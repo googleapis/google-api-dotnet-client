@@ -2257,6 +2257,91 @@ namespace Google.Apis.Dialogflow.v3
                                 });
                             }
                         }
+
+                        /// <summary>
+                        /// Processes a natural language query and returns structured, actionable data as a result
+                        /// through server-side streaming. Server-side streaming allows Dialogflow to send [partial
+                        /// responses](https://cloud.google.com/dialogflow/cx/docs/concept/fulfillment#partial-response)
+                        /// earlier in a single request.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="session">
+                        /// Required. The name of the session this query is sent to. Format:
+                        /// `projects//locations//agents//sessions/` or
+                        /// `projects//locations//agents//environments//sessions/`. If `Environment ID` is not
+                        /// specified, we assume default 'draft' environment. It's up to the API caller to choose an
+                        /// appropriate `Session ID`. It can be a random number or some type of session identifiers
+                        /// (preferably hashed). The length of the `Session ID` must not exceed 36 characters. For more
+                        /// information, see the [sessions
+                        /// guide](https://cloud.google.com/dialogflow/cx/docs/concept/session). Note: Always use agent
+                        /// versions for production traffic. See [Versions and
+                        /// environments](https://cloud.google.com/dialogflow/cx/docs/concept/version).
+                        /// </param>
+                        public virtual ServerStreamingDetectIntentRequest ServerStreamingDetectIntent(Google.Apis.Dialogflow.v3.Data.GoogleCloudDialogflowCxV3DetectIntentRequest body, string session)
+                        {
+                            return new ServerStreamingDetectIntentRequest(this.service, body, session);
+                        }
+
+                        /// <summary>
+                        /// Processes a natural language query and returns structured, actionable data as a result
+                        /// through server-side streaming. Server-side streaming allows Dialogflow to send [partial
+                        /// responses](https://cloud.google.com/dialogflow/cx/docs/concept/fulfillment#partial-response)
+                        /// earlier in a single request.
+                        /// </summary>
+                        public class ServerStreamingDetectIntentRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3.Data.GoogleCloudDialogflowCxV3DetectIntentResponse>
+                        {
+                            /// <summary>Constructs a new ServerStreamingDetectIntent request.</summary>
+                            public ServerStreamingDetectIntentRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v3.Data.GoogleCloudDialogflowCxV3DetectIntentRequest body, string session) : base(service)
+                            {
+                                Session = session;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The name of the session this query is sent to. Format:
+                            /// `projects//locations//agents//sessions/` or
+                            /// `projects//locations//agents//environments//sessions/`. If `Environment ID` is not
+                            /// specified, we assume default 'draft' environment. It's up to the API caller to choose an
+                            /// appropriate `Session ID`. It can be a random number or some type of session identifiers
+                            /// (preferably hashed). The length of the `Session ID` must not exceed 36 characters. For
+                            /// more information, see the [sessions
+                            /// guide](https://cloud.google.com/dialogflow/cx/docs/concept/session). Note: Always use
+                            /// agent versions for production traffic. See [Versions and
+                            /// environments](https://cloud.google.com/dialogflow/cx/docs/concept/version).
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("session", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Session { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Dialogflow.v3.Data.GoogleCloudDialogflowCxV3DetectIntentRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "serverStreamingDetectIntent";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v3/{+session}:serverStreamingDetectIntent";
+
+                            /// <summary>Initializes ServerStreamingDetectIntent parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("session", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "session",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+/environments/[^/]+/sessions/[^/]+$",
+                                });
+                            }
+                        }
                     }
 
                     /// <summary>
@@ -6537,6 +6622,90 @@ namespace Google.Apis.Dialogflow.v3
                         public override string RestPath => "v3/{+session}:matchIntent";
 
                         /// <summary>Initializes MatchIntent parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("session", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "session",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+/sessions/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Processes a natural language query and returns structured, actionable data as a result through
+                    /// server-side streaming. Server-side streaming allows Dialogflow to send [partial
+                    /// responses](https://cloud.google.com/dialogflow/cx/docs/concept/fulfillment#partial-response)
+                    /// earlier in a single request.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="session">
+                    /// Required. The name of the session this query is sent to. Format:
+                    /// `projects//locations//agents//sessions/` or
+                    /// `projects//locations//agents//environments//sessions/`. If `Environment ID` is not specified, we
+                    /// assume default 'draft' environment. It's up to the API caller to choose an appropriate `Session
+                    /// ID`. It can be a random number or some type of session identifiers (preferably hashed). The
+                    /// length of the `Session ID` must not exceed 36 characters. For more information, see the
+                    /// [sessions guide](https://cloud.google.com/dialogflow/cx/docs/concept/session). Note: Always use
+                    /// agent versions for production traffic. See [Versions and
+                    /// environments](https://cloud.google.com/dialogflow/cx/docs/concept/version).
+                    /// </param>
+                    public virtual ServerStreamingDetectIntentRequest ServerStreamingDetectIntent(Google.Apis.Dialogflow.v3.Data.GoogleCloudDialogflowCxV3DetectIntentRequest body, string session)
+                    {
+                        return new ServerStreamingDetectIntentRequest(this.service, body, session);
+                    }
+
+                    /// <summary>
+                    /// Processes a natural language query and returns structured, actionable data as a result through
+                    /// server-side streaming. Server-side streaming allows Dialogflow to send [partial
+                    /// responses](https://cloud.google.com/dialogflow/cx/docs/concept/fulfillment#partial-response)
+                    /// earlier in a single request.
+                    /// </summary>
+                    public class ServerStreamingDetectIntentRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3.Data.GoogleCloudDialogflowCxV3DetectIntentResponse>
+                    {
+                        /// <summary>Constructs a new ServerStreamingDetectIntent request.</summary>
+                        public ServerStreamingDetectIntentRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v3.Data.GoogleCloudDialogflowCxV3DetectIntentRequest body, string session) : base(service)
+                        {
+                            Session = session;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the session this query is sent to. Format:
+                        /// `projects//locations//agents//sessions/` or
+                        /// `projects//locations//agents//environments//sessions/`. If `Environment ID` is not
+                        /// specified, we assume default 'draft' environment. It's up to the API caller to choose an
+                        /// appropriate `Session ID`. It can be a random number or some type of session identifiers
+                        /// (preferably hashed). The length of the `Session ID` must not exceed 36 characters. For more
+                        /// information, see the [sessions
+                        /// guide](https://cloud.google.com/dialogflow/cx/docs/concept/session). Note: Always use agent
+                        /// versions for production traffic. See [Versions and
+                        /// environments](https://cloud.google.com/dialogflow/cx/docs/concept/version).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("session", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Session { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dialogflow.v3.Data.GoogleCloudDialogflowCxV3DetectIntentRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "serverStreamingDetectIntent";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3/{+session}:serverStreamingDetectIntent";
+
+                        /// <summary>Initializes ServerStreamingDetectIntent parameter list.</summary>
                         protected override void InitParameters()
                         {
                             base.InitParameters();

@@ -6283,7 +6283,9 @@ namespace Google.Apis.Cloudchannel.v1.Data
     /// <summary>Request message for CloudChannelService.CheckCloudIdentityAccountsExist.</summary>
     public class GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Domain to fetch for Cloud Identity account customer.</summary>
+        /// <summary>
+        /// Required. Domain to fetch for Cloud Identity account customers, including domained and domainless.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
         public virtual string Domain { get; set; }
 

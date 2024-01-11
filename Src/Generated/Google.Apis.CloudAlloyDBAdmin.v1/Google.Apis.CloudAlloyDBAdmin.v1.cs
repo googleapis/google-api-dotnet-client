@@ -5654,6 +5654,50 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
     }
 
     /// <summary>
+    /// Any custom metadata associated with the resource. i.e. A spanner instance can have multiple databases with its
+    /// own unique metadata. Information for these individual databases can be captured in custom metadata data
+    /// </summary>
+    public class StorageDatabasecenterPartnerapiV1mainCustomMetadataData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseMetadata")]
+        public virtual System.Collections.Generic.IList<StorageDatabasecenterPartnerapiV1mainDatabaseMetadata> DatabaseMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata for individual databases created in an instance. i.e. spanner instance can have multiple databases with
+    /// unique configuration settings.
+    /// </summary>
+    public class StorageDatabasecenterPartnerapiV1mainDatabaseMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Backup configuration for this database</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupConfiguration")]
+        public virtual StorageDatabasecenterPartnerapiV1mainBackupConfiguration BackupConfiguration { get; set; }
+
+        /// <summary>Information about the last backup attempt for this database</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupRun")]
+        public virtual StorageDatabasecenterPartnerapiV1mainBackupRun BackupRun { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("product")]
+        public virtual StorageDatabasecenterProtoCommonProduct Product { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
+        public virtual StorageDatabasecenterPartnerapiV1mainDatabaseResourceId ResourceId { get; set; }
+
+        /// <summary>
+        /// Required. Database name. Resource name to follow CAIS resource_name format as noted here
+        /// go/condor-common-datamodel
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// DatabaseResourceFeed is the top level proto to be used to ingest different database resource level events into
     /// Condor platform.
     /// </summary>
@@ -5916,9 +5960,9 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("currentState")]
         public virtual string CurrentState { get; set; }
 
-        /// <summary>Any custom metadata associated with the resource (a JSON field)</summary>
+        /// <summary>Any custom metadata associated with the resource</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customMetadata")]
-        public virtual System.Collections.Generic.IDictionary<string, object> CustomMetadata { get; set; }
+        public virtual StorageDatabasecenterPartnerapiV1mainCustomMetadataData CustomMetadata { get; set; }
 
         /// <summary>
         /// The state that the instance is expected to be in. For example, an instance state can transition to UNHEALTHY

@@ -514,6 +514,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         Schemas = new SchemasResource(service);
                         ServingConfigs = new ServingConfigsResource(service);
                         SiteSearchEngine = new SiteSearchEngineResource(service);
+                        SuggestionDenyListEntries = new SuggestionDenyListEntriesResource(service);
                         UserEvents = new UserEventsResource(service);
                     }
 
@@ -1619,7 +1620,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Indicates which fields in the provided Conversation to update. The following are NOT
-                            /// supported: * conversation.name If not set or empty, all supported fields are updated.
+                            /// supported: * Conversation.name If not set or empty, all supported fields are updated.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual object UpdateMask { get; set; }
@@ -2533,7 +2534,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// be used as the ID of the default serving config. For example, for Engine
                         /// `projects/*/locations/global/collections/*/engines/my-engine`, you can use
                         /// `projects/*/locations/global/collections/*/engines/my-engine/servingConfigs/my-engine` for
-                        /// your Recommend requests.
+                        /// your RecommendationService.Recommend requests.
                         /// </param>
                         public virtual RecommendRequest Recommend(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaRecommendRequest body, string servingConfig)
                         {
@@ -2559,7 +2560,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                             /// will be used as the ID of the default serving config. For example, for Engine
                             /// `projects/*/locations/global/collections/*/engines/my-engine`, you can use
                             /// `projects/*/locations/global/collections/*/engines/my-engine/servingConfigs/my-engine`
-                            /// for your Recommend requests.
+                            /// for your RecommendationService.Recommend requests.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("servingConfig", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string ServingConfig { get; private set; }
@@ -3009,6 +3010,142 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                                         });
                                     }
                                 }
+                            }
+                        }
+                    }
+
+                    /// <summary>Gets the SuggestionDenyListEntries resource.</summary>
+                    public virtual SuggestionDenyListEntriesResource SuggestionDenyListEntries { get; }
+
+                    /// <summary>The "suggestionDenyListEntries" collection of methods.</summary>
+                    public class SuggestionDenyListEntriesResource
+                    {
+                        private const string Resource = "suggestionDenyListEntries";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public SuggestionDenyListEntriesResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>Imports all SuggestionDenyListEntry for a DataStore.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">
+                        /// Required. The parent data store resource name for which to import denylist entries. Follows
+                        /// pattern projects/*/locations/*/collections/*/dataStores/*.
+                        /// </param>
+                        public virtual ImportRequest Import(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaImportSuggestionDenyListEntriesRequest body, string parent)
+                        {
+                            return new ImportRequest(this.service, body, parent);
+                        }
+
+                        /// <summary>Imports all SuggestionDenyListEntry for a DataStore.</summary>
+                        public class ImportRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleLongrunningOperation>
+                        {
+                            /// <summary>Constructs a new Import request.</summary>
+                            public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaImportSuggestionDenyListEntriesRequest body, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The parent data store resource name for which to import denylist entries.
+                            /// Follows pattern projects/*/locations/*/collections/*/dataStores/*.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaImportSuggestionDenyListEntriesRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "import";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta/{+parent}/suggestionDenyListEntries:import";
+
+                            /// <summary>Initializes Import parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Permanently deletes all SuggestionDenyListEntry for a DataStore.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">
+                        /// Required. The parent data store resource name for which to import denylist entries. Follows
+                        /// pattern projects/*/locations/*/collections/*/dataStores/*.
+                        /// </param>
+                        public virtual PurgeRequest Purge(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaPurgeSuggestionDenyListEntriesRequest body, string parent)
+                        {
+                            return new PurgeRequest(this.service, body, parent);
+                        }
+
+                        /// <summary>Permanently deletes all SuggestionDenyListEntry for a DataStore.</summary>
+                        public class PurgeRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleLongrunningOperation>
+                        {
+                            /// <summary>Constructs a new Purge request.</summary>
+                            public PurgeRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaPurgeSuggestionDenyListEntriesRequest body, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The parent data store resource name for which to import denylist entries.
+                            /// Follows pattern projects/*/locations/*/collections/*/dataStores/*.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaPurgeSuggestionDenyListEntriesRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "purge";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta/{+parent}/suggestionDenyListEntries:purge";
+
+                            /// <summary>Initializes Purge parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+$",
+                                });
                             }
                         }
                     }
@@ -3816,7 +3953,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Indicates which fields in the provided Conversation to update. The following are NOT
-                            /// supported: * conversation.name If not set or empty, all supported fields are updated.
+                            /// supported: * Conversation.name If not set or empty, all supported fields are updated.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual object UpdateMask { get; set; }
@@ -4043,7 +4180,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// be used as the ID of the default serving config. For example, for Engine
                         /// `projects/*/locations/global/collections/*/engines/my-engine`, you can use
                         /// `projects/*/locations/global/collections/*/engines/my-engine/servingConfigs/my-engine` for
-                        /// your Recommend requests.
+                        /// your RecommendationService.Recommend requests.
                         /// </param>
                         public virtual RecommendRequest Recommend(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaRecommendRequest body, string servingConfig)
                         {
@@ -4069,7 +4206,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                             /// will be used as the ID of the default serving config. For example, for Engine
                             /// `projects/*/locations/global/collections/*/engines/my-engine`, you can use
                             /// `projects/*/locations/global/collections/*/engines/my-engine/servingConfigs/my-engine`
-                            /// for your Recommend requests.
+                            /// for your RecommendationService.Recommend requests.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("servingConfig", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string ServingConfig { get; private set; }
@@ -4351,6 +4488,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     Operations = new OperationsResource(service);
                     Schemas = new SchemasResource(service);
                     ServingConfigs = new ServingConfigsResource(service);
+                    SuggestionDenyListEntries = new SuggestionDenyListEntriesResource(service);
                     UserEvents = new UserEventsResource(service);
                 }
 
@@ -5455,7 +5593,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                         /// <summary>
                         /// Indicates which fields in the provided Conversation to update. The following are NOT
-                        /// supported: * conversation.name If not set or empty, all supported fields are updated.
+                        /// supported: * Conversation.name If not set or empty, all supported fields are updated.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
@@ -6211,7 +6349,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     /// the ID of the default serving config. For example, for Engine
                     /// `projects/*/locations/global/collections/*/engines/my-engine`, you can use
                     /// `projects/*/locations/global/collections/*/engines/my-engine/servingConfigs/my-engine` for your
-                    /// Recommend requests.
+                    /// RecommendationService.Recommend requests.
                     /// </param>
                     public virtual RecommendRequest Recommend(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaRecommendRequest body, string servingConfig)
                     {
@@ -6237,7 +6375,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// be used as the ID of the default serving config. For example, for Engine
                         /// `projects/*/locations/global/collections/*/engines/my-engine`, you can use
                         /// `projects/*/locations/global/collections/*/engines/my-engine/servingConfigs/my-engine` for
-                        /// your Recommend requests.
+                        /// your RecommendationService.Recommend requests.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("servingConfig", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ServingConfig { get; private set; }
@@ -6335,6 +6473,142 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+/servingConfigs/[^/]+$",
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the SuggestionDenyListEntries resource.</summary>
+                public virtual SuggestionDenyListEntriesResource SuggestionDenyListEntries { get; }
+
+                /// <summary>The "suggestionDenyListEntries" collection of methods.</summary>
+                public class SuggestionDenyListEntriesResource
+                {
+                    private const string Resource = "suggestionDenyListEntries";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public SuggestionDenyListEntriesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Imports all SuggestionDenyListEntry for a DataStore.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The parent data store resource name for which to import denylist entries. Follows
+                    /// pattern projects/*/locations/*/collections/*/dataStores/*.
+                    /// </param>
+                    public virtual ImportRequest Import(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaImportSuggestionDenyListEntriesRequest body, string parent)
+                    {
+                        return new ImportRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>Imports all SuggestionDenyListEntry for a DataStore.</summary>
+                    public class ImportRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Import request.</summary>
+                        public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaImportSuggestionDenyListEntriesRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent data store resource name for which to import denylist entries. Follows
+                        /// pattern projects/*/locations/*/collections/*/dataStores/*.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaImportSuggestionDenyListEntriesRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "import";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta/{+parent}/suggestionDenyListEntries:import";
+
+                        /// <summary>Initializes Import parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Permanently deletes all SuggestionDenyListEntry for a DataStore.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The parent data store resource name for which to import denylist entries. Follows
+                    /// pattern projects/*/locations/*/collections/*/dataStores/*.
+                    /// </param>
+                    public virtual PurgeRequest Purge(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaPurgeSuggestionDenyListEntriesRequest body, string parent)
+                    {
+                        return new PurgeRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>Permanently deletes all SuggestionDenyListEntry for a DataStore.</summary>
+                    public class PurgeRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Purge request.</summary>
+                        public PurgeRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaPurgeSuggestionDenyListEntriesRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent data store resource name for which to import denylist entries. Follows
+                        /// pattern projects/*/locations/*/collections/*/dataStores/*.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaPurgeSuggestionDenyListEntriesRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "purge";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta/{+parent}/suggestionDenyListEntries:purge";
+
+                        /// <summary>Initializes Purge parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/.*$",
                             });
                         }
                     }
@@ -7484,6 +7758,109 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     }
 
     /// <summary>
+    /// Metadata related to the progress of the ImportSuggestionDenyListEntries operation. This is returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1ImportSuggestionDenyListEntriesMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for CompletionService.ImportSuggestionDenyListEntries method.</summary>
+    public class GoogleCloudDiscoveryengineV1ImportSuggestionDenyListEntriesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A sample of errors encountered while processing the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorSamples")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorSamples { get; set; }
+
+        /// <summary>Count of deny list entries that failed to be imported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failedEntriesCount")]
+        public virtual System.Nullable<long> FailedEntriesCount { get; set; }
+
+        /// <summary>Count of deny list entries successfully imported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("importedEntriesCount")]
+        public virtual System.Nullable<long> ImportedEntriesCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Metadata related to the progress of the Import operation. This is returned by the
     /// google.longrunning.Operation.metadata field.
     /// </summary>
@@ -7716,6 +8093,105 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Metadata related to the progress of the PurgeSuggestionDenyListEntries operation. This is returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1PurgeSuggestionDenyListEntriesMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for CompletionService.PurgeSuggestionDenyListEntries method.</summary>
+    public class GoogleCloudDiscoveryengineV1PurgeSuggestionDenyListEntriesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A sample of errors encountered while processing the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorSamples")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorSamples { get; set; }
+
+        /// <summary>Number of suggestion deny list entries purged.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purgeCount")]
+        public virtual System.Nullable<long> PurgeCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Defines the structure and layout of a type of document data.</summary>
     public class GoogleCloudDiscoveryengineV1Schema : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7821,7 +8297,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     }
 
     /// <summary>
-    /// Metadata related to the progress of the SiteSearchEngineService.BatchCreateTargetSite operation. This will be
+    /// Metadata related to the progress of the SiteSearchEngineService.BatchCreateTargetSites operation. This will be
     /// returned by the google.longrunning.Operation.metadata field.
     /// </summary>
     public class GoogleCloudDiscoveryengineV1alphaBatchCreateTargetSiteMetadata : Google.Apis.Requests.IDirectResponseSchema
@@ -9042,7 +9518,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// `agent_creation_config` to create agent or provide an agent name that links the agent with the Chat engine.
         /// Format: `projects//locations//agents/`. Note that the `dialogflow_agent_to_link` are one-time consumed by
         /// and passed to Dialogflow service. It means they cannot be retrieved using EngineService.GetEngine or
-        /// EngineService.ListEngines API after engine creation. Please use chat_engine_metadata.dialogflow_agent for
+        /// EngineService.ListEngines API after engine creation. Please use ChatEngineMetadata.dialogflow_agent for
         /// actual agent association after Engine is created.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dialogflowAgentToLink")]
@@ -9073,6 +9549,13 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultLanguageCode")]
         public virtual string DefaultLanguageCode { get; set; }
+
+        /// <summary>
+        /// Agent location for Agent creation, supported values: global/us/eu. If not provided, us Engine will create
+        /// Agent using us-central-1 by default; eu Engine will create Agent using eu-west-1 by default.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
 
         /// <summary>
         /// Required. The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g.,
@@ -9552,6 +10035,109 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     }
 
     /// <summary>
+    /// Metadata related to the progress of the ImportSuggestionDenyListEntries operation. This is returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaImportSuggestionDenyListEntriesMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for CompletionService.ImportSuggestionDenyListEntries method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaImportSuggestionDenyListEntriesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A sample of errors encountered while processing the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorSamples")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorSamples { get; set; }
+
+        /// <summary>Count of deny list entries that failed to be imported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failedEntriesCount")]
+        public virtual System.Nullable<long> FailedEntriesCount { get; set; }
+
+        /// <summary>Count of deny list entries successfully imported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("importedEntriesCount")]
+        public virtual System.Nullable<long> ImportedEntriesCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Metadata related to the progress of the Import operation. This is returned by the
     /// google.longrunning.Operation.metadata field.
     /// </summary>
@@ -9675,7 +10261,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     public class GoogleCloudDiscoveryengineV1alphaOcrConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. If OCR is enabled or not. OCR must be enabled for other OcrConfig options to apply.
+        /// Required. If OCR is enabled or not. OCR must be enabled for other OcrConfig options to apply. We will only
+        /// perform OCR on the first 80 pages of the PDF files.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
@@ -9803,6 +10390,105 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purgeSample")]
         public virtual System.Collections.Generic.IList<string> PurgeSample { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the PurgeSuggestionDenyListEntries operation. This is returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaPurgeSuggestionDenyListEntriesMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for CompletionService.PurgeSuggestionDenyListEntries method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaPurgeSuggestionDenyListEntriesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A sample of errors encountered while processing the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorSamples")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorSamples { get; set; }
+
+        /// <summary>Number of suggestion deny list entries purged.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purgeCount")]
+        public virtual System.Nullable<long> PurgeCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11177,7 +11863,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// The URI of the content. Only Cloud Storage URIs (e.g. `gs://bucket-name/path/to/file`) are supported. The
-        /// maximum file size is 100 MB.
+        /// maximum file size is 2.5 MB for text-based formats, 100 MB for other formats.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
@@ -11452,6 +12138,139 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsPrefix")]
         public virtual string GcsPrefix { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the ImportSuggestionDenyListEntries operation. This is returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaImportSuggestionDenyListEntriesMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for CompletionService.ImportSuggestionDenyListEntries method.</summary>
+    public class GoogleCloudDiscoveryengineV1betaImportSuggestionDenyListEntriesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Cloud Storage location for the input content. Only 1 file can be specified that contains all entries to
+        /// import. Supported values `gcs_source.schema` for autocomplete suggestion deny list entry imports: *
+        /// `suggestion_deny_list` (default): One JSON [SuggestionDenyListEntry] per line.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
+        public virtual GoogleCloudDiscoveryengineV1betaGcsSource GcsSource { get; set; }
+
+        /// <summary>The Inline source for the input content for suggestion deny list entries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inlineSource")]
+        public virtual GoogleCloudDiscoveryengineV1betaImportSuggestionDenyListEntriesRequestInlineSource InlineSource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The inline source for SuggestionDenyListEntry.</summary>
+    public class GoogleCloudDiscoveryengineV1betaImportSuggestionDenyListEntriesRequestInlineSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. A list of all denylist entries to import. Max of 1000 items.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entries")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaSuggestionDenyListEntry> Entries { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for CompletionService.ImportSuggestionDenyListEntries method.</summary>
+    public class GoogleCloudDiscoveryengineV1betaImportSuggestionDenyListEntriesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A sample of errors encountered while processing the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorSamples")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorSamples { get; set; }
+
+        /// <summary>Count of deny list entries that failed to be imported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failedEntriesCount")]
+        public virtual System.Nullable<long> FailedEntriesCount { get; set; }
+
+        /// <summary>Count of deny list entries successfully imported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("importedEntriesCount")]
+        public virtual System.Nullable<long> ImportedEntriesCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11914,6 +12733,112 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Metadata related to the progress of the PurgeSuggestionDenyListEntries operation. This is returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaPurgeSuggestionDenyListEntriesMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for CompletionService.PurgeSuggestionDenyListEntries method.</summary>
+    public class GoogleCloudDiscoveryengineV1betaPurgeSuggestionDenyListEntriesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for CompletionService.PurgeSuggestionDenyListEntries method.</summary>
+    public class GoogleCloudDiscoveryengineV1betaPurgeSuggestionDenyListEntriesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A sample of errors encountered while processing the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorSamples")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorSamples { get; set; }
+
+        /// <summary>Number of suggestion deny list entries purged.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purgeCount")]
+        public virtual System.Nullable<long> PurgeCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for Recommend method.</summary>
     public class GoogleCloudDiscoveryengineV1betaRecommendRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12182,10 +13107,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// Uses the provided embedding to do additional semantic document retrieval. The retrieval is based on the dot
-        /// product of SearchRequest.embedding_spec.embedding_vectors.vector and the document embedding that is provided
-        /// in SearchRequest.embedding_spec.embedding_vectors.field_path. If
-        /// SearchRequest.embedding_spec.embedding_vectors.field_path is not provided, it will use
-        /// ServingConfig.embedding_config.field_paths.
+        /// product of SearchRequest.EmbeddingSpec.EmbeddingVector.vector and the document embedding that is provided in
+        /// SearchRequest.EmbeddingSpec.EmbeddingVector.field_path. If
+        /// SearchRequest.EmbeddingSpec.EmbeddingVector.field_path is not provided, it will use
+        /// ServingConfig.EmbeddingConfig.field_paths.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("embeddingSpec")]
         public virtual GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpec EmbeddingSpec { get; set; }
@@ -12400,8 +13325,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// The maximum number of extractive answers returned in each search result. An extractive answer is a verbatim
         /// answer extracted from the original document, which provides a precise and contextually relevant answer to
         /// the search query. If the number of matching answers is less than the `max_extractive_answer_count`, return
-        /// all of the answers. Otherwise, return the `max_extractive_answer_count`. At most one answer is returned for
-        /// each SearchResult.
+        /// all of the answers. Otherwise, return the `max_extractive_answer_count`. At most five answers are returned
+        /// for each SearchResult.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxExtractiveAnswerCount")]
         public virtual System.Nullable<int> MaxExtractiveAnswerCount { get; set; }
@@ -12539,7 +13464,12 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>Specification of the model.</summary>
     public class GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelSpec : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The string format of the model version. e.g. stable, preview, etc.</summary>
+        /// <summary>
+        /// The model version used to generate the summary. Supported values are: * `stable`: string. Default value when
+        /// no value is specified. Uses a generally available, fine-tuned version of the text-bison@001 model. *
+        /// `preview`: string. (Public preview) Uses a fine-tuned version of the text-bison@002 model. This model works
+        /// only for summaries in English.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
 
@@ -13024,7 +13954,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
 
-        /// <summary>GCS or HTTP uri for the document.</summary>
+        /// <summary>Cloud Storage or HTTP uri for the document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 
@@ -13067,6 +13997,27 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>Summary text with no citation information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("summary")]
         public virtual string Summary { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Suggestion deny list entry identifying the phrase to block from suggestions and the applied operation for the
+    /// phrase.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaSuggestionDenyListEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Phrase to block from suggestions served. Can be maximum 125 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blockPhrase")]
+        public virtual string BlockPhrase { get; set; }
+
+        /// <summary>
+        /// Required. The match operator to apply for this phrase. Whether to block the exact phrase, or block any
+        /// suggestions containing this phrase.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchOperator")]
+        public virtual string MatchOperator { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13331,10 +14282,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// The filter syntax consists of an expression language for constructing a predicate from one or more fields of
         /// the documents being filtered. One example is for `search` events, the associated SearchRequest may contain a
         /// filter expression in SearchRequest.filter conforming to https://google.aip.dev/160#filtering. Similarly, for
-        /// `view-item-list` events that are generated from a RecommendationService.RecommendRequest, this field may be
-        /// populated directly from RecommendationService.RecommendRequest.filter conforming to
-        /// https://google.aip.dev/160#filtering. The value must be a UTF-8 encoded string with a length limit of 1,000
-        /// characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
+        /// `view-item-list` events that are generated from a RecommendRequest, this field may be populated directly
+        /// from RecommendRequest.filter conforming to https://google.aip.dev/160#filtering. The value must be a UTF-8
+        /// encoded string with a length limit of 1,000 characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }

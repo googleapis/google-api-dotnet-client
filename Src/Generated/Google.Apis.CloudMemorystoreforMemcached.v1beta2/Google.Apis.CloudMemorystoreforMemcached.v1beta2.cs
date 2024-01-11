@@ -1856,7 +1856,7 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
         /// <summary>
         /// Optional. The MaintenancePolicies that have been attached to the instance. The key must be of the type name
         /// of the oneof policy name defined in MaintenancePolicy, and the referenced policy must define the same policy
-        /// type. For details, please refer to go/cloud-saas-mw-ug. Should not be set if
+        /// type. For details, please refer to go/mr-user-guide. Should not be set if
         /// maintenance_settings.maintenance_policies is set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenancePolicyNames")]
@@ -2138,8 +2138,8 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
         /// <summary>
         /// Optional. The MaintenancePolicies that have been attached to the instance. The key must be of the type name
         /// of the oneof policy name defined in MaintenancePolicy, and the embedded policy must define the same policy
-        /// type. For details, please refer to go/cloud-saas-mw-ug. Should not be set if maintenance_policy_names is
-        /// set. If only the name is needed, then only populate MaintenancePolicy.name.
+        /// type. For details, please refer to go/mr-user-guide. Should not be set if maintenance_policy_names is set.
+        /// If only the name is needed, then only populate MaintenancePolicy.name.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenancePolicies")]
         public virtual System.Collections.Generic.IDictionary<string, MaintenancePolicy> MaintenancePolicies { get; set; }

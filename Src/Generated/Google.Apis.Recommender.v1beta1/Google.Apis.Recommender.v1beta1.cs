@@ -1357,6 +1357,95 @@ namespace Google.Apis.Recommender.v1beta1
                     }
                 }
             }
+
+            /// <summary>Lists locations with recommendations or insights.</summary>
+            /// <param name="name">The resource that owns the locations collection, if applicable.</param>
+            public virtual ListRequest List(string name)
+            {
+                return new ListRequest(this.service, name);
+            }
+
+            /// <summary>Lists locations with recommendations or insights.</summary>
+            public class ListRequest : RecommenderBaseServiceRequest<Google.Apis.Recommender.v1beta1.Data.GoogleCloudLocationListLocationsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>The resource that owns the locations collection, if applicable.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
+                /// `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
+                /// The maximum number of results to return. If not set, the service selects a default.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// A page token received from the `next_page_token` field in the response. Send that page token to
+                /// receive the subsequent page.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta1/{+name}/locations";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^billingAccounts/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
     }
 
@@ -2137,6 +2226,95 @@ namespace Google.Apis.Recommender.v1beta1
                             });
                         }
                     }
+                }
+            }
+
+            /// <summary>Lists locations with recommendations or insights.</summary>
+            /// <param name="name">The resource that owns the locations collection, if applicable.</param>
+            public virtual ListRequest List(string name)
+            {
+                return new ListRequest(this.service, name);
+            }
+
+            /// <summary>Lists locations with recommendations or insights.</summary>
+            public class ListRequest : RecommenderBaseServiceRequest<Google.Apis.Recommender.v1beta1.Data.GoogleCloudLocationListLocationsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>The resource that owns the locations collection, if applicable.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
+                /// `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
+                /// The maximum number of results to return. If not set, the service selects a default.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// A page token received from the `next_page_token` field in the response. Send that page token to
+                /// receive the subsequent page.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta1/{+name}/locations";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^folders/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 }
             }
         }
@@ -3294,6 +3472,95 @@ namespace Google.Apis.Recommender.v1beta1
                     }
                 }
             }
+
+            /// <summary>Lists locations with recommendations or insights.</summary>
+            /// <param name="name">The resource that owns the locations collection, if applicable.</param>
+            public virtual ListRequest List(string name)
+            {
+                return new ListRequest(this.service, name);
+            }
+
+            /// <summary>Lists locations with recommendations or insights.</summary>
+            public class ListRequest : RecommenderBaseServiceRequest<Google.Apis.Recommender.v1beta1.Data.GoogleCloudLocationListLocationsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>The resource that owns the locations collection, if applicable.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
+                /// `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
+                /// The maximum number of results to return. If not set, the service selects a default.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// A page token received from the `next_page_token` field in the response. Send that page token to
+                /// receive the subsequent page.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta1/{+name}/locations";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
     }
 
@@ -4374,6 +4641,95 @@ namespace Google.Apis.Recommender.v1beta1
                     }
                 }
             }
+
+            /// <summary>Lists locations with recommendations or insights.</summary>
+            /// <param name="name">The resource that owns the locations collection, if applicable.</param>
+            public virtual ListRequest List(string name)
+            {
+                return new ListRequest(this.service, name);
+            }
+
+            /// <summary>Lists locations with recommendations or insights.</summary>
+            public class ListRequest : RecommenderBaseServiceRequest<Google.Apis.Recommender.v1beta1.Data.GoogleCloudLocationListLocationsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>The resource that owns the locations collection, if applicable.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
+                /// `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
+                /// The maximum number of results to return. If not set, the service selects a default.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// A page token received from the `next_page_token` field in the response. Send that page token to
+                /// receive the subsequent page.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta1/{+name}/locations";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
     }
 
@@ -4455,6 +4811,53 @@ namespace Google.Apis.Recommender.v1beta1
 }
 namespace Google.Apis.Recommender.v1beta1.Data
 {
+    /// <summary>The response message for Locations.ListLocations.</summary>
+    public class GoogleCloudLocationListLocationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of locations that matches the specified filter in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudLocationLocation> Locations { get; set; }
+
+        /// <summary>The standard List next-page token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A resource that represents a Google Cloud location.</summary>
+    public class GoogleCloudLocationLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The friendly name for this location, typically a nearby city name. For example, "Tokyo".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>The canonical id for this location. For example: `"us-east1"`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
+        public virtual string LocationId { get; set; }
+
+        /// <summary>Service-specific metadata. For example the available capacity at the given location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
+        /// <summary>
+        /// Resource name for the location, which may vary between implementations. For example:
+        /// `"projects/example-project/locations/us-east1"`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Contains metadata about how much money a recommendation can save or incur.</summary>
     public class GoogleCloudRecommenderV1beta1CostProjection : Google.Apis.Requests.IDirectResponseSchema
     {

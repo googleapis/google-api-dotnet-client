@@ -2284,6 +2284,12 @@ namespace Google.Apis.Speech.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("totalBilledTime")]
         public virtual object TotalBilledTime { get; set; }
 
+        /// <summary>
+        /// Whether request used legacy asr models (was not automatically migrated to use conformer models).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usingLegacyModels")]
+        public virtual System.Nullable<bool> UsingLegacyModels { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

@@ -2219,6 +2219,69 @@ namespace Google.Apis.HangoutsChat.v1
         }
 
         /// <summary>
+        /// Completes the [import process](https://developers.google.com/chat/api/guides/import-data) for the specified
+        /// space and makes it visible to users. Requires app authentication and domain-wide delegation. For more
+        /// information, see [Authorize Google Chat apps to import
+        /// data](https://developers.google.com/chat/api/guides/authorize-import).
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">Required. Resource name of the import mode space. Format: `spaces/{space}`</param>
+        public virtual CompleteImportRequest CompleteImport(Google.Apis.HangoutsChat.v1.Data.CompleteImportSpaceRequest body, string name)
+        {
+            return new CompleteImportRequest(this.service, body, name);
+        }
+
+        /// <summary>
+        /// Completes the [import process](https://developers.google.com/chat/api/guides/import-data) for the specified
+        /// space and makes it visible to users. Requires app authentication and domain-wide delegation. For more
+        /// information, see [Authorize Google Chat apps to import
+        /// data](https://developers.google.com/chat/api/guides/authorize-import).
+        /// </summary>
+        public class CompleteImportRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.CompleteImportSpaceResponse>
+        {
+            /// <summary>Constructs a new CompleteImport request.</summary>
+            public CompleteImportRequest(Google.Apis.Services.IClientService service, Google.Apis.HangoutsChat.v1.Data.CompleteImportSpaceRequest body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. Resource name of the import mode space. Format: `spaces/{space}`</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.HangoutsChat.v1.Data.CompleteImportSpaceRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "completeImport";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}:completeImport";
+
+            /// <summary>Initializes CompleteImport parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^spaces/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
         /// Creates a named space. Spaces grouped by topics aren't supported. For an example, see [Create a
         /// space](https://developers.google.com/chat/api/guides/v1/spaces/create). If you receive the error message
         /// `ALREADY_EXISTS` when creating a space, try a different `displayName`. An existing space within the Google
@@ -3207,6 +3270,23 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userLocale")]
         public virtual string UserLocale { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for completing the import process for a space.</summary>
+    public class CompleteImportSpaceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class CompleteImportSpaceResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The import mode space.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("space")]
+        public virtual Space Space { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5066,8 +5146,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// Optional. Immutable. The creation time of the membership, such as when a member joined or was invited to
-        /// join a space. [Developer Preview](https://developers.google.com/workspace/preview): This field is output
-        /// only, except when used to import historical memberships in import mode spaces.
+        /// join a space. This field is output only, except when used to import historical memberships in import mode
+        /// spaces.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
@@ -5099,6 +5179,46 @@ namespace Google.Apis.HangoutsChat.v1.Data
         {
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _deleteTimeRaw;
+
+        private object _deleteTime;
+
+        /// <summary>
+        /// Optional. Immutable. The deletion time of the membership, such as when a member left or was removed from a
+        /// space. This field is output only, except when used to import historical memberships in import mode spaces.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
+        public virtual string DeleteTimeRaw
+        {
+            get => _deleteTimeRaw;
+            set
+            {
+                _deleteTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _deleteTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DeleteTimeDateTimeOffset instead.")]
+        public virtual object DeleteTime
+        {
+            get => _deleteTime;
+            set
+            {
+                _deleteTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _deleteTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>
@@ -5199,10 +5319,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         private object _createTime;
 
         /// <summary>
-        /// For spaces created in Chat, the time at which the message was created. This field is output only, except
-        /// when used in imported spaces. [Developer Preview](https://developers.google.com/workspace/preview): For
-        /// imported spaces, set this field to the historical timestamp at which the message was created in the source
-        /// in order to preserve the original creation time.
+        /// Optional. Immutable. For spaces created in Chat, the time at which the message was created. This field is
+        /// output only, except when used in import mode spaces. For import mode spaces, set this field to the
+        /// historical timestamp at which the message was created in the source in order to preserve the original
+        /// creation time.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
@@ -5662,6 +5782,48 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adminInstalled")]
         public virtual System.Nullable<bool> AdminInstalled { get; set; }
 
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>
+        /// Optional. Immutable. For spaces created in Chat, the time the space was created. This field is output only,
+        /// except when used in import mode spaces. For import mode spaces, set this field to the historical timestamp
+        /// at which the space was created in the source in order to preserve the original creation time. Only populated
+        /// in the output when `spaceType` is `GROUP_CHAT` or `SPACE`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>
         /// The space's display name. Required when [creating a
         /// space](https://developers.google.com/chat/api/reference/rest/v1/spaces/create). If you receive the error
@@ -5682,6 +5844,13 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalUserAllowed")]
         public virtual System.Nullable<bool> ExternalUserAllowed { get; set; }
+
+        /// <summary>
+        /// Optional. Whether this space is created in `Import Mode` as part of a data migration into Google Workspace.
+        /// While spaces are being imported, they aren't visible to users until the import is complete.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("importMode")]
+        public virtual System.Nullable<bool> ImportMode { get; set; }
 
         /// <summary>Resource name of the space. Format: `spaces/{space}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
