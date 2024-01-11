@@ -2144,29 +2144,26 @@ namespace Google.Apis.Monitoring.v1.Data
     }
 
     /// <summary>
-    /// Preview: A chart dimension for an SQL query. This is applied over the x-axis. This is a preview feature and may
-    /// be subject to change before final release.
+    /// A chart dimension. Dimensions are a structured labewl, class, or category for a set of measurements in your
+    /// data.
     /// </summary>
     public class Dimension : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Required. The name of the column in the source SQL query that is used to chart the dimension.
-        /// </summary>
+        /// <summary>The name of the column in the source SQL query that is used to chart the dimension.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("column")]
         public virtual string Column { get; set; }
 
         /// <summary>
-        /// Optional. The type of the dimension column. This is relevant only if one of the bin_size fields is set. If
-        /// it is empty, the type TIMESTAMP or INT64 will be assumed based on which bin_size field is set. If populated,
-        /// this should be set to one of the following types: DATE, TIME, DATETIME, TIMESTAMP, BIGNUMERIC, INT64,
-        /// NUMERIC, FLOAT64.
+        /// The type of the dimension column. This is relevant only if one of the bin_size fields is set. If it is
+        /// empty, the type TIMESTAMP or INT64 will be assumed based on which bin_size field is set. If populated, this
+        /// should be set to one of the following types: DATE, TIME, DATETIME, TIMESTAMP, BIGNUMERIC, INT64, NUMERIC,
+        /// FLOAT64.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columnType")]
         public virtual string ColumnType { get; set; }
 
         /// <summary>
-        /// Optional. float_bin_size is used when the column type used for a dimension is a floating point numeric
-        /// column.
+        /// float_bin_size is used when the column type used for a dimension is a floating point numeric column.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("floatBinSize")]
         public virtual System.Nullable<double> FloatBinSize { get; set; }
@@ -2194,8 +2191,7 @@ namespace Google.Apis.Monitoring.v1.Data
 
         /// <summary>
         /// time_bin_size is used when the data type specified by column is a time type and the bin size is determined
-        /// by a time duration. If column_type is DATE, this must be a whole value multiple of 1 day. If column_type is
-        /// TIME, this must be less than or equal to 24 hours.
+        /// by a time duration.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeBinSize")]
         public virtual object TimeBinSize { get; set; }
@@ -2561,20 +2557,19 @@ namespace Google.Apis.Monitoring.v1.Data
     }
 
     /// <summary>
-    /// Preview: A chart measure for an SQL query. This is applied over the y-axis. This is a preview feature and may be
-    /// subject to change before final release.
+    /// A chart measure. Measures represent a measured property in your chart data such as rainfall in inches, number of
+    /// units sold, revenue gained, etc.
     /// </summary>
     public class Measure : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The aggregation function applied to the input column. This must not be set to "none" unless
-        /// binning is disabled on the dimension. The aggregation function is used to group points on the dimension
-        /// bins.
+        /// The aggregation function applied to the input column. This must not be set to "none" unless binning is
+        /// disabled on the dimension. The aggregation function is used to group points on the dimension bins.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aggregationFunction")]
         public virtual AggregationFunction AggregationFunction { get; set; }
 
-        /// <summary>Required. The column name within in the dataset used for the measure.</summary>
+        /// <summary>The column name within the dataset used for the measure.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("column")]
         public virtual string Column { get; set; }
 
@@ -3020,6 +3015,19 @@ namespace Google.Apis.Monitoring.v1.Data
     /// <summary>Groups a time series query definition.</summary>
     public class PieChartDataSet : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// A dimension is a structured label, class, or category for a set of measurements in your data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
+        public virtual System.Collections.Generic.IList<Dimension> Dimensions { get; set; }
+
+        /// <summary>
+        /// A measure is a measured value of a property in your data. For example, rainfall in inches, number of units
+        /// sold, revenue gained, etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("measures")]
+        public virtual System.Collections.Generic.IList<Measure> Measures { get; set; }
+
         /// <summary>
         /// Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum
         /// alignment period to use in a time series query. For example, if the data is published once every 10 minutes,

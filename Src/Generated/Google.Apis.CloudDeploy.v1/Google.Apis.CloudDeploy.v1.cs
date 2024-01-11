@@ -316,8 +316,8 @@ namespace Google.Apis.CloudDeploy.v1
                 /// <summary>Creates a new CustomTargetType in a given project and location.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The parent collection in which the `CustomTargetType` should be created in. Format should
-                /// be `projects/{project_id}/locations/{location_name}`.
+                /// Required. The parent collection in which the `CustomTargetType` should be created. Format should be
+                /// `projects/{project_id}/locations/{location_name}`.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudDeploy.v1.Data.CustomTargetType body, string parent)
                 {
@@ -336,8 +336,8 @@ namespace Google.Apis.CloudDeploy.v1
                     }
 
                     /// <summary>
-                    /// Required. The parent collection in which the `CustomTargetType` should be created in. Format
-                    /// should be `projects/{project_id}/locations/{location_name}`.
+                    /// Required. The parent collection in which the `CustomTargetType` should be created. Format should
+                    /// be `projects/{project_id}/locations/{location_name}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -348,12 +348,12 @@ namespace Google.Apis.CloudDeploy.v1
 
                     /// <summary>
                     /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
-                    /// retry your request, the server will know to ignore the request if it has already been completed.
-                    /// The server will guarantee that for at least 60 minutes since the first request. For example,
-                    /// consider a situation where you make an initial request and the request times out. If you make
-                    /// the request again with the same request ID, the server can check if original operation with the
-                    /// same request ID was received, and if so, will ignore the second request. This prevents clients
-                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// retry your request, the server knows to ignore the request if it has already been completed. The
+                    /// server guarantees that for at least 60 minutes after the first request. For example, consider a
+                    /// situation where you make an initial request and the request times out. If you make the request
+                    /// again with the same request ID, the server can check if original operation with the same request
+                    /// ID was received, and if so, will ignore the second request. This prevents clients from
+                    /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
                     /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
@@ -464,12 +464,12 @@ namespace Google.Apis.CloudDeploy.v1
 
                     /// <summary>
                     /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
-                    /// retry your request, the server will know to ignore the request if it has already been completed.
-                    /// The server will guarantee that for at least 60 minutes after the first request. For example,
-                    /// consider a situation where you make an initial request and the request times out. If you make
-                    /// the request again with the same request ID, the server can check if original operation with the
-                    /// same request ID was received, and if so, will ignore the second request. This prevents clients
-                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// retry your request, the server knows to ignore the request if it has already been completed. The
+                    /// server guarantees that for at least 60 minutes after the first request. For example, consider a
+                    /// situation where you make an initial request and the request times out. If you make the request
+                    /// again with the same request ID, the server can check if original operation with the same request
+                    /// ID was received, and if so, will ignore the second request. This prevents clients from
+                    /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
                     /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
@@ -738,12 +738,12 @@ namespace Google.Apis.CloudDeploy.v1
 
                     /// <summary>
                     /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
-                    /// retry your request, the server will know to ignore the request if it has already been completed.
-                    /// The server will guarantee that for at least 60 minutes since the first request. For example,
-                    /// consider a situation where you make an initial request and the request times out. If you make
-                    /// the request again with the same request ID, the server can check if original operation with the
-                    /// same request ID was received, and if so, will ignore the second request. This prevents clients
-                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// retry your request, the server knows to ignore the request if it has already been completed. The
+                    /// server guarantees that for at least 60 minutes after the first request. For example, consider a
+                    /// situation where you make an initial request and the request times out. If you make the request
+                    /// again with the same request ID, the server can check if original operation with the same request
+                    /// ID was received, and if so, will ignore the second request. This prevents clients from
+                    /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
                     /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
@@ -752,8 +752,8 @@ namespace Google.Apis.CloudDeploy.v1
                     /// <summary>
                     /// Required. Field mask is used to specify the fields to be overwritten in the `CustomTargetType`
                     /// resource by the update. The fields specified in the update_mask are relative to the resource,
-                    /// not the full request. A field will be overwritten if it is in the mask. If the user does not
-                    /// provide a mask then all fields will be overwritten.
+                    /// not the full request. A field will be overwritten if it's in the mask. If the user doesn't
+                    /// provide a mask then all fields are overwritten.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -1146,13 +1146,13 @@ namespace Google.Apis.CloudDeploy.v1
 
                         /// <summary>
                         /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
-                        /// retry your request, the server will know to ignore the request if it has already been
-                        /// completed. The server will guarantee that for at least 60 minutes since the first request.
-                        /// For example, consider a situation where you make an initial request and the request times
-                        /// out. If you make the request again with the same request ID, the server can check if
-                        /// original operation with the same request ID was received, and if so, will ignore the second
-                        /// request. This prevents clients from accidentally creating duplicate commitments. The request
-                        /// ID must be a valid UUID with the exception that zero UUID is not supported
+                        /// retry your request, the server knows to ignore the request if it has already been completed.
+                        /// The server guarantees that for at least 60 minutes after the first request. For example,
+                        /// consider a situation where you make an initial request and the request times out. If you
+                        /// make the request again with the same request ID, the server can check if original operation
+                        /// with the same request ID was received, and if so, will ignore the second request. This
+                        /// prevents clients from accidentally creating duplicate commitments. The request ID must be a
+                        /// valid UUID with the exception that zero UUID is not supported
                         /// (00000000-0000-0000-0000-000000000000).
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
@@ -1263,13 +1263,13 @@ namespace Google.Apis.CloudDeploy.v1
 
                         /// <summary>
                         /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
-                        /// retry your request, the server will know to ignore the request if it has already been
-                        /// completed. The server will guarantee that for at least 60 minutes after the first request.
-                        /// For example, consider a situation where you make an initial request and the request times
-                        /// out. If you make the request again with the same request ID, the server can check if
-                        /// original operation with the same request ID was received, and if so, will ignore the second
-                        /// request. This prevents clients from accidentally creating duplicate commitments. The request
-                        /// ID must be a valid UUID with the exception that zero UUID is not supported
+                        /// retry your request, the server knows to ignore the request if it has already been completed.
+                        /// The server guarantees that for at least 60 minutes after the first request. For example,
+                        /// consider a situation where you make an initial request and the request times out. If you
+                        /// make the request again with the same request ID, the server can check if original operation
+                        /// with the same request ID was received, and if so, will ignore the second request. This
+                        /// prevents clients from accidentally creating duplicate commitments. The request ID must be a
+                        /// valid UUID with the exception that zero UUID is not supported
                         /// (00000000-0000-0000-0000-000000000000).
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
@@ -1534,13 +1534,13 @@ namespace Google.Apis.CloudDeploy.v1
 
                         /// <summary>
                         /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
-                        /// retry your request, the server will know to ignore the request if it has already been
-                        /// completed. The server will guarantee that for at least 60 minutes since the first request.
-                        /// For example, consider a situation where you make an initial request and the request times
-                        /// out. If you make the request again with the same request ID, the server can check if
-                        /// original operation with the same request ID was received, and if so, will ignore the second
-                        /// request. This prevents clients from accidentally creating duplicate commitments. The request
-                        /// ID must be a valid UUID with the exception that zero UUID is not supported
+                        /// retry your request, the server knows to ignore the request if it has already been completed.
+                        /// The server guarantees that for at least 60 minutes after the first request. For example,
+                        /// consider a situation where you make an initial request and the request times out. If you
+                        /// make the request again with the same request ID, the server can check if original operation
+                        /// with the same request ID was received, and if so, will ignore the second request. This
+                        /// prevents clients from accidentally creating duplicate commitments. The request ID must be a
+                        /// valid UUID with the exception that zero UUID is not supported
                         /// (00000000-0000-0000-0000-000000000000).
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
@@ -1549,8 +1549,8 @@ namespace Google.Apis.CloudDeploy.v1
                         /// <summary>
                         /// Required. Field mask is used to specify the fields to be overwritten in the `Automation`
                         /// resource by the update. The fields specified in the update_mask are relative to the
-                        /// resource, not the full request. A field will be overwritten if it is in the mask. If the
-                        /// user does not provide a mask then all fields will be overwritten.
+                        /// resource, not the full request. A field will be overwritten if it's in the mask. If the user
+                        /// doesn't provide a mask then all fields are overwritten.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
@@ -2109,14 +2109,14 @@ namespace Google.Apis.CloudDeploy.v1
 
                             /// <summary>
                             /// Optional. A request ID to identify requests. Specify a unique request ID so that if you
-                            /// must retry your request, the server will know to ignore the request if it has already
-                            /// been completed. The server will guarantee that for at least 60 minutes since the first
-                            /// request. For example, consider a situation where you make an initial request and the
-                            /// request times out. If you make the request again with the same request ID, the server
-                            /// can check if original operation with the same request ID was received, and if so, will
-                            /// ignore the second request. This prevents clients from accidentally creating duplicate
-                            /// commitments. The request ID must be a valid UUID with the exception that zero UUID is
-                            /// not supported (00000000-0000-0000-0000-000000000000).
+                            /// must retry your request, the server knows to ignore the request if it has already been
+                            /// completed. The server guarantees that for at least 60 minutes after the first request.
+                            /// For example, consider a situation where you make an initial request and the request
+                            /// times out. If you make the request again with the same request ID, the server can check
+                            /// if original operation with the same request ID was received, and if so, will ignore the
+                            /// second request. This prevents clients from accidentally creating duplicate commitments.
+                            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+                            /// (00000000-0000-0000-0000-000000000000).
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string RequestId { get; set; }
@@ -2575,13 +2575,13 @@ namespace Google.Apis.CloudDeploy.v1
 
                         /// <summary>
                         /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
-                        /// retry your request, the server will know to ignore the request if it has already been
-                        /// completed. The server will guarantee that for at least 60 minutes since the first request.
-                        /// For example, consider a situation where you make an initial request and the request times
-                        /// out. If you make the request again with the same request ID, the server can check if
-                        /// original operation with the same request ID was received, and if so, will ignore the second
-                        /// request. This prevents clients from accidentally creating duplicate commitments. The request
-                        /// ID must be a valid UUID with the exception that zero UUID is not supported
+                        /// retry your request, the server knows to ignore the request if it has already been completed.
+                        /// The server guarantees that for at least 60 minutes after the first request. For example,
+                        /// consider a situation where you make an initial request and the request times out. If you
+                        /// make the request again with the same request ID, the server can check if original operation
+                        /// with the same request ID was received, and if so, will ignore the second request. This
+                        /// prevents clients from accidentally creating duplicate commitments. The request ID must be a
+                        /// valid UUID with the exception that zero UUID is not supported
                         /// (00000000-0000-0000-0000-000000000000).
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
@@ -2844,12 +2844,12 @@ namespace Google.Apis.CloudDeploy.v1
 
                     /// <summary>
                     /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
-                    /// retry your request, the server will know to ignore the request if it has already been completed.
-                    /// The server will guarantee that for at least 60 minutes since the first request. For example,
-                    /// consider a situation where you make an initial request and the request times out. If you make
-                    /// the request again with the same request ID, the server can check if original operation with the
-                    /// same request ID was received, and if so, will ignore the second request. This prevents clients
-                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// retry your request, the server knows to ignore the request if it has already been completed. The
+                    /// server guarantees that for at least 60 minutes after the first request. For example, consider a
+                    /// situation where you make an initial request and the request times out. If you make the request
+                    /// again with the same request ID, the server can check if original operation with the same request
+                    /// ID was received, and if so, will ignore the second request. This prevents clients from
+                    /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
                     /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
@@ -2967,12 +2967,12 @@ namespace Google.Apis.CloudDeploy.v1
 
                     /// <summary>
                     /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
-                    /// retry your request, the server will know to ignore the request if it has already been completed.
-                    /// The server will guarantee that for at least 60 minutes after the first request. For example,
-                    /// consider a situation where you make an initial request and the request times out. If you make
-                    /// the request again with the same request ID, the server can check if original operation with the
-                    /// same request ID was received, and if so, will ignore the second request. This prevents clients
-                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// retry your request, the server knows to ignore the request if it has already been completed. The
+                    /// server guarantees that for at least 60 minutes after the first request. For example, consider a
+                    /// situation where you make an initial request and the request times out. If you make the request
+                    /// again with the same request ID, the server can check if original operation with the same request
+                    /// ID was received, and if so, will ignore the second request. This prevents clients from
+                    /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
                     /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
@@ -3326,12 +3326,12 @@ namespace Google.Apis.CloudDeploy.v1
 
                     /// <summary>
                     /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
-                    /// retry your request, the server will know to ignore the request if it has already been completed.
-                    /// The server will guarantee that for at least 60 minutes since the first request. For example,
-                    /// consider a situation where you make an initial request and the request times out. If you make
-                    /// the request again with the same request ID, the server can check if original operation with the
-                    /// same request ID was received, and if so, will ignore the second request. This prevents clients
-                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// retry your request, the server knows to ignore the request if it has already been completed. The
+                    /// server guarantees that for at least 60 minutes after the first request. For example, consider a
+                    /// situation where you make an initial request and the request times out. If you make the request
+                    /// again with the same request ID, the server can check if original operation with the same request
+                    /// ID was received, and if so, will ignore the second request. This prevents clients from
+                    /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
                     /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
@@ -3340,8 +3340,8 @@ namespace Google.Apis.CloudDeploy.v1
                     /// <summary>
                     /// Required. Field mask is used to specify the fields to be overwritten in the `DeliveryPipeline`
                     /// resource by the update. The fields specified in the update_mask are relative to the resource,
-                    /// not the full request. A field will be overwritten if it is in the mask. If the user does not
-                    /// provide a mask then all fields will be overwritten.
+                    /// not the full request. A field will be overwritten if it's in the mask. If the user doesn't
+                    /// provide a mask then all fields are overwritten.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -3937,12 +3937,12 @@ namespace Google.Apis.CloudDeploy.v1
 
                     /// <summary>
                     /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
-                    /// retry your request, the server will know to ignore the request if it has already been completed.
-                    /// The server will guarantee that for at least 60 minutes since the first request. For example,
-                    /// consider a situation where you make an initial request and the request times out. If you make
-                    /// the request again with the same request ID, the server can check if original operation with the
-                    /// same request ID was received, and if so, will ignore the second request. This prevents clients
-                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// retry your request, the server knows to ignore the request if it has already been completed. The
+                    /// server guarantees that for at least 60 minutes after the first request. For example, consider a
+                    /// situation where you make an initial request and the request times out. If you make the request
+                    /// again with the same request ID, the server can check if original operation with the same request
+                    /// ID was received, and if so, will ignore the second request. This prevents clients from
+                    /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
                     /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
@@ -4057,12 +4057,12 @@ namespace Google.Apis.CloudDeploy.v1
 
                     /// <summary>
                     /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
-                    /// retry your request, the server will know to ignore the request if it has already been completed.
-                    /// The server will guarantee that for at least 60 minutes after the first request. For example,
-                    /// consider a situation where you make an initial request and the request times out. If you make
-                    /// the request again with the same request ID, the server can check if original operation with the
-                    /// same request ID was received, and if so, will ignore the second request. This prevents clients
-                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// retry your request, the server knows to ignore the request if it has already been completed. The
+                    /// server guarantees that for at least 60 minutes after the first request. For example, consider a
+                    /// situation where you make an initial request and the request times out. If you make the request
+                    /// again with the same request ID, the server can check if original operation with the same request
+                    /// ID was received, and if so, will ignore the second request. This prevents clients from
+                    /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
                     /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
@@ -4410,12 +4410,12 @@ namespace Google.Apis.CloudDeploy.v1
 
                     /// <summary>
                     /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
-                    /// retry your request, the server will know to ignore the request if it has already been completed.
-                    /// The server will guarantee that for at least 60 minutes since the first request. For example,
-                    /// consider a situation where you make an initial request and the request times out. If you make
-                    /// the request again with the same request ID, the server can check if original operation with the
-                    /// same request ID was received, and if so, will ignore the second request. This prevents clients
-                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// retry your request, the server knows to ignore the request if it has already been completed. The
+                    /// server guarantees that for at least 60 minutes after the first request. For example, consider a
+                    /// situation where you make an initial request and the request times out. If you make the request
+                    /// again with the same request ID, the server can check if original operation with the same request
+                    /// ID was received, and if so, will ignore the second request. This prevents clients from
+                    /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
                     /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
@@ -4424,8 +4424,8 @@ namespace Google.Apis.CloudDeploy.v1
                     /// <summary>
                     /// Required. Field mask is used to specify the fields to be overwritten in the Target resource by
                     /// the update. The fields specified in the update_mask are relative to the resource, not the full
-                    /// request. A field will be overwritten if it is in the mask. If the user does not provide a mask
-                    /// then all fields will be overwritten.
+                    /// request. A field will be overwritten if it's in the mask. If the user doesn't provide a mask
+                    /// then all fields are overwritten.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -5558,9 +5558,25 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that
         /// represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
         /// (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. *
-        /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
-        /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
-        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+        /// A single identity in a workforce identity pool. *
+        /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All
+        /// workforce identities in a group. *
+        /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+        /// All workforce identities with a specific attribute value. *
+        /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a
+        /// workforce identity pool. *
+        /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+        /// A single identity in a workload identity pool. *
+        /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+        /// A workload identity pool group. *
+        /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+        /// All identities in a workload identity pool with a certain attribute. *
+        /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`:
+        /// All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address
+        /// (plus unique identifier) representing a user that has been recently deleted. For example,
+        /// `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to
+        /// `user:{emailid}` and the recovered user retains the role in the binding. *
         /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
         /// service account that has been recently deleted. For example,
         /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted,
@@ -5568,7 +5584,10 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
         /// a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`.
         /// If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role
-        /// in the binding.
+        /// in the binding. *
+        /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+        /// Deleted single identity in a workforce identity pool. For example,
+        /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; }
@@ -5721,20 +5740,19 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual System.Nullable<bool> AutomaticTrafficControl { get; set; }
 
         /// <summary>
-        /// Optional. A list of tags that are added to the canary revision while the canary deployment is in progress.
+        /// Optional. A list of tags that are added to the canary revision while the canary phase is in progress.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canaryRevisionTags")]
         public virtual System.Collections.Generic.IList<string> CanaryRevisionTags { get; set; }
 
         /// <summary>
-        /// Optional. A list of tags that are added to the prior revision while the canary deployment is in progress.
+        /// Optional. A list of tags that are added to the prior revision while the canary phase is in progress.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priorRevisionTags")]
         public virtual System.Collections.Generic.IList<string> PriorRevisionTags { get; set; }
 
         /// <summary>
-        /// Optional. A list of tags that are added to the final stable revision after the canary deployment is
-        /// completed.
+        /// Optional. A list of tags that are added to the final stable revision when the stable phase is applied.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stableRevisionTags")]
         public virtual System.Collections.Generic.IList<string> StableRevisionTags { get; set; }
@@ -5856,10 +5874,10 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>CustomMetadata contains information from a user defined operation.</summary>
+    /// <summary>CustomMetadata contains information from a user-defined operation.</summary>
     public class CustomMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Key-value pairs provided by the user defined operation.</summary>
+        /// <summary>Output only. Key-value pairs provided by the user-defined operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IDictionary<string, string> Values { get; set; }
 
@@ -5921,8 +5939,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
 
     /// <summary>
     /// A `CustomTargetType` resource in the Cloud Deploy API. A `CustomTargetType` defines a type of custom target that
-    /// can be referenced in a `Target` in order to facilitate deploying to a runtime that does not have a 1P
-    /// integration with Cloud Deploy.
+    /// can be referenced in a `Target` in order to facilitate deploying to other systems besides the supported
+    /// runtimes.
     /// </summary>
     public class CustomTargetType : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6246,6 +6264,10 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
 
+        /// <summary>Unique identifier of the `DeliveryPipeline`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pipelineUid")]
+        public virtual string PipelineUid { get; set; }
+
         /// <summary>Type of this notification, e.g. for a Pub/Sub failure.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -6320,7 +6342,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cloudRun")]
         public virtual CloudRunMetadata CloudRun { get; set; }
 
-        /// <summary>Output only. Custom metadata provided by user defined deploy operation.</summary>
+        /// <summary>Output only. Custom metadata provided by user-defined deploy operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("custom")]
         public virtual CustomMetadata Custom { get; set; }
 
@@ -6500,6 +6522,14 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>Required. Name of the Kubernetes Service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; }
+
+        /// <summary>
+        /// Optional. The amount of time to migrate traffic back from the canary Service to the original Service during
+        /// the stable phase deployment. If specified, must be between 15s and 3600s. If unspecified, there is no
+        /// cutback time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stableCutbackDuration")]
+        public virtual object StableCutbackDuration { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6790,9 +6820,17 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pipelineUid")]
         public virtual string PipelineUid { get; set; }
 
+        /// <summary>The name of the `Release`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("release")]
+        public virtual string Release { get; set; }
+
         /// <summary>Unique identifier of the `Release`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("releaseUid")]
         public virtual string ReleaseUid { get; set; }
+
+        /// <summary>The name of the `Rollout`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rollout")]
+        public virtual string Rollout { get; set; }
 
         /// <summary>Unique identifier of the `Rollout`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rolloutUid")]
@@ -7077,7 +7115,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cloudRun")]
         public virtual CloudRunMetadata CloudRun { get; set; }
 
-        /// <summary>Output only. Custom metadata provided by user defined `Rollout` operations.</summary>
+        /// <summary>Output only. Custom metadata provided by user-defined `Rollout` operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("custom")]
         public virtual CustomMetadata Custom { get; set; }
 
@@ -7921,9 +7959,17 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
 
+        /// <summary>Unique identifier of the `DeliveryPipeline`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pipelineUid")]
+        public virtual string PipelineUid { get; set; }
+
         /// <summary>The name of the `Release`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("release")]
         public virtual string Release { get; set; }
+
+        /// <summary>Unique identifier of the `Release`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("releaseUid")]
+        public virtual string ReleaseUid { get; set; }
 
         /// <summary>Type of this notification, e.g. for a Pub/Sub failure.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
@@ -7964,13 +8010,24 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
 
-        /// <summary>The name of the release.</summary>
+        /// <summary>Unique identifier of the `DeliveryPipeline`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pipelineUid")]
+        public virtual string PipelineUid { get; set; }
+
+        /// <summary>
+        /// The name of the release. release_uid is not in this log message because we write some of these log messages
+        /// at release creation time, before we've generated the uid.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("release")]
         public virtual string Release { get; set; }
 
         /// <summary>The state of the release render.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("releaseRenderState")]
         public virtual string ReleaseRenderState { get; set; }
+
+        /// <summary>Type of this notification, e.g. for a release render state change event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7983,7 +8040,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cloudRun")]
         public virtual CloudRunRenderMetadata CloudRun { get; set; }
 
-        /// <summary>Output only. Custom metadata provided by user defined render operation.</summary>
+        /// <summary>Output only. Custom metadata provided by user-defined render operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("custom")]
         public virtual CustomMetadata Custom { get; set; }
 
@@ -8600,6 +8657,10 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pipelineUid")]
         public virtual string PipelineUid { get; set; }
 
+        /// <summary>The name of the `Release`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("release")]
+        public virtual string Release { get; set; }
+
         /// <summary>Unique identifier of the `Release`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("releaseUid")]
         public virtual string ReleaseUid { get; set; }
@@ -8607,6 +8668,10 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>The name of the `Rollout`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rollout")]
         public virtual string Rollout { get; set; }
+
+        /// <summary>Unique identifier of the `Rollout`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rolloutUid")]
+        public virtual string RolloutUid { get; set; }
 
         /// <summary>ID of the `Target` that the rollout is deployed to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetId")]
@@ -8634,11 +8699,18 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pipelineUid")]
         public virtual string PipelineUid { get; set; }
 
+        /// <summary>The name of the `Release`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("release")]
+        public virtual string Release { get; set; }
+
         /// <summary>Unique identifier of the release.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("releaseUid")]
         public virtual string ReleaseUid { get; set; }
 
-        /// <summary>The name of the rollout.</summary>
+        /// <summary>
+        /// The name of the rollout. rollout_uid is not in this log message because we write some of these log messages
+        /// at rollout creation time, before we've generated the uid.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rollout")]
         public virtual string Rollout { get; set; }
 
@@ -9262,11 +9334,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Contains criteria for selecting Targets. Attributes provided must match the target resource in order for policy
-    /// restrictions to apply. E.g. if id "prod" and labels "foo: bar" are given the target resource must match both
-    /// that id and have that label in order to be selected.
-    /// </summary>
+    /// <summary>Contains criteria for selecting Targets.</summary>
     public class TargetAttribute : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

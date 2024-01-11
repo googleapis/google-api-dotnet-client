@@ -1474,6 +1474,28 @@ namespace Google.Apis.CloudComposer.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for Cloud Data Lineage integration.</summary>
+    public class CloudDataLineageIntegration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Whether or not Cloud Data Lineage integration is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The configuration setting for Airflow database data retention mechanism.</summary>
+    public class DataRetentionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The configuration settings for task logs retention</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taskLogsRetentionConfig")]
+        public virtual TaskLogsRetentionConfig TaskLogsRetentionConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The configuration of Cloud SQL instance that is used by the Apache Airflow software.</summary>
     public class DatabaseConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1716,6 +1738,10 @@ namespace Google.Apis.CloudComposer.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dagGcsPrefix")]
         public virtual string DagGcsPrefix { get; set; }
+
+        /// <summary>Optional. The configuration setting for Airflow database data retention mechanism.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataRetentionConfig")]
+        public virtual DataRetentionConfig DataRetentionConfig { get; set; }
 
         /// <summary>
         /// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
@@ -2725,6 +2751,10 @@ namespace Google.Apis.CloudComposer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("airflowConfigOverrides")]
         public virtual System.Collections.Generic.IDictionary<string, string> AirflowConfigOverrides { get; set; }
 
+        /// <summary>Optional. The configuration for Cloud Data Lineage integration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudDataLineageIntegration")]
+        public virtual CloudDataLineageIntegration CloudDataLineageIntegration { get; set; }
+
         /// <summary>
         /// Optional. Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver
         /// processes. Environment variable names must match the regular expression `a-zA-Z_*`. They cannot specify
@@ -2862,6 +2892,20 @@ namespace Google.Apis.CloudComposer.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
         public virtual string Bucket { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The configuration setting for Task Logs.</summary>
+    public class TaskLogsRetentionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The mode of storage for Airflow workers task logs. For details, see
+        /// go/composer-store-task-logs-in-cloud-logging-only-design-doc
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageMode")]
+        public virtual string StorageMode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

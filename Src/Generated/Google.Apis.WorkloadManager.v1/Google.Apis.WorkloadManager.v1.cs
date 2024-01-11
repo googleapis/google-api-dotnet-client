@@ -1621,6 +1621,21 @@ namespace Google.Apis.WorkloadManager.v1
 }
 namespace Google.Apis.WorkloadManager.v1.Data
 {
+    /// <summary>Message describing big query destination</summary>
+    public class BigQueryDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. determine if results will be saved in a new table</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createNewResultsTable")]
+        public virtual System.Nullable<bool> CreateNewResultsTable { get; set; }
+
+        /// <summary>Optional. destination dataset to save evaluation results</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationDataset")]
+        public virtual string DestinationDataset { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1642,6 +1657,10 @@ namespace Google.Apis.WorkloadManager.v1.Data
     /// <summary>LINT.IfChange Message describing Evaluation object</summary>
     public class Evaluation : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. BigQuery destination</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigQueryDestination")]
+        public virtual BigQueryDestination BigQueryDestination { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;

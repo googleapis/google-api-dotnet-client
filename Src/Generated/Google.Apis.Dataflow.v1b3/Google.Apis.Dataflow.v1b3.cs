@@ -5302,6 +5302,28 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Exponential buckets where the growth factor between buckets is `2**(2**-scale)`. e.g. for `scale=1` growth
+    /// factor is `2**(2**(-1))=sqrt(2)`. `n` buckets will have the following boundaries. - 0th: [0, gf) - i in [1,
+    /// n-1]: [gf^(i), gf^(i+1))
+    /// </summary>
+    public class Base2Exponent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Must be greater than 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numberOfBuckets")]
+        public virtual System.Nullable<int> NumberOfBuckets { get; set; }
+
+        /// <summary>
+        /// Must be between -3 and 3. This forces the growth factor of the bucket boundaries to be between `2^(1/8)` and
+        /// `256`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scale")]
+        public virtual System.Nullable<int> Scale { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for a BigQuery connector used by the job.</summary>
     public class BigQueryIODetails : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5339,6 +5361,21 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>TableId accessed in the connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
         public virtual string TableId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>`BucketOptions` describes the bucket boundaries used in the histogram.</summary>
+    public class BucketOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Bucket boundaries grow exponentially.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exponential")]
+        public virtual Base2Exponent Exponential { get; set; }
+
+        /// <summary>Bucket boundaries grow linearly.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linear")]
+        public virtual Linear Linear { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5809,6 +5846,39 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("translationErrorsCount")]
         public virtual System.Nullable<long> TranslationErrorsCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Summary statistics for a population of values. HistogramValue contains a sequence of buckets and gives a count
+    /// of values that fall into each bucket. Bucket boundares are defined by a formula and bucket widths are either
+    /// fixed or exponentially increasing.
+    /// </summary>
+    public class DataflowHistogramValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The number of values in each bucket of the histogram, as described in `bucket_options`.
+        /// `bucket_counts` should contain N values, where N is the number of buckets specified in `bucket_options`. If
+        /// `bucket_counts` has fewer than N values, the remaining values are assumed to be 0.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucketCounts")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> BucketCounts { get; set; }
+
+        /// <summary>Describes the bucket boundaries used in the histogram.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucketOptions")]
+        public virtual BucketOptions BucketOptions { get; set; }
+
+        /// <summary>Number of values recorded in this histogram.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<long> Count { get; set; }
+
+        /// <summary>
+        /// Statistics on the values recorded in the histogram that fall out of the bucket boundaries.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outlierStats")]
+        public virtual OutlierStats OutlierStats { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7546,6 +7616,28 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Linear buckets with the following boundaries for indices in 0 to n-1. - i in [0, n-1]: [start + (i)*width, start
+    /// + (i+1)*width)
+    /// </summary>
+    public class Linear : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Must be greater than 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numberOfBuckets")]
+        public virtual System.Nullable<int> NumberOfBuckets { get; set; }
+
+        /// <summary>Lower bound of the first bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("start")]
+        public virtual System.Nullable<double> Start { get; set; }
+
+        /// <summary>Distance between bucket boundaries. Must be greater than 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("width")]
+        public virtual System.Nullable<double> Width { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response to a request to list job messages.</summary>
     public class ListJobMessagesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7845,6 +7937,29 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The value of a metric along with its name and labels.</summary>
+    public class MetricValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Base name for this metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metric")]
+        public virtual string Metric { get; set; }
+
+        /// <summary>Optional. Set of metric labels for this metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricLabels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> MetricLabels { get; set; }
+
+        /// <summary>Histogram value of this metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueHistogram")]
+        public virtual DataflowHistogramValue ValueHistogram { get; set; }
+
+        /// <summary>Integer value of this metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueInt64")]
+        public virtual System.Nullable<long> ValueInt64 { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Describes mounted data disk.</summary>
     public class MountedDataDisk : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7883,6 +7998,29 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>Name of the counter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Statistics for the underflow and overflow bucket.</summary>
+    public class OutlierStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of values that are larger than the upper bound of the largest bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overflowCount")]
+        public virtual System.Nullable<long> OverflowCount { get; set; }
+
+        /// <summary>Mean of values in the overflow bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overflowMean")]
+        public virtual System.Nullable<double> OverflowMean { get; set; }
+
+        /// <summary>Number of values that are smaller than the lower bound of the smallest bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("underflowCount")]
+        public virtual System.Nullable<long> UnderflowCount { get; set; }
+
+        /// <summary>Mean of values in the undeflow bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("underflowMean")]
+        public virtual System.Nullable<double> UnderflowMean { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8120,6 +8258,39 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>The value combining function to invoke.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueCombiningFn")]
         public virtual System.Collections.Generic.IDictionary<string, object> ValueCombiningFn { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metrics for a particular unfused step and namespace. A metric is uniquely identified by the `metrics_namespace`,
+    /// `original_step`, `metric name` and `metric_labels`.
+    /// </summary>
+    public class PerStepNamespaceMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Metrics that are recorded for this namespace and unfused step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricValues")]
+        public virtual System.Collections.Generic.IList<MetricValue> MetricValues { get; set; }
+
+        /// <summary>The namespace of these metrics on the worker.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricsNamespace")]
+        public virtual string MetricsNamespace { get; set; }
+
+        /// <summary>The original system name of the unfused step that these metrics are reported from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originalStep")]
+        public virtual string OriginalStep { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Per worker metrics.</summary>
+    public class PerWorkerMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Metrics for a particular unfused step and namespace.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("perStepNamespaceMetrics")]
+        public virtual System.Collections.Generic.IList<PerStepNamespaceMetrics> PerStepNamespaceMetrics { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10790,6 +10961,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>System defined metrics for this worker.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("perWorkerMetrics")]
+        public virtual PerWorkerMetrics PerWorkerMetrics { get; set; }
 
         /// <summary>Contains per-user worker telemetry used in streaming autoscaling.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("streamingScalingReport")]

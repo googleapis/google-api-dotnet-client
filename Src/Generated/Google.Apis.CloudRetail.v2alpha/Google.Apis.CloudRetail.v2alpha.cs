@@ -7373,6 +7373,13 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mergedFacetValues")]
         public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaCatalogAttributeFacetConfigMergedFacetValue> MergedFacetValues { get; set; }
 
+        /// <summary>
+        /// Set this field only if you want to rerank based on facet values engaged by the user for the current key.
+        /// This option is only possible for custom facetable textual keys.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rerankConfig")]
+        public virtual GoogleCloudRetailV2alphaCatalogAttributeFacetConfigRerankConfig RerankConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7496,6 +7503,33 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<string> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Options to rerank based on facet values engaged by the user for the current key. That key needs to be a custom
+    /// textual key and facetable. To use this control, you also need to pass all the facet keys engaged by the user in
+    /// the request using the field [SearchRequest.FacetSpec]. In particular, if you don't pass the facet keys engaged
+    /// that you want to rerank on, this control won't be effective. Moreover, to obtain better results, the facet
+    /// values that you want to rerank on should be close to English (ideally made of words, underscores, and spaces).
+    /// </summary>
+    public class GoogleCloudRetailV2alphaCatalogAttributeFacetConfigRerankConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If empty, rerank on all facet values for the current key. Otherwise, will rerank on the facet values from
+        /// this list only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("facetValues")]
+        public virtual System.Collections.Generic.IList<string> FacetValues { get; set; }
+
+        /// <summary>
+        /// If set to true, then we also rerank the dynamic facets based on the facet values engaged by the user for the
+        /// current attribute key during serving.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rerankFacet")]
+        public virtual System.Nullable<bool> RerankFacet { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

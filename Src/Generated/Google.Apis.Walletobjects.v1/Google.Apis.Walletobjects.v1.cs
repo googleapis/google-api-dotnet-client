@@ -9529,6 +9529,10 @@ namespace Google.Apis.Walletobjects.v1.Data
 
     public class Issuer : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Allows the issuer to provide their callback settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("callbackOptions")]
+        public virtual CallbackOptions CallbackOptions { get; set; }
+
         /// <summary>Issuer contact information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contactInfo")]
         public virtual IssuerContactInfo ContactInfo { get; set; }

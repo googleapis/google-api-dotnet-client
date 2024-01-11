@@ -5188,6 +5188,13 @@ namespace Google.Apis.MigrationCenterAPI.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("machinePreferences")]
         public virtual MachinePreferences MachinePreferences { get; set; }
 
+        /// <summary>
+        /// Persistent disk type to use. If unspecified (default), all types are considered, based on available usage
+        /// data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("persistentDiskType")]
+        public virtual string PersistentDiskType { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

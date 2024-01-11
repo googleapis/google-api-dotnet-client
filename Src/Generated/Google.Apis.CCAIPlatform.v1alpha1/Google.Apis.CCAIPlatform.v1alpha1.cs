@@ -1186,7 +1186,7 @@ namespace Google.Apis.CCAIPlatform.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing ContactCenter object Next ID: 16</summary>
+    /// <summary>Message describing ContactCenter object Next ID: 18</summary>
     public class ContactCenter : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Info about the first admin user, such as given name and family name.</summary>
@@ -1263,6 +1263,15 @@ namespace Google.Apis.CCAIPlatform.v1alpha1.Data
         /// <summary>name of resource</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. A list of UJET components that should be privately accessed. This field is set by reading
+        /// settings from the data plane. For more information about the format of the component please refer to
+        /// go/ccaip-vpc-sc-org-policy. This field is must be fully populated only for Create/Update resource
+        /// operations. The main use case for this field is OrgPolicy checks via CPE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateComponents")]
+        public virtual System.Collections.Generic.IList<string> PrivateComponents { get; set; }
 
         /// <summary>Optional. Params that sets up Google as IdP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("samlParams")]
