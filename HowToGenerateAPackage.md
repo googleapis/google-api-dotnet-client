@@ -2,7 +2,7 @@
 
 This isn't quite a simple as it could be, but it's fairly simple:
 
-1. Use a Windows machine with `Visual Studio 2017 v15.4` or greater; and a recent version of `git`.
+1. Use a Windows machine with `Visual Studio 2022 v17.8` or greater; and a recent version of `git`.
 1. `git clone https://github.com/google/google-api-dotnet-client.git`
 1. Delete all files from the `DiscoveryJson` directory. They are all `.json` files.
 1. Copy the discovery-doc `json` file into the `DiscoveryJson` directory.
