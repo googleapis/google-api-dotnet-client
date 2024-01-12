@@ -40,7 +40,7 @@ These libraries are split into:
 
 ## Building and .NET Core
 
-We use Visual Studio 2017 to edit the Support Libraries.
+We use Visual Studio 2022 to edit the Support Libraries.
 
 We use [dotnet cli][dotnetcli] for testing and building both the generated Client Libraries and the Support Libraries.
 
