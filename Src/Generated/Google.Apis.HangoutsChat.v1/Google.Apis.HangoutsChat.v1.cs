@@ -3841,7 +3841,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
     /// <summary>
     /// A card action is the action associated with the card. For example, an invoice card might include actions such as
-    /// delete invoice, email invoice, or open the invoice in a browser. Not supported by Chat apps.
+    /// delete invoice, email invoice, or open the invoice in a browser. [Google Workspace
+    /// Add-ons](https://developers.google.com/workspace/add-ons):
     /// </summary>
     public class GoogleAppsCardV1CardAction : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3860,8 +3861,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// <summary>
     /// A persistent (sticky) footer that that appears at the bottom of the card. For an example in Google Chat apps,
     /// see [Card footer](https://developers.google.com/chat/ui/widgets/card-fixed-footer). Setting `fixedFooter`
-    /// without specifying a `primaryButton` or a `secondaryButton` causes an error. Supported by Google Workspace
-    /// Add-ons and Chat apps. For Chat apps, you can use fixed footers in
+    /// without specifying a `primaryButton` or a `secondaryButton` causes an error. [Google Workspace Add-ons and Chat
+    /// apps](https://developers.google.com/workspace/extend): For Chat apps, you can use fixed footers in
     /// [dialogs](https://developers.google.com/chat/how-tos/dialogs), but not [card
     /// messages](https://developers.google.com/chat/api/guides/v1/messages/create#create).
     /// </summary>
@@ -4660,8 +4661,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// Text that appears in the text input field when the field is empty. Use this text to prompt users to enter a
-        /// value. For example, `Enter a number from 0 to 100`. Supported by Google Chat apps, but not Google Workspace
-        /// Add-ons.
+        /// value. For example, `Enter a number from 0 to 100`. [Google Chat apps](https://developers.google.com/chat):
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("placeholderText")]
         public virtual string PlaceholderText { get; set; }

@@ -11183,6 +11183,20 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message used to identify the type of resource being profiled.</summary>
+    public class GooglePrivacyDlpV2DataSourceType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. An identifying string to the type of resource being profiled. Current values:
+        /// google/bigquery/table, google/project
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSource")]
+        public virtual string DataSource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Record key for a finding in Cloud Datastore.</summary>
     public class GooglePrivacyDlpV2DatastoreKey : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -15570,6 +15584,10 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>The data risk level of this table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataRiskLevel")]
         public virtual GooglePrivacyDlpV2DataRiskLevel DataRiskLevel { get; set; }
+
+        /// <summary>The resource type that was profiled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSourceType")]
+        public virtual GooglePrivacyDlpV2DataSourceType DataSourceType { get; set; }
 
         /// <summary>The BigQuery dataset ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datasetId")]

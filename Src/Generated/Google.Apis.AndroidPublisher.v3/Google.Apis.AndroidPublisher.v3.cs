@@ -10495,6 +10495,83 @@ namespace Google.Apis.AndroidPublisher.v3
                     });
                 }
             }
+
+            /// <summary>Revoke a subscription purchase for the user.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="packageName">
+            /// Required. The package of the application for which this subscription was purchased (for example,
+            /// 'com.some.thing').
+            /// </param>
+            /// <param name="token">
+            /// Required. The token provided to the user's device when the subscription was purchased.
+            /// </param>
+            public virtual RevokeRequest Revoke(Google.Apis.AndroidPublisher.v3.Data.RevokeSubscriptionPurchaseRequest body, string packageName, string token)
+            {
+                return new RevokeRequest(this.service, body, packageName, token);
+            }
+
+            /// <summary>Revoke a subscription purchase for the user.</summary>
+            public class RevokeRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.RevokeSubscriptionPurchaseResponse>
+            {
+                /// <summary>Constructs a new Revoke request.</summary>
+                public RevokeRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.RevokeSubscriptionPurchaseRequest body, string packageName, string token) : base(service)
+                {
+                    PackageName = packageName;
+                    Token = token;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The package of the application for which this subscription was purchased (for example,
+                /// 'com.some.thing').
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string PackageName { get; private set; }
+
+                /// <summary>
+                /// Required. The token provided to the user's device when the subscription was purchased.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("token", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Token { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AndroidPublisher.v3.Data.RevokeSubscriptionPurchaseRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "revoke";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "androidpublisher/v3/applications/{packageName}/purchases/subscriptionsv2/tokens/{token}:revoke";
+
+                /// <summary>Initializes Revoke parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("token", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "token",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
 
         /// <summary>Gets the Voidedpurchases resource.</summary>
@@ -15124,6 +15201,38 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Revocation context of the purchases.subscriptionsv2.revoke API.</summary>
+    public class RevocationContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Used when users should be refunded a prorated amount they paid for their subscription based on the
+        /// amount of time remaining in a subscription. Not supported for subscriptions with multiple items.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proratedRefund")]
+        public virtual UNDEFINEDPackageNameRevocationContextProratedRefund ProratedRefund { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for the purchases.subscriptionsv2.revoke API.</summary>
+    public class RevokeSubscriptionPurchaseRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Additional details around the subscription revocation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revocationContext")]
+        public virtual RevocationContext RevocationContext { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for the purchases.subscriptionsv2.revoke API.</summary>
+    public class RevokeSubscriptionPurchaseResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents a screen density.</summary>
     public class ScreenDensity : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -16405,6 +16514,13 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tracks")]
         public virtual System.Collections.Generic.IList<Track> Tracks { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Used to determine if the refund type in the RevocationContext is a prorated refund.</summary>
+    public class UNDEFINEDPackageNameRevocationContextProratedRefund : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

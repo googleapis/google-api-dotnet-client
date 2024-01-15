@@ -14764,7 +14764,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Type of the link between the two accounts. Acceptable values are: - "`channelPartner`" -
-        /// "`eCommercePlatform`" - "`paymentServiceProvider`"
+        /// "`eCommercePlatform`" - "`paymentServiceProvider`" - "`localProductManager`"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkType")]
         public virtual string LinkType { get; set; }
@@ -14775,7 +14775,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Provided services. Acceptable values are: - "`shoppingAdsProductManagement`" -
-        /// "`shoppingActionsProductManagement`" - "`shoppingActionsOrderManagement`" - "`paymentProcessing`"
+        /// "`shoppingActionsProductManagement`" - "`shoppingActionsOrderManagement`" - "`paymentProcessing`" -
+        /// "`localProductManagement`"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("services")]
         public virtual System.Collections.Generic.IList<string> Services { get; set; }

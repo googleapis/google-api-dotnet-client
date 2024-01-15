@@ -7659,7 +7659,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
     /// </summary>
     public class ReportSummary : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Aggregate statistics for all the assets across all the groups.</summary>
+        /// <summary>Aggregate statistics for unique assets across all the groups.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allAssetsStats")]
         public virtual ReportSummaryAssetAggregateStats AllAssetsStats { get; set; }
 
@@ -7694,7 +7694,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("memoryUtilizationChart")]
         public virtual ReportSummaryUtilizationChartData MemoryUtilizationChart { get; set; }
 
-        /// <summary>Count of assets grouped by Operating System families.</summary>
+        /// <summary>Count of assets grouped by Operating System families. Only present for virtual machines.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatingSystem")]
         public virtual ReportSummaryChartData OperatingSystem { get; set; }
 
@@ -7766,11 +7766,11 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("assetAggregateStats")]
         public virtual ReportSummaryAssetAggregateStats AssetAggregateStats { get; set; }
 
-        /// <summary>Description for the Group.</summary>
+        /// <summary>Description for this group finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Display Name for the Group.</summary>
+        /// <summary>Display Name for this group finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
@@ -7797,7 +7797,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>A set of findings that applies to all machines in the input.</summary>
+        /// <summary>
+        /// Output only. A set of findings that applies to all virtual machines in the input. Only present for virtual
+        /// machines.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineFinding")]
         public virtual ReportSummaryMachineFinding MachineFinding { get; set; }
 
@@ -7809,11 +7812,13 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("monthlyCostCompute")]
         public virtual Money MonthlyCostCompute { get; set; }
 
-        /// <summary>Network Egress monthly cost for this preference set.</summary>
+        /// <summary>Network Egress monthly cost for this preference set. Only present for virtual machines.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monthlyCostNetworkEgress")]
         public virtual Money MonthlyCostNetworkEgress { get; set; }
 
-        /// <summary>Licensing monthly cost for this preference set.</summary>
+        /// <summary>
+        /// Operating system licensing monthly cost for this preference set. Only present for virtual machines.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monthlyCostOsLicense")]
         public virtual Money MonthlyCostOsLicense { get; set; }
 
@@ -7837,7 +7842,9 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pricingTrack")]
         public virtual string PricingTrack { get; set; }
 
-        /// <summary>A set of findings that applies to Stole-Tenant machines in the input.</summary>
+        /// <summary>
+        /// A set of findings that applies to Stole-Tenant machines in the input. Only present for virtual machines.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("soleTenantFinding")]
         public virtual ReportSummarySoleTenantFinding SoleTenantFinding { get; set; }
 
@@ -7845,7 +7852,9 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("topPriority")]
         public virtual string TopPriority { get; set; }
 
-        /// <summary>A set of findings that applies to VMWare machines in the input.</summary>
+        /// <summary>
+        /// A set of findings that applies to VMWare machines in the input. Only present for virtual machines.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmwareEngineFinding")]
         public virtual ReportSummaryVMWareEngineFinding VmwareEngineFinding { get; set; }
 

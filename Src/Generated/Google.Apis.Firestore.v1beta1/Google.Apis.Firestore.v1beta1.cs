@@ -4068,7 +4068,7 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("direction")]
         public virtual string Direction { get; set; }
 
-        /// <summary>Order based on the value referenced by this field.</summary>
+        /// <summary>The field to order by.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
         public virtual FieldReference Field { get; set; }
 
@@ -4253,6 +4253,21 @@ namespace Google.Apis.Firestore.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Plan for the query.</summary>
+    public class QueryPlan : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Planning phase information for the query. It will include: { "indexes_used": [ {"query_scope": "Collection",
+        /// "properties": "(foo ASC, __name__ ASC)"}, {"query_scope": "Collection", "properties": "(bar ASC, __name__
+        /// ASC)"} ] }
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("planInfo")]
+        public virtual System.Collections.Generic.IDictionary<string, object> PlanInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A target specified by a query.</summary>
     public class QueryTarget : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4335,6 +4350,25 @@ namespace Google.Apis.Firestore.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Planning and execution statistics for the query.</summary>
+    public class ResultSetStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Plan for the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryPlan")]
+        public virtual QueryPlan QueryPlan { get; set; }
+
+        /// <summary>
+        /// Aggregated statistics from the execution of the query. This will only be present when the request specifies
+        /// `PROFILE` mode. For example, a query will return the statistics including: { "results_returned": "20",
+        /// "documents_scanned": "20", "indexes_entries_scanned": "10050", "total_execution_time": "100.7 msecs" }
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryStats")]
+        public virtual System.Collections.Generic.IDictionary<string, object> QueryStats { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request for Firestore.Rollback.</summary>
     public class RollbackRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4349,6 +4383,13 @@ namespace Google.Apis.Firestore.v1beta1.Data
     /// <summary>The request for Firestore.RunAggregationQuery.</summary>
     public class RunAggregationQueryRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The mode in which the query request is processed. This field is optional, and when not provided,
+        /// it defaults to `NORMAL` mode where no additional statistics will be returned with the query results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
+
         /// <summary>
         /// Starts a new transaction as part of the query, defaulting to read-only. The new transaction ID will be
         /// returned as the first response in the stream.
@@ -4462,6 +4503,14 @@ namespace Google.Apis.Firestore.v1beta1.Data
         public virtual AggregationResult Result { get; set; }
 
         /// <summary>
+        /// Query plan and execution statistics. Note that the returned stats are subject to change as Firestore
+        /// evolves. This is only present when the request specifies a mode other than `NORMAL` and is sent only once
+        /// with the last response in the stream.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stats")]
+        public virtual ResultSetStats Stats { get; set; }
+
+        /// <summary>
         /// The transaction that was started as part of this request. Only present on the first response when the
         /// request requested to start a new transaction.
         /// </summary>
@@ -4475,6 +4524,13 @@ namespace Google.Apis.Firestore.v1beta1.Data
     /// <summary>The request for Firestore.RunQuery.</summary>
     public class RunQueryRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The mode in which the query request is processed. This field is optional, and when not provided,
+        /// it defaults to `NORMAL` mode where no additional statistics will be returned with the query results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
+
         /// <summary>
         /// Starts a new transaction and reads the documents. Defaults to a read-only transaction. The new transaction
         /// ID will be returned as the first response in the stream.
@@ -4599,6 +4655,14 @@ namespace Google.Apis.Firestore.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skippedResults")]
         public virtual System.Nullable<int> SkippedResults { get; set; }
+
+        /// <summary>
+        /// Query plan and execution statistics. Note that the returned stats are subject to change as Firestore
+        /// evolves. This is only present when the request specifies a mode other than `NORMAL` and is sent only once
+        /// with the last response in the stream.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stats")]
+        public virtual ResultSetStats Stats { get; set; }
 
         /// <summary>
         /// The transaction that was started as part of this request. Can only be set in the first response, and only if

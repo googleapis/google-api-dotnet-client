@@ -14,10 +14,10 @@
 
 // Generated code. DO NOT EDIT!
 
-namespace Google.Apis.BigQueryDataPolicyService.v1
+namespace Google.Apis.BigQueryConnectionService.v1
 {
-    /// <summary>The BigQueryDataPolicyService Service.</summary>
-    public class BigQueryDataPolicyServiceService : Google.Apis.Services.BaseClientService
+    /// <summary>The BigQueryConnectionService Service.</summary>
+    public class BigQueryConnectionServiceService : Google.Apis.Services.BaseClientService
     {
         /// <summary>The API version.</summary>
         public const string Version = "v1";
@@ -26,13 +26,13 @@ namespace Google.Apis.BigQueryDataPolicyService.v1
         public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public BigQueryDataPolicyServiceService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        public BigQueryConnectionServiceService() : this(new Google.Apis.Services.BaseClientService.Initializer())
         {
         }
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public BigQueryDataPolicyServiceService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
+        public BigQueryConnectionServiceService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Projects = new ProjectsResource(this);
         }
@@ -41,21 +41,21 @@ namespace Google.Apis.BigQueryDataPolicyService.v1
         public override System.Collections.Generic.IList<string> Features => new string[0];
 
         /// <summary>Gets the service name.</summary>
-        public override string Name => "bigquerydatapolicy";
+        public override string Name => "bigqueryconnection";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://bigquerydatapolicy.googleapis.com/";
+        public override string BaseUri => BaseUriOverride ?? "https://bigqueryconnection.googleapis.com/";
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://bigquerydatapolicy.googleapis.com/batch";
+        public override string BatchUri => "https://bigqueryconnection.googleapis.com/batch";
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
 
-        /// <summary>Available OAuth 2.0 scopes for use with the BigQuery Data Policy API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the BigQuery Connection API.</summary>
         public class Scope
         {
             /// <summary>
@@ -70,7 +70,7 @@ namespace Google.Apis.BigQueryDataPolicyService.v1
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
-        /// <summary>Available OAuth 2.0 scope constants for use with the BigQuery Data Policy API.</summary>
+        /// <summary>Available OAuth 2.0 scope constants for use with the BigQuery Connection API.</summary>
         public static class ScopeConstants
         {
             /// <summary>
@@ -89,11 +89,11 @@ namespace Google.Apis.BigQueryDataPolicyService.v1
         public virtual ProjectsResource Projects { get; }
     }
 
-    /// <summary>A base abstract class for BigQueryDataPolicyService requests.</summary>
-    public abstract class BigQueryDataPolicyServiceBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
+    /// <summary>A base abstract class for BigQueryConnectionService requests.</summary>
+    public abstract class BigQueryConnectionServiceBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        /// <summary>Constructs a new BigQueryDataPolicyServiceBaseServiceRequest instance.</summary>
-        protected BigQueryDataPolicyServiceBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
+        /// <summary>Constructs a new BigQueryConnectionServiceBaseServiceRequest instance.</summary>
+        protected BigQueryConnectionServiceBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
         {
         }
 
@@ -175,7 +175,7 @@ namespace Google.Apis.BigQueryDataPolicyService.v1
         [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string UploadProtocol { get; set; }
 
-        /// <summary>Initializes BigQueryDataPolicyService parameter list.</summary>
+        /// <summary>Initializes BigQueryConnectionService parameter list.</summary>
         protected override void InitParameters()
         {
             base.InitParameters();
@@ -300,48 +300,42 @@ namespace Google.Apis.BigQueryDataPolicyService.v1
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-                DataPolicies = new DataPoliciesResource(service);
+                Connections = new ConnectionsResource(service);
             }
 
-            /// <summary>Gets the DataPolicies resource.</summary>
-            public virtual DataPoliciesResource DataPolicies { get; }
+            /// <summary>Gets the Connections resource.</summary>
+            public virtual ConnectionsResource Connections { get; }
 
-            /// <summary>The "dataPolicies" collection of methods.</summary>
-            public class DataPoliciesResource
+            /// <summary>The "connections" collection of methods.</summary>
+            public class ConnectionsResource
             {
-                private const string Resource = "dataPolicies";
+                private const string Resource = "connections";
 
                 /// <summary>The service which this resource belongs to.</summary>
                 private readonly Google.Apis.Services.IClientService service;
 
                 /// <summary>Constructs a new resource.</summary>
-                public DataPoliciesResource(Google.Apis.Services.IClientService service)
+                public ConnectionsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
                 }
 
-                /// <summary>
-                /// Creates a new data policy under a project with the given `dataPolicyId` (used as the display name),
-                /// policy tag, and data policy type.
-                /// </summary>
+                /// <summary>Creates a new connection.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. Resource name of the project that the data policy will belong to. The format is
-                /// `projects/{project_number}/locations/{location_id}`.
+                /// Required. Parent resource name. Must be in the format
+                /// `projects/{project_id}/locations/{location_id}`
                 /// </param>
-                public virtual CreateRequest Create(Google.Apis.BigQueryDataPolicyService.v1.Data.DataPolicy body, string parent)
+                public virtual CreateRequest Create(Google.Apis.BigQueryConnectionService.v1.Data.Connection body, string parent)
                 {
                     return new CreateRequest(this.service, body, parent);
                 }
 
-                /// <summary>
-                /// Creates a new data policy under a project with the given `dataPolicyId` (used as the display name),
-                /// policy tag, and data policy type.
-                /// </summary>
-                public class CreateRequest : BigQueryDataPolicyServiceBaseServiceRequest<Google.Apis.BigQueryDataPolicyService.v1.Data.DataPolicy>
+                /// <summary>Creates a new connection.</summary>
+                public class CreateRequest : BigQueryConnectionServiceBaseServiceRequest<Google.Apis.BigQueryConnectionService.v1.Data.Connection>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.BigQueryDataPolicyService.v1.Data.DataPolicy body, string parent) : base(service)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.BigQueryConnectionService.v1.Data.Connection body, string parent) : base(service)
                     {
                         Parent = parent;
                         Body = body;
@@ -349,14 +343,18 @@ namespace Google.Apis.BigQueryDataPolicyService.v1
                     }
 
                     /// <summary>
-                    /// Required. Resource name of the project that the data policy will belong to. The format is
-                    /// `projects/{project_number}/locations/{location_id}`.
+                    /// Required. Parent resource name. Must be in the format
+                    /// `projects/{project_id}/locations/{location_id}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Optional. Connection id that should be assigned to the created connection.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("connectionId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ConnectionId { get; set; }
+
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.BigQueryDataPolicyService.v1.Data.DataPolicy Body { get; set; }
+                    Google.Apis.BigQueryConnectionService.v1.Data.Connection Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -368,7 +366,7 @@ namespace Google.Apis.BigQueryDataPolicyService.v1
                     public override string HttpMethod => "POST";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+parent}/dataPolicies";
+                    public override string RestPath => "v1/{+parent}/connections";
 
                     /// <summary>Initializes Create parameter list.</summary>
                     protected override void InitParameters()
@@ -382,21 +380,29 @@ namespace Google.Apis.BigQueryDataPolicyService.v1
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
                         });
+                        RequestParameters.Add("connectionId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "connectionId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
                 }
 
-                /// <summary>Deletes the data policy specified by its resource name.</summary>
+                /// <summary>Deletes connection and associated credential.</summary>
                 /// <param name="name">
-                /// Required. Resource name of the data policy to delete. Format is
-                /// `projects/{project_number}/locations/{location_id}/dataPolicies/{data_policy_id}`.
+                /// Required. Name of the deleted connection, for example:
+                /// `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(this.service, name);
                 }
 
-                /// <summary>Deletes the data policy specified by its resource name.</summary>
-                public class DeleteRequest : BigQueryDataPolicyServiceBaseServiceRequest<Google.Apis.BigQueryDataPolicyService.v1.Data.Empty>
+                /// <summary>Deletes connection and associated credential.</summary>
+                public class DeleteRequest : BigQueryConnectionServiceBaseServiceRequest<Google.Apis.BigQueryConnectionService.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
                     public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
@@ -406,8 +412,8 @@ namespace Google.Apis.BigQueryDataPolicyService.v1
                     }
 
                     /// <summary>
-                    /// Required. Resource name of the data policy to delete. Format is
-                    /// `projects/{project_number}/locations/{location_id}/dataPolicies/{data_policy_id}`.
+                    /// Required. Name of the deleted connection, for example:
+                    /// `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -431,23 +437,23 @@ namespace Google.Apis.BigQueryDataPolicyService.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/dataPolicies/[^/]+$",
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+$",
                         });
                     }
                 }
 
-                /// <summary>Gets the data policy specified by its resource name.</summary>
+                /// <summary>Returns specified connection.</summary>
                 /// <param name="name">
-                /// Required. Resource name of the requested data policy. Format is
-                /// `projects/{project_number}/locations/{location_id}/dataPolicies/{data_policy_id}`.
+                /// Required. Name of the requested connection, for example:
+                /// `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(this.service, name);
                 }
 
-                /// <summary>Gets the data policy specified by its resource name.</summary>
-                public class GetRequest : BigQueryDataPolicyServiceBaseServiceRequest<Google.Apis.BigQueryDataPolicyService.v1.Data.DataPolicy>
+                /// <summary>Returns specified connection.</summary>
+                public class GetRequest : BigQueryConnectionServiceBaseServiceRequest<Google.Apis.BigQueryConnectionService.v1.Data.Connection>
                 {
                     /// <summary>Constructs a new Get request.</summary>
                     public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
@@ -457,8 +463,8 @@ namespace Google.Apis.BigQueryDataPolicyService.v1
                     }
 
                     /// <summary>
-                    /// Required. Resource name of the requested data policy. Format is
-                    /// `projects/{project_number}/locations/{location_id}/dataPolicies/{data_policy_id}`.
+                    /// Required. Name of the requested connection, for example:
+                    /// `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -482,28 +488,34 @@ namespace Google.Apis.BigQueryDataPolicyService.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/dataPolicies/[^/]+$",
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+$",
                         });
                     }
                 }
 
-                /// <summary>Gets the IAM policy for the specified data policy.</summary>
+                /// <summary>
+                /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
+                /// does not have a policy set.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">
                 /// REQUIRED: The resource for which the policy is being requested. See [Resource
                 /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
                 /// field.
                 /// </param>
-                public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.BigQueryDataPolicyService.v1.Data.GetIamPolicyRequest body, string resource)
+                public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.BigQueryConnectionService.v1.Data.GetIamPolicyRequest body, string resource)
                 {
                     return new GetIamPolicyRequest(this.service, body, resource);
                 }
 
-                /// <summary>Gets the IAM policy for the specified data policy.</summary>
-                public class GetIamPolicyRequest : BigQueryDataPolicyServiceBaseServiceRequest<Google.Apis.BigQueryDataPolicyService.v1.Data.Policy>
+                /// <summary>
+                /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
+                /// does not have a policy set.
+                /// </summary>
+                public class GetIamPolicyRequest : BigQueryConnectionServiceBaseServiceRequest<Google.Apis.BigQueryConnectionService.v1.Data.Policy>
                 {
                     /// <summary>Constructs a new GetIamPolicy request.</summary>
-                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.BigQueryDataPolicyService.v1.Data.GetIamPolicyRequest body, string resource) : base(service)
+                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.BigQueryConnectionService.v1.Data.GetIamPolicyRequest body, string resource) : base(service)
                     {
                         Resource = resource;
                         Body = body;
@@ -519,7 +531,7 @@ namespace Google.Apis.BigQueryDataPolicyService.v1
                     public virtual string Resource { get; private set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.BigQueryDataPolicyService.v1.Data.GetIamPolicyRequest Body { get; set; }
+                    Google.Apis.BigQueryConnectionService.v1.Data.GetIamPolicyRequest Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -543,23 +555,22 @@ namespace Google.Apis.BigQueryDataPolicyService.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/dataPolicies/[^/]+$",
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+$",
                         });
                     }
                 }
 
-                /// <summary>List all of the data policies in the specified parent project.</summary>
+                /// <summary>Returns a list of connections in the given project.</summary>
                 /// <param name="parent">
-                /// Required. Resource name of the project for which to list data policies. Format is
-                /// `projects/{project_number}/locations/{location_id}`.
+                /// Required. Parent resource name. Must be in the form: `projects/{project_id}/locations/{location_id}`
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>List all of the data policies in the specified parent project.</summary>
-                public class ListRequest : BigQueryDataPolicyServiceBaseServiceRequest<Google.Apis.BigQueryDataPolicyService.v1.Data.ListDataPoliciesResponse>
+                /// <summary>Returns a list of connections in the given project.</summary>
+                public class ListRequest : BigQueryConnectionServiceBaseServiceRequest<Google.Apis.BigQueryConnectionService.v1.Data.ListConnectionsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
                     public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
@@ -569,33 +580,17 @@ namespace Google.Apis.BigQueryDataPolicyService.v1
                     }
 
                     /// <summary>
-                    /// Required. Resource name of the project for which to list data policies. Format is
-                    /// `projects/{project_number}/locations/{location_id}`.
+                    /// Required. Parent resource name. Must be in the form:
+                    /// `projects/{project_id}/locations/{location_id}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>
-                    /// Filters the data policies by policy tags that they are associated with. Currently filter only
-                    /// supports "policy_tag" based filtering and OR based predicates. Sample filter can be "policy_tag:
-                    /// projects/1/locations/us/taxonomies/2/policyTags/3". You may also use wildcard such as
-                    /// "policy_tag: projects/1/locations/us/taxonomies/2*". Please note that OR predicates cannot be
-                    /// used with wildcard filters.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
-                    /// <summary>
-                    /// The maximum number of data policies to return. Must be a value between 1 and 1000. If not set,
-                    /// defaults to 50.
-                    /// </summary>
+                    /// <summary>Required. Page size.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
-                    /// <summary>
-                    /// The `nextPageToken` value returned from a previous list request, if any. If not set, defaults to
-                    /// an empty string.
-                    /// </summary>
+                    /// <summary>Page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
@@ -606,7 +601,7 @@ namespace Google.Apis.BigQueryDataPolicyService.v1
                     public override string HttpMethod => "GET";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+parent}/dataPolicies";
+                    public override string RestPath => "v1/{+parent}/connections";
 
                     /// <summary>Initializes List parameter list.</summary>
                     protected override void InitParameters()
@@ -619,14 +614,6 @@ namespace Google.Apis.BigQueryDataPolicyService.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                        });
-                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
                         });
                         RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                         {
@@ -648,27 +635,27 @@ namespace Google.Apis.BigQueryDataPolicyService.v1
                 }
 
                 /// <summary>
-                /// Updates the metadata for an existing data policy. The target data policy can be specified by the
-                /// resource name.
+                /// Updates the specified connection. For security reasons, also resets credential if connection
+                /// properties are in the update field mask.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Output only. Resource name of this data policy, in the format of
-                /// `projects/{project_number}/locations/{location_id}/dataPolicies/{data_policy_id}`.
+                /// Required. Name of the connection to update, for example:
+                /// `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
                 /// </param>
-                public virtual PatchRequest Patch(Google.Apis.BigQueryDataPolicyService.v1.Data.DataPolicy body, string name)
+                public virtual PatchRequest Patch(Google.Apis.BigQueryConnectionService.v1.Data.Connection body, string name)
                 {
                     return new PatchRequest(this.service, body, name);
                 }
 
                 /// <summary>
-                /// Updates the metadata for an existing data policy. The target data policy can be specified by the
-                /// resource name.
+                /// Updates the specified connection. For security reasons, also resets credential if connection
+                /// properties are in the update field mask.
                 /// </summary>
-                public class PatchRequest : BigQueryDataPolicyServiceBaseServiceRequest<Google.Apis.BigQueryDataPolicyService.v1.Data.DataPolicy>
+                public class PatchRequest : BigQueryConnectionServiceBaseServiceRequest<Google.Apis.BigQueryConnectionService.v1.Data.Connection>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.BigQueryDataPolicyService.v1.Data.DataPolicy body, string name) : base(service)
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.BigQueryConnectionService.v1.Data.Connection body, string name) : base(service)
                     {
                         Name = name;
                         Body = body;
@@ -676,23 +663,18 @@ namespace Google.Apis.BigQueryDataPolicyService.v1
                     }
 
                     /// <summary>
-                    /// Output only. Resource name of this data policy, in the format of
-                    /// `projects/{project_number}/locations/{location_id}/dataPolicies/{data_policy_id}`.
+                    /// Required. Name of the connection to update, for example:
+                    /// `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>
-                    /// The update mask applies to the resource. For the `FieldMask` definition, see
-                    /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask If not
-                    /// set, defaults to all of the fields that are allowed to update. Updates to the `name` and
-                    /// `dataPolicyId` fields are not allowed.
-                    /// </summary>
+                    /// <summary>Required. Update mask for the connection fields to be updated.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.BigQueryDataPolicyService.v1.Data.DataPolicy Body { get; set; }
+                    Google.Apis.BigQueryConnectionService.v1.Data.Connection Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -716,7 +698,7 @@ namespace Google.Apis.BigQueryDataPolicyService.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/dataPolicies/[^/]+$",
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+$",
                         });
                         RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                         {
@@ -729,82 +711,29 @@ namespace Google.Apis.BigQueryDataPolicyService.v1
                     }
                 }
 
-                /// <summary>Renames the id (display name) of the specified data policy.</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="name">
-                /// Required. Resource name of the data policy to rename. The format is
-                /// `projects/{project_number}/locations/{location_id}/dataPolicies/{data_policy_id}`
-                /// </param>
-                public virtual RenameRequest Rename(Google.Apis.BigQueryDataPolicyService.v1.Data.RenameDataPolicyRequest body, string name)
-                {
-                    return new RenameRequest(this.service, body, name);
-                }
-
-                /// <summary>Renames the id (display name) of the specified data policy.</summary>
-                public class RenameRequest : BigQueryDataPolicyServiceBaseServiceRequest<Google.Apis.BigQueryDataPolicyService.v1.Data.DataPolicy>
-                {
-                    /// <summary>Constructs a new Rename request.</summary>
-                    public RenameRequest(Google.Apis.Services.IClientService service, Google.Apis.BigQueryDataPolicyService.v1.Data.RenameDataPolicyRequest body, string name) : base(service)
-                    {
-                        Name = name;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. Resource name of the data policy to rename. The format is
-                    /// `projects/{project_number}/locations/{location_id}/dataPolicies/{data_policy_id}`
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.BigQueryDataPolicyService.v1.Data.RenameDataPolicyRequest Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "rename";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+name}:rename";
-
-                    /// <summary>Initializes Rename parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/dataPolicies/[^/]+$",
-                        });
-                    }
-                }
-
-                /// <summary>Sets the IAM policy for the specified data policy.</summary>
+                /// <summary>
+                /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
+                /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">
                 /// REQUIRED: The resource for which the policy is being specified. See [Resource
                 /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
                 /// field.
                 /// </param>
-                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.BigQueryDataPolicyService.v1.Data.SetIamPolicyRequest body, string resource)
+                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.BigQueryConnectionService.v1.Data.SetIamPolicyRequest body, string resource)
                 {
                     return new SetIamPolicyRequest(this.service, body, resource);
                 }
 
-                /// <summary>Sets the IAM policy for the specified data policy.</summary>
-                public class SetIamPolicyRequest : BigQueryDataPolicyServiceBaseServiceRequest<Google.Apis.BigQueryDataPolicyService.v1.Data.Policy>
+                /// <summary>
+                /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
+                /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+                /// </summary>
+                public class SetIamPolicyRequest : BigQueryConnectionServiceBaseServiceRequest<Google.Apis.BigQueryConnectionService.v1.Data.Policy>
                 {
                     /// <summary>Constructs a new SetIamPolicy request.</summary>
-                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.BigQueryDataPolicyService.v1.Data.SetIamPolicyRequest body, string resource) : base(service)
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.BigQueryConnectionService.v1.Data.SetIamPolicyRequest body, string resource) : base(service)
                     {
                         Resource = resource;
                         Body = body;
@@ -820,7 +749,7 @@ namespace Google.Apis.BigQueryDataPolicyService.v1
                     public virtual string Resource { get; private set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.BigQueryDataPolicyService.v1.Data.SetIamPolicyRequest Body { get; set; }
+                    Google.Apis.BigQueryConnectionService.v1.Data.SetIamPolicyRequest Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -844,28 +773,38 @@ namespace Google.Apis.BigQueryDataPolicyService.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/dataPolicies/[^/]+$",
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+$",
                         });
                     }
                 }
 
-                /// <summary>Returns the caller's permission on the specified data policy resource.</summary>
+                /// <summary>
+                /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
+                /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
+                /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
+                /// checking. This operation may "fail open" without warning.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">
                 /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
                 /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
                 /// field.
                 /// </param>
-                public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.BigQueryDataPolicyService.v1.Data.TestIamPermissionsRequest body, string resource)
+                public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.BigQueryConnectionService.v1.Data.TestIamPermissionsRequest body, string resource)
                 {
                     return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
-                /// <summary>Returns the caller's permission on the specified data policy resource.</summary>
-                public class TestIamPermissionsRequest : BigQueryDataPolicyServiceBaseServiceRequest<Google.Apis.BigQueryDataPolicyService.v1.Data.TestIamPermissionsResponse>
+                /// <summary>
+                /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
+                /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
+                /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
+                /// checking. This operation may "fail open" without warning.
+                /// </summary>
+                public class TestIamPermissionsRequest : BigQueryConnectionServiceBaseServiceRequest<Google.Apis.BigQueryConnectionService.v1.Data.TestIamPermissionsResponse>
                 {
                     /// <summary>Constructs a new TestIamPermissions request.</summary>
-                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.BigQueryDataPolicyService.v1.Data.TestIamPermissionsRequest body, string resource) : base(service)
+                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.BigQueryConnectionService.v1.Data.TestIamPermissionsRequest body, string resource) : base(service)
                     {
                         Resource = resource;
                         Body = body;
@@ -881,7 +820,7 @@ namespace Google.Apis.BigQueryDataPolicyService.v1
                     public virtual string Resource { get; private set; }
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.BigQueryDataPolicyService.v1.Data.TestIamPermissionsRequest Body { get; set; }
+                    Google.Apis.BigQueryConnectionService.v1.Data.TestIamPermissionsRequest Body { get; set; }
 
                     /// <summary>Returns the body of the request.</summary>
                     protected override object GetBody() => Body;
@@ -905,7 +844,7 @@ namespace Google.Apis.BigQueryDataPolicyService.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/dataPolicies/[^/]+$",
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+$",
                         });
                     }
                 }
@@ -913,7 +852,7 @@ namespace Google.Apis.BigQueryDataPolicyService.v1
         }
     }
 }
-namespace Google.Apis.BigQueryDataPolicyService.v1.Data
+namespace Google.Apis.BigQueryConnectionService.v1.Data
 {
     /// <summary>
     /// Specifies the audit configuration for a service. The configuration determines which permission types are logged,
@@ -967,6 +906,78 @@ namespace Google.Apis.BigQueryDataPolicyService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Authentication method for Amazon Web Services (AWS) that uses Google owned Google service account to assume into
+    /// customer's AWS IAM Role.
+    /// </summary>
+    public class AwsAccessRole : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The user’s AWS IAM Role that trusts the Google-owned AWS IAM user Connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iamRoleId")]
+        public virtual string IamRoleId { get; set; }
+
+        /// <summary>
+        /// A unique Google-owned and Google-generated identity for the Connection. This identity will be used to access
+        /// the user's AWS IAM Role.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identity")]
+        public virtual string Identity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Connection properties specific to Amazon Web Services (AWS).</summary>
+    public class AwsProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Authentication using Google owned service account to assume into customer's AWS IAM Role.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessRole")]
+        public virtual AwsAccessRole AccessRole { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Container for connection properties specific to Azure.</summary>
+    public class AzureProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The name of the Azure Active Directory Application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("application")]
+        public virtual string Application { get; set; }
+
+        /// <summary>Output only. The client id of the Azure Active Directory Application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
+        public virtual string ClientId { get; set; }
+
+        /// <summary>The id of customer's directory that host the data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerTenantId")]
+        public virtual string CustomerTenantId { get; set; }
+
+        /// <summary>
+        /// The client ID of the user's Azure Active Directory Application used for a federated connection.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("federatedApplicationClientId")]
+        public virtual string FederatedApplicationClientId { get; set; }
+
+        /// <summary>
+        /// Output only. A unique Google-owned and Google-generated identity for the Connection. This identity will be
+        /// used to access the user's Azure Active Directory Application.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identity")]
+        public virtual string Identity { get; set; }
+
+        /// <summary>Output only. The object id of the Azure Active Directory Application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
+        public virtual string ObjectId { get; set; }
+
+        /// <summary>The URL user will be redirected to after granting consent during connection setup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redirectUri")]
+        public virtual string RedirectUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Associates `members`, or principals, with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -993,25 +1004,9 @@ namespace Google.Apis.BigQueryDataPolicyService.v1.Data
         /// example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that
         /// represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
         /// (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. *
-        /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
-        /// A single identity in a workforce identity pool. *
-        /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All
-        /// workforce identities in a group. *
-        /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
-        /// All workforce identities with a specific attribute value. *
-        /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a
-        /// workforce identity pool. *
-        /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
-        /// A single identity in a workload identity pool. *
-        /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
-        /// A workload identity pool group. *
-        /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
-        /// All identities in a workload identity pool with a certain attribute. *
-        /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`:
-        /// All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address
-        /// (plus unique identifier) representing a user that has been recently deleted. For example,
-        /// `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to
-        /// `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
+        /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
+        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
         /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
         /// service account that has been recently deleted. For example,
         /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted,
@@ -1019,10 +1014,7 @@ namespace Google.Apis.BigQueryDataPolicyService.v1.Data
         /// binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
         /// a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`.
         /// If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role
-        /// in the binding. *
-        /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
-        /// Deleted single identity in a workforce identity pool. For example,
-        /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
+        /// in the binding.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; }
@@ -1038,55 +1030,185 @@ namespace Google.Apis.BigQueryDataPolicyService.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The data masking policy that is used to specify data masking rule.</summary>
-    public class DataMaskingPolicy : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>Container for connection properties for delegation of access to GCP resources.</summary>
+    public class CloudResourceProperties : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A predefined masking expression.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("predefinedExpression")]
-        public virtual string PredefinedExpression { get; set; }
-
         /// <summary>
-        /// The name of the BigQuery routine that contains the custom masking routine, in the format of
-        /// `projects/{project_number}/datasets/{dataset_id}/routines/{routine_id}`.
+        /// Output only. The account ID of the service created for the purpose of this connection. The service account
+        /// does not have any permissions associated with it when it is created. After creation, customers delegate
+        /// permissions to the service account. When the connection is used in the context of an operation in BigQuery,
+        /// the service account will be used to connect to the desired resources in GCP. The account ID is in the form
+        /// of: @gcp-sa-bigquery-cloudresource.iam.gserviceaccount.com
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("routine")]
-        public virtual string Routine { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountId")]
+        public virtual string ServiceAccountId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents the label-policy binding.</summary>
-    public class DataPolicy : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>Connection properties specific to Cloud Spanner.</summary>
+    public class CloudSpannerProperties : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The data masking policy that specifies the data masking rule to use.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dataMaskingPolicy")]
-        public virtual DataMaskingPolicy DataMaskingPolicy { get; set; }
+        /// <summary>Cloud Spanner database in the form `project/instance/database'</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual string Database { get; set; }
 
         /// <summary>
-        /// User-assigned (human readable) ID of the data policy that needs to be unique within a project. Used as
-        /// {data_policy_id} in part of the resource name.
+        /// Optional. Cloud Spanner database role for fine-grained access control. The Cloud Spanner admin should have
+        /// provisioned the database role with appropriate permissions, such as `SELECT` and `INSERT`. Other users
+        /// should only use roles provided by their Cloud Spanner admins. For more details, see [About fine-grained
+        /// access control] (https://cloud.google.com/spanner/docs/fgac-about). REQUIRES: The database role name must
+        /// start with a letter, and can only contain letters, numbers, and underscores.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dataPolicyId")]
-        public virtual string DataPolicyId { get; set; }
-
-        /// <summary>Type of data policy.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dataPolicyType")]
-        public virtual string DataPolicyType { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseRole")]
+        public virtual string DatabaseRole { get; set; }
 
         /// <summary>
-        /// Output only. Resource name of this data policy, in the format of
-        /// `projects/{project_number}/locations/{location_id}/dataPolicies/{data_policy_id}`.
+        /// Allows setting max parallelism per query when executing on Spanner independent compute resources. If
+        /// unspecified, default values of parallelism are chosen that are dependent on the Cloud Spanner instance
+        /// configuration. REQUIRES: `use_parallelism` must be set. REQUIRES: `use_data_boost` must be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxParallelism")]
+        public virtual System.Nullable<int> MaxParallelism { get; set; }
+
+        /// <summary>
+        /// If set, the request will be executed via Spanner independent compute resources. REQUIRES: `use_parallelism`
+        /// must be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useDataBoost")]
+        public virtual System.Nullable<bool> UseDataBoost { get; set; }
+
+        /// <summary>If parallelism should be used when reading from Cloud Spanner</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useParallelism")]
+        public virtual System.Nullable<bool> UseParallelism { get; set; }
+
+        /// <summary>
+        /// Deprecated: prefer use_data_boost instead. If the serverless analytics service should be used to read data
+        /// from Cloud Spanner. Note: `use_parallelism` must be set when using serverless analytics.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useServerlessAnalytics")]
+        public virtual System.Nullable<bool> UseServerlessAnalytics { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Credential info for the Cloud SQL.</summary>
+    public class CloudSqlCredential : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The password for the credential.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("password")]
+        public virtual string Password { get; set; }
+
+        /// <summary>The username for the credential.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("username")]
+        public virtual string Username { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Connection properties specific to the Cloud SQL.</summary>
+    public class CloudSqlProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Input only. Cloud SQL credential.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("credential")]
+        public virtual CloudSqlCredential Credential { get; set; }
+
+        /// <summary>Database name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual string Database { get; set; }
+
+        /// <summary>Cloud SQL instance ID in the form `project:location:instance`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceId")]
+        public virtual string InstanceId { get; set; }
+
+        /// <summary>
+        /// Output only. The account ID of the service used for the purpose of this connection. When the connection is
+        /// used in the context of an operation in BigQuery, this service account will serve as the identity being used
+        /// for connecting to the CloudSQL instance specified in this connection.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountId")]
+        public virtual string ServiceAccountId { get; set; }
+
+        /// <summary>Type of the Cloud SQL database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configuration parameters to establish connection with an external data source, except the credential attributes.
+    /// </summary>
+    public class Connection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Amazon Web Services (AWS) properties.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aws")]
+        public virtual AwsProperties Aws { get; set; }
+
+        /// <summary>Azure properties.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("azure")]
+        public virtual AzureProperties Azure { get; set; }
+
+        /// <summary>Cloud Resource properties.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudResource")]
+        public virtual CloudResourceProperties CloudResource { get; set; }
+
+        /// <summary>Cloud Spanner properties.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudSpanner")]
+        public virtual CloudSpannerProperties CloudSpanner { get; set; }
+
+        /// <summary>Cloud SQL properties.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudSql")]
+        public virtual CloudSqlProperties CloudSql { get; set; }
+
+        /// <summary>Output only. The creation timestamp of the connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
+        public virtual System.Nullable<long> CreationTime { get; set; }
+
+        /// <summary>User provided description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>User provided display name for the connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("friendlyName")]
+        public virtual string FriendlyName { get; set; }
+
+        /// <summary>Output only. True, if credential is configured for this connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hasCredential")]
+        public virtual System.Nullable<bool> HasCredential { get; set; }
+
+        /// <summary>
+        /// Optional. The Cloud KMS key that is used for encryption. Example:
+        /// `projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
+
+        /// <summary>Output only. The last update timestamp of the connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedTime")]
+        public virtual System.Nullable<long> LastModifiedTime { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of the connection in the form of:
+        /// `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Policy tag resource name, in the format of
-        /// `projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{policyTag_id}`.
+        /// Optional. Salesforce DataCloud properties. This field is intended for use only by Salesforce partner
+        /// projects. This field contains properties for your Salesforce DataCloud connection.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("policyTag")]
-        public virtual string PolicyTag { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("salesforceDataCloud")]
+        public virtual SalesforceDataCloudProperties SalesforceDataCloud { get; set; }
+
+        /// <summary>Spark properties.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spark")]
+        public virtual SparkProperties Spark { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1177,16 +1299,30 @@ namespace Google.Apis.BigQueryDataPolicyService.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response message for the ListDataPolicies method.</summary>
-    public class ListDataPoliciesResponse : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>The response for ConnectionService.ListConnections.</summary>
+    public class ListConnectionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Data policies that belong to the requested project.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dataPolicies")]
-        public virtual System.Collections.Generic.IList<DataPolicy> DataPolicies { get; set; }
+        /// <summary>List of connections.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connections")]
+        public virtual System.Collections.Generic.IList<Connection> Connections { get; set; }
 
-        /// <summary>Token used to retrieve the next page of results, or empty if there are no more results.</summary>
+        /// <summary>Next page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration of the Dataproc Metastore Service.</summary>
+    public class MetastoreServiceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Resource name of an existing Dataproc Metastore service. Example: *
+        /// `projects/[project_id]/locations/[region]/services/[service_id]`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metastoreService")]
+        public virtual string MetastoreService { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1269,12 +1405,25 @@ namespace Google.Apis.BigQueryDataPolicyService.v1.Data
         public virtual System.Nullable<int> Version { get; set; }
     }
 
-    /// <summary>Request message for the RenameDataPolicy method.</summary>
-    public class RenameDataPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>
+    /// Connection properties specific to Salesforce DataCloud. This is intended for use only by Salesforce partner
+    /// projects.
+    /// </summary>
+    public class SalesforceDataCloudProperties : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The new data policy id.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("newDataPolicyId")]
-        public virtual string NewDataPolicyId { get; set; }
+        /// <summary>
+        /// Output only. A unique Google-owned and Google-generated service account identity for the connection.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identity")]
+        public virtual string Identity { get; set; }
+
+        /// <summary>The URL to the user's Salesforce DataCloud instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceUri")]
+        public virtual string InstanceUri { get; set; }
+
+        /// <summary>The ID of the user's Salesforce tenant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tenantId")]
+        public virtual string TenantId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1297,6 +1446,45 @@ namespace Google.Apis.BigQueryDataPolicyService.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration of the Spark History Server.</summary>
+    public class SparkHistoryServerConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Resource name of an existing Dataproc Cluster to act as a Spark History Server for the connection.
+        /// Example: * `projects/[project_id]/regions/[region]/clusters/[cluster_name]`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataprocCluster")]
+        public virtual string DataprocCluster { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Container for connection properties to execute stored procedures for Apache Spark.</summary>
+    public class SparkProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Dataproc Metastore Service configuration for the connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metastoreServiceConfig")]
+        public virtual MetastoreServiceConfig MetastoreServiceConfig { get; set; }
+
+        /// <summary>
+        /// Output only. The account ID of the service created for the purpose of this connection. The service account
+        /// does not have any permissions associated with it when it is created. After creation, customers delegate
+        /// permissions to the service account. When the connection is used in the context of a stored procedure for
+        /// Apache Spark in BigQuery, the service account is used to connect to the desired resources in Google Cloud.
+        /// The account ID is in the form of: bqcx--@gcp-sa-bigquery-consp.iam.gserviceaccount.com
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountId")]
+        public virtual string ServiceAccountId { get; set; }
+
+        /// <summary>Optional. Spark History Server configuration for the connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sparkHistoryServerConfig")]
+        public virtual SparkHistoryServerConfig SparkHistoryServerConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

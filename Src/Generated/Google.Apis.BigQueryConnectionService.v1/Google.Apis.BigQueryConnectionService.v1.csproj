@@ -2,8 +2,8 @@
 
   <!-- nupkg information -->
   <PropertyGroup>
-    <Title>Google.Apis.CloudDomains.v1alpha2 Client Library</Title>
-    <Version>1.65.0.3289</Version>
+    <Title>Google.Apis.BigQueryConnectionService.v1 Client Library</Title>
+    <Version>1.65.0.3258</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2024 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
@@ -14,7 +14,7 @@
     <PackageIconUrl>https://www.gstatic.com/images/branding/product/1x/google_developers_64dp.png</PackageIconUrl>
     <PackageIcon>NuGetIcon.png</PackageIcon>
     <Description>
-      Google APIs Client Library for working with Domains v1alpha2.
+      Google APIs Client Library for working with Bigqueryconnection v1.
 
       Supported Platforms:
       - .NET Framework 4.5+
@@ -30,7 +30,7 @@
       - Windows Phone Silverlight 8.0
 
       More documentation on the API is available at:
-      https://developers.google.com/api-client-library/dotnet/apis/domains/v1alpha2
+      https://developers.google.com/api-client-library/dotnet/apis/bigqueryconnection/v1
 
       The package source code is available at:
       https://github.com/google/google-api-dotnet-client/tree/master/Src/Generated

@@ -30902,7 +30902,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Settings for YouTube and Partners line items.</summary>
+    /// <summary>Settings for YouTube and Partners line items. Next ID: 15</summary>
     public class YoutubeAndPartnersSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The bidding strategy of the YouTube and Partners line item.</summary>
