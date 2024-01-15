@@ -3220,6 +3220,21 @@ namespace Google.Apis.Datastore.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Plan for the query.</summary>
+    public class QueryPlan : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Planning phase information for the query. It will include: { "indexes_used": [ {"query_scope": "Collection",
+        /// "properties": "(foo ASC, __name__ ASC)"}, {"query_scope": "Collection", "properties": "(bar ASC, __name__
+        /// ASC)"} ] }
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("planInfo")]
+        public virtual System.Collections.Generic.IDictionary<string, object> PlanInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A batch of results produced by a query.</summary>
     public class QueryResultBatch : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3458,6 +3473,25 @@ namespace Google.Apis.Datastore.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Planning and execution statistics for the query.</summary>
+    public class ResultSetStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Plan for the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryPlan")]
+        public virtual QueryPlan QueryPlan { get; set; }
+
+        /// <summary>
+        /// Aggregated statistics from the execution of the query. This will only be present when the request specifies
+        /// `PROFILE` mode. For example, a query will return the statistics including: { "results_returned": "20",
+        /// "documents_scanned": "20", "indexes_entries_scanned": "10050", "total_execution_time": "100.7 msecs" }
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryStats")]
+        public virtual System.Collections.Generic.IDictionary<string, object> QueryStats { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request for Datastore.Rollback.</summary>
     public class RollbackRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3502,6 +3536,13 @@ namespace Google.Apis.Datastore.v1.Data
         public virtual GqlQuery GqlQuery { get; set; }
 
         /// <summary>
+        /// Optional. The mode in which the query request is processed. This field is optional, and when not provided,
+        /// it defaults to `NORMAL` mode where no additional statistics will be returned with the query results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
+
+        /// <summary>
         /// Entities are partitioned into subsets, identified by a partition ID. Queries are scoped to a single
         /// partition. This partition ID is normalized with the standard default context partition ID.
         /// </summary>
@@ -3528,6 +3569,13 @@ namespace Google.Apis.Datastore.v1.Data
         public virtual AggregationQuery Query { get; set; }
 
         /// <summary>
+        /// Query plan and execution statistics. Note that the returned stats are subject to change as Firestore
+        /// evolves. This is only present when the request specifies a mode other than `NORMAL`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stats")]
+        public virtual ResultSetStats Stats { get; set; }
+
+        /// <summary>
         /// The identifier of the transaction that was started as part of this RunAggregationQuery request. Set only
         /// when ReadOptions.new_transaction was set in RunAggregationQueryRequest.read_options.
         /// </summary>
@@ -3551,6 +3599,13 @@ namespace Google.Apis.Datastore.v1.Data
         /// <summary>The GQL query to run. This query must be a non-aggregation query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gqlQuery")]
         public virtual GqlQuery GqlQuery { get; set; }
+
+        /// <summary>
+        /// Optional. The mode in which the query request is processed. This field is optional, and when not provided,
+        /// it defaults to `NORMAL` mode where no additional statistics will be returned with the query results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
 
         /// <summary>
         /// Entities are partitioned into subsets, identified by a partition ID. Queries are scoped to a single
@@ -3581,6 +3636,13 @@ namespace Google.Apis.Datastore.v1.Data
         /// <summary>The parsed form of the `GqlQuery` from the request, if it was set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual Query Query { get; set; }
+
+        /// <summary>
+        /// Query plan and execution statistics. Note that the returned stats are subject to change as Firestore
+        /// evolves. This is only present when the request specifies a mode other than `NORMAL`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stats")]
+        public virtual ResultSetStats Stats { get; set; }
 
         /// <summary>
         /// The identifier of the transaction that was started as part of this RunQuery request. Set only when

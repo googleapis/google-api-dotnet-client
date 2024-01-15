@@ -17066,6 +17066,51 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("assignees")]
         public virtual System.Collections.Generic.IList<string> Assignees { get; set; }
 
+        /// <summary>The priority of the finding's corresponding case in the external system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("casePriority")]
+        public virtual string CasePriority { get; set; }
+
+        private string _caseSlaRaw;
+
+        private object _caseSla;
+
+        /// <summary>The SLA of the finding's corresponding case in the external system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("caseSla")]
+        public virtual string CaseSlaRaw
+        {
+            get => _caseSlaRaw;
+            set
+            {
+                _caseSla = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _caseSlaRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CaseSlaRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CaseSlaDateTimeOffset instead.")]
+        public virtual object CaseSla
+        {
+            get => _caseSla;
+            set
+            {
+                _caseSlaRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _caseSla = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CaseSlaRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CaseSlaDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CaseSlaRaw);
+            set => CaseSlaRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The link to the finding's corresponding case in the external system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("caseUri")]
+        public virtual string CaseUri { get; set; }
+
         private string _externalSystemUpdateTimeRaw;
 
         private object _externalSystemUpdateTime;
@@ -17125,6 +17170,13 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
+
+        /// <summary>
+        /// Information about the ticket, if any, that is being used to track the resolution of the issue that is
+        /// identified by this finding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ticketInfo")]
+        public virtual TicketInfo TicketInfo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -19986,6 +20038,73 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Information about the ticket, if any, that is being used to track the resolution of the issue that is identified
+    /// by this finding.
+    /// </summary>
+    public class TicketInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The assignee of the ticket in the ticket system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assignee")]
+        public virtual string Assignee { get; set; }
+
+        /// <summary>The description of the ticket in the ticket system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>The identifier of the ticket in the ticket system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The latest status of the ticket, as reported by the ticket system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>The time when the ticket was last updated, as reported by the ticket system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The link to the ticket in the ticket system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

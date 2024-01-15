@@ -31058,7 +31058,7 @@ namespace Google.Apis.DisplayVideo.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Settings for YouTube and Partners line items.</summary>
+    /// <summary>Settings for YouTube and Partners line items. Next ID: 15</summary>
     public class YoutubeAndPartnersSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The kind of content on which the YouTube and Partners ads will be shown.</summary>

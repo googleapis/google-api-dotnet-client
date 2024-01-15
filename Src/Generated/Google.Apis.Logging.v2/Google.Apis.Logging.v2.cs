@@ -18426,7 +18426,7 @@ namespace Google.Apis.Logging.v2.Data
             set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>State of an operation.</summary>
+        /// <summary>Output only. State of an operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -18484,7 +18484,7 @@ namespace Google.Apis.Logging.v2.Data
     public class CmekSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The resource name for the configured Cloud KMS key.KMS key name format:
+        /// Optional. The resource name for the configured Cloud KMS key.KMS key name format:
         /// "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]" For
         /// example:"projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key"To enable CMEK for the
         /// Log Router, set this field to a valid kms_key_name for which the associated service account has the needed
@@ -18500,7 +18500,7 @@ namespace Google.Apis.Logging.v2.Data
         public virtual string KmsKeyName { get; set; }
 
         /// <summary>
-        /// The CryptoKeyVersion resource name for the configured Cloud KMS key.KMS key name format:
+        /// Output only. The CryptoKeyVersion resource name for the configured Cloud KMS key.KMS key name format:
         /// "projects/[PROJECT_ID]/locations/[LOCATION]/keyRings/[KEYRING]/cryptoKeys/[KEY]/cryptoKeyVersions/[VERSION]"
         /// For
         /// example:"projects/my-project/locations/us-central1/keyRings/my-ring/cryptoKeys/my-key/cryptoKeyVersions/1"This
@@ -18618,7 +18618,7 @@ namespace Google.Apis.Logging.v2.Data
             set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>State of an operation.</summary>
+        /// <summary>Output only. State of an operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -19033,8 +19033,8 @@ namespace Google.Apis.Logging.v2.Data
     public class Link : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along with it,
-        /// in the same project as the LogBucket it's linked to. This dataset will also have BigQuery Views
+        /// Optional. The information of a BigQuery Dataset. When a link is created, a BigQuery dataset is created along
+        /// with it, in the same project as the LogBucket it's linked to. This dataset will also have BigQuery Views
         /// corresponding to the LogViews in the bucket.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigqueryDataset")]
@@ -19077,7 +19077,7 @@ namespace Google.Apis.Logging.v2.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Describes this link.The maximum length of the description is 8000 characters.</summary>
+        /// <summary>Optional. Describes this link.The maximum length of the description is 8000 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -19086,8 +19086,8 @@ namespace Google.Apis.Logging.v2.Data
         public virtual string LifecycleState { get; set; }
 
         /// <summary>
-        /// The resource name of the link. The name can have up to 100 characters. A valid link id (at the end of the
-        /// link name) must only have alphanumeric characters and underscores within it.
+        /// Output only. The resource name of the link. The name can have up to 100 characters. A valid link id (at the
+        /// end of the link name) must only have alphanumeric characters and underscores within it.
         /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]"
         /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]"
         /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/links/[LINK_ID]"
@@ -19186,7 +19186,7 @@ namespace Google.Apis.Logging.v2.Data
             set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>State of an operation.</summary>
+        /// <summary>Output only. State of an operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -19564,15 +19564,16 @@ namespace Google.Apis.Logging.v2.Data
     public class LogBucket : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Whether log analytics is enabled for this bucket.Once enabled, log analytics features cannot be disabled.
+        /// Optional. Whether log analytics is enabled for this bucket.Once enabled, log analytics features cannot be
+        /// disabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analyticsEnabled")]
         public virtual System.Nullable<bool> AnalyticsEnabled { get; set; }
 
         /// <summary>
-        /// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted
-        /// using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings
-        /// cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
+        /// Optional. The CMEK settings of the log bucket. If present, new log entries written to this log bucket are
+        /// encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK
+        /// settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cmekSettings")]
         public virtual CmekSettings CmekSettings { get; set; }
@@ -19616,11 +19617,11 @@ namespace Google.Apis.Logging.v2.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Describes this bucket.</summary>
+        /// <summary>Optional. Describes this bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>A list of indexed fields and related configuration data.</summary>
+        /// <summary>Optional. A list of indexed fields and related configuration data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indexConfigs")]
         public virtual System.Collections.Generic.IList<IndexConfig> IndexConfigs { get; set; }
 
@@ -19629,8 +19630,8 @@ namespace Google.Apis.Logging.v2.Data
         public virtual string LifecycleState { get; set; }
 
         /// <summary>
-        /// Whether the bucket is locked.The retention period on a locked bucket cannot be changed. Locked buckets may
-        /// only be deleted if they are empty.
+        /// Optional. Whether the bucket is locked.The retention period on a locked bucket cannot be changed. Locked
+        /// buckets may only be deleted if they are empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locked")]
         public virtual System.Nullable<bool> Locked { get; set; }
@@ -19646,18 +19647,18 @@ namespace Google.Apis.Logging.v2.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Log entry field paths that are denied access in this bucket.The following fields and their children are
-        /// eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation.Restricting a repeated
-        /// field will restrict all values. Adding a parent will block all child fields. (e.g. foo.bar will block
-        /// foo.bar.baz)
+        /// Optional. Log entry field paths that are denied access in this bucket.The following fields and their
+        /// children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels,
+        /// sourceLocation.Restricting a repeated field will restrict all values. Adding a parent will block all child
+        /// fields. (e.g. foo.bar will block foo.bar.baz)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictedFields")]
         public virtual System.Collections.Generic.IList<string> RestrictedFields { get; set; }
 
         /// <summary>
-        /// Logs will be retained by default for this amount of time, after which they will automatically be deleted.
-        /// The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default
-        /// time of 30 days will be used.
+        /// Optional. Logs will be retained by default for this amount of time, after which they will automatically be
+        /// deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the
+        /// default time of 30 days will be used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retentionDays")]
         public virtual System.Nullable<int> RetentionDays { get; set; }
@@ -20081,7 +20082,7 @@ namespace Google.Apis.Logging.v2.Data
         public virtual string Filter { get; set; }
 
         /// <summary>
-        /// Required. A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100
+        /// Output only. A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100
         /// characters and can include only letters, digits, underscores, hyphens, and periods. First character has to
         /// be alphanumeric.
         /// </summary>
@@ -20479,7 +20480,7 @@ namespace Google.Apis.Logging.v2.Data
         public virtual System.Nullable<bool> IncludeChildren { get; set; }
 
         /// <summary>
-        /// Required. The client-assigned sink identifier, unique within the project.For example:
+        /// Output only. The client-assigned sink identifier, unique within the project.For example:
         /// "my-syslog-errors-to-pubsub".Sink identifiers are limited to 100 characters and can include only the
         /// following characters: upper and lower-case alphanumeric characters, underscores, hyphens, periods.First
         /// character has to be alphanumeric.
@@ -20616,23 +20617,23 @@ namespace Google.Apis.Logging.v2.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Describes this view.</summary>
+        /// <summary>Optional. Describes this view.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Filter that restricts which log entries in a bucket are visible in this view.Filters must be logical
-        /// conjunctions that use the AND operator, and they can use any of the following qualifiers: SOURCE(), which
-        /// specifies a project, folder, organization, or billing account of origin. resource.type, which specifies the
-        /// resource type. LOG_ID(), which identifies the log.They can also use the negations of these qualifiers with
-        /// the NOT operator.For example:SOURCE("projects/myproject") AND resource.type = "gce_instance" AND NOT
-        /// LOG_ID("stdout")
+        /// Optional. Filter that restricts which log entries in a bucket are visible in this view.Filters must be
+        /// logical conjunctions that use the AND operator, and they can use any of the following qualifiers: SOURCE(),
+        /// which specifies a project, folder, organization, or billing account of origin. resource.type, which
+        /// specifies the resource type. LOG_ID(), which identifies the log.They can also use the negations of these
+        /// qualifiers with the NOT operator.For example:SOURCE("projects/myproject") AND resource.type = "gce_instance"
+        /// AND NOT LOG_ID("stdout")
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
 
         /// <summary>
-        /// The resource name of the view.For
+        /// Output only. The resource name of the view.For
         /// example:projects/my-project/locations/global/buckets/my-bucket/views/my-view
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -20687,7 +20688,7 @@ namespace Google.Apis.Logging.v2.Data
     public class LoggingQuery : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// An advanced query using the Logging Query Language
+        /// Required. An advanced query using the Logging Query Language
         /// (https://cloud.google.com/logging/docs/view/logging-query-language). The maximum length of the filter is
         /// 20000 characters.
         /// </summary>
@@ -20702,7 +20703,7 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("summaryFieldStart")]
         public virtual System.Nullable<int> SummaryFieldStart { get; set; }
 
-        /// <summary>The set of summary fields to display for this saved query.</summary>
+        /// <summary>Optional. The set of summary fields to display for this saved query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("summaryFields")]
         public virtual System.Collections.Generic.IList<SummaryField> SummaryFields { get; set; }
 
@@ -20920,7 +20921,7 @@ namespace Google.Apis.Logging.v2.Data
 
         /// <summary>
         /// Required. The monitored resource type. For example, the type "cloudsql_database" represents databases in
-        /// Google Cloud SQL. For a list of types, see Monitoring resource types
+        /// Google Cloud SQL. For a list of types, see Monitored resource types
         /// (https://cloud.google.com/monitoring/api/resources) and Logging resource types
         /// (https://cloud.google.com/logging/docs/api/v2/resource-list).
         /// </summary>
@@ -21025,7 +21026,7 @@ namespace Google.Apis.Logging.v2.Data
 
         private object _lastRunTime;
 
-        /// <summary>The timestamp when this query was last run.</summary>
+        /// <summary>Output only. The timestamp when this query was last run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastRunTime")]
         public virtual string LastRunTimeRaw
         {
@@ -21349,11 +21350,11 @@ namespace Google.Apis.Logging.v2.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>A human readable description of the saved query.</summary>
+        /// <summary>Optional. A human readable description of the saved query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>The user specified title for the SavedQuery.</summary>
+        /// <summary>Optional. The user specified title for the SavedQuery.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
@@ -21566,7 +21567,8 @@ namespace Google.Apis.Logging.v2.Data
     public class SummaryField : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The field from the LogEntry to include in the summary line, for example resource.type or jsonPayload.name.
+        /// Optional. The field from the LogEntry to include in the summary line, for example resource.type or
+        /// jsonPayload.name.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
         public virtual string Field { get; set; }

@@ -4108,6 +4108,17 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Oracle SCN position</summary>
+    public class OracleScnPosition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. SCN number from where Logs will be read</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scn")]
+        public virtual System.Nullable<long> Scn { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Oracle data source configuration</summary>
     public class OracleSourceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4659,6 +4670,10 @@ namespace Google.Apis.Datastream.v1.Data
         /// <summary>MySQL specific log position to start replicating from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mysqlLogPosition")]
         public virtual MysqlLogPosition MysqlLogPosition { get; set; }
+
+        /// <summary>Oracle specific log position to start replicating from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oracleScnPosition")]
+        public virtual OracleScnPosition OracleScnPosition { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

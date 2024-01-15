@@ -1632,6 +1632,13 @@ namespace Google.Apis.ChromePolicy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("numericRangeConstraint")]
         public virtual GoogleChromePolicyVersionsV1NumericRangeConstraint NumericRangeConstraint { get; set; }
 
+        /// <summary>
+        /// Constraints on the uploaded file of a file policy. If present, this policy requires a URL that can be
+        /// fetched by uploading a file with the constraints specified in this proto.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uploadedFileConstraints")]
+        public virtual GoogleChromePolicyVersionsV1UploadedFileConstraints UploadedFileConstraints { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2340,6 +2347,21 @@ namespace Google.Apis.ChromePolicy.v1.Data
         /// <summary>The uri for end user to download the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("downloadUri")]
         public virtual string DownloadUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Constraints on the uploaded file of a file policy.</summary>
+    public class GoogleChromePolicyVersionsV1UploadedFileConstraints : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The size limit of uploaded files for a setting, in bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeLimitBytes")]
+        public virtual System.Nullable<long> SizeLimitBytes { get; set; }
+
+        /// <summary>File types that can be uploaded for a setting.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportedContentTypes")]
+        public virtual System.Collections.Generic.IList<string> SupportedContentTypes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
