@@ -55975,17 +55975,6 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Details of operations that perform reboot PersistentResource.</summary>
-    public class GoogleCloudAiplatformV1beta1RebootPersistentResourceOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Operation metadata for PersistentResource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
-        public virtual GoogleCloudAiplatformV1beta1GenericOperationMetadata GenericMetadata { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Request message for MetadataService.DeleteContextChildrenRequest.</summary>
     public class GoogleCloudAiplatformV1beta1RemoveContextChildrenRequest : Google.Apis.Requests.IDirectResponseSchema
     {

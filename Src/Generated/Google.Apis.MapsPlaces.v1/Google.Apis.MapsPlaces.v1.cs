@@ -429,17 +429,18 @@ namespace Google.Apis.MapsPlaces.v1
             }
         }
 
-        /// <summary>Get place details with a place id (in a name) string.</summary>
-        /// <param name="name">
-        /// Required. A place ID returned in a Place (with "places/" prefix), or equivalently the name in the same
-        /// Place. Format: `places/{place_id}`.
-        /// </param>
+        /// <summary>
+        /// Get the details of a place based on its resource name, which is a string in the `places/{place_id}` format.
+        /// </summary>
+        /// <param name="name">Required. The resource name of a place, in the `places/{place_id}` format.</param>
         public virtual GetRequest Get(string name)
         {
             return new GetRequest(this.service, name);
         }
 
-        /// <summary>Get place details with a place id (in a name) string.</summary>
+        /// <summary>
+        /// Get the details of a place based on its resource name, which is a string in the `places/{place_id}` format.
+        /// </summary>
         public class GetRequest : MapsPlacesBaseServiceRequest<Google.Apis.MapsPlaces.v1.Data.GoogleMapsPlacesV1Place>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -449,10 +450,7 @@ namespace Google.Apis.MapsPlaces.v1
                 InitParameters();
             }
 
-            /// <summary>
-            /// Required. A place ID returned in a Place (with "places/" prefix), or equivalently the name in the same
-            /// Place. Format: `places/{place_id}`.
-            /// </summary>
+            /// <summary>Required. The resource name of a place, in the `places/{place_id}` format.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -1010,8 +1008,7 @@ namespace Google.Apis.MapsPlaces.v1.Data
         public virtual System.Nullable<bool> MenuForChildren { get; set; }
 
         /// <summary>
-        /// An ID representing this place which may be used to look up this place again (a.k.a. the API "resource" name:
-        /// places/place_id).
+        /// This Place's resource name, in `places/{place_id}` format. Can be used to look up the Place.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

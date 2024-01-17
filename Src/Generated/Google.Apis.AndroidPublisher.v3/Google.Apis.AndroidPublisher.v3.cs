@@ -15209,8 +15209,15 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// amount of time remaining in a subscription. Not supported for subscriptions with multiple items.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proratedRefund")]
-        public virtual UNDEFINEDPackageNameRevocationContextProratedRefund ProratedRefund { get; set; }
+        public virtual RevocationContextProratedRefund ProratedRefund { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Used to determine if the refund type in the RevocationContext is a prorated refund.</summary>
+    public class RevocationContextProratedRefund : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -16514,13 +16521,6 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tracks")]
         public virtual System.Collections.Generic.IList<Track> Tracks { get; set; }
 
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Used to determine if the refund type in the RevocationContext is a prorated refund.</summary>
-    public class UNDEFINEDPackageNameRevocationContextProratedRefund : Google.Apis.Requests.IDirectResponseSchema
-    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

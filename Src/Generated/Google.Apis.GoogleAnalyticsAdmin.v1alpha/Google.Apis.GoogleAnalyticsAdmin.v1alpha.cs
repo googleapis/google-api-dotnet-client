@@ -1463,6 +1463,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             AdSenseLinks = new AdSenseLinksResource(service);
             Audiences = new AudiencesResource(service);
             BigQueryLinks = new BigQueryLinksResource(service);
+            CalculatedMetrics = new CalculatedMetricsResource(service);
             ChannelGroups = new ChannelGroupsResource(service);
             ConversionEvents = new ConversionEventsResource(service);
             CustomDimensions = new CustomDimensionsResource(service);
@@ -2784,6 +2785,351 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the CalculatedMetrics resource.</summary>
+        public virtual CalculatedMetricsResource CalculatedMetrics { get; }
+
+        /// <summary>The "calculatedMetrics" collection of methods.</summary>
+        public class CalculatedMetricsResource
+        {
+            private const string Resource = "calculatedMetrics";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public CalculatedMetricsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Creates a CalculatedMetric.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. Format: properties/{property_id} Example: properties/1234</param>
+            public virtual CreateRequest Create(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaCalculatedMetric body, string parent)
+            {
+                return new CreateRequest(this.service, body, parent);
+            }
+
+            /// <summary>Creates a CalculatedMetric.</summary>
+            public class CreateRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaCalculatedMetric>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaCalculatedMetric body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. Format: properties/{property_id} Example: properties/1234</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Required. The ID to use for the calculated metric which will become the final component of the
+                /// calculated metric's resource name. This value should be 1-80 characters and valid characters are
+                /// /[a-zA-Z0-9_]/, no spaces allowed. calculated_metric_id must be unique between all calculated
+                /// metrics under a property. The calculated_metric_id is used when referencing this calculated metric
+                /// from external APIs, for example, "calcMetric:{calculated_metric_id}".
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("calculatedMetricId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string CalculatedMetricId { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaCalculatedMetric Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+parent}/calculatedMetrics";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+$",
+                    });
+                    RequestParameters.Add("calculatedMetricId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "calculatedMetricId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Deletes a CalculatedMetric on a property.</summary>
+            /// <param name="name">
+            /// Required. The name of the CalculatedMetric to delete. Format:
+            /// properties/{property_id}/calculatedMetrics/{calculated_metric_id} Example:
+            /// properties/1234/calculatedMetrics/Metric01
+            /// </param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(this.service, name);
+            }
+
+            /// <summary>Deletes a CalculatedMetric on a property.</summary>
+            public class DeleteRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleProtobufEmpty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the CalculatedMetric to delete. Format:
+                /// properties/{property_id}/calculatedMetrics/{calculated_metric_id} Example:
+                /// properties/1234/calculatedMetrics/Metric01
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+/calculatedMetrics/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Lookup for a single CalculatedMetric.</summary>
+            /// <param name="name">
+            /// Required. The name of the CalculatedMetric to get. Format:
+            /// properties/{property_id}/calculatedMetrics/{calculated_metric_id} Example:
+            /// properties/1234/calculatedMetrics/Metric01
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(this.service, name);
+            }
+
+            /// <summary>Lookup for a single CalculatedMetric.</summary>
+            public class GetRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaCalculatedMetric>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the CalculatedMetric to get. Format:
+                /// properties/{property_id}/calculatedMetrics/{calculated_metric_id} Example:
+                /// properties/1234/calculatedMetrics/Metric01
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+/calculatedMetrics/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Lists CalculatedMetrics on a property.</summary>
+            /// <param name="parent">Required. Example format: properties/1234</param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(this.service, parent);
+            }
+
+            /// <summary>Lists CalculatedMetrics on a property.</summary>
+            public class ListRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaListCalculatedMetricsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>Required. Example format: properties/1234</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. The maximum number of resources to return. If unspecified, at most 50 resources will be
+                /// returned. The maximum value is 200 (higher values will be coerced to the maximum).
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A page token, received from a previous `ListCalculatedMetrics` call. Provide this to
+                /// retrieve the subsequent page. When paginating, all other parameters provided to
+                /// `ListCalculatedMetrics` must match the call that provided the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+parent}/calculatedMetrics";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Updates a CalculatedMetric on a property.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Output only. Resource name for this CalculatedMetric. Format:
+            /// 'properties/{property_id}/calculatedMetrics/{calculated_metric_id}'
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaCalculatedMetric body, string name)
+            {
+                return new PatchRequest(this.service, body, name);
+            }
+
+            /// <summary>Updates a CalculatedMetric on a property.</summary>
+            public class PatchRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaCalculatedMetric>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaCalculatedMetric body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Output only. Resource name for this CalculatedMetric. Format:
+                /// 'properties/{property_id}/calculatedMetrics/{calculated_metric_id}'
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Required. The list of fields to be updated. Omitted fields will not be updated. To replace the
+                /// entire entity, use one path with the string "*" to match all fields.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaCalculatedMetric Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+/calculatedMetrics/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -10613,6 +10959,64 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A definition for a calculated metric.</summary>
+    public class GoogleAnalyticsAdminV1alphaCalculatedMetric : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The ID to use for the calculated metric. In the UI, this is referred to as the "API name." The
+        /// calculated_metric_id is used when referencing this calculated metric from external APIs. For example,
+        /// "calcMetric:{calculated_metric_id}".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("calculatedMetricId")]
+        public virtual string CalculatedMetricId { get; set; }
+
+        /// <summary>Optional. Description for this calculated metric. Max length of 4096 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Required. Display name for this calculated metric as shown in the Google Analytics UI. Max length 82
+        /// characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Required. The calculated metric's definition. Maximum number of unique referenced custom metrics is 5.
+        /// Formulas supports the following operations: + (addition), - (subtraction), - (negative), * (multiplication),
+        /// / (division), () (parenthesis). Any valid real numbers are acceptable that fit in a Long (64bit integer) or
+        /// a Double (64 bit floating point number). Example formula: "( customEvent:parameter_name +
+        /// cartPurchaseQuantity ) / 2.0"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("formula")]
+        public virtual string Formula { get; set; }
+
+        /// <summary>
+        /// Output only. If true, this calculated metric has a invalid metric reference. Anything using a calculated
+        /// metric with invalid_metric_reference set to true may fail, produce warnings, or produce unexpected results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invalidMetricReference")]
+        public virtual System.Nullable<bool> InvalidMetricReference { get; set; }
+
+        /// <summary>Required. The type for the calculated metric's value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricUnit")]
+        public virtual string MetricUnit { get; set; }
+
+        /// <summary>
+        /// Output only. Resource name for this CalculatedMetric. Format:
+        /// 'properties/{property_id}/calculatedMetrics/{calculated_metric_id}'
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Types of restricted data that this metric contains.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restrictedMetricType")]
+        public virtual System.Collections.Generic.IList<string> RestrictedMetricType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for CancelDisplayVideo360AdvertiserLinkProposal RPC.</summary>
     public class GoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10671,6 +11075,10 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// <summary>A snapshot of a BigQuery link resource in change history.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigqueryLink")]
         public virtual GoogleAnalyticsAdminV1alphaBigQueryLink BigqueryLink { get; set; }
+
+        /// <summary>A snapshot of a CalculatedMetric resource in change history.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("calculatedMetric")]
+        public virtual GoogleAnalyticsAdminV1alphaCalculatedMetric CalculatedMetric { get; set; }
 
         /// <summary>A snapshot of a ChannelGroup resource in change history.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelGroup")]
@@ -12480,6 +12888,24 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// <summary>List of BigQueryLinks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigqueryLinks")]
         public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaBigQueryLink> BigqueryLinks { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ListCalculatedMetrics RPC.</summary>
+    public class GoogleAnalyticsAdminV1alphaListCalculatedMetricsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of CalculatedMetrics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("calculatedMetrics")]
+        public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaCalculatedMetric> CalculatedMetrics { get; set; }
 
         /// <summary>
         /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
