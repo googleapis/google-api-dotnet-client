@@ -435,9 +435,8 @@ namespace Google.Apis.Cloudbilling.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Optional. The parent to create a billing account from. Format: - `organizations/{organization_id}`, for
-            /// example, `organizations/12345678` - `billingAccounts/{billing_account_id}`, for example,
-            /// `billingAccounts/012345-567890-ABCDEF`
+            /// Optional. The parent to create a billing account from. Format: - `billingAccounts/{billing_account_id}`,
+            /// for example, `billingAccounts/012345-567890-ABCDEF`
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Cloudbilling.v1.Data.BillingAccount body, string parent)
             {
@@ -466,9 +465,8 @@ namespace Google.Apis.Cloudbilling.v1
                 }
 
                 /// <summary>
-                /// Optional. The parent to create a billing account from. Format: - `organizations/{organization_id}`,
-                /// for example, `organizations/12345678` - `billingAccounts/{billing_account_id}`, for example,
-                /// `billingAccounts/012345-567890-ABCDEF`
+                /// Optional. The parent to create a billing account from. Format: -
+                /// `billingAccounts/{billing_account_id}`, for example, `billingAccounts/012345-567890-ABCDEF`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -645,9 +643,8 @@ namespace Google.Apis.Cloudbilling.v1
             }
 
             /// <summary>
-            /// Optional. The parent to create a billing account from. Format: - `organizations/{organization_id}`, for
-            /// example, `organizations/12345678` - `billingAccounts/{billing_account_id}`, for example,
-            /// `billingAccounts/012345-567890-ABCDEF`
+            /// Optional. The parent to create a billing account from. Format: - `billingAccounts/{billing_account_id}`,
+            /// for example, `billingAccounts/012345-567890-ABCDEF`
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Parent { get; set; }
@@ -1230,9 +1227,8 @@ namespace Google.Apis.Cloudbilling.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Optional. The parent to create a billing account from. Format: - `organizations/{organization_id}`, for
-            /// example, `organizations/12345678` - `billingAccounts/{billing_account_id}`, for example,
-            /// `billingAccounts/012345-567890-ABCDEF`
+            /// Optional. The parent to create a billing account from. Format: - `billingAccounts/{billing_account_id}`,
+            /// for example, `billingAccounts/012345-567890-ABCDEF`
             /// </param>
             public virtual CreateRequest Create(Google.Apis.Cloudbilling.v1.Data.BillingAccount body, string parent)
             {
@@ -1261,9 +1257,8 @@ namespace Google.Apis.Cloudbilling.v1
                 }
 
                 /// <summary>
-                /// Optional. The parent to create a billing account from. Format: - `organizations/{organization_id}`,
-                /// for example, `organizations/12345678` - `billingAccounts/{billing_account_id}`, for example,
-                /// `billingAccounts/012345-567890-ABCDEF`
+                /// Optional. The parent to create a billing account from. Format: -
+                /// `billingAccounts/{billing_account_id}`, for example, `billingAccounts/012345-567890-ABCDEF`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }

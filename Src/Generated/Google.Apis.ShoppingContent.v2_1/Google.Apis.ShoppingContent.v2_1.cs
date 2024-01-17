@@ -11916,7 +11916,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         }
 
         /// <summary>
-        /// Retrieves merchant performance mertrics matching the search query and optionally segmented by selected
+        /// Retrieves merchant performance metrics matching the search query and optionally segmented by selected
         /// dimensions.
         /// </summary>
         /// <param name="body">The body of the request.</param>
@@ -11929,7 +11929,7 @@ namespace Google.Apis.ShoppingContent.v2_1
         }
 
         /// <summary>
-        /// Retrieves merchant performance mertrics matching the search query and optionally segmented by selected
+        /// Retrieves merchant performance metrics matching the search query and optionally segmented by selected
         /// dimensions.
         /// </summary>
         public class SearchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.SearchResponse>
@@ -23726,8 +23726,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual System.Nullable<int> GetThisQuantityDiscounted { get; set; }
 
         /// <summary>
-        /// Required. Output only. The REST promotion ID to uniquely identify the promotion. Content API methods that
-        /// operate on promotions take this as their `promotionId` parameter. The REST ID for a promotion is of the form
+        /// Output only. The REST promotion ID to uniquely identify the promotion. Content API methods that operate on
+        /// promotions take this as their `promotionId` parameter. The REST ID for a promotion is of the form
         /// channel:contentLanguage:targetCountry:promotionId The `channel` field has a value of `"online"`,
         /// `"in_store"`, or `"online_in_store"`.
         /// </summary>
