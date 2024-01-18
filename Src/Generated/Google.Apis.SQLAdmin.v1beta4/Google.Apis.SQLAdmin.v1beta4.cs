@@ -5819,6 +5819,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
             [Newtonsoft.Json.JsonPropertyAttribute("mysqlExportOptions")]
             public virtual MysqlExportOptionsData MysqlExportOptions { get; set; }
 
+            /// <summary>Optional. Whether or not the export should be parallel.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("parallel")]
+            public virtual System.Nullable<bool> Parallel { get; set; }
+
             /// <summary>Export only schemas.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("schemaOnly")]
             public virtual System.Nullable<bool> SchemaOnly { get; set; }
@@ -5829,6 +5833,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("tables")]
             public virtual System.Collections.Generic.IList<string> Tables { get; set; }
+
+            /// <summary>Optional. The number of threads to use for parallel export.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("threads")]
+            public virtual System.Nullable<int> Threads { get; set; }
 
             /// <summary>Options for exporting from MySQL.</summary>
             public class MysqlExportOptionsData

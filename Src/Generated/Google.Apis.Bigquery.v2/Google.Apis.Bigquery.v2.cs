@@ -4399,9 +4399,25 @@ namespace Google.Apis.Bigquery.v2.Data
         /// example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that
         /// represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
         /// (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. *
-        /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
-        /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
-        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+        /// A single identity in a workforce identity pool. *
+        /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All
+        /// workforce identities in a group. *
+        /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+        /// All workforce identities with a specific attribute value. *
+        /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a
+        /// workforce identity pool. *
+        /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+        /// A single identity in a workload identity pool. *
+        /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+        /// A workload identity pool group. *
+        /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+        /// All identities in a workload identity pool with a certain attribute. *
+        /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`:
+        /// All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address
+        /// (plus unique identifier) representing a user that has been recently deleted. For example,
+        /// `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to
+        /// `user:{emailid}` and the recovered user retains the role in the binding. *
         /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
         /// service account that has been recently deleted. For example,
         /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted,
@@ -4409,7 +4425,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
         /// a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`.
         /// If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role
-        /// in the binding.
+        /// in the binding. *
+        /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+        /// Deleted single identity in a workforce identity pool. For example,
+        /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; }
@@ -8011,6 +8030,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("arrayType")]
         public virtual QueryParameterType ArrayType { get; set; }
 
+        /// <summary>[Optional] The element type of the range, if this is a range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rangeElementType")]
+        public virtual QueryParameterType RangeElementType { get; set; }
+
         /// <summary>[Optional] The types of the fields of this struct, in order, if this is a struct.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structTypes")]
         public virtual System.Collections.Generic.IList<StructTypesData> StructTypes { get; set; }
@@ -8045,6 +8068,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("arrayValues")]
         public virtual System.Collections.Generic.IList<QueryParameterValue> ArrayValues { get; set; }
 
+        /// <summary>[Optional] The range value, if this is a range type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rangeValue")]
+        public virtual RangeValueData RangeValue { get; set; }
+
         /// <summary>[Optional] The struct field values, in order of the struct type's declaration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structValues")]
         public virtual System.Collections.Generic.IDictionary<string, QueryParameterValue> StructValues { get; set; }
@@ -8055,6 +8082,16 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+
+        /// <summary>[Optional] The range value, if this is a range type.</summary>
+        public class RangeValueData
+        {
+            [Newtonsoft.Json.JsonPropertyAttribute("end")]
+            public virtual QueryParameterValue End { get; set; }
+
+            [Newtonsoft.Json.JsonPropertyAttribute("start")]
+            public virtual QueryParameterValue Start { get; set; }
+        }
     }
 
     public class QueryRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -8378,6 +8415,21 @@ namespace Google.Apis.Bigquery.v2.Data
         }
     }
 
+    /// <summary>Represents the value of a range.</summary>
+    public class RangeValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The end value of the range. A missing value represents an unbounded end.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("end")]
+        public virtual QueryParameterValue End { get; set; }
+
+        /// <summary>Optional. The start value of the range. A missing value represents an unbounded start.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("start")]
+        public virtual QueryParameterValue Start { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Evaluation metrics used by weighted-ALS models specified by feedback_type=implicit.</summary>
     public class RankingMetrics : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8636,9 +8688,13 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual SparkOptions SparkOptions { get; set; }
 
         /// <summary>
-        /// Optional. Can be set for procedures only. If true (default), the definition body will be validated in the
-        /// creation and the updates of the procedure. For procedures with an argument of ANY TYPE, the definition body
-        /// validtion is not supported at creation/update time, and thus this field must be set to false explicitly.
+        /// Optional. Use this option to catch many common errors. Error checking is not exhaustive, and successfully
+        /// creating a procedure doesn't guarantee that the procedure will successfully execute at runtime. If
+        /// `strictMode` is set to `TRUE`, the procedure body is further checked for errors such as non-existent tables
+        /// or columns. The `CREATE PROCEDURE` statement fails if the body fails any of these checks. If `strictMode` is
+        /// set to `FALSE`, the procedure body is checked only for syntax. For procedures that invoke themselves
+        /// recursively, specify `strictMode=FALSE` to avoid non-existent procedure errors during validation. Default
+        /// value is `TRUE`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("strictMode")]
         public virtual System.Nullable<bool> StrictMode { get; set; }

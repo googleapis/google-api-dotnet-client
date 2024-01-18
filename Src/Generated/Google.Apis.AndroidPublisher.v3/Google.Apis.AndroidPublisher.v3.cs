@@ -15206,7 +15206,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     {
         /// <summary>
         /// Optional. Used when users should be refunded a prorated amount they paid for their subscription based on the
-        /// amount of time remaining in a subscription. Not supported for subscriptions with multiple items.
+        /// amount of time remaining in a subscription.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proratedRefund")]
         public virtual RevocationContextProratedRefund ProratedRefund { get; set; }

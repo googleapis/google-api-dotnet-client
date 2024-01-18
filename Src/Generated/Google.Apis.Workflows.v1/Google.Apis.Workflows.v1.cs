@@ -1642,8 +1642,8 @@ namespace Google.Apis.Workflows.v1.Data
 
         /// <summary>
         /// Optional. User-defined environment variables associated with this workflow revision. This map has a maximum
-        /// length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE”
-        /// or “WORKFLOWS".
+        /// length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with "GOOGLE"
+        /// or "WORKFLOWS".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userEnvVars")]
         public virtual System.Collections.Generic.IDictionary<string, string> UserEnvVars { get; set; }

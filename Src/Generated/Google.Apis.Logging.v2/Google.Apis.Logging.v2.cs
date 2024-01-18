@@ -18536,6 +18536,13 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cancellationRequested")]
         public virtual System.Nullable<bool> CancellationRequested { get; set; }
 
+        /// <summary>
+        /// Destination to which to copy log entries.For example, a Cloud Storage
+        /// bucket:"storage.googleapis.com/my-cloud-storage-bucket"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destination")]
+        public virtual string Destination { get; set; }
+
         private string _endTimeRaw;
 
         private object _endTime;
@@ -18581,6 +18588,13 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("request")]
         public virtual CopyLogEntriesRequest Request { get; set; }
 
+        /// <summary>
+        /// Source from which to copy log entries.For example, a log
+        /// bucket:"projects/my-project/locations/global/buckets/my-source-bucket"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
         private string _startTimeRaw;
 
         private object _startTime;
@@ -18621,6 +18635,10 @@ namespace Google.Apis.Logging.v2.Data
         /// <summary>Output only. State of an operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>Name of the verb executed by the operation.For example,"copy"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verb")]
+        public virtual string Verb { get; set; }
 
         /// <summary>
         /// The IAM identity of a service account that must be granted access to the destination.If the service account
