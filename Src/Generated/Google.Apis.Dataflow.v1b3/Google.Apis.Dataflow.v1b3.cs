@@ -6498,6 +6498,14 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string StagingLocation { get; set; }
 
         /// <summary>
+        /// Optional. Specifies the Streaming Engine message processing guarantees. Reduces cost and latency but might
+        /// result in duplicate messages committed to storage. Designed to run simple mapping streaming ETL jobs at the
+        /// lowest cost. For example, Change Data Capture (CDC) to BigQuery is a canonical use case.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("streamingMode")]
+        public virtual string StreamingMode { get; set; }
+
+        /// <summary>
         /// Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete
         /// URL or an abbreviated path. Expected to be of the form
         /// "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or
@@ -8762,6 +8770,14 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ServiceAccountEmail { get; set; }
 
         /// <summary>
+        /// Optional. Specifies the Streaming Engine message processing guarantees. Reduces cost and latency but might
+        /// result in duplicate messages committed to storage. Designed to run simple mapping streaming ETL jobs at the
+        /// lowest cost. For example, Change Data Capture (CDC) to BigQuery is a canonical use case.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("streamingMode")]
+        public virtual string StreamingMode { get; set; }
+
+        /// <summary>
         /// Optional. Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a
         /// complete URL or an abbreviated path. Expected to be of the form
         /// "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or
@@ -9982,7 +9998,6 @@ namespace Google.Apis.Dataflow.v1b3.Data
     /// <summary>Contains per-user worker telemetry used in streaming autoscaling.</summary>
     public class StreamingScalingReport : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Current acive bundle count.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activeBundleCount")]
         public virtual System.Nullable<int> ActiveBundleCount { get; set; }
 
@@ -9990,11 +10005,14 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("activeThreadCount")]
         public virtual System.Nullable<int> ActiveThreadCount { get; set; }
 
-        /// <summary>Maximum bundle count limit.</summary>
+        /// <summary>Maximum bundle count.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maximumBundleCount")]
         public virtual System.Nullable<int> MaximumBundleCount { get; set; }
 
-        /// <summary>Maximum bytes count limit.</summary>
+        /// <summary>Maximum bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maximumBytes")]
+        public virtual System.Nullable<long> MaximumBytes { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("maximumBytesCount")]
         public virtual System.Nullable<int> MaximumBytesCount { get; set; }
 
@@ -10002,7 +10020,14 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maximumThreadCount")]
         public virtual System.Nullable<int> MaximumThreadCount { get; set; }
 
-        /// <summary>Current outstanding bytes count.</summary>
+        /// <summary>Current outstanding bundle count.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outstandingBundleCount")]
+        public virtual System.Nullable<int> OutstandingBundleCount { get; set; }
+
+        /// <summary>Current outstanding bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outstandingBytes")]
+        public virtual System.Nullable<long> OutstandingBytes { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("outstandingBytesCount")]
         public virtual System.Nullable<int> OutstandingBytesCount { get; set; }
 

@@ -5225,8 +5225,8 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     public class GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. For audio conversations, this field indicates which of the channels, 1 or 2, contains the agent.
-        /// Note that this must be set for audio conversations to be properly displayed and analyzed.
+        /// Optional. Indicates which of the channels, 1 or 2, contains the agent. Note that this must be set for
+        /// conversations to be properly displayed and analyzed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentChannel")]
         public virtual System.Nullable<int> AgentChannel { get; set; }
@@ -5238,8 +5238,8 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string AgentId { get; set; }
 
         /// <summary>
-        /// Optional. For audio conversations, this field indicates which of the channels, 1 or 2, contains the
-        /// customer. Note that this must be set for audio conversations to be properly displayed and analyzed.
+        /// Optional. Indicates which of the channels, 1 or 2, contains the agent. Note that this must be set for
+        /// conversations to be properly displayed and analyzed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerChannel")]
         public virtual System.Nullable<int> CustomerChannel { get; set; }
@@ -8772,8 +8772,8 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     public class GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestConversationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. For audio conversations, this field indicates which of the channels, 1 or 2, contains the agent.
-        /// Note that this must be set for audio conversations to be properly displayed and analyzed.
+        /// Optional. Indicates which of the channels, 1 or 2, contains the agent. Note that this must be set for
+        /// conversations to be properly displayed and analyzed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentChannel")]
         public virtual System.Nullable<int> AgentChannel { get; set; }
@@ -8785,8 +8785,8 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string AgentId { get; set; }
 
         /// <summary>
-        /// Optional. For audio conversations, this field indicates which of the channels, 1 or 2, contains the
-        /// customer. Note that this must be set for audio conversations to be properly displayed and analyzed.
+        /// Optional. Indicates which of the channels, 1 or 2, contains the agent. Note that this must be set for
+        /// conversations to be properly displayed and analyzed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerChannel")]
         public virtual System.Nullable<int> CustomerChannel { get; set; }
