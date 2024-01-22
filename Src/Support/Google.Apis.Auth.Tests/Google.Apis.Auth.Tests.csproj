@@ -6,12 +6,6 @@
     <AssemblyOriginatorKeyFile>..\..\..\google.apis.snk</AssemblyOriginatorKeyFile>
     <IsPackable>false</IsPackable>
     <LangVersion>latest</LangVersion>
-
-    <!--
-      - The (indirect) System.Management dependency complains on older frameworks,
-      - but we use it carefully.
-      -->
-    <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
   </PropertyGroup>
 
   <ItemGroup>
