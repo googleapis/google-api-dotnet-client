@@ -701,7 +701,7 @@ namespace Google.Apis.Firestore.v1
                     /// Lists the field configuration and metadata for this database. Currently,
                     /// FirestoreAdmin.ListFields only supports listing fields that have been explicitly overridden. To
                     /// issue this query, call FirestoreAdmin.ListFields with the filter set to
-                    /// `indexConfig.usesAncestorConfig:false or `ttlConfig:*`.
+                    /// `indexConfig.usesAncestorConfig:false` or `ttlConfig:*`.
                     /// </summary>
                     /// <param name="parent">
                     /// Required. A parent name of the form
@@ -716,7 +716,7 @@ namespace Google.Apis.Firestore.v1
                     /// Lists the field configuration and metadata for this database. Currently,
                     /// FirestoreAdmin.ListFields only supports listing fields that have been explicitly overridden. To
                     /// issue this query, call FirestoreAdmin.ListFields with the filter set to
-                    /// `indexConfig.usesAncestorConfig:false or `ttlConfig:*`.
+                    /// `indexConfig.usesAncestorConfig:false` or `ttlConfig:*`.
                     /// </summary>
                     public class ListRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1ListFieldsResponse>
                     {
@@ -4444,6 +4444,19 @@ namespace Google.Apis.Firestore.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>
+        /// The document's fields. The map keys represent field names. Field names matching the regular expression
+        /// `__.*__` are reserved. Reserved field names are forbidden except in certain documented contexts. The field
+        /// names, represented as UTF-8, must not exceed 1,500 bytes and cannot be empty. Field paths may be used in
+        /// other contexts to refer to structured fields defined here. For `map_value`, the field path is represented by
+        /// a dot-delimited (`.`) string of segments. Each segment is either a simple field name (defined below) or a
+        /// quoted field name. For example, the structured field `"foo" : { map_value: { "x&amp;amp;y" : { string_value:
+        /// "hello" }}}` would be represented by the field path `` foo.`x&amp;amp;y` ``. A simple field name contains
+        /// only characters `a` to `z`, `A` to `Z`, `0` to `9`, or `_`, and must not start with `0` to `9`. For example,
+        /// `foo_bar_17`. A quoted field name starts and ends with `` ` `` and may contain any character. Some
+        /// characters, including `` ` ``, must be escaped using a `\`. For example, `` `x&amp;amp;y` `` represents
+        /// `x&amp;amp;y` and `` `bak\`tik` `` represents `` bak`tik ``.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual System.Collections.Generic.IDictionary<string, Value> Fields { get; set; }
 
@@ -6715,7 +6728,7 @@ namespace Google.Apis.Firestore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("direction")]
         public virtual string Direction { get; set; }
 
-        /// <summary>Order based on the value referenced by this field.</summary>
+        /// <summary>The field to order by.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
         public virtual FieldReference Field { get; set; }
 
@@ -6900,6 +6913,21 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Plan for the query.</summary>
+    public class QueryPlan : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Planning phase information for the query. It will include: { "indexes_used": [ {"query_scope": "Collection",
+        /// "properties": "(foo ASC, __name__ ASC)"}, {"query_scope": "Collection", "properties": "(bar ASC, __name__
+        /// ASC)"} ] }
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("planInfo")]
+        public virtual System.Collections.Generic.IDictionary<string, object> PlanInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A target specified by a query.</summary>
     public class QueryTarget : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6982,6 +7010,25 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Planning and execution statistics for the query.</summary>
+    public class ResultSetStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Plan for the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryPlan")]
+        public virtual QueryPlan QueryPlan { get; set; }
+
+        /// <summary>
+        /// Aggregated statistics from the execution of the query. This will only be present when the request specifies
+        /// `PROFILE` mode. For example, a query will return the statistics including: { "results_returned": "20",
+        /// "documents_scanned": "20", "indexes_entries_scanned": "10050", "total_execution_time": "100.7 msecs" }
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryStats")]
+        public virtual System.Collections.Generic.IDictionary<string, object> QueryStats { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request for Firestore.Rollback.</summary>
     public class RollbackRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6996,6 +7043,13 @@ namespace Google.Apis.Firestore.v1.Data
     /// <summary>The request for Firestore.RunAggregationQuery.</summary>
     public class RunAggregationQueryRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The mode in which the query request is processed. This field is optional, and when not provided,
+        /// it defaults to `NORMAL` mode where no additional statistics will be returned with the query results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
+
         /// <summary>
         /// Starts a new transaction as part of the query, defaulting to read-only. The new transaction ID will be
         /// returned as the first response in the stream.
@@ -7109,6 +7163,14 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual AggregationResult Result { get; set; }
 
         /// <summary>
+        /// Query plan and execution statistics. Note that the returned stats are subject to change as Firestore
+        /// evolves. This is only present when the request specifies a mode other than `NORMAL` and is sent only once
+        /// with the last response in the stream.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stats")]
+        public virtual ResultSetStats Stats { get; set; }
+
+        /// <summary>
         /// The transaction that was started as part of this request. Only present on the first response when the
         /// request requested to start a new transaction.
         /// </summary>
@@ -7122,6 +7184,13 @@ namespace Google.Apis.Firestore.v1.Data
     /// <summary>The request for Firestore.RunQuery.</summary>
     public class RunQueryRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The mode in which the query request is processed. This field is optional, and when not provided,
+        /// it defaults to `NORMAL` mode where no additional statistics will be returned with the query results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
+
         /// <summary>
         /// Starts a new transaction and reads the documents. Defaults to a read-only transaction. The new transaction
         /// ID will be returned as the first response in the stream.
@@ -7248,6 +7317,14 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual System.Nullable<int> SkippedResults { get; set; }
 
         /// <summary>
+        /// Query plan and execution statistics. Note that the returned stats are subject to change as Firestore
+        /// evolves. This is only present when the request specifies a mode other than `NORMAL` and is sent only once
+        /// with the last response in the stream.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stats")]
+        public virtual ResultSetStats Stats { get; set; }
+
+        /// <summary>
         /// The transaction that was started as part of this request. Can only be set in the first response, and only if
         /// RunQueryRequest.new_transaction was set in the request. If set, no other fields will be set in this
         /// response.
@@ -7306,7 +7383,10 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A Firestore query.</summary>
+    /// <summary>
+    /// A Firestore query. The query stages are executed in the following order: 1. from 2. where 3. select 4. order_by
+    /// + start_at + end_at 5. offset 6. limit
+    /// </summary>
     public class StructuredQuery : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

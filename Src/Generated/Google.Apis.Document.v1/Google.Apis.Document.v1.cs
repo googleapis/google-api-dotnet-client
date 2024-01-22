@@ -3388,6 +3388,15 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inputDocuments")]
         public virtual GoogleCloudDocumentaiV1BatchDocumentsInputConfig InputDocuments { get; set; }
 
+        /// <summary>
+        /// Optional. The labels with user-defined metadata for the request. Label keys and values can be no longer than
+        /// 63 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and
+        /// dashes. International characters are allowed. Label values are optional. Label keys must start with a
+        /// letter.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
         /// <summary>Inference-time options for the process API</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processOptions")]
         public virtual GoogleCloudDocumentaiV1ProcessOptions ProcessOptions { get; set; }
@@ -5439,7 +5448,10 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("individualPageSelector")]
         public virtual GoogleCloudDocumentaiV1ProcessOptionsIndividualPageSelector IndividualPageSelector { get; set; }
 
-        /// <summary>Only applicable to `OCR_PROCESSOR`. Returns error if set on other processor types.</summary>
+        /// <summary>
+        /// Only applicable to `OCR_PROCESSOR` and `FORM_PARSER_PROCESSOR`. Returns error if set on other processor
+        /// types.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ocrConfig")]
         public virtual GoogleCloudDocumentaiV1OcrConfig OcrConfig { get; set; }
 
@@ -5475,6 +5487,15 @@ namespace Google.Apis.Document.v1.Data
         /// <summary>An inline document proto.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inlineDocument")]
         public virtual GoogleCloudDocumentaiV1Document InlineDocument { get; set; }
+
+        /// <summary>
+        /// Optional. The labels with user-defined metadata for the request. Label keys and values can be no longer than
+        /// 63 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and
+        /// dashes. International characters are allowed. Label values are optional. Label keys must start with a
+        /// letter.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Inference-time options for the process API</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processOptions")]
@@ -9192,7 +9213,7 @@ namespace Google.Apis.Document.v1.Data
     /// <summary>A singleton resource under a Processor which configures a collection of documents.</summary>
     public class GoogleCloudDocumentaiV1beta3Dataset : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Derepcated. Warehouse-based dataset configuration is not supported today.</summary>
+        /// <summary>Optional. Deprecated. Warehouse-based dataset configuration is not supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentWarehouseConfig")]
         public virtual GoogleCloudDocumentaiV1beta3DatasetDocumentWarehouseConfig DocumentWarehouseConfig { get; set; }
 

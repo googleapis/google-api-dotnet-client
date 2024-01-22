@@ -2427,7 +2427,9 @@ namespace Google.Apis.BigtableAdmin.v2
 
                 /// <summary>
                 /// Permanently drop/delete a row range from a specified table. The request can specify whether to
-                /// delete all rows in a table, or only those that match a particular prefix.
+                /// delete all rows in a table, or only those that match a particular prefix. Note that row key prefixes
+                /// used here are treated as service data. For more information about how service data is handled, see
+                /// the [Google Cloud Privacy Notice](https://cloud.google.com/terms/cloud-privacy-notice).
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -2441,7 +2443,9 @@ namespace Google.Apis.BigtableAdmin.v2
 
                 /// <summary>
                 /// Permanently drop/delete a row range from a specified table. The request can specify whether to
-                /// delete all rows in a table, or only those that match a particular prefix.
+                /// delete all rows in a table, or only those that match a particular prefix. Note that row key prefixes
+                /// used here are treated as service data. For more information about how service data is handled, see
+                /// the [Google Cloud Privacy Notice](https://cloud.google.com/terms/cloud-privacy-notice).
                 /// </summary>
                 public class DropRowRangeRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.Empty>
                 {

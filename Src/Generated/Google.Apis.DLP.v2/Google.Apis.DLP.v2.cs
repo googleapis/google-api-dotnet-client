@@ -7349,7 +7349,7 @@ namespace Google.Apis.DLP.v2
                 /// that have not yet run.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Required. The name of the DlpJob resource to be cancelled.</param>
+                /// <param name="name">Required. The name of the DlpJob resource to be finished.</param>
                 public virtual FinishRequest Finish(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2FinishDlpJobRequest body, string name)
                 {
                     return new FinishRequest(this.service, body, name);
@@ -7369,7 +7369,7 @@ namespace Google.Apis.DLP.v2
                         InitParameters();
                     }
 
-                    /// <summary>Required. The name of the DlpJob resource to be cancelled.</summary>
+                    /// <summary>Required. The name of the DlpJob resource to be finished.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 

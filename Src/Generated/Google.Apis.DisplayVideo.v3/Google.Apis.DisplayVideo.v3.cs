@@ -22006,7 +22006,7 @@ namespace Google.Apis.DisplayVideo.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
         public virtual System.Nullable<long> AdvertiserId { get; set; }
 
-        /// <summary>Required. Billing related settings of the advertiser.</summary>
+        /// <summary>Optional. Required. Billing related settings of the advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billingConfig")]
         public virtual AdvertiserBillingConfig BillingConfig { get; set; }
 
@@ -22126,7 +22126,7 @@ namespace Google.Apis.DisplayVideo.v3.Data
     /// <summary>Billing related settings of an advertiser.</summary>
     public class AdvertiserBillingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ID of a billing profile assigned to the advertiser.</summary>
+        /// <summary>Optional. The ID of a billing profile assigned to the advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billingProfileId")]
         public virtual System.Nullable<long> BillingProfileId { get; set; }
 
@@ -22286,169 +22286,6 @@ namespace Google.Apis.DisplayVideo.v3.Data
         /// <summary>Output only. The age range of an audience.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ageRange")]
         public virtual string AgeRange { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Rule-based algorithm.</summary>
-    public class AlgorithmRules : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Rules for the impression signals.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("impressionSignalRuleset")]
-        public virtual AlgorithmRulesRuleset ImpressionSignalRuleset { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A value to compare the signal to.</summary>
-    public class AlgorithmRulesComparisonValue : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Boolean value.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("boolValue")]
-        public virtual System.Nullable<bool> BoolValue { get; set; }
-
-        /// <summary>Creative dimension value.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("creativeDimensionValue")]
-        public virtual Dimensions CreativeDimensionValue { get; set; }
-
-        /// <summary>Day and time value. Only `TIME_ZONE_RESOLUTION_END_USER` is supported.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dayAndTimeValue")]
-        public virtual DayAndTime DayAndTimeValue { get; set; }
-
-        /// <summary>Device type value.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deviceTypeValue")]
-        public virtual string DeviceTypeValue { get; set; }
-
-        /// <summary>Double value.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("doubleValue")]
-        public virtual System.Nullable<double> DoubleValue { get; set; }
-
-        /// <summary>Environment value.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("environmentValue")]
-        public virtual string EnvironmentValue { get; set; }
-
-        /// <summary>Exchange value.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("exchangeValue")]
-        public virtual string ExchangeValue { get; set; }
-
-        /// <summary>Integer value.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("int64Value")]
-        public virtual System.Nullable<long> Int64Value { get; set; }
-
-        /// <summary>Ad position value.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("onScreenPositionValue")]
-        public virtual string OnScreenPositionValue { get; set; }
-
-        /// <summary>String value.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
-        public virtual string StringValue { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Set of conditions. The return value of the rule is either: * The return value for single met condition or * The
-    /// defined default return value if no conditions are met.
-    /// </summary>
-    public class AlgorithmRulesRule : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// List of conditions in this rule. The criteria among conditions should be mutually exclusive.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
-        public virtual System.Collections.Generic.IList<AlgorithmRulesRuleCondition> Conditions { get; set; }
-
-        /// <summary>The default return value applied when none of the conditions are met.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("defaultReturnValue")]
-        public virtual AlgorithmRulesSignalValue DefaultReturnValue { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Set of signal comparisons. Equivalent of an `if` statement.</summary>
-    public class AlgorithmRulesRuleCondition : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The value returned if the `signalComparisons` condition evaluates to `TRUE`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("returnValue")]
-        public virtual AlgorithmRulesSignalValue ReturnValue { get; set; }
-
-        /// <summary>
-        /// List of comparisons that build `if` statement condition. The comparisons are combined into a single
-        /// condition with `AND` logical operators.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("signalComparisons")]
-        public virtual System.Collections.Generic.IList<AlgorithmRulesSignalComparison> SignalComparisons { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A ruleset consisting of a list of rules and how to aggregate the resulting values.</summary>
-    public class AlgorithmRulesRuleset : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>How to aggregate values of evaluated rules.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("aggregationType")]
-        public virtual string AggregationType { get; set; }
-
-        /// <summary>Maximum value the ruleset can evaluate to.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maxValue")]
-        public virtual System.Nullable<double> MaxValue { get; set; }
-
-        /// <summary>List of rules to generate the impression value.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rules")]
-        public virtual System.Collections.Generic.IList<AlgorithmRulesRule> Rules { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Signal used to evaluate rules.</summary>
-    public class AlgorithmRulesSignal : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Signal based on impressions.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("impressionSignal")]
-        public virtual string ImpressionSignal { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// A single comparison. The comparison compares the `signal` to the `comparisonValue`. The comparison of
-    /// `siteId==123` is represented with the following field values: * `signal` has an `impressionSignal` of `SITE_ID`.
-    /// * `comparisonOperator` is set to `EQUAL`. * `comparisonValue` is set to 123.
-    /// </summary>
-    public class AlgorithmRulesSignalComparison : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Operator used to compare the two values. In the resulting experession, the `signal` will be the first value
-        /// and the `comparisonValue will be the second.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("comparisonOperator")]
-        public virtual string ComparisonOperator { get; set; }
-
-        /// <summary>Value to compare signal to.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("comparisonValue")]
-        public virtual AlgorithmRulesComparisonValue ComparisonValue { get; set; }
-
-        /// <summary>Signal to compare.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("signal")]
-        public virtual AlgorithmRulesSignal Signal { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Adjusted value of the signal used for rule evaluation.</summary>
-    public class AlgorithmRulesSignalValue : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Value to use as result.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("number")]
-        public virtual System.Nullable<double> Number { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24462,7 +24299,11 @@ namespace Google.Apis.DisplayVideo.v3.Data
     /// <summary>Wrapper message for a list of contact information defining Customer Match audience members.</summary>
     public class ContactInfoList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Input only. The consent setting for the users in contact_infos.</summary>
+        /// <summary>
+        /// Input only. The consent setting for the users in contact_infos. Leaving this field unset indicates that
+        /// consent is not specified. If ad_user_data or ad_personalization fields are set to `CONSENT_STATUS_DENIED`,
+        /// the request will return an error.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consent")]
         public virtual Consent Consent { get; set; }
 
@@ -25611,25 +25452,6 @@ namespace Google.Apis.DisplayVideo.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Representation of time defined by day of the week and hour of the day.</summary>
-    public class DayAndTime : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. Day of the week.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dayOfWeek")]
-        public virtual string DayOfWeek { get; set; }
-
-        /// <summary>Required. Hour of the day.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("hourOfDay")]
-        public virtual System.Nullable<int> HourOfDay { get; set; }
-
-        /// <summary>Required. The mechanism used to determine the relevant timezone.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("timeZoneResolution")]
-        public virtual string TimeZoneResolution { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// Representation of a segment of time defined on a specific day of the week and with a start and end time. The
     /// time represented by `start_hour` must be before the time represented by `end_hour`.
@@ -26468,9 +26290,9 @@ namespace Google.Apis.DisplayVideo.v3.Data
         public virtual System.Nullable<int> MaxImpressions { get; set; }
 
         /// <summary>
-        /// The maximum number of times a user may click-through or fully view an ad during this period until it is no
-        /// longer served to them. Must be greater than 0. Only applicable to YouTube and Partners resources. Required
-        /// when unlimited is `false` and max_impressions is not set.
+        /// Optional. The maximum number of times a user may click-through or fully view an ad during this period until
+        /// it is no longer served to them. Must be greater than 0. Only applicable to YouTube and Partners resources.
+        /// Required when unlimited is `false` and max_impressions is not set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxViews")]
         public virtual System.Nullable<int> MaxViews { get; set; }
@@ -28796,7 +28618,11 @@ namespace Google.Apis.DisplayVideo.v3.Data
     /// <summary>Wrapper message for a list of mobile device IDs defining Customer Match audience members.</summary>
     public class MobileDeviceIdList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Input only. The consent setting for the users in mobile_device_ids.</summary>
+        /// <summary>
+        /// Input only. The consent setting for the users in mobile_device_ids. Leaving this field unset indicates that
+        /// consent is not specified. If ad_user_data or ad_personalization fields are set to `CONSENT_STATUS_DENIED`,
+        /// the request will return an error.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consent")]
         public virtual Consent Consent { get; set; }
 
@@ -29909,106 +29735,6 @@ namespace Google.Apis.DisplayVideo.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Type for the response returned by [SdfDownloadTaskService.CreateSdfDownloadTask].</summary>
-    public class SdfDownloadTask : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// A resource name to be used in media.download to Download the prepared files. Resource names have the format
-        /// `download/sdfdownloadtasks/media/{media_id}`. `media_id` will be made available by the long running
-        /// operation service once the task status is done.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
-        public virtual string ResourceName { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Type for the metadata returned by [SdfDownloadTaskService.CreateSdfDownloadTask].</summary>
-    public class SdfDownloadTaskMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        private string _createTimeRaw;
-
-        private object _createTime;
-
-        /// <summary>The time when the operation was created.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        private string _endTimeRaw;
-
-        private object _endTime;
-
-        /// <summary>The time when execution was completed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual string EndTimeRaw
-        {
-            get => _endTimeRaw;
-            set
-            {
-                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _endTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
-        public virtual object EndTime
-        {
-            get => _endTime;
-            set
-            {
-                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _endTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>The SDF version used to execute this download task.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual string Version { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Request message for SearchTargetingOptions.</summary>
     public class SearchTargetingOptionsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -31043,7 +30769,13 @@ namespace Google.Apis.DisplayVideo.v3.Data
     /// </summary>
     public class YoutubeAndPartnersInventorySourceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether to target inventory on YouTube. This includes both search, channels and videos.</summary>
+        /// <summary>Optional. Whether to target inventory in video apps available with Google TV.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeGoogleTv")]
+        public virtual System.Nullable<bool> IncludeGoogleTv { get; set; }
+
+        /// <summary>
+        /// Optional. Whether to target inventory on YouTube. This includes both search, channels and videos.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeYoutube")]
         public virtual System.Nullable<bool> IncludeYoutube { get; set; }
 
@@ -31058,7 +30790,7 @@ namespace Google.Apis.DisplayVideo.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Settings for YouTube and Partners line items. Next ID: 15</summary>
+    /// <summary>Settings for YouTube and Partners line items.</summary>
     public class YoutubeAndPartnersSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The kind of content on which the YouTube and Partners ads will be shown.</summary>
@@ -31076,24 +30808,24 @@ namespace Google.Apis.DisplayVideo.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inventorySourceSettings")]
         public virtual YoutubeAndPartnersInventorySourceConfig InventorySourceSettings { get; set; }
 
-        /// <summary>The ID of the form to generate leads.</summary>
+        /// <summary>Optional. The ID of the form to generate leads.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("leadFormId")]
         public virtual System.Nullable<long> LeadFormId { get; set; }
 
-        /// <summary>The ID of the merchant which is linked to the line item for product feed.</summary>
+        /// <summary>Optional. The ID of the merchant which is linked to the line item for product feed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkedMerchantId")]
         public virtual System.Nullable<long> LinkedMerchantId { get; set; }
 
         /// <summary>
-        /// The IDs of the videos appear below the primary video ad when the ad is playing in the YouTube app on mobile
-        /// devices.
+        /// Optional. The IDs of the videos appear below the primary video ad when the ad is playing in the YouTube app
+        /// on mobile devices.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relatedVideoIds")]
         public virtual System.Collections.Generic.IList<string> RelatedVideoIds { get; set; }
 
         /// <summary>
-        /// The average number of times you want ads from this line item to show to the same person over a certain
-        /// period of time.
+        /// Optional. The average number of times you want ads from this line item to show to the same person over a
+        /// certain period of time.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetFrequency")]
         public virtual TargetFrequency TargetFrequency { get; set; }
@@ -31102,7 +30834,7 @@ namespace Google.Apis.DisplayVideo.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyMeasurementConfigs")]
         public virtual ThirdPartyMeasurementConfigs ThirdPartyMeasurementConfigs { get; set; }
 
-        /// <summary>The settings related to VideoAdSequence.</summary>
+        /// <summary>Optional. The settings related to VideoAdSequence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoAdSequenceSettings")]
         public virtual VideoAdSequenceSettings VideoAdSequenceSettings { get; set; }
 

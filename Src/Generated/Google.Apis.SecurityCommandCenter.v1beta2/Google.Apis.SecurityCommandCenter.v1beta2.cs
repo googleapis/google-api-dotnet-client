@@ -5004,7 +5004,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     {
         /// <summary>
         /// The resource name of the attack path simulation result that contains the details regarding this attack
-        /// exposure score. Example: organizations/123/attackExposureResults/456
+        /// exposure score. Example: organizations/123/simulations/456/attackExposureResults/789
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attackExposureResult")]
         public virtual string AttackExposureResult { get; set; }
@@ -7952,6 +7952,33 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The policy field that violates the deployed posture and its expected and and detected values.</summary>
+    public class PolicyDriftDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The detected value that violates the deployed posture, for example, `false` or
+        /// `allowed_values={"projects/22831892”}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectedValue")]
+        public virtual string DetectedValue { get; set; }
+
+        /// <summary>
+        /// The value of this field that was configured in a posture, for example, `true` or
+        /// `allowed_values={"projects/29831892”}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expectedValue")]
+        public virtual string ExpectedValue { get; set; }
+
+        /// <summary>
+        /// The name of the updated field, for example constraint.implementation.policy_rules[0].enforce
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("field")]
+        public virtual string Field { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents an operating system process.</summary>
     public class Process : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8370,27 +8397,37 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     public class SecurityPosture : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The name of the policy that has been updated, for example,
-        /// `projects/{project_id}/policies/{constraint_name}`.
+        /// The name of the updated policy, for example, `projects/{project_id}/policies/{constraint_name}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("changedPolicy")]
         public virtual string ChangedPolicy { get; set; }
 
-        /// <summary>
-        /// Name of the posture, for example, `organizations/{org_id}/locations/{location}/postures/{posture_name}`.
-        /// </summary>
+        /// <summary>Name of the posture, for example, `CIS-Posture`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>The ID of the updated policy, for example, `compute-policy-1`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
+        public virtual string Policy { get; set; }
+
+        /// <summary>The details about a change in an updated policy that violates the deployed posture.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyDriftDetails")]
+        public virtual System.Collections.Generic.IList<PolicyDriftDetails> PolicyDriftDetails { get; set; }
+
+        /// <summary>The name of the updated policyset, for example, `cis-policyset`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policySet")]
+        public virtual string PolicySet { get; set; }
+
         /// <summary>
         /// The name of the posture deployment, for example,
-        /// `projects/{project_id}/posturedeployments/{posture_deployment_id}`.
+        /// `organizations/{org_id}/posturedeployments/{posture_deployment_id}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postureDeployment")]
         public virtual string PostureDeployment { get; set; }
 
         /// <summary>
-        /// The project, folder, or organization on which the posture is deployed, for example, `projects/{project_id}`.
+        /// The project, folder, or organization on which the posture is deployed, for example,
+        /// `projects/{project_number}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postureDeploymentResource")]
         public virtual string PostureDeploymentResource { get; set; }
