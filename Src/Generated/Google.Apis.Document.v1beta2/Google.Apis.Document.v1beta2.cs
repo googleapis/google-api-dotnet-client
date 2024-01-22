@@ -5408,7 +5408,7 @@ namespace Google.Apis.Document.v1beta2.Data
     /// <summary>A singleton resource under a Processor which configures a collection of documents.</summary>
     public class GoogleCloudDocumentaiV1beta3Dataset : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Derepcated. Warehouse-based dataset configuration is not supported today.</summary>
+        /// <summary>Optional. Deprecated. Warehouse-based dataset configuration is not supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentWarehouseConfig")]
         public virtual GoogleCloudDocumentaiV1beta3DatasetDocumentWarehouseConfig DocumentWarehouseConfig { get; set; }
 

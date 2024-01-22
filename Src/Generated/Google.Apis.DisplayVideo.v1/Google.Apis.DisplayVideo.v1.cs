@@ -21314,7 +21314,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// <summary>Wrapper message for a list of contact information defining Customer Match audience members.</summary>
     public class ContactInfoList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Input only. The consent setting for the users in contact_infos.</summary>
+        /// <summary>
+        /// Input only. The consent setting for the users in contact_infos. Leaving this field unset indicates that
+        /// consent is not specified. If ad_user_data or ad_personalization fields are set to `CONSENT_STATUS_DENIED`,
+        /// the request will return an error.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consent")]
         public virtual Consent Consent { get; set; }
 
@@ -25403,7 +25407,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
     /// <summary>Wrapper message for a list of mobile device IDs defining Customer Match audience members.</summary>
     public class MobileDeviceIdList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Input only. The consent setting for the users in mobile_device_ids.</summary>
+        /// <summary>
+        /// Input only. The consent setting for the users in mobile_device_ids. Leaving this field unset indicates that
+        /// consent is not specified. If ad_user_data or ad_personalization fields are set to `CONSENT_STATUS_DENIED`,
+        /// the request will return an error.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consent")]
         public virtual Consent Consent { get; set; }
 

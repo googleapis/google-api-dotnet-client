@@ -1040,6 +1040,63 @@ namespace Google.Apis.AIPlatformNotebooks.v2
                     }
                 }
 
+                /// <summary>Resize a notebook instance disk to a higher capacity.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="notebookInstance">
+                /// Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
+                /// </param>
+                public virtual ResizeDiskRequest ResizeDisk(Google.Apis.AIPlatformNotebooks.v2.Data.ResizeDiskRequest body, string notebookInstance)
+                {
+                    return new ResizeDiskRequest(this.service, body, notebookInstance);
+                }
+
+                /// <summary>Resize a notebook instance disk to a higher capacity.</summary>
+                public class ResizeDiskRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new ResizeDisk request.</summary>
+                    public ResizeDiskRequest(Google.Apis.Services.IClientService service, Google.Apis.AIPlatformNotebooks.v2.Data.ResizeDiskRequest body, string notebookInstance) : base(service)
+                    {
+                        NotebookInstance = notebookInstance;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("notebookInstance", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string NotebookInstance { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AIPlatformNotebooks.v2.Data.ResizeDiskRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "resizeDisk";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+notebookInstance}:resizeDisk";
+
+                    /// <summary>Initializes ResizeDisk parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("notebookInstance", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "notebookInstance",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Rollbacks a notebook instance to the previous version.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -2902,6 +2959,21 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
     /// <summary>Request for resetting a notebook instance</summary>
     public class ResetInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for resizing the notebook instance disks</summary>
+    public class ResizeDiskRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The boot disk to be resized. Only disk_size_gb will be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootDisk")]
+        public virtual BootDisk BootDisk { get; set; }
+
+        /// <summary>Required. The data disk to be resized. Only disk_size_gb will be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataDisk")]
+        public virtual DataDisk DataDisk { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

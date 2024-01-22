@@ -1848,6 +1848,10 @@ namespace Google.Apis.TPU.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
 
+        /// <summary>Optional. Specifies networking queue count for TPU VM instance's network interface.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queueCount")]
+        public virtual System.Nullable<int> QueueCount { get; set; }
+
         /// <summary>
         /// The name of the subnetwork for the TPU node. It must be a preexisting Google Compute Engine subnetwork. If
         /// none is provided, "default" will be used.

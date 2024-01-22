@@ -290,7 +290,8 @@ namespace Google.Apis.VMwareEngine.v1
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-                Global = new GlobalResource(service);
+                DnsBindPermission = new DnsBindPermissionResource(service);
+                NetworkPeerings = new NetworkPeeringsResource(service);
                 NetworkPolicies = new NetworkPoliciesResource(service);
                 NodeTypes = new NodeTypesResource(service);
                 Operations = new OperationsResource(service);
@@ -299,594 +300,225 @@ namespace Google.Apis.VMwareEngine.v1
                 VmwareEngineNetworks = new VmwareEngineNetworksResource(service);
             }
 
-            /// <summary>Gets the Global resource.</summary>
-            public virtual GlobalResource Global { get; }
+            /// <summary>Gets the DnsBindPermission resource.</summary>
+            public virtual DnsBindPermissionResource DnsBindPermission { get; }
 
-            /// <summary>The "global" collection of methods.</summary>
-            public class GlobalResource
+            /// <summary>The "dnsBindPermission" collection of methods.</summary>
+            public class DnsBindPermissionResource
             {
-                private const string Resource = "global";
+                private const string Resource = "dnsBindPermission";
 
                 /// <summary>The service which this resource belongs to.</summary>
                 private readonly Google.Apis.Services.IClientService service;
 
                 /// <summary>Constructs a new resource.</summary>
-                public GlobalResource(Google.Apis.Services.IClientService service)
+                public DnsBindPermissionResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
-                    DnsBindPermission = new DnsBindPermissionResource(service);
-                    NetworkPeerings = new NetworkPeeringsResource(service);
                 }
 
-                /// <summary>Gets the DnsBindPermission resource.</summary>
-                public virtual DnsBindPermissionResource DnsBindPermission { get; }
-
-                /// <summary>The "dnsBindPermission" collection of methods.</summary>
-                public class DnsBindPermissionResource
+                /// <summary>
+                /// Grants the bind permission to the customer provided principal(user / service account) to bind their
+                /// DNS zone with the intranet VPC associated with the project. DnsBindPermission is a global resource
+                /// and location can only be global.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name of the resource which stores the users/service accounts having the permission to
+                /// bind to the corresponding intranet VPC of the consumer project. DnsBindPermission is a global
+                /// resource. Resource names are schemeless URIs that follow the conventions in
+                /// https://cloud.google.com/apis/design/resource_names. For example:
+                /// `projects/my-project/locations/global/dnsBindPermission`
+                /// </param>
+                public virtual GrantRequest Grant(Google.Apis.VMwareEngine.v1.Data.GrantDnsBindPermissionRequest body, string name)
                 {
-                    private const string Resource = "dnsBindPermission";
+                    return new GrantRequest(this.service, body, name);
+                }
 
-                    /// <summary>The service which this resource belongs to.</summary>
-                    private readonly Google.Apis.Services.IClientService service;
-
-                    /// <summary>Constructs a new resource.</summary>
-                    public DnsBindPermissionResource(Google.Apis.Services.IClientService service)
+                /// <summary>
+                /// Grants the bind permission to the customer provided principal(user / service account) to bind their
+                /// DNS zone with the intranet VPC associated with the project. DnsBindPermission is a global resource
+                /// and location can only be global.
+                /// </summary>
+                public class GrantRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Grant request.</summary>
+                    public GrantRequest(Google.Apis.Services.IClientService service, Google.Apis.VMwareEngine.v1.Data.GrantDnsBindPermissionRequest body, string name) : base(service)
                     {
-                        this.service = service;
+                        Name = name;
+                        Body = body;
+                        InitParameters();
                     }
 
                     /// <summary>
-                    /// Grants the bind permission to the customer provided principal(user / service account) to bind
-                    /// their DNS zone with the intranet VPC associated with the project.
-                    /// </summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="name">
                     /// Required. The name of the resource which stores the users/service accounts having the permission
                     /// to bind to the corresponding intranet VPC of the consumer project. DnsBindPermission is a global
                     /// resource. Resource names are schemeless URIs that follow the conventions in
                     /// https://cloud.google.com/apis/design/resource_names. For example:
                     /// `projects/my-project/locations/global/dnsBindPermission`
-                    /// </param>
-                    public virtual GrantRequest Grant(Google.Apis.VMwareEngine.v1.Data.GrantDnsBindPermissionRequest body, string name)
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.VMwareEngine.v1.Data.GrantDnsBindPermissionRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "grant";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:grant";
+
+                    /// <summary>Initializes Grant parameter list.</summary>
+                    protected override void InitParameters()
                     {
-                        return new GrantRequest(this.service, body, name);
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/dnsBindPermission$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Revokes the bind permission from the customer provided principal(user / service account) on the
+                /// intranet VPC associated with the consumer project. DnsBindPermission is a global resource and
+                /// location can only be global.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name of the resource which stores the users/service accounts having the permission to
+                /// bind to the corresponding intranet VPC of the consumer project. DnsBindPermission is a global
+                /// resource. Resource names are schemeless URIs that follow the conventions in
+                /// https://cloud.google.com/apis/design/resource_names. For example:
+                /// `projects/my-project/locations/global/dnsBindPermission`
+                /// </param>
+                public virtual RevokeRequest Revoke(Google.Apis.VMwareEngine.v1.Data.RevokeDnsBindPermissionRequest body, string name)
+                {
+                    return new RevokeRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Revokes the bind permission from the customer provided principal(user / service account) on the
+                /// intranet VPC associated with the consumer project. DnsBindPermission is a global resource and
+                /// location can only be global.
+                /// </summary>
+                public class RevokeRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Revoke request.</summary>
+                    public RevokeRequest(Google.Apis.Services.IClientService service, Google.Apis.VMwareEngine.v1.Data.RevokeDnsBindPermissionRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
                     }
 
                     /// <summary>
-                    /// Grants the bind permission to the customer provided principal(user / service account) to bind
-                    /// their DNS zone with the intranet VPC associated with the project.
-                    /// </summary>
-                    public class GrantRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Operation>
-                    {
-                        /// <summary>Constructs a new Grant request.</summary>
-                        public GrantRequest(Google.Apis.Services.IClientService service, Google.Apis.VMwareEngine.v1.Data.GrantDnsBindPermissionRequest body, string name) : base(service)
-                        {
-                            Name = name;
-                            Body = body;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// Required. The name of the resource which stores the users/service accounts having the
-                        /// permission to bind to the corresponding intranet VPC of the consumer project.
-                        /// DnsBindPermission is a global resource. Resource names are schemeless URIs that follow the
-                        /// conventions in https://cloud.google.com/apis/design/resource_names. For example:
-                        /// `projects/my-project/locations/global/dnsBindPermission`
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Name { get; private set; }
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.VMwareEngine.v1.Data.GrantDnsBindPermissionRequest Body { get; set; }
-
-                        /// <summary>Returns the body of the request.</summary>
-                        protected override object GetBody() => Body;
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "grant";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "POST";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1/{+name}:grant";
-
-                        /// <summary>Initializes Grant parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/global/dnsBindPermission$",
-                            });
-                        }
-                    }
-
-                    /// <summary>
-                    /// Revokes the bind permission from the customer provided principal(user / service account) on the
-                    /// intranet VPC associated with the consumer project.
-                    /// </summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="name">
                     /// Required. The name of the resource which stores the users/service accounts having the permission
                     /// to bind to the corresponding intranet VPC of the consumer project. DnsBindPermission is a global
                     /// resource. Resource names are schemeless URIs that follow the conventions in
                     /// https://cloud.google.com/apis/design/resource_names. For example:
                     /// `projects/my-project/locations/global/dnsBindPermission`
-                    /// </param>
-                    public virtual RevokeRequest Revoke(Google.Apis.VMwareEngine.v1.Data.RevokeDnsBindPermissionRequest body, string name)
-                    {
-                        return new RevokeRequest(this.service, body, name);
-                    }
-
-                    /// <summary>
-                    /// Revokes the bind permission from the customer provided principal(user / service account) on the
-                    /// intranet VPC associated with the consumer project.
                     /// </summary>
-                    public class RevokeRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Operation>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.VMwareEngine.v1.Data.RevokeDnsBindPermissionRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "revoke";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:revoke";
+
+                    /// <summary>Initializes Revoke parameter list.</summary>
+                    protected override void InitParameters()
                     {
-                        /// <summary>Constructs a new Revoke request.</summary>
-                        public RevokeRequest(Google.Apis.Services.IClientService service, Google.Apis.VMwareEngine.v1.Data.RevokeDnsBindPermissionRequest body, string name) : base(service)
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
-                            Name = name;
-                            Body = body;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// Required. The name of the resource which stores the users/service accounts having the
-                        /// permission to bind to the corresponding intranet VPC of the consumer project.
-                        /// DnsBindPermission is a global resource. Resource names are schemeless URIs that follow the
-                        /// conventions in https://cloud.google.com/apis/design/resource_names. For example:
-                        /// `projects/my-project/locations/global/dnsBindPermission`
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Name { get; private set; }
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.VMwareEngine.v1.Data.RevokeDnsBindPermissionRequest Body { get; set; }
-
-                        /// <summary>Returns the body of the request.</summary>
-                        protected override object GetBody() => Body;
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "revoke";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "POST";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1/{+name}:revoke";
-
-                        /// <summary>Initializes Revoke parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/global/dnsBindPermission$",
-                            });
-                        }
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/dnsBindPermission$",
+                        });
                     }
                 }
+            }
 
-                /// <summary>Gets the NetworkPeerings resource.</summary>
-                public virtual NetworkPeeringsResource NetworkPeerings { get; }
+            /// <summary>Gets the NetworkPeerings resource.</summary>
+            public virtual NetworkPeeringsResource NetworkPeerings { get; }
 
-                /// <summary>The "networkPeerings" collection of methods.</summary>
-                public class NetworkPeeringsResource
+            /// <summary>The "networkPeerings" collection of methods.</summary>
+            public class NetworkPeeringsResource
+            {
+                private const string Resource = "networkPeerings";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public NetworkPeeringsResource(Google.Apis.Services.IClientService service)
                 {
-                    private const string Resource = "networkPeerings";
+                    this.service = service;
+                    PeeringRoutes = new PeeringRoutesResource(service);
+                }
+
+                /// <summary>Gets the PeeringRoutes resource.</summary>
+                public virtual PeeringRoutesResource PeeringRoutes { get; }
+
+                /// <summary>The "peeringRoutes" collection of methods.</summary>
+                public class PeeringRoutesResource
+                {
+                    private const string Resource = "peeringRoutes";
 
                     /// <summary>The service which this resource belongs to.</summary>
                     private readonly Google.Apis.Services.IClientService service;
 
                     /// <summary>Constructs a new resource.</summary>
-                    public NetworkPeeringsResource(Google.Apis.Services.IClientService service)
+                    public PeeringRoutesResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
-                        PeeringRoutes = new PeeringRoutesResource(service);
-                    }
-
-                    /// <summary>Gets the PeeringRoutes resource.</summary>
-                    public virtual PeeringRoutesResource PeeringRoutes { get; }
-
-                    /// <summary>The "peeringRoutes" collection of methods.</summary>
-                    public class PeeringRoutesResource
-                    {
-                        private const string Resource = "peeringRoutes";
-
-                        /// <summary>The service which this resource belongs to.</summary>
-                        private readonly Google.Apis.Services.IClientService service;
-
-                        /// <summary>Constructs a new resource.</summary>
-                        public PeeringRoutesResource(Google.Apis.Services.IClientService service)
-                        {
-                            this.service = service;
-                        }
-
-                        /// <summary>Lists the network peering routes exchanged over a peering connection.</summary>
-                        /// <param name="parent">
-                        /// Required. The resource name of the network peering to retrieve peering routes from. Resource
-                        /// names are schemeless URIs that follow the conventions in
-                        /// https://cloud.google.com/apis/design/resource_names. For example:
-                        /// `projects/my-project/locations/global/networkPeerings/my-peering`
-                        /// </param>
-                        public virtual ListRequest List(string parent)
-                        {
-                            return new ListRequest(this.service, parent);
-                        }
-
-                        /// <summary>Lists the network peering routes exchanged over a peering connection.</summary>
-                        public class ListRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.ListPeeringRoutesResponse>
-                        {
-                            /// <summary>Constructs a new List request.</summary>
-                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
-                            {
-                                Parent = parent;
-                                InitParameters();
-                            }
-
-                            /// <summary>
-                            /// Required. The resource name of the network peering to retrieve peering routes from.
-                            /// Resource names are schemeless URIs that follow the conventions in
-                            /// https://cloud.google.com/apis/design/resource_names. For example:
-                            /// `projects/my-project/locations/global/networkPeerings/my-peering`
-                            /// </summary>
-                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string Parent { get; private set; }
-
-                            /// <summary>
-                            /// A filter expression that matches resources returned in the response. Currently, only
-                            /// filtering on the `direction` field is supported. To return routes imported from the peer
-                            /// network, provide "direction=INCOMING". To return routes exported from the VMware Engine
-                            /// network, provide "direction=OUTGOING". Other filter expressions return an error.
-                            /// </summary>
-                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual string Filter { get; set; }
-
-                            /// <summary>
-                            /// The maximum number of peering routes to return in one page. The service may return fewer
-                            /// than this value. The maximum value is coerced to 1000. The default value of this field
-                            /// is 500.
-                            /// </summary>
-                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual System.Nullable<int> PageSize { get; set; }
-
-                            /// <summary>
-                            /// A page token, received from a previous `ListPeeringRoutes` call. Provide this to
-                            /// retrieve the subsequent page. When paginating, all other parameters provided to
-                            /// `ListPeeringRoutes` must match the call that provided the page token.
-                            /// </summary>
-                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual string PageToken { get; set; }
-
-                            /// <summary>Gets the method name.</summary>
-                            public override string MethodName => "list";
-
-                            /// <summary>Gets the HTTP method.</summary>
-                            public override string HttpMethod => "GET";
-
-                            /// <summary>Gets the REST path.</summary>
-                            public override string RestPath => "v1/{+parent}/peeringRoutes";
-
-                            /// <summary>Initializes List parameter list.</summary>
-                            protected override void InitParameters()
-                            {
-                                base.InitParameters();
-                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "parent",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/global/networkPeerings/[^/]+$",
-                                });
-                                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "filter",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            }
-                        }
                     }
 
                     /// <summary>
-                    /// Creates a new network peering between the peer network and VMware Engine network provided in a
-                    /// `NetworkPeering` resource.
+                    /// Lists the network peering routes exchanged over a peering connection. NetworkPeering is a global
+                    /// resource and location can only be global.
                     /// </summary>
-                    /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
-                    /// Required. The resource name of the location to create the new network peering in. This value is
-                    /// always `global`, because `NetworkPeering` is a global resource. Resource names are schemeless
-                    /// URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For
-                    /// example: `projects/my-project/locations/global`
-                    /// </param>
-                    public virtual CreateRequest Create(Google.Apis.VMwareEngine.v1.Data.NetworkPeering body, string parent)
-                    {
-                        return new CreateRequest(this.service, body, parent);
-                    }
-
-                    /// <summary>
-                    /// Creates a new network peering between the peer network and VMware Engine network provided in a
-                    /// `NetworkPeering` resource.
-                    /// </summary>
-                    public class CreateRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Operation>
-                    {
-                        /// <summary>Constructs a new Create request.</summary>
-                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.VMwareEngine.v1.Data.NetworkPeering body, string parent) : base(service)
-                        {
-                            Parent = parent;
-                            Body = body;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// Required. The resource name of the location to create the new network peering in. This value
-                        /// is always `global`, because `NetworkPeering` is a global resource. Resource names are
-                        /// schemeless URIs that follow the conventions in
-                        /// https://cloud.google.com/apis/design/resource_names. For example:
-                        /// `projects/my-project/locations/global`
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Parent { get; private set; }
-
-                        /// <summary>
-                        /// Required. The user-provided identifier of the new `NetworkPeering`. This identifier must be
-                        /// unique among `NetworkPeering` resources within the parent and becomes the final token in the
-                        /// name URI. The identifier must meet the following requirements: * Only contains 1-63
-                        /// alphanumeric characters and hyphens * Begins with an alphabetical character * Ends with a
-                        /// non-hyphen character * Not formatted as a UUID * Complies with [RFC
-                        /// 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("networkPeeringId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string NetworkPeeringId { get; set; }
-
-                        /// <summary>
-                        /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
-                        /// retry your request, the server will know to ignore the request if it has already been
-                        /// completed. The server guarantees that a request doesn't result in creation of duplicate
-                        /// commitments for at least 60 minutes. For example, consider a situation where you make an
-                        /// initial request and the request times out. If you make the request again with the same
-                        /// request ID, the server can check if original operation with the same request ID was
-                        /// received, and if so, will ignore the second request. This prevents clients from accidentally
-                        /// creating duplicate commitments. The request ID must be a valid UUID with the exception that
-                        /// zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string RequestId { get; set; }
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.VMwareEngine.v1.Data.NetworkPeering Body { get; set; }
-
-                        /// <summary>Returns the body of the request.</summary>
-                        protected override object GetBody() => Body;
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "create";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "POST";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1/{+parent}/networkPeerings";
-
-                        /// <summary>Initializes Create parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/global$",
-                            });
-                            RequestParameters.Add("networkPeeringId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "networkPeeringId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "requestId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        }
-                    }
-
-                    /// <summary>
-                    /// Deletes a `NetworkPeering` resource. When a network peering is deleted for a VMware Engine
-                    /// network, the peer network becomes inaccessible to that VMware Engine network.
-                    /// </summary>
-                    /// <param name="name">
-                    /// Required. The resource name of the network peering to be deleted. Resource names are schemeless
-                    /// URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For
-                    /// example: `projects/my-project/locations/global/networkPeerings/my-peering`
-                    /// </param>
-                    public virtual DeleteRequest Delete(string name)
-                    {
-                        return new DeleteRequest(this.service, name);
-                    }
-
-                    /// <summary>
-                    /// Deletes a `NetworkPeering` resource. When a network peering is deleted for a VMware Engine
-                    /// network, the peer network becomes inaccessible to that VMware Engine network.
-                    /// </summary>
-                    public class DeleteRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Operation>
-                    {
-                        /// <summary>Constructs a new Delete request.</summary>
-                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                        {
-                            Name = name;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// Required. The resource name of the network peering to be deleted. Resource names are
-                        /// schemeless URIs that follow the conventions in
-                        /// https://cloud.google.com/apis/design/resource_names. For example:
-                        /// `projects/my-project/locations/global/networkPeerings/my-peering`
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Name { get; private set; }
-
-                        /// <summary>
-                        /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
-                        /// retry your request, the server will know to ignore the request if it has already been
-                        /// completed. The server guarantees that a request doesn't result in creation of duplicate
-                        /// commitments for at least 60 minutes. For example, consider a situation where you make an
-                        /// initial request and the request times out. If you make the request again with the same
-                        /// request ID, the server can check if original operation with the same request ID was
-                        /// received, and if so, will ignore the second request. This prevents clients from accidentally
-                        /// creating duplicate commitments. The request ID must be a valid UUID with the exception that
-                        /// zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string RequestId { get; set; }
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "delete";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "DELETE";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1/{+name}";
-
-                        /// <summary>Initializes Delete parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/global/networkPeerings/[^/]+$",
-                            });
-                            RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "requestId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        }
-                    }
-
-                    /// <summary>
-                    /// Retrieves a `NetworkPeering` resource by its resource name. The resource contains details of the
-                    /// network peering, such as peered networks, import and export custom route configurations, and
-                    /// peering state.
-                    /// </summary>
-                    /// <param name="name">
-                    /// Required. The resource name of the network peering to retrieve. Resource names are schemeless
-                    /// URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For
-                    /// example: `projects/my-project/locations/global/networkPeerings/my-peering`
-                    /// </param>
-                    public virtual GetRequest Get(string name)
-                    {
-                        return new GetRequest(this.service, name);
-                    }
-
-                    /// <summary>
-                    /// Retrieves a `NetworkPeering` resource by its resource name. The resource contains details of the
-                    /// network peering, such as peered networks, import and export custom route configurations, and
-                    /// peering state.
-                    /// </summary>
-                    public class GetRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.NetworkPeering>
-                    {
-                        /// <summary>Constructs a new Get request.</summary>
-                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                        {
-                            Name = name;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// Required. The resource name of the network peering to retrieve. Resource names are
-                        /// schemeless URIs that follow the conventions in
-                        /// https://cloud.google.com/apis/design/resource_names. For example:
-                        /// `projects/my-project/locations/global/networkPeerings/my-peering`
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Name { get; private set; }
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "get";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "GET";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1/{+name}";
-
-                        /// <summary>Initializes Get parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/global/networkPeerings/[^/]+$",
-                            });
-                        }
-                    }
-
-                    /// <summary>Lists `NetworkPeering` resources in a given project.</summary>
-                    /// <param name="parent">
-                    /// Required. The resource name of the location (global) to query for network peerings. Resource
+                    /// Required. The resource name of the network peering to retrieve peering routes from. Resource
                     /// names are schemeless URIs that follow the conventions in
                     /// https://cloud.google.com/apis/design/resource_names. For example:
-                    /// `projects/my-project/locations/global`
+                    /// `projects/my-project/locations/global/networkPeerings/my-peering`
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(this.service, parent);
                     }
 
-                    /// <summary>Lists `NetworkPeering` resources in a given project.</summary>
-                    public class ListRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.ListNetworkPeeringsResponse>
+                    /// <summary>
+                    /// Lists the network peering routes exchanged over a peering connection. NetworkPeering is a global
+                    /// resource and location can only be global.
+                    /// </summary>
+                    public class ListRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.ListPeeringRoutesResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
                         public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
@@ -896,55 +528,34 @@ namespace Google.Apis.VMwareEngine.v1
                         }
 
                         /// <summary>
-                        /// Required. The resource name of the location (global) to query for network peerings. Resource
+                        /// Required. The resource name of the network peering to retrieve peering routes from. Resource
                         /// names are schemeless URIs that follow the conventions in
                         /// https://cloud.google.com/apis/design/resource_names. For example:
-                        /// `projects/my-project/locations/global`
+                        /// `projects/my-project/locations/global/networkPeerings/my-peering`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// A filter expression that matches resources returned in the response. The expression must
-                        /// specify the field name, a comparison operator, and the value that you want to use for
-                        /// filtering. The value must be a string, a number, or a boolean. The comparison operator must
-                        /// be `=`, `!=`, `&amp;gt;`, or `&amp;lt;`. For example, if you are filtering a list of network
-                        /// peerings, you can exclude the ones named `example-peering` by specifying `name !=
-                        /// "example-peering"`. To filter on multiple expressions, provide each separate expression
-                        /// within parentheses. For example:
-                        /// ```
-                        /// (name = "example-peering") (createTime &amp;gt;
-                        /// "2021-04-12T08:15:10.40Z")
-                        /// ```
-                        /// By default, each expression is an `AND` expression. However,
-                        /// you can include `AND` and `OR` expressions explicitly. For example:
-                        /// ```
-                        /// (name =
-                        /// "example-peering-1") AND (createTime &amp;gt; "2021-04-12T08:15:10.40Z") OR (name =
-                        /// "example-peering-2")
-                        /// ```
+                        /// A filter expression that matches resources returned in the response. Currently, only
+                        /// filtering on the `direction` field is supported. To return routes imported from the peer
+                        /// network, provide "direction=INCOMING". To return routes exported from the VMware Engine
+                        /// network, provide "direction=OUTGOING". Other filter expressions return an error.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
                         /// <summary>
-                        /// Sorts list results by a certain order. By default, returned results are ordered by `name` in
-                        /// ascending order. You can also sort results in descending order based on the `name` value
-                        /// using `orderBy="name desc"`. Currently, only ordering by `name` is supported.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string OrderBy { get; set; }
-
-                        /// <summary>
-                        /// The maximum number of network peerings to return in one page. The maximum value is coerced
-                        /// to 1000. The default value of this field is 500.
+                        /// The maximum number of peering routes to return in one page. The service may return fewer
+                        /// than this value. The maximum value is coerced to 1000. The default value of this field is
+                        /// 500.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
                         /// <summary>
-                        /// A page token, received from a previous `ListNetworkPeerings` call. Provide this to retrieve
-                        /// the subsequent page. When paginating, all other parameters provided to `ListNetworkPeerings`
+                        /// A page token, received from a previous `ListPeeringRoutes` call. Provide this to retrieve
+                        /// the subsequent page. When paginating, all other parameters provided to `ListPeeringRoutes`
                         /// must match the call that provided the page token.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -957,7 +568,7 @@ namespace Google.Apis.VMwareEngine.v1
                         public override string HttpMethod => "GET";
 
                         /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1/{+parent}/networkPeerings";
+                        public override string RestPath => "v1/{+parent}/peeringRoutes";
 
                         /// <summary>Initializes List parameter list.</summary>
                         protected override void InitParameters()
@@ -969,19 +580,11 @@ namespace Google.Apis.VMwareEngine.v1
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/global$",
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/networkPeerings/[^/]+$",
                             });
                             RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "orderBy",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1005,163 +608,179 @@ namespace Google.Apis.VMwareEngine.v1
                             });
                         }
                     }
+                }
 
-                    /// <summary>
-                    /// Modifies a `NetworkPeering` resource. Only the `description` field can be updated. Only fields
-                    /// specified in `updateMask` are applied.
-                    /// </summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="name">
-                    /// Output only. The resource name of the network peering. Resource names are scheme-less URIs that
-                    /// follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
-                    /// `projects/my-project/locations/global/networkPeerings/my-peering`
-                    /// </param>
-                    public virtual PatchRequest Patch(Google.Apis.VMwareEngine.v1.Data.NetworkPeering body, string name)
+                /// <summary>
+                /// Creates a new network peering between the peer network and VMware Engine network provided in a
+                /// `NetworkPeering` resource. NetworkPeering is a global resource and location can only be global.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The resource name of the location to create the new network peering in. This value is
+                /// always `global`, because `NetworkPeering` is a global resource. Resource names are schemeless URIs
+                /// that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+                /// `projects/my-project/locations/global`
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.VMwareEngine.v1.Data.NetworkPeering body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>
+                /// Creates a new network peering between the peer network and VMware Engine network provided in a
+                /// `NetworkPeering` resource. NetworkPeering is a global resource and location can only be global.
+                /// </summary>
+                public class CreateRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.VMwareEngine.v1.Data.NetworkPeering body, string parent) : base(service)
                     {
-                        return new PatchRequest(this.service, body, name);
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
                     }
 
                     /// <summary>
-                    /// Modifies a `NetworkPeering` resource. Only the `description` field can be updated. Only fields
-                    /// specified in `updateMask` are applied.
+                    /// Required. The resource name of the location to create the new network peering in. This value is
+                    /// always `global`, because `NetworkPeering` is a global resource. Resource names are schemeless
+                    /// URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For
+                    /// example: `projects/my-project/locations/global`
                     /// </summary>
-                    public class PatchRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Operation>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. The user-provided identifier of the new `NetworkPeering`. This identifier must be
+                    /// unique among `NetworkPeering` resources within the parent and becomes the final token in the
+                    /// name URI. The identifier must meet the following requirements: * Only contains 1-63 alphanumeric
+                    /// characters and hyphens * Begins with an alphabetical character * Ends with a non-hyphen
+                    /// character * Not formatted as a UUID * Complies with [RFC
+                    /// 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("networkPeeringId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string NetworkPeeringId { get; set; }
+
+                    /// <summary>
+                    /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
+                    /// retry your request, the server will know to ignore the request if it has already been completed.
+                    /// The server guarantees that a request doesn't result in creation of duplicate commitments for at
+                    /// least 60 minutes. For example, consider a situation where you make an initial request and the
+                    /// request times out. If you make the request again with the same request ID, the server can check
+                    /// if original operation with the same request ID was received, and if so, will ignore the second
+                    /// request. This prevents clients from accidentally creating duplicate commitments. The request ID
+                    /// must be a valid UUID with the exception that zero UUID is not supported
+                    /// (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.VMwareEngine.v1.Data.NetworkPeering Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/networkPeerings";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
                     {
-                        /// <summary>Constructs a new Patch request.</summary>
-                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.VMwareEngine.v1.Data.NetworkPeering body, string name) : base(service)
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                         {
-                            Name = name;
-                            Body = body;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// Output only. The resource name of the network peering. Resource names are scheme-less URIs
-                        /// that follow the conventions in https://cloud.google.com/apis/design/resource_names. For
-                        /// example: `projects/my-project/locations/global/networkPeerings/my-peering`
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Name { get; private set; }
-
-                        /// <summary>
-                        /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
-                        /// retry your request, the server will know to ignore the request if it has already been
-                        /// completed. The server guarantees that a request doesn't result in creation of duplicate
-                        /// commitments for at least 60 minutes. For example, consider a situation where you make an
-                        /// initial request and the request times out. If you make the request again with the same
-                        /// request ID, the server can check if original operation with the same request ID was
-                        /// received, and if so, will ignore the second request. This prevents clients from accidentally
-                        /// creating duplicate commitments. The request ID must be a valid UUID with the exception that
-                        /// zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string RequestId { get; set; }
-
-                        /// <summary>
-                        /// Required. Field mask is used to specify the fields to be overwritten in the `NetworkPeering`
-                        /// resource by the update. The fields specified in the `update_mask` are relative to the
-                        /// resource, not the full request. A field will be overwritten if it is in the mask. If the
-                        /// user does not provide a mask then all fields will be overwritten.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual object UpdateMask { get; set; }
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.VMwareEngine.v1.Data.NetworkPeering Body { get; set; }
-
-                        /// <summary>Returns the body of the request.</summary>
-                        protected override object GetBody() => Body;
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "patch";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "PATCH";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1/{+name}";
-
-                        /// <summary>Initializes Patch parameter list.</summary>
-                        protected override void InitParameters()
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("networkPeeringId", new Google.Apis.Discovery.Parameter
                         {
-                            base.InitParameters();
-                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/global/networkPeerings/[^/]+$",
-                            });
-                            RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "requestId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "updateMask",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        }
+                            Name = "networkPeeringId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
                 }
 
                 /// <summary>
-                /// Gets all the principals having bind permission on the intranet VPC associated with the consumer
-                /// project granted by the Grant API.
+                /// Deletes a `NetworkPeering` resource. When a network peering is deleted for a VMware Engine network,
+                /// the peer network becomes inaccessible to that VMware Engine network. NetworkPeering is a global
+                /// resource and location can only be global.
                 /// </summary>
                 /// <param name="name">
-                /// Required. The name of the resource which stores the users/service accounts having the permission to
-                /// bind to the corresponding intranet VPC of the consumer project. DnsBindPermission is a global
-                /// resource. Resource names are schemeless URIs that follow the conventions in
-                /// https://cloud.google.com/apis/design/resource_names. For example:
-                /// `projects/my-project/locations/global/dnsBindPermission`
+                /// Required. The resource name of the network peering to be deleted. Resource names are schemeless URIs
+                /// that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+                /// `projects/my-project/locations/global/networkPeerings/my-peering`
                 /// </param>
-                public virtual GetDnsBindPermissionRequest GetDnsBindPermission(string name)
+                public virtual DeleteRequest Delete(string name)
                 {
-                    return new GetDnsBindPermissionRequest(this.service, name);
+                    return new DeleteRequest(this.service, name);
                 }
 
                 /// <summary>
-                /// Gets all the principals having bind permission on the intranet VPC associated with the consumer
-                /// project granted by the Grant API.
+                /// Deletes a `NetworkPeering` resource. When a network peering is deleted for a VMware Engine network,
+                /// the peer network becomes inaccessible to that VMware Engine network. NetworkPeering is a global
+                /// resource and location can only be global.
                 /// </summary>
-                public class GetDnsBindPermissionRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.DnsBindPermission>
+                public class DeleteRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Operation>
                 {
-                    /// <summary>Constructs a new GetDnsBindPermission request.</summary>
-                    public GetDnsBindPermissionRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
                     {
                         Name = name;
                         InitParameters();
                     }
 
                     /// <summary>
-                    /// Required. The name of the resource which stores the users/service accounts having the permission
-                    /// to bind to the corresponding intranet VPC of the consumer project. DnsBindPermission is a global
-                    /// resource. Resource names are schemeless URIs that follow the conventions in
-                    /// https://cloud.google.com/apis/design/resource_names. For example:
-                    /// `projects/my-project/locations/global/dnsBindPermission`
+                    /// Required. The resource name of the network peering to be deleted. Resource names are schemeless
+                    /// URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For
+                    /// example: `projects/my-project/locations/global/networkPeerings/my-peering`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>
+                    /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
+                    /// retry your request, the server will know to ignore the request if it has already been completed.
+                    /// The server guarantees that a request doesn't result in creation of duplicate commitments for at
+                    /// least 60 minutes. For example, consider a situation where you make an initial request and the
+                    /// request times out. If you make the request again with the same request ID, the server can check
+                    /// if original operation with the same request ID was received, and if so, will ignore the second
+                    /// request. This prevents clients from accidentally creating duplicate commitments. The request ID
+                    /// must be a valid UUID with the exception that zero UUID is not supported
+                    /// (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
                     /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "getDnsBindPermission";
+                    public override string MethodName => "delete";
 
                     /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
+                    public override string HttpMethod => "DELETE";
 
                     /// <summary>Gets the REST path.</summary>
                     public override string RestPath => "v1/{+name}";
 
-                    /// <summary>Initializes GetDnsBindPermission parameter list.</summary>
+                    /// <summary>Initializes Delete parameter list.</summary>
                     protected override void InitParameters()
                     {
                         base.InitParameters();
@@ -1171,7 +790,323 @@ namespace Google.Apis.VMwareEngine.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/global/dnsBindPermission$",
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/networkPeerings/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Retrieves a `NetworkPeering` resource by its resource name. The resource contains details of the
+                /// network peering, such as peered networks, import and export custom route configurations, and peering
+                /// state. NetworkPeering is a global resource and location can only be global.
+                /// </summary>
+                /// <param name="name">
+                /// Required. The resource name of the network peering to retrieve. Resource names are schemeless URIs
+                /// that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+                /// `projects/my-project/locations/global/networkPeerings/my-peering`
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>
+                /// Retrieves a `NetworkPeering` resource by its resource name. The resource contains details of the
+                /// network peering, such as peered networks, import and export custom route configurations, and peering
+                /// state. NetworkPeering is a global resource and location can only be global.
+                /// </summary>
+                public class GetRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.NetworkPeering>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the network peering to retrieve. Resource names are schemeless
+                    /// URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For
+                    /// example: `projects/my-project/locations/global/networkPeerings/my-peering`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/networkPeerings/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Lists `NetworkPeering` resources in a given project. NetworkPeering is a global resource and
+                /// location can only be global.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. The resource name of the location (global) to query for network peerings. Resource names
+                /// are schemeless URIs that follow the conventions in
+                /// https://cloud.google.com/apis/design/resource_names. For example:
+                /// `projects/my-project/locations/global`
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>
+                /// Lists `NetworkPeering` resources in a given project. NetworkPeering is a global resource and
+                /// location can only be global.
+                /// </summary>
+                public class ListRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.ListNetworkPeeringsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the location (global) to query for network peerings. Resource
+                    /// names are schemeless URIs that follow the conventions in
+                    /// https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/global`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// A filter expression that matches resources returned in the response. The expression must specify
+                    /// the field name, a comparison operator, and the value that you want to use for filtering. The
+                    /// value must be a string, a number, or a boolean. The comparison operator must be `=`, `!=`,
+                    /// `&amp;gt;`, or `&amp;lt;`. For example, if you are filtering a list of network peerings, you can
+                    /// exclude the ones named `example-peering` by specifying `name != "example-peering"`. To filter on
+                    /// multiple expressions, provide each separate expression within parentheses. For example:
+                    /// ```
+                    /// (name = "example-peering") (createTime &amp;gt; "2021-04-12T08:15:10.40Z")
+                    /// ```
+                    /// By default, each
+                    /// expression is an `AND` expression. However, you can include `AND` and `OR` expressions
+                    /// explicitly. For example:
+                    /// ```
+                    /// (name = "example-peering-1") AND (createTime &amp;gt;
+                    /// "2021-04-12T08:15:10.40Z") OR (name = "example-peering-2")
+                    /// ```
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Sorts list results by a certain order. By default, returned results are ordered by `name` in
+                    /// ascending order. You can also sort results in descending order based on the `name` value using
+                    /// `orderBy="name desc"`. Currently, only ordering by `name` is supported.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// The maximum number of network peerings to return in one page. The maximum value is coerced to
+                    /// 1000. The default value of this field is 500.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A page token, received from a previous `ListNetworkPeerings` call. Provide this to retrieve the
+                    /// subsequent page. When paginating, all other parameters provided to `ListNetworkPeerings` must
+                    /// match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/networkPeerings";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Modifies a `NetworkPeering` resource. Only the `description` field can be updated. Only fields
+                /// specified in `updateMask` are applied. NetworkPeering is a global resource and location can only be
+                /// global.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Output only. The resource name of the network peering. NetworkPeering is a global resource and
+                /// location can only be global. Resource names are scheme-less URIs that follow the conventions in
+                /// https://cloud.google.com/apis/design/resource_names. For example:
+                /// `projects/my-project/locations/global/networkPeerings/my-peering`
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.VMwareEngine.v1.Data.NetworkPeering body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Modifies a `NetworkPeering` resource. Only the `description` field can be updated. Only fields
+                /// specified in `updateMask` are applied. NetworkPeering is a global resource and location can only be
+                /// global.
+                /// </summary>
+                public class PatchRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.VMwareEngine.v1.Data.NetworkPeering body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Output only. The resource name of the network peering. NetworkPeering is a global resource and
+                    /// location can only be global. Resource names are scheme-less URIs that follow the conventions in
+                    /// https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/global/networkPeerings/my-peering`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
+                    /// retry your request, the server will know to ignore the request if it has already been completed.
+                    /// The server guarantees that a request doesn't result in creation of duplicate commitments for at
+                    /// least 60 minutes. For example, consider a situation where you make an initial request and the
+                    /// request times out. If you make the request again with the same request ID, the server can check
+                    /// if original operation with the same request ID was received, and if so, will ignore the second
+                    /// request. This prevents clients from accidentally creating duplicate commitments. The request ID
+                    /// must be a valid UUID with the exception that zero UUID is not supported
+                    /// (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Required. Field mask is used to specify the fields to be overwritten in the `NetworkPeering`
+                    /// resource by the update. The fields specified in the `update_mask` are relative to the resource,
+                    /// not the full request. A field will be overwritten if it is in the mask. If the user does not
+                    /// provide a mask then all fields will be overwritten.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.VMwareEngine.v1.Data.NetworkPeering Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/networkPeerings/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -8308,6 +8243,69 @@ namespace Google.Apis.VMwareEngine.v1
                 }
             }
 
+            /// <summary>
+            /// Gets all the principals having bind permission on the intranet VPC associated with the consumer project
+            /// granted by the Grant API. DnsBindPermission is a global resource and location can only be global.
+            /// </summary>
+            /// <param name="name">
+            /// Required. The name of the resource which stores the users/service accounts having the permission to bind
+            /// to the corresponding intranet VPC of the consumer project. DnsBindPermission is a global resource.
+            /// Resource names are schemeless URIs that follow the conventions in
+            /// https://cloud.google.com/apis/design/resource_names. For example:
+            /// `projects/my-project/locations/global/dnsBindPermission`
+            /// </param>
+            public virtual GetDnsBindPermissionRequest GetDnsBindPermission(string name)
+            {
+                return new GetDnsBindPermissionRequest(this.service, name);
+            }
+
+            /// <summary>
+            /// Gets all the principals having bind permission on the intranet VPC associated with the consumer project
+            /// granted by the Grant API. DnsBindPermission is a global resource and location can only be global.
+            /// </summary>
+            public class GetDnsBindPermissionRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.DnsBindPermission>
+            {
+                /// <summary>Constructs a new GetDnsBindPermission request.</summary>
+                public GetDnsBindPermissionRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the resource which stores the users/service accounts having the permission to
+                /// bind to the corresponding intranet VPC of the consumer project. DnsBindPermission is a global
+                /// resource. Resource names are schemeless URIs that follow the conventions in
+                /// https://cloud.google.com/apis/design/resource_names. For example:
+                /// `projects/my-project/locations/global/dnsBindPermission`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getDnsBindPermission";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes GetDnsBindPermission parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+/dnsBindPermission$",
+                    });
+                }
+            }
+
             /// <summary>Lists information about the supported locations for this service.</summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
@@ -8666,7 +8664,7 @@ namespace Google.Apis.VMwareEngine.v1.Data
         /// <summary>
         /// Required. Output only. The name of the resource which stores the users/service accounts having the
         /// permission to bind to the corresponding intranet VPC of the consumer project. DnsBindPermission is a global
-        /// resource. Resource names are schemeless URIs that follow the conventions in
+        /// resource and location can only be global. Resource names are schemeless URIs that follow the conventions in
         /// https://cloud.google.com/apis/design/resource_names. For example:
         /// `projects/my-project/locations/global/dnsBindPermission`
         /// </summary>
@@ -10090,8 +10088,9 @@ namespace Google.Apis.VMwareEngine.v1.Data
         public virtual System.Nullable<bool> ImportCustomRoutesWithPublicIp { get; set; }
 
         /// <summary>
-        /// Output only. The resource name of the network peering. Resource names are scheme-less URIs that follow the
-        /// conventions in https://cloud.google.com/apis/design/resource_names. For example:
+        /// Output only. The resource name of the network peering. NetworkPeering is a global resource and location can
+        /// only be global. Resource names are scheme-less URIs that follow the conventions in
+        /// https://cloud.google.com/apis/design/resource_names. For example:
         /// `projects/my-project/locations/global/networkPeerings/my-peering`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]

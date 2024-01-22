@@ -21973,7 +21973,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
         public virtual System.Nullable<long> AdvertiserId { get; set; }
 
-        /// <summary>Required. Billing related settings of the advertiser.</summary>
+        /// <summary>Optional. Required. Billing related settings of the advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billingConfig")]
         public virtual AdvertiserBillingConfig BillingConfig { get; set; }
 
@@ -22093,7 +22093,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
     /// <summary>Billing related settings of an advertiser.</summary>
     public class AdvertiserBillingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ID of a billing profile assigned to the advertiser.</summary>
+        /// <summary>Optional. The ID of a billing profile assigned to the advertiser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billingProfileId")]
         public virtual System.Nullable<long> BillingProfileId { get; set; }
 
@@ -24259,7 +24259,11 @@ namespace Google.Apis.DisplayVideo.v2.Data
     /// <summary>Wrapper message for a list of contact information defining Customer Match audience members.</summary>
     public class ContactInfoList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Input only. The consent setting for the users in contact_infos.</summary>
+        /// <summary>
+        /// Input only. The consent setting for the users in contact_infos. Leaving this field unset indicates that
+        /// consent is not specified. If ad_user_data or ad_personalization fields are set to `CONSENT_STATUS_DENIED`,
+        /// the request will return an error.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consent")]
         public virtual Consent Consent { get; set; }
 
@@ -26145,9 +26149,9 @@ namespace Google.Apis.DisplayVideo.v2.Data
         public virtual System.Nullable<int> MaxImpressions { get; set; }
 
         /// <summary>
-        /// The maximum number of times a user may click-through or fully view an ad during this period until it is no
-        /// longer served to them. Must be greater than 0. Only applicable to YouTube and Partners resources. Required
-        /// when unlimited is `false` and max_impressions is not set.
+        /// Optional. The maximum number of times a user may click-through or fully view an ad during this period until
+        /// it is no longer served to them. Must be greater than 0. Only applicable to YouTube and Partners resources.
+        /// Required when unlimited is `false` and max_impressions is not set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxViews")]
         public virtual System.Nullable<int> MaxViews { get; set; }
@@ -28522,7 +28526,11 @@ namespace Google.Apis.DisplayVideo.v2.Data
     /// <summary>Wrapper message for a list of mobile device IDs defining Customer Match audience members.</summary>
     public class MobileDeviceIdList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Input only. The consent setting for the users in mobile_device_ids.</summary>
+        /// <summary>
+        /// Input only. The consent setting for the users in mobile_device_ids. Leaving this field unset indicates that
+        /// consent is not specified. If ad_user_data or ad_personalization fields are set to `CONSENT_STATUS_DENIED`,
+        /// the request will return an error.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consent")]
         public virtual Consent Consent { get; set; }
 
@@ -30881,6 +30889,10 @@ namespace Google.Apis.DisplayVideo.v2.Data
     /// </summary>
     public class YoutubeAndPartnersInventorySourceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Whether to target inventory in video apps available with Google TV.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeGoogleTv")]
+        public virtual System.Nullable<bool> IncludeGoogleTv { get; set; }
+
         /// <summary>Whether to target inventory on the YouTube search results page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeYoutubeSearch")]
         public virtual System.Nullable<bool> IncludeYoutubeSearch { get; set; }
@@ -30902,7 +30914,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Settings for YouTube and Partners line items. Next ID: 15</summary>
+    /// <summary>Settings for YouTube and Partners line items.</summary>
     public class YoutubeAndPartnersSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The bidding strategy of the YouTube and Partners line item.</summary>
@@ -30924,24 +30936,24 @@ namespace Google.Apis.DisplayVideo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inventorySourceSettings")]
         public virtual YoutubeAndPartnersInventorySourceConfig InventorySourceSettings { get; set; }
 
-        /// <summary>The ID of the form to generate leads.</summary>
+        /// <summary>Optional. The ID of the form to generate leads.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("leadFormId")]
         public virtual System.Nullable<long> LeadFormId { get; set; }
 
-        /// <summary>The ID of the merchant which is linked to the line item for product feed.</summary>
+        /// <summary>Optional. The ID of the merchant which is linked to the line item for product feed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkedMerchantId")]
         public virtual System.Nullable<long> LinkedMerchantId { get; set; }
 
         /// <summary>
-        /// The IDs of the videos appear below the primary video ad when the ad is playing in the YouTube app on mobile
-        /// devices.
+        /// Optional. The IDs of the videos appear below the primary video ad when the ad is playing in the YouTube app
+        /// on mobile devices.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relatedVideoIds")]
         public virtual System.Collections.Generic.IList<string> RelatedVideoIds { get; set; }
 
         /// <summary>
-        /// The average number of times you want ads from this line item to show to the same person over a certain
-        /// period of time.
+        /// Optional. The average number of times you want ads from this line item to show to the same person over a
+        /// certain period of time.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetFrequency")]
         public virtual TargetFrequency TargetFrequency { get; set; }
@@ -30950,7 +30962,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyMeasurementSettings")]
         public virtual YoutubeAndPartnersThirdPartyMeasurementSettings ThirdPartyMeasurementSettings { get; set; }
 
-        /// <summary>The settings related to VideoAdSequence.</summary>
+        /// <summary>Optional. The settings related to VideoAdSequence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoAdSequenceSettings")]
         public virtual VideoAdSequenceSettings VideoAdSequenceSettings { get; set; }
 

@@ -6438,7 +6438,7 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Required. Service account used by runtime plane to access auth config secrets.</summary>
+        /// <summary>Optional. Service account used by runtime plane to access auth config secrets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
 
@@ -7154,6 +7154,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("privateConnectivityEnabled")]
         public virtual System.Nullable<bool> PrivateConnectivityEnabled { get; set; }
 
+        /// <summary>Optional. Proxy for Eventing auto-registration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proxyDestinationConfig")]
+        public virtual DestinationConfig ProxyDestinationConfig { get; set; }
+
         /// <summary>Registration endpoint for auto registration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("registrationDestinationConfig")]
         public virtual DestinationConfig RegistrationDestinationConfig { get; set; }
@@ -7200,6 +7204,10 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>ListenerAuthConfigTemplates represents the auth values for the event listener.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("listenerAuthConfigTemplates")]
         public virtual System.Collections.Generic.IList<AuthConfigTemplate> ListenerAuthConfigTemplates { get; set; }
+
+        /// <summary>Proxy destination config template.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proxyDestinationConfig")]
+        public virtual DestinationConfigTemplate ProxyDestinationConfig { get; set; }
 
         /// <summary>Registration host destination config template.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("registrationDestinationConfig")]
@@ -9120,6 +9128,10 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Optional. Regional network config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkConfig")]
         public virtual NetworkConfig NetworkConfig { get; set; }
+
+        /// <summary>Output only. Specifies whether the region is provisioned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provisioned")]
+        public virtual System.Nullable<bool> Provisioned { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

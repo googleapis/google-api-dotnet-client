@@ -7564,7 +7564,7 @@ namespace Google.Apis.CloudRun.v1.Data
         /// `run.googleapis.com/binary-authorization-breakglass`: Service, Job, *
         /// `run.googleapis.com/binary-authorization`: Service, Job, Execution. * `run.googleapis.com/client-name`: All
         /// resources. * `run.googleapis.com/cloudsql-instances`: Revision, Execution. *
-        /// `run.googleapis.com/container-dependencies`: Revision. * `run.googleapis.com/cpu-throttling`: Revision. *
+        /// `run.googleapis.com/container-dependencies`: Revision . * `run.googleapis.com/cpu-throttling`: Revision. *
         /// `run.googleapis.com/custom-audiences`: Service. * `run.googleapis.com/description`: Service. *
         /// `run.googleapis.com/encryption-key-shutdown-hours`: Revision * `run.googleapis.com/encryption-key`:
         /// Revision, Execution. * `run.googleapis.com/execution-environment`: Revision, Execution. *
@@ -8015,9 +8015,9 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual System.Nullable<int> ContainerConcurrency { get; set; }
 
         /// <summary>
-        /// Containers holds the single container that defines the unit of execution for this Revision. In the context
-        /// of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud
-        /// Run, only a single container may be provided.
+        /// Required. Containers holds the single container that defines the unit of execution for this Revision. In the
+        /// context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In
+        /// Cloud Run, only a single container may be provided.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containers")]
         public virtual System.Collections.Generic.IList<Container> Containers { get; set; }

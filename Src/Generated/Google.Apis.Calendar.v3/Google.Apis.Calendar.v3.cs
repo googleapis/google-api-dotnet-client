@@ -2676,21 +2676,54 @@ namespace Google.Apis.Calendar.v3
             [Google.Apis.Util.RequestParameterAttribute("calendarId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CalendarId { get; private set; }
 
-            /// <summary>
-            /// Deprecated and ignored. A value will always be returned in the email field for the organizer, creator
-            /// and attendees, even if no real email address is available (i.e. a generated, non-working value will be
-            /// provided).
-            /// </summary>
+            /// <summary>Deprecated and ignored.</summary>
             [Google.Apis.Util.RequestParameterAttribute("alwaysIncludeEmail", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> AlwaysIncludeEmail { get; set; }
 
             /// <summary>
-            /// Event types to return. Optional. Possible values are:  - "default"  - "focusTime"  - "outOfOffice"  -
-            /// "workingLocation"This parameter can be repeated multiple times to return events of different types. The
-            /// default is ["default", "focusTime", "outOfOffice"].
+            /// Event types to return. Optional. This parameter can be repeated multiple times to return events of
+            /// different types. The default is ["default", "focusTime", "outOfOffice"].
             /// </summary>
+            /// <remarks>
+            /// Use this property to set a single value for the parameter, or <see cref="EventTypesList"/> to set
+            /// multiple values. Do not set both properties.
+            /// </remarks>
             [Google.Apis.Util.RequestParameterAttribute("eventTypes", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual Google.Apis.Util.Repeatable<string> EventTypes { get; set; }
+            public virtual System.Nullable<EventTypesEnum> EventTypes { get; set; }
+
+            /// <summary>
+            /// Event types to return. Optional. This parameter can be repeated multiple times to return events of
+            /// different types. The default is ["default", "focusTime", "outOfOffice"].
+            /// </summary>
+            /// <remarks>
+            /// Use this property to set one or more values for the parameter. Do not set both this property and
+            /// <see cref="EventTypes"/>.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("eventTypes", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<EventTypesEnum> EventTypesList { get; set; }
+
+            /// <summary>
+            /// Event types to return. Optional. This parameter can be repeated multiple times to return events of
+            /// different types. The default is ["default", "focusTime", "outOfOffice"].
+            /// </summary>
+            public enum EventTypesEnum
+            {
+                /// <summary>Regular events.</summary>
+                [Google.Apis.Util.StringValueAttribute("default")]
+                Default__ = 0,
+
+                /// <summary>Focus time events.</summary>
+                [Google.Apis.Util.StringValueAttribute("focusTime")]
+                FocusTime = 1,
+
+                /// <summary>Out of office events.</summary>
+                [Google.Apis.Util.StringValueAttribute("outOfOffice")]
+                OutOfOffice = 2,
+
+                /// <summary>Working location events.</summary>
+                [Google.Apis.Util.StringValueAttribute("workingLocation")]
+                WorkingLocation = 3,
+            }
 
             /// <summary>
             /// Specifies an event ID in the iCalendar format to be provided in the response. Optional. Use this if you
@@ -2751,13 +2784,13 @@ namespace Google.Apis.Calendar.v3
 
             /// <summary>
             /// Free text search terms to find events that match these terms in the following fields:  - summary  -
-            /// description  - location  - attendee's displayName  - attendee's email  -
-            /// workingLocationProperties.officeLocation.buildingId  - workingLocationProperties.officeLocation.deskId
-            /// - workingLocationProperties.officeLocation.label  - workingLocationProperties.customLocation.label
-            /// These search terms also match predefined keywords against all display title translations of working
-            /// location, out-of-office, and focus-time events. For example, searching for "Office" or "Bureau" returns
-            /// working location events of type officeLocation, whereas searching for "Out of office" or "Abwesend"
-            /// returns out-of-office events. Optional.
+            /// description  - location  - attendee's displayName  - attendee's email  - organizer's displayName  -
+            /// organizer's email  - workingLocationProperties.officeLocation.buildingId  -
+            /// workingLocationProperties.officeLocation.deskId  - workingLocationProperties.officeLocation.label  -
+            /// workingLocationProperties.customLocation.label  These search terms also match predefined keywords
+            /// against all display title translations of working location, out-of-office, and focus-time events. For
+            /// example, searching for "Office" or "Bureau" returns working location events of type officeLocation,
+            /// whereas searching for "Out of office" or "Abwesend" returns out-of-office events. Optional.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("q", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Q { get; set; }
@@ -3705,21 +3738,54 @@ namespace Google.Apis.Calendar.v3
             [Google.Apis.Util.RequestParameterAttribute("calendarId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CalendarId { get; private set; }
 
-            /// <summary>
-            /// Deprecated and ignored. A value will always be returned in the email field for the organizer, creator
-            /// and attendees, even if no real email address is available (i.e. a generated, non-working value will be
-            /// provided).
-            /// </summary>
+            /// <summary>Deprecated and ignored.</summary>
             [Google.Apis.Util.RequestParameterAttribute("alwaysIncludeEmail", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> AlwaysIncludeEmail { get; set; }
 
             /// <summary>
-            /// Event types to return. Optional. Possible values are:  - "default"  - "focusTime"  - "outOfOffice"  -
-            /// "workingLocation"This parameter can be repeated multiple times to return events of different types. The
-            /// default is ["default", "focusTime", "outOfOffice"].
+            /// Event types to return. Optional. This parameter can be repeated multiple times to return events of
+            /// different types. The default is ["default", "focusTime", "outOfOffice"].
             /// </summary>
+            /// <remarks>
+            /// Use this property to set a single value for the parameter, or <see cref="EventTypesList"/> to set
+            /// multiple values. Do not set both properties.
+            /// </remarks>
             [Google.Apis.Util.RequestParameterAttribute("eventTypes", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual Google.Apis.Util.Repeatable<string> EventTypes { get; set; }
+            public virtual System.Nullable<EventTypesEnum> EventTypes { get; set; }
+
+            /// <summary>
+            /// Event types to return. Optional. This parameter can be repeated multiple times to return events of
+            /// different types. The default is ["default", "focusTime", "outOfOffice"].
+            /// </summary>
+            /// <remarks>
+            /// Use this property to set one or more values for the parameter. Do not set both this property and
+            /// <see cref="EventTypes"/>.
+            /// </remarks>
+            [Google.Apis.Util.RequestParameterAttribute("eventTypes", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<EventTypesEnum> EventTypesList { get; set; }
+
+            /// <summary>
+            /// Event types to return. Optional. This parameter can be repeated multiple times to return events of
+            /// different types. The default is ["default", "focusTime", "outOfOffice"].
+            /// </summary>
+            public enum EventTypesEnum
+            {
+                /// <summary>Regular events.</summary>
+                [Google.Apis.Util.StringValueAttribute("default")]
+                Default__ = 0,
+
+                /// <summary>Focus time events.</summary>
+                [Google.Apis.Util.StringValueAttribute("focusTime")]
+                FocusTime = 1,
+
+                /// <summary>Out of office events.</summary>
+                [Google.Apis.Util.StringValueAttribute("outOfOffice")]
+                OutOfOffice = 2,
+
+                /// <summary>Working location events.</summary>
+                [Google.Apis.Util.StringValueAttribute("workingLocation")]
+                WorkingLocation = 3,
+            }
 
             /// <summary>
             /// Specifies an event ID in the iCalendar format to be provided in the response. Optional. Use this if you
@@ -3780,13 +3846,13 @@ namespace Google.Apis.Calendar.v3
 
             /// <summary>
             /// Free text search terms to find events that match these terms in the following fields:  - summary  -
-            /// description  - location  - attendee's displayName  - attendee's email  -
-            /// workingLocationProperties.officeLocation.buildingId  - workingLocationProperties.officeLocation.deskId
-            /// - workingLocationProperties.officeLocation.label  - workingLocationProperties.customLocation.label
-            /// These search terms also match predefined keywords against all display title translations of working
-            /// location, out-of-office, and focus-time events. For example, searching for "Office" or "Bureau" returns
-            /// working location events of type officeLocation, whereas searching for "Out of office" or "Abwesend"
-            /// returns out-of-office events. Optional.
+            /// description  - location  - attendee's displayName  - attendee's email  - organizer's displayName  -
+            /// organizer's email  - workingLocationProperties.officeLocation.buildingId  -
+            /// workingLocationProperties.officeLocation.deskId  - workingLocationProperties.officeLocation.label  -
+            /// workingLocationProperties.customLocation.label  These search terms also match predefined keywords
+            /// against all display title translations of working location, out-of-office, and focus-time events. For
+            /// example, searching for "Office" or "Bureau" returns working location events of type officeLocation,
+            /// whereas searching for "Out of office" or "Abwesend" returns out-of-office events. Optional.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("q", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Q { get; set; }

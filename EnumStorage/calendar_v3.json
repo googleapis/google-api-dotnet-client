@@ -24,6 +24,12 @@
     "externalOnly",
     "none"
   ],
+  "Google.Apis.Calendar.v3.EventsResource+ListRequest.EventTypesEnum": [
+    "default",
+    "focusTime",
+    "outOfOffice",
+    "workingLocation"
+  ],
   "Google.Apis.Calendar.v3.EventsResource+ListRequest.OrderByEnum": [
     "startTime",
     "updated"
@@ -47,6 +53,12 @@
     "all",
     "externalOnly",
     "none"
+  ],
+  "Google.Apis.Calendar.v3.EventsResource+WatchRequest.EventTypesEnum": [
+    "default",
+    "focusTime",
+    "outOfOffice",
+    "workingLocation"
   ],
   "Google.Apis.Calendar.v3.EventsResource+WatchRequest.OrderByEnum": [
     "startTime",

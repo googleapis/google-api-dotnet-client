@@ -753,6 +753,63 @@ namespace Google.Apis.RecaptchaEnterprise.v1
                     });
                 }
             }
+
+            /// <summary>Reorders all firewall policies.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The name of the project to list the policies for, in the format `projects/{project}`.
+            /// </param>
+            public virtual ReorderRequest Reorder(Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesRequest body, string parent)
+            {
+                return new ReorderRequest(this.service, body, parent);
+            }
+
+            /// <summary>Reorders all firewall policies.</summary>
+            public class ReorderRequest : RecaptchaEnterpriseBaseServiceRequest<Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesResponse>
+            {
+                /// <summary>Constructs a new Reorder request.</summary>
+                public ReorderRequest(Google.Apis.Services.IClientService service, Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the project to list the policies for, in the format `projects/{project}`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "reorder";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/firewallpolicies:reorder";
+
+                /// <summary>Initializes Reorder parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                }
+            }
         }
 
         /// <summary>Gets the Keys resource.</summary>
@@ -2529,6 +2586,27 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The reorder firewall policies request message.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A list containing all policy names, in the new order. Each name is in the format
+        /// `projects/{project}/firewallpolicies/{firewallpolicy}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("names")]
+        public virtual System.Collections.Generic.IList<string> Names { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The reorder firewall policies response message.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1ReorderFirewallPoliciesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

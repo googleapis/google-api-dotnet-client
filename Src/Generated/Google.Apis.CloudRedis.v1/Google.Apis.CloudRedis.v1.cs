@@ -2527,6 +2527,7 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// Optional. The version of Redis software. If not provided, latest supported version will be used. Currently,
         /// the supported values are: * `REDIS_3_2` for Redis 3.2 compatibility * `REDIS_4_0` for Redis 4.0
         /// compatibility (default) * `REDIS_5_0` for Redis 5.0 compatibility * `REDIS_6_X` for Redis 6.x compatibility
+        /// * `REDIS_7_0` for Redis 7.0 compatibility
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redisVersion")]
         public virtual string RedisVersion { get; set; }
