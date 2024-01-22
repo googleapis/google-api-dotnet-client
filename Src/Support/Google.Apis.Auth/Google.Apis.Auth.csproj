@@ -6,12 +6,6 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net462;net6.0</TargetFrameworks>
     <LangVersion>latest</LangVersion>
-    
-    <!--
-      - The System.Management dependency complains on .NET 4.6.2 and netstandard 2.0,
-      - but we use it carefully.
-      -->
-    <SuppressTfmSupportBuildWarnings>true</SuppressTfmSupportBuildWarnings>
   </PropertyGroup>
 
   <!-- nupkg information -->
