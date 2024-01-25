@@ -11143,6 +11143,13 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ModelVariant { get; set; }
 
         /// <summary>
+        /// If `true`, the request will opt out for STT conformer model migration. This field will be deprecated once
+        /// force migration takes place in June 2024.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("optOutConformerModelMigration")]
+        public virtual System.Nullable<bool> OptOutConformerModelMigration { get; set; }
+
+        /// <summary>
         /// Optional. A list of strings containing words and phrases that the speech recognizer should recognize with
         /// higher likelihood. See [the Cloud Speech
         /// documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints) for more details.
@@ -12173,10 +12180,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     /// <summary>Represents the natural language text to be processed.</summary>
     public class GoogleCloudDialogflowCxV3TextInput : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Required. The UTF-8 encoded natural language text to be processed. Text length must not exceed 256
-        /// characters.
-        /// </summary>
+        /// <summary>Required. The UTF-8 encoded natural language text to be processed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
 
@@ -15507,6 +15511,13 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ModelVariant { get; set; }
 
         /// <summary>
+        /// If `true`, the request will opt out for STT conformer model migration. This field will be deprecated once
+        /// force migration takes place in June 2024.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("optOutConformerModelMigration")]
+        public virtual System.Nullable<bool> OptOutConformerModelMigration { get; set; }
+
+        /// <summary>
         /// Optional. A list of strings containing words and phrases that the speech recognizer should recognize with
         /// higher likelihood. See [the Cloud Speech
         /// documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints) for more details.
@@ -17894,10 +17905,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     /// <summary>Represents the natural language text to be processed.</summary>
     public class GoogleCloudDialogflowCxV3beta1TextInput : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Required. The UTF-8 encoded natural language text to be processed. Text length must not exceed 256
-        /// characters.
-        /// </summary>
+        /// <summary>Required. The UTF-8 encoded natural language text to be processed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
 

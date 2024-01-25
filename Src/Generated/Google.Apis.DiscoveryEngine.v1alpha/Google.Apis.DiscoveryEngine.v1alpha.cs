@@ -4498,14 +4498,15 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         public virtual string Query { get; set; }
 
                         /// <summary>
-                        /// Selects data model of query suggestions for serving. Currently supported values: *
-                        /// `document` - Using suggestions generated from user-imported documents. * `search-history` -
-                        /// Using suggestions generated from the past history of SearchService.Search API calls. Do not
-                        /// use it when there is no traffic for Search API. * `user-event` - Using suggestions generated
-                        /// from user-imported search events. * `document-completable` - Using suggestions taken
-                        /// directly from user-imported document fields marked as completable. Default values: *
-                        /// `document` is the default model for regular dataStores. * `search-history` is the default
-                        /// model for site search dataStores.
+                        /// Specifies the autocomplete data model. This overrides any model specified in the
+                        /// Configuration &amp;gt; Autocomplete section of the Cloud console. Currently supported
+                        /// values: * `document` - Using suggestions generated from user-imported documents. *
+                        /// `search-history` - Using suggestions generated from the past history of SearchService.Search
+                        /// API calls. Do not use it when there is no traffic for Search API. * `user-event` - Using
+                        /// suggestions generated from user-imported search events. * `document-completable` - Using
+                        /// suggestions taken directly from user-imported document fields marked as completable. Default
+                        /// values: * `document` is the default model for regular dataStores. * `search-history` is the
+                        /// default model for site search dataStores.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("queryModel", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string QueryModel { get; set; }
@@ -5174,7 +5175,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
 
                         /// <summary>
                         /// Indicates which fields in the provided DocumentProcessingConfig to update. The following are
-                        /// the only supported fields: * DocumentProcessingConfig.orc_config If not set, all supported
+                        /// the only supported fields: * DocumentProcessingConfig.ocr_config If not set, all supported
                         /// fields are updated.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
@@ -9813,7 +9814,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     public virtual string Query { get; set; }
 
                     /// <summary>
-                    /// Selects data model of query suggestions for serving. Currently supported values: * `document` -
+                    /// Specifies the autocomplete data model. This overrides any model specified in the Configuration
+                    /// &amp;gt; Autocomplete section of the Cloud console. Currently supported values: * `document` -
                     /// Using suggestions generated from user-imported documents. * `search-history` - Using suggestions
                     /// generated from the past history of SearchService.Search API calls. Do not use it when there is
                     /// no traffic for Search API. * `user-event` - Using suggestions generated from user-imported
@@ -10427,7 +10429,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
 
                     /// <summary>
                     /// Indicates which fields in the provided DocumentProcessingConfig to update. The following are the
-                    /// only supported fields: * DocumentProcessingConfig.orc_config If not set, all supported fields
+                    /// only supported fields: * DocumentProcessingConfig.ocr_config If not set, all supported fields
                     /// are updated.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
@@ -10631,7 +10633,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
             /// <summary>Estimates the data size to be used by a customer.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="location">
-            /// Required. Full resource name of the Location, such as `projects/{project}/locations/{location}`.
+            /// Required. Full resource name of the location, such as `projects/{project}/locations/{location}`.
             /// </param>
             public virtual EstimateDataSizeRequest EstimateDataSize(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaEstimateDataSizeRequest body, string location)
             {
@@ -10650,7 +10652,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                 }
 
                 /// <summary>
-                /// Required. Full resource name of the Location, such as `projects/{project}/locations/{location}`.
+                /// Required. Full resource name of the location, such as `projects/{project}/locations/{location}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Location { get; private set; }
@@ -11013,8 +11015,605 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Metadata related to the progress of the SiteSearchEngineService.BatchCreateTargetSites operation. This will be
+    /// returned by the google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1BatchCreateTargetSiteMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for SiteSearchEngineService.BatchCreateTargetSites method.</summary>
+    public class GoogleCloudDiscoveryengineV1BatchCreateTargetSitesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>TargetSites created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetSites")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1TargetSite> TargetSites { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the DataStoreService.CreateDataStore operation. This will be returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1CreateDataStoreMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the EngineService.CreateEngine operation. This will be returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1CreateEngineMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for Create Schema LRO.</summary>
     public class GoogleCloudDiscoveryengineV1CreateSchemaMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the SiteSearchEngineService.CreateTargetSite operation. This will be
+    /// returned by the google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1CreateTargetSiteMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>DataStore captures global settings and configs at the DataStore level.</summary>
+    public class GoogleCloudDiscoveryengineV1DataStore : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Immutable. The content config of the data store. If this field is unset, the server behavior defaults to
+        /// ContentConfig.NO_CONTENT.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentConfig")]
+        public virtual string ContentConfig { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Timestamp the DataStore was created at.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The id of the default Schema asscociated to this data store.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultSchemaId")]
+        public virtual string DefaultSchemaId { get; set; }
+
+        /// <summary>
+        /// Required. The data store display name. This field must be a UTF-8 encoded string with a length limit of 128
+        /// characters. Otherwise, an INVALID_ARGUMENT error is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Immutable. The industry vertical that the data store registers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("industryVertical")]
+        public virtual string IndustryVertical { get; set; }
+
+        /// <summary>
+        /// Immutable. The full resource name of the data store. Format:
+        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. This field
+        /// must be a UTF-8 encoded string with a length limit of 1024 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The solutions that the data store enrolls. Available solutions for each industry_vertical: * `MEDIA`:
+        /// `SOLUTION_TYPE_RECOMMENDATION` and `SOLUTION_TYPE_SEARCH`. * `SITE_SEARCH`: `SOLUTION_TYPE_SEARCH` is
+        /// automatically enrolled. Other solutions cannot be enrolled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("solutionTypes")]
+        public virtual System.Collections.Generic.IList<string> SolutionTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the DataStoreService.DeleteDataStore operation. This will be returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1DeleteDataStoreMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the EngineService.DeleteEngine operation. This will be returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1DeleteEngineMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
 
@@ -11170,6 +11769,526 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the SiteSearchEngineService.DeleteTargetSite operation. This will be
+    /// returned by the google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1DeleteTargetSiteMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the SiteSearchEngineService.DisableAdvancedSiteSearch operation. This will
+    /// be returned by the google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1DisableAdvancedSiteSearchMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for SiteSearchEngineService.DisableAdvancedSiteSearch method.</summary>
+    public class GoogleCloudDiscoveryengineV1DisableAdvancedSiteSearchResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the SiteSearchEngineService.EnableAdvancedSiteSearch operation. This will be
+    /// returned by the google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1EnableAdvancedSiteSearchMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for SiteSearchEngineService.EnableAdvancedSiteSearch method.</summary>
+    public class GoogleCloudDiscoveryengineV1EnableAdvancedSiteSearchResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata that describes the training and serving parameters of an Engine.</summary>
+    public class GoogleCloudDiscoveryengineV1Engine : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Configurations for the Chat Engine. Only applicable if solution_type is SOLUTION_TYPE_CHAT.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chatEngineConfig")]
+        public virtual GoogleCloudDiscoveryengineV1EngineChatEngineConfig ChatEngineConfig { get; set; }
+
+        /// <summary>
+        /// Output only. Additional information of the Chat Engine. Only applicable if solution_type is
+        /// SOLUTION_TYPE_CHAT.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chatEngineMetadata")]
+        public virtual GoogleCloudDiscoveryengineV1EngineChatEngineMetadata ChatEngineMetadata { get; set; }
+
+        /// <summary>Common config spec that specifies the metadata of the engine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commonConfig")]
+        public virtual GoogleCloudDiscoveryengineV1EngineCommonConfig CommonConfig { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Timestamp the Recommendation Engine was created at.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// The data stores associated with this engine. For SOLUTION_TYPE_SEARCH and SOLUTION_TYPE_RECOMMENDATION type
+        /// of engines, they can only associate with at most one data store. If solution_type is SOLUTION_TYPE_CHAT,
+        /// multiple DataStores in the same Collection can be associated here. Note that when used in
+        /// CreateEngineRequest, one DataStore id must be provided as the system will use it for necessary
+        /// initializations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataStoreIds")]
+        public virtual System.Collections.Generic.IList<string> DataStoreIds { get; set; }
+
+        /// <summary>
+        /// Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024
+        /// characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on
+        /// DataStore: If unspecified, default to `GENERIC`. Vertical on Engine has to match vertical of the DataStore
+        /// liniked to the engine.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("industryVertical")]
+        public virtual string IndustryVertical { get; set; }
+
+        /// <summary>
+        /// Immutable. The fully qualified resource name of the engine. This field must be a UTF-8 encoded string with a
+        /// length limit of 1024 characters. Format:
+        /// `projects/{project_number}/locations/{location}/collections/{collection}/engines/{engine}` engine should be
+        /// 1-63 characters, and valid characters are /a-z0-9*/. Otherwise, an INVALID_ARGUMENT error is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Configurations for the Search Engine. Only applicable if solution_type is SOLUTION_TYPE_SEARCH.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchEngineConfig")]
+        public virtual GoogleCloudDiscoveryengineV1EngineSearchEngineConfig SearchEngineConfig { get; set; }
+
+        /// <summary>Required. The solutions of the engine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("solutionType")]
+        public virtual string SolutionType { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Timestamp the Recommendation Engine was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configurations for a Chat Engine.</summary>
+    public class GoogleCloudDiscoveryengineV1EngineChatEngineConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The configurationt generate the Dialogflow agent that is associated to this Engine. Note that these
+        /// configurations are one-time consumed by and passed to Dialogflow service. It means they cannot be retrieved
+        /// using EngineService.GetEngine or EngineService.ListEngines API after engine creation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentCreationConfig")]
+        public virtual GoogleCloudDiscoveryengineV1EngineChatEngineConfigAgentCreationConfig AgentCreationConfig { get; set; }
+
+        /// <summary>
+        /// The resource name of an exist Dialogflow agent to link to this Chat Engine. Customers can either provide
+        /// `agent_creation_config` to create agent or provide an agent name that links the agent with the Chat engine.
+        /// Format: `projects//locations//agents/`. Note that the `dialogflow_agent_to_link` are one-time consumed by
+        /// and passed to Dialogflow service. It means they cannot be retrieved using EngineService.GetEngine or
+        /// EngineService.ListEngines API after engine creation. Please use ChatEngineMetadata.dialogflow_agent for
+        /// actual agent association after Engine is created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowAgentToLink")]
+        public virtual string DialogflowAgentToLink { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configurations for generating a Dialogflow agent. Note that these configurations are one-time consumed by and
+    /// passed to Dialogflow service. It means they cannot be retrieved using EngineService.GetEngine or
+    /// EngineService.ListEngines API after engine creation.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1EngineChatEngineConfigAgentCreationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Name of the company, organization or other entity that the agent represents. Used for knowledge connector
+        /// LLM prompt and for knowledge search.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("business")]
+        public virtual string Business { get; set; }
+
+        /// <summary>
+        /// Required. The default language of the agent as a language tag. See [Language
+        /// Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported
+        /// language codes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultLanguageCode")]
+        public virtual string DefaultLanguageCode { get; set; }
+
+        /// <summary>
+        /// Agent location for Agent creation, supported values: global/us/eu. If not provided, us Engine will create
+        /// Agent using us-central-1 by default; eu Engine will create Agent using eu-west-1 by default.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>
+        /// Required. The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g.,
+        /// America/New_York, Europe/Paris.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
+        public virtual string TimeZone { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Additional information of a Chat Engine. Fields in this message are output only.</summary>
+    public class GoogleCloudDiscoveryengineV1EngineChatEngineMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of a Dialogflow agent, that this Chat Engine refers to. Format:
+        /// `projects//locations//agents/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowAgent")]
+        public virtual string DialogflowAgent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Common configurations for an Engine.</summary>
+    public class GoogleCloudDiscoveryengineV1EngineCommonConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Immutable. The name of the company, business or entity that is associated with the engine. Setting this may
+        /// help improve LLM related features.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("companyName")]
+        public virtual string CompanyName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configurations for a Search Engine.</summary>
+    public class GoogleCloudDiscoveryengineV1EngineSearchEngineConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The add-on that this search engine enables.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchAddOns")]
+        public virtual System.Collections.Generic.IList<string> SearchAddOns { get; set; }
+
+        /// <summary>
+        /// The search feature tier of this engine. Different tiers might have different pricing. To learn more, please
+        /// check the pricing documentation. Defaults to SearchTier.SEARCH_TIER_STANDARD if not specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchTier")]
+        public virtual string SearchTier { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11758,8 +12877,250 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Verification information for target sites in advanced site search.</summary>
+    public class GoogleCloudDiscoveryengineV1SiteVerificationInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Site verification state indicating the ownership and validity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("siteVerificationState")]
+        public virtual string SiteVerificationState { get; set; }
+
+        private string _verifyTimeRaw;
+
+        private object _verifyTime;
+
+        /// <summary>Latest site verification time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verifyTime")]
+        public virtual string VerifyTimeRaw
+        {
+            get => _verifyTimeRaw;
+            set
+            {
+                _verifyTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _verifyTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="VerifyTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use VerifyTimeDateTimeOffset instead.")]
+        public virtual object VerifyTime
+        {
+            get => _verifyTime;
+            set
+            {
+                _verifyTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _verifyTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="VerifyTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? VerifyTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(VerifyTimeRaw);
+            set => VerifyTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A target site for the SiteSearchEngine.</summary>
+    public class GoogleCloudDiscoveryengineV1TargetSite : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Input only. If set to false, a uri_pattern is generated to include all pages whose address contains the
+        /// provided_uri_pattern. If set to true, an uri_pattern is generated to try to be an exact match of the
+        /// provided_uri_pattern or just the specific page if the provided_uri_pattern is a specific one.
+        /// provided_uri_pattern is always normalized to generate the URI pattern to be used by the search engine.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exactMatch")]
+        public virtual System.Nullable<bool> ExactMatch { get; set; }
+
+        /// <summary>Output only. Failure reason.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureReason")]
+        public virtual GoogleCloudDiscoveryengineV1TargetSiteFailureReason FailureReason { get; set; }
+
+        /// <summary>Output only. This is system-generated based on the provided_uri_pattern.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatedUriPattern")]
+        public virtual string GeneratedUriPattern { get; set; }
+
+        /// <summary>Output only. Indexing status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexingStatus")]
+        public virtual string IndexingStatus { get; set; }
+
+        /// <summary>
+        /// Output only. The fully qualified resource name of the target site.
+        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine/targetSites/{target_site}`
+        /// The `target_site_id` is system-generated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. Input only. The user provided URI pattern from which the `generated_uri_pattern` is generated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("providedUriPattern")]
+        public virtual string ProvidedUriPattern { get; set; }
+
+        /// <summary>Output only. Site ownership and validity verification status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("siteVerificationInfo")]
+        public virtual GoogleCloudDiscoveryengineV1SiteVerificationInfo SiteVerificationInfo { get; set; }
+
+        /// <summary>The type of the target site, e.g., whether the site is to be included or excluded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The target site's last updated time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Site search indexing failure reasons.</summary>
+    public class GoogleCloudDiscoveryengineV1TargetSiteFailureReason : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Failed due to insufficient quota.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quotaFailure")]
+        public virtual GoogleCloudDiscoveryengineV1TargetSiteFailureReasonQuotaFailure QuotaFailure { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDiscoveryengineV1TargetSiteFailureReasonQuotaFailure : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// This number is an estimation on how much total quota this project needs to successfully complete indexing.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalRequiredQuota")]
+        public virtual System.Nullable<long> TotalRequiredQuota { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for UpdateSchema LRO.</summary>
     public class GoogleCloudDiscoveryengineV1UpdateSchemaMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the SiteSearchEngineService.UpdateTargetSite operation. This will be
+    /// returned by the google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1UpdateTargetSiteMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
 
@@ -12038,9 +13399,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string Query { get; set; }
 
         /// <summary>
-        /// Selects data model of query suggestions for serving. Currently supported values: * `document` - Using
-        /// suggestions generated from user-imported documents. * `search-history` - Using suggestions generated from
-        /// the past history of SearchService.Search API calls. Do not use it when there is no traffic for Search API. *
+        /// Specifies the autocomplete data model. This overrides any model specified in the Configuration &amp;gt;
+        /// Autocomplete section of the Cloud console. Currently supported values: * `document` - Using suggestions
+        /// generated from user-imported documents. * `search-history` - Using suggestions generated from the past
+        /// history of SearchService.Search API calls. Do not use it when there is no traffic for Search API. *
         /// `user-event` - Using suggestions generated from user-imported search events. * `document-completable` -
         /// Using suggestions taken directly from user-imported document fields marked as completable. Default values: *
         /// `document` is the default model for regular dataStores. * `search-history` is the default model for site
@@ -13597,7 +14959,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// of engines, they can only associate with at most one data store. If solution_type is SOLUTION_TYPE_CHAT,
         /// multiple DataStores in the same Collection can be associated here. Note that when used in
         /// CreateEngineRequest, one DataStore id must be provided as the system will use it for necessary
-        /// intializations.
+        /// initializations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStoreIds")]
         public virtual System.Collections.Generic.IList<string> DataStoreIds { get; set; }
@@ -13779,8 +15141,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     public class GoogleCloudDiscoveryengineV1alphaEngineCommonConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The name of the company, business or entity that is associated with the engine. Setting this may help
-        /// improve LLM related features.
+        /// Immutable. The name of the company, business or entity that is associated with the engine. Setting this may
+        /// help improve LLM related features.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("companyName")]
         public virtual string CompanyName { get; set; }
@@ -13793,7 +15155,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     public class GoogleCloudDiscoveryengineV1alphaEngineMediaRecommendationEngineConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The optimization objective e.g. `cvr`. This field together with optimization_objective describe engine
+        /// The optimization objective. e.g., `cvr`. This field together with optimization_objective describe engine
         /// metadata to use to control engine training and serving. Currently supported values: `ctr`, `cvr`. If not
         /// specified, we choose default based on engine type. Default depends on type of recommendation:
         /// `recommended-for-you` =&amp;gt; `ctr` `others-you-may-like` =&amp;gt; `ctr`
@@ -13820,7 +15182,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string TrainingState { get; set; }
 
         /// <summary>
-        /// Required. The type of engine e.g. `recommended-for-you`. This field together with optimization_objective
+        /// Required. The type of engine. e.g., `recommended-for-you`. This field together with optimization_objective
         /// describe engine metadata to use to control engine training and serving. Currently supported values:
         /// `recommended-for-you`, `others-you-may-like`, `more-like-this`, `most-popular-items`.
         /// </summary>
@@ -15647,7 +17009,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     }
 
     /// <summary>
-    /// Details about why crawling failed for a particular CorpusType, e.g. DESKTOP and MOBILE crawling may fail for
+    /// Details about why crawling failed for a particular CorpusType, e.g., DESKTOP and MOBILE crawling may fail for
     /// different reasons.
     /// </summary>
     public class GoogleCloudDiscoveryengineV1alphaRecrawlUrisResponseFailureInfoFailureReason : Google.Apis.Requests.IDirectResponseSchema
@@ -15812,7 +17174,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// product of SearchRequest.EmbeddingSpec.EmbeddingVector.vector and the document embedding that is provided in
         /// SearchRequest.EmbeddingSpec.EmbeddingVector.field_path. If
         /// SearchRequest.EmbeddingSpec.EmbeddingVector.field_path is not provided, it will use
-        /// ServingConfig.EmbeddingConfig.field_paths.
+        /// ServingConfig.EmbeddingConfig.field_path.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("embeddingSpec")]
         public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestEmbeddingSpec EmbeddingSpec { get; set; }
@@ -16842,7 +18204,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("siteVerificationInfo")]
         public virtual GoogleCloudDiscoveryengineV1alphaSiteVerificationInfo SiteVerificationInfo { get; set; }
 
-        /// <summary>The type of the target site, e.g. whether the site is to be included or excluded.</summary>
+        /// <summary>The type of the target site, e.g., whether the site is to be included or excluded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -16900,6 +18262,12 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
 
     public class GoogleCloudDiscoveryengineV1alphaTargetSiteFailureReasonQuotaFailure : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// This number is an estimation on how much total quota this project needs to successfully complete indexing.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalRequiredQuota")]
+        public virtual System.Nullable<long> TotalRequiredQuota { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -17714,6 +19082,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fieldsUiComponentsMap")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDiscoveryengineV1alphaWidgetConfigUIComponentField> FieldsUiComponentsMap { get; set; }
 
+        /// <summary>
+        /// Output only. The industry vertical that the WidgetConfig registers. The WidgetConfig industry vertical is
+        /// based on the associated Engine.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("industryVertical")]
+        public virtual string IndustryVertical { get; set; }
+
         /// <summary>Output only. Whether LLM is enabled in the corresponding data store.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("llmEnabled")]
         public virtual System.Nullable<bool> LlmEnabled { get; set; }
@@ -17909,8 +19284,605 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Metadata related to the progress of the SiteSearchEngineService.BatchCreateTargetSites operation. This will be
+    /// returned by the google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaBatchCreateTargetSiteMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for SiteSearchEngineService.BatchCreateTargetSites method.</summary>
+    public class GoogleCloudDiscoveryengineV1betaBatchCreateTargetSitesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>TargetSites created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetSites")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaTargetSite> TargetSites { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the DataStoreService.CreateDataStore operation. This will be returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaCreateDataStoreMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the EngineService.CreateEngine operation. This will be returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaCreateEngineMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for Create Schema LRO.</summary>
     public class GoogleCloudDiscoveryengineV1betaCreateSchemaMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the SiteSearchEngineService.CreateTargetSite operation. This will be
+    /// returned by the google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaCreateTargetSiteMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>DataStore captures global settings and configs at the DataStore level.</summary>
+    public class GoogleCloudDiscoveryengineV1betaDataStore : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Immutable. The content config of the data store. If this field is unset, the server behavior defaults to
+        /// ContentConfig.NO_CONTENT.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentConfig")]
+        public virtual string ContentConfig { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Timestamp the DataStore was created at.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The id of the default Schema asscociated to this data store.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultSchemaId")]
+        public virtual string DefaultSchemaId { get; set; }
+
+        /// <summary>
+        /// Required. The data store display name. This field must be a UTF-8 encoded string with a length limit of 128
+        /// characters. Otherwise, an INVALID_ARGUMENT error is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Immutable. The industry vertical that the data store registers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("industryVertical")]
+        public virtual string IndustryVertical { get; set; }
+
+        /// <summary>
+        /// Immutable. The full resource name of the data store. Format:
+        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. This field
+        /// must be a UTF-8 encoded string with a length limit of 1024 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The solutions that the data store enrolls. Available solutions for each industry_vertical: * `MEDIA`:
+        /// `SOLUTION_TYPE_RECOMMENDATION` and `SOLUTION_TYPE_SEARCH`. * `SITE_SEARCH`: `SOLUTION_TYPE_SEARCH` is
+        /// automatically enrolled. Other solutions cannot be enrolled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("solutionTypes")]
+        public virtual System.Collections.Generic.IList<string> SolutionTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the DataStoreService.DeleteDataStore operation. This will be returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaDeleteDataStoreMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the EngineService.DeleteEngine operation. This will be returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaDeleteEngineMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
 
@@ -18066,6 +20038,526 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the SiteSearchEngineService.DeleteTargetSite operation. This will be
+    /// returned by the google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaDeleteTargetSiteMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the SiteSearchEngineService.DisableAdvancedSiteSearch operation. This will
+    /// be returned by the google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaDisableAdvancedSiteSearchMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for SiteSearchEngineService.DisableAdvancedSiteSearch method.</summary>
+    public class GoogleCloudDiscoveryengineV1betaDisableAdvancedSiteSearchResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the SiteSearchEngineService.EnableAdvancedSiteSearch operation. This will be
+    /// returned by the google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaEnableAdvancedSiteSearchMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for SiteSearchEngineService.EnableAdvancedSiteSearch method.</summary>
+    public class GoogleCloudDiscoveryengineV1betaEnableAdvancedSiteSearchResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata that describes the training and serving parameters of an Engine.</summary>
+    public class GoogleCloudDiscoveryengineV1betaEngine : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Configurations for the Chat Engine. Only applicable if solution_type is SOLUTION_TYPE_CHAT.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chatEngineConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaEngineChatEngineConfig ChatEngineConfig { get; set; }
+
+        /// <summary>
+        /// Output only. Additional information of the Chat Engine. Only applicable if solution_type is
+        /// SOLUTION_TYPE_CHAT.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chatEngineMetadata")]
+        public virtual GoogleCloudDiscoveryengineV1betaEngineChatEngineMetadata ChatEngineMetadata { get; set; }
+
+        /// <summary>Common config spec that specifies the metadata of the engine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commonConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaEngineCommonConfig CommonConfig { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Timestamp the Recommendation Engine was created at.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// The data stores associated with this engine. For SOLUTION_TYPE_SEARCH and SOLUTION_TYPE_RECOMMENDATION type
+        /// of engines, they can only associate with at most one data store. If solution_type is SOLUTION_TYPE_CHAT,
+        /// multiple DataStores in the same Collection can be associated here. Note that when used in
+        /// CreateEngineRequest, one DataStore id must be provided as the system will use it for necessary
+        /// initializations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataStoreIds")]
+        public virtual System.Collections.Generic.IList<string> DataStoreIds { get; set; }
+
+        /// <summary>
+        /// Required. The display name of the engine. Should be human readable. UTF-8 encoded string with limit of 1024
+        /// characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on
+        /// DataStore: If unspecified, default to `GENERIC`. Vertical on Engine has to match vertical of the DataStore
+        /// liniked to the engine.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("industryVertical")]
+        public virtual string IndustryVertical { get; set; }
+
+        /// <summary>
+        /// Immutable. The fully qualified resource name of the engine. This field must be a UTF-8 encoded string with a
+        /// length limit of 1024 characters. Format:
+        /// `projects/{project_number}/locations/{location}/collections/{collection}/engines/{engine}` engine should be
+        /// 1-63 characters, and valid characters are /a-z0-9*/. Otherwise, an INVALID_ARGUMENT error is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Configurations for the Search Engine. Only applicable if solution_type is SOLUTION_TYPE_SEARCH.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchEngineConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig SearchEngineConfig { get; set; }
+
+        /// <summary>Required. The solutions of the engine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("solutionType")]
+        public virtual string SolutionType { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Timestamp the Recommendation Engine was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configurations for a Chat Engine.</summary>
+    public class GoogleCloudDiscoveryengineV1betaEngineChatEngineConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The configurationt generate the Dialogflow agent that is associated to this Engine. Note that these
+        /// configurations are one-time consumed by and passed to Dialogflow service. It means they cannot be retrieved
+        /// using EngineService.GetEngine or EngineService.ListEngines API after engine creation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentCreationConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfig AgentCreationConfig { get; set; }
+
+        /// <summary>
+        /// The resource name of an exist Dialogflow agent to link to this Chat Engine. Customers can either provide
+        /// `agent_creation_config` to create agent or provide an agent name that links the agent with the Chat engine.
+        /// Format: `projects//locations//agents/`. Note that the `dialogflow_agent_to_link` are one-time consumed by
+        /// and passed to Dialogflow service. It means they cannot be retrieved using EngineService.GetEngine or
+        /// EngineService.ListEngines API after engine creation. Please use ChatEngineMetadata.dialogflow_agent for
+        /// actual agent association after Engine is created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowAgentToLink")]
+        public virtual string DialogflowAgentToLink { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configurations for generating a Dialogflow agent. Note that these configurations are one-time consumed by and
+    /// passed to Dialogflow service. It means they cannot be retrieved using EngineService.GetEngine or
+    /// EngineService.ListEngines API after engine creation.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaEngineChatEngineConfigAgentCreationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Name of the company, organization or other entity that the agent represents. Used for knowledge connector
+        /// LLM prompt and for knowledge search.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("business")]
+        public virtual string Business { get; set; }
+
+        /// <summary>
+        /// Required. The default language of the agent as a language tag. See [Language
+        /// Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported
+        /// language codes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultLanguageCode")]
+        public virtual string DefaultLanguageCode { get; set; }
+
+        /// <summary>
+        /// Agent location for Agent creation, supported values: global/us/eu. If not provided, us Engine will create
+        /// Agent using us-central-1 by default; eu Engine will create Agent using eu-west-1 by default.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>
+        /// Required. The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g.,
+        /// America/New_York, Europe/Paris.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
+        public virtual string TimeZone { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Additional information of a Chat Engine. Fields in this message are output only.</summary>
+    public class GoogleCloudDiscoveryengineV1betaEngineChatEngineMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of a Dialogflow agent, that this Chat Engine refers to. Format:
+        /// `projects//locations//agents/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowAgent")]
+        public virtual string DialogflowAgent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Common configurations for an Engine.</summary>
+    public class GoogleCloudDiscoveryengineV1betaEngineCommonConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Immutable. The name of the company, business or entity that is associated with the engine. Setting this may
+        /// help improve LLM related features.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("companyName")]
+        public virtual string CompanyName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configurations for a Search Engine.</summary>
+    public class GoogleCloudDiscoveryengineV1betaEngineSearchEngineConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The add-on that this search engine enables.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchAddOns")]
+        public virtual System.Collections.Generic.IList<string> SearchAddOns { get; set; }
+
+        /// <summary>
+        /// The search feature tier of this engine. Different tiers might have different pricing. To learn more, please
+        /// check the pricing documentation. Defaults to SearchTier.SEARCH_TIER_STANDARD if not specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchTier")]
+        public virtual string SearchTier { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -18654,8 +21146,250 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Verification information for target sites in advanced site search.</summary>
+    public class GoogleCloudDiscoveryengineV1betaSiteVerificationInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Site verification state indicating the ownership and validity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("siteVerificationState")]
+        public virtual string SiteVerificationState { get; set; }
+
+        private string _verifyTimeRaw;
+
+        private object _verifyTime;
+
+        /// <summary>Latest site verification time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verifyTime")]
+        public virtual string VerifyTimeRaw
+        {
+            get => _verifyTimeRaw;
+            set
+            {
+                _verifyTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _verifyTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="VerifyTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use VerifyTimeDateTimeOffset instead.")]
+        public virtual object VerifyTime
+        {
+            get => _verifyTime;
+            set
+            {
+                _verifyTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _verifyTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="VerifyTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? VerifyTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(VerifyTimeRaw);
+            set => VerifyTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A target site for the SiteSearchEngine.</summary>
+    public class GoogleCloudDiscoveryengineV1betaTargetSite : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Input only. If set to false, a uri_pattern is generated to include all pages whose address contains the
+        /// provided_uri_pattern. If set to true, an uri_pattern is generated to try to be an exact match of the
+        /// provided_uri_pattern or just the specific page if the provided_uri_pattern is a specific one.
+        /// provided_uri_pattern is always normalized to generate the URI pattern to be used by the search engine.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exactMatch")]
+        public virtual System.Nullable<bool> ExactMatch { get; set; }
+
+        /// <summary>Output only. Failure reason.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureReason")]
+        public virtual GoogleCloudDiscoveryengineV1betaTargetSiteFailureReason FailureReason { get; set; }
+
+        /// <summary>Output only. This is system-generated based on the provided_uri_pattern.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatedUriPattern")]
+        public virtual string GeneratedUriPattern { get; set; }
+
+        /// <summary>Output only. Indexing status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexingStatus")]
+        public virtual string IndexingStatus { get; set; }
+
+        /// <summary>
+        /// Output only. The fully qualified resource name of the target site.
+        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine/targetSites/{target_site}`
+        /// The `target_site_id` is system-generated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. Input only. The user provided URI pattern from which the `generated_uri_pattern` is generated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("providedUriPattern")]
+        public virtual string ProvidedUriPattern { get; set; }
+
+        /// <summary>Output only. Site ownership and validity verification status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("siteVerificationInfo")]
+        public virtual GoogleCloudDiscoveryengineV1betaSiteVerificationInfo SiteVerificationInfo { get; set; }
+
+        /// <summary>The type of the target site, e.g., whether the site is to be included or excluded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The target site's last updated time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Site search indexing failure reasons.</summary>
+    public class GoogleCloudDiscoveryengineV1betaTargetSiteFailureReason : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Failed due to insufficient quota.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quotaFailure")]
+        public virtual GoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonQuotaFailure QuotaFailure { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonQuotaFailure : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// This number is an estimation on how much total quota this project needs to successfully complete indexing.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalRequiredQuota")]
+        public virtual System.Nullable<long> TotalRequiredQuota { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for UpdateSchema LRO.</summary>
     public class GoogleCloudDiscoveryengineV1betaUpdateSchemaMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the SiteSearchEngineService.UpdateTargetSite operation. This will be
+    /// returned by the google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaUpdateTargetSiteMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
 

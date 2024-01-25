@@ -8175,6 +8175,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("helpText")]
         public virtual string HelpText { get; set; }
 
+        /// <summary>Optional. Whether the parameter should be hidden in the UI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hiddenUi")]
+        public virtual System.Nullable<bool> HiddenUi { get; set; }
+
         /// <summary>Optional. Whether the parameter is optional. Defaults to false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isOptional")]
         public virtual System.Nullable<bool> IsOptional { get; set; }
@@ -10329,6 +10333,18 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>The parameters for the template.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IList<ParameterMetadata> Parameters { get; set; }
+
+        /// <summary>Optional. Indicates if the template is streaming or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("streaming")]
+        public virtual System.Nullable<bool> Streaming { get; set; }
+
+        /// <summary>Optional. Indicates if the streaming template supports at least once mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportsAtLeastOnce")]
+        public virtual System.Nullable<bool> SupportsAtLeastOnce { get; set; }
+
+        /// <summary>Optional. Indicates if the streaming template supports exactly once mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportsExactlyOnce")]
+        public virtual System.Nullable<bool> SupportsExactlyOnce { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -1191,6 +1191,16 @@ namespace Google.Apis.BlockchainNodeEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Optional. When true, the node is only accessible via Private Service Connect; no public endpoints are
+        /// exposed. Otherwise, the node is only accessible via public endpoints. Warning: Private Service Connect
+        /// enabled nodes may require a manual migration effort to remain compatible with future versions of the
+        /// product. If this feature is enabled, you will be notified of these changes along with any required action to
+        /// avoid disruption. See https://cloud.google.com/vpc/docs/private-service-connect.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateServiceConnectEnabled")]
+        public virtual System.Nullable<bool> PrivateServiceConnectEnabled { get; set; }
+
         /// <summary>Output only. A status representing the state of the node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }

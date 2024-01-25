@@ -2425,6 +2425,10 @@ namespace Google.Apis.WorkloadManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
         public virtual string Severity { get; set; }
 
+        /// <summary>List of user-defined tags</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IList<string> Tags { get; set; }
+
         /// <summary>the docuement url for the rule</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
@@ -2775,6 +2779,10 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// <summary>resource name</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual string Resource { get; set; }
+
+        /// <summary>resource type</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

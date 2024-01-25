@@ -12524,7 +12524,7 @@ namespace Google.Apis.Aiplatform.v1beta1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The resource name of the Location to create FeatureOnlineStores. Format:
-                /// `projects/{project}/locations/{location}'`
+                /// `projects/{project}/locations/{location}`
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Aiplatform.v1beta1.Data.GoogleCloudAiplatformV1beta1FeatureOnlineStore body, string parent)
                 {
@@ -12544,7 +12544,7 @@ namespace Google.Apis.Aiplatform.v1beta1
 
                     /// <summary>
                     /// Required. The resource name of the Location to create FeatureOnlineStores. Format:
-                    /// `projects/{project}/locations/{location}'`
+                    /// `projects/{project}/locations/{location}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -40088,7 +40088,7 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
 
         /// <summary>Language filter result from SAFT LangId.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageFilterResult")]
-        public virtual LearningServingLlmLanguageFilterResult LanguageFilterResult { get; set; }
+        public virtual LearningGenaiRootLanguageFilterResult LanguageFilterResult { get; set; }
 
         /// <summary>The RAI signals for the text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("raiSignals")]
@@ -42664,6 +42664,10 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// <summary>Operation metadata for PersistentResource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
         public virtual GoogleCloudAiplatformV1beta1GenericOperationMetadata GenericMetadata { get; set; }
+
+        /// <summary>Progress Message for Create LRO</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progressMessage")]
+        public virtual string ProgressMessage { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -51270,7 +51274,7 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
 
         /// <summary>
         /// Output only. Source of a model. It can either be automl training pipeline, custom training pipeline,
-        /// BigQuery ML, or existing Vertex AI Model.
+        /// BigQuery ML, or saved and tuned from Genie or Model Garden.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelSourceInfo")]
         public virtual GoogleCloudAiplatformV1beta1ModelSourceInfo ModelSourceInfo { get; set; }
@@ -54535,6 +54539,13 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
     public class GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. The default runtime for the PipelineJob. If not provided, Vertex Custom Job is used as the
+        /// runtime. For Vertex Custom Job, please refer to https://cloud.google.com/vertex-ai/docs/training/overview
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultRuntime")]
+        public virtual GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigDefaultRuntime DefaultRuntime { get; set; }
+
+        /// <summary>
         /// Represents the failure policy of a pipeline. Currently, the default of a pipeline is that the pipeline will
         /// continue to run until no more tasks can be executed, also known as PIPELINE_FAILURE_POLICY_FAIL_SLOW.
         /// However, if a pipeline is set to PIPELINE_FAILURE_POLICY_FAIL_FAST, it will stop scheduling any new tasks
@@ -54582,6 +54593,17 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The default runtime for the PipelineJob.</summary>
+    public class GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigDefaultRuntime : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Persistent resource based runtime detail.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("persistentResourceRuntimeDetail")]
+        public virtual GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigPersistentResourceRuntimeDetail PersistentResourceRuntimeDetail { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The type of an input artifact.</summary>
     public class GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigInputArtifact : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -54592,6 +54614,23 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("artifactId")]
         public virtual string ArtifactId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Persistent resource based runtime detail. For more information, refer to
+    /// https://cloud.google.com/vertex-ai/docs/training/persistent-resource-overview
+    /// </summary>
+    public class GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigPersistentResourceRuntimeDetail : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Persistent resource name. Format:
+        /// `projects/{project}/locations/{location}/persistentResources/{persistent_resource}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("persistentResourceName")]
+        public virtual string PersistentResourceName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -56040,9 +56079,7 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// LINT.IfChange(report_event_message_types) Request message for NotebookInternalService.ReportRuntimeEvent.
-    /// </summary>
+    /// <summary>Request message for NotebookInternalService.ReportRuntimeEvent.</summary>
     public class GoogleCloudAiplatformV1beta1ReportRuntimeEventRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. The details of the request for debug.</summary>
@@ -63787,6 +63824,10 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
         public virtual GoogleCloudAiplatformV1beta1GenericOperationMetadata GenericMetadata { get; set; }
 
+        /// <summary>Progress Message for Update LRO</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progressMessage")]
+        public virtual string ProgressMessage { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -64818,7 +64859,7 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
     /// <summary>
     /// The proto defines the attribution information for a document using whatever fields are most applicable for that
     /// document's datasource. For example, a Wikipedia article's attribution is in the form of its article title, a
-    /// website is in the form of a URL, and a Github repo is in the form of a repo name. Next id:28
+    /// website is in the form of a URL, and a Github repo is in the form of a repo name. Next id: 30
     /// </summary>
     public class LanguageLabsAidaTrustRecitationProtoDocAttribution : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -64833,6 +64874,10 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("bibkey")]
         public virtual string Bibkey { get; set; }
+
+        /// <summary>ID of the paper in bioarxiv like ddoi.org/{biorxiv_id} eg: https://doi.org/10.1101/343517</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("biorxivId")]
+        public virtual string BiorxivId { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("bookTitle")]
         public virtual string BookTitle { get; set; }
@@ -64930,6 +64975,10 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wikipediaArticleTitle")]
         public virtual string WikipediaArticleTitle { get; set; }
+
+        /// <summary>The unique video id from Youtube. Example: AkoGsW52Ir0</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("youtubeVideoId")]
+        public virtual string YoutubeVideoId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -65033,7 +65082,7 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
     /// <summary>
     /// The proto defines the attribution information for a document using whatever fields are most applicable for that
     /// document's datasource. For example, a Wikipedia article's attribution is in the form of its article title, a
-    /// website is in the form of a URL, and a Github repo is in the form of a repo name. Next id: 28
+    /// website is in the form of a URL, and a Github repo is in the form of a repo name. Next id: 30
     /// </summary>
     public class LearningGenaiRecitationDocAttribution : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -65048,6 +65097,10 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("bibkey")]
         public virtual string Bibkey { get; set; }
+
+        /// <summary>ID of the paper in bioarxiv like ddoi.org/{biorxiv_id} eg: https://doi.org/10.1101/343517</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("biorxivId")]
+        public virtual string BiorxivId { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("bookTitle")]
         public virtual string BookTitle { get; set; }
@@ -65143,6 +65196,9 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wikipediaArticleTitle")]
         public virtual string WikipediaArticleTitle { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("youtubeVideoId")]
+        public virtual string YoutubeVideoId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -65336,7 +65392,7 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         public virtual string DefaultMetadata { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("languageFilterResult")]
-        public virtual LearningServingLlmLanguageFilterResult LanguageFilterResult { get; set; }
+        public virtual LearningGenaiRootLanguageFilterResult LanguageFilterResult { get; set; }
 
         /// <summary>Safety filter output information for LLM Root RAI harm check.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("raiOutput")]
@@ -65356,6 +65412,53 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("toxicityResult")]
         public virtual LearningGenaiRootToxicityResult ToxicityResult { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class LearningGenaiRootGroundingMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("citations")]
+        public virtual System.Collections.Generic.IList<LearningGenaiRootGroundingMetadataCitation> Citations { get; set; }
+
+        /// <summary>True if grounding is cancelled, for example, no facts being retrieved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groundingCancelled")]
+        public virtual System.Nullable<bool> GroundingCancelled { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("searchQueries")]
+        public virtual System.Collections.Generic.IList<string> SearchQueries { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class LearningGenaiRootGroundingMetadataCitation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Index in the prediction output where the citation ends (exclusive). Must be &amp;gt; start_index and
+        /// &amp;lt; len(output).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endIndex")]
+        public virtual System.Nullable<int> EndIndex { get; set; }
+
+        /// <summary>
+        /// Index of the fact supporting this claim. Should be within the range of the `world_facts` in the
+        /// GenerateResponse.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("factIndex")]
+        public virtual System.Nullable<int> FactIndex { get; set; }
+
+        /// <summary>Confidence score of this entailment. Value is [0,1] with 1 is the most confidence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<double> Score { get; set; }
+
+        /// <summary>
+        /// Index in the prediction output where the citation starts (inclusive). Must be &amp;gt;= 0 and &amp;lt;
+        /// end_index.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
+        public virtual System.Nullable<int> StartIndex { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -65469,6 +65572,24 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
     {
         [Newtonsoft.Json.JsonPropertyAttribute("scoredTokens")]
         public virtual System.Collections.Generic.IList<LearningGenaiRootScoredToken> ScoredTokens { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class LearningGenaiRootLanguageFilterResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>False when query or response should be filtered out due to unsupported language.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowed")]
+        public virtual System.Nullable<bool> Allowed { get; set; }
+
+        /// <summary>Language of the query or response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectedLanguage")]
+        public virtual string DetectedLanguage { get; set; }
+
+        /// <summary>Probability of the language predicted as returned by LangID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectedLanguageProbability")]
+        public virtual System.Nullable<float> DetectedLanguageProbability { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -65870,24 +65991,6 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    public class LearningServingLlmLanguageFilterResult : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>False when query or response should be filtered out due to unsupported language.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("allowed")]
-        public virtual System.Nullable<bool> Allowed { get; set; }
-
-        /// <summary>Language of the query or response.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("detectedLanguage")]
-        public virtual string DetectedLanguage { get; set; }
-
-        /// <summary>Probability of the language predicted as returned by LangID.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("detectedLanguageProbability")]
-        public virtual System.Nullable<float> DetectedLanguageProbability { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>LINT.IfChange This metadata contains additional information required for debugging.</summary>
     public class LearningServingLlmMessageMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -65919,6 +66022,9 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// <summary>NOT YET IMPLEMENTED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finishReason")]
         public virtual string FinishReason { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("groundingMetadata")]
+        public virtual LearningGenaiRootGroundingMetadata GroundingMetadata { get; set; }
 
         /// <summary>
         /// Applies to Response message only. Indicates whether the message is a fallback and the response would have

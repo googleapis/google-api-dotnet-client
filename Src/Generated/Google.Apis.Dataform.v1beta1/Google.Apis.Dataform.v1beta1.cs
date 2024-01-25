@@ -700,6 +700,10 @@ namespace Google.Apis.Dataform.v1beta1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
+                        /// <summary>Optional. Filter for the returned list.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
                         /// <summary>
                         /// Optional. Maximum number of compilation results to return. The server may return fewer items
                         /// than requested. If unspecified, the server will pick an appropriate default.
@@ -735,6 +739,14 @@ namespace Google.Apis.Dataform.v1beta1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                             RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                             {
@@ -4672,7 +4684,9 @@ namespace Google.Apis.Dataform.v1beta1.Data
 
         /// <summary>
         /// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`,
-        /// or `roles/owner`.
+        /// or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM
+        /// documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined
+        /// roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }

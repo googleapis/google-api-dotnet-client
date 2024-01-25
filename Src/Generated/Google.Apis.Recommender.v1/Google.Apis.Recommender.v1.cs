@@ -4890,6 +4890,10 @@ namespace Google.Apis.Recommender.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("stateInfo")]
         public virtual GoogleCloudRecommenderV1RecommendationStateInfo StateInfo { get; set; }
 
+        /// <summary>Fully qualified resource names that this recommendation is targeting.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetResources")]
+        public virtual System.Collections.Generic.IList<string> TargetResources { get; set; }
+
         /// <summary>
         /// Corresponds to a mutually exclusive group ID within a recommender. A non-empty ID indicates that the
         /// recommendation belongs to a mutually exclusive group. This means that only one recommendation within the
