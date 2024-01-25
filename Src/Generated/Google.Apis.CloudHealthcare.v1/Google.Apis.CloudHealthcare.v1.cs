@@ -634,7 +634,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// <summary>Updates the specified Attribute definition.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
-                        /// Resource name of the Attribute definition, of the form
+                        /// Identifier. Resource name of the Attribute definition, of the form
                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`.
                         /// Cannot be changed after creation.
                         /// </param>
@@ -655,7 +655,7 @@ namespace Google.Apis.CloudHealthcare.v1
                             }
 
                             /// <summary>
-                            /// Resource name of the Attribute definition, of the form
+                            /// Identifier. Resource name of the Attribute definition, of the form
                             /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`.
                             /// Cannot be changed after creation.
                             /// </summary>
@@ -3044,7 +3044,7 @@ namespace Google.Apis.CloudHealthcare.v1
 
                                 /// <summary>GetSeriesMetrics returns metrics for a series.</summary>
                                 /// <param name="series">
-                                /// The series resource path. For example,
+                                /// Required. The series resource path. For example,
                                 /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}/dicomWeb/studies/{study_uid}/series/{series_uid}`.
                                 /// </param>
                                 public virtual GetSeriesMetricsRequest GetSeriesMetrics(string series)
@@ -3063,7 +3063,7 @@ namespace Google.Apis.CloudHealthcare.v1
                                     }
 
                                     /// <summary>
-                                    /// The series resource path. For example,
+                                    /// Required. The series resource path. For example,
                                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}/dicomWeb/studies/{study_uid}/series/{series_uid}`.
                                     /// </summary>
                                     [Google.Apis.Util.RequestParameterAttribute("series", Google.Apis.Util.RequestParameterType.Path)]
@@ -3096,7 +3096,7 @@ namespace Google.Apis.CloudHealthcare.v1
 
                             /// <summary>GetStudyMetrics returns metrics for a study.</summary>
                             /// <param name="study">
-                            /// The study resource path. For example,
+                            /// Required. The study resource path. For example,
                             /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}/dicomWeb/studies/{study_uid}`.
                             /// </param>
                             public virtual GetStudyMetricsRequest GetStudyMetrics(string study)
@@ -3115,7 +3115,7 @@ namespace Google.Apis.CloudHealthcare.v1
                                 }
 
                                 /// <summary>
-                                /// The study resource path. For example,
+                                /// Required. The study resource path. For example,
                                 /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}/dicomWeb/studies/{study_uid}`.
                                 /// </summary>
                                 [Google.Apis.Util.RequestParameterAttribute("study", Google.Apis.Util.RequestParameterType.Path)]
@@ -3229,11 +3229,11 @@ namespace Google.Apis.CloudHealthcare.v1
                                     /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-dicom).
                                     /// </summary>
                                     /// <param name="parent">
-                                    /// The name of the DICOM store that is being accessed. For example,
+                                    /// Required. The name of the DICOM store that is being accessed. For example,
                                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
                                     /// </param>
                                     /// <param name="dicomWebPath">
-                                    /// The path of the RetrieveFrames DICOMweb request. For example,
+                                    /// Required. The path of the RetrieveFrames DICOMweb request. For example,
                                     /// `studies/{study_uid}/series/{series_uid}/instances/{instance_uid}/frames/{frame_list}`.
                                     /// </param>
                                     public virtual RetrieveFramesRequest RetrieveFrames(string parent, string dicomWebPath)
@@ -3262,14 +3262,14 @@ namespace Google.Apis.CloudHealthcare.v1
                                         }
 
                                         /// <summary>
-                                        /// The name of the DICOM store that is being accessed. For example,
+                                        /// Required. The name of the DICOM store that is being accessed. For example,
                                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
                                         /// </summary>
                                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                                         public virtual string Parent { get; private set; }
 
                                         /// <summary>
-                                        /// The path of the RetrieveFrames DICOMweb request. For example,
+                                        /// Required. The path of the RetrieveFrames DICOMweb request. For example,
                                         /// `studies/{study_uid}/series/{series_uid}/instances/{instance_uid}/frames/{frame_list}`.
                                         /// </summary>
                                         [Google.Apis.Util.RequestParameterAttribute("dicomWebPath", Google.Apis.Util.RequestParameterType.Path)]
@@ -3319,11 +3319,11 @@ namespace Google.Apis.CloudHealthcare.v1
                                     /// formats](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-consumer).
                                     /// </summary>
                                     /// <param name="parent">
-                                    /// The name of the DICOM store that is being accessed. For example,
+                                    /// Required. The name of the DICOM store that is being accessed. For example,
                                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
                                     /// </param>
                                     /// <param name="dicomWebPath">
-                                    /// The path of the RetrieveRenderedFrames DICOMweb request. For example,
+                                    /// Required. The path of the RetrieveRenderedFrames DICOMweb request. For example,
                                     /// `studies/{study_uid}/series/{series_uid}/instances/{instance_uid}/frames/{frame_list}/rendered`.
                                     /// </param>
                                     public virtual RetrieveRenderedRequest RetrieveRendered(string parent, string dicomWebPath)
@@ -3353,14 +3353,15 @@ namespace Google.Apis.CloudHealthcare.v1
                                         }
 
                                         /// <summary>
-                                        /// The name of the DICOM store that is being accessed. For example,
+                                        /// Required. The name of the DICOM store that is being accessed. For example,
                                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
                                         /// </summary>
                                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                                         public virtual string Parent { get; private set; }
 
                                         /// <summary>
-                                        /// The path of the RetrieveRenderedFrames DICOMweb request. For example,
+                                        /// Required. The path of the RetrieveRenderedFrames DICOMweb request. For
+                                        /// example,
                                         /// `studies/{study_uid}/series/{series_uid}/instances/{instance_uid}/frames/{frame_list}/rendered`.
                                         /// </summary>
                                         [Google.Apis.Util.RequestParameterAttribute("dicomWebPath", Google.Apis.Util.RequestParameterType.Path)]
@@ -3408,11 +3409,11 @@ namespace Google.Apis.CloudHealthcare.v1
                                 /// instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#delete-dicom).
                                 /// </summary>
                                 /// <param name="parent">
-                                /// The name of the DICOM store that is being accessed. For example,
+                                /// Required. The name of the DICOM store that is being accessed. For example,
                                 /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
                                 /// </param>
                                 /// <param name="dicomWebPath">
-                                /// The path of the DeleteInstance request. For example,
+                                /// Required. The path of the DeleteInstance request. For example,
                                 /// `studies/{study_uid}/series/{series_uid}/instances/{instance_uid}`.
                                 /// </param>
                                 public virtual DeleteRequest Delete(string parent, string dicomWebPath)
@@ -3439,14 +3440,14 @@ namespace Google.Apis.CloudHealthcare.v1
                                     }
 
                                     /// <summary>
-                                    /// The name of the DICOM store that is being accessed. For example,
+                                    /// Required. The name of the DICOM store that is being accessed. For example,
                                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
                                     /// </summary>
                                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                                     public virtual string Parent { get; private set; }
 
                                     /// <summary>
-                                    /// The path of the DeleteInstance request. For example,
+                                    /// Required. The path of the DeleteInstance request. For example,
                                     /// `studies/{study_uid}/series/{series_uid}/instances/{instance_uid}`.
                                     /// </summary>
                                     [Google.Apis.Util.RequestParameterAttribute("dicomWebPath", Google.Apis.Util.RequestParameterType.Path)]
@@ -3497,11 +3498,11 @@ namespace Google.Apis.CloudHealthcare.v1
                                 /// instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-instance).
                                 /// </summary>
                                 /// <param name="parent">
-                                /// The name of the DICOM store that is being accessed. For example,
+                                /// Required. The name of the DICOM store that is being accessed. For example,
                                 /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
                                 /// </param>
                                 /// <param name="dicomWebPath">
-                                /// The path of the RetrieveInstance DICOMweb request. For example,
+                                /// Required. The path of the RetrieveInstance DICOMweb request. For example,
                                 /// `studies/{study_uid}/series/{series_uid}/instances/{instance_uid}`.
                                 /// </param>
                                 public virtual RetrieveInstanceRequest RetrieveInstance(string parent, string dicomWebPath)
@@ -3532,14 +3533,14 @@ namespace Google.Apis.CloudHealthcare.v1
                                     }
 
                                     /// <summary>
-                                    /// The name of the DICOM store that is being accessed. For example,
+                                    /// Required. The name of the DICOM store that is being accessed. For example,
                                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
                                     /// </summary>
                                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                                     public virtual string Parent { get; private set; }
 
                                     /// <summary>
-                                    /// The path of the RetrieveInstance DICOMweb request. For example,
+                                    /// Required. The path of the RetrieveInstance DICOMweb request. For example,
                                     /// `studies/{study_uid}/series/{series_uid}/instances/{instance_uid}`.
                                     /// </summary>
                                     [Google.Apis.Util.RequestParameterAttribute("dicomWebPath", Google.Apis.Util.RequestParameterType.Path)]
@@ -3589,11 +3590,11 @@ namespace Google.Apis.CloudHealthcare.v1
                                 /// metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-metadata).
                                 /// </summary>
                                 /// <param name="parent">
-                                /// The name of the DICOM store that is being accessed. For example,
+                                /// Required. The name of the DICOM store that is being accessed. For example,
                                 /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
                                 /// </param>
                                 /// <param name="dicomWebPath">
-                                /// The path of the RetrieveInstanceMetadata DICOMweb request. For example,
+                                /// Required. The path of the RetrieveInstanceMetadata DICOMweb request. For example,
                                 /// `studies/{study_uid}/series/{series_uid}/instances/{instance_uid}/metadata`.
                                 /// </param>
                                 public virtual RetrieveMetadataRequest RetrieveMetadata(string parent, string dicomWebPath)
@@ -3623,14 +3624,15 @@ namespace Google.Apis.CloudHealthcare.v1
                                     }
 
                                     /// <summary>
-                                    /// The name of the DICOM store that is being accessed. For example,
+                                    /// Required. The name of the DICOM store that is being accessed. For example,
                                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
                                     /// </summary>
                                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                                     public virtual string Parent { get; private set; }
 
                                     /// <summary>
-                                    /// The path of the RetrieveInstanceMetadata DICOMweb request. For example,
+                                    /// Required. The path of the RetrieveInstanceMetadata DICOMweb request. For
+                                    /// example,
                                     /// `studies/{study_uid}/series/{series_uid}/instances/{instance_uid}/metadata`.
                                     /// </summary>
                                     [Google.Apis.Util.RequestParameterAttribute("dicomWebPath", Google.Apis.Util.RequestParameterType.Path)]
@@ -3679,11 +3681,11 @@ namespace Google.Apis.CloudHealthcare.v1
                                 /// formats](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-consumer).
                                 /// </summary>
                                 /// <param name="parent">
-                                /// The name of the DICOM store that is being accessed. For example,
+                                /// Required. The name of the DICOM store that is being accessed. For example,
                                 /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
                                 /// </param>
                                 /// <param name="dicomWebPath">
-                                /// The path of the RetrieveRenderedInstance DICOMweb request. For example,
+                                /// Required. The path of the RetrieveRenderedInstance DICOMweb request. For example,
                                 /// `studies/{study_uid}/series/{series_uid}/instances/{instance_uid}/rendered`.
                                 /// </param>
                                 public virtual RetrieveRenderedRequest RetrieveRendered(string parent, string dicomWebPath)
@@ -3712,14 +3714,15 @@ namespace Google.Apis.CloudHealthcare.v1
                                     }
 
                                     /// <summary>
-                                    /// The name of the DICOM store that is being accessed. For example,
+                                    /// Required. The name of the DICOM store that is being accessed. For example,
                                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
                                     /// </summary>
                                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                                     public virtual string Parent { get; private set; }
 
                                     /// <summary>
-                                    /// The path of the RetrieveRenderedInstance DICOMweb request. For example,
+                                    /// Required. The path of the RetrieveRenderedInstance DICOMweb request. For
+                                    /// example,
                                     /// `studies/{study_uid}/series/{series_uid}/instances/{instance_uid}/rendered`.
                                     /// </summary>
                                     [Google.Apis.Util.RequestParameterAttribute("dicomWebPath", Google.Apis.Util.RequestParameterType.Path)]
@@ -3768,11 +3771,11 @@ namespace Google.Apis.CloudHealthcare.v1
                             /// instance](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#delete-dicom).
                             /// </summary>
                             /// <param name="parent">
-                            /// The name of the DICOM store that is being accessed. For example,
+                            /// Required. The name of the DICOM store that is being accessed. For example,
                             /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
                             /// </param>
                             /// <param name="dicomWebPath">
-                            /// The path of the DeleteSeries request. For example,
+                            /// Required. The path of the DeleteSeries request. For example,
                             /// `studies/{study_uid}/series/{series_uid}`.
                             /// </param>
                             public virtual DeleteRequest Delete(string parent, string dicomWebPath)
@@ -3800,14 +3803,14 @@ namespace Google.Apis.CloudHealthcare.v1
                                 }
 
                                 /// <summary>
-                                /// The name of the DICOM store that is being accessed. For example,
+                                /// Required. The name of the DICOM store that is being accessed. For example,
                                 /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
                                 /// </summary>
                                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                                 public virtual string Parent { get; private set; }
 
                                 /// <summary>
-                                /// The path of the DeleteSeries request. For example,
+                                /// Required. The path of the DeleteSeries request. For example,
                                 /// `studies/{study_uid}/series/{series_uid}`.
                                 /// </summary>
                                 [Google.Apis.Util.RequestParameterAttribute("dicomWebPath", Google.Apis.Util.RequestParameterType.Path)]
@@ -3856,11 +3859,11 @@ namespace Google.Apis.CloudHealthcare.v1
                             /// metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-metadata).
                             /// </summary>
                             /// <param name="parent">
-                            /// The name of the DICOM store that is being accessed. For example,
+                            /// Required. The name of the DICOM store that is being accessed. For example,
                             /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
                             /// </param>
                             /// <param name="dicomWebPath">
-                            /// The path of the RetrieveSeriesMetadata DICOMweb request. For example,
+                            /// Required. The path of the RetrieveSeriesMetadata DICOMweb request. For example,
                             /// `studies/{study_uid}/series/{series_uid}/metadata`.
                             /// </param>
                             public virtual RetrieveMetadataRequest RetrieveMetadata(string parent, string dicomWebPath)
@@ -3889,14 +3892,14 @@ namespace Google.Apis.CloudHealthcare.v1
                                 }
 
                                 /// <summary>
-                                /// The name of the DICOM store that is being accessed. For example,
+                                /// Required. The name of the DICOM store that is being accessed. For example,
                                 /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
                                 /// </summary>
                                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                                 public virtual string Parent { get; private set; }
 
                                 /// <summary>
-                                /// The path of the RetrieveSeriesMetadata DICOMweb request. For example,
+                                /// Required. The path of the RetrieveSeriesMetadata DICOMweb request. For example,
                                 /// `studies/{study_uid}/series/{series_uid}/metadata`.
                                 /// </summary>
                                 [Google.Apis.Util.RequestParameterAttribute("dicomWebPath", Google.Apis.Util.RequestParameterType.Path)]
@@ -3945,11 +3948,11 @@ namespace Google.Apis.CloudHealthcare.v1
                             /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-dicom).
                             /// </summary>
                             /// <param name="parent">
-                            /// The name of the DICOM store that is being accessed. For example,
+                            /// Required. The name of the DICOM store that is being accessed. For example,
                             /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
                             /// </param>
                             /// <param name="dicomWebPath">
-                            /// The path of the RetrieveSeries DICOMweb request. For example,
+                            /// Required. The path of the RetrieveSeries DICOMweb request. For example,
                             /// `studies/{study_uid}/series/{series_uid}`.
                             /// </param>
                             public virtual RetrieveSeriesRequest RetrieveSeries(string parent, string dicomWebPath)
@@ -3978,14 +3981,14 @@ namespace Google.Apis.CloudHealthcare.v1
                                 }
 
                                 /// <summary>
-                                /// The name of the DICOM store that is being accessed. For example,
+                                /// Required. The name of the DICOM store that is being accessed. For example,
                                 /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
                                 /// </summary>
                                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                                 public virtual string Parent { get; private set; }
 
                                 /// <summary>
-                                /// The path of the RetrieveSeries DICOMweb request. For example,
+                                /// Required. The path of the RetrieveSeries DICOMweb request. For example,
                                 /// `studies/{study_uid}/series/{series_uid}`.
                                 /// </summary>
                                 [Google.Apis.Util.RequestParameterAttribute("dicomWebPath", Google.Apis.Util.RequestParameterType.Path)]
@@ -4033,12 +4036,12 @@ namespace Google.Apis.CloudHealthcare.v1
                             /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom).
                             /// </summary>
                             /// <param name="parent">
-                            /// The name of the DICOM store that is being accessed. For example,
+                            /// Required. The name of the DICOM store that is being accessed. For example,
                             /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
                             /// </param>
                             /// <param name="dicomWebPath">
-                            /// The path of the SearchForInstancesRequest DICOMweb request. For example, `instances`,
-                            /// `series/{series_uid}/instances`, or `studies/{study_uid}/instances`.
+                            /// Required. The path of the SearchForInstancesRequest DICOMweb request. For example,
+                            /// `instances`, `series/{series_uid}/instances`, or `studies/{study_uid}/instances`.
                             /// </param>
                             public virtual SearchForInstancesRequest SearchForInstances(string parent, string dicomWebPath)
                             {
@@ -4065,14 +4068,14 @@ namespace Google.Apis.CloudHealthcare.v1
                                 }
 
                                 /// <summary>
-                                /// The name of the DICOM store that is being accessed. For example,
+                                /// Required. The name of the DICOM store that is being accessed. For example,
                                 /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
                                 /// </summary>
                                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                                 public virtual string Parent { get; private set; }
 
                                 /// <summary>
-                                /// The path of the SearchForInstancesRequest DICOMweb request. For example,
+                                /// Required. The path of the SearchForInstancesRequest DICOMweb request. For example,
                                 /// `instances`, `series/{series_uid}/instances`, or `studies/{study_uid}/instances`.
                                 /// </summary>
                                 [Google.Apis.Util.RequestParameterAttribute("dicomWebPath", Google.Apis.Util.RequestParameterType.Path)]
@@ -4121,7 +4124,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// </summary>
                         /// <param name="parent"><c>null</c></param>
                         /// <param name="dicomWebPath">
-                        /// The path of the DeleteStudy request. For example, `studies/{study_uid}`.
+                        /// Required. The path of the DeleteStudy request. For example, `studies/{study_uid}`.
                         /// </param>
                         public virtual DeleteRequest Delete(string parent, string dicomWebPath)
                         {
@@ -4150,7 +4153,7 @@ namespace Google.Apis.CloudHealthcare.v1
                             public virtual string Parent { get; private set; }
 
                             /// <summary>
-                            /// The path of the DeleteStudy request. For example, `studies/{study_uid}`.
+                            /// Required. The path of the DeleteStudy request. For example, `studies/{study_uid}`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("dicomWebPath", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string DicomWebPath { get; private set; }
@@ -4198,11 +4201,11 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// metadata](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-metadata).
                         /// </summary>
                         /// <param name="parent">
-                        /// The name of the DICOM store that is being accessed. For example,
+                        /// Required. The name of the DICOM store that is being accessed. For example,
                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
                         /// </param>
                         /// <param name="dicomWebPath">
-                        /// The path of the RetrieveStudyMetadata DICOMweb request. For example,
+                        /// Required. The path of the RetrieveStudyMetadata DICOMweb request. For example,
                         /// `studies/{study_uid}/metadata`.
                         /// </param>
                         public virtual RetrieveMetadataRequest RetrieveMetadata(string parent, string dicomWebPath)
@@ -4231,14 +4234,14 @@ namespace Google.Apis.CloudHealthcare.v1
                             }
 
                             /// <summary>
-                            /// The name of the DICOM store that is being accessed. For example,
+                            /// Required. The name of the DICOM store that is being accessed. For example,
                             /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
                             /// <summary>
-                            /// The path of the RetrieveStudyMetadata DICOMweb request. For example,
+                            /// Required. The path of the RetrieveStudyMetadata DICOMweb request. For example,
                             /// `studies/{study_uid}/metadata`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("dicomWebPath", Google.Apis.Util.RequestParameterType.Path)]
@@ -4286,11 +4289,12 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#retrieve-dicom).
                         /// </summary>
                         /// <param name="parent">
-                        /// The name of the DICOM store that is being accessed. For example,
+                        /// Required. The name of the DICOM store that is being accessed. For example,
                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
                         /// </param>
                         /// <param name="dicomWebPath">
-                        /// The path of the RetrieveStudy DICOMweb request. For example, `studies/{study_uid}`.
+                        /// Required. The path of the RetrieveStudy DICOMweb request. For example,
+                        /// `studies/{study_uid}`.
                         /// </param>
                         public virtual RetrieveStudyRequest RetrieveStudy(string parent, string dicomWebPath)
                         {
@@ -4317,14 +4321,15 @@ namespace Google.Apis.CloudHealthcare.v1
                             }
 
                             /// <summary>
-                            /// The name of the DICOM store that is being accessed. For example,
+                            /// Required. The name of the DICOM store that is being accessed. For example,
                             /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
                             /// <summary>
-                            /// The path of the RetrieveStudy DICOMweb request. For example, `studies/{study_uid}`.
+                            /// Required. The path of the RetrieveStudy DICOMweb request. For example,
+                            /// `studies/{study_uid}`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("dicomWebPath", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string DicomWebPath { get; private set; }
@@ -4371,12 +4376,12 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom).
                         /// </summary>
                         /// <param name="parent">
-                        /// The name of the DICOM store that is being accessed. For example,
+                        /// Required. The name of the DICOM store that is being accessed. For example,
                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
                         /// </param>
                         /// <param name="dicomWebPath">
-                        /// The path of the SearchForInstancesRequest DICOMweb request. For example, `instances`,
-                        /// `series/{series_uid}/instances`, or `studies/{study_uid}/instances`.
+                        /// Required. The path of the SearchForInstancesRequest DICOMweb request. For example,
+                        /// `instances`, `series/{series_uid}/instances`, or `studies/{study_uid}/instances`.
                         /// </param>
                         public virtual SearchForInstancesRequest SearchForInstances(string parent, string dicomWebPath)
                         {
@@ -4403,15 +4408,15 @@ namespace Google.Apis.CloudHealthcare.v1
                             }
 
                             /// <summary>
-                            /// The name of the DICOM store that is being accessed. For example,
+                            /// Required. The name of the DICOM store that is being accessed. For example,
                             /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
                             /// <summary>
-                            /// The path of the SearchForInstancesRequest DICOMweb request. For example, `instances`,
-                            /// `series/{series_uid}/instances`, or `studies/{study_uid}/instances`.
+                            /// Required. The path of the SearchForInstancesRequest DICOMweb request. For example,
+                            /// `instances`, `series/{series_uid}/instances`, or `studies/{study_uid}/instances`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("dicomWebPath", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string DicomWebPath { get; private set; }
@@ -4458,11 +4463,11 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom).
                         /// </summary>
                         /// <param name="parent">
-                        /// The name of the DICOM store that is being accessed. For example,
+                        /// Required. The name of the DICOM store that is being accessed. For example,
                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
                         /// </param>
                         /// <param name="dicomWebPath">
-                        /// The path of the SearchForSeries DICOMweb request. For example, `series` or
+                        /// Required. The path of the SearchForSeries DICOMweb request. For example, `series` or
                         /// `studies/{study_uid}/series`.
                         /// </param>
                         public virtual SearchForSeriesRequest SearchForSeries(string parent, string dicomWebPath)
@@ -4490,14 +4495,14 @@ namespace Google.Apis.CloudHealthcare.v1
                             }
 
                             /// <summary>
-                            /// The name of the DICOM store that is being accessed. For example,
+                            /// Required. The name of the DICOM store that is being accessed. For example,
                             /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
                             /// <summary>
-                            /// The path of the SearchForSeries DICOMweb request. For example, `series` or
+                            /// Required. The path of the SearchForSeries DICOMweb request. For example, `series` or
                             /// `studies/{study_uid}/series`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("dicomWebPath", Google.Apis.Util.RequestParameterType.Path)]
@@ -4546,12 +4551,12 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">
-                        /// The name of the DICOM store that is being accessed. For example,
+                        /// Required. The name of the DICOM store that is being accessed. For example,
                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
                         /// </param>
                         /// <param name="dicomWebPath">
-                        /// The path of the StoreInstances DICOMweb request. For example, `studies/[{study_uid}]`. Note
-                        /// that the `study_uid` is optional.
+                        /// Required. The path of the StoreInstances DICOMweb request. For example,
+                        /// `studies/[{study_uid}]`. Note that the `study_uid` is optional.
                         /// </param>
                         public virtual StoreInstancesRequest StoreInstances(Google.Apis.CloudHealthcare.v1.Data.HttpBody body, string parent, string dicomWebPath)
                         {
@@ -4579,15 +4584,15 @@ namespace Google.Apis.CloudHealthcare.v1
                             }
 
                             /// <summary>
-                            /// The name of the DICOM store that is being accessed. For example,
+                            /// Required. The name of the DICOM store that is being accessed. For example,
                             /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
                             /// <summary>
-                            /// The path of the StoreInstances DICOMweb request. For example, `studies/[{study_uid}]`.
-                            /// Note that the `study_uid` is optional.
+                            /// Required. The path of the StoreInstances DICOMweb request. For example,
+                            /// `studies/[{study_uid}]`. Note that the `study_uid` is optional.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("dicomWebPath", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string DicomWebPath { get; private set; }
@@ -4633,7 +4638,7 @@ namespace Google.Apis.CloudHealthcare.v1
 
                     /// <summary>Creates a new DICOM store within the parent dataset.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="parent">The name of the dataset this DICOM store belongs to.</param>
+                    /// <param name="parent">Required. The name of the dataset this DICOM store belongs to.</param>
                     public virtual CreateRequest Create(Google.Apis.CloudHealthcare.v1.Data.DicomStore body, string parent)
                     {
                         return new CreateRequest(this.service, body, parent);
@@ -4650,13 +4655,13 @@ namespace Google.Apis.CloudHealthcare.v1
                             InitParameters();
                         }
 
-                        /// <summary>The name of the dataset this DICOM store belongs to.</summary>
+                        /// <summary>Required. The name of the dataset this DICOM store belongs to.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// The ID of the DICOM store that is being created. Any string value up to 256 characters in
-                        /// length.
+                        /// Required. The ID of the DICOM store that is being created. Any string value up to 256
+                        /// characters in length.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("dicomStoreId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string DicomStoreId { get; set; }
@@ -4710,7 +4715,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="sourceStore">
-                    /// Source DICOM store resource name. For example,
+                    /// Required. Source DICOM store resource name. For example,
                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
                     /// </param>
                     public virtual DeidentifyRequest Deidentify(Google.Apis.CloudHealthcare.v1.Data.DeidentifyDicomStoreRequest body, string sourceStore)
@@ -4738,7 +4743,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         }
 
                         /// <summary>
-                        /// Source DICOM store resource name. For example,
+                        /// Required. Source DICOM store resource name. For example,
                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("sourceStore", Google.Apis.Util.RequestParameterType.Path)]
@@ -4777,7 +4782,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     /// <summary>
                     /// Deletes the specified DICOM store and removes all images that are contained within it.
                     /// </summary>
-                    /// <param name="name">The resource name of the DICOM store to delete.</param>
+                    /// <param name="name">Required. The resource name of the DICOM store to delete.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
                         return new DeleteRequest(this.service, name);
@@ -4795,7 +4800,7 @@ namespace Google.Apis.CloudHealthcare.v1
                             InitParameters();
                         }
 
-                        /// <summary>The resource name of the DICOM store to delete.</summary>
+                        /// <summary>Required. The resource name of the DICOM store to delete.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -4831,7 +4836,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// The DICOM store resource name from which to export the data. For example,
+                    /// Required. The DICOM store resource name from which to export the data. For example,
                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
                     /// </param>
                     public virtual ExportRequest Export(Google.Apis.CloudHealthcare.v1.Data.ExportDicomDataRequest body, string name)
@@ -4856,7 +4861,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         }
 
                         /// <summary>
-                        /// The DICOM store resource name from which to export the data. For example,
+                        /// Required. The DICOM store resource name from which to export the data. For example,
                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -4893,7 +4898,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     }
 
                     /// <summary>Gets the specified DICOM store.</summary>
-                    /// <param name="name">The resource name of the DICOM store to get.</param>
+                    /// <param name="name">Required. The resource name of the DICOM store to get.</param>
                     public virtual GetRequest Get(string name)
                     {
                         return new GetRequest(this.service, name);
@@ -4909,7 +4914,7 @@ namespace Google.Apis.CloudHealthcare.v1
                             InitParameters();
                         }
 
-                        /// <summary>The resource name of the DICOM store to get.</summary>
+                        /// <summary>Required. The resource name of the DICOM store to get.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -4938,7 +4943,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     }
 
                     /// <summary>Gets metrics associated with the DICOM store.</summary>
-                    /// <param name="name">The resource name of the DICOM store to get metrics for.</param>
+                    /// <param name="name">Required. The resource name of the DICOM store to get metrics for.</param>
                     public virtual GetDICOMStoreMetricsRequest GetDICOMStoreMetrics(string name)
                     {
                         return new GetDICOMStoreMetricsRequest(this.service, name);
@@ -4954,7 +4959,7 @@ namespace Google.Apis.CloudHealthcare.v1
                             InitParameters();
                         }
 
-                        /// <summary>The resource name of the DICOM store to get metrics for.</summary>
+                        /// <summary>Required. The resource name of the DICOM store to get metrics for.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -5071,7 +5076,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// The name of the DICOM store resource into which the data is imported. For example,
+                    /// Required. The name of the DICOM store resource into which the data is imported. For example,
                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
                     /// </param>
                     public virtual ImportRequest Import(Google.Apis.CloudHealthcare.v1.Data.ImportDicomDataRequest body, string name)
@@ -5096,7 +5101,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         }
 
                         /// <summary>
-                        /// The name of the DICOM store resource into which the data is imported. For example,
+                        /// Required. The name of the DICOM store resource into which the data is imported. For example,
                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -5133,7 +5138,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     }
 
                     /// <summary>Lists the DICOM stores in the given dataset.</summary>
-                    /// <param name="parent">Name of the dataset.</param>
+                    /// <param name="parent">Required. Name of the dataset.</param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(this.service, parent);
@@ -5149,7 +5154,7 @@ namespace Google.Apis.CloudHealthcare.v1
                             InitParameters();
                         }
 
-                        /// <summary>Name of the dataset.</summary>
+                        /// <summary>Required. Name of the dataset.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
@@ -5242,7 +5247,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     /// <summary>Updates the specified DICOM store.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Resource name of the DICOM store, of the form
+                    /// Identifier. Resource name of the DICOM store, of the form
                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.CloudHealthcare.v1.Data.DicomStore body, string name)
@@ -5262,14 +5267,14 @@ namespace Google.Apis.CloudHealthcare.v1
                         }
 
                         /// <summary>
-                        /// Resource name of the DICOM store, of the form
+                        /// Identifier. Resource name of the DICOM store, of the form
                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
                         /// <summary>
-                        /// The update mask applies to the resource. For the `FieldMask` definition, see
+                        /// Required. The update mask applies to the resource. For the `FieldMask` definition, see
                         /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
@@ -5322,11 +5327,11 @@ namespace Google.Apis.CloudHealthcare.v1
                     /// [Search for DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom).
                     /// </summary>
                     /// <param name="parent">
-                    /// The name of the DICOM store that is being accessed. For example,
+                    /// Required. The name of the DICOM store that is being accessed. For example,
                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
                     /// </param>
                     /// <param name="dicomWebPath">
-                    /// The path of the SearchForInstancesRequest DICOMweb request. For example, `instances`,
+                    /// Required. The path of the SearchForInstancesRequest DICOMweb request. For example, `instances`,
                     /// `series/{series_uid}/instances`, or `studies/{study_uid}/instances`.
                     /// </param>
                     public virtual SearchForInstancesRequest SearchForInstances(string parent, string dicomWebPath)
@@ -5353,15 +5358,15 @@ namespace Google.Apis.CloudHealthcare.v1
                         }
 
                         /// <summary>
-                        /// The name of the DICOM store that is being accessed. For example,
+                        /// Required. The name of the DICOM store that is being accessed. For example,
                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// The path of the SearchForInstancesRequest DICOMweb request. For example, `instances`,
-                        /// `series/{series_uid}/instances`, or `studies/{study_uid}/instances`.
+                        /// Required. The path of the SearchForInstancesRequest DICOMweb request. For example,
+                        /// `instances`, `series/{series_uid}/instances`, or `studies/{study_uid}/instances`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("dicomWebPath", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string DicomWebPath { get; private set; }
@@ -5407,11 +5412,11 @@ namespace Google.Apis.CloudHealthcare.v1
                     /// [Search for DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom).
                     /// </summary>
                     /// <param name="parent">
-                    /// The name of the DICOM store that is being accessed. For example,
+                    /// Required. The name of the DICOM store that is being accessed. For example,
                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
                     /// </param>
                     /// <param name="dicomWebPath">
-                    /// The path of the SearchForSeries DICOMweb request. For example, `series` or
+                    /// Required. The path of the SearchForSeries DICOMweb request. For example, `series` or
                     /// `studies/{study_uid}/series`.
                     /// </param>
                     public virtual SearchForSeriesRequest SearchForSeries(string parent, string dicomWebPath)
@@ -5438,14 +5443,14 @@ namespace Google.Apis.CloudHealthcare.v1
                         }
 
                         /// <summary>
-                        /// The name of the DICOM store that is being accessed. For example,
+                        /// Required. The name of the DICOM store that is being accessed. For example,
                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// The path of the SearchForSeries DICOMweb request. For example, `series` or
+                        /// Required. The path of the SearchForSeries DICOMweb request. For example, `series` or
                         /// `studies/{study_uid}/series`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("dicomWebPath", Google.Apis.Util.RequestParameterType.Path)]
@@ -5492,11 +5497,11 @@ namespace Google.Apis.CloudHealthcare.v1
                     /// [Search for DICOM data](https://cloud.google.com/healthcare/docs/how-tos/dicomweb#search-dicom).
                     /// </summary>
                     /// <param name="parent">
-                    /// The name of the DICOM store that is being accessed. For example,
+                    /// Required. The name of the DICOM store that is being accessed. For example,
                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
                     /// </param>
                     /// <param name="dicomWebPath">
-                    /// The path of the SearchForStudies DICOMweb request. For example, `studies`.
+                    /// Required. The path of the SearchForStudies DICOMweb request. For example, `studies`.
                     /// </param>
                     public virtual SearchForStudiesRequest SearchForStudies(string parent, string dicomWebPath)
                     {
@@ -5522,14 +5527,14 @@ namespace Google.Apis.CloudHealthcare.v1
                         }
 
                         /// <summary>
-                        /// The name of the DICOM store that is being accessed. For example,
+                        /// Required. The name of the DICOM store that is being accessed. For example,
                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// The path of the SearchForStudies DICOMweb request. For example, `studies`.
+                        /// Required. The path of the SearchForStudies DICOMweb request. For example, `studies`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("dicomWebPath", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string DicomWebPath { get; private set; }
@@ -5644,12 +5649,12 @@ namespace Google.Apis.CloudHealthcare.v1
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
-                    /// The name of the DICOM store that is being accessed. For example,
+                    /// Required. The name of the DICOM store that is being accessed. For example,
                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
                     /// </param>
                     /// <param name="dicomWebPath">
-                    /// The path of the StoreInstances DICOMweb request. For example, `studies/[{study_uid}]`. Note that
-                    /// the `study_uid` is optional.
+                    /// Required. The path of the StoreInstances DICOMweb request. For example, `studies/[{study_uid}]`.
+                    /// Note that the `study_uid` is optional.
                     /// </param>
                     public virtual StoreInstancesRequest StoreInstances(Google.Apis.CloudHealthcare.v1.Data.HttpBody body, string parent, string dicomWebPath)
                     {
@@ -5677,15 +5682,15 @@ namespace Google.Apis.CloudHealthcare.v1
                         }
 
                         /// <summary>
-                        /// The name of the DICOM store that is being accessed. For example,
+                        /// Required. The name of the DICOM store that is being accessed. For example,
                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// The path of the StoreInstances DICOMweb request. For example, `studies/[{study_uid}]`. Note
-                        /// that the `study_uid` is optional.
+                        /// Required. The path of the StoreInstances DICOMweb request. For example,
+                        /// `studies/[{study_uid}]`. Note that the `study_uid` is optional.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("dicomWebPath", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string DicomWebPath { get; private set; }
@@ -5857,7 +5862,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// resources](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#getting_all_patient_compartment_resources).
                         /// </summary>
                         /// <param name="name">
-                        /// Name of the `Patient` resource for which the information is required.
+                        /// Required. Name of the `Patient` resource for which the information is required.
                         /// </param>
                         public virtual PatientEverythingRequest PatientEverything(string name)
                         {
@@ -5894,13 +5899,15 @@ namespace Google.Apis.CloudHealthcare.v1
                                 InitParameters();
                             }
 
-                            /// <summary>Name of the `Patient` resource for which the information is required.</summary>
+                            /// <summary>
+                            /// Required. Name of the `Patient` resource for which the information is required.
+                            /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
                             /// <summary>
-                            /// Maximum number of resources in a page. If not specified, 100 is used. May not be larger
-                            /// than 1000.
+                            /// Optional. Maximum number of resources in a page. If not specified, 100 is used. May not
+                            /// be larger than 1000.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("_count", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> Count { get; set; }
@@ -5916,25 +5923,25 @@ namespace Google.Apis.CloudHealthcare.v1
                             public virtual string PageToken { get; set; }
 
                             /// <summary>
-                            /// If provided, only resources updated after this time are returned. The time uses the
-                            /// format YYYY-MM-DDThh:mm:ss.sss+zz:zz. For example, `2015-02-07T13:28:17.239+02:00` or
-                            /// `2017-01-01T00:00:00Z`. The time must be specified to the second and include a time
-                            /// zone.
+                            /// Optional. If provided, only resources updated after this time are returned. The time
+                            /// uses the format YYYY-MM-DDThh:mm:ss.sss+zz:zz. For example,
+                            /// `2015-02-07T13:28:17.239+02:00` or `2017-01-01T00:00:00Z`. The time must be specified to
+                            /// the second and include a time zone.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("_since", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Since { get; set; }
 
                             /// <summary>
-                            /// String of comma-delimited FHIR resource types. If provided, only resources of the
-                            /// specified resource type(s) are returned. Specifying multiple `_type` parameters isn't
-                            /// supported. For example, the result of `_type=Observation&amp;amp;_type=Encounter` is
-                            /// undefined. Use `_type=Observation,Encounter` instead.
+                            /// Optional. String of comma-delimited FHIR resource types. If provided, only resources of
+                            /// the specified resource type(s) are returned. Specifying multiple `_type` parameters
+                            /// isn't supported. For example, the result of `_type=Observation&amp;amp;_type=Encounter`
+                            /// is undefined. Use `_type=Observation,Encounter` instead.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("_type", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Type { get; set; }
 
                             /// <summary>
-                            /// The response includes records prior to the end date. The date uses the format
+                            /// Optional. The response includes records prior to the end date. The date uses the format
                             /// YYYY-MM-DD. If no end date is provided, all records subsequent to the start date are in
                             /// scope.
                             /// </summary>
@@ -5942,9 +5949,9 @@ namespace Google.Apis.CloudHealthcare.v1
                             public virtual string End { get; set; }
 
                             /// <summary>
-                            /// The response includes records subsequent to the start date. The date uses the format
-                            /// YYYY-MM-DD. If no start date is provided, all records prior to the end date are in
-                            /// scope.
+                            /// Optional. The response includes records subsequent to the start date. The date uses the
+                            /// format YYYY-MM-DD. If no start date is provided, all records prior to the end date are
+                            /// in scope.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("start", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Start { get; set; }
@@ -6028,7 +6035,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// `Resource-purge`, see [Deleting historical versions of a FHIR
                         /// resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#deleting_historical_versions_of_a_fhir_resource).
                         /// </summary>
-                        /// <param name="name">The name of the resource to purge.</param>
+                        /// <param name="name">Required. The name of the resource to purge.</param>
                         public virtual ResourcePurgeRequest ResourcePurge(string name)
                         {
                             return new ResourcePurgeRequest(this.service, name);
@@ -6050,7 +6057,7 @@ namespace Google.Apis.CloudHealthcare.v1
                                 InitParameters();
                             }
 
-                            /// <summary>The name of the resource to purge.</summary>
+                            /// <summary>Required. The name of the resource to purge.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
@@ -6094,11 +6101,12 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">
-                        /// The name of the FHIR store that holds the profiles being used for validation.
+                        /// Required. The name of the FHIR store that holds the profiles being used for validation.
                         /// </param>
                         /// <param name="type">
-                        /// The FHIR resource type of the resource being validated. For a complete list, see the FHIR
-                        /// Resource Index ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
+                        /// Required. The FHIR resource type of the resource being validated. For a complete list, see
+                        /// the FHIR Resource Index
+                        /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
                         /// [STU3](http://hl7.org/implement/standards/fhir/STU3/resourcelist.html), or
                         /// [R4](http://hl7.org/implement/standards/fhir/R4/resourcelist.html)). Must match the resource
                         /// type in the provided content.
@@ -6134,14 +6142,14 @@ namespace Google.Apis.CloudHealthcare.v1
                             }
 
                             /// <summary>
-                            /// The name of the FHIR store that holds the profiles being used for validation.
+                            /// Required. The name of the FHIR store that holds the profiles being used for validation.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
                             /// <summary>
-                            /// The FHIR resource type of the resource being validated. For a complete list, see the
-                            /// FHIR Resource Index
+                            /// Required. The FHIR resource type of the resource being validated. For a complete list,
+                            /// see the FHIR Resource Index
                             /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
                             /// [STU3](http://hl7.org/implement/standards/fhir/STU3/resourcelist.html), or
                             /// [R4](http://hl7.org/implement/standards/fhir/R4/resourcelist.html)). Must match the
@@ -6151,8 +6159,8 @@ namespace Google.Apis.CloudHealthcare.v1
                             public virtual string Type { get; private set; }
 
                             /// <summary>
-                            /// The canonical URL of a profile that this resource should be validated against. For
-                            /// example, to validate a Patient resource against the US Core Patient profile this
+                            /// Required. The canonical URL of a profile that this resource should be validated against.
+                            /// For example, to validate a Patient resource against the US Core Patient profile this
                             /// parameter would be `http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient`. A
                             /// StructureDefinition with this canonical URL must exist in the FHIR store.
                             /// </summary>
@@ -6219,7 +6227,9 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// DSTU2 case. On success, the response body contains a JSON-encoded representation of a
                         /// `CapabilityStatement` resource.
                         /// </summary>
-                        /// <param name="name">Name of the FHIR store to retrieve the capabilities for.</param>
+                        /// <param name="name">
+                        /// Required. Name of the FHIR store to retrieve the capabilities for.
+                        /// </param>
                         public virtual CapabilitiesRequest Capabilities(string name)
                         {
                             return new CapabilitiesRequest(this.service, name);
@@ -6248,7 +6258,7 @@ namespace Google.Apis.CloudHealthcare.v1
                                 InitParameters();
                             }
 
-                            /// <summary>Name of the FHIR store to retrieve the capabilities for.</summary>
+                            /// <summary>Required. Name of the FHIR store to retrieve the capabilities for.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
@@ -6288,10 +6298,10 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// call `conditionalDelete`, see [Conditionally deleting a FHIR
                         /// resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#conditionally_deleting_a_fhir_resource).
                         /// </summary>
-                        /// <param name="parent">The name of the FHIR store this resource belongs to.</param>
+                        /// <param name="parent">Required. The name of the FHIR store this resource belongs to.</param>
                         /// <param name="type">
-                        /// The FHIR resource type to delete, such as Patient or Observation. For a complete list, see
-                        /// the FHIR Resource Index
+                        /// Required. The FHIR resource type to delete, such as Patient or Observation. For a complete
+                        /// list, see the FHIR Resource Index
                         /// ([DSTU2](https://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
                         /// [STU3](https://hl7.org/implement/standards/fhir/STU3/resourcelist.html),
                         /// [R4](https://hl7.org/implement/standards/fhir/R4/resourcelist.html)).
@@ -6323,13 +6333,13 @@ namespace Google.Apis.CloudHealthcare.v1
                                 InitParameters();
                             }
 
-                            /// <summary>The name of the FHIR store this resource belongs to.</summary>
+                            /// <summary>Required. The name of the FHIR store this resource belongs to.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
                             /// <summary>
-                            /// The FHIR resource type to delete, such as Patient or Observation. For a complete list,
-                            /// see the FHIR Resource Index
+                            /// Required. The FHIR resource type to delete, such as Patient or Observation. For a
+                            /// complete list, see the FHIR Resource Index
                             /// ([DSTU2](https://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
                             /// [STU3](https://hl7.org/implement/standards/fhir/STU3/resourcelist.html),
                             /// [R4](https://hl7.org/implement/standards/fhir/R4/resourcelist.html)).
@@ -6388,10 +6398,10 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#conditionally_patching_a_fhir_resource).
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
-                        /// <param name="parent">The name of the FHIR store this resource belongs to.</param>
+                        /// <param name="parent">Required. The name of the FHIR store this resource belongs to.</param>
                         /// <param name="type">
-                        /// The FHIR resource type to update, such as Patient or Observation. For a complete list, see
-                        /// the FHIR Resource Index
+                        /// Required. The FHIR resource type to update, such as Patient or Observation. For a complete
+                        /// list, see the FHIR Resource Index
                         /// ([DSTU2](https://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
                         /// [STU3](https://hl7.org/implement/standards/fhir/STU3/resourcelist.html),
                         /// [R4](https://hl7.org/implement/standards/fhir/R4/resourcelist.html)).
@@ -6430,13 +6440,13 @@ namespace Google.Apis.CloudHealthcare.v1
                                 InitParameters();
                             }
 
-                            /// <summary>The name of the FHIR store this resource belongs to.</summary>
+                            /// <summary>Required. The name of the FHIR store this resource belongs to.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
                             /// <summary>
-                            /// The FHIR resource type to update, such as Patient or Observation. For a complete list,
-                            /// see the FHIR Resource Index
+                            /// Required. The FHIR resource type to update, such as Patient or Observation. For a
+                            /// complete list, see the FHIR Resource Index
                             /// ([DSTU2](https://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
                             /// [STU3](https://hl7.org/implement/standards/fhir/STU3/resourcelist.html),
                             /// [R4](https://hl7.org/implement/standards/fhir/R4/resourcelist.html)).
@@ -6507,10 +6517,10 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#conditionally_updating_a_fhir_resource).
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
-                        /// <param name="parent">The name of the FHIR store this resource belongs to.</param>
+                        /// <param name="parent">Required. The name of the FHIR store this resource belongs to.</param>
                         /// <param name="type">
-                        /// The FHIR resource type to update, such as Patient or Observation. For a complete list, see
-                        /// the FHIR Resource Index
+                        /// Required. The FHIR resource type to update, such as Patient or Observation. For a complete
+                        /// list, see the FHIR Resource Index
                         /// ([DSTU2](https://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
                         /// [STU3](https://hl7.org/implement/standards/fhir/STU3/resourcelist.html),
                         /// [R4](https://hl7.org/implement/standards/fhir/R4/resourcelist.html)). Must match the
@@ -6556,13 +6566,13 @@ namespace Google.Apis.CloudHealthcare.v1
                                 InitParameters();
                             }
 
-                            /// <summary>The name of the FHIR store this resource belongs to.</summary>
+                            /// <summary>Required. The name of the FHIR store this resource belongs to.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
                             /// <summary>
-                            /// The FHIR resource type to update, such as Patient or Observation. For a complete list,
-                            /// see the FHIR Resource Index
+                            /// Required. The FHIR resource type to update, such as Patient or Observation. For a
+                            /// complete list, see the FHIR Resource Index
                             /// ([DSTU2](https://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
                             /// [STU3](https://hl7.org/implement/standards/fhir/STU3/resourcelist.html),
                             /// [R4](https://hl7.org/implement/standards/fhir/R4/resourcelist.html)). Must match the
@@ -6634,10 +6644,10 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#creating_a_fhir_resource).
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
-                        /// <param name="parent">The name of the FHIR store this resource belongs to.</param>
+                        /// <param name="parent">Required. The name of the FHIR store this resource belongs to.</param>
                         /// <param name="type">
-                        /// The FHIR resource type to create, such as Patient or Observation. For a complete list, see
-                        /// the FHIR Resource Index
+                        /// Required. The FHIR resource type to create, such as Patient or Observation. For a complete
+                        /// list, see the FHIR Resource Index
                         /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
                         /// [STU3](http://hl7.org/implement/standards/fhir/STU3/resourcelist.html),
                         /// [R4](http://hl7.org/implement/standards/fhir/R4/resourcelist.html)). Must match the resource
@@ -6683,13 +6693,13 @@ namespace Google.Apis.CloudHealthcare.v1
                                 InitParameters();
                             }
 
-                            /// <summary>The name of the FHIR store this resource belongs to.</summary>
+                            /// <summary>Required. The name of the FHIR store this resource belongs to.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
                             /// <summary>
-                            /// The FHIR resource type to create, such as Patient or Observation. For a complete list,
-                            /// see the FHIR Resource Index
+                            /// Required. The FHIR resource type to create, such as Patient or Observation. For a
+                            /// complete list, see the FHIR Resource Index
                             /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
                             /// [STU3](http://hl7.org/implement/standards/fhir/STU3/resourcelist.html),
                             /// [R4](http://hl7.org/implement/standards/fhir/R4/resourcelist.html)). Must match the
@@ -6747,7 +6757,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// that show how to call `delete`, see [Deleting a FHIR
                         /// resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#deleting_a_fhir_resource).
                         /// </summary>
-                        /// <param name="name">The name of the resource to delete.</param>
+                        /// <param name="name">Required. The name of the resource to delete.</param>
                         public virtual DeleteRequest Delete(string name)
                         {
                             return new DeleteRequest(this.service, name);
@@ -6773,7 +6783,7 @@ namespace Google.Apis.CloudHealthcare.v1
                                 InitParameters();
                             }
 
-                            /// <summary>The name of the resource to delete.</summary>
+                            /// <summary>Required. The name of the resource to delete.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
@@ -6835,7 +6845,9 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// bundles](https://cloud.google.com/healthcare/docs/how-tos/fhir-bundles).
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
-                        /// <param name="parent">Name of the FHIR store in which this bundle will be executed.</param>
+                        /// <param name="parent">
+                        /// Required. Name of the FHIR store in which this bundle will be executed.
+                        /// </param>
                         public virtual ExecuteBundleRequest ExecuteBundle(Google.Apis.CloudHealthcare.v1.Data.HttpBody body, string parent)
                         {
                             return new ExecuteBundleRequest(this.service, body, parent);
@@ -6884,7 +6896,9 @@ namespace Google.Apis.CloudHealthcare.v1
                                 InitParameters();
                             }
 
-                            /// <summary>Name of the FHIR store in which this bundle will be executed.</summary>
+                            /// <summary>
+                            /// Required. Name of the FHIR store in which this bundle will be executed.
+                            /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
@@ -6932,7 +6946,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// `history`, see [Listing FHIR resource
                         /// versions](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#listing_fhir_resource_versions).
                         /// </summary>
-                        /// <param name="name">The name of the resource to retrieve.</param>
+                        /// <param name="name">Required. The name of the resource to retrieve.</param>
                         public virtual HistoryRequest History(string name)
                         {
                             return new HistoryRequest(this.service, name);
@@ -6961,7 +6975,7 @@ namespace Google.Apis.CloudHealthcare.v1
                                 InitParameters();
                             }
 
-                            /// <summary>The name of the resource to retrieve.</summary>
+                            /// <summary>Required. The name of the resource to retrieve.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
@@ -7073,7 +7087,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#patching_a_fhir_resource).
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
-                        /// <param name="name">The name of the resource to update.</param>
+                        /// <param name="name">Required. The name of the resource to update.</param>
                         public virtual PatchRequest Patch(Google.Apis.CloudHealthcare.v1.Data.HttpBody body, string name)
                         {
                             return new PatchRequest(this.service, body, name);
@@ -7104,7 +7118,7 @@ namespace Google.Apis.CloudHealthcare.v1
                                 InitParameters();
                             }
 
-                            /// <summary>The name of the resource to update.</summary>
+                            /// <summary>Required. The name of the resource to update.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
@@ -7155,7 +7169,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// call `read`, see [Getting a FHIR
                         /// resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#getting_a_fhir_resource).
                         /// </summary>
-                        /// <param name="name">The name of the resource to retrieve.</param>
+                        /// <param name="name">Required. The name of the resource to retrieve.</param>
                         public virtual ReadRequest Read(string name)
                         {
                             return new ReadRequest(this.service, name);
@@ -7187,7 +7201,7 @@ namespace Google.Apis.CloudHealthcare.v1
                                 InitParameters();
                             }
 
-                            /// <summary>The name of the resource to retrieve.</summary>
+                            /// <summary>Required. The name of the resource to retrieve.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
@@ -7272,7 +7286,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// search features](https://cloud.google.com/healthcare/docs/how-tos/fhir-advanced-search).
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
-                        /// <param name="parent">Name of the FHIR store to retrieve resources from.</param>
+                        /// <param name="parent">Required. Name of the FHIR store to retrieve resources from.</param>
                         public virtual SearchRequest Search(Google.Apis.CloudHealthcare.v1.Data.SearchResourcesRequest body, string parent)
                         {
                             return new SearchRequest(this.service, body, parent);
@@ -7344,7 +7358,7 @@ namespace Google.Apis.CloudHealthcare.v1
                                 InitParameters();
                             }
 
-                            /// <summary>Name of the FHIR store to retrieve resources from.</summary>
+                            /// <summary>Required. Name of the FHIR store to retrieve resources from.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
@@ -7435,10 +7449,10 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// search features](https://cloud.google.com/healthcare/docs/how-tos/fhir-advanced-search).
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
-                        /// <param name="parent">Name of the FHIR store to retrieve resources from.</param>
+                        /// <param name="parent">Required. Name of the FHIR store to retrieve resources from.</param>
                         /// <param name="resourceType">
-                        /// The FHIR resource type to search, such as Patient or Observation. For a complete list, see
-                        /// the FHIR Resource Index
+                        /// Required. The FHIR resource type to search, such as Patient or Observation. For a complete
+                        /// list, see the FHIR Resource Index
                         /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
                         /// [STU3](http://hl7.org/implement/standards/fhir/STU3/resourcelist.html),
                         /// [R4](http://hl7.org/implement/standards/fhir/R4/resourcelist.html)).
@@ -7515,13 +7529,13 @@ namespace Google.Apis.CloudHealthcare.v1
                                 InitParameters();
                             }
 
-                            /// <summary>Name of the FHIR store to retrieve resources from.</summary>
+                            /// <summary>Required. Name of the FHIR store to retrieve resources from.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
                             /// <summary>
-                            /// The FHIR resource type to search, such as Patient or Observation. For a complete list,
-                            /// see the FHIR Resource Index
+                            /// Required. The FHIR resource type to search, such as Patient or Observation. For a
+                            /// complete list, see the FHIR Resource Index
                             /// ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
                             /// [STU3](http://hl7.org/implement/standards/fhir/STU3/resourcelist.html),
                             /// [R4](http://hl7.org/implement/standards/fhir/R4/resourcelist.html)).
@@ -7588,7 +7602,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// resource](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#updating_a_fhir_resource).
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
-                        /// <param name="name">The name of the resource to update.</param>
+                        /// <param name="name">Required. The name of the resource to update.</param>
                         public virtual UpdateRequest Update(Google.Apis.CloudHealthcare.v1.Data.HttpBody body, string name)
                         {
                             return new UpdateRequest(this.service, body, name);
@@ -7624,7 +7638,7 @@ namespace Google.Apis.CloudHealthcare.v1
                                 InitParameters();
                             }
 
-                            /// <summary>The name of the resource to update.</summary>
+                            /// <summary>Required. The name of the resource to update.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
@@ -7671,7 +7685,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// a FHIR resource
                         /// version](https://cloud.google.com/healthcare/docs/how-tos/fhir-resources#retrieving_a_fhir_resource_version).
                         /// </summary>
-                        /// <param name="name">The name of the resource version to retrieve.</param>
+                        /// <param name="name">Required. The name of the resource version to retrieve.</param>
                         public virtual VreadRequest Vread(string name)
                         {
                             return new VreadRequest(this.service, name);
@@ -7699,7 +7713,7 @@ namespace Google.Apis.CloudHealthcare.v1
                                 InitParameters();
                             }
 
-                            /// <summary>The name of the resource version to retrieve.</summary>
+                            /// <summary>Required. The name of the resource version to retrieve.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
@@ -7730,7 +7744,7 @@ namespace Google.Apis.CloudHealthcare.v1
 
                     /// <summary>Creates a new FHIR store within the parent dataset.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="parent">The name of the dataset this FHIR store belongs to.</param>
+                    /// <param name="parent">Required. The name of the dataset this FHIR store belongs to.</param>
                     public virtual CreateRequest Create(Google.Apis.CloudHealthcare.v1.Data.FhirStore body, string parent)
                     {
                         return new CreateRequest(this.service, body, parent);
@@ -7747,13 +7761,13 @@ namespace Google.Apis.CloudHealthcare.v1
                             InitParameters();
                         }
 
-                        /// <summary>The name of the dataset this FHIR store belongs to.</summary>
+                        /// <summary>Required. The name of the dataset this FHIR store belongs to.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// The ID of the FHIR store that is being created. The string must match the following regex:
-                        /// `[\p{L}\p{N}_\-\.]{1,256}`.
+                        /// Required. The ID of the FHIR store that is being created. The string must match the
+                        /// following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("fhirStoreId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string FhirStoreId { get; set; }
@@ -7805,7 +7819,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="sourceStore">
-                    /// Source FHIR store resource name. For example,
+                    /// Required. Source FHIR store resource name. For example,
                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
                     /// </param>
                     public virtual DeidentifyRequest Deidentify(Google.Apis.CloudHealthcare.v1.Data.DeidentifyFhirStoreRequest body, string sourceStore)
@@ -7831,7 +7845,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         }
 
                         /// <summary>
-                        /// Source FHIR store resource name. For example,
+                        /// Required. Source FHIR store resource name. For example,
                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("sourceStore", Google.Apis.Util.RequestParameterType.Path)]
@@ -7868,7 +7882,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     }
 
                     /// <summary>Deletes the specified FHIR store and removes all resources within it.</summary>
-                    /// <param name="name">The resource name of the FHIR store to delete.</param>
+                    /// <param name="name">Required. The resource name of the FHIR store to delete.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
                         return new DeleteRequest(this.service, name);
@@ -7884,7 +7898,7 @@ namespace Google.Apis.CloudHealthcare.v1
                             InitParameters();
                         }
 
-                        /// <summary>The resource name of the FHIR store to delete.</summary>
+                        /// <summary>Required. The resource name of the FHIR store to delete.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -7922,7 +7936,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// The name of the FHIR store to export resource from, in the format of
+                    /// Required. The name of the FHIR store to export resource from, in the format of
                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
                     /// </param>
                     public virtual ExportRequest Export(Google.Apis.CloudHealthcare.v1.Data.ExportResourcesRequest body, string name)
@@ -7949,7 +7963,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         }
 
                         /// <summary>
-                        /// The name of the FHIR store to export resource from, in the format of
+                        /// Required. The name of the FHIR store to export resource from, in the format of
                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -7986,7 +8000,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     }
 
                     /// <summary>Gets the configuration of the specified FHIR store.</summary>
-                    /// <param name="name">The resource name of the FHIR store to get.</param>
+                    /// <param name="name">Required. The resource name of the FHIR store to get.</param>
                     public virtual GetRequest Get(string name)
                     {
                         return new GetRequest(this.service, name);
@@ -8002,7 +8016,7 @@ namespace Google.Apis.CloudHealthcare.v1
                             InitParameters();
                         }
 
-                        /// <summary>The resource name of the FHIR store to get.</summary>
+                        /// <summary>Required. The resource name of the FHIR store to get.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -8031,7 +8045,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     }
 
                     /// <summary>Gets metrics associated with the FHIR store.</summary>
-                    /// <param name="name">The resource name of the FHIR store to get metrics for.</param>
+                    /// <param name="name">Required. The resource name of the FHIR store to get metrics for.</param>
                     public virtual GetFHIRStoreMetricsRequest GetFHIRStoreMetrics(string name)
                     {
                         return new GetFHIRStoreMetricsRequest(this.service, name);
@@ -8047,7 +8061,7 @@ namespace Google.Apis.CloudHealthcare.v1
                             InitParameters();
                         }
 
-                        /// <summary>The resource name of the FHIR store to get metrics for.</summary>
+                        /// <summary>Required. The resource name of the FHIR store to get metrics for.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -8203,7 +8217,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// The name of the FHIR store to import FHIR resources to, in the format of
+                    /// Required. The name of the FHIR store to import FHIR resources to, in the format of
                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
                     /// </param>
                     public virtual ImportRequest Import(Google.Apis.CloudHealthcare.v1.Data.ImportResourcesRequest body, string name)
@@ -8267,7 +8281,7 @@ namespace Google.Apis.CloudHealthcare.v1
                         }
 
                         /// <summary>
-                        /// The name of the FHIR store to import FHIR resources to, in the format of
+                        /// Required. The name of the FHIR store to import FHIR resources to, in the format of
                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -8304,7 +8318,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     }
 
                     /// <summary>Lists the FHIR stores in the given dataset.</summary>
-                    /// <param name="parent">Name of the dataset.</param>
+                    /// <param name="parent">Required. Name of the dataset.</param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(this.service, parent);
@@ -8320,7 +8334,7 @@ namespace Google.Apis.CloudHealthcare.v1
                             InitParameters();
                         }
 
-                        /// <summary>Name of the dataset.</summary>
+                        /// <summary>Required. Name of the dataset.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
@@ -8413,7 +8427,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     /// <summary>Updates the configuration of the specified FHIR store.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Output only. Resource name of the FHIR store, of the form
+                    /// Output only. Identifier. Resource name of the FHIR store, of the form
                     /// `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.CloudHealthcare.v1.Data.FhirStore body, string name)
@@ -8433,14 +8447,14 @@ namespace Google.Apis.CloudHealthcare.v1
                         }
 
                         /// <summary>
-                        /// Output only. Resource name of the FHIR store, of the form
+                        /// Output only. Identifier. Resource name of the FHIR store, of the form
                         /// `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
                         /// <summary>
-                        /// The update mask applies to the resource. For the `FieldMask` definition, see
+                        /// Required. The update mask applies to the resource. For the `FieldMask` definition, see
                         /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
@@ -8480,6 +8494,81 @@ namespace Google.Apis.CloudHealthcare.v1
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Rolls back resources from the FHIR store to the specified time. This method returns an Operation
+                    /// that can be used to track the status of the rollback by calling GetOperation. Immediate fatal
+                    /// errors appear in the error field, errors are also logged to Cloud Logging (see [Viewing error
+                    /// logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). Otherwise,
+                    /// when the operation finishes, a detailed response of type RollbackFhirResourcesResponse is
+                    /// returned in the response field. The metadata field type for this operation is OperationMetadata.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The name of the FHIR store to rollback, in the format of
+                    /// "projects/{project_id}/locations/{location_id}/datasets/{dataset_id}
+                    /// /fhirStores/{fhir_store_id}".
+                    /// </param>
+                    public virtual RollbackRequest Rollback(Google.Apis.CloudHealthcare.v1.Data.RollbackFhirResourcesRequest body, string name)
+                    {
+                        return new RollbackRequest(this.service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Rolls back resources from the FHIR store to the specified time. This method returns an Operation
+                    /// that can be used to track the status of the rollback by calling GetOperation. Immediate fatal
+                    /// errors appear in the error field, errors are also logged to Cloud Logging (see [Viewing error
+                    /// logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). Otherwise,
+                    /// when the operation finishes, a detailed response of type RollbackFhirResourcesResponse is
+                    /// returned in the response field. The metadata field type for this operation is OperationMetadata.
+                    /// </summary>
+                    public class RollbackRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Rollback request.</summary>
+                        public RollbackRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1.Data.RollbackFhirResourcesRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the FHIR store to rollback, in the format of
+                        /// "projects/{project_id}/locations/{location_id}/datasets/{dataset_id}
+                        /// /fhirStores/{fhir_store_id}".
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudHealthcare.v1.Data.RollbackFhirResourcesRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "rollback";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:rollback";
+
+                        /// <summary>Initializes Rollback parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
                             });
                         }
                     }
@@ -10324,7 +10413,7 @@ namespace Google.Apis.CloudHealthcare.v1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="sourceDataset">
-                /// Source dataset resource name. For example,
+                /// Required. Source dataset resource name. For example,
                 /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
                 /// </param>
                 public virtual DeidentifyRequest Deidentify(Google.Apis.CloudHealthcare.v1.Data.DeidentifyDatasetRequest body, string sourceDataset)
@@ -10352,7 +10441,7 @@ namespace Google.Apis.CloudHealthcare.v1
                     }
 
                     /// <summary>
-                    /// Source dataset resource name. For example,
+                    /// Required. Source dataset resource name. For example,
                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("sourceDataset", Google.Apis.Util.RequestParameterType.Path)]
@@ -11296,7 +11385,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Resource name of the Attribute definition, of the form
+        /// Identifier. Resource name of the Attribute definition, of the form
         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`.
         /// Cannot be changed after creation.
         /// </summary>
@@ -11661,7 +11750,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// Resource name of the Consent artifact, of the form
+        /// Identifier. Resource name of the Consent artifact, of the form
         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
         /// Cannot be changed after creation.
         /// </summary>
@@ -11899,9 +11988,9 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         public virtual DeidentifyConfig Config { get; set; }
 
         /// <summary>
-        /// The name of the dataset resource to create and write the redacted data to. * The destination dataset must
-        /// not exist. * The destination dataset must be in the same location as the source dataset. De-identifying data
-        /// across multiple locations is not supported.
+        /// Required. The name of the dataset resource to create and write the redacted data to. * The destination
+        /// dataset must not exist. * The destination dataset must be in the same location as the source dataset.
+        /// De-identifying data across multiple locations is not supported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationDataset")]
         public virtual string DestinationDataset { get; set; }
@@ -11927,7 +12016,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         public virtual DeidentifyConfig Config { get; set; }
 
         /// <summary>
-        /// The name of the DICOM store to create and write the redacted data to. For example,
+        /// Required. The name of the DICOM store to create and write the redacted data to. For example,
         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`. * The
         /// destination dataset must exist. * The source dataset and destination dataset must both reside in the same
         /// location. De-identifying data across multiple locations is not supported. * The destination DICOM store must
@@ -11961,7 +12050,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         public virtual DeidentifyConfig Config { get; set; }
 
         /// <summary>
-        /// The name of the FHIR store to create and write the redacted data to. For example,
+        /// Required. The name of the FHIR store to create and write the redacted data to. For example,
         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`. * The
         /// destination dataset must exist. * The source dataset and destination dataset must both reside in the same
         /// location. De-identifying data across multiple locations is not supported. * The destination FHIR store must
@@ -12065,7 +12154,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Resource name of the DICOM store, of the form
+        /// Identifier. Resource name of the DICOM store, of the form
         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -12737,7 +12826,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Output only. Resource name of the FHIR store, of the form
+        /// Output only. Identifier. Resource name of the FHIR store, of the form
         /// `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -12774,9 +12863,9 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         public virtual ValidationConfig ValidationConfig { get; set; }
 
         /// <summary>
-        /// Immutable. The FHIR specification version that this FHIR store supports natively. This field is immutable
-        /// after store creation. Requests are rejected if they contain FHIR resources of a different version. Version
-        /// is required for every FHIR store.
+        /// Required. Immutable. The FHIR specification version that this FHIR store supports natively. This field is
+        /// immutable after store creation. Requests are rejected if they contain FHIR resources of a different version.
+        /// Version is required for every FHIR store.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
@@ -14485,6 +14574,114 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class RollbackFhirResourceFilteringFields : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A filter expression that matches data in the `Resource.meta` element. Supports all filters in
+        /// [AIP-160](https://google.aip.dev/160) except the "has" (`:`) operator. Supports the following custom
+        /// functions: * `tag("") = ""` for tag filtering. * `extension_value_ts("") = ` for filtering extensions with a
+        /// timestamp, where `` is a Unix timestamp. Supports the `&amp;gt;`, `&amp;lt;`, `&amp;lt;=`, `&amp;gt;=`, and
+        /// `!=` comparison operators.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadataFilter")]
+        public virtual string MetadataFilter { get; set; }
+
+        /// <summary>Optional. A list of operation IDs to roll back.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<ulong>> OperationIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class RollbackFhirResourcesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. CREATE/UPDATE/DELETE/ALL for reverting all txns of a certain type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("changeType")]
+        public virtual string ChangeType { get; set; }
+
+        /// <summary>Optional. Specifies whether to exclude earlier rollbacks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeRollbacks")]
+        public virtual System.Nullable<bool> ExcludeRollbacks { get; set; }
+
+        /// <summary>Optional. Parameters for filtering resources</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filteringFields")]
+        public virtual RollbackFhirResourceFilteringFields FilteringFields { get; set; }
+
+        /// <summary>Optional. When enabled, changes will be reverted without explicit confirmation</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("force")]
+        public virtual System.Nullable<bool> Force { get; set; }
+
+        /// <summary>
+        /// Optional. GCS object containing list of {resourceType}/{resourceId} lines, identifying resources to be
+        /// reverted
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputGcsObject")]
+        public virtual string InputGcsObject { get; set; }
+
+        /// <summary>Required. Bucket to deposit result</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resultGcsBucket")]
+        public virtual string ResultGcsBucket { get; set; }
+
+        private string _rollbackTimeRaw;
+
+        private object _rollbackTime;
+
+        /// <summary>Required. Time point to rollback to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rollbackTime")]
+        public virtual string RollbackTimeRaw
+        {
+            get => _rollbackTimeRaw;
+            set
+            {
+                _rollbackTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _rollbackTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="RollbackTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use RollbackTimeDateTimeOffset instead.")]
+        public virtual object RollbackTime
+        {
+            get => _rollbackTime;
+            set
+            {
+                _rollbackTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _rollbackTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="RollbackTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? RollbackTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RollbackTimeRaw);
+            set => RollbackTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. If specified, revert only resources of these types</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual System.Collections.Generic.IList<string> Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Final response of rollback FIHR resources request.</summary>
+    public class RollbackFhirResourcesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The name of the FHIR store to rollback, in the format of
+        /// "projects/{project_id}/locations/{location_id}/datasets/{dataset_id} /fhirStores/{fhir_store_id}".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fhirStore")]
+        public virtual string FhirStore { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for the FHIR BigQuery schema. Determines how the server generates the schema.</summary>
     public class SchemaConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14620,8 +14817,8 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     public class SearchResourcesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The FHIR resource type to search, such as Patient or Observation. For a complete list, see the FHIR Resource
-        /// Index ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
+        /// Required. The FHIR resource type to search, such as Patient or Observation. For a complete list, see the
+        /// FHIR Resource Index ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/resourcelist.html),
         /// [STU3](http://hl7.org/implement/standards/fhir/STU3/resourcelist.html),
         /// [R4](http://hl7.org/implement/standards/fhir/R4/resourcelist.html)).
         /// </summary>

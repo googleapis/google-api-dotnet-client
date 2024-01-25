@@ -12791,6 +12791,28 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Response of the ExportAnalyticsMetricsRequest. If the long running operation was successful, then this message
+    /// is returned by the google.longrunning.Operations.response field if the operation was successful.
+    /// </summary>
+    public class GoogleCloudRetailV2betaExportAnalyticsMetricsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A sample of errors encountered while processing the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorSamples")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorSamples { get; set; }
+
+        /// <summary>This field is never set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorsConfig")]
+        public virtual GoogleCloudRetailV2betaExportErrorsConfig ErrorsConfig { get; set; }
+
+        /// <summary>Output result indicating where the data were exported to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputResult")]
+        public virtual GoogleCloudRetailV2betaOutputResult OutputResult { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration of destination for Export related errors.</summary>
     public class GoogleCloudRetailV2betaExportErrorsConfig : Google.Apis.Requests.IDirectResponseSchema
     {

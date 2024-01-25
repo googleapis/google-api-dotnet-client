@@ -2144,8 +2144,7 @@ namespace Google.Apis.Monitoring.v1.Data
     }
 
     /// <summary>
-    /// Preview: A chart dimension for an SQL query. This is applied over the x-axis. This is a preview feature and may
-    /// be subject to change before final release.
+    /// A chart dimension. Dimensions are a structured label, class, or category for a set of measurements in your data.
     /// </summary>
     public class Dimension : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2561,8 +2560,8 @@ namespace Google.Apis.Monitoring.v1.Data
     }
 
     /// <summary>
-    /// Preview: A chart measure for an SQL query. This is applied over the y-axis. This is a preview feature and may be
-    /// subject to change before final release.
+    /// A chart measure. Measures represent a measured property in your chart data such as rainfall in inches, number of
+    /// units sold, revenue gained, etc.
     /// </summary>
     public class Measure : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3020,6 +3019,19 @@ namespace Google.Apis.Monitoring.v1.Data
     /// <summary>Groups a time series query definition.</summary>
     public class PieChartDataSet : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// A dimension is a structured label, class, or category for a set of measurements in your data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
+        public virtual System.Collections.Generic.IList<Dimension> Dimensions { get; set; }
+
+        /// <summary>
+        /// A measure is a measured value of a property in your data. For example, rainfall in inches, number of units
+        /// sold, revenue gained, etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("measures")]
+        public virtual System.Collections.Generic.IList<Measure> Measures { get; set; }
+
         /// <summary>
         /// Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum
         /// alignment period to use in a time series query. For example, if the data is published once every 10 minutes,

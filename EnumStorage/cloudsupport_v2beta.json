@@ -1,4 +1,9 @@
 {
+  "Google.Apis.CloudSupport.v2beta.CasesResource+ListRequest.ProductLineEnum": [
+    "PRODUCT_LINE_UNSPECIFIED",
+    "GOOGLE_CLOUD",
+    "GOOGLE_MAPS"
+  ],
   "Google.Apis.CloudSupport.v2beta.CloudSupportBaseServiceRequest<<TResponse>>.AltEnum": [
     "json",
     "media",

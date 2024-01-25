@@ -5295,6 +5295,13 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Compute engine sole tenant migration target.</summary>
+    public class ComputeEngineSoleTenantMigrationTarget : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Compute Engine storage option descriptor.</summary>
     public class ComputeStorageDescriptor : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6780,6 +6787,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
     /// <summary>An insight about potential migrations for an asset.</summary>
     public class MigrationInsight : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. A Google Compute Engine Sole Tenant target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("computeEngineSoleTenantTarget")]
+        public virtual ComputeEngineSoleTenantMigrationTarget ComputeEngineSoleTenantTarget { get; set; }
+
         /// <summary>Output only. A Google Compute Engine target.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("computeEngineTarget")]
         public virtual ComputeEngineMigrationTarget ComputeEngineTarget { get; set; }

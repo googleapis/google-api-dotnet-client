@@ -8934,6 +8934,10 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>Output only. The current instance config state. Applicable only for USER_MANAGED configs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>Output only. The storage limit in bytes per processing unit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageLimitPerProcessingUnit")]
+        public virtual System.Nullable<long> StorageLimitPerProcessingUnit { get; set; }
     }
 
     /// <summary>

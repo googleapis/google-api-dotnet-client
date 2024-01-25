@@ -4804,7 +4804,7 @@ namespace Google.Apis.VMMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>AwsVmDetails describes a VM in AWS.</summary>
+    /// <summary>AzureVmDetails describes a VM in Azure.</summary>
     public class AzureVmDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The VM Boot Option.</summary>

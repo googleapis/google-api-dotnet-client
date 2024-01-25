@@ -568,7 +568,7 @@ namespace Google.Apis.CloudRedis.v1
                     public override string HttpMethod => "GET";
 
                     /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+name}/certificateAuthority";
+                    public override string RestPath => "v1/{+name}";
 
                     /// <summary>Initializes GetCertificateAuthority parameter list.</summary>
                     protected override void InitParameters()
@@ -580,7 +580,7 @@ namespace Google.Apis.CloudRedis.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+/certificateAuthority$",
                         });
                     }
                 }
@@ -2550,17 +2550,11 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reservedIpRange")]
         public virtual string ReservedIpRange { get; set; }
 
-        /// <summary>
-        /// Optional. Output only. Reserved for future use. Zone Isolation compliance state of the instance. Field name
-        /// and documentation is obfuscated according to go/per-resource-zi-bit-semantics.
-        /// </summary>
+        /// <summary>Optional. Output only. Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
         public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
 
-        /// <summary>
-        /// Optional. Output only. Reserved for future use. Zone Separation compliance state of the instance. Field name
-        /// and documentation is obfuscated according to go/zs-resource-status.
-        /// </summary>
+        /// <summary>Optional. Output only. Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
         public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 

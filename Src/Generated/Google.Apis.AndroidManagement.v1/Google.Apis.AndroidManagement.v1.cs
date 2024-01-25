@@ -277,6 +277,7 @@ namespace Google.Apis.AndroidManagement.v1
             Applications = new ApplicationsResource(service);
             Devices = new DevicesResource(service);
             EnrollmentTokens = new EnrollmentTokensResource(service);
+            MigrationTokens = new MigrationTokensResource(service);
             Policies = new PoliciesResource(service);
             WebApps = new WebAppsResource(service);
             WebTokens = new WebTokensResource(service);
@@ -1257,6 +1258,220 @@ namespace Google.Apis.AndroidManagement.v1
 
                 /// <summary>Gets the REST path.</summary>
                 public override string RestPath => "v1/{+parent}/enrollmentTokens";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^enterprises/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the MigrationTokens resource.</summary>
+        public virtual MigrationTokensResource MigrationTokens { get; }
+
+        /// <summary>The "migrationTokens" collection of methods.</summary>
+        public class MigrationTokensResource
+        {
+            private const string Resource = "migrationTokens";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public MigrationTokensResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Creates a migration token, to migrate an existing device from being managed by the EMM's Device Policy
+            /// Controller (DPC) to being managed by the Android Management API.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The enterprise in which this migration token will be created. Format: enterprises/{enterprise}
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.AndroidManagement.v1.Data.MigrationToken body, string parent)
+            {
+                return new CreateRequest(this.service, body, parent);
+            }
+
+            /// <summary>
+            /// Creates a migration token, to migrate an existing device from being managed by the EMM's Device Policy
+            /// Controller (DPC) to being managed by the Android Management API.
+            /// </summary>
+            public class CreateRequest : AndroidManagementBaseServiceRequest<Google.Apis.AndroidManagement.v1.Data.MigrationToken>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidManagement.v1.Data.MigrationToken body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The enterprise in which this migration token will be created. Format:
+                /// enterprises/{enterprise}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AndroidManagement.v1.Data.MigrationToken Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/migrationTokens";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^enterprises/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Gets a migration token.</summary>
+            /// <param name="name">
+            /// Required. The name of the migration token to retrieve. Format:
+            /// enterprises/{enterprise}/migrationTokens/{migration_token}
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(this.service, name);
+            }
+
+            /// <summary>Gets a migration token.</summary>
+            public class GetRequest : AndroidManagementBaseServiceRequest<Google.Apis.AndroidManagement.v1.Data.MigrationToken>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the migration token to retrieve. Format:
+                /// enterprises/{enterprise}/migrationTokens/{migration_token}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^enterprises/[^/]+/migrationTokens/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Lists migration tokens.</summary>
+            /// <param name="parent">
+            /// Required. The enterprise which the migration tokens belong to. Format: enterprises/{enterprise}
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(this.service, parent);
+            }
+
+            /// <summary>Lists migration tokens.</summary>
+            public class ListRequest : AndroidManagementBaseServiceRequest<Google.Apis.AndroidManagement.v1.Data.ListMigrationTokensResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The enterprise which the migration tokens belong to. Format: enterprises/{enterprise}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// The maximum number of migration tokens to return. Fewer migration tokens may be returned. If
+                /// unspecified, at most 100 migration tokens will be returned. The maximum value is 100; values above
+                /// 100 will be coerced to 100.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// A page token, received from a previous ListMigrationTokens call. Provide this to retrieve the
+                /// subsequent page.When paginating, all other parameters provided to ListMigrationTokens must match the
+                /// call that provided the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/migrationTokens";
 
                 /// <summary>Initializes List parameter list.</summary>
                 protected override void InitParameters()
@@ -3722,6 +3937,13 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displays")]
         public virtual System.Collections.Generic.IList<Display> Displays { get; set; }
 
+        /// <summary>
+        /// Output only. Information related to whether this device was migrated from being managed by another Device
+        /// Policy Controller (DPC).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dpcMigrationInfo")]
+        public virtual DpcMigrationInfo DpcMigrationInfo { get; set; }
+
         private string _enrollmentTimeRaw;
 
         private object _enrollmentTime;
@@ -4172,6 +4394,30 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalIpAddressesReturned")]
         public virtual System.Nullable<long> TotalIpAddressesReturned { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Information related to whether this device was migrated from being managed by another Device Policy Controller
+    /// (DPC).
+    /// </summary>
+    public class DpcMigrationInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. If this device was migrated from another DPC, the additionalData field of the migration token
+        /// is populated here.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalData")]
+        public virtual string AdditionalData { get; set; }
+
+        /// <summary>
+        /// Output only. If this device was migrated from another DPC, this is its package name. Not populated
+        /// otherwise.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("previousDpc")]
+        public virtual string PreviousDpc { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4979,6 +5225,24 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response to a request to list migration tokens for a given enterprise.</summary>
+    public class ListMigrationTokensResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The migration tokens from the specified enterprise.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("migrationTokens")]
+        public virtual System.Collections.Generic.IList<MigrationToken> MigrationTokens { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as page_token to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response message for Operations.ListOperations.</summary>
     public class ListOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5258,6 +5522,153 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>Total RAM on device in bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalRam")]
         public virtual System.Nullable<long> TotalRam { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A token to initiate the migration of a device from being managed by a third-party DPC to being managed by
+    /// Android Management API. A migration token is valid only for a single device.
+    /// </summary>
+    public class MigrationToken : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Immutable. Optional EMM-specified additional data. Once the device is migrated this will be populated in the
+        /// migrationAdditionalData field of the Device resource. This must be at most 1024 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalData")]
+        public virtual string AdditionalData { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Time when this migration token was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. Once this migration token is used to migrate a device, the name of the resulting Device
+        /// resource will be populated here, in the form enterprises/{enterprise}/devices/{device}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("device")]
+        public virtual string Device { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. The id of the device, as in the Play EMM API. This corresponds to the deviceId
+        /// parameter in Play EMM API's Devices.get
+        /// (https://developers.google.com/android/work/play/emm-api/v1/devices/get#parameters) call.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
+        public virtual string DeviceId { get; set; }
+
+        private string _expireTimeRaw;
+
+        private object _expireTime;
+
+        /// <summary>
+        /// Immutable. The time when this migration token expires. This can be at most seven days from the time of
+        /// creation. The migration token is deleted seven days after it expires.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual string ExpireTimeRaw
+        {
+            get => _expireTimeRaw;
+            set
+            {
+                _expireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireTimeDateTimeOffset instead.")]
+        public virtual object ExpireTime
+        {
+            get => _expireTime;
+            set
+            {
+                _expireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expireTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Required. Immutable. The management mode of the device or profile being migrated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managementMode")]
+        public virtual string ManagementMode { get; set; }
+
+        /// <summary>
+        /// Output only. The name of the migration token, which is generated by the server during creation, in the form
+        /// enterprises/{enterprise}/migrationTokens/{migration_token}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. The name of the policy initially applied to the enrolled device, in the form
+        /// enterprises/{enterprise}/policies/{policy}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
+        public virtual string Policy { get; set; }
+
+        /// <summary>
+        /// Input only. The time that this migration token is valid for. This is input-only, and for returning a
+        /// migration token the server will populate the expireTime field. This can be at most seven days. The default
+        /// is seven days.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
+        public virtual object Ttl { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. The user id of the Managed Google Play account on the device, as in the Play EMM API.
+        /// This corresponds to the userId parameter in Play EMM API's Devices.get
+        /// (https://developers.google.com/android/work/play/emm-api/v1/devices/get#parameters) call.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userId")]
+        public virtual string UserId { get; set; }
+
+        /// <summary>Output only. The value of the migration token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

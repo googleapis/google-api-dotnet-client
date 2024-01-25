@@ -4290,6 +4290,71 @@ namespace Google.Apis.CloudRetail.v2beta
                     }
                 }
 
+                /// <summary>
+                /// Exports analytics metrics. `Operation.response` is of type `ExportAnalyticsMetricsResponse`.
+                /// `Operation.metadata` is of type `ExportMetadata`.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="catalog">
+                /// Required. Full resource name of the parent catalog. Expected format:
+                /// `projects/*/locations/*/catalogs/*`
+                /// </param>
+                public virtual ExportAnalyticsMetricsRequest ExportAnalyticsMetrics(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaExportAnalyticsMetricsRequest body, string catalog)
+                {
+                    return new ExportAnalyticsMetricsRequest(this.service, body, catalog);
+                }
+
+                /// <summary>
+                /// Exports analytics metrics. `Operation.response` is of type `ExportAnalyticsMetricsResponse`.
+                /// `Operation.metadata` is of type `ExportMetadata`.
+                /// </summary>
+                public class ExportAnalyticsMetricsRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new ExportAnalyticsMetrics request.</summary>
+                    public ExportAnalyticsMetricsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaExportAnalyticsMetricsRequest body, string catalog) : base(service)
+                    {
+                        Catalog = catalog;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Full resource name of the parent catalog. Expected format:
+                    /// `projects/*/locations/*/catalogs/*`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("catalog", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Catalog { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaExportAnalyticsMetricsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "exportAnalyticsMetrics";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2beta/{+catalog}:exportAnalyticsMetrics";
+
+                    /// <summary>Initializes ExportAnalyticsMetrics parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("catalog", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "catalog",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Gets an AttributesConfig.</summary>
                 /// <param name="name">
                 /// Required. Full AttributesConfig resource name. Format:
@@ -8589,6 +8654,51 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for the `ExportAnalyticsMetrics` method.</summary>
+    public class GoogleCloudRetailV2betaExportAnalyticsMetricsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A filtering expression to specify restrictions on returned metrics. The expression is a sequence of terms.
+        /// Each term applies a restriction to the returned metrics. Use this expression to restrict results to a
+        /// specific time range. Currently we expect only one types of fields: * `timestamp`: This can be specified
+        /// twice, once with a less than operator and once with a greater than operator. The `timestamp` restriction
+        /// should result in one, contiguous, valid, `timestamp` range. Some examples of valid filters expressions: *
+        /// Example 1: `timestamp &amp;gt; "2012-04-23T18:25:43.511Z" timestamp &amp;lt; "2012-04-23T18:30:43.511Z"` *
+        /// Example 2: `timestamp &amp;gt; "2012-04-23T18:25:43.511Z"`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>Required. The output location of the data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputConfig")]
+        public virtual GoogleCloudRetailV2betaOutputConfig OutputConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response of the ExportAnalyticsMetricsRequest. If the long running operation was successful, then this message
+    /// is returned by the google.longrunning.Operations.response field if the operation was successful.
+    /// </summary>
+    public class GoogleCloudRetailV2betaExportAnalyticsMetricsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A sample of errors encountered while processing the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorSamples")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorSamples { get; set; }
+
+        /// <summary>This field is never set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorsConfig")]
+        public virtual GoogleCloudRetailV2betaExportErrorsConfig ErrorsConfig { get; set; }
+
+        /// <summary>Output result indicating where the data were exported to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputResult")]
+        public virtual GoogleCloudRetailV2betaOutputResult OutputResult { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration of destination for Export related errors.</summary>
     public class GoogleCloudRetailV2betaExportErrorsConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9726,6 +9836,59 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// <summary>Optional. A set of valid serving configs that may be used for `PAGE_OPTIMIZATION`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servingConfigIds")]
         public virtual System.Collections.Generic.IList<string> ServingConfigIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The output configuration setting.</summary>
+    public class GoogleCloudRetailV2betaOutputConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The BigQuery location where the output is to be written to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigqueryDestination")]
+        public virtual GoogleCloudRetailV2betaOutputConfigBigQueryDestination BigqueryDestination { get; set; }
+
+        /// <summary>The Google Cloud Storage location where the output is to be written to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
+        public virtual GoogleCloudRetailV2betaOutputConfigGcsDestination GcsDestination { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The BigQuery output destination configuration.</summary>
+    public class GoogleCloudRetailV2betaOutputConfigBigQueryDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The ID of a BigQuery Dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datasetId")]
+        public virtual string DatasetId { get; set; }
+
+        /// <summary>Required. The prefix of exported BigQuery tables.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableIdPrefix")]
+        public virtual string TableIdPrefix { get; set; }
+
+        /// <summary>
+        /// Required. Describes the table type. The following values are supported: * `table`: A BigQuery native table.
+        /// * `view`: A virtual table defined by a SQL query.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableType")]
+        public virtual string TableType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The Google Cloud Storage output destination configuration.</summary>
+    public class GoogleCloudRetailV2betaOutputConfigGcsDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The output uri prefix for saving output data to json files. Some mapping examples are as follows:
+        /// output_uri_prefix sample output(assuming the object is foo.json) ========================
+        /// ============================================= gs://bucket/ gs://bucket/foo.json gs://bucket/folder/
+        /// gs://bucket/folder/foo.json gs://bucket/folder/item_ gs://bucket/folder/item_foo.json
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputUriPrefix")]
+        public virtual string OutputUriPrefix { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

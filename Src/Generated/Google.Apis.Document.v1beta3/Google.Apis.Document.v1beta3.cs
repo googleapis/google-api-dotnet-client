@@ -10183,6 +10183,10 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("latestEvaluation")]
         public virtual GoogleCloudDocumentaiV1beta3EvaluationReference LatestEvaluation { get; set; }
 
+        /// <summary>Output only. The model type of this processor version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelType")]
+        public virtual string ModelType { get; set; }
+
         /// <summary>
         /// The resource name of the processor version. Format:
         /// `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processor_version}`

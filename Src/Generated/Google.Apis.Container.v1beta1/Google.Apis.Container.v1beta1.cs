@@ -1239,8 +1239,7 @@ namespace Google.Apis.Container.v1beta1
 
                     /// <summary>
                     /// Gets the OIDC discovery document for the cluster. See the [OpenID Connect Discovery 1.0
-                    /// specification](https://openid.net/specs/openid-connect-discovery-1_0.html) for details. This API
-                    /// is not yet intended for general use, and is not available for all clusters.
+                    /// specification](https://openid.net/specs/openid-connect-discovery-1_0.html) for details.
                     /// </summary>
                     /// <param name="parent">
                     /// The cluster (project, location, cluster name) to get the discovery document for. Specified in
@@ -1253,8 +1252,7 @@ namespace Google.Apis.Container.v1beta1
 
                     /// <summary>
                     /// Gets the OIDC discovery document for the cluster. See the [OpenID Connect Discovery 1.0
-                    /// specification](https://openid.net/specs/openid-connect-discovery-1_0.html) for details. This API
-                    /// is not yet intended for general use, and is not available for all clusters.
+                    /// specification](https://openid.net/specs/openid-connect-discovery-1_0.html) for details.
                     /// </summary>
                     public class GetOpenidConfigurationRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1beta1.Data.GetOpenIDConfigResponse>
                     {
@@ -1690,10 +1688,7 @@ namespace Google.Apis.Container.v1beta1
                     }
                 }
 
-                /// <summary>
-                /// Gets the public component of the cluster signing keys in JSON Web Key format. This API is not yet
-                /// intended for general use, and is not available for all clusters.
-                /// </summary>
+                /// <summary>Gets the public component of the cluster signing keys in JSON Web Key format.</summary>
                 /// <param name="parent">
                 /// The cluster (project, location, cluster name) to get keys for. Specified in the format
                 /// `projects/*/locations/*/clusters/*`.
@@ -1703,10 +1698,7 @@ namespace Google.Apis.Container.v1beta1
                     return new GetJwksRequest(this.service, parent);
                 }
 
-                /// <summary>
-                /// Gets the public component of the cluster signing keys in JSON Web Key format. This API is not yet
-                /// intended for general use, and is not available for all clusters.
-                /// </summary>
+                /// <summary>Gets the public component of the cluster signing keys in JSON Web Key format.</summary>
                 public class GetJwksRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1beta1.Data.GetJSONWebKeysResponse>
                 {
                     /// <summary>Constructs a new GetJwks request.</summary>

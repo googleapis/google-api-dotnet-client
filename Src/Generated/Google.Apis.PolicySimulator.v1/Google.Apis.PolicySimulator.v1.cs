@@ -2560,19 +2560,19 @@ namespace Google.Apis.PolicySimulator.v1.Data
     public class GoogleCloudPolicysimulatorV1alphaOrgPolicyOverlay : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The OrgPolicy CustomConstraint changes to preview violations for. Any existing CustomConstraints with the
-        /// same name will be overridden in the simulation. That is, violations will be determined as if all custom
-        /// constraints in the overlay were instantiated. Only a single custom_constraint is supported in the overlay at
-        /// a time. For evaluating multiple constraints, multiple `GenerateOrgPolicyViolationsPreview` requests are
-        /// made, where each request evaluates a single constraint.
+        /// Optional. The OrgPolicy CustomConstraint changes to preview violations for. Any existing CustomConstraints
+        /// with the same name will be overridden in the simulation. That is, violations will be determined as if all
+        /// custom constraints in the overlay were instantiated. Only a single custom_constraint is supported in the
+        /// overlay at a time. For evaluating multiple constraints, multiple `GenerateOrgPolicyViolationsPreview`
+        /// requests are made, where each request evaluates a single constraint.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customConstraints")]
         public virtual System.Collections.Generic.IList<GoogleCloudPolicysimulatorV1alphaOrgPolicyOverlayCustomConstraintOverlay> CustomConstraints { get; set; }
 
         /// <summary>
-        /// The OrgPolicy changes to preview violations for. Any existing OrgPolicies with the same name will be
-        /// overridden in the simulation. That is, violations will be determined as if all policies in the overlay were
-        /// created or updated.
+        /// Optional. The OrgPolicy changes to preview violations for. Any existing OrgPolicies with the same name will
+        /// be overridden in the simulation. That is, violations will be determined as if all policies in the overlay
+        /// were created or updated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policies")]
         public virtual System.Collections.Generic.IList<GoogleCloudPolicysimulatorV1alphaOrgPolicyOverlayPolicyOverlay> Policies { get; set; }
@@ -2584,11 +2584,11 @@ namespace Google.Apis.PolicySimulator.v1.Data
     /// <summary>A change to an OrgPolicy custom constraint.</summary>
     public class GoogleCloudPolicysimulatorV1alphaOrgPolicyOverlayCustomConstraintOverlay : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The new or updated custom constraint.</summary>
+        /// <summary>Optional. The new or updated custom constraint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customConstraint")]
         public virtual GoogleCloudOrgpolicyV2CustomConstraint CustomConstraint { get; set; }
 
-        /// <summary>Resource the constraint is attached to. Example: "organization/987654"</summary>
+        /// <summary>Optional. Resource the constraint is attached to. Example: "organization/987654"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customConstraintParent")]
         public virtual string CustomConstraintParent { get; set; }
 
@@ -2599,11 +2599,11 @@ namespace Google.Apis.PolicySimulator.v1.Data
     /// <summary>A change to an OrgPolicy.</summary>
     public class GoogleCloudPolicysimulatorV1alphaOrgPolicyOverlayPolicyOverlay : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The new or updated OrgPolicy.</summary>
+        /// <summary>Optional. The new or updated OrgPolicy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
         public virtual GoogleCloudOrgpolicyV2Policy Policy { get; set; }
 
-        /// <summary>The parent of the policy we are attaching to. Example: "projects/123456"</summary>
+        /// <summary>Optional. The parent of the policy we are attaching to. Example: "projects/123456"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyParent")]
         public virtual string PolicyParent { get; set; }
 
@@ -2705,27 +2705,28 @@ namespace Google.Apis.PolicySimulator.v1.Data
     /// <summary>A summary of the state of all resources scanned for compliance with the changed OrgPolicy.</summary>
     public class GoogleCloudPolicysimulatorV1alphaOrgPolicyViolationsPreviewResourceCounts : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Number of scanned resources with zero violations.</summary>
+        /// <summary>Output only. Number of scanned resources with zero violations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compliant")]
         public virtual System.Nullable<int> Compliant { get; set; }
 
-        /// <summary>Number of resources that returned an error when scanned.</summary>
+        /// <summary>Output only. Number of resources that returned an error when scanned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
         public virtual System.Nullable<int> Errors { get; set; }
 
-        /// <summary>Number of scanned resources with at least one violation.</summary>
+        /// <summary>Output only. Number of scanned resources with at least one violation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("noncompliant")]
         public virtual System.Nullable<int> Noncompliant { get; set; }
 
         /// <summary>
-        /// Number of resources checked for compliance. Must equal: unenforced + noncompliant + compliant + error
+        /// Output only. Number of resources checked for compliance. Must equal: unenforced + noncompliant + compliant +
+        /// error
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scanned")]
         public virtual System.Nullable<int> Scanned { get; set; }
 
         /// <summary>
-        /// Number of resources where the constraint was not enforced, i.e. the Policy set `enforced: false` for that
-        /// resource.
+        /// Output only. Number of resources where the constraint was not enforced, i.e. the Policy set `enforced:
+        /// false` for that resource.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unenforced")]
         public virtual System.Nullable<int> Unenforced { get; set; }
@@ -2840,19 +2841,19 @@ namespace Google.Apis.PolicySimulator.v1.Data
     public class GoogleCloudPolicysimulatorV1betaOrgPolicyOverlay : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The OrgPolicy CustomConstraint changes to preview violations for. Any existing CustomConstraints with the
-        /// same name will be overridden in the simulation. That is, violations will be determined as if all custom
-        /// constraints in the overlay were instantiated. Only a single custom_constraint is supported in the overlay at
-        /// a time. For evaluating multiple constraints, multiple `GenerateOrgPolicyViolationsPreview` requests are
-        /// made, where each request evaluates a single constraint.
+        /// Optional. The OrgPolicy CustomConstraint changes to preview violations for. Any existing CustomConstraints
+        /// with the same name will be overridden in the simulation. That is, violations will be determined as if all
+        /// custom constraints in the overlay were instantiated. Only a single custom_constraint is supported in the
+        /// overlay at a time. For evaluating multiple constraints, multiple `GenerateOrgPolicyViolationsPreview`
+        /// requests are made, where each request evaluates a single constraint.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customConstraints")]
         public virtual System.Collections.Generic.IList<GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlay> CustomConstraints { get; set; }
 
         /// <summary>
-        /// The OrgPolicy changes to preview violations for. Any existing OrgPolicies with the same name will be
-        /// overridden in the simulation. That is, violations will be determined as if all policies in the overlay were
-        /// created or updated.
+        /// Optional. The OrgPolicy changes to preview violations for. Any existing OrgPolicies with the same name will
+        /// be overridden in the simulation. That is, violations will be determined as if all policies in the overlay
+        /// were created or updated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policies")]
         public virtual System.Collections.Generic.IList<GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay> Policies { get; set; }
@@ -2864,11 +2865,11 @@ namespace Google.Apis.PolicySimulator.v1.Data
     /// <summary>A change to an OrgPolicy custom constraint.</summary>
     public class GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlay : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The new or updated custom constraint.</summary>
+        /// <summary>Optional. The new or updated custom constraint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customConstraint")]
         public virtual GoogleCloudOrgpolicyV2CustomConstraint CustomConstraint { get; set; }
 
-        /// <summary>Resource the constraint is attached to. Example: "organization/987654"</summary>
+        /// <summary>Optional. Resource the constraint is attached to. Example: "organization/987654"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customConstraintParent")]
         public virtual string CustomConstraintParent { get; set; }
 
@@ -2879,11 +2880,11 @@ namespace Google.Apis.PolicySimulator.v1.Data
     /// <summary>A change to an OrgPolicy.</summary>
     public class GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The new or updated OrgPolicy.</summary>
+        /// <summary>Optional. The new or updated OrgPolicy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
         public virtual GoogleCloudOrgpolicyV2Policy Policy { get; set; }
 
-        /// <summary>The parent of the policy we are attaching to. Example: "projects/123456"</summary>
+        /// <summary>Optional. The parent of the policy we are attaching to. Example: "projects/123456"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyParent")]
         public virtual string PolicyParent { get; set; }
 
@@ -2985,27 +2986,28 @@ namespace Google.Apis.PolicySimulator.v1.Data
     /// <summary>A summary of the state of all resources scanned for compliance with the changed OrgPolicy.</summary>
     public class GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewResourceCounts : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Number of scanned resources with zero violations.</summary>
+        /// <summary>Output only. Number of scanned resources with zero violations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compliant")]
         public virtual System.Nullable<int> Compliant { get; set; }
 
-        /// <summary>Number of resources that returned an error when scanned.</summary>
+        /// <summary>Output only. Number of resources that returned an error when scanned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
         public virtual System.Nullable<int> Errors { get; set; }
 
-        /// <summary>Number of scanned resources with at least one violation.</summary>
+        /// <summary>Output only. Number of scanned resources with at least one violation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("noncompliant")]
         public virtual System.Nullable<int> Noncompliant { get; set; }
 
         /// <summary>
-        /// Number of resources checked for compliance. Must equal: unenforced + noncompliant + compliant + error
+        /// Output only. Number of resources checked for compliance. Must equal: unenforced + noncompliant + compliant +
+        /// error
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scanned")]
         public virtual System.Nullable<int> Scanned { get; set; }
 
         /// <summary>
-        /// Number of resources where the constraint was not enforced, i.e. the Policy set `enforced: false` for that
-        /// resource.
+        /// Output only. Number of resources where the constraint was not enforced, i.e. the Policy set `enforced:
+        /// false` for that resource.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unenforced")]
         public virtual System.Nullable<int> Unenforced { get; set; }
@@ -3128,7 +3130,9 @@ namespace Google.Apis.PolicySimulator.v1.Data
 
         /// <summary>
         /// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`,
-        /// or `roles/owner`.
+        /// or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM
+        /// documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined
+        /// roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
