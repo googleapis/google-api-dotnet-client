@@ -3273,6 +3273,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
+        /// <summary>Display information of a Storage Bucket. Used only for return traces.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageBucket")]
+        public virtual StorageBucketInfo StorageBucket { get; set; }
+
         /// <summary>Display information of a VPC connector.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpcConnector")]
         public virtual VpcConnectorInfo VpcConnector { get; set; }
@@ -3284,6 +3288,17 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         /// <summary>Display information of a Compute Engine VPN tunnel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpnTunnel")]
         public virtual VpnTunnelInfo VpnTunnel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>For display only. Metadata associated with Storage Bucket.</summary>
+    public class StorageBucketInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Cloud Storage Bucket name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
+        public virtual string Bucket { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

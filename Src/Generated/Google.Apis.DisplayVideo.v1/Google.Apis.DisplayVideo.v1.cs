@@ -21146,6 +21146,10 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cmAccountId")]
         public virtual System.Nullable<long> CmAccountId { get; set; }
 
+        /// <summary>Output only. The set of CM360 Advertiser IDs sharing the CM360 Floodlight configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cmAdvertiserIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> CmAdvertiserIds { get; set; }
+
         /// <summary>
         /// Required. Immutable. ID of the CM360 Floodlight configuration linked with the DV360 advertiser.
         /// </summary>

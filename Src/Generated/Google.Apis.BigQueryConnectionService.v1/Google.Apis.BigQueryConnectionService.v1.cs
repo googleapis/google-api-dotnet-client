@@ -1040,7 +1040,9 @@ namespace Google.Apis.BigQueryConnectionService.v1.Data
 
         /// <summary>
         /// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`,
-        /// or `roles/owner`.
+        /// or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM
+        /// documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined
+        /// roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
@@ -1184,6 +1186,10 @@ namespace Google.Apis.BigQueryConnectionService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cloudSql")]
         public virtual CloudSqlProperties CloudSql { get; set; }
 
+        /// <summary>Optional. Connector configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configuration")]
+        public virtual ConnectorConfiguration Configuration { get; set; }
+
         /// <summary>Output only. The creation timestamp of the connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
         public virtual System.Nullable<long> CreationTime { get; set; }
@@ -1228,6 +1234,83 @@ namespace Google.Apis.BigQueryConnectionService.v1.Data
         /// <summary>Spark properties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spark")]
         public virtual SparkProperties Spark { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents concrete parameter values for Connector Configuration.</summary>
+    public class ConnectorConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Client authentication.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authentication")]
+        public virtual ConnectorConfigurationAuthentication Authentication { get; set; }
+
+        /// <summary>Required. Immutable. The ID of the Connector these parameters are configured for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectorId")]
+        public virtual string ConnectorId { get; set; }
+
+        /// <summary>Specifies how to reach the remote system this connection is pointing to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpoint")]
+        public virtual ConnectorConfigurationEndpoint Endpoint { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Client authentication.</summary>
+    public class ConnectorConfigurationAuthentication : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Username/password authentication.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usernamePassword")]
+        public virtual ConnectorConfigurationUsernamePassword UsernamePassword { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Remote endpoint specification.</summary>
+    public class ConnectorConfigurationEndpoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Host and port in a format of `hostname:port` as defined in
+        /// https://www.ietf.org/rfc/rfc3986.html#section-3.2.2 and https://www.ietf.org/rfc/rfc3986.html#section-3.2.3.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostPort")]
+        public virtual string HostPort { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Secret value parameter.</summary>
+    public class ConnectorConfigurationSecret : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Input only. Secret as plaintext.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("plaintext")]
+        public virtual string Plaintext { get; set; }
+
+        /// <summary>
+        /// Output only. Indicates type of secret. Can be used to check type of stored secret value even if it's
+        /// `INPUT_ONLY`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretType")]
+        public virtual string SecretType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Username and Password authentication.</summary>
+    public class ConnectorConfigurationUsernamePassword : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Password.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("password")]
+        public virtual ConnectorConfigurationSecret Password { get; set; }
+
+        /// <summary>Required. Username.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("username")]
+        public virtual string Username { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

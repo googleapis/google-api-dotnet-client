@@ -2,8 +2,8 @@
 
   <!-- nupkg information -->
   <PropertyGroup>
-    <Title>Google.Apis.CloudRedis.v1beta1 Client Library</Title>
-    <Version>1.66.0.3304</Version>
+    <Title>Google.Apis.WorkspaceEvents.v1 Client Library</Title>
+    <Version>1.66.0.3311</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2024 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
@@ -14,7 +14,7 @@
     <PackageIconUrl>https://www.gstatic.com/images/branding/product/1x/google_developers_64dp.png</PackageIconUrl>
     <PackageIcon>NuGetIcon.png</PackageIcon>
     <Description>
-      Google APIs Client Library for working with Redis v1beta1.
+      Google APIs Client Library for working with Workspaceevents v1.
 
       Supported Platforms:
       - .NET Framework 4.6.2+
@@ -31,7 +31,7 @@
       - Windows Phone Silverlight 8.0
 
       More documentation on the API is available at:
-      https://developers.google.com/api-client-library/dotnet/apis/redis/v1beta1
+      https://developers.google.com/api-client-library/dotnet/apis/workspaceevents/v1
 
       The package source code is available at:
       https://github.com/google/google-api-dotnet-client/tree/master/Src/Generated
@@ -59,7 +59,6 @@
     <PackageReference Include="ConfigureAwaitChecker.Analyzer" Version="5.0.0" PrivateAssets="All" />
     <PackageReference Include="SourceLink.Create.CommandLine" Version="2.8.3" PrivateAssets="All" />
     <PackageReference Include="Google.Apis" Version="1.66.0" />
-    <PackageReference Include="Google.Apis.Auth" Version="1.66.0" />
   </ItemGroup>
 
 </Project>

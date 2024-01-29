@@ -35,6 +35,7 @@ namespace Google.Apis.Drive.v3
         public DriveService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             About = new AboutResource(this);
+            Apps = new AppsResource(this);
             Changes = new ChangesResource(this);
             Channels = new ChannelsResource(this);
             Comments = new CommentsResource(this);
@@ -73,6 +74,9 @@ namespace Google.Apis.Drive.v3
             /// <summary>See, create, and delete its own configuration data in your Google Drive</summary>
             public static string DriveAppdata = "https://www.googleapis.com/auth/drive.appdata";
 
+            /// <summary>View your Google Drive apps</summary>
+            public static string DriveAppsReadonly = "https://www.googleapis.com/auth/drive.apps.readonly";
+
             /// <summary>
             /// See, edit, create, and delete only the specific Google Drive files you use with this app
             /// </summary>
@@ -103,6 +107,9 @@ namespace Google.Apis.Drive.v3
             /// <summary>See, create, and delete its own configuration data in your Google Drive</summary>
             public const string DriveAppdata = "https://www.googleapis.com/auth/drive.appdata";
 
+            /// <summary>View your Google Drive apps</summary>
+            public const string DriveAppsReadonly = "https://www.googleapis.com/auth/drive.apps.readonly";
+
             /// <summary>
             /// See, edit, create, and delete only the specific Google Drive files you use with this app
             /// </summary>
@@ -126,6 +133,9 @@ namespace Google.Apis.Drive.v3
 
         /// <summary>Gets the About resource.</summary>
         public virtual AboutResource About { get; }
+
+        /// <summary>Gets the Apps resource.</summary>
+        public virtual AppsResource Apps { get; }
 
         /// <summary>Gets the Changes resource.</summary>
         public virtual ChangesResource Changes { get; }
@@ -378,6 +388,144 @@ namespace Google.Apis.Drive.v3
             protected override void InitParameters()
             {
                 base.InitParameters();
+            }
+        }
+    }
+
+    /// <summary>The "apps" collection of methods.</summary>
+    public class AppsResource
+    {
+        private const string Resource = "apps";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public AppsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Gets a specific app.</summary>
+        /// <param name="appId">The ID of the app.</param>
+        public virtual GetRequest Get(string appId)
+        {
+            return new GetRequest(this.service, appId);
+        }
+
+        /// <summary>Gets a specific app.</summary>
+        public class GetRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.App>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string appId) : base(service)
+            {
+                AppId = appId;
+                InitParameters();
+            }
+
+            /// <summary>The ID of the app.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("appId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string AppId { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "apps/{appId}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("appId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "appId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Lists a user's installed apps.</summary>
+        public virtual ListRequest List()
+        {
+            return new ListRequest(this.service);
+        }
+
+        /// <summary>Lists a user's installed apps.</summary>
+        public class ListRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.AppList>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>
+            /// A comma-separated list of file extensions to limit returned results. All results within the given app
+            /// query scope which can open any of the given file extensions are included in the response. If
+            /// `appFilterMimeTypes` are provided as well, the result is a union of the two resulting app lists.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("appFilterExtensions", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string AppFilterExtensions { get; set; }
+
+            /// <summary>
+            /// A comma-separated list of file extensions to limit returned results. All results within the given app
+            /// query scope which can open any of the given MIME types will be included in the response. If
+            /// `appFilterExtensions` are provided as well, the result is a union of the two resulting app lists.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("appFilterMimeTypes", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string AppFilterMimeTypes { get; set; }
+
+            /// <summary>
+            /// A language or locale code, as defined by BCP 47, with some extensions from Unicode's LDML format
+            /// (http://www.unicode.org/reports/tr35/).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string LanguageCode { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "apps";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("appFilterExtensions", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "appFilterExtensions",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("appFilterMimeTypes", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "appFilterMimeTypes",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "languageCode",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
         }
     }
@@ -5781,6 +5929,177 @@ namespace Google.Apis.Drive.v3.Data
             [Newtonsoft.Json.JsonPropertyAttribute("id")]
             public virtual string Id { get; set; }
         }
+    }
+
+    /// <summary>
+    /// The `apps` resource provides a list of apps that a user has installed, with information about each app's
+    /// supported MIME types, file extensions, and other details. Some resource methods (such as `apps.get`) require an
+    /// `appId`. Use the `apps.list` method to retrieve the ID for an installed application.
+    /// </summary>
+    public class App : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the app is authorized to access data on the user's Drive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorized")]
+        public virtual System.Nullable<bool> Authorized { get; set; }
+
+        /// <summary>
+        /// The template URL to create a file with this app in a given folder. The template contains the {folderId} to
+        /// be replaced by the folder ID house the new file.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createInFolderTemplate")]
+        public virtual string CreateInFolderTemplate { get; set; }
+
+        /// <summary>The URL to create a file with this app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createUrl")]
+        public virtual string CreateUrl { get; set; }
+
+        /// <summary>
+        /// Whether the app has Drive-wide scope. An app with Drive-wide scope can access all files in the user's Drive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hasDriveWideScope")]
+        public virtual System.Nullable<bool> HasDriveWideScope { get; set; }
+
+        /// <summary>The various icons for the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("icons")]
+        public virtual System.Collections.Generic.IList<AppIcons> Icons { get; set; }
+
+        /// <summary>The ID of the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Whether the app is installed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("installed")]
+        public virtual System.Nullable<bool> Installed { get; set; }
+
+        /// <summary>
+        /// Output only. Identifies what kind of resource this is. Value: the fixed string "drive#app".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>A long description of the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("longDescription")]
+        public virtual string LongDescription { get; set; }
+
+        /// <summary>The name of the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The type of object this app creates such as a Chart. If empty, the app name should be used instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectType")]
+        public virtual string ObjectType { get; set; }
+
+        /// <summary>
+        /// The template URL for opening files with this app. The template contains {ids} or {exportIds} to be replaced
+        /// by the actual file IDs. For more information, see Open Files for the full documentation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("openUrlTemplate")]
+        public virtual string OpenUrlTemplate { get; set; }
+
+        /// <summary>The list of primary file extensions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryFileExtensions")]
+        public virtual System.Collections.Generic.IList<string> PrimaryFileExtensions { get; set; }
+
+        /// <summary>The list of primary MIME types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryMimeTypes")]
+        public virtual System.Collections.Generic.IList<string> PrimaryMimeTypes { get; set; }
+
+        /// <summary>The ID of the product listing for this app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; }
+
+        /// <summary>A link to the product listing for this app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productUrl")]
+        public virtual string ProductUrl { get; set; }
+
+        /// <summary>The list of secondary file extensions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secondaryFileExtensions")]
+        public virtual System.Collections.Generic.IList<string> SecondaryFileExtensions { get; set; }
+
+        /// <summary>The list of secondary MIME types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secondaryMimeTypes")]
+        public virtual System.Collections.Generic.IList<string> SecondaryMimeTypes { get; set; }
+
+        /// <summary>A short description of the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shortDescription")]
+        public virtual string ShortDescription { get; set; }
+
+        /// <summary>Whether this app supports creating objects.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportsCreate")]
+        public virtual System.Nullable<bool> SupportsCreate { get; set; }
+
+        /// <summary>Whether this app supports importing from Google Docs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportsImport")]
+        public virtual System.Nullable<bool> SupportsImport { get; set; }
+
+        /// <summary>Whether this app supports opening more than one file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportsMultiOpen")]
+        public virtual System.Nullable<bool> SupportsMultiOpen { get; set; }
+
+        /// <summary>Whether this app supports creating files when offline.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportsOfflineCreate")]
+        public virtual System.Nullable<bool> SupportsOfflineCreate { get; set; }
+
+        /// <summary>Whether the app is selected as the default handler for the types it supports.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useByDefault")]
+        public virtual System.Nullable<bool> UseByDefault { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class AppIcons : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Category of the icon. Allowed values are: * `application` - The icon for the application. * `document` - The
+        /// icon for a file associated with the app. * `documentShared` - The icon for a shared file associated with the
+        /// app.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; }
+
+        /// <summary>URL for the icon.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iconUrl")]
+        public virtual string IconUrl { get; set; }
+
+        /// <summary>Size of the icon. Represented as the maximum of the width and height.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("size")]
+        public virtual System.Nullable<int> Size { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A list of third-party applications which the user has installed or given access to Google Drive.
+    /// </summary>
+    public class AppList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The list of app IDs that the user has specified to use by default. The list is in reverse-priority order
+        /// (lowest to highest).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultAppIds")]
+        public virtual System.Collections.Generic.IList<string> DefaultAppIds { get; set; }
+
+        /// <summary>The list of apps.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<App> Items { get; set; }
+
+        /// <summary>
+        /// Output only. Identifies what kind of resource this is. Value: the fixed string "drive#appList".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>A link back to this list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>A change to a file or shared drive.</summary>

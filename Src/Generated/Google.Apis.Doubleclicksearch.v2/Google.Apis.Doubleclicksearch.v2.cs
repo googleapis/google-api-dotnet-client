@@ -1330,7 +1330,11 @@ namespace Google.Apis.Doubleclicksearch.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adId")]
         public virtual System.Nullable<long> AdId { get; set; }
 
-        /// <summary>Ad user data consent for this conversion.</summary>
+        /// <summary>
+        /// Represents consent for core platform services (CPS) preferences in settings. No default value. Acceptable
+        /// values are: GRANTED: The desired consent status is to grant. Read the CPS preferences from GTE settings.
+        /// DENIED: The desired consent status is to deny; CPS list is empty.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adUserDataConsent")]
         public virtual string AdUserDataConsent { get; set; }
 

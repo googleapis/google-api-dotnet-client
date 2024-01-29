@@ -2453,7 +2453,7 @@ namespace Google.Apis.NetworkServices.v1beta1
                 /// <summary>Updates the parameters of the specified `LbRouteExtension` resource.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. Name of the `LbRouteExtension` resource in the following format:
+                /// Required. Identifier. Name of the `LbRouteExtension` resource in the following format:
                 /// `projects/{project}/locations/{location}/lbRouteExtensions/{lb_route_extension}`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkServices.v1beta1.Data.LbRouteExtension body, string name)
@@ -2473,7 +2473,7 @@ namespace Google.Apis.NetworkServices.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. Name of the `LbRouteExtension` resource in the following format:
+                    /// Required. Identifier. Name of the `LbRouteExtension` resource in the following format:
                     /// `projects/{project}/locations/{location}/lbRouteExtensions/{lb_route_extension}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -2887,7 +2887,7 @@ namespace Google.Apis.NetworkServices.v1beta1
                 /// <summary>Updates the parameters of the specified `LbTrafficExtension` resource.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. Name of the `LbTrafficExtension` resource in the following format:
+                /// Required. Identifier. Name of the `LbTrafficExtension` resource in the following format:
                 /// `projects/{project}/locations/{location}/lbTrafficExtensions/{lb_traffic_extension}`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkServices.v1beta1.Data.LbTrafficExtension body, string name)
@@ -2907,7 +2907,7 @@ namespace Google.Apis.NetworkServices.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. Name of the `LbTrafficExtension` resource in the following format:
+                    /// Required. Identifier. Name of the `LbTrafficExtension` resource in the following format:
                     /// `projects/{project}/locations/{location}/lbTrafficExtensions/{lb_traffic_extension}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -5812,7 +5812,9 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
 
         /// <summary>
         /// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`,
-        /// or `roles/owner`.
+        /// or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM
+        /// documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined
+        /// roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
@@ -7557,7 +7559,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual string LoadBalancingScheme { get; set; }
 
         /// <summary>
-        /// Required. Name of the `LbRouteExtension` resource in the following format:
+        /// Required. Identifier. Name of the `LbRouteExtension` resource in the following format:
         /// `projects/{project}/locations/{location}/lbRouteExtensions/{lb_route_extension}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -7685,7 +7687,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual string LoadBalancingScheme { get; set; }
 
         /// <summary>
-        /// Required. Name of the `LbTrafficExtension` resource in the following format:
+        /// Required. Identifier. Name of the `LbTrafficExtension` resource in the following format:
         /// `projects/{project}/locations/{location}/lbTrafficExtensions/{lb_traffic_extension}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -8127,7 +8129,8 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         /// matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config
         /// from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client
         /// with label connects, the config from P3 will be selected. If there is more than one best match, (for
-        /// example, if a config P4 with selector exists and if a client with label connects), an error will be thrown.
+        /// example, if a config P4 with selector exists and if a client with label connects), pick up the one with
+        /// older creation time.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadataLabelMatchCriteria")]
         public virtual string MetadataLabelMatchCriteria { get; set; }

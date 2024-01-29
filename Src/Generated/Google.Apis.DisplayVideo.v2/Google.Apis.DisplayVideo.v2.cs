@@ -15318,6 +15318,212 @@ namespace Google.Apis.DisplayVideo.v2
         public FloodlightGroupsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            FloodlightActivities = new FloodlightActivitiesResource(service);
+        }
+
+        /// <summary>Gets the FloodlightActivities resource.</summary>
+        public virtual FloodlightActivitiesResource FloodlightActivities { get; }
+
+        /// <summary>The "floodlightActivities" collection of methods.</summary>
+        public class FloodlightActivitiesResource
+        {
+            private const string Resource = "floodlightActivities";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public FloodlightActivitiesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Gets a Floodlight activity.</summary>
+            /// <param name="floodlightGroupId">
+            /// Required. The ID of the parent Floodlight group to which the requested Floodlight activity belongs.
+            /// </param>
+            /// <param name="floodlightActivityId">Required. The ID of the Floodlight activity to fetch.</param>
+            public virtual GetRequest Get(long floodlightGroupId, long floodlightActivityId)
+            {
+                return new GetRequest(this.service, floodlightGroupId, floodlightActivityId);
+            }
+
+            /// <summary>Gets a Floodlight activity.</summary>
+            public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v2.Data.FloodlightActivity>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, long floodlightGroupId, long floodlightActivityId) : base(service)
+                {
+                    FloodlightGroupId = floodlightGroupId;
+                    FloodlightActivityId = floodlightActivityId;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The ID of the parent Floodlight group to which the requested Floodlight activity belongs.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("floodlightGroupId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long FloodlightGroupId { get; private set; }
+
+                /// <summary>Required. The ID of the Floodlight activity to fetch.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("floodlightActivityId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long FloodlightActivityId { get; private set; }
+
+                /// <summary>
+                /// Required. The ID of the partner through which the Floodlight activity is being accessed.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<long> PartnerId { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2/floodlightGroups/{+floodlightGroupId}/floodlightActivities/{+floodlightActivityId}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("floodlightGroupId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "floodlightGroupId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("floodlightActivityId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "floodlightActivityId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "partnerId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Lists Floodlight activities in a Floodlight group.</summary>
+            /// <param name="floodlightGroupId">
+            /// Required. The ID of the parent Floodlight group to which the requested Floodlight activities belong.
+            /// </param>
+            public virtual ListRequest List(long floodlightGroupId)
+            {
+                return new ListRequest(this.service, floodlightGroupId);
+            }
+
+            /// <summary>Lists Floodlight activities in a Floodlight group.</summary>
+            public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v2.Data.ListFloodlightActivitiesResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, long floodlightGroupId) : base(service)
+                {
+                    FloodlightGroupId = floodlightGroupId;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The ID of the parent Floodlight group to which the requested Floodlight activities belong.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("floodlightGroupId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long FloodlightGroupId { get; private set; }
+
+                /// <summary>
+                /// Optional. Field by which to sort the list. Acceptable values are: * `displayName` (default) *
+                /// `floodlightActivityId` The default sorting order is ascending. To specify descending order for a
+                /// field, a suffix "desc" should be added to the field name. Example: `displayName desc`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>
+                /// Optional. Requested page size. Must be between `1` and `100`. If unspecified will default to `100`.
+                /// Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A token identifying a page of results the server should return. Typically, this is the
+                /// value of next_page_token returned from the previous call to `ListFloodlightActivities` method. If
+                /// not specified, the first page of results will be returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>
+                /// Required. The ID of the partner through which the Floodlight activities are being accessed.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<long> PartnerId { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2/floodlightGroups/{+floodlightGroupId}/floodlightActivities";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("floodlightGroupId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "floodlightGroupId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "partnerId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
 
         /// <summary>Gets a Floodlight group.</summary>
@@ -24056,6 +24262,10 @@ namespace Google.Apis.DisplayVideo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cmAccountId")]
         public virtual System.Nullable<long> CmAccountId { get; set; }
 
+        /// <summary>Output only. The set of CM360 Advertiser IDs sharing the CM360 Floodlight configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cmAdvertiserIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> CmAdvertiserIds { get; set; }
+
         /// <summary>
         /// Required. Immutable. ID of the CM360 Floodlight configuration linked with the DV360 advertiser.
         /// </summary>
@@ -26087,6 +26297,52 @@ namespace Google.Apis.DisplayVideo.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A single Floodlight activity.</summary>
+    public class FloodlightActivity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. IDs of the advertisers that have access to the parent Floodlight group. Only advertisers under
+        /// the provided partner ID will be listed in this field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advertiserIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> AdvertiserIds { get; set; }
+
+        /// <summary>Required. The display name of the Floodlight activity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Output only. The unique ID of the Floodlight activity. Assigned by the system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("floodlightActivityId")]
+        public virtual System.Nullable<long> FloodlightActivityId { get; set; }
+
+        /// <summary>Required. Immutable. The ID of the parent Floodlight group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("floodlightGroupId")]
+        public virtual System.Nullable<long> FloodlightGroupId { get; set; }
+
+        /// <summary>Output only. The resource name of the Floodlight activity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. A list of configuration objects designating whether remarketing for this Floodlight Activity is
+        /// enabled and available for a specifc advertiser. If enabled, this Floodlight Activity generates a remarketing
+        /// user list that is able to be used in targeting under the advertiser.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remarketingConfigs")]
+        public virtual System.Collections.Generic.IList<RemarketingConfig> RemarketingConfigs { get; set; }
+
+        /// <summary>Optional. Whether the Floodlight activity is served.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servingStatus")]
+        public virtual string ServingStatus { get; set; }
+
+        /// <summary>Output only. Whether tags are required to be compliant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sslRequired")]
+        public virtual System.Nullable<bool> SslRequired { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A single Floodlight group.</summary>
     public class FloodlightGroup : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -27885,6 +28141,23 @@ namespace Google.Apis.DisplayVideo.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    public class ListFloodlightActivitiesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of Floodlight activities. This list will be absent if empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("floodlightActivities")]
+        public virtual System.Collections.Generic.IList<FloodlightActivity> FloodlightActivities { get; set; }
+
+        /// <summary>
+        /// A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call
+        /// to `ListFloodlightActivities` method to retrieve the next page of results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class ListGoogleAudiencesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The list of Google audiences. This list will be absent if empty.</summary>
@@ -29498,6 +29771,24 @@ namespace Google.Apis.DisplayVideo.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionalLocationListId")]
         public virtual System.Nullable<long> RegionalLocationListId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings that control the whether remarketing is enabled for the given identified advertiser.</summary>
+    public class RemarketingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The ID of the advertiser.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
+        public virtual System.Nullable<long> AdvertiserId { get; set; }
+
+        /// <summary>
+        /// Output only. Whether the Floodlight activity remarketing user list is available to the identified
+        /// advertiser.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remarketingEnabled")]
+        public virtual System.Nullable<bool> RemarketingEnabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

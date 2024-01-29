@@ -6374,6 +6374,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkPolicyConfig")]
         public virtual NetworkPolicyConfig NetworkPolicyConfig { get; set; }
 
+        /// <summary>Optional. Configuration for the StatefulHA add-on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statefulHaConfig")]
+        public virtual StatefulHAConfig StatefulHaConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -10879,6 +10883,17 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for the Stateful HA add-on.</summary>
+    public class StatefulHAConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the Stateful HA add-on is enabled for this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

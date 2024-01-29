@@ -26505,6 +26505,13 @@ namespace Google.Apis.Aiplatform.v1
                     [Google.Apis.Util.RequestParameterAttribute("pipelineJobId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PipelineJobId { get; set; }
 
+                    /// <summary>
+                    /// Optional. Whether to do component level validations before job creation. Currently we only
+                    /// support Google First Party Component/Pipelines.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("preflightValidations", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> PreflightValidations { get; set; }
+
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1PipelineJob Body { get; set; }
 
@@ -26535,6 +26542,14 @@ namespace Google.Apis.Aiplatform.v1
                         RequestParameters.Add("pipelineJobId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pipelineJobId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("preflightValidations", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "preflightValidations",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -35340,6 +35355,13 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("finishReason")]
         public virtual string FinishReason { get; set; }
 
+        /// <summary>
+        /// Grounding metadata. Combine with the facts list from response to generate grounding citations for this
+        /// choice.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groundingMetadata")]
+        public virtual LearningGenaiRootGroundingMetadata GroundingMetadata { get; set; }
+
         /// <summary>Index of the candidate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("index")]
         public virtual System.Nullable<int> Index { get; set; }
@@ -35409,6 +35431,32 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A condense version of WorldFact (assistant/boq/lamda/factuality/proto/factuality.proto) to propagate the
+    /// essential information about the fact used in factuality to the upstream caller.
+    /// </summary>
+    public class CloudAiNlLlmProtoServiceFact : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Query that is used to retrieve this fact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual string Query { get; set; }
+
+        /// <summary>If present, the summary/snippet of the fact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summary")]
+        public virtual string Summary { get; set; }
+
+        /// <summary>If present, it refers to the title of this fact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>If present, this URL links to the webpage of the fact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Function call details.</summary>
     public class CloudAiNlLlmProtoServiceFunctionCall : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -35451,6 +35499,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("debugMetadata")]
         public virtual CloudAiNlLlmProtoServiceMessageMetadata DebugMetadata { get; set; }
+
+        /// <summary>External facts retrieved for factuality/grounding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("facts")]
+        public virtual System.Collections.Generic.IList<CloudAiNlLlmProtoServiceFact> Facts { get; set; }
 
         /// <summary>
         /// Content filter results for a prompt sent in the request. Note: Sent only in the first stream chunk. Only
@@ -35564,9 +35616,28 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("endOffset")]
         public virtual object EndOffset { get; set; }
 
+        /// <summary>Internal only model level metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelLevelMetaData")]
+        public virtual CloudAiNlLlmProtoServicePartVideoMetadataModelLevelMetadata ModelLevelMetaData { get; set; }
+
         /// <summary>The start offset of the video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startOffset")]
         public virtual object StartOffset { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Internal only fields</summary>
+    public class CloudAiNlLlmProtoServicePartVideoMetadataModelLevelMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Frame rate to decode from this video.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fps")]
+        public virtual System.Nullable<float> Fps { get; set; }
+
+        /// <summary>Number of frames to decode from this video.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numFrames")]
+        public virtual System.Nullable<int> NumFrames { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -38119,6 +38190,13 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pipelineJobId")]
         public virtual string PipelineJobId { get; set; }
+
+        /// <summary>
+        /// Optional. Whether to do component level validations before job creation. Currently we only support Google
+        /// First Party Component/Pipelines.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preflightValidations")]
+        public virtual System.Nullable<bool> PreflightValidations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -40803,8 +40881,13 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// such as regression Models that predict only one score, there is only one attibution that explains the
         /// predicted output. For Models that predict multiple outputs, such as multiclass Models that predict multiple
         /// classes, each element explains one specific item. Attribution.output_index can be used to identify which
-        /// output this attribution is explaining. If users set ExplanationParameters.top_k, the attributions are sorted
-        /// by instance_output_value in descending order. If ExplanationParameters.output_indices is specified, the
+        /// output this attribution is explaining. By default, we provide Shapley values for the predicted class.
+        /// However, you can configure the explanation request to generate Shapley values for any other classes too. For
+        /// example, if a model predicts a probability of `0.4` for approving a loan application, the model's decision
+        /// is to reject the application since `p(reject) = 0.6 &amp;gt; p(approve) = 0.4`, and the default Shapley
+        /// values would be computed for rejection decision and not approval, even though the latter might be the
+        /// positive class. If users set ExplanationParameters.top_k, the attributions are sorted by
+        /// instance_output_value in descending order. If ExplanationParameters.output_indices is specified, the
         /// attributions are stored by Attribution.output_index in the same order as they appear in the output_indices.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributions")]
@@ -44574,6 +44657,13 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Output only. The ip address used to send match gRPC requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchGrpcAddress")]
         public virtual string MatchGrpcAddress { get; set; }
+
+        /// <summary>
+        /// Output only. PscAutomatedEndpoints is populated if private service connect is enabled if PscAutomatedConfig
+        /// is set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscAutomatedEndpoints")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1PscAutomatedEndpoints> PscAutomatedEndpoints { get; set; }
 
         /// <summary>
         /// Output only. The name of the service attachment resource. Populated if private service connect is enabled.
@@ -50023,6 +50113,28 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("command")]
         public virtual System.Collections.Generic.IList<string> Command { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// PscAutomatedEndpoints defines the output of the forwarding rule automatically created by each
+    /// PscAutomationConfig.
+    /// </summary>
+    public class GoogleCloudAiplatformV1PscAutomatedEndpoints : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Ip Address created by the automated forwarding rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchAddress")]
+        public virtual string MatchAddress { get; set; }
+
+        /// <summary>Corresponding network in pscAutomationConfigs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
+
+        /// <summary>Corresponding project_id in pscAutomationConfigs</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -58798,7 +58910,9 @@ namespace Google.Apis.Aiplatform.v1.Data
 
         /// <summary>
         /// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`,
-        /// or `roles/owner`.
+        /// or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM
+        /// documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined
+        /// roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }

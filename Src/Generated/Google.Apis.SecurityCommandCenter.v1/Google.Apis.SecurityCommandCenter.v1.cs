@@ -8658,6 +8658,16 @@ namespace Google.Apis.SecurityCommandCenter.v1
                         public virtual string Filter { get; set; }
 
                         /// <summary>
+                        /// Optional. The fields by which to order the valued resources response. Supported fields: *
+                        /// `exposed_score` * `resource_value` * `resource_type` * `resource` * `display_name` Values
+                        /// should be a comma separated list of fields. For example: `exposed_score,resource_value`. The
+                        /// default sorting order is descending. To specify ascending or descending order for a field,
+                        /// append a " ASC" or a " DESC" suffix, respectively; for example: `exposed_score DESC`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
+
+                        /// <summary>
                         /// The maximum number of results to return in a single response. Default is 10, minimum is 1,
                         /// maximum is 1000.
                         /// </summary>
@@ -8696,6 +8706,14 @@ namespace Google.Apis.SecurityCommandCenter.v1
                             RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -9073,6 +9091,16 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     public virtual string Filter { get; set; }
 
                     /// <summary>
+                    /// Optional. The fields by which to order the valued resources response. Supported fields: *
+                    /// `exposed_score` * `resource_value` * `resource_type` * `resource` * `display_name` Values should
+                    /// be a comma separated list of fields. For example: `exposed_score,resource_value`. The default
+                    /// sorting order is descending. To specify ascending or descending order for a field, append a "
+                    /// ASC" or a " DESC" suffix, respectively; for example: `exposed_score DESC`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
                     /// The maximum number of results to return in a single response. Default is 10, minimum is 1,
                     /// maximum is 1000.
                     /// </summary>
@@ -9111,6 +9139,14 @@ namespace Google.Apis.SecurityCommandCenter.v1
                         RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -15529,7 +15565,9 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
 
         /// <summary>
         /// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`,
-        /// or `roles/owner`.
+        /// or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM
+        /// documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined
+        /// roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
