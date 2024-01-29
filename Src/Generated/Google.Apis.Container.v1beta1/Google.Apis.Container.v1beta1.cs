@@ -6440,6 +6440,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkPolicyConfig")]
         public virtual NetworkPolicyConfig NetworkPolicyConfig { get; set; }
 
+        /// <summary>Optional. Configuration for the StatefulHA add-on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statefulHaConfig")]
+        public virtual StatefulHAConfig StatefulHaConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6522,7 +6526,7 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>Autopilot is the configuration for Autopilot settings on the cluster.</summary>
     public class Autopilot : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>ConversionStatus shows conversion status.</summary>
+        /// <summary>Output only. ConversionStatus shows conversion status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversionStatus")]
         public virtual AutopilotConversionStatus ConversionStatus { get; set; }
 
@@ -11368,6 +11372,17 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for the Stateful HA add-on.</summary>
+    public class StatefulHAConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the Stateful HA add-on is enabled for this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

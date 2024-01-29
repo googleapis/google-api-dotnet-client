@@ -5086,7 +5086,9 @@ namespace Google.Apis.NetworkServices.v1.Data
 
         /// <summary>
         /// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`,
-        /// or `roles/owner`.
+        /// or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM
+        /// documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined
+        /// roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
@@ -5135,7 +5137,8 @@ namespace Google.Apis.NetworkServices.v1.Data
         /// matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config
         /// from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client
         /// with label connects, the config from P3 will be selected. If there is more than one best match, (for
-        /// example, if a config P4 with selector exists and if a client with label connects), an error will be thrown.
+        /// example, if a config P4 with selector exists and if a client with label connects), pick up the one with
+        /// older creation time.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadataLabelMatchCriteria")]
         public virtual string MetadataLabelMatchCriteria { get; set; }

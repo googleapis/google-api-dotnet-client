@@ -11144,7 +11144,8 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
 
         /// <summary>
         /// If `true`, the request will opt out for STT conformer model migration. This field will be deprecated once
-        /// force migration takes place in June 2024.
+        /// force migration takes place in June 2024. Please refer to [Dialogflow CX Speech model
+        /// migration](https://cloud.google.com/dialogflow/cx/docs/concept/speech-model-migration).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("optOutConformerModelMigration")]
         public virtual System.Nullable<bool> OptOutConformerModelMigration { get; set; }
@@ -15512,7 +15513,8 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
 
         /// <summary>
         /// If `true`, the request will opt out for STT conformer model migration. This field will be deprecated once
-        /// force migration takes place in June 2024.
+        /// force migration takes place in June 2024. Please refer to [Dialogflow CX Speech model
+        /// migration](https://cloud.google.com/dialogflow/cx/docs/concept/speech-model-migration).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("optOutConformerModelMigration")]
         public virtual System.Nullable<bool> OptOutConformerModelMigration { get; set; }

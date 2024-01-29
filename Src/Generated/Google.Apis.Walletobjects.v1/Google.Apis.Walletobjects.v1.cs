@@ -8114,7 +8114,7 @@ namespace Google.Apis.Walletobjects.v1.Data
     public class FlightCarrier : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A logo for the airline alliance, displayed above the QR code that the passenger scans to board.
+        /// A logo for the airline alliance, displayed below the QR code that the passenger scans to board.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("airlineAllianceLogo")]
         public virtual Image AirlineAllianceLogo { get; set; }

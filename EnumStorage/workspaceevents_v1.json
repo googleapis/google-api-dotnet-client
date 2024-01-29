@@ -1,0 +1,11 @@
+{
+  "Google.Apis.WorkspaceEvents.v1.WorkspaceEventsBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.WorkspaceEvents.v1.WorkspaceEventsBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

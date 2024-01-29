@@ -4148,7 +4148,7 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxConcurrentCdcTasks")]
         public virtual System.Nullable<int> MaxConcurrentCdcTasks { get; set; }
 
-        /// <summary>Stream large object values. NOTE: This feature is currently experimental.</summary>
+        /// <summary>Stream large object values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("streamLargeObjects")]
         public virtual StreamLargeObjects StreamLargeObjects { get; set; }
 
@@ -4671,7 +4671,7 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mysqlLogPosition")]
         public virtual MysqlLogPosition MysqlLogPosition { get; set; }
 
-        /// <summary>Oracle specific log position to start replicating from.</summary>
+        /// <summary>Oracle SCN to start replicating from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oracleScnPosition")]
         public virtual OracleScnPosition OracleScnPosition { get; set; }
 

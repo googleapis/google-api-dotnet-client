@@ -1,9 +1,27 @@
 {
   "Google.Apis.Bigquery.v2.BigqueryBaseServiceRequest<<TResponse>>.AltEnum": [
-    "json"
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Bigquery.v2.BigqueryBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.Bigquery.v2.DatasetsResource+GetRequest.DatasetViewEnum": [
+    "DATASET_VIEW_UNSPECIFIED",
+    "METADATA",
+    "ACL",
+    "FULL"
   ],
   "Google.Apis.Bigquery.v2.JobsResource+InsertMediaUpload.AltEnum": [
-    "json"
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Bigquery.v2.JobsResource+InsertMediaUpload.XgafvEnum": [
+    "1",
+    "2"
   ],
   "Google.Apis.Bigquery.v2.JobsResource+ListRequest.ProjectionEnum": [
     "full",

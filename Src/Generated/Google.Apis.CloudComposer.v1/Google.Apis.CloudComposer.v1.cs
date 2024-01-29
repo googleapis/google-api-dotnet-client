@@ -310,6 +310,127 @@ namespace Google.Apis.CloudComposer.v1
                 public EnvironmentsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    Workloads = new WorkloadsResource(service);
+                }
+
+                /// <summary>Gets the Workloads resource.</summary>
+                public virtual WorkloadsResource Workloads { get; }
+
+                /// <summary>The "workloads" collection of methods.</summary>
+                public class WorkloadsResource
+                {
+                    private const string Resource = "workloads";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public WorkloadsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Lists workloads in a Cloud Composer environment. Workload is a unit that runs a single Composer
+                    /// component. This method is supported for Cloud Composer environments in versions
+                    /// composer-3.*.*-airflow-*.*.* and newer.
+                    /// </summary>
+                    /// <param name="parent">
+                    /// Required. The environment name to get workloads for, in the form:
+                    /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>
+                    /// Lists workloads in a Cloud Composer environment. Workload is a unit that runs a single Composer
+                    /// component. This method is supported for Cloud Composer environments in versions
+                    /// composer-3.*.*-airflow-*.*.* and newer.
+                    /// </summary>
+                    public class ListRequest : CloudComposerBaseServiceRequest<Google.Apis.CloudComposer.v1.Data.ListWorkloadsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The environment name to get workloads for, in the form:
+                        /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. The list filter. Currently only supports equality on the type field. The value of
+                        /// a field specified in the filter expression must be one ComposerWorkloadType enum option.
+                        /// It's possible to get multiple types using "OR" operator, e.g.: "type=SCHEDULER OR
+                        /// type=CELERY_WORKER". If not specified, all items are returned.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>Optional. The maximum number of environments to return.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. The next_page_token value returned from a previous List request, if any.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/workloads";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/environments/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Create a new environment.</summary>
@@ -1485,6 +1606,70 @@ namespace Google.Apis.CloudComposer.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Information about a single workload.</summary>
+    public class ComposerWorkload : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of a workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Status of a workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual ComposerWorkloadStatus Status { get; set; }
+
+        /// <summary>Type of a workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Workload status.</summary>
+    public class ComposerWorkloadStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Detailed message of the status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detailedStatusMessage")]
+        public virtual string DetailedStatusMessage { get; set; }
+
+        /// <summary>Output only. Workload state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. Text to provide more descriptive status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
+        public virtual string StatusMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for resources used by Airflow DAG processors.</summary>
+    public class DagProcessorResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The number of DAG processors. If not provided or set to 0, a single DAG processor instance will be
+        /// created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<int> Count { get; set; }
+
+        /// <summary>Optional. CPU request and limit for a single Airflow DAG processor replica.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpu")]
+        public virtual System.Nullable<float> Cpu { get; set; }
+
+        /// <summary>Optional. Memory (GB) request and limit for a single Airflow DAG processor replica.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryGb")]
+        public virtual System.Nullable<float> MemoryGb { get; set; }
+
+        /// <summary>Optional. Storage (GB) request and limit for a single Airflow DAG processor replica.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageGb")]
+        public virtual System.Nullable<float> StorageGb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The configuration setting for Airflow database data retention mechanism.</summary>
     public class DataRetentionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2078,6 +2263,21 @@ namespace Google.Apis.CloudComposer.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response to ListWorkloadsRequest.</summary>
+    public class ListWorkloadsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The page token used to query for the next page if one exists.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of environment workloads.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workloads")]
+        public virtual System.Collections.Generic.IList<ComposerWorkload> Workloads { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request to load a snapshot into a Cloud Composer environment.</summary>
     public class LoadSnapshotRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2254,6 +2454,27 @@ namespace Google.Apis.CloudComposer.v1.Data
     /// </summary>
     public class NodeConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The IP range in CIDR notation to use internally by Cloud Composer. IP addresses are not reserved -
+        /// and the same range can be used by multiple Cloud Composer environments. In case of overlap, IPs from this
+        /// range will not be accessible in the user's VPC network. Cannot be updated. If not specified, the default
+        /// value of '100.64.128.0/20' is used. This field is supported for Cloud Composer environments in versions
+        /// composer-3.*.*-airflow-*.*.* and newer.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("composerInternalIpv4CidrBlock")]
+        public virtual string ComposerInternalIpv4CidrBlock { get; set; }
+
+        /// <summary>
+        /// Optional. Network Attachment that Cloud Composer environment is connected to, which provides connectivity
+        /// with a user's VPC network. Takes precedence over network and subnetwork settings. If not provided, but
+        /// network and subnetwork are defined during environment, it will be provisioned. If not provided and network
+        /// and subnetwork are also empty, then connectivity to user's VPC network is disabled. Network attachment must
+        /// be provided in format projects/{project}/regions/{region}/networkAttachments/{networkAttachment}. This field
+        /// is supported for Cloud Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("composerNetworkAttachment")]
+        public virtual string ComposerNetworkAttachment { get; set; }
+
         /// <summary>
         /// Optional. The disk size in GB used for node VMs. Minimum size is 30GB. If unspecified, defaults to 100GB.
         /// Cannot be updated. This field is supported for Cloud Composer environments in versions
@@ -2604,6 +2825,16 @@ namespace Google.Apis.CloudComposer.v1.Data
         public virtual string CloudSqlIpv4CidrBlock { get; set; }
 
         /// <summary>
+        /// Optional. If `true`, builds performed during operations that install Python packages have only private
+        /// connectivity to Google services (including Artifact Registry) and VPC network (if either
+        /// `NodeConfig.network` and `NodeConfig.subnetwork` fields or `NodeConfig.composer_network_attachment` field
+        /// are specified). If `false`, the builds also have access to the internet. This field is supported for Cloud
+        /// Composer environments in versions composer-3.*.*-airflow-*.*.* and newer.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enablePrivateBuildsOnly")]
+        public virtual System.Nullable<bool> EnablePrivateBuildsOnly { get; set; }
+
+        /// <summary>
         /// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true,
         /// `IPAllocationPolicy.use_ip_aliases` must be set to true for Cloud Composer environments in versions
         /// composer-1.*.*-airflow-*.*.*.
@@ -2810,6 +3041,14 @@ namespace Google.Apis.CloudComposer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("schedulerCount")]
         public virtual System.Nullable<int> SchedulerCount { get; set; }
 
+        /// <summary>
+        /// Optional. Whether or not the web server uses custom plugins. If unspecified, the field defaults to
+        /// `PLUGINS_ENABLED`. This field is supported for Cloud Composer environments in versions
+        /// composer-3.*.*-airflow-*.*.* and newer.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webServerPluginsMode")]
+        public virtual string WebServerPluginsMode { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3012,6 +3251,13 @@ namespace Google.Apis.CloudComposer.v1.Data
     /// </summary>
     public class WorkloadsConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Resources used by Airflow DAG processors. This field is supported for Cloud Composer environments
+        /// in versions composer-3.*.*-airflow-*.*.* and newer.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dagProcessor")]
+        public virtual DagProcessorResource DagProcessor { get; set; }
+
         /// <summary>Optional. Resources used by Airflow schedulers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduler")]
         public virtual SchedulerResource Scheduler { get; set; }

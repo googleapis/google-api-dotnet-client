@@ -15182,6 +15182,212 @@ namespace Google.Apis.DisplayVideo.v3
         public FloodlightGroupsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            FloodlightActivities = new FloodlightActivitiesResource(service);
+        }
+
+        /// <summary>Gets the FloodlightActivities resource.</summary>
+        public virtual FloodlightActivitiesResource FloodlightActivities { get; }
+
+        /// <summary>The "floodlightActivities" collection of methods.</summary>
+        public class FloodlightActivitiesResource
+        {
+            private const string Resource = "floodlightActivities";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public FloodlightActivitiesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Gets a Floodlight activity.</summary>
+            /// <param name="floodlightGroupId">
+            /// Required. The ID of the parent Floodlight group to which the requested Floodlight activity belongs.
+            /// </param>
+            /// <param name="floodlightActivityId">Required. The ID of the Floodlight activity to fetch.</param>
+            public virtual GetRequest Get(long floodlightGroupId, long floodlightActivityId)
+            {
+                return new GetRequest(this.service, floodlightGroupId, floodlightActivityId);
+            }
+
+            /// <summary>Gets a Floodlight activity.</summary>
+            public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.FloodlightActivity>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, long floodlightGroupId, long floodlightActivityId) : base(service)
+                {
+                    FloodlightGroupId = floodlightGroupId;
+                    FloodlightActivityId = floodlightActivityId;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The ID of the parent Floodlight group to which the requested Floodlight activity belongs.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("floodlightGroupId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long FloodlightGroupId { get; private set; }
+
+                /// <summary>Required. The ID of the Floodlight activity to fetch.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("floodlightActivityId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long FloodlightActivityId { get; private set; }
+
+                /// <summary>
+                /// Required. The ID of the partner through which the Floodlight activity is being accessed.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<long> PartnerId { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/floodlightGroups/{+floodlightGroupId}/floodlightActivities/{+floodlightActivityId}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("floodlightGroupId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "floodlightGroupId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("floodlightActivityId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "floodlightActivityId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "partnerId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Lists Floodlight activities in a Floodlight group.</summary>
+            /// <param name="floodlightGroupId">
+            /// Required. The ID of the parent Floodlight group to which the requested Floodlight activities belong.
+            /// </param>
+            public virtual ListRequest List(long floodlightGroupId)
+            {
+                return new ListRequest(this.service, floodlightGroupId);
+            }
+
+            /// <summary>Lists Floodlight activities in a Floodlight group.</summary>
+            public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.ListFloodlightActivitiesResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, long floodlightGroupId) : base(service)
+                {
+                    FloodlightGroupId = floodlightGroupId;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The ID of the parent Floodlight group to which the requested Floodlight activities belong.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("floodlightGroupId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long FloodlightGroupId { get; private set; }
+
+                /// <summary>
+                /// Optional. Field by which to sort the list. Acceptable values are: * `displayName` (default) *
+                /// `floodlightActivityId` The default sorting order is ascending. To specify descending order for a
+                /// field, a suffix "desc" should be added to the field name. Example: `displayName desc`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>
+                /// Optional. Requested page size. Must be between `1` and `100`. If unspecified will default to `100`.
+                /// Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A token identifying a page of results the server should return. Typically, this is the
+                /// value of next_page_token returned from the previous call to `ListFloodlightActivities` method. If
+                /// not specified, the first page of results will be returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>
+                /// Required. The ID of the partner through which the Floodlight activities are being accessed.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<long> PartnerId { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/floodlightGroups/{+floodlightGroupId}/floodlightActivities";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("floodlightGroupId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "floodlightGroupId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "partnerId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
 
         /// <summary>Gets a Floodlight group.</summary>
@@ -22291,6 +22497,169 @@ namespace Google.Apis.DisplayVideo.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Rule-based algorithm.</summary>
+    public class AlgorithmRules : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Rules for the impression signals.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("impressionSignalRuleset")]
+        public virtual AlgorithmRulesRuleset ImpressionSignalRuleset { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A value to compare the signal to.</summary>
+    public class AlgorithmRulesComparisonValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Boolean value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boolValue")]
+        public virtual System.Nullable<bool> BoolValue { get; set; }
+
+        /// <summary>Creative dimension value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creativeDimensionValue")]
+        public virtual Dimensions CreativeDimensionValue { get; set; }
+
+        /// <summary>Day and time value. Only `TIME_ZONE_RESOLUTION_END_USER` is supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dayAndTimeValue")]
+        public virtual DayAndTime DayAndTimeValue { get; set; }
+
+        /// <summary>Device type value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceTypeValue")]
+        public virtual string DeviceTypeValue { get; set; }
+
+        /// <summary>Double value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("doubleValue")]
+        public virtual System.Nullable<double> DoubleValue { get; set; }
+
+        /// <summary>Environment value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environmentValue")]
+        public virtual string EnvironmentValue { get; set; }
+
+        /// <summary>Exchange value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exchangeValue")]
+        public virtual string ExchangeValue { get; set; }
+
+        /// <summary>Integer value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("int64Value")]
+        public virtual System.Nullable<long> Int64Value { get; set; }
+
+        /// <summary>Ad position value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onScreenPositionValue")]
+        public virtual string OnScreenPositionValue { get; set; }
+
+        /// <summary>String value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
+        public virtual string StringValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Set of conditions. The return value of the rule is either: * The return value for single met condition or * The
+    /// defined default return value if no conditions are met.
+    /// </summary>
+    public class AlgorithmRulesRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// List of conditions in this rule. The criteria among conditions should be mutually exclusive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
+        public virtual System.Collections.Generic.IList<AlgorithmRulesRuleCondition> Conditions { get; set; }
+
+        /// <summary>The default return value applied when none of the conditions are met.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultReturnValue")]
+        public virtual AlgorithmRulesSignalValue DefaultReturnValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Set of signal comparisons. Equivalent of an `if` statement.</summary>
+    public class AlgorithmRulesRuleCondition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The value returned if the `signalComparisons` condition evaluates to `TRUE`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnValue")]
+        public virtual AlgorithmRulesSignalValue ReturnValue { get; set; }
+
+        /// <summary>
+        /// List of comparisons that build `if` statement condition. The comparisons are combined into a single
+        /// condition with `AND` logical operators.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signalComparisons")]
+        public virtual System.Collections.Generic.IList<AlgorithmRulesSignalComparison> SignalComparisons { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A ruleset consisting of a list of rules and how to aggregate the resulting values.</summary>
+    public class AlgorithmRulesRuleset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>How to aggregate values of evaluated rules.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregationType")]
+        public virtual string AggregationType { get; set; }
+
+        /// <summary>Maximum value the ruleset can evaluate to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxValue")]
+        public virtual System.Nullable<double> MaxValue { get; set; }
+
+        /// <summary>List of rules to generate the impression value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rules")]
+        public virtual System.Collections.Generic.IList<AlgorithmRulesRule> Rules { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Signal used to evaluate rules.</summary>
+    public class AlgorithmRulesSignal : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Signal based on impressions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("impressionSignal")]
+        public virtual string ImpressionSignal { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A single comparison. The comparison compares the `signal` to the `comparisonValue`. The comparison of
+    /// `siteId==123` is represented with the following field values: * `signal` has an `impressionSignal` of `SITE_ID`.
+    /// * `comparisonOperator` is set to `EQUAL`. * `comparisonValue` is set to 123.
+    /// </summary>
+    public class AlgorithmRulesSignalComparison : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Operator used to compare the two values. In the resulting experession, the `signal` will be the first value
+        /// and the `comparisonValue will be the second.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("comparisonOperator")]
+        public virtual string ComparisonOperator { get; set; }
+
+        /// <summary>Value to compare signal to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("comparisonValue")]
+        public virtual AlgorithmRulesComparisonValue ComparisonValue { get; set; }
+
+        /// <summary>Signal to compare.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signal")]
+        public virtual AlgorithmRulesSignal Signal { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Adjusted value of the signal used for rule evaluation.</summary>
+    public class AlgorithmRulesSignalValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Value to use as result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("number")]
+        public virtual System.Nullable<double> Number { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Details for assigned app targeting option. This will be populated in the details field of an
     /// AssignedTargetingOption when targeting_type is `TARGETING_TYPE_APP`.
@@ -24096,6 +24465,10 @@ namespace Google.Apis.DisplayVideo.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cmAccountId")]
         public virtual System.Nullable<long> CmAccountId { get; set; }
 
+        /// <summary>Output only. The set of CM360 Advertiser IDs sharing the CM360 Floodlight configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cmAdvertiserIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> CmAdvertiserIds { get; set; }
+
         /// <summary>
         /// Required. Immutable. ID of the CM360 Floodlight configuration linked with the DV360 advertiser.
         /// </summary>
@@ -25452,6 +25825,25 @@ namespace Google.Apis.DisplayVideo.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Representation of time defined by day of the week and hour of the day.</summary>
+    public class DayAndTime : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Day of the week.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dayOfWeek")]
+        public virtual string DayOfWeek { get; set; }
+
+        /// <summary>Required. Hour of the day.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hourOfDay")]
+        public virtual System.Nullable<int> HourOfDay { get; set; }
+
+        /// <summary>Required. The mechanism used to determine the relevant timezone.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZoneResolution")]
+        public virtual string TimeZoneResolution { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Representation of a segment of time defined on a specific day of the week and with a start and end time. The
     /// time represented by `start_hour` must be before the time represented by `end_hour`.
@@ -26223,6 +26615,52 @@ namespace Google.Apis.DisplayVideo.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bidAmountMicros")]
         public virtual System.Nullable<long> BidAmountMicros { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A single Floodlight activity.</summary>
+    public class FloodlightActivity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. IDs of the advertisers that have access to the parent Floodlight group. Only advertisers under
+        /// the provided partner ID will be listed in this field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advertiserIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> AdvertiserIds { get; set; }
+
+        /// <summary>Required. The display name of the Floodlight activity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Output only. The unique ID of the Floodlight activity. Assigned by the system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("floodlightActivityId")]
+        public virtual System.Nullable<long> FloodlightActivityId { get; set; }
+
+        /// <summary>Required. Immutable. The ID of the parent Floodlight group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("floodlightGroupId")]
+        public virtual System.Nullable<long> FloodlightGroupId { get; set; }
+
+        /// <summary>Output only. The resource name of the Floodlight activity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. A list of configuration objects designating whether remarketing for this Floodlight Activity is
+        /// enabled and available for a specifc advertiser. If enabled, this Floodlight Activity generates a remarketing
+        /// user list that is able to be used in targeting under the advertiser.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remarketingConfigs")]
+        public virtual System.Collections.Generic.IList<RemarketingConfig> RemarketingConfigs { get; set; }
+
+        /// <summary>Optional. Whether the Floodlight activity is served.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servingStatus")]
+        public virtual string ServingStatus { get; set; }
+
+        /// <summary>Output only. Whether tags are required to be compliant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sslRequired")]
+        public virtual System.Nullable<bool> SslRequired { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -28128,6 +28566,23 @@ namespace Google.Apis.DisplayVideo.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    public class ListFloodlightActivitiesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of Floodlight activities. This list will be absent if empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("floodlightActivities")]
+        public virtual System.Collections.Generic.IList<FloodlightActivity> FloodlightActivities { get; set; }
+
+        /// <summary>
+        /// A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call
+        /// to `ListFloodlightActivities` method to retrieve the next page of results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class ListGoogleAudiencesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The list of Google audiences. This list will be absent if empty.</summary>
@@ -29610,6 +30065,24 @@ namespace Google.Apis.DisplayVideo.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Settings that control the whether remarketing is enabled for the given identified advertiser.</summary>
+    public class RemarketingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The ID of the advertiser.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
+        public virtual System.Nullable<long> AdvertiserId { get; set; }
+
+        /// <summary>
+        /// Output only. Whether the Floodlight activity remarketing user list is available to the identified
+        /// advertiser.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remarketingEnabled")]
+        public virtual System.Nullable<bool> RemarketingEnabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for NegativeKeywordService.ReplaceNegativeKeywords.</summary>
     public class ReplaceNegativeKeywordsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -29728,6 +30201,106 @@ namespace Google.Apis.DisplayVideo.v3.Data
         public virtual string AdminEmail { get; set; }
 
         /// <summary>Required. The version of SDF being used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Type for the response returned by [SdfDownloadTaskService.CreateSdfDownloadTask].</summary>
+    public class SdfDownloadTask : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A resource name to be used in media.download to Download the prepared files. Resource names have the format
+        /// `download/sdfdownloadtasks/media/{media_id}`. `media_id` will be made available by the long running
+        /// operation service once the task status is done.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Type for the metadata returned by [SdfDownloadTaskService.CreateSdfDownloadTask].</summary>
+    public class SdfDownloadTaskMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>The time when the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>The time when execution was completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The SDF version used to execute this download task.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
 

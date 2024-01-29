@@ -5691,6 +5691,10 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     /// <summary>Request message for google.bigtable.admin.v2.BigtableTableAdmin.ModifyColumnFamilies</summary>
     public class ModifyColumnFamiliesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. If true, ignore safety checks when modifying the column families.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreWarnings")]
+        public virtual System.Nullable<bool> IgnoreWarnings { get; set; }
+
         /// <summary>
         /// Required. Modifications to be atomically applied to the specified table's families. Entries are applied in
         /// order, meaning that earlier modifications can be masked by later ones (in the case of repeated updates to
