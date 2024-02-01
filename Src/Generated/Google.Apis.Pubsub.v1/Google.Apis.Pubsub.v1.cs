@@ -1624,7 +1624,7 @@ namespace Google.Apis.Pubsub.v1
             }
 
             /// <summary>
-            /// Updates an existing snapshot. Snapshots are used in
+            /// Updates an existing snapshot by updating the fields specified in the update mask. Snapshots are used in
             /// [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations, which allow you to manage
             /// message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an
             /// existing subscription to the state captured by a snapshot.
@@ -1637,7 +1637,7 @@ namespace Google.Apis.Pubsub.v1
             }
 
             /// <summary>
-            /// Updates an existing snapshot. Snapshots are used in
+            /// Updates an existing snapshot by updating the fields specified in the update mask. Snapshots are used in
             /// [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations, which allow you to manage
             /// message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an
             /// existing subscription to the state captured by a snapshot.
@@ -2448,8 +2448,8 @@ namespace Google.Apis.Pubsub.v1
             }
 
             /// <summary>
-            /// Updates an existing subscription. Note that certain properties of a subscription, such as its topic, are
-            /// not modifiable.
+            /// Updates an existing subscription by updating the fields specified in the update mask. Note that certain
+            /// properties of a subscription, such as its topic, are not modifiable.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -2465,8 +2465,8 @@ namespace Google.Apis.Pubsub.v1
             }
 
             /// <summary>
-            /// Updates an existing subscription. Note that certain properties of a subscription, such as its topic, are
-            /// not modifiable.
+            /// Updates an existing subscription by updating the fields specified in the update mask. Note that certain
+            /// properties of a subscription, such as its topic, are not modifiable.
             /// </summary>
             public class PatchRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.Subscription>
             {
@@ -3335,7 +3335,8 @@ namespace Google.Apis.Pubsub.v1
             }
 
             /// <summary>
-            /// Updates an existing topic. Note that certain properties of a topic are not modifiable.
+            /// Updates an existing topic by updating the fields specified in the update mask. Note that certain
+            /// properties of a topic are not modifiable.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -3350,7 +3351,8 @@ namespace Google.Apis.Pubsub.v1
             }
 
             /// <summary>
-            /// Updates an existing topic. Note that certain properties of a topic are not modifiable.
+            /// Updates an existing topic by updating the fields specified in the update mask. Note that certain
+            /// properties of a topic are not modifiable.
             /// </summary>
             public class PatchRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.Topic>
             {
@@ -3637,6 +3639,45 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Ingestion settings for Amazon Kinesis Data Streams.</summary>
+    public class AwsKinesis : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. AWS role ARN to be used for Federated Identity authentication with Kinesis. Check the Pub/Sub docs
+        /// for how to set up this role and the required permissions that need to be attached to it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsRoleArn")]
+        public virtual string AwsRoleArn { get; set; }
+
+        /// <summary>
+        /// Required. The Kinesis consumer ARN to used for ingestion in Enhanced Fan-Out mode. The consumer must be
+        /// already created and ready to be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumerArn")]
+        public virtual string ConsumerArn { get; set; }
+
+        /// <summary>
+        /// Required. The GCP service account to be used for Federated Identity authentication with Kinesis (via a
+        /// `AssumeRoleWithWebIdentity` call for the provided role). The `aws_role_arn` must be set up with
+        /// `accounts.google.com:sub` equals to this service account number.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcpServiceAccount")]
+        public virtual string GcpServiceAccount { get; set; }
+
+        /// <summary>
+        /// Output only. An output-only field that indicates the state of the Kinesis ingestion source.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Required. The Kinesis stream ARN to ingest data from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("streamArn")]
+        public virtual string StreamArn { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for a BigQuery subscription.</summary>
     public class BigQueryConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3749,7 +3790,9 @@ namespace Google.Apis.Pubsub.v1.Data
 
         /// <summary>
         /// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`,
-        /// or `roles/owner`.
+        /// or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM
+        /// documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined
+        /// roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
@@ -3961,6 +4004,17 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Settings for an ingestion data source on a topic.</summary>
+    public class IngestionDataSourceSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Amazon Kinesis Data Streams.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsKinesis")]
+        public virtual AwsKinesis AwsKinesis { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response for the `ListSchemaRevisions` method.</summary>
     public class ListSchemaRevisionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4119,8 +4173,8 @@ namespace Google.Apis.Pubsub.v1.Data
         /// example, if the value is 10, the new ack deadline will expire 10 seconds after the `ModifyAckDeadline` call
         /// was made. Specifying zero might immediately make the message available for delivery to another subscriber
         /// client. This typically results in an increase in the rate of message redeliveries (that is, duplicates). The
-        /// minimum deadline you can specify is 0 seconds. The maximum deadline you can specify is 600 seconds (10
-        /// minutes).
+        /// minimum deadline you can specify is 0 seconds. The maximum deadline you can specify in a single request is
+        /// 600 seconds (10 minutes).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ackDeadlineSeconds")]
         public virtual System.Nullable<int> AckDeadlineSeconds { get; set; }
@@ -4311,9 +4365,9 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string Data { get; set; }
 
         /// <summary>
-        /// Optional. ID of this message, assigned by the server when the message is published. Guaranteed to be unique
-        /// within the topic. This value may be read by a subscriber that receives a `PubsubMessage` via a `Pull` call
-        /// or a push delivery. It must not be populated by the publisher in a `Publish` call.
+        /// ID of this message, assigned by the server when the message is published. Guaranteed to be unique within the
+        /// topic. This value may be read by a subscriber that receives a `PubsubMessage` via a `Pull` call or a push
+        /// delivery. It must not be populated by the publisher in a `Publish` call.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageId")]
         public virtual string MessageId { get; set; }
@@ -4333,8 +4387,8 @@ namespace Google.Apis.Pubsub.v1.Data
         private object _publishTime;
 
         /// <summary>
-        /// Optional. The time at which the message was published, populated by the server when it receives the
-        /// `Publish` call. It must not be populated by the publisher in a `Publish` call.
+        /// The time at which the message was published, populated by the server when it receives the `Publish` call. It
+        /// must not be populated by the publisher in a `Publish` call.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishTime")]
         public virtual string PublishTimeRaw
@@ -4993,6 +5047,10 @@ namespace Google.Apis.Pubsub.v1.Data
     /// <summary>A topic resource.</summary>
     public class Topic : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Settings for managed ingestion from a data source into this topic.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ingestionDataSourceSettings")]
+        public virtual IngestionDataSourceSettings IngestionDataSourceSettings { get; set; }
+
         /// <summary>
         /// Optional. The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on
         /// this topic. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
@@ -5043,6 +5101,10 @@ namespace Google.Apis.Pubsub.v1.Data
         /// <summary>Optional. Settings for validating messages published against a schema.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schemaSettings")]
         public virtual SchemaSettings SchemaSettings { get; set; }
+
+        /// <summary>Output only. An output-only field indicating the state of the topic.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

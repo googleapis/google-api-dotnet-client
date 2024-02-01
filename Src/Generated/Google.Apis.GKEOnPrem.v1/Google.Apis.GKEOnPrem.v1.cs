@@ -7196,7 +7196,7 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Resource that represents a bare metal admin cluster. LINT.IfChange</summary>
+    /// <summary>Resource that represents a bare metal admin cluster.</summary>
     public class BareMetalAdminCluster : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -7836,7 +7836,7 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Resource that represents a bare metal user cluster. LINT.IfChange</summary>
+    /// <summary>Resource that represents a bare metal user cluster.</summary>
     public class BareMetalCluster : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -8891,9 +8891,25 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         /// example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that
         /// represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
         /// (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. *
-        /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
-        /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
-        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+        /// A single identity in a workforce identity pool. *
+        /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All
+        /// workforce identities in a group. *
+        /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+        /// All workforce identities with a specific attribute value. *
+        /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a
+        /// workforce identity pool. *
+        /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+        /// A single identity in a workload identity pool. *
+        /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+        /// A workload identity pool group. *
+        /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+        /// All identities in a workload identity pool with a certain attribute. *
+        /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`:
+        /// All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address
+        /// (plus unique identifier) representing a user that has been recently deleted. For example,
+        /// `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to
+        /// `user:{emailid}` and the recovered user retains the role in the binding. *
         /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
         /// service account that has been recently deleted. For example,
         /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted,
@@ -8901,14 +8917,19 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         /// binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
         /// a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`.
         /// If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role
-        /// in the binding.
+        /// in the binding. *
+        /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+        /// Deleted single identity in a workforce identity pool. For example,
+        /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("members")]
         public virtual System.Collections.Generic.IList<string> Members { get; set; }
 
         /// <summary>
         /// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`,
-        /// or `roles/owner`.
+        /// or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM
+        /// documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined
+        /// roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
@@ -9547,7 +9568,7 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Information about operation progress. LINT.IfChange</summary>
+    /// <summary>Information about operation progress.</summary>
     public class OperationProgress : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The stages of the operation.</summary>
@@ -10620,6 +10641,10 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("autoRepairConfig")]
         public virtual VmwareAutoRepairConfig AutoRepairConfig { get; set; }
 
+        /// <summary>Binary Authorization related configurations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("binaryAuthorization")]
+        public virtual BinaryAuthorization BinaryAuthorization { get; set; }
+
         /// <summary>VMware user cluster control plane nodes must have either 1 or 3 replicas.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("controlPlaneNode")]
         public virtual VmwareControlPlaneNodeConfig ControlPlaneNode { get; set; }
@@ -10918,6 +10943,10 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataplaneV2Enabled")]
         public virtual System.Nullable<bool> DataplaneV2Enabled { get; set; }
 
+        /// <summary>Configure ForwardMode for Dataplane v2.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("forwardMode")]
+        public virtual string ForwardMode { get; set; }
+
         /// <summary>Enable Dataplane V2 for clusters with Windows nodes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("windowsDataplaneV2Enabled")]
         public virtual System.Nullable<bool> WindowsDataplaneV2Enabled { get; set; }
@@ -11127,9 +11156,7 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("staticIpConfig")]
         public virtual VmwareStaticIpConfig StaticIpConfig { get; set; }
 
-        /// <summary>
-        /// Output only. vcenter_network specifies vCenter network name. Inherited from the admin cluster.
-        /// </summary>
+        /// <summary>vcenter_network specifies vCenter network name. Inherited from the admin cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vcenterNetwork")]
         public virtual string VcenterNetwork { get; set; }
 

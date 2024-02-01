@@ -7179,7 +7179,9 @@ namespace Google.Apis.Spanner.v1.Data
 
         /// <summary>
         /// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`,
-        /// or `roles/owner`.
+        /// or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM
+        /// documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined
+        /// roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
@@ -7220,6 +7222,14 @@ namespace Google.Apis.Spanner.v1.Data
     /// <summary>The request for Commit.</summary>
     public class CommitRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The amount of latency this request is willing to incur in order to improve throughput. If this
+        /// field is not set, Spanner assumes requests are relatively latency sensitive and automatically determines an
+        /// appropriate delay time. You can specify a batching delay value between 0 and 500 ms.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxCommitDelay")]
+        public virtual object MaxCommitDelay { get; set; }
+
         /// <summary>
         /// The mutations to be executed when this transaction commits. All mutations are applied atomically, in the
         /// order they appear in this list.
@@ -10392,7 +10402,7 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("defaultLeaderLocation")]
         public virtual System.Nullable<bool> DefaultLeaderLocation { get; set; }
 
-        /// <summary>The location of the serving resources, e.g. "us-central1".</summary>
+        /// <summary>The location of the serving resources, e.g., "us-central1".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 

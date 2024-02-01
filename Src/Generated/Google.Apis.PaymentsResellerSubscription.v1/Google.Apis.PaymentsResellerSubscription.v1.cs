@@ -2427,6 +2427,10 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("partnerEligibilityIds")]
         public virtual System.Collections.Generic.IList<string> PartnerEligibilityIds { get; set; }
 
+        /// <summary>Optional. Specifies the plan type offered to the end user by the partner.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partnerPlanType")]
+        public virtual string PartnerPlanType { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

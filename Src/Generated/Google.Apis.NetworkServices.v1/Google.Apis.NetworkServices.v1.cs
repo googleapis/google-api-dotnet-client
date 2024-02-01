@@ -5363,7 +5363,7 @@ namespace Google.Apis.NetworkServices.v1.Data
     /// <summary>
     /// Gateway represents the configuration for a proxy, typically a load balancer. It captures the ip:port over which
     /// the services are exposed by the proxy, along with any policy configurations. Routes have reference to to
-    /// Gateways to dictate how requests should be routed by this Gateway. Next id: 29
+    /// Gateways to dictate how requests should be routed by this Gateway. Next id: 30
     /// </summary>
     public class Gateway : Google.Apis.Requests.IDirectResponseSchema
     {

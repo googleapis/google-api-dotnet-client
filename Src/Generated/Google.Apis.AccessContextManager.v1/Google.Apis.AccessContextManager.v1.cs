@@ -3332,7 +3332,9 @@ namespace Google.Apis.AccessContextManager.v1.Data
 
         /// <summary>
         /// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`,
-        /// or `roles/owner`.
+        /// or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM
+        /// documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined
+        /// roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
@@ -3502,8 +3504,8 @@ namespace Google.Apis.AccessContextManager.v1.Data
     public class EgressFrom : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A list of identities that are allowed access through this [EgressPolicy]. Should be in the format of email
-        /// address. The email address should represent individual user or service account only.
+        /// A list of identities that are allowed access through this [EgressPolicy], in the format of `user:{email_id}`
+        /// or `serviceAccount:{email_id}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("identities")]
         public virtual System.Collections.Generic.IList<string> Identities { get; set; }
@@ -3762,8 +3764,8 @@ namespace Google.Apis.AccessContextManager.v1.Data
     public class IngressFrom : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A list of identities that are allowed access through this ingress policy. Should be in the format of email
-        /// address. The email address should represent individual user or service account only.
+        /// A list of identities that are allowed access through this ingress policy, in the format of `user:{email_id}`
+        /// or `serviceAccount:{email_id}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("identities")]
         public virtual System.Collections.Generic.IList<string> Identities { get; set; }

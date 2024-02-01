@@ -1610,7 +1610,9 @@ namespace Google.Apis.NetworkManagement.v1.Data
 
         /// <summary>
         /// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`,
-        /// or `roles/owner`.
+        /// or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM
+        /// documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined
+        /// roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
@@ -2431,6 +2433,10 @@ namespace Google.Apis.NetworkManagement.v1.Data
     /// <summary>For display only. Metadata associated with the load balancer backend.</summary>
     public class LoadBalancerBackendInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>URI of the backend bucket this backend targets (if applicable).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backendBucketUri")]
+        public virtual string BackendBucketUri { get; set; }
+
         /// <summary>URI of the backend service this backend belongs to (if applicable).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backendServiceUri")]
         public virtual string BackendServiceUri { get; set; }
@@ -2468,6 +2474,14 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// <summary>URI of the network endpoint group this backend belongs to (if applicable).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkEndpointGroupUri")]
         public virtual string NetworkEndpointGroupUri { get; set; }
+
+        /// <summary>PSC Google API target this PSC NEG backend targets (if applicable).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscGoogleApiTarget")]
+        public virtual string PscGoogleApiTarget { get; set; }
+
+        /// <summary>URI of the PSC service attachment this PSC NEG backend targets (if applicable).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscServiceAttachmentUri")]
+        public virtual string PscServiceAttachmentUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3237,7 +3251,10 @@ namespace Google.Apis.NetworkManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("instance")]
         public virtual InstanceInfo Instance { get; set; }
 
-        /// <summary>Display information of the load balancers.</summary>
+        /// <summary>
+        /// Display information of the load balancers. Deprecated in favor of the `load_balancer_backend_info` field,
+        /// not used in new tests.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loadBalancer")]
         public virtual LoadBalancerInfo LoadBalancer { get; set; }
 

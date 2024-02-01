@@ -1712,7 +1712,12 @@ namespace Google.Apis.AnalyticsData.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("category")]
         public virtual string Category { get; set; }
 
-        /// <summary>True if the dimension is a custom dimension for this property.</summary>
+        /// <summary>
+        /// True if the dimension is custom to this property. This includes user, event, &amp;amp; item scoped custom
+        /// dimensions; to learn more about custom dimensions, see https://support.google.com/analytics/answer/14240153.
+        /// This also include custom channel groups; to learn more about custom channel groups, see
+        /// https://support.google.com/analytics/answer/13051316.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customDefinition")]
         public virtual System.Nullable<bool> CustomDefinition { get; set; }
 

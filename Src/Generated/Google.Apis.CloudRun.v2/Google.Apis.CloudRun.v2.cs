@@ -4663,6 +4663,10 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customAudiences")]
         public virtual System.Collections.Generic.IList<string> CustomAudiences { get; set; }
 
+        /// <summary>Optional. Disables public resolution of the default URI of this service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultUriDisabled")]
+        public virtual System.Nullable<bool> DefaultUriDisabled { get; set; }
+
         private string _deleteTimeRaw;
 
         private object _deleteTime;

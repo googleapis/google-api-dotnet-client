@@ -1859,6 +1859,14 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual string BucketName { get; set; }
 
         /// <summary>
+        /// Transfer managed folders is in public preview. This option is only applicable to the Cloud Storage source
+        /// bucket. If set to true: - The source managed folder will be transferred to the destination bucket - The
+        /// destination managed folder will always be overwritten, other OVERWRITE options will not be supported
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managedFolderTransferEnabled")]
+        public virtual System.Nullable<bool> ManagedFolderTransferEnabled { get; set; }
+
+        /// <summary>
         /// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is
         /// treated as an object prefix. As such, it should generally not begin with a '/'. The root path value must
         /// meet [Object Name Requirements](/storage/docs/naming#objectnames).

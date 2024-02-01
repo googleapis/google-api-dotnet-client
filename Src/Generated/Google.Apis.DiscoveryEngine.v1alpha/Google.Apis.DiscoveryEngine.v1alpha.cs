@@ -5143,7 +5143,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Output only. The full resource name of the Document Processing Config. Format:
+                    /// The full resource name of the Document Processing Config. Format:
                     /// `projects/*/locations/*/collections/*/dataStores/*/documentProcessingConfig`.
                     /// </param>
                     public virtual UpdateDocumentProcessingConfigRequest UpdateDocumentProcessingConfig(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig body, string name)
@@ -5167,7 +5167,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         }
 
                         /// <summary>
-                        /// Output only. The full resource name of the Document Processing Config. Format:
+                        /// The full resource name of the Document Processing Config. Format:
                         /// `projects/*/locations/*/collections/*/dataStores/*/documentProcessingConfig`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -10397,7 +10397,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Output only. The full resource name of the Document Processing Config. Format:
+                /// The full resource name of the Document Processing Config. Format:
                 /// `projects/*/locations/*/collections/*/dataStores/*/documentProcessingConfig`.
                 /// </param>
                 public virtual UpdateDocumentProcessingConfigRequest UpdateDocumentProcessingConfig(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig body, string name)
@@ -10421,7 +10421,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     }
 
                     /// <summary>
-                    /// Output only. The full resource name of the Document Processing Config. Format:
+                    /// The full resource name of the Document Processing Config. Format:
                     /// `projects/*/locations/*/collections/*/dataStores/*/documentProcessingConfig`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -14540,6 +14540,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The digital parsing configurations for documents.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaDigitalParsingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Metadata related to the progress of the SiteSearchEngineService.DisableAdvancedSiteSearch operation. This will
     /// be returned by the google.longrunning.Operation.metadata field.
@@ -14774,15 +14781,53 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     public class GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. The full resource name of the Document Processing Config. Format:
+        /// Configurations for default Document parser. If not specified, we will configure it as default
+        /// DigitalParsingConfig, and the default parsing config will be applied to all file types for Document parsing.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultParsingConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfig DefaultParsingConfig { get; set; }
+
+        /// <summary>
+        /// The full resource name of the Document Processing Config. Format:
         /// `projects/*/locations/*/collections/*/dataStores/*/documentProcessingConfig`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The OCR config. Currently it only applies to PDFs.</summary>
+        /// <summary>
+        /// [DEPRECATED] This field is deprecated. To specify OCR parsing config, please specify `ocr_parsing_config` in
+        /// `default_parsing_config` field The OCR config. Currently it only applies to PDFs.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ocrConfig")]
         public virtual GoogleCloudDiscoveryengineV1alphaOcrConfig OcrConfig { get; set; }
+
+        /// <summary>
+        /// Map from file type to override the default parsing configuration based on the file type. Supported keys: *
+        /// `pdf`: Override parsing config for PDF files, either digital parsing, ocr parsing or layout parsing is
+        /// supported. * `html`: Override parsing config for HTML files, only digital parsing and or layout parsing are
+        /// supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parsingConfigOverrides")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfig> ParsingConfigOverrides { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Related configurations applied to a specific type of document parser.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Configurations applied to digital parser.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("digitalParsingConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaDigitalParsingConfig DigitalParsingConfig { get; set; }
+
+        /// <summary>Configurations applied to layout parser.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("layoutParsingConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaLayoutParsingConfig LayoutParsingConfig { get; set; }
+
+        /// <summary>Configurations applied to OCR parser. Currently it only applies to PDFs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ocrParsingConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaOcrParsingConfig OcrParsingConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16090,6 +16135,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The layout parsing configurations for documents.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaLayoutParsingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response for ListConversations method.</summary>
     public class GoogleCloudDiscoveryengineV1alphaListConversationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -16252,6 +16304,24 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
 
+        /// <summary>
+        /// Apply additional enhanced OCR processing to a list of document elements. Supported values: * `table`:
+        /// advanced table parsing model.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enhancedDocumentElements")]
+        public virtual System.Collections.Generic.IList<string> EnhancedDocumentElements { get; set; }
+
+        /// <summary>If true, will use native text instead of OCR text on pages containing native text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useNativeText")]
+        public virtual System.Nullable<bool> UseNativeText { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The OCR parsing configurations for documents.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaOcrParsingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>
         /// Apply additional enhanced OCR processing to a list of document elements. Supported values: * `table`:
         /// advanced table parsing model.
