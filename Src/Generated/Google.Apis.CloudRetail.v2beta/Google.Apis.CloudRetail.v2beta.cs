@@ -7904,6 +7904,10 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ignoredFacetValues")]
         public virtual System.Collections.Generic.IList<GoogleCloudRetailV2betaCatalogAttributeFacetConfigIgnoredFacetValues> IgnoredFacetValues { get; set; }
 
+        /// <summary>Use this field only if you want to merge a facet key into another facet key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mergedFacet")]
+        public virtual GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacet MergedFacet { get; set; }
+
         /// <summary>
         /// Each instance replaces a list of facet values by a merged facet value. If a facet value is not in any list,
         /// then it will stay the same. To avoid conflicts, only paths of length 1 are accepted. In other words, if
@@ -8019,6 +8023,33 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<string> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The current facet key (i.e. attribute config) maps into the merged_facet_key. A facet key can have at most one
+    /// child. The current facet key and the merged facet key need both to be textual custom attributes or both
+    /// numerical custom attributes (same type).
+    /// </summary>
+    public class GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The merged facet key should be a valid facet key that is different than the facet key of the current catalog
+        /// attribute. We refer this is merged facet key as the child of the current catalog attribute. This merged
+        /// facet key can't be a parent of another facet key (i.e. no directed path of length 2). This merged facet key
+        /// needs to be either a textual custom attribute or a numerical custom attribute.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mergedFacetKey")]
+        public virtual string MergedFacetKey { get; set; }
+
+        /// <summary>
+        /// Each instance is a list of facet values that map into the same (possibly different) merged facet value. For
+        /// the current attribute config, each facet value should map to at most one merged facet value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mergedFacetValues")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetValue> MergedFacetValues { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9187,7 +9218,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual string RequestId { get; set; }
 
         /// <summary>
-        /// Indicates which fields in the provided imported `products` to update. If not set, all fields are updated.
+        /// Indicates which fields in the provided imported `products` to update. If not set, all fields are updated. If
+        /// provided, only the existing product fields are updated. Missing products will not be created.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; }

@@ -4955,8 +4955,7 @@ namespace Google.Apis.Dataform.v1beta1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Immutable. The name of the release config to compile. The release config's 'current_compilation_result'
-        /// field will be updated to this compilation result. Must be in the format
+        /// Immutable. The name of the release config to compile. Must be in the format
         /// `projects/*/locations/*/repositories/*/releaseConfigs/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("releaseConfig")]
@@ -6160,9 +6159,10 @@ namespace Google.Apis.Dataform.v1beta1.Data
 
         /// <summary>
         /// Optional. The name of the currently released compilation result for this release config. This value is
-        /// updated when a compilation result is created from this release config, or when this resource is updated by
-        /// API call (perhaps to roll back to an earlier release). The compilation result must have been created using
-        /// this release config. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
+        /// updated when a compilation result is automatically created from this release config (using cron_schedule),
+        /// or when this resource is updated by API call (perhaps to roll back to an earlier release). The compilation
+        /// result must have been created using this release config. Must be in the format
+        /// `projects/*/locations/*/repositories/*/compilationResults/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("releaseCompilationResult")]
         public virtual string ReleaseCompilationResult { get; set; }

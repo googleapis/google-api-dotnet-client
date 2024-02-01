@@ -2057,6 +2057,41 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Alerts from Device Management Rules configured by Admin.</summary>
+    public class DeviceManagementRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The device ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
+        public virtual string DeviceId { get; set; }
+
+        /// <summary>The model of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceModel")]
+        public virtual string DeviceModel { get; set; }
+
+        /// <summary>The type of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceType")]
+        public virtual string DeviceType { get; set; }
+
+        /// <summary>The email of the user this alert was created for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; }
+
+        /// <summary>Required for iOS, empty for others.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iosVendorId")]
+        public virtual string IosVendorId { get; set; }
+
+        /// <summary>The device resource ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
+        public virtual string ResourceId { get; set; }
+
+        /// <summary>The serial number of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serialNumber")]
+        public virtual string SerialNumber { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Alerts that get triggered on violations of Data Loss Prevention (DLP) rules.</summary>
     public class DlpRuleViolation : Google.Apis.Requests.IDirectResponseSchema
     {

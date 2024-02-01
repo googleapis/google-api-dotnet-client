@@ -291,6 +291,1084 @@ namespace Google.Apis.SecretManager.v1
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                Secrets = new SecretsResource(service);
+            }
+
+            /// <summary>Gets the Secrets resource.</summary>
+            public virtual SecretsResource Secrets { get; }
+
+            /// <summary>The "secrets" collection of methods.</summary>
+            public class SecretsResource
+            {
+                private const string Resource = "secrets";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public SecretsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Versions = new VersionsResource(service);
+                }
+
+                /// <summary>Gets the Versions resource.</summary>
+                public virtual VersionsResource Versions { get; }
+
+                /// <summary>The "versions" collection of methods.</summary>
+                public class VersionsResource
+                {
+                    private const string Resource = "versions";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public VersionsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Accesses a SecretVersion. This call returns the secret data.
+                    /// `projects/*/secrets/*/versions/latest` is an alias to the most recently created SecretVersion.
+                    /// </summary>
+                    /// <param name="name">
+                    /// Required. The resource name of the SecretVersion in the format `projects/*/secrets/*/versions/*`
+                    /// or `projects/*/locations/*/secrets/*/versions/*`. `projects/*/secrets/*/versions/latest` or
+                    /// `projects/*/locations/*/secrets/*/versions/latest` is an alias to the most recently created
+                    /// SecretVersion.
+                    /// </param>
+                    public virtual AccessRequest Access(string name)
+                    {
+                        return new AccessRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Accesses a SecretVersion. This call returns the secret data.
+                    /// `projects/*/secrets/*/versions/latest` is an alias to the most recently created SecretVersion.
+                    /// </summary>
+                    public class AccessRequest : SecretManagerBaseServiceRequest<Google.Apis.SecretManager.v1.Data.AccessSecretVersionResponse>
+                    {
+                        /// <summary>Constructs a new Access request.</summary>
+                        public AccessRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the SecretVersion in the format
+                        /// `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*`.
+                        /// `projects/*/secrets/*/versions/latest` or `projects/*/locations/*/secrets/*/versions/latest`
+                        /// is an alias to the most recently created SecretVersion.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "access";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:access";
+
+                        /// <summary>Initializes Access parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/secrets/[^/]+/versions/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Destroys a SecretVersion. Sets the state of the SecretVersion to DESTROYED and irrevocably
+                    /// destroys the secret data.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The resource name of the SecretVersion to destroy in the format
+                    /// `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*`.
+                    /// </param>
+                    public virtual DestroyRequest Destroy(Google.Apis.SecretManager.v1.Data.DestroySecretVersionRequest body, string name)
+                    {
+                        return new DestroyRequest(this.service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Destroys a SecretVersion. Sets the state of the SecretVersion to DESTROYED and irrevocably
+                    /// destroys the secret data.
+                    /// </summary>
+                    public class DestroyRequest : SecretManagerBaseServiceRequest<Google.Apis.SecretManager.v1.Data.SecretVersion>
+                    {
+                        /// <summary>Constructs a new Destroy request.</summary>
+                        public DestroyRequest(Google.Apis.Services.IClientService service, Google.Apis.SecretManager.v1.Data.DestroySecretVersionRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the SecretVersion to destroy in the format
+                        /// `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.SecretManager.v1.Data.DestroySecretVersionRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "destroy";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:destroy";
+
+                        /// <summary>Initializes Destroy parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/secrets/[^/]+/versions/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Disables a SecretVersion. Sets the state of the SecretVersion to DISABLED.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The resource name of the SecretVersion to disable in the format
+                    /// `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*`.
+                    /// </param>
+                    public virtual DisableRequest Disable(Google.Apis.SecretManager.v1.Data.DisableSecretVersionRequest body, string name)
+                    {
+                        return new DisableRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Disables a SecretVersion. Sets the state of the SecretVersion to DISABLED.</summary>
+                    public class DisableRequest : SecretManagerBaseServiceRequest<Google.Apis.SecretManager.v1.Data.SecretVersion>
+                    {
+                        /// <summary>Constructs a new Disable request.</summary>
+                        public DisableRequest(Google.Apis.Services.IClientService service, Google.Apis.SecretManager.v1.Data.DisableSecretVersionRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the SecretVersion to disable in the format
+                        /// `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.SecretManager.v1.Data.DisableSecretVersionRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "disable";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:disable";
+
+                        /// <summary>Initializes Disable parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/secrets/[^/]+/versions/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Enables a SecretVersion. Sets the state of the SecretVersion to ENABLED.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The resource name of the SecretVersion to enable in the format
+                    /// `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*`.
+                    /// </param>
+                    public virtual EnableRequest Enable(Google.Apis.SecretManager.v1.Data.EnableSecretVersionRequest body, string name)
+                    {
+                        return new EnableRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Enables a SecretVersion. Sets the state of the SecretVersion to ENABLED.</summary>
+                    public class EnableRequest : SecretManagerBaseServiceRequest<Google.Apis.SecretManager.v1.Data.SecretVersion>
+                    {
+                        /// <summary>Constructs a new Enable request.</summary>
+                        public EnableRequest(Google.Apis.Services.IClientService service, Google.Apis.SecretManager.v1.Data.EnableSecretVersionRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the SecretVersion to enable in the format
+                        /// `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.SecretManager.v1.Data.EnableSecretVersionRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "enable";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:enable";
+
+                        /// <summary>Initializes Enable parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/secrets/[^/]+/versions/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Gets metadata for a SecretVersion. `projects/*/secrets/*/versions/latest` is an alias to the
+                    /// most recently created SecretVersion.
+                    /// </summary>
+                    /// <param name="name">
+                    /// Required. The resource name of the SecretVersion in the format `projects/*/secrets/*/versions/*`
+                    /// or `projects/*/locations/*/secrets/*/versions/*`. `projects/*/secrets/*/versions/latest` or
+                    /// `projects/*/locations/*/secrets/*/versions/latest` is an alias to the most recently created
+                    /// SecretVersion.
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Gets metadata for a SecretVersion. `projects/*/secrets/*/versions/latest` is an alias to the
+                    /// most recently created SecretVersion.
+                    /// </summary>
+                    public class GetRequest : SecretManagerBaseServiceRequest<Google.Apis.SecretManager.v1.Data.SecretVersion>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the SecretVersion in the format
+                        /// `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*`.
+                        /// `projects/*/secrets/*/versions/latest` or `projects/*/locations/*/secrets/*/versions/latest`
+                        /// is an alias to the most recently created SecretVersion.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/secrets/[^/]+/versions/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists SecretVersions. This call does not return secret data.</summary>
+                    /// <param name="parent">
+                    /// Required. The resource name of the Secret associated with the SecretVersions to list, in the
+                    /// format `projects/*/secrets/*` or `projects/*/locations/*/secrets/*`.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists SecretVersions. This call does not return secret data.</summary>
+                    public class ListRequest : SecretManagerBaseServiceRequest<Google.Apis.SecretManager.v1.Data.ListSecretVersionsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the Secret associated with the SecretVersions to list, in the
+                        /// format `projects/*/secrets/*` or `projects/*/locations/*/secrets/*`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Filter string, adhering to the rules in [List-operation
+                        /// filtering](https://cloud.google.com/secret-manager/docs/filtering). List only secret
+                        /// versions matching the filter. If filter is empty, all secret versions are listed.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>
+                        /// Optional. The maximum number of results to be returned in a single page. If set to 0, the
+                        /// server decides the number of results to return. If the number is greater than 25000, it is
+                        /// capped at 25000.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. Pagination token, returned earlier via
+                        /// ListSecretVersionsResponse.next_page_token][].
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/versions";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/secrets/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>
+                /// Creates a new SecretVersion containing secret data and attaches it to an existing Secret.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The resource name of the Secret to associate with the SecretVersion in the format
+                /// `projects/*/secrets/*` or `projects/*/locations/*/secrets/*`.
+                /// </param>
+                public virtual AddVersionRequest AddVersion(Google.Apis.SecretManager.v1.Data.AddSecretVersionRequest body, string parent)
+                {
+                    return new AddVersionRequest(this.service, body, parent);
+                }
+
+                /// <summary>
+                /// Creates a new SecretVersion containing secret data and attaches it to an existing Secret.
+                /// </summary>
+                public class AddVersionRequest : SecretManagerBaseServiceRequest<Google.Apis.SecretManager.v1.Data.SecretVersion>
+                {
+                    /// <summary>Constructs a new AddVersion request.</summary>
+                    public AddVersionRequest(Google.Apis.Services.IClientService service, Google.Apis.SecretManager.v1.Data.AddSecretVersionRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the Secret to associate with the SecretVersion in the format
+                    /// `projects/*/secrets/*` or `projects/*/locations/*/secrets/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.SecretManager.v1.Data.AddSecretVersionRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "addVersion";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}:addVersion";
+
+                    /// <summary>Initializes AddVersion parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/secrets/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Creates a new Secret containing no SecretVersions.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The resource name of the project to associate with the Secret, in the format `projects/*`
+                /// or `projects/*/locations/*`.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.SecretManager.v1.Data.Secret body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new Secret containing no SecretVersions.</summary>
+                public class CreateRequest : SecretManagerBaseServiceRequest<Google.Apis.SecretManager.v1.Data.Secret>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.SecretManager.v1.Data.Secret body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the project to associate with the Secret, in the format
+                    /// `projects/*` or `projects/*/locations/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. This must be unique within the project. A secret ID is a string with a maximum length
+                    /// of 255 characters and can contain uppercase and lowercase letters, numerals, and the hyphen
+                    /// (`-`) and underscore (`_`) characters.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("secretId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string SecretId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.SecretManager.v1.Data.Secret Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/secrets";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("secretId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "secretId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a Secret.</summary>
+                /// <param name="name">
+                /// Required. The resource name of the Secret to delete in the format `projects/*/secrets/*`.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a Secret.</summary>
+                public class DeleteRequest : SecretManagerBaseServiceRequest<Google.Apis.SecretManager.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the Secret to delete in the format `projects/*/secrets/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Etag of the Secret. The request succeeds if it matches the etag of the currently
+                    /// stored secret object. If the etag is omitted, the request succeeds.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Etag { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/secrets/[^/]+$",
+                        });
+                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "etag",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets metadata for a given Secret.</summary>
+                /// <param name="name">
+                /// Required. The resource name of the Secret, in the format `projects/*/secrets/*` or
+                /// `projects/*/locations/*/secrets/*`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets metadata for a given Secret.</summary>
+                public class GetRequest : SecretManagerBaseServiceRequest<Google.Apis.SecretManager.v1.Data.Secret>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the Secret, in the format `projects/*/secrets/*` or
+                    /// `projects/*/locations/*/secrets/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/secrets/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Gets the access control policy for a secret. Returns empty policy if the secret exists and does not
+                /// have a policy set.
+                /// </summary>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
+                /// </param>
+                public virtual GetIamPolicyRequest GetIamPolicy(string resource)
+                {
+                    return new GetIamPolicyRequest(this.service, resource);
+                }
+
+                /// <summary>
+                /// Gets the access control policy for a secret. Returns empty policy if the secret exists and does not
+                /// have a policy set.
+                /// </summary>
+                public class GetIamPolicyRequest : SecretManagerBaseServiceRequest<Google.Apis.SecretManager.v1.Data.Policy>
+                {
+                    /// <summary>Constructs a new GetIamPolicy request.</summary>
+                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum policy version that will be used to format the policy. Valid values are 0,
+                    /// 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any
+                    /// conditional role bindings must specify version 3. Policies with no conditional role bindings may
+                    /// specify any valid value or leave the field unset. The policy in the response might use the
+                    /// policy version that you specified, or it might use a lower policy version. For example, if you
+                    /// specify version 3, but the policy has no conditional role bindings, the response uses version 1.
+                    /// To learn which resources support conditions in their IAM policies, see the [IAM
+                    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "getIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:getIamPolicy";
+
+                    /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/secrets/[^/]+$",
+                        });
+                        RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Lists Secrets.</summary>
+                /// <param name="parent">
+                /// Required. The resource name of the project associated with the Secrets, in the format `projects/*`
+                /// or `projects/*/locations/*`
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists Secrets.</summary>
+                public class ListRequest : SecretManagerBaseServiceRequest<Google.Apis.SecretManager.v1.Data.ListSecretsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the project associated with the Secrets, in the format
+                    /// `projects/*` or `projects/*/locations/*`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Filter string, adhering to the rules in [List-operation
+                    /// filtering](https://cloud.google.com/secret-manager/docs/filtering). List only secrets matching
+                    /// the filter. If filter is empty, all secrets are listed.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of results to be returned in a single page. If set to 0, the server
+                    /// decides the number of results to return. If the number is greater than 25000, it is capped at
+                    /// 25000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. Pagination token, returned earlier via ListSecretsResponse.next_page_token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/secrets";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates metadata of an existing Secret.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Output only. The resource name of the Secret in the format `projects/*/secrets/*`.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.SecretManager.v1.Data.Secret body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates metadata of an existing Secret.</summary>
+                public class PatchRequest : SecretManagerBaseServiceRequest<Google.Apis.SecretManager.v1.Data.Secret>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.SecretManager.v1.Data.Secret body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Output only. The resource name of the Secret in the format `projects/*/secrets/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Required. Specifies the fields to be updated.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.SecretManager.v1.Data.Secret Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/secrets/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Sets the access control policy on the specified secret. Replaces any existing policy. Permissions on
+                /// SecretVersions are enforced according to the policy set on the associated Secret.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
+                /// </param>
+                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.SecretManager.v1.Data.SetIamPolicyRequest body, string resource)
+                {
+                    return new SetIamPolicyRequest(this.service, body, resource);
+                }
+
+                /// <summary>
+                /// Sets the access control policy on the specified secret. Replaces any existing policy. Permissions on
+                /// SecretVersions are enforced according to the policy set on the associated Secret.
+                /// </summary>
+                public class SetIamPolicyRequest : SecretManagerBaseServiceRequest<Google.Apis.SecretManager.v1.Data.Policy>
+                {
+                    /// <summary>Constructs a new SetIamPolicy request.</summary>
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.SecretManager.v1.Data.SetIamPolicyRequest body, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.SecretManager.v1.Data.SetIamPolicyRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "setIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:setIamPolicy";
+
+                    /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/secrets/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Returns permissions that a caller has for the specified secret. If the secret does not exist, this
+                /// call returns an empty set of permissions, not a NOT_FOUND error. Note: This operation is designed to
+                /// be used for building permission-aware UIs and command-line tools, not for authorization checking.
+                /// This operation may "fail open" without warning.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
+                /// </param>
+                public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.SecretManager.v1.Data.TestIamPermissionsRequest body, string resource)
+                {
+                    return new TestIamPermissionsRequest(this.service, body, resource);
+                }
+
+                /// <summary>
+                /// Returns permissions that a caller has for the specified secret. If the secret does not exist, this
+                /// call returns an empty set of permissions, not a NOT_FOUND error. Note: This operation is designed to
+                /// be used for building permission-aware UIs and command-line tools, not for authorization checking.
+                /// This operation may "fail open" without warning.
+                /// </summary>
+                public class TestIamPermissionsRequest : SecretManagerBaseServiceRequest<Google.Apis.SecretManager.v1.Data.TestIamPermissionsResponse>
+                {
+                    /// <summary>Constructs a new TestIamPermissions request.</summary>
+                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.SecretManager.v1.Data.TestIamPermissionsRequest body, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.SecretManager.v1.Data.TestIamPermissionsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "testIamPermissions";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:testIamPermissions";
+
+                    /// <summary>Initializes TestIamPermissions parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/secrets/[^/]+$",
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets information about a location.</summary>
@@ -468,8 +1546,10 @@ namespace Google.Apis.SecretManager.v1
                 /// is an alias to the most recently created SecretVersion.
                 /// </summary>
                 /// <param name="name">
-                /// Required. The resource name of the SecretVersion in the format `projects/*/secrets/*/versions/*`.
-                /// `projects/*/secrets/*/versions/latest` is an alias to the most recently created SecretVersion.
+                /// Required. The resource name of the SecretVersion in the format `projects/*/secrets/*/versions/*` or
+                /// `projects/*/locations/*/secrets/*/versions/*`. `projects/*/secrets/*/versions/latest` or
+                /// `projects/*/locations/*/secrets/*/versions/latest` is an alias to the most recently created
+                /// SecretVersion.
                 /// </param>
                 public virtual AccessRequest Access(string name)
                 {
@@ -490,9 +1570,10 @@ namespace Google.Apis.SecretManager.v1
                     }
 
                     /// <summary>
-                    /// Required. The resource name of the SecretVersion in the format
-                    /// `projects/*/secrets/*/versions/*`. `projects/*/secrets/*/versions/latest` is an alias to the
-                    /// most recently created SecretVersion.
+                    /// Required. The resource name of the SecretVersion in the format `projects/*/secrets/*/versions/*`
+                    /// or `projects/*/locations/*/secrets/*/versions/*`. `projects/*/secrets/*/versions/latest` or
+                    /// `projects/*/locations/*/secrets/*/versions/latest` is an alias to the most recently created
+                    /// SecretVersion.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -528,7 +1609,7 @@ namespace Google.Apis.SecretManager.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Required. The resource name of the SecretVersion to destroy in the format
-                /// `projects/*/secrets/*/versions/*`.
+                /// `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*`.
                 /// </param>
                 public virtual DestroyRequest Destroy(Google.Apis.SecretManager.v1.Data.DestroySecretVersionRequest body, string name)
                 {
@@ -551,7 +1632,7 @@ namespace Google.Apis.SecretManager.v1
 
                     /// <summary>
                     /// Required. The resource name of the SecretVersion to destroy in the format
-                    /// `projects/*/secrets/*/versions/*`.
+                    /// `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -590,7 +1671,7 @@ namespace Google.Apis.SecretManager.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Required. The resource name of the SecretVersion to disable in the format
-                /// `projects/*/secrets/*/versions/*`.
+                /// `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*`.
                 /// </param>
                 public virtual DisableRequest Disable(Google.Apis.SecretManager.v1.Data.DisableSecretVersionRequest body, string name)
                 {
@@ -610,7 +1691,7 @@ namespace Google.Apis.SecretManager.v1
 
                     /// <summary>
                     /// Required. The resource name of the SecretVersion to disable in the format
-                    /// `projects/*/secrets/*/versions/*`.
+                    /// `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -649,7 +1730,7 @@ namespace Google.Apis.SecretManager.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Required. The resource name of the SecretVersion to enable in the format
-                /// `projects/*/secrets/*/versions/*`.
+                /// `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*`.
                 /// </param>
                 public virtual EnableRequest Enable(Google.Apis.SecretManager.v1.Data.EnableSecretVersionRequest body, string name)
                 {
@@ -669,7 +1750,7 @@ namespace Google.Apis.SecretManager.v1
 
                     /// <summary>
                     /// Required. The resource name of the SecretVersion to enable in the format
-                    /// `projects/*/secrets/*/versions/*`.
+                    /// `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -709,8 +1790,10 @@ namespace Google.Apis.SecretManager.v1
                 /// recently created SecretVersion.
                 /// </summary>
                 /// <param name="name">
-                /// Required. The resource name of the SecretVersion in the format `projects/*/secrets/*/versions/*`.
-                /// `projects/*/secrets/*/versions/latest` is an alias to the most recently created SecretVersion.
+                /// Required. The resource name of the SecretVersion in the format `projects/*/secrets/*/versions/*` or
+                /// `projects/*/locations/*/secrets/*/versions/*`. `projects/*/secrets/*/versions/latest` or
+                /// `projects/*/locations/*/secrets/*/versions/latest` is an alias to the most recently created
+                /// SecretVersion.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -731,9 +1814,10 @@ namespace Google.Apis.SecretManager.v1
                     }
 
                     /// <summary>
-                    /// Required. The resource name of the SecretVersion in the format
-                    /// `projects/*/secrets/*/versions/*`. `projects/*/secrets/*/versions/latest` is an alias to the
-                    /// most recently created SecretVersion.
+                    /// Required. The resource name of the SecretVersion in the format `projects/*/secrets/*/versions/*`
+                    /// or `projects/*/locations/*/secrets/*/versions/*`. `projects/*/secrets/*/versions/latest` or
+                    /// `projects/*/locations/*/secrets/*/versions/latest` is an alias to the most recently created
+                    /// SecretVersion.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -765,7 +1849,7 @@ namespace Google.Apis.SecretManager.v1
                 /// <summary>Lists SecretVersions. This call does not return secret data.</summary>
                 /// <param name="parent">
                 /// Required. The resource name of the Secret associated with the SecretVersions to list, in the format
-                /// `projects/*/secrets/*`.
+                /// `projects/*/secrets/*` or `projects/*/locations/*/secrets/*`.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -784,7 +1868,7 @@ namespace Google.Apis.SecretManager.v1
 
                     /// <summary>
                     /// Required. The resource name of the Secret associated with the SecretVersions to list, in the
-                    /// format `projects/*/secrets/*`.
+                    /// format `projects/*/secrets/*` or `projects/*/locations/*/secrets/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -866,7 +1950,7 @@ namespace Google.Apis.SecretManager.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. The resource name of the Secret to associate with the SecretVersion in the format
-            /// `projects/*/secrets/*`.
+            /// `projects/*/secrets/*` or `projects/*/locations/*/secrets/*`.
             /// </param>
             public virtual AddVersionRequest AddVersion(Google.Apis.SecretManager.v1.Data.AddSecretVersionRequest body, string parent)
             {
@@ -888,7 +1972,7 @@ namespace Google.Apis.SecretManager.v1
 
                 /// <summary>
                 /// Required. The resource name of the Secret to associate with the SecretVersion in the format
-                /// `projects/*/secrets/*`.
+                /// `projects/*/secrets/*` or `projects/*/locations/*/secrets/*`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -926,7 +2010,8 @@ namespace Google.Apis.SecretManager.v1
             /// <summary>Creates a new Secret containing no SecretVersions.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. The resource name of the project to associate with the Secret, in the format `projects/*`.
+            /// Required. The resource name of the project to associate with the Secret, in the format `projects/*` or
+            /// `projects/*/locations/*`.
             /// </param>
             public virtual CreateRequest Create(Google.Apis.SecretManager.v1.Data.Secret body, string parent)
             {
@@ -945,7 +2030,8 @@ namespace Google.Apis.SecretManager.v1
                 }
 
                 /// <summary>
-                /// Required. The resource name of the project to associate with the Secret, in the format `projects/*`.
+                /// Required. The resource name of the project to associate with the Secret, in the format `projects/*`
+                /// or `projects/*/locations/*`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -1062,7 +2148,8 @@ namespace Google.Apis.SecretManager.v1
 
             /// <summary>Gets metadata for a given Secret.</summary>
             /// <param name="name">
-            /// Required. The resource name of the Secret, in the format `projects/*/secrets/*`.
+            /// Required. The resource name of the Secret, in the format `projects/*/secrets/*` or
+            /// `projects/*/locations/*/secrets/*`.
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -1079,7 +2166,10 @@ namespace Google.Apis.SecretManager.v1
                     InitParameters();
                 }
 
-                /// <summary>Required. The resource name of the Secret, in the format `projects/*/secrets/*`.</summary>
+                /// <summary>
+                /// Required. The resource name of the Secret, in the format `projects/*/secrets/*` or
+                /// `projects/*/locations/*/secrets/*`.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1188,7 +2278,8 @@ namespace Google.Apis.SecretManager.v1
 
             /// <summary>Lists Secrets.</summary>
             /// <param name="parent">
-            /// Required. The resource name of the project associated with the Secrets, in the format `projects/*`.
+            /// Required. The resource name of the project associated with the Secrets, in the format `projects/*` or
+            /// `projects/*/locations/*`
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -1206,7 +2297,8 @@ namespace Google.Apis.SecretManager.v1
                 }
 
                 /// <summary>
-                /// Required. The resource name of the project associated with the Secrets, in the format `projects/*`.
+                /// Required. The resource name of the project associated with the Secrets, in the format `projects/*`
+                /// or `projects/*/locations/*`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -1492,7 +2584,10 @@ namespace Google.Apis.SecretManager.v1.Data
     /// <summary>Response message for SecretManagerService.AccessSecretVersion.</summary>
     public class AccessSecretVersionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The resource name of the SecretVersion in the format `projects/*/secrets/*/versions/*`.</summary>
+        /// <summary>
+        /// The resource name of the SecretVersion in the format `projects/*/secrets/*/versions/*` or
+        /// `projects/*/locations/*/secrets/*/versions/*`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -1661,7 +2756,9 @@ namespace Google.Apis.SecretManager.v1.Data
 
         /// <summary>
         /// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`,
-        /// or `roles/owner`.
+        /// or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM
+        /// documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined
+        /// roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
@@ -2203,7 +3300,7 @@ namespace Google.Apis.SecretManager.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Required. Immutable. The replication policy of the secret data attached to the Secret. The replication
+        /// Optional. Immutable. The replication policy of the secret data attached to the Secret. The replication
         /// policy cannot be changed after the Secret has been created.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replication")]
@@ -2231,7 +3328,7 @@ namespace Google.Apis.SecretManager.v1.Data
         /// 63 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore
         /// ('_') characters. An alias string must start with a letter and cannot be the string 'latest' or 'NEW'. No
         /// more than 50 aliases can be assigned to a given secret. Version-Alias pairs will be viewable via GetSecret
-        /// and modifiable via UpdateSecret. At launch Access by Allias will only be supported on GetSecretVersion and
+        /// and modifiable via UpdateSecret. Access by alias is only be supported on GetSecretVersion and
         /// AccessSecretVersion.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionAliases")]

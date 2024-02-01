@@ -1509,6 +1509,10 @@ namespace Google.Apis.Transcoder.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("heightPixels")]
         public virtual System.Nullable<int> HeightPixels { get; set; }
 
+        /// <summary>Optional. HLG color format setting for H264.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hlg")]
+        public virtual H264ColorFormatHLG Hlg { get; set; }
+
         /// <summary>
         /// Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p`
         /// pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel
@@ -1542,6 +1546,10 @@ namespace Google.Apis.Transcoder.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rateControlMode")]
         public virtual string RateControlMode { get; set; }
 
+        /// <summary>Optional. SDR color format setting for H264.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sdr")]
+        public virtual H264ColorFormatSDR Sdr { get; set; }
+
         /// <summary>
         /// Enforces the specified codec tune. The available options are
         /// [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.264#Tune). Note that certain values for this field
@@ -1574,6 +1582,20 @@ namespace Google.Apis.Transcoder.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("widthPixels")]
         public virtual System.Nullable<int> WidthPixels { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Convert the input video to a Hybrid Log Gamma (HLG) video.</summary>
+    public class H264ColorFormatHLG : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Convert the input video to a Standard Dynamic Range (SDR) video.</summary>
+    public class H264ColorFormatSDR : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1652,6 +1674,10 @@ namespace Google.Apis.Transcoder.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gopFrameCount")]
         public virtual System.Nullable<int> GopFrameCount { get; set; }
 
+        /// <summary>Optional. HDR10 color format setting for H265.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hdr10")]
+        public virtual H265ColorFormatHDR10 Hdr10 { get; set; }
+
         /// <summary>
         /// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to
         /// match the specified width and input aspect ratio. If both are omitted, the input height is used. For
@@ -1661,6 +1687,10 @@ namespace Google.Apis.Transcoder.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("heightPixels")]
         public virtual System.Nullable<int> HeightPixels { get; set; }
+
+        /// <summary>Optional. HLG color format setting for H265.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hlg")]
+        public virtual H265ColorFormatHLG Hlg { get; set; }
 
         /// <summary>
         /// Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p`
@@ -1697,6 +1727,10 @@ namespace Google.Apis.Transcoder.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rateControlMode")]
         public virtual string RateControlMode { get; set; }
 
+        /// <summary>Optional. SDR color format setting for H265.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sdr")]
+        public virtual H265ColorFormatSDR Sdr { get; set; }
+
         /// <summary>
         /// Enforces the specified codec tune. The available options are
         /// [FFmpeg-compatible](https://trac.ffmpeg.org/wiki/Encode/H.265). Note that certain values for this field may
@@ -1729,6 +1763,27 @@ namespace Google.Apis.Transcoder.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("widthPixels")]
         public virtual System.Nullable<int> WidthPixels { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Convert the input video to a High Dynamic Range 10 (HDR10) video.</summary>
+    public class H265ColorFormatHDR10 : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Convert the input video to a Hybrid Log Gamma (HLG) video.</summary>
+    public class H265ColorFormatHLG : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Convert the input video to a Standard Dynamic Range (SDR) video.</summary>
+    public class H265ColorFormatSDR : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2587,6 +2642,10 @@ namespace Google.Apis.Transcoder.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("heightPixels")]
         public virtual System.Nullable<int> HeightPixels { get; set; }
 
+        /// <summary>Optional. HLG color format setting for VP9.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hlg")]
+        public virtual Vp9ColorFormatHLG Hlg { get; set; }
+
         /// <summary>
         /// Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p`
         /// pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel
@@ -2611,6 +2670,10 @@ namespace Google.Apis.Transcoder.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rateControlMode")]
         public virtual string RateControlMode { get; set; }
 
+        /// <summary>Optional. SDR color format setting for VP9.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sdr")]
+        public virtual Vp9ColorFormatSDR Sdr { get; set; }
+
         /// <summary>
         /// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to
         /// match the specified height and input aspect ratio. If both are omitted, the input width is used. For
@@ -2621,6 +2684,20 @@ namespace Google.Apis.Transcoder.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("widthPixels")]
         public virtual System.Nullable<int> WidthPixels { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Convert the input video to a Hybrid Log Gamma (HLG) video.</summary>
+    public class Vp9ColorFormatHLG : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Convert the input video to a Standard Dynamic Range (SDR) video.</summary>
+    public class Vp9ColorFormatSDR : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

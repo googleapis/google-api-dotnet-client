@@ -1648,6 +1648,10 @@ namespace Google.Apis.BlockchainNodeEngine.v1.Data
     /// </summary>
     public class ValidatorConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Immutable. When true, deploys a GCP-managed validator client alongside the beacon client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managedValidatorClient")]
+        public virtual System.Nullable<bool> ManagedValidatorClient { get; set; }
+
         /// <summary>
         /// URLs for MEV-relay services to use for block building. When set, a GCP-managed MEV-boost service is
         /// configured on the beacon client.

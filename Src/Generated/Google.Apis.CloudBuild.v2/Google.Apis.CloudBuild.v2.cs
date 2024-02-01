@@ -2066,7 +2066,9 @@ namespace Google.Apis.CloudBuild.v2.Data
 
         /// <summary>
         /// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`,
-        /// or `roles/owner`.
+        /// or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM
+        /// documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined
+        /// roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
@@ -3362,6 +3364,10 @@ namespace Google.Apis.CloudBuild.v2.Data
             set => FinallyStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Output only. GCB default params.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcbParams")]
+        public virtual System.Collections.Generic.IDictionary<string, string> GcbParams { get; set; }
+
         /// <summary>
         /// Output only. The `PipelineRun` name with format
         /// `projects/{project}/locations/{location}/pipelineRuns/{pipeline_run}`
@@ -3385,9 +3391,17 @@ namespace Google.Apis.CloudBuild.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pipelineSpec")]
         public virtual PipelineSpec PipelineSpec { get; set; }
 
+        /// <summary>Optional. Provenance configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
+        public virtual Provenance Provenance { get; set; }
+
         /// <summary>Output only. The exact PipelineSpec used to instantiate the run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resolvedPipelineSpec")]
         public virtual PipelineSpec ResolvedPipelineSpec { get; set; }
+
+        /// <summary>Optional. Security configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("security")]
+        public virtual Security Security { get; set; }
 
         /// <summary>Service account used in the Pipeline.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
@@ -3481,6 +3495,10 @@ namespace Google.Apis.CloudBuild.v2.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>Optional. Worker configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("worker")]
+        public virtual Worker Worker { get; set; }
 
         /// <summary>Output only. The WorkerPool used to run this PipelineRun.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerPool")]
@@ -3713,6 +3731,25 @@ namespace Google.Apis.CloudBuild.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Provenance configuration.</summary>
+    public class Provenance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Provenance push mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual string Enabled { get; set; }
+
+        /// <summary>Optional. Provenance region.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; }
+
+        /// <summary>Optional. Where provenance is stored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storage")]
+        public virtual string Storage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A repository associated to a parent connection.</summary>
     public class Repository : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3934,6 +3971,21 @@ namespace Google.Apis.CloudBuild.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretVersion")]
         public virtual string SecretVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Security configuration.</summary>
+    public class Security : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Privilege mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privilegeMode")]
+        public virtual string PrivilegeMode { get; set; }
+
+        /// <summary>IAM service account whose credentials will be used at runtime.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4425,6 +4477,17 @@ namespace Google.Apis.CloudBuild.v2.Data
         /// <summary>Values is an array of strings, which is compared against the input, for guard checking.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<string> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for the worker.</summary>
+    public class Worker : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Machine type of a worker, default is "e2-standard-2".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
+        public virtual string MachineType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

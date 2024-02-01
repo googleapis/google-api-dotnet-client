@@ -3062,7 +3062,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>CVE stands for Common Vulnerabilities and Exposures. More information: https://cve.mitre.org</summary>
+    /// <summary>
+    /// CVE stands for Common Vulnerabilities and Exposures. Information from the [CVE
+    /// record](https://www.cve.org/ResourcesSupport/Glossary) that describes this vulnerability.
+    /// </summary>
     public class Cve : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -4528,6 +4531,14 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         public virtual string Scope { get; set; }
 
         /// <summary>
+        /// A mapping of the sensitivity on Sensitive Data Protection finding to resource values. This mapping can only
+        /// be used in combination with a resource_type that is related to BigQuery, e.g.
+        /// "bigquery.googleapis.com/Dataset".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sensitiveDataProtectionMapping")]
+        public virtual GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping SensitiveDataProtectionMapping { get; set; }
+
+        /// <summary>
         /// Required. Tag values combined with AND to check against. Values in the form "tagValues/123" E.g. [
         /// "tagValues/123", "tagValues/456", "tagValues/789" ]
         /// https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing
@@ -4673,6 +4684,24 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Resource value mapping for Sensitive Data Protection findings. If any of these mappings have a resource value
+    /// that is not unspecified, the resource_value field will be ignored when reading this configuration.
+    /// </summary>
+    public class GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Resource value mapping for high-sensitivity Sensitive Data Protection findings</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("highSensitivityMapping")]
+        public virtual string HighSensitivityMapping { get; set; }
+
+        /// <summary>Resource value mapping for medium-sensitivity Sensitive Data Protection findings</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mediumSensitivityMapping")]
+        public virtual string MediumSensitivityMapping { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

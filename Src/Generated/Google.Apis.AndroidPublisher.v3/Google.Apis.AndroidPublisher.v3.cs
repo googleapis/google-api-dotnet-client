@@ -541,6 +541,59 @@ namespace Google.Apis.AndroidPublisher.v3
                 }
             }
         }
+
+        /// <summary>Writes the Safety Labels declaration of an app.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="packageName">Required. Package name of the app.</param>
+        public virtual DataSafetyRequest DataSafety(Google.Apis.AndroidPublisher.v3.Data.SafetyLabelsUpdateRequest body, string packageName)
+        {
+            return new DataSafetyRequest(this.service, body, packageName);
+        }
+
+        /// <summary>Writes the Safety Labels declaration of an app.</summary>
+        public class DataSafetyRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.SafetyLabelsUpdateResponse>
+        {
+            /// <summary>Constructs a new DataSafety request.</summary>
+            public DataSafetyRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v3.Data.SafetyLabelsUpdateRequest body, string packageName) : base(service)
+            {
+                PackageName = packageName;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. Package name of the app.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string PackageName { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.AndroidPublisher.v3.Data.SafetyLabelsUpdateRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "dataSafety";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "androidpublisher/v3/applications/{packageName}/dataSafety";
+
+            /// <summary>Initializes DataSafety parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "packageName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
     }
 
     /// <summary>The "apprecovery" collection of methods.</summary>
@@ -15235,6 +15288,30 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
     /// <summary>Response for the purchases.subscriptionsv2.revoke API.</summary>
     public class RevokeSubscriptionPurchaseResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to update Safety Labels of an app.</summary>
+    public class SafetyLabelsUpdateRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Contents of the CSV file containing Data Safety responses. For the format of this file, see the
+        /// Help Center documentation at
+        /// https://support.google.com/googleplay/android-developer/answer/10787469?hl=en#zippy=%2Cunderstand-the-csv-format
+        /// To download an up to date template, follow the steps at
+        /// https://support.google.com/googleplay/android-developer/answer/10787469?hl=en#zippy=%2Cexport-to-a-csv-file
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("safetyLabels")]
+        public virtual string SafetyLabels { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for SafetyLabelsUpdate rpc.</summary>
+    public class SafetyLabelsUpdateResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
