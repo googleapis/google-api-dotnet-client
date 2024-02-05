@@ -3390,8 +3390,8 @@ namespace Google.Apis.Document.v1.Data
 
         /// <summary>
         /// Optional. The labels with user-defined metadata for the request. Label keys and values can be no longer than
-        /// 63 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and
-        /// dashes. International characters are allowed. Label values are optional. Label keys must start with a
+        /// 63 characters (Unicode codepoints) and can only contain lowercase letters, numeric characters, underscores,
+        /// and dashes. International characters are allowed. Label values are optional. Label keys must start with a
         /// letter.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
@@ -5490,8 +5490,8 @@ namespace Google.Apis.Document.v1.Data
 
         /// <summary>
         /// Optional. The labels with user-defined metadata for the request. Label keys and values can be no longer than
-        /// 63 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and
-        /// dashes. International characters are allowed. Label values are optional. Label keys must start with a
+        /// 63 characters (Unicode codepoints) and can only contain lowercase letters, numeric characters, underscores,
+        /// and dashes. International characters are allowed. Label values are optional. Label keys must start with a
         /// letter.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]

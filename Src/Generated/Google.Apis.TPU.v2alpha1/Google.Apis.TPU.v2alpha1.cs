@@ -3253,6 +3253,10 @@ namespace Google.Apis.TPU.v2alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reserved")]
         public virtual System.Nullable<bool> Reserved { get; set; }
 
+        /// <summary>Optional. Defines whether the node is Spot VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spot")]
+        public virtual System.Nullable<bool> Spot { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

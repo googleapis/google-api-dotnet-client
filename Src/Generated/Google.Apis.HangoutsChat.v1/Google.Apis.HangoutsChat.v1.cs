@@ -100,7 +100,8 @@ namespace Google.Apis.HangoutsChat.v1
             public static string ChatMessagesReadonly = "https://www.googleapis.com/auth/chat.messages.readonly";
 
             /// <summary>
-            /// Create conversations and spaces and view or update metadata (including history settings) in Google Chat
+            /// Create conversations and spaces and see or edit metadata (including history settings and access
+            /// settings) in Google Chat
             /// </summary>
             public static string ChatSpaces = "https://www.googleapis.com/auth/chat.spaces";
 
@@ -155,7 +156,8 @@ namespace Google.Apis.HangoutsChat.v1
             public const string ChatMessagesReadonly = "https://www.googleapis.com/auth/chat.messages.readonly";
 
             /// <summary>
-            /// Create conversations and spaces and view or update metadata (including history settings) in Google Chat
+            /// Create conversations and spaces and see or edit metadata (including history settings and access
+            /// settings) in Google Chat
             /// </summary>
             public const string ChatSpaces = "https://www.googleapis.com/auth/chat.spaces";
 

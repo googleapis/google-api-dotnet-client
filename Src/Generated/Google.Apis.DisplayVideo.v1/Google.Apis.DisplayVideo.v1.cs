@@ -19380,9 +19380,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual System.Nullable<long> IasClientId { get; set; }
 
         /// <summary>
-        /// Whether or not to use DV360's Online Behavioral Advertising (OBA) compliance. Warning: Changing OBA settings
-        /// may cause the audit status of your creatives to be reset by some ad exchanges, making them ineligible to
-        /// serve until they are re-approved.
+        /// Whether or not to use DV360's Online Behavioral Advertising (OBA) compliance. Starting on February 9, 2024,
+        /// this field will be affected by an update to the Display &amp;amp; Video 360 API Terms of Service. See our
+        /// [announcement](//ads-developers.googleblog.com/2024/01/update-to-display-video-360-api-terms.html) for more
+        /// detail. Warning: Changing OBA settings may cause the audit status of your creatives to be reset by some ad
+        /// exchanges, making them ineligible to serve until they are re-approved.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("obaComplianceDisabled")]
         public virtual System.Nullable<bool> ObaComplianceDisabled { get; set; }

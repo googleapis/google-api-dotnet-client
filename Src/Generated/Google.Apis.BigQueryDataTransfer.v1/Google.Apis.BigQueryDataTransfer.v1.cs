@@ -2000,6 +2000,67 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     });
                 }
             }
+
+            /// <summary>
+            /// Unenroll data sources in a user project. This allows users to remove transfer configurations for these
+            /// data sources. They will no longer appear in the ListDataSources RPC and will also no longer appear in
+            /// the [BigQuery UI](https://console.cloud.google.com/bigquery).
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">The name of the project resource in the form: `projects/{project_id}`</param>
+            public virtual UnenrollDataSourcesRequest UnenrollDataSources(Google.Apis.BigQueryDataTransfer.v1.Data.UnenrollDataSourcesRequest body, string name)
+            {
+                return new UnenrollDataSourcesRequest(this.service, body, name);
+            }
+
+            /// <summary>
+            /// Unenroll data sources in a user project. This allows users to remove transfer configurations for these
+            /// data sources. They will no longer appear in the ListDataSources RPC and will also no longer appear in
+            /// the [BigQuery UI](https://console.cloud.google.com/bigquery).
+            /// </summary>
+            public class UnenrollDataSourcesRequest : BigQueryDataTransferBaseServiceRequest<Google.Apis.BigQueryDataTransfer.v1.Data.Empty>
+            {
+                /// <summary>Constructs a new UnenrollDataSources request.</summary>
+                public UnenrollDataSourcesRequest(Google.Apis.Services.IClientService service, Google.Apis.BigQueryDataTransfer.v1.Data.UnenrollDataSourcesRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>The name of the project resource in the form: `projects/{project_id}`</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.BigQueryDataTransfer.v1.Data.UnenrollDataSourcesRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "unenrollDataSources";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}:unenrollDataSources";
+
+                /// <summary>Initializes UnenrollDataSources parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
+                }
+            }
         }
 
         /// <summary>Gets the TransferConfigs resource.</summary>
@@ -4350,6 +4411,19 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         /// <summary>Deprecated. Unique ID of the user on whose behalf transfer is done.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
         public virtual System.Nullable<long> UserId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A request to unenroll a set of data sources so they are no longer visible in the BigQuery UI's `Transfer` tab.
+    /// </summary>
+    public class UnenrollDataSourcesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Data sources that are unenrolled. It is required to provide at least one data source id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSourceIds")]
+        public virtual System.Collections.Generic.IList<string> DataSourceIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

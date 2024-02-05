@@ -4184,7 +4184,7 @@ namespace Google.Apis.BigtableAdmin.v2.Data
 
         /// <summary>
         /// Output only. Name of the backup from which this backup was copied. If a backup is not created by copying a
-        /// backup, this field will be empty. Values are of the form: projects//instances//backups/.
+        /// backup, this field will be empty. Values are of the form: projects//instances//clusters//backups/
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceBackup")]
         public virtual string SourceBackup { get; set; }
@@ -4294,7 +4294,7 @@ namespace Google.Apis.BigtableAdmin.v2.Data
 
         /// <summary>
         /// Output only. Name of the backup from which this backup was copied. If a backup is not created by copying a
-        /// backup, this field will be empty. Values are of the form: projects//instances//backups/.
+        /// backup, this field will be empty. Values are of the form: projects//instances//clusters//backups/
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceBackup")]
         public virtual string SourceBackup { get; set; }
@@ -4409,7 +4409,9 @@ namespace Google.Apis.BigtableAdmin.v2.Data
 
         /// <summary>
         /// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`,
-        /// or `roles/owner`.
+        /// or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM
+        /// documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined
+        /// roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }

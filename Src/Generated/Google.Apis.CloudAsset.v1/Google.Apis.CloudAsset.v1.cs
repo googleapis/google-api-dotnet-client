@@ -1980,12 +1980,30 @@ namespace Google.Apis.CloudAsset.v1
 
         /// <summary>
         /// Analyzes organization policies governed assets (Google Cloud resources or policies) under a scope. This RPC
-        /// supports custom constraints and the following 10 canned constraints: * storage.uniformBucketLevelAccess *
-        /// iam.disableServiceAccountKeyCreation * iam.allowedPolicyMemberDomains * compute.vmExternalIpAccess *
-        /// appengine.enforceServiceAccountActAsCheck * gcp.resourceLocations * compute.trustedImageProjects *
-        /// compute.skipDefaultNetworkCreation * compute.requireOsLogin * compute.disableNestedVirtualization This RPC
-        /// only returns either resources of types [supported by search
-        /// APIs](https://cloud.google.com/asset-inventory/docs/supported-asset-types) or IAM policies.
+        /// supports custom constraints and the following canned constraints: * constraints/ainotebooks.accessMode *
+        /// constraints/ainotebooks.disableFileDownloads * constraints/ainotebooks.disableRootAccess *
+        /// constraints/ainotebooks.disableTerminal * constraints/ainotebooks.environmentOptions *
+        /// constraints/ainotebooks.requireAutoUpgradeSchedule * constraints/ainotebooks.restrictVpcNetworks *
+        /// constraints/compute.disableGuestAttributesAccess * constraints/compute.disableInstanceDataAccessApis *
+        /// constraints/compute.disableNestedVirtualization * constraints/compute.disableSerialPortAccess *
+        /// constraints/compute.disableSerialPortLogging * constraints/compute.disableVpcExternalIpv6 *
+        /// constraints/compute.requireOsLogin * constraints/compute.requireShieldedVm *
+        /// constraints/compute.restrictLoadBalancerCreationForTypes *
+        /// constraints/compute.restrictProtocolForwardingCreationForTypes *
+        /// constraints/compute.restrictXpnProjectLienRemoval * constraints/compute.setNewProjectDefaultToZonalDNSOnly *
+        /// constraints/compute.skipDefaultNetworkCreation * constraints/compute.trustedImageProjects *
+        /// constraints/compute.vmCanIpForward * constraints/compute.vmExternalIpAccess *
+        /// constraints/gcp.detailedAuditLoggingMode * constraints/gcp.resourceLocations *
+        /// constraints/iam.allowedPolicyMemberDomains * constraints/iam.automaticIamGrantsForDefaultServiceAccounts *
+        /// constraints/iam.disableServiceAccountCreation * constraints/iam.disableServiceAccountKeyCreation *
+        /// constraints/iam.disableServiceAccountKeyUpload *
+        /// constraints/iam.restrictCrossProjectServiceAccountLienRemoval * constraints/iam.serviceAccountKeyExpiryHours
+        /// * constraints/resourcemanager.accessBoundaries * constraints/resourcemanager.allowedExportDestinations *
+        /// constraints/sql.restrictAuthorizedNetworks * constraints/sql.restrictNoncompliantDiagnosticDataAccess *
+        /// constraints/sql.restrictNoncompliantResourceCreation * constraints/sql.restrictPublicIp *
+        /// constraints/storage.publicAccessPrevention * constraints/storage.restrictAuthTypes *
+        /// constraints/storage.uniformBucketLevelAccess This RPC only returns either resources of types [supported by
+        /// search APIs](https://cloud.google.com/asset-inventory/docs/supported-asset-types) or IAM policies.
         /// </summary>
         /// <param name="scope">
         /// Required. The organization to scope the request. Only organization policies within the scope will be
@@ -1999,12 +2017,30 @@ namespace Google.Apis.CloudAsset.v1
 
         /// <summary>
         /// Analyzes organization policies governed assets (Google Cloud resources or policies) under a scope. This RPC
-        /// supports custom constraints and the following 10 canned constraints: * storage.uniformBucketLevelAccess *
-        /// iam.disableServiceAccountKeyCreation * iam.allowedPolicyMemberDomains * compute.vmExternalIpAccess *
-        /// appengine.enforceServiceAccountActAsCheck * gcp.resourceLocations * compute.trustedImageProjects *
-        /// compute.skipDefaultNetworkCreation * compute.requireOsLogin * compute.disableNestedVirtualization This RPC
-        /// only returns either resources of types [supported by search
-        /// APIs](https://cloud.google.com/asset-inventory/docs/supported-asset-types) or IAM policies.
+        /// supports custom constraints and the following canned constraints: * constraints/ainotebooks.accessMode *
+        /// constraints/ainotebooks.disableFileDownloads * constraints/ainotebooks.disableRootAccess *
+        /// constraints/ainotebooks.disableTerminal * constraints/ainotebooks.environmentOptions *
+        /// constraints/ainotebooks.requireAutoUpgradeSchedule * constraints/ainotebooks.restrictVpcNetworks *
+        /// constraints/compute.disableGuestAttributesAccess * constraints/compute.disableInstanceDataAccessApis *
+        /// constraints/compute.disableNestedVirtualization * constraints/compute.disableSerialPortAccess *
+        /// constraints/compute.disableSerialPortLogging * constraints/compute.disableVpcExternalIpv6 *
+        /// constraints/compute.requireOsLogin * constraints/compute.requireShieldedVm *
+        /// constraints/compute.restrictLoadBalancerCreationForTypes *
+        /// constraints/compute.restrictProtocolForwardingCreationForTypes *
+        /// constraints/compute.restrictXpnProjectLienRemoval * constraints/compute.setNewProjectDefaultToZonalDNSOnly *
+        /// constraints/compute.skipDefaultNetworkCreation * constraints/compute.trustedImageProjects *
+        /// constraints/compute.vmCanIpForward * constraints/compute.vmExternalIpAccess *
+        /// constraints/gcp.detailedAuditLoggingMode * constraints/gcp.resourceLocations *
+        /// constraints/iam.allowedPolicyMemberDomains * constraints/iam.automaticIamGrantsForDefaultServiceAccounts *
+        /// constraints/iam.disableServiceAccountCreation * constraints/iam.disableServiceAccountKeyCreation *
+        /// constraints/iam.disableServiceAccountKeyUpload *
+        /// constraints/iam.restrictCrossProjectServiceAccountLienRemoval * constraints/iam.serviceAccountKeyExpiryHours
+        /// * constraints/resourcemanager.accessBoundaries * constraints/resourcemanager.allowedExportDestinations *
+        /// constraints/sql.restrictAuthorizedNetworks * constraints/sql.restrictNoncompliantDiagnosticDataAccess *
+        /// constraints/sql.restrictNoncompliantResourceCreation * constraints/sql.restrictPublicIp *
+        /// constraints/storage.publicAccessPrevention * constraints/storage.restrictAuthTypes *
+        /// constraints/storage.uniformBucketLevelAccess This RPC only returns either resources of types [supported by
+        /// search APIs](https://cloud.google.com/asset-inventory/docs/supported-asset-types) or IAM policies.
         /// </summary>
         public class AnalyzeOrgPolicyGovernedAssetsRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1.Data.AnalyzeOrgPolicyGovernedAssetsResponse>
         {
@@ -4205,6 +4241,14 @@ namespace Google.Apis.CloudAsset.v1.Data
     public class GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedIamPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// The asset type of the AnalyzeOrgPolicyGovernedAssetsResponse.GovernedIamPolicy.attached_resource. Example:
+        /// `cloudresourcemanager.googleapis.com/Project` See [Cloud Asset Inventory Supported Asset
+        /// Types](https://cloud.google.com/asset-inventory/docs/supported-asset-types) for all supported asset types.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetType")]
+        public virtual string AssetType { get; set; }
+
+        /// <summary>
         /// The full resource name of the resource on which this IAM policy is set. Example:
         /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`. See [Cloud Asset
         /// Inventory Resource Name Format](https://cloud.google.com/asset-inventory/docs/resource-name-format) for more
@@ -4248,6 +4292,18 @@ namespace Google.Apis.CloudAsset.v1.Data
     /// </summary>
     public class GoogleCloudAssetV1AnalyzeOrgPolicyGovernedAssetsResponseGovernedResource : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The asset type of the AnalyzeOrgPolicyGovernedAssetsResponse.GovernedResource.full_resource_name Example:
+        /// `cloudresourcemanager.googleapis.com/Project` See [Cloud Asset Inventory Supported Asset
+        /// Types](https://cloud.google.com/asset-inventory/docs/supported-asset-types) for all supported asset types.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetType")]
+        public virtual string AssetType { get; set; }
+
+        /// <summary>The effective tags on this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveTags")]
+        public virtual System.Collections.Generic.IList<EffectiveTagDetails> EffectiveTags { get; set; }
+
         /// <summary>
         /// The folder(s) that this resource belongs to, in the format of folders/{FOLDER_NUMBER}. This field is
         /// available when the resource belongs (directly or cascadingly) to one or more folders.
@@ -4474,12 +4530,30 @@ namespace Google.Apis.CloudAsset.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("consolidatedPolicy")]
         public virtual AnalyzerOrgPolicy ConsolidatedPolicy { get; set; }
 
+        /// <summary>The effective tags on this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveTags")]
+        public virtual System.Collections.Generic.IList<EffectiveTagDetails> EffectiveTags { get; set; }
+
+        /// <summary>
+        /// The folder(s) that this resource belongs to, in the format of folders/{FOLDER_NUMBER}. This field is
+        /// available when the resource belongs (directly or cascadingly) to one or more folders.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("folders")]
+        public virtual System.Collections.Generic.IList<string> Folders { get; set; }
+
         /// <summary>
         /// The [full resource name] (https://cloud.google.com/asset-inventory/docs/resource-name-format) of an
         /// organization/folder/project resource.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullResourceName")]
         public virtual string FullResourceName { get; set; }
+
+        /// <summary>
+        /// The organization that this resource belongs to, in the format of organizations/{ORGANIZATION_NUMBER}. This
+        /// field is available when the resource belongs (directly or cascadingly) to an organization.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organization")]
+        public virtual string Organization { get; set; }
 
         /// <summary>
         /// The [full resource name] (https://cloud.google.com/asset-inventory/docs/resource-name-format) of the parent
@@ -4495,6 +4569,13 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyBundle")]
         public virtual System.Collections.Generic.IList<AnalyzerOrgPolicy> PolicyBundle { get; set; }
+
+        /// <summary>
+        /// The project that this resource belongs to, in the format of projects/{PROJECT_NUMBER}. This field is
+        /// available when the resource belongs to a project.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("project")]
+        public virtual string Project { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4633,6 +4714,15 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// <summary>The evaluating condition for this rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual Expr Condition { get; set; }
+
+        /// <summary>
+        /// The condition evaluation result for this rule. Only populated if it meets all the following criteria: *
+        /// there is a condition defined for this rule * this rule is within a consolidated_policy * the
+        /// consolidated_policy is within AnalyzeOrgPolicyGovernedContainersResponse.GovernedContainer or
+        /// AnalyzeOrgPolicyGovernedAssetsResponse.GovernedResource
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditionEvaluation")]
+        public virtual ConditionEvaluation ConditionEvaluation { get; set; }
 
         /// <summary>
         /// Setting this to true means that all values are denied. This field can be set only in Policies for list
@@ -5406,8 +5496,8 @@ namespace Google.Apis.CloudAsset.v1.Data
     public class GoogleIdentityAccesscontextmanagerV1EgressFrom : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A list of identities that are allowed access through this [EgressPolicy]. Should be in the format of email
-        /// address. The email address should represent individual user or service account only.
+        /// A list of identities that are allowed access through this [EgressPolicy], in the format of `user:{email_id}`
+        /// or `serviceAccount:{email_id}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("identities")]
         public virtual System.Collections.Generic.IList<string> Identities { get; set; }
@@ -5530,8 +5620,8 @@ namespace Google.Apis.CloudAsset.v1.Data
     public class GoogleIdentityAccesscontextmanagerV1IngressFrom : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A list of identities that are allowed access through this ingress policy. Should be in the format of email
-        /// address. The email address should represent individual user or service account only.
+        /// A list of identities that are allowed access through this ingress policy, in the format of `user:{email_id}`
+        /// or `serviceAccount:{email_id}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("identities")]
         public virtual System.Collections.Generic.IList<string> Identities { get; set; }
@@ -6522,12 +6612,34 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual AnalyzerOrgPolicy ConsolidatedPolicy { get; set; }
 
         /// <summary>
+        /// The folder(s) that this consolidated policy belongs to, in the format of folders/{FOLDER_NUMBER}. This field
+        /// is available when the consolidated policy belongs (directly or cascadingly) to one or more folders.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("folders")]
+        public virtual System.Collections.Generic.IList<string> Folders { get; set; }
+
+        /// <summary>
+        /// The organization that this consolidated policy belongs to, in the format of
+        /// organizations/{ORGANIZATION_NUMBER}. This field is available when the consolidated policy belongs (directly
+        /// or cascadingly) to an organization.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organization")]
+        public virtual string Organization { get; set; }
+
+        /// <summary>
         /// The ordered list of all organization policies from the
         /// AnalyzeOrgPoliciesResponse.OrgPolicyResult.consolidated_policy.attached_resource. to the scope specified in
         /// the request. If the constraint is defined with default policy, it will also appear in the list.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyBundle")]
         public virtual System.Collections.Generic.IList<AnalyzerOrgPolicy> PolicyBundle { get; set; }
+
+        /// <summary>
+        /// The project that this consolidated policy belongs to, in the format of projects/{PROJECT_NUMBER}. This field
+        /// is available when the consolidated policy belongs to a project.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("project")]
+        public virtual string Project { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

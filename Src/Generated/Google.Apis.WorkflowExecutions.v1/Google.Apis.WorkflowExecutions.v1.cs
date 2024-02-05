@@ -951,10 +951,10 @@ namespace Google.Apis.WorkflowExecutions.v1
 
                         /// <summary>
                         /// Optional. Filters applied to the `[Executions.ListExecutions]` results. The following fields
-                        /// are supported for filtering: `executionId`, `state`, `startTime`, `endTime`, `duration`,
-                        /// `workflowRevisionId`, `stepName`, and `label`. For details, see AIP-160. For example, if you
-                        /// are using the Google APIs Explorer: `state="SUCCEEDED"` or `startTime&amp;gt;"2023-08-01"
-                        /// AND state="FAILED"`
+                        /// are supported for filtering: `executionId`, `state`, `createTime`, `startTime`, `endTime`,
+                        /// `duration`, `workflowRevisionId`, `stepName`, and `label`. For details, see AIP-160. For
+                        /// example, if you are using the Google APIs Explorer: `state="SUCCEEDED"` or
+                        /// `startTime&amp;gt;"2023-08-01" AND state="FAILED"`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
@@ -962,8 +962,9 @@ namespace Google.Apis.WorkflowExecutions.v1
                         /// <summary>
                         /// Optional. Comma-separated list of fields that specify the ordering applied to the
                         /// `[Executions.ListExecutions]` results. By default the ordering is based on descending
-                        /// `startTime`. The following fields are supported for ordering: `executionId`, `state`,
-                        /// `startTime`, `endTime`, `duration`, and `workflowRevisionId`. For details, see AIP-132.
+                        /// `createTime`. The following fields are supported for ordering: `executionId`, `state`,
+                        /// `createTime`, `startTime`, `endTime`, `duration`, and `workflowRevisionId`. For details, see
+                        /// AIP-132.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string OrderBy { get; set; }
@@ -1552,9 +1553,9 @@ namespace Google.Apis.WorkflowExecutions.v1.Data
         public virtual string Data { get; set; }
 
         /// <summary>
-        /// Optional. ID of this message, assigned by the server when the message is published. Guaranteed to be unique
-        /// within the topic. This value may be read by a subscriber that receives a `PubsubMessage` via a `Pull` call
-        /// or a push delivery. It must not be populated by the publisher in a `Publish` call.
+        /// ID of this message, assigned by the server when the message is published. Guaranteed to be unique within the
+        /// topic. This value may be read by a subscriber that receives a `PubsubMessage` via a `Pull` call or a push
+        /// delivery. It must not be populated by the publisher in a `Publish` call.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageId")]
         public virtual string MessageId { get; set; }
@@ -1574,8 +1575,8 @@ namespace Google.Apis.WorkflowExecutions.v1.Data
         private object _publishTime;
 
         /// <summary>
-        /// Optional. The time at which the message was published, populated by the server when it receives the
-        /// `Publish` call. It must not be populated by the publisher in a `Publish` call.
+        /// The time at which the message was published, populated by the server when it receives the `Publish` call. It
+        /// must not be populated by the publisher in a `Publish` call.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishTime")]
         public virtual string PublishTimeRaw
