@@ -1493,8 +1493,8 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
     public class GoogleIdentityAccesscontextmanagerV1EgressFrom : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A list of identities that are allowed access through this [EgressPolicy]. Should be in the format of email
-        /// address. The email address should represent individual user or service account only.
+        /// A list of identities that are allowed access through this [EgressPolicy], in the format of `user:{email_id}`
+        /// or `serviceAccount:{email_id}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("identities")]
         public virtual System.Collections.Generic.IList<string> Identities { get; set; }
@@ -1617,8 +1617,8 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
     public class GoogleIdentityAccesscontextmanagerV1IngressFrom : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A list of identities that are allowed access through this ingress policy. Should be in the format of email
-        /// address. The email address should represent individual user or service account only.
+        /// A list of identities that are allowed access through this ingress policy, in the format of `user:{email_id}`
+        /// or `serviceAccount:{email_id}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("identities")]
         public virtual System.Collections.Generic.IList<string> Identities { get; set; }

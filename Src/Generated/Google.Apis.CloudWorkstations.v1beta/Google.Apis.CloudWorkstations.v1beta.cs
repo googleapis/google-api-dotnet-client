@@ -2652,7 +2652,9 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
 
         /// <summary>
         /// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`,
-        /// or `roles/owner`.
+        /// or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM
+        /// documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined
+        /// roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
@@ -2848,6 +2850,10 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disablePublicIpAddresses")]
         public virtual System.Nullable<bool> DisablePublicIpAddresses { get; set; }
+
+        /// <summary>Optional. Whether to disable SSH access to the VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableSsh")]
+        public virtual System.Nullable<bool> DisableSsh { get; set; }
 
         /// <summary>
         /// Optional. Whether to enable nested virtualization on Cloud Workstations VMs created under this workstation

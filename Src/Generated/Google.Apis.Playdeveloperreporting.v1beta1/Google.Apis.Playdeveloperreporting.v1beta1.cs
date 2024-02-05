@@ -2648,7 +2648,7 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
-        /// <summary>Identifier. The resource name of the issue. Format: apps/{app}/errorIssues/{issue}</summary>
+        /// <summary>Identifier. The resource name of the issue. Format: apps/{app}/{issue}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -2721,7 +2721,7 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("issue")]
         public virtual string Issue { get; set; }
 
-        /// <summary>The resource name of the report. Format: apps/{app}/errorReports/{report}</summary>
+        /// <summary>The resource name of the report. Format: apps/{app}/{report}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
