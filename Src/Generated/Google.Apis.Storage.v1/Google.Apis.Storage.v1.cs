@@ -10215,10 +10215,6 @@ namespace Google.Apis.Storage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>User-provided metadata, in key/value pairs.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
-
         /// <summary>
         /// The version of the metadata for this folder. Used for preconditions and for detecting changes in metadata.
         /// </summary>

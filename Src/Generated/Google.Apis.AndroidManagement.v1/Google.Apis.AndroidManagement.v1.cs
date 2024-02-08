@@ -460,59 +460,6 @@ namespace Google.Apis.AndroidManagement.v1
                 }
 
                 /// <summary>
-                /// Deletes a long-running operation. This method indicates that the client is no longer interested in
-                /// the operation result. It does not cancel the operation. If the server doesn't support this method,
-                /// it returns google.rpc.Code.UNIMPLEMENTED.
-                /// </summary>
-                /// <param name="name">The name of the operation resource to be deleted.</param>
-                public virtual DeleteRequest Delete(string name)
-                {
-                    return new DeleteRequest(this.service, name);
-                }
-
-                /// <summary>
-                /// Deletes a long-running operation. This method indicates that the client is no longer interested in
-                /// the operation result. It does not cancel the operation. If the server doesn't support this method,
-                /// it returns google.rpc.Code.UNIMPLEMENTED.
-                /// </summary>
-                public class DeleteRequest : AndroidManagementBaseServiceRequest<Google.Apis.AndroidManagement.v1.Data.Empty>
-                {
-                    /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                    {
-                        Name = name;
-                        InitParameters();
-                    }
-
-                    /// <summary>The name of the operation resource to be deleted.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "delete";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "DELETE";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+name}";
-
-                    /// <summary>Initializes Delete parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^enterprises/[^/]+/devices/[^/]+/operations/[^/]+$",
-                        });
-                    }
-                }
-
-                /// <summary>
                 /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation
                 /// result at intervals as recommended by the API service.
                 /// </summary>
@@ -2673,10 +2620,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Security policies set to secure values by default. To maintain the security posture of a device, we don't
-    /// recommend overriding any of the default values.
-    /// </summary>
+    /// <summary>Advanced security settings. In most cases, setting these is not needed.</summary>
     public class AdvancedSecurityOverrides : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -3166,6 +3110,22 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extensionConfig")]
         public virtual ExtensionConfig ExtensionConfig { get; set; }
+
+        /// <summary>
+        /// Optional. The constraints for installing the app. You can specify a maximum of one InstallConstraint.
+        /// Multiple constraints are rejected.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("installConstraint")]
+        public virtual System.Collections.Generic.IList<InstallConstraint> InstallConstraint { get; set; }
+
+        /// <summary>
+        /// Optional. Amongst apps with installTypeset to:FORCE_INSTALLEDPREINSTALLED this controls the relative
+        /// priority of installation. A value of 0 (default) means this app has no priority over other apps. For values
+        /// between 1 and 10,000, a lower value means a higher priority. Values outside of the range 0 to 10,000
+        /// inclusive are rejected.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("installPriority")]
+        public virtual System.Nullable<int> InstallPriority { get; set; }
 
         /// <summary>The type of installation to perform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("installType")]
@@ -4135,7 +4095,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
 
         /// <summary>
         /// Events related to memory and storage measurements in chronological order. This information is only available
-        /// if memoryInfoEnabled is true in the device's policy.
+        /// if memoryInfoEnabled is true in the device's policy.Events are retained for a certain period of time and old
+        /// events are deleted.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memoryEvents")]
         public virtual System.Collections.Generic.IList<MemoryEvent> MemoryEvents { get; set; }
@@ -4898,6 +4859,29 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Amongst apps with InstallTypeset to:FORCE_INSTALLEDPREINSTALLED this defines a set of restrictions for the app
+    /// installation. At least one of the fields must be set. When multiple fields are set, then all the constraints
+    /// need to be satisfied for the app to be installed.
+    /// </summary>
+    public class InstallConstraint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Charging constraint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chargingConstraint")]
+        public virtual string ChargingConstraint { get; set; }
+
+        /// <summary>Optional. Device idle constraint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceIdleConstraint")]
+        public virtual string DeviceIdleConstraint { get; set; }
+
+        /// <summary>Optional. Network type constraint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkTypeConstraint")]
+        public virtual string NetworkTypeConstraint { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response on issuing a command. This is currently empty as a placeholder.</summary>
     public class IssueCommandResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5457,7 +5441,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>An event related to memory and storage measurements.</summary>
+    /// <summary>
+    /// An event related to memory and storage measurements.To distinguish between new and old events, we recommend
+    /// using the createTime field.
+    /// </summary>
     public class MemoryEvent : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -6131,10 +6118,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adjustVolumeDisabled")]
         public virtual System.Nullable<bool> AdjustVolumeDisabled { get; set; }
 
-        /// <summary>
-        /// Security policies set to secure values by default. To maintain the security posture of a device, we don't
-        /// recommend overriding any of the default values.
-        /// </summary>
+        /// <summary>Advanced security settings. In most cases, setting these is not needed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advancedSecurityOverrides")]
         public virtual AdvancedSecurityOverrides AdvancedSecurityOverrides { get; set; }
 
@@ -6145,10 +6129,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("alwaysOnVpnPackage")]
         public virtual AlwaysOnVpnPackage AlwaysOnVpnPackage { get; set; }
 
-        /// <summary>
-        /// The app tracks for Android Device Policy the device can access. The device receives the latest version among
-        /// all accessible tracks. If no tracks are specified, then the device only uses the production track.
-        /// </summary>
+        /// <summary>This setting is not supported. Any value is ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidDevicePolicyTracks")]
         public virtual System.Collections.Generic.IList<string> AndroidDevicePolicyTracks { get; set; }
 

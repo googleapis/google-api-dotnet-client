@@ -21817,6 +21817,10 @@ namespace Google.Apis.Dfareporting.v4.Data
     /// </summary>
     public class Conversion : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>This represents consent for ad user data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adUserDataConsent")]
+        public virtual string AdUserDataConsent { get; set; }
+
         /// <summary>
         /// Whether this particular request may come from a user under the age of 13, under COPPA compliance.
         /// </summary>
@@ -26364,6 +26368,10 @@ namespace Google.Apis.Dfareporting.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("contentCategoryId")]
         public virtual System.Nullable<long> ContentCategoryId { get; set; }
 
+        /// <summary>Optional. Conversion domain overrides for a placement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionDomainOverride")]
+        public virtual PlacementConversionDomainOverride ConversionDomainOverride { get; set; }
+
         /// <summary>Information about the creation of this placement. This is a read-only field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createInfo")]
         public virtual LastModifiedInfo CreateInfo { get; set; }
@@ -26579,6 +26587,15 @@ namespace Google.Apis.Dfareporting.v4.Data
         public virtual string ETag { get; set; }
     }
 
+    public class PlacementConversionDomainOverride : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionDomains")]
+        public virtual System.Collections.Generic.IList<PlacementSingleConversionDomain> ConversionDomains { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Contains properties of a package or roadblock.</summary>
     public class PlacementGroup : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -26737,6 +26754,18 @@ namespace Google.Apis.Dfareporting.v4.Data
         /// <summary>Placement group collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("placementGroups")]
         public virtual System.Collections.Generic.IList<PlacementGroup> PlacementGroups { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class PlacementSingleConversionDomain : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionDomainId")]
+        public virtual System.Nullable<long> ConversionDomainId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionDomainValue")]
+        public virtual string ConversionDomainValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -28588,7 +28617,8 @@ namespace Google.Apis.Dfareporting.v4.Data
         public virtual string AdditionalKeyValues { get; set; }
 
         /// <summary>
-        /// Whether static landing page URLs should be included in the tags. This setting applies only to placements.
+        /// Whether static landing page URLs should be included in the tags. New placements will default to the value
+        /// set on their site.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeClickThroughUrls")]
         public virtual System.Nullable<bool> IncludeClickThroughUrls { get; set; }

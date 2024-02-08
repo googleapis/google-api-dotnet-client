@@ -12304,6 +12304,14 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     public class AutoRenewingBasePlanType : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. Account hold period of the subscription, specified in ISO 8601 format. Acceptable values must be
+        /// in DAYS and in the range P0D (zero days) to P30D (30 days). If not specified, the default value is P30D (30
+        /// days).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountHoldDuration")]
+        public virtual string AccountHoldDuration { get; set; }
+
+        /// <summary>
         /// Required. Subscription period, specified in ISO 8601 format. For a list of acceptable billing periods, refer
         /// to the help center.
         /// </summary>

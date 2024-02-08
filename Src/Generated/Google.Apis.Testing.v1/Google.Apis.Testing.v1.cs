@@ -309,6 +309,14 @@ namespace Google.Apis.Testing.v1
                 InitParameters();
             }
 
+            /// <summary>
+            /// A path to a file in Google Cloud Storage. Example:
+            /// gs://build-app-1414623860166/app%40debug-unaligned.apk These paths are expected to be url encoded
+            /// (percent encoding)
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("bundleLocation.gcsPath", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string BundleLocationGcsPath { get; set; }
+
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Testing.v1.Data.FileReference Body { get; set; }
 
@@ -328,6 +336,14 @@ namespace Google.Apis.Testing.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
+                RequestParameters.Add("bundleLocation.gcsPath", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bundleLocation.gcsPath",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
         }
     }
@@ -1501,7 +1517,7 @@ namespace Google.Apis.Testing.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Android application details based on application manifest and apk archive contents.</summary>
+    /// <summary>Android application details based on application manifest and archive contents.</summary>
     public class ApkDetail : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("apkManifest")]
@@ -2024,10 +2040,10 @@ namespace Google.Apis.Testing.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response containing the details of the specified Android application APK.</summary>
+    /// <summary>Response containing the details of the specified Android application.</summary>
     public class GetApkDetailsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Details of the Android APK.</summary>
+        /// <summary>Details of the Android App.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apkDetail")]
         public virtual ApkDetail ApkDetail { get; set; }
 
@@ -2455,6 +2471,27 @@ namespace Google.Apis.Testing.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testTargetsForShard")]
         public virtual System.Collections.Generic.IList<TestTargetsForShard> TestTargetsForShard { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes a single error or issue with a matrix.</summary>
+    public class MatrixErrorDetail : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. A human-readable message about how the error in the TestMatrix. Expands on the `reason` field
+        /// with additional details and possible options to fix the issue.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>
+        /// Output only. The reason for the error. This is a constant value in UPPER_SNAKE_CASE that identifies the
+        /// cause of the error.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3021,6 +3058,13 @@ namespace Google.Apis.Testing.v1.Data
         /// <summary>Required. The devices the tests are being executed on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environmentMatrix")]
         public virtual EnvironmentMatrix EnvironmentMatrix { get; set; }
+
+        /// <summary>
+        /// Output only. Details about why a matrix was deemed invalid. If multiple checks can be safely performed, they
+        /// will be reported but no assumptions should be made about the length of this list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extendedInvalidMatrixDetails")]
+        public virtual System.Collections.Generic.IList<MatrixErrorDetail> ExtendedInvalidMatrixDetails { get; set; }
 
         /// <summary>
         /// If true, only a single attempt at most will be made to run each execution/shard in the matrix. Flaky test

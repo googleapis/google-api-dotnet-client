@@ -6112,6 +6112,10 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
+        /// <summary>
+        /// Optional. If this is true, aunspecified repo type will be treated as error. Is used for new repo types that
+        /// don't have any specific fields. Right now is used by AOSS team when creating repos for customers.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disallowUnspecifiedMode")]
         public virtual System.Nullable<bool> DisallowUnspecifiedMode { get; set; }
 

@@ -2524,6 +2524,220 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                             this.service = service;
                         }
 
+                        /// <summary>
+                        /// Gets a ServingConfig. Returns a NotFound error if the ServingConfig does not exist.
+                        /// </summary>
+                        /// <param name="name">
+                        /// Required. The resource name of the ServingConfig to get. Format:
+                        /// `projects/{project_number}/locations/{location}/collections/{collection}/dataStores/{data_store}/servingConfigs/{serving_config_id}`
+                        /// </param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(this.service, name);
+                        }
+
+                        /// <summary>
+                        /// Gets a ServingConfig. Returns a NotFound error if the ServingConfig does not exist.
+                        /// </summary>
+                        public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaServingConfig>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource name of the ServingConfig to get. Format:
+                            /// `projects/{project_number}/locations/{location}/collections/{collection}/dataStores/{data_store}/servingConfigs/{serving_config_id}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+/servingConfigs/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Lists all ServingConfigs linked to this dataStore.</summary>
+                        /// <param name="parent">
+                        /// Required. The dataStore resource name. Format:
+                        /// `projects/{project_number}/locations/{location}/collections/{collection}/dataStores/{data_store}`
+                        /// </param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(this.service, parent);
+                        }
+
+                        /// <summary>Lists all ServingConfigs linked to this dataStore.</summary>
+                        public class ListRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaListServingConfigsResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The dataStore resource name. Format:
+                            /// `projects/{project_number}/locations/{location}/collections/{collection}/dataStores/{data_store}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// Optional. Maximum number of results to return. If unspecified, defaults to 100. If a
+                            /// value greater than 100 is provided, at most 100 results are returned.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>
+                            /// Optional. A page token, received from a previous `ListServingConfigs` call. Provide this
+                            /// to retrieve the subsequent page.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta/{+parent}/servingConfigs";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+$",
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Updates a ServingConfig. Returns a NOT_FOUND error if the ServingConfig does not exist.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">
+                        /// Immutable. Fully qualified name
+                        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/servingConfigs/{serving_config_id}`
+                        /// </param>
+                        public virtual PatchRequest Patch(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaServingConfig body, string name)
+                        {
+                            return new PatchRequest(this.service, body, name);
+                        }
+
+                        /// <summary>
+                        /// Updates a ServingConfig. Returns a NOT_FOUND error if the ServingConfig does not exist.
+                        /// </summary>
+                        public class PatchRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaServingConfig>
+                        {
+                            /// <summary>Constructs a new Patch request.</summary>
+                            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaServingConfig body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Immutable. Fully qualified name
+                            /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/servingConfigs/{serving_config_id}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>
+                            /// Indicates which fields in the provided ServingConfig to update. The following are NOT
+                            /// supported: * ServingConfig.name If not set, all supported fields are updated.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual object UpdateMask { get; set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaServingConfig Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "patch";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "PATCH";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta/{+name}";
+
+                            /// <summary>Initializes Patch parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+/servingConfigs/[^/]+$",
+                                });
+                                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "updateMask",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
                         /// <summary>Makes a recommendation, which requires a contextual user event.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="servingConfig">
@@ -5337,6 +5551,220 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                             this.service = service;
                         }
 
+                        /// <summary>
+                        /// Gets a ServingConfig. Returns a NotFound error if the ServingConfig does not exist.
+                        /// </summary>
+                        /// <param name="name">
+                        /// Required. The resource name of the ServingConfig to get. Format:
+                        /// `projects/{project_number}/locations/{location}/collections/{collection}/dataStores/{data_store}/servingConfigs/{serving_config_id}`
+                        /// </param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(this.service, name);
+                        }
+
+                        /// <summary>
+                        /// Gets a ServingConfig. Returns a NotFound error if the ServingConfig does not exist.
+                        /// </summary>
+                        public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaServingConfig>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource name of the ServingConfig to get. Format:
+                            /// `projects/{project_number}/locations/{location}/collections/{collection}/dataStores/{data_store}/servingConfigs/{serving_config_id}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/servingConfigs/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Lists all ServingConfigs linked to this dataStore.</summary>
+                        /// <param name="parent">
+                        /// Required. The dataStore resource name. Format:
+                        /// `projects/{project_number}/locations/{location}/collections/{collection}/dataStores/{data_store}`
+                        /// </param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(this.service, parent);
+                        }
+
+                        /// <summary>Lists all ServingConfigs linked to this dataStore.</summary>
+                        public class ListRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaListServingConfigsResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The dataStore resource name. Format:
+                            /// `projects/{project_number}/locations/{location}/collections/{collection}/dataStores/{data_store}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// Optional. Maximum number of results to return. If unspecified, defaults to 100. If a
+                            /// value greater than 100 is provided, at most 100 results are returned.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>
+                            /// Optional. A page token, received from a previous `ListServingConfigs` call. Provide this
+                            /// to retrieve the subsequent page.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta/{+parent}/servingConfigs";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+$",
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Updates a ServingConfig. Returns a NOT_FOUND error if the ServingConfig does not exist.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">
+                        /// Immutable. Fully qualified name
+                        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/servingConfigs/{serving_config_id}`
+                        /// </param>
+                        public virtual PatchRequest Patch(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaServingConfig body, string name)
+                        {
+                            return new PatchRequest(this.service, body, name);
+                        }
+
+                        /// <summary>
+                        /// Updates a ServingConfig. Returns a NOT_FOUND error if the ServingConfig does not exist.
+                        /// </summary>
+                        public class PatchRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaServingConfig>
+                        {
+                            /// <summary>Constructs a new Patch request.</summary>
+                            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaServingConfig body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Immutable. Fully qualified name
+                            /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/servingConfigs/{serving_config_id}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>
+                            /// Indicates which fields in the provided ServingConfig to update. The following are NOT
+                            /// supported: * ServingConfig.name If not set, all supported fields are updated.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual object UpdateMask { get; set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaServingConfig Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "patch";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "PATCH";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta/{+name}";
+
+                            /// <summary>Initializes Patch parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/servingConfigs/[^/]+$",
+                                });
+                                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "updateMask",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
                         /// <summary>Makes a recommendation, which requires a contextual user event.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="servingConfig">
@@ -7858,6 +8286,220 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     public ServingConfigsResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Gets a ServingConfig. Returns a NotFound error if the ServingConfig does not exist.
+                    /// </summary>
+                    /// <param name="name">
+                    /// Required. The resource name of the ServingConfig to get. Format:
+                    /// `projects/{project_number}/locations/{location}/collections/{collection}/dataStores/{data_store}/servingConfigs/{serving_config_id}`
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Gets a ServingConfig. Returns a NotFound error if the ServingConfig does not exist.
+                    /// </summary>
+                    public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaServingConfig>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the ServingConfig to get. Format:
+                        /// `projects/{project_number}/locations/{location}/collections/{collection}/dataStores/{data_store}/servingConfigs/{serving_config_id}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+/servingConfigs/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists all ServingConfigs linked to this dataStore.</summary>
+                    /// <param name="parent">
+                    /// Required. The dataStore resource name. Format:
+                    /// `projects/{project_number}/locations/{location}/collections/{collection}/dataStores/{data_store}`
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists all ServingConfigs linked to this dataStore.</summary>
+                    public class ListRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaListServingConfigsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The dataStore resource name. Format:
+                        /// `projects/{project_number}/locations/{location}/collections/{collection}/dataStores/{data_store}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Maximum number of results to return. If unspecified, defaults to 100. If a value
+                        /// greater than 100 is provided, at most 100 results are returned.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. A page token, received from a previous `ListServingConfigs` call. Provide this to
+                        /// retrieve the subsequent page.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta/{+parent}/servingConfigs";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Updates a ServingConfig. Returns a NOT_FOUND error if the ServingConfig does not exist.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Immutable. Fully qualified name
+                    /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/servingConfigs/{serving_config_id}`
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaServingConfig body, string name)
+                    {
+                        return new PatchRequest(this.service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Updates a ServingConfig. Returns a NOT_FOUND error if the ServingConfig does not exist.
+                    /// </summary>
+                    public class PatchRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaServingConfig>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaServingConfig body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Immutable. Fully qualified name
+                        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/servingConfigs/{serving_config_id}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Indicates which fields in the provided ServingConfig to update. The following are NOT
+                        /// supported: * ServingConfig.name If not set, all supported fields are updated.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaServingConfig Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+/servingConfigs/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
                     }
 
                     /// <summary>Makes a recommendation, which requires a contextual user event.</summary>
@@ -16738,6 +17380,17 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Defines embedding config, used for bring your own embeddings feature.</summary>
+    public class GoogleCloudDiscoveryengineV1betaEmbeddingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Full field path in the schema mapped as embedding field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldPath")]
+        public virtual string FieldPath { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Metadata related to the progress of the SiteSearchEngineService.EnableAdvancedSiteSearch operation. This will be
     /// returned by the google.longrunning.Operation.metadata field.
@@ -17729,6 +18382,21 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>The Schemas.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schemas")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaSchema> Schemas { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for ListServingConfigs method.</summary>
+    public class GoogleCloudDiscoveryengineV1betaListServingConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Pagination token, if not returned indicates the last page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>All the ServingConfigs for a given dataStore.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servingConfigs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaServingConfig> ServingConfigs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -18732,9 +19400,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     {
         /// <summary>
         /// The model version used to generate the summary. Supported values are: * `stable`: string. Default value when
-        /// no value is specified. Uses a generally available, fine-tuned version of the text-bison@001 model. *
-        /// `preview`: string. (Public preview) Uses a fine-tuned version of the text-bison@002 model. This model works
-        /// only for summaries in English.
+        /// no value is specified. Uses a generally available, fine-tuned version of the text-bison@001 model.
+        /// LINT.IfChange * `preview`: string. (Public preview) Uses a fine-tuned version of the text-bison@002 model.
+        /// This model works only for summaries in English.
+        /// LINT.ThenChange(//depot/google3/cloud/console/web/ai/unified_cloud_search/pages/configurations/widget_tab.ts)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
@@ -19263,6 +19932,269 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>Summary text with no citation information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("summary")]
         public virtual string Summary { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configures metadata that is used to generate serving time results (e.g. search results or recommendation
+    /// predictions). The ServingConfig is passed in the search and predict request and generates results.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaServingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Boost controls to use in serving path. All triggered boost controls will be applied. Boost controls must be
+        /// in the same data store as the serving config. Maximum of 20 boost controls.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boostControlIds")]
+        public virtual System.Collections.Generic.IList<string> BoostControlIds { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. ServingConfig created timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Required. The human readable serving config display name. Used in Discovery UI. This field must be a UTF-8
+        /// encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Condition do not associate specifications. If multiple do not associate conditions match, all matching do
+        /// not associate controls in the list will execute. Order does not matter. Maximum number of specifications is
+        /// 100. Can only be set if SolutionType is SOLUTION_TYPE_SEARCH.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dissociateControlIds")]
+        public virtual System.Collections.Generic.IList<string> DissociateControlIds { get; set; }
+
+        /// <summary>
+        /// How much diversity to use in recommendation model results e.g. `medium-diversity` or `high-diversity`.
+        /// Currently supported values: * `no-diversity` * `low-diversity` * `medium-diversity` * `high-diversity` *
+        /// `auto-diversity` If not specified, we choose default based on recommendation model type. Default value:
+        /// `no-diversity`. Can only be set if SolutionType is SOLUTION_TYPE_RECOMMENDATION.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diversityLevel")]
+        public virtual string DiversityLevel { get; set; }
+
+        /// <summary>
+        /// Bring your own embedding config. The config is used for search semantic retrieval. The retrieval is based on
+        /// the dot product of SearchRequest.EmbeddingSpec.EmbeddingVector.vector and the document embeddings that are
+        /// provided by this EmbeddingConfig. If SearchRequest.EmbeddingSpec.EmbeddingVector.vector is provided, it
+        /// overrides this ServingConfig.embedding_config.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("embeddingConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaEmbeddingConfig EmbeddingConfig { get; set; }
+
+        /// <summary>
+        /// Filter controls to use in serving path. All triggered filter controls will be applied. Filter controls must
+        /// be in the same data store as the serving config. Maximum of 20 filter controls.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterControlIds")]
+        public virtual System.Collections.Generic.IList<string> FilterControlIds { get; set; }
+
+        /// <summary>The GenericConfig of the serving configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaServingConfigGenericConfig GenericConfig { get; set; }
+
+        /// <summary>
+        /// Condition ignore specifications. If multiple ignore conditions match, all matching ignore controls in the
+        /// list will execute. Order does not matter. Maximum number of specifications is 100.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreControlIds")]
+        public virtual System.Collections.Generic.IList<string> IgnoreControlIds { get; set; }
+
+        /// <summary>The MediaConfig of the serving configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mediaConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaServingConfigMediaConfig MediaConfig { get; set; }
+
+        /// <summary>
+        /// The id of the model to use at serving time. Currently only RecommendationModels are supported. Can be
+        /// changed but only to a compatible model (e.g. others-you-may-like CTR to others-you-may-like CVR). Required
+        /// when SolutionType is SOLUTION_TYPE_RECOMMENDATION.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelId")]
+        public virtual string ModelId { get; set; }
+
+        /// <summary>
+        /// Immutable. Fully qualified name
+        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/servingConfigs/{serving_config_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Condition oneway synonyms specifications. If multiple oneway synonyms conditions match, all matching oneway
+        /// synonyms controls in the list will execute. Maximum number of specifications is 100. Can only be set if
+        /// SolutionType is SOLUTION_TYPE_SEARCH.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onewaySynonymsControlIds")]
+        public virtual System.Collections.Generic.IList<string> OnewaySynonymsControlIds { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("rankingExpression")]
+        public virtual string RankingExpression { get; set; }
+
+        /// <summary>
+        /// IDs of the redirect controls. Only the first triggered redirect action is applied, even if multiple apply.
+        /// Maximum number of specifications is 100. Can only be set if SolutionType is SOLUTION_TYPE_SEARCH.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redirectControlIds")]
+        public virtual System.Collections.Generic.IList<string> RedirectControlIds { get; set; }
+
+        /// <summary>
+        /// Condition replacement specifications. Applied according to the order in the list. A previously replaced term
+        /// can not be re-replaced. Maximum number of specifications is 100. Can only be set if SolutionType is
+        /// SOLUTION_TYPE_SEARCH.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replacementControlIds")]
+        public virtual System.Collections.Generic.IList<string> ReplacementControlIds { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. Specifies the solution type that a serving config can be associated with.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("solutionType")]
+        public virtual string SolutionType { get; set; }
+
+        /// <summary>
+        /// Condition synonyms specifications. If multiple synonyms conditions match, all matching synonyms controls in
+        /// the list will execute. Maximum number of specifications is 100. Can only be set if SolutionType is
+        /// SOLUTION_TYPE_SEARCH.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("synonymsControlIds")]
+        public virtual System.Collections.Generic.IList<string> SynonymsControlIds { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. ServingConfig updated timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specifies the configurations needed for Generic Discovery.Currently we support: * `content_search_spec`:
+    /// configuration for generic content search.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaServingConfigGenericConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Specifies the expected behavior of content search. Only valid for content-search enabled data store.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentSearchSpec")]
+        public virtual GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpec ContentSearchSpec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specifies the configurations needed for Media Discovery. Currently we support: * `demote_content_watched`:
+    /// Threshold for watched content demotion. Customers can specify if using watched content demotion or use viewed
+    /// detail page. Using the content watched demotion, customers need to specify the watched minutes or percentage
+    /// exceeds the threshold, the content will be demoted in the recommendation result. * `promote_fresh_content`:
+    /// cutoff days for fresh content promotion. Customers can specify if using content freshness promotion. If the
+    /// content was published within the cutoff days, the content will be promoted in the recommendation result. Can
+    /// only be set if SolutionType is SOLUTION_TYPE_RECOMMENDATION.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaServingConfigMediaConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Specifies the content freshness used for recommendation result. Contents will be demoted if contents were
+        /// published for more than content freshness cutoff days.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentFreshnessCutoffDays")]
+        public virtual System.Nullable<int> ContentFreshnessCutoffDays { get; set; }
+
+        /// <summary>Specifies the content watched minutes threshold for demotion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentWatchedMinutesThreshold")]
+        public virtual System.Nullable<float> ContentWatchedMinutesThreshold { get; set; }
+
+        /// <summary>
+        /// Specifies the content watched percentage threshold for demotion. Threshold value must be between [0, 1.0]
+        /// inclusive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentWatchedPercentageThreshold")]
+        public virtual System.Nullable<float> ContentWatchedPercentageThreshold { get; set; }
+
+        /// <summary>Specifies the content watched minutes threshold for demotion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentWatchedSecondsThreshold")]
+        public virtual System.Nullable<float> ContentWatchedSecondsThreshold { get; set; }
+
+        /// <summary>
+        /// Specifies the event type used for demoting recommendation result. Currently supported values: * `view-item`:
+        /// Item viewed. * `media-play`: Start/resume watching a video, playing a song, etc. * `media-complete`:
+        /// Finished or stopped midway through a video, song, etc. If unset, watch history demotion will not be applied.
+        /// Content freshness demotion will still be applied.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("demotionEventType")]
+        public virtual string DemotionEventType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

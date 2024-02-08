@@ -310,7 +310,701 @@ namespace Google.Apis.CloudComposer.v1
                 public EnvironmentsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    UserWorkloadsConfigMaps = new UserWorkloadsConfigMapsResource(service);
+                    UserWorkloadsSecrets = new UserWorkloadsSecretsResource(service);
                     Workloads = new WorkloadsResource(service);
+                }
+
+                /// <summary>Gets the UserWorkloadsConfigMaps resource.</summary>
+                public virtual UserWorkloadsConfigMapsResource UserWorkloadsConfigMaps { get; }
+
+                /// <summary>The "userWorkloadsConfigMaps" collection of methods.</summary>
+                public class UserWorkloadsConfigMapsResource
+                {
+                    private const string Resource = "userWorkloadsConfigMaps";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public UserWorkloadsConfigMapsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Creates a user workloads ConfigMap. This method is supported for Cloud Composer environments in
+                    /// versions composer-3.*.*-airflow-*.*.* and newer.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The environment name to create a ConfigMap for, in the form:
+                    /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.CloudComposer.v1.Data.UserWorkloadsConfigMap body, string parent)
+                    {
+                        return new CreateRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>
+                    /// Creates a user workloads ConfigMap. This method is supported for Cloud Composer environments in
+                    /// versions composer-3.*.*-airflow-*.*.* and newer.
+                    /// </summary>
+                    public class CreateRequest : CloudComposerBaseServiceRequest<Google.Apis.CloudComposer.v1.Data.UserWorkloadsConfigMap>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudComposer.v1.Data.UserWorkloadsConfigMap body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The environment name to create a ConfigMap for, in the form:
+                        /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudComposer.v1.Data.UserWorkloadsConfigMap Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/userWorkloadsConfigMaps";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/environments/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Deletes a user workloads ConfigMap. This method is supported for Cloud Composer environments in
+                    /// versions composer-3.*.*-airflow-*.*.* and newer.
+                    /// </summary>
+                    /// <param name="name">
+                    /// Required. The ConfigMap to delete, in the form:
+                    /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsConfigMaps/{userWorkloadsConfigMapId}"
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Deletes a user workloads ConfigMap. This method is supported for Cloud Composer environments in
+                    /// versions composer-3.*.*-airflow-*.*.* and newer.
+                    /// </summary>
+                    public class DeleteRequest : CloudComposerBaseServiceRequest<Google.Apis.CloudComposer.v1.Data.Empty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The ConfigMap to delete, in the form:
+                        /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsConfigMaps/{userWorkloadsConfigMapId}"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/environments/[^/]+/userWorkloadsConfigMaps/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Gets an existing user workloads ConfigMap. This method is supported for Cloud Composer
+                    /// environments in versions composer-3.*.*-airflow-*.*.* and newer.
+                    /// </summary>
+                    /// <param name="name">
+                    /// Required. The resource name of the ConfigMap to get, in the form:
+                    /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsConfigMaps/{userWorkloadsConfigMapId}"
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Gets an existing user workloads ConfigMap. This method is supported for Cloud Composer
+                    /// environments in versions composer-3.*.*-airflow-*.*.* and newer.
+                    /// </summary>
+                    public class GetRequest : CloudComposerBaseServiceRequest<Google.Apis.CloudComposer.v1.Data.UserWorkloadsConfigMap>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the ConfigMap to get, in the form:
+                        /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsConfigMaps/{userWorkloadsConfigMapId}"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/environments/[^/]+/userWorkloadsConfigMaps/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Lists user workloads ConfigMaps. This method is supported for Cloud Composer environments in
+                    /// versions composer-3.*.*-airflow-*.*.* and newer.
+                    /// </summary>
+                    /// <param name="parent">
+                    /// Required. List ConfigMaps in the given environment, in the form:
+                    /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>
+                    /// Lists user workloads ConfigMaps. This method is supported for Cloud Composer environments in
+                    /// versions composer-3.*.*-airflow-*.*.* and newer.
+                    /// </summary>
+                    public class ListRequest : CloudComposerBaseServiceRequest<Google.Apis.CloudComposer.v1.Data.ListUserWorkloadsConfigMapsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. List ConfigMaps in the given environment, in the form:
+                        /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Optional. The maximum number of ConfigMaps to return.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. The next_page_token value returned from a previous List request, if any.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/userWorkloadsConfigMaps";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/environments/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Updates a user workloads ConfigMap. This method is supported for Cloud Composer environments in
+                    /// versions composer-3.*.*-airflow-*.*.* and newer.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Identifier. The resource name of the ConfigMap, in the form:
+                    /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsConfigMaps/{userWorkloadsConfigMapId}"
+                    /// </param>
+                    public virtual UpdateRequest Update(Google.Apis.CloudComposer.v1.Data.UserWorkloadsConfigMap body, string name)
+                    {
+                        return new UpdateRequest(this.service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Updates a user workloads ConfigMap. This method is supported for Cloud Composer environments in
+                    /// versions composer-3.*.*-airflow-*.*.* and newer.
+                    /// </summary>
+                    public class UpdateRequest : CloudComposerBaseServiceRequest<Google.Apis.CloudComposer.v1.Data.UserWorkloadsConfigMap>
+                    {
+                        /// <summary>Constructs a new Update request.</summary>
+                        public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudComposer.v1.Data.UserWorkloadsConfigMap body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Identifier. The resource name of the ConfigMap, in the form:
+                        /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsConfigMaps/{userWorkloadsConfigMapId}"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudComposer.v1.Data.UserWorkloadsConfigMap Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "update";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PUT";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Update parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/environments/[^/]+/userWorkloadsConfigMaps/[^/]+$",
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the UserWorkloadsSecrets resource.</summary>
+                public virtual UserWorkloadsSecretsResource UserWorkloadsSecrets { get; }
+
+                /// <summary>The "userWorkloadsSecrets" collection of methods.</summary>
+                public class UserWorkloadsSecretsResource
+                {
+                    private const string Resource = "userWorkloadsSecrets";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public UserWorkloadsSecretsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Creates a user workloads Secret. This method is supported for Cloud Composer environments in
+                    /// versions composer-3.*.*-airflow-*.*.* and newer.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The environment name to create a Secret for, in the form:
+                    /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.CloudComposer.v1.Data.UserWorkloadsSecret body, string parent)
+                    {
+                        return new CreateRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>
+                    /// Creates a user workloads Secret. This method is supported for Cloud Composer environments in
+                    /// versions composer-3.*.*-airflow-*.*.* and newer.
+                    /// </summary>
+                    public class CreateRequest : CloudComposerBaseServiceRequest<Google.Apis.CloudComposer.v1.Data.UserWorkloadsSecret>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudComposer.v1.Data.UserWorkloadsSecret body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The environment name to create a Secret for, in the form:
+                        /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudComposer.v1.Data.UserWorkloadsSecret Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/userWorkloadsSecrets";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/environments/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Deletes a user workloads Secret. This method is supported for Cloud Composer environments in
+                    /// versions composer-3.*.*-airflow-*.*.* and newer.
+                    /// </summary>
+                    /// <param name="name">
+                    /// Required. The Secret to delete, in the form:
+                    /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsSecrets/{userWorkloadsSecretId}"
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Deletes a user workloads Secret. This method is supported for Cloud Composer environments in
+                    /// versions composer-3.*.*-airflow-*.*.* and newer.
+                    /// </summary>
+                    public class DeleteRequest : CloudComposerBaseServiceRequest<Google.Apis.CloudComposer.v1.Data.Empty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The Secret to delete, in the form:
+                        /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsSecrets/{userWorkloadsSecretId}"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/environments/[^/]+/userWorkloadsSecrets/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Gets an existing user workloads Secret. Values of the "data" field in the response are cleared.
+                    /// This method is supported for Cloud Composer environments in versions
+                    /// composer-3.*.*-airflow-*.*.* and newer.
+                    /// </summary>
+                    /// <param name="name">
+                    /// Required. The resource name of the Secret to get, in the form:
+                    /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsSecrets/{userWorkloadsSecretId}"
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Gets an existing user workloads Secret. Values of the "data" field in the response are cleared.
+                    /// This method is supported for Cloud Composer environments in versions
+                    /// composer-3.*.*-airflow-*.*.* and newer.
+                    /// </summary>
+                    public class GetRequest : CloudComposerBaseServiceRequest<Google.Apis.CloudComposer.v1.Data.UserWorkloadsSecret>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the Secret to get, in the form:
+                        /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsSecrets/{userWorkloadsSecretId}"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/environments/[^/]+/userWorkloadsSecrets/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Lists user workloads Secrets. This method is supported for Cloud Composer environments in
+                    /// versions composer-3.*.*-airflow-*.*.* and newer.
+                    /// </summary>
+                    /// <param name="parent">
+                    /// Required. List Secrets in the given environment, in the form:
+                    /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>
+                    /// Lists user workloads Secrets. This method is supported for Cloud Composer environments in
+                    /// versions composer-3.*.*-airflow-*.*.* and newer.
+                    /// </summary>
+                    public class ListRequest : CloudComposerBaseServiceRequest<Google.Apis.CloudComposer.v1.Data.ListUserWorkloadsSecretsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. List Secrets in the given environment, in the form:
+                        /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Optional. The maximum number of Secrets to return.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. The next_page_token value returned from a previous List request, if any.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/userWorkloadsSecrets";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/environments/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Updates a user workloads Secret. This method is supported for Cloud Composer environments in
+                    /// versions composer-3.*.*-airflow-*.*.* and newer.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Identifier. The resource name of the Secret, in the form:
+                    /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsSecrets/{userWorkloadsSecretId}"
+                    /// </param>
+                    public virtual UpdateRequest Update(Google.Apis.CloudComposer.v1.Data.UserWorkloadsSecret body, string name)
+                    {
+                        return new UpdateRequest(this.service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Updates a user workloads Secret. This method is supported for Cloud Composer environments in
+                    /// versions composer-3.*.*-airflow-*.*.* and newer.
+                    /// </summary>
+                    public class UpdateRequest : CloudComposerBaseServiceRequest<Google.Apis.CloudComposer.v1.Data.UserWorkloadsSecret>
+                    {
+                        /// <summary>Constructs a new Update request.</summary>
+                        public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudComposer.v1.Data.UserWorkloadsSecret body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Identifier. The resource name of the Secret, in the form:
+                        /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsSecrets/{userWorkloadsSecretId}"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudComposer.v1.Data.UserWorkloadsSecret Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "update";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PUT";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Update parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/environments/[^/]+/userWorkloadsSecrets/[^/]+$",
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Gets the Workloads resource.</summary>
@@ -2263,6 +2957,36 @@ namespace Google.Apis.CloudComposer.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The user workloads ConfigMaps for a given environment.</summary>
+    public class ListUserWorkloadsConfigMapsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The page token used to query for the next page if one exists.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of ConfigMaps returned by a ListUserWorkloadsConfigMapsRequest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userWorkloadsConfigMaps")]
+        public virtual System.Collections.Generic.IList<UserWorkloadsConfigMap> UserWorkloadsConfigMaps { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The user workloads Secrets for a given environment.</summary>
+    public class ListUserWorkloadsSecretsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The page token used to query for the next page if one exists.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of Secrets returned by a ListUserWorkloadsSecretsRequest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userWorkloadsSecrets")]
+        public virtual System.Collections.Generic.IList<UserWorkloadsSecret> UserWorkloadsSecrets { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response to ListWorkloadsRequest.</summary>
     public class ListWorkloadsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3164,6 +3888,53 @@ namespace Google.Apis.CloudComposer.v1.Data
         /// <summary>Optional. Memory (GB) request and limit for a single Airflow triggerer replica.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memoryGb")]
         public virtual System.Nullable<float> MemoryGb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// User workloads ConfigMap used by Airflow tasks that run with Kubernetes executor or KubernetesPodOperator.
+    /// </summary>
+    public class UserWorkloadsConfigMap : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The "data" field of Kubernetes ConfigMap, organized in key-value pairs. For details see:
+        /// https://kubernetes.io/docs/concepts/configuration/configmap/
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Data { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the ConfigMap, in the form:
+        /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsConfigMaps/{userWorkloadsConfigMapId}"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// User workloads Secret used by Airflow tasks that run with Kubernetes executor or KubernetesPodOperator.
+    /// </summary>
+    public class UserWorkloadsSecret : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The "data" field of Kubernetes Secret, organized in key-value pairs, which can contain sensitive
+        /// values such as a password, a token, or a key. The values for all keys have to be base64-encoded strings. For
+        /// details see: https://kubernetes.io/docs/concepts/configuration/secret/
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Data { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the Secret, in the form:
+        /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsSecrets/{userWorkloadsSecretId}"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

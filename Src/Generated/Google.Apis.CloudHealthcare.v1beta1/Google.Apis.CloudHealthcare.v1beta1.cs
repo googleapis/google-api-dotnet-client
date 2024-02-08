@@ -364,7 +364,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">
-                        /// The name of the Annotation store this annotation belongs to. For example,
+                        /// Required. The name of the Annotation store this annotation belongs to. For example,
                         /// `projects/my-project/locations/us-central1/datasets/mydataset/annotationStores/myannotationstore`.
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.CloudHealthcare.v1beta1.Data.Annotation body, string parent)
@@ -387,7 +387,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             }
 
                             /// <summary>
-                            /// The name of the Annotation store this annotation belongs to. For example,
+                            /// Required. The name of the Annotation store this annotation belongs to. For example,
                             /// `projects/my-project/locations/us-central1/datasets/mydataset/annotationStores/myannotationstore`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -424,7 +424,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         }
 
                         /// <summary>Deletes an Annotation or returns NOT_FOUND if it does not exist.</summary>
-                        /// <param name="name">The resource name of the Annotation to delete.</param>
+                        /// <param name="name">Required. The resource name of the Annotation to delete.</param>
                         public virtual DeleteRequest Delete(string name)
                         {
                             return new DeleteRequest(this.service, name);
@@ -440,7 +440,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                 InitParameters();
                             }
 
-                            /// <summary>The resource name of the Annotation to delete.</summary>
+                            /// <summary>Required. The resource name of the Annotation to delete.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
@@ -469,7 +469,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         }
 
                         /// <summary>Gets an Annotation.</summary>
-                        /// <param name="name">The resource name of the Annotation to retrieve.</param>
+                        /// <param name="name">Required. The resource name of the Annotation to retrieve.</param>
                         public virtual GetRequest Get(string name)
                         {
                             return new GetRequest(this.service, name);
@@ -485,7 +485,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                 InitParameters();
                             }
 
-                            /// <summary>The resource name of the Annotation to retrieve.</summary>
+                            /// <summary>Required. The resource name of the Annotation to retrieve.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
@@ -516,7 +516,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// <summary>
                         /// Lists the Annotations in the given Annotation store for a source resource.
                         /// </summary>
-                        /// <param name="parent">Name of the Annotation store to retrieve Annotations from.</param>
+                        /// <param name="parent">
+                        /// Required. Name of the Annotation store to retrieve Annotations from.
+                        /// </param>
                         public virtual ListRequest List(string parent)
                         {
                             return new ListRequest(this.service, parent);
@@ -534,7 +536,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                 InitParameters();
                             }
 
-                            /// <summary>Name of the Annotation store to retrieve Annotations from.</summary>
+                            /// <summary>Required. Name of the Annotation store to retrieve Annotations from.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
@@ -644,7 +646,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// <summary>Updates the Annotation.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
-                        /// Resource name of the Annotation, of the form
+                        /// Identifier. Resource name of the Annotation, of the form
                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
                         /// </param>
                         public virtual PatchRequest Patch(Google.Apis.CloudHealthcare.v1beta1.Data.Annotation body, string name)
@@ -664,14 +666,14 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             }
 
                             /// <summary>
-                            /// Resource name of the Annotation, of the form
+                            /// Identifier. Resource name of the Annotation, of the form
                             /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
                             /// <summary>
-                            /// The update mask applies to the resource. For the `FieldMask` definition, see
+                            /// Required. The update mask applies to the resource. For the `FieldMask` definition, see
                             /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
@@ -718,7 +720,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
 
                     /// <summary>Creates a new Annotation store within the parent dataset.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="parent">The name of the dataset this Annotation store belongs to.</param>
+                    /// <param name="parent">Required. The name of the dataset this Annotation store belongs to.</param>
                     public virtual CreateRequest Create(Google.Apis.CloudHealthcare.v1beta1.Data.AnnotationStore body, string parent)
                     {
                         return new CreateRequest(this.service, body, parent);
@@ -735,13 +737,13 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             InitParameters();
                         }
 
-                        /// <summary>The name of the dataset this Annotation store belongs to.</summary>
+                        /// <summary>Required. The name of the dataset this Annotation store belongs to.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// The ID of the Annotation store that is being created. The string must match the following
-                        /// regex: `[\p{L}\p{N}_\-\.]{1,256}`.
+                        /// Required. The ID of the Annotation store that is being created. The string must match the
+                        /// following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("annotationStoreId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string AnnotationStoreId { get; set; }
@@ -787,7 +789,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// <summary>
                     /// Deletes the specified Annotation store and removes all annotations that are contained within it.
                     /// </summary>
-                    /// <param name="name">The resource name of the Annotation store to delete.</param>
+                    /// <param name="name">Required. The resource name of the Annotation store to delete.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
                         return new DeleteRequest(this.service, name);
@@ -805,7 +807,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             InitParameters();
                         }
 
-                        /// <summary>The resource name of the Annotation store to delete.</summary>
+                        /// <summary>Required. The resource name of the Annotation store to delete.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -842,7 +844,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// The Annotation store to compare against `golden_store`, in the format of
+                    /// Required. The Annotation store to compare against `golden_store`, in the format of
                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
                     /// </param>
                     public virtual EvaluateRequest Evaluate(Google.Apis.CloudHealthcare.v1beta1.Data.EvaluateAnnotationStoreRequest body, string name)
@@ -868,7 +870,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         }
 
                         /// <summary>
-                        /// The Annotation store to compare against `golden_store`, in the format of
+                        /// Required. The Annotation store to compare against `golden_store`, in the format of
                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -913,7 +915,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// The name of the Annotation store to export annotations to, in the format of
+                    /// Required. The name of the Annotation store to export annotations to, in the format of
                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
                     /// </param>
                     public virtual ExportRequest Export(Google.Apis.CloudHealthcare.v1beta1.Data.ExportAnnotationsRequest body, string name)
@@ -939,7 +941,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         }
 
                         /// <summary>
-                        /// The name of the Annotation store to export annotations to, in the format of
+                        /// Required. The name of the Annotation store to export annotations to, in the format of
                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -978,7 +980,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// <summary>
                     /// Gets the specified Annotation store or returns NOT_FOUND if it does not exist.
                     /// </summary>
-                    /// <param name="name">The resource name of the Annotation store to get.</param>
+                    /// <param name="name">Required. The resource name of the Annotation store to get.</param>
                     public virtual GetRequest Get(string name)
                     {
                         return new GetRequest(this.service, name);
@@ -996,7 +998,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             InitParameters();
                         }
 
-                        /// <summary>The resource name of the Annotation store to get.</summary>
+                        /// <summary>Required. The resource name of the Annotation store to get.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -1114,7 +1116,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// The name of the Annotation store to which the server imports annotations, in the format
+                    /// Required. The name of the Annotation store to which the server imports annotations, in the
+                    /// format
                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
                     /// </param>
                     public virtual ImportRequest Import(Google.Apis.CloudHealthcare.v1beta1.Data.ImportAnnotationsRequest body, string name)
@@ -1140,7 +1143,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         }
 
                         /// <summary>
-                        /// The name of the Annotation store to which the server imports annotations, in the format
+                        /// Required. The name of the Annotation store to which the server imports annotations, in the
+                        /// format
                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1177,7 +1181,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     }
 
                     /// <summary>Lists the Annotation stores in the given dataset for a source store.</summary>
-                    /// <param name="parent">Name of the dataset.</param>
+                    /// <param name="parent">Required. Name of the dataset.</param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(this.service, parent);
@@ -1193,7 +1197,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             InitParameters();
                         }
 
-                        /// <summary>Name of the dataset.</summary>
+                        /// <summary>Required. Name of the dataset.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
@@ -1286,7 +1290,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// <summary>Updates the specified Annotation store.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Resource name of the Annotation store, of the form
+                    /// Identifier. Resource name of the Annotation store, of the form
                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.CloudHealthcare.v1beta1.Data.AnnotationStore body, string name)
@@ -1306,14 +1310,14 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         }
 
                         /// <summary>
-                        /// Resource name of the Annotation store, of the form
+                        /// Identifier. Resource name of the Annotation store, of the form
                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
                         /// <summary>
-                        /// The update mask applies to the resource. For the `FieldMask` definition, see
+                        /// Required. The update mask applies to the resource. For the `FieldMask` definition, see
                         /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
@@ -2757,7 +2761,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
-                        /// Resource name of the Consent, of the form
+                        /// Identifier. Resource name of the Consent, of the form
                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`.
                         /// Cannot be changed after creation.
                         /// </param>
@@ -2782,7 +2786,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             }
 
                             /// <summary>
-                            /// Resource name of the Consent, of the form
+                            /// Identifier. Resource name of the Consent, of the form
                             /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`.
                             /// Cannot be changed after creation.
                             /// </summary>
@@ -10372,6 +10376,75 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     }
 
                     /// <summary>
+                    /// Explains all the permitted/denied actor, purpose and environment for a given resource.
+                    /// </summary>
+                    /// <param name="name">
+                    /// Required. The name of the FHIR store to enforce, in the format
+                    /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+                    /// </param>
+                    public virtual ExplainDataAccessRequest ExplainDataAccess(string name)
+                    {
+                        return new ExplainDataAccessRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Explains all the permitted/denied actor, purpose and environment for a given resource.
+                    /// </summary>
+                    public class ExplainDataAccessRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.ExplainDataAccessResponse>
+                    {
+                        /// <summary>Constructs a new ExplainDataAccess request.</summary>
+                        public ExplainDataAccessRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the FHIR store to enforce, in the format
+                        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Required. The ID (`{resourceType}/{id}`) of the resource to explain data access on.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resourceId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string ResourceId { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "explainDataAccess";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}:explainDataAccess";
+
+                        /// <summary>Initializes ExplainDataAccess parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
+                            });
+                            RequestParameters.Add("resourceId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resourceId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
                     /// Export resources from the FHIR store to the specified destination. This method returns an
                     /// Operation that can be used to track the status of the export by calling GetOperation. Immediate
                     /// fatal errors appear in the error field, errors are also logged to Cloud Logging (see [Viewing
@@ -11194,7 +11267,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
 
                         /// <summary>Gets multiple messages in the given HL7v2 store.</summary>
                         /// <param name="parent">
-                        /// Name of the HL7v2 store to retrieve messages from, in the format:
+                        /// Required. Name of the HL7v2 store to retrieve messages from, in the format:
                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7v2Stores/{hl7v2_store_id}`.
                         /// </param>
                         public virtual BatchGetRequest BatchGet(string parent)
@@ -11213,7 +11286,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             }
 
                             /// <summary>
-                            /// Name of the HL7v2 store to retrieve messages from, in the format:
+                            /// Required. Name of the HL7v2 store to retrieve messages from, in the format:
                             /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7v2Stores/{hl7v2_store_id}`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -11323,7 +11396,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// transmits the message when a notification is received.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
-                        /// <param name="parent">The name of the HL7v2 store this message belongs to.</param>
+                        /// <param name="parent">Required. The name of the HL7v2 store this message belongs to.</param>
                         public virtual CreateRequest Create(Google.Apis.CloudHealthcare.v1beta1.Data.CreateMessageRequest body, string parent)
                         {
                             return new CreateRequest(this.service, body, parent);
@@ -11345,7 +11418,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                 InitParameters();
                             }
 
-                            /// <summary>The name of the HL7v2 store this message belongs to.</summary>
+                            /// <summary>Required. The name of the HL7v2 store this message belongs to.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
@@ -11380,7 +11453,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         }
 
                         /// <summary>Deletes an HL7v2 message.</summary>
-                        /// <param name="name">The resource name of the HL7v2 message to delete.</param>
+                        /// <param name="name">Required. The resource name of the HL7v2 message to delete.</param>
                         public virtual DeleteRequest Delete(string name)
                         {
                             return new DeleteRequest(this.service, name);
@@ -11396,7 +11469,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                 InitParameters();
                             }
 
-                            /// <summary>The resource name of the HL7v2 message to delete.</summary>
+                            /// <summary>Required. The resource name of the HL7v2 message to delete.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
@@ -11425,7 +11498,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         }
 
                         /// <summary>Gets an HL7v2 message.</summary>
-                        /// <param name="name">The resource name of the HL7v2 message to retrieve.</param>
+                        /// <param name="name">Required. The resource name of the HL7v2 message to retrieve.</param>
                         public virtual GetRequest Get(string name)
                         {
                             return new GetRequest(this.service, name);
@@ -11441,7 +11514,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                 InitParameters();
                             }
 
-                            /// <summary>The resource name of the HL7v2 message to retrieve.</summary>
+                            /// <summary>Required. The resource name of the HL7v2 message to retrieve.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
@@ -11536,7 +11609,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// suitable for replying to HL7v2 interface systems that expect these acknowledgments.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
-                        /// <param name="parent">The name of the HL7v2 store this message belongs to.</param>
+                        /// <param name="parent">Required. The name of the HL7v2 store this message belongs to.</param>
                         public virtual IngestRequest Ingest(Google.Apis.CloudHealthcare.v1beta1.Data.IngestMessageRequest body, string parent)
                         {
                             return new IngestRequest(this.service, body, parent);
@@ -11561,7 +11634,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                 InitParameters();
                             }
 
-                            /// <summary>The name of the HL7v2 store this message belongs to.</summary>
+                            /// <summary>Required. The name of the HL7v2 store this message belongs to.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
@@ -11600,7 +11673,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// messages are indexed asynchronously, so there might be a slight delay between the time a
                         /// message is created and when it can be found through a filter.
                         /// </summary>
-                        /// <param name="parent">Name of the HL7v2 store to retrieve messages from.</param>
+                        /// <param name="parent">Required. Name of the HL7v2 store to retrieve messages from.</param>
                         public virtual ListRequest List(string parent)
                         {
                             return new ListRequest(this.service, parent);
@@ -11620,7 +11693,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                 InitParameters();
                             }
 
-                            /// <summary>Name of the HL7v2 store to retrieve messages from.</summary>
+                            /// <summary>Required. Name of the HL7v2 store to retrieve messages from.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
@@ -11809,7 +11882,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
-                        /// Resource name of the Message, of the form
+                        /// Output only. Resource name of the Message, of the form
                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`.
                         /// Assigned by the server.
                         /// </param>
@@ -11835,7 +11908,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             }
 
                             /// <summary>
-                            /// Resource name of the Message, of the form
+                            /// Output only. Resource name of the Message, of the form
                             /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`.
                             /// Assigned by the server.
                             /// </summary>
@@ -11843,7 +11916,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             public virtual string Name { get; private set; }
 
                             /// <summary>
-                            /// The update mask applies to the resource. For the `FieldMask` definition, see
+                            /// Required. The update mask applies to the resource. For the `FieldMask` definition, see
                             /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
@@ -11890,7 +11963,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
 
                     /// <summary>Creates a new HL7v2 store within the parent dataset.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="parent">The name of the dataset this HL7v2 store belongs to.</param>
+                    /// <param name="parent">Required. The name of the dataset this HL7v2 store belongs to.</param>
                     public virtual CreateRequest Create(Google.Apis.CloudHealthcare.v1beta1.Data.Hl7V2Store body, string parent)
                     {
                         return new CreateRequest(this.service, body, parent);
@@ -11907,13 +11980,13 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             InitParameters();
                         }
 
-                        /// <summary>The name of the dataset this HL7v2 store belongs to.</summary>
+                        /// <summary>Required. The name of the dataset this HL7v2 store belongs to.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// The ID of the HL7v2 store that is being created. The string must match the following regex:
-                        /// `[\p{L}\p{N}_\-\.]{1,256}`.
+                        /// Required. The ID of the HL7v2 store that is being created. The string must match the
+                        /// following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("hl7V2StoreId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Hl7V2StoreId { get; set; }
@@ -11957,7 +12030,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     }
 
                     /// <summary>Deletes the specified HL7v2 store and removes all messages that it contains.</summary>
-                    /// <param name="name">The resource name of the HL7v2 store to delete.</param>
+                    /// <param name="name">Required. The resource name of the HL7v2 store to delete.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
                         return new DeleteRequest(this.service, name);
@@ -11973,7 +12046,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             InitParameters();
                         }
 
-                        /// <summary>The resource name of the HL7v2 store to delete.</summary>
+                        /// <summary>Required. The resource name of the HL7v2 store to delete.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -12011,7 +12084,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// The name of the source HL7v2 store, in the format
+                    /// Required. The name of the source HL7v2 store, in the format
                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7v2Stores/{hl7v2_store_id}`
                     /// </param>
                     public virtual ExportRequest Export(Google.Apis.CloudHealthcare.v1beta1.Data.ExportMessagesRequest body, string name)
@@ -12038,7 +12111,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         }
 
                         /// <summary>
-                        /// The name of the source HL7v2 store, in the format
+                        /// Required. The name of the source HL7v2 store, in the format
                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7v2Stores/{hl7v2_store_id}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -12075,7 +12148,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     }
 
                     /// <summary>Gets the specified HL7v2 store.</summary>
-                    /// <param name="name">The resource name of the HL7v2 store to get.</param>
+                    /// <param name="name">Required. The resource name of the HL7v2 store to get.</param>
                     public virtual GetRequest Get(string name)
                     {
                         return new GetRequest(this.service, name);
@@ -12091,7 +12164,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             InitParameters();
                         }
 
-                        /// <summary>The resource name of the HL7v2 store to get.</summary>
+                        /// <summary>Required. The resource name of the HL7v2 store to get.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -12121,7 +12194,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
 
                     /// <summary>Gets metrics associated with the HL7v2 store.</summary>
                     /// <param name="name">
-                    /// The resource name of the HL7v2 store to get metrics for, in the format
+                    /// Required. The resource name of the HL7v2 store to get metrics for, in the format
                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
                     /// </param>
                     public virtual GetHL7v2StoreMetricsRequest GetHL7v2StoreMetrics(string name)
@@ -12140,7 +12213,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         }
 
                         /// <summary>
-                        /// The resource name of the HL7v2 store to get metrics for, in the format
+                        /// Required. The resource name of the HL7v2 store to get metrics for, in the format
                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -12274,7 +12347,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// The name of the target HL7v2 store, in the format
+                    /// Required. The name of the target HL7v2 store, in the format
                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7v2Stores/{hl7v2_store_id}`
                     /// </param>
                     public virtual ImportRequest Import(Google.Apis.CloudHealthcare.v1beta1.Data.ImportMessagesRequest body, string name)
@@ -12314,7 +12387,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         }
 
                         /// <summary>
-                        /// The name of the target HL7v2 store, in the format
+                        /// Required. The name of the target HL7v2 store, in the format
                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7v2Stores/{hl7v2_store_id}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -12351,7 +12424,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     }
 
                     /// <summary>Lists the HL7v2 stores in the given dataset.</summary>
-                    /// <param name="parent">Name of the dataset.</param>
+                    /// <param name="parent">Required. Name of the dataset.</param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(this.service, parent);
@@ -12367,7 +12440,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             InitParameters();
                         }
 
-                        /// <summary>Name of the dataset.</summary>
+                        /// <summary>Required. Name of the dataset.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
@@ -12460,7 +12533,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// <summary>Updates the HL7v2 store.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Resource name of the HL7v2 store, of the form
+                    /// Identifier. Resource name of the HL7v2 store, of the form
                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.CloudHealthcare.v1beta1.Data.Hl7V2Store body, string name)
@@ -12480,14 +12553,14 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         }
 
                         /// <summary>
-                        /// Resource name of the HL7v2 store, of the form
+                        /// Identifier. Resource name of the HL7v2 store, of the form
                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
                         /// <summary>
-                        /// The update mask applies to the resource. For the `FieldMask` definition, see
+                        /// Required. The update mask applies to the resource. For the `FieldMask` definition, see
                         /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
@@ -12902,7 +12975,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// The name of the project where the server creates the dataset. For example,
+                /// Required. The name of the project where the server creates the dataset. For example,
                 /// `projects/{project_id}/locations/{location_id}`.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudHealthcare.v1beta1.Data.Dataset body, string parent)
@@ -12926,15 +12999,15 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     }
 
                     /// <summary>
-                    /// The name of the project where the server creates the dataset. For example,
+                    /// Required. The name of the project where the server creates the dataset. For example,
                     /// `projects/{project_id}/locations/{location_id}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// The ID of the dataset that is being created. The string must match the following regex:
-                    /// `[\p{L}\p{N}_\-\.]{1,256}`.
+                    /// Required. The ID of the dataset that is being created. The string must match the following
+                    /// regex: `[\p{L}\p{N}_\-\.]{1,256}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("datasetId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string DatasetId { get; set; }
@@ -13055,7 +13128,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                 /// not affect the sources from which the dataset was imported (if any).
                 /// </summary>
                 /// <param name="name">
-                /// The name of the dataset to delete. For example,
+                /// Required. The name of the dataset to delete. For example,
                 /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
@@ -13077,7 +13150,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     }
 
                     /// <summary>
-                    /// The name of the dataset to delete. For example,
+                    /// Required. The name of the dataset to delete. For example,
                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -13109,7 +13182,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
 
                 /// <summary>Gets any metadata associated with a dataset.</summary>
                 /// <param name="name">
-                /// The name of the dataset to read. For example,
+                /// Required. The name of the dataset to read. For example,
                 /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
                 /// </param>
                 public virtual GetRequest Get(string name)
@@ -13128,7 +13201,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     }
 
                     /// <summary>
-                    /// The name of the dataset to read. For example,
+                    /// Required. The name of the dataset to read. For example,
                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -13240,7 +13313,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
 
                 /// <summary>Lists the health datasets in the current project.</summary>
                 /// <param name="parent">
-                /// The name of the project whose datasets should be listed. For example,
+                /// Required. The name of the project whose datasets should be listed. For example,
                 /// `projects/{project_id}/locations/{location_id}`.
                 /// </param>
                 public virtual ListRequest List(string parent)
@@ -13259,7 +13332,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     }
 
                     /// <summary>
-                    /// The name of the project whose datasets should be listed. For example,
+                    /// Required. The name of the project whose datasets should be listed. For example,
                     /// `projects/{project_id}/locations/{location_id}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -13319,7 +13392,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                 /// <summary>Updates dataset metadata.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Resource name of the dataset, of the form
+                /// Identifier. Resource name of the dataset, of the form
                 /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CloudHealthcare.v1beta1.Data.Dataset body, string name)
@@ -13339,14 +13412,14 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     }
 
                     /// <summary>
-                    /// Resource name of the dataset, of the form
+                    /// Identifier. Resource name of the dataset, of the form
                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// The update mask applies to the resource. For the `FieldMask` definition, see
+                    /// Required. The update mask applies to the resource. For the `FieldMask` definition, see
                     /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
@@ -13983,7 +14056,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     /// <summary>An annotation record.</summary>
     public class Annotation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Details of the source.</summary>
+        /// <summary>Required. Details of the source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotationSource")]
         public virtual AnnotationSource AnnotationSource { get; set; }
 
@@ -13999,7 +14072,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual ImageAnnotation ImageAnnotation { get; set; }
 
         /// <summary>
-        /// Resource name of the Annotation, of the form
+        /// Identifier. Resource name of the Annotation, of the form
         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -14070,7 +14143,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Resource name of the Annotation store, of the form
+        /// Identifier. Resource name of the Annotation store, of the form
         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -14416,7 +14489,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
 
         /// <summary>
         /// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`,
-        /// or `roles/owner`.
+        /// or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM
+        /// documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined
+        /// roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
@@ -14721,7 +14796,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// Resource name of the Consent, of the form
+        /// Identifier. Resource name of the Consent, of the form
         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`.
         /// Cannot be changed after creation.
         /// </summary>
@@ -14792,6 +14867,31 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// <summary>Required. User's UUID provided by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
         public virtual string UserId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The accessor scope that describes who can access, for what purpose, in which environment.</summary>
+    public class ConsentAccessorScope : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// An individual, group, or access role that identifies the accessor or a characteristic of the accessor. This
+        /// can be a resource ID (such as `{resourceType}/{id}`) or an external URI. This value must be present.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actor")]
+        public virtual string Actor { get; set; }
+
+        /// <summary>
+        /// An abstract identifier that describes the environment or conditions under which the accessor is acting. Can
+        /// be “*” if it applies to all environments.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environment")]
+        public virtual string Environment { get; set; }
+
+        /// <summary>The intent of data use. Can be “*” if it applies to all purposes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purpose")]
+        public virtual string Purpose { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14985,7 +15085,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     /// <summary>Creates a new message.</summary>
     public class CreateMessageRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>HL7v2 message.</summary>
+        /// <summary>Required. HL7v2 message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual Message Message { get; set; }
 
@@ -15033,7 +15133,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     public class Dataset : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Resource name of the dataset, of the form
+        /// Identifier. Resource name of the dataset, of the form
         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -15608,7 +15708,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> GoldenInfoTypeMapping { get; set; }
 
         /// <summary>
-        /// The Annotation store to use as ground truth, in the format of
+        /// Required. The Annotation store to use as ground truth, in the format of
         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("goldenStore")]
@@ -15696,6 +15796,136 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// <summary>The consent evaluation result for each `data_id`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
         public virtual System.Collections.Generic.IList<Result> Results { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The enforcing consent's metadata.</summary>
+    public class ExplainDataAccessConsentInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The compartment base resources that matched a cascading policy. Each resource has the following format:
+        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/{resource_type}/{resource_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cascadeOrigins")]
+        public virtual System.Collections.Generic.IList<string> CascadeOrigins { get; set; }
+
+        /// <summary>
+        /// The resource name of this consent resource. Format:
+        /// `projects/{projectId}/datasets/{datasetId}/fhirStores/{fhirStoreId}/fhir/{resourceType}/{id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consentResource")]
+        public virtual string ConsentResource { get; set; }
+
+        private string _enforcementTimeRaw;
+
+        private object _enforcementTime;
+
+        /// <summary>Last enforcement timestamp of this consent resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enforcementTime")]
+        public virtual string EnforcementTimeRaw
+        {
+            get => _enforcementTimeRaw;
+            set
+            {
+                _enforcementTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _enforcementTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EnforcementTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EnforcementTimeDateTimeOffset instead.")]
+        public virtual object EnforcementTime
+        {
+            get => _enforcementTime;
+            set
+            {
+                _enforcementTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _enforcementTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="EnforcementTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EnforcementTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EnforcementTimeRaw);
+            set => EnforcementTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// A list of all the matching accessor scopes of this consent policy that enforced
+        /// ExplainDataAccessConsentScope.accessor_scope.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchingAccessorScopes")]
+        public virtual System.Collections.Generic.IList<ConsentAccessorScope> MatchingAccessorScopes { get; set; }
+
+        /// <summary>
+        /// The patient owning the consent (only applicable for patient consents), in the format:
+        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Patient/{patient_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("patientConsentOwner")]
+        public virtual string PatientConsentOwner { get; set; }
+
+        /// <summary>The policy type of consent resource (e.g. PATIENT, ADMIN).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The consent's variant combinations. A single consent may have multiple variants.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("variants")]
+        public virtual System.Collections.Generic.IList<string> Variants { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A single consent scope that provides info on who has access to the requested resource scope for a particular
+    /// purpose and environment, enforced by which consent.
+    /// </summary>
+    public class ExplainDataAccessConsentScope : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The accessor scope that describes who can access, for what purpose, and in which environment.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessorScope")]
+        public virtual ConsentAccessorScope AccessorScope { get; set; }
+
+        /// <summary>
+        /// Whether the current consent scope is permitted or denied access on the requested resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("decision")]
+        public virtual string Decision { get; set; }
+
+        /// <summary>Metadata of the consent resources that enforce the consent scope's access.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enforcingConsents")]
+        public virtual System.Collections.Generic.IList<ExplainDataAccessConsentInfo> EnforcingConsents { get; set; }
+
+        /// <summary>Other consent scopes that created exceptions within this scope.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exceptions")]
+        public virtual System.Collections.Generic.IList<ExplainDataAccessConsentScope> Exceptions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>List of consent scopes that are applicable to the explained access on a given resource.</summary>
+    public class ExplainDataAccessResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// List of applicable consent scopes. Sorted in order of actor such that scopes belonging to the same actor
+        /// will be adjacent to each other in the list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consentScopes")]
+        public virtual System.Collections.Generic.IList<ExplainDataAccessConsentScope> ConsentScopes { get; set; }
+
+        /// <summary>Warnings associated with this response. It inform user with exceeded scope limit errors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warning")]
+        public virtual string Warning { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16189,10 +16419,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual System.Nullable<bool> DisableResourceVersioning { get; set; }
 
         /// <summary>
-        /// Optional. Whether to allow the [ImportResourcesHistory] and [ExecuteBundle] APIs to accept history bundles,
-        /// and directly insert and overwrite historical resource versions into the FHIR store. Importing resource
-        /// histories creates resource interactions that have occurred in the past that clients might not allow. If set
-        /// to false, using history bundles fail with an error.
+        /// Optional. Whether to allow ExecuteBundle to accept history bundles, and directly insert and overwrite
+        /// historical resource versions into the FHIR store. If set to false, using history bundles fails with an
+        /// error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableHistoryModifications")]
         public virtual System.Nullable<bool> EnableHistoryModifications { get; set; }
@@ -16991,7 +17220,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Resource name of the HL7v2 store, of the form
+        /// Identifier. Resource name of the HL7v2 store, of the form
         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -17332,7 +17561,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     /// <summary>Ingests a message into the specified HL7v2 store.</summary>
     public class IngestMessageRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>HL7v2 message to ingest.</summary>
+        /// <summary>Required. HL7v2 message to ingest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual Message Message { get; set; }
 
@@ -17773,7 +18002,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Raw message bytes.</summary>
+        /// <summary>Required. Raw message bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual string Data { get; set; }
 
@@ -17792,7 +18021,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string MessageType { get; set; }
 
         /// <summary>
-        /// Resource name of the Message, of the form
+        /// Output only. Resource name of the Message, of the form
         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`.
         /// Assigned by the server.
         /// </summary>
