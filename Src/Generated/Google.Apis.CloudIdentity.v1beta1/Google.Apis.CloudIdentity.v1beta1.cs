@@ -5024,10 +5024,7 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Browser-specific fields reported by the Endpoint Verification extension. See go/additionalattributesdesign and
-    /// go/caa-webprotect-attributes-extension LINT.IfChange
-    /// </summary>
+    /// <summary>Browser-specific fields reported by the Endpoint Verification extension. LINT.IfChange</summary>
     public class BrowserInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Browser's management state.</summary>

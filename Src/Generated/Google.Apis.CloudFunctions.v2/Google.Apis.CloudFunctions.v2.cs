@@ -313,6 +313,128 @@ namespace Google.Apis.CloudFunctions.v2
                 }
 
                 /// <summary>
+                /// Aborts generation upgrade process for a function with the given name from the specified project.
+                /// Deletes all 2nd Gen copy related configuration and resources which were created during the upgrade
+                /// process.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. The name of the function for which upgrade should be aborted.</param>
+                public virtual AbortFunctionUpgradeRequest AbortFunctionUpgrade(Google.Apis.CloudFunctions.v2.Data.AbortFunctionUpgradeRequest body, string name)
+                {
+                    return new AbortFunctionUpgradeRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Aborts generation upgrade process for a function with the given name from the specified project.
+                /// Deletes all 2nd Gen copy related configuration and resources which were created during the upgrade
+                /// process.
+                /// </summary>
+                public class AbortFunctionUpgradeRequest : CloudFunctionsBaseServiceRequest<Google.Apis.CloudFunctions.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new AbortFunctionUpgrade request.</summary>
+                    public AbortFunctionUpgradeRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudFunctions.v2.Data.AbortFunctionUpgradeRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the function for which upgrade should be aborted.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudFunctions.v2.Data.AbortFunctionUpgradeRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "abortFunctionUpgrade";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}:abortFunctionUpgrade";
+
+                    /// <summary>Initializes AbortFunctionUpgrade parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/functions/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Finalizes the upgrade after which function upgrade can not be rolled back. This is the last step of
+                /// the multi step process to upgrade 1st Gen functions to 2nd Gen. Deletes all original 1st Gen related
+                /// configuration and resources.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. The name of the function for which upgrade should be finalized.</param>
+                public virtual CommitFunctionUpgradeRequest CommitFunctionUpgrade(Google.Apis.CloudFunctions.v2.Data.CommitFunctionUpgradeRequest body, string name)
+                {
+                    return new CommitFunctionUpgradeRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Finalizes the upgrade after which function upgrade can not be rolled back. This is the last step of
+                /// the multi step process to upgrade 1st Gen functions to 2nd Gen. Deletes all original 1st Gen related
+                /// configuration and resources.
+                /// </summary>
+                public class CommitFunctionUpgradeRequest : CloudFunctionsBaseServiceRequest<Google.Apis.CloudFunctions.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new CommitFunctionUpgrade request.</summary>
+                    public CommitFunctionUpgradeRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudFunctions.v2.Data.CommitFunctionUpgradeRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the function for which upgrade should be finalized.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudFunctions.v2.Data.CommitFunctionUpgradeRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "commitFunctionUpgrade";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}:commitFunctionUpgrade";
+
+                    /// <summary>Initializes CommitFunctionUpgrade parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/functions/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
                 /// Creates a new function. If a function with the given name already exists in the specified project,
                 /// the long running operation will return `ALREADY_EXISTS` error.
                 /// </summary>
@@ -909,6 +1031,138 @@ namespace Google.Apis.CloudFunctions.v2
                 }
 
                 /// <summary>
+                /// Changes the traffic target of a function from the original 1st Gen function to the 2nd Gen copy.
+                /// This is the second step of the multi step process to upgrade 1st Gen functions to 2nd Gen. After
+                /// this operation, all new traffic will be served by 2nd Gen copy.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name of the function for which traffic target should be changed to 2nd Gen from 1st
+                /// Gen.
+                /// </param>
+                public virtual RedirectFunctionUpgradeTrafficRequest RedirectFunctionUpgradeTraffic(Google.Apis.CloudFunctions.v2.Data.RedirectFunctionUpgradeTrafficRequest body, string name)
+                {
+                    return new RedirectFunctionUpgradeTrafficRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Changes the traffic target of a function from the original 1st Gen function to the 2nd Gen copy.
+                /// This is the second step of the multi step process to upgrade 1st Gen functions to 2nd Gen. After
+                /// this operation, all new traffic will be served by 2nd Gen copy.
+                /// </summary>
+                public class RedirectFunctionUpgradeTrafficRequest : CloudFunctionsBaseServiceRequest<Google.Apis.CloudFunctions.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new RedirectFunctionUpgradeTraffic request.</summary>
+                    public RedirectFunctionUpgradeTrafficRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudFunctions.v2.Data.RedirectFunctionUpgradeTrafficRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the function for which traffic target should be changed to 2nd Gen from
+                    /// 1st Gen.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudFunctions.v2.Data.RedirectFunctionUpgradeTrafficRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "redirectFunctionUpgradeTraffic";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}:redirectFunctionUpgradeTraffic";
+
+                    /// <summary>Initializes RedirectFunctionUpgradeTraffic parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/functions/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Reverts the traffic target of a function from the 2nd Gen copy to the original 1st Gen function.
+                /// After this operation, all new traffic would be served by the 1st Gen.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name of the function for which traffic target should be changed back to 1st Gen from
+                /// 2nd Gen.
+                /// </param>
+                public virtual RollbackFunctionUpgradeTrafficRequest RollbackFunctionUpgradeTraffic(Google.Apis.CloudFunctions.v2.Data.RollbackFunctionUpgradeTrafficRequest body, string name)
+                {
+                    return new RollbackFunctionUpgradeTrafficRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Reverts the traffic target of a function from the 2nd Gen copy to the original 1st Gen function.
+                /// After this operation, all new traffic would be served by the 1st Gen.
+                /// </summary>
+                public class RollbackFunctionUpgradeTrafficRequest : CloudFunctionsBaseServiceRequest<Google.Apis.CloudFunctions.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new RollbackFunctionUpgradeTraffic request.</summary>
+                    public RollbackFunctionUpgradeTrafficRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudFunctions.v2.Data.RollbackFunctionUpgradeTrafficRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the function for which traffic target should be changed back to 1st Gen
+                    /// from 2nd Gen.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudFunctions.v2.Data.RollbackFunctionUpgradeTrafficRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "rollbackFunctionUpgradeTraffic";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}:rollbackFunctionUpgradeTraffic";
+
+                    /// <summary>Initializes RollbackFunctionUpgradeTraffic parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/functions/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
                 /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
                 /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
                 /// </summary>
@@ -967,6 +1221,73 @@ namespace Google.Apis.CloudFunctions.v2
                         RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
                         {
                             Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/functions/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Creates a 2nd Gen copy of the function configuration based on the 1st Gen function with the given
+                /// name. This is the first step of the multi step process to upgrade 1st Gen functions to 2nd Gen. Only
+                /// 2nd Gen configuration is setup as part of this request and traffic continues to be served by 1st
+                /// Gen.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name of the function which should have configuration copied for upgrade.
+                /// </param>
+                public virtual SetupFunctionUpgradeConfigRequest SetupFunctionUpgradeConfig(Google.Apis.CloudFunctions.v2.Data.SetupFunctionUpgradeConfigRequest body, string name)
+                {
+                    return new SetupFunctionUpgradeConfigRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Creates a 2nd Gen copy of the function configuration based on the 1st Gen function with the given
+                /// name. This is the first step of the multi step process to upgrade 1st Gen functions to 2nd Gen. Only
+                /// 2nd Gen configuration is setup as part of this request and traffic continues to be served by 1st
+                /// Gen.
+                /// </summary>
+                public class SetupFunctionUpgradeConfigRequest : CloudFunctionsBaseServiceRequest<Google.Apis.CloudFunctions.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new SetupFunctionUpgradeConfig request.</summary>
+                    public SetupFunctionUpgradeConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudFunctions.v2.Data.SetupFunctionUpgradeConfigRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the function which should have configuration copied for upgrade.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudFunctions.v2.Data.SetupFunctionUpgradeConfigRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "setupFunctionUpgradeConfig";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}:setupFunctionUpgradeConfig";
+
+                    /// <summary>Initializes SetupFunctionUpgradeConfig parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
@@ -1391,6 +1712,13 @@ namespace Google.Apis.CloudFunctions.v2
 }
 namespace Google.Apis.CloudFunctions.v2.Data
 {
+    /// <summary>Request for the `AbortFunctionUpgrade` method.</summary>
+    public class AbortFunctionUpgradeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Specifies the audit configuration for a service. The configuration determines which permission types are logged,
     /// and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If
@@ -1615,6 +1943,13 @@ namespace Google.Apis.CloudFunctions.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request for the `CommitFunctionUpgrade` method.</summary>
+    public class CommitFunctionUpgradeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
     /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
@@ -1791,6 +2126,45 @@ namespace Google.Apis.CloudFunctions.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("buildConfig")]
         public virtual BuildConfig BuildConfig { get; set; }
 
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>
+        /// Output only. The create timestamp of a Cloud Function. This is only applicable to 2nd Gen functions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>User-provided description of a function.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
@@ -1879,6 +2253,10 @@ namespace Google.Apis.CloudFunctions.v2.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>Output only. UpgradeInfo for this Cloud Function</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgradeInfo")]
+        public virtual UpgradeInfo UpgradeInfo { get; set; }
 
         /// <summary>Output only. The deployed url for the function.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
@@ -2830,6 +3208,13 @@ namespace Google.Apis.CloudFunctions.v2.Data
         public virtual System.Nullable<int> Version { get; set; }
     }
 
+    /// <summary>Request for the `RedirectFunctionUpgradeTraffic` method.</summary>
+    public class RedirectFunctionUpgradeTrafficRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Location of the source in a Google Cloud Source Repository.</summary>
     public class RepoSource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2870,6 +3255,13 @@ namespace Google.Apis.CloudFunctions.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tagName")]
         public virtual string TagName { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for the `RollbackFunctionUpgradeTraffic` method.</summary>
+    public class RollbackFunctionUpgradeTrafficRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3145,6 +3537,13 @@ namespace Google.Apis.CloudFunctions.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request for the `SetupFunctionUpgradeConfig` method.</summary>
+    public class SetupFunctionUpgradeConfigRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The location of the function source code.</summary>
     public class Source : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3266,6 +3665,34 @@ namespace Google.Apis.CloudFunctions.v2.Data
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Information related to: * A function's eligibility for 1st Gen to 2nd Gen migration * Current state of migration
+    /// for function undergoing migration.
+    /// </summary>
+    public class UpgradeInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Describes the Build step of the function that builds a container to prepare for 2nd gen upgrade.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildConfig")]
+        public virtual BuildConfig BuildConfig { get; set; }
+
+        /// <summary>Describes the Event trigger which has been setup to prepare for 2nd gen upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventTrigger")]
+        public virtual EventTrigger EventTrigger { get; set; }
+
+        /// <summary>Describes the Cloud Run service which has been setup to prepare for 2nd gen upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceConfig")]
+        public virtual ServiceConfig ServiceConfig { get; set; }
+
+        /// <summary>UpgradeState of the function</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgradeState")]
+        public virtual string UpgradeState { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

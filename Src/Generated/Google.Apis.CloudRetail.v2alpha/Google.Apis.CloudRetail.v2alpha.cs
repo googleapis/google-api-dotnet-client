@@ -6135,6 +6135,21 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A BigQuery output result.</summary>
+    public class GoogleCloudRetailV2BigQueryOutputResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of a BigQuery Dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datasetId")]
+        public virtual string DatasetId { get; set; }
+
+        /// <summary>The ID of a BigQuery Table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
+        public virtual string TableId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata associated with a create operation.</summary>
     public class GoogleCloudRetailV2CreateModelMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6144,6 +6159,54 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
         public virtual string Model { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response of the ExportAnalyticsMetricsRequest. If the long running operation was successful, then this message
+    /// is returned by the google.longrunning.Operations.response field if the operation was successful.
+    /// </summary>
+    public class GoogleCloudRetailV2ExportAnalyticsMetricsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A sample of errors encountered while processing the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorSamples")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorSamples { get; set; }
+
+        /// <summary>This field is never set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorsConfig")]
+        public virtual GoogleCloudRetailV2ExportErrorsConfig ErrorsConfig { get; set; }
+
+        /// <summary>Output result indicating where the data were exported to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputResult")]
+        public virtual GoogleCloudRetailV2OutputResult OutputResult { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration of destination for Export related errors.</summary>
+    public class GoogleCloudRetailV2ExportErrorsConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Google Cloud Storage path for import errors. This must be an empty, existing Cloud Storage bucket. Export
+        /// errors will be written to a file in this bucket, one per line, as a JSON-encoded `google.rpc.Status`
+        /// message.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsPrefix")]
+        public virtual string GcsPrefix { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A Gcs output result.</summary>
+    public class GoogleCloudRetailV2GcsOutputResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The uri of Gcs output</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputUri")]
+        public virtual string OutputUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6575,6 +6638,21 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// <summary>Optional. A set of valid serving configs that may be used for `PAGE_OPTIMIZATION`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servingConfigIds")]
         public virtual System.Collections.Generic.IList<string> ServingConfigIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Output result that stores the information about where the exported data is stored.</summary>
+    public class GoogleCloudRetailV2OutputResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The BigQuery location where the result is stored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigqueryResult")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2BigQueryOutputResult> BigqueryResult { get; set; }
+
+        /// <summary>The Google Cloud Storage location where the result is stored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsResult")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2GcsOutputResult> GcsResult { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

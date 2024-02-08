@@ -6395,51 +6395,6 @@ namespace Google.Apis.Walletobjects.v1
                     this.service = service;
                 }
 
-                /// <summary>
-                /// Provide Google with information about awaiting private pass update. This will allow Google to
-                /// provide the update notification to the device that currently holds this pass.
-                /// </summary>
-                /// <param name="body">The body of the request.</param>
-                public virtual SetPassUpdateNoticeRequest SetPassUpdateNotice(Google.Apis.Walletobjects.v1.Data.SetPassUpdateNoticeRequest body)
-                {
-                    return new SetPassUpdateNoticeRequest(this.service, body);
-                }
-
-                /// <summary>
-                /// Provide Google with information about awaiting private pass update. This will allow Google to
-                /// provide the update notification to the device that currently holds this pass.
-                /// </summary>
-                public class SetPassUpdateNoticeRequest : WalletobjectsBaseServiceRequest<Google.Apis.Walletobjects.v1.Data.SetPassUpdateNoticeResponse>
-                {
-                    /// <summary>Constructs a new SetPassUpdateNotice request.</summary>
-                    public SetPassUpdateNoticeRequest(Google.Apis.Services.IClientService service, Google.Apis.Walletobjects.v1.Data.SetPassUpdateNoticeRequest body) : base(service)
-                    {
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Walletobjects.v1.Data.SetPassUpdateNoticeRequest Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "setPassUpdateNotice";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "walletobjects/v1/privateContent/setPassUpdateNotice";
-
-                    /// <summary>Initializes SetPassUpdateNotice parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                    }
-                }
-
                 /// <summary>Upload private data (text or URI) and returns an Id to be used in its place.</summary>
                 /// <param name="body">The body of the request.</param>
                 public virtual UploadPrivateDataRequest UploadPrivateData(Google.Apis.Walletobjects.v1.Data.UploadPrivateDataRequest body)
@@ -6619,6 +6574,7 @@ namespace Google.Apis.Walletobjects.v1.Data
 
     public class AppLinkDataAppLinkInfoAppTarget : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>URI for AppTarget. The description on the URI must be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetUri")]
         public virtual Uri TargetUri { get; set; }
 
@@ -11479,23 +11435,6 @@ namespace Google.Apis.Walletobjects.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("animationType")]
         public virtual string AnimationType { get; set; }
 
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Request to send a private pass update notice information to Google, so that devices can then fetch the notice
-    /// prompting the user to update a pass.
-    /// </summary>
-    public class SetPassUpdateNoticeRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A response to a request to notify Google of an awaiting update to a private pass.</summary>
-    public class SetPassUpdateNoticeResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

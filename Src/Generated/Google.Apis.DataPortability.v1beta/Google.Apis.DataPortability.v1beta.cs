@@ -63,6 +63,30 @@ namespace Google.Apis.DataPortability.v1beta
             /// <summary>Move a copy of messages between you and the businesses you have conversations with.</summary>
             public static string DataportabilityBusinessmessagingConversations = "https://www.googleapis.com/auth/dataportability.businessmessaging.conversations";
 
+            /// <summary>Move a copy of your pinned trips on Maps.</summary>
+            public static string DataportabilityMapsCommuteRoutes = "https://www.googleapis.com/auth/dataportability.maps.commute_routes";
+
+            /// <summary>Move a copy of your commute settings on Maps.</summary>
+            public static string DataportabilityMapsCommuteSettings = "https://www.googleapis.com/auth/dataportability.maps.commute_settings";
+
+            /// <summary>Move a copy of your electric vehicle profile on Maps.</summary>
+            public static string DataportabilityMapsEvProfile = "https://www.googleapis.com/auth/dataportability.maps.ev_profile";
+
+            /// <summary>Move a copy of your updates to places on Maps.</summary>
+            public static string DataportabilityMapsOfferingContributions = "https://www.googleapis.com/auth/dataportability.maps.offering_contributions";
+
+            /// <summary>Move a copy of the photos and videos you posted on Maps.</summary>
+            public static string DataportabilityMapsPhotosVideos = "https://www.googleapis.com/auth/dataportability.maps.photos_videos";
+
+            /// <summary>Move a copy of your reviews and posts on Maps.</summary>
+            public static string DataportabilityMapsReviews = "https://www.googleapis.com/auth/dataportability.maps.reviews";
+
+            /// <summary>Move a copy of your Starred places list on Maps.</summary>
+            public static string DataportabilityMapsStarredPlaces = "https://www.googleapis.com/auth/dataportability.maps.starred_places";
+
+            /// <summary>Move a copy of your Maps activity.</summary>
+            public static string DataportabilityMyactivityMaps = "https://www.googleapis.com/auth/dataportability.myactivity.maps";
+
             /// <summary>Move a copy of your search activity.</summary>
             public static string DataportabilityMyactivitySearch = "https://www.googleapis.com/auth/dataportability.myactivity.search";
 
@@ -78,40 +102,40 @@ namespace Google.Apis.DataPortability.v1beta
             /// <summary>Move a copy of reviews you wrote about products or online stores.</summary>
             public static string DataportabilityShoppingReviews = "https://www.googleapis.com/auth/dataportability.shopping.reviews";
 
-            /// <summary>Move a copy of information about your channel.</summary>
+            /// <summary>Move a copy of information about your YouTube channel.</summary>
             public static string DataportabilityYoutubeChannel = "https://www.googleapis.com/auth/dataportability.youtube.channel";
 
-            /// <summary>Move a copy of your comments.</summary>
+            /// <summary>Move a copy of your YouTube comments.</summary>
             public static string DataportabilityYoutubeComments = "https://www.googleapis.com/auth/dataportability.youtube.comments";
 
-            /// <summary>Move a copy of your messages in live chat.</summary>
+            /// <summary>Move a copy of your YouTube messages in live chat.</summary>
             public static string DataportabilityYoutubeLiveChat = "https://www.googleapis.com/auth/dataportability.youtube.live_chat";
 
-            /// <summary>Move a copy of your uploaded YouTube Music tracks and your YouTube Music library.</summary>
+            /// <summary>Move a copy of your uploaded YouTube music tracks and your YouTube music library.</summary>
             public static string DataportabilityYoutubeMusic = "https://www.googleapis.com/auth/dataportability.youtube.music";
 
-            /// <summary>Move a copy of your private playlists.</summary>
+            /// <summary>Move a copy of your YouTube private playlists.</summary>
             public static string DataportabilityYoutubePrivatePlaylists = "https://www.googleapis.com/auth/dataportability.youtube.private_playlists";
 
-            /// <summary>Move a copy of your private videos and information about them.</summary>
+            /// <summary>Move a copy of your private YouTube videos and information about them.</summary>
             public static string DataportabilityYoutubePrivateVideos = "https://www.googleapis.com/auth/dataportability.youtube.private_videos";
 
-            /// <summary>Move a copy of your public playlists.</summary>
+            /// <summary>Move a copy of your public YouTube playlists.</summary>
             public static string DataportabilityYoutubePublicPlaylists = "https://www.googleapis.com/auth/dataportability.youtube.public_playlists";
 
-            /// <summary>Move a copy of your public videos and information about them.</summary>
+            /// <summary>Move a copy of your public YouTube videos and information about them.</summary>
             public static string DataportabilityYoutubePublicVideos = "https://www.googleapis.com/auth/dataportability.youtube.public_videos";
 
-            /// <summary>Move a copy of YouTube Shopping Wishlists, and wishlist items.</summary>
+            /// <summary>Move a copy of your YouTube shopping wishlists, and wishlist items.</summary>
             public static string DataportabilityYoutubeShopping = "https://www.googleapis.com/auth/dataportability.youtube.shopping";
 
-            /// <summary>Move a copy of your channel subscriptions, even if they're private.</summary>
+            /// <summary>Move a copy of your YouTube channel subscriptions, even if they're private.</summary>
             public static string DataportabilityYoutubeSubscriptions = "https://www.googleapis.com/auth/dataportability.youtube.subscriptions";
 
-            /// <summary>Move a copy of your unlisted playlists.</summary>
+            /// <summary>Move a copy of your unlisted YouTube playlists.</summary>
             public static string DataportabilityYoutubeUnlistedPlaylists = "https://www.googleapis.com/auth/dataportability.youtube.unlisted_playlists";
 
-            /// <summary>Move a copy of your unlisted videos and information about them.</summary>
+            /// <summary>Move a copy of your unlisted YouTube videos and information about them.</summary>
             public static string DataportabilityYoutubeUnlistedVideos = "https://www.googleapis.com/auth/dataportability.youtube.unlisted_videos";
         }
 
@@ -120,6 +144,30 @@ namespace Google.Apis.DataPortability.v1beta
         {
             /// <summary>Move a copy of messages between you and the businesses you have conversations with.</summary>
             public const string DataportabilityBusinessmessagingConversations = "https://www.googleapis.com/auth/dataportability.businessmessaging.conversations";
+
+            /// <summary>Move a copy of your pinned trips on Maps.</summary>
+            public const string DataportabilityMapsCommuteRoutes = "https://www.googleapis.com/auth/dataportability.maps.commute_routes";
+
+            /// <summary>Move a copy of your commute settings on Maps.</summary>
+            public const string DataportabilityMapsCommuteSettings = "https://www.googleapis.com/auth/dataportability.maps.commute_settings";
+
+            /// <summary>Move a copy of your electric vehicle profile on Maps.</summary>
+            public const string DataportabilityMapsEvProfile = "https://www.googleapis.com/auth/dataportability.maps.ev_profile";
+
+            /// <summary>Move a copy of your updates to places on Maps.</summary>
+            public const string DataportabilityMapsOfferingContributions = "https://www.googleapis.com/auth/dataportability.maps.offering_contributions";
+
+            /// <summary>Move a copy of the photos and videos you posted on Maps.</summary>
+            public const string DataportabilityMapsPhotosVideos = "https://www.googleapis.com/auth/dataportability.maps.photos_videos";
+
+            /// <summary>Move a copy of your reviews and posts on Maps.</summary>
+            public const string DataportabilityMapsReviews = "https://www.googleapis.com/auth/dataportability.maps.reviews";
+
+            /// <summary>Move a copy of your Starred places list on Maps.</summary>
+            public const string DataportabilityMapsStarredPlaces = "https://www.googleapis.com/auth/dataportability.maps.starred_places";
+
+            /// <summary>Move a copy of your Maps activity.</summary>
+            public const string DataportabilityMyactivityMaps = "https://www.googleapis.com/auth/dataportability.myactivity.maps";
 
             /// <summary>Move a copy of your search activity.</summary>
             public const string DataportabilityMyactivitySearch = "https://www.googleapis.com/auth/dataportability.myactivity.search";
@@ -136,40 +184,40 @@ namespace Google.Apis.DataPortability.v1beta
             /// <summary>Move a copy of reviews you wrote about products or online stores.</summary>
             public const string DataportabilityShoppingReviews = "https://www.googleapis.com/auth/dataportability.shopping.reviews";
 
-            /// <summary>Move a copy of information about your channel.</summary>
+            /// <summary>Move a copy of information about your YouTube channel.</summary>
             public const string DataportabilityYoutubeChannel = "https://www.googleapis.com/auth/dataportability.youtube.channel";
 
-            /// <summary>Move a copy of your comments.</summary>
+            /// <summary>Move a copy of your YouTube comments.</summary>
             public const string DataportabilityYoutubeComments = "https://www.googleapis.com/auth/dataportability.youtube.comments";
 
-            /// <summary>Move a copy of your messages in live chat.</summary>
+            /// <summary>Move a copy of your YouTube messages in live chat.</summary>
             public const string DataportabilityYoutubeLiveChat = "https://www.googleapis.com/auth/dataportability.youtube.live_chat";
 
-            /// <summary>Move a copy of your uploaded YouTube Music tracks and your YouTube Music library.</summary>
+            /// <summary>Move a copy of your uploaded YouTube music tracks and your YouTube music library.</summary>
             public const string DataportabilityYoutubeMusic = "https://www.googleapis.com/auth/dataportability.youtube.music";
 
-            /// <summary>Move a copy of your private playlists.</summary>
+            /// <summary>Move a copy of your YouTube private playlists.</summary>
             public const string DataportabilityYoutubePrivatePlaylists = "https://www.googleapis.com/auth/dataportability.youtube.private_playlists";
 
-            /// <summary>Move a copy of your private videos and information about them.</summary>
+            /// <summary>Move a copy of your private YouTube videos and information about them.</summary>
             public const string DataportabilityYoutubePrivateVideos = "https://www.googleapis.com/auth/dataportability.youtube.private_videos";
 
-            /// <summary>Move a copy of your public playlists.</summary>
+            /// <summary>Move a copy of your public YouTube playlists.</summary>
             public const string DataportabilityYoutubePublicPlaylists = "https://www.googleapis.com/auth/dataportability.youtube.public_playlists";
 
-            /// <summary>Move a copy of your public videos and information about them.</summary>
+            /// <summary>Move a copy of your public YouTube videos and information about them.</summary>
             public const string DataportabilityYoutubePublicVideos = "https://www.googleapis.com/auth/dataportability.youtube.public_videos";
 
-            /// <summary>Move a copy of YouTube Shopping Wishlists, and wishlist items.</summary>
+            /// <summary>Move a copy of your YouTube shopping wishlists, and wishlist items.</summary>
             public const string DataportabilityYoutubeShopping = "https://www.googleapis.com/auth/dataportability.youtube.shopping";
 
-            /// <summary>Move a copy of your channel subscriptions, even if they're private.</summary>
+            /// <summary>Move a copy of your YouTube channel subscriptions, even if they're private.</summary>
             public const string DataportabilityYoutubeSubscriptions = "https://www.googleapis.com/auth/dataportability.youtube.subscriptions";
 
-            /// <summary>Move a copy of your unlisted playlists.</summary>
+            /// <summary>Move a copy of your unlisted YouTube playlists.</summary>
             public const string DataportabilityYoutubeUnlistedPlaylists = "https://www.googleapis.com/auth/dataportability.youtube.unlisted_playlists";
 
-            /// <summary>Move a copy of your unlisted videos and information about them.</summary>
+            /// <summary>Move a copy of your unlisted YouTube videos and information about them.</summary>
             public const string DataportabilityYoutubeUnlistedVideos = "https://www.googleapis.com/auth/dataportability.youtube.unlisted_videos";
         }
 

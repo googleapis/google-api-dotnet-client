@@ -1519,6 +1519,10 @@ namespace Google.Apis.CloudFunctions.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("buildName")]
         public virtual string BuildName { get; set; }
 
+        /// <summary>Optional. A service account the user provides for use with Cloud Build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildServiceAccount")]
+        public virtual string BuildServiceAccount { get; set; }
+
         /// <summary>
         /// Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this
         /// field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where `{project}` and `{region}`
@@ -1535,9 +1539,9 @@ namespace Google.Apis.CloudFunctions.v1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Docker Registry to use for this deployment. If `docker_repository` field is specified, this field will be
-        /// automatically set as `ARTIFACT_REGISTRY`. If unspecified, it currently defaults to `CONTAINER_REGISTRY`.
-        /// This field may be overridden by the backend for eligible deployments.
+        /// Docker Registry to use for this deployment. If unspecified, it defaults to `ARTIFACT_REGISTRY`. If
+        /// `docker_repository` field is specified, this field should either be left unspecified or set to
+        /// `ARTIFACT_REGISTRY`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dockerRegistry")]
         public virtual string DockerRegistry { get; set; }
