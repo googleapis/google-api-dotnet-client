@@ -19,6 +19,7 @@ using Google.Apis.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using static Google.Apis.Auth.SignedTokenVerification;
 
@@ -52,10 +53,11 @@ namespace Google.Apis.Auth
         /// <param name="jwt">The JWT to validate.</param>
         /// <param name="clock">Optional. The <see cref="IClock"/> to use for JWT expiration verification. Defaults to the system clock.</param>
         /// <param name="forceGoogleCertRefresh">Optional. If true forces new certificates to be downloaded from Google. Defaults to false.</param>
+        /// <param name="cancellationToken">Optional. Cancellation token.</param>
         /// <returns>The JWT payload, if the JWT is valid. Throws an <see cref="InvalidJwtException"/> otherwise.</returns>
         /// <exception cref="InvalidJwtException">Thrown when passed a JWT that is not a valid JWT signed by Google.</exception>
-        public static Task<Payload> ValidateAsync(string jwt, IClock clock = null, bool forceGoogleCertRefresh = false) =>
-            ValidateAsync(jwt, new ValidationSettings { Clock = clock, ForceGoogleCertRefresh = forceGoogleCertRefresh });
+        public static Task<Payload> ValidateAsync(string jwt, IClock clock = null, bool forceGoogleCertRefresh = false, CancellationToken cancellationToken = default) =>
+            ValidateAsync(jwt, new ValidationSettings { Clock = clock, ForceGoogleCertRefresh = forceGoogleCertRefresh }, cancellationToken);
 
         /// <summary>
         /// Settings used when validating a JSON Web Signature.
@@ -173,20 +175,21 @@ namespace Google.Apis.Auth
         /// </remarks>
         /// <param name="jwt">The JWT to validate.</param>
         /// <param name="validationSettings">Specifies how to carry out the validation.</param>
+        /// <param name="cancellationToken">Optional. Cancellation token.</param>
         /// <returns>The payload of the verified token.</returns>
         /// <exception cref="InvalidJwtException">If the token does not pass verification.</exception>
-        public static Task<Payload> ValidateAsync(string jwt, ValidationSettings validationSettings) =>
-            ValidateInternalAsync(jwt, validationSettings);
+        public static Task<Payload> ValidateAsync(string jwt, ValidationSettings validationSettings, CancellationToken cancellationToken = default) =>
+            ValidateInternalAsync(jwt, validationSettings, cancellationToken);
 
         // internal for testing
-        internal static async Task<Payload> ValidateInternalAsync(string jwt, ValidationSettings validationSettings)
+        internal static async Task<Payload> ValidateInternalAsync(string jwt, ValidationSettings validationSettings, CancellationToken cancellationToken = default)
         {
             var settings = validationSettings.ThrowIfNull(nameof(validationSettings)).Clone();
             var verificationOptions = validationSettings.ToVerificationOptions();
             var signedToken = SignedToken<Header, Payload>.FromSignedToken(jwt);
 
             // Start general validation task ...
-            var generalValidationTask = SignedTokenVerification.VerifySignedTokenAsync(signedToken, verificationOptions, default);
+            var generalValidationTask = SignedTokenVerification.VerifySignedTokenAsync(signedToken, verificationOptions, cancellationToken);
 
             // ... and do Google specific validation in the meantime.
 
