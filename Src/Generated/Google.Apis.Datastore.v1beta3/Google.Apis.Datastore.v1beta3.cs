@@ -1172,6 +1172,21 @@ namespace Google.Apis.Datastore.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Explain options for the query.</summary>
+    public class ExplainOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Whether to execute this query. When false (the default), the query will be planned, returning only
+        /// metrics from the planning stages. When true, the query will be planned and executed, returning the full
+        /// query results along with both planning and execution stage metrics.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analyze")]
+        public virtual System.Nullable<bool> Analyze { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A holder for any type of filter.</summary>
     public class Filter : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2534,6 +2549,13 @@ namespace Google.Apis.Datastore.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("aggregationQuery")]
         public virtual AggregationQuery AggregationQuery { get; set; }
 
+        /// <summary>
+        /// Optional. Explain options for the query. If set, additional query statistics will be returned. If not, only
+        /// query results will be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("explainOptions")]
+        public virtual ExplainOptions ExplainOptions { get; set; }
+
         /// <summary>The GQL query to run. This query must be an aggregation query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gqlQuery")]
         public virtual GqlQuery GqlQuery { get; set; }
@@ -2571,6 +2593,13 @@ namespace Google.Apis.Datastore.v1beta3.Data
     /// <summary>The request for Datastore.RunQuery.</summary>
     public class RunQueryRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Explain options for the query. If set, additional query statistics will be returned. If not, only
+        /// query results will be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("explainOptions")]
+        public virtual ExplainOptions ExplainOptions { get; set; }
+
         /// <summary>The GQL query to run. This query must be a non-aggregation query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gqlQuery")]
         public virtual GqlQuery GqlQuery { get; set; }

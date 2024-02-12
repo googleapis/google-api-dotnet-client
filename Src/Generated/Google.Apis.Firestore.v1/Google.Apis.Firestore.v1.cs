@@ -4748,6 +4748,21 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Explain options for the query.</summary>
+    public class ExplainOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Whether to execute this query. When false (the default), the query will be planned, returning only
+        /// metrics from the planning stages. When true, the query will be planned and executed, returning the full
+        /// query results along with both planning and execution stage metrics.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analyze")]
+        public virtual System.Nullable<bool> Analyze { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A filter on a specific field.</summary>
     public class FieldFilter : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5100,6 +5115,36 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// The CMEK (Customer Managed Encryption Key) configuration for a Firestore database. If not present, the database
+    /// is secured by the default Google encryption key.
+    /// </summary>
+    public class GoogleFirestoreAdminV1CmekConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Currently in-use [KMS key
+        /// versions](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions). During [key
+        /// rotation](https://cloud.google.com/kms/docs/key-rotation), there can be multiple in-use key versions. The
+        /// expected format is
+        /// `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{key_version}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeKeyVersion")]
+        public virtual System.Collections.Generic.IList<string> ActiveKeyVersion { get; set; }
+
+        /// <summary>
+        /// Required. Only keys in the same location as this database are allowed to be used for encryption. For
+        /// Firestore's nam5 multi-region, this corresponds to Cloud KMS multi-region us. For Firestore's eur3
+        /// multi-region, this corresponds to Cloud KMS multi-region europe. See
+        /// https://cloud.google.com/kms/docs/locations. The expected format is
+        /// `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata related to the create database operation.</summary>
     public class GoogleFirestoreAdminV1CreateDatabaseMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5120,6 +5165,10 @@ namespace Google.Apis.Firestore.v1.Data
         /// <summary>The App Engine integration mode to use for this database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appEngineIntegrationMode")]
         public virtual string AppEngineIntegrationMode { get; set; }
+
+        /// <summary>Optional. Presence indicates CMEK is enabled for this database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cmekConfig")]
+        public virtual GoogleFirestoreAdminV1CmekConfig CmekConfig { get; set; }
 
         /// <summary>The concurrency control mode to use for this database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("concurrencyMode")]
@@ -7010,6 +7059,13 @@ namespace Google.Apis.Firestore.v1.Data
     public class RunAggregationQueryRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. Explain options for the query. If set, additional query statistics will be returned. If not, only
+        /// query results will be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("explainOptions")]
+        public virtual ExplainOptions ExplainOptions { get; set; }
+
+        /// <summary>
         /// Starts a new transaction as part of the query, defaulting to read-only. The new transaction ID will be
         /// returned as the first response in the stream.
         /// </summary>
@@ -7135,6 +7191,13 @@ namespace Google.Apis.Firestore.v1.Data
     /// <summary>The request for Firestore.RunQuery.</summary>
     public class RunQueryRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Explain options for the query. If set, additional query statistics will be returned. If not, only
+        /// query results will be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("explainOptions")]
+        public virtual ExplainOptions ExplainOptions { get; set; }
+
         /// <summary>
         /// Starts a new transaction and reads the documents. Defaults to a read-only transaction. The new transaction
         /// ID will be returned as the first response in the stream.

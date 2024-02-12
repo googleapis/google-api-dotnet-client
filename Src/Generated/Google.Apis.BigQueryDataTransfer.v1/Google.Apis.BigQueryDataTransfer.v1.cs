@@ -2004,7 +2004,8 @@ namespace Google.Apis.BigQueryDataTransfer.v1
             /// <summary>
             /// Unenroll data sources in a user project. This allows users to remove transfer configurations for these
             /// data sources. They will no longer appear in the ListDataSources RPC and will also no longer appear in
-            /// the [BigQuery UI](https://console.cloud.google.com/bigquery).
+            /// the [BigQuery UI](https://console.cloud.google.com/bigquery). Data transfers configurations of
+            /// unenrolled data sources will not be scheduled.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The name of the project resource in the form: `projects/{project_id}`</param>
@@ -2016,7 +2017,8 @@ namespace Google.Apis.BigQueryDataTransfer.v1
             /// <summary>
             /// Unenroll data sources in a user project. This allows users to remove transfer configurations for these
             /// data sources. They will no longer appear in the ListDataSources RPC and will also no longer appear in
-            /// the [BigQuery UI](https://console.cloud.google.com/bigquery).
+            /// the [BigQuery UI](https://console.cloud.google.com/bigquery). Data transfers configurations of
+            /// unenrolled data sources will not be scheduled.
             /// </summary>
             public class UnenrollDataSourcesRequest : BigQueryDataTransferBaseServiceRequest<Google.Apis.BigQueryDataTransfer.v1.Data.Empty>
             {
@@ -3555,7 +3557,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
 
         /// <summary>
         /// Defines time to stop scheduling transfer runs. A transfer run cannot be scheduled at or after the end time.
-        /// The end time can be changed at any moment. The time when a data transfer can be trigerred manually is not
+        /// The end time can be changed at any moment. The time when a data transfer can be triggered manually is not
         /// limited by this option.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
@@ -3597,7 +3599,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         /// <summary>
         /// Specifies time to start scheduling transfer runs. The first run will be scheduled at or after the start time
         /// according to a recurrence pattern defined in the schedule string. The start time can be changed at any
-        /// moment. The time when a data transfer can be trigerred manually is not limited by this option.
+        /// moment. The time when a data transfer can be triggered manually is not limited by this option.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual string StartTimeRaw
@@ -3952,7 +3954,9 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("destinationDatasetId")]
         public virtual string DestinationDatasetId { get; set; }
 
-        /// <summary>Is this config disabled. When set to true, no runs are scheduled for a given transfer.</summary>
+        /// <summary>
+        /// Is this config disabled. When set to true, no runs will be scheduled for this transfer config.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
         public virtual System.Nullable<bool> Disabled { get; set; }
 
@@ -4024,7 +4028,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
 
         /// <summary>
         /// Pub/Sub topic where notifications will be sent after transfer runs associated with this transfer config
-        /// finish. The format for specifying a pubsub topic is: `projects/{project}/topics/{topic}`
+        /// finish. The format for specifying a pubsub topic is: `projects/{project_id}/topics/{topic_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationPubsubTopic")]
         public virtual string NotificationPubsubTopic { get; set; }
@@ -4233,7 +4237,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
 
         /// <summary>
         /// Output only. Pub/Sub topic where a notification will be sent after this transfer run finishes. The format
-        /// for specifying a pubsub topic is: `projects/{project}/topics/{topic}`
+        /// for specifying a pubsub topic is: `projects/{project_id}/topics/{topic_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationPubsubTopic")]
         public virtual string NotificationPubsubTopic { get; set; }

@@ -7631,9 +7631,13 @@ namespace Google.Apis.Spanner.v1.Data
         /// Contains a protobuf-serialized
         /// [google.protobuf.FileDescriptorSet](https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/descriptor.proto).
         /// To generate it, [install](https://grpc.io/docs/protoc-installation/) and run `protoc` with --include_imports
-        /// and --descriptor_set_out. For example, to generate for moon/shot/app.proto, run """ $protoc
+        /// and --descriptor_set_out. For example, to generate for moon/shot/app.proto, run
+        /// ```
+        /// $protoc
         /// --proto_path=/app_path --proto_path=/lib_path \ --include_imports \ --descriptor_set_out=descriptors.data \
-        /// moon/shot/app.proto """ For more details, see protobuffer [self
+        /// moon/shot/app.proto
+        /// ```
+        /// For more details, see protobuffer [self
         /// description](https://developers.google.com/protocol-buffers/docs/techniques#self-description).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protoDescriptors")]
@@ -7803,6 +7807,10 @@ namespace Google.Apis.Spanner.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
             set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The expected fulfillment period of this create operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expectedFulfillmentPeriod")]
+        public virtual string ExpectedFulfillmentPeriod { get; set; }
 
         /// <summary>The instance being created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instance")]
@@ -8160,8 +8168,8 @@ namespace Google.Apis.Spanner.v1.Data
     public class DirectedReadOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Exclude_replicas indicates that should be excluded from serving requests. Spanner will not route requests to
-        /// the replicas in this list.
+        /// Exclude_replicas indicates that specified replicas should be excluded from serving requests. Spanner will
+        /// not route requests to the replicas in this list.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludeReplicas")]
         public virtual ExcludeReplicas ExcludeReplicas { get; set; }
@@ -10419,7 +10427,7 @@ namespace Google.Apis.Spanner.v1.Data
     /// selection: * `location` - The location must be one of the regions within the multi-region configuration of your
     /// database. * `type` - The type of the replica. Some examples of using replica_selectors are: *
     /// `location:us-east1` --&amp;gt; The "us-east1" replica(s) of any available type will be used to process the
-    /// request. * `type:READ_ONLY` --&amp;gt; The "READ_ONLY" type replica(s) in nearest . available location will be
+    /// request. * `type:READ_ONLY` --&amp;gt; The "READ_ONLY" type replica(s) in nearest available location will be
     /// used to process the request. * `location:us-east1 type:READ_ONLY` --&amp;gt; The "READ_ONLY" type replica(s) in
     /// location "us-east1" will be used to process the request.
     /// </summary>
@@ -11500,9 +11508,13 @@ namespace Google.Apis.Spanner.v1.Data
         /// Optional. Proto descriptors used by CREATE/ALTER PROTO BUNDLE statements. Contains a protobuf-serialized
         /// [google.protobuf.FileDescriptorSet](https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/descriptor.proto).
         /// To generate it, [install](https://grpc.io/docs/protoc-installation/) and run `protoc` with --include_imports
-        /// and --descriptor_set_out. For example, to generate for moon/shot/app.proto, run """ $protoc
+        /// and --descriptor_set_out. For example, to generate for moon/shot/app.proto, run
+        /// ```
+        /// $protoc
         /// --proto_path=/app_path --proto_path=/lib_path \ --include_imports \ --descriptor_set_out=descriptors.data \
-        /// moon/shot/app.proto """ For more details, see protobuffer [self
+        /// moon/shot/app.proto
+        /// ```
+        /// For more details, see protobuffer [self
         /// description](https://developers.google.com/protocol-buffers/docs/techniques#self-description).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protoDescriptors")]
@@ -11751,6 +11763,10 @@ namespace Google.Apis.Spanner.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
             set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The expected fulfillment period of this update operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expectedFulfillmentPeriod")]
+        public virtual string ExpectedFulfillmentPeriod { get; set; }
 
         /// <summary>The desired end state of the update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instance")]

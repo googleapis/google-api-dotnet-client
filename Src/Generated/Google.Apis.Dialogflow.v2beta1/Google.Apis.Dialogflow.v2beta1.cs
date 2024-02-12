@@ -19196,6 +19196,34 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata returned for the EntityTypes.ExportEntityTypes long running operation.</summary>
+    public class GoogleCloudDialogflowCxV3ExportEntityTypesMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for EntityTypes.ExportEntityTypes.</summary>
+    public class GoogleCloudDialogflowCxV3ExportEntityTypesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Uncompressed byte content for entity types. This field is populated only if `entity_types_content_inline` is
+        /// set to true in ExportEntityTypesRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityTypesContent")]
+        public virtual GoogleCloudDialogflowCxV3InlineDestination EntityTypesContent { get; set; }
+
+        /// <summary>
+        /// The URI to a file containing the exported entity types. This field is populated only if `entity_types_uri`
+        /// is specified in ExportEntityTypesRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityTypesUri")]
+        public virtual string EntityTypesUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response message for Flows.ExportFlow.</summary>
     public class GoogleCloudDialogflowCxV3ExportFlowResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -19548,6 +19576,50 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// <summary>Includes details about skipped documents or any other warnings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
         public virtual System.Collections.Generic.IList<GoogleRpcStatus> Warnings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata returned for the EntityTypes.ImportEntityTypes long running operation.</summary>
+    public class GoogleCloudDialogflowCxV3ImportEntityTypesMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for EntityTypes.ImportEntityTypes.</summary>
+    public class GoogleCloudDialogflowCxV3ImportEntityTypesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Info which resources have conflicts when REPORT_CONFLICT merge_option is set in ImportEntityTypesRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conflictingResources")]
+        public virtual GoogleCloudDialogflowCxV3ImportEntityTypesResponseConflictingResources ConflictingResources { get; set; }
+
+        /// <summary>
+        /// The unique identifier of the imported entity types. Format: `projects//locations//agents//entity_types/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityTypes")]
+        public virtual System.Collections.Generic.IList<string> EntityTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Conflicting resources detected during the import process. Only filled when REPORT_CONFLICT is set in the request
+    /// and there are conflicts in the display names.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3ImportEntityTypesResponseConflictingResources : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Display names of conflicting entities.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityDisplayNames")]
+        public virtual System.Collections.Generic.IList<string> EntityDisplayNames { get; set; }
+
+        /// <summary>Display names of conflicting entity types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityTypeDisplayNames")]
+        public virtual System.Collections.Generic.IList<string> EntityTypeDisplayNames { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21790,6 +21862,34 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata returned for the EntityTypes.ExportEntityTypes long running operation.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ExportEntityTypesMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for EntityTypes.ExportEntityTypes.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ExportEntityTypesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Uncompressed byte content for entity types. This field is populated only if `entity_types_content_inline` is
+        /// set to true in ExportEntityTypesRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityTypesContent")]
+        public virtual GoogleCloudDialogflowCxV3beta1InlineDestination EntityTypesContent { get; set; }
+
+        /// <summary>
+        /// The URI to a file containing the exported entity types. This field is populated only if `entity_types_uri`
+        /// is specified in ExportEntityTypesRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityTypesUri")]
+        public virtual string EntityTypesUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response message for Flows.ExportFlow.</summary>
     public class GoogleCloudDialogflowCxV3beta1ExportFlowResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -22142,6 +22242,50 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// <summary>Includes details about skipped documents or any other warnings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
         public virtual System.Collections.Generic.IList<GoogleRpcStatus> Warnings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata returned for the EntityTypes.ImportEntityTypes long running operation.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ImportEntityTypesMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for EntityTypes.ImportEntityTypes.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ImportEntityTypesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Info which resources have conflicts when REPORT_CONFLICT merge_option is set in ImportEntityTypesRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conflictingResources")]
+        public virtual GoogleCloudDialogflowCxV3beta1ImportEntityTypesResponseConflictingResources ConflictingResources { get; set; }
+
+        /// <summary>
+        /// The unique identifier of the imported entity types. Format: `projects//locations//agents//entity_types/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityTypes")]
+        public virtual System.Collections.Generic.IList<string> EntityTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Conflicting resources detected during the import process. Only filled when REPORT_CONFLICT is set in the request
+    /// and there are conflicts in the display names.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3beta1ImportEntityTypesResponseConflictingResources : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Display names of conflicting entities.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityDisplayNames")]
+        public virtual System.Collections.Generic.IList<string> EntityDisplayNames { get; set; }
+
+        /// <summary>Display names of conflicting entity types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityTypeDisplayNames")]
+        public virtual System.Collections.Generic.IList<string> EntityTypeDisplayNames { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26439,6 +26583,10 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// <summary>Text of actual submitted summary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("summaryText")]
         public virtual string SummaryText { get; set; }
+
+        /// <summary>Optional. Actual text sections of submitted summary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textSections")]
+        public virtual System.Collections.Generic.IDictionary<string, string> TextSections { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
