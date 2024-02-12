@@ -3085,7 +3085,10 @@ namespace Google.Apis.TPU.v2alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
-        /// <summary>Output only. The initiator of the QueuedResources's current state.</summary>
+        /// <summary>
+        /// Output only. The initiator of the QueuedResources's current state. Used to indicate whether the
+        /// SUSPENDING/SUSPENDED state was initiated by the user or the service.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateInitiator")]
         public virtual string StateInitiator { get; set; }
 

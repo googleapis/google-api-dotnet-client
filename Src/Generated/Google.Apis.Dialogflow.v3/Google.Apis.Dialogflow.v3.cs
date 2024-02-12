@@ -672,6 +672,65 @@ namespace Google.Apis.Dialogflow.v3
                         }
                     }
 
+                    /// <summary>Exports the selected entity types.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The name of the parent agent to export entity types. Format:
+                    /// `projects//locations//agents/`.
+                    /// </param>
+                    public virtual ExportRequest Export(Google.Apis.Dialogflow.v3.Data.GoogleCloudDialogflowCxV3ExportEntityTypesRequest body, string parent)
+                    {
+                        return new ExportRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>Exports the selected entity types.</summary>
+                    public class ExportRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Export request.</summary>
+                        public ExportRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v3.Data.GoogleCloudDialogflowCxV3ExportEntityTypesRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the parent agent to export entity types. Format:
+                        /// `projects//locations//agents/`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dialogflow.v3.Data.GoogleCloudDialogflowCxV3ExportEntityTypesRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "export";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3/{+parent}/entityTypes:export";
+
+                        /// <summary>Initializes Export parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Retrieves the specified entity type.</summary>
                     /// <param name="name">
                     /// Required. The name of the entity type. Format: `projects//locations//agents//entityTypes/`.
@@ -735,6 +794,63 @@ namespace Google.Apis.Dialogflow.v3
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Imports the specified entitytypes into the agent.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The agent to import the entity types into. Format: `projects//locations//agents/`.
+                    /// </param>
+                    public virtual ImportRequest Import(Google.Apis.Dialogflow.v3.Data.GoogleCloudDialogflowCxV3ImportEntityTypesRequest body, string parent)
+                    {
+                        return new ImportRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>Imports the specified entitytypes into the agent.</summary>
+                    public class ImportRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Import request.</summary>
+                        public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v3.Data.GoogleCloudDialogflowCxV3ImportEntityTypesRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The agent to import the entity types into. Format: `projects//locations//agents/`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dialogflow.v3.Data.GoogleCloudDialogflowCxV3ImportEntityTypesRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "import";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3/{+parent}/entityTypes:import";
+
+                        /// <summary>Initializes Import parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+$",
                             });
                         }
                     }
@@ -11912,6 +12028,77 @@ namespace Google.Apis.Dialogflow.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata returned for the EntityTypes.ExportEntityTypes long running operation.</summary>
+    public class GoogleCloudDialogflowCxV3ExportEntityTypesMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request message for EntityTypes.ExportEntityTypes.</summary>
+    public class GoogleCloudDialogflowCxV3ExportEntityTypesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The data format of the exported entity types. If not specified, `BLOB` is assumed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataFormat")]
+        public virtual string DataFormat { get; set; }
+
+        /// <summary>
+        /// Required. The name of the entity types to export. Format: `projects//locations//agents//entityTypes/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityTypes")]
+        public virtual System.Collections.Generic.IList<string> EntityTypes { get; set; }
+
+        /// <summary>Optional. The option to return the serialized entity types inline.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityTypesContentInline")]
+        public virtual System.Nullable<bool> EntityTypesContentInline { get; set; }
+
+        /// <summary>
+        /// Optional. The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to export the entity types
+        /// to. The format of this URI must be `gs:///`. Dialogflow performs a write operation for the Cloud Storage
+        /// object on the caller's behalf, so your request authentication must have write permissions for the object.
+        /// For more information, see [Dialogflow access
+        /// control](https://cloud.google.com/dialogflow/cx/docs/concept/access-control#storage).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityTypesUri")]
+        public virtual string EntityTypesUri { get; set; }
+
+        /// <summary>
+        /// Optional. The language to retrieve the entity type for. The following fields are language dependent: *
+        /// `EntityType.entities.value` * `EntityType.entities.synonyms` * `EntityType.excluded_phrases.value` If not
+        /// specified, all language dependent fields will be retrieved. [Many
+        /// languages](https://cloud.google.com/dialogflow/docs/reference/language) are supported. Note: languages must
+        /// be enabled in the agent before they can be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for EntityTypes.ExportEntityTypes.</summary>
+    public class GoogleCloudDialogflowCxV3ExportEntityTypesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Uncompressed byte content for entity types. This field is populated only if `entity_types_content_inline` is
+        /// set to true in ExportEntityTypesRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityTypesContent")]
+        public virtual GoogleCloudDialogflowCxV3InlineDestination EntityTypesContent { get; set; }
+
+        /// <summary>
+        /// The URI to a file containing the exported entity types. This field is populated only if `entity_types_uri`
+        /// is specified in ExportEntityTypesRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityTypesUri")]
+        public virtual string EntityTypesUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request message for Flows.ExportFlow.</summary>
     public class GoogleCloudDialogflowCxV3ExportFlowRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12730,6 +12917,83 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// <summary>Includes details about skipped documents or any other warnings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
         public virtual System.Collections.Generic.IList<GoogleRpcStatus> Warnings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata returned for the EntityTypes.ImportEntityTypes long running operation.</summary>
+    public class GoogleCloudDialogflowCxV3ImportEntityTypesMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request message for EntityTypes.ImportEntityTypes.</summary>
+    public class GoogleCloudDialogflowCxV3ImportEntityTypesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Uncompressed byte content of entity types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityTypesContent")]
+        public virtual GoogleCloudDialogflowCxV3InlineSource EntityTypesContent { get; set; }
+
+        /// <summary>
+        /// The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to import entity types from. The
+        /// format of this URI must be `gs:///`. Dialogflow performs a read operation for the Cloud Storage object on
+        /// the caller's behalf, so your request authentication must have read permissions for the object. For more
+        /// information, see [Dialogflow access
+        /// control](https://cloud.google.com/dialogflow/cx/docs/concept/access-control#storage).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityTypesUri")]
+        public virtual string EntityTypesUri { get; set; }
+
+        /// <summary>Required. Merge option for importing entity types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mergeOption")]
+        public virtual string MergeOption { get; set; }
+
+        /// <summary>
+        /// Optional. The target entity type to import into. Format: `projects//locations//agents//entity_types/`. If
+        /// set, there should be only one entity type included in entity_types, of which the type should match the type
+        /// of the target entity type. All entities in the imported entity type will be added to the target entity type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetEntityType")]
+        public virtual string TargetEntityType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for EntityTypes.ImportEntityTypes.</summary>
+    public class GoogleCloudDialogflowCxV3ImportEntityTypesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Info which resources have conflicts when REPORT_CONFLICT merge_option is set in ImportEntityTypesRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conflictingResources")]
+        public virtual GoogleCloudDialogflowCxV3ImportEntityTypesResponseConflictingResources ConflictingResources { get; set; }
+
+        /// <summary>
+        /// The unique identifier of the imported entity types. Format: `projects//locations//agents//entity_types/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityTypes")]
+        public virtual System.Collections.Generic.IList<string> EntityTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Conflicting resources detected during the import process. Only filled when REPORT_CONFLICT is set in the request
+    /// and there are conflicts in the display names.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3ImportEntityTypesResponseConflictingResources : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Display names of conflicting entities.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityDisplayNames")]
+        public virtual System.Collections.Generic.IList<string> EntityDisplayNames { get; set; }
+
+        /// <summary>Display names of conflicting entity types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityTypeDisplayNames")]
+        public virtual System.Collections.Generic.IList<string> EntityTypeDisplayNames { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16814,6 +17078,34 @@ namespace Google.Apis.Dialogflow.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata returned for the EntityTypes.ExportEntityTypes long running operation.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ExportEntityTypesMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for EntityTypes.ExportEntityTypes.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ExportEntityTypesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Uncompressed byte content for entity types. This field is populated only if `entity_types_content_inline` is
+        /// set to true in ExportEntityTypesRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityTypesContent")]
+        public virtual GoogleCloudDialogflowCxV3beta1InlineDestination EntityTypesContent { get; set; }
+
+        /// <summary>
+        /// The URI to a file containing the exported entity types. This field is populated only if `entity_types_uri`
+        /// is specified in ExportEntityTypesRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityTypesUri")]
+        public virtual string EntityTypesUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response message for Flows.ExportFlow.</summary>
     public class GoogleCloudDialogflowCxV3beta1ExportFlowResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -17166,6 +17458,50 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// <summary>Includes details about skipped documents or any other warnings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
         public virtual System.Collections.Generic.IList<GoogleRpcStatus> Warnings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata returned for the EntityTypes.ImportEntityTypes long running operation.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ImportEntityTypesMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for EntityTypes.ImportEntityTypes.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ImportEntityTypesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Info which resources have conflicts when REPORT_CONFLICT merge_option is set in ImportEntityTypesRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conflictingResources")]
+        public virtual GoogleCloudDialogflowCxV3beta1ImportEntityTypesResponseConflictingResources ConflictingResources { get; set; }
+
+        /// <summary>
+        /// The unique identifier of the imported entity types. Format: `projects//locations//agents//entity_types/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityTypes")]
+        public virtual System.Collections.Generic.IList<string> EntityTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Conflicting resources detected during the import process. Only filled when REPORT_CONFLICT is set in the request
+    /// and there are conflicts in the display names.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3beta1ImportEntityTypesResponseConflictingResources : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Display names of conflicting entities.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityDisplayNames")]
+        public virtual System.Collections.Generic.IList<string> EntityDisplayNames { get; set; }
+
+        /// <summary>Display names of conflicting entity types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityTypeDisplayNames")]
+        public virtual System.Collections.Generic.IList<string> EntityTypeDisplayNames { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

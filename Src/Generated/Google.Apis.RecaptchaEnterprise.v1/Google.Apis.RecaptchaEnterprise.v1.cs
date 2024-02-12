@@ -1987,6 +1987,12 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("block")]
         public virtual GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction Block { get; set; }
 
+        /// <summary>
+        /// This action will inject reCAPTCHA JavaScript code into the HTML page returned by the site backend.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeRecaptchaScript")]
+        public virtual GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction IncludeRecaptchaScript { get; set; }
+
         /// <summary>This action will redirect the request to a ReCaptcha interstitial to attach a token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redirect")]
         public virtual GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectAction Redirect { get; set; }
@@ -2014,6 +2020,17 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
 
     /// <summary>A block action serves an HTTP error code a prevents the request from hitting the backend.</summary>
     public class GoogleCloudRecaptchaenterpriseV1FirewallActionBlockAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An include reCAPTCHA script action involves injecting reCAPTCHA JavaScript code into the HTML returned by the
+    /// site backend. This reCAPTCHA script is tasked with collecting user signals on the requested web page, issuing
+    /// tokens as a cookie within the site domain, and enabling their utilization in subsequent page requests.
+    /// </summary>
+    public class GoogleCloudRecaptchaenterpriseV1FirewallActionIncludeRecaptchaScriptAction : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

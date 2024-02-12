@@ -293,6 +293,7 @@ namespace Google.Apis.TPU.v2
                 AcceleratorTypes = new AcceleratorTypesResource(service);
                 Nodes = new NodesResource(service);
                 Operations = new OperationsResource(service);
+                QueuedResources = new QueuedResourcesResource(service);
                 RuntimeVersions = new RuntimeVersionsResource(service);
             }
 
@@ -1189,6 +1190,346 @@ namespace Google.Apis.TPU.v2
                 }
             }
 
+            /// <summary>Gets the QueuedResources resource.</summary>
+            public virtual QueuedResourcesResource QueuedResources { get; }
+
+            /// <summary>The "queuedResources" collection of methods.</summary>
+            public class QueuedResourcesResource
+            {
+                private const string Resource = "queuedResources";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public QueuedResourcesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a QueuedResource TPU instance.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. The parent resource name.</param>
+                public virtual CreateRequest Create(Google.Apis.TPU.v2.Data.QueuedResource body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a QueuedResource TPU instance.</summary>
+                public class CreateRequest : TPUBaseServiceRequest<Google.Apis.TPU.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.TPU.v2.Data.QueuedResource body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent resource name.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The unqualified resource name. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("queuedResourceId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string QueuedResourceId { get; set; }
+
+                    /// <summary>Optional. Idempotent request UUID.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.TPU.v2.Data.QueuedResource Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/queuedResources";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("queuedResourceId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "queuedResourceId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a QueuedResource TPU instance.</summary>
+                /// <param name="name">Required. The resource name.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a QueuedResource TPU instance.</summary>
+                public class DeleteRequest : TPUBaseServiceRequest<Google.Apis.TPU.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The resource name.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. If set to true, all running nodes belonging to this queued resource will be deleted
+                    /// first and then the queued resource will be deleted. Otherwise (i.e. force=false), the queued
+                    /// resource will only be deleted if its nodes have already been deleted or the queued resource is
+                    /// in the ACCEPTED, FAILED, or SUSPENDED state.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> Force { get; set; }
+
+                    /// <summary>Optional. Idempotent request UUID.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/queuedResources/[^/]+$",
+                        });
+                        RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "force",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a queued resource.</summary>
+                /// <param name="name">Required. The resource name.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of a queued resource.</summary>
+                public class GetRequest : TPUBaseServiceRequest<Google.Apis.TPU.v2.Data.QueuedResource>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The resource name.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/queuedResources/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists queued resources.</summary>
+                /// <param name="parent">Required. The parent resource name.</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists queued resources.</summary>
+                public class ListRequest : TPUBaseServiceRequest<Google.Apis.TPU.v2.Data.ListQueuedResourcesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent resource name.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. The maximum number of items to return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. The next_page_token value returned from a previous List request, if any.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/queuedResources";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Resets a QueuedResource TPU instance</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. The name of the queued resource.</param>
+                public virtual ResetRequest Reset(Google.Apis.TPU.v2.Data.ResetQueuedResourceRequest body, string name)
+                {
+                    return new ResetRequest(this.service, body, name);
+                }
+
+                /// <summary>Resets a QueuedResource TPU instance</summary>
+                public class ResetRequest : TPUBaseServiceRequest<Google.Apis.TPU.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new Reset request.</summary>
+                    public ResetRequest(Google.Apis.Services.IClientService service, Google.Apis.TPU.v2.Data.ResetQueuedResourceRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the queued resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.TPU.v2.Data.ResetQueuedResourceRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "reset";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}:reset";
+
+                    /// <summary>Initializes Reset parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/queuedResources/[^/]+$",
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the RuntimeVersions resource.</summary>
             public virtual RuntimeVersionsResource RuntimeVersions { get; }
 
@@ -1570,6 +1911,13 @@ namespace Google.Apis.TPU.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Further data for the accepted state.</summary>
+    public class AcceptedData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>An access config attached to the TPU worker.</summary>
     public class AccessConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1577,6 +1925,13 @@ namespace Google.Apis.TPU.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("externalIp")]
         public virtual string ExternalIp { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Further data for the active state.</summary>
+    public class ActiveData : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1602,6 +1957,20 @@ namespace Google.Apis.TPU.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Further data for the creating state.</summary>
+    public class CreatingData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Further data for the deleting state.</summary>
+    public class DeletingData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
@@ -1609,6 +1978,17 @@ namespace Google.Apis.TPU.v2.Data
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Further data for the failed state.</summary>
+    public class FailedData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The error that caused the queued resource to enter the FAILED state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1657,6 +2037,20 @@ namespace Google.Apis.TPU.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Guaranteed tier definition.</summary>
+    public class Guaranteed : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Defines the minimum duration of the guarantee. If specified, the requested resources will only be
+        /// provisioned if they can be allocated for at least the given duration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minDuration")]
+        public virtual object MinDuration { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A guest attributes.</summary>
     public class GuestAttributes : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1700,6 +2094,97 @@ namespace Google.Apis.TPU.v2.Data
         /// <summary>The list of guest attributes entries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<GuestAttributesEntry> Items { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive). The start
+    /// must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time).
+    /// When both start and end are unspecified, the interval matches any time.
+    /// </summary>
+    public class Interval : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>
+        /// Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be
+        /// before the end.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>
+        /// Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be
+        /// the same or after the start.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1773,6 +2258,25 @@ namespace Google.Apis.TPU.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response for ListQueuedResources.</summary>
+    public class ListQueuedResourcesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The next page token or empty if none.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The listed queued resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queuedResources")]
+        public virtual System.Collections.Generic.IList<QueuedResource> QueuedResources { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response for ListRuntimeVersions.</summary>
     public class ListRuntimeVersionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1819,6 +2323,31 @@ namespace Google.Apis.TPU.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Parameters to specify for multislice QueuedResource requests. This message must be populated in case of
+    /// multislice requests instead of node_id.
+    /// </summary>
+    public class MultisliceParams : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Number of nodes with this spec. The system will attempt to provison "node_count" nodes as part of
+        /// the request. This needs to be &amp;gt; 1.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeCount")]
+        public virtual System.Nullable<int> NodeCount { get; set; }
+
+        /// <summary>
+        /// Optional. Prefix of node_ids in case of multislice request. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex
+        /// format. If node_count = 3 and node_id_prefix = "np", node ids of nodes created will be "np-0", "np-1",
+        /// "np-2". If this field is not provided we use queued_resource_id as the node_id_prefix.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeIdPrefix")]
+        public virtual string NodeIdPrefix { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2034,6 +2563,36 @@ namespace Google.Apis.TPU.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Details of the TPU node(s) being requested. Users can request either a single node or multiple nodes. NodeSpec
+    /// provides the specification for node(s) to be created.
+    /// </summary>
+    public class NodeSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Fields to specify in case of multislice request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multisliceParams")]
+        public virtual MultisliceParams MultisliceParams { get; set; }
+
+        /// <summary>Required. The node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("node")]
+        public virtual Node Node { get; set; }
+
+        /// <summary>
+        /// Optional. The unqualified resource name. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format. This is only
+        /// specified when requesting a single node. In case of multislice requests, multislice_params must be populated
+        /// instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeId")]
+        public virtual string NodeId { get; set; }
+
+        /// <summary>Required. The parent resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2178,6 +2737,251 @@ namespace Google.Apis.TPU.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Further data for the provisioning state.</summary>
+    public class ProvisioningData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A QueuedResource represents a request for resources that will be placed in a queue and fulfilled when the
+    /// necessary resources are available.
+    /// </summary>
+    public class QueuedResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time when the QueuedResource was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. The Guaranteed tier</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guaranteed")]
+        public virtual Guaranteed Guaranteed { get; set; }
+
+        /// <summary>Output only. Immutable. The name of the QueuedResource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. The queueing policy of the QueuedRequest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queueingPolicy")]
+        public virtual QueueingPolicy QueueingPolicy { get; set; }
+
+        /// <summary>
+        /// Optional. Name of the reservation in which the resource should be provisioned. Format:
+        /// projects/{project}/locations/{zone}/reservations/{reservation}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reservationName")]
+        public virtual string ReservationName { get; set; }
+
+        /// <summary>Optional. The Spot tier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spot")]
+        public virtual Spot Spot { get; set; }
+
+        /// <summary>Output only. State of the QueuedResource request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual QueuedResourceState State { get; set; }
+
+        /// <summary>Optional. Defines a TPU resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tpu")]
+        public virtual Tpu Tpu { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>QueuedResourceState defines the details of the QueuedResource request.</summary>
+    public class QueuedResourceState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Further data for the accepted state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acceptedData")]
+        public virtual AcceptedData AcceptedData { get; set; }
+
+        /// <summary>Output only. Further data for the active state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeData")]
+        public virtual ActiveData ActiveData { get; set; }
+
+        /// <summary>Output only. Further data for the creating state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creatingData")]
+        public virtual CreatingData CreatingData { get; set; }
+
+        /// <summary>Output only. Further data for the deleting state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deletingData")]
+        public virtual DeletingData DeletingData { get; set; }
+
+        /// <summary>Output only. Further data for the failed state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failedData")]
+        public virtual FailedData FailedData { get; set; }
+
+        /// <summary>Output only. Further data for the provisioning state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provisioningData")]
+        public virtual ProvisioningData ProvisioningData { get; set; }
+
+        /// <summary>Output only. State of the QueuedResource request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>
+        /// Output only. The initiator of the QueuedResources's current state. Used to indicate whether the
+        /// SUSPENDING/SUSPENDED state was initiated by the user or the service.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateInitiator")]
+        public virtual string StateInitiator { get; set; }
+
+        /// <summary>Output only. Further data for the suspended state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suspendedData")]
+        public virtual SuspendedData SuspendedData { get; set; }
+
+        /// <summary>Output only. Further data for the suspending state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suspendingData")]
+        public virtual SuspendingData SuspendingData { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines the policy of the QueuedRequest.</summary>
+    public class QueueingPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. A relative time after which resources may be created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validAfterDuration")]
+        public virtual object ValidAfterDuration { get; set; }
+
+        private string _validAfterTimeRaw;
+
+        private object _validAfterTime;
+
+        /// <summary>Optional. An absolute time after which resources may be created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validAfterTime")]
+        public virtual string ValidAfterTimeRaw
+        {
+            get => _validAfterTimeRaw;
+            set
+            {
+                _validAfterTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _validAfterTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ValidAfterTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ValidAfterTimeDateTimeOffset instead.")]
+        public virtual object ValidAfterTime
+        {
+            get => _validAfterTime;
+            set
+            {
+                _validAfterTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _validAfterTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ValidAfterTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ValidAfterTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ValidAfterTimeRaw);
+            set => ValidAfterTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. An absolute time interval within which resources may be created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validInterval")]
+        public virtual Interval ValidInterval { get; set; }
+
+        /// <summary>
+        /// Optional. A relative time after which resources should not be created. If the request cannot be fulfilled by
+        /// this time the request will be failed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validUntilDuration")]
+        public virtual object ValidUntilDuration { get; set; }
+
+        private string _validUntilTimeRaw;
+
+        private object _validUntilTime;
+
+        /// <summary>
+        /// Optional. An absolute time after which resources should not be created. If the request cannot be fulfilled
+        /// by this time the request will be failed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validUntilTime")]
+        public virtual string ValidUntilTimeRaw
+        {
+            get => _validUntilTimeRaw;
+            set
+            {
+                _validUntilTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _validUntilTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ValidUntilTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ValidUntilTimeDateTimeOffset instead.")]
+        public virtual object ValidUntilTime
+        {
+            get => _validUntilTime;
+            set
+            {
+                _validUntilTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _validUntilTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ValidUntilTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ValidUntilTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ValidUntilTimeRaw);
+            set => ValidUntilTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for ResetQueuedResource.</summary>
+    public class ResetQueuedResourceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A runtime version that a Node can be configured with.</summary>
     public class RuntimeVersion : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2254,6 +3058,13 @@ namespace Google.Apis.TPU.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Spot tier definition.</summary>
+    public class Spot : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request for StartNode.</summary>
     public class StartNodeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2292,6 +3103,20 @@ namespace Google.Apis.TPU.v2.Data
 
     /// <summary>Request for StopNode.</summary>
     public class StopNodeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Further data for the suspended state.</summary>
+    public class SuspendedData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Further data for the suspending state.</summary>
+    public class SuspendingData : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2348,6 +3173,17 @@ namespace Google.Apis.TPU.v2.Data
         /// <summary>A string used to uniquely distinguish a worker within a TPU node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerId")]
         public virtual string WorkerId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of the TPU resource(s) being requested.</summary>
+    public class Tpu : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The TPU node(s) being requested.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeSpec")]
+        public virtual System.Collections.Generic.IList<NodeSpec> NodeSpec { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

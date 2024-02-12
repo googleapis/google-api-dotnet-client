@@ -3149,6 +3149,21 @@ namespace Google.Apis.Firestore.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Explain options for the query.</summary>
+    public class ExplainOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Whether to execute this query. When false (the default), the query will be planned, returning only
+        /// metrics from the planning stages. When true, the query will be planned and executed, returning the full
+        /// query results along with both planning and execution stage metrics.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analyze")]
+        public virtual System.Nullable<bool> Analyze { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A filter on a specific field.</summary>
     public class FieldFilter : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4363,6 +4378,13 @@ namespace Google.Apis.Firestore.v1beta1.Data
     public class RunAggregationQueryRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. Explain options for the query. If set, additional query statistics will be returned. If not, only
+        /// query results will be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("explainOptions")]
+        public virtual ExplainOptions ExplainOptions { get; set; }
+
+        /// <summary>
         /// Starts a new transaction as part of the query, defaulting to read-only. The new transaction ID will be
         /// returned as the first response in the stream.
         /// </summary>
@@ -4488,6 +4510,13 @@ namespace Google.Apis.Firestore.v1beta1.Data
     /// <summary>The request for Firestore.RunQuery.</summary>
     public class RunQueryRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Explain options for the query. If set, additional query statistics will be returned. If not, only
+        /// query results will be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("explainOptions")]
+        public virtual ExplainOptions ExplainOptions { get; set; }
+
         /// <summary>
         /// Starts a new transaction and reads the documents. Defaults to a read-only transaction. The new transaction
         /// ID will be returned as the first response in the stream.

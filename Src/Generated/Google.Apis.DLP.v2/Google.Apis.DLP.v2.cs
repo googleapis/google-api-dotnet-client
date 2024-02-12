@@ -58,7 +58,7 @@ namespace Google.Apis.DLP.v2
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Cloud Data Loss Prevention (DLP).</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Sensitive Data Protection (DLP).</summary>
         public class Scope
         {
             /// <summary>
@@ -68,7 +68,7 @@ namespace Google.Apis.DLP.v2
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
-        /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Data Loss Prevention (DLP).</summary>
+        /// <summary>Available OAuth 2.0 scope constants for use with the Sensitive Data Protection (DLP).</summary>
         public static class ScopeConstants
         {
             /// <summary>
@@ -9854,6 +9854,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rowsLimitPercent")]
         public virtual System.Nullable<int> RowsLimitPercent { get; set; }
 
+        /// <summary>How to sample the data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sampleMethod")]
         public virtual string SampleMethod { get; set; }
 
@@ -10213,6 +10214,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("filesLimitPercent")]
         public virtual System.Nullable<int> FilesLimitPercent { get; set; }
 
+        /// <summary>How to sample the data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sampleMethod")]
         public virtual string SampleMethod { get; set; }
 
@@ -10559,6 +10561,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Type of content to inspect.</summary>
     public class GooglePrivacyDlpV2ContentItem : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Content data to inspect or redact. Replaces `type` and `data`.</summary>
@@ -12946,6 +12949,7 @@ namespace Google.Apis.DLP.v2.Data
     /// <summary>A type of transformation that is applied over images.</summary>
     public class GooglePrivacyDlpV2ImageTransformations : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>List of transforms to make.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transforms")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2ImageTransformation> Transforms { get; set; }
 
@@ -14461,6 +14465,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Success or errors for the profile generation.</summary>
     public class GooglePrivacyDlpV2ProfileStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -14768,9 +14773,11 @@ namespace Google.Apis.DLP.v2.Data
     /// <summary>Message for a unique key indicating a record that contains a finding.</summary>
     public class GooglePrivacyDlpV2RecordKey : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Datastore key</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigQueryKey")]
         public virtual GooglePrivacyDlpV2BigQueryKey BigQueryKey { get; set; }
 
+        /// <summary>Bigquery key</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datastoreKey")]
         public virtual GooglePrivacyDlpV2DatastoreKey DatastoreKey { get; set; }
 
@@ -14818,6 +14825,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The field in a record to transform.</summary>
     public class GooglePrivacyDlpV2RecordTransformation : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _containerTimestampRaw;
@@ -15277,6 +15285,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hybridOptions")]
         public virtual GooglePrivacyDlpV2HybridOptions HybridOptions { get; set; }
 
+        /// <summary>Configuration of the timespan of the items to include in scanning.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timespanConfig")]
         public virtual GooglePrivacyDlpV2TimespanConfig TimespanConfig { get; set; }
 
@@ -15287,6 +15296,7 @@ namespace Google.Apis.DLP.v2.Data
     /// <summary>Storage metadata label to indicate which metadata entry contains findings.</summary>
     public class GooglePrivacyDlpV2StorageMetadataLabel : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Label name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
 
@@ -16204,6 +16214,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The outcome of a transformation.</summary>
     public class GooglePrivacyDlpV2TransformationResultStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Detailed error codes and messages</summary>

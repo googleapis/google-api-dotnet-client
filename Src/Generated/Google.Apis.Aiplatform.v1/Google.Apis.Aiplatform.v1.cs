@@ -6856,7 +6856,8 @@ namespace Google.Apis.Aiplatform.v1
                 }
 
                 /// <summary>
-                /// Perform an unary online prediction request for Vertex first-party products and frameworks.
+                /// Perform an unary online prediction request to a gRPC model server for Vertex first-party products
+                /// and frameworks.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="endpoint">
@@ -6869,7 +6870,8 @@ namespace Google.Apis.Aiplatform.v1
                 }
 
                 /// <summary>
-                /// Perform an unary online prediction request for Vertex first-party products and frameworks.
+                /// Perform an unary online prediction request to a gRPC model server for Vertex first-party products
+                /// and frameworks.
                 /// </summary>
                 public class DirectPredictRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1DirectPredictResponse>
                 {
@@ -6918,7 +6920,9 @@ namespace Google.Apis.Aiplatform.v1
                     }
                 }
 
-                /// <summary>Perform an online prediction request through gRPC.</summary>
+                /// <summary>
+                /// Perform an unary online prediction request to a gRPC model server for custom containers.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="endpoint">
                 /// Required. The name of the Endpoint requested to serve the prediction. Format:
@@ -6929,7 +6933,9 @@ namespace Google.Apis.Aiplatform.v1
                     return new DirectRawPredictRequest(this.service, body, endpoint);
                 }
 
-                /// <summary>Perform an online prediction request through gRPC.</summary>
+                /// <summary>
+                /// Perform an unary online prediction request to a gRPC model server for custom containers.
+                /// </summary>
                 public class DirectRawPredictRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1DirectRawPredictResponse>
                 {
                     /// <summary>Constructs a new DirectRawPredict request.</summary>
@@ -7036,6 +7042,65 @@ namespace Google.Apis.Aiplatform.v1
                         RequestParameters.Add("endpoint", new Google.Apis.Discovery.Parameter
                         {
                             Name = "endpoint",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/endpoints/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Generate content with multimodal inputs.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="model">
+                /// Required. The name of the publisher model requested to serve the prediction. Format:
+                /// `projects/{project}/locations/{location}/publishers/*/models/*`
+                /// </param>
+                public virtual GenerateContentRequest GenerateContent(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1GenerateContentRequest body, string model)
+                {
+                    return new GenerateContentRequest(this.service, body, model);
+                }
+
+                /// <summary>Generate content with multimodal inputs.</summary>
+                public class GenerateContentRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1GenerateContentResponse>
+                {
+                    /// <summary>Constructs a new GenerateContent request.</summary>
+                    public GenerateContentRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1GenerateContentRequest body, string model) : base(service)
+                    {
+                        Model = model;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the publisher model requested to serve the prediction. Format:
+                    /// `projects/{project}/locations/{location}/publishers/*/models/*`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("model", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Model { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1GenerateContentRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "generateContent";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+model}:generateContent";
+
+                    /// <summary>Initializes GenerateContent parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("model", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "model",
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
@@ -7603,7 +7668,7 @@ namespace Google.Apis.Aiplatform.v1
                     }
                 }
 
-                /// <summary></summary>
+                /// <summary>Perform a streaming online prediction with an arbitrary HTTP payload.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="endpoint">
                 /// Required. The name of the Endpoint requested to serve the prediction. Format:
@@ -7614,7 +7679,7 @@ namespace Google.Apis.Aiplatform.v1
                     return new StreamRawPredictRequest(this.service, body, endpoint);
                 }
 
-                /// <summary></summary>
+                /// <summary>Perform a streaming online prediction with an arbitrary HTTP payload.</summary>
                 public class StreamRawPredictRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleApiHttpBody>
                 {
                     /// <summary>Constructs a new StreamRawPredict request.</summary>
@@ -10118,6 +10183,71 @@ namespace Google.Apis.Aiplatform.v1
                         }
                     }
 
+                    /// <summary>
+                    /// Search the nearest entities under a FeatureView. Search only works for indexable feature view;
+                    /// if a feature view isn't indexable, returns Invalid argument response.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="featureView">
+                    /// Required. FeatureView resource format
+                    /// `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}/featureViews/{featureView}`
+                    /// </param>
+                    public virtual SearchNearestEntitiesRequest SearchNearestEntities(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1SearchNearestEntitiesRequest body, string featureView)
+                    {
+                        return new SearchNearestEntitiesRequest(this.service, body, featureView);
+                    }
+
+                    /// <summary>
+                    /// Search the nearest entities under a FeatureView. Search only works for indexable feature view;
+                    /// if a feature view isn't indexable, returns Invalid argument response.
+                    /// </summary>
+                    public class SearchNearestEntitiesRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1SearchNearestEntitiesResponse>
+                    {
+                        /// <summary>Constructs a new SearchNearestEntities request.</summary>
+                        public SearchNearestEntitiesRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1SearchNearestEntitiesRequest body, string featureView) : base(service)
+                        {
+                            FeatureView = featureView;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. FeatureView resource format
+                        /// `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}/featureViews/{featureView}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("featureView", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string FeatureView { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1SearchNearestEntitiesRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "searchNearestEntities";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+featureView}:searchNearestEntities";
+
+                        /// <summary>Initializes SearchNearestEntities parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("featureView", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "featureView",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/featureOnlineStores/[^/]+/featureViews/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Triggers on-demand sync for the FeatureView.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="featureView">
@@ -10809,7 +10939,8 @@ namespace Google.Apis.Aiplatform.v1
                     /// the update. The fields specified in the update_mask are relative to the resource, not the full
                     /// request. A field will be overwritten if it is in the mask. If the user does not provide a mask
                     /// then only the non-empty fields present in the request will be overwritten. Set the update_mask
-                    /// to `*` to override all fields. Updatable fields: * `big_query_source` * `labels` * `sync_config`
+                    /// to `*` to override all fields. Updatable fields: * `big_query_source` * `bigtable` * `labels` *
+                    /// `sync_config`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -23690,6 +23821,86 @@ namespace Google.Apis.Aiplatform.v1
                     }
                 }
 
+                /// <summary>
+                /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
+                /// does not have a policy set.
+                /// </summary>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
+                /// </param>
+                public virtual GetIamPolicyRequest GetIamPolicy(string resource)
+                {
+                    return new GetIamPolicyRequest(this.service, resource);
+                }
+
+                /// <summary>
+                /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
+                /// does not have a policy set.
+                /// </summary>
+                public class GetIamPolicyRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleIamV1Policy>
+                {
+                    /// <summary>Constructs a new GetIamPolicy request.</summary>
+                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum policy version that will be used to format the policy. Valid values are 0,
+                    /// 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any
+                    /// conditional role bindings must specify version 3. Policies with no conditional role bindings may
+                    /// specify any valid value or leave the field unset. The policy in the response might use the
+                    /// policy version that you specified, or it might use a lower policy version. For example, if you
+                    /// specify version 3, but the policy has no conditional role bindings, the response uses version 1.
+                    /// To learn which resources support conditions in their IAM policies, see the [IAM
+                    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "getIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:getIamPolicy";
+
+                    /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/models/[^/]+$",
+                        });
+                        RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
                 /// <summary>Lists Models in a Location.</summary>
                 /// <param name="parent">
                 /// Required. The resource name of the Location to list the Models from. Format:
@@ -24051,6 +24262,152 @@ namespace Google.Apis.Aiplatform.v1
                         RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                         {
                             Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
+                /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
+                /// </param>
+                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Aiplatform.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
+                {
+                    return new SetIamPolicyRequest(this.service, body, resource);
+                }
+
+                /// <summary>
+                /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
+                /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+                /// </summary>
+                public class SetIamPolicyRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleIamV1Policy>
+                {
+                    /// <summary>Constructs a new SetIamPolicy request.</summary>
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Aiplatform.v1.Data.GoogleIamV1SetIamPolicyRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "setIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:setIamPolicy";
+
+                    /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/models/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
+                /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
+                /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
+                /// checking. This operation may "fail open" without warning.
+                /// </summary>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
+                /// </param>
+                public virtual TestIamPermissionsRequest TestIamPermissions(string resource)
+                {
+                    return new TestIamPermissionsRequest(this.service, resource);
+                }
+
+                /// <summary>
+                /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
+                /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
+                /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
+                /// checking. This operation may "fail open" without warning.
+                /// </summary>
+                public class TestIamPermissionsRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleIamV1TestIamPermissionsResponse>
+                {
+                    /// <summary>Constructs a new TestIamPermissions request.</summary>
+                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>
+                    /// The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or
+                    /// `storage.*`) are not allowed. For more information see [IAM
+                    /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("permissions", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<string> Permissions { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "testIamPermissions";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:testIamPermissions";
+
+                    /// <summary>Initializes TestIamPermissions parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/models/[^/]+$",
+                        });
+                        RequestParameters.Add("permissions", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "permissions",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -26952,6 +27309,65 @@ namespace Google.Apis.Aiplatform.v1
                         }
                     }
 
+                    /// <summary>Generate content with multimodal inputs.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="model">
+                    /// Required. The name of the publisher model requested to serve the prediction. Format:
+                    /// `projects/{project}/locations/{location}/publishers/*/models/*`
+                    /// </param>
+                    public virtual GenerateContentRequest GenerateContent(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1GenerateContentRequest body, string model)
+                    {
+                        return new GenerateContentRequest(this.service, body, model);
+                    }
+
+                    /// <summary>Generate content with multimodal inputs.</summary>
+                    public class GenerateContentRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1GenerateContentResponse>
+                    {
+                        /// <summary>Constructs a new GenerateContent request.</summary>
+                        public GenerateContentRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1GenerateContentRequest body, string model) : base(service)
+                        {
+                            Model = model;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the publisher model requested to serve the prediction. Format:
+                        /// `projects/{project}/locations/{location}/publishers/*/models/*`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("model", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Model { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1GenerateContentRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "generateContent";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+model}:generateContent";
+
+                        /// <summary>Initializes GenerateContent parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("model", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "model",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/publishers/[^/]+/models/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Perform an online prediction.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="endpoint">
@@ -27200,7 +27616,7 @@ namespace Google.Apis.Aiplatform.v1
                         }
                     }
 
-                    /// <summary></summary>
+                    /// <summary>Perform a streaming online prediction with an arbitrary HTTP payload.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="endpoint">
                     /// Required. The name of the Endpoint requested to serve the prediction. Format:
@@ -27211,7 +27627,7 @@ namespace Google.Apis.Aiplatform.v1
                         return new StreamRawPredictRequest(this.service, body, endpoint);
                     }
 
-                    /// <summary></summary>
+                    /// <summary>Perform a streaming online prediction with an arbitrary HTTP payload.</summary>
                     public class StreamRawPredictRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleApiHttpBody>
                     {
                         /// <summary>Constructs a new StreamRawPredict request.</summary>
@@ -35616,28 +36032,9 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("endOffset")]
         public virtual object EndOffset { get; set; }
 
-        /// <summary>Internal only model level metadata.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("modelLevelMetaData")]
-        public virtual CloudAiNlLlmProtoServicePartVideoMetadataModelLevelMetadata ModelLevelMetaData { get; set; }
-
         /// <summary>The start offset of the video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startOffset")]
         public virtual object StartOffset { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Internal only fields</summary>
-    public class CloudAiNlLlmProtoServicePartVideoMetadataModelLevelMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Frame rate to decode from this video.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fps")]
-        public virtual System.Nullable<float> Fps { get; set; }
-
-        /// <summary>Number of frames to decode from this video.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("numFrames")]
-        public virtual System.Nullable<int> NumFrames { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -46339,7 +46736,7 @@ namespace Google.Apis.Aiplatform.v1.Data
     {
         /// <summary>
         /// Immutable. The path to the directory containing the Model artifact and any of its supporting files. Not
-        /// present for AutoML Models or Large Models.
+        /// required for AutoML Models.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("artifactUri")]
         public virtual string ArtifactUri { get; set; }
@@ -46347,7 +46744,7 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>
         /// Input only. The specification of the container that is to be used when deploying this Model. The
         /// specification is ingested upon ModelService.UploadModel, and all binaries it contains are copied and stored
-        /// internally by Vertex AI. Not present for AutoML Models or Large Models.
+        /// internally by Vertex AI. Not required for AutoML Models.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerSpec")]
         public virtual GoogleCloudAiplatformV1ModelContainerSpec ContainerSpec { get; set; }
@@ -46932,6 +47329,12 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>The type of log.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logType")]
         public virtual string LogType { get; set; }
+
+        /// <summary>
+        /// Output only. The schema version of the request/response logging BigQuery table. Default to v1 if unset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestResponseLoggingSchemaVersion")]
+        public virtual string RequestResponseLoggingSchemaVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -47648,6 +48051,7 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The alert config for model monitoring.</summary>
     public class GoogleCloudAiplatformV1ModelMonitoringAlertConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Email alert config.</summary>
@@ -48472,6 +48876,104 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A query to find a number of similar entities.</summary>
+    public class GoogleCloudAiplatformV1NearestNeighborQuery : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The embedding vector that be used for similar search.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("embedding")]
+        public virtual GoogleCloudAiplatformV1NearestNeighborQueryEmbedding Embedding { get; set; }
+
+        /// <summary>
+        /// Optional. The entity id whose similar entities should be searched for. If embedding is set, search will use
+        /// embedding instead of entity_id.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityId")]
+        public virtual string EntityId { get; set; }
+
+        /// <summary>
+        /// Optional. The number of similar entities to be retrieved from feature view for each query.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("neighborCount")]
+        public virtual System.Nullable<int> NeighborCount { get; set; }
+
+        /// <summary>Optional. Parameters that can be set to tune query on the fly.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
+        public virtual GoogleCloudAiplatformV1NearestNeighborQueryParameters Parameters { get; set; }
+
+        /// <summary>
+        /// Optional. Crowding is a constraint on a neighbor list produced by nearest neighbor search requiring that no
+        /// more than sper_crowding_attribute_neighbor_count of the k neighbors returned have the same value of
+        /// crowding_attribute. It's used for improving result diversity.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("perCrowdingAttributeNeighborCount")]
+        public virtual System.Nullable<int> PerCrowdingAttributeNeighborCount { get; set; }
+
+        /// <summary>Optional. The list of string filters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringFilters")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1NearestNeighborQueryStringFilter> StringFilters { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The embedding vector.</summary>
+    public class GoogleCloudAiplatformV1NearestNeighborQueryEmbedding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Individual value in the embedding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Collections.Generic.IList<System.Nullable<float>> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Parameters that can be overrided in each query to tune query latency and recall.</summary>
+    public class GoogleCloudAiplatformV1NearestNeighborQueryParameters : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The number of neighbors to find via approximate search before exact reordering is performed; if
+        /// set, this value must be &amp;gt; neighbor_count.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("approximateNeighborCandidates")]
+        public virtual System.Nullable<int> ApproximateNeighborCandidates { get; set; }
+
+        /// <summary>
+        /// Optional. The fraction of the number of leaves to search, set at query time allows user to tune search
+        /// performance. This value increase result in both search accuracy and latency increase. The value should be
+        /// between 0.0 and 1.0.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("leafNodesSearchFraction")]
+        public virtual System.Nullable<double> LeafNodesSearchFraction { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// String filter is used to search a subset of the entities by using boolean rules on string columns. For example:
+    /// if a query specifies string filter with 'name = color, allow_tokens = {red, blue}, deny_tokens = {purple}','
+    /// then that query will match entities that are red or blue, but if those points are also purple, then they will be
+    /// excluded even if they are red/blue. Only string filter is supported for now, numeric filter will be supported in
+    /// the near future.
+    /// </summary>
+    public class GoogleCloudAiplatformV1NearestNeighborQueryStringFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The allowed tokens.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowTokens")]
+        public virtual System.Collections.Generic.IList<string> AllowTokens { get; set; }
+
+        /// <summary>Optional. The denied tokens.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("denyTokens")]
+        public virtual System.Collections.Generic.IList<string> DenyTokens { get; set; }
+
+        /// <summary>Required. Column names in BigQuery that used as filters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Runtime operation metadata with regard to Matching Engine Index.</summary>
     public class GoogleCloudAiplatformV1NearestNeighborSearchOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -48540,6 +49042,40 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Cloud Storage URI pointing to the original file in user's bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceGcsUri")]
         public virtual string SourceGcsUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Nearest neighbors for one query.</summary>
+    public class GoogleCloudAiplatformV1NearestNeighbors : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>All its neighbors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("neighbors")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1NearestNeighborsNeighbor> Neighbors { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A neighbor of the query vector.</summary>
+    public class GoogleCloudAiplatformV1NearestNeighborsNeighbor : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The distance between the neighbor and the query vector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("distance")]
+        public virtual System.Nullable<double> Distance { get; set; }
+
+        /// <summary>The id of the similar entity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityId")]
+        public virtual string EntityId { get; set; }
+
+        /// <summary>
+        /// The attributes of the neighbor, e.g. filters, crowding and metadata Note that full entities are returned
+        /// only when "return_full_entity" is set to true. Otherwise, only the "entity_id" and "distance" fields are
+        /// populated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityKeyValues")]
+        public virtual GoogleCloudAiplatformV1FetchFeatureValuesResponse EntityKeyValues { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -50204,6 +50740,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deploy")]
         public virtual GoogleCloudAiplatformV1PublisherModelCallToActionDeploy Deploy { get; set; }
 
+        /// <summary>Optional. Deploy PublisherModel to Google Kubernetes Engine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployGke")]
+        public virtual GoogleCloudAiplatformV1PublisherModelCallToActionDeployGke DeployGke { get; set; }
+
         /// <summary>Optional. Open evaluation pipeline of the PublisherModel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("openEvaluationPipeline")]
         public virtual GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences OpenEvaluationPipeline { get; set; }
@@ -50300,6 +50840,17 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Required. The title of the regional resource reference.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configurations for PublisherModel GKE deployment</summary>
+    public class GoogleCloudAiplatformV1PublisherModelCallToActionDeployGke : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. GKE deployment configuration in yaml format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gkeYamlConfigs")]
+        public virtual System.Collections.Generic.IList<string> GkeYamlConfigs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -51594,12 +52145,6 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableRetries")]
         public virtual System.Nullable<bool> DisableRetries { get; set; }
-
-        /// <summary>
-        /// Optional. This is the maximum time a user will wait in the QRM queue for resources. Default is 1 day
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maxWaitDuration")]
-        public virtual object MaxWaitDuration { get; set; }
 
         /// <summary>
         /// Restarts the entire CustomJob if a worker gets restarted. This feature can be used by distributed training
@@ -55938,6 +56483,36 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The request message for FeatureOnlineStoreService.SearchNearestEntities.</summary>
+    public class GoogleCloudAiplatformV1SearchNearestEntitiesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual GoogleCloudAiplatformV1NearestNeighborQuery Query { get; set; }
+
+        /// <summary>
+        /// Optional. If set to true, the full entities (including all vector values and metadata) of the nearest
+        /// neighbors are returned; otherwise only entity id of the nearest neighbors will be returned. Note that
+        /// returning full entities will significantly increase the latency and cost of the query.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnFullEntity")]
+        public virtual System.Nullable<bool> ReturnFullEntity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for FeatureOnlineStoreService.SearchNearestEntities</summary>
+    public class GoogleCloudAiplatformV1SearchNearestEntitiesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The nearest neighbors of the query entity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nearestNeighbors")]
+        public virtual GoogleCloudAiplatformV1NearestNeighbors NearestNeighbors { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A set of Shielded Instance options. See [Images using supported Shielded VM
     /// features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
@@ -58573,6 +59148,14 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("datapoints")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1IndexDatapoint> Datapoints { get; set; }
 
+        /// <summary>
+        /// Optional. Update mask is used to specify the fields to be overwritten in the datapoints by the update. The
+        /// fields specified in the update_mask are relative to each IndexDatapoint inside datapoints, not the full
+        /// request. Updatable fields: * Use `all_restricts` to update both restricts and numeric_restricts.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -60077,6 +60660,11 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("safetycat")]
         public virtual LearningGenaiRootHarmSafetyCatCategories Safetycat { get; set; }
 
+        /// <summary>
+        /// Spii Filter uses buckets http://google3/google/privacy/dlp/v2/storage.proto;l=77;rcl=584719820 to classify
+        /// the input. LMRoot converts the bucket into double score. For example the score for "POSSIBLE" is 3 / 5 = 0.6
+        /// .
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spii")]
         public virtual LearningGenaiRootHarmSpiiFilter Spii { get; set; }
 

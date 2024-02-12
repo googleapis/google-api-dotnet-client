@@ -1032,6 +1032,16 @@ namespace Google.Apis.Contactcenterinsights.v1
                     public virtual string Filter { get; set; }
 
                     /// <summary>
+                    /// Optional. The attribute by which to order conversations in the response. If empty, conversations
+                    /// will be ordered by descending creation time. Supported values are one of the following: *
+                    /// create_time * duration * turn_count * latest_analysis The default sort order is ascending. To
+                    /// specify order, append `asc` or `desc`, i.e. `create_time desc`. See
+                    /// https://google.aip.dev/132#ordering for more details.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
                     /// The maximum number of conversations to return in the response. A valid page size ranges from 0
                     /// to 1,000 inclusive. If the page size is zero or unspecified, a default page size of 100 will be
                     /// chosen. Note that a call might return fewer results than the requested page size.
@@ -1094,6 +1104,14 @@ namespace Google.Apis.Contactcenterinsights.v1
                         RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1772,6 +1790,59 @@ namespace Google.Apis.Contactcenterinsights.v1
                     }
                 }
 
+                /// <summary>Exports an issue model to the provided destination.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. The issue model to export</param>
+                public virtual ExportRequest Export(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1ExportIssueModelRequest body, string name)
+                {
+                    return new ExportRequest(this.service, body, name);
+                }
+
+                /// <summary>Exports an issue model to the provided destination.</summary>
+                public class ExportRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Export request.</summary>
+                    public ExportRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1ExportIssueModelRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The issue model to export</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1ExportIssueModelRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "export";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:export";
+
+                    /// <summary>Initializes Export parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/issueModels/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Gets an issue model.</summary>
                 /// <param name="name">Required. The name of the issue model to get.</param>
                 public virtual GetRequest Get(string name)
@@ -1813,6 +1884,59 @@ namespace Google.Apis.Contactcenterinsights.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/issueModels/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Imports an issue model from a Cloud Storage bucket.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. The parent resource of the issue model.</param>
+                public virtual ImportRequest Import(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1ImportIssueModelRequest body, string parent)
+                {
+                    return new ImportRequest(this.service, body, parent);
+                }
+
+                /// <summary>Imports an issue model from a Cloud Storage bucket.</summary>
+                public class ImportRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Import request.</summary>
+                    public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1ImportIssueModelRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent resource of the issue model.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1ImportIssueModelRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "import";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/issueModels:import";
+
+                    /// <summary>Initializes Import parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
                         });
                     }
                 }
@@ -4996,6 +5120,124 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata used for export issue model.</summary>
+    public class GoogleCloudContactcenterinsightsV1ExportIssueModelMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The original export request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual GoogleCloudContactcenterinsightsV1ExportIssueModelRequest Request { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to export an issue model.</summary>
+    public class GoogleCloudContactcenterinsightsV1ExportIssueModelRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Google Cloud Storage URI to export the Issue Model to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
+        public virtual GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination GcsDestination { get; set; }
+
+        /// <summary>Required. The issue model to export</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Google Cloud Storage Object URI to save the issue model to.</summary>
+    public class GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Format: `gs:///`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectUri")]
+        public virtual string ObjectUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response from export issue model</summary>
+    public class GoogleCloudContactcenterinsightsV1ExportIssueModelResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Agent Assist frequently-asked-question answer data.</summary>
     public class GoogleCloudContactcenterinsightsV1FaqAnswerData : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5054,6 +5296,132 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
 
     /// <summary>The data for a hold annotation.</summary>
     public class GoogleCloudContactcenterinsightsV1HoldData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata used for import issue model.</summary>
+    public class GoogleCloudContactcenterinsightsV1ImportIssueModelMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The original import request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual GoogleCloudContactcenterinsightsV1ImportIssueModelRequest Request { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to import an issue model.</summary>
+    public class GoogleCloudContactcenterinsightsV1ImportIssueModelRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. If set to true, will create a new issue model from the imported file with randomly generated IDs
+        /// for the issue model and corresponding issues. Otherwise, replaces an existing model with the same ID as the
+        /// file.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createNewModel")]
+        public virtual System.Nullable<bool> CreateNewModel { get; set; }
+
+        /// <summary>Google Cloud Storage source message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
+        public virtual GoogleCloudContactcenterinsightsV1ImportIssueModelRequestGcsSource GcsSource { get; set; }
+
+        /// <summary>Required. The parent resource of the issue model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Google Cloud Storage Object URI to get the issue model file from.</summary>
+    public class GoogleCloudContactcenterinsightsV1ImportIssueModelRequestGcsSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Format: `gs:///`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectUri")]
+        public virtual string ObjectUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response from import issue model</summary>
+    public class GoogleCloudContactcenterinsightsV1ImportIssueModelResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5258,6 +5626,21 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>Required. The Cloud Storage bucket containing source objects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketUri")]
         public virtual string BucketUri { get; set; }
+
+        /// <summary>
+        /// Optional. Custom keys to extract as conversation labels from metadata files in `metadata_bucket_uri`. Keys
+        /// not included in this field will be ignored. Note that there is a limit of 20 labels per conversation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customMetadataKeys")]
+        public virtual System.Collections.Generic.IList<string> CustomMetadataKeys { get; set; }
+
+        /// <summary>
+        /// Optional. The Cloud Storage path to the source object metadata. Note that: [1] metadata files are expected
+        /// to be in JSON format [2] metadata and source objects must be in separate buckets [3] a source object's
+        /// metadata object must share the same name to be properly ingested
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadataBucketUri")]
+        public virtual string MetadataBucketUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8543,6 +8926,124 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata used for export issue model.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The original export request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelRequest Request { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to export an issue model.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Google Cloud Storage URI to export the Issue Model to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelRequestGcsDestination GcsDestination { get; set; }
+
+        /// <summary>Required. The issue model to export</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Google Cloud Storage Object URI to save the issue model to.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelRequestGcsDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Format: `gs:///`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectUri")]
+        public virtual string ObjectUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response from export issue model</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Agent Assist frequently-asked-question answer data.</summary>
     public class GoogleCloudContactcenterinsightsV1alpha1FaqAnswerData : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8601,6 +9102,132 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
 
     /// <summary>The data for a hold annotation.</summary>
     public class GoogleCloudContactcenterinsightsV1alpha1HoldData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata used for import issue model.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The original import request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelRequest Request { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to import an issue model.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. If set to true, will create a new issue model from the imported file with randomly generated IDs
+        /// for the issue model and corresponding issues. Otherwise, replaces an existing model with the same ID as the
+        /// file.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createNewModel")]
+        public virtual System.Nullable<bool> CreateNewModel { get; set; }
+
+        /// <summary>Google Cloud Storage source message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelRequestGcsSource GcsSource { get; set; }
+
+        /// <summary>Required. The parent resource of the issue model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Google Cloud Storage Object URI to get the issue model file from.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelRequestGcsSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Format: `gs:///`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectUri")]
+        public virtual string ObjectUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response from import issue model</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8805,6 +9432,21 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>Required. The Cloud Storage bucket containing source objects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketUri")]
         public virtual string BucketUri { get; set; }
+
+        /// <summary>
+        /// Optional. Custom keys to extract as conversation labels from metadata files in `metadata_bucket_uri`. Keys
+        /// not included in this field will be ignored. Note that there is a limit of 20 labels per conversation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customMetadataKeys")]
+        public virtual System.Collections.Generic.IList<string> CustomMetadataKeys { get; set; }
+
+        /// <summary>
+        /// Optional. The Cloud Storage path to the source object metadata. Note that: [1] metadata files are expected
+        /// to be in JSON format [2] metadata and source objects must be in separate buckets [3] a source object's
+        /// metadata object must share the same name to be properly ingested
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadataBucketUri")]
+        public virtual string MetadataBucketUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
