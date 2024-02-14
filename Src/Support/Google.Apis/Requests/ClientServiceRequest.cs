@@ -262,7 +262,7 @@ namespace Google.Apis.Requests
         #endregion
 
         /// <inheritdoc/>
-        public HttpRequestMessage CreateRequest(Nullable<bool> overrideGZipEnabled = null)
+        public HttpRequestMessage CreateRequest(bool? overrideGZipEnabled = null)
         {
             var builder = CreateBuilder();
             var request = builder.CreateRequest();
@@ -270,25 +270,24 @@ namespace Google.Apis.Requests
             request.SetRequestSerailizedContent(service, body, overrideGZipEnabled.HasValue
                 ? overrideGZipEnabled.Value : service.GZipEnabled);
             AddETag(request);
-// TODO: Use Options instead, ideally in a single place...
-#pragma warning disable CS0618 // Type or member is obsolete
+
             if (_unsuccessfulResponseHandlers != null)
             {
-                request.Properties.Add(ConfigurableMessageHandler.UnsuccessfulResponseHandlerKey, _unsuccessfulResponseHandlers);
+                request.SetOption(ConfigurableMessageHandler.UnsuccessfulResponseHandlerKey, _unsuccessfulResponseHandlers);
             }
             if (_exceptionHandlers != null)
             {
-                request.Properties.Add(ConfigurableMessageHandler.ExceptionHandlerKey, _exceptionHandlers);
+                request.SetOption(ConfigurableMessageHandler.ExceptionHandlerKey, _exceptionHandlers);
             }
             if (_executeInterceptors != null)
             {
-                request.Properties.Add(ConfigurableMessageHandler.ExecuteInterceptorKey, _executeInterceptors);
+                request.SetOption(ConfigurableMessageHandler.ExecuteInterceptorKey, _executeInterceptors);
             }
             if (Credential != null)
             {
-                request.Properties.Add(ConfigurableMessageHandler.CredentialKey, Credential);
+                request.SetOption(ConfigurableMessageHandler.CredentialKey, Credential);
             }
-#pragma warning restore CS0618 // Type or member is obsolete
+
             ModifyRequest?.Invoke(request);
             return request;
         }

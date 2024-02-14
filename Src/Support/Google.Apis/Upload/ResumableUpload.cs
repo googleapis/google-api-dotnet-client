@@ -29,7 +29,6 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Reflection;
 using System.Runtime.ExceptionServices;
 using System.Threading;
 using System.Threading.Tasks;
@@ -232,12 +231,8 @@ namespace Google.Apis.Upload
 
             public void AddToRequest(HttpRequestMessage request)
             {
-                // TODO: Use Options instead, ideally in a single place...
-#pragma warning disable CS0618 // Type or member is obsolete
-                // This assumes the property hasn't been set elsewhere - but that's reasonable as we're creating the messages ourselves in this class.
-                request.Properties[ConfigurableMessageHandler.ExceptionHandlerKey] = new List<IHttpExceptionHandler> { this };
-                request.Properties[ConfigurableMessageHandler.UnsuccessfulResponseHandlerKey] = new List<IHttpUnsuccessfulResponseHandler> { this };
-#pragma warning restore CS0618 // Type or member is obsolete
+                request.SetOption(ConfigurableMessageHandler.ExceptionHandlerKey,new List<IHttpExceptionHandler> { this });
+                request.SetOption(ConfigurableMessageHandler.UnsuccessfulResponseHandlerKey, new List<IHttpUnsuccessfulResponseHandler> { this });
             }
 
             public Task<bool> HandleResponseAsync(HandleUnsuccessfulResponseArgs args)
