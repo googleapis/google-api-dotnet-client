@@ -22,7 +22,6 @@ using Google.Apis.Requests;
 using Google.Apis.Responses;
 using Google.Apis.Testing;
 using Google.Apis.Util;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,12 +34,12 @@ namespace Google.Apis.Services
     /// A base class for a client service which provides common mechanism for all services, like 
     /// serialization and GZip support.  It should be safe to use a single service instance to make server requests
     /// concurrently from multiple threads. 
-    /// This class adds a special <see cref="Google.Apis.Http.IHttpExecuteInterceptor"/> to the 
-    /// <see cref="Google.Apis.Http.ConfigurableMessageHandler"/> execute interceptor list, which uses the given 
+    /// This class adds a special <see cref="IHttpExecuteInterceptor"/> to the 
+    /// <see cref="ConfigurableMessageHandler"/> execute interceptor list, which uses the given 
     /// Authenticator. It calls to its applying authentication method, and injects the "Authorization" header in the 
     /// request.
-    /// If the given Authenticator implements <see cref="Google.Apis.Http.IHttpUnsuccessfulResponseHandler"/>, this 
-    /// class adds the Authenticator to the <see cref="Google.Apis.Http.ConfigurableMessageHandler"/>'s unsuccessful 
+    /// If the given Authenticator implements <see cref="IHttpUnsuccessfulResponseHandler"/>, this 
+    /// class adds the Authenticator to the <see cref="ConfigurableMessageHandler"/>'s unsuccessful 
     /// response handler list.
     /// </summary>
     public abstract class BaseClientService : IClientService
@@ -59,14 +58,14 @@ namespace Google.Apis.Services
         {
             /// <summary>
             /// Gets or sets the factory for creating <see cref="System.Net.Http.HttpClient"/> instance. If this 
-            /// property is not set the service uses a new <see cref="Google.Apis.Http.HttpClientFactory"/> instance.
+            /// property is not set the service uses a new <see cref="Http.HttpClientFactory"/> instance.
             /// </summary>
             public IHttpClientFactory HttpClientFactory { get; set; }
 
             /// <summary>
             /// Gets or sets a HTTP client initializer which is able to customize properties on 
-            /// <see cref="Google.Apis.Http.ConfigurableHttpClient"/> and 
-            /// <see cref="Google.Apis.Http.ConfigurableMessageHandler"/>.
+            /// <see cref="ConfigurableHttpClient"/> and 
+            /// <see cref="ConfigurableMessageHandler"/>.
             /// </summary>
             public IConfigurableHttpClientInitializer HttpClientInitializer { get; set; }
 
@@ -75,9 +74,9 @@ namespace Google.Apis.Services
             /// <c>UnsuccessfulResponse503</c>, which means that exponential back-off is used on 503 abnormal HTTP
             /// response.
             /// If the value is set to <c>None</c>, no exponential back-off policy is used, and it's up to the user to
-            /// configure the <see cref="Google.Apis.Http.ConfigurableMessageHandler"/> in an
-            /// <see cref="Google.Apis.Http.IConfigurableHttpClientInitializer"/> to set a specific back-off
-            /// implementation (using <see cref="Google.Apis.Http.BackOffHandler"/>).
+            /// configure the <see cref="ConfigurableMessageHandler"/> in an
+            /// <see cref="IConfigurableHttpClientInitializer"/> to set a specific back-off
+            /// implementation (using <see cref="BackOffHandler"/>).
             /// </summary>
             public ExponentialBackOffPolicy DefaultExponentialBackOffPolicy { get; set; }
 
@@ -85,7 +84,7 @@ namespace Google.Apis.Services
             public bool GZipEnabled { get; set; }
 
             /// <summary>
-            /// Gets or sets the serializer. Default value is <see cref="Google.Apis.Json.NewtonsoftJsonSerializer"/>.
+            /// Gets or sets the serializer. Default value is <see cref="NewtonsoftJsonSerializer"/>.
             /// </summary>
             public ISerializer Serializer { get; set; }
 
@@ -226,10 +225,10 @@ namespace Google.Apis.Services
         }
 
         /// <summary>
-        /// Creates the back-off handler with <see cref="Google.Apis.Util.ExponentialBackOff"/>. 
+        /// Creates the back-off handler with <see cref="ExponentialBackOff"/>. 
         /// Overrides this method to change the default behavior of back-off handler (e.g. you can change the maximum
         /// waited request's time span, or create a back-off handler with you own implementation of 
-        /// <see cref="Google.Apis.Util.IBackOff"/>).
+        /// <see cref="IBackOff"/>).
         /// </summary>
         protected virtual BackOffHandler CreateBackOffHandler()
         {
