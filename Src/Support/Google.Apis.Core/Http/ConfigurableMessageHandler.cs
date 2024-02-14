@@ -14,18 +14,18 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using Google.Apis.Core.Util;
+using Google.Apis.Logging;
+using Google.Apis.Testing;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-
-using Google.Apis.Logging;
-using Google.Apis.Testing;
-using System.Net.Http.Headers;
 
 namespace Google.Apis.Http
 {
@@ -48,27 +48,27 @@ namespace Google.Apis.Http
         public const int MaxAllowedNumTries = 20;
 
         /// <summary>
-        /// Key for unsuccessful response handlers in an <see cref="HttpRequestMessage"/> properties.
+        /// Key for unsuccessful response handlers in an <see cref="HttpRequestMessage"/> options.
         /// </summary>
         public const string UnsuccessfulResponseHandlerKey = "__UnsuccessfulResponseHandlerKey";
 
         /// <summary>
-        /// Key for exception handlers in an <see cref="HttpRequestMessage"/> properties.
+        /// Key for exception handlers in an <see cref="HttpRequestMessage"/> options.
         /// </summary>
         public const string ExceptionHandlerKey = "__ExceptionHandlerKey";
 
         /// <summary>
-        /// Key for execute handlers in an <see cref="HttpRequestMessage"/> properties.
+        /// Key for execute handlers in an <see cref="HttpRequestMessage"/> options.
         /// </summary>
         public const string ExecuteInterceptorKey = "__ExecuteInterceptorKey";
 
         /// <summary>
-        /// Key for a stream response interceptor provider in an <see cref="HttpRequestMessage"/> properties.
+        /// Key for a stream response interceptor provider in an <see cref="HttpRequestMessage"/> options.
         /// </summary>
         public const string ResponseStreamInterceptorProviderKey = "__ResponseStreamInterceptorProviderKey";
 
         /// <summary>
-        /// Key for a credential in a <see cref="HttpRequestMessage"/> properties.
+        /// Key for a credential in a <see cref="HttpRequestMessage"/> options.
         /// </summary>
         public const string CredentialKey = "__CredentialKey";
 
@@ -434,11 +434,7 @@ namespace Google.Apis.Http
                 {
                     interceptors = executeInterceptors.ToList();
                 }
-                // TODO: Use Options instead, ideally in a single place...
-#pragma warning disable CS0618 // Type or member is obsolete
-                if (request.Properties.TryGetValue(ExecuteInterceptorKey, out var interceptorsValue) &&
-#pragma warning restore CS0618 // Type or member is obsolete
-                    interceptorsValue is List<IHttpExecuteInterceptor> perCallinterceptors)
+                if (request.TryGetOption(ExecuteInterceptorKey, out List<IHttpExecuteInterceptor> perCallinterceptors))
                 {
                     interceptors.AddRange(perCallinterceptors);
                 }
@@ -497,11 +493,7 @@ namespace Google.Apis.Http
                     {
                         handlers = exceptionHandlers.ToList();
                     }
-                    // TODO: Use Options instead, ideally in a single place...
-#pragma warning disable CS0618 // Type or member is obsolete
-                    if (request.Properties.TryGetValue(ExceptionHandlerKey, out var handlersValue) &&
-#pragma warning restore CS0618 // Type or member is obsolete
-                        handlersValue is List<IHttpExceptionHandler> perCallHandlers)
+                    if (request.TryGetOption(ExceptionHandlerKey, out List<IHttpExceptionHandler> perCallHandlers))
                     {
                         handlers.AddRange(perCallHandlers);
                     }
@@ -563,11 +555,7 @@ namespace Google.Apis.Http
                         {
                             handlers = unsuccessfulResponseHandlers.ToList();
                         }
-                        // TODO: Use Options instead, ideally in a single place...
-#pragma warning disable CS0618 // Type or member is obsolete
-                        if (request.Properties.TryGetValue(UnsuccessfulResponseHandlerKey, out var handlersValue) &&
-#pragma warning restore CS0618 // Type or member is obsolete
-                            handlersValue is List<IHttpUnsuccessfulResponseHandler> perCallHandlers)
+                        if (request.TryGetOption(UnsuccessfulResponseHandlerKey, out List<IHttpUnsuccessfulResponseHandler> perCallHandlers))
                         {
                             handlers.AddRange(perCallHandlers);
                         }
@@ -678,16 +666,11 @@ namespace Google.Apis.Http
             return false;
         }
 
-// TODO: Use Options instead, ideally in a single place...
-#pragma warning disable CS0618 // Type or member is obsolete
         private IHttpExecuteInterceptor GetEffectiveCredential(HttpRequestMessage request) =>
-            (request.Properties.TryGetValue(CredentialKey, out var cred) && cred is IHttpExecuteInterceptor callCredential)
-            ? callCredential : Credential;
+            request.TryGetOption(CredentialKey, out IHttpExecuteInterceptor callCredential) ? callCredential : Credential;
 
         private int GetEffectiveMaxRetries(HttpRequestMessage request) =>
-            (request.Properties.TryGetValue(MaxRetriesKey, out var maxRetries) && maxRetries is int perRequestMaxRetries)
-            ? perRequestMaxRetries : NumTries;
-#pragma warning restore CS0618 // Type or member is obsolete
+            request.TryGetOption(MaxRetriesKey, out int perRequestMaxRetries) ? perRequestMaxRetries : NumTries;
 
         /// <summary>
         /// Handles redirect if the response's status code is redirect, redirects are turned on, and the header has

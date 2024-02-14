@@ -14,13 +14,10 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System;
-using System.Collections.Generic;
-
-using Google.Apis.Discovery;
 using Google.Apis.Http;
 using Google.Apis.Services;
 using Google.Apis.Util;
+using System.Collections.Generic;
 
 namespace Google.Apis.Tests.Mocks
 {
