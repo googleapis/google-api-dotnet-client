@@ -58,10 +58,11 @@ namespace Google.Apis.Http
             // Create the handler.
             var handler = CreateHandler(args);
             var configurableHandler = new ConfigurableMessageHandler(handler)
-                {
-                    ApplicationName = args.ApplicationName,
-                    GoogleApiClientHeader = args.GoogleApiClientHeader
-                };
+            {
+                ApplicationName = args.ApplicationName,
+                GoogleApiClientHeader = args.GoogleApiClientHeader,
+                UniverseDomain = args.UniverseDomain,
+            };
 
             // Create the client.
             var client = new ConfigurableHttpClient(configurableHandler);

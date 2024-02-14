@@ -73,6 +73,11 @@ namespace Google.Apis.Http
         public const string CredentialKey = "__CredentialKey";
 
         /// <summary>
+        /// Key for a universe domain in a <see cref="HttpRequestMessage"/> options.
+        /// </summary>
+        internal const string UniverseDomainKey = "__UniverseDomainKey";
+
+        /// <summary>
         /// Key for request specific max retries.
         /// </summary>
         public const string MaxRetriesKey = "__MaxRetriesKey";
@@ -345,6 +350,13 @@ namespace Google.Apis.Http
         /// </summary>
         public IHttpExecuteInterceptor Credential { get; set; }
 
+        /// <summary>
+        /// The universe domain to include as an option in the request.
+        /// This may be used by the <see cref="Credential"/> to validate against its own universe domain.
+        /// May be null, in which case no universe domain will be included in the request.
+        /// </summary>
+        public string UniverseDomain { get; set; }
+
         /// <summary>Constructs a new configurable message handler.</summary>
         public ConfigurableMessageHandler(HttpMessageHandler httpMessageHandler)
             : base(httpMessageHandler)
@@ -416,6 +428,13 @@ namespace Google.Apis.Http
             if (apiClientHeader != null)
             {
                 request.Headers.Add("x-goog-api-client", apiClientHeader);
+            }
+
+            // Set the universe domain as a request option. Credentials may use it to validate it
+            // against their own universe domain.
+            if (UniverseDomain is not null)
+            {
+                request.SetOption(UniverseDomainKey, UniverseDomain);
             }
 
             HttpResponseMessage response = null;

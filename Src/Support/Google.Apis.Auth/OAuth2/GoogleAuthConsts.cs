@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using System;
+using System.Net.Http;
 
 namespace Google.Apis.Auth.OAuth2
 {
@@ -104,6 +105,11 @@ namespace Google.Apis.Auth.OAuth2
         /// The default universe domain.
         /// </summary>
         internal const string DefaultUniverseDomain = "googleapis.com";
+
+        /// <summary>
+        /// Key for a universe domain in a <see cref="HttpRequestMessage"/> options.
+        /// </summary>
+        internal const string UniverseDomainKey = "__UniverseDomainKey";
 
         /// <summary>
         /// The non empty value set on <see cref="QuotaProjectEnvironmentVariable"/>, if any;

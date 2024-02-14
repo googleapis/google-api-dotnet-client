@@ -713,6 +713,92 @@ TOgrHXgWf1cxYf5cB8DfC3NoaYZ4D3Wh9Qjn3cl36CXfSKEnPK49DkrGZz1avAjV
             await Assert.ThrowsAsync<InvalidOperationException>(() => googleCredential.SignBlobAsync(Encoding.ASCII.GetBytes("toSign")));
         }
 
+        [Fact]
+        public async Task UniverseDomain_RequestAndCredentialSame()
+        {
+            string universeDomain = "custom.domain";
+
+            HttpRequestMessage request = new HttpRequestMessage();
+            request.SetOption(GoogleAuthConsts.UniverseDomainKey, universeDomain);
+
+            IHttpExecuteInterceptor credential = GoogleCredential.FromAccessToken("fake_token")
+                .CreateWithUniverseDomain(universeDomain);
+
+            await credential.InterceptAsync(request, default);
+
+            Assert.Equal("fake_token", request.Headers.Authorization.Parameter);
+        }
+
+        [Fact]
+        public async Task UniverseDomain_NoneInRequestDefaultInCredential()
+        {
+            HttpRequestMessage request = new HttpRequestMessage();
+
+            IHttpExecuteInterceptor credential = GoogleCredential.FromAccessToken("fake_token");
+
+            await credential.InterceptAsync(request, default);
+
+            Assert.Equal("fake_token", request.Headers.Authorization.Parameter);
+        }
+
+        [Fact]
+        public async Task UniverseDomain_NoneInRequestCustomInCredential()
+        {
+            HttpRequestMessage request = new HttpRequestMessage();
+
+            IHttpExecuteInterceptor credential = GoogleCredential.FromAccessToken("fake_token")
+                .CreateWithUniverseDomain("custom.domain");
+
+            await credential.InterceptAsync(request, default);
+
+            // If the request has no universe domain information we don't validate,
+            // even if the credential has a custom domain. The request is not defaulted to googleapis.com,
+            // defaulting should happen at request origin. Basically, the credential can make a decision
+            // on defaults for itself but not for any and all requests.
+            Assert.Equal("fake_token", request.Headers.Authorization.Parameter);
+        }
+
+        [Fact]
+        public async Task UniverseDomain_DefaultInRequestNoneInCredential()
+        {
+            HttpRequestMessage request = new HttpRequestMessage();
+            request.SetOption(GoogleAuthConsts.UniverseDomainKey, "googleapis.com");
+
+            IHttpExecuteInterceptor credential = GoogleCredential.FromAccessToken("fake_token");
+
+            await credential.InterceptAsync(request, default);
+
+            // The credential defaults to googleapis.com.
+            Assert.Equal("fake_token", request.Headers.Authorization.Parameter);
+        }
+
+        [Fact]
+        public async Task UniverseDomain_CustomInRequestNoneInCredential()
+        {
+            HttpRequestMessage request = new HttpRequestMessage();
+            request.SetOption(GoogleAuthConsts.UniverseDomainKey, "custom.domain");
+
+            IHttpExecuteInterceptor credential = GoogleCredential.FromAccessToken("fake_token");
+
+            // The credential defaults to googleapis.com which is not the same as the custom domain
+            // specified in the credential.
+            await Assert.ThrowsAsync<InvalidOperationException>(() => credential.InterceptAsync(request, default));
+            Assert.Null(request.Headers.Authorization?.Parameter);
+        }
+
+        [Fact]
+        public async Task UniverseDomain_DifferentCustomInRequestAndCredential()
+        {
+            HttpRequestMessage request = new HttpRequestMessage();
+            request.SetOption(GoogleAuthConsts.UniverseDomainKey, "custom1.domain");
+
+            IHttpExecuteInterceptor credential = GoogleCredential.FromAccessToken("fake_token")
+                .CreateWithUniverseDomain("custom2.domain");
+
+            await Assert.ThrowsAsync<InvalidOperationException>(() => credential.InterceptAsync(request, default));
+            Assert.Null(request.Headers.Authorization?.Parameter);
+        }
+
         /// <summary>
         /// Fake implementation of <see cref="IAuthorizationCodeFlow"/> which only supports fetching the
         /// clock and the access method.

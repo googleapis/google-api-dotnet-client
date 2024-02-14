@@ -44,6 +44,8 @@ namespace Google.Apis.Services
     /// </summary>
     public abstract class BaseClientService : IClientService
     {
+        private const string DefaultUniverseDomain = "googleapis.com";
+
         /// <summary>The class logger.</summary>
         private static readonly ILogger Logger = ApplicationContext.Logger.ForType<BaseClientService>();
 
@@ -109,6 +111,19 @@ namespace Google.Apis.Services
             public string BaseUri { get; set; }
 
             /// <summary>
+            /// The universe domain to connect to, or null to use the default universe domain <see cref="DefaultUniverseDomain"/>.
+            /// </summary>
+            /// <remarks>
+            /// <para>
+            /// <see cref="UniverseDomain"/> is used to build the endpoint to connect to, unless <see cref="BaseUri"/>
+            /// is set, in which case <see cref="BaseUri"/> will be used without further modification.
+            /// <see cref="UniverseDomain"/> may also be used by the credential, if any, to validate against its
+            /// own universe domain.
+            /// </para>
+            /// </remarks>
+            public string UniverseDomain { get; set; }
+
+            /// <summary>
             /// Builder for the x-goog-api-client header, collecting version information.
             /// Services automatically add the API library version to this.
             /// Most users will never need to configure this, but higher level abstraction Google libraries
@@ -164,6 +179,7 @@ namespace Google.Apis.Services
             ApiKey = initializer.ApiKey;
             ApplicationName = initializer.ApplicationName;
             BaseUriOverride = initializer.BaseUri;
+            UniverseDomain = initializer.UniverseDomain;
             ValidateParameters = initializer.ValidateParameters;
             if (ApplicationName == null)
             {
@@ -186,6 +202,17 @@ namespace Google.Apis.Services
         /// </summary>
         protected string BaseUriOverride { get; }
 
+        /// <summary>
+        /// The universe domain to connect to, or null to use the default universe domain <see cref="DefaultUniverseDomain"/>.
+        /// </summary>
+        /// <remarks>
+        /// <para>
+        /// <see cref="UniverseDomain"/> is used to build the endpoint to connect to, unless <see cref="BaseUriOverride"/>
+        /// is set, in which case <see cref="BaseUriOverride"/> will be used without further modification.
+        /// </para>
+        /// </remarks>
+        public string UniverseDomain { get; set; }
+
         /// <summary>Returns <c>true</c> if this service contains the specified feature.</summary>
         private bool HasFeature(Features feature)
         {
@@ -197,11 +224,12 @@ namespace Google.Apis.Services
             // If factory wasn't set use the default HTTP client factory.
             var factory = initializer.HttpClientFactory ?? new HttpClientFactory();
             var args = new CreateHttpClientArgs
-                {
-                    GZipEnabled = GZipEnabled,
-                    ApplicationName = ApplicationName,
-                    GoogleApiClientHeader = versionHeader
-                };
+            {
+                GZipEnabled = GZipEnabled,
+                ApplicationName = ApplicationName,
+                GoogleApiClientHeader = versionHeader,
+                UniverseDomain = UniverseDomain ?? DefaultUniverseDomain,
+            };
 
             // Add the user's input initializer.
             if (HttpClientInitializer != null)
@@ -235,6 +263,29 @@ namespace Google.Apis.Services
             // TODO(peleyal): consider return here interface and not the concrete class
             return new BackOffHandler(new ExponentialBackOff());
         }
+
+        /// <summary>
+        /// Gets the effective URI taking into account the <see cref="UniverseDomain"/>.
+        /// </summary>
+        /// <param name="explicitUri">An explicit URI. May be null.</param>
+        /// <param name="defaultUri">A default URI. May be null.</param>
+        /// <returns>
+        /// <list type="bullet">
+        /// <item><paramref name="explicitUri"/> if not null.</item>
+        /// <item>
+        /// Otherwise, if <see cref="UniverseDomain"/> is not null, the result of replacing
+        /// <see cref="DefaultUniverseDomain"/> with <see cref="UniverseDomain"/>
+        /// in <paramref name="defaultUri"/>.
+        /// </item>
+        /// Otherwise <paramref name="defaultUri"/>.
+        /// </list>
+        /// </returns>
+        protected internal string GetEffectiveUri(string explicitUri, string defaultUri) =>
+            // Note this method needs to receive explicit and default URIs so we can use
+            // it for the batch endpoint as well. The batch endpoint does not have an
+            // override mechanism, so we pass explicitUri as null in that case.
+            explicitUri ??
+            (UniverseDomain is null ? defaultUri : defaultUri?.Replace(DefaultUniverseDomain, UniverseDomain));
 
         #region IClientService Members
 
