@@ -223,6 +223,39 @@ namespace Google.Apis.Tests.Apis.Services
             Assert.Equal(expectedServiceUri, service.BaseUri);
         }
 
+        [Theory]
+        [InlineData(null, null, null, null)]
+        [InlineData(null, "custom.domain", null, null)]
+        [InlineData(null, "custom.domain", "https://service.googleapis.com", "https://service.custom.domain")]
+        [InlineData(null, "custom.domain", "https://service.another.domain", "https://service.another.domain")]
+        [InlineData("https://service.explicit.domain", "custom.domain", "https://service.googleapis.com", "https://service.explicit.domain")]
+        [InlineData("https://service.explicit.domain", "custom.domain", "https://service.another.domain", "https://service.explicit.domain")]
+        public void UniverseDomain_GetEffectiveUri(string explicitUri, string universeDomain, string defaultUri, string expectedUri)
+        {
+            var service = new MockClientService(new BaseClientService.Initializer
+            { 
+                // We don't need to initialize BaseUri here as we are testing the GetEffectiveUri method directly.
+                UniverseDomain = universeDomain
+            });
+
+            var effectiveUri = service.GetEffectiveUri(explicitUri, defaultUri);
+            Assert.Equal(expectedUri, effectiveUri);
+        }
+
+        [Theory]
+        [InlineData(null, "googleapis.com")]
+        [InlineData("googleapis.com", "googleapis.com")]
+        [InlineData("custom.domain", "custom.domain")]
+        public void UniverseDomain_PropagatesToMessageHandler(string explicitUniverseDomain, string expectedUnirseDomain)
+        {
+            var service = new MockClientService(new BaseClientService.Initializer
+            {
+                UniverseDomain = explicitUniverseDomain
+            });
+
+            Assert.Equal(service.HttpClient.MessageHandler.UniverseDomain, expectedUnirseDomain);
+        }
+
         /// <summary>
         /// Tests the default values of <seealso cref="Google.Apis.Services.BaseClientService"/>
         /// </summary>

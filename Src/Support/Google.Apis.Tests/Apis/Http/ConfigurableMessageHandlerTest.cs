@@ -1129,16 +1129,53 @@ namespace Google.Apis.Tests.Apis.Http
             Assert.Single(fakeHandler.LatestRequestHeaders, h => h.Key == "x-goog-user-project");
         }
 
+        [Theory]
+        // googleapis.com is no different here than any other domain,
+        // we still test for it explicitly to document behaviour.
+        [InlineData("googleapis.com")]
+        [InlineData("custom.domain")]
+        public async Task PropagatesUniverseDomain(string expectedUniverseDomain)
+        {
+            var fakeHandler = new FakeHandler();
+            var configurableHandler = new ConfigurableMessageHandler(fakeHandler)
+            {
+                UniverseDomain = expectedUniverseDomain
+            };
+
+            using (var client = new HttpClient(configurableHandler))
+            {
+                await client.GetAsync("http://will.be.ignored");
+            }
+
+            Assert.True(fakeHandler.LatestRequest.TryGetOption(ConfigurableMessageHandler.UniverseDomainKey, out string universeDomain));
+            Assert.Equal(expectedUniverseDomain, universeDomain);
+        }
+
+        [Fact]
+        public async Task NoUniverseDomain()
+        {
+            var fakeHandler = new FakeHandler();
+            var configurableHandler = new ConfigurableMessageHandler(fakeHandler);
+
+            using (var client = new HttpClient(configurableHandler))
+            {
+                await client.GetAsync("http://will.be.ignored");
+            }
+
+            Assert.False(fakeHandler.LatestRequest.TryGetOption(ConfigurableMessageHandler.UniverseDomainKey, out string universeDomain));
+        }
+
         /// <summary>
         /// Handler for intercepting all authenticated requests.
         /// </summary>
         private class FakeHandler : HttpMessageHandler
         {
-            public HttpRequestHeaders LatestRequestHeaders { get; private set; }
+            public HttpRequestHeaders LatestRequestHeaders => LatestRequest?.Headers;
+            public HttpRequestMessage LatestRequest { get; private set; }
 
             protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
             {
-                LatestRequestHeaders = request.Headers;
+                LatestRequest = request;
                 return Task.FromResult(new HttpResponseMessage());
             }
         }

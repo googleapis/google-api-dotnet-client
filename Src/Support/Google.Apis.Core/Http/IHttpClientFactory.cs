@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using System.Collections.Generic;
+using System.Net.Http;
 
 namespace Google.Apis.Http
 {
@@ -26,6 +27,13 @@ namespace Google.Apis.Http
 
         /// <summary>Gets or sets the application name that is sent in the User-Agent header.</summary>
         public string ApplicationName { get; set; }
+
+        /// <summary>
+        /// The universe domain that will be included as part of <see cref="HttpRequestMessage"/> options
+        /// that may be used by the credential, if any, to validate against its own universe domain.
+        /// May be null in which case no universe domain will be included in the request.
+        /// </summary>
+        public string UniverseDomain { get; set; }
 
         /// <summary>Gets a list of initializers to initialize the HTTP client instance.</summary>
         public IList<IConfigurableHttpClientInitializer> Initializers { get; private set; }

@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using Google.Apis.Http;
+using Google.Apis.Util;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -426,7 +427,18 @@ namespace Google.Apis.Auth.OAuth2
         }
 
         // Proxy IHttpExecuteInterceptor's only method.
-        Task IHttpExecuteInterceptor.InterceptAsync(HttpRequestMessage request, CancellationToken cancellationToken) =>
-            credential.InterceptAsync(request, cancellationToken);
+        async Task IHttpExecuteInterceptor.InterceptAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+        {
+            if (request?.TryGetOption(GoogleAuthConsts.UniverseDomainKey, out string targetUniverseDomain) == true)
+            {
+                string credentialUniverseDomain = await credential.GetUniverseDomainAsync(cancellationToken).ConfigureAwait(false);
+                if (targetUniverseDomain != credentialUniverseDomain)
+                {
+                    throw new InvalidOperationException(
+                        $"The service client universe domain {targetUniverseDomain} does not match the credential universe domain {credentialUniverseDomain}.");
+                }
+            }
+            await credential.InterceptAsync(request, cancellationToken).ConfigureAwait(false);
+        }
     }
 }

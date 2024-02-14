@@ -55,7 +55,8 @@ namespace Google.Apis.Http
             var configurableHandler = new ConfigurableMessageHandler(handler)
             {
                 ApplicationName = args.ApplicationName,
-                GoogleApiClientHeader = args.GoogleApiClientHeader
+                GoogleApiClientHeader = args.GoogleApiClientHeader,
+                UniverseDomain = args.UniverseDomain,
             };
 
             // We always set not to dispose the inner handler, it's not created

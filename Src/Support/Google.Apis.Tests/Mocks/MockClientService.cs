@@ -56,5 +56,7 @@ namespace Google.Apis.Tests.Mocks
             // time span into a list.
             return new MockBackOffHandler(new ExponentialBackOff());
         }
+
+        public new string GetEffectiveUri(string explicitUri, string defaultUri) => base.GetEffectiveUri(explicitUri, defaultUri);
     }
 }
