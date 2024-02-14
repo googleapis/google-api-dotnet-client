@@ -224,42 +224,6 @@ namespace Google.Apis.Tests.Apis.Services
         }
 
         /// <summary>
-        /// A mock authentication message handler which returns an unauthorized response in the first call, and a 
-        /// successful response in the second.
-        /// </summary>
-        class MockAuthenticationMessageHandler : CountableMessageHandler
-        {
-            internal static string FirstToken = "invalid";
-            internal static string SecondToken = "valid";
-
-            protected override Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request,
-                CancellationToken cancellationToken)
-            {
-                TaskCompletionSource<HttpResponseMessage> tcs = new TaskCompletionSource<HttpResponseMessage>();
-                switch (Calls)
-                {
-                    case 1:
-                        Assert.Single(request.Headers.GetValues("Authorization"));
-                        Assert.Equal(FirstToken, request.Headers.GetValues("Authorization").First());
-                        tcs.SetResult(new HttpResponseMessage
-                            {
-                                StatusCode = System.Net.HttpStatusCode.Unauthorized
-                            });
-                        break;
-                    case 2:
-                        Assert.Single(request.Headers.GetValues("Authorization"));
-                        Assert.Equal(SecondToken, request.Headers.GetValues("Authorization").First());
-                        tcs.SetResult(new HttpResponseMessage());
-                        break;
-                    default:
-                        throw new Exception("There should be only two calls");
-                }
-
-                return tcs.Task;
-            }
-        }
-
-        /// <summary>
         /// Tests the default values of <seealso cref="Google.Apis.Services.BaseClientService"/>
         /// </summary>
         [Fact]
