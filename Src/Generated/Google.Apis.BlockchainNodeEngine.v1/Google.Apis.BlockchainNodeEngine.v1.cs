@@ -1648,6 +1648,16 @@ namespace Google.Apis.BlockchainNodeEngine.v1.Data
     /// </summary>
     public class ValidatorConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the
+        /// validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or
+        /// https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that
+        /// while this is often described as "suggested", as we run the execution node we can trust the execution node,
+        /// and therefore this is considered enforced.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("beaconFeeRecipient")]
+        public virtual string BeaconFeeRecipient { get; set; }
+
         /// <summary>Immutable. When true, deploys a GCP-managed validator client alongside the beacon client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedValidatorClient")]
         public virtual System.Nullable<bool> ManagedValidatorClient { get; set; }

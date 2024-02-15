@@ -2038,7 +2038,7 @@ namespace Google.Apis.CloudSupport.v2.Data
     /// projects/123/cases/456
     /// ```
     /// You can use either of them when calling the API. To learn more about project
-    /// identifiers, see [AIP-2510](https://google.aip.dev/cloud/2510).
+    /// identifiers, see [AIP-2510](https://google.aip.dev/cloud/2510). Next ID: 38
     /// </summary>
     public class Case : Google.Apis.Requests.IDirectResponseSchema
     {

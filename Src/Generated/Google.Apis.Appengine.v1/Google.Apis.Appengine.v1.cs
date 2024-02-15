@@ -5824,6 +5824,10 @@ namespace Google.Apis.Appengine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("stage")]
         public virtual string Stage { get; set; }
 
+        /// <summary>Supported operating systems for the runtime, e.g., 'ubuntu22', etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportedOperatingSystems")]
+        public virtual System.Collections.Generic.IList<string> SupportedOperatingSystems { get; set; }
+
         /// <summary>Warning messages, e.g., a deprecation warning.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
         public virtual System.Collections.Generic.IList<string> Warnings { get; set; }

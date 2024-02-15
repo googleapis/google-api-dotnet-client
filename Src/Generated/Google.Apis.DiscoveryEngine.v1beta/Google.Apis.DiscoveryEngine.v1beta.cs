@@ -12686,6 +12686,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Failed due to insufficient quota.</summary>
     public class GoogleCloudDiscoveryengineV1TargetSiteFailureReasonQuotaFailure : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -15568,6 +15569,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Failed due to insufficient quota.</summary>
     public class GoogleCloudDiscoveryengineV1alphaTargetSiteFailureReasonQuotaFailure : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -19400,10 +19402,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     {
         /// <summary>
         /// The model version used to generate the summary. Supported values are: * `stable`: string. Default value when
-        /// no value is specified. Uses a generally available, fine-tuned version of the text-bison@001 model.
-        /// LINT.IfChange * `preview`: string. (Public preview) Uses a fine-tuned version of the text-bison@002 model.
-        /// This model works only for summaries in English.
-        /// LINT.ThenChange(//depot/google3/cloud/console/web/ai/unified_cloud_search/pages/configurations/widget_tab.ts)
+        /// no value is specified. Uses a generally available, fine-tuned version of the text-bison@001 model. *
+        /// `preview`: string. (Public preview) Uses a fine-tuned version of the text-bison@002 model. This model works
+        /// only for summaries in English.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
@@ -19824,6 +19825,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("summaryText")]
         public virtual string SummaryText { get; set; }
 
+        /// <summary>Summary with metadata information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("summaryWithMetadata")]
         public virtual GoogleCloudDiscoveryengineV1betaSearchResponseSummarySummaryWithMetadata SummaryWithMetadata { get; set; }
 
@@ -20065,6 +20067,19 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("onewaySynonymsControlIds")]
         public virtual System.Collections.Generic.IList<string> OnewaySynonymsControlIds { get; set; }
 
+        /// <summary>
+        /// The ranking expression controls the customized ranking on retrieval documents. To leverage this, document
+        /// embedding is required. The ranking expression setting in ServingConfig applies to all search requests served
+        /// by the serving config. However, if SearchRequest.ranking_expression is specified, it overrides the
+        /// ServingConfig ranking expression. The ranking expression is a single function or multiple functions that are
+        /// joined by "+". * ranking_expression = function, { " + ", function }; Supported functions: * double *
+        /// relevance_score * double * dotProduct(embedding_field_path) Function variables: relevance_score: pre-defined
+        /// keywords, used for measure relevance between query and document. embedding_field_path: the document
+        /// embedding field used with query embedding vector. dotProduct: embedding function between
+        /// embedding_field_path and query embedding vector. Example ranking expression: If document has an embedding
+        /// field doc_embedding, the ranking expression could be 0.5 * relevance_score + 0.3 *
+        /// dotProduct(doc_embedding).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rankingExpression")]
         public virtual string RankingExpression { get; set; }
 
@@ -20384,6 +20399,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Failed due to insufficient quota.</summary>
     public class GoogleCloudDiscoveryengineV1betaTargetSiteFailureReasonQuotaFailure : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

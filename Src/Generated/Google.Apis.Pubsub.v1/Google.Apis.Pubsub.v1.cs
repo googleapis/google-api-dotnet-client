@@ -3690,6 +3690,15 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual System.Nullable<bool> DropUnknownFields { get; set; }
 
         /// <summary>
+        /// Optional. The service account to use to write to BigQuery. The subscription creator or updater that
+        /// specifies this field must have `iam.serviceAccounts.actAs` permission on the service account. If not
+        /// specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents),
+        /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
+        public virtual string ServiceAccountEmail { get; set; }
+
+        /// <summary>
         /// Output only. An output-only field that indicates whether or not the subscription can receive messages.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -3843,6 +3852,15 @@ namespace Google.Apis.Pubsub.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxDuration")]
         public virtual object MaxDuration { get; set; }
+
+        /// <summary>
+        /// Optional. The service account to use to write to Cloud Storage. The subscription creator or updater that
+        /// specifies this field must have `iam.serviceAccounts.actAs` permission on the service account. If not
+        /// specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents),
+        /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
+        public virtual string ServiceAccountEmail { get; set; }
 
         /// <summary>
         /// Output only. An output-only field that indicates whether or not the subscription can receive messages.

@@ -60,7 +60,10 @@ namespace Google.Apis.DataPortability.v1beta
         /// <summary>Available OAuth 2.0 scopes for use with the Data Portability API.</summary>
         public class Scope
         {
-            /// <summary>Move a copy of messages between you and the businesses you have conversations with.</summary>
+            /// <summary>
+            /// Move a copy of messages between you and the businesses you have conversations with across Google
+            /// services.
+            /// </summary>
             public static string DataportabilityBusinessmessagingConversations = "https://www.googleapis.com/auth/dataportability.businessmessaging.conversations";
 
             /// <summary>Move a copy of your pinned trips on Maps.</summary>
@@ -87,7 +90,7 @@ namespace Google.Apis.DataPortability.v1beta
             /// <summary>Move a copy of your Maps activity.</summary>
             public static string DataportabilityMyactivityMaps = "https://www.googleapis.com/auth/dataportability.myactivity.maps";
 
-            /// <summary>Move a copy of your search activity.</summary>
+            /// <summary>Move a copy of your Google Search activity.</summary>
             public static string DataportabilityMyactivitySearch = "https://www.googleapis.com/auth/dataportability.myactivity.search";
 
             /// <summary>Move a copy of your Shopping activity.</summary>
@@ -96,10 +99,10 @@ namespace Google.Apis.DataPortability.v1beta
             /// <summary>Move a copy of your YouTube activity.</summary>
             public static string DataportabilityMyactivityYoutube = "https://www.googleapis.com/auth/dataportability.myactivity.youtube";
 
-            /// <summary>Move a copy of your shipping information.</summary>
+            /// <summary>Move a copy of your shipping information on Shopping.</summary>
             public static string DataportabilityShoppingAddresses = "https://www.googleapis.com/auth/dataportability.shopping.addresses";
 
-            /// <summary>Move a copy of reviews you wrote about products or online stores.</summary>
+            /// <summary>Move a copy of reviews you wrote about products or online stores on Google Search.</summary>
             public static string DataportabilityShoppingReviews = "https://www.googleapis.com/auth/dataportability.shopping.reviews";
 
             /// <summary>Move a copy of information about your YouTube channel.</summary>
@@ -142,7 +145,10 @@ namespace Google.Apis.DataPortability.v1beta
         /// <summary>Available OAuth 2.0 scope constants for use with the Data Portability API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>Move a copy of messages between you and the businesses you have conversations with.</summary>
+            /// <summary>
+            /// Move a copy of messages between you and the businesses you have conversations with across Google
+            /// services.
+            /// </summary>
             public const string DataportabilityBusinessmessagingConversations = "https://www.googleapis.com/auth/dataportability.businessmessaging.conversations";
 
             /// <summary>Move a copy of your pinned trips on Maps.</summary>
@@ -169,7 +175,7 @@ namespace Google.Apis.DataPortability.v1beta
             /// <summary>Move a copy of your Maps activity.</summary>
             public const string DataportabilityMyactivityMaps = "https://www.googleapis.com/auth/dataportability.myactivity.maps";
 
-            /// <summary>Move a copy of your search activity.</summary>
+            /// <summary>Move a copy of your Google Search activity.</summary>
             public const string DataportabilityMyactivitySearch = "https://www.googleapis.com/auth/dataportability.myactivity.search";
 
             /// <summary>Move a copy of your Shopping activity.</summary>
@@ -178,10 +184,10 @@ namespace Google.Apis.DataPortability.v1beta
             /// <summary>Move a copy of your YouTube activity.</summary>
             public const string DataportabilityMyactivityYoutube = "https://www.googleapis.com/auth/dataportability.myactivity.youtube";
 
-            /// <summary>Move a copy of your shipping information.</summary>
+            /// <summary>Move a copy of your shipping information on Shopping.</summary>
             public const string DataportabilityShoppingAddresses = "https://www.googleapis.com/auth/dataportability.shopping.addresses";
 
-            /// <summary>Move a copy of reviews you wrote about products or online stores.</summary>
+            /// <summary>Move a copy of reviews you wrote about products or online stores on Google Search.</summary>
             public const string DataportabilityShoppingReviews = "https://www.googleapis.com/auth/dataportability.shopping.reviews";
 
             /// <summary>Move a copy of information about your YouTube channel.</summary>

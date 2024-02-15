@@ -1343,6 +1343,10 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("contentRankLostImpressionShare")]
         public virtual System.Nullable<double> ContentRankLostImpressionShare { get; set; }
 
+        /// <summary>The conversion custom metrics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionCustomMetrics")]
+        public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V0CommonValue> ConversionCustomMetrics { get; set; }
+
         /// <summary>
         /// The number of conversions. This only includes conversion actions which include_in_conversions_metric
         /// attribute is set to true. If you use conversion-based bidding, your bid strategies will optimize for these
@@ -1609,6 +1613,10 @@ namespace Google.Apis.SA360.v0.Data
         /// <summary>The percentage of mobile clicks that go to a mobile-friendly page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileFriendlyClicksPercentage")]
         public virtual System.Nullable<double> MobileFriendlyClicksPercentage { get; set; }
+
+        /// <summary>The raw event conversion metrics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rawEventConversionMetrics")]
+        public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V0CommonValue> RawEventConversionMetrics { get; set; }
 
         /// <summary>
         /// The percentage of the customer's Shopping or Search ad impressions that are shown in the most prominent
@@ -1942,6 +1950,10 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("conversionActionName")]
         public virtual string ConversionActionName { get; set; }
 
+        /// <summary>The conversion custom dimensions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionCustomDimensions")]
+        public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V0CommonValue> ConversionCustomDimensions { get; set; }
+
         /// <summary>Date to which metrics apply. yyyy-MM-dd format, for example, 2018-04-17.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("date")]
         public virtual string Date { get; set; }
@@ -2140,6 +2152,10 @@ namespace Google.Apis.SA360.v0.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quarter")]
         public virtual string Quarter { get; set; }
+
+        /// <summary>The raw event conversion dimensions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rawEventConversionDimensions")]
+        public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V0CommonValue> RawEventConversionDimensions { get; set; }
 
         /// <summary>
         /// Week as defined as Monday through Sunday, and represented by the date of Monday. Formatted as yyyy-MM-dd.
@@ -4849,6 +4865,80 @@ namespace Google.Apis.SA360.v0.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A conversion custom variable. See "About custom Floodlight metrics and dimensions in the new Search Ads 360" at
+    /// https://support.google.com/sa360/answer/13567857
+    /// </summary>
+    public class GoogleAdsSearchads360V0ResourcesConversionCustomVariable : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Cardinality of the conversion custom variable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cardinality")]
+        public virtual string Cardinality { get; set; }
+
+        /// <summary>Output only. The IDs of custom columns that use this conversion custom variable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customColumnIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> CustomColumnIds { get; set; }
+
+        /// <summary>Output only. Family of the conversion custom variable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("family")]
+        public virtual string Family { get; set; }
+
+        /// <summary>Output only. Fields for Search Ads 360 floodlight conversion custom variables.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("floodlightConversionCustomVariableInfo")]
+        public virtual GoogleAdsSearchads360V0ResourcesConversionCustomVariableFloodlightConversionCustomVariableInfo FloodlightConversionCustomVariableInfo { get; set; }
+
+        /// <summary>Output only. The ID of the conversion custom variable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<long> Id { get; set; }
+
+        /// <summary>
+        /// Required. The name of the conversion custom variable. Name should be unique. The maximum length of name is
+        /// 100 characters. There should not be any extra spaces before and after.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The resource name of the customer that owns the conversion custom variable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ownerCustomer")]
+        public virtual string OwnerCustomer { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource name of the conversion custom variable. Conversion custom variable resource names
+        /// have the form: `customers/{customer_id}/conversionCustomVariables/{conversion_custom_variable_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>The status of the conversion custom variable for conversion event accrual.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. The tag of the conversion custom variable. Tag should be unique and consist of a "u"
+        /// character directly followed with a number less than ormequal to 100. For example: "u4".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tag")]
+        public virtual string Tag { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information for Search Ads 360 Floodlight Conversion Custom Variables.</summary>
+    public class GoogleAdsSearchads360V0ResourcesConversionCustomVariableFloodlightConversionCustomVariableInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Floodlight variable data type defined in Search Ads 360.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("floodlightVariableDataType")]
+        public virtual string FloodlightVariableDataType { get; set; }
+
+        /// <summary>Output only. Floodlight variable type defined in Search Ads 360.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("floodlightVariableType")]
+        public virtual string FloodlightVariableType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A collection of customer-wide settings related to Search Ads 360 Conversion Tracking.</summary>
     public class GoogleAdsSearchads360V0ResourcesConversionTrackingSetting : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5838,6 +5928,36 @@ namespace Google.Apis.SA360.v0.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message for conversion custom dimension header.</summary>
+    public class GoogleAdsSearchads360V0ServicesConversionCustomDimensionHeader : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The conversion custom dimension ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<long> Id { get; set; }
+
+        /// <summary>The user defined name of the conversion custom dimension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for conversion custom metric header.</summary>
+    public class GoogleAdsSearchads360V0ServicesConversionCustomMetricHeader : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The conversion custom metric ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<long> Id { get; set; }
+
+        /// <summary>The user defined name of the conversion custom metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message for custom column header.</summary>
     public class GoogleAdsSearchads360V0ServicesCustomColumnHeader : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5874,6 +5994,36 @@ namespace Google.Apis.SA360.v0.Data
         /// <summary>The CustomColumns owned by the provided customer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customColumns")]
         public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V0ResourcesCustomColumn> CustomColumns { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for raw event conversion dimension header.</summary>
+    public class GoogleAdsSearchads360V0ServicesRawEventConversionDimensionHeader : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The conversion custom variable ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<long> Id { get; set; }
+
+        /// <summary>The user defined name of the raw event dimension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for raw event conversion metric header.</summary>
+    public class GoogleAdsSearchads360V0ServicesRawEventConversionMetricHeader : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The conversion custom variable ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<long> Id { get; set; }
+
+        /// <summary>The user defined name of the raw event metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6005,6 +6155,10 @@ namespace Google.Apis.SA360.v0.Data
         /// <summary>The conversion action referenced in the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversionAction")]
         public virtual GoogleAdsSearchads360V0ResourcesConversionAction ConversionAction { get; set; }
+
+        /// <summary>The conversion custom variable referenced in the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionCustomVariable")]
+        public virtual GoogleAdsSearchads360V0ResourcesConversionCustomVariable ConversionCustomVariable { get; set; }
 
         /// <summary>The custom columns.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customColumns")]
@@ -6187,6 +6341,14 @@ namespace Google.Apis.SA360.v0.Data
     /// <summary>Response message for SearchAds360Service.Search.</summary>
     public class GoogleAdsSearchads360V0ServicesSearchSearchAds360Response : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The headers of the conversion custom dimensions in the results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionCustomDimensionHeaders")]
+        public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V0ServicesConversionCustomDimensionHeader> ConversionCustomDimensionHeaders { get; set; }
+
+        /// <summary>The headers of the conversion custom metrics in the results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionCustomMetricHeaders")]
+        public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V0ServicesConversionCustomMetricHeader> ConversionCustomMetricHeaders { get; set; }
+
         /// <summary>The headers of the custom columns in the results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customColumnHeaders")]
         public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V0ServicesCustomColumnHeader> CustomColumnHeaders { get; set; }
@@ -6201,6 +6363,14 @@ namespace Google.Apis.SA360.v0.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The headers of the raw event conversion dimensions in the results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rawEventConversionDimensionHeaders")]
+        public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V0ServicesRawEventConversionDimensionHeader> RawEventConversionDimensionHeaders { get; set; }
+
+        /// <summary>The headers of the raw event conversion metrics in the results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rawEventConversionMetricHeaders")]
+        public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V0ServicesRawEventConversionMetricHeader> RawEventConversionMetricHeaders { get; set; }
 
         /// <summary>The list of rows that matched the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
