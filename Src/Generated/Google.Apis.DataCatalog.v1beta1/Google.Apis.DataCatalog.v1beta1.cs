@@ -4802,11 +4802,29 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ordinalPosition")]
         public virtual System.Nullable<int> OrdinalPosition { get; set; }
 
+        /// <summary>
+        /// Optional. The subtype of the RANGE, if the type of this field is RANGE. If the type is RANGE, this field is
+        /// required. Possible values for the field element type of a RANGE include: * DATE * DATETIME * TIMESTAMP
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rangeElementType")]
+        public virtual GoogleCloudDatacatalogV1ColumnSchemaFieldElementType RangeElementType { get; set; }
+
         /// <summary>Optional. Schema of sub-columns. A column can have zero or more sub-columns.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subcolumns")]
         public virtual System.Collections.Generic.IList<GoogleCloudDatacatalogV1ColumnSchema> Subcolumns { get; set; }
 
         /// <summary>Required. Type of the column. Must be a UTF-8 string with the maximum size of 128 bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the type of a field element.</summary>
+    public class GoogleCloudDatacatalogV1ColumnSchemaFieldElementType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The type of a field element. See ColumnSchema.type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 

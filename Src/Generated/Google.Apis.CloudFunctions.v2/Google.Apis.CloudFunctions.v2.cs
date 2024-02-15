@@ -1440,7 +1440,7 @@ namespace Google.Apis.CloudFunctions.v2
                 /// Lists operations that match the specified filter in the request. If the server doesn't support this
                 /// method, it returns `UNIMPLEMENTED`.
                 /// </summary>
-                /// <param name="name">Must not be set.</param>
+                /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
                     return new ListRequest(this.service, name);
@@ -1459,30 +1459,19 @@ namespace Google.Apis.CloudFunctions.v2
                         InitParameters();
                     }
 
-                    /// <summary>Must not be set.</summary>
+                    /// <summary>The name of the operation's parent resource.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>
-                    /// Required. A filter for matching the requested operations. The supported formats of *filter* are:
-                    /// To query for a specific function: project:*,location:*,function:* To query for all of the latest
-                    /// operations for a project: project:*,latest:true
-                    /// </summary>
+                    /// <summary>The standard list filter.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>
-                    /// The maximum number of records that should be returned. Requested page size cannot exceed 100. If
-                    /// not set, the default page size is 100. Pagination is only supported when querying for a specific
-                    /// function.
-                    /// </summary>
+                    /// <summary>The standard list page size.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
-                    /// <summary>
-                    /// Token identifying which result to start with, which is returned by a previous list call.
-                    /// Pagination is only supported when querying for a specific function.
-                    /// </summary>
+                    /// <summary>The standard list page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
@@ -1856,7 +1845,6 @@ namespace Google.Apis.CloudFunctions.v2.Data
     /// <summary>Describes the Build step of the function that builds a container from the given source.</summary>
     public class BuildConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>See the comment next to this message for more details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("automaticUpdatePolicy")]
         public virtual AutomaticUpdatePolicy AutomaticUpdatePolicy { get; set; }
 
@@ -1897,7 +1885,6 @@ namespace Google.Apis.CloudFunctions.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("environmentVariables")]
         public virtual System.Collections.Generic.IDictionary<string, string> EnvironmentVariables { get; set; }
 
-        /// <summary>See the comment next to this message for more details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onDeployUpdatePolicy")]
         public virtual OnDeployUpdatePolicy OnDeployUpdatePolicy { get; set; }
 

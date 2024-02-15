@@ -3086,6 +3086,12 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ConnectedWorkAndPersonalApp { get; set; }
 
         /// <summary>
+        /// Optional. Whether the app is allowed to act as a credential provider on Android 14 and above.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("credentialProviderPolicy")]
+        public virtual string CredentialProviderPolicy { get; set; }
+
+        /// <summary>
         /// The default policy for all permissions requested by the app. If specified, this overrides the policy-level
         /// default_permission_policy which applies to all apps. It does not override the permission_grants which
         /// applies to all apps.
@@ -3119,7 +3125,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual System.Collections.Generic.IList<InstallConstraint> InstallConstraint { get; set; }
 
         /// <summary>
-        /// Optional. Amongst apps with installTypeset to:FORCE_INSTALLEDPREINSTALLED this controls the relative
+        /// Optional. Amongst apps with installType set to: FORCE_INSTALLED PREINSTALLEDthis controls the relative
         /// priority of installation. A value of 0 (default) means this app has no priority over other apps. For values
         /// between 1 and 10,000, a lower value means a higher priority. Values outside of the range 0 to 10,000
         /// inclusive are rejected.
@@ -4860,7 +4866,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
     }
 
     /// <summary>
-    /// Amongst apps with InstallTypeset to:FORCE_INSTALLEDPREINSTALLED this defines a set of restrictions for the app
+    /// Amongst apps with InstallType set to: FORCE_INSTALLED PREINSTALLEDthis defines a set of restrictions for the app
     /// installation. At least one of the fields must be set. When multiple fields are set, then all the constraints
     /// need to be satisfied for the app to be installed.
     /// </summary>
@@ -6221,6 +6227,15 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createWindowsDisabled")]
         public virtual System.Nullable<bool> CreateWindowsDisabled { get; set; }
 
+        /// <summary>
+        /// Controls which apps are allowed to act as credential providers on Android 14 and above. These apps store
+        /// credentials, see this (https://developer.android.com/training/sign-in/passkeys) and this
+        /// (https://developer.android.com/reference/androidx/credentials/CredentialManager) for details. See also
+        /// credentialProviderPolicy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("credentialProviderPolicyDefault")]
+        public virtual string CredentialProviderPolicyDefault { get; set; }
+
         /// <summary>Whether configuring user credentials is disabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("credentialsConfigDisabled")]
         public virtual System.Nullable<bool> CredentialsConfigDisabled { get; set; }
@@ -6458,6 +6473,12 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preferentialNetworkService")]
         public virtual string PreferentialNetworkService { get; set; }
+
+        /// <summary>
+        /// Optional. Controls whether printing is allowed. This is supported on devices running Android 9 and above. .
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("printingPolicy")]
+        public virtual string PrintingPolicy { get; set; }
 
         /// <summary>
         /// Allows showing UI on a device for a user to choose a private key alias if there are no matching rules in

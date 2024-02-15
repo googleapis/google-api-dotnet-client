@@ -350,29 +350,19 @@ namespace Google.Apis.CloudFunctions.v1
                 InitParameters();
             }
 
-            /// <summary>
-            /// Required. A filter for matching the requested operations. The supported formats of *filter* are: To
-            /// query for a specific function: project:*,location:*,function:* To query for all of the latest operations
-            /// for a project: project:*,latest:true
-            /// </summary>
+            /// <summary>The standard list filter.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>Must not be set.</summary>
+            /// <summary>The name of the operation's parent resource.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Name { get; set; }
 
-            /// <summary>
-            /// The maximum number of records that should be returned. Requested page size cannot exceed 100. If not
-            /// set, the default page size is 100. Pagination is only supported when querying for a specific function.
-            /// </summary>
+            /// <summary>The standard list page size.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
-            /// <summary>
-            /// Token identifying which result to start with, which is returned by a previous list call. Pagination is
-            /// only supported when querying for a specific function.
-            /// </summary>
+            /// <summary>The standard list page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -1497,7 +1487,6 @@ namespace Google.Apis.CloudFunctions.v1.Data
     /// </summary>
     public class CloudFunction : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>See the comment next to this message for more details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("automaticUpdatePolicy")]
         public virtual AutomaticUpdatePolicy AutomaticUpdatePolicy { get; set; }
 
@@ -1630,7 +1619,6 @@ namespace Google.Apis.CloudFunctions.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
 
-        /// <summary>See the comment next to this message for more details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onDeployUpdatePolicy")]
         public virtual OnDeployUpdatePolicy OnDeployUpdatePolicy { get; set; }
 

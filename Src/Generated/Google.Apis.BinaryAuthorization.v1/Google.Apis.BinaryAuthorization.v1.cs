@@ -1782,9 +1782,9 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
     public class AttestationSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The IDs of the GCP projects storing the SLSA attestations as Container Analysis Occurrences, in the format
-        /// `projects/[PROJECT_ID]`. Maximum number of `container_analysis_attestation_projects` allowed in each
-        /// `AttestationSource` is 10.
+        /// The IDs of the Google Cloud projects that store the SLSA attestations as Container Analysis Occurrences, in
+        /// the format `projects/[PROJECT_ID]`. Maximum number of `container_analysis_attestation_projects` allowed in
+        /// each `AttestationSource` is 10.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerAnalysisAttestationProjects")]
         public virtual System.Collections.Generic.IList<string> ContainerAnalysisAttestationProjects { get; set; }
@@ -2007,6 +2007,13 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageFreshnessCheck")]
         public virtual ImageFreshnessCheck ImageFreshnessCheck { get; set; }
+
+        /// <summary>
+        /// Optional. Require that an image was signed by Cosign with a trusted key. This check requires that both the
+        /// image and signature are stored in Artifact Registry.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sigstoreSignatureCheck")]
+        public virtual SigstoreSignatureCheck SigstoreSignatureCheck { get; set; }
 
         /// <summary>Optional. Require a SimpleSigning-type attestation for every image in the deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("simpleSigningAttestationCheck")]
@@ -2610,6 +2617,71 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signature")]
         public virtual string SignatureValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A Sigstore authority, used to verify signatures that are created by Sigstore. An authority is analogous to an
+    /// attestation authenticator, verifying that a signature is valid or invalid.
+    /// </summary>
+    public class SigstoreAuthority : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A user-provided name for this `SigstoreAuthority`. This field has no effect on the policy
+        /// evaluation behavior except to improve readability of messages in evaluation results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Required. A simple set of public keys. A signature is considered valid if any keys in the set validate the
+        /// signature.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicKeySet")]
+        public virtual SigstorePublicKeySet PublicKeySet { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A Sigstore public key. `SigstorePublicKey` is the public key material used to authenticate Sigstore signatures.
+    /// </summary>
+    public class SigstorePublicKey : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The public key material in PEM format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicKeyPem")]
+        public virtual string PublicKeyPem { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A bundle of Sigstore public keys, used to verify Sigstore signatures. A signature is authenticated by a
+    /// `SigstorePublicKeySet` if any of the keys verify it.
+    /// </summary>
+    public class SigstorePublicKeySet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. `public_keys` must have at least one entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicKeys")]
+        public virtual System.Collections.Generic.IList<SigstorePublicKey> PublicKeys { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A Sigstore signature check, which verifies the Sigstore signature associated with an image.</summary>
+    public class SigstoreSignatureCheck : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The authorities required by this check to verify the signature. A signature only needs to be
+        /// verified by one authority to pass the check.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sigstoreAuthorities")]
+        public virtual System.Collections.Generic.IList<SigstoreAuthority> SigstoreAuthorities { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

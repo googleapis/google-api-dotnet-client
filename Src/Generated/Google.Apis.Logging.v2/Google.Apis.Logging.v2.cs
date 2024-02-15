@@ -21438,6 +21438,13 @@ namespace Google.Apis.Logging.v2.Data
     /// <summary>Describes the settings associated with a project, folder, organization, or billing account.</summary>
     public class Settings : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The default analytics mode of an org or folder which is inherited by all newly created child
+        /// project buckets.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analyticsMode")]
+        public virtual string AnalyticsMode { get; set; }
+
         /// <summary>Optional. Overrides the built-in configuration for _Default sink.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultSinkConfig")]
         public virtual DefaultSinkConfig DefaultSinkConfig { get; set; }

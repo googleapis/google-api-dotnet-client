@@ -446,7 +446,7 @@ namespace Google.Apis.Translate.v3
                     /// <summary>Deletes an AdaptiveMtFile along with its sentences.</summary>
                     /// <param name="name">
                     /// Required. The resource name of the file to delete, in form of
-                    /// `projects/{project-number-or-id}/locations/{location_id}/adaptiveMtDatasets/{dataset}/files/{file}`
+                    /// `projects/{project-number-or-id}/locations/{location_id}/adaptiveMtDatasets/{dataset}/adaptiveMtFiles/{file}`
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
@@ -465,7 +465,7 @@ namespace Google.Apis.Translate.v3
 
                         /// <summary>
                         /// Required. The resource name of the file to delete, in form of
-                        /// `projects/{project-number-or-id}/locations/{location_id}/adaptiveMtDatasets/{dataset}/files/{file}`
+                        /// `projects/{project-number-or-id}/locations/{location_id}/adaptiveMtDatasets/{dataset}/adaptiveMtFiles/{file}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -497,7 +497,7 @@ namespace Google.Apis.Translate.v3
                     /// <summary>Gets and AdaptiveMtFile</summary>
                     /// <param name="name">
                     /// Required. The resource name of the file, in form of
-                    /// `projects/{project-number-or-id}/locations/{location_id}/adaptiveMtDatasets/{dataset}/files/{file}`
+                    /// `projects/{project-number-or-id}/locations/{location_id}/adaptiveMtDatasets/{dataset}/adaptiveMtFiles/{file}`
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
@@ -516,7 +516,7 @@ namespace Google.Apis.Translate.v3
 
                         /// <summary>
                         /// Required. The resource name of the file, in form of
-                        /// `projects/{project-number-or-id}/locations/{location_id}/adaptiveMtDatasets/{dataset}/files/{file}`
+                        /// `projects/{project-number-or-id}/locations/{location_id}/adaptiveMtDatasets/{dataset}/adaptiveMtFiles/{file}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -3927,7 +3927,7 @@ namespace Google.Apis.Translate.v3.Data
 
         /// <summary>
         /// Required. The resource name of the file, in form of
-        /// `projects/{project-number-or-id}/locations/{location_id}/adaptiveMtDatasets/{dataset}/files/{file}`
+        /// `projects/{project-number-or-id}/locations/{location_id}/adaptiveMtDatasets/{dataset}/adaptiveMtFiles/{file}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -4015,7 +4015,7 @@ namespace Google.Apis.Translate.v3.Data
 
         /// <summary>
         /// Required. The resource name of the file, in form of
-        /// `projects/{project-number-or-id}/locations/{location_id}/adaptiveMtDatasets/{dataset}/files/{file}/sentences/{sentence}`
+        /// `projects/{project-number-or-id}/locations/{location_id}/adaptiveMtDatasets/{dataset}/adaptiveMtFiles/{file}/adaptiveMtSentences/{sentence}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

@@ -2077,6 +2077,83 @@ namespace Google.Apis.CloudBuild.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for connections to Bitbucket Cloud.</summary>
+    public class BitbucketCloudConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. An access token with the `webhook`, `repository`, `repository:admin` and `pullrequest` scope
+        /// access. It can be either a workspace, project or repository access token. It's recommended to use a system
+        /// account to generate these credentials.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorizerCredential")]
+        public virtual UserCredential AuthorizerCredential { get; set; }
+
+        /// <summary>
+        /// Required. An access token with the `repository` access. It can be either a workspace, project or repository
+        /// access token. It's recommended to use a system account to generate the credentials.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readAuthorizerCredential")]
+        public virtual UserCredential ReadAuthorizerCredential { get; set; }
+
+        /// <summary>
+        /// Required. SecretManager resource containing the webhook secret used to verify webhook events, formatted as
+        /// `projects/*/secrets/*/versions/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webhookSecretSecretVersion")]
+        public virtual string WebhookSecretSecretVersion { get; set; }
+
+        /// <summary>Required. The Bitbucket Cloud Workspace ID to be connected to Google Cloud Platform.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workspace")]
+        public virtual string Workspace { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for connections to Bitbucket Data Center.</summary>
+    public class BitbucketDataCenterConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. A http access token with the `REPO_ADMIN` scope access.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorizerCredential")]
+        public virtual UserCredential AuthorizerCredential { get; set; }
+
+        /// <summary>
+        /// Required. The URI of the Bitbucket Data Center instance or cluster this connection is for.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostUri")]
+        public virtual string HostUri { get; set; }
+
+        /// <summary>Required. A http access token with the `REPO_READ` access.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readAuthorizerCredential")]
+        public virtual UserCredential ReadAuthorizerCredential { get; set; }
+
+        /// <summary>Output only. Version of the Bitbucket Data Center running on the `host_uri`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverVersion")]
+        public virtual string ServerVersion { get; set; }
+
+        /// <summary>
+        /// Optional. Configuration for using Service Directory to privately connect to a Bitbucket Data Center. This
+        /// should only be set if the Bitbucket Data Center is hosted on-premises and not reachable by public internet.
+        /// If this field is left empty, calls to the Bitbucket Data Center will be made over the public internet.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceDirectoryConfig")]
+        public virtual GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig ServiceDirectoryConfig { get; set; }
+
+        /// <summary>Optional. SSL certificate to use for requests to the Bitbucket Data Center.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sslCa")]
+        public virtual string SslCa { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. SecretManager resource containing the webhook secret used to verify webhook events,
+        /// formatted as `projects/*/secrets/*/versions/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webhookSecretSecretVersion")]
+        public virtual string WebhookSecretSecretVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2124,12 +2201,22 @@ namespace Google.Apis.CloudBuild.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A connection to a SCM like GitHub, GitHub Enterprise, Bitbucket Data Center or GitLab.</summary>
+    /// <summary>
+    /// A connection to a SCM like GitHub, GitHub Enterprise, Bitbucket Data Center, Bitbucket Cloud or GitLab.
+    /// </summary>
     public class Connection : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Allows clients to store small amounts of arbitrary data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
+
+        /// <summary>Configuration for connections to Bitbucket Cloud.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bitbucketCloudConfig")]
+        public virtual BitbucketCloudConfig BitbucketCloudConfig { get; set; }
+
+        /// <summary>Configuration for connections to Bitbucket Data Center.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bitbucketDataCenterConfig")]
+        public virtual BitbucketDataCenterConfig BitbucketDataCenterConfig { get; set; }
 
         private string _createTimeRaw;
 
@@ -3394,6 +3481,13 @@ namespace Google.Apis.CloudBuild.v2.Data
         /// <summary>Optional. Provenance configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
         public virtual Provenance Provenance { get; set; }
+
+        /// <summary>
+        /// Output only. The `Record` of this `PipelineRun`. Format:
+        /// `projects/{project}/locations/{location}/results/{result_id}/records/{record_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("record")]
+        public virtual string Record { get; set; }
 
         /// <summary>Output only. The exact PipelineSpec used to instantiate the run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resolvedPipelineSpec")]

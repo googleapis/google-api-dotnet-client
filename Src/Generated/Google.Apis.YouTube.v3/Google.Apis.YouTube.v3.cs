@@ -11772,6 +11772,10 @@ namespace Google.Apis.YouTube.v3.Data
     /// <summary>Information specific to a store on a merchandising platform linked to a YouTube channel.</summary>
     public class ChannelToStoreLinkDetails : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Information specific to billing (read-only).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billingDetails")]
+        public virtual ChannelToStoreLinkDetailsBillingDetails BillingDetails { get; set; }
+
         /// <summary>Google Merchant Center id of the store.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
         public virtual System.Nullable<ulong> MerchantId { get; set; }
@@ -11783,6 +11787,17 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>Landing page of the store.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeUrl")]
         public virtual string StoreUrl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information specific to billing.</summary>
+    public class ChannelToStoreLinkDetailsBillingDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The current billing profile status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billingStatus")]
+        public virtual string BillingStatus { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13688,7 +13703,7 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Next ID: 33</summary>
+    /// <summary>Next ID: 34</summary>
     public class LiveChatMessageSnippet : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -13698,7 +13713,7 @@ namespace Google.Apis.YouTube.v3.Data
         /// the user that made the purchase giftMembershipReceivedEvent - the user that received the gift membership
         /// messageDeletedEvent - the moderator that took the action messageRetractedEvent - the author that retracted
         /// their message userBannedEvent - the moderator that took the action superChatEvent - the user that made the
-        /// purchase superStickerEvent - the user that made the purchase
+        /// purchase superStickerEvent - the user that made the purchase pollEvent - the user that created the poll
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorChannelId")]
         public virtual string AuthorChannelId { get; set; }
@@ -13752,6 +13767,10 @@ namespace Google.Apis.YouTube.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newSponsorDetails")]
         public virtual LiveChatNewSponsorDetails NewSponsorDetails { get; set; }
+
+        /// <summary>Details about the poll event, this is only set if the type is 'pollEvent'.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pollDetails")]
+        public virtual LiveChatPollDetails PollDetails { get; set; }
 
         /// <summary>The date and time when the message was orignally published.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishedAt")]
@@ -13902,6 +13921,43 @@ namespace Google.Apis.YouTube.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memberLevelName")]
         public virtual string MemberLevelName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class LiveChatPollDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual LiveChatPollDetailsPollMetadata Metadata { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class LiveChatPollDetailsPollMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The options will be returned in the order that is displayed in 1P</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("options")]
+        public virtual System.Collections.Generic.IList<LiveChatPollDetailsPollMetadataPollOption> Options { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("questionText")]
+        public virtual string QuestionText { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class LiveChatPollDetailsPollMetadataPollOption : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("optionText")]
+        public virtual string OptionText { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("tally")]
+        public virtual System.Nullable<long> Tally { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

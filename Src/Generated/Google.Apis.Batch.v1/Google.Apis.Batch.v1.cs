@@ -2404,7 +2404,7 @@ namespace Google.Apis.Batch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("taskGroups")]
         public virtual System.Collections.Generic.IList<TaskGroup> TaskGroups { get; set; }
 
-        /// <summary>Output only. A system generated unique ID (in UUID4 format) for the Job.</summary>
+        /// <summary>Output only. A system generated unique ID for the Job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
 

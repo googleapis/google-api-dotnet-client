@@ -3518,6 +3518,13 @@ namespace Google.Apis.CertificateManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Immutable. Type of DnsAuthorization. If unset during resource creation the following default will be used: -
+        /// in location global: FIXED_RECORD.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
         private string _updateTimeRaw;
 
         private object _updateTime;

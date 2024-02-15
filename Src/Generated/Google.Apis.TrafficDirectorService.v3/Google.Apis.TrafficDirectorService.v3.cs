@@ -361,13 +361,6 @@ namespace Google.Apis.TrafficDirectorService.v3.Data
     public class ClientConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// For xDS clients, the scope in which the data is used. For example, gRPC indicates the data plane target or
-        /// that the data is associated with gRPC server(s).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("clientScope")]
-        public virtual string ClientScope { get; set; }
-
-        /// <summary>
         /// Represents generic xDS config and the exact config structure depends on the type URL (like Cluster if it is
         /// CDS)
         /// </summary>

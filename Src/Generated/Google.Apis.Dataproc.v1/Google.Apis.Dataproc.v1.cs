@@ -3603,7 +3603,7 @@ namespace Google.Apis.Dataproc.v1
                         /// <summary>
                         /// Optional. A unique ID used to identify the request. If the server receives two
                         /// CreateNodeGroupRequest
-                        /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateNodeGroupRequests)
+                        /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateNodeGroupRequest)
                         /// with the same ID, the second request is ignored and the first google.longrunning.Operation
                         /// created and stored in the backend is returned.Recommendation: Set this value to a UUID
                         /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The ID must contain only
@@ -3704,6 +3704,65 @@ namespace Google.Apis.Dataproc.v1
                         public override string RestPath => "v1/{+name}";
 
                         /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/regions/[^/]+/clusters/[^/]+/nodeGroups/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Repair nodes in a node group.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The name of the node group to resize. Format:
+                    /// projects/{project}/regions/{region}/clusters/{cluster}/nodeGroups/{nodeGroup}
+                    /// </param>
+                    public virtual RepairRequest Repair(Google.Apis.Dataproc.v1.Data.RepairNodeGroupRequest body, string name)
+                    {
+                        return new RepairRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Repair nodes in a node group.</summary>
+                    public class RepairRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Repair request.</summary>
+                        public RepairRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.RepairNodeGroupRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the node group to resize. Format:
+                        /// projects/{project}/regions/{region}/clusters/{cluster}/nodeGroups/{nodeGroup}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dataproc.v1.Data.RepairNodeGroupRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "repair";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:repair";
+
+                        /// <summary>Initializes Repair parameter list.</summary>
                         protected override void InitParameters()
                         {
                             base.InitParameters();
@@ -4419,11 +4478,11 @@ namespace Google.Apis.Dataproc.v1
                     /// following syntax:field = value AND field = value ...where field is one of status.state,
                     /// clusterName, or labels.[KEY], and [KEY] is a label key. value can be * to match all values.
                     /// status.state can be one of the following: ACTIVE, INACTIVE, CREATING, RUNNING, ERROR, DELETING,
-                    /// or UPDATING. ACTIVE contains the CREATING, UPDATING, and RUNNING states. INACTIVE contains the
-                    /// DELETING and ERROR states. clusterName is the name of the cluster provided at creation time.
-                    /// Only the logical AND operator is supported; space-separated items are treated as having an
-                    /// implicit AND operator.Example filter:status.state = ACTIVE AND clusterName = mycluster AND
-                    /// labels.env = staging AND labels.starred = *
+                    /// UPDATING, STOPPING, or STOPPED. ACTIVE contains the CREATING, UPDATING, and RUNNING states.
+                    /// INACTIVE contains the DELETING, ERROR, STOPPING, and STOPPED states. clusterName is the name of
+                    /// the cluster provided at creation time. Only the logical AND operator is supported;
+                    /// space-separated items are treated as having an implicit AND operator.Example filter:status.state
+                    /// = ACTIVE AND clusterName = mycluster AND labels.env = staging AND labels.starred = *
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -7197,6 +7256,113 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata describing the Analyze operation.</summary>
+    public class AnalyzeOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. name of the workload being analyzed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analyzedWorkloadName")]
+        public virtual string AnalyzedWorkloadName { get; set; }
+
+        /// <summary>Output only. Type of the workload being analyzed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analyzedWorkloadType")]
+        public virtual string AnalyzedWorkloadType { get; set; }
+
+        /// <summary>
+        /// Output only. unique identifier of the workload typically generated by control plane. E.g. batch uuid.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analyzedWorkloadUuid")]
+        public virtual string AnalyzedWorkloadUuid { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time when the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. Short description of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        private string _doneTimeRaw;
+
+        private object _doneTime;
+
+        /// <summary>Output only. The time when the operation finished.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("doneTime")]
+        public virtual string DoneTimeRaw
+        {
+            get => _doneTimeRaw;
+            set
+            {
+                _doneTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _doneTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DoneTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DoneTimeDateTimeOffset instead.")]
+        public virtual object DoneTime
+        {
+            get => _doneTime;
+            set
+            {
+                _doneTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _doneTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DoneTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DoneTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DoneTimeRaw);
+            set => DoneTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. Labels associated with the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Output only. Warnings encountered during operation execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
+        public virtual System.Collections.Generic.IList<string> Warnings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Autoscaling Policy config associated with the cluster.</summary>
     public class AutoscalingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7685,7 +7851,9 @@ namespace Google.Apis.Dataproc.v1.Data
 
         /// <summary>
         /// Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or
-        /// roles/owner.
+        /// roles/owner.For an overview of the IAM roles and permissions, see the IAM documentation
+        /// (https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see here
+        /// (https://cloud.google.com/iam/docs/understanding-roles).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
@@ -10807,6 +10975,32 @@ namespace Google.Apis.Dataproc.v1.Data
         /// <summary>
         /// Optional. A unique ID used to identify the request. If the server receives two RepairClusterRequests with
         /// the same ID, the second request is ignored, and the first google.longrunning.Operation created and stored in
+        /// the backend is returned.Recommendation: Set this value to a UUID
+        /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The ID must contain only letters (a-z, A-Z),
+        /// numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class RepairNodeGroupRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Name of instances to be repaired. These instances must belong to specified node pool.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceNames")]
+        public virtual System.Collections.Generic.IList<string> InstanceNames { get; set; }
+
+        /// <summary>Required. Repair action to take on specified resources of the node pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repairAction")]
+        public virtual string RepairAction { get; set; }
+
+        /// <summary>
+        /// Optional. A unique ID used to identify the request. If the server receives two RepairNodeGroupRequest with
+        /// the same ID, the second request is ignored and the first google.longrunning.Operation created and stored in
         /// the backend is returned.Recommendation: Set this value to a UUID
         /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The ID must contain only letters (a-z, A-Z),
         /// numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.

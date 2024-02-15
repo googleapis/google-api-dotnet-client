@@ -53,7 +53,6 @@ namespace Google.Apis.Walletobjects.v1
             Smarttap = new SmarttapResource(this);
             Transitclass = new TransitclassResource(this);
             Transitobject = new TransitobjectResource(this);
-            Walletobjects = new WalletobjectsResource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -144,9 +143,6 @@ namespace Google.Apis.Walletobjects.v1
 
         /// <summary>Gets the Transitobject resource.</summary>
         public virtual TransitobjectResource Transitobject { get; }
-
-        /// <summary>Gets the Walletobjects resource.</summary>
-        public virtual WalletobjectsResource Walletobjects { get; }
     }
 
     /// <summary>A base abstract class for Walletobjects requests.</summary>
@@ -6344,98 +6340,6 @@ namespace Google.Apis.Walletobjects.v1
             }
         }
     }
-
-    /// <summary>The "walletobjects" collection of methods.</summary>
-    public class WalletobjectsResource
-    {
-        private const string Resource = "walletobjects";
-
-        /// <summary>The service which this resource belongs to.</summary>
-        private readonly Google.Apis.Services.IClientService service;
-
-        /// <summary>Constructs a new resource.</summary>
-        public WalletobjectsResource(Google.Apis.Services.IClientService service)
-        {
-            this.service = service;
-            V1 = new V1Resource(service);
-        }
-
-        /// <summary>Gets the V1 resource.</summary>
-        public virtual V1Resource V1 { get; }
-
-        /// <summary>The "v1" collection of methods.</summary>
-        public class V1Resource
-        {
-            private const string Resource = "v1";
-
-            /// <summary>The service which this resource belongs to.</summary>
-            private readonly Google.Apis.Services.IClientService service;
-
-            /// <summary>Constructs a new resource.</summary>
-            public V1Resource(Google.Apis.Services.IClientService service)
-            {
-                this.service = service;
-                PrivateContent = new PrivateContentResource(service);
-            }
-
-            /// <summary>Gets the PrivateContent resource.</summary>
-            public virtual PrivateContentResource PrivateContent { get; }
-
-            /// <summary>The "privateContent" collection of methods.</summary>
-            public class PrivateContentResource
-            {
-                private const string Resource = "privateContent";
-
-                /// <summary>The service which this resource belongs to.</summary>
-                private readonly Google.Apis.Services.IClientService service;
-
-                /// <summary>Constructs a new resource.</summary>
-                public PrivateContentResource(Google.Apis.Services.IClientService service)
-                {
-                    this.service = service;
-                }
-
-                /// <summary>Upload private data (text or URI) and returns an Id to be used in its place.</summary>
-                /// <param name="body">The body of the request.</param>
-                public virtual UploadPrivateDataRequest UploadPrivateData(Google.Apis.Walletobjects.v1.Data.UploadPrivateDataRequest body)
-                {
-                    return new UploadPrivateDataRequest(this.service, body);
-                }
-
-                /// <summary>Upload private data (text or URI) and returns an Id to be used in its place.</summary>
-                public class UploadPrivateDataRequest : WalletobjectsBaseServiceRequest<Google.Apis.Walletobjects.v1.Data.UploadPrivateDataResponse>
-                {
-                    /// <summary>Constructs a new UploadPrivateData request.</summary>
-                    public UploadPrivateDataRequest(Google.Apis.Services.IClientService service, Google.Apis.Walletobjects.v1.Data.UploadPrivateDataRequest body) : base(service)
-                    {
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Walletobjects.v1.Data.UploadPrivateDataRequest Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "uploadPrivateData";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "walletobjects/v1/privateContent/uploadPrivateData";
-
-                    /// <summary>Initializes UploadPrivateData parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                    }
-                }
-            }
-        }
-    }
 }
 namespace Google.Apis.Walletobjects.v1.Data
 {
@@ -8718,6 +8622,13 @@ namespace Google.Apis.Walletobjects.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linksModuleData")]
         public virtual LinksModuleData LinksModuleData { get; set; }
+
+        /// <summary>
+        /// An array of messages displayed in the app. All users of this object will receive its associated messages.
+        /// The maximum number of these fields is 10.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messages")]
+        public virtual System.Collections.Generic.IList<Message> Messages { get; set; }
 
         /// <summary>
         /// Identifies whether multiple users and devices will save the same object referencing this class.
@@ -11152,43 +11063,6 @@ namespace Google.Apis.Walletobjects.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Private data for TextModule. This data will be rendered as a TextModule for a pass.</summary>
-    public class PrivateText : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Translated strings for the body.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("body")]
-        public virtual LocalizedString Body { get; set; }
-
-        /// <summary>Translated strings for the header.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("header")]
-        public virtual LocalizedString Header { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Private data for LinkModule. This data will be rendered as the LinkModule for a pass.</summary>
-    public class PrivateUri : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The URI's title appearing in the app as text and its translated strings. Recommended maximum is 20
-        /// characters to ensure the full string is displayed on smaller screens.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual LocalizedString Description { get; set; }
-
-        /// <summary>
-        /// The location of a web page, image, or other resource. URIs in the `LinksModuleData` can have different
-        /// prefixes indicating the type of URI (a link to a web page, a link to a map, a telephone number, or an email
-        /// address).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     public class PurchaseDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>ID of the account used to purchase the ticket.</summary>
@@ -12423,62 +12297,6 @@ namespace Google.Apis.Walletobjects.v1.Data
         /// <summary>Indicates if the object needs to have upcoming notification enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableNotification")]
         public virtual System.Nullable<bool> EnableNotification { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request for sending user private Text or URI by the Issuer.</summary>
-    public class UploadPrivateDataRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ID of the issuer sending the data.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("issuerId")]
-        public virtual System.Nullable<long> IssuerId { get; set; }
-
-        /// <summary>Private text data of the user.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual PrivateText Text { get; set; }
-
-        /// <summary>Private URIs of the user.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual PrivateUri Uri { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response for uploading user private data (text or URIs)</summary>
-    public class UploadPrivateDataResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A 64-bit content id for the private data that was uploaded by the Issuer.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("privateContentId")]
-        public virtual System.Nullable<long> PrivateContentId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request to upload user's private images by Issuers to be used in passes.</summary>
-    public class UploadPrivateImageRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A reference to the image payload that was uploaded by Scotty.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("blob")]
-        public virtual Media Blob { get; set; }
-
-        /// <summary>Extra information about the uploaded media.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mediaRequestInfo")]
-        public virtual MediaRequestInfo MediaRequestInfo { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response for uploading the private image</summary>
-    public class UploadPrivateImageResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A 64-bit content id for the image that was uploaded by the Issuer.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("privateContentId")]
-        public virtual System.Nullable<long> PrivateContentId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

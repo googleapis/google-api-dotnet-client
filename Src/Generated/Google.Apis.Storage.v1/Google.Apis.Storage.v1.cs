@@ -3477,14 +3477,6 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("managedFolder", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ManagedFolder { get; private set; }
 
-            /// <summary>
-            /// Allows the deletion of a managed folder even if it is not empty. A managed folder is empty if there are
-            /// no objects or managed folders that it applies to. Callers must have storage.managedFolders.setIamPolicy
-            /// permission.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("allowNonEmpty", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> AllowNonEmpty { get; set; }
-
             /// <summary>If set, only deletes the managed folder if its metageneration matches this value.</summary>
             [Google.Apis.Util.RequestParameterAttribute("ifMetagenerationMatch", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> IfMetagenerationMatch { get; set; }
@@ -3521,14 +3513,6 @@ namespace Google.Apis.Storage.v1
                     Name = "managedFolder",
                     IsRequired = true,
                     ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("allowNonEmpty", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "allowNonEmpty",
-                    IsRequired = false,
-                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -10223,6 +10207,27 @@ namespace Google.Apis.Storage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
         public virtual string Bucket { get; set; }
 
+        /// <summary>The creation time of the folder in RFC 3339 format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
+        }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual System.DateTime? CreateTime
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
+
         /// <summary>The ID of the folder, including the bucket name, folder name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -10252,46 +10257,25 @@ namespace Google.Apis.Storage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; }
 
-        /// <summary>The creation time of the folder in RFC 3339 format.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("timeCreated")]
-        public virtual string TimeCreatedRaw { get; set; }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="TimeCreatedRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? TimeCreatedDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(TimeCreatedRaw);
-            set => TimeCreatedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
-        }
-
-        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="TimeCreatedRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TimeCreatedDateTimeOffset instead.")]
-        public virtual System.DateTime? TimeCreated
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeFromString(TimeCreatedRaw);
-            set => TimeCreatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-        }
-
         /// <summary>The modification time of the folder metadata in RFC 3339 format.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updated")]
-        public virtual string UpdatedRaw { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw { get; set; }
 
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdatedRaw"/>.</summary>
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdatedDateTimeOffset
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
         {
-            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(UpdatedRaw);
-            set => UpdatedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
+            get => Google.Apis.Util.DiscoveryFormat.ParseDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToDateTime(value);
         }
 
-        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="UpdatedRaw"/>.</summary>
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdatedDateTimeOffset instead.")]
-        public virtual System.DateTime? Updated
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual System.DateTime? UpdateTime
         {
-            get => Google.Apis.Util.Utilities.GetDateTimeFromString(UpdatedRaw);
-            set => UpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>

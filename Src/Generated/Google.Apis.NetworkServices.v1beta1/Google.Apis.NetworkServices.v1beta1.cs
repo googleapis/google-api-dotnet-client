@@ -6074,7 +6074,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
     public class ExtensionChainExtension : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The `:authority` header in the gRPC request sent from Envoy to the extension service.
+        /// Optional. The `:authority` header in the gRPC request sent from Envoy to the extension service.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authority")]
         public virtual string Authority { get; set; }
@@ -6153,7 +6153,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
     /// <summary>
     /// Gateway represents the configuration for a proxy, typically a load balancer. It captures the ip:port over which
     /// the services are exposed by the proxy, along with any policy configurations. Routes have reference to to
-    /// Gateways to dictate how requests should be routed by this Gateway. Next id: 30
+    /// Gateways to dictate how requests should be routed by this Gateway. Next id: 32
     /// </summary>
     public class Gateway : Google.Apis.Requests.IDirectResponseSchema
     {
