@@ -10140,7 +10140,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// the update. The fields specified in the update_mask are relative to the resource, not the
                         /// full request. A field will be overwritten if it is in the mask. If the user does not provide
                         /// a mask then only the non-empty fields present in the request will be overwritten. Set the
-                        /// update_mask to `*` to override all fields. Updatable fields: * `labels`
+                        /// update_mask to `*` to override all fields. Updatable fields: * `labels` * `serviceAgentType`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
@@ -26862,13 +26862,6 @@ namespace Google.Apis.Aiplatform.v1
                     [Google.Apis.Util.RequestParameterAttribute("pipelineJobId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PipelineJobId { get; set; }
 
-                    /// <summary>
-                    /// Optional. Whether to do component level validations before job creation. Currently we only
-                    /// support Google First Party Component/Pipelines.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("preflightValidations", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> PreflightValidations { get; set; }
-
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1PipelineJob Body { get; set; }
 
@@ -26899,14 +26892,6 @@ namespace Google.Apis.Aiplatform.v1
                         RequestParameters.Add("pipelineJobId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pipelineJobId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("preflightValidations", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "preflightValidations",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -36147,9 +36132,48 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("category")]
         public virtual string Category { get; set; }
 
+        /// <summary>The influential terms that could potentially block the response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("influentialTerms")]
+        public virtual System.Collections.Generic.IList<CloudAiNlLlmProtoServiceSafetyRatingInfluentialTerm> InfluentialTerms { get; set; }
+
         /// <summary>Harm probability levels in the content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("probability")]
         public virtual string Probability { get; set; }
+
+        /// <summary>Harm probability score.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("probabilityScore")]
+        public virtual System.Nullable<float> ProbabilityScore { get; set; }
+
+        /// <summary>Harm severity levels in the content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; }
+
+        /// <summary>Harm severity score.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severityScore")]
+        public virtual System.Nullable<float> SeverityScore { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The influential term that could potentially block the response.</summary>
+    public class CloudAiNlLlmProtoServiceSafetyRatingInfluentialTerm : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The beginning offset of the influential term.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("beginOffset")]
+        public virtual System.Nullable<int> BeginOffset { get; set; }
+
+        /// <summary>The confidence score of the influential term.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; }
+
+        /// <summary>The source of the influential term, prompt or response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
+        /// <summary>The influential term.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("term")]
+        public virtual string Term { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -37865,6 +37889,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("finishReason")]
         public virtual string FinishReason { get; set; }
 
+        /// <summary>Output only. Metadata specifies sources used to ground generated content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groundingMetadata")]
+        public virtual GoogleCloudAiplatformV1GroundingMetadata GroundingMetadata { get; set; }
+
         /// <summary>Output only. Index of the candidate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("index")]
         public virtual System.Nullable<int> Index { get; set; }
@@ -38587,13 +38615,6 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pipelineJobId")]
         public virtual string PipelineJobId { get; set; }
-
-        /// <summary>
-        /// Optional. Whether to do component level validations before job creation. Currently we only support Google
-        /// First Party Component/Pipelines.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("preflightValidations")]
-        public virtual System.Nullable<bool> PreflightValidations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -40568,6 +40589,13 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Configures the request-response logging for online prediction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("predictRequestResponseLoggingConfig")]
         public virtual GoogleCloudAiplatformV1PredictRequestResponseLoggingConfig PredictRequestResponseLoggingConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Configuration for private service connect. network and private_service_connect_config are mutually
+        /// exclusive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateServiceConnectConfig")]
+        public virtual GoogleCloudAiplatformV1PrivateServiceConnectConfig PrivateServiceConnectConfig { get; set; }
 
         /// <summary>
         /// A map from a DeployedModel's ID to the percentage of this Endpoint's traffic that should be forwarded to
@@ -43143,6 +43171,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("featureGroups")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1FeatureViewFeatureRegistrySourceFeatureGroup> FeatureGroups { get; set; }
 
+        /// <summary>Optional. The project number of the parent project of the Feature Groups.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectNumber")]
+        public virtual System.Nullable<long> ProjectNumber { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -43223,6 +43255,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("runTime")]
         public virtual GoogleTypeInterval RunTime { get; set; }
 
+        /// <summary>Output only. Summary of the sync job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("syncSummary")]
+        public virtual GoogleCloudAiplatformV1FeatureViewSyncSyncSummary SyncSummary { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -43238,6 +43274,24 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cron")]
         public virtual string Cron { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Summary from the Sync job. For continuous syncs, the summary is updated periodically. For batch syncs, it gets
+    /// updated on completion of the sync.
+    /// </summary>
+    public class GoogleCloudAiplatformV1FeatureViewSyncSyncSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Total number of rows synced.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rowSynced")]
+        public virtual System.Nullable<long> RowSynced { get; set; }
+
+        /// <summary>Output only. BigQuery slot milliseconds consumed for the sync job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalSlot")]
+        public virtual System.Nullable<long> TotalSlot { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -43914,7 +43968,7 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>
         /// Optional. A list of `Tools` the model may use to generate the next response. A `Tool` is a piece of code
         /// that enables the system to interact with external systems to perform an action, or set of actions, outside
-        /// of knowledge and scope of the model. The only supported tool is currently `Function`
+        /// of knowledge and scope of the model.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tools")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1Tool> Tools { get; set; }
@@ -44099,6 +44153,71 @@ namespace Google.Apis.Aiplatform.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Tool to retrieve public web data for grounding, powered by Google.</summary>
+    public class GoogleCloudAiplatformV1GoogleSearchRetrieval : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Disable using the result from this tool in detecting grounding attribution. This does not affect
+        /// how the result is given to the model for generation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableAttribution")]
+        public virtual System.Nullable<bool> DisableAttribution { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Grounding attribution.</summary>
+    public class GoogleCloudAiplatformV1GroundingAttribution : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Output only. Confidence score of the attribution. Ranges from 0 to 1. 1 is the most confident.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidenceScore")]
+        public virtual System.Nullable<float> ConfidenceScore { get; set; }
+
+        /// <summary>Output only. Segment of the content this attribution belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("segment")]
+        public virtual GoogleCloudAiplatformV1Segment Segment { get; set; }
+
+        /// <summary>Optional. Attribution from the web.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("web")]
+        public virtual GoogleCloudAiplatformV1GroundingAttributionWeb Web { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Attribution from the web.</summary>
+    public class GoogleCloudAiplatformV1GroundingAttributionWeb : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Title of the attribution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>Output only. URI reference of the attribution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata returned to client when grounding is enabled.</summary>
+    public class GoogleCloudAiplatformV1GroundingMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. List of grounding attributions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groundingAttributions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1GroundingAttribution> GroundingAttributions { get; set; }
+
+        /// <summary>Optional. Web search queries for the following-up web search.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webSearchQueries")]
+        public virtual System.Collections.Generic.IList<string> WebSearchQueries { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -49958,13 +50077,6 @@ namespace Google.Apis.Aiplatform.v1.Data
     public class GoogleCloudAiplatformV1PipelineJobRuntimeConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The default runtime for the PipelineJob. If not provided, Vertex Custom Job is used as the
-        /// runtime. For Vertex Custom Job, please refer to https://cloud.google.com/vertex-ai/docs/training/overview
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("defaultRuntime")]
-        public virtual GoogleCloudAiplatformV1PipelineJobRuntimeConfigDefaultRuntime DefaultRuntime { get; set; }
-
-        /// <summary>
         /// Represents the failure policy of a pipeline. Currently, the default of a pipeline is that the pipeline will
         /// continue to run until no more tasks can be executed, also known as PIPELINE_FAILURE_POLICY_FAIL_SLOW.
         /// However, if a pipeline is set to PIPELINE_FAILURE_POLICY_FAIL_FAST, it will stop scheduling any new tasks
@@ -50012,17 +50124,6 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The default runtime for the PipelineJob.</summary>
-    public class GoogleCloudAiplatformV1PipelineJobRuntimeConfigDefaultRuntime : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Persistent resource based runtime detail.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("persistentResourceRuntimeDetail")]
-        public virtual GoogleCloudAiplatformV1PipelineJobRuntimeConfigPersistentResourceRuntimeDetail PersistentResourceRuntimeDetail { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>The type of an input artifact.</summary>
     public class GoogleCloudAiplatformV1PipelineJobRuntimeConfigInputArtifact : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -50033,23 +50134,6 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("artifactId")]
         public virtual string ArtifactId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Persistent resource based runtime detail. For more information, refer to
-    /// https://cloud.google.com/vertex-ai/docs/training/persistent-resource-overview
-    /// </summary>
-    public class GoogleCloudAiplatformV1PipelineJobRuntimeConfigPersistentResourceRuntimeDetail : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Persistent resource name. Format:
-        /// `projects/{project}/locations/{location}/persistentResources/{persistent_resource}`
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("persistentResourceName")]
-        public virtual string PersistentResourceName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -51487,6 +51571,24 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("catchUp")]
         public virtual System.Nullable<bool> CatchUp { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines a retrieval tool that model can call to access external knowledge.</summary>
+    public class GoogleCloudAiplatformV1Retrieval : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Disable using the result from this tool in detecting grounding attribution. This does not affect
+        /// how the result is given to the model for generation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableAttribution")]
+        public virtual System.Nullable<bool> DisableAttribution { get; set; }
+
+        /// <summary>Set to use data source powered by Vertex AI Search.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vertexAiSearch")]
+        public virtual GoogleCloudAiplatformV1VertexAISearch VertexAiSearch { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -56513,6 +56615,31 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Segment of the content.</summary>
+    public class GoogleCloudAiplatformV1Segment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. End index in the given Part, measured in bytes. Offset from the start of the Part, exclusive,
+        /// starting at zero.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endIndex")]
+        public virtual System.Nullable<int> EndIndex { get; set; }
+
+        /// <summary>Output only. The index of a Part object within its parent Content object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partIndex")]
+        public virtual System.Nullable<int> PartIndex { get; set; }
+
+        /// <summary>
+        /// Output only. Start index in the given Part, measured in bytes. Offset from the start of the Part, inclusive,
+        /// starting at zero.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
+        public virtual System.Nullable<int> StartIndex { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A set of Shielded Instance options. See [Images using supported Shielded VM
     /// features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
@@ -58326,7 +58453,7 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// <summary>
     /// Tool details that the model may use to generate response. A `Tool` is a piece of code that enables the system to
     /// interact with external systems to perform an action, or set of actions, outside of knowledge and scope of the
-    /// model.
+    /// model. A Tool object should contain exactly one type of Tool.
     /// </summary>
     public class GoogleCloudAiplatformV1Tool : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -58338,6 +58465,17 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("functionDeclarations")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1FunctionDeclaration> FunctionDeclarations { get; set; }
+
+        /// <summary>Optional. Specialized retrieval tool that is powered by Google search.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleSearchRetrieval")]
+        public virtual GoogleCloudAiplatformV1GoogleSearchRetrieval GoogleSearchRetrieval { get; set; }
+
+        /// <summary>
+        /// Optional. System will always execute the provided retrieval tool(s) to get external knowledge to answer the
+        /// prompt. Retrieval results are presented to the model for generation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retrieval")]
+        public virtual GoogleCloudAiplatformV1Retrieval Retrieval { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -59212,6 +59350,23 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>A string value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
         public virtual string StringValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Retrieve from Vertex AI Search datastore for grounding. See
+    /// https://cloud.google.com/vertex-ai-search-and-conversation
+    /// </summary>
+    public class GoogleCloudAiplatformV1VertexAISearch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Fully-qualified Vertex AI Search's datastore resource ID.
+        /// projects/&amp;lt;&amp;gt;/locations/&amp;lt;&amp;gt;/collections/&amp;lt;&amp;gt;/dataStores/&amp;lt;&amp;gt;
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datastore")]
+        public virtual string Datastore { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -60151,7 +60306,8 @@ namespace Google.Apis.Aiplatform.v1.Data
 
         /// <summary>
         /// The recitation action for one given input. When its segments contain different actions, the overall action
-        /// will be returned in the precedence of BLOCK &amp;gt; CITE &amp;gt; NO_ACTION.
+        /// will be returned in the precedence of BLOCK &amp;gt; CITE &amp;gt; NO_ACTION. When the given input is not
+        /// found in any source, the recitation action will not be specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recitationAction")]
         public virtual string RecitationAction { get; set; }
@@ -60371,7 +60527,8 @@ namespace Google.Apis.Aiplatform.v1.Data
 
         /// <summary>
         /// The recitation action for one given input. When its segments contain different actions, the overall action
-        /// will be returned in the precedence of BLOCK &amp;gt; CITE &amp;gt; NO_ACTION.
+        /// will be returned in the precedence of BLOCK &amp;gt; CITE &amp;gt; NO_ACTION. When the given input is not
+        /// found in any source, the recitation action will be NO_ACTION.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recitationAction")]
         public virtual string RecitationAction { get; set; }
@@ -61189,6 +61346,10 @@ namespace Google.Apis.Aiplatform.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("groundingMetadata")]
         public virtual LearningGenaiRootGroundingMetadata GroundingMetadata { get; set; }
+
+        /// <summary>Applies to streaming response message only. Whether the message is a code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isCode")]
+        public virtual System.Nullable<bool> IsCode { get; set; }
 
         /// <summary>
         /// Applies to Response message only. Indicates whether the message is a fallback and the response would have

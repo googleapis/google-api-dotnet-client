@@ -1479,13 +1479,16 @@ namespace Google.Apis.Transcoder.v1.Data
         public virtual string EntropyCoder { get; set; }
 
         /// <summary>
-        /// Required. The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will
-        /// default to the input frame rate if larger than the input frame rate. The API will generate an output FPS
-        /// that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame
-        /// rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
+        /// Required. The target video frame rate in frames per second (FPS). Must be less than or equal to 120.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frameRate")]
         public virtual System.Nullable<double> FrameRate { get; set; }
+
+        /// <summary>
+        /// Optional. Frame rate conversion strategy for desired frame rate. The default is `DOWNSAMPLE`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frameRateConversionStrategy")]
+        public virtual string FrameRateConversionStrategy { get; set; }
 
         /// <summary>
         /// Select the GOP size based on the specified duration. The default is `3s`. Note that `gopDuration` must be
@@ -1654,13 +1657,16 @@ namespace Google.Apis.Transcoder.v1.Data
         public virtual System.Nullable<bool> EnableTwoPass { get; set; }
 
         /// <summary>
-        /// Required. The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will
-        /// default to the input frame rate if larger than the input frame rate. The API will generate an output FPS
-        /// that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame
-        /// rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
+        /// Required. The target video frame rate in frames per second (FPS). Must be less than or equal to 120.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frameRate")]
         public virtual System.Nullable<double> FrameRate { get; set; }
+
+        /// <summary>
+        /// Optional. Frame rate conversion strategy for desired frame rate. The default is `DOWNSAMPLE`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frameRateConversionStrategy")]
+        public virtual string FrameRateConversionStrategy { get; set; }
 
         /// <summary>
         /// Select the GOP size based on the specified duration. The default is `3s`. Note that `gopDuration` must be
@@ -2612,13 +2618,16 @@ namespace Google.Apis.Transcoder.v1.Data
         public virtual System.Nullable<int> CrfLevel { get; set; }
 
         /// <summary>
-        /// Required. The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will
-        /// default to the input frame rate if larger than the input frame rate. The API will generate an output FPS
-        /// that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculating frame
-        /// rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
+        /// Required. The target video frame rate in frames per second (FPS). Must be less than or equal to 120.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frameRate")]
         public virtual System.Nullable<double> FrameRate { get; set; }
+
+        /// <summary>
+        /// Optional. Frame rate conversion strategy for desired frame rate. The default is `DOWNSAMPLE`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frameRateConversionStrategy")]
+        public virtual string FrameRateConversionStrategy { get; set; }
 
         /// <summary>
         /// Select the GOP size based on the specified duration. The default is `3s`. Note that `gopDuration` must be

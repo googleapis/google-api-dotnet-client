@@ -4434,6 +4434,10 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("executionEnvironment")]
         public virtual string ExecutionEnvironment { get; set; }
 
+        /// <summary>Optional. Disables health checking containers during deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("healthCheckDisabled")]
+        public virtual System.Nullable<bool> HealthCheckDisabled { get; set; }
+
         /// <summary>
         /// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are
         /// shared with Google's billing system, so they can be used to filter, or break down billing charges by team,
@@ -4470,7 +4474,7 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
 
-        /// <summary>Enable session affinity.</summary>
+        /// <summary>Optional. Enable session affinity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionAffinity")]
         public virtual System.Nullable<bool> SessionAffinity { get; set; }
 

@@ -5279,6 +5279,10 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual System.Nullable<long> MaxTimeTravelHours { get; set; }
 
         /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
         public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
@@ -6967,6 +6971,18 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual System.Collections.Generic.IList<ConnectionProperty> ConnectionProperties { get; set; }
 
         /// <summary>
+        /// Optional. [Experimental] Configures the load job to only copy files to the destination BigLake managed table
+        /// with an external storage_uri, without reading file content and writing them to new files. Copying files only
+        /// is supported when: * source_uris are in the same external storage system as the destination table but they
+        /// do not overlap with storage_uri of the destination table. * source_format is the same file format as the
+        /// destination table. * destination_table is an existing BigLake managed table. Its schema does not have
+        /// default value expression. It schema does not have type parameters other than precision and scale. * No
+        /// options other than the above are specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("copyFilesOnly")]
+        public virtual System.Nullable<bool> CopyFilesOnly { get; set; }
+
+        /// <summary>
         /// Optional. Specifies whether the job is allowed to create new tables. The following values are supported: *
         /// CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. * CREATE_NEVER: The table must
         /// already exist. If it does not, a 'notFound' error is returned in the job result. The default value is
@@ -8080,7 +8096,7 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("undeclaredQueryParameters")]
         public virtual System.Collections.Generic.IList<QueryParameter> UndeclaredQueryParameters { get; set; }
 
-        /// <summary>Output only. Search query specific statistics.</summary>
+        /// <summary>Output only. Vector Search query specific statistics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vectorSearchStatistics")]
         public virtual VectorSearchStatistics VectorSearchStatistics { get; set; }
 

@@ -5057,6 +5057,10 @@ namespace Google.Apis.GKEHub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rootsyncCrd")]
         public virtual string RootsyncCrd { get; set; }
 
+        /// <summary>The state of CS This field summarizes the other fields in this message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
         /// <summary>The state of ConfigSync's process to sync configs to a cluster</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("syncState")]
         public virtual ConfigManagementSyncState SyncState { get; set; }
@@ -5309,6 +5313,10 @@ namespace Google.Apis.GKEHub.v1.Data
         /// <summary>Hierarchy Controller configuration for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hierarchyController")]
         public virtual ConfigManagementHierarchyControllerConfig HierarchyController { get; set; }
+
+        /// <summary>Enables automatic Feature management.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("management")]
+        public virtual string Management { get; set; }
 
         /// <summary>Policy Controller configuration for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyController")]

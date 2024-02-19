@@ -7777,7 +7777,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("associations")]
         public virtual System.Collections.Generic.IList<FirewallEndpointAssociationReference> Associations { get; set; }
 
-        /// <summary>Optional. Project to bill on endpoint uptime usage.</summary>
+        /// <summary>Required. Project to bill on endpoint uptime usage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billingProjectId")]
         public virtual string BillingProjectId { get; set; }
 

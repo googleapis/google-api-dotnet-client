@@ -6448,6 +6448,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("specLocation")]
         public virtual string SpecLocation { get; set; }
 
+        /// <summary>Output only. State of the custom connector version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
         private string _updateTimeRaw;
 
         private object _updateTime;

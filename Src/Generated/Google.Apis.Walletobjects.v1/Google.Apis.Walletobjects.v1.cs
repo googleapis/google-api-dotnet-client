@@ -1877,6 +1877,67 @@ namespace Google.Apis.Walletobjects.v1
             this.service = service;
         }
 
+        /// <summary>Adds a message to the generic class referenced by the given class ID.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="resourceId">
+        /// The unique identifier for a class. This ID must be unique across all classes from an issuer. This value
+        /// should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by
+        /// you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'.
+        /// </param>
+        public virtual AddmessageRequest Addmessage(Google.Apis.Walletobjects.v1.Data.AddMessageRequest body, string resourceId)
+        {
+            return new AddmessageRequest(this.service, body, resourceId);
+        }
+
+        /// <summary>Adds a message to the generic class referenced by the given class ID.</summary>
+        public class AddmessageRequest : WalletobjectsBaseServiceRequest<Google.Apis.Walletobjects.v1.Data.GenericClassAddMessageResponse>
+        {
+            /// <summary>Constructs a new Addmessage request.</summary>
+            public AddmessageRequest(Google.Apis.Services.IClientService service, Google.Apis.Walletobjects.v1.Data.AddMessageRequest body, string resourceId) : base(service)
+            {
+                ResourceId = resourceId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// The unique identifier for a class. This ID must be unique across all classes from an issuer. This value
+            /// should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen
+            /// by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("resourceId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ResourceId { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Walletobjects.v1.Data.AddMessageRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "addmessage";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "walletobjects/v1/genericClass/{resourceId}/addMessage";
+
+            /// <summary>Initializes Addmessage parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("resourceId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resourceId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
         /// <summary>Returns the generic class with the given class ID.</summary>
         /// <param name="resourceId">
         /// The unique identifier for a class. This ID must be unique across all classes from an issuer. This value
@@ -2183,6 +2244,67 @@ namespace Google.Apis.Walletobjects.v1
         public GenericobjectResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+        }
+
+        /// <summary>Adds a message to the generic object referenced by the given object ID.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="resourceId">
+        /// The unique identifier for an object. This ID must be unique across all classes from an issuer. This value
+        /// should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by
+        /// you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'.
+        /// </param>
+        public virtual AddmessageRequest Addmessage(Google.Apis.Walletobjects.v1.Data.AddMessageRequest body, string resourceId)
+        {
+            return new AddmessageRequest(this.service, body, resourceId);
+        }
+
+        /// <summary>Adds a message to the generic object referenced by the given object ID.</summary>
+        public class AddmessageRequest : WalletobjectsBaseServiceRequest<Google.Apis.Walletobjects.v1.Data.GenericObjectAddMessageResponse>
+        {
+            /// <summary>Constructs a new Addmessage request.</summary>
+            public AddmessageRequest(Google.Apis.Services.IClientService service, Google.Apis.Walletobjects.v1.Data.AddMessageRequest body, string resourceId) : base(service)
+            {
+                ResourceId = resourceId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// The unique identifier for an object. This ID must be unique across all classes from an issuer. This
+            /// value should follow the format issuer ID. identifier where the former is issued by Google and latter is
+            /// chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("resourceId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ResourceId { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Walletobjects.v1.Data.AddMessageRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "addmessage";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "walletobjects/v1/genericObject/{resourceId}/addMessage";
+
+            /// <summary>Initializes Addmessage parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("resourceId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resourceId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
         }
 
         /// <summary>Returns the generic object with the given object ID.</summary>
@@ -6478,7 +6600,14 @@ namespace Google.Apis.Walletobjects.v1.Data
 
     public class AppLinkDataAppLinkInfoAppTarget : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>URI for AppTarget. The description on the URI must be set.</summary>
+        /// <summary>Package name for AppTarget. For example: com.google.android.gm</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; }
+
+        /// <summary>
+        /// URI for AppTarget. The description on the URI must be set. Prefer setting package field instead, if this
+        /// target is defined for your application.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetUri")]
         public virtual Uri TargetUri { get; set; }
 
@@ -8667,6 +8796,19 @@ namespace Google.Apis.Walletobjects.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Response to adding a new issuer message to the class. This contains the entire updated GenericClass.
+    /// </summary>
+    public class GenericClassAddMessageResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The updated EventTicketClass resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual GenericClass Resource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>List response which contains the list of all generic classes for a given issuer ID.</summary>
     public class GenericClassListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8831,6 +8973,19 @@ namespace Google.Apis.Walletobjects.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wideLogo")]
         public virtual Image WideLogo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response to adding a new issuer message to the object. This contains the entire updated GenericObject.
+    /// </summary>
+    public class GenericObjectAddMessageResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The updated GenericObject resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual GenericObject Resource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
