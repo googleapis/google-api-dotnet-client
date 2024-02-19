@@ -4581,6 +4581,87 @@ namespace Google.Apis.GKEHub.v1alpha
                     }
                 }
 
+                /// <summary>Lists permitted Scopes.</summary>
+                /// <param name="parent">
+                /// Required. The parent (project and location) where the Scope will be listed. Specified in the format
+                /// `projects/*/locations/*`.
+                /// </param>
+                public virtual ListPermittedRequest ListPermitted(string parent)
+                {
+                    return new ListPermittedRequest(this.service, parent);
+                }
+
+                /// <summary>Lists permitted Scopes.</summary>
+                public class ListPermittedRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1alpha.Data.ListPermittedScopesResponse>
+                {
+                    /// <summary>Constructs a new ListPermitted request.</summary>
+                    public ListPermittedRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent (project and location) where the Scope will be listed. Specified in the
+                    /// format `projects/*/locations/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. When requesting a 'page' of resources, `page_size` specifies number of resources to
+                    /// return. If unspecified or set to 0, all resources will be returned.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. Token returned by previous call to `ListPermittedScopes` which specifies the position
+                    /// in the list from where to continue listing the resources.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "listPermitted";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/scopes:listPermitted";
+
+                    /// <summary>Initializes ListPermitted parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
                 /// <summary>Updates a scopes.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -5859,6 +5940,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rootsyncCrd")]
         public virtual string RootsyncCrd { get; set; }
 
+        /// <summary>The state of CS This field summarizes the other fields in this message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
         /// <summary>The state of ConfigSync's process to sync configs to a cluster</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("syncState")]
         public virtual ConfigManagementSyncState SyncState { get; set; }
@@ -6117,6 +6202,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>Hierarchy Controller configuration for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hierarchyController")]
         public virtual ConfigManagementHierarchyControllerConfig HierarchyController { get; set; }
+
+        /// <summary>Enables automatic Feature management.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("management")]
+        public virtual string Management { get; set; }
 
         /// <summary>Policy Controller configuration for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyController")]
@@ -7698,6 +7787,24 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>List of permitted Scopes.</summary>
+    public class ListPermittedScopesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token to request the next page of resources from the `ListPermittedScopes` method. The value of an empty
+        /// string means that there are no more resources to return.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of permitted Scopes</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
+        public virtual System.Collections.Generic.IList<Scope> Scopes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

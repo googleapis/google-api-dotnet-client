@@ -2851,6 +2851,10 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("postgresqlExcludedObjects")]
         public virtual PostgresqlRdbms PostgresqlExcludedObjects { get; set; }
 
+        /// <summary>SQLServer data source objects to avoid backfilling</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlServerExcludedObjects")]
+        public virtual SqlServerRdbms SqlServerExcludedObjects { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3092,6 +3096,10 @@ namespace Google.Apis.Datastream.v1.Data
         /// <summary>Private connectivity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateConnectivity")]
         public virtual PrivateConnectivity PrivateConnectivity { get; set; }
+
+        /// <summary>SQLServer Connection Profile configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlServerProfile")]
+        public virtual SqlServerProfile SqlServerProfile { get; set; }
 
         /// <summary>Static Service IP connectivity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("staticServiceIpConnectivity")]
@@ -4628,6 +4636,10 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sourceConnectionProfile")]
         public virtual string SourceConnectionProfile { get; set; }
 
+        /// <summary>SQLServer data source configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlServerSourceConfig")]
+        public virtual SqlServerSourceConfig SqlServerSourceConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4660,6 +4672,10 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("postgresqlIdentifier")]
         public virtual PostgresqlObjectIdentifier PostgresqlIdentifier { get; set; }
 
+        /// <summary>SQLServer data source object identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlServerIdentifier")]
+        public virtual SqlServerObjectIdentifier SqlServerIdentifier { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4674,6 +4690,154 @@ namespace Google.Apis.Datastream.v1.Data
         /// <summary>Oracle SCN to start replicating from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oracleScnPosition")]
         public virtual OracleScnPosition OracleScnPosition { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>SQLServer Column.</summary>
+    public class SqlServerColumn : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Column name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("column")]
+        public virtual string Column { get; set; }
+
+        /// <summary>The SQLServer data type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataType")]
+        public virtual string DataType { get; set; }
+
+        /// <summary>Column length.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("length")]
+        public virtual System.Nullable<int> Length { get; set; }
+
+        /// <summary>Whether or not the column can accept a null value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nullable")]
+        public virtual System.Nullable<bool> Nullable { get; set; }
+
+        /// <summary>The ordinal position of the column in the table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ordinalPosition")]
+        public virtual System.Nullable<int> OrdinalPosition { get; set; }
+
+        /// <summary>Column precision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("precision")]
+        public virtual System.Nullable<int> Precision { get; set; }
+
+        /// <summary>Whether or not the column represents a primary key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryKey")]
+        public virtual System.Nullable<bool> PrimaryKey { get; set; }
+
+        /// <summary>Column scale.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scale")]
+        public virtual System.Nullable<int> Scale { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>SQLServer data source object identifier.</summary>
+    public class SqlServerObjectIdentifier : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The schema name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schema")]
+        public virtual string Schema { get; set; }
+
+        /// <summary>Required. The table name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("table")]
+        public virtual string Table { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>SQLServer database profile</summary>
+    public class SqlServerProfile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Database for the SQLServer connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual string Database { get; set; }
+
+        /// <summary>Required. Hostname for the SQLServer connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostname")]
+        public virtual string Hostname { get; set; }
+
+        /// <summary>Required. Password for the SQLServer connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("password")]
+        public virtual string Password { get; set; }
+
+        /// <summary>Port for the SQLServer connection, default value is 1433.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("port")]
+        public virtual System.Nullable<int> Port { get; set; }
+
+        /// <summary>Required. Username for the SQLServer connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("username")]
+        public virtual string Username { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>SQLServer database structure.</summary>
+    public class SqlServerRdbms : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>SQLServer schemas in the database server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemas")]
+        public virtual System.Collections.Generic.IList<SqlServerSchema> Schemas { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>SQLServer schema.</summary>
+    public class SqlServerSchema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Schema name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schema")]
+        public virtual string Schema { get; set; }
+
+        /// <summary>Tables in the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tables")]
+        public virtual System.Collections.Generic.IList<SqlServerTable> Tables { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>SQLServer data source configuration</summary>
+    public class SqlServerSourceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>SQLServer objects to exclude from the stream.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeObjects")]
+        public virtual SqlServerRdbms ExcludeObjects { get; set; }
+
+        /// <summary>SQLServer objects to include in the stream.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeObjects")]
+        public virtual SqlServerRdbms IncludeObjects { get; set; }
+
+        /// <summary>Max concurrent backfill tasks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxConcurrentBackfillTasks")]
+        public virtual System.Nullable<int> MaxConcurrentBackfillTasks { get; set; }
+
+        /// <summary>Max concurrent CDC tasks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxConcurrentCdcTasks")]
+        public virtual System.Nullable<int> MaxConcurrentCdcTasks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>SQLServer table.</summary>
+    public class SqlServerTable : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// SQLServer columns in the schema. When unspecified as part of include/exclude objects, includes/excludes
+        /// everything.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columns")]
+        public virtual System.Collections.Generic.IList<SqlServerColumn> Columns { get; set; }
+
+        /// <summary>Table name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("table")]
+        public virtual string Table { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -2768,6 +2768,10 @@ namespace Google.Apis.Books.v1
                 [Google.Apis.Util.RequestParameterAttribute("volumeId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string VolumeId { get; private set; }
 
+                /// <summary>Optional. String to identify the originator of this request.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("source", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Source { get; set; }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "summary";
 
@@ -2793,6 +2797,14 @@ namespace Google.Apis.Books.v1
                     {
                         Name = "volumeId",
                         IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "source",
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,

@@ -2596,6 +2596,12 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("directAccessVersionInfo")]
         public virtual DirectAccessVersionInfo DirectAccessVersionInfo { get; set; }
 
+        /// <summary>
+        /// Output only. The estimated wait time for a single interactive device session using Direct Access.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interactiveDeviceAvailabilityEstimate")]
+        public virtual object InteractiveDeviceAvailabilityEstimate { get; set; }
+
         /// <summary>An Android version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionId")]
         public virtual string VersionId { get; set; }

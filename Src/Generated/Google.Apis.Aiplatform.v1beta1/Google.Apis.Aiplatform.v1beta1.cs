@@ -311,6 +311,7 @@ namespace Google.Apis.Aiplatform.v1beta1
                 DeploymentResourcePools = new DeploymentResourcePoolsResource(service);
                 EdgeDevices = new EdgeDevicesResource(service);
                 Endpoints = new EndpointsResource(service);
+                EvaluationTasks = new EvaluationTasksResource(service);
                 ExampleStores = new ExampleStoresResource(service);
                 ExtensionControllers = new ExtensionControllersResource(service);
                 Extensions = new ExtensionsResource(service);
@@ -8319,6 +8320,311 @@ namespace Google.Apis.Aiplatform.v1beta1
                 }
             }
 
+            /// <summary>Gets the EvaluationTasks resource.</summary>
+            public virtual EvaluationTasksResource EvaluationTasks { get; }
+
+            /// <summary>The "evaluationTasks" collection of methods.</summary>
+            public class EvaluationTasksResource
+            {
+                private const string Resource = "evaluationTasks";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public EvaluationTasksResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Operations = new OperationsResource(service);
+                }
+
+                /// <summary>Gets the Operations resource.</summary>
+                public virtual OperationsResource Operations { get; }
+
+                /// <summary>The "operations" collection of methods.</summary>
+                public class OperationsResource
+                {
+                    private const string Resource = "operations";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public OperationsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Deletes a long-running operation. This method indicates that the client is no longer interested
+                    /// in the operation result. It does not cancel the operation. If the server doesn't support this
+                    /// method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+                    /// </summary>
+                    /// <param name="name">The name of the operation resource to be deleted.</param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Deletes a long-running operation. This method indicates that the client is no longer interested
+                    /// in the operation result. It does not cancel the operation. If the server doesn't support this
+                    /// method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+                    /// </summary>
+                    public class DeleteRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleProtobufEmpty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>The name of the operation resource to be deleted.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/evaluationTasks/[^/]+/operations/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                    /// operation result at intervals as recommended by the API service.
+                    /// </summary>
+                    /// <param name="name">The name of the operation resource.</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                    /// operation result at intervals as recommended by the API service.
+                    /// </summary>
+                    public class GetRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>The name of the operation resource.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/evaluationTasks/[^/]+/operations/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Lists operations that match the specified filter in the request. If the server doesn't support
+                    /// this method, it returns `UNIMPLEMENTED`.
+                    /// </summary>
+                    /// <param name="name">The name of the operation's parent resource.</param>
+                    public virtual ListRequest List(string name)
+                    {
+                        return new ListRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Lists operations that match the specified filter in the request. If the server doesn't support
+                    /// this method, it returns `UNIMPLEMENTED`.
+                    /// </summary>
+                    public class ListRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleLongrunningListOperationsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>The name of the operation's parent resource.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>The standard list filter.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>The standard list page size.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>The standard list page token.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}/operations";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/evaluationTasks/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Waits until the specified long-running operation is done or reaches at most a specified timeout,
+                    /// returning the latest state. If the operation is already done, the latest state is immediately
+                    /// returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC
+                    /// timeout is used. If the server does not support this method, it returns
+                    /// `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return
+                    /// the latest state before the specified timeout (including immediately), meaning even an immediate
+                    /// response is no guarantee that the operation is done.
+                    /// </summary>
+                    /// <param name="name">The name of the operation resource to wait on.</param>
+                    public virtual WaitRequest Wait(string name)
+                    {
+                        return new WaitRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Waits until the specified long-running operation is done or reaches at most a specified timeout,
+                    /// returning the latest state. If the operation is already done, the latest state is immediately
+                    /// returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC
+                    /// timeout is used. If the server does not support this method, it returns
+                    /// `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return
+                    /// the latest state before the specified timeout (including immediately), meaning even an immediate
+                    /// response is no guarantee that the operation is done.
+                    /// </summary>
+                    public class WaitRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Wait request.</summary>
+                        public WaitRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>The name of the operation resource to wait on.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// The maximum duration to wait before timing out. If left blank, the wait will be at most the
+                        /// time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also
+                        /// specified, the shorter one will be used.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("timeout", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object Timeout { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "wait";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}:wait";
+
+                        /// <summary>Initializes Wait parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/evaluationTasks/[^/]+/operations/[^/]+$",
+                            });
+                            RequestParameters.Add("timeout", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "timeout",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+            }
+
             /// <summary>Gets the ExampleStores resource.</summary>
             public virtual ExampleStoresResource ExampleStores { get; }
 
@@ -12131,7 +12437,7 @@ namespace Google.Apis.Aiplatform.v1beta1
                         /// the update. The fields specified in the update_mask are relative to the resource, not the
                         /// full request. A field will be overwritten if it is in the mask. If the user does not provide
                         /// a mask then only the non-empty fields present in the request will be overwritten. Set the
-                        /// update_mask to `*` to override all fields. Updatable fields: * `labels`
+                        /// update_mask to `*` to override all fields. Updatable fields: * `labels` * `serviceAgentType`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
@@ -40329,9 +40635,48 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("category")]
         public virtual string Category { get; set; }
 
+        /// <summary>The influential terms that could potentially block the response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("influentialTerms")]
+        public virtual System.Collections.Generic.IList<CloudAiNlLlmProtoServiceSafetyRatingInfluentialTerm> InfluentialTerms { get; set; }
+
         /// <summary>Harm probability levels in the content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("probability")]
         public virtual string Probability { get; set; }
+
+        /// <summary>Harm probability score.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("probabilityScore")]
+        public virtual System.Nullable<float> ProbabilityScore { get; set; }
+
+        /// <summary>Harm severity levels in the content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; }
+
+        /// <summary>Harm severity score.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severityScore")]
+        public virtual System.Nullable<float> SeverityScore { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The influential term that could potentially block the response.</summary>
+    public class CloudAiNlLlmProtoServiceSafetyRatingInfluentialTerm : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The beginning offset of the influential term.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("beginOffset")]
+        public virtual System.Nullable<int> BeginOffset { get; set; }
+
+        /// <summary>The confidence score of the influential term.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; }
+
+        /// <summary>The source of the influential term, prompt or response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
+        /// <summary>The influential term.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("term")]
+        public virtual string Term { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -42111,6 +42456,10 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finishReason")]
         public virtual string FinishReason { get; set; }
+
+        /// <summary>Output only. Metadata specifies sources used to ground generated content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groundingMetadata")]
+        public virtual GoogleCloudAiplatformV1beta1GroundingMetadata GroundingMetadata { get; set; }
 
         /// <summary>Output only. Index of the candidate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("index")]
@@ -44879,6 +45228,13 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         public virtual GoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfig PredictRequestResponseLoggingConfig { get; set; }
 
         /// <summary>
+        /// Optional. Configuration for private service connect. network and private_service_connect_config are mutually
+        /// exclusive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateServiceConnectConfig")]
+        public virtual GoogleCloudAiplatformV1beta1PrivateServiceConnectConfig PrivateServiceConnectConfig { get; set; }
+
+        /// <summary>
         /// A map from a DeployedModel's ID to the percentage of this Endpoint's traffic that should be forwarded to
         /// that DeployedModel. If a DeployedModel's ID is not listed in this map, then it receives no traffic. The
         /// traffic percentage values must add up to 100, or map must be empty if the Endpoint is to not accept any
@@ -46089,41 +46445,6 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exportedFiles")]
         public virtual System.Collections.Generic.IList<string> ExportedFiles { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Details of EndpointService.ExportEndpoint operation.</summary>
-    public class GoogleCloudAiplatformV1beta1ExportEndpointOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The common part of the operation metadata.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
-        public virtual GoogleCloudAiplatformV1beta1GenericOperationMetadata GenericMetadata { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response message of EndpointService.ExportEndpoint operation.</summary>
-    public class GoogleCloudAiplatformV1beta1ExportEndpointResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Information further describing the output of this Endpoint export.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("outputInfo")]
-        public virtual GoogleCloudAiplatformV1beta1ExportEndpointResponseOutputInfo OutputInfo { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Describes the output of the ExportEndpoint.</summary>
-    public class GoogleCloudAiplatformV1beta1ExportEndpointResponseOutputInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// If the Endpoint is being exported to BigQuery this is the full path of the BigQuery ML model created.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("bigQueryDestination")]
-        public virtual GoogleCloudAiplatformV1beta1BigQueryDestination BigQueryDestination { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -47541,6 +47862,10 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("featureGroups")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1FeatureViewFeatureRegistrySourceFeatureGroup> FeatureGroups { get; set; }
 
+        /// <summary>Optional. The project number of the parent project of the Feature Groups.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectNumber")]
+        public virtual System.Nullable<long> ProjectNumber { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -47621,6 +47946,10 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("runTime")]
         public virtual GoogleTypeInterval RunTime { get; set; }
 
+        /// <summary>Output only. Summary of the sync job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("syncSummary")]
+        public virtual GoogleCloudAiplatformV1beta1FeatureViewSyncSyncSummary SyncSummary { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -47636,6 +47965,24 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cron")]
         public virtual string Cron { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Summary from the Sync job. For continuous syncs, the summary is updated periodically. For batch syncs, it gets
+    /// updated on completion of the sync.
+    /// </summary>
+    public class GoogleCloudAiplatformV1beta1FeatureViewSyncSyncSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Total number of rows synced.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rowSynced")]
+        public virtual System.Nullable<long> RowSynced { get; set; }
+
+        /// <summary>Output only. BigQuery slot milliseconds consumed for the sync job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalSlot")]
+        public virtual System.Nullable<long> TotalSlot { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -48441,7 +48788,7 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// <summary>
         /// Optional. A list of `Tools` the model may use to generate the next response. A `Tool` is a piece of code
         /// that enables the system to interact with external systems to perform an action, or set of actions, outside
-        /// of knowledge and scope of the model. The only supported tool is currently `Function`
+        /// of knowledge and scope of the model.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tools")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1Tool> Tools { get; set; }
@@ -48626,6 +48973,71 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Tool to retrieve public web data for grounding, powered by Google.</summary>
+    public class GoogleCloudAiplatformV1beta1GoogleSearchRetrieval : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Disable using the result from this tool in detecting grounding attribution. This does not affect
+        /// how the result is given to the model for generation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableAttribution")]
+        public virtual System.Nullable<bool> DisableAttribution { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Grounding attribution.</summary>
+    public class GoogleCloudAiplatformV1beta1GroundingAttribution : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Output only. Confidence score of the attribution. Ranges from 0 to 1. 1 is the most confident.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidenceScore")]
+        public virtual System.Nullable<float> ConfidenceScore { get; set; }
+
+        /// <summary>Output only. Segment of the content this attribution belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("segment")]
+        public virtual GoogleCloudAiplatformV1beta1Segment Segment { get; set; }
+
+        /// <summary>Optional. Attribution from the web.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("web")]
+        public virtual GoogleCloudAiplatformV1beta1GroundingAttributionWeb Web { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Attribution from the web.</summary>
+    public class GoogleCloudAiplatformV1beta1GroundingAttributionWeb : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Title of the attribution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>Output only. URI reference of the attribution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata returned to client when grounding is enabled.</summary>
+    public class GoogleCloudAiplatformV1beta1GroundingMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. List of grounding attributions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groundingAttributions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1GroundingAttribution> GroundingAttributions { get; set; }
+
+        /// <summary>Optional. Web search queries for the following-up web search.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webSearchQueries")]
+        public virtual System.Collections.Generic.IList<string> WebSearchQueries { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -54727,13 +55139,6 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
     public class GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The default runtime for the PipelineJob. If not provided, Vertex Custom Job is used as the
-        /// runtime. For Vertex Custom Job, please refer to https://cloud.google.com/vertex-ai/docs/training/overview
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("defaultRuntime")]
-        public virtual GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigDefaultRuntime DefaultRuntime { get; set; }
-
-        /// <summary>
         /// Represents the failure policy of a pipeline. Currently, the default of a pipeline is that the pipeline will
         /// continue to run until no more tasks can be executed, also known as PIPELINE_FAILURE_POLICY_FAIL_SLOW.
         /// However, if a pipeline is set to PIPELINE_FAILURE_POLICY_FAIL_FAST, it will stop scheduling any new tasks
@@ -54781,17 +55186,6 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The default runtime for the PipelineJob.</summary>
-    public class GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigDefaultRuntime : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Persistent resource based runtime detail.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("persistentResourceRuntimeDetail")]
-        public virtual GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigPersistentResourceRuntimeDetail PersistentResourceRuntimeDetail { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>The type of an input artifact.</summary>
     public class GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigInputArtifact : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -54802,23 +55196,6 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("artifactId")]
         public virtual string ArtifactId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Persistent resource based runtime detail. For more information, refer to
-    /// https://cloud.google.com/vertex-ai/docs/training/persistent-resource-overview
-    /// </summary>
-    public class GoogleCloudAiplatformV1beta1PipelineJobRuntimeConfigPersistentResourceRuntimeDetail : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Persistent resource name. Format:
-        /// `projects/{project}/locations/{location}/persistentResources/{persistent_resource}`
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("persistentResourceName")]
-        public virtual string PersistentResourceName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -55998,6 +56375,17 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for the Ray metrics.</summary>
+    public class GoogleCloudAiplatformV1beta1RayMetricSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Flag to disable the Ray metrics collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual System.Nullable<bool> Disabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Configuration information for the Ray cluster. For experimental launch, Ray cluster creation and Persistent
     /// cluster creation are 1:1 mapping: We will provision all the nodes within the Persistent cluster as Ray nodes.
@@ -56021,6 +56409,10 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
         public virtual string ImageUri { get; set; }
+
+        /// <summary>Optional. Ray metrics configurations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rayMetricSpec")]
+        public virtual GoogleCloudAiplatformV1beta1RayMetricSpec RayMetricSpec { get; set; }
 
         /// <summary>
         /// Optional. Required if image_uri isn't set. A map of resource_pool_id to prebuild Ray image if user need to
@@ -56493,6 +56885,24 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("catchUp")]
         public virtual System.Nullable<bool> CatchUp { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines a retrieval tool that model can call to access external knowledge.</summary>
+    public class GoogleCloudAiplatformV1beta1Retrieval : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Disable using the result from this tool in detecting grounding attribution. This does not affect
+        /// how the result is given to the model for generation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableAttribution")]
+        public virtual System.Nullable<bool> DisableAttribution { get; set; }
+
+        /// <summary>Set to use data source powered by Vertex AI Search.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vertexAiSearch")]
+        public virtual GoogleCloudAiplatformV1beta1VertexAISearch VertexAiSearch { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -61417,6 +61827,31 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Segment of the content.</summary>
+    public class GoogleCloudAiplatformV1beta1Segment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. End index in the given Part, measured in bytes. Offset from the start of the Part, exclusive,
+        /// starting at zero.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endIndex")]
+        public virtual System.Nullable<int> EndIndex { get; set; }
+
+        /// <summary>Output only. The index of a Part object within its parent Content object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partIndex")]
+        public virtual System.Nullable<int> PartIndex { get; set; }
+
+        /// <summary>
+        /// Output only. Start index in the given Part, measured in bytes. Offset from the start of the Part, inclusive,
+        /// starting at zero.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
+        public virtual System.Nullable<int> StartIndex { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for the use of custom service account to run the workloads.</summary>
     public class GoogleCloudAiplatformV1beta1ServiceAccountSpec : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -63325,7 +63760,7 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
     /// <summary>
     /// Tool details that the model may use to generate response. A `Tool` is a piece of code that enables the system to
     /// interact with external systems to perform an action, or set of actions, outside of knowledge and scope of the
-    /// model.
+    /// model. A Tool object should contain exactly one type of Tool.
     /// </summary>
     public class GoogleCloudAiplatformV1beta1Tool : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -63337,6 +63772,17 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("functionDeclarations")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1FunctionDeclaration> FunctionDeclarations { get; set; }
+
+        /// <summary>Optional. Specialized retrieval tool that is powered by Google search.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleSearchRetrieval")]
+        public virtual GoogleCloudAiplatformV1beta1GoogleSearchRetrieval GoogleSearchRetrieval { get; set; }
+
+        /// <summary>
+        /// Optional. System will always execute the provided retrieval tool(s) to get external knowledge to answer the
+        /// prompt. Retrieval results are presented to the model for generation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retrieval")]
+        public virtual GoogleCloudAiplatformV1beta1Retrieval Retrieval { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -64237,6 +64683,23 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// <summary>A string value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
         public virtual string StringValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Retrieve from Vertex AI Search datastore for grounding. See
+    /// https://cloud.google.com/vertex-ai-search-and-conversation
+    /// </summary>
+    public class GoogleCloudAiplatformV1beta1VertexAISearch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Fully-qualified Vertex AI Search's datastore resource ID.
+        /// projects/&amp;lt;&amp;gt;/locations/&amp;lt;&amp;gt;/collections/&amp;lt;&amp;gt;/dataStores/&amp;lt;&amp;gt;
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datastore")]
+        public virtual string Datastore { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -65221,7 +65684,8 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
 
         /// <summary>
         /// The recitation action for one given input. When its segments contain different actions, the overall action
-        /// will be returned in the precedence of BLOCK &amp;gt; CITE &amp;gt; NO_ACTION.
+        /// will be returned in the precedence of BLOCK &amp;gt; CITE &amp;gt; NO_ACTION. When the given input is not
+        /// found in any source, the recitation action will not be specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recitationAction")]
         public virtual string RecitationAction { get; set; }
@@ -65441,7 +65905,8 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
 
         /// <summary>
         /// The recitation action for one given input. When its segments contain different actions, the overall action
-        /// will be returned in the precedence of BLOCK &amp;gt; CITE &amp;gt; NO_ACTION.
+        /// will be returned in the precedence of BLOCK &amp;gt; CITE &amp;gt; NO_ACTION. When the given input is not
+        /// found in any source, the recitation action will be NO_ACTION.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recitationAction")]
         public virtual string RecitationAction { get; set; }
@@ -66259,6 +66724,10 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("groundingMetadata")]
         public virtual LearningGenaiRootGroundingMetadata GroundingMetadata { get; set; }
+
+        /// <summary>Applies to streaming response message only. Whether the message is a code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isCode")]
+        public virtual System.Nullable<bool> IsCode { get; set; }
 
         /// <summary>
         /// Applies to Response message only. Indicates whether the message is a fallback and the response would have

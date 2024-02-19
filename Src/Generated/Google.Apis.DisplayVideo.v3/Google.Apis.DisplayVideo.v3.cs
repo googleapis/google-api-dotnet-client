@@ -2870,7 +2870,9 @@ namespace Google.Apis.DisplayVideo.v3
 
             /// <summary>
             /// Permanently deletes a campaign. A deleted campaign cannot be recovered. The campaign should be archived
-            /// first, i.e. set entity_status to `ENTITY_STATUS_ARCHIVED`, to be able to delete it.
+            /// first, i.e. set entity_status to `ENTITY_STATUS_ARCHIVED`, to be able to delete it. **This method
+            /// regularly experiences high latency.** We recommend [increasing your default
+            /// timeout](/display-video/api/guides/best-practices/timeouts#client_library_timeout) to avoid errors.
             /// </summary>
             /// <param name="advertiserId">The ID of the advertiser this campaign belongs to.</param>
             /// <param name="campaignId">The ID of the campaign we need to delete.</param>
@@ -2881,7 +2883,9 @@ namespace Google.Apis.DisplayVideo.v3
 
             /// <summary>
             /// Permanently deletes a campaign. A deleted campaign cannot be recovered. The campaign should be archived
-            /// first, i.e. set entity_status to `ENTITY_STATUS_ARCHIVED`, to be able to delete it.
+            /// first, i.e. set entity_status to `ENTITY_STATUS_ARCHIVED`, to be able to delete it. **This method
+            /// regularly experiences high latency.** We recommend [increasing your default
+            /// timeout](/display-video/api/guides/best-practices/timeouts#client_library_timeout) to avoid errors.
             /// </summary>
             public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Empty>
             {
@@ -3745,7 +3749,9 @@ namespace Google.Apis.DisplayVideo.v3
 
                 /// <summary>
                 /// Replaces all of the sites under a single channel. The operation will replace the sites under a
-                /// channel with the sites provided in ReplaceSitesRequest.new_sites.
+                /// channel with the sites provided in ReplaceSitesRequest.new_sites. **This method regularly
+                /// experiences high latency.** We recommend [increasing your default
+                /// timeout](/display-video/api/guides/best-practices/timeouts#client_library_timeout) to avoid errors.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="advertiserId">The ID of the advertiser that owns the parent channel.</param>
@@ -3757,7 +3763,9 @@ namespace Google.Apis.DisplayVideo.v3
 
                 /// <summary>
                 /// Replaces all of the sites under a single channel. The operation will replace the sites under a
-                /// channel with the sites provided in ReplaceSitesRequest.new_sites.
+                /// channel with the sites provided in ReplaceSitesRequest.new_sites. **This method regularly
+                /// experiences high latency.** We recommend [increasing your default
+                /// timeout](/display-video/api/guides/best-practices/timeouts#client_library_timeout) to avoid errors.
                 /// </summary>
                 public class ReplaceRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.ReplaceSitesResponse>
                 {
@@ -9250,7 +9258,9 @@ namespace Google.Apis.DisplayVideo.v3
 
             /// <summary>
             /// Duplicates a line item. Returns the ID of the created line item if successful. YouTube &amp;amp;
-            /// Partners line items cannot be created or updated using the API.
+            /// Partners line items cannot be created or updated using the API. **This method regularly experiences high
+            /// latency.** We recommend [increasing your default
+            /// timeout](/display-video/api/guides/best-practices/timeouts#client_library_timeout) to avoid errors.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">Required. The ID of the advertiser this line item belongs to.</param>
@@ -9262,7 +9272,9 @@ namespace Google.Apis.DisplayVideo.v3
 
             /// <summary>
             /// Duplicates a line item. Returns the ID of the created line item if successful. YouTube &amp;amp;
-            /// Partners line items cannot be created or updated using the API.
+            /// Partners line items cannot be created or updated using the API. **This method regularly experiences high
+            /// latency.** We recommend [increasing your default
+            /// timeout](/display-video/api/guides/best-practices/timeouts#client_library_timeout) to avoid errors.
             /// </summary>
             public class DuplicateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.DuplicateLineItemResponse>
             {
@@ -9579,7 +9591,8 @@ namespace Google.Apis.DisplayVideo.v3
             /// cannot be made concurrently with the following requests updating the same line item: *
             /// BulkEditAssignedTargetingOptions * BulkUpdateLineItems * assignedTargetingOptions.create *
             /// assignedTargetingOptions.delete YouTube &amp;amp; Partners line items cannot be created or updated using
-            /// the API.
+            /// the API. **This method regularly experiences high latency.** We recommend [increasing your default
+            /// timeout](/display-video/api/guides/best-practices/timeouts#client_library_timeout) to avoid errors.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">
@@ -9596,7 +9609,8 @@ namespace Google.Apis.DisplayVideo.v3
             /// cannot be made concurrently with the following requests updating the same line item: *
             /// BulkEditAssignedTargetingOptions * BulkUpdateLineItems * assignedTargetingOptions.create *
             /// assignedTargetingOptions.delete YouTube &amp;amp; Partners line items cannot be created or updated using
-            /// the API.
+            /// the API. **This method regularly experiences high latency.** We recommend [increasing your default
+            /// timeout](/display-video/api/guides/best-practices/timeouts#client_library_timeout) to avoid errors.
             /// </summary>
             public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.LineItem>
             {
@@ -12742,8 +12756,9 @@ namespace Google.Apis.DisplayVideo.v3
         }
 
         /// <summary>
-        /// Creates a new advertiser. Returns the newly created advertiser if successful. This method can take up to 180
-        /// seconds to complete.
+        /// Creates a new advertiser. Returns the newly created advertiser if successful. **This method regularly
+        /// experiences high latency.** We recommend [increasing your default
+        /// timeout](/display-video/api/guides/best-practices/timeouts#client_library_timeout) to avoid errors.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.DisplayVideo.v3.Data.Advertiser body)
@@ -12752,8 +12767,9 @@ namespace Google.Apis.DisplayVideo.v3
         }
 
         /// <summary>
-        /// Creates a new advertiser. Returns the newly created advertiser if successful. This method can take up to 180
-        /// seconds to complete.
+        /// Creates a new advertiser. Returns the newly created advertiser if successful. **This method regularly
+        /// experiences high latency.** We recommend [increasing your default
+        /// timeout](/display-video/api/guides/best-practices/timeouts#client_library_timeout) to avoid errors.
         /// </summary>
         public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.Advertiser>
         {
@@ -18284,7 +18300,9 @@ namespace Google.Apis.DisplayVideo.v3
 
                 /// <summary>
                 /// Replaces all of the sites under a single channel. The operation will replace the sites under a
-                /// channel with the sites provided in ReplaceSitesRequest.new_sites.
+                /// channel with the sites provided in ReplaceSitesRequest.new_sites. **This method regularly
+                /// experiences high latency.** We recommend [increasing your default
+                /// timeout](/display-video/api/guides/best-practices/timeouts#client_library_timeout) to avoid errors.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="partnerId">The ID of the partner that owns the parent channel.</param>
@@ -18296,7 +18314,9 @@ namespace Google.Apis.DisplayVideo.v3
 
                 /// <summary>
                 /// Replaces all of the sites under a single channel. The operation will replace the sites under a
-                /// channel with the sites provided in ReplaceSitesRequest.new_sites.
+                /// channel with the sites provided in ReplaceSitesRequest.new_sites. **This method regularly
+                /// experiences high latency.** We recommend [increasing your default
+                /// timeout](/display-video/api/guides/best-practices/timeouts#client_library_timeout) to avoid errors.
                 /// </summary>
                 public class ReplaceRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v3.Data.ReplaceSitesResponse>
                 {
@@ -22355,11 +22375,18 @@ namespace Google.Apis.DisplayVideo.v3.Data
         public virtual System.Nullable<long> IasClientId { get; set; }
 
         /// <summary>
-        /// Whether or not to use DV360's Online Behavioral Advertising (OBA) compliance. Starting on February 9, 2024,
-        /// this field will be affected by an update to the Display &amp;amp; Video 360 API Terms of Service. See our
-        /// [announcement](//ads-developers.googleblog.com/2024/01/update-to-display-video-360-api-terms.html) for more
-        /// detail. Warning: Changing OBA settings may cause the audit status of your creatives to be reset by some ad
-        /// exchanges, making them ineligible to serve until they are re-approved.
+        /// Whether or not to disable Google's About this Ad feature that adds badging (to identify the content as an
+        /// ad) and transparency information (on interaction with About this Ad) to your ads for Online Behavioral
+        /// Advertising (OBA) and regulatory requirements. About this Ad gives users greater control over the ads they
+        /// see and helps you explain why they're seeing your ad. [Learn
+        /// more](//support.google.com/displayvideo/answer/14315795). If you choose to set this field to `true`, note
+        /// that ads served through Display &amp;amp; Video 360 must comply to the following: * Be Online Behavioral
+        /// Advertising (OBA) compliant, as per your contract with Google Marketing Platform. * In the European Economic
+        /// Area (EEA), include transparency information and a mechanism for users to report illegal content in ads. If
+        /// using an alternative ad badging, transparency, and reporting solution, you must ensure it includes the
+        /// required transparency information and illegal content flagging mechanism and that you notify Google of any
+        /// illegal content reports using the appropriate
+        /// [form](//support.google.com/legal/troubleshooter/1114905?sjid=6787484030557261960-EU#ts=2981967%2C2982031%2C12980091).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("obaComplianceDisabled")]
         public virtual System.Nullable<bool> ObaComplianceDisabled { get; set; }
