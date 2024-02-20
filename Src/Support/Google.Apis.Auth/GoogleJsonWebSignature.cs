@@ -42,7 +42,6 @@ namespace Google.Apis.Auth
         /// <summary>
         /// Validates a Google-issued Json Web Token (JWT).
         /// Will throw a <see cref="InvalidJwtException"/> if the passed value is not valid JWT signed by Google.
-        /// If you want to use a cancellation token you can use <see cref="ValidateWithCancellationAsync"/>
         /// </summary>
         /// <remarks>
         /// <para>Follows the procedure to
@@ -57,27 +56,7 @@ namespace Google.Apis.Auth
         /// <returns>The JWT payload, if the JWT is valid. Throws an <see cref="InvalidJwtException"/> otherwise.</returns>
         /// <exception cref="InvalidJwtException">Thrown when passed a JWT that is not a valid JWT signed by Google.</exception>
         public static Task<Payload> ValidateAsync(string jwt, IClock clock = null, bool forceGoogleCertRefresh = false) =>
-            ValidateWithCancellationAsync(jwt, clock, forceGoogleCertRefresh);
-
-        /// <summary>
-        /// Validates a Google-issued Json Web Token (JWT).
-        /// Will throw a <see cref="InvalidJwtException"/> if the passed value is not valid JWT signed by Google.
-        /// </summary>
-        /// <remarks>
-        /// <para>Follows the procedure to
-        /// <see href="https://developers.google.com/identity/protocols/OpenIDConnect#validatinganidtoken">validate a JWT ID token</see>.
-        /// </para>
-        /// <para>Google certificates are cached, and refreshed once per hour. This can be overridden by setting
-        /// <paramref name="forceGoogleCertRefresh"/> to true.</para>
-        /// </remarks>
-        /// <param name="jwt">The JWT to validate.</param>
-        /// <param name="clock">Optional. The <see cref="IClock"/> to use for JWT expiration verification. Defaults to the system clock.</param>
-        /// <param name="forceGoogleCertRefresh">Optional. If true forces new certificates to be downloaded from Google. Defaults to false.</param>
-        /// <param name="cancellationToken">Cancellation token</param>
-        /// <returns>The JWT payload, if the JWT is valid. Throws an <see cref="InvalidJwtException"/> otherwise.</returns>
-        /// <exception cref="InvalidJwtException">Thrown when passed a JWT that is not a valid JWT signed by Google.</exception>
-        public static Task<Payload> ValidateWithCancellationAsync(string jwt, IClock clock = null, bool forceGoogleCertRefresh = false, CancellationToken cancellationToken = default) =>
-            ValidateAsync(jwt, new ValidationSettings { Clock = clock, ForceGoogleCertRefresh = forceGoogleCertRefresh }, cancellationToken);
+            ValidateAsync(jwt, new ValidationSettings { Clock = clock, ForceGoogleCertRefresh = forceGoogleCertRefresh });
 
         /// <summary>
         /// Settings used when validating a JSON Web Signature.
@@ -232,7 +211,12 @@ namespace Google.Apis.Auth
             ValidateInternalAsync(jwt, validationSettings, cancellationToken);
 
         // internal for testing
-        internal static async Task<Payload> ValidateInternalAsync(string jwt, ValidationSettings validationSettings, CancellationToken cancellationToken = default)
+        internal static Task<Payload> ValidateInternalAsync(string jwt, ValidationSettings validationSettings)
+        {
+            return ValidateInternalAsync(jwt, validationSettings, default);
+        }
+
+        internal static async Task<Payload> ValidateInternalAsync(string jwt, ValidationSettings validationSettings, CancellationToken cancellationToken)
         {
             var settings = validationSettings.ThrowIfNull(nameof(validationSettings)).Clone();
             var verificationOptions = validationSettings.ToVerificationOptions();
