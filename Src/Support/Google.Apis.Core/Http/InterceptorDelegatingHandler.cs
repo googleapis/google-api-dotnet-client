@@ -14,13 +14,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using Google.Apis.Http;
 using Google.Apis.Util;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Google.Apis.Core.Http;
+namespace Google.Apis.Http;
 
 /// <summary>
 /// A <see cref="DelegatingHandler"/> which executes an <see cref="IHttpExecuteInterceptor"/> before
