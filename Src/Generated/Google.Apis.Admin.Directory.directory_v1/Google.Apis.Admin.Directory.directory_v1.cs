@@ -12106,7 +12106,8 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// to be an integer in the range [0,100]. * `DEVICE_START_CRD_SESSION`: Payload is optionally a stringified
         /// JSON object in the form: { "ackedUserPresence": true }. `ackedUserPresence` is a boolean. By default,
         /// `ackedUserPresence` is set to `false`. To start a Chrome Remote Desktop session for an active device, set
-        /// `ackedUserPresence` to `true`.
+        /// `ackedUserPresence` to `true`. * `REBOOT`: Payload is a stringified JSON object in the form: {
+        /// "user_session_delay_seconds": 300 }. The delay has to be in the range [0, 300].
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual string Payload { get; set; }

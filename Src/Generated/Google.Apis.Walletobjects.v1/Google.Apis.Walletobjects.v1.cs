@@ -10613,7 +10613,7 @@ namespace Google.Apis.Walletobjects.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("localizedHeader")]
         public virtual LocalizedString LocalizedHeader { get; set; }
 
-        /// <summary>The type of the message. Currently, this can only be set for offers.</summary>
+        /// <summary>The message type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageType")]
         public virtual string MessageType { get; set; }
 

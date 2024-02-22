@@ -4651,9 +4651,7 @@ namespace Google.Apis.Appengine.v1beta.Data
         /// act upon differences in the previous and current reasons.Reasons will be provided for every system: service
         /// management, data governance, abuse, and billing.If this is a CCFE-triggered event used for reconciliation
         /// then the current reasons will be set to their *_CONTROL_PLANE_SYNC state. The previous reasons will contain
-        /// the last known set of non-unknown non-control_plane_sync reasons for the state.Reasons fields are
-        /// deprecated. New tenants should only use the state field. If you must know the reason(s) behind a specific
-        /// state, please consult with CCFE team first (cloud-ccfe-discuss@google.com).
+        /// the last known set of non-unknown non-control_plane_sync reasons for the state.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("previousReasons")]
         public virtual Reasons PreviousReasons { get; set; }
@@ -6308,6 +6306,10 @@ namespace Google.Apis.Appengine.v1beta.Data
         /// <summary>Date when Runtime is deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deprecationDate")]
         public virtual Date DeprecationDate { get; set; }
+
+        /// <summary>User-friendly display name, e.g. 'Node.js 12', etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Date when Runtime is end of support.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endOfSupportDate")]
