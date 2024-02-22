@@ -8805,11 +8805,7 @@ namespace Google.Apis.AndroidPublisher.v3
                 }
             }
 
-            /// <summary>
-            /// Archives a subscription. Can only be done if at least one base plan was active in the past, and no base
-            /// plan is available for new or existing subscribers currently. This action is irreversible, and the
-            /// subscription ID will remain reserved.
-            /// </summary>
+            /// <summary>Deprecated: subscription archiving is not supported.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="packageName">
             /// Required. The parent app (package name) of the app of the subscription to delete.
@@ -8820,11 +8816,7 @@ namespace Google.Apis.AndroidPublisher.v3
                 return new ArchiveRequest(this.service, body, packageName, productId);
             }
 
-            /// <summary>
-            /// Archives a subscription. Can only be done if at least one base plan was active in the past, and no base
-            /// plan is available for new or existing subscribers currently. This action is irreversible, and the
-            /// subscription ID will remain reserved.
-            /// </summary>
+            /// <summary>Deprecated: subscription archiving is not supported.</summary>
             public class ArchiveRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.Subscription>
             {
                 /// <summary>Constructs a new Archive request.</summary>
@@ -9276,9 +9268,7 @@ namespace Google.Apis.AndroidPublisher.v3
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-                /// <summary>
-                /// Whether archived subscriptions should be included in the response. Defaults to false.
-                /// </summary>
+                /// <summary>Deprecated: subscription archiving is not supported.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("showArchived", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> ShowArchived { get; set; }
 
@@ -12263,7 +12253,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request message for ArchiveSubscription.</summary>
+    /// <summary>Deprecated: subscription archiving is not supported.</summary>
     public class ArchiveSubscriptionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -15075,7 +15065,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     {
         /// <summary>
         /// You must tell us if your app contains streaming products to correctly charge US state and local sales tax.
-        /// Field only supported in United States.
+        /// Field only supported in the United States.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eligibleForStreamingServiceTaxRate")]
         public virtual System.Nullable<bool> EligibleForStreamingServiceTaxRate { get; set; }
@@ -15307,9 +15297,9 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>
         /// Required. Contents of the CSV file containing Data Safety responses. For the format of this file, see the
         /// Help Center documentation at
-        /// https://support.google.com/googleplay/android-developer/answer/10787469?hl=en#zippy=%2Cunderstand-the-csv-format
+        /// https://support.google.com/googleplay/android-developer/answer/10787469?#zippy=%2Cunderstand-the-csv-format
         /// To download an up to date template, follow the steps at
-        /// https://support.google.com/googleplay/android-developer/answer/10787469?hl=en#zippy=%2Cexport-to-a-csv-file
+        /// https://support.google.com/googleplay/android-developer/answer/10787469?#zippy=%2Cexport-to-a-csv-file
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("safetyLabels")]
         public virtual string SafetyLabels { get; set; }
@@ -15469,11 +15459,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     /// <summary>A single subscription for an app.</summary>
     public class Subscription : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Output only. Whether this subscription is archived. Archived subscriptions are not available to any
-        /// subscriber any longer, cannot be updated, and are not returned in list requests unless the show archived
-        /// flag is passed in.
-        /// </summary>
+        /// <summary>Output only. Deprecated: subscription archiving is not supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("archived")]
         public virtual System.Nullable<bool> Archived { get; set; }
 

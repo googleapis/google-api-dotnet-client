@@ -991,8 +991,9 @@ namespace Google.Apis.Admin.Reports.reports_v1
             public virtual System.Nullable<int> MaxResults { get; set; }
 
             /// <summary>
-            /// ID of the organizational unit to report on. Activity records will be shown only for users who belong to
-            /// the specified organizational unit. Data before Dec 17, 2018 doesn't appear in the filtered results.
+            /// `Deprecated`. This field is deprecated and is no longer supported. ID of the organizational unit to
+            /// report on. Activity records will be shown only for users who belong to the specified organizational
+            /// unit. Data before Dec 17, 2018 doesn't appear in the filtered results.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("orgUnitID", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrgUnitID { get; set; }

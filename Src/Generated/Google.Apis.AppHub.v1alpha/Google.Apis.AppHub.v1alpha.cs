@@ -370,7 +370,11 @@ namespace Google.Apis.AppHub.v1alpha
                         [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string RequestId { get; set; }
 
-                        /// <summary>Required. The Service identifier.</summary>
+                        /// <summary>
+                        /// Required. The Service identifier. Must contain only lowercase letters, numbers or hyphens,
+                        /// with the first character a letter, the last a letter or a number, and a 63 character
+                        /// maximum.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("serviceId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string ServiceId { get; set; }
 
@@ -783,7 +787,11 @@ namespace Google.Apis.AppHub.v1alpha
                         [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string RequestId { get; set; }
 
-                        /// <summary>Required. The Workload identifier.</summary>
+                        /// <summary>
+                        /// Required. The Workload identifier. Must contain only lowercase letters, numbers or hyphens,
+                        /// with the first character a letter, the last a letter or a number, and a 63 character
+                        /// maximum.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("workloadId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string WorkloadId { get; set; }
 
@@ -1165,7 +1173,10 @@ namespace Google.Apis.AppHub.v1alpha
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Required. The Application identifier.</summary>
+                    /// <summary>
+                    /// Required. The Application identifier. Must contain only lowercase letters, numbers or hyphens,
+                    /// with the first character a letter, the last a letter or a number, and a 63 character maximum.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("applicationId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ApplicationId { get; set; }
 
@@ -1911,14 +1922,18 @@ namespace Google.Apis.AppHub.v1alpha
                     }
                 }
 
-                /// <summary>Lists discovered services in a host project and location.</summary>
+                /// <summary>
+                /// Lists discovered services that can be added to an application in a host project and location.
+                /// </summary>
                 /// <param name="parent">Required. Value for parent.</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>Lists discovered services in a host project and location.</summary>
+                /// <summary>
+                /// Lists discovered services that can be added to an application in a host project and location.
+                /// </summary>
                 public class ListRequest : AppHubBaseServiceRequest<Google.Apis.AppHub.v1alpha.Data.ListDiscoveredServicesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -2166,14 +2181,18 @@ namespace Google.Apis.AppHub.v1alpha
                     }
                 }
 
-                /// <summary>Lists discovered workloads in a host project and location.</summary>
+                /// <summary>
+                /// Lists discovered workloads that can be added to an application in a host project and location.
+                /// </summary>
                 /// <param name="parent">Required. Value for parent.</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>Lists discovered workloads in a host project and location.</summary>
+                /// <summary>
+                /// Lists discovered workloads that can be added to an application in a host project and location.
+                /// </summary>
                 public class ListRequest : AppHubBaseServiceRequest<Google.Apis.AppHub.v1alpha.Data.ListDiscoveredWorkloadsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -3147,11 +3166,15 @@ namespace Google.Apis.AppHub.v1alpha.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Optional. User-defined description of an Application.</summary>
+        /// <summary>
+        /// Optional. User-defined description of an Application. Can have a maximum length of 2048 characters.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Optional. User-defined name for the Application.</summary>
+        /// <summary>
+        /// Optional. User-defined name for the Application. Can have a maximum length of 63 characters.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
@@ -3395,7 +3418,7 @@ namespace Google.Apis.AppHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("channel")]
         public virtual Channel Channel { get; set; }
 
-        /// <summary>Optional. Contact's name.</summary>
+        /// <summary>Optional. Contact's name. Can have a maximum length of 63 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
@@ -3410,13 +3433,20 @@ namespace Google.Apis.AppHub.v1alpha.Data
     /// <summary>Criticality of the Application, Service, or Workload</summary>
     public class Criticality : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Criticality level.</summary>
+        /// <summary>
+        /// Optional. Criticality level. Can contain only lowercase letters, numeric characters, underscores, and
+        /// dashes. Can have a maximum length of 63 characters.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("level")]
         public virtual string Level { get; set; }
 
-        /// <summary>Required. Indicates mission-critical Application, Service, or Workload.</summary>
+        /// <summary>Optional. Indicates mission-critical Application, Service, or Workload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("missionCritical")]
         public virtual System.Nullable<bool> MissionCritical { get; set; }
+
+        /// <summary>Required. Criticality Type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3510,9 +3540,16 @@ namespace Google.Apis.AppHub.v1alpha.Data
     /// <summary>Environment of the Application, Service, or Workload</summary>
     public class Environment : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Environment name.</summary>
+        /// <summary>
+        /// Optional. Environment name. Can contain only lowercase letters, numeric characters, underscores, and dashes.
+        /// Can have a maximum length of 63 characters.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
         public virtual string EnvironmentValue { get; set; }
+
+        /// <summary>Required. Environment Type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4070,7 +4107,9 @@ namespace Google.Apis.AppHub.v1alpha.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Optional. User-defined description of a Service.</summary>
+        /// <summary>
+        /// Optional. User-defined description of a Service. Can have a maximum length of 2048 characters.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -4078,7 +4117,7 @@ namespace Google.Apis.AppHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("discoveredService")]
         public virtual string DiscoveredService { get; set; }
 
-        /// <summary>Optional. User-defined name for the Service.</summary>
+        /// <summary>Optional. User-defined name for the Service. Can have a maximum length of 63 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
@@ -4395,7 +4434,9 @@ namespace Google.Apis.AppHub.v1alpha.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Optional. User-defined description of a Workload.</summary>
+        /// <summary>
+        /// Optional. User-defined description of a Workload. Can have a maximum length of 2048 characters.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -4403,7 +4444,7 @@ namespace Google.Apis.AppHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("discoveredWorkload")]
         public virtual string DiscoveredWorkload { get; set; }
 
-        /// <summary>Optional. User-defined name for the Workload.</summary>
+        /// <summary>Optional. User-defined name for the Workload. Can have a maximum length of 63 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 

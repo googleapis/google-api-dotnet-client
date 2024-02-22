@@ -527,9 +527,9 @@ namespace Google.Apis.CloudAsset.v1
         /// Required. Only IAM policies on or below the scope will be returned. This can only be an organization number
         /// (such as "organizations/123"), a folder number (such as "folders/123"), a project ID (such as
         /// "projects/my-project-id"), or a project number (such as "projects/12345"). To know how to get organization
-        /// id, visit [here
+        /// ID, visit [here
         /// ](https://cloud.google.com/resource-manager/docs/creating-managing-organization#retrieving_your_organization_id).
-        /// To know how to get folder or project id, visit [here
+        /// To know how to get folder or project ID, visit [here
         /// ](https://cloud.google.com/resource-manager/docs/creating-managing-folders#viewing_or_listing_folders_and_projects).
         /// </param>
         public virtual BatchGetRequest BatchGet(string scope)
@@ -551,9 +551,9 @@ namespace Google.Apis.CloudAsset.v1
             /// Required. Only IAM policies on or below the scope will be returned. This can only be an organization
             /// number (such as "organizations/123"), a folder number (such as "folders/123"), a project ID (such as
             /// "projects/my-project-id"), or a project number (such as "projects/12345"). To know how to get
-            /// organization id, visit [here
+            /// organization ID, visit [here
             /// ](https://cloud.google.com/resource-manager/docs/creating-managing-organization#retrieving_your_organization_id).
-            /// To know how to get folder or project id, visit [here
+            /// To know how to get folder or project ID, visit [here
             /// ](https://cloud.google.com/resource-manager/docs/creating-managing-folders#viewing_or_listing_folders_and_projects).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("scope", Google.Apis.Util.RequestParameterType.Path)]
@@ -1355,9 +1355,9 @@ namespace Google.Apis.CloudAsset.v1
         /// Required. The relative name of the root asset. Only resources and IAM policies within the scope will be
         /// analyzed. This can only be an organization number (such as "organizations/123"), a folder number (such as
         /// "folders/123"), a project ID (such as "projects/my-project-id"), or a project number (such as
-        /// "projects/12345"). To know how to get organization id, visit [here
+        /// "projects/12345"). To know how to get organization ID, visit [here
         /// ](https://cloud.google.com/resource-manager/docs/creating-managing-organization#retrieving_your_organization_id).
-        /// To know how to get folder or project id, visit [here
+        /// To know how to get folder or project ID, visit [here
         /// ](https://cloud.google.com/resource-manager/docs/creating-managing-folders#viewing_or_listing_folders_and_projects).
         /// </param>
         public virtual AnalyzeIamPolicyRequest AnalyzeIamPolicy(string scope)
@@ -1379,9 +1379,9 @@ namespace Google.Apis.CloudAsset.v1
             /// Required. The relative name of the root asset. Only resources and IAM policies within the scope will be
             /// analyzed. This can only be an organization number (such as "organizations/123"), a folder number (such
             /// as "folders/123"), a project ID (such as "projects/my-project-id"), or a project number (such as
-            /// "projects/12345"). To know how to get organization id, visit [here
+            /// "projects/12345"). To know how to get organization ID, visit [here
             /// ](https://cloud.google.com/resource-manager/docs/creating-managing-organization#retrieving_your_organization_id).
-            /// To know how to get folder or project id, visit [here
+            /// To know how to get folder or project ID, visit [here
             /// ](https://cloud.google.com/resource-manager/docs/creating-managing-folders#viewing_or_listing_folders_and_projects).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("scope", Google.Apis.Util.RequestParameterType.Path)]
@@ -1680,9 +1680,9 @@ namespace Google.Apis.CloudAsset.v1
         /// Required. The relative name of the root asset. Only resources and IAM policies within the scope will be
         /// analyzed. This can only be an organization number (such as "organizations/123"), a folder number (such as
         /// "folders/123"), a project ID (such as "projects/my-project-id"), or a project number (such as
-        /// "projects/12345"). To know how to get organization id, visit [here
+        /// "projects/12345"). To know how to get organization ID, visit [here
         /// ](https://cloud.google.com/resource-manager/docs/creating-managing-organization#retrieving_your_organization_id).
-        /// To know how to get folder or project id, visit [here
+        /// To know how to get folder or project ID, visit [here
         /// ](https://cloud.google.com/resource-manager/docs/creating-managing-folders#viewing_or_listing_folders_and_projects).
         /// </param>
         public virtual AnalyzeIamPolicyLongrunningRequest AnalyzeIamPolicyLongrunning(Google.Apis.CloudAsset.v1.Data.AnalyzeIamPolicyLongrunningRequest body, string scope)
@@ -1712,9 +1712,9 @@ namespace Google.Apis.CloudAsset.v1
             /// Required. The relative name of the root asset. Only resources and IAM policies within the scope will be
             /// analyzed. This can only be an organization number (such as "organizations/123"), a folder number (such
             /// as "folders/123"), a project ID (such as "projects/my-project-id"), or a project number (such as
-            /// "projects/12345"). To know how to get organization id, visit [here
+            /// "projects/12345"). To know how to get organization ID, visit [here
             /// ](https://cloud.google.com/resource-manager/docs/creating-managing-organization#retrieving_your_organization_id).
-            /// To know how to get folder or project id, visit [here
+            /// To know how to get folder or project ID, visit [here
             /// ](https://cloud.google.com/resource-manager/docs/creating-managing-folders#viewing_or_listing_folders_and_projects).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("scope", Google.Apis.Util.RequestParameterType.Path)]
@@ -3748,7 +3748,7 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The Condition evaluation.</summary>
+    /// <summary>The condition evaluation.</summary>
     public class ConditionEvaluation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The evaluation result.</summary>
@@ -4717,9 +4717,11 @@ namespace Google.Apis.CloudAsset.v1.Data
 
         /// <summary>
         /// The condition evaluation result for this rule. Only populated if it meets all the following criteria: *
-        /// there is a condition defined for this rule * this rule is within a consolidated_policy * the
-        /// consolidated_policy is within AnalyzeOrgPolicyGovernedContainersResponse.GovernedContainer or
-        /// AnalyzeOrgPolicyGovernedAssetsResponse.GovernedResource
+        /// There is a condition defined for this rule. * This rule is within
+        /// AnalyzeOrgPolicyGovernedContainersResponse.GovernedContainer.consolidated_policy, or
+        /// AnalyzeOrgPolicyGovernedAssetsResponse.GovernedAsset.consolidated_policy when the
+        /// AnalyzeOrgPolicyGovernedAssetsResponse.GovernedAsset has
+        /// AnalyzeOrgPolicyGovernedAssetsResponse.GovernedAsset.governed_resource.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditionEvaluation")]
         public virtual ConditionEvaluation ConditionEvaluation { get; set; }
@@ -4739,7 +4741,7 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual System.Nullable<bool> Enforce { get; set; }
 
         /// <summary>
-        /// List of values to be used for this PolicyRule. This field can be set only in Policies for list constraints.
+        /// List of values to be used for this policy rule. This field can be set only in policies for list constraints.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual GoogleCloudAssetV1StringValues Values { get; set; }
@@ -6016,9 +6018,9 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// Required. The relative name of the root asset. Only resources and IAM policies within the scope will be
         /// analyzed. This can only be an organization number (such as "organizations/123"), a folder number (such as
         /// "folders/123"), a project ID (such as "projects/my-project-id"), or a project number (such as
-        /// "projects/12345"). To know how to get organization id, visit [here
+        /// "projects/12345"). To know how to get organization ID, visit [here
         /// ](https://cloud.google.com/resource-manager/docs/creating-managing-organization#retrieving_your_organization_id).
-        /// To know how to get folder or project id, visit [here
+        /// To know how to get folder or project ID, visit [here
         /// ](https://cloud.google.com/resource-manager/docs/creating-managing-folders#viewing_or_listing_folders_and_projects).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scope")]
@@ -7839,7 +7841,7 @@ namespace Google.Apis.CloudAsset.v1.Data
     }
 
     /// <summary>
-    /// The key and value for a [tag](https://cloud.google.com/resource-manager/docs/tags/tags-overview),
+    /// The key and value for a [tag](https://cloud.google.com/resource-manager/docs/tags/tags-overview).
     /// </summary>
     public class Tag : Google.Apis.Requests.IDirectResponseSchema
     {

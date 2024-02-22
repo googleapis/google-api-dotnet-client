@@ -829,6 +829,10 @@ namespace Google.Apis.Localservices.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("geo")]
         public virtual string Geo { get; set; }
 
+        /// <summary>Unique identifier of a Detailed Lead Report.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleAdsLeadId")]
+        public virtual System.Nullable<long> GoogleAdsLeadId { get; set; }
+
         /// <summary>Lead category (e.g. hvac, plumber)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("leadCategory")]
         public virtual string LeadCategory { get; set; }
@@ -872,7 +876,7 @@ namespace Google.Apis.Localservices.v1.Data
             set => LeadCreationTimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Unique identifier of a Detailed Lead Report.</summary>
+        /// <summary>Deprecated in favor of google_ads_lead_id. Unique identifier of a Detailed Lead Report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("leadId")]
         public virtual System.Nullable<long> LeadId { get; set; }
 

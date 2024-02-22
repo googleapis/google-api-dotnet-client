@@ -15027,8 +15027,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class AttributionSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Lookback windows (in days) used for attribution in this source. Supported values are 7, 30, 60,
-        /// 90.
+        /// Required. Lookback windows (in days) used for attribution in this source. Supported values are 7, 30, 40.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributionLookbackWindowInDays")]
         public virtual System.Nullable<int> AttributionLookbackWindowInDays { get; set; }

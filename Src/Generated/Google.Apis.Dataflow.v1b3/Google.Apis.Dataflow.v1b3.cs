@@ -69,9 +69,6 @@ namespace Google.Apis.Dataflow.v1b3
 
             /// <summary>View your Google Compute Engine resources</summary>
             public static string ComputeReadonly = "https://www.googleapis.com/auth/compute.readonly";
-
-            /// <summary>See your primary Google Account email address</summary>
-            public static string UserinfoEmail = "https://www.googleapis.com/auth/userinfo.email";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Dataflow API.</summary>
@@ -88,9 +85,6 @@ namespace Google.Apis.Dataflow.v1b3
 
             /// <summary>View your Google Compute Engine resources</summary>
             public const string ComputeReadonly = "https://www.googleapis.com/auth/compute.readonly";
-
-            /// <summary>See your primary Google Account email address</summary>
-            public const string UserinfoEmail = "https://www.googleapis.com/auth/userinfo.email";
         }
 
         /// <summary>Gets the Projects resource.</summary>
@@ -6390,7 +6384,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The environment values to be set at runtime for flex template.</summary>
+    /// <summary>The environment values to be set at runtime for flex template. LINT.IfChange</summary>
     public class FlexTemplateRuntimeEnvironment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Additional experiment flags for the job.</summary>
@@ -10039,6 +10033,17 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains per-user-worker streaming scaling recommendation from the backend.</summary>
+    public class StreamingScalingReportResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Maximum thread count limit;</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maximumThreadCount")]
+        public virtual System.Nullable<int> MaximumThreadCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A task which initializes part of a streaming Dataflow job.</summary>
     public class StreamingSetupTask : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11114,6 +11119,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
     /// <summary>A worker_message response allows the server to pass information to the sender.</summary>
     public class WorkerMessageResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Service's streaming scaling response for workers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("streamingScalingReportResponse")]
+        public virtual StreamingScalingReportResponse StreamingScalingReportResponse { get; set; }
+
         /// <summary>The service's response to a worker's health report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerHealthReportResponse")]
         public virtual WorkerHealthReportResponse WorkerHealthReportResponse { get; set; }

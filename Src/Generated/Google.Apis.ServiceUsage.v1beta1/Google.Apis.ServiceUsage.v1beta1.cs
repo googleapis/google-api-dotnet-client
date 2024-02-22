@@ -4152,17 +4152,6 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
     /// <summary>The consumer policy rule that defines enabled services, groups, and categories.</summary>
     public class GoogleApiServiceusageV2alphaEnableRule : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The names of the categories that are enabled. Example: `categories/googleServices`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("categories")]
-        public virtual System.Collections.Generic.IList<string> Categories { get; set; }
-
-        /// <summary>
-        /// The names of the service groups that are enabled. Example:
-        /// `services/container.googleapis.com/groups/dependencies`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("groups")]
-        public virtual System.Collections.Generic.IList<string> Groups { get; set; }
-
         /// <summary>The names of the services that are enabled. Example: `services/storage.googleapis.com`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("services")]
         public virtual System.Collections.Generic.IList<string> Services { get; set; }

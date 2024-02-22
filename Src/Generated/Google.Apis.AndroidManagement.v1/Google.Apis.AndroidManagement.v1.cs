@@ -2649,6 +2649,14 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string GooglePlayProtectVerifyApps { get; set; }
 
         /// <summary>
+        /// Optional. Controls Memory Tagging Extension (MTE)
+        /// (https://source.android.com/docs/security/test/memory-safety/arm-mte) on the device. The device needs to be
+        /// rebooted to apply changes to the MTE policy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mtePolicy")]
+        public virtual string MtePolicy { get; set; }
+
+        /// <summary>
         /// Personal apps that can read work profile notifications using a NotificationListenerService
         /// (https://developer.android.com/reference/android/service/notification/NotificationListenerService). By
         /// default, no personal apps (aside from system apps) can read work notifications. Each value in the list must

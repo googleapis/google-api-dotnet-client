@@ -67,6 +67,9 @@ namespace Google.Apis.MapsPlaces.v1
             /// <summary>Private Service: https://www.googleapis.com/auth/maps-platform.places</summary>
             public static string MapsPlatformPlaces = "https://www.googleapis.com/auth/maps-platform.places";
 
+            /// <summary>Private Service: https://www.googleapis.com/auth/maps-platform.places.autocomplete</summary>
+            public static string MapsPlatformPlacesAutocomplete = "https://www.googleapis.com/auth/maps-platform.places.autocomplete";
+
             /// <summary>Private Service: https://www.googleapis.com/auth/maps-platform.places.details</summary>
             public static string MapsPlatformPlacesDetails = "https://www.googleapis.com/auth/maps-platform.places.details";
 
@@ -88,6 +91,9 @@ namespace Google.Apis.MapsPlaces.v1
 
             /// <summary>Private Service: https://www.googleapis.com/auth/maps-platform.places</summary>
             public const string MapsPlatformPlaces = "https://www.googleapis.com/auth/maps-platform.places";
+
+            /// <summary>Private Service: https://www.googleapis.com/auth/maps-platform.places.autocomplete</summary>
+            public const string MapsPlatformPlacesAutocomplete = "https://www.googleapis.com/auth/maps-platform.places.autocomplete";
 
             /// <summary>Private Service: https://www.googleapis.com/auth/maps-platform.places.details</summary>
             public const string MapsPlatformPlacesDetails = "https://www.googleapis.com/auth/maps-platform.places.details";
@@ -429,6 +435,45 @@ namespace Google.Apis.MapsPlaces.v1
             }
         }
 
+        /// <summary>Returns predictions for the given input.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual AutocompleteRequest Autocomplete(Google.Apis.MapsPlaces.v1.Data.GoogleMapsPlacesV1AutocompletePlacesRequest body)
+        {
+            return new AutocompleteRequest(this.service, body);
+        }
+
+        /// <summary>Returns predictions for the given input.</summary>
+        public class AutocompleteRequest : MapsPlacesBaseServiceRequest<Google.Apis.MapsPlaces.v1.Data.GoogleMapsPlacesV1AutocompletePlacesResponse>
+        {
+            /// <summary>Constructs a new Autocomplete request.</summary>
+            public AutocompleteRequest(Google.Apis.Services.IClientService service, Google.Apis.MapsPlaces.v1.Data.GoogleMapsPlacesV1AutocompletePlacesRequest body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.MapsPlaces.v1.Data.GoogleMapsPlacesV1AutocompletePlacesRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "autocomplete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/places:autocomplete";
+
+            /// <summary>Initializes Autocomplete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
+        }
+
         /// <summary>
         /// Get the details of a place based on its resource name, which is a string in the `places/{place_id}` format.
         /// </summary>
@@ -471,6 +516,25 @@ namespace Google.Apis.MapsPlaces.v1
             [Google.Apis.Util.RequestParameterAttribute("regionCode", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RegionCode { get; set; }
 
+            /// <summary>
+            /// Optional. A string which identifies an Autocomplete session for billing purposes. Must be a URL and
+            /// filename safe base64 string with at most 36 ASCII characters in length. Otherwise an INVALID_ARGUMENT
+            /// error is returned. The session begins when the user starts typing a query, and concludes when they
+            /// select a place and a call to Place Details or Address Validation is made. Each session can have multiple
+            /// queries, followed by one Place Details or Address Validation request. The credentials used for each
+            /// request within a session must belong to the same Google Cloud Console project. Once a session has
+            /// concluded, the token is no longer valid; your app must generate a fresh token for each session. If the
+            /// `session_token` parameter is omitted, or if you reuse a session token, the session is charged as if no
+            /// session token was provided (each request is billed separately). We recommend the following guidelines: *
+            /// Use session tokens for all Place Autocomplete calls. * Generate a fresh token for each session. Using a
+            /// version 4 UUID is recommended. * Ensure that the credentials used for all Place Autocomplete, Place
+            /// Details, and Address Validation requests within a session belong to the same Cloud Console project. * Be
+            /// sure to pass a unique session token for each new session. Using the same token for more than one session
+            /// will result in each request being billed individually.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("sessionToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string SessionToken { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
@@ -503,6 +567,14 @@ namespace Google.Apis.MapsPlaces.v1
                 RequestParameters.Add("regionCode", new Google.Apis.Discovery.Parameter
                 {
                     Name = "regionCode",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sessionToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sessionToken",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -633,6 +705,306 @@ namespace Google.Apis.MapsPlaces.v1.Data
         /// <summary>URI of the author of the Photo or Review.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request proto for AutocompletePlaces.</summary>
+    public class GoogleMapsPlacesV1AutocompletePlacesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. If true, the response will include both Place and query predictions. Otherwise the response will
+        /// only return Place predictions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeQueryPredictions")]
+        public virtual System.Nullable<bool> IncludeQueryPredictions { get; set; }
+
+        /// <summary>
+        /// Optional. Included primary Place type (for example, "restaurant" or "gas_station") from
+        /// https://developers.google.com/maps/documentation/places/web-service/place-types. A Place is only returned if
+        /// its primary type is included in this list. Up to 5 values can be specified. If no types are specified, all
+        /// Place types are returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includedPrimaryTypes")]
+        public virtual System.Collections.Generic.IList<string> IncludedPrimaryTypes { get; set; }
+
+        /// <summary>
+        /// Optional. Only include results in the specified regions, specified as up to 15 CLDR two-character region
+        /// codes. An empty set will not restrict the results. If both `location_restriction` and
+        /// `included_region_codes` are set, the results will be located in the area of intersection.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includedRegionCodes")]
+        public virtual System.Collections.Generic.IList<string> IncludedRegionCodes { get; set; }
+
+        /// <summary>Required. The text string on which to search.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("input")]
+        public virtual string Input { get; set; }
+
+        /// <summary>
+        /// Optional. A zero-based Unicode character offset of `input` indicating the cursor position in `input`. The
+        /// cursor position may influence what predictions are returned. If empty, defaults to the length of `input`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputOffset")]
+        public virtual System.Nullable<int> InputOffset { get; set; }
+
+        /// <summary>
+        /// Optional. The language in which to return results. Defaults to en-US. The results may be in mixed languages
+        /// if the language used in `input` is different from `language_code` or if the returned Place does not have a
+        /// translation from the local language to `language_code`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>
+        /// Optional. Bias results to a specified location. At most one of `location_bias` or `location_restriction`
+        /// should be set. If neither are set, the results will be biased by IP address, meaning the IP address will be
+        /// mapped to an imprecise location and used as a biasing signal.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationBias")]
+        public virtual GoogleMapsPlacesV1AutocompletePlacesRequestLocationBias LocationBias { get; set; }
+
+        /// <summary>
+        /// Optional. Restrict results to a specified location. At most one of `location_bias` or `location_restriction`
+        /// should be set. If neither are set, the results will be biased by IP address, meaning the IP address will be
+        /// mapped to an imprecise location and used as a biasing signal.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationRestriction")]
+        public virtual GoogleMapsPlacesV1AutocompletePlacesRequestLocationRestriction LocationRestriction { get; set; }
+
+        /// <summary>
+        /// Optional. The origin point from which to calculate geodesic distance to the destination (returned as
+        /// `distance_meters`). If this value is omitted, geodesic distance will not be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("origin")]
+        public virtual GoogleTypeLatLng Origin { get; set; }
+
+        /// <summary>
+        /// Optional. The region code, specified as a CLDR two-character region code. This affects address formatting,
+        /// result ranking, and may influence what results are returned. This does not restrict results to the specified
+        /// region. To restrict results to a region, use `region_code_restriction`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
+
+        /// <summary>
+        /// Optional. A string which identifies an Autocomplete session for billing purposes. Must be a URL and filename
+        /// safe base64 string with at most 36 ASCII characters in length. Otherwise an INVALID_ARGUMENT error is
+        /// returned. The session begins when the user starts typing a query, and concludes when they select a place and
+        /// a call to Place Details or Address Validation is made. Each session can have multiple queries, followed by
+        /// one Place Details or Address Validation request. The credentials used for each request within a session must
+        /// belong to the same Google Cloud Console project. Once a session has concluded, the token is no longer valid;
+        /// your app must generate a fresh token for each session. If the `session_token` parameter is omitted, or if
+        /// you reuse a session token, the session is charged as if no session token was provided (each request is
+        /// billed separately). We recommend the following guidelines: * Use session tokens for all Place Autocomplete
+        /// calls. * Generate a fresh token for each session. Using a version 4 UUID is recommended. * Ensure that the
+        /// credentials used for all Place Autocomplete, Place Details, and Address Validation requests within a session
+        /// belong to the same Cloud Console project. * Be sure to pass a unique session token for each new session.
+        /// Using the same token for more than one session will result in each request being billed individually.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionToken")]
+        public virtual string SessionToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The region to search. The results may be biased around the specified region.</summary>
+    public class GoogleMapsPlacesV1AutocompletePlacesRequestLocationBias : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A circle defined by a center point and radius.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("circle")]
+        public virtual GoogleMapsPlacesV1Circle Circle { get; set; }
+
+        /// <summary>A viewport defined by a northeast and a southwest corner.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rectangle")]
+        public virtual GoogleGeoTypeViewport Rectangle { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The region to search. The results will be restricted to the specified region.</summary>
+    public class GoogleMapsPlacesV1AutocompletePlacesRequestLocationRestriction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A circle defined by a center point and radius.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("circle")]
+        public virtual GoogleMapsPlacesV1Circle Circle { get; set; }
+
+        /// <summary>A viewport defined by a northeast and a southwest corner.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rectangle")]
+        public virtual GoogleGeoTypeViewport Rectangle { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response proto for AutocompletePlaces.</summary>
+    public class GoogleMapsPlacesV1AutocompletePlacesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Contains a list of suggestions, ordered in descending order of relevance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestions")]
+        public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion> Suggestions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An Autocomplete suggestion result.</summary>
+    public class GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A prediction for a Place.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("placePrediction")]
+        public virtual GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionPlacePrediction PlacePrediction { get; set; }
+
+        /// <summary>A prediction for a query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryPrediction")]
+        public virtual GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionQueryPrediction QueryPrediction { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Text representing a Place or query prediction. The text may be used as is or formatted.</summary>
+    public class GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A list of string ranges identifying where the input request matched in `text`. The ranges can be used to
+        /// format specific parts of `text`. The substrings may not be exact matches of `input` if the matching was
+        /// determined by criteria other than string matching (for example, spell corrections or transliterations).
+        /// These values are Unicode character offsets of `text`. The ranges are guaranteed to be ordered in increasing
+        /// offset values.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matches")]
+        public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange> Matches { get; set; }
+
+        /// <summary>Text that may be used as is or formatted with `matches`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Prediction results for a Place Autocomplete prediction.</summary>
+    public class GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionPlacePrediction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The length of the geodesic in meters from `origin` if `origin` is specified. Certain predictions such as
+        /// routes may not populate this field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("distanceMeters")]
+        public virtual System.Nullable<int> DistanceMeters { get; set; }
+
+        /// <summary>
+        /// The resource name of the suggested Place. This name can be used in other APIs that accept Place names.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("place")]
+        public virtual string Place { get; set; }
+
+        /// <summary>
+        /// The unique identifier of the suggested Place. This identifier can be used in other APIs that accept Place
+        /// IDs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("placeId")]
+        public virtual string PlaceId { get; set; }
+
+        /// <summary>
+        /// A breakdown of the Place prediction into main text containing the name of the Place and secondary text
+        /// containing additional disambiguating features (such as a city or region). `structured_format` is recommended
+        /// for developers who wish to show two separate, but related, UI elements. Developers who wish to show a single
+        /// UI element may want to use `text` instead. They are two different ways to represent a Place prediction.
+        /// Users should not try to parse `structured_format` into `text` or vice versa.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structuredFormat")]
+        public virtual GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat StructuredFormat { get; set; }
+
+        /// <summary>
+        /// Contains the human-readable name for the returned result. For establishment results, this is usually the
+        /// business name and address. `text` is recommended for developers who wish to show a single UI element.
+        /// Developers who wish to show two separate, but related, UI elements may want to use `structured_format`
+        /// instead. They are two different ways to represent a Place prediction. Users should not try to parse
+        /// `structured_format` into `text` or vice versa. This text may be different from the `display_name` returned
+        /// by GetPlace. May be in mixed languages if the request `input` and `language_code` are in different languages
+        /// or if the Place does not have a translation from the local language to `language_code`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText Text { get; set; }
+
+        /// <summary>
+        /// List of types that apply to this Place from Table A or Table B in
+        /// https://developers.google.com/maps/documentation/places/web-service/place-types. A type is a categorization
+        /// of a Place. Places with shared types will share similar characteristics.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("types")]
+        public virtual System.Collections.Generic.IList<string> Types { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Prediction results for a Query Autocomplete prediction.</summary>
+    public class GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionQueryPrediction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A breakdown of the query prediction into main text containing the query and secondary text containing
+        /// additional disambiguating features (such as a city or region). `structured_format` is recommended for
+        /// developers who wish to show two separate, but related, UI elements. Developers who wish to show a single UI
+        /// element may want to use `text` instead. They are two different ways to represent a query prediction. Users
+        /// should not try to parse `structured_format` into `text` or vice versa.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structuredFormat")]
+        public virtual GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat StructuredFormat { get; set; }
+
+        /// <summary>
+        /// The predicted text. This text does not represent a Place, but rather a text query that could be used in a
+        /// search endpoint (for example, TextSearch). `text` is recommended for developers who wish to show a single UI
+        /// element. Developers who wish to show two separate, but related, UI elements may want to use
+        /// `structured_format` instead. They are two different ways to represent a query prediction. Users should not
+        /// try to parse `structured_format` into `text` or vice versa. May be in mixed languages if the request `input`
+        /// and `language_code` are in different languages or if part of the query does not have a translation from the
+        /// local language to `language_code`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Identifies a substring within a given text.</summary>
+    public class GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Zero-based offset of the last Unicode character (exclusive).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endOffset")]
+        public virtual System.Nullable<int> EndOffset { get; set; }
+
+        /// <summary>Zero-based offset of the first Unicode character of the string (inclusive).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startOffset")]
+        public virtual System.Nullable<int> StartOffset { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Contains a breakdown of a Place or query prediction into main text and secondary text. For Place predictions,
+    /// the main text contains the specific name of the Place. For query predictions, the main text contains the query.
+    /// The secondary text contains additional disambiguating features (such as a city or region) to further identify
+    /// the Place or refine the query.
+    /// </summary>
+    public class GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Represents the name of the Place or query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mainText")]
+        public virtual GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText MainText { get; set; }
+
+        /// <summary>
+        /// Represents additional disambiguating features (such as a city or region) to further identify the Place or
+        /// refine the query.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secondaryText")]
+        public virtual GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText SecondaryText { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1032,7 +1404,9 @@ namespace Google.Apis.MapsPlaces.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("paymentOptions")]
         public virtual GoogleMapsPlacesV1PlacePaymentOptions PaymentOptions { get; set; }
 
-        /// <summary>Information (including references) about photos of this place.</summary>
+        /// <summary>
+        /// Information (including references) about photos of this place. A maximum of 10 photos can be returned.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("photos")]
         public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1Photo> Photos { get; set; }
 
@@ -1086,7 +1460,9 @@ namespace Google.Apis.MapsPlaces.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("restroom")]
         public virtual System.Nullable<bool> Restroom { get; set; }
 
-        /// <summary>List of reviews about this place, sorted by relevance.</summary>
+        /// <summary>
+        /// List of reviews about this place, sorted by relevance. A maximum of 5 reviews can be returned.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reviews")]
         public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1Review> Reviews { get; set; }
 

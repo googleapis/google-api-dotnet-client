@@ -2153,9 +2153,7 @@ namespace Google.Apis.Appengine.v1alpha.Data
         /// act upon differences in the previous and current reasons.Reasons will be provided for every system: service
         /// management, data governance, abuse, and billing.If this is a CCFE-triggered event used for reconciliation
         /// then the current reasons will be set to their *_CONTROL_PLANE_SYNC state. The previous reasons will contain
-        /// the last known set of non-unknown non-control_plane_sync reasons for the state.Reasons fields are
-        /// deprecated. New tenants should only use the state field. If you must know the reason(s) behind a specific
-        /// state, please consult with CCFE team first (cloud-ccfe-discuss@google.com).
+        /// the last known set of non-unknown non-control_plane_sync reasons for the state.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("previousReasons")]
         public virtual Reasons PreviousReasons { get; set; }
