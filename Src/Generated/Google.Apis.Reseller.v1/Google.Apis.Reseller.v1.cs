@@ -37,6 +37,8 @@ namespace Google.Apis.Reseller.v1
             Customers = new CustomersResource(this);
             Resellernotify = new ResellernotifyResource(this);
             Subscriptions = new SubscriptionsResource(this);
+            BaseUri = GetEffectiveUri(BaseUriOverride, "https://reseller.googleapis.com/");
+            BatchUri = GetEffectiveUri(null, "https://reseller.googleapis.com/batch");
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -46,13 +48,13 @@ namespace Google.Apis.Reseller.v1
         public override string Name => "reseller";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://reseller.googleapis.com/";
+        public override string BaseUri { get; }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://reseller.googleapis.com/batch";
+        public override string BatchUri { get; }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";

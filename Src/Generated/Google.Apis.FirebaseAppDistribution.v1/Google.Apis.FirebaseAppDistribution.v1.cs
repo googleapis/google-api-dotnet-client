@@ -36,6 +36,8 @@ namespace Google.Apis.FirebaseAppDistribution.v1
         {
             Media = new MediaResource(this);
             Projects = new ProjectsResource(this);
+            BaseUri = GetEffectiveUri(BaseUriOverride, "https://firebaseappdistribution.googleapis.com/");
+            BatchUri = GetEffectiveUri(null, "https://firebaseappdistribution.googleapis.com/batch");
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -45,13 +47,13 @@ namespace Google.Apis.FirebaseAppDistribution.v1
         public override string Name => "firebaseappdistribution";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://firebaseappdistribution.googleapis.com/";
+        public override string BaseUri { get; }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://firebaseappdistribution.googleapis.com/batch";
+        public override string BatchUri { get; }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";

@@ -39,6 +39,8 @@ namespace Google.Apis.GamesManagement.v1management
             Events = new EventsResource(this);
             Players = new PlayersResource(this);
             Scores = new ScoresResource(this);
+            BaseUri = GetEffectiveUri(BaseUriOverride, "https://gamesmanagement.googleapis.com/");
+            BatchUri = GetEffectiveUri(null, "https://gamesmanagement.googleapis.com/batch");
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -48,13 +50,13 @@ namespace Google.Apis.GamesManagement.v1management
         public override string Name => "gamesManagement";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://gamesmanagement.googleapis.com/";
+        public override string BaseUri { get; }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://gamesmanagement.googleapis.com/batch";
+        public override string BatchUri { get; }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";

@@ -37,6 +37,8 @@ namespace Google.Apis.PubsubLite.v1
             Admin = new AdminResource(this);
             Cursor = new CursorResource(this);
             TopicStats = new TopicStatsResource(this);
+            BaseUri = GetEffectiveUri(BaseUriOverride, "https://pubsublite.googleapis.com/");
+            BatchUri = GetEffectiveUri(null, "https://pubsublite.googleapis.com/batch");
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -46,13 +48,13 @@ namespace Google.Apis.PubsubLite.v1
         public override string Name => "pubsublite";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://pubsublite.googleapis.com/";
+        public override string BaseUri { get; }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://pubsublite.googleapis.com/batch";
+        public override string BatchUri { get; }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";

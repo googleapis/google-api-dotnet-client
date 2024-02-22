@@ -35,6 +35,8 @@ namespace Google.Apis.MyBusinessLodging.v1
         public MyBusinessLodgingService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Locations = new LocationsResource(this);
+            BaseUri = GetEffectiveUri(BaseUriOverride, "https://mybusinesslodging.googleapis.com/");
+            BatchUri = GetEffectiveUri(null, "https://mybusinesslodging.googleapis.com/batch");
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -44,13 +46,13 @@ namespace Google.Apis.MyBusinessLodging.v1
         public override string Name => "mybusinesslodging";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://mybusinesslodging.googleapis.com/";
+        public override string BaseUri { get; }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://mybusinesslodging.googleapis.com/batch";
+        public override string BatchUri { get; }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";

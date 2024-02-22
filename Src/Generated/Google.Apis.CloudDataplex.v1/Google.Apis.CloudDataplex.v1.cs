@@ -35,6 +35,8 @@ namespace Google.Apis.CloudDataplex.v1
         public CloudDataplexService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Projects = new ProjectsResource(this);
+            BaseUri = GetEffectiveUri(BaseUriOverride, "https://dataplex.googleapis.com/");
+            BatchUri = GetEffectiveUri(null, "https://dataplex.googleapis.com/batch");
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -44,13 +46,13 @@ namespace Google.Apis.CloudDataplex.v1
         public override string Name => "dataplex";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://dataplex.googleapis.com/";
+        public override string BaseUri { get; }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://dataplex.googleapis.com/batch";
+        public override string BatchUri { get; }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
@@ -14542,6 +14544,66 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// <summary>Zones under the given parent lake.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zones")]
         public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1Zone> Zones { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// These messages contain information about the execution of a metadata job. The monitored resource is
+    /// 'MetadataJob'.
+    /// </summary>
+    public class GoogleCloudDataplexV1MetadataJobEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Import job results. Should only be populated on terminal states.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("importResult")]
+        public virtual GoogleCloudDataplexV1MetadataJobEventImportResult ImportResult { get; set; }
+
+        /// <summary>Message describing failure or success event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>
+        /// The resource name associated with the event. Supported resources included, but not limited to EntryGroup,
+        /// MetadataJob, and Entry.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual string Resource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Import job result for metadata job.</summary>
+    public class GoogleCloudDataplexV1MetadataJobEventImportResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Total number of entries created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createdEntries")]
+        public virtual System.Nullable<long> CreatedEntries { get; set; }
+
+        /// <summary>Total number of entries deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deletedEntries")]
+        public virtual System.Nullable<long> DeletedEntries { get; set; }
+
+        /// <summary>The number of entry groups modified/specified by the import job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mutatedEntryGroups")]
+        public virtual System.Nullable<long> MutatedEntryGroups { get; set; }
+
+        /// <summary>Total number of entries recreated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recreatedEntries")]
+        public virtual System.Nullable<long> RecreatedEntries { get; set; }
+
+        /// <summary>Output only. Terminal state of the import job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Total number of entries left unchanged.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unchangedEntries")]
+        public virtual System.Nullable<long> UnchangedEntries { get; set; }
+
+        /// <summary>Total number of entries updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updatedEntries")]
+        public virtual System.Nullable<long> UpdatedEntries { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

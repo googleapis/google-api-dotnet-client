@@ -38,6 +38,8 @@ namespace Google.Apis.AccessContextManager.v1
             Operations = new OperationsResource(this);
             Organizations = new OrganizationsResource(this);
             Services = new ServicesResource(this);
+            BaseUri = GetEffectiveUri(BaseUriOverride, "https://accesscontextmanager.googleapis.com/");
+            BatchUri = GetEffectiveUri(null, "https://accesscontextmanager.googleapis.com/batch");
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -47,13 +49,13 @@ namespace Google.Apis.AccessContextManager.v1
         public override string Name => "accesscontextmanager";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://accesscontextmanager.googleapis.com/";
+        public override string BaseUri { get; }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://accesscontextmanager.googleapis.com/batch";
+        public override string BatchUri { get; }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";

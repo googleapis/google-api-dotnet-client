@@ -35,6 +35,8 @@ namespace Google.Apis.BigQueryReservation.v1
         public BigQueryReservationService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Projects = new ProjectsResource(this);
+            BaseUri = GetEffectiveUri(BaseUriOverride, "https://bigqueryreservation.googleapis.com/");
+            BatchUri = GetEffectiveUri(null, "https://bigqueryreservation.googleapis.com/batch");
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -44,13 +46,13 @@ namespace Google.Apis.BigQueryReservation.v1
         public override string Name => "bigqueryreservation";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://bigqueryreservation.googleapis.com/";
+        public override string BaseUri { get; }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://bigqueryreservation.googleapis.com/batch";
+        public override string BatchUri { get; }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";

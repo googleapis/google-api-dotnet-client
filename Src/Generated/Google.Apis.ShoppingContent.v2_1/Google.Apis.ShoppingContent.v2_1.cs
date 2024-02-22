@@ -71,6 +71,8 @@ namespace Google.Apis.ShoppingContent.v2_1
             Settlementtransactions = new SettlementtransactionsResource(this);
             Shippingsettings = new ShippingsettingsResource(this);
             Shoppingadsprogram = new ShoppingadsprogramResource(this);
+            BaseUri = GetEffectiveUri(BaseUriOverride, "https://shoppingcontent.googleapis.com/content/v2.1/");
+            BatchUri = GetEffectiveUri(null, "https://shoppingcontent.googleapis.com/batch");
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -80,13 +82,13 @@ namespace Google.Apis.ShoppingContent.v2_1
         public override string Name => "content";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://shoppingcontent.googleapis.com/content/v2.1/";
+        public override string BaseUri { get; }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "content/v2.1/";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://shoppingcontent.googleapis.com/batch";
+        public override string BatchUri { get; }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";

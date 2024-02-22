@@ -35,6 +35,8 @@ namespace Google.Apis.SiteVerification.v1
         public SiteVerificationService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             WebResource = new WebResourceResource(this);
+            BaseUri = GetEffectiveUri(BaseUriOverride, "https://www.googleapis.com/siteVerification/v1/");
+            BatchUri = GetEffectiveUri(null, "https://www.googleapis.com/batch/siteVerification/v1");
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -44,13 +46,13 @@ namespace Google.Apis.SiteVerification.v1
         public override string Name => "siteVerification";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://www.googleapis.com/siteVerification/v1/";
+        public override string BaseUri { get; }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "siteVerification/v1/";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://www.googleapis.com/batch/siteVerification/v1";
+        public override string BatchUri { get; }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch/siteVerification/v1";

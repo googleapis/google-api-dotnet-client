@@ -36,6 +36,8 @@ namespace Google.Apis.Digitalassetlinks.v1
         {
             Assetlinks = new AssetlinksResource(this);
             Statements = new StatementsResource(this);
+            BaseUri = GetEffectiveUri(BaseUriOverride, "https://digitalassetlinks.googleapis.com/");
+            BatchUri = GetEffectiveUri(null, "https://digitalassetlinks.googleapis.com/batch");
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -45,13 +47,13 @@ namespace Google.Apis.Digitalassetlinks.v1
         public override string Name => "digitalassetlinks";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://digitalassetlinks.googleapis.com/";
+        public override string BaseUri { get; }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://digitalassetlinks.googleapis.com/batch";
+        public override string BatchUri { get; }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";

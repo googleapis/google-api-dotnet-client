@@ -35,6 +35,8 @@ namespace Google.Apis.CloudFunctions.v2beta
         public CloudFunctionsService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Projects = new ProjectsResource(this);
+            BaseUri = GetEffectiveUri(BaseUriOverride, "https://cloudfunctions.googleapis.com/");
+            BatchUri = GetEffectiveUri(null, "https://cloudfunctions.googleapis.com/batch");
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -44,13 +46,13 @@ namespace Google.Apis.CloudFunctions.v2beta
         public override string Name => "cloudfunctions";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://cloudfunctions.googleapis.com/";
+        public override string BaseUri { get; }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://cloudfunctions.googleapis.com/batch";
+        public override string BatchUri { get; }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";

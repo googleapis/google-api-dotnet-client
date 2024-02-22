@@ -38,6 +38,8 @@ namespace Google.Apis.WebRisk.v1
             Projects = new ProjectsResource(this);
             ThreatLists = new ThreatListsResource(this);
             Uris = new UrisResource(this);
+            BaseUri = GetEffectiveUri(BaseUriOverride, "https://webrisk.googleapis.com/");
+            BatchUri = GetEffectiveUri(null, "https://webrisk.googleapis.com/batch");
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -47,13 +49,13 @@ namespace Google.Apis.WebRisk.v1
         public override string Name => "webrisk";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://webrisk.googleapis.com/";
+        public override string BaseUri { get; }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://webrisk.googleapis.com/batch";
+        public override string BatchUri { get; }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";

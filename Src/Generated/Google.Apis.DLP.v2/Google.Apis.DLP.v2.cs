@@ -38,6 +38,8 @@ namespace Google.Apis.DLP.v2
             Locations = new LocationsResource(this);
             Organizations = new OrganizationsResource(this);
             Projects = new ProjectsResource(this);
+            BaseUri = GetEffectiveUri(BaseUriOverride, "https://dlp.googleapis.com/");
+            BatchUri = GetEffectiveUri(null, "https://dlp.googleapis.com/batch");
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -47,13 +49,13 @@ namespace Google.Apis.DLP.v2
         public override string Name => "dlp";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://dlp.googleapis.com/";
+        public override string BaseUri { get; }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://dlp.googleapis.com/batch";
+        public override string BatchUri { get; }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";

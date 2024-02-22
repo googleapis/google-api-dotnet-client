@@ -35,6 +35,8 @@ namespace Google.Apis.MapsPlaces.v1
         public MapsPlacesService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Places = new PlacesResource(this);
+            BaseUri = GetEffectiveUri(BaseUriOverride, "https://places.googleapis.com/");
+            BatchUri = GetEffectiveUri(null, "https://places.googleapis.com/batch");
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -44,13 +46,13 @@ namespace Google.Apis.MapsPlaces.v1
         public override string Name => "places";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://places.googleapis.com/";
+        public override string BaseUri { get; }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://places.googleapis.com/batch";
+        public override string BatchUri { get; }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";

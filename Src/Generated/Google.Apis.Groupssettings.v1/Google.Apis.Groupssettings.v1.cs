@@ -35,6 +35,8 @@ namespace Google.Apis.Groupssettings.v1
         public GroupssettingsService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Groups = new GroupsResource(this);
+            BaseUri = GetEffectiveUri(BaseUriOverride, "https://www.googleapis.com/groups/v1/groups/");
+            BatchUri = GetEffectiveUri(null, "https://www.googleapis.com/batch/groupssettings/v1");
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -44,13 +46,13 @@ namespace Google.Apis.Groupssettings.v1
         public override string Name => "groupssettings";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://www.googleapis.com/groups/v1/groups/";
+        public override string BaseUri { get; }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "groups/v1/groups/";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://www.googleapis.com/batch/groupssettings/v1";
+        public override string BatchUri { get; }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch/groupssettings/v1";

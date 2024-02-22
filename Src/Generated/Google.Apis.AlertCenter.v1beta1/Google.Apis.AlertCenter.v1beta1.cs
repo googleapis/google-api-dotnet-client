@@ -36,6 +36,8 @@ namespace Google.Apis.AlertCenter.v1beta1
         {
             Alerts = new AlertsResource(this);
             V1beta1 = new V1beta1Resource(this);
+            BaseUri = GetEffectiveUri(BaseUriOverride, "https://alertcenter.googleapis.com/");
+            BatchUri = GetEffectiveUri(null, "https://alertcenter.googleapis.com/batch");
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -45,13 +47,13 @@ namespace Google.Apis.AlertCenter.v1beta1
         public override string Name => "alertcenter";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://alertcenter.googleapis.com/";
+        public override string BaseUri { get; }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://alertcenter.googleapis.com/batch";
+        public override string BatchUri { get; }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";

@@ -36,6 +36,8 @@ namespace Google.Apis.BigtableAdmin.v2
         {
             Operations = new OperationsResource(this);
             Projects = new ProjectsResource(this);
+            BaseUri = GetEffectiveUri(BaseUriOverride, "https://bigtableadmin.googleapis.com/");
+            BatchUri = GetEffectiveUri(null, "https://bigtableadmin.googleapis.com/batch");
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -45,13 +47,13 @@ namespace Google.Apis.BigtableAdmin.v2
         public override string Name => "bigtableadmin";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://bigtableadmin.googleapis.com/";
+        public override string BaseUri { get; }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://bigtableadmin.googleapis.com/batch";
+        public override string BatchUri { get; }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";

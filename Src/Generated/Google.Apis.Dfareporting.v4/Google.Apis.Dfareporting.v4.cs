@@ -97,6 +97,8 @@ namespace Google.Apis.Dfareporting.v4
             UserRolePermissions = new UserRolePermissionsResource(this);
             UserRoles = new UserRolesResource(this);
             VideoFormats = new VideoFormatsResource(this);
+            BaseUri = GetEffectiveUri(BaseUriOverride, "https://dfareporting.googleapis.com/dfareporting/v4/");
+            BatchUri = GetEffectiveUri(null, "https://dfareporting.googleapis.com/batch");
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -106,13 +108,13 @@ namespace Google.Apis.Dfareporting.v4
         public override string Name => "dfareporting";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://dfareporting.googleapis.com/dfareporting/v4/";
+        public override string BaseUri { get; }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "dfareporting/v4/";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://dfareporting.googleapis.com/batch";
+        public override string BatchUri { get; }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";

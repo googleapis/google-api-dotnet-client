@@ -38,6 +38,8 @@ namespace Google.Apis.StreetViewPublish.v1
             PhotoSequence = new PhotoSequenceResource(this);
             PhotoSequences = new PhotoSequencesResource(this);
             Photos = new PhotosResource(this);
+            BaseUri = GetEffectiveUri(BaseUriOverride, "https://streetviewpublish.googleapis.com/");
+            BatchUri = GetEffectiveUri(null, "https://streetviewpublish.googleapis.com/batch");
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -47,13 +49,13 @@ namespace Google.Apis.StreetViewPublish.v1
         public override string Name => "streetviewpublish";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://streetviewpublish.googleapis.com/";
+        public override string BaseUri { get; }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://streetviewpublish.googleapis.com/batch";
+        public override string BatchUri { get; }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";

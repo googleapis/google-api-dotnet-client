@@ -35,6 +35,8 @@ namespace Google.Apis.Iam.v2
         public IamService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Policies = new PoliciesResource(this);
+            BaseUri = GetEffectiveUri(BaseUriOverride, "https://iam.googleapis.com/");
+            BatchUri = GetEffectiveUri(null, "https://iam.googleapis.com/batch");
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -44,13 +46,13 @@ namespace Google.Apis.Iam.v2
         public override string Name => "iam";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://iam.googleapis.com/";
+        public override string BaseUri { get; }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://iam.googleapis.com/batch";
+        public override string BatchUri { get; }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";

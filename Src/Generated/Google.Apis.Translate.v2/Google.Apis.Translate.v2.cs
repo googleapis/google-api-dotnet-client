@@ -37,6 +37,8 @@ namespace Google.Apis.Translate.v2
             Detections = new DetectionsResource(this);
             Languages = new LanguagesResource(this);
             Translations = new TranslationsResource(this);
+            BaseUri = GetEffectiveUri(BaseUriOverride, "https://translation.googleapis.com/language/translate/");
+            BatchUri = GetEffectiveUri(null, "https://translation.googleapis.com/batch/translate");
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -46,13 +48,13 @@ namespace Google.Apis.Translate.v2
         public override string Name => "translate";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://translation.googleapis.com/language/translate/";
+        public override string BaseUri { get; }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "language/translate/";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://translation.googleapis.com/batch/translate";
+        public override string BatchUri { get; }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch/translate";
