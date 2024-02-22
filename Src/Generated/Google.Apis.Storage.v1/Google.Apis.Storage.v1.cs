@@ -46,6 +46,8 @@ namespace Google.Apis.Storage.v1
             Objects = new ObjectsResource(this);
             Operations = new OperationsResource(this);
             Projects = new ProjectsResource(this);
+            BaseUri = GetEffectiveUri(BaseUriOverride, "https://storage.googleapis.com/storage/v1/");
+            BatchUri = GetEffectiveUri(null, "https://storage.googleapis.com/batch/storage/v1");
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -55,13 +57,13 @@ namespace Google.Apis.Storage.v1
         public override string Name => "storage";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://storage.googleapis.com/storage/v1/";
+        public override string BaseUri { get; }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "storage/v1/";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://storage.googleapis.com/batch/storage/v1";
+        public override string BatchUri { get; }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch/storage/v1";

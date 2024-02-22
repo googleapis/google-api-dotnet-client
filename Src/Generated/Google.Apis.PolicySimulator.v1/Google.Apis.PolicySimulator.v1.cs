@@ -38,6 +38,8 @@ namespace Google.Apis.PolicySimulator.v1
             Operations = new OperationsResource(this);
             Organizations = new OrganizationsResource(this);
             Projects = new ProjectsResource(this);
+            BaseUri = GetEffectiveUri(BaseUriOverride, "https://policysimulator.googleapis.com/");
+            BatchUri = GetEffectiveUri(null, "https://policysimulator.googleapis.com/batch");
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -47,13 +49,13 @@ namespace Google.Apis.PolicySimulator.v1
         public override string Name => "policysimulator";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://policysimulator.googleapis.com/";
+        public override string BaseUri { get; }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://policysimulator.googleapis.com/batch";
+        public override string BatchUri { get; }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";

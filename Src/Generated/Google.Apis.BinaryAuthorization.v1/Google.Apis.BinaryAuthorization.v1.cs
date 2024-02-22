@@ -36,6 +36,8 @@ namespace Google.Apis.BinaryAuthorization.v1
         {
             Projects = new ProjectsResource(this);
             Systempolicy = new SystempolicyResource(this);
+            BaseUri = GetEffectiveUri(BaseUriOverride, "https://binaryauthorization.googleapis.com/");
+            BatchUri = GetEffectiveUri(null, "https://binaryauthorization.googleapis.com/batch");
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -45,13 +47,13 @@ namespace Google.Apis.BinaryAuthorization.v1
         public override string Name => "binaryauthorization";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://binaryauthorization.googleapis.com/";
+        public override string BaseUri { get; }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://binaryauthorization.googleapis.com/batch";
+        public override string BatchUri { get; }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
@@ -897,7 +899,112 @@ namespace Google.Apis.BinaryAuthorization.v1
             public PlatformsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                Gke = new GkeResource(service);
                 Policies = new PoliciesResource(service);
+            }
+
+            /// <summary>Gets the Gke resource.</summary>
+            public virtual GkeResource Gke { get; }
+
+            /// <summary>The "gke" collection of methods.</summary>
+            public class GkeResource
+            {
+                private const string Resource = "gke";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public GkeResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Policies = new PoliciesResource(service);
+                }
+
+                /// <summary>Gets the Policies resource.</summary>
+                public virtual PoliciesResource Policies { get; }
+
+                /// <summary>The "policies" collection of methods.</summary>
+                public class PoliciesResource
+                {
+                    private const string Resource = "policies";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public PoliciesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Evaluates a Kubernetes object versus a GKE platform policy. Returns `NOT_FOUND` if the policy
+                    /// doesn't exist, `INVALID_ARGUMENT` if the policy or request is malformed and `PERMISSION_DENIED`
+                    /// if the client does not have sufficient permissions.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The name of the platform policy to evaluate in the format
+                    /// `projects/*/platforms/*/policies/*`.
+                    /// </param>
+                    public virtual EvaluateRequest Evaluate(Google.Apis.BinaryAuthorization.v1.Data.EvaluateGkePolicyRequest body, string name)
+                    {
+                        return new EvaluateRequest(this.service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Evaluates a Kubernetes object versus a GKE platform policy. Returns `NOT_FOUND` if the policy
+                    /// doesn't exist, `INVALID_ARGUMENT` if the policy or request is malformed and `PERMISSION_DENIED`
+                    /// if the client does not have sufficient permissions.
+                    /// </summary>
+                    public class EvaluateRequest : BinaryAuthorizationBaseServiceRequest<Google.Apis.BinaryAuthorization.v1.Data.EvaluateGkePolicyResponse>
+                    {
+                        /// <summary>Constructs a new Evaluate request.</summary>
+                        public EvaluateRequest(Google.Apis.Services.IClientService service, Google.Apis.BinaryAuthorization.v1.Data.EvaluateGkePolicyRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the platform policy to evaluate in the format
+                        /// `projects/*/platforms/*/policies/*`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.BinaryAuthorization.v1.Data.EvaluateGkePolicyRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "evaluate";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:evaluate";
+
+                        /// <summary>Initializes Evaluate parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/platforms/gke/policies/[^/]+$",
+                            });
+                        }
+                    }
+                }
             }
 
             /// <summary>Gets the Policies resource.</summary>
@@ -1715,6 +1822,17 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Result of evaluating an image name allowlist.</summary>
+    public class AllowlistResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The allowlist pattern that the image matched.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchedPattern")]
+        public virtual string MatchedPattern { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// An attestation authenticator that will be used to verify attestations. Typically this is just a set of public
     /// keys. Conceptually, an authenticator can be treated as always returning either "authenticated" or "not
@@ -2042,6 +2160,51 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Result of evaluating one check.</summary>
+    public class CheckResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If the image was exempted by an allow_pattern in the check, contains the pattern that the image name
+        /// matched.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowlistResult")]
+        public virtual AllowlistResult AllowlistResult { get; set; }
+
+        /// <summary>The name of the check.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>If a check was evaluated, contains the result of the check.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluationResult")]
+        public virtual EvaluationResult EvaluationResult { get; set; }
+
+        /// <summary>Explanation of this check result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("explanation")]
+        public virtual string Explanation { get; set; }
+
+        /// <summary>The index of the check.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("index")]
+        public virtual System.Nullable<long> Index { get; set; }
+
+        /// <summary>The type of the check.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Result of evaluating one or more checks.</summary>
+    public class CheckResults : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Per-check details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("results")]
+        public virtual System.Collections.Generic.IList<CheckResult> Results { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A conjunction of policy checks, scoped to a particular namespace or Kubernetes service account. In order for
     /// evaluation of a `CheckSet` to return "allowed" for a given image in a given Pod, one of the following conditions
@@ -2083,6 +2246,40 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Result of evaluating one check set.</summary>
+    public class CheckSetResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If the image was exempted by an allow_pattern in the check set, contains the pattern that the image name
+        /// matched.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowlistResult")]
+        public virtual AllowlistResult AllowlistResult { get; set; }
+
+        /// <summary>If checks were evaluated, contains the results of evaluating each check.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("checkResults")]
+        public virtual CheckResults CheckResults { get; set; }
+
+        /// <summary>The name of the check set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Explanation of this check set result. Only populated if no checks were evaluated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("explanation")]
+        public virtual string Explanation { get; set; }
+
+        /// <summary>The index of the check set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("index")]
+        public virtual System.Nullable<long> Index { get; set; }
+
+        /// <summary>The scope of the check set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual Scope Scope { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
@@ -2090,6 +2287,43 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for PlatformPolicyEvaluationService.EvaluateGkePolicy.</summary>
+    public class EvaluateGkePolicyRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. JSON or YAML blob representing a Kubernetes resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Resource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for PlatformPolicyEvaluationService.EvaluateGkePolicy.</summary>
+    public class EvaluateGkePolicyResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Evaluation result for each Pod contained in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("results")]
+        public virtual System.Collections.Generic.IList<PodResult> Results { get; set; }
+
+        /// <summary>The result of evaluating all Pods in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verdict")]
+        public virtual string Verdict { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Result of evaluating one check.</summary>
+    public class EvaluationResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The result of evaluating this check.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verdict")]
+        public virtual string Verdict { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2275,6 +2509,38 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Result of evaluating one image.</summary>
+    public class ImageResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If the image was exempted by a top-level allow_pattern, contains the allowlist pattern that the image name
+        /// matched.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowlistResult")]
+        public virtual AllowlistResult AllowlistResult { get; set; }
+
+        /// <summary>
+        /// If a check set was evaluated, contains the result of the check set. Empty if there were no check sets.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("checkSetResult")]
+        public virtual CheckSetResult CheckSetResult { get; set; }
+
+        /// <summary>Explanation of this image result. Only populated if no check sets were evaluated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("explanation")]
+        public virtual string Explanation { get; set; }
+
+        /// <summary>Image URI from the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
+        public virtual string ImageUri { get; set; }
+
+        /// <summary>The result of evaluating this image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verdict")]
+        public virtual string Verdict { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class Jwt : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -2428,6 +2694,33 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Result of evaluating the whole GKE policy for one Pod.</summary>
+    public class PodResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Per-image details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageResults")]
+        public virtual System.Collections.Generic.IList<ImageResult> ImageResults { get; set; }
+
+        /// <summary>The Kubernetes namespace of the Pod.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kubernetesNamespace")]
+        public virtual string KubernetesNamespace { get; set; }
+
+        /// <summary>The Kubernetes service account of the Pod.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kubernetesServiceAccount")]
+        public virtual string KubernetesServiceAccount { get; set; }
+
+        /// <summary>The name of the Pod.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("podName")]
+        public virtual string PodName { get; set; }
+
+        /// <summary>The result of evaluating this Pod.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verdict")]
+        public virtual string Verdict { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

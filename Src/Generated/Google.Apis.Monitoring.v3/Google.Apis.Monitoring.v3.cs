@@ -39,6 +39,8 @@ namespace Google.Apis.Monitoring.v3
             Projects = new ProjectsResource(this);
             Services = new ServicesResource(this);
             UptimeCheckIps = new UptimeCheckIpsResource(this);
+            BaseUri = GetEffectiveUri(BaseUriOverride, "https://monitoring.googleapis.com/");
+            BatchUri = GetEffectiveUri(null, "https://monitoring.googleapis.com/batch");
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -48,13 +50,13 @@ namespace Google.Apis.Monitoring.v3
         public override string Name => "monitoring";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://monitoring.googleapis.com/";
+        public override string BaseUri { get; }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://monitoring.googleapis.com/batch";
+        public override string BatchUri { get; }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";

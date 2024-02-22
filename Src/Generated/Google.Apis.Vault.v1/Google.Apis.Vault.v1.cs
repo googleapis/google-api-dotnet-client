@@ -36,6 +36,8 @@ namespace Google.Apis.Vault.v1
         {
             Matters = new MattersResource(this);
             Operations = new OperationsResource(this);
+            BaseUri = GetEffectiveUri(BaseUriOverride, "https://vault.googleapis.com/");
+            BatchUri = GetEffectiveUri(null, "https://vault.googleapis.com/batch");
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -45,13 +47,13 @@ namespace Google.Apis.Vault.v1
         public override string Name => "vault";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://vault.googleapis.com/";
+        public override string BaseUri { get; }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://vault.googleapis.com/batch";
+        public override string BatchUri { get; }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";

@@ -43,6 +43,8 @@ namespace Google.Apis.Dns.v1
             ResourceRecordSets = new ResourceRecordSetsResource(this);
             ResponsePolicies = new ResponsePoliciesResource(this);
             ResponsePolicyRules = new ResponsePolicyRulesResource(this);
+            BaseUri = GetEffectiveUri(BaseUriOverride, "https://dns.googleapis.com/");
+            BatchUri = GetEffectiveUri(null, "https://dns.googleapis.com/batch");
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -52,13 +54,13 @@ namespace Google.Apis.Dns.v1
         public override string Name => "dns";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://dns.googleapis.com/";
+        public override string BaseUri { get; }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://dns.googleapis.com/batch";
+        public override string BatchUri { get; }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";

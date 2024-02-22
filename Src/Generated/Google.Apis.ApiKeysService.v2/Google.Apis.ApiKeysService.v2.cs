@@ -37,6 +37,8 @@ namespace Google.Apis.ApiKeysService.v2
             Keys = new KeysResource(this);
             Operations = new OperationsResource(this);
             Projects = new ProjectsResource(this);
+            BaseUri = GetEffectiveUri(BaseUriOverride, "https://apikeys.googleapis.com/");
+            BatchUri = GetEffectiveUri(null, "https://apikeys.googleapis.com/batch");
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -46,13 +48,13 @@ namespace Google.Apis.ApiKeysService.v2
         public override string Name => "apikeys";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://apikeys.googleapis.com/";
+        public override string BaseUri { get; }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://apikeys.googleapis.com/batch";
+        public override string BatchUri { get; }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";

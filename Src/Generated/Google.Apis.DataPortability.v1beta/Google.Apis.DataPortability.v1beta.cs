@@ -37,6 +37,8 @@ namespace Google.Apis.DataPortability.v1beta
             ArchiveJobs = new ArchiveJobsResource(this);
             Authorization = new AuthorizationResource(this);
             PortabilityArchive = new PortabilityArchiveResource(this);
+            BaseUri = GetEffectiveUri(BaseUriOverride, "https://dataportability.googleapis.com/");
+            BatchUri = GetEffectiveUri(null, "https://dataportability.googleapis.com/batch");
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -46,13 +48,13 @@ namespace Google.Apis.DataPortability.v1beta
         public override string Name => "dataportability";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://dataportability.googleapis.com/";
+        public override string BaseUri { get; }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://dataportability.googleapis.com/batch";
+        public override string BatchUri { get; }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
@@ -432,10 +434,10 @@ namespace Google.Apis.DataPortability.v1beta
             this.service = service;
         }
 
-        /// <summary>Retrieves the state of a Takeout Archive job for the Portability API.</summary>
+        /// <summary>Retrieves the state of an Archive job for the Portability API.</summary>
         /// <param name="name">
-        /// Required. The archive job ID that is returned when you request the state of the job from Takeout. The format
-        /// is: archiveJobs/{archive_job}/portabilityArchiveState. archive_job is the job ID returned by the
+        /// Required. The archive job ID that is returned when you request the state of the job. The format is:
+        /// archiveJobs/{archive_job}/portabilityArchiveState. archive_job is the job ID returned by the
         /// InitiatePortabilityArchiveResponse.
         /// </param>
         public virtual GetPortabilityArchiveStateRequest GetPortabilityArchiveState(string name)
@@ -443,7 +445,7 @@ namespace Google.Apis.DataPortability.v1beta
             return new GetPortabilityArchiveStateRequest(this.service, name);
         }
 
-        /// <summary>Retrieves the state of a Takeout Archive job for the Portability API.</summary>
+        /// <summary>Retrieves the state of an Archive job for the Portability API.</summary>
         public class GetPortabilityArchiveStateRequest : DataPortabilityBaseServiceRequest<Google.Apis.DataPortability.v1beta.Data.PortabilityArchiveState>
         {
             /// <summary>Constructs a new GetPortabilityArchiveState request.</summary>
@@ -454,8 +456,8 @@ namespace Google.Apis.DataPortability.v1beta
             }
 
             /// <summary>
-            /// Required. The archive job ID that is returned when you request the state of the job from Takeout. The
-            /// format is: archiveJobs/{archive_job}/portabilityArchiveState. archive_job is the job ID returned by the
+            /// Required. The archive job ID that is returned when you request the state of the job. The format is:
+            /// archiveJobs/{archive_job}/portabilityArchiveState. archive_job is the job ID returned by the
             /// InitiatePortabilityArchiveResponse.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -488,8 +490,8 @@ namespace Google.Apis.DataPortability.v1beta
         /// <summary>Retries a failed Portability Archive job.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
-        /// Required. The archive job ID returned by the InitiatePortabilityArchiveResponse to be retried. Retrying is
-        /// only executed if the initial job failed.
+        /// Required. The Archive job ID you're retrying. This is returned by the InitiatePortabilityArchiveResponse.
+        /// Retrying is only executed if the initial job failed.
         /// </param>
         public virtual RetryRequest Retry(Google.Apis.DataPortability.v1beta.Data.RetryPortabilityArchiveRequest body, string name)
         {
@@ -508,8 +510,8 @@ namespace Google.Apis.DataPortability.v1beta
             }
 
             /// <summary>
-            /// Required. The archive job ID returned by the InitiatePortabilityArchiveResponse to be retried. Retrying
-            /// is only executed if the initial job failed.
+            /// Required. The Archive job ID you're retrying. This is returned by the
+            /// InitiatePortabilityArchiveResponse. Retrying is only executed if the initial job failed.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -561,9 +563,9 @@ namespace Google.Apis.DataPortability.v1beta
 
         /// <summary>
         /// Revokes OAuth tokens and resets exhausted scopes for a user/project pair. This method allows you to initiate
-        /// a Takeout request after a new consent is granted. This method also indicates that previous archives can be
-        /// garbage collected. You should call this method when all jobs are complete and all archives are downloaded.
-        /// Do not call it only when you start a new job.
+        /// a request after a new consent is granted. This method also indicates that previous archives can be garbage
+        /// collected. You should call this method when all jobs are complete and all archives are downloaded. Do not
+        /// call it only when you start a new job.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual ResetRequest Reset(Google.Apis.DataPortability.v1beta.Data.ResetAuthorizationRequest body)
@@ -573,9 +575,9 @@ namespace Google.Apis.DataPortability.v1beta
 
         /// <summary>
         /// Revokes OAuth tokens and resets exhausted scopes for a user/project pair. This method allows you to initiate
-        /// a Takeout request after a new consent is granted. This method also indicates that previous archives can be
-        /// garbage collected. You should call this method when all jobs are complete and all archives are downloaded.
-        /// Do not call it only when you start a new job.
+        /// a request after a new consent is granted. This method also indicates that previous archives can be garbage
+        /// collected. You should call this method when all jobs are complete and all archives are downloaded. Do not
+        /// call it only when you start a new job.
         /// </summary>
         public class ResetRequest : DataPortabilityBaseServiceRequest<Google.Apis.DataPortability.v1beta.Data.Empty>
         {
@@ -623,14 +625,14 @@ namespace Google.Apis.DataPortability.v1beta
             this.service = service;
         }
 
-        /// <summary>Initiates a new Takeout Archive job for the Portability API.</summary>
+        /// <summary>Initiates a new Archive job for the Portability API.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual InitiateRequest Initiate(Google.Apis.DataPortability.v1beta.Data.InitiatePortabilityArchiveRequest body)
         {
             return new InitiateRequest(this.service, body);
         }
 
-        /// <summary>Initiates a new Takeout Archive job for the Portability API.</summary>
+        /// <summary>Initiates a new Archive job for the Portability API.</summary>
         public class InitiateRequest : DataPortabilityBaseServiceRequest<Google.Apis.DataPortability.v1beta.Data.InitiatePortabilityArchiveResponse>
         {
             /// <summary>Constructs a new Initiate request.</summary>
@@ -676,7 +678,7 @@ namespace Google.Apis.DataPortability.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request to kick off a Takeout Archive job.</summary>
+    /// <summary>Request to kick off an Archive job.</summary>
     public class InitiatePortabilityArchiveRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -690,11 +692,11 @@ namespace Google.Apis.DataPortability.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response from initiating a Take Archive job.</summary>
+    /// <summary>Response from initiating an Archive job.</summary>
     public class InitiatePortabilityArchiveResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The archive job ID that is initiated in the Takeout API. This can be used to get the state of the job.
+        /// The archive job ID that is initiated in the API. This can be used to get the state of the job.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("archiveJobId")]
         public virtual string ArchiveJobId { get; set; }
@@ -703,7 +705,7 @@ namespace Google.Apis.DataPortability.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Resource that contains the state of a Takeout Archive job.</summary>
+    /// <summary>Resource that contains the state of an Archive job.</summary>
     public class PortabilityArchiveState : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -713,7 +715,7 @@ namespace Google.Apis.DataPortability.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Resource that represents the state of the Takeout Archive job.</summary>
+        /// <summary>Resource that represents the state of the Archive job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -745,7 +747,8 @@ namespace Google.Apis.DataPortability.v1beta.Data
     public class RetryPortabilityArchiveResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The archive job ID that is initiated by the retry endpoint. This can be used to get the state of the new job
+        /// The archive job ID that is initiated by the retry endpoint. This can be used to get the state of the new
+        /// job.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("archiveJobId")]
         public virtual string ArchiveJobId { get; set; }

@@ -36,6 +36,8 @@ namespace Google.Apis.ChecksService.v1alpha
         {
             Accounts = new AccountsResource(this);
             Media = new MediaResource(this);
+            BaseUri = GetEffectiveUri(BaseUriOverride, "https://checks.googleapis.com/");
+            BatchUri = GetEffectiveUri(null, "https://checks.googleapis.com/batch");
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -45,13 +47,13 @@ namespace Google.Apis.ChecksService.v1alpha
         public override string Name => "checks";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://checks.googleapis.com/";
+        public override string BaseUri { get; }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://checks.googleapis.com/batch";
+        public override string BatchUri { get; }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";

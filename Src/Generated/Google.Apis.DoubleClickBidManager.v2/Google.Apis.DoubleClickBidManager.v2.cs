@@ -35,6 +35,8 @@ namespace Google.Apis.DoubleClickBidManager.v2
         public DoubleClickBidManagerService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Queries = new QueriesResource(this);
+            BaseUri = GetEffectiveUri(BaseUriOverride, "https://doubleclickbidmanager.googleapis.com/v2/");
+            BatchUri = GetEffectiveUri(null, "https://doubleclickbidmanager.googleapis.com/batch");
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -44,13 +46,13 @@ namespace Google.Apis.DoubleClickBidManager.v2
         public override string Name => "doubleclickbidmanager";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://doubleclickbidmanager.googleapis.com/v2/";
+        public override string BaseUri { get; }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "v2/";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://doubleclickbidmanager.googleapis.com/batch";
+        public override string BatchUri { get; }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";

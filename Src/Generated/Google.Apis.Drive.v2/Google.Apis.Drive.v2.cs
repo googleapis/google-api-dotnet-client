@@ -48,6 +48,8 @@ namespace Google.Apis.Drive.v2
             Replies = new RepliesResource(this);
             Revisions = new RevisionsResource(this);
             Teamdrives = new TeamdrivesResource(this);
+            BaseUri = GetEffectiveUri(BaseUriOverride, "https://www.googleapis.com/drive/v2/");
+            BatchUri = GetEffectiveUri(null, "https://www.googleapis.com/batch/drive/v2");
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -57,13 +59,13 @@ namespace Google.Apis.Drive.v2
         public override string Name => "drive";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://www.googleapis.com/drive/v2/";
+        public override string BaseUri { get; }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "drive/v2/";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://www.googleapis.com/batch/drive/v2";
+        public override string BatchUri { get; }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch/drive/v2";

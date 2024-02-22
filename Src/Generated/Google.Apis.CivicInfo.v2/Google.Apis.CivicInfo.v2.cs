@@ -37,6 +37,8 @@ namespace Google.Apis.CivicInfo.v2
             Divisions = new DivisionsResource(this);
             Elections = new ElectionsResource(this);
             Representatives = new RepresentativesResource(this);
+            BaseUri = GetEffectiveUri(BaseUriOverride, "https://civicinfo.googleapis.com/");
+            BatchUri = GetEffectiveUri(null, "https://civicinfo.googleapis.com/batch");
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -46,13 +48,13 @@ namespace Google.Apis.CivicInfo.v2
         public override string Name => "civicinfo";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://civicinfo.googleapis.com/";
+        public override string BaseUri { get; }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://civicinfo.googleapis.com/batch";
+        public override string BatchUri { get; }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";

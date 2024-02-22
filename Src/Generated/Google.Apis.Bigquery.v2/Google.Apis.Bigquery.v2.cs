@@ -42,6 +42,8 @@ namespace Google.Apis.Bigquery.v2
             RowAccessPolicies = new RowAccessPoliciesResource(this);
             Tabledata = new TabledataResource(this);
             Tables = new TablesResource(this);
+            BaseUri = GetEffectiveUri(BaseUriOverride, "https://bigquery.googleapis.com/bigquery/v2/");
+            BatchUri = GetEffectiveUri(null, "https://bigquery.googleapis.com/batch/bigquery/v2");
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -51,13 +53,13 @@ namespace Google.Apis.Bigquery.v2
         public override string Name => "bigquery";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://bigquery.googleapis.com/bigquery/v2/";
+        public override string BaseUri { get; }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "bigquery/v2/";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://bigquery.googleapis.com/batch/bigquery/v2";
+        public override string BatchUri { get; }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch/bigquery/v2";

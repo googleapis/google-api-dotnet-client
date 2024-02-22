@@ -37,6 +37,8 @@ namespace Google.Apis.FirebaseDynamicLinks.v1
             ManagedShortLinks = new ManagedShortLinksResource(this);
             ShortLinks = new ShortLinksResource(this);
             V1 = new V1Resource(this);
+            BaseUri = GetEffectiveUri(BaseUriOverride, "https://firebasedynamiclinks.googleapis.com/");
+            BatchUri = GetEffectiveUri(null, "https://firebasedynamiclinks.googleapis.com/batch");
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -46,13 +48,13 @@ namespace Google.Apis.FirebaseDynamicLinks.v1
         public override string Name => "firebasedynamiclinks";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://firebasedynamiclinks.googleapis.com/";
+        public override string BaseUri { get; }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://firebasedynamiclinks.googleapis.com/batch";
+        public override string BatchUri { get; }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";

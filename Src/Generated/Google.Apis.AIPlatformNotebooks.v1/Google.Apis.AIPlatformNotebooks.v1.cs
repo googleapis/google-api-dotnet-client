@@ -35,6 +35,8 @@ namespace Google.Apis.AIPlatformNotebooks.v1
         public AIPlatformNotebooksService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Projects = new ProjectsResource(this);
+            BaseUri = GetEffectiveUri(BaseUriOverride, "https://notebooks.googleapis.com/");
+            BatchUri = GetEffectiveUri(null, "https://notebooks.googleapis.com/batch");
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -44,13 +46,13 @@ namespace Google.Apis.AIPlatformNotebooks.v1
         public override string Name => "notebooks";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://notebooks.googleapis.com/";
+        public override string BaseUri { get; }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://notebooks.googleapis.com/batch";
+        public override string BatchUri { get; }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
@@ -4436,9 +4438,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
 
         /// <summary>
         /// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`,
-        /// or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM
-        /// documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined
-        /// roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
+        /// or `roles/owner`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }

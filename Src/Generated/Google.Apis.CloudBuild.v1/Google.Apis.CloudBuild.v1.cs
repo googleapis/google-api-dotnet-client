@@ -39,6 +39,8 @@ namespace Google.Apis.CloudBuild.v1
             Operations = new OperationsResource(this);
             Projects = new ProjectsResource(this);
             V1 = new V1Resource(this);
+            BaseUri = GetEffectiveUri(BaseUriOverride, "https://cloudbuild.googleapis.com/");
+            BatchUri = GetEffectiveUri(null, "https://cloudbuild.googleapis.com/batch");
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -48,13 +50,13 @@ namespace Google.Apis.CloudBuild.v1
         public override string Name => "cloudbuild";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://cloudbuild.googleapis.com/";
+        public override string BaseUri { get; }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://cloudbuild.googleapis.com/batch";
+        public override string BatchUri { get; }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";

@@ -35,6 +35,8 @@ namespace Google.Apis.MyBusinessVerifications.v1
         public MyBusinessVerificationsService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Locations = new LocationsResource(this);
+            BaseUri = GetEffectiveUri(BaseUriOverride, "https://mybusinessverifications.googleapis.com/");
+            BatchUri = GetEffectiveUri(null, "https://mybusinessverifications.googleapis.com/batch");
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -44,13 +46,13 @@ namespace Google.Apis.MyBusinessVerifications.v1
         public override string Name => "mybusinessverifications";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://mybusinessverifications.googleapis.com/";
+        public override string BaseUri { get; }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://mybusinessverifications.googleapis.com/batch";
+        public override string BatchUri { get; }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";

@@ -36,6 +36,8 @@ namespace Google.Apis.Area120Tables.v1alpha1
         {
             Tables = new TablesResource(this);
             Workspaces = new WorkspacesResource(this);
+            BaseUri = GetEffectiveUri(BaseUriOverride, "https://area120tables.googleapis.com/");
+            BatchUri = GetEffectiveUri(null, "https://area120tables.googleapis.com/batch");
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -45,13 +47,13 @@ namespace Google.Apis.Area120Tables.v1alpha1
         public override string Name => "area120tables";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://area120tables.googleapis.com/";
+        public override string BaseUri { get; }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://area120tables.googleapis.com/batch";
+        public override string BatchUri { get; }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";

@@ -36,6 +36,8 @@ namespace Google.Apis.SA360.v0
         {
             Customers = new CustomersResource(this);
             SearchAds360Fields = new SearchAds360FieldsResource(this);
+            BaseUri = GetEffectiveUri(BaseUriOverride, "https://searchads360.googleapis.com/");
+            BatchUri = GetEffectiveUri(null, "https://searchads360.googleapis.com/batch");
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -45,13 +47,13 @@ namespace Google.Apis.SA360.v0
         public override string Name => "searchads360";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://searchads360.googleapis.com/";
+        public override string BaseUri { get; }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://searchads360.googleapis.com/batch";
+        public override string BatchUri { get; }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";

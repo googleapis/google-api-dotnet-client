@@ -36,6 +36,8 @@ namespace Google.Apis.AnalyticsReporting.v4
         {
             Reports = new ReportsResource(this);
             UserActivity = new UserActivityResource(this);
+            BaseUri = GetEffectiveUri(BaseUriOverride, "https://analyticsreporting.googleapis.com/");
+            BatchUri = GetEffectiveUri(null, "https://analyticsreporting.googleapis.com/batch");
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -45,13 +47,13 @@ namespace Google.Apis.AnalyticsReporting.v4
         public override string Name => "analyticsreporting";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://analyticsreporting.googleapis.com/";
+        public override string BaseUri { get; }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://analyticsreporting.googleapis.com/batch";
+        public override string BatchUri { get; }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";

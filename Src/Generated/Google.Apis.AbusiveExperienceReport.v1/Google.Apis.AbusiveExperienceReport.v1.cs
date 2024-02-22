@@ -36,6 +36,8 @@ namespace Google.Apis.AbusiveExperienceReport.v1
         {
             Sites = new SitesResource(this);
             ViolatingSites = new ViolatingSitesResource(this);
+            BaseUri = GetEffectiveUri(BaseUriOverride, "https://abusiveexperiencereport.googleapis.com/");
+            BatchUri = GetEffectiveUri(null, "https://abusiveexperiencereport.googleapis.com/batch");
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -45,13 +47,13 @@ namespace Google.Apis.AbusiveExperienceReport.v1
         public override string Name => "abusiveexperiencereport";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://abusiveexperiencereport.googleapis.com/";
+        public override string BaseUri { get; }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://abusiveexperiencereport.googleapis.com/batch";
+        public override string BatchUri { get; }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";

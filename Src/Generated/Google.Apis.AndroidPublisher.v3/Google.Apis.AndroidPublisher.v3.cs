@@ -48,6 +48,8 @@ namespace Google.Apis.AndroidPublisher.v3
             Reviews = new ReviewsResource(this);
             Systemapks = new SystemapksResource(this);
             Users = new UsersResource(this);
+            BaseUri = GetEffectiveUri(BaseUriOverride, "https://androidpublisher.googleapis.com/");
+            BatchUri = GetEffectiveUri(null, "https://androidpublisher.googleapis.com/batch");
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -57,13 +59,13 @@ namespace Google.Apis.AndroidPublisher.v3
         public override string Name => "androidpublisher";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://androidpublisher.googleapis.com/";
+        public override string BaseUri { get; }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://androidpublisher.googleapis.com/batch";
+        public override string BatchUri { get; }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
@@ -12227,7 +12229,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Data format for a list of app versions. Only one app version is supported for now.</summary>
+    /// <summary>Data format for a list of app versions.</summary>
     public class AppVersionList : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>List of app version codes.</summary>

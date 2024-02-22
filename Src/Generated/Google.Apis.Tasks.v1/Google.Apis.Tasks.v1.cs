@@ -36,6 +36,8 @@ namespace Google.Apis.Tasks.v1
         {
             Tasklists = new TasklistsResource(this);
             Tasks = new TasksResource(this);
+            BaseUri = GetEffectiveUri(BaseUriOverride, "https://tasks.googleapis.com/");
+            BatchUri = GetEffectiveUri(null, "https://tasks.googleapis.com/batch");
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -45,13 +47,13 @@ namespace Google.Apis.Tasks.v1
         public override string Name => "tasks";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://tasks.googleapis.com/";
+        public override string BaseUri { get; }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://tasks.googleapis.com/batch";
+        public override string BatchUri { get; }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";

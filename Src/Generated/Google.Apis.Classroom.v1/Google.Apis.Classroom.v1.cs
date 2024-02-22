@@ -38,6 +38,8 @@ namespace Google.Apis.Classroom.v1
             Invitations = new InvitationsResource(this);
             Registrations = new RegistrationsResource(this);
             UserProfiles = new UserProfilesResource(this);
+            BaseUri = GetEffectiveUri(BaseUriOverride, "https://classroom.googleapis.com/");
+            BatchUri = GetEffectiveUri(null, "https://classroom.googleapis.com/batch");
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -47,13 +49,13 @@ namespace Google.Apis.Classroom.v1
         public override string Name => "classroom";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://classroom.googleapis.com/";
+        public override string BaseUri { get; }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://classroom.googleapis.com/batch";
+        public override string BatchUri { get; }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";

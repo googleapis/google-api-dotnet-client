@@ -35,6 +35,8 @@ namespace Google.Apis.PolicyTroubleshooter.v1beta
         public PolicyTroubleshooterService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Iam = new IamResource(this);
+            BaseUri = GetEffectiveUri(BaseUriOverride, "https://policytroubleshooter.googleapis.com/");
+            BatchUri = GetEffectiveUri(null, "https://policytroubleshooter.googleapis.com/batch");
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -44,13 +46,13 @@ namespace Google.Apis.PolicyTroubleshooter.v1beta
         public override string Name => "policytroubleshooter";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://policytroubleshooter.googleapis.com/";
+        public override string BaseUri { get; }
 
         /// <summary>Gets the service base path.</summary>
         public override string BasePath => "";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
-        public override string BatchUri => "https://policytroubleshooter.googleapis.com/batch";
+        public override string BatchUri { get; }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
