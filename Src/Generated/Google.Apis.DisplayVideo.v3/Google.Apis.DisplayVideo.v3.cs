@@ -26219,6 +26219,14 @@ namespace Google.Apis.DisplayVideo.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
         public virtual System.Nullable<long> AdvertiserId { get; set; }
 
+        /// <summary>Input only. A list of contact information to define the members to be removed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("removedContactInfoList")]
+        public virtual ContactInfoList RemovedContactInfoList { get; set; }
+
+        /// <summary>Input only. A list of mobile device IDs to define the members to be removed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("removedMobileDeviceIdList")]
+        public virtual MobileDeviceIdList RemovedMobileDeviceIdList { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

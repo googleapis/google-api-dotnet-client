@@ -6335,6 +6335,12 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pscConnectionId")]
         public virtual string PscConnectionId { get; set; }
 
+        /// <summary>
+        /// Output only. The URI of the selected subnetwork selected to allocate IP address for this connection.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selectedSubnetwork")]
+        public virtual string SelectedSubnetwork { get; set; }
+
         /// <summary>The URI of a service attachment which is the target of the PSC connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAttachmentUri")]
         public virtual string ServiceAttachmentUri { get; set; }
@@ -7827,6 +7833,12 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// <summary>The PSC connection id of the PSC forwarding rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pscConnectionId")]
         public virtual string PscConnectionId { get; set; }
+
+        /// <summary>
+        /// Output only. The URI of the subnetwork selected to allocate IP address for this connection.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selectedSubnetwork")]
+        public virtual string SelectedSubnetwork { get; set; }
 
         /// <summary>State of the PSC Connection</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]

@@ -9324,10 +9324,7 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
         public virtual string DiskType { get; set; }
 
-        /// <summary>
-        /// Optional. Enable confidential storage on Hyperdisk. boot_disk_kms_key is required when
-        /// enable_confidential_storage is true. This is only available for private preview.
-        /// </summary>
+        /// <summary>Optional. Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableConfidentialStorage")]
         public virtual System.Nullable<bool> EnableConfidentialStorage { get; set; }
 
@@ -11772,6 +11769,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
+
+        /// <summary>Specifies the configuration of queued provisioning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queuedProvisioning")]
+        public virtual QueuedProvisioning QueuedProvisioning { get; set; }
 
         /// <summary>
         /// The resource labels for the node pool to use to annotate any related Google Compute Engine resources.

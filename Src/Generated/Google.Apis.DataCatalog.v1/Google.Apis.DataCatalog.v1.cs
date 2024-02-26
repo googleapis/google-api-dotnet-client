@@ -5850,6 +5850,10 @@ namespace Google.Apis.DataCatalog.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
+        /// <summary>FeatureonlineStore spec for Vertex AI Feature Store.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("featureOnlineStoreSpec")]
+        public virtual GoogleCloudDatacatalogV1FeatureOnlineStoreSpec FeatureOnlineStoreSpec { get; set; }
+
         /// <summary>
         /// Specification that applies to a fileset resource. Valid only for entries with the `FILESET` type.
         /// </summary>
@@ -6036,6 +6040,17 @@ namespace Google.Apis.DataCatalog.v1.Data
         /// <summary>List of taxonomies and policy tags as nested protocol buffers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taxonomies")]
         public virtual System.Collections.Generic.IList<GoogleCloudDatacatalogV1SerializedTaxonomy> Taxonomies { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Detail description of the source information of a Vertex Feature Online Store.</summary>
+    public class GoogleCloudDatacatalogV1FeatureOnlineStoreSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Type of underelaying storage for the FeatureOnlineStore.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageType")]
+        public virtual string StorageType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -1656,6 +1656,21 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class BatchTaskSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteObjectTaskSpec")]
+        public virtual DeleteObjectTaskSpec DeleteObjectTaskSpec { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("listTaskSpec")]
+        public virtual ListTaskSpec ListTaskSpec { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("metadataTaskSpec")]
+        public virtual MetadataTaskSpec MetadataTaskSpec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1687,6 +1702,24 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("year")]
         public virtual System.Nullable<int> Year { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class DeleteObjectTaskSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("generation")]
+        public virtual System.Nullable<long> Generation { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("hardDeleteVersionedObject")]
+        public virtual System.Nullable<bool> HardDeleteVersionedObject { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("size")]
+        public virtual System.Nullable<long> Size { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1896,6 +1929,21 @@ namespace Google.Apis.Storagetransfer.v1.Data
     }
 
     /// <summary>
+    /// An HdfsData resource specifies a path within an HDFS entity (e.g. a cluster). All cluster-specific settings,
+    /// such as namenodes and ports, are configured on the transfer agents servicing requests, so HdfsData only contains
+    /// the root path to the data in our transfer.
+    /// </summary>
+    public class HdfsData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Root path to transfer files.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// An HttpData resource specifies a list of objects on the web to be transferred over HTTP. The information of the
     /// objects to be transferred is contained in a file referenced by a URL. The first line in the file must be
     /// `"TsvHttpData-1.0"`, which specifies the format of the file. Subsequent lines specify the information of the
@@ -1955,6 +2003,18 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class ListTaskSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("manifest")]
+        public virtual Manifest Manifest { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("objectPrefixes")]
+        public virtual ObjectPrefixes ObjectPrefixes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response from ListTransferJobs.</summary>
     public class ListTransferJobsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1999,6 +2059,18 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logActions")]
         public virtual System.Collections.Generic.IList<string> LogActions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class Manifest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("manifestLocation")]
+        public virtual string ManifestLocation { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("root")]
+        public virtual string Root { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2059,8 +2131,8 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual string TemporaryHold { get; set; }
 
         /// <summary>
-        /// Specifies how each object's `timeCreated` metadata is preserved for transfers between Google Cloud Storage
-        /// buckets. If unspecified, the default behavior is the same as TIME_CREATED_SKIP.
+        /// Specifies how each object's `timeCreated` metadata is preserved for transfers. If unspecified, the default
+        /// behavior is the same as TIME_CREATED_SKIP.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeCreated")]
         public virtual string TimeCreated { get; set; }
@@ -2072,6 +2144,24 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class MetadataTaskSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("bucketName")]
+        public virtual string BucketName { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("generation")]
+        public virtual System.Nullable<long> Generation { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("size")]
+        public virtual System.Nullable<long> Size { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2258,6 +2348,27 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minTimeElapsedSinceLastModification")]
         public virtual object MinTimeElapsedSinceLastModification { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class ObjectPrefix : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("bucketName")]
+        public virtual string BucketName { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("objectPrefix")]
+        public virtual string ObjectPrefixValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class ObjectPrefixes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("objectPrefixes")]
+        public virtual System.Collections.Generic.IList<ObjectPrefix> ObjectPrefixesValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3002,6 +3113,10 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsIntermediateDataLocation")]
         public virtual GcsData GcsIntermediateDataLocation { get; set; }
+
+        /// <summary>An HDFS cluster data source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hdfsDataSource")]
+        public virtual HdfsData HdfsDataSource { get; set; }
 
         /// <summary>An HTTP URL data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpDataSource")]

@@ -26646,6 +26646,10 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("eventInput")]
         public virtual GoogleCloudDialogflowV2beta1EventInput EventInput { get; set; }
 
+        /// <summary>The intent to be triggered on V3 agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intentInput")]
+        public virtual GoogleCloudDialogflowV2beta1IntentInput IntentInput { get; set; }
+
         private string _messageSendTimeRaw;
 
         private object _messageSendTime;
