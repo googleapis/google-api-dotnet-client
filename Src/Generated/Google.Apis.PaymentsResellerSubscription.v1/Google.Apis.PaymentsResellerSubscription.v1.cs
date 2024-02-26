@@ -1523,7 +1523,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         public virtual GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails FiniteBillingCycleDetails { get; set; }
 
         /// <summary>
-        /// Output only. Response only. Resource name of the product. It will have the format of
+        /// Identifier. Response only. Resource name of the product. It will have the format of
         /// "partners/{partner_id}/products/{product_id}"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -1662,7 +1662,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         public virtual GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails IntroductoryPricingDetails { get; set; }
 
         /// <summary>
-        /// Output only. Response only. Resource name of the subscription promotion. It will have the format of
+        /// Identifier. Response only. Resource name of the subscription promotion. It will have the format of
         /// "partners/{partner_id}/promotion/{promotion_id}"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -1729,7 +1729,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     /// <summary>The details of a introductory pricing promotion.</summary>
     public class GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Specifies the introductory pricing periods.</summary>
+        /// <summary>Output only. Specifies the introductory pricing periods.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("introductoryPricingSpecs")]
         public virtual System.Collections.Generic.IList<GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec> IntroductoryPricingSpecs { get; set; }
 
@@ -1988,7 +1988,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         public virtual System.Collections.Generic.IList<GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem> LineItems { get; set; }
 
         /// <summary>
-        /// Optional. Resource name of the subscription. It will have the format of
+        /// Identifier. Resource name of the subscription. It will have the format of
         /// "partners/{partner_id}/subscriptions/{subscription_id}". This is available for authorizeAddon, but otherwise
         /// is response only.
         /// </summary>
@@ -2146,7 +2146,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     /// <summary>Describes the details of a cancelled or cancelling subscription.</summary>
     public class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionCancellationDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The reason of the cancellation.</summary>
+        /// <summary>Output only. The reason of the cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; }
 
@@ -2320,7 +2320,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     /// <summary>Details for a ONE_TIME recurrence line item.</summary>
     public class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The service period of the ONE_TIME line item.</summary>
+        /// <summary>Output only. The service period of the ONE_TIME line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servicePeriod")]
         public virtual GoogleCloudPaymentsResellerSubscriptionV1ServicePeriod ServicePeriod { get; set; }
 
@@ -2480,7 +2480,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     /// <summary>The bundle details for a line item corresponding to a hard bundle.</summary>
     public class SubscriptionLineItemBundleDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The details for each element in the hard bundle.</summary>
+        /// <summary>Output only. The details for each element in the hard bundle.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bundleElementDetails")]
         public virtual System.Collections.Generic.IList<GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemBundleDetailsBundleElementDetails> BundleElementDetails { get; set; }
 

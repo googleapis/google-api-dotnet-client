@@ -5214,8 +5214,8 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
 
         /// <summary>
-        /// Optional. Information about the external metadata storage where the dataset is defined. Filled out when the
-        /// dataset type is EXTERNAL.
+        /// Optional. Reference to a read-only external dataset defined in data catalogs outside of BigQuery. Filled out
+        /// when the dataset type is EXTERNAL.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalDatasetReference")]
         public virtual ExternalDatasetReference ExternalDatasetReference { get; set; }

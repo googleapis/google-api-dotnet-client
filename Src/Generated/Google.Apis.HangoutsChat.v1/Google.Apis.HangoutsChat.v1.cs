@@ -3249,12 +3249,9 @@ namespace Google.Apis.HangoutsChat.v1.Data
     public class CommonEventObject : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A map containing the current values of the widgets in a card. The map keys are the string IDs assigned to
-        /// each widget, and the values represent inputs to the widget. Depending on the input data type, a different
-        /// object represents each input: For single-value widgets, `StringInput`. For multi-value widgets, an array of
-        /// `StringInput` objects. For a date-time picker, a `DateTimeInput`. For a date-only picker, a `DateInput`. For
-        /// a time-only picker, a `TimeInput`. Corresponds with the data entered by a user on a card in a
-        /// [dialog](https://developers.google.com/chat/how-tos/dialogs).
+        /// A map containing the values that a user inputs in a widget from a card or dialog. The map keys are the
+        /// string IDs assigned to each widget, and the values represent inputs to the widget. For details, see [Process
+        /// information inputted by users](https://developers.google.com/chat/ui/read-form-data).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formInputs")]
         public virtual System.Collections.Generic.IDictionary<string, Inputs> FormInputs { get; set; }
@@ -5036,27 +5033,42 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// Types of data that users can enter on cards or dialogs. To learn how to process information from users, see
-    /// [Read form data input by users on cards](https://developers.google.com/chat/ui/read-form-data).
+    /// Types of data that users can [input on cards or dialogs](https://developers.google.com/chat/ui/read-form-data).
+    /// The input type depends on the type of values that the widget accepts.
     /// </summary>
     public class Inputs : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Date input values.</summary>
+        /// <summary>
+        /// Date input values from a
+        /// [`DateTimePicker`](https://developers.google.com/chat/api/reference/rest/v1/cards#DateTimePicker) widget
+        /// that only accepts date values.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dateInput")]
         public virtual DateInput DateInput { get; set; }
 
-        /// <summary>Date and time input values.</summary>
+        /// <summary>
+        /// Date and time input values from a
+        /// [`DateTimePicker`](https://developers.google.com/chat/api/reference/rest/v1/cards#DateTimePicker) widget
+        /// that accepts both a date and time.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dateTimeInput")]
         public virtual DateTimeInput DateTimeInput { get; set; }
 
         /// <summary>
-        /// Input parameter for regular widgets. For single-valued widgets, it is a single value list. For multi-valued
-        /// widgets, such as checkbox, all the values are presented.
+        /// A list of strings that represent the values that the user inputs in a widget. If the widget only accepts one
+        /// value, such as a [`TextInput`](https://developers.google.com/chat/api/reference/rest/v1/cards#TextInput)
+        /// widget, the list contains one string object. If the widget accepts multiple values, such as a
+        /// [`SelectionInput`](https://developers.google.com/chat/api/reference/rest/v1/cards#selectioninput) widget of
+        /// checkboxes, the list contains a string object for each value that the user inputs or selects.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stringInputs")]
         public virtual StringInputs StringInputs { get; set; }
 
-        /// <summary>Time input values.</summary>
+        /// <summary>
+        /// Time input values from a
+        /// [`DateTimePicker`](https://developers.google.com/chat/api/reference/rest/v1/cards#DateTimePicker) widget
+        /// that only accepts time values.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeInput")]
         public virtual TimeInput TimeInput { get; set; }
 
@@ -6044,7 +6056,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// </summary>
     public class StringInputs : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>An array of strings entered by the user.</summary>
+        /// <summary>An list of strings entered by the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual System.Collections.Generic.IList<string> Value { get; set; }
 

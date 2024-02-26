@@ -4508,10 +4508,32 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         public virtual SubjectConfig SubjectConfig { get; set; }
 
         /// <summary>
+        /// Optional. When specified this provides a custom SKI to be used in the certificate. This should only be used
+        /// to maintain a SKI of an existing CA originally created outside CAS, which was not generated using method (1)
+        /// described in RFC 5280 section 4.2.1.2.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subjectKeyId")]
+        public virtual CertificateConfigKeyId SubjectKeyId { get; set; }
+
+        /// <summary>
         /// Required. Describes how some of the technical X.509 fields in a certificate should be populated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("x509Config")]
         public virtual X509Parameters X509Config { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A KeyId identifies a specific public key, usually by hashing the public key.</summary>
+    public class CertificateConfigKeyId : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1
+        /// hash of the public key.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyId")]
+        public virtual string KeyId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

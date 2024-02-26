@@ -276,6 +276,7 @@ namespace Google.Apis.ContainerAnalysis.v1
             this.service = service;
             Notes = new NotesResource(service);
             Occurrences = new OccurrencesResource(service);
+            Resources = new ResourcesResource(service);
         }
 
         /// <summary>Gets the Notes resource.</summary>
@@ -1739,6 +1740,81 @@ namespace Google.Apis.ContainerAnalysis.v1
                 }
             }
         }
+
+        /// <summary>Gets the Resources resource.</summary>
+        public virtual ResourcesResource Resources { get; }
+
+        /// <summary>The "resources" collection of methods.</summary>
+        public class ResourcesResource
+        {
+            private const string Resource = "resources";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public ResourcesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Generates an SBOM for the given resource.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. The name of the resource in the form of `projects/[PROJECT_ID]/resources/[RESOURCE_URL]`.
+            /// </param>
+            public virtual ExportSBOMRequest ExportSBOM(Google.Apis.ContainerAnalysis.v1.Data.ExportSBOMRequest body, string name)
+            {
+                return new ExportSBOMRequest(this.service, body, name);
+            }
+
+            /// <summary>Generates an SBOM for the given resource.</summary>
+            public class ExportSBOMRequest : ContainerAnalysisBaseServiceRequest<Google.Apis.ContainerAnalysis.v1.Data.ExportSBOMResponse>
+            {
+                /// <summary>Constructs a new ExportSBOM request.</summary>
+                public ExportSBOMRequest(Google.Apis.Services.IClientService service, Google.Apis.ContainerAnalysis.v1.Data.ExportSBOMRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the resource in the form of `projects/[PROJECT_ID]/resources/[RESOURCE_URL]`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.ContainerAnalysis.v1.Data.ExportSBOMRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "exportSBOM";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}:exportSBOM";
+
+                /// <summary>Initializes ExportSBOM parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/resources/.*$",
+                    });
+                }
+            }
+        }
     }
 }
 namespace Google.Apis.ContainerAnalysis.v1.Data
@@ -2011,7 +2087,9 @@ namespace Google.Apis.ContainerAnalysis.v1.Data
 
         /// <summary>
         /// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`,
-        /// or `roles/owner`.
+        /// or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM
+        /// documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined
+        /// roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
@@ -2633,6 +2711,13 @@ namespace Google.Apis.ContainerAnalysis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
         public virtual string RevisionId { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Empty placeholder to denote that this is a Google Cloud Storage export request.</summary>
+    public class CloudStorageLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4669,6 +4754,31 @@ namespace Google.Apis.ContainerAnalysis.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("sig")]
         public virtual string Sig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request to generate and export SBOM. Target must be specified for the request.</summary>
+    public class ExportSBOMRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Empty placeholder to denote that this is a Google Cloud Storage export request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudStorageLocation")]
+        public virtual CloudStorageLocation CloudStorageLocation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response from a call to ExportSBOM.</summary>
+    public class ExportSBOMResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The name of the discovery occurrence in the form "projects/{project_id}/occurrences/{OCCURRENCE_ID} It can
+        /// be used to track the progress of the SBOM export.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("discoveryOccurrence")]
+        public virtual string DiscoveryOccurrence { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

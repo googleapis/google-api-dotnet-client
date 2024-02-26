@@ -4235,6 +4235,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pemCertificateChain")]
         public virtual System.Collections.Generic.IList<string> PemCertificateChain { get; set; }
 
+        /// <summary>Output only. The DNS name to use with PSC for the Instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscDnsName")]
+        public virtual string PscDnsName { get; set; }
+
         /// <summary>
         /// Output only. The public IP addresses for the Instance. This is available ONLY when enable_public_ip is set.
         /// This is the connection endpoint for an end-user application.
@@ -4836,6 +4840,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nodes")]
         public virtual System.Collections.Generic.IList<Node> Nodes { get; set; }
 
+        /// <summary>Optional. The configuration for Private Service Connect (PSC) for the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscInstanceConfig")]
+        public virtual PscInstanceConfig PscInstanceConfig { get; set; }
+
         /// <summary>
         /// Output only. The public IP addresses for the Instance. This is available ONLY when enable_public_ip is set.
         /// This is the connection endpoint for an end-user application.
@@ -5344,6 +5352,82 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual System.Nullable<bool> ValidateOnly { get; set; }
     }
 
+    /// <summary>PscInstanceConfig contains PSC related configuration at an instance level.</summary>
+    public class PscInstanceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. List of consumer networks that are allowed to create PSC endpoints to service-attachments to this
+        /// instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedConsumerNetworks")]
+        public virtual System.Collections.Generic.IList<string> AllowedConsumerNetworks { get; set; }
+
+        /// <summary>
+        /// Optional. List of consumer projects that are allowed to create PSC endpoints to service-attachments to this
+        /// instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedConsumerProjects")]
+        public virtual System.Collections.Generic.IList<string> AllowedConsumerProjects { get; set; }
+
+        /// <summary>
+        /// Optional. List of service attachments that this instance has created endpoints to connect with. Currently,
+        /// only a single outgoing service attachment is supported per instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outgoingServiceAttachmentLinks")]
+        public virtual System.Collections.Generic.IList<string> OutgoingServiceAttachmentLinks { get; set; }
+
+        /// <summary>
+        /// Optional. Whether PSC connectivity is enabled for this instance. This is populated by referencing the value
+        /// from the parent cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscEnabled")]
+        public virtual System.Nullable<bool> PscEnabled { get; set; }
+
+        /// <summary>
+        /// Optional. Configurations for setting up PSC interfaces attached to the instance which are used for outbound
+        /// connectivity. Only primary instances can have PSC interface attached. All the VMs created for the primary
+        /// instance will share the same configurations. Currently we only support 0 or 1 PSC interface.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscInterfaceConfigs")]
+        public virtual System.Collections.Generic.IList<PscInterfaceConfig> PscInterfaceConfigs { get; set; }
+
+        /// <summary>
+        /// Output only. The service attachment created when Private Service Connect (PSC) is enabled for the instance.
+        /// The name of the resource will be in the format of projects//regions//serviceAttachments/
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAttachmentLink")]
+        public virtual string ServiceAttachmentLink { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configuration for setting up a PSC interface. This information needs to be provided by the customer. PSC
+    /// interfaces will be created and added to VMs via SLM (adding a network interface will require recreating the VM).
+    /// For HA instances this will be done via LDTM.
+    /// </summary>
+    public class PscInterfaceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A list of endpoints in the consumer VPC the interface might initiate outbound connections to. This list has
+        /// to be provided when the PSC interface is created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumerEndpointIps")]
+        public virtual System.Collections.Generic.IList<string> ConsumerEndpointIps { get; set; }
+
+        /// <summary>
+        /// The NetworkAttachment resource created in the consumer VPC to which the PSC interface will be linked, in the
+        /// form of: "projects/${CONSUMER_PROJECT}/regions/${REGION}/networkAttachments/${NETWORK_ATTACHMENT_NAME}".
+        /// NetworkAttachment has to be provided when the PSC interface is created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkAttachment")]
+        public virtual string NetworkAttachment { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A backup's position in a quantity-based retention queue, of backups with the same source cluster and type, with
     /// length, retention, specified by the backup's retention policy. Once the position is greater than the retention,
@@ -5802,6 +5886,9 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string FeedType { get; set; }
 
         /// <summary>More feed data would be added in subsequent CLs</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recommendationSignalData")]
+        public virtual StorageDatabasecenterPartnerapiV1mainDatabaseResourceRecommendationSignalData RecommendationSignalData { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("resourceHealthSignalData")]
         public virtual StorageDatabasecenterPartnerapiV1mainDatabaseResourceHealthSignalData ResourceHealthSignalData { get; set; }
 
@@ -5941,9 +6028,9 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ProviderDescription { get; set; }
 
         /// <summary>
-        /// Required. The type of resource this ID is identifying. Ex alloydb.googleapis.com/Cluster,
-        /// alloydb.googleapis.com/Instance, spanner.googleapis.com/Instance REQUIRED Please refer
-        /// go/condor-common-datamodel
+        /// Required. The type of resource this ID is identifying. Ex redis.googleapis.com/Instance,
+        /// redis.googleapis.com/Cluster, alloydb.googleapis.com/Cluster, alloydb.googleapis.com/Instance,
+        /// spanner.googleapis.com/Instance REQUIRED Please refer go/condor-common-datamodel
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
         public virtual string ResourceType { get; set; }
@@ -6020,6 +6107,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         /// <summary>Any custom metadata associated with the resource</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customMetadata")]
         public virtual StorageDatabasecenterPartnerapiV1mainCustomMetadataData CustomMetadata { get; set; }
+
+        /// <summary>Entitlements associated with the resource</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entitlements")]
+        public virtual System.Collections.Generic.IList<StorageDatabasecenterPartnerapiV1mainEntitlement> Entitlements { get; set; }
 
         /// <summary>
         /// The state that the instance is expected to be in. For example, an instance state can transition to UNHEALTHY
@@ -6110,6 +6201,110 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userLabels")]
         public virtual System.Collections.Generic.IDictionary<string, string> UserLabels { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Common model for database resource recommendation signal data.</summary>
+    public class StorageDatabasecenterPartnerapiV1mainDatabaseResourceRecommendationSignalData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Any other additional metadata specific to recommendation</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalMetadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> AdditionalMetadata { get; set; }
+
+        private string _lastRefreshTimeRaw;
+
+        private object _lastRefreshTime;
+
+        /// <summary>Required. last time recommendationw as refreshed</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastRefreshTime")]
+        public virtual string LastRefreshTimeRaw
+        {
+            get => _lastRefreshTimeRaw;
+            set
+            {
+                _lastRefreshTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastRefreshTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastRefreshTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastRefreshTimeDateTimeOffset instead.")]
+        public virtual object LastRefreshTime
+        {
+            get => _lastRefreshTime;
+            set
+            {
+                _lastRefreshTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastRefreshTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastRefreshTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastRefreshTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastRefreshTimeRaw);
+            set => LastRefreshTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Required. Recommendation state</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recommendationState")]
+        public virtual string RecommendationState { get; set; }
+
+        /// <summary>
+        /// Required. Name of recommendation. Examples:
+        /// organizations/1234/locations/us-central1/recommenders/google.cloudsql.instance.PerformanceRecommender/recommendations/9876
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recommender")]
+        public virtual string Recommender { get; set; }
+
+        /// <summary>Required. ID of recommender. Examples: "google.cloudsql.instance.PerformanceRecommender"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recommenderId")]
+        public virtual string RecommenderId { get; set; }
+
+        /// <summary>
+        /// Required. Contains an identifier for a subtype of recommendations produced for the same recommender. Subtype
+        /// is a function of content and impact, meaning a new subtype might be added when significant changes to
+        /// `content` or `primary_impact.category` are introduced. See the Recommenders section to see a list of
+        /// subtypes for a given Recommender. Examples: For recommender =
+        /// "google.cloudsql.instance.PerformanceRecommender", recommender_subtype can be
+        /// "MYSQL_HIGH_NUMBER_OF_OPEN_TABLES_BEST_PRACTICE"/"POSTGRES_HIGH_TRANSACTION_ID_UTILIZATION_BEST_PRACTICE"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recommenderSubtype")]
+        public virtual string RecommenderSubtype { get; set; }
+
+        /// <summary>
+        /// Required. Database resource name associated with the signal. Resource name to follow CAIS resource_name
+        /// format as noted here go/condor-common-datamodel
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>
+        /// Required. Type of signal, for example, `SIGNAL_TYPE_IDLE`, `SIGNAL_TYPE_HIGH_NUMBER_OF_TABLES`, etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signalType")]
+        public virtual string SignalType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Proto representing the access that a user has to a specific feature/service. NextId: 3.</summary>
+    public class StorageDatabasecenterPartnerapiV1mainEntitlement : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The current state of user's accessibility to a feature/benefit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entitlementState")]
+        public virtual string EntitlementState { get; set; }
+
+        /// <summary>An enum that represents the type of this entitlement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

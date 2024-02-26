@@ -8942,10 +8942,6 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
         public virtual string DiskType { get; set; }
 
-        /// <summary>Optional. Reserved for future use.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enableConfidentialStorage")]
-        public virtual System.Nullable<bool> EnableConfidentialStorage { get; set; }
-
         /// <summary>
         /// Parameters for the node ephemeral storage using Local SSDs. If unspecified, ephemeral storage is backed by
         /// the boot disk.
@@ -11269,10 +11265,6 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
-
-        /// <summary>Specifies the configuration of queued provisioning.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("queuedProvisioning")]
-        public virtual QueuedProvisioning QueuedProvisioning { get; set; }
 
         /// <summary>
         /// The resource labels for the node pool to use to annotate any related Google Compute Engine resources.

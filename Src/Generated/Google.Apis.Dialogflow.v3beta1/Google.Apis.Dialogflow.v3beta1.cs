@@ -13389,6 +13389,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
+        /// <summary>The affected language code of the change.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
         /// <summary>
         /// The unique identifier of the changelog. Format: `projects//locations//agents//changelogs/`.
         /// </summary>
@@ -17131,6 +17135,18 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("triggerIntent")]
         public virtual string TriggerIntent { get; set; }
 
+        /// <summary>The list of webhook display names in the order of call sequence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webhookDisplayNames")]
+        public virtual System.Collections.Generic.IList<string> WebhookDisplayNames { get; set; }
+
+        /// <summary>The list of webhook ids in the order of call sequence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webhookIds")]
+        public virtual System.Collections.Generic.IList<string> WebhookIds { get; set; }
+
+        /// <summary>The list of webhook latencies in the order of call sequence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webhookLatencies")]
+        public virtual System.Collections.Generic.IList<object> WebhookLatencies { get; set; }
+
         /// <summary>
         /// The list of webhook payload in WebhookResponse.payload, in the order of call sequence. If some webhook call
         /// fails or doesn't return any payload, an empty `Struct` would be used instead.
@@ -17141,6 +17157,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>The list of webhook call status in the order of call sequence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webhookStatuses")]
         public virtual System.Collections.Generic.IList<GoogleRpcStatus> WebhookStatuses { get; set; }
+
+        /// <summary>The list of webhook tags in the order of call sequence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webhookTags")]
+        public virtual System.Collections.Generic.IList<string> WebhookTags { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

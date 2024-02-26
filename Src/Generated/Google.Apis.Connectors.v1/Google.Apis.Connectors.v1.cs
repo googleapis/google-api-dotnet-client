@@ -6252,6 +6252,10 @@ namespace Google.Apis.Connectors.v1.Data
     /// <summary>CustomConnector represents the custom connector defined by the customer as part of byoc.</summary>
     public class CustomConnector : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Active connector versions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeConnectorVersions")]
+        public virtual System.Collections.Generic.IList<string> ActiveConnectorVersions { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -6446,7 +6450,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
 
-        /// <summary>Optional. Location of the custom connector spec.</summary>
+        /// <summary>
+        /// Optional. Location of the custom connector spec. The location can be either a public url like
+        /// `https://public-url.com/spec` Or a Google Cloud Storage location like `gs:///`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("specLocation")]
         public virtual string SpecLocation { get; set; }
 
@@ -7170,6 +7177,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("registrationDestinationConfig")]
         public virtual DestinationConfig RegistrationDestinationConfig { get; set; }
 
+        /// <summary>Optional. Additional eventing related field values</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("triggerConfigVariables")]
+        public virtual System.Collections.Generic.IList<ConfigVariable> TriggerConfigVariables { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7220,6 +7231,10 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Registration host destination config template.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("registrationDestinationConfig")]
         public virtual DestinationConfigTemplate RegistrationDestinationConfig { get; set; }
+
+        /// <summary>Trigger Config fields that needs to be rendered</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("triggerConfigVariables")]
+        public virtual System.Collections.Generic.IList<ConfigVariableTemplate> TriggerConfigVariables { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

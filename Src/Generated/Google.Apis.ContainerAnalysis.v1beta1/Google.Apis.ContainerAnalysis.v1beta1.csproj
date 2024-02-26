@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.ContainerAnalysis.v1beta1 Client Library</Title>
-    <Version>1.67.0.3291</Version>
+    <Version>1.67.0.3337</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2024 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>

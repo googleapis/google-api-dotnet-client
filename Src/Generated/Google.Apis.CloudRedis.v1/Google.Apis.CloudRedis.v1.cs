@@ -2074,7 +2074,9 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("shardCount")]
         public virtual System.Nullable<int> ShardCount { get; set; }
 
-        /// <summary>Output only. Redis memory size in GB for the entire cluster.</summary>
+        /// <summary>
+        /// Output only. Redis memory size in GB for the entire cluster rounded up to the next integer.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeGb")]
         public virtual System.Nullable<int> SizeGb { get; set; }
 

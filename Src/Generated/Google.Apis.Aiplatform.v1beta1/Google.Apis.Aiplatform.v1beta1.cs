@@ -30583,13 +30583,6 @@ namespace Google.Apis.Aiplatform.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("pipelineJobId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PipelineJobId { get; set; }
 
-                    /// <summary>
-                    /// Optional. Whether to do component level validations before job creation. Currently we only
-                    /// support Google First Party Component/Pipelines.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("preflightValidations", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> PreflightValidations { get; set; }
-
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Aiplatform.v1beta1.Data.GoogleCloudAiplatformV1beta1PipelineJob Body { get; set; }
 
@@ -30620,14 +30613,6 @@ namespace Google.Apis.Aiplatform.v1beta1
                         RequestParameters.Add("pipelineJobId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pipelineJobId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("preflightValidations", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "preflightValidations",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -40063,13 +40048,17 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("imageRaiScores")]
         public virtual CloudAiLargeModelsVisionImageRAIScores ImageRaiScores { get; set; }
 
-        /// <summary>RAI info for image</summary>
+        /// <summary>RAI info for image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("raiInfo")]
         public virtual CloudAiLargeModelsVisionRaiInfo RaiInfo { get; set; }
 
         /// <summary>Semantic filter info for image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("semanticFilterResponse")]
         public virtual CloudAiLargeModelsVisionSemanticFilterResponse SemanticFilterResponse { get; set; }
+
+        /// <summary>Text/Expanded text input for imagen.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
 
         /// <summary>Path to another storage (typically Google Cloud Storage).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
@@ -43212,13 +43201,6 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pipelineJobId")]
         public virtual string PipelineJobId { get; set; }
 
-        /// <summary>
-        /// Optional. Whether to do component level validations before job creation. Currently we only support Google
-        /// First Party Component/Pipelines.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("preflightValidations")]
-        public virtual System.Nullable<bool> PreflightValidations { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -44199,10 +44181,21 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         }
 
         /// <summary>
+        /// The user-defined name of the DatasetVersion. The name can be up to 128 characters long and can consist of
+        /// any UTF-8 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
         /// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
+
+        /// <summary>Required. Additional information about the DatasetVersion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual object Metadata { get; set; }
 
         /// <summary>Output only. The resource name of the DatasetVersion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -46949,6 +46942,12 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Entity responsible for maintaining this feature. Can be comma separated list of email addresses or URIs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pointOfContact")]
+        public virtual string PointOfContact { get; set; }
+
         private string _updateTimeRaw;
 
         private object _updateTime;
@@ -47125,8 +47124,7 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         public virtual GoogleCloudAiplatformV1beta1BigQuerySource BigQuerySource { get; set; }
 
         /// <summary>
-        /// Optional. Columns to construct entity_id / row keys. Currently only supports 1 entity_id_column. If not
-        /// provided defaults to `entity_id`.
+        /// Optional. Columns to construct entity_id / row keys. If not provided defaults to `entity_id`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityIdColumns")]
         public virtual System.Collections.Generic.IList<string> EntityIdColumns { get; set; }
@@ -47781,6 +47779,23 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
+        /// Output only. A Service Account unique to this FeatureView. The role bigquery.dataViewer should be granted to
+        /// this service account to allow Vertex AI Feature Store to sync data to the online store.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
+        public virtual string ServiceAccountEmail { get; set; }
+
+        /// <summary>
+        /// Optional. Service agent type used during data sync. By default, the Vertex AI Service Agent is used. When
+        /// using an IAM Policy to isolate this FeatureView within a project
+        /// (https://cloud.google.com/vertex-ai/docs/featurestore/latest/resource-policy) a separate service account
+        /// should be provisioned by setting this field to `SERVICE_AGENT_TYPE_FEATURE_VIEW`. This will generate a
+        /// separate service account to access the BigQuery source table.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAgentType")]
+        public virtual string ServiceAgentType { get; set; }
+
+        /// <summary>
         /// Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest
         /// featureValues for each entityId of this FeatureView are made ready for online serving.
         /// </summary>
@@ -47831,7 +47846,7 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
 
     public class GoogleCloudAiplatformV1beta1FeatureViewBigQuerySource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Columns to construct entity_id / row keys. Start by supporting 1 only.</summary>
+        /// <summary>Required. Columns to construct entity_id / row keys.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityIdColumns")]
         public virtual System.Collections.Generic.IList<string> EntityIdColumns { get; set; }
 
@@ -47849,9 +47864,30 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
     /// <summary>Lookup key for a feature view.</summary>
     public class GoogleCloudAiplatformV1beta1FeatureViewDataKey : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The actual Entity ID will be composed from this struct. This should match with the way ID is defined in the
+        /// FeatureView spec.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compositeKey")]
+        public virtual GoogleCloudAiplatformV1beta1FeatureViewDataKeyCompositeKey CompositeKey { get; set; }
+
         /// <summary>String key to use for lookup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ID that is comprised from several parts (columns).</summary>
+    public class GoogleCloudAiplatformV1beta1FeatureViewDataKeyCompositeKey : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Parts to construct Entity ID. Should match with the same ID columns as defined in FeatureView in the same
+        /// order.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parts")]
+        public virtual System.Collections.Generic.IList<string> Parts { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -48975,6 +49011,17 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains information about the source of the models generated from Generative AI Studio.</summary>
+    public class GoogleCloudAiplatformV1beta1GenieSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The public base model URI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseModelUri")]
+        public virtual string BaseModelUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -51743,6 +51790,13 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         public virtual string ArtifactUri { get; set; }
 
         /// <summary>
+        /// Optional. User input field to specify the base model source. Currently it only supports specifing the Model
+        /// Garden models and Genie models.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseModelSource")]
+        public virtual GoogleCloudAiplatformV1beta1ModelBaseModelSource BaseModelSource { get; set; }
+
+        /// <summary>
         /// Input only. The specification of the container that is to be used when deploying this Model. The
         /// specification is ingested upon ModelService.UploadModel, and all binaries it contains are copied and stored
         /// internally by Vertex AI. Not required for AutoML Models.
@@ -52082,6 +52136,24 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(VersionUpdateTimeRaw);
             set => VersionUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+    }
+
+    /// <summary>
+    /// User input field to specify the base model source. Currently it only supports specifing the Model Garden models
+    /// and Genie models.
+    /// </summary>
+    public class GoogleCloudAiplatformV1beta1ModelBaseModelSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Information about the base model of Genie models.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genieSource")]
+        public virtual GoogleCloudAiplatformV1beta1GenieSource GenieSource { get; set; }
+
+        /// <summary>Source information of Model Garden models.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelGardenSource")]
+        public virtual GoogleCloudAiplatformV1beta1ModelGardenSource ModelGardenSource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>
@@ -53005,6 +53077,17 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains information about the source of the models generated from Model Garden.</summary>
+    public class GoogleCloudAiplatformV1beta1ModelGardenSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The model garden source model resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicModelName")]
+        public virtual string PublicModelName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -54994,6 +55077,10 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pipelineSpec")]
         public virtual System.Collections.Generic.IDictionary<string, object> PipelineSpec { get; set; }
 
+        /// <summary>Optional. Whether to do component level validations before job creation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preflightValidations")]
+        public virtual System.Nullable<bool> PreflightValidations { get; set; }
+
         /// <summary>
         /// A list of names for the reserved ip ranges under the VPC network that can be used for this Pipeline Job's
         /// workload. If set, we will deploy the Pipeline Job's workload within the provided ip ranges. Otherwise, the
@@ -56924,6 +57011,18 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// <summary>Output only. Harm probability levels in the content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("probability")]
         public virtual string Probability { get; set; }
+
+        /// <summary>Output only. Harm probability score.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("probabilityScore")]
+        public virtual System.Nullable<float> ProbabilityScore { get; set; }
+
+        /// <summary>Output only. Harm severity levels in the content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; }
+
+        /// <summary>Output only. Harm severity score.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severityScore")]
+        public virtual System.Nullable<float> SeverityScore { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -63762,26 +63861,30 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
     /// <summary>
     /// Tool details that the model may use to generate response. A `Tool` is a piece of code that enables the system to
     /// interact with external systems to perform an action, or set of actions, outside of knowledge and scope of the
-    /// model. A Tool object should contain exactly one type of Tool.
+    /// model. A Tool object should contain exactly one type of Tool (e.g FunctionDeclaration, Retrieval or
+    /// GoogleSearchRetrieval).
     /// </summary>
     public class GoogleCloudAiplatformV1beta1Tool : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. One or more function declarations to be passed to the model along with the current user query.
-        /// Model may decide to call a subset of these functions by populating FunctionCall in the response. User should
-        /// provide a FunctionResponse for each function call in the next turn. Based on the function responses, Model
-        /// will generate the final response back to the user. Maximum 64 function declarations can be provided.
+        /// Optional. Function tool type. One or more function declarations to be passed to the model along with the
+        /// current user query. Model may decide to call a subset of these functions by populating FunctionCall in the
+        /// response. User should provide a FunctionResponse for each function call in the next turn. Based on the
+        /// function responses, Model will generate the final response back to the user. Maximum 64 function
+        /// declarations can be provided.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("functionDeclarations")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1FunctionDeclaration> FunctionDeclarations { get; set; }
 
-        /// <summary>Optional. Specialized retrieval tool that is powered by Google search.</summary>
+        /// <summary>
+        /// Optional. GoogleSearchRetrieval tool type. Specialized retrieval tool that is powered by Google search.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleSearchRetrieval")]
         public virtual GoogleCloudAiplatformV1beta1GoogleSearchRetrieval GoogleSearchRetrieval { get; set; }
 
         /// <summary>
-        /// Optional. System will always execute the provided retrieval tool(s) to get external knowledge to answer the
-        /// prompt. Retrieval results are presented to the model for generation.
+        /// Optional. Retrieval tool type. System will always execute the provided retrieval tool(s) to get external
+        /// knowledge to answer the prompt. Retrieval results are presented to the model for generation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retrieval")]
         public virtual GoogleCloudAiplatformV1beta1Retrieval Retrieval { get; set; }
@@ -66032,6 +66135,74 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Stores all metadata relating to AIDA DoConversation.</summary>
+    public class LearningGenaiRootCodeyChatMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Indicates the programming language of the code if the message is a code chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("codeLanguage")]
+        public virtual string CodeLanguage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes a sample at a checkpoint for post-processing.</summary>
+    public class LearningGenaiRootCodeyCheckpoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Metadata that describes what was truncated at this checkpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("codeyTruncatorMetadata")]
+        public virtual LearningGenaiRootCodeyTruncatorMetadata CodeyTruncatorMetadata { get; set; }
+
+        /// <summary>Current state of the sample after truncator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currentSample")]
+        public virtual string CurrentSample { get; set; }
+
+        /// <summary>Postprocessor run that yielded this checkpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postInferenceStep")]
+        public virtual string PostInferenceStep { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Stores all metadata relating to Completion.</summary>
+    public class LearningGenaiRootCodeyCompletionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("checkpoints")]
+        public virtual System.Collections.Generic.IList<LearningGenaiRootCodeyCheckpoint> Checkpoints { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Top-level wrapper used to store all things codey-related.</summary>
+    public class LearningGenaiRootCodeyOutput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("codeyChatMetadata")]
+        public virtual LearningGenaiRootCodeyChatMetadata CodeyChatMetadata { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("codeyCompletionMetadata")]
+        public virtual LearningGenaiRootCodeyCompletionMetadata CodeyCompletionMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata describing what was truncated at each checkpoint.</summary>
+    public class LearningGenaiRootCodeyTruncatorMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Index of the current sample that trims off truncated text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cutoffIndex")]
+        public virtual System.Nullable<int> CutoffIndex { get; set; }
+
+        /// <summary>Text that was truncated at a specific checkpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("truncatedText")]
+        public virtual string TruncatedText { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class LearningGenaiRootDataProviderOutput : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -66701,6 +66872,10 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("classifierSummary")]
         public virtual LearningGenaiRootClassifierOutputSummary ClassifierSummary { get; set; }
+
+        /// <summary>Contains metadata related to Codey Processors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("codeyOutput")]
+        public virtual LearningGenaiRootCodeyOutput CodeyOutput { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("currentStreamTextLength")]
         public virtual System.Nullable<long> CurrentStreamTextLength { get; set; }
