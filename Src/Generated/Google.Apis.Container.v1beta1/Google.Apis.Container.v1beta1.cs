@@ -9482,6 +9482,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sandboxConfig")]
         public virtual SandboxConfig SandboxConfig { get; set; }
 
+        /// <summary>List of secondary boot disks attached to the nodes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secondaryBootDisks")]
+        public virtual System.Collections.Generic.IList<SecondaryBootDisk> SecondaryBootDisks { get; set; }
+
         /// <summary>
         /// The Google Cloud Platform Service Account to be used by the node VMs. Specify the email address of the
         /// Service Account; otherwise, if no Service Account is specified, the "default" service account is used.
@@ -10583,6 +10587,23 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Type of the sandbox to use for the node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// SecondaryBootDisk represents a persistent disk attached to a node with special configurations based on its mode.
+    /// </summary>
+    public class SecondaryBootDisk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Fully-qualified resource ID for an existing disk image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskImage")]
+        public virtual string DiskImage { get; set; }
+
+        /// <summary>Disk mode (container image cache, etc.)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

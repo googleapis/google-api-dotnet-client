@@ -4583,6 +4583,108 @@ namespace Google.Apis.GKEHub.v1alpha
                     }
                 }
 
+                /// <summary>
+                /// Lists Memberships bound to a Scope. The response includes relevant Memberships from all regions.
+                /// </summary>
+                /// <param name="scopeName">
+                /// Required. Name of the Scope, in the format `projects/*/locations/global/scopes/*`, to which the
+                /// Memberships are bound.
+                /// </param>
+                public virtual ListMembershipsRequest ListMemberships(string scopeName)
+                {
+                    return new ListMembershipsRequest(this.service, scopeName);
+                }
+
+                /// <summary>
+                /// Lists Memberships bound to a Scope. The response includes relevant Memberships from all regions.
+                /// </summary>
+                public class ListMembershipsRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1alpha.Data.ListBoundMembershipsResponse>
+                {
+                    /// <summary>Constructs a new ListMemberships request.</summary>
+                    public ListMembershipsRequest(Google.Apis.Services.IClientService service, string scopeName) : base(service)
+                    {
+                        ScopeName = scopeName;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the Scope, in the format `projects/*/locations/global/scopes/*`, to which the
+                    /// Memberships are bound.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("scopeName", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ScopeName { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Lists Memberships that match the filter expression, following the syntax outlined in
+                    /// https://google.aip.dev/160. Currently, filtering can be done only based on Memberships's `name`,
+                    /// `labels`, `create_time`, `update_time`, and `unique_id`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. When requesting a 'page' of resources, `page_size` specifies number of resources to
+                    /// return. If unspecified or set to 0, all resources will be returned. Pagination is currently not
+                    /// supported; therefore, setting this field does not have any impact for now.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. Token returned by previous call to `ListBoundMemberships` which specifies the position
+                    /// in the list from where to continue listing the resources.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "listMemberships";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+scopeName}:listMemberships";
+
+                    /// <summary>Initializes ListMemberships parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("scopeName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "scopeName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/scopes/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
                 /// <summary>Lists permitted Scopes.</summary>
                 /// <param name="parent">
                 /// Required. The parent (project and location) where the Scope will be listed. Specified in the format
@@ -7658,6 +7760,28 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>
         /// A token to request the next page of resources from the `ListAdminClusterMemberships` method. The value of an
         /// empty string means that there are no more resources to return.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>List of locations that could not be reached while fetching this list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>List of Memberships bound to a Scope.</summary>
+    public class ListBoundMembershipsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of Memberships bound to the given Scope.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memberships")]
+        public virtual System.Collections.Generic.IList<Membership> Memberships { get; set; }
+
+        /// <summary>
+        /// A token to request the next page of resources from the `ListBoundMemberships` method. The value of an empty
+        /// string means that there are no more resources to return.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }

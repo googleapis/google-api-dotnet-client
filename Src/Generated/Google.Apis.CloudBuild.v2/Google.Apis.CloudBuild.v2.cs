@@ -4495,17 +4495,6 @@ namespace Google.Apis.CloudBuild.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>VolumeClaim is a user's request for a volume.</summary>
-    public class VolumeClaim : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Volume size, e.g. 1gb.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("storage")]
-        public virtual string Storage { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Pod volumes to mount into the container's filesystem.</summary>
     public class VolumeMount : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4609,10 +4598,6 @@ namespace Google.Apis.CloudBuild.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subPath")]
         public virtual string SubPath { get; set; }
-
-        /// <summary>Volume claim that will be created in the same namespace.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("volumeClaim")]
-        public virtual VolumeClaim VolumeClaim { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -321,10 +321,10 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
 
                 /// <summary>
                 /// Optional. Specifies the filters for the product results. The syntax is defined in
-                /// https://google.aip.dev/160 with the following caveats: - Only the following features are supported:
+                /// https://google.aip.dev/160 with the following caveats: 1. Only the following features are supported:
                 /// - Logical operator `AND` - Comparison operator `=` (no wildcards `*`) - Traversal operator `.` - Has
-                /// operator `:` (no wildcards `*`) - Only the following fields are supported: - `regionCodes` -
-                /// `youtubePayload.partnerEligibilityId` - `youtubePayload.postalCode` - Unless explicitly mentioned
+                /// operator `:` (no wildcards `*`) 2. Only the following fields are supported: - `regionCodes` -
+                /// `youtubePayload.partnerEligibilityId` - `youtubePayload.postalCode` 3. Unless explicitly mentioned
                 /// above, other features are not supported. Example: `regionCodes:US AND
                 /// youtubePayload.postalCode=94043 AND youtubePayload.partnerEligibilityId=eligibility-id`
                 /// </summary>
@@ -505,10 +505,10 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
 
                 /// <summary>
                 /// Optional. Specifies the filters for the promotion results. The syntax is defined in
-                /// https://google.aip.dev/160 with the following caveats: - Only the following features are supported:
+                /// https://google.aip.dev/160 with the following caveats: 1. Only the following features are supported:
                 /// - Logical operator `AND` - Comparison operator `=` (no wildcards `*`) - Traversal operator `.` - Has
-                /// operator `:` (no wildcards `*`) - Only the following fields are supported: - `applicableProducts` -
-                /// `regionCodes` - `youtubePayload.partnerEligibilityId` - `youtubePayload.postalCode` - Unless
+                /// operator `:` (no wildcards `*`) 2. Only the following fields are supported: - `applicableProducts` -
+                /// `regionCodes` - `youtubePayload.partnerEligibilityId` - `youtubePayload.postalCode` 3. Unless
                 /// explicitly mentioned above, other features are not supported. Example:
                 /// `applicableProducts:partners/partner1/products/product1 AND regionCodes:US AND
                 /// youtubePayload.postalCode=94043 AND youtubePayload.partnerEligibilityId=eligibility-id`
@@ -1111,6 +1111,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request to cancel a subscription.</summary>
     public class GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -1129,6 +1130,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response that contains the cancelled subscription resource.</summary>
     public class GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The cancelled subscription resource.</summary>
@@ -1187,6 +1189,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response that contains the entitled subscription resource.</summary>
     public class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The subscription that has user linked to it.</summary>
@@ -1222,6 +1225,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response that contains the timestamps after the extension.</summary>
     public class GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _cycleEndTimeRaw;
@@ -1356,7 +1360,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     /// <summary>Describes the details of an extension request.</summary>
     public class GoogleCloudPaymentsResellerSubscriptionV1Extension : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Specifies the period of access the subscription should grant.</summary>
+        /// <summary>Required. Specifies the period of access the subscription should grant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
         public virtual GoogleCloudPaymentsResellerSubscriptionV1Duration Duration { get; set; }
 
@@ -1368,14 +1372,15 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request to find eligible promotions for the current user.</summary>
     public class GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Optional. Specifies the filters for the promotion results. The syntax is defined in
-        /// https://google.aip.dev/160 with the following caveats: - Only the following features are supported: -
+        /// https://google.aip.dev/160 with the following caveats: 1. Only the following features are supported: -
         /// Logical operator `AND` - Comparison operator `=` (no wildcards `*`) - Traversal operator `.` - Has operator
-        /// `:` (no wildcards `*`) - Only the following fields are supported: - `applicableProducts` - `regionCodes` -
-        /// `youtubePayload.partnerEligibilityId` - `youtubePayload.postalCode` - Unless explicitly mentioned above,
+        /// `:` (no wildcards `*`) 2. Only the following fields are supported: - `applicableProducts` - `regionCodes` -
+        /// `youtubePayload.partnerEligibilityId` - `youtubePayload.postalCode` 3. Unless explicitly mentioned above,
         /// other features are not supported. Example: `applicableProducts:partners/partner1/products/product1 AND
         /// regionCodes:US AND youtubePayload.postalCode=94043 AND youtubePayload.partnerEligibilityId=eligibility-id`
         /// </summary>
@@ -1456,6 +1461,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response that contains the products.</summary>
     public class GoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -1473,6 +1479,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response that contains the promotions.</summary>
     public class GoogleCloudPaymentsResellerSubscriptionV1ListPromotionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

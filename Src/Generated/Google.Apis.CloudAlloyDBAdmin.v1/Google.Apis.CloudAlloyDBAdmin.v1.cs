@@ -4126,7 +4126,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         /// <summary>
         /// Required. The resource link for the VPC network in which cluster resources are created and from which they
         /// are accessible via Private IP. The network must belong to the same project as the cluster. It is specified
-        /// in the form: "projects/{project}/global/networks/{network_id}". This is required to create a cluster.
+        /// in the form: `projects/{project}/global/networks/{network_id}`. This is required to create a cluster.
         /// Deprecated, use network_config.network instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
@@ -5058,7 +5058,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         /// <summary>
         /// Optional. The resource link for the VPC network in which cluster resources are created and from which they
         /// are accessible via Private IP. The network must belong to the same project as the cluster. It is specified
-        /// in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
+        /// in the form: `projects/{project_number}/global/networks/{network_id}`. This is required to create a cluster.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
@@ -6070,7 +6070,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
     /// <summary>Common model for database resource recommendation signal data.</summary>
     public class StorageDatabasecenterPartnerapiV1mainDatabaseResourceRecommendationSignalData : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Any other additional metadata specific to recommendation</summary>
+        /// <summary>Optional. Any other additional metadata specific to recommendation</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalMetadata")]
         public virtual System.Collections.Generic.IDictionary<string, object> AdditionalMetadata { get; set; }
 
@@ -6177,6 +6177,9 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         /// <summary>Identifies the specific error that occurred. REQUIRED</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual string Code { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("errorType")]
+        public virtual string ErrorType { get; set; }
 
         /// <summary>Additional information about the error encountered. REQUIRED</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]

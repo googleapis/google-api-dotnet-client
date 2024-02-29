@@ -35,6 +35,7 @@ namespace Google.Apis.Appengine.v1
         public AppengineService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Apps = new AppsResource(this);
+            Projects = new ProjectsResource(this);
             BaseUri = GetEffectiveUri(BaseUriOverride, "https://appengine.googleapis.com/");
             BatchUri = GetEffectiveUri(null, "https://appengine.googleapis.com/batch");
         }
@@ -95,6 +96,9 @@ namespace Google.Apis.Appengine.v1
 
         /// <summary>Gets the Apps resource.</summary>
         public virtual AppsResource Apps { get; }
+
+        /// <summary>Gets the Projects resource.</summary>
+        public virtual ProjectsResource Projects { get; }
     }
 
     /// <summary>A base abstract class for Appengine requests.</summary>
@@ -3712,6 +3716,179 @@ namespace Google.Apis.Appengine.v1
             }
         }
     }
+
+    /// <summary>The "projects" collection of methods.</summary>
+    public class ProjectsResource
+    {
+        private const string Resource = "projects";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ProjectsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            Locations = new LocationsResource(service);
+        }
+
+        /// <summary>Gets the Locations resource.</summary>
+        public virtual LocationsResource Locations { get; }
+
+        /// <summary>The "locations" collection of methods.</summary>
+        public class LocationsResource
+        {
+            private const string Resource = "locations";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public LocationsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                Applications = new ApplicationsResource(service);
+            }
+
+            /// <summary>Gets the Applications resource.</summary>
+            public virtual ApplicationsResource Applications { get; }
+
+            /// <summary>The "applications" collection of methods.</summary>
+            public class ApplicationsResource
+            {
+                private const string Resource = "applications";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ApplicationsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    AuthorizedDomains = new AuthorizedDomainsResource(service);
+                }
+
+                /// <summary>Gets the AuthorizedDomains resource.</summary>
+                public virtual AuthorizedDomainsResource AuthorizedDomains { get; }
+
+                /// <summary>The "authorizedDomains" collection of methods.</summary>
+                public class AuthorizedDomainsResource
+                {
+                    private const string Resource = "authorizedDomains";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public AuthorizedDomainsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Lists all domains the user is authorized to administer.</summary>
+                    /// <param name="projectsId">
+                    /// Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+                    /// </param>
+                    /// <param name="locationsId">Part of `parent`. See documentation of `projectsId`.</param>
+                    /// <param name="applicationsId">Part of `parent`. See documentation of `projectsId`.</param>
+                    public virtual ListRequest List(string projectsId, string locationsId, string applicationsId)
+                    {
+                        return new ListRequest(this.service, projectsId, locationsId, applicationsId);
+                    }
+
+                    /// <summary>Lists all domains the user is authorized to administer.</summary>
+                    public class ListRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1.Data.ListAuthorizedDomainsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string projectsId, string locationsId, string applicationsId) : base(service)
+                        {
+                            ProjectsId = projectsId;
+                            LocationsId = locationsId;
+                            ApplicationsId = applicationsId;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("projectsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ProjectsId { get; private set; }
+
+                        /// <summary>Part of `parent`. See documentation of `projectsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("locationsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string LocationsId { get; private set; }
+
+                        /// <summary>Part of `parent`. See documentation of `projectsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("applicationsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ApplicationsId { get; private set; }
+
+                        /// <summary>Maximum results to return per page.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Continuation token for fetching the next page of results.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedDomains";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("projectsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("locationsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "locationsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("applicationsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "applicationsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 namespace Google.Apis.Appengine.v1.Data
 {
@@ -5699,7 +5876,8 @@ namespace Google.Apis.Appengine.v1.Data
     /// <summary>
     /// Containers transition between and within states based on reasons sent from various systems. CCFE will provide
     /// the CLH with reasons for the current state per system.The current systems that CCFE supports are: Service
-    /// Management (Inception) Data Governance (Wipeout) Abuse (Ares) Billing (Internal Cloud Billing API)
+    /// Management (Inception) Data Governance (Wipeout) Abuse (Ares) Billing (Internal Cloud Billing API) Service
+    /// Activation (Service Controller)
     /// </summary>
     public class Reasons : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5711,6 +5889,13 @@ namespace Google.Apis.Appengine.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("dataGovernance")]
         public virtual string DataGovernance { get; set; }
+
+        /// <summary>
+        /// Consumer Container denotes if the service is active within a project or not. This information could be used
+        /// to clean up resources in case service in DISABLED_FULL i.e. Service is inactive &amp;gt; 30 days.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceActivation")]
+        public virtual string ServiceActivation { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("serviceManagement")]
         public virtual string ServiceManagement { get; set; }

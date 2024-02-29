@@ -2208,14 +2208,22 @@ namespace Google.Apis.AndroidManagement.v1
             }
         }
 
-        /// <summary>Deletes an enterprise. Only available for EMM-managed enterprises.</summary>
+        /// <summary>
+        /// Permanently deletes an enterprise and all accounts and data associated with it. Warning: this will result in
+        /// a cascaded deletion of all AM API devices associated with the deleted enterprise. Only available for
+        /// EMM-managed enterprises.
+        /// </summary>
         /// <param name="name">The name of the enterprise in the form enterprises/{enterpriseId}.</param>
         public virtual DeleteRequest Delete(string name)
         {
             return new DeleteRequest(this.service, name);
         }
 
-        /// <summary>Deletes an enterprise. Only available for EMM-managed enterprises.</summary>
+        /// <summary>
+        /// Permanently deletes an enterprise and all accounts and data associated with it. Warning: this will result in
+        /// a cascaded deletion of all AM API devices associated with the deleted enterprise. Only available for
+        /// EMM-managed enterprises.
+        /// </summary>
         public class DeleteRequest : AndroidManagementBaseServiceRequest<Google.Apis.AndroidManagement.v1.Data.Empty>
         {
             /// <summary>Constructs a new Delete request.</summary>

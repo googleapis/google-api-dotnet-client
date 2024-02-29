@@ -4122,7 +4122,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         /// <summary>
         /// Required. The resource link for the VPC network in which cluster resources are created and from which they
         /// are accessible via Private IP. The network must belong to the same project as the cluster. It is specified
-        /// in the form: "projects/{project}/global/networks/{network_id}". This is required to create a cluster.
+        /// in the form: `projects/{project}/global/networks/{network_id}`. This is required to create a cluster.
         /// Deprecated, use network_config.network instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
@@ -4134,6 +4134,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         /// <summary>Output only. Cross Region replication config specific to PRIMARY cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryConfig")]
         public virtual PrimaryConfig PrimaryConfig { get; set; }
+
+        /// <summary>Optional. The configuration for Private Service Connect (PSC) for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscConfig")]
+        public virtual PscConfig PscConfig { get; set; }
 
         /// <summary>
         /// Output only. Reconciling (https://google.aip.dev/128#reconciliation). Set to true if the current state of
@@ -5121,7 +5125,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         /// <summary>
         /// Optional. The resource link for the VPC network in which cluster resources are created and from which they
         /// are accessible via Private IP. The network must belong to the same project as the cluster. It is specified
-        /// in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
+        /// in the form: `projects/{project_number}/global/networks/{network_id}`. This is required to create a cluster.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
@@ -5352,6 +5356,19 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual System.Nullable<bool> ValidateOnly { get; set; }
     }
 
+    /// <summary>PscConfig contains PSC related configuration at a cluster level.</summary>
+    public class PscConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Create an instance that allows connections from Private Service Connect endpoints to the instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscEnabled")]
+        public virtual System.Nullable<bool> PscEnabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>PscInstanceConfig contains PSC related configuration at an instance level.</summary>
     public class PscInstanceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5393,7 +5410,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
 
         /// <summary>
         /// Output only. The service attachment created when Private Service Connect (PSC) is enabled for the instance.
-        /// The name of the resource will be in the format of projects//regions//serviceAttachments/
+        /// The name of the resource will be in the format of `projects//regions//serviceAttachments/`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAttachmentLink")]
         public virtual string ServiceAttachmentLink { get; set; }
@@ -5418,7 +5435,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
 
         /// <summary>
         /// The NetworkAttachment resource created in the consumer VPC to which the PSC interface will be linked, in the
-        /// form of: "projects/${CONSUMER_PROJECT}/regions/${REGION}/networkAttachments/${NETWORK_ATTACHMENT_NAME}".
+        /// form of: `projects/${CONSUMER_PROJECT}/regions/${REGION}/networkAttachments/${NETWORK_ATTACHMENT_NAME}`.
         /// NetworkAttachment has to be provided when the PSC interface is created.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkAttachment")]
@@ -6209,7 +6226,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
     /// <summary>Common model for database resource recommendation signal data.</summary>
     public class StorageDatabasecenterPartnerapiV1mainDatabaseResourceRecommendationSignalData : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Any other additional metadata specific to recommendation</summary>
+        /// <summary>Optional. Any other additional metadata specific to recommendation</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalMetadata")]
         public virtual System.Collections.Generic.IDictionary<string, object> AdditionalMetadata { get; set; }
 
@@ -6316,6 +6333,9 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         /// <summary>Identifies the specific error that occurred. REQUIRED</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual string Code { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("errorType")]
+        public virtual string ErrorType { get; set; }
 
         /// <summary>Additional information about the error encountered. REQUIRED</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]

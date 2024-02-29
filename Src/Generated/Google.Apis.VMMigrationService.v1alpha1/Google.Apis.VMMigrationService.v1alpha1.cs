@@ -293,6 +293,7 @@ namespace Google.Apis.VMMigrationService.v1alpha1
             {
                 this.service = service;
                 Groups = new GroupsResource(service);
+                ImageImports = new ImageImportsResource(service);
                 Operations = new OperationsResource(service);
                 Sources = new SourcesResource(service);
                 TargetProjects = new TargetProjectsResource(service);
@@ -806,6 +807,549 @@ namespace Google.Apis.VMMigrationService.v1alpha1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/groups/[^/]+$",
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the ImageImports resource.</summary>
+            public virtual ImageImportsResource ImageImports { get; }
+
+            /// <summary>The "imageImports" collection of methods.</summary>
+            public class ImageImportsResource
+            {
+                private const string Resource = "imageImports";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ImageImportsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    ImageImportJobs = new ImageImportJobsResource(service);
+                }
+
+                /// <summary>Gets the ImageImportJobs resource.</summary>
+                public virtual ImageImportJobsResource ImageImportJobs { get; }
+
+                /// <summary>The "imageImportJobs" collection of methods.</summary>
+                public class ImageImportJobsResource
+                {
+                    private const string Resource = "imageImportJobs";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ImageImportJobsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Initiates the cancellation of a running clone job.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Required. The image import job id.</param>
+                    public virtual CancelRequest Cancel(Google.Apis.VMMigrationService.v1alpha1.Data.CancelImageImportJobRequest body, string name)
+                    {
+                        return new CancelRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Initiates the cancellation of a running clone job.</summary>
+                    public class CancelRequest : VMMigrationServiceBaseServiceRequest<Google.Apis.VMMigrationService.v1alpha1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Cancel request.</summary>
+                        public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.VMMigrationService.v1alpha1.Data.CancelImageImportJobRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The image import job id.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.VMMigrationService.v1alpha1.Data.CancelImageImportJobRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "cancel";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha1/{+name}:cancel";
+
+                        /// <summary>Initializes Cancel parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/imageImports/[^/]+/imageImportJobs/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets details of a single ImageImportJob.</summary>
+                    /// <param name="name">Required. The ImageImportJob name.</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Gets details of a single ImageImportJob.</summary>
+                    public class GetRequest : VMMigrationServiceBaseServiceRequest<Google.Apis.VMMigrationService.v1alpha1.Data.ImageImportJob>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The ImageImportJob name.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/imageImports/[^/]+/imageImportJobs/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists ImageImportJobs in a given project.</summary>
+                    /// <param name="parent">Required. The parent, which owns this collection of targets.</param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists ImageImportJobs in a given project.</summary>
+                    public class ListRequest : VMMigrationServiceBaseServiceRequest<Google.Apis.VMMigrationService.v1alpha1.Data.ListImageImportJobsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The parent, which owns this collection of targets.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Optional. The filter request (according to https://google.aip.dev/160).</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>
+                        /// Optional. The order by fields for the result (according to
+                        /// https://google.aip.dev/132#ordering). Currently ordering is only possible by "name" field.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
+
+                        /// <summary>
+                        /// Optional. The maximum number of targets to return. The service may return fewer than this
+                        /// value. If unspecified, at most 500 targets will be returned. The maximum value is 1000;
+                        /// values above 1000 will be coerced to 1000.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. A page token, received from a previous `ListImageImportJobs` call. Provide this to
+                        /// retrieve the subsequent page. When paginating, all other parameters provided to
+                        /// `ListImageImportJobs` must match the call that provided the page token.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha1/{+parent}/imageImportJobs";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/imageImports/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Creates a new ImageImport in a given project.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. The ImageImport's parent.</param>
+                public virtual CreateRequest Create(Google.Apis.VMMigrationService.v1alpha1.Data.ImageImport body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new ImageImport in a given project.</summary>
+                public class CreateRequest : VMMigrationServiceBaseServiceRequest<Google.Apis.VMMigrationService.v1alpha1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.VMMigrationService.v1alpha1.Data.ImageImport body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The ImageImport's parent.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. The image import identifier. This value maximum length is 63 characters, and valid
+                    /// characters are /a-z-/. It must start with an english letter and must not end with a hyphen.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("imageImportId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ImageImportId { get; set; }
+
+                    /// <summary>
+                    /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
+                    /// retry your request, the server will know to ignore the request if it has already been completed.
+                    /// The server will guarantee that for at least 60 minutes since the first request. For example,
+                    /// consider a situation where you make an initial request and the request times out. If you make
+                    /// the request again with the same request ID, the server can check if original operation with the
+                    /// same request ID was received, and if so, will ignore the second request. This prevents clients
+                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.VMMigrationService.v1alpha1.Data.ImageImport Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha1/{+parent}/imageImports";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("imageImportId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "imageImportId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single ImageImport.</summary>
+                /// <param name="name">Required. The ImageImport name.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a single ImageImport.</summary>
+                public class DeleteRequest : VMMigrationServiceBaseServiceRequest<Google.Apis.VMMigrationService.v1alpha1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The ImageImport name.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
+                    /// retry your request, the server will know to ignore the request if it has already been completed.
+                    /// The server will guarantee that for at least 60 minutes after the first request. For example,
+                    /// consider a situation where you make an initial request and t he request times out. If you make
+                    /// the request again with the same request ID, the server can check if original operation with the
+                    /// same request ID was received, and if so, will ignore the second request. This prevents clients
+                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/imageImports/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single ImageImport.</summary>
+                /// <param name="name">Required. The ImageImport name.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of a single ImageImport.</summary>
+                public class GetRequest : VMMigrationServiceBaseServiceRequest<Google.Apis.VMMigrationService.v1alpha1.Data.ImageImport>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The ImageImport name.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/imageImports/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists ImageImports in a given project.</summary>
+                /// <param name="parent">Required. The parent, which owns this collection of targets.</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists ImageImports in a given project.</summary>
+                public class ListRequest : VMMigrationServiceBaseServiceRequest<Google.Apis.VMMigrationService.v1alpha1.Data.ListImageImportsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent, which owns this collection of targets.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. The filter request (according to https://google.aip.dev/160).</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. The order by fields for the result (according to https://google.aip.dev/132#ordering).
+                    /// Currently ordering is only possible by "name" field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of targets to return. The service may return fewer than this value.
+                    /// If unspecified, at most 500 targets will be returned. The maximum value is 1000; values above
+                    /// 1000 will be coerced to 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `ListImageImports` call. Provide this to
+                    /// retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `ListImageImports` must match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha1/{+parent}/imageImports";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -4922,6 +5466,13 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for 'CancelImageImportJob' request.</summary>
+    public class CancelImageImportJobRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5476,6 +6027,13 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>CreatingImageStep contains specific step details.</summary>
+    public class CreatingImageStep : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>CutoverForecast holds information about future CutoverJobs of a MigratingVm.</summary>
     public class CutoverForecast : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5854,6 +6412,13 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Mentions that the image import is not using OS adaptation process.</summary>
+    public class DataDiskImageImport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// DatacenterConnector message describes a connector between the Source and Google Cloud, which is installed on a
     /// vmware datacenter (an OVA vm installed by the user) to connect the Datacenter to Google Cloud and support vm
@@ -6061,6 +6626,59 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         /// <summary>Required. The Image resource used when creating the disk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceImage")]
         public virtual string SourceImage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The target details of the image resource that will be created by the import job.</summary>
+    public class DiskImageTargetDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Additional licenses to assign to the image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalLicenses")]
+        public virtual System.Collections.Generic.IList<string> AdditionalLicenses { get; set; }
+
+        /// <summary>Optional. Use to skip OS adaptation process.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataDiskImageImport")]
+        public virtual DataDiskImageImport DataDiskImageImport { get; set; }
+
+        /// <summary>Optional. An optional description of the image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Optional. Immutable. The encryption to apply to the image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryption")]
+        public virtual Encryption Encryption { get; set; }
+
+        /// <summary>Optional. The name of the image family to which the new image belongs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("familyName")]
+        public virtual string FamilyName { get; set; }
+
+        /// <summary>Required. The name of the image to be created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageName")]
+        public virtual string ImageName { get; set; }
+
+        /// <summary>Optional. A map of labels to associate with the image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Optional. Use to set the parameters relevant for the OS adaptation process.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osAdaptationParameters")]
+        public virtual ImageImportOsAdaptationParameters OsAdaptationParameters { get; set; }
+
+        /// <summary>
+        /// Optional. Set to true to set the image storageLocations to the single region of the import job. When false,
+        /// the closest multi-region is selected.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("singleRegionStorage")]
+        public virtual System.Nullable<bool> SingleRegionStorage { get; set; }
+
+        /// <summary>
+        /// Required. Reference to the TargetProject resource that represents the target project in which the imported
+        /// image will be created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetProject")]
+        public virtual string TargetProject { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6348,6 +6966,317 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>ImageImport describes the configuration of the image import to run.</summary>
+    public class ImageImport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Immutable. The path to the Cloud Storage file from which the image should be imported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudStorageUri")]
+        public virtual string CloudStorageUri { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the image import was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Immutable. Target details for importing a disk image, will be used by ImageImportJob.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskImageTargetDefaults")]
+        public virtual DiskImageTargetDetails DiskImageTargetDefaults { get; set; }
+
+        /// <summary>
+        /// Immutable. The encryption details used by the image import process during the image adaptation for Compute
+        /// Engine.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryption")]
+        public virtual Encryption Encryption { get; set; }
+
+        /// <summary>Output only. The resource path of the ImageImport.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The result of the most recent runs for this ImageImport. All jobs for this ImageImport can be
+        /// listed via ListImageImportJobs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recentImageImportJobs")]
+        public virtual System.Collections.Generic.IList<ImageImportJob> RecentImageImportJobs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ImageImportJob describes the progress and result of an image import.</summary>
+    public class ImageImportJob : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The path to the Cloud Storage file from which the image should be imported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudStorageUri")]
+        public virtual string CloudStorageUri { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>
+        /// Output only. The time the image import was created (as an API call, not when it was actually created in the
+        /// target).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The resource paths of the resources created by the image import job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createdResources")]
+        public virtual System.Collections.Generic.IList<string> CreatedResources { get; set; }
+
+        /// <summary>Output only. Target details used to import a disk image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskImageTargetDetails")]
+        public virtual DiskImageTargetDetails DiskImageTargetDetails { get; set; }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Output only. The time the image import was ended.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. Provides details on the error that led to the image import state in case of an error.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<Status> Errors { get; set; }
+
+        /// <summary>Output only. The resource path of the ImageImportJob.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The state of the image import.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. The image import steps list representing its progress.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("steps")]
+        public virtual System.Collections.Generic.IList<ImageImportStep> Steps { get; set; }
+
+        /// <summary>Output only. Warnings that occurred during the image import.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
+        public virtual System.Collections.Generic.IList<MigrationWarning> Warnings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Parameters affecting the OS adaptation process.</summary>
+    public class ImageImportOsAdaptationParameters : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Set to true in order to generalize the imported image. The generalization process enables
+        /// co-existence of multiple VMs created from the same image. For Windows, generalizing the image removes
+        /// computer-specific information such as installed drivers and the computer security identifier (SID).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generalize")]
+        public virtual System.Nullable<bool> Generalize { get; set; }
+
+        /// <summary>Optional. Choose which type of license to apply to the imported image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenseType")]
+        public virtual string LicenseType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ImageImportStep holds information about the image import step progress.</summary>
+    public class ImageImportStep : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Adapting OS step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adaptingOs")]
+        public virtual AdaptingOSStep AdaptingOs { get; set; }
+
+        /// <summary>Creating image step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creatingImage")]
+        public virtual CreatingImageStep CreatingImage { get; set; }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Output only. The time the step has ended.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Initializing step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("initializing")]
+        public virtual InitializingImageImportStep Initializing { get; set; }
+
+        /// <summary>Loading source files step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loadingSourceFiles")]
+        public virtual LoadingImageSourceFilesStep LoadingSourceFiles { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>Output only. The time the step has started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>InitializingImageImportStep contains specific step details.</summary>
+    public class InitializingImageImportStep : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>InitializingReplicationStep contains specific step details.</summary>
     public class InitializingReplicationStep : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6449,6 +7378,50 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         /// <summary>Output only. The list of groups response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groups")]
         public virtual System.Collections.Generic.IList<Group> Groups { get; set; }
+
+        /// <summary>
+        /// Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted,
+        /// there are no subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Output only. Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for 'ListImageImportJobs' call.</summary>
+    public class ListImageImportJobsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The list of target response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageImportJobs")]
+        public virtual System.Collections.Generic.IList<ImageImportJob> ImageImportJobs { get; set; }
+
+        /// <summary>
+        /// Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted,
+        /// there are no subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Output only. Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for 'ListImageImports' call.</summary>
+    public class ListImageImportsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The list of target response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageImports")]
+        public virtual System.Collections.Generic.IList<ImageImport> ImageImports { get; set; }
 
         /// <summary>
         /// Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted,
@@ -6601,6 +7574,13 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("utilizationReports")]
         public virtual System.Collections.Generic.IList<UtilizationReport> UtilizationReports { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>LoadingImageSourceFilesStep contains specific step details.</summary>
+    public class LoadingImageSourceFilesStep : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

@@ -4952,6 +4952,78 @@ namespace Google.Apis.ChromeManagement.v1.Data
     }
 
     /// <summary>
+    /// Runtime counters retrieved from CPU. Currently the runtime counters telemetry is only supported by Intel vPro
+    /// PSR on Gen 14+.
+    /// </summary>
+    public class GoogleChromeManagementV1RuntimeCountersReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Number of times that the device has entered into the hibernation state. Currently obtained via the PSR,
+        /// count from S0-&amp;gt;S4.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enterHibernationCount")]
+        public virtual System.Nullable<long> EnterHibernationCount { get; set; }
+
+        /// <summary>
+        /// Number of times that the device has entered into the power-off state. Currently obtained via the PSR, count
+        /// from S0-&amp;gt;S5.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enterPoweroffCount")]
+        public virtual System.Nullable<long> EnterPoweroffCount { get; set; }
+
+        /// <summary>
+        /// Number of times that the device has entered into the sleep state. Currently obtained via the PSR, count from
+        /// S0-&amp;gt;S3.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enterSleepCount")]
+        public virtual System.Nullable<long> EnterSleepCount { get; set; }
+
+        private string _reportTimeRaw;
+
+        private object _reportTime;
+
+        /// <summary>Timestamp when the report was collected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportTime")]
+        public virtual string ReportTimeRaw
+        {
+            get => _reportTimeRaw;
+            set
+            {
+                _reportTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _reportTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ReportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ReportTimeDateTimeOffset instead.")]
+        public virtual object ReportTime
+        {
+            get => _reportTime;
+            set
+            {
+                _reportTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _reportTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ReportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ReportTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReportTimeRaw);
+            set => ReportTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Total lifetime runtime. Currently always S0 runtime from Intel vPro PSR.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uptimeRuntimeDuration")]
+        public virtual object UptimeRuntimeDuration { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Status data for storage. * This field is telemetry information and this will change over time as the device is
     /// utilized. * Data for this field is controlled via policy:
     /// [ReportDeviceStorageStatus](https://chromeenterprise.google/policies/#ReportDeviceStorageStatus) * Data
@@ -5171,6 +5243,14 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("peripheralsReport")]
         public virtual System.Collections.Generic.IList<GoogleChromeManagementV1PeripheralsReport> PeripheralsReport { get; set; }
+
+        /// <summary>
+        /// Output only. Runtime counters reports collected device lifetime runtime, as well as the counts of
+        /// S0-&amp;gt;S3, S0-&amp;gt;S4, and S0-&amp;gt;S5 transitions, meaning entering into sleep, hibernation, and
+        /// power-off states
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimeCountersReport")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1RuntimeCountersReport> RuntimeCountersReport { get; set; }
 
         /// <summary>
         /// Output only. Device serial number. This value is the same as the Admin Console's Serial Number in the

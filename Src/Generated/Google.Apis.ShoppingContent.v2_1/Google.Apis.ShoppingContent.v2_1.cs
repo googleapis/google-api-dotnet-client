@@ -24981,8 +24981,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class SearchRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Number of ReportRows to retrieve in a single page. Defaults to the maximum of 1000. Values above 1000 are
-        /// coerced to 1000.
+        /// Number of ReportRows to retrieve in a single page. Defaults to 1000. Values above 5000 are coerced to 5000.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
         public virtual System.Nullable<int> PageSize { get; set; }

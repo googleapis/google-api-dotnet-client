@@ -1212,6 +1212,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                 [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
                                 public virtual System.Nullable<bool> AllowMissing { get; set; }
 
+                                /// <summary>
+                                /// Indicates which fields in the provided imported 'document' to update. If not set,
+                                /// will by default update all fields.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual object UpdateMask { get; set; }
+
                                 /// <summary>Gets or sets the body of this request.</summary>
                                 Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaDocument Body { get; set; }
 
@@ -1242,6 +1249,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                     RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
                                     {
                                         Name = "allowMissing",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "updateMask",
                                         IsRequired = false,
                                         ParameterType = "query",
                                         DefaultValue = null,
@@ -7590,6 +7605,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<bool> AllowMissing { get; set; }
 
+                            /// <summary>
+                            /// Indicates which fields in the provided imported 'document' to update. If not set, will
+                            /// by default update all fields.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual object UpdateMask { get; set; }
+
                             /// <summary>Gets or sets the body of this request.</summary>
                             Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaDocument Body { get; set; }
 
@@ -7620,6 +7642,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                 RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "allowMissing",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "updateMask",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -11330,6 +11360,126 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     });
                 }
             }
+
+            /// <summary>Gets the AclConfig.</summary>
+            /// <param name="name">
+            /// Required. Resource name of AclConfig, such as `projects/*/locations/*/aclConfig`. If the caller does not
+            /// have permission to access the AclConfig, regardless of whether or not it exists, a PERMISSION_DENIED
+            /// error is returned.
+            /// </param>
+            public virtual GetAclConfigRequest GetAclConfig(string name)
+            {
+                return new GetAclConfigRequest(this.service, name);
+            }
+
+            /// <summary>Gets the AclConfig.</summary>
+            public class GetAclConfigRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAclConfig>
+            {
+                /// <summary>Constructs a new GetAclConfig request.</summary>
+                public GetAclConfigRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Resource name of AclConfig, such as `projects/*/locations/*/aclConfig`. If the caller does
+                /// not have permission to access the AclConfig, regardless of whether or not it exists, a
+                /// PERMISSION_DENIED error is returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getAclConfig";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes GetAclConfig parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+/aclConfig$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Default Acl Configuration for use in a location of a customer's project. Updates will only reflect to
+            /// new data stores. Existing data stores will still use the old value.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Immutable. The full resource name of the acl configuration. Format:
+            /// `projects/{project}/locations/{location}/aclConfig`. This field must be a UTF-8 encoded string with a
+            /// length limit of 1024 characters.
+            /// </param>
+            public virtual UpdateAclConfigRequest UpdateAclConfig(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAclConfig body, string name)
+            {
+                return new UpdateAclConfigRequest(this.service, body, name);
+            }
+
+            /// <summary>
+            /// Default Acl Configuration for use in a location of a customer's project. Updates will only reflect to
+            /// new data stores. Existing data stores will still use the old value.
+            /// </summary>
+            public class UpdateAclConfigRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAclConfig>
+            {
+                /// <summary>Constructs a new UpdateAclConfig request.</summary>
+                public UpdateAclConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAclConfig body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Immutable. The full resource name of the acl configuration. Format:
+                /// `projects/{project}/locations/{location}/aclConfig`. This field must be a UTF-8 encoded string with
+                /// a length limit of 1024 characters.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAclConfig Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "updateAclConfig";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes UpdateAclConfig parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+/aclConfig$",
+                    });
+                }
+            }
         }
 
         /// <summary>Gets the Operations resource.</summary>
@@ -12145,6 +12295,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
+        /// <summary>Configuration for Document understanding and enrichment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentProcessingConfig")]
+        public virtual GoogleCloudDiscoveryengineV1DocumentProcessingConfig DocumentProcessingConfig { get; set; }
+
         /// <summary>Immutable. The industry vertical that the data store registers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("industryVertical")]
         public virtual string IndustryVertical { get; set; }
@@ -12164,6 +12318,17 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("solutionTypes")]
         public virtual System.Collections.Generic.IList<string> SolutionTypes { get; set; }
+
+        /// <summary>
+        /// The start schema to use for this DataStore when provisioning it. If unset, a default vertical specialized
+        /// schema will be used. This field is only used by CreateDataStore API, and will be ignored if used in other
+        /// APIs. This field will be omitted from all API responses including CreateDataStore API. To retrieve a schema
+        /// of a DataStore, use SchemaService.GetSchema API instead. The provided schema will be validated against
+        /// certain rules on schema. Learn more from [this
+        /// doc](https://cloud.google.com/generative-ai-app-builder/docs/provide-schema).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startingSchema")]
+        public virtual GoogleCloudDiscoveryengineV1Schema StartingSchema { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12502,6 +12667,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The digital parsing configurations for documents.</summary>
+    public class GoogleCloudDiscoveryengineV1DigitalParsingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Metadata related to the progress of the SiteSearchEngineService.DisableAdvancedSiteSearch operation. This will
     /// be returned by the google.longrunning.Operation.metadata field.
@@ -12589,6 +12761,55 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Response message for SiteSearchEngineService.DisableAdvancedSiteSearch method.</summary>
     public class GoogleCloudDiscoveryengineV1DisableAdvancedSiteSearchResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A singleton resource of DataStore. It's empty when DataStore is created, which defaults to digital parser. The
+    /// first call to DataStoreService.UpdateDocumentProcessingConfig method will initialize the config.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1DocumentProcessingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Configurations for default Document parser. If not specified, we will configure it as default
+        /// DigitalParsingConfig, and the default parsing config will be applied to all file types for Document parsing.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultParsingConfig")]
+        public virtual GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfig DefaultParsingConfig { get; set; }
+
+        /// <summary>
+        /// The full resource name of the Document Processing Config. Format:
+        /// `projects/*/locations/*/collections/*/dataStores/*/documentProcessingConfig`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Map from file type to override the default parsing configuration based on the file type. Supported keys: *
+        /// `pdf`: Override parsing config for PDF files, either digital parsing, ocr parsing or layout parsing is
+        /// supported. * `html`: Override parsing config for HTML files, only digital parsing and or layout parsing are
+        /// supported. * `docx`: Override parsing config for DOCX files, only digital parsing and or layout parsing are
+        /// supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parsingConfigOverrides")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfig> ParsingConfigOverrides { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Related configurations applied to a specific type of document parser.</summary>
+    public class GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Configurations applied to digital parser.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("digitalParsingConfig")]
+        public virtual GoogleCloudDiscoveryengineV1DigitalParsingConfig DigitalParsingConfig { get; set; }
+
+        /// <summary>Configurations applied to OCR parser. Currently it only applies to PDFs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ocrParsingConfig")]
+        public virtual GoogleCloudDiscoveryengineV1OcrParsingConfig OcrParsingConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -13286,6 +13507,24 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The OCR parsing configurations for documents.</summary>
+    public class GoogleCloudDiscoveryengineV1OcrParsingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Apply additional enhanced OCR processing to a list of document elements. Supported values: * `table`:
+        /// advanced table parsing model.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enhancedDocumentElements")]
+        public virtual System.Collections.Generic.IList<string> EnhancedDocumentElements { get; set; }
+
+        /// <summary>If true, will use native text instead of OCR text on pages containing native text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useNativeText")]
+        public virtual System.Nullable<bool> UseNativeText { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Metadata related to the progress of the PurgeDocuments operation. This will be returned by the
     /// google.longrunning.Operation.metadata field.
@@ -13332,6 +13571,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Count of entries that encountered errors while processing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failureCount")]
         public virtual System.Nullable<long> FailureCount { get; set; }
+
+        /// <summary>Count of entries that were ignored as entries were not found.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoredCount")]
+        public virtual System.Nullable<long> IgnoredCount { get; set; }
 
         /// <summary>Count of entries that were deleted successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("successCount")]
@@ -13845,6 +14088,25 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Access Control Configuration.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAclConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identity provider config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idpConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaIdpConfig IdpConfig { get; set; }
+
+        /// <summary>
+        /// Immutable. The full resource name of the acl configuration. Format:
+        /// `projects/{project}/locations/{location}/aclConfig`. This field must be a UTF-8 encoded string with a length
+        /// limit of 1024 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>AdditionalParams message for WidgetService methods for security and privacy enhancement.</summary>
     public class GoogleCloudDiscoveryengineV1alphaAdditionalParams : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14303,6 +14565,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Request message for ConversationalSearchService.ConverseConversation method.</summary>
     public class GoogleCloudDiscoveryengineV1alphaConverseConversationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Boost specification to boost certain documents in search results which may affect the converse response. For
+        /// more information on boosting, see [Boosting](https://cloud.google.com/retail/docs/boosting#boost)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boostSpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpec BoostSpec { get; set; }
+
         /// <summary>
         /// The conversation to be used by auto session only. The name field will be ignored as we automatically assign
         /// new name for the conversation in auto session.
@@ -14785,6 +15054,16 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     public class GoogleCloudDiscoveryengineV1alphaDataStore : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Immutable. Whether data in the DataStore has ACL information. If set to `true`, the source data must have
+        /// ACL. ACL will be ingested when data is ingested by DocumentService.ImportDocuments methods. When ACL is
+        /// enabled for the DataStore, Document can't be accessed by calling DocumentService.GetDocument or
+        /// DocumentService.ListDocuments. Currently ACL is only supported in `GENERIC` industry vertical with
+        /// non-`PUBLIC_WEBSITE` content config.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aclEnabled")]
+        public virtual System.Nullable<bool> AclEnabled { get; set; }
+
+        /// <summary>
         /// Immutable. The content config of the data store. If this field is unset, the server behavior defaults to
         /// ContentConfig.NO_CONTENT.
         /// </summary>
@@ -14839,6 +15118,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
+        /// <summary>Configuration for Document understanding and enrichment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentProcessingConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig DocumentProcessingConfig { get; set; }
+
+        /// <summary>Output only. Data store level identity provider config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idpConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaIdpConfig IdpConfig { get; set; }
+
         /// <summary>Immutable. The industry vertical that the data store registers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("industryVertical")]
         public virtual string IndustryVertical { get; set; }
@@ -14858,6 +15145,17 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("solutionTypes")]
         public virtual System.Collections.Generic.IList<string> SolutionTypes { get; set; }
+
+        /// <summary>
+        /// The start schema to use for this DataStore when provisioning it. If unset, a default vertical specialized
+        /// schema will be used. This field is only used by CreateDataStore API, and will be ignored if used in other
+        /// APIs. This field will be omitted from all API responses including CreateDataStore API. To retrieve a schema
+        /// of a DataStore, use SchemaService.GetSchema API instead. The provided schema will be validated against
+        /// certain rules on schema. Learn more from [this
+        /// doc](https://cloud.google.com/generative-ai-app-builder/docs/provide-schema).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startingSchema")]
+        public virtual GoogleCloudDiscoveryengineV1alphaSchema StartingSchema { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15304,6 +15602,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Document captures all raw metadata information of items to be recommended or searched.</summary>
     public class GoogleCloudDiscoveryengineV1alphaDocument : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Access control information for the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aclInfo")]
+        public virtual GoogleCloudDiscoveryengineV1alphaDocumentAclInfo AclInfo { get; set; }
+
         /// <summary>
         /// The unstructured data linked to this document. Content must be set if this document is under a
         /// `CONTENT_REQUIRED` data store.
@@ -15324,6 +15626,47 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
+
+        private string _indexTimeRaw;
+
+        private object _indexTime;
+
+        /// <summary>
+        /// Output only. The last time the document was indexed. If this field is set, the document could be returned in
+        /// search results. This field is OUTPUT_ONLY. If this field is not populated, it means the document has never
+        /// been indexed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexTime")]
+        public virtual string IndexTimeRaw
+        {
+            get => _indexTimeRaw;
+            set
+            {
+                _indexTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _indexTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="IndexTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use IndexTimeDateTimeOffset instead.")]
+        public virtual object IndexTime
+        {
+            get => _indexTime;
+            set
+            {
+                _indexTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _indexTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="IndexTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? IndexTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(IndexTimeRaw);
+            set => IndexTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>
         /// The JSON string representation of the document. It should conform to the registered Schema or an
@@ -15357,6 +15700,35 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structData")]
         public virtual System.Collections.Generic.IDictionary<string, object> StructData { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ACL Information of the Document.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaDocumentAclInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("readers")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaDocumentAclInfoAccessRestriction> Readers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// AclRestriction to model complex inheritance restrictions. Example: Modeling a "Both Permit" inheritance, where
+    /// to access a child document, user needs to have access to parent document. Document Hierarchy - Space_S
+    /// --&amp;gt; Page_P. Readers: Space_S: group_1, user_1 Page_P: group_2, group_3, user_2 Space_S ACL Restriction -
+    /// { "acl_info": { "readers": [ { "principals": [ { "group_id": "group_1" }, { "user_id": "user_1" } ] } ] } }
+    /// Page_P ACL Restriction. { "acl_info": { "readers": [ { "principals": [ { "group_id": "group_2" }, { "group_id":
+    /// "group_3" }, { "user_id": "user_2" } ], }, { "principals": [ { "group_id": "group_1" }, { "user_id": "user_1" }
+    /// ], } ] } }
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaDocumentAclInfoAccessRestriction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of principals.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("principals")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaPrincipal> Principals { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15461,6 +15833,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// Map from file type to override the default parsing configuration based on the file type. Supported keys: *
         /// `pdf`: Override parsing config for PDF files, either digital parsing, ocr parsing or layout parsing is
         /// supported. * `html`: Override parsing config for HTML files, only digital parsing and or layout parsing are
+        /// supported. * `docx`: Override parsing config for DOCX files, only digital parsing and or layout parsing are
         /// supported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parsingConfigOverrides")]
@@ -15612,6 +15985,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Metadata that describes the training and serving parameters of an Engine.</summary>
     public class GoogleCloudDiscoveryengineV1alphaEngine : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Whether the search engine can associate with multiple data stores. If true, the generic search engine can
+        /// associate with one or more data stores. This is an input-only field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowMultipleDataStoresSearchEngine")]
+        public virtual System.Nullable<bool> AllowMultipleDataStoresSearchEngine { get; set; }
+
         /// <summary>
         /// Configurations for the Chat Engine. Only applicable if solution_type is SOLUTION_TYPE_CHAT.
         /// </summary>
@@ -16312,6 +16692,32 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxRelatedQuestions")]
         public virtual System.Nullable<int> MaxRelatedQuestions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Identity Provider Config.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaIdpConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>External Identity provider config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalIdpConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaIdpConfigExternalIdpConfig ExternalIdpConfig { get; set; }
+
+        /// <summary>Identity provider type configured.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idpType")]
+        public virtual string IdpType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Third party IDP Config.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaIdpConfigExternalIdpConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Workforce pool name. Example: "locations/global/workforcePools/pool_id"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workforcePoolName")]
+        public virtual string WorkforcePoolName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17120,6 +17526,29 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Principal identifier of a user or a group.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaPrincipal : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Group identifier. For Google Workspace user account, group_id should be the google workspace group email.
+        /// For non-google identity provider user account, group_id is the mapped group identifier configured during the
+        /// workforcepool config.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupId")]
+        public virtual string GroupId { get; set; }
+
+        /// <summary>
+        /// User identifier. For Google Workspace user account, user_id should be the google workspace user email. For
+        /// non-google identity provider user account, user_id is the mapped user identifier configured during the
+        /// workforcepool config.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userId")]
+        public virtual string UserId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Metadata related to the progress of the PurgeDocuments operation. This will be returned by the
     /// google.longrunning.Operation.metadata field.
@@ -17166,6 +17595,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Count of entries that encountered errors while processing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failureCount")]
         public virtual System.Nullable<long> FailureCount { get; set; }
+
+        /// <summary>Count of entries that were ignored as entries were not found.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoredCount")]
+        public virtual System.Nullable<long> IgnoredCount { get; set; }
 
         /// <summary>Count of entries that were deleted successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("successCount")]
@@ -17215,6 +17648,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Request message for DocumentService.PurgeDocuments method.</summary>
     public class GoogleCloudDiscoveryengineV1alphaPurgeDocumentsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The desired location of errors incurred during the purge.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaPurgeErrorConfig ErrorConfig { get; set; }
+
         /// <summary>
         /// Required. Filter matching documents to purge. Only currently supported value is `*` (all items).
         /// </summary>
@@ -17227,6 +17664,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("force")]
         public virtual System.Nullable<bool> Force { get; set; }
+
+        /// <summary>
+        /// Cloud Storage location for the input content. Supported `data_schema`: * `document_id`: One valid
+        /// Document.id per line.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
+        public virtual GoogleCloudDiscoveryengineV1alphaGcsSource GcsSource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17248,6 +17692,20 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purgeSample")]
         public virtual System.Collections.Generic.IList<string> PurgeSample { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration of destination for Purge related errors.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaPurgeErrorConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Cloud Storage prefix for purge errors. This must be an empty, existing Cloud Storage directory. Purge errors
+        /// are written to sharded files in this directory, one per line, as a JSON-encoded `google.rpc.Status` message.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsPrefix")]
+        public virtual string GcsPrefix { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17943,6 +18401,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("contentSearchSpec")]
         public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpec ContentSearchSpec { get; set; }
 
+        /// <summary>Custom fine tuning configs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customFineTuningSpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaCustomFineTuningSpec CustomFineTuningSpec { get; set; }
+
         /// <summary>
         /// Uses the provided embedding to do additional semantic document retrieval. The retrieval is based on the dot
         /// product of SearchRequest.EmbeddingSpec.EmbeddingVector.vector and the document embedding that is provided in
@@ -18135,8 +18597,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>
         /// An expression which specifies a boost condition. The syntax and supported fields are the same as a filter
         /// expression. See SearchRequest.filter for detail syntax and limitations. Examples: * To boost documents with
-        /// document ID "doc_1" or "doc_2", and color "Red" or "Blue": * (id: ANY("doc_1", "doc_2")) AND (color:
-        /// ANY("Red","Blue"))
+        /// document ID "doc_1" or "doc_2", and color "Red" or "Blue": * (document_id: ANY("doc_1", "doc_2")) AND
+        /// (color: ANY("Red", "Blue"))
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual string Condition { get; set; }
@@ -20129,6 +20591,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableSummarization")]
         public virtual System.Nullable<bool> EnableSummarization { get; set; }
 
+        /// <summary>Whether to enable standalone web app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableWebApp")]
+        public virtual System.Nullable<bool> EnableWebApp { get; set; }
+
         /// <summary>The configuration and appearance of facets in the end user view.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("facetField")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaWidgetConfigFacetField> FacetField { get; set; }
@@ -20830,6 +21296,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
+        /// <summary>Configuration for Document understanding and enrichment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentProcessingConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaDocumentProcessingConfig DocumentProcessingConfig { get; set; }
+
         /// <summary>Immutable. The industry vertical that the data store registers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("industryVertical")]
         public virtual string IndustryVertical { get; set; }
@@ -20849,6 +21319,17 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("solutionTypes")]
         public virtual System.Collections.Generic.IList<string> SolutionTypes { get; set; }
+
+        /// <summary>
+        /// The start schema to use for this DataStore when provisioning it. If unset, a default vertical specialized
+        /// schema will be used. This field is only used by CreateDataStore API, and will be ignored if used in other
+        /// APIs. This field will be omitted from all API responses including CreateDataStore API. To retrieve a schema
+        /// of a DataStore, use SchemaService.GetSchema API instead. The provided schema will be validated against
+        /// certain rules on schema. Learn more from [this
+        /// doc](https://cloud.google.com/generative-ai-app-builder/docs/provide-schema).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startingSchema")]
+        public virtual GoogleCloudDiscoveryengineV1betaSchema StartingSchema { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21187,6 +21668,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The digital parsing configurations for documents.</summary>
+    public class GoogleCloudDiscoveryengineV1betaDigitalParsingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Metadata related to the progress of the SiteSearchEngineService.DisableAdvancedSiteSearch operation. This will
     /// be returned by the google.longrunning.Operation.metadata field.
@@ -21274,6 +21762,55 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Response message for SiteSearchEngineService.DisableAdvancedSiteSearch method.</summary>
     public class GoogleCloudDiscoveryengineV1betaDisableAdvancedSiteSearchResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A singleton resource of DataStore. It's empty when DataStore is created, which defaults to digital parser. The
+    /// first call to DataStoreService.UpdateDocumentProcessingConfig method will initialize the config.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaDocumentProcessingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Configurations for default Document parser. If not specified, we will configure it as default
+        /// DigitalParsingConfig, and the default parsing config will be applied to all file types for Document parsing.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultParsingConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfig DefaultParsingConfig { get; set; }
+
+        /// <summary>
+        /// The full resource name of the Document Processing Config. Format:
+        /// `projects/*/locations/*/collections/*/dataStores/*/documentProcessingConfig`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Map from file type to override the default parsing configuration based on the file type. Supported keys: *
+        /// `pdf`: Override parsing config for PDF files, either digital parsing, ocr parsing or layout parsing is
+        /// supported. * `html`: Override parsing config for HTML files, only digital parsing and or layout parsing are
+        /// supported. * `docx`: Override parsing config for DOCX files, only digital parsing and or layout parsing are
+        /// supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parsingConfigOverrides")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfig> ParsingConfigOverrides { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Related configurations applied to a specific type of document parser.</summary>
+    public class GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Configurations applied to digital parser.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("digitalParsingConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaDigitalParsingConfig DigitalParsingConfig { get; set; }
+
+        /// <summary>Configurations applied to OCR parser. Currently it only applies to PDFs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ocrParsingConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaOcrParsingConfig OcrParsingConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -21971,6 +22508,24 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The OCR parsing configurations for documents.</summary>
+    public class GoogleCloudDiscoveryengineV1betaOcrParsingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Apply additional enhanced OCR processing to a list of document elements. Supported values: * `table`:
+        /// advanced table parsing model.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enhancedDocumentElements")]
+        public virtual System.Collections.Generic.IList<string> EnhancedDocumentElements { get; set; }
+
+        /// <summary>If true, will use native text instead of OCR text on pages containing native text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useNativeText")]
+        public virtual System.Nullable<bool> UseNativeText { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Metadata related to the progress of the PurgeDocuments operation. This will be returned by the
     /// google.longrunning.Operation.metadata field.
@@ -22017,6 +22572,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Count of entries that encountered errors while processing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failureCount")]
         public virtual System.Nullable<long> FailureCount { get; set; }
+
+        /// <summary>Count of entries that were ignored as entries were not found.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoredCount")]
+        public virtual System.Nullable<long> IgnoredCount { get; set; }
 
         /// <summary>Count of entries that were deleted successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("successCount")]
