@@ -1231,10 +1231,14 @@ namespace Google.Apis.Storagetransfer.v1
         /// <param name="name">Required. The name of the type being listed; must be `transferOperations`.</param>
         /// <param name="filter">
         /// Required. A list of query parameters specified as JSON text in the form of: `{"projectId":"my_project_id",
-        /// "jobNames":["jobid1","jobid2",...], "operationNames":["opid1","opid2",...],
-        /// "transferStatuses":["status1","status2",...]}` Since `jobNames`, `operationNames`, and `transferStatuses`
-        /// support multiple values, they must be specified with array notation. `projectId` is required. `jobNames`,
-        /// `operationNames`, and `transferStatuses` are optional. The valid values for `transferStatuses` are
+        /// "jobNames":["jobid1","jobid2",...], "jobNamePattern": "job_name_pattern",
+        /// "operationNames":["opid1","opid2",...], "operationNamePattern": "operation_name_pattern", "minCreationTime":
+        /// "min_creation_time", "maxCreationTime": "max_creation_time", "transferStatuses":["status1","status2",...]}`
+        /// Since `jobNames`, `operationNames`, and `transferStatuses` support multiple values, they must be specified
+        /// with array notation. `projectId` is the only argument that is required. If specified, `jobNamePattern` and
+        /// `operationNamePattern` must match the full job or operation name respectively. '*' is a wildcard matching 0
+        /// or more characters. `minCreationTime` and `maxCreationTime` should be timestamps encoded as a string in the
+        /// [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format. The valid values for `transferStatuses` are
         /// case-insensitive: IN_PROGRESS, PAUSED, SUCCESS, FAILED, and ABORTED.
         /// </param>
         public virtual ListRequest List(string name, string filter)
@@ -1261,12 +1265,16 @@ namespace Google.Apis.Storagetransfer.v1
 
             /// <summary>
             /// Required. A list of query parameters specified as JSON text in the form of:
-            /// `{"projectId":"my_project_id", "jobNames":["jobid1","jobid2",...],
-            /// "operationNames":["opid1","opid2",...], "transferStatuses":["status1","status2",...]}` Since `jobNames`,
-            /// `operationNames`, and `transferStatuses` support multiple values, they must be specified with array
-            /// notation. `projectId` is required. `jobNames`, `operationNames`, and `transferStatuses` are optional.
-            /// The valid values for `transferStatuses` are case-insensitive: IN_PROGRESS, PAUSED, SUCCESS, FAILED, and
-            /// ABORTED.
+            /// `{"projectId":"my_project_id", "jobNames":["jobid1","jobid2",...], "jobNamePattern": "job_name_pattern",
+            /// "operationNames":["opid1","opid2",...], "operationNamePattern": "operation_name_pattern",
+            /// "minCreationTime": "min_creation_time", "maxCreationTime": "max_creation_time",
+            /// "transferStatuses":["status1","status2",...]}` Since `jobNames`, `operationNames`, and
+            /// `transferStatuses` support multiple values, they must be specified with array notation. `projectId` is
+            /// the only argument that is required. If specified, `jobNamePattern` and `operationNamePattern` must match
+            /// the full job or operation name respectively. '*' is a wildcard matching 0 or more characters.
+            /// `minCreationTime` and `maxCreationTime` should be timestamps encoded as a string in the [RFC
+            /// 3339](https://www.ietf.org/rfc/rfc3339.txt) format. The valid values for `transferStatuses` are
+            /// case-insensitive: IN_PROGRESS, PAUSED, SUCCESS, FAILED, and ABORTED.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; private set; }
@@ -1656,21 +1664,6 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    public class BatchTaskSpec : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("deleteObjectTaskSpec")]
-        public virtual DeleteObjectTaskSpec DeleteObjectTaskSpec { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("listTaskSpec")]
-        public virtual ListTaskSpec ListTaskSpec { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("metadataTaskSpec")]
-        public virtual MetadataTaskSpec MetadataTaskSpec { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1702,24 +1695,6 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("year")]
         public virtual System.Nullable<int> Year { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class DeleteObjectTaskSpec : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("generation")]
-        public virtual System.Nullable<long> Generation { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("hardDeleteVersionedObject")]
-        public virtual System.Nullable<bool> HardDeleteVersionedObject { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("size")]
-        public virtual System.Nullable<long> Size { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2003,18 +1978,6 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    public class ListTaskSpec : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("manifest")]
-        public virtual Manifest Manifest { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("objectPrefixes")]
-        public virtual ObjectPrefixes ObjectPrefixes { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Response from ListTransferJobs.</summary>
     public class ListTransferJobsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2059,18 +2022,6 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logActions")]
         public virtual System.Collections.Generic.IList<string> LogActions { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class Manifest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("manifestLocation")]
-        public virtual string ManifestLocation { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("root")]
-        public virtual string Root { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2144,24 +2095,6 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class MetadataTaskSpec : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("bucketName")]
-        public virtual string BucketName { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("generation")]
-        public virtual System.Nullable<long> Generation { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("size")]
-        public virtual System.Nullable<long> Size { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2348,27 +2281,6 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minTimeElapsedSinceLastModification")]
         public virtual object MinTimeElapsedSinceLastModification { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class ObjectPrefix : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("bucketName")]
-        public virtual string BucketName { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("objectPrefix")]
-        public virtual string ObjectPrefixValue { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class ObjectPrefixes : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("objectPrefixes")]
-        public virtual System.Collections.Generic.IList<ObjectPrefix> ObjectPrefixesValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

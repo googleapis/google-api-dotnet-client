@@ -466,8 +466,8 @@ namespace Google.Apis.CloudSourceRepositories.v1
             }
 
             /// <summary>
-            /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does
-            /// not have a policy set.
+            /// Gets the IAM policy policy for a resource. Returns an empty policy if the resource exists and does not
+            /// have a policy set.
             /// </summary>
             /// <param name="resource">
             /// REQUIRED: The resource for which the policy is being requested. See [Resource
@@ -479,8 +479,8 @@ namespace Google.Apis.CloudSourceRepositories.v1
             }
 
             /// <summary>
-            /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does
-            /// not have a policy set.
+            /// Gets the IAM policy policy for a resource. Returns an empty policy if the resource exists and does not
+            /// have a policy set.
             /// </summary>
             public class GetIamPolicyRequest : CloudSourceRepositoriesBaseServiceRequest<Google.Apis.CloudSourceRepositories.v1.Data.Policy>
             {
@@ -682,9 +682,7 @@ namespace Google.Apis.CloudSourceRepositories.v1
                 }
             }
 
-            /// <summary>
-            /// Sets the access control policy on the specified resource. Replaces any existing policy.
-            /// </summary>
+            /// <summary>Sets the IAM policy on the specified resource. Replaces any existing policy.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="resource">
             /// REQUIRED: The resource for which the policy is being specified. See [Resource
@@ -695,9 +693,7 @@ namespace Google.Apis.CloudSourceRepositories.v1
                 return new SetIamPolicyRequest(this.service, body, resource);
             }
 
-            /// <summary>
-            /// Sets the access control policy on the specified resource. Replaces any existing policy.
-            /// </summary>
+            /// <summary>Sets the IAM policy on the specified resource. Replaces any existing policy.</summary>
             public class SetIamPolicyRequest : CloudSourceRepositoriesBaseServiceRequest<Google.Apis.CloudSourceRepositories.v1.Data.Policy>
             {
                 /// <summary>Constructs a new SetIamPolicy request.</summary>

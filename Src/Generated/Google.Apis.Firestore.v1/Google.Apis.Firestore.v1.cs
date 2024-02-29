@@ -5102,36 +5102,6 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// The CMEK (Customer Managed Encryption Key) configuration for a Firestore database. If not present, the database
-    /// is secured by the default Google encryption key.
-    /// </summary>
-    public class GoogleFirestoreAdminV1CmekConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Output only. Currently in-use [KMS key
-        /// versions](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions). During [key
-        /// rotation](https://cloud.google.com/kms/docs/key-rotation), there can be multiple in-use key versions. The
-        /// expected format is
-        /// `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{key_version}`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("activeKeyVersion")]
-        public virtual System.Collections.Generic.IList<string> ActiveKeyVersion { get; set; }
-
-        /// <summary>
-        /// Required. Only keys in the same location as this database are allowed to be used for encryption. For
-        /// Firestore's nam5 multi-region, this corresponds to Cloud KMS multi-region us. For Firestore's eur3
-        /// multi-region, this corresponds to Cloud KMS multi-region europe. See
-        /// https://cloud.google.com/kms/docs/locations. The expected format is
-        /// `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
-        public virtual string KmsKeyName { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Metadata related to the create database operation.</summary>
     public class GoogleFirestoreAdminV1CreateDatabaseMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5152,10 +5122,6 @@ namespace Google.Apis.Firestore.v1.Data
         /// <summary>The App Engine integration mode to use for this database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appEngineIntegrationMode")]
         public virtual string AppEngineIntegrationMode { get; set; }
-
-        /// <summary>Optional. Presence indicates CMEK is enabled for this database.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cmekConfig")]
-        public virtual GoogleFirestoreAdminV1CmekConfig CmekConfig { get; set; }
 
         /// <summary>The concurrency control mode to use for this database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("concurrencyMode")]

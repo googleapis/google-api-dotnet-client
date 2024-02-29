@@ -2468,7 +2468,10 @@ namespace Google.Apis.Document.v1beta2.Data
     /// <summary>Represents a weak reference to a page element within a document.</summary>
     public class GoogleCloudDocumentaiV1beta1DocumentPageAnchorPageRef : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Identifies the bounding polygon of a layout element on the page.</summary>
+        /// <summary>
+        /// Optional. Identifies the bounding polygon of a layout element on the page. If `layout_type` is set, the
+        /// bounding polygon must be exactly the same to the layout element it's referring to.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
         public virtual GoogleCloudDocumentaiV1beta1BoundingPoly BoundingPoly { get; set; }
 
@@ -3926,7 +3929,10 @@ namespace Google.Apis.Document.v1beta2.Data
     /// <summary>Represents a weak reference to a page element within a document.</summary>
     public class GoogleCloudDocumentaiV1beta2DocumentPageAnchorPageRef : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Identifies the bounding polygon of a layout element on the page.</summary>
+        /// <summary>
+        /// Optional. Identifies the bounding polygon of a layout element on the page. If `layout_type` is set, the
+        /// bounding polygon must be exactly the same to the layout element it's referring to.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
         public virtual GoogleCloudDocumentaiV1beta2BoundingPoly BoundingPoly { get; set; }
 

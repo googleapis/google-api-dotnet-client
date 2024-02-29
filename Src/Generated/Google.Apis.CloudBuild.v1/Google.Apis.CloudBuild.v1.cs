@@ -4655,6 +4655,57 @@ namespace Google.Apis.CloudBuild.v1
                     }
                 }
             }
+
+            /// <summary>Returns the `DefaultServiceAccount` used by the project.</summary>
+            /// <param name="name">
+            /// Required. The name of the `DefaultServiceAccount` to retrieve. Format:
+            /// `projects/{project}/locations/{location}/defaultServiceAccount`
+            /// </param>
+            public virtual GetDefaultServiceAccountRequest GetDefaultServiceAccount(string name)
+            {
+                return new GetDefaultServiceAccountRequest(this.service, name);
+            }
+
+            /// <summary>Returns the `DefaultServiceAccount` used by the project.</summary>
+            public class GetDefaultServiceAccountRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.DefaultServiceAccount>
+            {
+                /// <summary>Constructs a new GetDefaultServiceAccount request.</summary>
+                public GetDefaultServiceAccountRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the `DefaultServiceAccount` to retrieve. Format:
+                /// `projects/{project}/locations/{location}/defaultServiceAccount`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getDefaultServiceAccount";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes GetDefaultServiceAccount parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+/defaultServiceAccount$",
+                    });
+                }
+            }
         }
 
         /// <summary>Gets the Triggers resource.</summary>
@@ -7178,6 +7229,28 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The default service account used for `Builds`.</summary>
+    public class DefaultServiceAccount : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifier. Format: `projects/{project}/locations/{location}/defaultServiceAccount</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The email address of the service account identity that will be used for a build by default.
+        /// This is returned in the format `projects/{project}/serviceAccounts/{service_account}` where
+        /// `{service_account}` could be the legacy Cloud Build SA, in the format
+        /// [PROJECT_NUMBER]@cloudbuild.gserviceaccount.com or the Compute SA, in the format
+        /// [PROJECT_NUMBER]-compute@developer.gserviceaccount.com. If no service account will be used by default, this
+        /// will be empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
+        public virtual string ServiceAccountEmail { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for `DeleteBitbucketServerConfig` operation.</summary>
     public class DeleteBitbucketServerConfigOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8554,9 +8627,48 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkConfig")]
         public virtual NetworkConfig NetworkConfig { get; set; }
 
+        /// <summary>Immutable. Private Service Connect(PSC) Network configuration for the pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateServiceConnect")]
+        public virtual PrivateServiceConnect PrivateServiceConnect { get; set; }
+
         /// <summary>Machine configuration for the workers in the pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerConfig")]
         public virtual WorkerConfig WorkerConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines the Private Service Connect network configuration for the pool.</summary>
+    public class PrivateServiceConnect : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Immutable. The network attachment that the worker network interface is peered to. Must be in the
+        /// format `projects/{project}/regions/{region}/networkAttachments/{networkAttachment}`. The region of network
+        /// attachment must be the same as the worker pool. See [Network
+        /// Attachments](https://cloud.google.com/vpc/docs/about-network-attachments)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkAttachment")]
+        public virtual string NetworkAttachment { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. Disable public IP on the primary network interface. If true, workers are created
+        /// without any public address, which prevents network egress to public IPs unless a network proxy is
+        /// configured. If false, workers are created with a public address which allows for public internet egress. The
+        /// public address only applies to traffic through the primary network interface. If `route_all_traffic` is set
+        /// to true, all traffic will go through the non-primary network interface, this boolean has no effect.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicIpAddressDisabled")]
+        public virtual System.Nullable<bool> PublicIpAddressDisabled { get; set; }
+
+        /// <summary>
+        /// Immutable. Route all traffic through PSC interface. Enable this if you want full control of traffic in the
+        /// private pool. Configure Cloud NAT for the subnet of network attachment if you need to access public
+        /// Internet. If false, Only route private IPs, e.g. 10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16 through PSC
+        /// interface.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routeAllTraffic")]
+        public virtual System.Nullable<bool> RouteAllTraffic { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

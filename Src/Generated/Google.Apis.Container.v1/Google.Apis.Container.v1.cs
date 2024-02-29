@@ -8942,6 +8942,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
         public virtual string DiskType { get; set; }
 
+        /// <summary>Optional. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableConfidentialStorage")]
+        public virtual System.Nullable<bool> EnableConfidentialStorage { get; set; }
+
         /// <summary>
         /// Parameters for the node ephemeral storage using Local SSDs. If unspecified, ephemeral storage is backed by
         /// the boot disk.
@@ -9082,6 +9086,10 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>Sandbox configuration for this node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sandboxConfig")]
         public virtual SandboxConfig SandboxConfig { get; set; }
+
+        /// <summary>List of secondary boot disks attached to the nodes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secondaryBootDisks")]
+        public virtual System.Collections.Generic.IList<SecondaryBootDisk> SecondaryBootDisks { get; set; }
 
         /// <summary>
         /// The Google Cloud Platform Service Account to be used by the node VMs. Specify the email address of the
@@ -10104,6 +10112,23 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>Type of the sandbox to use for the node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// SecondaryBootDisk represents a persistent disk attached to a node with special configurations based on its mode.
+    /// </summary>
+    public class SecondaryBootDisk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Fully-qualified resource ID for an existing disk image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskImage")]
+        public virtual string DiskImage { get; set; }
+
+        /// <summary>Disk mode (container image cache, etc.)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11265,6 +11290,10 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
+
+        /// <summary>Specifies the configuration of queued provisioning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queuedProvisioning")]
+        public virtual QueuedProvisioning QueuedProvisioning { get; set; }
 
         /// <summary>
         /// The resource labels for the node pool to use to annotate any related Google Compute Engine resources.

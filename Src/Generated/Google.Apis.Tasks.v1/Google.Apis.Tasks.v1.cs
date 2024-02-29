@@ -892,7 +892,7 @@ namespace Google.Apis.Tasks.v1
             public virtual string DueMin { get; set; }
 
             /// <summary>
-            /// Maximum number of task lists returned on one page. Optional. The default is 20 (max allowed: 100).
+            /// Maximum number of tasks returned on one page. Optional. The default is 20 (max allowed: 100).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }

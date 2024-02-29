@@ -5925,6 +5925,171 @@ namespace Google.Apis.YouTube.v3
             }
         }
 
+        /// <summary>Inserts a new resource into this collection.</summary>
+        /// <remarks>
+        /// Considerations regarding <paramref name="stream"/>:
+        /// <list type="bullet">
+        /// <item>
+        /// <description>
+        /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c> before reading
+        /// commences. If <paramref name="stream"/> is not seekable, then it will be read from its current position
+        /// </description>
+        /// </item>
+        /// <item>
+        /// <description>
+        /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is completed
+        /// </description>
+        /// </item>
+        /// <item><description>Caller is responsible for closing the <paramref name="stream"/></description></item>
+        /// </list>
+        /// </remarks>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="stream">The stream to upload. See remarks for further information.</param>
+        /// <param name="contentType">The content type of the stream to upload.</param>
+        public virtual InsertMediaUpload Insert(Google.Apis.YouTube.v3.Data.PlaylistImage body, System.IO.Stream stream, string contentType)
+        {
+            return new InsertMediaUpload(service, body, stream, contentType);
+        }
+
+        /// <summary>Insert media upload which supports resumable upload.</summary>
+        public class InsertMediaUpload : Google.Apis.Upload.ResumableUpload<Google.Apis.YouTube.v3.Data.PlaylistImage, Google.Apis.YouTube.v3.Data.PlaylistImage>
+        {
+            /// <summary>V1 error format.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
+
+            /// <summary>V1 error format.</summary>
+            public enum XgafvEnum
+            {
+                /// <summary>v1 error format</summary>
+                [Google.Apis.Util.StringValueAttribute("1")]
+                Value1 = 0,
+
+                /// <summary>v2 error format</summary>
+                [Google.Apis.Util.StringValueAttribute("2")]
+                Value2 = 1,
+            }
+
+            /// <summary>OAuth access token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string AccessToken { get; set; }
+
+            /// <summary>Data format for response.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<AltEnum> Alt { get; set; }
+
+            /// <summary>Data format for response.</summary>
+            public enum AltEnum
+            {
+                /// <summary>Responses with Content-Type of application/json</summary>
+                [Google.Apis.Util.StringValueAttribute("json")]
+                Json = 0,
+
+                /// <summary>Media download with context-dependent Content-Type</summary>
+                [Google.Apis.Util.StringValueAttribute("media")]
+                Media = 1,
+
+                /// <summary>Responses with Content-Type of application/x-protobuf</summary>
+                [Google.Apis.Util.StringValueAttribute("proto")]
+                Proto = 2,
+            }
+
+            /// <summary>JSONP</summary>
+            [Google.Apis.Util.RequestParameterAttribute("callback", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Callback { get; set; }
+
+            /// <summary>Selector specifying which fields to include in a partial response.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Fields { get; set; }
+
+            /// <summary>
+            /// API key. Your API key identifies your project and provides you with API access, quota, and reports.
+            /// Required unless you provide an OAuth 2.0 token.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Key { get; set; }
+
+            /// <summary>OAuth 2.0 token for the current user.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("oauth_token", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OauthToken { get; set; }
+
+            /// <summary>Returns response with indentations and line breaks.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> PrettyPrint { get; set; }
+
+            /// <summary>
+            /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned
+            /// to a user, but should not exceed 40 characters.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string QuotaUser { get; set; }
+
+            /// <summary>Legacy upload protocol for media (e.g. "media", "multipart").</summary>
+            [Google.Apis.Util.RequestParameterAttribute("uploadType", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string UploadType { get; set; }
+
+            /// <summary>Upload protocol for media (e.g. "raw", "multipart").</summary>
+            [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string UploadProtocol { get; set; }
+
+            /// <summary>
+            /// *Note:* This parameter is intended exclusively for YouTube content partners. The
+            /// *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a
+            /// YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This
+            /// parameter is intended for YouTube content partners that own and manage many different YouTube channels.
+            /// It allows content owners to authenticate once and get access to all their video and channel data,
+            /// without having to provide authentication credentials for each individual channel. The CMS account that
+            /// the user authenticates with must be linked to the specified YouTube content owner.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("onBehalfOfContentOwner", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OnBehalfOfContentOwner { get; set; }
+
+            /// <summary>
+            /// This parameter can only be used in a properly authorized request. *Note:* This parameter is intended
+            /// exclusively for YouTube content partners. The *onBehalfOfContentOwnerChannel* parameter specifies the
+            /// YouTube channel ID of the channel to which a video is being added. This parameter is required when a
+            /// request specifies a value for the onBehalfOfContentOwner parameter, and it can only be used in
+            /// conjunction with that parameter. In addition, the request must be authorized using a CMS account that is
+            /// linked to the content owner that the onBehalfOfContentOwner parameter specifies. Finally, the channel
+            /// that the onBehalfOfContentOwnerChannel parameter value specifies must be linked to the content owner
+            /// that the onBehalfOfContentOwner parameter specifies. This parameter is intended for YouTube content
+            /// partners that own and manage many different YouTube channels. It allows content owners to authenticate
+            /// once and perform actions on behalf of the channel specified in the parameter value, without having to
+            /// provide authentication credentials for each separate channel.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("onBehalfOfContentOwnerChannel", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OnBehalfOfContentOwnerChannel { get; set; }
+
+            /// <summary>The *part* parameter specifies the properties that the API response will include.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("part", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> Part { get; set; }
+
+            /// <summary>Constructs a new Insert media upload instance.</summary>
+            /// <remarks>
+            /// Considerations regarding <paramref name="stream"/>:
+            /// <list type="bullet">
+            /// <item>
+            /// <description>
+            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c> before
+            /// reading commences. If <paramref name="stream"/> is not seekable, then it will be read from its current
+            /// position
+            /// </description>
+            /// </item>
+            /// <item>
+            /// <description>
+            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is completed
+            /// </description>
+            /// </item>
+            /// <item><description>Caller is responsible for closing the <paramref name="stream"/></description></item>
+            /// </list>
+            /// </remarks>
+            public InsertMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.YouTube.v3.Data.PlaylistImage body, System.IO.Stream stream, string contentType)
+                : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "youtube/v3/playlistImages"), "POST", stream, contentType)
+            {
+                Body = body;
+            }
+        }
+
         /// <summary>Retrieves a list of resources, possibly filtered.</summary>
         public virtual ListRequest List()
         {

@@ -5067,7 +5067,7 @@ namespace Google.Apis.Pubsub.v1.Data
     /// <summary>A topic resource.</summary>
     public class Topic : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Settings for managed ingestion from a data source into this topic.</summary>
+        /// <summary>Optional. Settings for ingestion from a data source into this topic.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ingestionDataSourceSettings")]
         public virtual IngestionDataSourceSettings IngestionDataSourceSettings { get; set; }
 

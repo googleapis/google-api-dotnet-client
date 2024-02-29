@@ -14967,14 +14967,14 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
     {
         /// <summary>
         /// The base URI that identifies the network location of the application in which the vulnerability was
-        /// detected. Examples: http://11.22.33.44, http://foo.com, http://11.22.33.44:8080
+        /// detected. For example, `http://example.com`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("baseUri")]
         public virtual string BaseUri { get; set; }
 
         /// <summary>
-        /// The full URI with payload that can be used to reproduce the vulnerability. Example:
-        /// http://11.22.33.44/reflected/parameter/attribute/singlequoted/js?p=aMmYgI6H
+        /// The full URI with payload that can be used to reproduce the vulnerability. For example,
+        /// `http://example.com?p=aMmYgI6H`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullUri")]
         public virtual string FullUri { get; set; }
@@ -15369,15 +15369,15 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
     {
         /// <summary>
         /// The name of the Backup and DR appliance that captures, moves, and manages the lifecycle of backup data. For
-        /// example, “backup-server-57137”.
+        /// example, `backup-server-57137`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appliance")]
         public virtual string Appliance { get; set; }
 
         /// <summary>
         /// The names of Backup and DR applications. An application is a VM, database, or file system on a managed host
-        /// monitored by a backup and recovery appliance. For example, “centos7-01-vol00”, “centos7-01-vol01”,
-        /// “centos7-01-vol02”.
+        /// monitored by a backup and recovery appliance. For example, `centos7-01-vol00`, `centos7-01-vol01`,
+        /// `centos7-01-vol02`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("applications")]
         public virtual System.Collections.Generic.IList<string> Applications { get; set; }
@@ -15424,13 +15424,13 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// <summary>
         /// The name of a Backup and DR template which comprises one or more backup policies. See the [Backup and DR
         /// documentation](https://cloud.google.com/backup-disaster-recovery/docs/concepts/backup-plan#temp) for more
-        /// information. For example, “snap-ov”.
+        /// information. For example, `snap-ov`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupTemplate")]
         public virtual string BackupTemplate { get; set; }
 
         /// <summary>
-        /// The backup type of the Backup and DR image. For example, “Snapshot”, “Remote Snapshot”, “OnVault”.
+        /// The backup type of the Backup and DR image. For example, `Snapshot`, `Remote Snapshot`, `OnVault`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupType")]
         public virtual string BackupType { get; set; }
@@ -15440,14 +15440,14 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// management console. The host can be of type Generic (for example, Compute Engine, SQL Server, Oracle DB, SMB
         /// file system, etc.), vCenter, or an ESX server. See the [Backup and DR documentation on
         /// hosts](https://cloud.google.com/backup-disaster-recovery/docs/configuration/manage-hosts-and-their-applications)
-        /// for more information. For example, “centos7-01”.
+        /// for more information. For example, `centos7-01`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
         public virtual string Host { get; set; }
 
         /// <summary>
         /// The names of Backup and DR policies that are associated with a template and that define when to run a
-        /// backup, how frequently to run a backup, and how long to retain the backup image. For example, “onvaults”.
+        /// backup, how frequently to run a backup, and how long to retain the backup image. For example, `onvaults`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policies")]
         public virtual System.Collections.Generic.IList<string> Policies { get; set; }
@@ -15456,7 +15456,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// The names of Backup and DR advanced policy options of a policy applying to an application. See the [Backup
         /// and DR documentation on policy
         /// options](https://cloud.google.com/backup-disaster-recovery/docs/create-plan/policy-settings). For example,
-        /// “skipofflineappsincongrp, nounmap”.
+        /// `skipofflineappsincongrp, nounmap`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyOptions")]
         public virtual System.Collections.Generic.IList<string> PolicyOptions { get; set; }
@@ -15465,7 +15465,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// The name of the Backup and DR resource profile that specifies the storage media for backups of application
         /// and VM data. See the [Backup and DR documentation on
         /// profiles](https://cloud.google.com/backup-disaster-recovery/docs/concepts/backup-plan#profile). For example,
-        /// “GCP”.
+        /// `GCP`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profile")]
         public virtual string Profile { get; set; }
@@ -15474,7 +15474,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// The name of the Backup and DR storage pool that the backup and recovery appliance is storing data in. The
         /// storage pool could be of type Cloud, Primary, Snapshot, or OnVault. See the [Backup and DR documentation on
         /// storage pools](https://cloud.google.com/backup-disaster-recovery/docs/concepts/storage-pools). For example,
-        /// “DiskPoolOne”.
+        /// `DiskPoolOne`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storagePool")]
         public virtual string StoragePool { get; set; }
@@ -17197,6 +17197,82 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("assignees")]
         public virtual System.Collections.Generic.IList<string> Assignees { get; set; }
 
+        private string _caseCloseTimeRaw;
+
+        private object _caseCloseTime;
+
+        /// <summary>The time when the case was closed, as reported by the external system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("caseCloseTime")]
+        public virtual string CaseCloseTimeRaw
+        {
+            get => _caseCloseTimeRaw;
+            set
+            {
+                _caseCloseTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _caseCloseTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CaseCloseTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CaseCloseTimeDateTimeOffset instead.")]
+        public virtual object CaseCloseTime
+        {
+            get => _caseCloseTime;
+            set
+            {
+                _caseCloseTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _caseCloseTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CaseCloseTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CaseCloseTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CaseCloseTimeRaw);
+            set => CaseCloseTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _caseCreateTimeRaw;
+
+        private object _caseCreateTime;
+
+        /// <summary>The time when the case was created, as reported by the external system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("caseCreateTime")]
+        public virtual string CaseCreateTimeRaw
+        {
+            get => _caseCreateTimeRaw;
+            set
+            {
+                _caseCreateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _caseCreateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CaseCreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CaseCreateTimeDateTimeOffset instead.")]
+        public virtual object CaseCreateTime
+        {
+            get => _caseCreateTime;
+            set
+            {
+                _caseCreateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _caseCreateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="CaseCreateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CaseCreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CaseCreateTimeRaw);
+            set => CaseCreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>The priority of the finding's corresponding case in the external system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("casePriority")]
         public virtual string CasePriority { get; set; }
@@ -18226,14 +18302,14 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
     {
         /// <summary>
         /// The base URI that identifies the network location of the application in which the vulnerability was
-        /// detected. Examples: http://11.22.33.44, http://foo.com, http://11.22.33.44:8080
+        /// detected. For example, `http://example.com`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("baseUri")]
         public virtual string BaseUri { get; set; }
 
         /// <summary>
-        /// The full URI with payload that could be used to reproduce the vulnerability. Example:
-        /// http://11.22.33.44/reflected/parameter/attribute/singlequoted/js?p=aMmYgI6H
+        /// The full URI with payload that could be used to reproduce the vulnerability. For example,
+        /// `http://example.com?p=aMmYgI6H`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullUri")]
         public virtual string FullUri { get; set; }
@@ -18326,15 +18402,15 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
     {
         /// <summary>
         /// The name of the Backup and DR appliance that captures, moves, and manages the lifecycle of backup data. For
-        /// example, “backup-server-57137”.
+        /// example, `backup-server-57137`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appliance")]
         public virtual string Appliance { get; set; }
 
         /// <summary>
         /// The names of Backup and DR applications. An application is a VM, database, or file system on a managed host
-        /// monitored by a backup and recovery appliance. For example, “centos7-01-vol00”, “centos7-01-vol01”,
-        /// “centos7-01-vol02”.
+        /// monitored by a backup and recovery appliance. For example, `centos7-01-vol00`, `centos7-01-vol01`,
+        /// `centos7-01-vol02`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("applications")]
         public virtual System.Collections.Generic.IList<string> Applications { get; set; }
@@ -18381,13 +18457,13 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// <summary>
         /// The name of a Backup and DR template which comprises one or more backup policies. See the [Backup and DR
         /// documentation](https://cloud.google.com/backup-disaster-recovery/docs/concepts/backup-plan#temp) for more
-        /// information. For example, “snap-ov”.
+        /// information. For example, `snap-ov`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupTemplate")]
         public virtual string BackupTemplate { get; set; }
 
         /// <summary>
-        /// The backup type of the Backup and DR image. For example, “Snapshot”, “Remote Snapshot”, “OnVault”.
+        /// The backup type of the Backup and DR image. For example, `Snapshot`, `Remote Snapshot`, `OnVault`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupType")]
         public virtual string BackupType { get; set; }
@@ -18397,14 +18473,14 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// management console. The host can be of type Generic (for example, Compute Engine, SQL Server, Oracle DB, SMB
         /// file system, etc.), vCenter, or an ESX server. See the [Backup and DR documentation on
         /// hosts](https://cloud.google.com/backup-disaster-recovery/docs/configuration/manage-hosts-and-their-applications)
-        /// for more information. For example, “centos7-01”.
+        /// for more information. For example, `centos7-01`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
         public virtual string Host { get; set; }
 
         /// <summary>
         /// The names of Backup and DR policies that are associated with a template and that define when to run a
-        /// backup, how frequently to run a backup, and how long to retain the backup image. For example, “onvaults”.
+        /// backup, how frequently to run a backup, and how long to retain the backup image. For example, `onvaults`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policies")]
         public virtual System.Collections.Generic.IList<string> Policies { get; set; }
@@ -18413,7 +18489,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// The names of Backup and DR advanced policy options of a policy applying to an application. See the [Backup
         /// and DR documentation on policy
         /// options](https://cloud.google.com/backup-disaster-recovery/docs/create-plan/policy-settings). For example,
-        /// “skipofflineappsincongrp, nounmap”.
+        /// `skipofflineappsincongrp, nounmap`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyOptions")]
         public virtual System.Collections.Generic.IList<string> PolicyOptions { get; set; }
@@ -18422,7 +18498,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// The name of the Backup and DR resource profile that specifies the storage media for backups of application
         /// and VM data. See the [Backup and DR documentation on
         /// profiles](https://cloud.google.com/backup-disaster-recovery/docs/concepts/backup-plan#profile). For example,
-        /// “GCP”.
+        /// `GCP`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profile")]
         public virtual string Profile { get; set; }
@@ -18431,7 +18507,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// The name of the Backup and DR storage pool that the backup and recovery appliance is storing data in. The
         /// storage pool could be of type Cloud, Primary, Snapshot, or OnVault. See the [Backup and DR documentation on
         /// storage pools](https://cloud.google.com/backup-disaster-recovery/docs/concepts/storage-pools). For example,
-        /// “DiskPoolOne”.
+        /// `DiskPoolOne`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storagePool")]
         public virtual string StoragePool { get; set; }
@@ -19123,6 +19199,82 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// <summary>References primary/secondary etc assignees in the external system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assignees")]
         public virtual System.Collections.Generic.IList<string> Assignees { get; set; }
+
+        private string _caseCloseTimeRaw;
+
+        private object _caseCloseTime;
+
+        /// <summary>The time when the case was closed, as reported by the external system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("caseCloseTime")]
+        public virtual string CaseCloseTimeRaw
+        {
+            get => _caseCloseTimeRaw;
+            set
+            {
+                _caseCloseTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _caseCloseTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CaseCloseTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CaseCloseTimeDateTimeOffset instead.")]
+        public virtual object CaseCloseTime
+        {
+            get => _caseCloseTime;
+            set
+            {
+                _caseCloseTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _caseCloseTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CaseCloseTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CaseCloseTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CaseCloseTimeRaw);
+            set => CaseCloseTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _caseCreateTimeRaw;
+
+        private object _caseCreateTime;
+
+        /// <summary>The time when the case was created, as reported by the external system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("caseCreateTime")]
+        public virtual string CaseCreateTimeRaw
+        {
+            get => _caseCreateTimeRaw;
+            set
+            {
+                _caseCreateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _caseCreateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CaseCreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CaseCreateTimeDateTimeOffset instead.")]
+        public virtual object CaseCreateTime
+        {
+            get => _caseCreateTime;
+            set
+            {
+                _caseCreateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _caseCreateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="CaseCreateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CaseCreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CaseCreateTimeRaw);
+            set => CaseCreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The priority of the finding's corresponding case in the external system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("casePriority")]
@@ -20218,14 +20370,14 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
     {
         /// <summary>
         /// The detected value that violates the deployed posture, for example, `false` or
-        /// `allowed_values={"projects/22831892”}`.
+        /// `allowed_values={"projects/22831892"}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectedValue")]
         public virtual string DetectedValue { get; set; }
 
         /// <summary>
         /// The value of this field that was configured in a posture, for example, `true` or
-        /// `allowed_values={"projects/29831892”}`.
+        /// `allowed_values={"projects/29831892"}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expectedValue")]
         public virtual string ExpectedValue { get; set; }
@@ -22172,19 +22324,19 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual System.Nullable<int> Version { get; set; }
     }
 
-    /// <summary>The policy field that violates the deployed posture and its expected and and detected values.</summary>
+    /// <summary>The policy field that violates the deployed posture and its expected and detected values.</summary>
     public class PolicyDriftDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// The detected value that violates the deployed posture, for example, `false` or
-        /// `allowed_values={"projects/22831892”}`.
+        /// `allowed_values={"projects/22831892"}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectedValue")]
         public virtual string DetectedValue { get; set; }
 
         /// <summary>
         /// The value of this field that was configured in a posture, for example, `true` or
-        /// `allowed_values={"projects/29831892”}`.
+        /// `allowed_values={"projects/29831892"}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expectedValue")]
         public virtual string ExpectedValue { get; set; }

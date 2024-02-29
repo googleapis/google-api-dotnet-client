@@ -81,6 +81,15 @@
     "updates",
     "all_current"
   ],
+  "Google.Apis.YouTube.v3.PlaylistImagesResource+InsertMediaUpload.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.YouTube.v3.PlaylistImagesResource+InsertMediaUpload.XgafvEnum": [
+    "1",
+    "2"
+  ],
   "Google.Apis.YouTube.v3.SearchResource+ListRequest.ChannelTypeEnum": [
     "channelTypeUnspecified",
     "any",

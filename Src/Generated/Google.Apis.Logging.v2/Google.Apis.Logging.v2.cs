@@ -18586,7 +18586,7 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("progress")]
         public virtual System.Nullable<int> Progress { get; set; }
 
-        /// <summary>CopyLogEntries RPC request.</summary>
+        /// <summary>CopyLogEntries RPC request. This field is deprecated and not used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("request")]
         public virtual CopyLogEntriesRequest Request { get; set; }
 
@@ -21433,6 +21433,10 @@ namespace Google.Apis.Logging.v2.Data
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Required. The visibility status of this query, which determines its ownership.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("visibility")]
+        public virtual string Visibility { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -21440,13 +21444,6 @@ namespace Google.Apis.Logging.v2.Data
     /// <summary>Describes the settings associated with a project, folder, organization, or billing account.</summary>
     public class Settings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Optional. The default analytics mode of an org or folder which is inherited by all newly created child
-        /// project buckets.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("analyticsMode")]
-        public virtual string AnalyticsMode { get; set; }
-
         /// <summary>Optional. Overrides the built-in configuration for _Default sink.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultSinkConfig")]
         public virtual DefaultSinkConfig DefaultSinkConfig { get; set; }

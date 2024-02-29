@@ -3973,7 +3973,10 @@ namespace Google.Apis.Document.v1.Data
     /// <summary>Represents a weak reference to a page element within a document.</summary>
     public class GoogleCloudDocumentaiV1DocumentPageAnchorPageRef : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Identifies the bounding polygon of a layout element on the page.</summary>
+        /// <summary>
+        /// Optional. Identifies the bounding polygon of a layout element on the page. If `layout_type` is set, the
+        /// bounding polygon must be exactly the same to the layout element it's referring to.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
         public virtual GoogleCloudDocumentaiV1BoundingPoly BoundingPoly { get; set; }
 
@@ -4707,6 +4710,10 @@ namespace Google.Apis.Document.v1.Data
     /// <summary>Defines properties that can be part of the entity type.</summary>
     public class GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>User defined name for the property.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
         /// <summary>The name of the property. Follows the same guidelines as the EntityType name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -5456,6 +5463,13 @@ namespace Google.Apis.Document.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ocrConfig")]
         public virtual GoogleCloudDocumentaiV1OcrConfig OcrConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Override the schema of the ProcessorVersion. Will return an Invalid Argument error if this field
+        /// is set when the underlying ProcessorVersion doesn't support schema override.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemaOverride")]
+        public virtual GoogleCloudDocumentaiV1DocumentSchema SchemaOverride { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6491,7 +6505,10 @@ namespace Google.Apis.Document.v1.Data
     /// <summary>Represents a weak reference to a page element within a document.</summary>
     public class GoogleCloudDocumentaiV1beta1DocumentPageAnchorPageRef : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Identifies the bounding polygon of a layout element on the page.</summary>
+        /// <summary>
+        /// Optional. Identifies the bounding polygon of a layout element on the page. If `layout_type` is set, the
+        /// bounding polygon must be exactly the same to the layout element it's referring to.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
         public virtual GoogleCloudDocumentaiV1beta1BoundingPoly BoundingPoly { get; set; }
 
@@ -7921,7 +7938,10 @@ namespace Google.Apis.Document.v1.Data
     /// <summary>Represents a weak reference to a page element within a document.</summary>
     public class GoogleCloudDocumentaiV1beta2DocumentPageAnchorPageRef : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Identifies the bounding polygon of a layout element on the page.</summary>
+        /// <summary>
+        /// Optional. Identifies the bounding polygon of a layout element on the page. If `layout_type` is set, the
+        /// bounding polygon must be exactly the same to the layout element it's referring to.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
         public virtual GoogleCloudDocumentaiV1beta2BoundingPoly BoundingPoly { get; set; }
 

@@ -1694,7 +1694,7 @@ namespace Google.Apis.Backupdr.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("managementUri")]
         public virtual ManagementURI ManagementUri { get; set; }
 
-        /// <summary>Output only. The resource name.</summary>
+        /// <summary>Output only. Identifier. The resource name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
