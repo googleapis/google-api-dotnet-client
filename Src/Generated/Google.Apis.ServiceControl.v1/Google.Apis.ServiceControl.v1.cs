@@ -901,6 +901,13 @@ namespace Google.Apis.ServiceControl.v1.Data
     /// <summary>Contains additional information about the check operation.</summary>
     public class CheckInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The unique id of the api key in the format of "apikey:". This field will be populated when the consumer
+        /// passed to Chemist is an API key and all the API key related validations are successful.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiKeyUid")]
+        public virtual string ApiKeyUid { get; set; }
+
         /// <summary>Consumer info of this check.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consumerInfo")]
         public virtual ConsumerInfo ConsumerInfo { get; set; }

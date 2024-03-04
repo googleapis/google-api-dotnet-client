@@ -2361,6 +2361,21 @@ namespace Google.Apis.CloudComposer.v1beta1
 }
 namespace Google.Apis.CloudComposer.v1beta1.Data
 {
+    /// <summary>The policy for airflow metadata database retention.</summary>
+    public class AirflowMetadataRetentionPolicyConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. How many days data should be retained for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retentionDays")]
+        public virtual System.Nullable<int> RetentionDays { get; set; }
+
+        /// <summary>Optional. Retention can be either enabled or disabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retentionMode")]
+        public virtual string RetentionMode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Allowed IP range with user-provided description.</summary>
     public class AllowedIpRange : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2530,6 +2545,18 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
     /// <summary>The configuration setting for Airflow database data retention mechanism.</summary>
     public class DataRetentionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The number of days describing for how long to store event-based records in airflow database. If
+        /// the retention mechanism is enabled this value must be a positive integer otherwise, value should be set to
+        /// 0.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("airflowDatabaseRetentionDays")]
+        public virtual System.Nullable<int> AirflowDatabaseRetentionDays { get; set; }
+
+        /// <summary>Optional. The retention policy for airflow metadata database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("airflowMetadataRetentionConfig")]
+        public virtual AirflowMetadataRetentionPolicyConfig AirflowMetadataRetentionConfig { get; set; }
+
         /// <summary>Optional. The configuration settings for task logs retention</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taskLogsRetentionConfig")]
         public virtual TaskLogsRetentionConfig TaskLogsRetentionConfig { get; set; }

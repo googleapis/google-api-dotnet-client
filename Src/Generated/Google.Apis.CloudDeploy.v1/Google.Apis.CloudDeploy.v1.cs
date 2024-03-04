@@ -5371,6 +5371,10 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("advanceAutomationRuns")]
         public virtual System.Collections.Generic.IList<string> AdvanceAutomationRuns { get; set; }
 
+        /// <summary>Output only. The current AutomationRun repairing the rollout.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currentRepairAutomationRun")]
+        public virtual string CurrentRepairAutomationRun { get; set; }
+
         /// <summary>Output only. The ID of the AutomationRun initiated by a promote release rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promoteAutomationRun")]
         public virtual string PromoteAutomationRun { get; set; }

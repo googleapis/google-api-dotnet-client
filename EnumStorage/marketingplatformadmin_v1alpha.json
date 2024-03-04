@@ -1,0 +1,11 @@
+{
+  "Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.GoogleMarketingPlatformAdminAPIBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.GoogleMarketingPlatformAdminAPI.v1alpha.GoogleMarketingPlatformAdminAPIBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

@@ -2549,7 +2549,11 @@ namespace Google.Apis.CloudTasks.v2beta3.Data
     /// <summary>Wraps the Header object.</summary>
     public class HeaderOverride : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>header embodying a key and a value.</summary>
+        /// <summary>
+        /// Header embodying a key and a value. Do not put business sensitive or personally identifying data in the HTTP
+        /// Header Override Configuration or other similar fields in accordance with Section 12 (Resource Fields) of the
+        /// [Service Specific Terms](https://cloud.google.com/terms/service-terms).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("header")]
         public virtual Header Header { get; set; }
 
@@ -2681,7 +2685,10 @@ namespace Google.Apis.CloudTasks.v2beta3.Data
         /// example,`Content-Type` can be set to `"application/octet-stream"` or `"application/json"`. The default value
         /// is set to `"application/json"`. * User-Agent: This will be set to `"Google-Cloud-Tasks"`. Headers which can
         /// have multiple values (according to RFC2616) can be specified using comma-separated values. The size of the
-        /// headers must be less than 80KB. Queue-level headers to override headers of all the tasks in the queue.
+        /// headers must be less than 80KB. Queue-level headers to override headers of all the tasks in the queue. Do
+        /// not put business sensitive or personally identifying data in the HTTP Header Override Configuration or other
+        /// similar fields in accordance with Section 12 (Resource Fields) of the [Service Specific
+        /// Terms](https://cloud.google.com/terms/service-terms).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headerOverrides")]
         public virtual System.Collections.Generic.IList<HeaderOverride> HeaderOverrides { get; set; }

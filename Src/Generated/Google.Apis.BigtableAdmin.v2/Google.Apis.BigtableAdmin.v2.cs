@@ -4444,13 +4444,6 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("consistencyToken")]
         public virtual string ConsistencyToken { get; set; }
 
-        /// <summary>
-        /// Checks that reads using an app profile with `StandardIsolation` can see all writes committed before the
-        /// token was created, even if the read and write target different clusters.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("standardReadRemoteWrites")]
-        public virtual StandardReadRemoteWrites StandardReadRemoteWrites { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6199,15 +6192,6 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("priority")]
         public virtual string Priority { get; set; }
 
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Checks that all writes before the consistency token was generated is replicated in every cluster and readable.
-    /// </summary>
-    public class StandardReadRemoteWrites : Google.Apis.Requests.IDirectResponseSchema
-    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

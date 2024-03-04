@@ -290,7 +290,7 @@ namespace Google.Apis.DLP.v2
 
         /// <summary>
         /// Returns a list of the sensitive information types that DLP API supports. See
-        /// https://cloud.google.com/dlp/docs/infotypes-reference to learn more.
+        /// https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference to learn more.
         /// </summary>
         public virtual ListRequest List()
         {
@@ -299,7 +299,7 @@ namespace Google.Apis.DLP.v2
 
         /// <summary>
         /// Returns a list of the sensitive information types that DLP API supports. See
-        /// https://cloud.google.com/dlp/docs/infotypes-reference to learn more.
+        /// https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference to learn more.
         /// </summary>
         public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListInfoTypesResponse>
         {
@@ -415,7 +415,7 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>
             /// Returns a list of the sensitive information types that DLP API supports. See
-            /// https://cloud.google.com/dlp/docs/infotypes-reference to learn more.
+            /// https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference to learn more.
             /// </summary>
             /// <param name="parent">
             /// The parent resource name. The format of this value is as follows: locations/ LOCATION_ID
@@ -427,7 +427,7 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>
             /// Returns a list of the sensitive information types that DLP API supports. See
-            /// https://cloud.google.com/dlp/docs/infotypes-reference to learn more.
+            /// https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference to learn more.
             /// </summary>
             public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListInfoTypesResponse>
             {
@@ -549,15 +549,16 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>
             /// Creates a DeidentifyTemplate for reusing frequently used configuration for de-identifying content,
-            /// images, and storage. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
+            /// images, and storage. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid
+            /// to learn more.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. Parent resource name. The format of this value varies depending on the scope of the request
             /// (project or organization) and whether you have [specified a processing
-            /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location specified:
-            /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified (defaults to
-            /// global): `projects/`PROJECT_ID + Organizations scope, location specified:
+            /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
+            /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location
+            /// specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
             /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified (defaults to
             /// global): `organizations/`ORG_ID The following example `parent` string specifies a parent project with
             /// the identifier `example-project`, and specifies the `europe-west3` location for processing data:
@@ -570,7 +571,8 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>
             /// Creates a DeidentifyTemplate for reusing frequently used configuration for de-identifying content,
-            /// images, and storage. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
+            /// images, and storage. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid
+            /// to learn more.
             /// </summary>
             public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyTemplate>
             {
@@ -585,13 +587,13 @@ namespace Google.Apis.DLP.v2
                 /// <summary>
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
                 /// request (project or organization) and whether you have [specified a processing
-                /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
-                /// processing data: parent=projects/example-project/locations/europe-west3
+                /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
+                /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
+                /// location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location
+                /// specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location
+                /// specified (defaults to global): `organizations/`ORG_ID The following example `parent` string
+                /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
+                /// location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -627,8 +629,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Deletes a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-            /// more.
+            /// Deletes a DeidentifyTemplate. See
+            /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more.
             /// </summary>
             /// <param name="name">
             /// Required. Resource name of the organization and deidentify template to be deleted, for example
@@ -641,8 +643,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Deletes a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-            /// more.
+            /// Deletes a DeidentifyTemplate. See
+            /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more.
             /// </summary>
             public class DeleteRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GoogleProtobufEmpty>
             {
@@ -686,7 +688,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Gets a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
+            /// Gets a DeidentifyTemplate. See
+            /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more.
             /// </summary>
             /// <param name="name">
             /// Required. Resource name of the organization and deidentify template to be read, for example
@@ -699,7 +702,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Gets a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
+            /// Gets a DeidentifyTemplate. See
+            /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more.
             /// </summary>
             public class GetRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyTemplate>
             {
@@ -743,14 +747,15 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Lists DeidentifyTemplates. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
+            /// Lists DeidentifyTemplates. See
+            /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more.
             /// </summary>
             /// <param name="parent">
             /// Required. Parent resource name. The format of this value varies depending on the scope of the request
             /// (project or organization) and whether you have [specified a processing
-            /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location specified:
-            /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified (defaults to
-            /// global): `projects/`PROJECT_ID + Organizations scope, location specified:
+            /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
+            /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location
+            /// specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
             /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified (defaults to
             /// global): `organizations/`ORG_ID The following example `parent` string specifies a parent project with
             /// the identifier `example-project`, and specifies the `europe-west3` location for processing data:
@@ -762,7 +767,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Lists DeidentifyTemplates. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
+            /// Lists DeidentifyTemplates. See
+            /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more.
             /// </summary>
             public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListDeidentifyTemplatesResponse>
             {
@@ -776,13 +782,13 @@ namespace Google.Apis.DLP.v2
                 /// <summary>
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
                 /// request (project or organization) and whether you have [specified a processing
-                /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
-                /// processing data: parent=projects/example-project/locations/europe-west3
+                /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
+                /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
+                /// location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location
+                /// specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location
+                /// specified (defaults to global): `organizations/`ORG_ID The following example `parent` string
+                /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
+                /// location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -872,8 +878,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Updates the DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-            /// more.
+            /// Updates the DeidentifyTemplate. See
+            /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -887,8 +893,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Updates the DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-            /// more.
+            /// Updates the DeidentifyTemplate. See
+            /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more.
             /// </summary>
             public class PatchRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyTemplate>
             {
@@ -958,15 +964,15 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>
             /// Creates an InspectTemplate for reusing frequently used configuration for inspecting content, images, and
-            /// storage. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+            /// storage. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. Parent resource name. The format of this value varies depending on the scope of the request
             /// (project or organization) and whether you have [specified a processing
-            /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location specified:
-            /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified (defaults to
-            /// global): `projects/`PROJECT_ID + Organizations scope, location specified:
+            /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
+            /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location
+            /// specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
             /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified (defaults to
             /// global): `organizations/`ORG_ID The following example `parent` string specifies a parent project with
             /// the identifier `example-project`, and specifies the `europe-west3` location for processing data:
@@ -979,7 +985,7 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>
             /// Creates an InspectTemplate for reusing frequently used configuration for inspecting content, images, and
-            /// storage. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+            /// storage. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more.
             /// </summary>
             public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectTemplate>
             {
@@ -994,13 +1000,13 @@ namespace Google.Apis.DLP.v2
                 /// <summary>
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
                 /// request (project or organization) and whether you have [specified a processing
-                /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
-                /// processing data: parent=projects/example-project/locations/europe-west3
+                /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
+                /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
+                /// location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location
+                /// specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location
+                /// specified (defaults to global): `organizations/`ORG_ID The following example `parent` string
+                /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
+                /// location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -1036,7 +1042,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Deletes an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+            /// Deletes an InspectTemplate. See
+            /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more.
             /// </summary>
             /// <param name="name">
             /// Required. Resource name of the organization and inspectTemplate to be deleted, for example
@@ -1048,7 +1055,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Deletes an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+            /// Deletes an InspectTemplate. See
+            /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more.
             /// </summary>
             public class DeleteRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GoogleProtobufEmpty>
             {
@@ -1092,7 +1100,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Gets an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+            /// Gets an InspectTemplate. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates
+            /// to learn more.
             /// </summary>
             /// <param name="name">
             /// Required. Resource name of the organization and inspectTemplate to be read, for example
@@ -1104,7 +1113,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Gets an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+            /// Gets an InspectTemplate. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates
+            /// to learn more.
             /// </summary>
             public class GetRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectTemplate>
             {
@@ -1148,14 +1158,15 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Lists InspectTemplates. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+            /// Lists InspectTemplates. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates
+            /// to learn more.
             /// </summary>
             /// <param name="parent">
             /// Required. Parent resource name. The format of this value varies depending on the scope of the request
             /// (project or organization) and whether you have [specified a processing
-            /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location specified:
-            /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified (defaults to
-            /// global): `projects/`PROJECT_ID + Organizations scope, location specified:
+            /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
+            /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location
+            /// specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
             /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified (defaults to
             /// global): `organizations/`ORG_ID The following example `parent` string specifies a parent project with
             /// the identifier `example-project`, and specifies the `europe-west3` location for processing data:
@@ -1167,7 +1178,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Lists InspectTemplates. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+            /// Lists InspectTemplates. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates
+            /// to learn more.
             /// </summary>
             public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListInspectTemplatesResponse>
             {
@@ -1181,13 +1193,13 @@ namespace Google.Apis.DLP.v2
                 /// <summary>
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
                 /// request (project or organization) and whether you have [specified a processing
-                /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
-                /// processing data: parent=projects/example-project/locations/europe-west3
+                /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
+                /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
+                /// location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location
+                /// specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location
+                /// specified (defaults to global): `organizations/`ORG_ID The following example `parent` string
+                /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
+                /// location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -1277,7 +1289,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Updates the InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+            /// Updates the InspectTemplate. See
+            /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -1290,7 +1303,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Updates the InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+            /// Updates the InspectTemplate. See
+            /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more.
             /// </summary>
             public class PatchRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectTemplate>
             {
@@ -1356,12 +1370,209 @@ namespace Google.Apis.DLP.v2
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                ColumnDataProfiles = new ColumnDataProfilesResource(service);
                 DeidentifyTemplates = new DeidentifyTemplatesResource(service);
                 DiscoveryConfigs = new DiscoveryConfigsResource(service);
                 DlpJobs = new DlpJobsResource(service);
                 InspectTemplates = new InspectTemplatesResource(service);
                 JobTriggers = new JobTriggersResource(service);
+                ProjectDataProfiles = new ProjectDataProfilesResource(service);
                 StoredInfoTypes = new StoredInfoTypesResource(service);
+                TableDataProfiles = new TableDataProfilesResource(service);
+            }
+
+            /// <summary>Gets the ColumnDataProfiles resource.</summary>
+            public virtual ColumnDataProfilesResource ColumnDataProfiles { get; }
+
+            /// <summary>The "columnDataProfiles" collection of methods.</summary>
+            public class ColumnDataProfilesResource
+            {
+                private const string Resource = "columnDataProfiles";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ColumnDataProfilesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Gets a column data profile.</summary>
+                /// <param name="name">
+                /// Required. Resource name, for example `organizations/12345/locations/us/columnDataProfiles/53234423`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets a column data profile.</summary>
+                public class GetRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ColumnDataProfile>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name, for example
+                    /// `organizations/12345/locations/us/columnDataProfiles/53234423`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/columnDataProfiles/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists data profiles for an organization.</summary>
+                /// <param name="parent">
+                /// Required. Resource name of the organization or project, for example
+                /// `organizations/433245324/locations/europe` or projects/project-id/locations/asia.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists data profiles for an organization.</summary>
+                public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListColumnDataProfilesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name of the organization or project, for example
+                    /// `organizations/433245324/locations/europe` or projects/project-id/locations/asia.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Allows filtering. Supported syntax: * Filter expressions are made up of one or more
+                    /// restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of
+                    /// restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator}
+                    /// {value}`. * Supported fields/values: - `table_data_profile_name` - The name of the related table
+                    /// data profile. - `project_id` - The Google Cloud project ID. (REQUIRED) - `dataset_id` - The
+                    /// BigQuery dataset ID. (REQUIRED) - `table_id` - The BigQuery table ID. (REQUIRED) - `field_id` -
+                    /// The ID of the BigQuery field. - `info_type` - The infotype detected in the resource. -
+                    /// `sensitivity_level` - HIGH|MEDIUM|LOW - `data_risk_level`: How much risk is associated with this
+                    /// data. - `status_code` - an RPC status code as defined in
+                    /// https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto * The operator must
+                    /// be `=` for project_id, dataset_id, and table_id. Other filters also support `!=`. Examples: *
+                    /// project_id = 12345 AND status_code = 1 * project_id = 12345 AND sensitivity_level = HIGH *
+                    /// project_id = 12345 AND info_type = STREET_ADDRESS The length of this field should be no more
+                    /// than 500 characters.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
+                    /// case insensitive. The default sorting order is ascending. Redundant space characters are
+                    /// insignificant. Only one order field at a time is allowed. Examples: * `project_id asc` *
+                    /// `table_id` * `sensitivity_level desc` Supported fields are: - `project_id`: The Google Cloud
+                    /// project ID. - `dataset_id`: The ID of a BigQuery dataset. - `table_id`: The ID of a BigQuery
+                    /// table. - `sensitivity_level`: How sensitive the data in a column is, at most. -
+                    /// `data_risk_level`: How much risk is associated with this data. - `profile_last_generated`: When
+                    /// the profile was last updated in epoch seconds.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Size of the page. This value can be limited by the server. If zero, server returns a page of max
+                    /// size 100.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Page token to continue retrieval.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/columnDataProfiles";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the DeidentifyTemplates resource.</summary>
@@ -1383,19 +1594,20 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// Creates a DeidentifyTemplate for reusing frequently used configuration for de-identifying content,
-                /// images, and storage. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
+                /// images, and storage. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
                 /// request (project or organization) and whether you have [specified a processing
-                /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
-                /// processing data: parent=projects/example-project/locations/europe-west3
+                /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
+                /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
+                /// location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location
+                /// specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location
+                /// specified (defaults to global): `organizations/`ORG_ID The following example `parent` string
+                /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
+                /// location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest body, string parent)
                 {
@@ -1404,7 +1616,8 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// Creates a DeidentifyTemplate for reusing frequently used configuration for de-identifying content,
-                /// images, and storage. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
+                /// images, and storage. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more.
                 /// </summary>
                 public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyTemplate>
                 {
@@ -1419,13 +1632,14 @@ namespace Google.Apis.DLP.v2
                     /// <summary>
                     /// Required. Parent resource name. The format of this value varies depending on the scope of the
                     /// request (project or organization) and whether you have [specified a processing
-                    /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                    /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                    /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                    /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                    /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                    /// parent project with the identifier `example-project`, and specifies the `europe-west3` location
-                    /// for processing data: parent=projects/example-project/locations/europe-west3
+                    /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
+                    /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects
+                    /// scope, no location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope,
+                    /// location specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
+                    /// location specified (defaults to global): `organizations/`ORG_ID The following example `parent`
+                    /// string specifies a parent project with the identifier `example-project`, and specifies the
+                    /// `europe-west3` location for processing data:
+                    /// parent=projects/example-project/locations/europe-west3
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1461,8 +1675,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Deletes a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-                /// more.
+                /// Deletes a DeidentifyTemplate. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more.
                 /// </summary>
                 /// <param name="name">
                 /// Required. Resource name of the organization and deidentify template to be deleted, for example
@@ -1475,8 +1689,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Deletes a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-                /// more.
+                /// Deletes a DeidentifyTemplate. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more.
                 /// </summary>
                 public class DeleteRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GoogleProtobufEmpty>
                 {
@@ -1520,8 +1734,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Gets a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-                /// more.
+                /// Gets a DeidentifyTemplate. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more.
                 /// </summary>
                 /// <param name="name">
                 /// Required. Resource name of the organization and deidentify template to be read, for example
@@ -1534,8 +1748,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Gets a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-                /// more.
+                /// Gets a DeidentifyTemplate. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more.
                 /// </summary>
                 public class GetRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyTemplate>
                 {
@@ -1579,19 +1793,19 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Lists DeidentifyTemplates. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-                /// more.
+                /// Lists DeidentifyTemplates. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more.
                 /// </summary>
                 /// <param name="parent">
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
                 /// request (project or organization) and whether you have [specified a processing
-                /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
-                /// processing data: parent=projects/example-project/locations/europe-west3
+                /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
+                /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
+                /// location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location
+                /// specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location
+                /// specified (defaults to global): `organizations/`ORG_ID The following example `parent` string
+                /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
+                /// location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -1599,8 +1813,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Lists DeidentifyTemplates. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-                /// more.
+                /// Lists DeidentifyTemplates. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more.
                 /// </summary>
                 public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListDeidentifyTemplatesResponse>
                 {
@@ -1614,13 +1828,14 @@ namespace Google.Apis.DLP.v2
                     /// <summary>
                     /// Required. Parent resource name. The format of this value varies depending on the scope of the
                     /// request (project or organization) and whether you have [specified a processing
-                    /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                    /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                    /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                    /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                    /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                    /// parent project with the identifier `example-project`, and specifies the `europe-west3` location
-                    /// for processing data: parent=projects/example-project/locations/europe-west3
+                    /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
+                    /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects
+                    /// scope, no location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope,
+                    /// location specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
+                    /// location specified (defaults to global): `organizations/`ORG_ID The following example `parent`
+                    /// string specifies a parent project with the identifier `example-project`, and specifies the
+                    /// `europe-west3` location for processing data:
+                    /// parent=projects/example-project/locations/europe-west3
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1710,8 +1925,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Updates the DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to
-                /// learn more.
+                /// Updates the DeidentifyTemplate. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -1725,8 +1940,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Updates the DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to
-                /// learn more.
+                /// Updates the DeidentifyTemplate. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more.
                 /// </summary>
                 public class PatchRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyTemplate>
                 {
@@ -2138,12 +2353,13 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// Lists DlpJobs that match the specified filter in the request. See
-                /// https://cloud.google.com/dlp/docs/inspecting-storage and
-                /// https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
+                /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage and
+                /// https://cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis to learn more.
                 /// </summary>
                 /// <param name="parent">
                 /// Required. Parent resource name. The format of this value varies depending on whether you have
-                /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location): + Projects
+                /// [specified a processing
+                /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
                 /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
                 /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
                 /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
@@ -2156,8 +2372,8 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// Lists DlpJobs that match the specified filter in the request. See
-                /// https://cloud.google.com/dlp/docs/inspecting-storage and
-                /// https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
+                /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage and
+                /// https://cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis to learn more.
                 /// </summary>
                 public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListDlpJobsResponse>
                 {
@@ -2170,7 +2386,8 @@ namespace Google.Apis.DLP.v2
 
                     /// <summary>
                     /// Required. Parent resource name. The format of this value varies depending on whether you have
-                    /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location): +
+                    /// [specified a processing
+                    /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
                     /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects
                     /// scope, no location specified (defaults to global): `projects/`PROJECT_ID The following example
                     /// `parent` string specifies a parent project with the identifier `example-project`, and specifies
@@ -2333,19 +2550,20 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// Creates an InspectTemplate for reusing frequently used configuration for inspecting content, images,
-                /// and storage. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+                /// and storage. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn
+                /// more.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
                 /// request (project or organization) and whether you have [specified a processing
-                /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
-                /// processing data: parent=projects/example-project/locations/europe-west3
+                /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
+                /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
+                /// location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location
+                /// specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location
+                /// specified (defaults to global): `organizations/`ORG_ID The following example `parent` string
+                /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
+                /// location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateInspectTemplateRequest body, string parent)
                 {
@@ -2354,7 +2572,8 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// Creates an InspectTemplate for reusing frequently used configuration for inspecting content, images,
-                /// and storage. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+                /// and storage. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn
+                /// more.
                 /// </summary>
                 public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectTemplate>
                 {
@@ -2369,13 +2588,14 @@ namespace Google.Apis.DLP.v2
                     /// <summary>
                     /// Required. Parent resource name. The format of this value varies depending on the scope of the
                     /// request (project or organization) and whether you have [specified a processing
-                    /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                    /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                    /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                    /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                    /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                    /// parent project with the identifier `example-project`, and specifies the `europe-west3` location
-                    /// for processing data: parent=projects/example-project/locations/europe-west3
+                    /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
+                    /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects
+                    /// scope, no location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope,
+                    /// location specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
+                    /// location specified (defaults to global): `organizations/`ORG_ID The following example `parent`
+                    /// string specifies a parent project with the identifier `example-project`, and specifies the
+                    /// `europe-west3` location for processing data:
+                    /// parent=projects/example-project/locations/europe-west3
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -2411,7 +2631,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Deletes an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+                /// Deletes an InspectTemplate. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more.
                 /// </summary>
                 /// <param name="name">
                 /// Required. Resource name of the organization and inspectTemplate to be deleted, for example
@@ -2424,7 +2645,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Deletes an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+                /// Deletes an InspectTemplate. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more.
                 /// </summary>
                 public class DeleteRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GoogleProtobufEmpty>
                 {
@@ -2468,7 +2690,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Gets an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+                /// Gets an InspectTemplate. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more.
                 /// </summary>
                 /// <param name="name">
                 /// Required. Resource name of the organization and inspectTemplate to be read, for example
@@ -2481,7 +2704,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Gets an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+                /// Gets an InspectTemplate. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more.
                 /// </summary>
                 public class GetRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectTemplate>
                 {
@@ -2525,18 +2749,19 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Lists InspectTemplates. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+                /// Lists InspectTemplates. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more.
                 /// </summary>
                 /// <param name="parent">
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
                 /// request (project or organization) and whether you have [specified a processing
-                /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
-                /// processing data: parent=projects/example-project/locations/europe-west3
+                /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
+                /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
+                /// location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location
+                /// specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location
+                /// specified (defaults to global): `organizations/`ORG_ID The following example `parent` string
+                /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
+                /// location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -2544,7 +2769,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Lists InspectTemplates. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+                /// Lists InspectTemplates. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more.
                 /// </summary>
                 public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListInspectTemplatesResponse>
                 {
@@ -2558,13 +2784,14 @@ namespace Google.Apis.DLP.v2
                     /// <summary>
                     /// Required. Parent resource name. The format of this value varies depending on the scope of the
                     /// request (project or organization) and whether you have [specified a processing
-                    /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                    /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                    /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                    /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                    /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                    /// parent project with the identifier `example-project`, and specifies the `europe-west3` location
-                    /// for processing data: parent=projects/example-project/locations/europe-west3
+                    /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
+                    /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects
+                    /// scope, no location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope,
+                    /// location specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
+                    /// location specified (defaults to global): `organizations/`ORG_ID The following example `parent`
+                    /// string specifies a parent project with the identifier `example-project`, and specifies the
+                    /// `europe-west3` location for processing data:
+                    /// parent=projects/example-project/locations/europe-west3
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -2654,7 +2881,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Updates the InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+                /// Updates the InspectTemplate. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -2668,7 +2896,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Updates the InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+                /// Updates the InspectTemplate. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more.
                 /// </summary>
                 public class PatchRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectTemplate>
                 {
@@ -2738,12 +2967,14 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// Creates a job trigger to run DLP actions such as scanning storage for sensitive information on a set
-                /// schedule. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+                /// schedule. See https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to learn
+                /// more.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. Parent resource name. The format of this value varies depending on whether you have
-                /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location): + Projects
+                /// [specified a processing
+                /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
                 /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
                 /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
                 /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
@@ -2756,7 +2987,8 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// Creates a job trigger to run DLP actions such as scanning storage for sensitive information on a set
-                /// schedule. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+                /// schedule. See https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to learn
+                /// more.
                 /// </summary>
                 public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2JobTrigger>
                 {
@@ -2770,7 +3002,8 @@ namespace Google.Apis.DLP.v2
 
                     /// <summary>
                     /// Required. Parent resource name. The format of this value varies depending on whether you have
-                    /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location): +
+                    /// [specified a processing
+                    /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
                     /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects
                     /// scope, no location specified (defaults to global): `projects/`PROJECT_ID The following example
                     /// `parent` string specifies a parent project with the identifier `example-project`, and specifies
@@ -2811,7 +3044,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Deletes a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+                /// Deletes a job trigger. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to learn more.
                 /// </summary>
                 /// <param name="name">
                 /// Required. Resource name of the project and the triggeredJob, for example
@@ -2823,7 +3057,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Deletes a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+                /// Deletes a job trigger. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to learn more.
                 /// </summary>
                 public class DeleteRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GoogleProtobufEmpty>
                 {
@@ -2866,7 +3101,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Gets a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+                /// Gets a job trigger. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to learn more.
                 /// </summary>
                 /// <param name="name">
                 /// Required. Resource name of the project and the triggeredJob, for example
@@ -2878,7 +3114,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Gets a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+                /// Gets a job trigger. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to learn more.
                 /// </summary>
                 public class GetRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2JobTrigger>
                 {
@@ -2921,11 +3158,13 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Lists job triggers. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+                /// Lists job triggers. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to learn more.
                 /// </summary>
                 /// <param name="parent">
                 /// Required. Parent resource name. The format of this value varies depending on whether you have
-                /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location): + Projects
+                /// [specified a processing
+                /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
                 /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
                 /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
                 /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
@@ -2937,7 +3176,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Lists job triggers. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+                /// Lists job triggers. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to learn more.
                 /// </summary>
                 public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListJobTriggersResponse>
                 {
@@ -2950,7 +3190,8 @@ namespace Google.Apis.DLP.v2
 
                     /// <summary>
                     /// Required. Parent resource name. The format of this value varies depending on whether you have
-                    /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location): +
+                    /// [specified a processing
+                    /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
                     /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects
                     /// scope, no location specified (defaults to global): `projects/`PROJECT_ID The following example
                     /// `parent` string specifies a parent project with the identifier `example-project`, and specifies
@@ -3096,7 +3337,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Updates a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+                /// Updates a job trigger. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to learn more.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -3109,7 +3351,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Updates a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+                /// Updates a job trigger. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to learn more.
                 /// </summary>
                 public class PatchRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2JobTrigger>
                 {
@@ -3159,6 +3402,188 @@ namespace Google.Apis.DLP.v2
                 }
             }
 
+            /// <summary>Gets the ProjectDataProfiles resource.</summary>
+            public virtual ProjectDataProfilesResource ProjectDataProfiles { get; }
+
+            /// <summary>The "projectDataProfiles" collection of methods.</summary>
+            public class ProjectDataProfilesResource
+            {
+                private const string Resource = "projectDataProfiles";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ProjectDataProfilesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Gets a project data profile.</summary>
+                /// <param name="name">
+                /// Required. Resource name, for example
+                /// `organizations/12345/locations/us/projectDataProfiles/53234423`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets a project data profile.</summary>
+                public class GetRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ProjectDataProfile>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name, for example
+                    /// `organizations/12345/locations/us/projectDataProfiles/53234423`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/projectDataProfiles/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists data profiles for an organization.</summary>
+                /// <param name="parent">Required. organizations/{org_id}/locations/{loc_id}</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists data profiles for an organization.</summary>
+                public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListProjectDataProfilesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. organizations/{org_id}/locations/{loc_id}</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Allows filtering. Supported syntax: * Filter expressions are made up of one or more
+                    /// restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of
+                    /// restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator}
+                    /// {value}`. * Supported fields/values: - `sensitivity_level` - HIGH|MODERATE|LOW -
+                    /// `data_risk_level` - HIGH|MODERATE|LOW - `status_code` - an RPC status code as defined in
+                    /// https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto * The operator must
+                    /// be `=` or `!=`. Examples: * project_id = 12345 AND status_code = 1 * project_id = 12345 AND
+                    /// sensitivity_level = HIGH The length of this field should be no more than 500 characters.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
+                    /// case insensitive. The default sorting order is ascending. Redundant space characters are
+                    /// insignificant. Only one order field at a time is allowed. Examples: * `project_id` *
+                    /// `sensitivity_level desc` Supported fields are: - `project_id`: GCP project ID -
+                    /// `sensitivity_level`: How sensitive the data in a project is, at most. - `data_risk_level`: How
+                    /// much risk is associated with this data. - `profile_last_generated`: When the profile was last
+                    /// updated in epoch seconds.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Size of the page. This value can be limited by the server. If zero, server returns a page of max
+                    /// size 100.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Page token to continue retrieval.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/projectDataProfiles";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the StoredInfoTypes resource.</summary>
             public virtual StoredInfoTypesResource StoredInfoTypes { get; }
 
@@ -3178,19 +3603,19 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// Creates a pre-built stored infoType to be used for inspection. See
-                /// https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
                 /// request (project or organization) and whether you have [specified a processing
-                /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
-                /// processing data: parent=projects/example-project/locations/europe-west3
+                /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
+                /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
+                /// location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location
+                /// specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location
+                /// specified (defaults to global): `organizations/`ORG_ID The following example `parent` string
+                /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
+                /// location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateStoredInfoTypeRequest body, string parent)
                 {
@@ -3199,7 +3624,7 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// Creates a pre-built stored infoType to be used for inspection. See
-                /// https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more.
                 /// </summary>
                 public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2StoredInfoType>
                 {
@@ -3214,13 +3639,14 @@ namespace Google.Apis.DLP.v2
                     /// <summary>
                     /// Required. Parent resource name. The format of this value varies depending on the scope of the
                     /// request (project or organization) and whether you have [specified a processing
-                    /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                    /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                    /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                    /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                    /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                    /// parent project with the identifier `example-project`, and specifies the `europe-west3` location
-                    /// for processing data: parent=projects/example-project/locations/europe-west3
+                    /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
+                    /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects
+                    /// scope, no location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope,
+                    /// location specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
+                    /// location specified (defaults to global): `organizations/`ORG_ID The following example `parent`
+                    /// string specifies a parent project with the identifier `example-project`, and specifies the
+                    /// `europe-west3` location for processing data:
+                    /// parent=projects/example-project/locations/europe-west3
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -3256,8 +3682,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Deletes a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn
-                /// more.
+                /// Deletes a stored infoType. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more.
                 /// </summary>
                 /// <param name="name">
                 /// Required. Resource name of the organization and storedInfoType to be deleted, for example
@@ -3270,8 +3696,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Deletes a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn
-                /// more.
+                /// Deletes a stored infoType. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more.
                 /// </summary>
                 public class DeleteRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GoogleProtobufEmpty>
                 {
@@ -3315,8 +3741,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Gets a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn
-                /// more.
+                /// Gets a stored infoType. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more.
                 /// </summary>
                 /// <param name="name">
                 /// Required. Resource name of the organization and storedInfoType to be read, for example
@@ -3329,8 +3755,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Gets a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn
-                /// more.
+                /// Gets a stored infoType. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more.
                 /// </summary>
                 public class GetRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2StoredInfoType>
                 {
@@ -3374,17 +3800,17 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Lists stored infoTypes. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn
-                /// more.
+                /// Lists stored infoTypes. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more.
                 /// </summary>
                 /// <param name="parent">
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
                 /// request (project or organization) and whether you have [specified a processing
-                /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID The following example `parent` string specifies a parent
-                /// project with the identifier `example-project`, and specifies the `europe-west3` location for
-                /// processing data: parent=projects/example-project/locations/europe-west3
+                /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
+                /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
+                /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
+                /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
+                /// location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -3392,8 +3818,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Lists stored infoTypes. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn
-                /// more.
+                /// Lists stored infoTypes. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more.
                 /// </summary>
                 public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListStoredInfoTypesResponse>
                 {
@@ -3407,11 +3833,12 @@ namespace Google.Apis.DLP.v2
                     /// <summary>
                     /// Required. Parent resource name. The format of this value varies depending on the scope of the
                     /// request (project or organization) and whether you have [specified a processing
-                    /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                    /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                    /// (defaults to global): `projects/`PROJECT_ID The following example `parent` string specifies a
-                    /// parent project with the identifier `example-project`, and specifies the `europe-west3` location
-                    /// for processing data: parent=projects/example-project/locations/europe-west3
+                    /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
+                    /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects
+                    /// scope, no location specified (defaults to global): `projects/`PROJECT_ID The following example
+                    /// `parent` string specifies a parent project with the identifier `example-project`, and specifies
+                    /// the `europe-west3` location for processing data:
+                    /// parent=projects/example-project/locations/europe-west3
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -3502,8 +3929,8 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// Updates the stored infoType by creating a new version. The existing version will continue to be used
-                /// until the new version is ready. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
-                /// learn more.
+                /// until the new version is ready. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -3518,8 +3945,8 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// Updates the stored infoType by creating a new version. The existing version will continue to be used
-                /// until the new version is ready. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
-                /// learn more.
+                /// until the new version is ready. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more.
                 /// </summary>
                 public class PatchRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2StoredInfoType>
                 {
@@ -3569,6 +3996,199 @@ namespace Google.Apis.DLP.v2
                     }
                 }
             }
+
+            /// <summary>Gets the TableDataProfiles resource.</summary>
+            public virtual TableDataProfilesResource TableDataProfiles { get; }
+
+            /// <summary>The "tableDataProfiles" collection of methods.</summary>
+            public class TableDataProfilesResource
+            {
+                private const string Resource = "tableDataProfiles";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public TableDataProfilesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Gets a table data profile.</summary>
+                /// <param name="name">
+                /// Required. Resource name, for example `organizations/12345/locations/us/tableDataProfiles/53234423`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets a table data profile.</summary>
+                public class GetRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2TableDataProfile>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name, for example
+                    /// `organizations/12345/locations/us/tableDataProfiles/53234423`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/tableDataProfiles/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists data profiles for an organization.</summary>
+                /// <param name="parent">
+                /// Required. Resource name of the organization or project, for example
+                /// `organizations/433245324/locations/europe` or `projects/project-id/locations/asia`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists data profiles for an organization.</summary>
+                public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListTableDataProfilesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name of the organization or project, for example
+                    /// `organizations/433245324/locations/europe` or `projects/project-id/locations/asia`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Allows filtering. Supported syntax: * Filter expressions are made up of one or more
+                    /// restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of
+                    /// restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator}
+                    /// {value}`. * Supported fields/values: - `project_id` - The GCP project ID. - `dataset_id` - The
+                    /// BigQuery dataset ID. - `table_id` - The ID of the BigQuery table. - `sensitivity_level` -
+                    /// HIGH|MODERATE|LOW - `data_risk_level` - HIGH|MODERATE|LOW - `resource_visibility`:
+                    /// PUBLIC|RESTRICTED - `status_code` - an RPC status code as defined in
+                    /// https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto * The operator must
+                    /// be `=` or `!=`. Examples: * project_id = 12345 AND status_code = 1 * project_id = 12345 AND
+                    /// sensitivity_level = HIGH * project_id = 12345 AND resource_visibility = PUBLIC The length of
+                    /// this field should be no more than 500 characters.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
+                    /// case insensitive. The default sorting order is ascending. Redundant space characters are
+                    /// insignificant. Only one order field at a time is allowed. Examples: * `project_id asc` *
+                    /// `table_id` * `sensitivity_level desc` Supported fields are: - `project_id`: The GCP project ID.
+                    /// - `dataset_id`: The ID of a BigQuery dataset. - `table_id`: The ID of a BigQuery table. -
+                    /// `sensitivity_level`: How sensitive the data in a table is, at most. - `data_risk_level`: How
+                    /// much risk is associated with this data. - `profile_last_generated`: When the profile was last
+                    /// updated in epoch seconds. - `last_modified`: The last time the resource was modified. -
+                    /// `resource_visibility`: Visibility restriction for this resource. - `row_count`: Number of rows
+                    /// in this resource.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Size of the page. This value can be limited by the server. If zero, server returns a page of max
+                    /// size 100.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Page token to continue retrieval.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/tableDataProfiles";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
         }
 
         /// <summary>Gets the StoredInfoTypes resource.</summary>
@@ -3590,15 +4210,15 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>
             /// Creates a pre-built stored infoType to be used for inspection. See
-            /// https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
+            /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. Parent resource name. The format of this value varies depending on the scope of the request
             /// (project or organization) and whether you have [specified a processing
-            /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location specified:
-            /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified (defaults to
-            /// global): `projects/`PROJECT_ID + Organizations scope, location specified:
+            /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
+            /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location
+            /// specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
             /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified (defaults to
             /// global): `organizations/`ORG_ID The following example `parent` string specifies a parent project with
             /// the identifier `example-project`, and specifies the `europe-west3` location for processing data:
@@ -3611,7 +4231,7 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>
             /// Creates a pre-built stored infoType to be used for inspection. See
-            /// https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
+            /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more.
             /// </summary>
             public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2StoredInfoType>
             {
@@ -3626,13 +4246,13 @@ namespace Google.Apis.DLP.v2
                 /// <summary>
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
                 /// request (project or organization) and whether you have [specified a processing
-                /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
-                /// processing data: parent=projects/example-project/locations/europe-west3
+                /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
+                /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
+                /// location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location
+                /// specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location
+                /// specified (defaults to global): `organizations/`ORG_ID The following example `parent` string
+                /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
+                /// location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -3668,8 +4288,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Deletes a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn
-            /// more.
+            /// Deletes a stored infoType. See
+            /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more.
             /// </summary>
             /// <param name="name">
             /// Required. Resource name of the organization and storedInfoType to be deleted, for example
@@ -3681,8 +4301,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Deletes a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn
-            /// more.
+            /// Deletes a stored infoType. See
+            /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more.
             /// </summary>
             public class DeleteRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GoogleProtobufEmpty>
             {
@@ -3726,7 +4346,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Gets a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
+            /// Gets a stored infoType. See
+            /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more.
             /// </summary>
             /// <param name="name">
             /// Required. Resource name of the organization and storedInfoType to be read, for example
@@ -3738,7 +4359,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Gets a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
+            /// Gets a stored infoType. See
+            /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more.
             /// </summary>
             public class GetRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2StoredInfoType>
             {
@@ -3782,16 +4404,17 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Lists stored infoTypes. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
+            /// Lists stored infoTypes. See
+            /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more.
             /// </summary>
             /// <param name="parent">
             /// Required. Parent resource name. The format of this value varies depending on the scope of the request
             /// (project or organization) and whether you have [specified a processing
-            /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location specified:
-            /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified (defaults to
-            /// global): `projects/`PROJECT_ID The following example `parent` string specifies a parent project with the
-            /// identifier `example-project`, and specifies the `europe-west3` location for processing data:
-            /// parent=projects/example-project/locations/europe-west3
+            /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
+            /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location
+            /// specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string specifies a
+            /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
+            /// processing data: parent=projects/example-project/locations/europe-west3
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -3799,7 +4422,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Lists stored infoTypes. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
+            /// Lists stored infoTypes. See
+            /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more.
             /// </summary>
             public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListStoredInfoTypesResponse>
             {
@@ -3813,11 +4437,11 @@ namespace Google.Apis.DLP.v2
                 /// <summary>
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
                 /// request (project or organization) and whether you have [specified a processing
-                /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID The following example `parent` string specifies a parent
-                /// project with the identifier `example-project`, and specifies the `europe-west3` location for
-                /// processing data: parent=projects/example-project/locations/europe-west3
+                /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
+                /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
+                /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
+                /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
+                /// location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -3908,8 +4532,8 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>
             /// Updates the stored infoType by creating a new version. The existing version will continue to be used
-            /// until the new version is ready. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn
-            /// more.
+            /// until the new version is ready. See
+            /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -3923,8 +4547,8 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>
             /// Updates the stored infoType by creating a new version. The existing version will continue to be used
-            /// until the new version is ready. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn
-            /// more.
+            /// until the new version is ready. See
+            /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more.
             /// </summary>
             public class PatchRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2StoredInfoType>
             {
@@ -4017,18 +4641,19 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>
             /// De-identifies potentially sensitive info from a ContentItem. This method has limits on input size and
-            /// output size. See https://cloud.google.com/dlp/docs/deidentify-sensitive-data to learn more. When no
-            /// InfoTypes or CustomInfoTypes are specified in this request, the system will automatically choose what
-            /// detectors to run. By default this may be all types, but may change over time as detectors are updated.
+            /// output size. See https://cloud.google.com/sensitive-data-protection/docs/deidentify-sensitive-data to
+            /// learn more. When no InfoTypes or CustomInfoTypes are specified in this request, the system will
+            /// automatically choose what detectors to run. By default this may be all types, but may change over time
+            /// as detectors are updated.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Parent resource name. The format of this value varies depending on whether you have [specified a
-            /// processing location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-            /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-            /// (defaults to global): `projects/`PROJECT_ID The following example `parent` string specifies a parent
-            /// project with the identifier `example-project`, and specifies the `europe-west3` location for processing
-            /// data: parent=projects/example-project/locations/europe-west3
+            /// processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
+            /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
+            /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
+            /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
+            /// location for processing data: parent=projects/example-project/locations/europe-west3
             /// </param>
             public virtual DeidentifyRequest Deidentify(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyContentRequest body, string parent)
             {
@@ -4037,9 +4662,10 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>
             /// De-identifies potentially sensitive info from a ContentItem. This method has limits on input size and
-            /// output size. See https://cloud.google.com/dlp/docs/deidentify-sensitive-data to learn more. When no
-            /// InfoTypes or CustomInfoTypes are specified in this request, the system will automatically choose what
-            /// detectors to run. By default this may be all types, but may change over time as detectors are updated.
+            /// output size. See https://cloud.google.com/sensitive-data-protection/docs/deidentify-sensitive-data to
+            /// learn more. When no InfoTypes or CustomInfoTypes are specified in this request, the system will
+            /// automatically choose what detectors to run. By default this may be all types, but may change over time
+            /// as detectors are updated.
             /// </summary>
             public class DeidentifyRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyContentResponse>
             {
@@ -4053,11 +4679,11 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// Parent resource name. The format of this value varies depending on whether you have [specified a
-                /// processing location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope,
-                /// location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location
-                /// specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
-                /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
-                /// location for processing data: parent=projects/example-project/locations/europe-west3
+                /// processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
+                /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope,
+                /// no location specified (defaults to global): `projects/`PROJECT_ID The following example `parent`
+                /// string specifies a parent project with the identifier `example-project`, and specifies the
+                /// `europe-west3` location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -4096,17 +4722,18 @@ namespace Google.Apis.DLP.v2
             /// Finds potentially sensitive info in content. This method has limits on input size, processing time, and
             /// output size. When no InfoTypes or CustomInfoTypes are specified in this request, the system will
             /// automatically choose what detectors to run. By default this may be all types, but may change over time
-            /// as detectors are updated. For how to guides, see https://cloud.google.com/dlp/docs/inspecting-images and
-            /// https://cloud.google.com/dlp/docs/inspecting-text,
+            /// as detectors are updated. For how to guides, see
+            /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-images and
+            /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-text,
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Parent resource name. The format of this value varies depending on whether you have [specified a
-            /// processing location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-            /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-            /// (defaults to global): `projects/`PROJECT_ID The following example `parent` string specifies a parent
-            /// project with the identifier `example-project`, and specifies the `europe-west3` location for processing
-            /// data: parent=projects/example-project/locations/europe-west3
+            /// processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
+            /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
+            /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
+            /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
+            /// location for processing data: parent=projects/example-project/locations/europe-west3
             /// </param>
             public virtual InspectRequest Inspect(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectContentRequest body, string parent)
             {
@@ -4117,8 +4744,9 @@ namespace Google.Apis.DLP.v2
             /// Finds potentially sensitive info in content. This method has limits on input size, processing time, and
             /// output size. When no InfoTypes or CustomInfoTypes are specified in this request, the system will
             /// automatically choose what detectors to run. By default this may be all types, but may change over time
-            /// as detectors are updated. For how to guides, see https://cloud.google.com/dlp/docs/inspecting-images and
-            /// https://cloud.google.com/dlp/docs/inspecting-text,
+            /// as detectors are updated. For how to guides, see
+            /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-images and
+            /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-text,
             /// </summary>
             public class InspectRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectContentResponse>
             {
@@ -4132,11 +4760,11 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// Parent resource name. The format of this value varies depending on whether you have [specified a
-                /// processing location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope,
-                /// location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location
-                /// specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
-                /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
-                /// location for processing data: parent=projects/example-project/locations/europe-west3
+                /// processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
+                /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope,
+                /// no location specified (defaults to global): `projects/`PROJECT_ID The following example `parent`
+                /// string specifies a parent project with the identifier `example-project`, and specifies the
+                /// `europe-west3` location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -4173,17 +4801,17 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>
             /// Re-identifies content that has been de-identified. See
-            /// https://cloud.google.com/dlp/docs/pseudonymization#re-identification_in_free_text_code_example to learn
-            /// more.
+            /// https://cloud.google.com/sensitive-data-protection/docs/pseudonymization#re-identification_in_free_text_code_example
+            /// to learn more.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. Parent resource name. The format of this value varies depending on whether you have [specified
-            /// a processing location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope,
-            /// location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location
-            /// specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string specifies a
-            /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
-            /// processing data: parent=projects/example-project/locations/europe-west3
+            /// a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
+            /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
+            /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
+            /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
+            /// location for processing data: parent=projects/example-project/locations/europe-west3
             /// </param>
             public virtual ReidentifyRequest Reidentify(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ReidentifyContentRequest body, string parent)
             {
@@ -4192,8 +4820,8 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>
             /// Re-identifies content that has been de-identified. See
-            /// https://cloud.google.com/dlp/docs/pseudonymization#re-identification_in_free_text_code_example to learn
-            /// more.
+            /// https://cloud.google.com/sensitive-data-protection/docs/pseudonymization#re-identification_in_free_text_code_example
+            /// to learn more.
             /// </summary>
             public class ReidentifyRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ReidentifyContentResponse>
             {
@@ -4207,7 +4835,8 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// Required. Parent resource name. The format of this value varies depending on whether you have
-                /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location): + Projects
+                /// [specified a processing
+                /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
                 /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
                 /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
                 /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
@@ -4266,15 +4895,16 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>
             /// Creates a DeidentifyTemplate for reusing frequently used configuration for de-identifying content,
-            /// images, and storage. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
+            /// images, and storage. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid
+            /// to learn more.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. Parent resource name. The format of this value varies depending on the scope of the request
             /// (project or organization) and whether you have [specified a processing
-            /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location specified:
-            /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified (defaults to
-            /// global): `projects/`PROJECT_ID + Organizations scope, location specified:
+            /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
+            /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location
+            /// specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
             /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified (defaults to
             /// global): `organizations/`ORG_ID The following example `parent` string specifies a parent project with
             /// the identifier `example-project`, and specifies the `europe-west3` location for processing data:
@@ -4287,7 +4917,8 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>
             /// Creates a DeidentifyTemplate for reusing frequently used configuration for de-identifying content,
-            /// images, and storage. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
+            /// images, and storage. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid
+            /// to learn more.
             /// </summary>
             public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyTemplate>
             {
@@ -4302,13 +4933,13 @@ namespace Google.Apis.DLP.v2
                 /// <summary>
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
                 /// request (project or organization) and whether you have [specified a processing
-                /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
-                /// processing data: parent=projects/example-project/locations/europe-west3
+                /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
+                /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
+                /// location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location
+                /// specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location
+                /// specified (defaults to global): `organizations/`ORG_ID The following example `parent` string
+                /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
+                /// location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -4344,8 +4975,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Deletes a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-            /// more.
+            /// Deletes a DeidentifyTemplate. See
+            /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more.
             /// </summary>
             /// <param name="name">
             /// Required. Resource name of the organization and deidentify template to be deleted, for example
@@ -4358,8 +4989,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Deletes a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-            /// more.
+            /// Deletes a DeidentifyTemplate. See
+            /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more.
             /// </summary>
             public class DeleteRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GoogleProtobufEmpty>
             {
@@ -4403,7 +5034,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Gets a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
+            /// Gets a DeidentifyTemplate. See
+            /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more.
             /// </summary>
             /// <param name="name">
             /// Required. Resource name of the organization and deidentify template to be read, for example
@@ -4416,7 +5048,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Gets a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
+            /// Gets a DeidentifyTemplate. See
+            /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more.
             /// </summary>
             public class GetRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyTemplate>
             {
@@ -4460,14 +5093,15 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Lists DeidentifyTemplates. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
+            /// Lists DeidentifyTemplates. See
+            /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more.
             /// </summary>
             /// <param name="parent">
             /// Required. Parent resource name. The format of this value varies depending on the scope of the request
             /// (project or organization) and whether you have [specified a processing
-            /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location specified:
-            /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified (defaults to
-            /// global): `projects/`PROJECT_ID + Organizations scope, location specified:
+            /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
+            /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location
+            /// specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
             /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified (defaults to
             /// global): `organizations/`ORG_ID The following example `parent` string specifies a parent project with
             /// the identifier `example-project`, and specifies the `europe-west3` location for processing data:
@@ -4479,7 +5113,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Lists DeidentifyTemplates. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
+            /// Lists DeidentifyTemplates. See
+            /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more.
             /// </summary>
             public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListDeidentifyTemplatesResponse>
             {
@@ -4493,13 +5128,13 @@ namespace Google.Apis.DLP.v2
                 /// <summary>
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
                 /// request (project or organization) and whether you have [specified a processing
-                /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
-                /// processing data: parent=projects/example-project/locations/europe-west3
+                /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
+                /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
+                /// location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location
+                /// specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location
+                /// specified (defaults to global): `organizations/`ORG_ID The following example `parent` string
+                /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
+                /// location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -4589,8 +5224,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Updates the DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-            /// more.
+            /// Updates the DeidentifyTemplate. See
+            /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -4604,8 +5239,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Updates the DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-            /// more.
+            /// Updates the DeidentifyTemplate. See
+            /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more.
             /// </summary>
             public class PatchRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyTemplate>
             {
@@ -4675,8 +5310,9 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>
             /// Starts asynchronous cancellation on a long-running DlpJob. The server makes a best effort to cancel the
-            /// DlpJob, but success is not guaranteed. See https://cloud.google.com/dlp/docs/inspecting-storage and
-            /// https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
+            /// DlpJob, but success is not guaranteed. See
+            /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage and
+            /// https://cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis to learn more.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Required. The name of the DlpJob resource to be cancelled.</param>
@@ -4687,8 +5323,9 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>
             /// Starts asynchronous cancellation on a long-running DlpJob. The server makes a best effort to cancel the
-            /// DlpJob, but success is not guaranteed. See https://cloud.google.com/dlp/docs/inspecting-storage and
-            /// https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
+            /// DlpJob, but success is not guaranteed. See
+            /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage and
+            /// https://cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis to learn more.
             /// </summary>
             public class CancelRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GoogleProtobufEmpty>
             {
@@ -4736,19 +5373,19 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>
             /// Creates a new job to inspect storage or calculate risk metrics. See
-            /// https://cloud.google.com/dlp/docs/inspecting-storage and
-            /// https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more. When no InfoTypes or
-            /// CustomInfoTypes are specified in inspect jobs, the system will automatically choose what detectors to
-            /// run. By default this may be all types, but may change over time as detectors are updated.
+            /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage and
+            /// https://cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis to learn more. When no
+            /// InfoTypes or CustomInfoTypes are specified in inspect jobs, the system will automatically choose what
+            /// detectors to run. By default this may be all types, but may change over time as detectors are updated.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. Parent resource name. The format of this value varies depending on whether you have [specified
-            /// a processing location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope,
-            /// location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location
-            /// specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string specifies a
-            /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
-            /// processing data: parent=projects/example-project/locations/europe-west3
+            /// a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
+            /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
+            /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
+            /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
+            /// location for processing data: parent=projects/example-project/locations/europe-west3
             /// </param>
             public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateDlpJobRequest body, string parent)
             {
@@ -4757,10 +5394,10 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>
             /// Creates a new job to inspect storage or calculate risk metrics. See
-            /// https://cloud.google.com/dlp/docs/inspecting-storage and
-            /// https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more. When no InfoTypes or
-            /// CustomInfoTypes are specified in inspect jobs, the system will automatically choose what detectors to
-            /// run. By default this may be all types, but may change over time as detectors are updated.
+            /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage and
+            /// https://cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis to learn more. When no
+            /// InfoTypes or CustomInfoTypes are specified in inspect jobs, the system will automatically choose what
+            /// detectors to run. By default this may be all types, but may change over time as detectors are updated.
             /// </summary>
             public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DlpJob>
             {
@@ -4774,7 +5411,8 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// Required. Parent resource name. The format of this value varies depending on whether you have
-                /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location): + Projects
+                /// [specified a processing
+                /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
                 /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
                 /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
                 /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
@@ -4816,8 +5454,8 @@ namespace Google.Apis.DLP.v2
             /// <summary>
             /// Deletes a long-running DlpJob. This method indicates that the client is no longer interested in the
             /// DlpJob result. The job will be canceled if possible. See
-            /// https://cloud.google.com/dlp/docs/inspecting-storage and
-            /// https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
+            /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage and
+            /// https://cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis to learn more.
             /// </summary>
             /// <param name="name">Required. The name of the DlpJob resource to be deleted.</param>
             public virtual DeleteRequest Delete(string name)
@@ -4828,8 +5466,8 @@ namespace Google.Apis.DLP.v2
             /// <summary>
             /// Deletes a long-running DlpJob. This method indicates that the client is no longer interested in the
             /// DlpJob result. The job will be canceled if possible. See
-            /// https://cloud.google.com/dlp/docs/inspecting-storage and
-            /// https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
+            /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage and
+            /// https://cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis to learn more.
             /// </summary>
             public class DeleteRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GoogleProtobufEmpty>
             {
@@ -4869,8 +5507,9 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Gets the latest state of a long-running DlpJob. See https://cloud.google.com/dlp/docs/inspecting-storage
-            /// and https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
+            /// Gets the latest state of a long-running DlpJob. See
+            /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage and
+            /// https://cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis to learn more.
             /// </summary>
             /// <param name="name">Required. The name of the DlpJob resource.</param>
             public virtual GetRequest Get(string name)
@@ -4879,8 +5518,9 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Gets the latest state of a long-running DlpJob. See https://cloud.google.com/dlp/docs/inspecting-storage
-            /// and https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
+            /// Gets the latest state of a long-running DlpJob. See
+            /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage and
+            /// https://cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis to learn more.
             /// </summary>
             public class GetRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DlpJob>
             {
@@ -4921,16 +5561,16 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>
             /// Lists DlpJobs that match the specified filter in the request. See
-            /// https://cloud.google.com/dlp/docs/inspecting-storage and
-            /// https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
+            /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage and
+            /// https://cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis to learn more.
             /// </summary>
             /// <param name="parent">
             /// Required. Parent resource name. The format of this value varies depending on whether you have [specified
-            /// a processing location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope,
-            /// location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location
-            /// specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string specifies a
-            /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
-            /// processing data: parent=projects/example-project/locations/europe-west3
+            /// a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
+            /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
+            /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
+            /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
+            /// location for processing data: parent=projects/example-project/locations/europe-west3
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -4939,8 +5579,8 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>
             /// Lists DlpJobs that match the specified filter in the request. See
-            /// https://cloud.google.com/dlp/docs/inspecting-storage and
-            /// https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
+            /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage and
+            /// https://cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis to learn more.
             /// </summary>
             public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListDlpJobsResponse>
             {
@@ -4953,7 +5593,8 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// Required. Parent resource name. The format of this value varies depending on whether you have
-                /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location): + Projects
+                /// [specified a processing
+                /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
                 /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
                 /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
                 /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
@@ -5114,7 +5755,8 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>
             /// Redacts potentially sensitive info from an image. This method has limits on input size, processing time,
-            /// and output size. See https://cloud.google.com/dlp/docs/redacting-sensitive-data-images to learn more.
+            /// and output size. See
+            /// https://cloud.google.com/sensitive-data-protection/docs/redacting-sensitive-data-images to learn more.
             /// When no InfoTypes or CustomInfoTypes are specified in this request, the system will automatically choose
             /// what detectors to run. By default this may be all types, but may change over time as detectors are
             /// updated.
@@ -5122,11 +5764,11 @@ namespace Google.Apis.DLP.v2
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Parent resource name. The format of this value varies depending on whether you have [specified a
-            /// processing location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-            /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-            /// (defaults to global): `projects/`PROJECT_ID The following example `parent` string specifies a parent
-            /// project with the identifier `example-project`, and specifies the `europe-west3` location for processing
-            /// data: parent=projects/example-project/locations/europe-west3
+            /// processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
+            /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
+            /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
+            /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
+            /// location for processing data: parent=projects/example-project/locations/europe-west3
             /// </param>
             public virtual RedactRequest Redact(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2RedactImageRequest body, string parent)
             {
@@ -5135,7 +5777,8 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>
             /// Redacts potentially sensitive info from an image. This method has limits on input size, processing time,
-            /// and output size. See https://cloud.google.com/dlp/docs/redacting-sensitive-data-images to learn more.
+            /// and output size. See
+            /// https://cloud.google.com/sensitive-data-protection/docs/redacting-sensitive-data-images to learn more.
             /// When no InfoTypes or CustomInfoTypes are specified in this request, the system will automatically choose
             /// what detectors to run. By default this may be all types, but may change over time as detectors are
             /// updated.
@@ -5152,11 +5795,11 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// Parent resource name. The format of this value varies depending on whether you have [specified a
-                /// processing location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope,
-                /// location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location
-                /// specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
-                /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
-                /// location for processing data: parent=projects/example-project/locations/europe-west3
+                /// processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
+                /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope,
+                /// no location specified (defaults to global): `projects/`PROJECT_ID The following example `parent`
+                /// string specifies a parent project with the identifier `example-project`, and specifies the
+                /// `europe-west3` location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -5211,15 +5854,15 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>
             /// Creates an InspectTemplate for reusing frequently used configuration for inspecting content, images, and
-            /// storage. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+            /// storage. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. Parent resource name. The format of this value varies depending on the scope of the request
             /// (project or organization) and whether you have [specified a processing
-            /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location specified:
-            /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified (defaults to
-            /// global): `projects/`PROJECT_ID + Organizations scope, location specified:
+            /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
+            /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location
+            /// specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
             /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified (defaults to
             /// global): `organizations/`ORG_ID The following example `parent` string specifies a parent project with
             /// the identifier `example-project`, and specifies the `europe-west3` location for processing data:
@@ -5232,7 +5875,7 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>
             /// Creates an InspectTemplate for reusing frequently used configuration for inspecting content, images, and
-            /// storage. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+            /// storage. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more.
             /// </summary>
             public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectTemplate>
             {
@@ -5247,13 +5890,13 @@ namespace Google.Apis.DLP.v2
                 /// <summary>
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
                 /// request (project or organization) and whether you have [specified a processing
-                /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
-                /// processing data: parent=projects/example-project/locations/europe-west3
+                /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
+                /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
+                /// location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location
+                /// specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location
+                /// specified (defaults to global): `organizations/`ORG_ID The following example `parent` string
+                /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
+                /// location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -5289,7 +5932,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Deletes an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+            /// Deletes an InspectTemplate. See
+            /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more.
             /// </summary>
             /// <param name="name">
             /// Required. Resource name of the organization and inspectTemplate to be deleted, for example
@@ -5301,7 +5945,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Deletes an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+            /// Deletes an InspectTemplate. See
+            /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more.
             /// </summary>
             public class DeleteRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GoogleProtobufEmpty>
             {
@@ -5345,7 +5990,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Gets an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+            /// Gets an InspectTemplate. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates
+            /// to learn more.
             /// </summary>
             /// <param name="name">
             /// Required. Resource name of the organization and inspectTemplate to be read, for example
@@ -5357,7 +6003,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Gets an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+            /// Gets an InspectTemplate. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates
+            /// to learn more.
             /// </summary>
             public class GetRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectTemplate>
             {
@@ -5401,14 +6048,15 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Lists InspectTemplates. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+            /// Lists InspectTemplates. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates
+            /// to learn more.
             /// </summary>
             /// <param name="parent">
             /// Required. Parent resource name. The format of this value varies depending on the scope of the request
             /// (project or organization) and whether you have [specified a processing
-            /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location specified:
-            /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified (defaults to
-            /// global): `projects/`PROJECT_ID + Organizations scope, location specified:
+            /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
+            /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location
+            /// specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
             /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified (defaults to
             /// global): `organizations/`ORG_ID The following example `parent` string specifies a parent project with
             /// the identifier `example-project`, and specifies the `europe-west3` location for processing data:
@@ -5420,7 +6068,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Lists InspectTemplates. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+            /// Lists InspectTemplates. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates
+            /// to learn more.
             /// </summary>
             public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListInspectTemplatesResponse>
             {
@@ -5434,13 +6083,13 @@ namespace Google.Apis.DLP.v2
                 /// <summary>
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
                 /// request (project or organization) and whether you have [specified a processing
-                /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
-                /// processing data: parent=projects/example-project/locations/europe-west3
+                /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
+                /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
+                /// location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location
+                /// specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location
+                /// specified (defaults to global): `organizations/`ORG_ID The following example `parent` string
+                /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
+                /// location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -5530,7 +6179,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Updates the InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+            /// Updates the InspectTemplate. See
+            /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -5543,7 +6193,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Updates the InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+            /// Updates the InspectTemplate. See
+            /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more.
             /// </summary>
             public class PatchRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectTemplate>
             {
@@ -5678,16 +6329,17 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>
             /// Creates a job trigger to run DLP actions such as scanning storage for sensitive information on a set
-            /// schedule. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+            /// schedule. See https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to learn
+            /// more.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. Parent resource name. The format of this value varies depending on whether you have [specified
-            /// a processing location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope,
-            /// location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location
-            /// specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string specifies a
-            /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
-            /// processing data: parent=projects/example-project/locations/europe-west3
+            /// a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
+            /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
+            /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
+            /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
+            /// location for processing data: parent=projects/example-project/locations/europe-west3
             /// </param>
             public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateJobTriggerRequest body, string parent)
             {
@@ -5696,7 +6348,8 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>
             /// Creates a job trigger to run DLP actions such as scanning storage for sensitive information on a set
-            /// schedule. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+            /// schedule. See https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to learn
+            /// more.
             /// </summary>
             public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2JobTrigger>
             {
@@ -5710,7 +6363,8 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// Required. Parent resource name. The format of this value varies depending on whether you have
-                /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location): + Projects
+                /// [specified a processing
+                /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
                 /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
                 /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
                 /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
@@ -5750,7 +6404,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Deletes a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+            /// Deletes a job trigger. See https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers
+            /// to learn more.
             /// </summary>
             /// <param name="name">
             /// Required. Resource name of the project and the triggeredJob, for example
@@ -5762,7 +6417,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Deletes a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+            /// Deletes a job trigger. See https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers
+            /// to learn more.
             /// </summary>
             public class DeleteRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GoogleProtobufEmpty>
             {
@@ -5805,7 +6461,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Gets a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+            /// Gets a job trigger. See https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to
+            /// learn more.
             /// </summary>
             /// <param name="name">
             /// Required. Resource name of the project and the triggeredJob, for example
@@ -5817,7 +6474,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Gets a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+            /// Gets a job trigger. See https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to
+            /// learn more.
             /// </summary>
             public class GetRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2JobTrigger>
             {
@@ -5860,15 +6518,16 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Lists job triggers. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+            /// Lists job triggers. See https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to
+            /// learn more.
             /// </summary>
             /// <param name="parent">
             /// Required. Parent resource name. The format of this value varies depending on whether you have [specified
-            /// a processing location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope,
-            /// location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location
-            /// specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string specifies a
-            /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
-            /// processing data: parent=projects/example-project/locations/europe-west3
+            /// a processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
+            /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
+            /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
+            /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
+            /// location for processing data: parent=projects/example-project/locations/europe-west3
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -5876,7 +6535,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Lists job triggers. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+            /// Lists job triggers. See https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to
+            /// learn more.
             /// </summary>
             public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListJobTriggersResponse>
             {
@@ -5889,7 +6549,8 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// Required. Parent resource name. The format of this value varies depending on whether you have
-                /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location): + Projects
+                /// [specified a processing
+                /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
                 /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
                 /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
                 /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
@@ -6034,7 +6695,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Updates a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+            /// Updates a job trigger. See https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers
+            /// to learn more.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -6047,7 +6709,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Updates a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+            /// Updates a job trigger. See https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers
+            /// to learn more.
             /// </summary>
             public class PatchRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2JobTrigger>
             {
@@ -6112,6 +6775,7 @@ namespace Google.Apis.DLP.v2
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                ColumnDataProfiles = new ColumnDataProfilesResource(service);
                 Content = new ContentResource(service);
                 DeidentifyTemplates = new DeidentifyTemplatesResource(service);
                 DiscoveryConfigs = new DiscoveryConfigsResource(service);
@@ -6119,7 +6783,203 @@ namespace Google.Apis.DLP.v2
                 Image = new ImageResource(service);
                 InspectTemplates = new InspectTemplatesResource(service);
                 JobTriggers = new JobTriggersResource(service);
+                ProjectDataProfiles = new ProjectDataProfilesResource(service);
                 StoredInfoTypes = new StoredInfoTypesResource(service);
+                TableDataProfiles = new TableDataProfilesResource(service);
+            }
+
+            /// <summary>Gets the ColumnDataProfiles resource.</summary>
+            public virtual ColumnDataProfilesResource ColumnDataProfiles { get; }
+
+            /// <summary>The "columnDataProfiles" collection of methods.</summary>
+            public class ColumnDataProfilesResource
+            {
+                private const string Resource = "columnDataProfiles";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ColumnDataProfilesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Gets a column data profile.</summary>
+                /// <param name="name">
+                /// Required. Resource name, for example `organizations/12345/locations/us/columnDataProfiles/53234423`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets a column data profile.</summary>
+                public class GetRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ColumnDataProfile>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name, for example
+                    /// `organizations/12345/locations/us/columnDataProfiles/53234423`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/columnDataProfiles/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists data profiles for an organization.</summary>
+                /// <param name="parent">
+                /// Required. Resource name of the organization or project, for example
+                /// `organizations/433245324/locations/europe` or projects/project-id/locations/asia.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists data profiles for an organization.</summary>
+                public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListColumnDataProfilesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name of the organization or project, for example
+                    /// `organizations/433245324/locations/europe` or projects/project-id/locations/asia.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Allows filtering. Supported syntax: * Filter expressions are made up of one or more
+                    /// restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of
+                    /// restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator}
+                    /// {value}`. * Supported fields/values: - `table_data_profile_name` - The name of the related table
+                    /// data profile. - `project_id` - The Google Cloud project ID. (REQUIRED) - `dataset_id` - The
+                    /// BigQuery dataset ID. (REQUIRED) - `table_id` - The BigQuery table ID. (REQUIRED) - `field_id` -
+                    /// The ID of the BigQuery field. - `info_type` - The infotype detected in the resource. -
+                    /// `sensitivity_level` - HIGH|MEDIUM|LOW - `data_risk_level`: How much risk is associated with this
+                    /// data. - `status_code` - an RPC status code as defined in
+                    /// https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto * The operator must
+                    /// be `=` for project_id, dataset_id, and table_id. Other filters also support `!=`. Examples: *
+                    /// project_id = 12345 AND status_code = 1 * project_id = 12345 AND sensitivity_level = HIGH *
+                    /// project_id = 12345 AND info_type = STREET_ADDRESS The length of this field should be no more
+                    /// than 500 characters.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
+                    /// case insensitive. The default sorting order is ascending. Redundant space characters are
+                    /// insignificant. Only one order field at a time is allowed. Examples: * `project_id asc` *
+                    /// `table_id` * `sensitivity_level desc` Supported fields are: - `project_id`: The Google Cloud
+                    /// project ID. - `dataset_id`: The ID of a BigQuery dataset. - `table_id`: The ID of a BigQuery
+                    /// table. - `sensitivity_level`: How sensitive the data in a column is, at most. -
+                    /// `data_risk_level`: How much risk is associated with this data. - `profile_last_generated`: When
+                    /// the profile was last updated in epoch seconds.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Size of the page. This value can be limited by the server. If zero, server returns a page of max
+                    /// size 100.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Page token to continue retrieval.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/columnDataProfiles";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the Content resource.</summary>
@@ -6141,19 +7001,20 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// De-identifies potentially sensitive info from a ContentItem. This method has limits on input size
-                /// and output size. See https://cloud.google.com/dlp/docs/deidentify-sensitive-data to learn more. When
-                /// no InfoTypes or CustomInfoTypes are specified in this request, the system will automatically choose
-                /// what detectors to run. By default this may be all types, but may change over time as detectors are
-                /// updated.
+                /// and output size. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/deidentify-sensitive-data to learn more.
+                /// When no InfoTypes or CustomInfoTypes are specified in this request, the system will automatically
+                /// choose what detectors to run. By default this may be all types, but may change over time as
+                /// detectors are updated.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Parent resource name. The format of this value varies depending on whether you have [specified a
-                /// processing location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope,
-                /// location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location
-                /// specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
-                /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
-                /// location for processing data: parent=projects/example-project/locations/europe-west3
+                /// processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
+                /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope,
+                /// no location specified (defaults to global): `projects/`PROJECT_ID The following example `parent`
+                /// string specifies a parent project with the identifier `example-project`, and specifies the
+                /// `europe-west3` location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
                 public virtual DeidentifyRequest Deidentify(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyContentRequest body, string parent)
                 {
@@ -6162,10 +7023,11 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// De-identifies potentially sensitive info from a ContentItem. This method has limits on input size
-                /// and output size. See https://cloud.google.com/dlp/docs/deidentify-sensitive-data to learn more. When
-                /// no InfoTypes or CustomInfoTypes are specified in this request, the system will automatically choose
-                /// what detectors to run. By default this may be all types, but may change over time as detectors are
-                /// updated.
+                /// and output size. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/deidentify-sensitive-data to learn more.
+                /// When no InfoTypes or CustomInfoTypes are specified in this request, the system will automatically
+                /// choose what detectors to run. By default this may be all types, but may change over time as
+                /// detectors are updated.
                 /// </summary>
                 public class DeidentifyRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyContentResponse>
                 {
@@ -6179,11 +7041,12 @@ namespace Google.Apis.DLP.v2
 
                     /// <summary>
                     /// Parent resource name. The format of this value varies depending on whether you have [specified a
-                    /// processing location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope,
-                    /// location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location
-                    /// specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
-                    /// specifies a parent project with the identifier `example-project`, and specifies the
-                    /// `europe-west3` location for processing data:
+                    /// processing
+                    /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
+                    /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects
+                    /// scope, no location specified (defaults to global): `projects/`PROJECT_ID The following example
+                    /// `parent` string specifies a parent project with the identifier `example-project`, and specifies
+                    /// the `europe-west3` location for processing data:
                     /// parent=projects/example-project/locations/europe-west3
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -6224,17 +7087,17 @@ namespace Google.Apis.DLP.v2
                 /// and output size. When no InfoTypes or CustomInfoTypes are specified in this request, the system will
                 /// automatically choose what detectors to run. By default this may be all types, but may change over
                 /// time as detectors are updated. For how to guides, see
-                /// https://cloud.google.com/dlp/docs/inspecting-images and
-                /// https://cloud.google.com/dlp/docs/inspecting-text,
+                /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-images and
+                /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-text,
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Parent resource name. The format of this value varies depending on whether you have [specified a
-                /// processing location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope,
-                /// location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location
-                /// specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
-                /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
-                /// location for processing data: parent=projects/example-project/locations/europe-west3
+                /// processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
+                /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope,
+                /// no location specified (defaults to global): `projects/`PROJECT_ID The following example `parent`
+                /// string specifies a parent project with the identifier `example-project`, and specifies the
+                /// `europe-west3` location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
                 public virtual InspectRequest Inspect(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectContentRequest body, string parent)
                 {
@@ -6246,8 +7109,8 @@ namespace Google.Apis.DLP.v2
                 /// and output size. When no InfoTypes or CustomInfoTypes are specified in this request, the system will
                 /// automatically choose what detectors to run. By default this may be all types, but may change over
                 /// time as detectors are updated. For how to guides, see
-                /// https://cloud.google.com/dlp/docs/inspecting-images and
-                /// https://cloud.google.com/dlp/docs/inspecting-text,
+                /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-images and
+                /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-text,
                 /// </summary>
                 public class InspectRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectContentResponse>
                 {
@@ -6261,11 +7124,12 @@ namespace Google.Apis.DLP.v2
 
                     /// <summary>
                     /// Parent resource name. The format of this value varies depending on whether you have [specified a
-                    /// processing location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope,
-                    /// location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location
-                    /// specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
-                    /// specifies a parent project with the identifier `example-project`, and specifies the
-                    /// `europe-west3` location for processing data:
+                    /// processing
+                    /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
+                    /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects
+                    /// scope, no location specified (defaults to global): `projects/`PROJECT_ID The following example
+                    /// `parent` string specifies a parent project with the identifier `example-project`, and specifies
+                    /// the `europe-west3` location for processing data:
                     /// parent=projects/example-project/locations/europe-west3
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -6303,13 +7167,14 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// Re-identifies content that has been de-identified. See
-                /// https://cloud.google.com/dlp/docs/pseudonymization#re-identification_in_free_text_code_example to
-                /// learn more.
+                /// https://cloud.google.com/sensitive-data-protection/docs/pseudonymization#re-identification_in_free_text_code_example
+                /// to learn more.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. Parent resource name. The format of this value varies depending on whether you have
-                /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location): + Projects
+                /// [specified a processing
+                /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
                 /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
                 /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
                 /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
@@ -6322,8 +7187,8 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// Re-identifies content that has been de-identified. See
-                /// https://cloud.google.com/dlp/docs/pseudonymization#re-identification_in_free_text_code_example to
-                /// learn more.
+                /// https://cloud.google.com/sensitive-data-protection/docs/pseudonymization#re-identification_in_free_text_code_example
+                /// to learn more.
                 /// </summary>
                 public class ReidentifyRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ReidentifyContentResponse>
                 {
@@ -6337,7 +7202,8 @@ namespace Google.Apis.DLP.v2
 
                     /// <summary>
                     /// Required. Parent resource name. The format of this value varies depending on whether you have
-                    /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location): +
+                    /// [specified a processing
+                    /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
                     /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects
                     /// scope, no location specified (defaults to global): `projects/`PROJECT_ID The following example
                     /// `parent` string specifies a parent project with the identifier `example-project`, and specifies
@@ -6397,19 +7263,20 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// Creates a DeidentifyTemplate for reusing frequently used configuration for de-identifying content,
-                /// images, and storage. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
+                /// images, and storage. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
                 /// request (project or organization) and whether you have [specified a processing
-                /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
-                /// processing data: parent=projects/example-project/locations/europe-west3
+                /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
+                /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
+                /// location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location
+                /// specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location
+                /// specified (defaults to global): `organizations/`ORG_ID The following example `parent` string
+                /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
+                /// location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest body, string parent)
                 {
@@ -6418,7 +7285,8 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// Creates a DeidentifyTemplate for reusing frequently used configuration for de-identifying content,
-                /// images, and storage. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
+                /// images, and storage. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more.
                 /// </summary>
                 public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyTemplate>
                 {
@@ -6433,13 +7301,14 @@ namespace Google.Apis.DLP.v2
                     /// <summary>
                     /// Required. Parent resource name. The format of this value varies depending on the scope of the
                     /// request (project or organization) and whether you have [specified a processing
-                    /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                    /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                    /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                    /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                    /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                    /// parent project with the identifier `example-project`, and specifies the `europe-west3` location
-                    /// for processing data: parent=projects/example-project/locations/europe-west3
+                    /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
+                    /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects
+                    /// scope, no location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope,
+                    /// location specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
+                    /// location specified (defaults to global): `organizations/`ORG_ID The following example `parent`
+                    /// string specifies a parent project with the identifier `example-project`, and specifies the
+                    /// `europe-west3` location for processing data:
+                    /// parent=projects/example-project/locations/europe-west3
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -6475,8 +7344,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Deletes a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-                /// more.
+                /// Deletes a DeidentifyTemplate. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more.
                 /// </summary>
                 /// <param name="name">
                 /// Required. Resource name of the organization and deidentify template to be deleted, for example
@@ -6489,8 +7358,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Deletes a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-                /// more.
+                /// Deletes a DeidentifyTemplate. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more.
                 /// </summary>
                 public class DeleteRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GoogleProtobufEmpty>
                 {
@@ -6534,8 +7403,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Gets a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-                /// more.
+                /// Gets a DeidentifyTemplate. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more.
                 /// </summary>
                 /// <param name="name">
                 /// Required. Resource name of the organization and deidentify template to be read, for example
@@ -6548,8 +7417,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Gets a DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-                /// more.
+                /// Gets a DeidentifyTemplate. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more.
                 /// </summary>
                 public class GetRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyTemplate>
                 {
@@ -6593,19 +7462,19 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Lists DeidentifyTemplates. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-                /// more.
+                /// Lists DeidentifyTemplates. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more.
                 /// </summary>
                 /// <param name="parent">
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
                 /// request (project or organization) and whether you have [specified a processing
-                /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
-                /// processing data: parent=projects/example-project/locations/europe-west3
+                /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
+                /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
+                /// location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location
+                /// specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location
+                /// specified (defaults to global): `organizations/`ORG_ID The following example `parent` string
+                /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
+                /// location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -6613,8 +7482,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Lists DeidentifyTemplates. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn
-                /// more.
+                /// Lists DeidentifyTemplates. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more.
                 /// </summary>
                 public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListDeidentifyTemplatesResponse>
                 {
@@ -6628,13 +7497,14 @@ namespace Google.Apis.DLP.v2
                     /// <summary>
                     /// Required. Parent resource name. The format of this value varies depending on the scope of the
                     /// request (project or organization) and whether you have [specified a processing
-                    /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                    /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                    /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                    /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                    /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                    /// parent project with the identifier `example-project`, and specifies the `europe-west3` location
-                    /// for processing data: parent=projects/example-project/locations/europe-west3
+                    /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
+                    /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects
+                    /// scope, no location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope,
+                    /// location specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
+                    /// location specified (defaults to global): `organizations/`ORG_ID The following example `parent`
+                    /// string specifies a parent project with the identifier `example-project`, and specifies the
+                    /// `europe-west3` location for processing data:
+                    /// parent=projects/example-project/locations/europe-west3
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -6724,8 +7594,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Updates the DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to
-                /// learn more.
+                /// Updates the DeidentifyTemplate. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -6739,8 +7609,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Updates the DeidentifyTemplate. See https://cloud.google.com/dlp/docs/creating-templates-deid to
-                /// learn more.
+                /// Updates the DeidentifyTemplate. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates-deid to learn more.
                 /// </summary>
                 public class PatchRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyTemplate>
                 {
@@ -7152,8 +8022,9 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// Starts asynchronous cancellation on a long-running DlpJob. The server makes a best effort to cancel
-                /// the DlpJob, but success is not guaranteed. See https://cloud.google.com/dlp/docs/inspecting-storage
-                /// and https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
+                /// the DlpJob, but success is not guaranteed. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage and
+                /// https://cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis to learn more.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Required. The name of the DlpJob resource to be cancelled.</param>
@@ -7164,8 +8035,9 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// Starts asynchronous cancellation on a long-running DlpJob. The server makes a best effort to cancel
-                /// the DlpJob, but success is not guaranteed. See https://cloud.google.com/dlp/docs/inspecting-storage
-                /// and https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
+                /// the DlpJob, but success is not guaranteed. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage and
+                /// https://cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis to learn more.
                 /// </summary>
                 public class CancelRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GoogleProtobufEmpty>
                 {
@@ -7213,15 +8085,17 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// Creates a new job to inspect storage or calculate risk metrics. See
-                /// https://cloud.google.com/dlp/docs/inspecting-storage and
-                /// https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more. When no InfoTypes or
-                /// CustomInfoTypes are specified in inspect jobs, the system will automatically choose what detectors
-                /// to run. By default this may be all types, but may change over time as detectors are updated.
+                /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage and
+                /// https://cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis to learn more. When no
+                /// InfoTypes or CustomInfoTypes are specified in inspect jobs, the system will automatically choose
+                /// what detectors to run. By default this may be all types, but may change over time as detectors are
+                /// updated.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. Parent resource name. The format of this value varies depending on whether you have
-                /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location): + Projects
+                /// [specified a processing
+                /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
                 /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
                 /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
                 /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
@@ -7234,10 +8108,11 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// Creates a new job to inspect storage or calculate risk metrics. See
-                /// https://cloud.google.com/dlp/docs/inspecting-storage and
-                /// https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more. When no InfoTypes or
-                /// CustomInfoTypes are specified in inspect jobs, the system will automatically choose what detectors
-                /// to run. By default this may be all types, but may change over time as detectors are updated.
+                /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage and
+                /// https://cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis to learn more. When no
+                /// InfoTypes or CustomInfoTypes are specified in inspect jobs, the system will automatically choose
+                /// what detectors to run. By default this may be all types, but may change over time as detectors are
+                /// updated.
                 /// </summary>
                 public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DlpJob>
                 {
@@ -7251,7 +8126,8 @@ namespace Google.Apis.DLP.v2
 
                     /// <summary>
                     /// Required. Parent resource name. The format of this value varies depending on whether you have
-                    /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location): +
+                    /// [specified a processing
+                    /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
                     /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects
                     /// scope, no location specified (defaults to global): `projects/`PROJECT_ID The following example
                     /// `parent` string specifies a parent project with the identifier `example-project`, and specifies
@@ -7294,8 +8170,8 @@ namespace Google.Apis.DLP.v2
                 /// <summary>
                 /// Deletes a long-running DlpJob. This method indicates that the client is no longer interested in the
                 /// DlpJob result. The job will be canceled if possible. See
-                /// https://cloud.google.com/dlp/docs/inspecting-storage and
-                /// https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
+                /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage and
+                /// https://cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis to learn more.
                 /// </summary>
                 /// <param name="name">Required. The name of the DlpJob resource to be deleted.</param>
                 public virtual DeleteRequest Delete(string name)
@@ -7306,8 +8182,8 @@ namespace Google.Apis.DLP.v2
                 /// <summary>
                 /// Deletes a long-running DlpJob. This method indicates that the client is no longer interested in the
                 /// DlpJob result. The job will be canceled if possible. See
-                /// https://cloud.google.com/dlp/docs/inspecting-storage and
-                /// https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
+                /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage and
+                /// https://cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis to learn more.
                 /// </summary>
                 public class DeleteRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GoogleProtobufEmpty>
                 {
@@ -7407,8 +8283,8 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// Gets the latest state of a long-running DlpJob. See
-                /// https://cloud.google.com/dlp/docs/inspecting-storage and
-                /// https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
+                /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage and
+                /// https://cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis to learn more.
                 /// </summary>
                 /// <param name="name">Required. The name of the DlpJob resource.</param>
                 public virtual GetRequest Get(string name)
@@ -7418,8 +8294,8 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// Gets the latest state of a long-running DlpJob. See
-                /// https://cloud.google.com/dlp/docs/inspecting-storage and
-                /// https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
+                /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage and
+                /// https://cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis to learn more.
                 /// </summary>
                 public class GetRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DlpJob>
                 {
@@ -7525,12 +8401,13 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// Lists DlpJobs that match the specified filter in the request. See
-                /// https://cloud.google.com/dlp/docs/inspecting-storage and
-                /// https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
+                /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage and
+                /// https://cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis to learn more.
                 /// </summary>
                 /// <param name="parent">
                 /// Required. Parent resource name. The format of this value varies depending on whether you have
-                /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location): + Projects
+                /// [specified a processing
+                /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
                 /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
                 /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
                 /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
@@ -7543,8 +8420,8 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// Lists DlpJobs that match the specified filter in the request. See
-                /// https://cloud.google.com/dlp/docs/inspecting-storage and
-                /// https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
+                /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-storage and
+                /// https://cloud.google.com/sensitive-data-protection/docs/compute-risk-analysis to learn more.
                 /// </summary>
                 public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListDlpJobsResponse>
                 {
@@ -7557,7 +8434,8 @@ namespace Google.Apis.DLP.v2
 
                     /// <summary>
                     /// Required. Parent resource name. The format of this value varies depending on whether you have
-                    /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location): +
+                    /// [specified a processing
+                    /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
                     /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects
                     /// scope, no location specified (defaults to global): `projects/`PROJECT_ID The following example
                     /// `parent` string specifies a parent project with the identifier `example-project`, and specifies
@@ -7720,19 +8598,20 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// Redacts potentially sensitive info from an image. This method has limits on input size, processing
-                /// time, and output size. See https://cloud.google.com/dlp/docs/redacting-sensitive-data-images to
-                /// learn more. When no InfoTypes or CustomInfoTypes are specified in this request, the system will
+                /// time, and output size. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/redacting-sensitive-data-images to learn
+                /// more. When no InfoTypes or CustomInfoTypes are specified in this request, the system will
                 /// automatically choose what detectors to run. By default this may be all types, but may change over
                 /// time as detectors are updated.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Parent resource name. The format of this value varies depending on whether you have [specified a
-                /// processing location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope,
-                /// location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location
-                /// specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
-                /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
-                /// location for processing data: parent=projects/example-project/locations/europe-west3
+                /// processing location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
+                /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope,
+                /// no location specified (defaults to global): `projects/`PROJECT_ID The following example `parent`
+                /// string specifies a parent project with the identifier `example-project`, and specifies the
+                /// `europe-west3` location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
                 public virtual RedactRequest Redact(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2RedactImageRequest body, string parent)
                 {
@@ -7741,8 +8620,9 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// Redacts potentially sensitive info from an image. This method has limits on input size, processing
-                /// time, and output size. See https://cloud.google.com/dlp/docs/redacting-sensitive-data-images to
-                /// learn more. When no InfoTypes or CustomInfoTypes are specified in this request, the system will
+                /// time, and output size. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/redacting-sensitive-data-images to learn
+                /// more. When no InfoTypes or CustomInfoTypes are specified in this request, the system will
                 /// automatically choose what detectors to run. By default this may be all types, but may change over
                 /// time as detectors are updated.
                 /// </summary>
@@ -7758,11 +8638,12 @@ namespace Google.Apis.DLP.v2
 
                     /// <summary>
                     /// Parent resource name. The format of this value varies depending on whether you have [specified a
-                    /// processing location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope,
-                    /// location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location
-                    /// specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
-                    /// specifies a parent project with the identifier `example-project`, and specifies the
-                    /// `europe-west3` location for processing data:
+                    /// processing
+                    /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
+                    /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects
+                    /// scope, no location specified (defaults to global): `projects/`PROJECT_ID The following example
+                    /// `parent` string specifies a parent project with the identifier `example-project`, and specifies
+                    /// the `europe-west3` location for processing data:
                     /// parent=projects/example-project/locations/europe-west3
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -7818,19 +8699,20 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// Creates an InspectTemplate for reusing frequently used configuration for inspecting content, images,
-                /// and storage. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+                /// and storage. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn
+                /// more.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
                 /// request (project or organization) and whether you have [specified a processing
-                /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
-                /// processing data: parent=projects/example-project/locations/europe-west3
+                /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
+                /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
+                /// location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location
+                /// specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location
+                /// specified (defaults to global): `organizations/`ORG_ID The following example `parent` string
+                /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
+                /// location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateInspectTemplateRequest body, string parent)
                 {
@@ -7839,7 +8721,8 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// Creates an InspectTemplate for reusing frequently used configuration for inspecting content, images,
-                /// and storage. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+                /// and storage. See https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn
+                /// more.
                 /// </summary>
                 public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectTemplate>
                 {
@@ -7854,13 +8737,14 @@ namespace Google.Apis.DLP.v2
                     /// <summary>
                     /// Required. Parent resource name. The format of this value varies depending on the scope of the
                     /// request (project or organization) and whether you have [specified a processing
-                    /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                    /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                    /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                    /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                    /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                    /// parent project with the identifier `example-project`, and specifies the `europe-west3` location
-                    /// for processing data: parent=projects/example-project/locations/europe-west3
+                    /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
+                    /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects
+                    /// scope, no location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope,
+                    /// location specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
+                    /// location specified (defaults to global): `organizations/`ORG_ID The following example `parent`
+                    /// string specifies a parent project with the identifier `example-project`, and specifies the
+                    /// `europe-west3` location for processing data:
+                    /// parent=projects/example-project/locations/europe-west3
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -7896,7 +8780,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Deletes an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+                /// Deletes an InspectTemplate. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more.
                 /// </summary>
                 /// <param name="name">
                 /// Required. Resource name of the organization and inspectTemplate to be deleted, for example
@@ -7909,7 +8794,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Deletes an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+                /// Deletes an InspectTemplate. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more.
                 /// </summary>
                 public class DeleteRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GoogleProtobufEmpty>
                 {
@@ -7953,7 +8839,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Gets an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+                /// Gets an InspectTemplate. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more.
                 /// </summary>
                 /// <param name="name">
                 /// Required. Resource name of the organization and inspectTemplate to be read, for example
@@ -7966,7 +8853,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Gets an InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+                /// Gets an InspectTemplate. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more.
                 /// </summary>
                 public class GetRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectTemplate>
                 {
@@ -8010,18 +8898,19 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Lists InspectTemplates. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+                /// Lists InspectTemplates. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more.
                 /// </summary>
                 /// <param name="parent">
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
                 /// request (project or organization) and whether you have [specified a processing
-                /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
-                /// processing data: parent=projects/example-project/locations/europe-west3
+                /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
+                /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
+                /// location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location
+                /// specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location
+                /// specified (defaults to global): `organizations/`ORG_ID The following example `parent` string
+                /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
+                /// location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -8029,7 +8918,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Lists InspectTemplates. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+                /// Lists InspectTemplates. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more.
                 /// </summary>
                 public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListInspectTemplatesResponse>
                 {
@@ -8043,13 +8933,14 @@ namespace Google.Apis.DLP.v2
                     /// <summary>
                     /// Required. Parent resource name. The format of this value varies depending on the scope of the
                     /// request (project or organization) and whether you have [specified a processing
-                    /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                    /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                    /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                    /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                    /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                    /// parent project with the identifier `example-project`, and specifies the `europe-west3` location
-                    /// for processing data: parent=projects/example-project/locations/europe-west3
+                    /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
+                    /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects
+                    /// scope, no location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope,
+                    /// location specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
+                    /// location specified (defaults to global): `organizations/`ORG_ID The following example `parent`
+                    /// string specifies a parent project with the identifier `example-project`, and specifies the
+                    /// `europe-west3` location for processing data:
+                    /// parent=projects/example-project/locations/europe-west3
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -8139,7 +9030,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Updates the InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+                /// Updates the InspectTemplate. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -8153,7 +9045,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Updates the InspectTemplate. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+                /// Updates the InspectTemplate. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-templates to learn more.
                 /// </summary>
                 public class PatchRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectTemplate>
                 {
@@ -8288,12 +9181,14 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// Creates a job trigger to run DLP actions such as scanning storage for sensitive information on a set
-                /// schedule. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+                /// schedule. See https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to learn
+                /// more.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. Parent resource name. The format of this value varies depending on whether you have
-                /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location): + Projects
+                /// [specified a processing
+                /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
                 /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
                 /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
                 /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
@@ -8306,7 +9201,8 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// Creates a job trigger to run DLP actions such as scanning storage for sensitive information on a set
-                /// schedule. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+                /// schedule. See https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to learn
+                /// more.
                 /// </summary>
                 public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2JobTrigger>
                 {
@@ -8320,7 +9216,8 @@ namespace Google.Apis.DLP.v2
 
                     /// <summary>
                     /// Required. Parent resource name. The format of this value varies depending on whether you have
-                    /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location): +
+                    /// [specified a processing
+                    /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
                     /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects
                     /// scope, no location specified (defaults to global): `projects/`PROJECT_ID The following example
                     /// `parent` string specifies a parent project with the identifier `example-project`, and specifies
@@ -8361,7 +9258,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Deletes a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+                /// Deletes a job trigger. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to learn more.
                 /// </summary>
                 /// <param name="name">
                 /// Required. Resource name of the project and the triggeredJob, for example
@@ -8373,7 +9271,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Deletes a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+                /// Deletes a job trigger. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to learn more.
                 /// </summary>
                 public class DeleteRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GoogleProtobufEmpty>
                 {
@@ -8416,7 +9315,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Gets a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+                /// Gets a job trigger. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to learn more.
                 /// </summary>
                 /// <param name="name">
                 /// Required. Resource name of the project and the triggeredJob, for example
@@ -8428,7 +9328,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Gets a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+                /// Gets a job trigger. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to learn more.
                 /// </summary>
                 public class GetRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2JobTrigger>
                 {
@@ -8536,11 +9437,13 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Lists job triggers. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+                /// Lists job triggers. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to learn more.
                 /// </summary>
                 /// <param name="parent">
                 /// Required. Parent resource name. The format of this value varies depending on whether you have
-                /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location): + Projects
+                /// [specified a processing
+                /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
                 /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
                 /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
                 /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
@@ -8552,7 +9455,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Lists job triggers. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+                /// Lists job triggers. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to learn more.
                 /// </summary>
                 public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListJobTriggersResponse>
                 {
@@ -8565,7 +9469,8 @@ namespace Google.Apis.DLP.v2
 
                     /// <summary>
                     /// Required. Parent resource name. The format of this value varies depending on whether you have
-                    /// [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location): +
+                    /// [specified a processing
+                    /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
                     /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects
                     /// scope, no location specified (defaults to global): `projects/`PROJECT_ID The following example
                     /// `parent` string specifies a parent project with the identifier `example-project`, and specifies
@@ -8711,7 +9616,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Updates a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+                /// Updates a job trigger. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to learn more.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -8724,7 +9630,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Updates a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+                /// Updates a job trigger. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-job-triggers to learn more.
                 /// </summary>
                 public class PatchRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2JobTrigger>
                 {
@@ -8774,6 +9681,188 @@ namespace Google.Apis.DLP.v2
                 }
             }
 
+            /// <summary>Gets the ProjectDataProfiles resource.</summary>
+            public virtual ProjectDataProfilesResource ProjectDataProfiles { get; }
+
+            /// <summary>The "projectDataProfiles" collection of methods.</summary>
+            public class ProjectDataProfilesResource
+            {
+                private const string Resource = "projectDataProfiles";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ProjectDataProfilesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Gets a project data profile.</summary>
+                /// <param name="name">
+                /// Required. Resource name, for example
+                /// `organizations/12345/locations/us/projectDataProfiles/53234423`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets a project data profile.</summary>
+                public class GetRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ProjectDataProfile>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name, for example
+                    /// `organizations/12345/locations/us/projectDataProfiles/53234423`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/projectDataProfiles/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists data profiles for an organization.</summary>
+                /// <param name="parent">Required. organizations/{org_id}/locations/{loc_id}</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists data profiles for an organization.</summary>
+                public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListProjectDataProfilesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. organizations/{org_id}/locations/{loc_id}</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Allows filtering. Supported syntax: * Filter expressions are made up of one or more
+                    /// restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of
+                    /// restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator}
+                    /// {value}`. * Supported fields/values: - `sensitivity_level` - HIGH|MODERATE|LOW -
+                    /// `data_risk_level` - HIGH|MODERATE|LOW - `status_code` - an RPC status code as defined in
+                    /// https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto * The operator must
+                    /// be `=` or `!=`. Examples: * project_id = 12345 AND status_code = 1 * project_id = 12345 AND
+                    /// sensitivity_level = HIGH The length of this field should be no more than 500 characters.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
+                    /// case insensitive. The default sorting order is ascending. Redundant space characters are
+                    /// insignificant. Only one order field at a time is allowed. Examples: * `project_id` *
+                    /// `sensitivity_level desc` Supported fields are: - `project_id`: GCP project ID -
+                    /// `sensitivity_level`: How sensitive the data in a project is, at most. - `data_risk_level`: How
+                    /// much risk is associated with this data. - `profile_last_generated`: When the profile was last
+                    /// updated in epoch seconds.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Size of the page. This value can be limited by the server. If zero, server returns a page of max
+                    /// size 100.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Page token to continue retrieval.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/projectDataProfiles";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the StoredInfoTypes resource.</summary>
             public virtual StoredInfoTypesResource StoredInfoTypes { get; }
 
@@ -8793,19 +9882,19 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// Creates a pre-built stored infoType to be used for inspection. See
-                /// https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
                 /// request (project or organization) and whether you have [specified a processing
-                /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
-                /// processing data: parent=projects/example-project/locations/europe-west3
+                /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
+                /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
+                /// location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location
+                /// specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location
+                /// specified (defaults to global): `organizations/`ORG_ID The following example `parent` string
+                /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
+                /// location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateStoredInfoTypeRequest body, string parent)
                 {
@@ -8814,7 +9903,7 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// Creates a pre-built stored infoType to be used for inspection. See
-                /// https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more.
                 /// </summary>
                 public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2StoredInfoType>
                 {
@@ -8829,13 +9918,14 @@ namespace Google.Apis.DLP.v2
                     /// <summary>
                     /// Required. Parent resource name. The format of this value varies depending on the scope of the
                     /// request (project or organization) and whether you have [specified a processing
-                    /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                    /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                    /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                    /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                    /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                    /// parent project with the identifier `example-project`, and specifies the `europe-west3` location
-                    /// for processing data: parent=projects/example-project/locations/europe-west3
+                    /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
+                    /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects
+                    /// scope, no location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope,
+                    /// location specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no
+                    /// location specified (defaults to global): `organizations/`ORG_ID The following example `parent`
+                    /// string specifies a parent project with the identifier `example-project`, and specifies the
+                    /// `europe-west3` location for processing data:
+                    /// parent=projects/example-project/locations/europe-west3
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -8871,8 +9961,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Deletes a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn
-                /// more.
+                /// Deletes a stored infoType. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more.
                 /// </summary>
                 /// <param name="name">
                 /// Required. Resource name of the organization and storedInfoType to be deleted, for example
@@ -8885,8 +9975,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Deletes a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn
-                /// more.
+                /// Deletes a stored infoType. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more.
                 /// </summary>
                 public class DeleteRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GoogleProtobufEmpty>
                 {
@@ -8930,8 +10020,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Gets a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn
-                /// more.
+                /// Gets a stored infoType. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more.
                 /// </summary>
                 /// <param name="name">
                 /// Required. Resource name of the organization and storedInfoType to be read, for example
@@ -8944,8 +10034,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Gets a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn
-                /// more.
+                /// Gets a stored infoType. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more.
                 /// </summary>
                 public class GetRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2StoredInfoType>
                 {
@@ -8989,17 +10079,17 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Lists stored infoTypes. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn
-                /// more.
+                /// Lists stored infoTypes. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more.
                 /// </summary>
                 /// <param name="parent">
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
                 /// request (project or organization) and whether you have [specified a processing
-                /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID The following example `parent` string specifies a parent
-                /// project with the identifier `example-project`, and specifies the `europe-west3` location for
-                /// processing data: parent=projects/example-project/locations/europe-west3
+                /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
+                /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
+                /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
+                /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
+                /// location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -9007,8 +10097,8 @@ namespace Google.Apis.DLP.v2
                 }
 
                 /// <summary>
-                /// Lists stored infoTypes. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn
-                /// more.
+                /// Lists stored infoTypes. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more.
                 /// </summary>
                 public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListStoredInfoTypesResponse>
                 {
@@ -9022,11 +10112,12 @@ namespace Google.Apis.DLP.v2
                     /// <summary>
                     /// Required. Parent resource name. The format of this value varies depending on the scope of the
                     /// request (project or organization) and whether you have [specified a processing
-                    /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                    /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                    /// (defaults to global): `projects/`PROJECT_ID The following example `parent` string specifies a
-                    /// parent project with the identifier `example-project`, and specifies the `europe-west3` location
-                    /// for processing data: parent=projects/example-project/locations/europe-west3
+                    /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): +
+                    /// Projects scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects
+                    /// scope, no location specified (defaults to global): `projects/`PROJECT_ID The following example
+                    /// `parent` string specifies a parent project with the identifier `example-project`, and specifies
+                    /// the `europe-west3` location for processing data:
+                    /// parent=projects/example-project/locations/europe-west3
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -9117,8 +10208,8 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// Updates the stored infoType by creating a new version. The existing version will continue to be used
-                /// until the new version is ready. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
-                /// learn more.
+                /// until the new version is ready. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -9133,8 +10224,8 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>
                 /// Updates the stored infoType by creating a new version. The existing version will continue to be used
-                /// until the new version is ready. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to
-                /// learn more.
+                /// until the new version is ready. See
+                /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more.
                 /// </summary>
                 public class PatchRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2StoredInfoType>
                 {
@@ -9184,6 +10275,199 @@ namespace Google.Apis.DLP.v2
                     }
                 }
             }
+
+            /// <summary>Gets the TableDataProfiles resource.</summary>
+            public virtual TableDataProfilesResource TableDataProfiles { get; }
+
+            /// <summary>The "tableDataProfiles" collection of methods.</summary>
+            public class TableDataProfilesResource
+            {
+                private const string Resource = "tableDataProfiles";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public TableDataProfilesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Gets a table data profile.</summary>
+                /// <param name="name">
+                /// Required. Resource name, for example `organizations/12345/locations/us/tableDataProfiles/53234423`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets a table data profile.</summary>
+                public class GetRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2TableDataProfile>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name, for example
+                    /// `organizations/12345/locations/us/tableDataProfiles/53234423`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/tableDataProfiles/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists data profiles for an organization.</summary>
+                /// <param name="parent">
+                /// Required. Resource name of the organization or project, for example
+                /// `organizations/433245324/locations/europe` or `projects/project-id/locations/asia`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists data profiles for an organization.</summary>
+                public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListTableDataProfilesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name of the organization or project, for example
+                    /// `organizations/433245324/locations/europe` or `projects/project-id/locations/asia`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Allows filtering. Supported syntax: * Filter expressions are made up of one or more
+                    /// restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of
+                    /// restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator}
+                    /// {value}`. * Supported fields/values: - `project_id` - The GCP project ID. - `dataset_id` - The
+                    /// BigQuery dataset ID. - `table_id` - The ID of the BigQuery table. - `sensitivity_level` -
+                    /// HIGH|MODERATE|LOW - `data_risk_level` - HIGH|MODERATE|LOW - `resource_visibility`:
+                    /// PUBLIC|RESTRICTED - `status_code` - an RPC status code as defined in
+                    /// https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto * The operator must
+                    /// be `=` or `!=`. Examples: * project_id = 12345 AND status_code = 1 * project_id = 12345 AND
+                    /// sensitivity_level = HIGH * project_id = 12345 AND resource_visibility = PUBLIC The length of
+                    /// this field should be no more than 500 characters.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
+                    /// case insensitive. The default sorting order is ascending. Redundant space characters are
+                    /// insignificant. Only one order field at a time is allowed. Examples: * `project_id asc` *
+                    /// `table_id` * `sensitivity_level desc` Supported fields are: - `project_id`: The GCP project ID.
+                    /// - `dataset_id`: The ID of a BigQuery dataset. - `table_id`: The ID of a BigQuery table. -
+                    /// `sensitivity_level`: How sensitive the data in a table is, at most. - `data_risk_level`: How
+                    /// much risk is associated with this data. - `profile_last_generated`: When the profile was last
+                    /// updated in epoch seconds. - `last_modified`: The last time the resource was modified. -
+                    /// `resource_visibility`: Visibility restriction for this resource. - `row_count`: Number of rows
+                    /// in this resource.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Size of the page. This value can be limited by the server. If zero, server returns a page of max
+                    /// size 100.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Page token to continue retrieval.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/tableDataProfiles";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
         }
 
         /// <summary>Gets the StoredInfoTypes resource.</summary>
@@ -9205,15 +10489,15 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>
             /// Creates a pre-built stored infoType to be used for inspection. See
-            /// https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
+            /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. Parent resource name. The format of this value varies depending on the scope of the request
             /// (project or organization) and whether you have [specified a processing
-            /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location specified:
-            /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified (defaults to
-            /// global): `projects/`PROJECT_ID + Organizations scope, location specified:
+            /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
+            /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location
+            /// specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
             /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified (defaults to
             /// global): `organizations/`ORG_ID The following example `parent` string specifies a parent project with
             /// the identifier `example-project`, and specifies the `europe-west3` location for processing data:
@@ -9226,7 +10510,7 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>
             /// Creates a pre-built stored infoType to be used for inspection. See
-            /// https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
+            /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more.
             /// </summary>
             public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2StoredInfoType>
             {
@@ -9241,13 +10525,13 @@ namespace Google.Apis.DLP.v2
                 /// <summary>
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
                 /// request (project or organization) and whether you have [specified a processing
-                /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID + Organizations scope, location specified:
-                /// `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location specified
-                /// (defaults to global): `organizations/`ORG_ID The following example `parent` string specifies a
-                /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
-                /// processing data: parent=projects/example-project/locations/europe-west3
+                /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
+                /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
+                /// location specified (defaults to global): `projects/`PROJECT_ID + Organizations scope, location
+                /// specified: `organizations/`ORG_ID`/locations/`LOCATION_ID + Organizations scope, no location
+                /// specified (defaults to global): `organizations/`ORG_ID The following example `parent` string
+                /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
+                /// location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -9283,8 +10567,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Deletes a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn
-            /// more.
+            /// Deletes a stored infoType. See
+            /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more.
             /// </summary>
             /// <param name="name">
             /// Required. Resource name of the organization and storedInfoType to be deleted, for example
@@ -9296,8 +10580,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Deletes a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn
-            /// more.
+            /// Deletes a stored infoType. See
+            /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more.
             /// </summary>
             public class DeleteRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GoogleProtobufEmpty>
             {
@@ -9341,7 +10625,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Gets a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
+            /// Gets a stored infoType. See
+            /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more.
             /// </summary>
             /// <param name="name">
             /// Required. Resource name of the organization and storedInfoType to be read, for example
@@ -9353,7 +10638,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Gets a stored infoType. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
+            /// Gets a stored infoType. See
+            /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more.
             /// </summary>
             public class GetRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2StoredInfoType>
             {
@@ -9397,16 +10683,17 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Lists stored infoTypes. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
+            /// Lists stored infoTypes. See
+            /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more.
             /// </summary>
             /// <param name="parent">
             /// Required. Parent resource name. The format of this value varies depending on the scope of the request
             /// (project or organization) and whether you have [specified a processing
-            /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location specified:
-            /// `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified (defaults to
-            /// global): `projects/`PROJECT_ID The following example `parent` string specifies a parent project with the
-            /// identifier `example-project`, and specifies the `europe-west3` location for processing data:
-            /// parent=projects/example-project/locations/europe-west3
+            /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
+            /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location
+            /// specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string specifies a
+            /// parent project with the identifier `example-project`, and specifies the `europe-west3` location for
+            /// processing data: parent=projects/example-project/locations/europe-west3
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -9414,7 +10701,8 @@ namespace Google.Apis.DLP.v2
             }
 
             /// <summary>
-            /// Lists stored infoTypes. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
+            /// Lists stored infoTypes. See
+            /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more.
             /// </summary>
             public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListStoredInfoTypesResponse>
             {
@@ -9428,11 +10716,11 @@ namespace Google.Apis.DLP.v2
                 /// <summary>
                 /// Required. Parent resource name. The format of this value varies depending on the scope of the
                 /// request (project or organization) and whether you have [specified a processing
-                /// location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location
-                /// specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified
-                /// (defaults to global): `projects/`PROJECT_ID The following example `parent` string specifies a parent
-                /// project with the identifier `example-project`, and specifies the `europe-west3` location for
-                /// processing data: parent=projects/example-project/locations/europe-west3
+                /// location](https://cloud.google.com/sensitive-data-protection/docs/specifying-location): + Projects
+                /// scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no
+                /// location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string
+                /// specifies a parent project with the identifier `example-project`, and specifies the `europe-west3`
+                /// location for processing data: parent=projects/example-project/locations/europe-west3
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -9523,8 +10811,8 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>
             /// Updates the stored infoType by creating a new version. The existing version will continue to be used
-            /// until the new version is ready. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn
-            /// more.
+            /// until the new version is ready. See
+            /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -9538,8 +10826,8 @@ namespace Google.Apis.DLP.v2
 
             /// <summary>
             /// Updates the stored infoType by creating a new version. The existing version will continue to be used
-            /// until the new version is ready. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn
-            /// more.
+            /// until the new version is ready. See
+            /// https://cloud.google.com/sensitive-data-protection/docs/creating-stored-infotypes to learn more.
             /// </summary>
             public class PatchRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2StoredInfoType>
             {
@@ -9594,8 +10882,8 @@ namespace Google.Apis.DLP.v2
 namespace Google.Apis.DLP.v2.Data
 {
     /// <summary>
-    /// A task to execute on the completion of a job. See https://cloud.google.com/dlp/docs/concepts-actions to learn
-    /// more.
+    /// A task to execute on the completion of a job. See
+    /// https://cloud.google.com/sensitive-data-protection/docs/concepts-actions to learn more.
     /// </summary>
     public class GooglePrivacyDlpV2Action : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9850,8 +11138,8 @@ namespace Google.Apis.DLP.v2.Data
         /// Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down. Must be
         /// between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of rows_limit and
         /// rows_limit_percent can be specified. Cannot be used in conjunction with TimespanConfig. Caution: A [known
-        /// issue](https://cloud.google.com/dlp/docs/known-issues#bq-sampling) is causing the `rowsLimitPercent` field
-        /// to behave unexpectedly. We recommend using `rowsLimit` instead.
+        /// issue](https://cloud.google.com/sensitive-data-protection/docs/known-issues#bq-sampling) is causing the
+        /// `rowsLimitPercent` field to behave unexpectedly. We recommend using `rowsLimit` instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowsLimitPercent")]
         public virtual System.Nullable<int> RowsLimitPercent { get; set; }
@@ -10002,8 +11290,8 @@ namespace Google.Apis.DLP.v2.Data
     /// provided by the user for custom behavior, such as 1-30 -&amp;gt; LOW 31-65 -&amp;gt; MEDIUM 66-100 -&amp;gt;
     /// HIGH This can be used on data of type: number, long, string, timestamp. If the bound `Value` type differs from
     /// the type of data being transformed, we will first attempt converting the type of the data to be transformed to
-    /// match the type of the bound before comparing. See https://cloud.google.com/dlp/docs/concepts-bucketing to learn
-    /// more.
+    /// match the type of the bound before comparing. See
+    /// https://cloud.google.com/sensitive-data-protection/docs/concepts-bucketing to learn more.
     /// </summary>
     public class GooglePrivacyDlpV2BucketingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10180,7 +11468,7 @@ namespace Google.Apis.DLP.v2.Data
         /// the bytes are omitted. Only one of `bytes_limit_per_file` and `bytes_limit_per_file_percent` can be
         /// specified. This field can't be set if de-identification is requested. For certain file types, setting this
         /// field has no effect. For more information, see [Limits on bytes scanned per
-        /// file](https://cloud.google.com/dlp/docs/supported-file-types#max-byte-size-per-file).
+        /// file](https://cloud.google.com/sensitive-data-protection/docs/supported-file-types#max-byte-size-per-file).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bytesLimitPerFile")]
         public virtual System.Nullable<long> BytesLimitPerFile { get; set; }
@@ -10191,7 +11479,7 @@ namespace Google.Apis.DLP.v2.Data
         /// bytes_limit_per_file and bytes_limit_per_file_percent can be specified. This field can't be set if
         /// de-identification is requested. For certain file types, setting this field has no effect. For more
         /// information, see [Limits on bytes scanned per
-        /// file](https://cloud.google.com/dlp/docs/supported-file-types#max-byte-size-per-file).
+        /// file](https://cloud.google.com/sensitive-data-protection/docs/supported-file-types#max-byte-size-per-file).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bytesLimitPerFilePercent")]
         public virtual System.Nullable<int> BytesLimitPerFilePercent { get; set; }
@@ -10228,8 +11516,8 @@ namespace Google.Apis.DLP.v2.Data
     public class GooglePrivacyDlpV2CloudStoragePath : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A url representing a file or path (no wildcards) in Cloud Storage. Example:
-        /// gs://[BUCKET_NAME]/dictionary.txt
+        /// A URL representing a file or path (no wildcards) in Cloud Storage. Example:
+        /// `gs://[BUCKET_NAME]/dictionary.txt`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
@@ -10336,7 +11624,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("datasetLocation")]
         public virtual string DatasetLocation { get; set; }
 
-        /// <summary>The Google Cloud project ID that owns the BigQuery dataset.</summary>
+        /// <summary>The Google Cloud project ID that owns the profiled resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datasetProjectId")]
         public virtual string DatasetProjectId { get; set; }
 
@@ -10425,7 +11713,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tableDataProfile")]
         public virtual string TableDataProfile { get; set; }
 
-        /// <summary>The resource name of the table this column is within.</summary>
+        /// <summary>The resource name of the resource this column is within.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableFullResource")]
         public virtual string TableFullResource { get; set; }
 
@@ -10571,8 +11859,8 @@ namespace Google.Apis.DLP.v2.Data
         public virtual GooglePrivacyDlpV2ByteContentItem ByteItem { get; set; }
 
         /// <summary>
-        /// Structured content for inspection. See https://cloud.google.com/dlp/docs/inspecting-text#inspecting_a_table
-        /// to learn more.
+        /// Structured content for inspection. See
+        /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-text#inspecting_a_table to learn more.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("table")]
         public virtual GooglePrivacyDlpV2Table Table { get; set; }
@@ -10861,7 +12149,7 @@ namespace Google.Apis.DLP.v2.Data
     /// Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be
     /// either 32 or 64 bytes. Outputs a base64 encoded representation of the hashed output (for example,
     /// L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=). Currently, only string and integer values can be hashed. See
-    /// https://cloud.google.com/dlp/docs/pseudonymization to learn more.
+    /// https://cloud.google.com/sensitive-data-protection/docs/pseudonymization to learn more.
     /// </summary>
     public class GooglePrivacyDlpV2CryptoHashConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10902,7 +12190,7 @@ namespace Google.Apis.DLP.v2.Data
     /// surrogate back into the original identifier. The identifier must be encoded as ASCII. For a given crypto key and
     /// context, the same identifier will be replaced with the same surrogate. Identifiers must be at least two
     /// characters long. In the case that the identifier is the empty string, it will be skipped. See
-    /// https://cloud.google.com/dlp/docs/pseudonymization to learn more. Note: We recommend using
+    /// https://cloud.google.com/sensitive-data-protection/docs/pseudonymization to learn more. Note: We recommend using
     /// CryptoDeterministicConfig for all use cases which do not require preserving the input alphabet space and size,
     /// plus warrant referential integrity.
     /// </summary>
@@ -10951,14 +12239,14 @@ namespace Google.Apis.DLP.v2.Data
         /// example, if the name of custom infoType is 'MY_TOKEN_INFO_TYPE' and the surrogate is 'abc', the full
         /// replacement value will be: 'MY_TOKEN_INFO_TYPE(3):abc' This annotation identifies the surrogate when
         /// inspecting content using the custom infoType
-        /// [`SurrogateType`](https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#surrogatetype). This
-        /// facilitates reversal of the surrogate when it occurs in free text. In order for inspection to work properly,
-        /// the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a
-        /// surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name
-        /// carefully after considering what your data looks like. One way to select a name that has a high chance of
-        /// yielding reliable detection is to include one or more unicode characters that are highly improbable to exist
-        /// in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the
-        /// hex code point 29DD might be used like so: ⧝MY_TOKEN_TYPE
+        /// [`SurrogateType`](https://cloud.google.com/sensitive-data-protection/docs/reference/rest/v2/InspectConfig#surrogatetype).
+        /// This facilitates reversal of the surrogate when it occurs in free text. In order for inspection to work
+        /// properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection
+        /// may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom
+        /// infoType name carefully after considering what your data looks like. One way to select a name that has a
+        /// high chance of yielding reliable detection is to include one or more unicode characters that are highly
+        /// improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard,
+        /// the symbol with the hex code point 29DD might be used like so: ⧝MY_TOKEN_TYPE
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("surrogateInfoType")]
         public virtual GooglePrivacyDlpV2InfoType SurrogateInfoType { get; set; }
@@ -11088,6 +12376,49 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inspectConfig")]
         public virtual GooglePrivacyDlpV2InspectConfig InspectConfig { get; set; }
 
+        private string _inspectTemplateModifiedTimeRaw;
+
+        private object _inspectTemplateModifiedTime;
+
+        /// <summary>Timestamp when the template was modified</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inspectTemplateModifiedTime")]
+        public virtual string InspectTemplateModifiedTimeRaw
+        {
+            get => _inspectTemplateModifiedTimeRaw;
+            set
+            {
+                _inspectTemplateModifiedTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _inspectTemplateModifiedTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="InspectTemplateModifiedTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use InspectTemplateModifiedTimeDateTimeOffset instead.")]
+        public virtual object InspectTemplateModifiedTime
+        {
+            get => _inspectTemplateModifiedTime;
+            set
+            {
+                _inspectTemplateModifiedTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _inspectTemplateModifiedTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="InspectTemplateModifiedTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? InspectTemplateModifiedTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(InspectTemplateModifiedTimeRaw);
+            set => InspectTemplateModifiedTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Name of the inspection template used to generate this profile</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inspectTemplateName")]
+        public virtual string InspectTemplateName { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -11095,7 +12426,7 @@ namespace Google.Apis.DLP.v2.Data
     /// <summary>
     /// Configuration for setting up a job to scan resources for profile generation. Only one data profile configuration
     /// may exist per organization, folder, or project. The generated data profiles are retained according to the [data
-    /// retention policy] (https://cloud.google.com/dlp/docs/data-profiles#retention).
+    /// retention policy] (https://cloud.google.com/sensitive-data-protection/docs/data-profiles#retention).
     /// </summary>
     public class GooglePrivacyDlpV2DataProfileJobConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11110,7 +12441,7 @@ namespace Google.Apis.DLP.v2.Data
         /// Each region is scanned using the applicable template. If no region-specific template is specified, but a
         /// "global" template is specified, it will be copied to that region and used instead. If no global or
         /// region-specific template is provided for a region with data, that region's data will not be scanned. For
-        /// more information, see https://cloud.google.com/dlp/docs/data-profiles#data-residency.
+        /// more information, see https://cloud.google.com/sensitive-data-protection/docs/data-profiles#data-residency.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inspectTemplates")]
         public virtual System.Collections.Generic.IList<string> InspectTemplates { get; set; }
@@ -11233,7 +12564,7 @@ namespace Google.Apis.DLP.v2.Data
 
     /// <summary>
     /// Shifts dates by random number of days, with option to be consistent for the same context. See
-    /// https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
+    /// https://cloud.google.com/sensitive-data-protection/docs/concepts-date-shifting to learn more.
     /// </summary>
     public class GooglePrivacyDlpV2DateShiftConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11469,7 +12800,7 @@ namespace Google.Apis.DLP.v2.Data
 
     /// <summary>
     /// DeidentifyTemplates contains instructions on how to de-identify content. See
-    /// https://cloud.google.com/dlp/docs/concepts-templates to learn more.
+    /// https://cloud.google.com/sensitive-data-protection/docs/concepts-templates to learn more.
     /// </summary>
     public class GooglePrivacyDlpV2DeidentifyTemplate : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11702,8 +13033,8 @@ namespace Google.Apis.DLP.v2.Data
     /// next to non-digits. For example, the dictionary word "jen" will match the first three letters of the text
     /// "jen123" but will return no matches for "jennifer". Dictionary words containing a large number of characters
     /// that are not letters or digits may result in unexpected findings because such characters are treated as
-    /// whitespace. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of
-    /// dictionaries. For dictionaries that do not fit within these constraints, consider using
+    /// whitespace. The [limits](https://cloud.google.com/sensitive-data-protection/limits) page contains details about
+    /// the size limits of dictionaries. For dictionaries that do not fit within these constraints, consider using
     /// `LargeCustomDictionaryConfig` in the `StoredInfoType` API.
     /// </summary>
     public class GooglePrivacyDlpV2Dictionary : Google.Apis.Requests.IDirectResponseSchema
@@ -11815,7 +13146,7 @@ namespace Google.Apis.DLP.v2.Data
     /// <summary>
     /// Configuration for discovery to scan resources for profile generation. Only one discovery configuration may exist
     /// per organization, folder, or project. The generated data profiles are retained according to the [data retention
-    /// policy] (https://cloud.google.com/dlp/docs/data-profiles#retention).
+    /// policy] (https://cloud.google.com/sensitive-data-protection/docs/data-profiles#retention).
     /// </summary>
     public class GooglePrivacyDlpV2DiscoveryConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11879,7 +13210,7 @@ namespace Google.Apis.DLP.v2.Data
         /// Each region is scanned using the applicable template. If no region-specific template is specified, but a
         /// "global" template is specified, it will be copied to that region and used instead. If no global or
         /// region-specific template is provided for a region with data, that region's data will not be scanned. For
-        /// more information, see https://cloud.google.com/dlp/docs/data-profiles#data-residency.
+        /// more information, see https://cloud.google.com/sensitive-data-protection/docs/data-profiles#data-residency.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inspectTemplates")]
         public virtual System.Collections.Generic.IList<string> InspectTemplates { get; set; }
@@ -12661,7 +13992,8 @@ namespace Google.Apis.DLP.v2.Data
     /// lower_bound = 10 and upper_bound = 20, all values that are within this bucket will be replaced with "10-20".
     /// This can be used on data of type: double, long. If the bound Value type differs from the type of data being
     /// transformed, we will first attempt converting the type of the data to be transformed to match the type of the
-    /// bound before comparing. See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+    /// bound before comparing. See https://cloud.google.com/sensitive-data-protection/docs/concepts-bucketing to learn
+    /// more.
     /// </summary>
     public class GooglePrivacyDlpV2FixedSizeBucketingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12712,7 +14044,7 @@ namespace Google.Apis.DLP.v2.Data
         /// this case, use the hotword regex "\(xxx\)", where "xxx" is the area code in question. For tabular data, if
         /// you want to modify the likelihood of an entire column of findngs, see [Hotword example: Set the match
         /// likelihood of a table column]
-        /// (https://cloud.google.com/dlp/docs/creating-custom-infotypes-likelihood#match-column-values).
+        /// (https://cloud.google.com/sensitive-data-protection/docs/creating-custom-infotypes-likelihood#match-column-values).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proximity")]
         public virtual GooglePrivacyDlpV2Proximity Proximity { get; set; }
@@ -12964,9 +14296,9 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>
         /// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the
-        /// names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When
-        /// sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern
-        /// `[A-Za-z0-9$_-]{1,64}`.
+        /// names listed at https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference when specifying
+        /// a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the
+        /// pattern `[A-Za-z0-9$_-]{1,64}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -13158,8 +14490,8 @@ namespace Google.Apis.DLP.v2.Data
         public virtual System.Collections.Generic.IList<string> ContentOptions { get; set; }
 
         /// <summary>
-        /// CustomInfoTypes provided by the user. See https://cloud.google.com/dlp/docs/creating-custom-infotypes to
-        /// learn more.
+        /// CustomInfoTypes provided by the user. See
+        /// https://cloud.google.com/sensitive-data-protection/docs/creating-custom-infotypes to learn more.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customInfoTypes")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2CustomInfoType> CustomInfoTypes { get; set; }
@@ -13179,11 +14511,11 @@ namespace Google.Apis.DLP.v2.Data
 
         /// <summary>
         /// Restricts what info_types to look for. The values must correspond to InfoType values returned by
-        /// ListInfoTypes or listed at https://cloud.google.com/dlp/docs/infotypes-reference. When no InfoTypes or
-        /// CustomInfoTypes are specified in a request, the system may automatically choose a default list of detectors
-        /// to run, which may change over time. If you need precise control and predictability as to what detectors are
-        /// run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used,
-        /// which may change over time.
+        /// ListInfoTypes or listed at https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference. When
+        /// no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose a default
+        /// list of detectors to run, which may change over time. If you need precise control and predictability as to
+        /// what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default
+        /// list will be used, which may change over time.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infoTypes")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InfoType> InfoTypes { get; set; }
@@ -13202,7 +14534,7 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>
         /// Only returns findings equal to or above this threshold. The default is POSSIBLE. In general, the highest
         /// likelihood setting yields the fewest findings in results and the lowest chance of a false positive. For more
-        /// information, see [Match likelihood](https://cloud.google.com/dlp/docs/likelihood).
+        /// information, see [Match likelihood](https://cloud.google.com/sensitive-data-protection/docs/likelihood).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minLikelihood")]
         public virtual string MinLikelihood { get; set; }
@@ -13330,8 +14662,8 @@ namespace Google.Apis.DLP.v2.Data
 
     /// <summary>
     /// The inspectTemplate contains a configuration (set of types of sensitive data to be detected) to be used anywhere
-    /// you otherwise would normally specify InspectConfig. See https://cloud.google.com/dlp/docs/concepts-templates to
-    /// learn more.
+    /// you otherwise would normally specify InspectConfig. See
+    /// https://cloud.google.com/sensitive-data-protection/docs/concepts-templates to learn more.
     /// </summary>
     public class GooglePrivacyDlpV2InspectTemplate : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13478,7 +14810,7 @@ namespace Google.Apis.DLP.v2.Data
 
     /// <summary>
     /// Contains a configuration to make dlp api calls on a repeating basis. See
-    /// https://cloud.google.com/dlp/docs/concepts-job-triggers to learn more.
+    /// https://cloud.google.com/sensitive-data-protection/docs/concepts-job-triggers to learn more.
     /// </summary>
     public class GooglePrivacyDlpV2JobTrigger : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13864,8 +15196,8 @@ namespace Google.Apis.DLP.v2.Data
     /// Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key.
     /// Authorization requires the following IAM permissions when sending a request to perform a crypto transformation
     /// using a KMS-wrapped crypto key: dlp.kms.encrypt For more information, see [Creating a wrapped key]
-    /// (https://cloud.google.com/dlp/docs/create-wrapped-key). Note: When you use Cloud KMS for cryptographic
-    /// operations, [charges apply](https://cloud.google.com/kms/pricing).
+    /// (https://cloud.google.com/sensitive-data-protection/docs/create-wrapped-key). Note: When you use Cloud KMS for
+    /// cryptographic operations, [charges apply](https://cloud.google.com/kms/pricing).
     /// </summary>
     public class GooglePrivacyDlpV2KmsWrappedCryptoKey : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13968,9 +15300,9 @@ namespace Google.Apis.DLP.v2.Data
 
     /// <summary>
     /// Configuration for a custom dictionary created from a data source of any size up to the maximum size defined in
-    /// the [limits](https://cloud.google.com/dlp/limits) page. The artifacts of dictionary creation are stored in the
-    /// specified Cloud Storage location. Consider using `CustomInfoType.Dictionary` for smaller dictionaries that
-    /// satisfy the size requirements.
+    /// the [limits](https://cloud.google.com/sensitive-data-protection/limits) page. The artifacts of dictionary
+    /// creation are stored in the specified Cloud Storage location. Consider using `CustomInfoType.Dictionary` for
+    /// smaller dictionaries that satisfy the size requirements.
     /// </summary>
     public class GooglePrivacyDlpV2LargeCustomDictionaryConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14034,6 +15366,21 @@ namespace Google.Apis.DLP.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relativeLikelihood")]
         public virtual System.Nullable<int> RelativeLikelihood { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>List of profiles generated for a given organization or project.</summary>
+    public class GooglePrivacyDlpV2ListColumnDataProfilesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of data profiles.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columnDataProfiles")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2ColumnDataProfile> ColumnDataProfiles { get; set; }
+
+        /// <summary>The next page token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14137,6 +15484,21 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>List of profiles generated for a given organization or project.</summary>
+    public class GooglePrivacyDlpV2ListProjectDataProfilesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The next page token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>List of data profiles.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectDataProfiles")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2ProjectDataProfile> ProjectDataProfiles { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for ListStoredInfoTypes.</summary>
     public class GooglePrivacyDlpV2ListStoredInfoTypesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14150,6 +15512,21 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>List of storedInfoTypes, up to page_size in ListStoredInfoTypesRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storedInfoTypes")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2StoredInfoType> StoredInfoTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>List of profiles generated for a given organization or project.</summary>
+    public class GooglePrivacyDlpV2ListTableDataProfilesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The next page token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>List of data profiles.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableDataProfiles")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2TableDataProfile> TableDataProfiles { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14517,6 +15894,72 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>An aggregated profile for this project, based on the resources profiled within it.</summary>
+    public class GooglePrivacyDlpV2ProjectDataProfile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The data risk level of this project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataRiskLevel")]
+        public virtual GooglePrivacyDlpV2DataRiskLevel DataRiskLevel { get; set; }
+
+        /// <summary>The resource name of the profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _profileLastGeneratedRaw;
+
+        private object _profileLastGenerated;
+
+        /// <summary>The last time the profile was generated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("profileLastGenerated")]
+        public virtual string ProfileLastGeneratedRaw
+        {
+            get => _profileLastGeneratedRaw;
+            set
+            {
+                _profileLastGenerated = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _profileLastGeneratedRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ProfileLastGeneratedRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ProfileLastGeneratedDateTimeOffset instead.")]
+        public virtual object ProfileLastGenerated
+        {
+            get => _profileLastGenerated;
+            set
+            {
+                _profileLastGeneratedRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _profileLastGenerated = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ProfileLastGeneratedRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ProfileLastGeneratedDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ProfileLastGeneratedRaw);
+            set => ProfileLastGeneratedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Success or error status of the last attempt to profile the project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("profileStatus")]
+        public virtual GooglePrivacyDlpV2ProfileStatus ProfileStatus { get; set; }
+
+        /// <summary>Project ID that was profiled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; }
+
+        /// <summary>The sensitivity score of this project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sensitivityScore")]
+        public virtual GooglePrivacyDlpV2SensitivityScore SensitivityScore { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message for specifying a window around a finding to apply a detection rule.</summary>
     public class GooglePrivacyDlpV2Proximity : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14528,7 +15971,7 @@ namespace Google.Apis.DLP.v2.Data
         /// Number of characters before the finding to consider. For tabular data, if you want to modify the likelihood
         /// of an entire column of findngs, set this to 1. For more information, see [Hotword example: Set the match
         /// likelihood of a table column]
-        /// (https://cloud.google.com/dlp/docs/creating-custom-infotypes-likelihood#match-column-values).
+        /// (https://cloud.google.com/sensitive-data-protection/docs/creating-custom-infotypes-likelihood#match-column-values).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("windowBefore")]
         public virtual System.Nullable<int> WindowBefore { get; set; }
@@ -14634,8 +16077,8 @@ namespace Google.Apis.DLP.v2.Data
     /// <summary>
     /// Publish a message into a given Pub/Sub topic when DlpJob has completed. The message contains a single field,
     /// `DlpJobName`, which is equal to the finished job's
-    /// [`DlpJob.name`](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.dlpJobs#DlpJob). Compatible with:
-    /// Inspect, Risk
+    /// [`DlpJob.name`](https://cloud.google.com/sensitive-data-protection/docs/reference/rest/v2/projects.dlpJobs#DlpJob).
+    /// Compatible with: Inspect, Risk
     /// </summary>
     public class GooglePrivacyDlpV2PublishToPubSub : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14779,7 +16222,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bigQueryKey")]
         public virtual GooglePrivacyDlpV2BigQueryKey BigQueryKey { get; set; }
 
-        /// <summary>Bigquery key</summary>
+        /// <summary>BigQuery key</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datastoreKey")]
         public virtual GooglePrivacyDlpV2DatastoreKey DatastoreKey { get; set; }
 
@@ -15048,8 +16491,9 @@ namespace Google.Apis.DLP.v2.Data
     public class GooglePrivacyDlpV2ReplaceDictionaryConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A list of words to select from for random replacement. The [limits](https://cloud.google.com/dlp/limits)
-        /// page contains details about the size limits of dictionaries.
+        /// A list of words to select from for random replacement. The
+        /// [limits](https://cloud.google.com/sensitive-data-protection/limits) page contains details about the size
+        /// limits of dictionaries.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wordList")]
         public virtual GooglePrivacyDlpV2WordList WordList { get; set; }
@@ -15153,8 +16597,8 @@ namespace Google.Apis.DLP.v2.Data
     }
 
     /// <summary>
-    /// Configuration for a risk analysis job. See https://cloud.google.com/dlp/docs/concepts-risk-analysis to learn
-    /// more.
+    /// Configuration for a risk analysis job. See
+    /// https://cloud.google.com/sensitive-data-protection/docs/concepts-risk-analysis to learn more.
     /// </summary>
     public class GooglePrivacyDlpV2RiskAnalysisJobConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -15329,7 +16773,7 @@ namespace Google.Apis.DLP.v2.Data
 
     /// <summary>
     /// Configuration for stored infoTypes. All fields and subfield are provided by the user. For more information, see
-    /// https://cloud.google.com/dlp/docs/creating-custom-infotypes.
+    /// https://cloud.google.com/sensitive-data-protection/docs/creating-custom-infotypes.
     /// </summary>
     public class GooglePrivacyDlpV2StoredInfoTypeConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -15520,7 +16964,7 @@ namespace Google.Apis.DLP.v2.Data
 
     /// <summary>
     /// Message for detecting output from deidentification transformations such as
-    /// [`CryptoReplaceFfxFpeConfig`](https://cloud.google.com/dlp/docs/reference/rest/v2/organizations.deidentifyTemplates#cryptoreplaceffxfpeconfig).
+    /// [`CryptoReplaceFfxFpeConfig`](https://cloud.google.com/sensitive-data-protection/docs/reference/rest/v2/organizations.deidentifyTemplates#cryptoreplaceffxfpeconfig).
     /// These types of transformations are those that perform pseudonymization, thereby producing a "surrogate" as
     /// output. This should be used in conjunction with a field on the transformation such as `surrogate_info_type`.
     /// This CustomInfoType does not support the use of `detection_rules`.
@@ -15533,7 +16977,8 @@ namespace Google.Apis.DLP.v2.Data
 
     /// <summary>
     /// Structured content to inspect. Up to 50,000 `Value`s per request allowed. See
-    /// https://cloud.google.com/dlp/docs/inspecting-structured-text#inspecting_a_table to learn more.
+    /// https://cloud.google.com/sensitive-data-protection/docs/inspecting-structured-text#inspecting_a_table to learn
+    /// more.
     /// </summary>
     public class GooglePrivacyDlpV2Table : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -15601,18 +17046,18 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceType")]
         public virtual GooglePrivacyDlpV2DataSourceType DataSourceType { get; set; }
 
-        /// <summary>The BigQuery dataset ID.</summary>
+        /// <summary>If the resource is BigQuery, the dataset ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datasetId")]
         public virtual string DatasetId { get; set; }
 
         /// <summary>
-        /// The BigQuery location where the dataset's data is stored. See
+        /// If supported, the location where the dataset's data is stored. See
         /// https://cloud.google.com/bigquery/docs/locations for supported locations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datasetLocation")]
         public virtual string DatasetLocation { get; set; }
 
-        /// <summary>The Google Cloud project ID that owns the BigQuery dataset.</summary>
+        /// <summary>The Google Cloud project ID that owns the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datasetProjectId")]
         public virtual string DatasetProjectId { get; set; }
 
@@ -15664,7 +17109,8 @@ namespace Google.Apis.DLP.v2.Data
         public virtual System.Nullable<long> FailedColumnCount { get; set; }
 
         /// <summary>
-        /// The resource name of the table. https://cloud.google.com/apis/design/resource_names#full_resource_name
+        /// The resource name of the resource profiled.
+        /// https://cloud.google.com/apis/design/resource_names#full_resource_name
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullResource")]
         public virtual string FullResource { get; set; }
@@ -15796,7 +17242,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
-        /// <summary>The BigQuery table ID.</summary>
+        /// <summary>If the resource is BigQuery, the BigQuery table ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
         public virtual string TableId { get; set; }
 
@@ -16013,7 +17459,8 @@ namespace Google.Apis.DLP.v2.Data
         /// specified, then entities are filtered based on the given start and end times. If an entity does not contain
         /// the provided timestamp property or contains empty or invalid values, then it is included. Valid data types
         /// of the provided timestamp property are: `TIMESTAMP`. See the [known
-        /// issue](https://cloud.google.com/dlp/docs/known-issues#bq-timespan) related to this operation.
+        /// issue](https://cloud.google.com/sensitive-data-protection/docs/known-issues#bq-timespan) related to this
+        /// operation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestampField")]
         public virtual GooglePrivacyDlpV2FieldId TimestampField { get; set; }

@@ -1446,9 +1446,13 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cause")]
         public virtual string Cause { get; set; }
 
+        /// <summary>IP address that caused the abort.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
+        public virtual string IpAddress { get; set; }
+
         /// <summary>
-        /// List of project IDs that the user has specified in the request but does not have permission to access
-        /// network configs. Analysis is aborted in this case with the PERMISSION_DENIED cause.
+        /// List of project IDs the user specified in the request but lacks access to. In this case, analysis is aborted
+        /// with the PERMISSION_DENIED cause.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectsMissingPermission")]
         public virtual System.Collections.Generic.IList<string> ProjectsMissingPermission { get; set; }
@@ -1893,6 +1897,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
     /// <summary>Details of the final state "deliver" and associated resource.</summary>
     public class DeliverInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>IP address of the target (if applicable).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
+        public virtual string IpAddress { get; set; }
+
         /// <summary>URI of the resource that the packet is delivered to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUri")]
         public virtual string ResourceUri { get; set; }
@@ -2203,6 +2211,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
     /// <summary>Details of the final state "forward" and associated resource.</summary>
     public class ForwardInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>IP address of the target (if applicable).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
+        public virtual string IpAddress { get; set; }
+
         /// <summary>URI of the resource that the packet is forwarded to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUri")]
         public virtual string ResourceUri { get; set; }
