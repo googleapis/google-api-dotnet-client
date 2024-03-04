@@ -1965,6 +1965,141 @@ namespace Google.Apis.CloudRedis.v1beta1
 }
 namespace Google.Apis.CloudRedis.v1beta1.Data
 {
+    /// <summary>Configuration for availability of database instance</summary>
+    public class AvailabilityConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that
+        /// zone affect data accessibility. * `REGIONAL`: The instance can serve data from more than one zone in a
+        /// region (it is highly available).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availabilityType")]
+        public virtual string AvailabilityType { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("externalReplicaConfigured")]
+        public virtual System.Nullable<bool> ExternalReplicaConfigured { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("promotableReplicaConfigured")]
+        public virtual System.Nullable<bool> PromotableReplicaConfigured { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for automatic backups</summary>
+    public class BackupConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether customer visible automated backups are enabled on the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("automatedBackupEnabled")]
+        public virtual System.Nullable<bool> AutomatedBackupEnabled { get; set; }
+
+        /// <summary>Backup retention settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupRetentionSettings")]
+        public virtual RetentionSettings BackupRetentionSettings { get; set; }
+
+        /// <summary>
+        /// Whether point-in-time recovery is enabled. This is optional field, if the database service does not have
+        /// this feature or metadata is not available in control plane, this can be omitted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pointInTimeRecoveryEnabled")]
+        public virtual System.Nullable<bool> PointInTimeRecoveryEnabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A backup run.</summary>
+    public class BackupRun : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>The time the backup operation completed. REQUIRED</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Information about why the backup operation failed. This is only present if the run has the FAILED status.
+        /// OPTIONAL
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual OperationError Error { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>The time the backup operation started. REQUIRED</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The status of this run. REQUIRED</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class CertChain : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The certificates that form the CA chain, from leaf to root order.</summary>
@@ -2105,6 +2240,522 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains compliance information about a security standard indicating unmet recommendations.</summary>
+    public class Compliance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Industry-wide compliance standards or benchmarks, such as CIS, PCI, and OWASP.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("standard")]
+        public virtual string Standard { get; set; }
+
+        /// <summary>Version of the standard or benchmark, for example, 1.1</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Any custom metadata associated with the resource. i.e. A spanner instance can have multiple databases with its
+    /// own unique metadata. Information for these individual databases can be captured in custom metadata data
+    /// </summary>
+    public class CustomMetadataData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseMetadata")]
+        public virtual System.Collections.Generic.IList<DatabaseMetadata> DatabaseMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata for individual databases created in an instance. i.e. spanner instance can have multiple databases with
+    /// unique configuration settings.
+    /// </summary>
+    public class DatabaseMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Backup configuration for this database</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupConfiguration")]
+        public virtual BackupConfiguration BackupConfiguration { get; set; }
+
+        /// <summary>Information about the last backup attempt for this database</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupRun")]
+        public virtual BackupRun BackupRun { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("product")]
+        public virtual Product Product { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
+        public virtual DatabaseResourceId ResourceId { get; set; }
+
+        /// <summary>
+        /// Required. Database name. Resource name to follow CAIS resource_name format as noted here
+        /// go/condor-common-datamodel
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// DatabaseResourceFeed is the top level proto to be used to ingest different database resource level events into
+    /// Condor platform.
+    /// </summary>
+    public class DatabaseResourceFeed : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _feedTimestampRaw;
+
+        private object _feedTimestamp;
+
+        /// <summary>Required. Timestamp when feed is generated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feedTimestamp")]
+        public virtual string FeedTimestampRaw
+        {
+            get => _feedTimestampRaw;
+            set
+            {
+                _feedTimestamp = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _feedTimestampRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="FeedTimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use FeedTimestampDateTimeOffset instead.")]
+        public virtual object FeedTimestamp
+        {
+            get => _feedTimestamp;
+            set
+            {
+                _feedTimestampRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _feedTimestamp = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="FeedTimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? FeedTimestampDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(FeedTimestampRaw);
+            set => FeedTimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Required. Type feed to be ingested into condor</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feedType")]
+        public virtual string FeedType { get; set; }
+
+        /// <summary>More feed data would be added in subsequent CLs</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recommendationSignalData")]
+        public virtual DatabaseResourceRecommendationSignalData RecommendationSignalData { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceHealthSignalData")]
+        public virtual DatabaseResourceHealthSignalData ResourceHealthSignalData { get; set; }
+
+        /// <summary>
+        /// Primary key associated with the Resource. resource_id is available in individual feed level as well.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
+        public virtual DatabaseResourceId ResourceId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceMetadata")]
+        public virtual DatabaseResourceMetadata ResourceMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Common model for database resource health signal data.</summary>
+    public class DatabaseResourceHealthSignalData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Any other additional metadata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalMetadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> AdditionalMetadata { get; set; }
+
+        /// <summary>
+        /// Industry standards associated with this signal; if this signal is an issue, that could be a violation of the
+        /// associated industry standard(s). For example, AUTO_BACKUP_DISABLED signal is associated with CIS GCP 1.1,
+        /// CIS GCP 1.2, CIS GCP 1.3, NIST 800-53 and ISO-27001 compliance standards. If a database resource does not
+        /// have automated backup enable, it will violate these following industry standards.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compliance")]
+        public virtual System.Collections.Generic.IList<Compliance> Compliance { get; set; }
+
+        /// <summary>Description associated with signal</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        private string _eventTimeRaw;
+
+        private object _eventTime;
+
+        /// <summary>Required. The last time at which the event described by this signal took place</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
+        public virtual string EventTimeRaw
+        {
+            get => _eventTimeRaw;
+            set
+            {
+                _eventTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _eventTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EventTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EventTimeDateTimeOffset instead.")]
+        public virtual object EventTime
+        {
+            get => _eventTime;
+            set
+            {
+                _eventTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _eventTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EventTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EventTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EventTimeRaw);
+            set => EventTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// The external-uri of the signal, using which more information about this signal can be obtained. In GCP, this
+        /// will take user to SCC page to get more details about signals.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalUri")]
+        public virtual string ExternalUri { get; set; }
+
+        /// <summary>Required. The name of the signal, ex: PUBLIC_SQL_INSTANCE, SQL_LOG_ERROR_VERBOSITY etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Cloud provider name. Ex: GCP/AWS/Azure/OnPrem/SelfManaged</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provider")]
+        public virtual string Provider { get; set; }
+
+        /// <summary>
+        /// Closest parent container of this resource. In GCP, 'container' refers to a Cloud Resource Manager project.
+        /// It must be resource name of a Cloud Resource Manager project with the format of "provider//", such as
+        /// "projects/123". For GCP provided resources, number should be project number.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceContainer")]
+        public virtual string ResourceContainer { get; set; }
+
+        /// <summary>
+        /// Required. Database resource name associated with the signal. Resource name to follow CAIS resource_name
+        /// format as noted here go/condor-common-datamodel
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>Required. The class of the signal, such as if it's a THREAT or VULNERABILITY.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signalClass")]
+        public virtual string SignalClass { get; set; }
+
+        /// <summary>
+        /// Required. Unique identifier for the signal. This is an unique id which would be mainatined by partner to
+        /// identify a signal.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signalId")]
+        public virtual string SignalId { get; set; }
+
+        /// <summary>
+        /// Required. Type of signal, for example, `AVAILABLE_IN_MULTIPLE_ZONES`, `LOGGING_MOST_ERRORS`, etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signalType")]
+        public virtual string SignalType { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>DatabaseResourceId will serve as primary key for any resource ingestion event.</summary>
+    public class DatabaseResourceId : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Cloud provider name. Ex: GCP/AWS/Azure/OnPrem/SelfManaged</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provider")]
+        public virtual string Provider { get; set; }
+
+        /// <summary>Optional. Needs to be used only when the provider is PROVIDER_OTHER.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("providerDescription")]
+        public virtual string ProviderDescription { get; set; }
+
+        /// <summary>
+        /// Required. The type of resource this ID is identifying. Ex redis.googleapis.com/Instance,
+        /// redis.googleapis.com/Cluster, alloydb.googleapis.com/Cluster, alloydb.googleapis.com/Instance,
+        /// spanner.googleapis.com/Instance REQUIRED Please refer go/condor-common-datamodel
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
+        public virtual string ResourceType { get; set; }
+
+        /// <summary>
+        /// Required. A service-local token that distinguishes this resource from other resources within the same
+        /// service.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uniqueId")]
+        public virtual string UniqueId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Common model for database resource instance metadata.</summary>
+    public class DatabaseResourceMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Availability configuration for this instance</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availabilityConfiguration")]
+        public virtual AvailabilityConfiguration AvailabilityConfiguration { get; set; }
+
+        /// <summary>Backup configuration for this instance</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupConfiguration")]
+        public virtual BackupConfiguration BackupConfiguration { get; set; }
+
+        /// <summary>Latest backup run information for this instance</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupRun")]
+        public virtual BackupRun BackupRun { get; set; }
+
+        private string _creationTimeRaw;
+
+        private object _creationTime;
+
+        /// <summary>
+        /// The creation time of the resource, i.e. the time when resource is created and recorded in partner service.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
+        public virtual string CreationTimeRaw
+        {
+            get => _creationTimeRaw;
+            set
+            {
+                _creationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _creationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreationTimeDateTimeOffset instead.")]
+        public virtual object CreationTime
+        {
+            get => _creationTime;
+            set
+            {
+                _creationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _creationTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreationTimeRaw);
+            set => CreationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Current state of the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currentState")]
+        public virtual string CurrentState { get; set; }
+
+        /// <summary>Any custom metadata associated with the resource</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customMetadata")]
+        public virtual CustomMetadataData CustomMetadata { get; set; }
+
+        /// <summary>Entitlements associated with the resource</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entitlements")]
+        public virtual System.Collections.Generic.IList<Entitlement> Entitlements { get; set; }
+
+        /// <summary>
+        /// The state that the instance is expected to be in. For example, an instance state can transition to UNHEALTHY
+        /// due to wrong patch update, while the expected state will remain at the HEALTHY.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expectedState")]
+        public virtual string ExpectedState { get; set; }
+
+        /// <summary>Required. Unique identifier for a Database resource</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual DatabaseResourceId Id { get; set; }
+
+        /// <summary>The type of the instance. Specified at creation time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceType")]
+        public virtual string InstanceType { get; set; }
+
+        /// <summary>The resource location. REQUIRED</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>
+        /// Identifier for this resource's immediate parent/primary resource if the current resource is a replica or
+        /// derived form of another Database resource. Else it would be NULL. REQUIRED if the immediate parent exists
+        /// when first time resource is getting ingested
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryResourceId")]
+        public virtual DatabaseResourceId PrimaryResourceId { get; set; }
+
+        /// <summary>The product this resource represents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("product")]
+        public virtual Product Product { get; set; }
+
+        /// <summary>
+        /// Closest parent Cloud Resource Manager container of this resource. It must be resource name of a Cloud
+        /// Resource Manager project with the format of "/", such as "projects/123". For GCP provided resources, number
+        /// should be project number.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceContainer")]
+        public virtual string ResourceContainer { get; set; }
+
+        /// <summary>
+        /// Required. Different from DatabaseResourceId.unique_id, a resource name can be reused over time. That is,
+        /// after a resource named "ABC" is deleted, the name "ABC" can be used to to create a new resource within the
+        /// same source. Resource name to follow CAIS resource_name format as noted here go/condor-common-datamodel
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        private string _updationTimeRaw;
+
+        private object _updationTime;
+
+        /// <summary>The time at which the resource was updated and recorded at partner service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updationTime")]
+        public virtual string UpdationTimeRaw
+        {
+            get => _updationTimeRaw;
+            set
+            {
+                _updationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdationTimeDateTimeOffset instead.")]
+        public virtual object UpdationTime
+        {
+            get => _updationTime;
+            set
+            {
+                _updationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updationTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdationTimeRaw);
+            set => UpdationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// User-provided labels, represented as a dictionary where each label is a single key value pair.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userLabels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> UserLabels { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Common model for database resource recommendation signal data.</summary>
+    public class DatabaseResourceRecommendationSignalData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Any other additional metadata specific to recommendation</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalMetadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> AdditionalMetadata { get; set; }
+
+        private string _lastRefreshTimeRaw;
+
+        private object _lastRefreshTime;
+
+        /// <summary>Required. last time recommendationw as refreshed</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastRefreshTime")]
+        public virtual string LastRefreshTimeRaw
+        {
+            get => _lastRefreshTimeRaw;
+            set
+            {
+                _lastRefreshTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastRefreshTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastRefreshTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastRefreshTimeDateTimeOffset instead.")]
+        public virtual object LastRefreshTime
+        {
+            get => _lastRefreshTime;
+            set
+            {
+                _lastRefreshTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastRefreshTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastRefreshTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastRefreshTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastRefreshTimeRaw);
+            set => LastRefreshTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Required. Recommendation state</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recommendationState")]
+        public virtual string RecommendationState { get; set; }
+
+        /// <summary>
+        /// Required. Name of recommendation. Examples:
+        /// organizations/1234/locations/us-central1/recommenders/google.cloudsql.instance.PerformanceRecommender/recommendations/9876
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recommender")]
+        public virtual string Recommender { get; set; }
+
+        /// <summary>Required. ID of recommender. Examples: "google.cloudsql.instance.PerformanceRecommender"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recommenderId")]
+        public virtual string RecommenderId { get; set; }
+
+        /// <summary>
+        /// Required. Contains an identifier for a subtype of recommendations produced for the same recommender. Subtype
+        /// is a function of content and impact, meaning a new subtype might be added when significant changes to
+        /// `content` or `primary_impact.category` are introduced. See the Recommenders section to see a list of
+        /// subtypes for a given Recommender. Examples: For recommender =
+        /// "google.cloudsql.instance.PerformanceRecommender", recommender_subtype can be
+        /// "MYSQL_HIGH_NUMBER_OF_OPEN_TABLES_BEST_PRACTICE"/"POSTGRES_HIGH_TRANSACTION_ID_UTILIZATION_BEST_PRACTICE"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recommenderSubtype")]
+        public virtual string RecommenderSubtype { get; set; }
+
+        /// <summary>
+        /// Required. Database resource name associated with the signal. Resource name to follow CAIS resource_name
+        /// format as noted here go/condor-common-datamodel
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>
+        /// Required. Type of signal, for example, `SIGNAL_TYPE_IDLE`, `SIGNAL_TYPE_HIGH_NUMBER_OF_TABLES`, etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signalType")]
+        public virtual string SignalType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Endpoints on each network, for Redis clients to connect to the cluster.</summary>
     public class DiscoveryEndpoint : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2134,6 +2785,21 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Proto representing the access that a user has to a specific feature/service. NextId: 3.</summary>
+    public class Entitlement : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The current state of user's accessibility to a feature/benefit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entitlementState")]
+        public virtual string EntitlementState { get; set; }
+
+        /// <summary>An enum that represents the type of this entitlement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3031,6 +3697,24 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>An error that occurred during a backup creation operation.</summary>
+    public class OperationError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifies the specific error that occurred. REQUIRED</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("errorType")]
+        public virtual string ErrorType { get; set; }
+
+        /// <summary>Additional information about the error encountered. REQUIRED</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Pre-defined metadata fields.</summary>
     public class OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3251,6 +3935,28 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Product specification for Condor resources.</summary>
+    public class Product : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The specific engine that the underlying database is running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("engine")]
+        public virtual string Engine { get; set; }
+
+        /// <summary>Type of specific database product. It could be CloudSQL, AlloyDB etc..</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>
+        /// Version of the underlying database engine. Example values: For MySQL, it could be "8.0", "5.7" etc.. For
+        /// Postgres, it could be "14", "15" etc..
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class PscConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -3360,6 +4066,22 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ScheduleTimeRaw);
             set => ScheduleTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class RetentionSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("quantityBasedRetention")]
+        public virtual System.Nullable<int> QuantityBasedRetention { get; set; }
+
+        /// <summary>The unit that 'retained_backups' represents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retentionUnit")]
+        public virtual string RetentionUnit { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("timeBasedRetention")]
+        public virtual object TimeBasedRetention { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -7028,6 +7028,18 @@ namespace Google.Apis.Spanner.v1.Data
     /// <summary>The request for BatchWrite.</summary>
     public class BatchWriteRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. When `exclude_txn_from_change_streams` is set to `true`: * Mutations from all transactions in this
+        /// batch write operation will not be recorded in change streams with DDL option `allow_txn_exclusion=true` that
+        /// are tracking columns modified by these transactions. * Mutations from all transactions in this batch write
+        /// operation will be recorded in change streams with DDL option `allow_txn_exclusion=false or not set` that are
+        /// tracking columns modified by these transactions. When `exclude_txn_from_change_streams` is set to `false` or
+        /// not set, mutations from all transactions in this batch write operation will be recorded in all change
+        /// streams that are tracking columns modified by these transactions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeTxnFromChangeStreams")]
+        public virtual System.Nullable<bool> ExcludeTxnFromChangeStreams { get; set; }
+
         /// <summary>Required. The groups of mutations to be applied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mutationGroups")]
         public virtual System.Collections.Generic.IList<MutationGroup> MutationGroups { get; set; }
@@ -11012,6 +11024,15 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
+        /// <summary>
+        /// Optional. If true, specifies a multiplexed session. A multiplexed session may be used for multiple,
+        /// concurrent read-only operations but can not be used for read-write transactions, partitioned reads, or
+        /// partitioned queries. Multiplexed sessions can be created via CreateSession but not via BatchCreateSessions.
+        /// Multiplexed sessions may not be deleted nor listed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multiplexed")]
+        public virtual System.Nullable<bool> Multiplexed { get; set; }
+
         /// <summary>Output only. The name of the session. This is always system-assigned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -11344,6 +11365,19 @@ namespace Google.Apis.Spanner.v1.Data
     /// </summary>
     public class TransactionOptions : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// When `exclude_txn_from_change_streams` is set to `true`: * Mutations from this transaction will not be
+        /// recorded in change streams with DDL option `allow_txn_exclusion=true` that are tracking columns modified by
+        /// these transactions. * Mutations from this transaction will be recorded in change streams with DDL option
+        /// `allow_txn_exclusion=false or not set` that are tracking columns modified by these transactions. When
+        /// `exclude_txn_from_change_streams` is set to `false` or not set, mutations from this transaction will be
+        /// recorded in all change streams that are tracking columns modified by these transactions.
+        /// `exclude_txn_from_change_streams` may only be specified for read-write or partitioned-dml transactions,
+        /// otherwise the API will return an `INVALID_ARGUMENT` error.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeTxnFromChangeStreams")]
+        public virtual System.Nullable<bool> ExcludeTxnFromChangeStreams { get; set; }
+
         /// <summary>
         /// Partitioned DML transaction. Authorization to begin a Partitioned DML transaction requires
         /// `spanner.databases.beginPartitionedDmlTransaction` permission on the `session` resource.

@@ -5168,6 +5168,10 @@ namespace Google.Apis.Dns.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("managedZonesPerNetwork")]
         public virtual System.Nullable<int> ManagedZonesPerNetwork { get; set; }
 
+        /// <summary>Maximum number of nameservers per delegation, meant to prevent abuse</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nameserversPerDelegation")]
+        public virtual System.Nullable<int> NameserversPerDelegation { get; set; }
+
         /// <summary>Maximum allowed number of networks to which a privately scoped zone can be attached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networksPerManagedZone")]
         public virtual System.Nullable<int> NetworksPerManagedZone { get; set; }
