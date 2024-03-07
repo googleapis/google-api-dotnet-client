@@ -1614,7 +1614,8 @@ namespace Google.Apis.Logging.v2
 
                     /// <summary>
                     /// Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100
-                    /// characters and can include only letters, digits, underscores, hyphens, and periods.
+                    /// characters and can include only letters, digits, underscores, hyphens, and periods. Bucket
+                    /// identifiers must start with an alphanumeric character.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("bucketId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string BucketId { get; set; }
@@ -1695,7 +1696,8 @@ namespace Google.Apis.Logging.v2
 
                     /// <summary>
                     /// Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100
-                    /// characters and can include only letters, digits, underscores, hyphens, and periods.
+                    /// characters and can include only letters, digits, underscores, hyphens, and periods. Bucket
+                    /// identifiers must start with an alphanumeric character.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("bucketId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string BucketId { get; set; }
@@ -5688,7 +5690,8 @@ namespace Google.Apis.Logging.v2
 
                     /// <summary>
                     /// Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100
-                    /// characters and can include only letters, digits, underscores, hyphens, and periods.
+                    /// characters and can include only letters, digits, underscores, hyphens, and periods. Bucket
+                    /// identifiers must start with an alphanumeric character.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("bucketId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string BucketId { get; set; }
@@ -5769,7 +5772,8 @@ namespace Google.Apis.Logging.v2
 
                     /// <summary>
                     /// Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100
-                    /// characters and can include only letters, digits, underscores, hyphens, and periods.
+                    /// characters and can include only letters, digits, underscores, hyphens, and periods. Bucket
+                    /// identifiers must start with an alphanumeric character.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("bucketId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string BucketId { get; set; }
@@ -8768,7 +8772,8 @@ namespace Google.Apis.Logging.v2
 
                 /// <summary>
                 /// Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100
-                /// characters and can include only letters, digits, underscores, hyphens, and periods.
+                /// characters and can include only letters, digits, underscores, hyphens, and periods. Bucket
+                /// identifiers must start with an alphanumeric character.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("bucketId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string BucketId { get; set; }
@@ -8848,7 +8853,8 @@ namespace Google.Apis.Logging.v2
 
                 /// <summary>
                 /// Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100
-                /// characters and can include only letters, digits, underscores, hyphens, and periods.
+                /// characters and can include only letters, digits, underscores, hyphens, and periods. Bucket
+                /// identifiers must start with an alphanumeric character.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("bucketId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string BucketId { get; set; }
@@ -11270,7 +11276,8 @@ namespace Google.Apis.Logging.v2
 
                     /// <summary>
                     /// Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100
-                    /// characters and can include only letters, digits, underscores, hyphens, and periods.
+                    /// characters and can include only letters, digits, underscores, hyphens, and periods. Bucket
+                    /// identifiers must start with an alphanumeric character.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("bucketId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string BucketId { get; set; }
@@ -11351,7 +11358,8 @@ namespace Google.Apis.Logging.v2
 
                     /// <summary>
                     /// Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100
-                    /// characters and can include only letters, digits, underscores, hyphens, and periods.
+                    /// characters and can include only letters, digits, underscores, hyphens, and periods. Bucket
+                    /// identifiers must start with an alphanumeric character.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("bucketId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string BucketId { get; set; }
@@ -14976,7 +14984,8 @@ namespace Google.Apis.Logging.v2
 
                     /// <summary>
                     /// Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100
-                    /// characters and can include only letters, digits, underscores, hyphens, and periods.
+                    /// characters and can include only letters, digits, underscores, hyphens, and periods. Bucket
+                    /// identifiers must start with an alphanumeric character.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("bucketId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string BucketId { get; set; }
@@ -15057,7 +15066,8 @@ namespace Google.Apis.Logging.v2
 
                     /// <summary>
                     /// Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100
-                    /// characters and can include only letters, digits, underscores, hyphens, and periods.
+                    /// characters and can include only letters, digits, underscores, hyphens, and periods. Bucket
+                    /// identifiers must start with an alphanumeric character.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("bucketId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string BucketId { get; set; }
@@ -18702,7 +18712,8 @@ namespace Google.Apis.Logging.v2.Data
 
         /// <summary>
         /// Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and
-        /// can include only letters, digits, underscores, hyphens, and periods.
+        /// can include only letters, digits, underscores, hyphens, and periods. Bucket identifiers must start with an
+        /// alphanumeric character.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketId")]
         public virtual string BucketId { get; set; }
@@ -19584,8 +19595,7 @@ namespace Google.Apis.Logging.v2.Data
     public class LogBucket : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Whether log analytics is enabled for this bucket.Once enabled, log analytics features cannot be
-        /// disabled.
+        /// Whether log analytics is enabled for this bucket.Once enabled, log analytics features cannot be disabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analyticsEnabled")]
         public virtual System.Nullable<bool> AnalyticsEnabled { get; set; }
@@ -21374,7 +21384,7 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Optional. The user specified title for the SavedQuery.</summary>
+        /// <summary>Required. The user specified title for the SavedQuery.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 

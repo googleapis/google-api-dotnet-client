@@ -5700,6 +5700,55 @@ namespace Google.Apis.CloudRetail.v2alpha
             }
         }
 
+        /// <summary>Get the AlertConfig of the requested project.</summary>
+        /// <param name="name">
+        /// Required. Full AlertConfig resource name. Format: projects/{project_number}/alertConfig
+        /// </param>
+        public virtual GetAlertConfigRequest GetAlertConfig(string name)
+        {
+            return new GetAlertConfigRequest(this.service, name);
+        }
+
+        /// <summary>Get the AlertConfig of the requested project.</summary>
+        public class GetAlertConfigRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaAlertConfig>
+        {
+            /// <summary>Constructs a new GetAlertConfig request.</summary>
+            public GetAlertConfigRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. Full AlertConfig resource name. Format: projects/{project_number}/alertConfig
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getAlertConfig";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v2alpha/{+name}";
+
+            /// <summary>Initializes GetAlertConfig parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+/alertConfig$",
+                });
+            }
+        }
+
         /// <summary>Gets the LoggingConfig of the requested project.</summary>
         /// <param name="name">
         /// Required. Full LoggingConfig resource name. Format: projects/{project_number}/loggingConfig
@@ -5845,6 +5894,78 @@ namespace Google.Apis.CloudRetail.v2alpha
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^projects/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>Update the alert config of the requested project.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">
+        /// Required. Immutable. The name of the AlertConfig singleton resource. Format: projects/*/alertConfig
+        /// </param>
+        public virtual UpdateAlertConfigRequest UpdateAlertConfig(Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaAlertConfig body, string name)
+        {
+            return new UpdateAlertConfigRequest(this.service, body, name);
+        }
+
+        /// <summary>Update the alert config of the requested project.</summary>
+        public class UpdateAlertConfigRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaAlertConfig>
+        {
+            /// <summary>Constructs a new UpdateAlertConfig request.</summary>
+            public UpdateAlertConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaAlertConfig body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. Immutable. The name of the AlertConfig singleton resource. Format: projects/*/alertConfig
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>
+            /// Indicates which fields in the provided AlertConfig to update. If not set, all supported fields are
+            /// updated.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaAlertConfig Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "updateAlertConfig";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v2alpha/{+name}";
+
+            /// <summary>Initializes UpdateAlertConfig parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+/alertConfig$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
             }
         }
@@ -7216,6 +7337,55 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
     /// </summary>
     public class GoogleCloudRetailV2alphaAddLocalInventoriesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Project level alert config.</summary>
+    public class GoogleCloudRetailV2alphaAlertConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Alert policies for a customer. They must be unique by [AlertPolicy.alert_group]</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alertPolicies")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaAlertConfigAlertPolicy> AlertPolicies { get; set; }
+
+        /// <summary>
+        /// Required. Immutable. The name of the AlertConfig singleton resource. Format: projects/*/alertConfig
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Alert policy for a customer.</summary>
+    public class GoogleCloudRetailV2alphaAlertConfigAlertPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The feature that provides alerting capability. Supported value is only `search-data-quality` for now.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alertGroup")]
+        public virtual string AlertGroup { get; set; }
+
+        /// <summary>The enrollment status of a customer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enrollStatus")]
+        public virtual string EnrollStatus { get; set; }
+
+        /// <summary>Recipients for the alert policy. One alert policy should not exceed 20 recipients.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recipients")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaAlertConfigAlertPolicyRecipient> Recipients { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Recipient contact information.</summary>
+    public class GoogleCloudRetailV2alphaAlertConfigAlertPolicyRecipient : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Email address of the recipient.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("emailAddress")]
+        public virtual string EmailAddress { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

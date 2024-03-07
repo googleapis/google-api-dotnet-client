@@ -6456,6 +6456,10 @@ namespace Google.Apis.GKEHub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("proxy")]
         public virtual string Proxy { get; set; }
 
+        /// <summary>SAML specific configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("samlConfig")]
+        public virtual IdentityServiceSamlConfig SamlConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6478,6 +6482,10 @@ namespace Google.Apis.GKEHub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("encryptedClientSecret")]
         public virtual string EncryptedClientSecret { get; set; }
 
+        /// <summary>Optional. Format of the AzureAD groups that the client wants for auth.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupFormat")]
+        public virtual string GroupFormat { get; set; }
+
         /// <summary>The redirect URL that kubectl uses for authorization.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kubectlRedirectUri")]
         public virtual string KubectlRedirectUri { get; set; }
@@ -6488,6 +6496,10 @@ namespace Google.Apis.GKEHub.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tenant")]
         public virtual string Tenant { get; set; }
+
+        /// <summary>Optional. Claim in the AzureAD ID Token that holds the user details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userClaim")]
+        public virtual string UserClaim { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6602,6 +6614,57 @@ namespace Google.Apis.GKEHub.v1.Data
         public virtual string UserClaim { get; set; }
 
         /// <summary>Prefix to prepend to user name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userPrefix")]
+        public virtual string UserPrefix { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for the SAML Auth flow.</summary>
+    public class IdentityServiceSamlConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The mapping of additional user attributes like nickname, birthday and address etc.. `key` is the
+        /// name of this additional attribute. `value` is a string presenting as CEL(common expression language, go/cel)
+        /// used for getting the value from the resources. Take nickname as an example, in this case, `key` is
+        /// "attribute.nickname" and `value` is "assertion.nickname".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributeMapping")]
+        public virtual System.Collections.Generic.IDictionary<string, string> AttributeMapping { get; set; }
+
+        /// <summary>Optional. Prefix to prepend to group name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupPrefix")]
+        public virtual string GroupPrefix { get; set; }
+
+        /// <summary>
+        /// Optional. The SAML attribute to read groups from. This value is expected to be a string and will be passed
+        /// along as-is (with the option of being prefixed by the `group_prefix`).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupsAttribute")]
+        public virtual string GroupsAttribute { get; set; }
+
+        /// <summary>Required. The list of IdP certificates to validate the SAML response against.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identityProviderCertificates")]
+        public virtual System.Collections.Generic.IList<string> IdentityProviderCertificates { get; set; }
+
+        /// <summary>Required. The entity ID of the SAML IdP.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identityProviderId")]
+        public virtual string IdentityProviderId { get; set; }
+
+        /// <summary>Required. The URI where the SAML IdP exposes the SSO service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identityProviderSsoUri")]
+        public virtual string IdentityProviderSsoUri { get; set; }
+
+        /// <summary>
+        /// Optional. The SAML attribute to read username from. If unspecified, the username will be read from the
+        /// NameID element of the assertion in SAML response. This value is expected to be a string and will be passed
+        /// along as-is (with the option of being prefixed by the `user_prefix`).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userAttribute")]
+        public virtual string UserAttribute { get; set; }
+
+        /// <summary>Optional. Prefix to prepend to user name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userPrefix")]
         public virtual string UserPrefix { get; set; }
 

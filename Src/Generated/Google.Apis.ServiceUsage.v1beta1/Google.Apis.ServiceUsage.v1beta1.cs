@@ -5530,6 +5530,13 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("producerQuotaPolicy")]
         public virtual ProducerQuotaPolicy ProducerQuotaPolicy { get; set; }
 
+        /// <summary>
+        /// Rollout information of this quota bucket. This field is present only if the effective limit will change due
+        /// to the ongoing rollout of the service config.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rolloutInfo")]
+        public virtual RolloutInfo RolloutInfo { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5705,6 +5712,17 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         /// <summary>The values removed from the parent consumer policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("removedValues")]
         public virtual System.Collections.Generic.IList<string> RemovedValues { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>[Output only] Rollout information of a quota.</summary>
+    public class RolloutInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether there is an ongoing rollout for the default limit or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultLimitOngoingRollout")]
+        public virtual System.Nullable<bool> DefaultLimitOngoingRollout { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

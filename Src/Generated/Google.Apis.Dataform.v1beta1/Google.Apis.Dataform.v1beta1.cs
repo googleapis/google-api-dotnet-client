@@ -1126,7 +1126,7 @@ namespace Google.Apis.Dataform.v1beta1
 
                     /// <summary>Updates a single ReleaseConfig.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="name">Output only. The release config's name.</param>
+                    /// <param name="name">Identifier. The release config's name.</param>
                     public virtual PatchRequest Patch(Google.Apis.Dataform.v1beta1.Data.ReleaseConfig body, string name)
                     {
                         return new PatchRequest(this.service, body, name);
@@ -1143,7 +1143,7 @@ namespace Google.Apis.Dataform.v1beta1
                             InitParameters();
                         }
 
-                        /// <summary>Output only. The release config's name.</summary>
+                        /// <summary>Identifier. The release config's name.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -6148,7 +6148,7 @@ namespace Google.Apis.Dataform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gitCommitish")]
         public virtual string GitCommitish { get; set; }
 
-        /// <summary>Output only. The release config's name.</summary>
+        /// <summary>Identifier. The release config's name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 

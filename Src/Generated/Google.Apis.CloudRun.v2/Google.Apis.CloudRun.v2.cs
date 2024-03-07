@@ -4935,7 +4935,7 @@ namespace Google.Apis.CloudRun.v2.Data
     {
         /// <summary>
         /// total min instances for the service. This number of instances is divided among all revisions with specified
-        /// traffic based on the percent of traffic they are receiving. (ALPHA)
+        /// traffic based on the percent of traffic they are receiving. (BETA)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minInstanceCount")]
         public virtual System.Nullable<int> MinInstanceCount { get; set; }
@@ -5615,6 +5615,1411 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>Direct VPC egress settings. Currently only single network interface is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkInterfaces")]
         public virtual System.Collections.Generic.IList<GoogleCloudRunV2NetworkInterface> NetworkInterfaces { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ApprovalConfig describes configuration for manual approval of a build.</summary>
+    public class GoogleDevtoolsCloudbuildV1ApprovalConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether or not approval is needed. If this is set on a build, it will become pending when created, and will
+        /// need to be explicitly approved to start.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("approvalRequired")]
+        public virtual System.Nullable<bool> ApprovalRequired { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// ApprovalResult describes the decision and associated metadata of a manual approval of a build.
+    /// </summary>
+    public class GoogleDevtoolsCloudbuildV1ApprovalResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _approvalTimeRaw;
+
+        private object _approvalTime;
+
+        /// <summary>Output only. The time when the approval decision was made.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("approvalTime")]
+        public virtual string ApprovalTimeRaw
+        {
+            get => _approvalTimeRaw;
+            set
+            {
+                _approvalTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _approvalTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ApprovalTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ApprovalTimeDateTimeOffset instead.")]
+        public virtual object ApprovalTime
+        {
+            get => _approvalTime;
+            set
+            {
+                _approvalTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _approvalTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ApprovalTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ApprovalTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ApprovalTimeRaw);
+            set => ApprovalTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. Email of the user that called the ApproveBuild API to approve or reject a build at the time
+        /// that the API was called.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("approverAccount")]
+        public virtual string ApproverAccount { get; set; }
+
+        /// <summary>Optional. An optional comment for this manual approval result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("comment")]
+        public virtual string Comment { get; set; }
+
+        /// <summary>Required. The decision of this manual approval.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("decision")]
+        public virtual string Decision { get; set; }
+
+        /// <summary>
+        /// Optional. An optional URL tied to this manual approval result. This field is essentially the same as
+        /// comment, except that it will be rendered by the UI differently. An example use case is a link to an external
+        /// job that approved this Build.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Files in the workspace to upload to Cloud Storage upon successful completion of all build steps.
+    /// </summary>
+    public class GoogleDevtoolsCloudbuildV1ArtifactObjects : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/". (see [Bucket
+        /// Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Files in the
+        /// workspace matching any path pattern will be uploaded to Cloud Storage with this location as a prefix.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>Path globs used to match files in the build's workspace.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("paths")]
+        public virtual System.Collections.Generic.IList<string> Paths { get; set; }
+
+        /// <summary>Output only. Stores timing information for pushing all artifact objects.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timing")]
+        public virtual GoogleDevtoolsCloudbuildV1TimeSpan Timing { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Artifacts produced by a build that should be uploaded upon successful completion of all build steps.
+    /// </summary>
+    public class GoogleDevtoolsCloudbuildV1Artifacts : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A list of images to be pushed upon the successful completion of all build steps. The images will be pushed
+        /// using the builder service account's credentials. The digests of the pushed images will be stored in the
+        /// Build resource's results field. If any of the images fail to be pushed, the build is marked FAILURE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("images")]
+        public virtual System.Collections.Generic.IList<string> Images { get; set; }
+
+        /// <summary>
+        /// A list of Maven artifacts to be uploaded to Artifact Registry upon successful completion of all build steps.
+        /// Artifacts in the workspace matching specified paths globs will be uploaded to the specified Artifact
+        /// Registry repository using the builder service account's credentials. If any artifacts fail to be pushed, the
+        /// build is marked FAILURE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mavenArtifacts")]
+        public virtual System.Collections.Generic.IList<GoogleDevtoolsCloudbuildV1MavenArtifact> MavenArtifacts { get; set; }
+
+        /// <summary>
+        /// A list of npm packages to be uploaded to Artifact Registry upon successful completion of all build steps.
+        /// Npm packages in the specified paths will be uploaded to the specified Artifact Registry repository using the
+        /// builder service account's credentials. If any packages fail to be pushed, the build is marked FAILURE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("npmPackages")]
+        public virtual System.Collections.Generic.IList<GoogleDevtoolsCloudbuildV1NpmPackage> NpmPackages { get; set; }
+
+        /// <summary>
+        /// A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps. Files in
+        /// the workspace matching specified paths globs will be uploaded to the specified Cloud Storage location using
+        /// the builder service account's credentials. The location and generation of the uploaded objects will be
+        /// stored in the Build resource's results field. If any objects fail to be pushed, the build is marked FAILURE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objects")]
+        public virtual GoogleDevtoolsCloudbuildV1ArtifactObjects Objects { get; set; }
+
+        /// <summary>
+        /// A list of Python packages to be uploaded to Artifact Registry upon successful completion of all build steps.
+        /// The build service account credentials will be used to perform the upload. If any objects fail to be pushed,
+        /// the build is marked FAILURE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pythonPackages")]
+        public virtual System.Collections.Generic.IList<GoogleDevtoolsCloudbuildV1PythonPackage> PythonPackages { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A build resource in the Cloud Build API. At a high level, a `Build` describes where to find source code, how to
+    /// build it (for example, the builder image to run on the source), and where to store the built artifacts. Fields
+    /// can include the following variables, which will be expanded when the build is created: - $PROJECT_ID: the
+    /// project ID of the build. - $PROJECT_NUMBER: the project number of the build. - $LOCATION: the location/region of
+    /// the build. - $BUILD_ID: the autogenerated ID of the build. - $REPO_NAME: the source repository name specified by
+    /// RepoSource. - $BRANCH_NAME: the branch name specified by RepoSource. - $TAG_NAME: the tag name specified by
+    /// RepoSource. - $REVISION_ID or $COMMIT_SHA: the commit SHA specified by RepoSource or resolved from the specified
+    /// branch or tag. - $SHORT_SHA: first 7 characters of $REVISION_ID or $COMMIT_SHA.
+    /// </summary>
+    public class GoogleDevtoolsCloudbuildV1Build : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Describes this build's approval configuration, status, and result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("approval")]
+        public virtual GoogleDevtoolsCloudbuildV1BuildApproval Approval { get; set; }
+
+        /// <summary>
+        /// Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifacts")]
+        public virtual GoogleDevtoolsCloudbuildV1Artifacts Artifacts { get; set; }
+
+        /// <summary>Secrets and secret environment variables.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableSecrets")]
+        public virtual GoogleDevtoolsCloudbuildV1Secrets AvailableSecrets { get; set; }
+
+        /// <summary>
+        /// Output only. The ID of the `BuildTrigger` that triggered this build, if it was triggered automatically.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildTriggerId")]
+        public virtual string BuildTriggerId { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Time at which the request to create the build was received.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. Contains information about the build when status=FAILURE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureInfo")]
+        public virtual GoogleDevtoolsCloudbuildV1FailureInfo FailureInfo { get; set; }
+
+        private string _finishTimeRaw;
+
+        private object _finishTime;
+
+        /// <summary>
+        /// Output only. Time at which execution of the build was finished. The difference between finish_time and
+        /// start_time is the duration of the build's execution.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finishTime")]
+        public virtual string FinishTimeRaw
+        {
+            get => _finishTimeRaw;
+            set
+            {
+                _finishTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _finishTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="FinishTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use FinishTimeDateTimeOffset instead.")]
+        public virtual object FinishTime
+        {
+            get => _finishTime;
+            set
+            {
+                _finishTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _finishTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="FinishTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? FinishTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(FinishTimeRaw);
+            set => FinishTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. Unique identifier of the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// A list of images to be pushed upon the successful completion of all build steps. The images are pushed using
+        /// the builder service account's credentials. The digests of the pushed images will be stored in the `Build`
+        /// resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("images")]
+        public virtual System.Collections.Generic.IList<string> Images { get; set; }
+
+        /// <summary>Output only. URL to logs for this build in Google Cloud Console.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logUrl")]
+        public virtual string LogUrl { get; set; }
+
+        /// <summary>
+        /// Cloud Storage bucket where logs should be written (see [Bucket Name
+        /// Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of
+        /// the format `${logs_bucket}/log-${build_id}.txt`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logsBucket")]
+        public virtual string LogsBucket { get; set; }
+
+        /// <summary>
+        /// Output only. The 'Build' name with format: `projects/{project}/locations/{location}/builds/{build}`, where
+        /// {build} is a unique identifier generated by the service.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Special options for this build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("options")]
+        public virtual GoogleDevtoolsCloudbuildV1BuildOptions Options { get; set; }
+
+        /// <summary>Output only. ID of the project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; }
+
+        /// <summary>
+        /// TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will
+        /// expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queueTtl")]
+        public virtual object QueueTtl { get; set; }
+
+        /// <summary>Output only. Results of the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("results")]
+        public virtual GoogleDevtoolsCloudbuildV1Results Results { get; set; }
+
+        /// <summary>
+        /// Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for
+        /// managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from
+        /// Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secrets")]
+        public virtual System.Collections.Generic.IList<GoogleDevtoolsCloudbuildV1Secret> Secrets { get; set; }
+
+        /// <summary>
+        /// IAM service account whose credentials will be used at build runtime. Must be of the format
+        /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service
+        /// account.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
+
+        /// <summary>The location of the source files to build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual GoogleDevtoolsCloudbuildV1Source Source { get; set; }
+
+        /// <summary>Output only. A permanent fixed identifier for source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceProvenance")]
+        public virtual GoogleDevtoolsCloudbuildV1SourceProvenance SourceProvenance { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>Output only. Time at which execution of the build was started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. Status of the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>Output only. Customer-readable message about the current status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statusDetail")]
+        public virtual string StatusDetail { get; set; }
+
+        /// <summary>Required. The operations to be performed on the workspace.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("steps")]
+        public virtual System.Collections.Generic.IList<GoogleDevtoolsCloudbuildV1BuildStep> Steps { get; set; }
+
+        /// <summary>Substitutions data for `Build` resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("substitutions")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Substitutions { get; set; }
+
+        /// <summary>Tags for annotation of a `Build`. These are not docker tags.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IList<string> Tags { get; set; }
+
+        /// <summary>
+        /// Amount of time that this build should be allowed to run, to second granularity. If this amount of time
+        /// elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from
+        /// `startTime`. Default time is 60 minutes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
+        public virtual object Timeout { get; set; }
+
+        /// <summary>
+        /// Output only. Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all
+        /// build steps. * PUSH: time to push all artifacts including docker images and non docker artifacts. *
+        /// FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up build. If the build does not specify source
+        /// or images, these keys will not be included.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timing")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleDevtoolsCloudbuildV1TimeSpan> Timing { get; set; }
+
+        /// <summary>Output only. Non-fatal problems encountered during the execution of the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
+        public virtual System.Collections.Generic.IList<GoogleDevtoolsCloudbuildV1Warning> Warnings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>BuildApproval describes a build's approval configuration, state, and result.</summary>
+    public class GoogleDevtoolsCloudbuildV1BuildApproval : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Configuration for manual approval of this build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("config")]
+        public virtual GoogleDevtoolsCloudbuildV1ApprovalConfig Config { get; set; }
+
+        /// <summary>Output only. Result of manual approval for this Build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("result")]
+        public virtual GoogleDevtoolsCloudbuildV1ApprovalResult Result { get; set; }
+
+        /// <summary>Output only. The state of this build's approval.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for build operations.</summary>
+    public class GoogleDevtoolsCloudbuildV1BuildOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The build that the operation is tracking.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("build")]
+        public virtual GoogleDevtoolsCloudbuildV1Build Build { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Optional arguments to enable specific features of builds.</summary>
+    public class GoogleDevtoolsCloudbuildV1BuildOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Option to include built-in and custom substitutions as env variables for all build steps.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("automapSubstitutions")]
+        public virtual System.Nullable<bool> AutomapSubstitutions { get; set; }
+
+        /// <summary>Optional. Option to specify how default logs buckets are setup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultLogsBucketBehavior")]
+        public virtual string DefaultLogsBucketBehavior { get; set; }
+
+        /// <summary>
+        /// Requested disk size for the VM that runs the build. Note that this is *NOT* "disk free"; some of the space
+        /// will be used by the operating system and build utilities. Also note that this is the minimum disk size that
+        /// will be allocated for the build -- the build may run with a larger disk than requested. At present, the
+        /// maximum disk size is 2000GB; builds that request more than the maximum are rejected with an error.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
+        public virtual System.Nullable<long> DiskSizeGb { get; set; }
+
+        /// <summary>
+        /// Option to specify whether or not to apply bash style string operations to the substitutions. NOTE: this is
+        /// always enabled for triggered builds and cannot be overridden in the build configuration file.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dynamicSubstitutions")]
+        public virtual System.Nullable<bool> DynamicSubstitutions { get; set; }
+
+        /// <summary>
+        /// A list of global environment variable definitions that will exist for all build steps in this build. If a
+        /// variable is defined in both globally and in a build step, the variable will use the build step value. The
+        /// elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("env")]
+        public virtual System.Collections.Generic.IList<string> Env { get; set; }
+
+        /// <summary>Option to define build log streaming behavior to Cloud Storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logStreamingOption")]
+        public virtual string LogStreamingOption { get; set; }
+
+        /// <summary>Option to specify the logging mode, which determines if and where build logs are stored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logging")]
+        public virtual string Logging { get; set; }
+
+        /// <summary>Compute Engine machine type on which to run the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
+        public virtual string MachineType { get; set; }
+
+        /// <summary>
+        /// Optional. Specification for execution on a `WorkerPool`. See [running builds in a private
+        /// pool](https://cloud.google.com/build/docs/private-pools/run-builds-in-private-pool) for more information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pool")]
+        public virtual GoogleDevtoolsCloudbuildV1PoolOption Pool { get; set; }
+
+        /// <summary>Requested verifiability options.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestedVerifyOption")]
+        public virtual string RequestedVerifyOption { get; set; }
+
+        /// <summary>
+        /// A list of global environment variables, which are encrypted using a Cloud Key Management Service crypto key.
+        /// These values must be specified in the build's `Secret`. These variables will be available to all build steps
+        /// in this build.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretEnv")]
+        public virtual System.Collections.Generic.IList<string> SecretEnv { get; set; }
+
+        /// <summary>Requested hash for SourceProvenance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceProvenanceHash")]
+        public virtual System.Collections.Generic.IList<string> SourceProvenanceHash { get; set; }
+
+        /// <summary>
+        /// Option to specify behavior when there is an error in the substitution checks. NOTE: this is always set to
+        /// ALLOW_LOOSE for triggered builds and cannot be overridden in the build configuration file.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("substitutionOption")]
+        public virtual string SubstitutionOption { get; set; }
+
+        /// <summary>
+        /// Global list of volumes to mount for ALL build steps Each volume is created as an empty volume prior to
+        /// starting the build process. Upon completion of the build, volumes and their contents are discarded. Global
+        /// volume names and paths cannot conflict with the volumes defined a build step. Using a global volume in a
+        /// build with only one step is not valid as it is indicative of a build request with an incorrect
+        /// configuration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volumes")]
+        public virtual System.Collections.Generic.IList<GoogleDevtoolsCloudbuildV1Volume> Volumes { get; set; }
+
+        /// <summary>This field deprecated; please use `pool.name` instead.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workerPool")]
+        public virtual string WorkerPool { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A step in the build pipeline.</summary>
+    public class GoogleDevtoolsCloudbuildV1BuildStep : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Allow this build step to fail without failing the entire build if and only if the exit code is one of the
+        /// specified codes. If allow_failure is also specified, this field will take precedence.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowExitCodes")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> AllowExitCodes { get; set; }
+
+        /// <summary>
+        /// Allow this build step to fail without failing the entire build. If false, the entire build will fail if this
+        /// step fails. Otherwise, the build will succeed, but this step will still have a failure status. Error
+        /// information will be reported in the failure_detail field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowFailure")]
+        public virtual System.Nullable<bool> AllowFailure { get; set; }
+
+        /// <summary>
+        /// A list of arguments that will be presented to the step when it is started. If the image used to run the
+        /// step's container has an entrypoint, the `args` are used as arguments to that entrypoint. If the image does
+        /// not define an entrypoint, the first element in args is used as the entrypoint, and the remainder will be
+        /// used as arguments.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("args")]
+        public virtual System.Collections.Generic.IList<string> Args { get; set; }
+
+        /// <summary>
+        /// Option to include built-in and custom substitutions as env variables for this build step. This option will
+        /// override the global option in BuildOption.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("automapSubstitutions")]
+        public virtual System.Nullable<bool> AutomapSubstitutions { get; set; }
+
+        /// <summary>
+        /// Working directory to use when running this step's container. If this value is a relative path, it is
+        /// relative to the build's working directory. If this value is absolute, it may be outside the build's working
+        /// directory, in which case the contents of the path may not be persisted across build step executions, unless
+        /// a `volume` for that path is specified. If the build specifies a `RepoSource` with `dir` and a step with a
+        /// `dir`, which specifies an absolute path, the `RepoSource` `dir` is ignored for the step's execution.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dir")]
+        public virtual string Dir { get; set; }
+
+        /// <summary>
+        /// Entrypoint to be used instead of the build step image's default entrypoint. If unset, the image's default
+        /// entrypoint is used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entrypoint")]
+        public virtual string Entrypoint { get; set; }
+
+        /// <summary>
+        /// A list of environment variable definitions to be used when running a step. The elements are of the form
+        /// "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("env")]
+        public virtual System.Collections.Generic.IList<string> Env { get; set; }
+
+        /// <summary>Output only. Return code from running the step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exitCode")]
+        public virtual System.Nullable<int> ExitCode { get; set; }
+
+        /// <summary>
+        /// Unique identifier for this build step, used in `wait_for` to reference this build step as a dependency.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// Required. The name of the container image that will run this particular build step. If the image is
+        /// available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to
+        /// pull the image first, using the builder service account's credentials if necessary. The Docker daemon's
+        /// cache will already have the latest versions of all of the officially supported build steps
+        /// ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)).
+        /// The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian",
+        /// but they will be refreshed at the time you attempt to use them. If you built an image in a previous build
+        /// step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later
+        /// build step.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Stores timing information for pulling this build step's builder image only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pullTiming")]
+        public virtual GoogleDevtoolsCloudbuildV1TimeSpan PullTiming { get; set; }
+
+        /// <summary>
+        /// A shell script to be executed in the step. When script is provided, the user cannot specify the entrypoint
+        /// or args.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("script")]
+        public virtual string Script { get; set; }
+
+        /// <summary>
+        /// A list of environment variables which are encrypted using a Cloud Key Management Service crypto key. These
+        /// values must be specified in the build's `Secret`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretEnv")]
+        public virtual System.Collections.Generic.IList<string> SecretEnv { get; set; }
+
+        /// <summary>
+        /// Output only. Status of the build step. At this time, build step status is only updated on build completion;
+        /// step status is not updated in real-time as the build progresses.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>
+        /// Time limit for executing this build step. If not defined, the step has no time limit and will be allowed to
+        /// continue to run until either it completes or the build itself times out.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
+        public virtual object Timeout { get; set; }
+
+        /// <summary>Output only. Stores timing information for executing this build step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timing")]
+        public virtual GoogleDevtoolsCloudbuildV1TimeSpan Timing { get; set; }
+
+        /// <summary>
+        /// List of volumes to mount into the build step. Each volume is created as an empty volume prior to execution
+        /// of the build step. Upon completion of the build, volumes and their contents are discarded. Using a named
+        /// volume in only one step is not valid as it is indicative of a build request with an incorrect configuration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volumes")]
+        public virtual System.Collections.Generic.IList<GoogleDevtoolsCloudbuildV1Volume> Volumes { get; set; }
+
+        /// <summary>
+        /// The ID(s) of the step(s) that this build step depends on. This build step will not start until all the build
+        /// steps in `wait_for` have completed successfully. If `wait_for` is empty, this build step will start when all
+        /// previous build steps in the `Build.Steps` list have completed successfully.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("waitFor")]
+        public virtual System.Collections.Generic.IList<string> WaitFor { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An image built by the pipeline.</summary>
+    public class GoogleDevtoolsCloudbuildV1BuiltImage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Docker Registry 2.0 digest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("digest")]
+        public virtual string Digest { get; set; }
+
+        /// <summary>
+        /// Name used to push the container image to Google Container Registry, as presented to `docker push`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Stores timing information for pushing the specified image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pushTiming")]
+        public virtual GoogleDevtoolsCloudbuildV1TimeSpan PushTiming { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Location of the source in a 2nd-gen Google Cloud Build repository resource.</summary>
+    public class GoogleDevtoolsCloudbuildV1ConnectedRepository : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Directory, relative to the source root, in which to run the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dir")]
+        public virtual string Dir { get; set; }
+
+        /// <summary>
+        /// Required. Name of the Google Cloud Build repository, formatted as
+        /// `projects/*/locations/*/connections/*/repositories/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repository")]
+        public virtual string Repository { get; set; }
+
+        /// <summary>
+        /// The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revision")]
+        public virtual string Revision { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A fatal problem encountered during the execution of the build.</summary>
+    public class GoogleDevtoolsCloudbuildV1FailureInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Explains the failure issue in more detail using hard-coded text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detail")]
+        public virtual string Detail { get; set; }
+
+        /// <summary>The name of the failure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Container message for hashes of byte content of files, used in SourceProvenance messages to verify integrity of
+    /// source input to the build.
+    /// </summary>
+    public class GoogleDevtoolsCloudbuildV1FileHashes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Collection of file hashes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileHash")]
+        public virtual System.Collections.Generic.IList<GoogleDevtoolsCloudbuildV1Hash> FileHash { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Location of the source in any accessible Git repository.</summary>
+    public class GoogleDevtoolsCloudbuildV1GitSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Directory, relative to the source root, in which to run the build. This must be a relative path. If a step's
+        /// `dir` is specified and is an absolute path, this value is ignored for that step's execution.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dir")]
+        public virtual string Dir { get; set; }
+
+        /// <summary>
+        /// The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref. Cloud
+        /// Build uses `git fetch` to fetch the revision from the Git repository; therefore make sure that the string
+        /// you provide for `revision` is parsable by the command. For information on string values accepted by `git
+        /// fetch`, see https://git-scm.com/docs/gitrevisions#_specifying_revisions. For information on `git fetch`, see
+        /// https://git-scm.com/docs/git-fetch.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revision")]
+        public virtual string Revision { get; set; }
+
+        /// <summary>
+        /// Location of the Git repo to build. This will be used as a `git remote`, see
+        /// https://git-scm.com/docs/git-remote.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Container message for hash values.</summary>
+    public class GoogleDevtoolsCloudbuildV1Hash : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of hash that was performed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The hash value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Pairs a set of secret environment variables mapped to encrypted values with the Cloud KMS key to use to decrypt
+    /// the value.
+    /// </summary>
+    public class GoogleDevtoolsCloudbuildV1InlineSecret : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Map of environment variable name to its encrypted value. Secret environment variables must be unique across
+        /// all of a build's secrets, and must be used by at least one build step. Values can be at most 64 KB in size.
+        /// There can be at most 100 secret values across all of a build's secrets.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("envMap")]
+        public virtual System.Collections.Generic.IDictionary<string, string> EnvMap { get; set; }
+
+        /// <summary>
+        /// Resource name of Cloud KMS crypto key to decrypt the encrypted value. In format:
+        /// projects/*/locations/*/keyRings/*/cryptoKeys/*
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A Maven artifact to upload to Artifact Registry upon successful completion of all build steps.
+    /// </summary>
+    public class GoogleDevtoolsCloudbuildV1MavenArtifact : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Maven `artifactId` value used when uploading the artifact to Artifact Registry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifactId")]
+        public virtual string ArtifactId { get; set; }
+
+        /// <summary>Maven `groupId` value used when uploading the artifact to Artifact Registry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupId")]
+        public virtual string GroupId { get; set; }
+
+        /// <summary>
+        /// Path to an artifact in the build's workspace to be uploaded to Artifact Registry. This can be either an
+        /// absolute path, e.g. /workspace/my-app/target/my-app-1.0.SNAPSHOT.jar or a relative path from /workspace,
+        /// e.g. my-app/target/my-app-1.0.SNAPSHOT.jar.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>
+        /// Artifact Registry repository, in the form "https://$REGION-maven.pkg.dev/$PROJECT/$REPOSITORY" Artifact in
+        /// the workspace specified by path will be uploaded to Artifact Registry with this location as a prefix.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repository")]
+        public virtual string Repository { get; set; }
+
+        /// <summary>Maven `version` value used when uploading the artifact to Artifact Registry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Npm package to upload to Artifact Registry upon successful completion of all build steps.</summary>
+    public class GoogleDevtoolsCloudbuildV1NpmPackage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Path to the package.json. e.g. workspace/path/to/package</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packagePath")]
+        public virtual string PackagePath { get; set; }
+
+        /// <summary>
+        /// Artifact Registry repository, in the form "https://$REGION-npm.pkg.dev/$PROJECT/$REPOSITORY" Npm package in
+        /// the workspace specified by path will be zipped and uploaded to Artifact Registry with this location as a
+        /// prefix.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repository")]
+        public virtual string Repository { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Details about how a build should be executed on a `WorkerPool`. See [running builds in a private
+    /// pool](https://cloud.google.com/build/docs/private-pools/run-builds-in-private-pool) for more information.
+    /// </summary>
+    public class GoogleDevtoolsCloudbuildV1PoolOption : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The `WorkerPool` resource to execute the build on. You must have `cloudbuild.workerpools.use` on the project
+        /// hosting the WorkerPool. Format projects/{project}/locations/{location}/workerPools/{workerPoolId}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Python package to upload to Artifact Registry upon successful completion of all build steps. A package can
+    /// encapsulate multiple objects to be uploaded to a single repository.
+    /// </summary>
+    public class GoogleDevtoolsCloudbuildV1PythonPackage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Path globs used to match files in the build's workspace. For Python/ Twine, this is usually `dist/*`, and
+        /// sometimes additionally an `.asc` file.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("paths")]
+        public virtual System.Collections.Generic.IList<string> Paths { get; set; }
+
+        /// <summary>
+        /// Artifact Registry repository, in the form "https://$REGION-python.pkg.dev/$PROJECT/$REPOSITORY" Files in the
+        /// workspace matching any path pattern will be uploaded to Artifact Registry with this location as a prefix.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repository")]
+        public virtual string Repository { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Location of the source in a Google Cloud Source Repository.</summary>
+    public class GoogleDevtoolsCloudbuildV1RepoSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Regex matching branches to build. The syntax of the regular expressions accepted is the syntax accepted by
+        /// RE2 and described at https://github.com/google/re2/wiki/Syntax
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("branchName")]
+        public virtual string BranchName { get; set; }
+
+        /// <summary>Explicit commit SHA to build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commitSha")]
+        public virtual string CommitSha { get; set; }
+
+        /// <summary>
+        /// Directory, relative to the source root, in which to run the build. This must be a relative path. If a step's
+        /// `dir` is specified and is an absolute path, this value is ignored for that step's execution.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dir")]
+        public virtual string Dir { get; set; }
+
+        /// <summary>Only trigger a build if the revision regex does NOT match the revision regex.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invertRegex")]
+        public virtual System.Nullable<bool> InvertRegex { get; set; }
+
+        /// <summary>
+        /// ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is
+        /// assumed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; }
+
+        /// <summary>Name of the Cloud Source Repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repoName")]
+        public virtual string RepoName { get; set; }
+
+        /// <summary>Substitutions to use in a triggered build. Should only be used with RunBuildTrigger</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("substitutions")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Substitutions { get; set; }
+
+        /// <summary>
+        /// Regex matching tags to build. The syntax of the regular expressions accepted is the syntax accepted by RE2
+        /// and described at https://github.com/google/re2/wiki/Syntax
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tagName")]
+        public virtual string TagName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Artifacts created by the build pipeline.</summary>
+    public class GoogleDevtoolsCloudbuildV1Results : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Path to the artifact manifest for non-container artifacts uploaded to Cloud Storage. Only populated when
+        /// artifacts are uploaded to Cloud Storage.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifactManifest")]
+        public virtual string ArtifactManifest { get; set; }
+
+        /// <summary>Time to push all non-container artifacts to Cloud Storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifactTiming")]
+        public virtual GoogleDevtoolsCloudbuildV1TimeSpan ArtifactTiming { get; set; }
+
+        /// <summary>List of build step digests, in the order corresponding to build step indices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildStepImages")]
+        public virtual System.Collections.Generic.IList<string> BuildStepImages { get; set; }
+
+        /// <summary>
+        /// List of build step outputs, produced by builder images, in the order corresponding to build step indices.
+        /// [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by
+        /// writing to `$BUILDER_OUTPUT/output`. Only the first 50KB of data is stored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildStepOutputs")]
+        public virtual System.Collections.Generic.IList<string> BuildStepOutputs { get; set; }
+
+        /// <summary>Container images that were built as a part of the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("images")]
+        public virtual System.Collections.Generic.IList<GoogleDevtoolsCloudbuildV1BuiltImage> Images { get; set; }
+
+        /// <summary>Maven artifacts uploaded to Artifact Registry at the end of the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mavenArtifacts")]
+        public virtual System.Collections.Generic.IList<GoogleDevtoolsCloudbuildV1UploadedMavenArtifact> MavenArtifacts { get; set; }
+
+        /// <summary>Npm packages uploaded to Artifact Registry at the end of the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("npmPackages")]
+        public virtual System.Collections.Generic.IList<GoogleDevtoolsCloudbuildV1UploadedNpmPackage> NpmPackages { get; set; }
+
+        /// <summary>
+        /// Number of non-container artifacts uploaded to Cloud Storage. Only populated when artifacts are uploaded to
+        /// Cloud Storage.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numArtifacts")]
+        public virtual System.Nullable<long> NumArtifacts { get; set; }
+
+        /// <summary>Python artifacts uploaded to Artifact Registry at the end of the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pythonPackages")]
+        public virtual System.Collections.Generic.IList<GoogleDevtoolsCloudbuildV1UploadedPythonPackage> PythonPackages { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Pairs a set of secret environment variables containing encrypted values with the Cloud KMS key to use to decrypt
+    /// the value. Note: Use `kmsKeyName` with `available_secrets` instead of using `kmsKeyName` with `secret`. For
+    /// instructions see: https://cloud.google.com/cloud-build/docs/securing-builds/use-encrypted-credentials.
+    /// </summary>
+    public class GoogleDevtoolsCloudbuildV1Secret : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Cloud KMS key name to use to decrypt these envs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
+
+        /// <summary>
+        /// Map of environment variable name to its encrypted value. Secret environment variables must be unique across
+        /// all of a build's secrets, and must be used by at least one build step. Values can be at most 64 KB in size.
+        /// There can be at most 100 secret values across all of a build's secrets.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretEnv")]
+        public virtual System.Collections.Generic.IDictionary<string, string> SecretEnv { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Pairs a secret environment variable with a SecretVersion in Secret Manager.</summary>
+    public class GoogleDevtoolsCloudbuildV1SecretManagerSecret : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Environment variable name to associate with the secret. Secret environment variables must be unique across
+        /// all of a build's secrets, and must be used by at least one build step.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("env")]
+        public virtual string Env { get; set; }
+
+        /// <summary>Resource name of the SecretVersion. In format: projects/*/secrets/*/versions/*</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionName")]
+        public virtual string VersionName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Secrets and secret environment variables.</summary>
+    public class GoogleDevtoolsCloudbuildV1Secrets : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Secrets encrypted with KMS key and the associated secret environment variable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inline")]
+        public virtual System.Collections.Generic.IList<GoogleDevtoolsCloudbuildV1InlineSecret> Inline { get; set; }
+
+        /// <summary>Secrets in Secret Manager and associated secret environment variable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretManager")]
+        public virtual System.Collections.Generic.IList<GoogleDevtoolsCloudbuildV1SecretManagerSecret> SecretManager { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Location of the source in a supported storage service.</summary>
+    public class GoogleDevtoolsCloudbuildV1Source : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. If provided, get the source from this 2nd-gen Google Cloud Build repository resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectedRepository")]
+        public virtual GoogleDevtoolsCloudbuildV1ConnectedRepository ConnectedRepository { get; set; }
+
+        /// <summary>If provided, get the source from this Git repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gitSource")]
+        public virtual GoogleDevtoolsCloudbuildV1GitSource GitSource { get; set; }
+
+        /// <summary>If provided, get the source from this location in a Cloud Source Repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repoSource")]
+        public virtual GoogleDevtoolsCloudbuildV1RepoSource RepoSource { get; set; }
+
+        /// <summary>If provided, get the source from this location in Cloud Storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageSource")]
+        public virtual GoogleDevtoolsCloudbuildV1StorageSource StorageSource { get; set; }
+
+        /// <summary>
+        /// If provided, get the source from this manifest in Cloud Storage. This feature is in Preview; see description
+        /// [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageSourceManifest")]
+        public virtual GoogleDevtoolsCloudbuildV1StorageSourceManifest StorageSourceManifest { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Provenance of the source. Ways to find the original source, or verify that some source was used for this build.
+    /// </summary>
+    public class GoogleDevtoolsCloudbuildV1SourceProvenance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Hash(es) of the build source, which can be used to verify that the original source integrity
+        /// was maintained in the build. Note that `FileHashes` will only be populated if `BuildOptions` has requested a
+        /// `SourceProvenanceHash`. The keys to this map are file paths used as build source and the values contain the
+        /// hash values for those files. If the build source came in a single package such as a gzipped tarfile
+        /// (`.tar.gz`), the `FileHash` will be for the single path to that file.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileHashes")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleDevtoolsCloudbuildV1FileHashes> FileHashes { get; set; }
+
+        /// <summary>
+        /// Output only. A copy of the build's `source.connected_repository`, if exists, with any revisions resolved.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolvedConnectedRepository")]
+        public virtual GoogleDevtoolsCloudbuildV1ConnectedRepository ResolvedConnectedRepository { get; set; }
+
+        /// <summary>
+        /// Output only. A copy of the build's `source.git_source`, if exists, with any revisions resolved.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolvedGitSource")]
+        public virtual GoogleDevtoolsCloudbuildV1GitSource ResolvedGitSource { get; set; }
+
+        /// <summary>A copy of the build's `source.repo_source`, if exists, with any revisions resolved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolvedRepoSource")]
+        public virtual GoogleDevtoolsCloudbuildV1RepoSource ResolvedRepoSource { get; set; }
+
+        /// <summary>A copy of the build's `source.storage_source`, if exists, with any generations resolved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolvedStorageSource")]
+        public virtual GoogleDevtoolsCloudbuildV1StorageSource ResolvedStorageSource { get; set; }
+
+        /// <summary>
+        /// A copy of the build's `source.storage_source_manifest`, if exists, with any revisions resolved. This feature
+        /// is in Preview.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolvedStorageSourceManifest")]
+        public virtual GoogleDevtoolsCloudbuildV1StorageSourceManifest ResolvedStorageSourceManifest { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Location of the source in an archive file in Cloud Storage.</summary>
+    public class GoogleDevtoolsCloudbuildV1StorageSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Cloud Storage bucket containing the source (see [Bucket Name
+        /// Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
+        public virtual string Bucket { get; set; }
+
+        /// <summary>
+        /// Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generation")]
+        public virtual System.Nullable<long> Generation { get; set; }
+
+        /// <summary>
+        /// Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file
+        /// (`.tar.gz`) containing source to build.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("object")]
+        public virtual string Object__ { get; set; }
+
+        /// <summary>Optional. Option to specify the tool to fetch the source file for the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceFetcher")]
+        public virtual string SourceFetcher { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Location of the source manifest in Cloud Storage. This feature is in Preview; see description
+    /// [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
+    /// </summary>
+    public class GoogleDevtoolsCloudbuildV1StorageSourceManifest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Cloud Storage bucket containing the source manifest (see [Bucket Name
+        /// Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
+        public virtual string Bucket { get; set; }
+
+        /// <summary>
+        /// Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generation")]
+        public virtual System.Nullable<long> Generation { get; set; }
+
+        /// <summary>Cloud Storage object containing the source manifest. This object must be a JSON file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("object")]
+        public virtual string Object__ { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Start and end times for a build execution phase.</summary>
+    public class GoogleDevtoolsCloudbuildV1TimeSpan : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>End of time span.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>Start of time span.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A Maven artifact uploaded using the MavenArtifact directive.</summary>
+    public class GoogleDevtoolsCloudbuildV1UploadedMavenArtifact : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Hash types and values of the Maven Artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileHashes")]
+        public virtual GoogleDevtoolsCloudbuildV1FileHashes FileHashes { get; set; }
+
+        /// <summary>Output only. Stores timing information for pushing the specified artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pushTiming")]
+        public virtual GoogleDevtoolsCloudbuildV1TimeSpan PushTiming { get; set; }
+
+        /// <summary>URI of the uploaded artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An npm package uploaded to Artifact Registry using the NpmPackage directive.</summary>
+    public class GoogleDevtoolsCloudbuildV1UploadedNpmPackage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Hash types and values of the npm package.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileHashes")]
+        public virtual GoogleDevtoolsCloudbuildV1FileHashes FileHashes { get; set; }
+
+        /// <summary>Output only. Stores timing information for pushing the specified artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pushTiming")]
+        public virtual GoogleDevtoolsCloudbuildV1TimeSpan PushTiming { get; set; }
+
+        /// <summary>URI of the uploaded npm package.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Artifact uploaded using the PythonPackage directive.</summary>
+    public class GoogleDevtoolsCloudbuildV1UploadedPythonPackage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Hash types and values of the Python Artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileHashes")]
+        public virtual GoogleDevtoolsCloudbuildV1FileHashes FileHashes { get; set; }
+
+        /// <summary>Output only. Stores timing information for pushing the specified artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pushTiming")]
+        public virtual GoogleDevtoolsCloudbuildV1TimeSpan PushTiming { get; set; }
+
+        /// <summary>URI of the uploaded artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Volume describes a Docker container volume which is mounted into build steps in order to persist files across
+    /// build step execution.
+    /// </summary>
+    public class GoogleDevtoolsCloudbuildV1Volume : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Name of the volume to mount. Volume names must be unique per build step and must be valid names for Docker
+        /// volumes. Each named volume must be used by at least two build steps.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Path at which to mount the volume. Paths must be absolute and cannot conflict with other volume paths on the
+        /// same build step or with certain reserved volume paths.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A non-fatal problem encountered during the execution of the build.</summary>
+    public class GoogleDevtoolsCloudbuildV1Warning : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The priority for this warning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priority")]
+        public virtual string Priority { get; set; }
+
+        /// <summary>Explanation of the warning generated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

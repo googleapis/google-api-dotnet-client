@@ -5498,6 +5498,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enumOptions")]
         public virtual System.Collections.Generic.IList<EnumOption> EnumOptions { get; set; }
 
+        /// <summary>Optional. enum source denotes the source of api to fill the enum options</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enumSource")]
+        public virtual string EnumSource { get; set; }
+
         /// <summary>Indicates if current template is part of advanced settings</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isAdvanced")]
         public virtual System.Nullable<bool> IsAdvanced { get; set; }
@@ -6947,6 +6951,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("subscriberLink")]
         public virtual string SubscriberLink { get; set; }
 
+        /// <summary>Optional. Configuration for configuring the trigger</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("triggerConfigVariables")]
+        public virtual System.Collections.Generic.IList<ConfigVariable> TriggerConfigVariables { get; set; }
+
         private string _updateTimeRaw;
 
         private object _updateTime;
@@ -7176,10 +7184,6 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Registration endpoint for auto registration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("registrationDestinationConfig")]
         public virtual DestinationConfig RegistrationDestinationConfig { get; set; }
-
-        /// <summary>Optional. Additional eventing related field values</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("triggerConfigVariables")]
-        public virtual System.Collections.Generic.IList<ConfigVariable> TriggerConfigVariables { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

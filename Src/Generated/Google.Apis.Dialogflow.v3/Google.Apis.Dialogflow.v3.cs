@@ -10348,6 +10348,10 @@ namespace Google.Apis.Dialogflow.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Optional. Settings for end user personalization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("personalizationSettings")]
+        public virtual GoogleCloudDialogflowCxV3AgentPersonalizationSettings PersonalizationSettings { get; set; }
+
         /// <summary>
         /// Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
         /// </summary>
@@ -10449,6 +10453,22 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// <summary>The branch of the GitHub repository tracked for this agent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackingBranch")]
         public virtual string TrackingBranch { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings for end user personalization.</summary>
+    public class GoogleCloudDialogflowCxV3AgentPersonalizationSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Default end user metadata, used when processing DetectIntent requests. Recommended to be filled as
+        /// a template instead of hard-coded value, for example { "age": "$session.params.age" }. The data will be
+        /// merged with the QueryParameters.end_user_metadata in DetectIntentRequest.query_params during query
+        /// processing.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultEndUserMetadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> DefaultEndUserMetadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15131,7 +15151,9 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// <summary>
         /// Retains the data for the specified number of days. User must set a value lower than Dialogflow's default
         /// 365d TTL (30 days for Agent Assist traffic), higher value will be ignored and use default. Setting a value
-        /// higher than that has no effect. A missing value or setting to 0 also means we use default TTL.
+        /// higher than that has no effect. A missing value or setting to 0 also means we use default TTL. When data
+        /// retention configuration is changed, it only applies to the data created after the change; the TTL of
+        /// existing data created before the change stays intact.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retentionWindowDays")]
         public virtual System.Nullable<int> RetentionWindowDays { get; set; }
@@ -15151,7 +15173,10 @@ namespace Google.Apis.Dialogflow.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("audioFormat")]
         public virtual string AudioFormat { get; set; }
 
-        /// <summary>Enable audio redaction if it is true.</summary>
+        /// <summary>
+        /// Enable audio redaction if it is true. Note that this only redacts end-user audio data; Synthesised audio
+        /// from the virtual agent is not redacted.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableAudioRedaction")]
         public virtual System.Nullable<bool> EnableAudioRedaction { get; set; }
 

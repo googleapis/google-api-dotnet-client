@@ -2665,6 +2665,39 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A configuration that workstations can boost to.</summary>
+    public class BoostConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A list of the type and count of accelerator cards attached to the boost instance. Defaults to
+        /// `none`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accelerators")]
+        public virtual System.Collections.Generic.IList<Accelerator> Accelerators { get; set; }
+
+        /// <summary>Optional. Required. The id to be used for the boost config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// Optional. The type of machine that boosted VM instances will use—for example, `e2-standard-4`. For more
+        /// information about machine types that Cloud Workstations supports, see the list of [available machine
+        /// types](https://cloud.google.com/workstations/docs/available-machine-types). Defaults to `e2-standard-4`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
+        public virtual string MachineType { get; set; }
+
+        /// <summary>
+        /// Optional. The number of boost VMs that the system should keep idle so that workstations can be boosted
+        /// quickly. Defaults to `0`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("poolSize")]
+        public virtual System.Nullable<int> PoolSize { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2833,6 +2866,13 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual System.Collections.Generic.IList<Accelerator> Accelerators { get; set; }
 
         /// <summary>
+        /// Optional. A list of the boost configurations that workstations created using this workstation configuration
+        /// are allowed to use.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boostConfigs")]
+        public virtual System.Collections.Generic.IList<BoostConfig> BoostConfigs { get; set; }
+
+        /// <summary>
         /// Optional. The size of the boot disk for the VM in gigabytes (GB). The minimum boot disk size is `30` GB.
         /// Defaults to `50` GB.
         /// </summary>
@@ -2858,7 +2898,7 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual System.Nullable<bool> DisableSsh { get; set; }
 
         /// <summary>
-        /// Optional. Whether to enable nested virtualization on Cloud Workstations VMs created under this workstation
+        /// Optional. Whether to enable nested virtualization on Cloud Workstations VMs created using this workstation
         /// configuration. Nested virtualization lets you run virtual machine (VM) instances inside your workstation.
         /// Before enabling nested virtualization, consider the following important considerations. Cloud Workstations
         /// instances are subject to the [same restrictions as Compute Engine
@@ -2975,7 +3015,7 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
     }
 
     /// <summary>
-    /// A PersistentDirectory backed by a Compute Engine regional persistent disk. The persistent_directories field is
+    /// A Persistent Directory backed by a Compute Engine regional persistent disk. The persistent_directories field is
     /// repeated, but it may contain only one entry. It creates a [persistent
     /// disk](https://cloud.google.com/compute/docs/disks/persistent-disks) that mounts to the workstation VM at `/home`
     /// when the session starts and detaches when the session ends. If this field is empty, workstations created with
@@ -3600,6 +3640,12 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
     public class StartWorkstationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. If set, the workstation starts using the boost configuration with the specified ID.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boostConfig")]
+        public virtual string BoostConfig { get; set; }
+
+        /// <summary>
         /// Optional. If set, the request will be rejected if the latest version of the workstation on the server does
         /// not have this ETag.
         /// </summary>
@@ -4202,9 +4248,9 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
 
         /// <summary>
         /// Optional. Disables support for plain TCP connections in the workstation. By default the service supports TCP
-        /// connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage
-        /// of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over
-        /// https or wss.
+        /// connections through a websocket relay. Setting this option to true disables that relay, which prevents the
+        /// usage of services that require plain TCP connections, such as SSH. When enabled, all communication must
+        /// occur over HTTPS or WSS.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableTcpConnections")]
         public virtual System.Nullable<bool> DisableTcpConnections { get; set; }

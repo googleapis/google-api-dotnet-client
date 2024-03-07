@@ -10646,6 +10646,28 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Information about the device's backlights.</summary>
+    public class BacklightInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Current brightness of the backlight, between 0 and max_brightness.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("brightness")]
+        public virtual System.Nullable<int> Brightness { get; set; }
+
+        /// <summary>Output only. Maximum brightness for the backlight.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxBrightness")]
+        public virtual System.Nullable<int> MaxBrightness { get; set; }
+
+        /// <summary>
+        /// Output only. Path to this backlight on the system. Useful if the caller needs to correlate with other
+        /// information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A request for changing the status of a batch of ChromeOS devices.</summary>
     public class BatchChangeChromeOsDeviceStatusRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11138,6 +11160,10 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoUpdateExpiration")]
         public virtual System.Nullable<long> AutoUpdateExpiration { get; set; }
+
+        /// <summary>Output only. Contains backlight information for the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backlightInfo")]
+        public virtual System.Collections.Generic.IList<BacklightInfo> BacklightInfo { get; set; }
 
         /// <summary>
         /// The boot mode for the device. The possible values are: * `Verified`: The device is running a valid version

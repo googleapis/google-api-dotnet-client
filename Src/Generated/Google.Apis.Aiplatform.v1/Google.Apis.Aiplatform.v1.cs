@@ -26753,6 +26753,140 @@ namespace Google.Apis.Aiplatform.v1
                 }
 
                 /// <summary>
+                /// Batch cancel PipelineJobs. Firstly the server will check if all the jobs are in non-terminal states,
+                /// and skip the jobs that are already terminated. If the operation failed, none of the pipeline jobs
+                /// are cancelled. The server will poll the states of all the pipeline jobs periodically to check the
+                /// cancellation status. This operation will return an LRO.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The name of the PipelineJobs' parent resource. Format:
+                /// `projects/{project}/locations/{location}`
+                /// </param>
+                public virtual BatchCancelRequest BatchCancel(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1BatchCancelPipelineJobsRequest body, string parent)
+                {
+                    return new BatchCancelRequest(this.service, body, parent);
+                }
+
+                /// <summary>
+                /// Batch cancel PipelineJobs. Firstly the server will check if all the jobs are in non-terminal states,
+                /// and skip the jobs that are already terminated. If the operation failed, none of the pipeline jobs
+                /// are cancelled. The server will poll the states of all the pipeline jobs periodically to check the
+                /// cancellation status. This operation will return an LRO.
+                /// </summary>
+                public class BatchCancelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new BatchCancel request.</summary>
+                    public BatchCancelRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1BatchCancelPipelineJobsRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the PipelineJobs' parent resource. Format:
+                    /// `projects/{project}/locations/{location}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1BatchCancelPipelineJobsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "batchCancel";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/pipelineJobs:batchCancel";
+
+                    /// <summary>Initializes BatchCancel parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Batch deletes PipelineJobs The Operation is atomic. If it fails, none of the PipelineJobs are
+                /// deleted. If it succeeds, all of the PipelineJobs are deleted.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The name of the PipelineJobs' parent resource. Format:
+                /// `projects/{project}/locations/{location}`
+                /// </param>
+                public virtual BatchDeleteRequest BatchDelete(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1BatchDeletePipelineJobsRequest body, string parent)
+                {
+                    return new BatchDeleteRequest(this.service, body, parent);
+                }
+
+                /// <summary>
+                /// Batch deletes PipelineJobs The Operation is atomic. If it fails, none of the PipelineJobs are
+                /// deleted. If it succeeds, all of the PipelineJobs are deleted.
+                /// </summary>
+                public class BatchDeleteRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new BatchDelete request.</summary>
+                    public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1BatchDeletePipelineJobsRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the PipelineJobs' parent resource. Format:
+                    /// `projects/{project}/locations/{location}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1BatchDeletePipelineJobsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "batchDelete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/pipelineJobs:batchDelete";
+
+                    /// <summary>Initializes BatchDelete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
                 /// Cancels a PipelineJob. Starts asynchronous cancellation on the PipelineJob. The server makes a best
                 /// effort to cancel the pipeline, but success is not guaranteed. Clients can use
                 /// PipelineService.GetPipelineJob or other methods to check whether the cancellation succeeded or
@@ -36886,6 +37020,20 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for PipelineService.BatchCancelPipelineJobs.</summary>
+    public class GoogleCloudAiplatformV1BatchCancelPipelineJobsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The names of the PipelineJobs to cancel. A maximum of 32 PipelineJobs can be cancelled in a batch.
+        /// Format: `projects/{project}/locations/{location}/pipelineJobs/{pipelineJob}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("names")]
+        public virtual System.Collections.Generic.IList<string> Names { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Details of operations that perform batch create Features.</summary>
     public class GoogleCloudAiplatformV1BatchCreateFeaturesOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -36996,6 +37144,20 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startingReplicaCount")]
         public virtual System.Nullable<int> StartingReplicaCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for PipelineService.BatchDeletePipelineJobs.</summary>
+    public class GoogleCloudAiplatformV1BatchDeletePipelineJobsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The names of the PipelineJobs to delete. A maximum of 32 PipelineJobs can be deleted in a batch.
+        /// Format: `projects/{project}/locations/{location}/pipelineJobs/{pipelineJob}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("names")]
+        public virtual System.Collections.Generic.IList<string> Names { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -39594,7 +39756,7 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>Required. Additional information about the DatasetVersion.</summary>
+        /// <summary>Required. Output only. Additional information about the DatasetVersion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual object Metadata { get; set; }
 
@@ -44201,6 +44363,17 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains information about the source of the models generated from Generative AI Studio.</summary>
+    public class GoogleCloudAiplatformV1GenieSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The public base model URI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseModelUri")]
+        public virtual string BaseModelUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Grounding attribution.</summary>
     public class GoogleCloudAiplatformV1GroundingAttribution : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -46890,6 +47063,13 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ArtifactUri { get; set; }
 
         /// <summary>
+        /// Optional. User input field to specify the base model source. Currently it only supports specifing the Model
+        /// Garden models and Genie models.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseModelSource")]
+        public virtual GoogleCloudAiplatformV1ModelBaseModelSource BaseModelSource { get; set; }
+
+        /// <summary>
         /// Input only. The specification of the container that is to be used when deploying this Model. The
         /// specification is ingested upon ModelService.UploadModel, and all binaries it contains are copied and stored
         /// internally by Vertex AI. Not required for AutoML Models.
@@ -47240,6 +47420,24 @@ namespace Google.Apis.Aiplatform.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(VersionUpdateTimeRaw);
             set => VersionUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+    }
+
+    /// <summary>
+    /// User input field to specify the base model source. Currently it only supports specifing the Model Garden models
+    /// and Genie models.
+    /// </summary>
+    public class GoogleCloudAiplatformV1ModelBaseModelSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Information about the base model of Genie models.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genieSource")]
+        public virtual GoogleCloudAiplatformV1GenieSource GenieSource { get; set; }
+
+        /// <summary>Source information of Model Garden models.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelGardenSource")]
+        public virtual GoogleCloudAiplatformV1ModelGardenSource ModelGardenSource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>
@@ -48194,6 +48392,17 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains information about the source of the models generated from Model Garden.</summary>
+    public class GoogleCloudAiplatformV1ModelGardenSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The model garden source model resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicModelName")]
+        public virtual string PublicModelName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

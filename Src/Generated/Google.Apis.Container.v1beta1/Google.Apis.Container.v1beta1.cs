@@ -7325,6 +7325,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUsageExportConfig")]
         public virtual ResourceUsageExportConfig ResourceUsageExportConfig { get; set; }
 
+        /// <summary>Secret CSI driver configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretManagerConfig")]
+        public virtual SecretManagerConfig SecretManagerConfig { get; set; }
+
         /// <summary>Enable/Disable Security Posture API features for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityPostureConfig")]
         public virtual SecurityPostureConfig SecurityPostureConfig { get; set; }
@@ -7512,6 +7516,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>DNSConfig contains clusterDNS config for this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredDnsConfig")]
         public virtual DNSConfig DesiredDnsConfig { get; set; }
+
+        /// <summary>Enable/Disable Cilium Clusterwide Network Policy for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredEnableCiliumClusterwideNetworkPolicy")]
+        public virtual System.Nullable<bool> DesiredEnableCiliumClusterwideNetworkPolicy { get; set; }
 
         /// <summary>Enable/Disable FQDN Network Policy for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredEnableFqdnNetworkPolicy")]
@@ -7705,6 +7713,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>The desired configuration for exporting resource usage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredResourceUsageExportConfig")]
         public virtual ResourceUsageExportConfig DesiredResourceUsageExportConfig { get; set; }
+
+        /// <summary>Enable/Disable Secret Manager Config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredSecretManagerConfig")]
+        public virtual SecretManagerConfig DesiredSecretManagerConfig { get; set; }
 
         /// <summary>Enable/Disable Security Posture API features for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredSecurityPostureConfig")]
@@ -9129,6 +9141,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>DNSConfig contains clusterDNS config for this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dnsConfig")]
         public virtual DNSConfig DnsConfig { get; set; }
+
+        /// <summary>Whether CiliumClusterWideNetworkPolicy is enabled on this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableCiliumClusterwideNetworkPolicy")]
+        public virtual System.Nullable<bool> EnableCiliumClusterwideNetworkPolicy { get; set; }
 
         /// <summary>Whether FQDN Network Policy is enabled on this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableFqdnNetworkPolicy")]
@@ -10604,6 +10620,17 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Disk mode (container image cache, etc.)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
         public virtual string Mode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>SecretManagerConfig is config for secret manager enablement.</summary>
+    public class SecretManagerConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the cluster is configured to use secret manager CSI component.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

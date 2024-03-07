@@ -4453,7 +4453,7 @@
    }
   }
  },
- "revision": "20240219",
+ "revision": "20240228",
  "rootUrl": "https://dialogflow.googleapis.com/",
  "schemas": {
   "GoogleCloudDialogflowCxV3AdvancedSettings": {
@@ -6841,6 +6841,10 @@
      "description": "The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.",
      "type": "string"
     },
+    "personalizationSettings": {
+     "$ref": "GoogleCloudDialogflowCxV3beta1AgentPersonalizationSettings",
+     "description": "Optional. Settings for end user personalization."
+    },
     "securitySettings": {
      "description": "Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.",
      "type": "string"
@@ -6930,6 +6934,21 @@
     "trackingBranch": {
      "description": "The branch of the GitHub repository tracked for this agent.",
      "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "GoogleCloudDialogflowCxV3beta1AgentPersonalizationSettings": {
+   "description": "Settings for end user personalization.",
+   "id": "GoogleCloudDialogflowCxV3beta1AgentPersonalizationSettings",
+   "properties": {
+    "defaultEndUserMetadata": {
+     "additionalProperties": {
+      "description": "Properties of the object.",
+      "type": "any"
+     },
+     "description": "Optional. Default end user metadata, used when processing DetectIntent requests. Recommended to be filled as a template instead of hard-coded value, for example { \"age\": \"$session.params.age\" }. The data will be merged with the QueryParameters.end_user_metadata in DetectIntentRequest.query_params during query processing.",
+     "type": "object"
     }
    },
    "type": "object"
@@ -10884,7 +10903,7 @@
      "type": "string"
     },
     "retentionWindowDays": {
-     "description": "Retains data in interaction logging for the specified number of days. This does not apply to Cloud logging, which is owned by the user - not Dialogflow. User must set a value lower than Dialogflow's default 365d TTL (30 days for Agent Assist traffic), higher value will be ignored and use default. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use default TTL.",
+     "description": "Retains data in interaction logging for the specified number of days. This does not apply to Cloud logging, which is owned by the user - not Dialogflow. User must set a value lower than Dialogflow's default 365d TTL (30 days for Agent Assist traffic), higher value will be ignored and use default. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use default TTL. When data retention configuration is changed, it only applies to the data created after the change; the TTL of existing data created before the change stays intact.",
      "format": "int32",
      "type": "integer"
     }
@@ -10916,7 +10935,7 @@
      "type": "string"
     },
     "enableAudioRedaction": {
-     "description": "Enable audio redaction if it is true.",
+     "description": "Enable audio redaction if it is true. Note that this only redacts end-user audio data; Synthesised audio from the virtual agent is not redacted.",
      "type": "boolean"
     },
     "gcsBucket": {

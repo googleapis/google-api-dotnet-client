@@ -1204,11 +1204,17 @@ namespace Google.Apis.CloudSupport.v2beta
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>The product line to request cases for.</summary>
+            /// <summary>
+            /// The product line for which to request cases for. If unspecified, only Google Cloud cases will be
+            /// returned.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("productLine", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ProductLineEnum> ProductLine { get; set; }
 
-            /// <summary>The product line to request cases for.</summary>
+            /// <summary>
+            /// The product line for which to request cases for. If unspecified, only Google Cloud cases will be
+            /// returned.
+            /// </summary>
             public enum ProductLineEnum
             {
                 /// <summary>Unknown product type.</summary>
@@ -2106,7 +2112,7 @@ namespace Google.Apis.CloudSupport.v2beta.Data
     /// projects/123/cases/456
     /// ```
     /// You can use either of them when calling the API. To learn more about project
-    /// identifiers, see [AIP-2510](https://google.aip.dev/cloud/2510). Next ID: 38
+    /// identifiers, see [AIP-2510](https://google.aip.dev/cloud/2510).
     /// </summary>
     public class Case : Google.Apis.Requests.IDirectResponseSchema
     {

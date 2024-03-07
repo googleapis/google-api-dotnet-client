@@ -35,6 +35,7 @@ namespace Google.Apis.Cloudbilling.v1beta
         public CloudbillingService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             BillingAccounts = new BillingAccountsResource(this);
+            Projects = new ProjectsResource(this);
             SkuGroups = new SkuGroupsResource(this);
             Skus = new SkusResource(this);
             V1beta = new V1betaResource(this);
@@ -94,6 +95,9 @@ namespace Google.Apis.Cloudbilling.v1beta
 
         /// <summary>Gets the BillingAccounts resource.</summary>
         public virtual BillingAccountsResource BillingAccounts { get; }
+
+        /// <summary>Gets the Projects resource.</summary>
+        public virtual ProjectsResource Projects { get; }
 
         /// <summary>Gets the SkuGroups resource.</summary>
         public virtual SkuGroupsResource SkuGroups { get; }
@@ -298,9 +302,177 @@ namespace Google.Apis.Cloudbilling.v1beta
         public BillingAccountsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            Anomalies = new AnomaliesResource(service);
             Services = new ServicesResource(service);
             SkuGroups = new SkuGroupsResource(service);
             Skus = new SkusResource(service);
+        }
+
+        /// <summary>Gets the Anomalies resource.</summary>
+        public virtual AnomaliesResource Anomalies { get; }
+
+        /// <summary>The "anomalies" collection of methods.</summary>
+        public class AnomaliesResource
+        {
+            private const string Resource = "anomalies";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public AnomaliesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Gets an anomaly for a billing account or a project.</summary>
+            /// <param name="name">
+            /// Required. Format for project: projects/{project}/anomalies/{anomalies}. Format for billing account:
+            /// billingAccounts/{billing_account}/anomalies/{anomalies}.
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(this.service, name);
+            }
+
+            /// <summary>Gets an anomaly for a billing account or a project.</summary>
+            public class GetRequest : CloudbillingBaseServiceRequest<Google.Apis.Cloudbilling.v1beta.Data.GoogleCloudBillingAnomaliesV1betaAnomaly>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Format for project: projects/{project}/anomalies/{anomalies}. Format for billing account:
+                /// billingAccounts/{billing_account}/anomalies/{anomalies}.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^billingAccounts/[^/]+/anomalies/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Lists anomalies for a billing account or a project.</summary>
+            /// <param name="parent">
+            /// Required. The project to list Anomaly for the project. Format for project: projects/{project}. Format
+            /// for billing account: billingAccounts/{billing_account}.
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(this.service, parent);
+            }
+
+            /// <summary>Lists anomalies for a billing account or a project.</summary>
+            public class ListRequest : CloudbillingBaseServiceRequest<Google.Apis.Cloudbilling.v1beta.Data.GoogleCloudBillingAnomaliesV1betaListAnomaliesResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The project to list Anomaly for the project. Format for project: projects/{project}.
+                /// Format for billing account: billingAccounts/{billing_account}.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. Options for how to filter the anomalies. Currently, only filter on `start_time` and
+                /// `end_time` is supported. Only =, AND operators are supported. If start_time and/or end_time empty,
+                /// we only retrieve the most recent 30 days' anomalies. Examples: - start_time = "20231201" AND
+                /// end_time = "20240120" .
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
+                /// Optional. Maximum number of anomalies to return. Results may return fewer than this value. Default
+                /// value is 50 and maximum value is 1000.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. Page token received from a previous ListAnomalies call to retrieve the next page of
+                /// results. If this field is empty, the first page is returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta/{+parent}/anomalies";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^billingAccounts/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
 
         /// <summary>Gets the Services resource.</summary>
@@ -1184,6 +1356,189 @@ namespace Google.Apis.Cloudbilling.v1beta
                     DefaultValue = null,
                     Pattern = @"^billingAccounts/[^/]+$",
                 });
+            }
+        }
+    }
+
+    /// <summary>The "projects" collection of methods.</summary>
+    public class ProjectsResource
+    {
+        private const string Resource = "projects";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ProjectsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            Anomalies = new AnomaliesResource(service);
+        }
+
+        /// <summary>Gets the Anomalies resource.</summary>
+        public virtual AnomaliesResource Anomalies { get; }
+
+        /// <summary>The "anomalies" collection of methods.</summary>
+        public class AnomaliesResource
+        {
+            private const string Resource = "anomalies";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public AnomaliesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Gets an anomaly for a billing account or a project.</summary>
+            /// <param name="name">
+            /// Required. Format for project: projects/{project}/anomalies/{anomalies}. Format for billing account:
+            /// billingAccounts/{billing_account}/anomalies/{anomalies}.
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(this.service, name);
+            }
+
+            /// <summary>Gets an anomaly for a billing account or a project.</summary>
+            public class GetRequest : CloudbillingBaseServiceRequest<Google.Apis.Cloudbilling.v1beta.Data.GoogleCloudBillingAnomaliesV1betaAnomaly>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Format for project: projects/{project}/anomalies/{anomalies}. Format for billing account:
+                /// billingAccounts/{billing_account}/anomalies/{anomalies}.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/anomalies/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Lists anomalies for a billing account or a project.</summary>
+            /// <param name="parent">
+            /// Required. The project to list Anomaly for the project. Format for project: projects/{project}. Format
+            /// for billing account: billingAccounts/{billing_account}.
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(this.service, parent);
+            }
+
+            /// <summary>Lists anomalies for a billing account or a project.</summary>
+            public class ListRequest : CloudbillingBaseServiceRequest<Google.Apis.Cloudbilling.v1beta.Data.GoogleCloudBillingAnomaliesV1betaListAnomaliesResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The project to list Anomaly for the project. Format for project: projects/{project}.
+                /// Format for billing account: billingAccounts/{billing_account}.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. Options for how to filter the anomalies. Currently, only filter on `start_time` and
+                /// `end_time` is supported. Only =, AND operators are supported. If start_time and/or end_time empty,
+                /// we only retrieve the most recent 30 days' anomalies. Examples: - start_time = "20231201" AND
+                /// end_time = "20240120" .
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
+                /// Optional. Maximum number of anomalies to return. Results may return fewer than this value. Default
+                /// value is 50 and maximum value is 1000.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. Page token received from a previous ListAnomalies call to retrieve the next page of
+                /// results. If this field is empty, the first page is returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta/{+parent}/anomalies";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
             }
         }
     }
@@ -2226,6 +2581,190 @@ namespace Google.Apis.Cloudbilling.v1beta.Data
         /// <summary>The point in time, relative to the start of the time frame covered by the cost estimate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("estimationTimeFrameOffset")]
         public virtual object EstimationTimeFrameOffset { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Encapsulates an anomaly.</summary>
+    public class GoogleCloudBillingAnomaliesV1betaAnomaly : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _detectionTimeRaw;
+
+        private object _detectionTime;
+
+        /// <summary>
+        /// Time that the anomaly was detected. Will be set to 00:00 google time of the detected date.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectionTime")]
+        public virtual string DetectionTimeRaw
+        {
+            get => _detectionTimeRaw;
+            set
+            {
+                _detectionTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _detectionTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DetectionTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DetectionTimeDateTimeOffset instead.")]
+        public virtual object DetectionTime
+        {
+            get => _detectionTime;
+            set
+            {
+                _detectionTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _detectionTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DetectionTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DetectionTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DetectionTimeRaw);
+            set => DetectionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Deviation information of the anomaly.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviation")]
+        public virtual GoogleCloudBillingAnomaliesV1betaAnomalyDeviation Deviation { get; set; }
+
+        /// <summary>Identifier. Resource name for the anomaly.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The display name of the resource that the anomaly occurred in/belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceDisplayName")]
+        public virtual string ResourceDisplayName { get; set; }
+
+        /// <summary>A list of causes which contribute to the anomaly.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rootCauses")]
+        public virtual System.Collections.Generic.IList<GoogleCloudBillingAnomaliesV1betaCause> RootCauses { get; set; }
+
+        /// <summary>Indicate the scope of the anomaly.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual string Scope { get; set; }
+
+        /// <summary>Severity of the anomaly. Unspecified if severity is not met/assigned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The most recent anomaly's last updated time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Encapsulates the deviation information.</summary>
+    public class GoogleCloudBillingAnomaliesV1betaAnomalyDeviation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The actual spend for the anomaly.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actualSpend")]
+        public virtual Money ActualSpend { get; set; }
+
+        /// <summary>
+        /// The difference between the actual spend and expected spend's upper bound. Calculation formula:
+        /// deviation_amount = actual_spend - expected_spend.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviationAmount")]
+        public virtual Money DeviationAmount { get; set; }
+
+        /// <summary>
+        /// The percentage of devition amount from expected spend's upper bound. Calculation formula:
+        /// deviation_percentage = divation_amount / expected_spend * 100.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviationPercentage")]
+        public virtual System.Nullable<double> DeviationPercentage { get; set; }
+
+        /// <summary>The expected spend for the anomaly.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expectedSpend")]
+        public virtual Money ExpectedSpend { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Encapsulates the information of the reason which caused the anomaly.</summary>
+    public class GoogleCloudBillingAnomaliesV1betaCause : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The cause type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("causeType")]
+        public virtual string CauseType { get; set; }
+
+        /// <summary>The deviation information for the cause.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviation")]
+        public virtual GoogleCloudBillingAnomaliesV1betaAnomalyDeviation Deviation { get; set; }
+
+        /// <summary>The display name of the cause.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// The resource name of the cause. project: projects/{project}. service: services/{service}. sku:
+        /// services/{service}/skus/{sku}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual string Resource { get; set; }
+
+        /// <summary>The sub causes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subCauses")]
+        public virtual System.Collections.Generic.IList<GoogleCloudBillingAnomaliesV1betaCause> SubCauses { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ListAnomalies.</summary>
+    public class GoogleCloudBillingAnomaliesV1betaListAnomaliesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The returned anomalies.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("anomalies")]
+        public virtual System.Collections.Generic.IList<GoogleCloudBillingAnomaliesV1betaAnomaly> Anomalies { get; set; }
+
+        /// <summary>
+        /// Token that can be sent as `page_token` in the subsequent request to retrieve the next page. If this field is
+        /// empty, there are no subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

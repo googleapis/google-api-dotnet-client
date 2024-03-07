@@ -736,6 +736,16 @@ namespace Google.Apis.CloudFunctions.v2
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>
+                    /// Optional. The optional version of the 1st gen function whose details should be obtained. The
+                    /// version of a 1st gen function is an integer that starts from 1 and gets incremented on
+                    /// redeployments. GCF may keep historical configs for old versions of 1st gen function. This field
+                    /// can be specified to fetch the historical configs. This field is valid only for GCF 1st gen
+                    /// function.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("revision", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Revision { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
@@ -756,6 +766,14 @@ namespace Google.Apis.CloudFunctions.v2
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/functions/[^/]+$",
+                        });
+                        RequestParameters.Add("revision", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "revision",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
