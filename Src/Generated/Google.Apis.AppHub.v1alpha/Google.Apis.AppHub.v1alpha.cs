@@ -2023,6 +2023,70 @@ namespace Google.Apis.AppHub.v1alpha
                         });
                     }
                 }
+
+                /// <summary>
+                /// Looks up a discovered service in a host project and location and with a given resource URI.
+                /// </summary>
+                /// <param name="parent">Required. Value for parent.</param>
+                public virtual LookupRequest Lookup(string parent)
+                {
+                    return new LookupRequest(this.service, parent);
+                }
+
+                /// <summary>
+                /// Looks up a discovered service in a host project and location and with a given resource URI.
+                /// </summary>
+                public class LookupRequest : AppHubBaseServiceRequest<Google.Apis.AppHub.v1alpha.Data.LookupDiscoveredServiceResponse>
+                {
+                    /// <summary>Constructs a new Lookup request.</summary>
+                    public LookupRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Value for parent.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. Resource URI to find service for. Accepts both project number and project id and does
+                    /// translation when needed.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("uri", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Uri { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "lookup";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/discoveredServices:lookup";
+
+                    /// <summary>Initializes Lookup parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("uri", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "uri",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the DiscoveredWorkloads resource.</summary>
@@ -2275,6 +2339,70 @@ namespace Google.Apis.AppHub.v1alpha
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Looks up a discovered Workload in a host project and location and with a given resource URI.
+                /// </summary>
+                /// <param name="parent">Required. Value for parent.</param>
+                public virtual LookupRequest Lookup(string parent)
+                {
+                    return new LookupRequest(this.service, parent);
+                }
+
+                /// <summary>
+                /// Looks up a discovered Workload in a host project and location and with a given resource URI.
+                /// </summary>
+                public class LookupRequest : AppHubBaseServiceRequest<Google.Apis.AppHub.v1alpha.Data.LookupDiscoveredWorkloadResponse>
+                {
+                    /// <summary>Constructs a new Lookup request.</summary>
+                    public LookupRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Value for parent.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. Resource URI to find workload for. Accepts both project number and project id and does
+                    /// translation when needed.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("uri", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Uri { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "lookup";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/discoveredWorkloads:lookup";
+
+                    /// <summary>Initializes Lookup parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("uri", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "uri",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3810,6 +3938,28 @@ namespace Google.Apis.AppHub.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for LookupDiscoveredService.</summary>
+    public class LookupDiscoveredServiceResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Discovered service if exists, empty otherwise.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("discoveredService")]
+        public virtual DiscoveredService DiscoveredService { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for LookupDiscoveredWorkload.</summary>
+    public class LookupDiscoveredWorkloadResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Discovered workload if exists, empty otherwise.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("discoveredWorkload")]
+        public virtual DiscoveredWorkload DiscoveredWorkload { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

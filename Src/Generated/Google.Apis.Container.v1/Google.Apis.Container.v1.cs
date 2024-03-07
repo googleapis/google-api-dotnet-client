@@ -7324,6 +7324,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredDnsConfig")]
         public virtual DNSConfig DesiredDnsConfig { get; set; }
 
+        /// <summary>Enable/Disable Cilium Clusterwide Network Policy for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredEnableCiliumClusterwideNetworkPolicy")]
+        public virtual System.Nullable<bool> DesiredEnableCiliumClusterwideNetworkPolicy { get; set; }
+
         /// <summary>Enable/Disable FQDN Network Policy for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredEnableFqdnNetworkPolicy")]
         public virtual System.Nullable<bool> DesiredEnableFqdnNetworkPolicy { get; set; }
@@ -8754,6 +8758,10 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>DNSConfig contains clusterDNS config for this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dnsConfig")]
         public virtual DNSConfig DnsConfig { get; set; }
+
+        /// <summary>Whether CiliumClusterwideNetworkPolicy is enabled on this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableCiliumClusterwideNetworkPolicy")]
+        public virtual System.Nullable<bool> EnableCiliumClusterwideNetworkPolicy { get; set; }
 
         /// <summary>Whether FQDN Network Policy is enabled on this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableFqdnNetworkPolicy")]

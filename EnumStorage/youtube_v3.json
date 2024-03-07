@@ -90,6 +90,15 @@
     "1",
     "2"
   ],
+  "Google.Apis.YouTube.v3.PlaylistImagesResource+UpdateMediaUpload.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.YouTube.v3.PlaylistImagesResource+UpdateMediaUpload.XgafvEnum": [
+    "1",
+    "2"
+  ],
   "Google.Apis.YouTube.v3.SearchResource+ListRequest.ChannelTypeEnum": [
     "channelTypeUnspecified",
     "any",

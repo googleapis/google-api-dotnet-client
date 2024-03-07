@@ -2565,7 +2565,7 @@
    }
   }
  },
- "revision": "20240214",
+ "revision": "20240213",
  "rootUrl": "https://container.googleapis.com/",
  "schemas": {
   "AcceleratorConfig": {
@@ -3479,6 +3479,10 @@
      "$ref": "ResourceUsageExportConfig",
      "description": "Configuration for exporting resource usages. Resource usage export is disabled when this config unspecified."
     },
+    "secretManagerConfig": {
+     "$ref": "SecretManagerConfig",
+     "description": "Secret CSI driver configuration."
+    },
     "securityPostureConfig": {
      "$ref": "SecurityPostureConfig",
      "description": "Enable/Disable Security Posture API features for the cluster."
@@ -3705,6 +3709,10 @@
      "$ref": "DNSConfig",
      "description": "DNSConfig contains clusterDNS config for this cluster."
     },
+    "desiredEnableCiliumClusterwideNetworkPolicy": {
+     "description": "Enable/Disable Cilium Clusterwide Network Policy for the cluster.",
+     "type": "boolean"
+    },
     "desiredEnableFqdnNetworkPolicy": {
      "description": "Enable/Disable FQDN Network Policy for the cluster.",
      "type": "boolean"
@@ -3874,6 +3882,10 @@
     "desiredResourceUsageExportConfig": {
      "$ref": "ResourceUsageExportConfig",
      "description": "The desired configuration for exporting resource usage."
+    },
+    "desiredSecretManagerConfig": {
+     "$ref": "SecretManagerConfig",
+     "description": "Enable/Disable Secret Manager Config."
     },
     "desiredSecurityPostureConfig": {
      "$ref": "SecurityPostureConfig",
@@ -5333,6 +5345,10 @@
      "$ref": "DNSConfig",
      "description": "DNSConfig contains clusterDNS config for this cluster."
     },
+    "enableCiliumClusterwideNetworkPolicy": {
+     "description": "Whether CiliumClusterWideNetworkPolicy is enabled on this cluster.",
+     "type": "boolean"
+    },
     "enableFqdnNetworkPolicy": {
      "description": "Whether FQDN Network Policy is enabled on this cluster.",
      "type": "boolean"
@@ -6779,6 +6795,17 @@
       "CONTAINER_IMAGE_CACHE is for using the secondary boot disk as a container image cache."
      ],
      "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "SecretManagerConfig": {
+   "description": "SecretManagerConfig is config for secret manager enablement.",
+   "id": "SecretManagerConfig",
+   "properties": {
+    "enabled": {
+     "description": "Whether the cluster is configured to use secret manager CSI component.",
+     "type": "boolean"
     }
    },
    "type": "object"

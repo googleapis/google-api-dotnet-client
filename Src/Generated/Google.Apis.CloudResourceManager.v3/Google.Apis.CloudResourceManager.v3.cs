@@ -5002,6 +5002,13 @@ namespace Google.Apis.CloudResourceManager.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
+        /// <summary>
+        /// Optional. Input only. Immutable. Tag keys/values directly bound to this folder. Each item in the map must be
+        /// expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
+
         private string _updateTimeRaw;
 
         private object _updateTime;
@@ -5798,6 +5805,13 @@ namespace Google.Apis.CloudResourceManager.v3.Data
         /// <summary>Output only. The project lifecycle state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. Immutable. Tag keys/values directly bound to this project. Each item in the map must
+        /// be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
 
         private string _updateTimeRaw;
 

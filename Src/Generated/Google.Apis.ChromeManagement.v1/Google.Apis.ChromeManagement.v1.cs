@@ -1810,7 +1810,15 @@ namespace Google.Apis.ChromeManagement.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Required. Read mask to specify which fields to return.</summary>
+                    /// <summary>
+                    /// Required. Read mask to specify which fields to return. Supported read_mask paths are: - name -
+                    /// org_unit_id - device_id - serial_number - cpu_info - cpu_status_report - memory_info -
+                    /// memory_status_report - network_info - network_diagnostics_report - network_status_report -
+                    /// os_update_status - graphics_info - graphics_status_report - battery_info - battery_status_report
+                    /// - storage_info - storage_status_report - thunderbolt_info - audio_status_report -
+                    /// boot_performance_report - heartbeat_status_report - network_bandwidth_report -
+                    /// peripherals_report - kiosk_app_status_report - app_report - runtime_counters_report
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object ReadMask { get; set; }
 
@@ -1893,7 +1901,15 @@ namespace Google.Apis.ChromeManagement.v1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
-                    /// <summary>Required. Read mask to specify which fields to return.</summary>
+                    /// <summary>
+                    /// Required. Read mask to specify which fields to return. Supported read_mask paths are: - name -
+                    /// org_unit_id - device_id - serial_number - cpu_info - cpu_status_report - memory_info -
+                    /// memory_status_report - network_info - network_diagnostics_report - network_status_report -
+                    /// os_update_status - graphics_info - graphics_status_report - battery_info - battery_status_report
+                    /// - storage_info - storage_status_report - thunderbolt_info - audio_status_report -
+                    /// boot_performance_report - heartbeat_status_report - network_bandwidth_report -
+                    /// peripherals_report - kiosk_app_status_report - app_report - runtime_counters_report
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object ReadMask { get; set; }
 
@@ -2023,6 +2039,10 @@ namespace Google.Apis.ChromeManagement.v1
                     /// <summary>
                     /// Required. Read mask to specify which fields to return. Although currently required, this field
                     /// will become optional, while the filter parameter with an event type will be come required.
+                    /// Supported read_mask paths are: - device - user - audio_severe_underrun_event -
+                    /// usb_peripherals_event - https_latency_change_event - network_state_change_event -
+                    /// wifi_signal_strength_event - vpn_connection_state_change_event - app_install_event -
+                    /// app_uninstall_event - app_launch_event
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object ReadMask { get; set; }
@@ -2327,7 +2347,12 @@ namespace Google.Apis.ChromeManagement.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Read mask to specify which fields to return.</summary>
+                    /// <summary>
+                    /// Read mask to specify which fields to return. Supported read_mask paths are: - name - org_unit_id
+                    /// - user_id - user_email - user_device.device_id - user_device.audio_status_report -
+                    /// user_device.device_activity_report - user_device.network_bandwidth_report -
+                    /// user_device.peripherals_report
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object ReadMask { get; set; }
 
@@ -2407,7 +2432,12 @@ namespace Google.Apis.ChromeManagement.v1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
-                    /// <summary>Read mask to specify which fields to return.</summary>
+                    /// <summary>
+                    /// Read mask to specify which fields to return. Supported read_mask paths are: - name - org_unit_id
+                    /// - user_id - user_email - user_device.device_id - user_device.audio_status_report -
+                    /// user_device.device_activity_report - user_device.network_bandwidth_report -
+                    /// user_device.peripherals_report
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object ReadMask { get; set; }
 

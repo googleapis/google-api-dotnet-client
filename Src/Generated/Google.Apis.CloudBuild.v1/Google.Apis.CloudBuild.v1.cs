@@ -8627,48 +8627,9 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkConfig")]
         public virtual NetworkConfig NetworkConfig { get; set; }
 
-        /// <summary>Immutable. Private Service Connect(PSC) Network configuration for the pool.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("privateServiceConnect")]
-        public virtual PrivateServiceConnect PrivateServiceConnect { get; set; }
-
         /// <summary>Machine configuration for the workers in the pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerConfig")]
         public virtual WorkerConfig WorkerConfig { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Defines the Private Service Connect network configuration for the pool.</summary>
-    public class PrivateServiceConnect : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. Immutable. The network attachment that the worker network interface is peered to. Must be in the
-        /// format `projects/{project}/regions/{region}/networkAttachments/{networkAttachment}`. The region of network
-        /// attachment must be the same as the worker pool. See [Network
-        /// Attachments](https://cloud.google.com/vpc/docs/about-network-attachments)
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("networkAttachment")]
-        public virtual string NetworkAttachment { get; set; }
-
-        /// <summary>
-        /// Required. Immutable. Disable public IP on the primary network interface. If true, workers are created
-        /// without any public address, which prevents network egress to public IPs unless a network proxy is
-        /// configured. If false, workers are created with a public address which allows for public internet egress. The
-        /// public address only applies to traffic through the primary network interface. If `route_all_traffic` is set
-        /// to true, all traffic will go through the non-primary network interface, this boolean has no effect.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("publicIpAddressDisabled")]
-        public virtual System.Nullable<bool> PublicIpAddressDisabled { get; set; }
-
-        /// <summary>
-        /// Immutable. Route all traffic through PSC interface. Enable this if you want full control of traffic in the
-        /// private pool. Configure Cloud NAT for the subnet of network attachment if you need to access public
-        /// Internet. If false, Only route private IPs, e.g. 10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16 through PSC
-        /// interface.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("routeAllTraffic")]
-        public virtual System.Nullable<bool> RouteAllTraffic { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

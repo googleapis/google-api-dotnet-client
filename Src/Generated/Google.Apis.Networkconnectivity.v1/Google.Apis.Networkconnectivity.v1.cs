@@ -7946,8 +7946,8 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Output only. The location of the route. Uses the following form: "projects/{project}/locations/{location}"
-        /// Example: projects/1234/locations/us-central1
+        /// Output only. The origin location of the route. Uses the following form:
+        /// "projects/{project}/locations/{location}" Example: projects/1234/locations/us-central1
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }

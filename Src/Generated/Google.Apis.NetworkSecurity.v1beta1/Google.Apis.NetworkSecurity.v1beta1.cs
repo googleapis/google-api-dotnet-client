@@ -7923,6 +7923,12 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>
+        /// Optional. Whether the association is disabled. True indicates that traffic won't be intercepted
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual System.Nullable<bool> Disabled { get; set; }
+
         /// <summary>Required. The URL of the FirewallEndpoint that is being associated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firewallEndpoint")]
         public virtual string FirewallEndpoint { get; set; }

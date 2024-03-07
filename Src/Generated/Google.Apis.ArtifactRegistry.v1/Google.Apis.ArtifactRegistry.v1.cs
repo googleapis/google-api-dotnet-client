@@ -34,6 +34,7 @@ namespace Google.Apis.ArtifactRegistry.v1
         /// <param name="initializer">The service initializer.</param>
         public ArtifactRegistryService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
+            Media = new MediaResource(this);
             Projects = new ProjectsResource(this);
             BaseUri = GetEffectiveUri(BaseUriOverride, "https://artifactregistry.googleapis.com/");
             BatchUri = GetEffectiveUri(null, "https://artifactregistry.googleapis.com/batch");
@@ -86,6 +87,9 @@ namespace Google.Apis.ArtifactRegistry.v1
             /// </summary>
             public const string CloudPlatformReadOnly = "https://www.googleapis.com/auth/cloud-platform.read-only";
         }
+
+        /// <summary>Gets the Media resource.</summary>
+        public virtual MediaResource Media { get; }
 
         /// <summary>Gets the Projects resource.</summary>
         public virtual ProjectsResource Projects { get; }
@@ -269,6 +273,152 @@ namespace Google.Apis.ArtifactRegistry.v1
                 DefaultValue = null,
                 Pattern = null,
             });
+        }
+    }
+
+    /// <summary>The "media" collection of methods.</summary>
+    public class MediaResource
+    {
+        private const string Resource = "media";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public MediaResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Download a file.</summary>
+        /// <param name="name">Required. The name of the file to download.</param>
+        public virtual DownloadRequest Download(string name)
+        {
+            return new DownloadRequest(this.service, name);
+        }
+
+        /// <summary>Download a file.</summary>
+        public class DownloadRequest : ArtifactRegistryBaseServiceRequest<Google.Apis.ArtifactRegistry.v1.Data.DownloadFileResponse>
+        {
+            /// <summary>Constructs a new Download request.</summary>
+            public DownloadRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                MediaDownloader = new Google.Apis.Download.MediaDownloader(service);
+                InitParameters();
+            }
+
+            /// <summary>Required. The name of the file to download.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "download";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}:download";
+
+            /// <summary>Initializes Download parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+/files/[^/]+$",
+                });
+            }
+
+            /// <summary>Gets the media downloader.</summary>
+            public Google.Apis.Download.IMediaDownloader MediaDownloader { get; private set; }
+
+            /// <summary>
+            /// <para>Synchronously download the media into the given stream.</para>
+            /// <para>
+            /// Warning: This method hides download errors; use <see cref="DownloadWithStatus(System.IO.Stream)"/>
+            /// instead.
+            /// </para>
+            /// </summary>
+            /// <remarks>
+            /// This method uses the <see cref="MediaDownloader"/> property to perform the download. Progress event
+            /// handlers and other configuration may be performed using that property prior to calling this method.
+            /// </remarks>
+            public virtual void Download(System.IO.Stream stream)
+            {
+                var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
+                mediaDownloader.Range = null;
+                mediaDownloader.Download(this.GenerateRequestUri(), stream);
+            }
+
+            /// <summary>Synchronously download the media into the given stream.</summary>
+            /// <remarks>
+            /// This method uses the <see cref="MediaDownloader"/> property to perform the download. Progress event
+            /// handlers and other configuration may be performed using that property prior to calling this method.
+            /// </remarks>
+            /// <returns>The final status of the download; including whether the download succeeded or failed.</returns>
+            public virtual Google.Apis.Download.IDownloadProgress DownloadWithStatus(System.IO.Stream stream)
+            {
+                var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
+                mediaDownloader.Range = null;
+                return mediaDownloader.Download(this.GenerateRequestUri(), stream);
+            }
+
+            /// <summary>Asynchronously download the media into the given stream.</summary>
+            /// <remarks>
+            /// This method uses the <see cref="MediaDownloader"/> property to perform the download. Progress event
+            /// handlers and other configuration may be performed using that property prior to calling this method.
+            /// </remarks>
+            public virtual System.Threading.Tasks.Task<Google.Apis.Download.IDownloadProgress> DownloadAsync(System.IO.Stream stream)
+            {
+                var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
+                mediaDownloader.Range = null;
+                return mediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream);
+            }
+
+            /// <summary>Asynchronously download the media into the given stream.</summary>
+            /// <remarks>
+            /// This method uses the <see cref="MediaDownloader"/> property to perform the download. Progress event
+            /// handlers and other configuration may be performed using that property prior to calling this method.
+            /// </remarks>
+            public virtual System.Threading.Tasks.Task<Google.Apis.Download.IDownloadProgress> DownloadAsync(System.IO.Stream stream,
+                System.Threading.CancellationToken cancellationToken)
+            {
+                var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
+                mediaDownloader.Range = null;
+                return mediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream, cancellationToken);
+            }
+
+            /// <summary>Synchronously download a range of the media into the given stream.</summary>
+            /// <remarks>
+            /// This method uses the <see cref="MediaDownloader"/> property to perform the download. Progress event
+            /// handlers and other configuration may be performed using that property prior to calling this method.
+            /// </remarks>
+            public virtual Google.Apis.Download.IDownloadProgress DownloadRange(System.IO.Stream stream, System.Net.Http.Headers.RangeHeaderValue range)
+            {
+                var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
+                mediaDownloader.Range = range;
+                return mediaDownloader.Download(this.GenerateRequestUri(), stream);
+            }
+
+            /// <summary>Asynchronously download a range of the media into the given stream.</summary>
+            /// <remarks>
+            /// This method uses the <see cref="MediaDownloader"/> property to perform the download. Progress event
+            /// handlers and other configuration may be performed using that property prior to calling this method.
+            /// </remarks>
+            public virtual System.Threading.Tasks.Task<Google.Apis.Download.IDownloadProgress> DownloadRangeAsync(System.IO.Stream stream,
+                System.Net.Http.Headers.RangeHeaderValue range,
+                System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+            {
+                var mediaDownloader = (Google.Apis.Download.MediaDownloader)MediaDownloader;
+                mediaDownloader.Range = range;
+                return mediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream, cancellationToken);
+            }
         }
     }
 
@@ -2917,6 +3067,82 @@ namespace Google.Apis.ArtifactRegistry.v1
                             });
                         }
                     }
+
+                    /// <summary>Updates a package.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// The name of the package, for example:
+                    /// `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1`. If the package ID part
+                    /// contains slashes, the slashes are escaped.
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.ArtifactRegistry.v1.Data.Package body, string name)
+                    {
+                        return new PatchRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Updates a package.</summary>
+                    public class PatchRequest : ArtifactRegistryBaseServiceRequest<Google.Apis.ArtifactRegistry.v1.Data.Package>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ArtifactRegistry.v1.Data.Package body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// The name of the package, for example:
+                        /// `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1`. If the package ID part
+                        /// contains slashes, the slashes are escaped.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// The update mask applies to the resource. For the `FieldMask` definition, see
+                        /// https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.ArtifactRegistry.v1.Data.Package Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+/packages/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Gets the PythonPackages resource.</summary>
@@ -4273,6 +4499,10 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
     /// <summary>Configuration for an Apt remote repository.</summary>
     public class AptRepository : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Customer-specified remote repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customRepository")]
+        public virtual GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository CustomRepository { get; set; }
+
         /// <summary>One of the publicly available Apt repositories supported by Artifact Registry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicRepository")]
         public virtual GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository PublicRepository { get; set; }
@@ -4623,6 +4853,10 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
     /// <summary>Configuration for a Docker remote repository.</summary>
     public class DockerRepository : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Customer-specified remote repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customRepository")]
+        public virtual GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository CustomRepository { get; set; }
+
         /// <summary>One of the publicly available Docker repositories supported by Artifact Registry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicRepository")]
         public virtual string PublicRepository { get; set; }
@@ -4644,6 +4878,13 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("immutableTags")]
         public virtual System.Nullable<bool> ImmutableTags { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response to download a file.</summary>
+    public class DownloadFileResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4955,6 +5196,19 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Customer-specified publicly available remote repository.</summary>
+    public class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// An http/https uri reference to the upstream remote repository, for ex: "https://my.apt.registry/".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Publicly available Apt repositories constructed from a common repository base and a custom repository path.
     /// </summary>
@@ -4967,6 +5221,71 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         /// <summary>A custom field to define a path to a specific repository from the base.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("repositoryPath")]
         public virtual string RepositoryPath { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Customer-specified publicly available remote repository.</summary>
+    public class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// An http/https uri reference to the custom remote repository, for ex: "https://registry-1.docker.io".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Customer-specified publicly available remote repository.</summary>
+    public class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// An http/https uri reference to the upstream remote repository, for ex: "https://my.maven.registry/".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Customer-specified publicly available remote repository.</summary>
+    public class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// An http/https uri reference to the upstream remote repository, for ex: "https://my.npm.registry/".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Customer-specified publicly available remote repository.</summary>
+    public class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// An http/https uri reference to the upstream remote repository, for ex: "https://my.python.registry/".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Customer-specified publicly available remote repository.</summary>
+    public class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// An http/https uri reference to the upstream remote repository, for ex: "https://my.yum.registry/".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5526,6 +5845,10 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
     /// <summary>Configuration for a Maven remote repository.</summary>
     public class MavenRepository : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Customer-specified remote repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customRepository")]
+        public virtual GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository CustomRepository { get; set; }
+
         /// <summary>One of the publicly available Maven repositories supported by Artifact Registry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicRepository")]
         public virtual string PublicRepository { get; set; }
@@ -5657,6 +5980,10 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
     /// <summary>Configuration for a Npm remote repository.</summary>
     public class NpmRepository : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Customer-specified remote repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customRepository")]
+        public virtual GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository CustomRepository { get; set; }
+
         /// <summary>One of the publicly available Npm repositories supported by Artifact Registry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicRepository")]
         public virtual string PublicRepository { get; set; }
@@ -5718,6 +6045,10 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
     /// <summary>Packages are named collections of versions.</summary>
     public class Package : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Client specified annotations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -6009,6 +6340,10 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
     /// <summary>Configuration for a Python remote repository.</summary>
     public class PythonRepository : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Customer-specified remote repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customRepository")]
+        public virtual GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository CustomRepository { get; set; }
+
         /// <summary>One of the publicly available Python repositories supported by Artifact Registry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicRepository")]
         public virtual string PublicRepository { get; set; }
@@ -6027,6 +6362,13 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         /// <summary>The description of the remote source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Input only. A create/update remote repo option to avoid making a HEAD/GET request to validate a remote repo
+        /// and any supplied upstream credentials.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableUpstreamValidation")]
+        public virtual System.Nullable<bool> DisableUpstreamValidation { get; set; }
 
         /// <summary>Specific settings for a Docker remote repository.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dockerRepository")]
@@ -6714,6 +7056,10 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
     /// <summary>Configuration for a Yum remote repository.</summary>
     public class YumRepository : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Customer-specified remote repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customRepository")]
+        public virtual GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository CustomRepository { get; set; }
+
         /// <summary>One of the publicly available Yum repositories supported by Artifact Registry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicRepository")]
         public virtual GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository PublicRepository { get; set; }

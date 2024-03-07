@@ -1057,8 +1057,8 @@ namespace Google.Apis.HangoutsChat.v1
 
                 /// <summary>
                 /// Optional. The maximum number of memberships to return. The service might return fewer than this
-                /// value. If unspecified, at most 100 memberships are returned. The maximum value is 1,000. If you use
-                /// a value more than 1,000, it's automatically changed to 1,000. Negative values return an
+                /// value. If unspecified, at most 100 memberships are returned. The maximum value is 1000. If you use a
+                /// value more than 1000, it's automatically changed to 1000. Negative values return an
                 /// `INVALID_ARGUMENT` error.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -1912,8 +1912,8 @@ namespace Google.Apis.HangoutsChat.v1
 
                 /// <summary>
                 /// The maximum number of messages returned. The service might return fewer messages than this value. If
-                /// unspecified, at most 25 are returned. The maximum value is 1,000. If you use a value more than
-                /// 1,000, it's automatically changed to 1,000. Negative values return an `INVALID_ARGUMENT` error.
+                /// unspecified, at most 25 are returned. The maximum value is 1000. If you use a value more than 1000,
+                /// it's automatically changed to 1000. Negative values return an `INVALID_ARGUMENT` error.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -2610,8 +2610,8 @@ namespace Google.Apis.HangoutsChat.v1
 
             /// <summary>
             /// Optional. The maximum number of spaces to return. The service might return fewer than this value. If
-            /// unspecified, at most 100 spaces are returned. The maximum value is 1,000. If you use a value more than
-            /// 1,000, it's automatically changed to 1,000. Negative values return an `INVALID_ARGUMENT` error.
+            /// unspecified, at most 100 spaces are returned. The maximum value is 1000. If you use a value more than
+            /// 1000, it's automatically changed to 1000. Negative values return an `INVALID_ARGUMENT` error.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
@@ -3165,7 +3165,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// <summary>
     /// For a `SelectionInput` widget that uses a multiselect menu, a data source from Google Chat. The data source
     /// populates selection items for the multiselect menu. For example, a user can select Google Chat spaces that
-    /// they're a member of. [Google Chat apps](https://developers.google.com/chat):
+    /// they're a member of. [Google Chat apps](https://developers.google.com/workspace/chat):
     /// </summary>
     public class ChatClientDataSourceMarkup : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3623,7 +3623,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// `interaction` to `OPEN_DIALOG`, the app can open a
         /// [dialog](https://developers.google.com/chat/how-tos/dialogs). When specified, a loading indicator isn't
         /// shown. If specified for an add-on, the entire card is stripped and nothing is shown in the client. [Google
-        /// Chat apps](https://developers.google.com/chat):
+        /// Chat apps](https://developers.google.com/workspace/chat):
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interaction")]
         public virtual string Interaction { get; set; }
@@ -3793,13 +3793,13 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// { "cardsV2": [ { "cardId":
     /// "unique-card-id", "card": { "header": { "title": "Sasha", "subtitle": "Software Engineer", "imageUrl":
     /// "https://developers.google.com/chat/images/quickstart-app-avatar.png", "imageType": "CIRCLE", "imageAltText":
-    /// "Avatar for Sasha", }, "sections": [ { "header": "Contact Info", "collapsible": true,
-    /// "uncollapsibleWidgetsCount": 1, "widgets": [ { "decoratedText": { "startIcon": { "knownIcon": "EMAIL", },
-    /// "text": "sasha@example.com", } }, { "decoratedText": { "startIcon": { "knownIcon": "PERSON", }, "text":
-    /// "Online", }, }, { "decoratedText": { "startIcon": { "knownIcon": "PHONE", }, "text": "+1 (555) 555-1234", } }, {
-    /// "buttonList": { "buttons": [ { "text": "Share", "onClick": { "openLink": { "url": "https://example.com/share", }
-    /// } }, { "text": "Edit", "onClick": { "action": { "function": "goToView", "parameters": [ { "key": "viewType",
-    /// "value": "EDIT", } ], } } }, ], } }, ], }, ], }, } ], }
+    /// "Avatar for Sasha" }, "sections": [ { "header": "Contact Info", "collapsible": true,
+    /// "uncollapsibleWidgetsCount": 1, "widgets": [ { "decoratedText": { "startIcon": { "knownIcon": "EMAIL" }, "text":
+    /// "sasha@example.com" } }, { "decoratedText": { "startIcon": { "knownIcon": "PERSON" }, "text": "Online" } }, {
+    /// "decoratedText": { "startIcon": { "knownIcon": "PHONE" }, "text": "+1 (555) 555-1234" } }, { "buttonList": {
+    /// "buttons": [ { "text": "Share", "onClick": { "openLink": { "url": "https://example.com/share" } } }, { "text":
+    /// "Edit", "onClick": { "action": { "function": "goToView", "parameters": [ { "key": "viewType", "value": "EDIT" }
+    /// ] } } } ] } } ] } ] } } ] }
     /// ```
     /// </summary>
     public class GoogleAppsCardV1Card : Google.Apis.Requests.IDirectResponseSchema
@@ -3956,23 +3956,21 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A column. [Google Chat apps](https://developers.google.com/chat):</summary>
+    /// <summary>
+    /// A column. [Google Workspace Add-ons and Chat apps](https://developers.google.com/workspace/extend): Columns for
+    /// Google Workspace Add-ons are in Developer Preview.
+    /// </summary>
     public class GoogleAppsCardV1Column : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Specifies whether widgets align to the left, right, or center of a column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("horizontalAlignment")]
         public virtual string HorizontalAlignment { get; set; }
 
-        /// <summary>
-        /// Specifies how a column fills the width of the card. [Google Chat apps](https://developers.google.com/chat):
-        /// </summary>
+        /// <summary>Specifies how a column fills the width of the card.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("horizontalSizeStyle")]
         public virtual string HorizontalSizeStyle { get; set; }
 
-        /// <summary>
-        /// Specifies whether widgets align to the top, bottom, or center of a column. [Google Chat
-        /// apps](https://developers.google.com/chat):
-        /// </summary>
+        /// <summary>Specifies whether widgets align to the top, bottom, or center of a column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verticalAlignment")]
         public virtual string VerticalAlignment { get; set; }
 
@@ -3998,8 +3996,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// iOS devices, the second column wraps if the screen width is less than or equal to 300 pt. * On Android devices,
     /// the second column wraps if the screen width is less than or equal to 320 dp. To include more than 2 columns, or
     /// to use rows, use the `Grid` widget. [Google Workspace Add-ons and Chat
-    /// apps](https://developers.google.com/workspace/extend): Columns for Google Workspace Add-ons are in [Developer
-    /// Preview](https://developers.google.com/workspace/preview).
+    /// apps](https://developers.google.com/workspace/extend): Columns for Google Workspace Add-ons are in Developer
+    /// Preview.
     /// </summary>
     public class GoogleAppsCardV1Columns : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4416,7 +4414,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
     /// <summary>
     /// For a `SelectionInput` widget that uses a multiselect menu, a data source from Google Workspace. Used to
-    /// populate items in a multiselect menu. [Google Chat apps](https://developers.google.com/chat):
+    /// populate items in a multiselect menu. [Google Chat apps](https://developers.google.com/workspace/chat):
     /// </summary>
     public class GoogleAppsCardV1PlatformDataSource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4734,7 +4732,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// Text that appears in the text input field when the field is empty. Use this text to prompt users to enter a
-        /// value. For example, `Enter a number from 0 to 100`. [Google Chat apps](https://developers.google.com/chat):
+        /// value. For example, `Enter a number from 0 to 100`. [Google Chat
+        /// apps](https://developers.google.com/workspace/chat):
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("placeholderText")]
         public virtual string PlaceholderText { get; set; }
@@ -4919,7 +4918,9 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// The supported widgets that you can include in a column. [Google Chat apps](https://developers.google.com/chat):
+    /// The supported widgets that you can include in a column. [Google Workspace Add-ons and Chat
+    /// apps](https://developers.google.com/workspace/extend): Columns for Google Workspace Add-ons are in Developer
+    /// Preview.
     /// </summary>
     public class GoogleAppsCardV1Widgets : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4973,7 +4974,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// <summary>
     /// For a `SelectionInput` widget that uses a multiselect menu, a data source from a Google Workspace application.
     /// The data source populates selection items for the multiselect menu. [Google Chat
-    /// apps](https://developers.google.com/chat):
+    /// apps](https://developers.google.com/workspace/chat):
     /// </summary>
     public class HostAppDataSourceMarkup : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5989,7 +5990,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
     /// <summary>
     /// A data source that populates Google Chat spaces as selection items for a multiselect menu. Only populates spaces
-    /// that the user is a member of. [Google Chat apps](https://developers.google.com/chat):
+    /// that the user is a member of. [Google Chat apps](https://developers.google.com/workspace/chat):
     /// </summary>
     public class SpaceDataSource : Google.Apis.Requests.IDirectResponseSchema
     {

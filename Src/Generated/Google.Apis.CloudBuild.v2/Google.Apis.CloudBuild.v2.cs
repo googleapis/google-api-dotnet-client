@@ -3314,6 +3314,29 @@ namespace Google.Apis.CloudBuild.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A value produced by a Pipeline.</summary>
+    public class PipelineResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Description of the result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Output only. Name of the result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The type of data that the result holds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>Output only. Value of the result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual ResultValue Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message describing PipelineRun object</summary>
     public class PipelineRun : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3495,6 +3518,10 @@ namespace Google.Apis.CloudBuild.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resolvedPipelineSpec")]
         public virtual PipelineSpec ResolvedPipelineSpec { get; set; }
 
+        /// <summary>Optional. Output only. List of results written out by the pipeline's containers</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("results")]
+        public virtual System.Collections.Generic.IList<PipelineRunResult> Results { get; set; }
+
         /// <summary>Optional. Security configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("security")]
         public virtual Security Security { get; set; }
@@ -3609,6 +3636,21 @@ namespace Google.Apis.CloudBuild.v2.Data
         public virtual System.Collections.Generic.IList<WorkspaceBinding> Workspaces { get; set; }
     }
 
+    /// <summary>PipelineRunResult used to describe the results of a pipeline</summary>
+    public class PipelineRunResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Name of the TaskRun</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Value of the result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual ResultValue Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>PipelineSpec defines the desired state of Pipeline.</summary>
     public class PipelineSpec : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3629,6 +3671,10 @@ namespace Google.Apis.CloudBuild.v2.Data
         /// <summary>List of parameters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("params")]
         public virtual System.Collections.Generic.IList<ParamSpec> Params__ { get; set; }
+
+        /// <summary>Optional. Output only. List of results written out by the pipeline's containers</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("results")]
+        public virtual System.Collections.Generic.IList<PipelineResult> Results { get; set; }
 
         /// <summary>List of Tasks that execute when this Pipeline is run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tasks")]
@@ -3948,6 +3994,29 @@ namespace Google.Apis.CloudBuild.v2.Data
         /// <summary>Output only. External ID of the webhook created for the repository.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webhookId")]
         public virtual string WebhookId { get; set; }
+    }
+
+    /// <summary>ResultValue holds different types of data for a single result.</summary>
+    public class ResultValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Value of the result if type is array.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("arrayVal")]
+        public virtual System.Collections.Generic.IList<string> ArrayVal { get; set; }
+
+        /// <summary>Value of the result if type is object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectVal")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ObjectVal { get; set; }
+
+        /// <summary>Value of the result if type is string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringVal")]
+        public virtual string StringVal { get; set; }
+
+        /// <summary>Output only. The type of data that the result holds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>Represents the custom metadata of the RunWorkflow long-running operation.</summary>
