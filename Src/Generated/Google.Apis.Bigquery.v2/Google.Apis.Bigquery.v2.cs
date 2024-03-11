@@ -5259,6 +5259,12 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual System.Nullable<long> LastModifiedTime { get; set; }
 
         /// <summary>
+        /// Output only. Metadata about the LinkedDataset. Filled out when the dataset type is LINKED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkedDatasetMetadata")]
+        public virtual LinkedDatasetMetadata LinkedDatasetMetadata { get; set; }
+
+        /// <summary>
         /// Optional. The source dataset reference when the dataset is of type LINKED. For all other dataset types it is
         /// not set. This field cannot be updated once it is set. Any attempt to update this field using Update and
         /// Patch API Operations will be ignored.
@@ -8244,6 +8250,17 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata about the Linked Dataset.</summary>
+    public class LinkedDatasetMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Specifies whether Linked Dataset is currently in a linked state or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkState")]
+        public virtual string LinkState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A dataset source type which refers to another BigQuery dataset.</summary>
     public class LinkedDatasetSource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8786,6 +8803,33 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enumAsString")]
         public virtual System.Nullable<bool> EnumAsString { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The partitioning column information.</summary>
+    public class PartitionedColumn : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The name of the partition column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("field")]
+        public virtual string Field { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The partitioning information, which includes managed table and external table partition information.
+    /// </summary>
+    public class PartitioningDefinition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Details about each partitioning column. BigQuery native tables only support 1 partitioning
+        /// column. Other table types may support 0, 1 or more partitioning columns.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partitionedColumn")]
+        public virtual System.Collections.Generic.IList<PartitionedColumn> PartitionedColumn { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10171,23 +10215,22 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Endpoints { get; set; }
 
         /// <summary>
-        /// Output only. The Google Cloud Storage bucket that is used as the default filesystem by the Spark
-        /// application. This fields is only filled when the Spark procedure uses the INVOKER security mode. It is
-        /// inferred from the system variable @@spark_proc_properties.staging_bucket if it is provided. Otherwise,
-        /// BigQuery creates a default staging bucket for the job and returns the bucket name in this field. Example: *
-        /// `gs://[bucket_name]`
+        /// Output only. The Google Cloud Storage bucket that is used as the default file system by the Spark
+        /// application. This field is only filled when the Spark procedure uses the invoker security mode. The
+        /// `gcsStagingBucket` bucket is inferred from the `@@spark_proc_properties.staging_bucket` system variable (if
+        /// it is provided). Otherwise, BigQuery creates a default staging bucket for the job and returns the bucket
+        /// name in this field. Example: * `gs://[bucket_name]`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsStagingBucket")]
         public virtual string GcsStagingBucket { get; set; }
 
         /// <summary>
         /// Output only. The Cloud KMS encryption key that is used to protect the resources created by the Spark job. If
-        /// the Spark procedure uses DEFINER security mode, the Cloud KMS key is inferred from the Spark connection
-        /// associated with the procedure if it is provided. Otherwise the key is inferred from the default key of the
-        /// Spark connection's project if the CMEK organization policy is enforced. If the Spark procedure uses INVOKER
-        /// security mode, the Cloud KMS encryption key is inferred from the system variable
-        /// @@spark_proc_properties.kms_key_name if it is provided. Otherwise, the key is inferred fromt he default key
-        /// of the BigQuery job's project if the CMEK organization policy is enforced. Example: *
+        /// the Spark procedure uses the invoker security mode, the Cloud KMS encryption key is either inferred from the
+        /// provided system variable, `@@spark_proc_properties.kms_key_name`, or the default key of the BigQuery job's
+        /// project (if the CMEK organization policy is enforced). Otherwise, the Cloud KMS key is either inferred from
+        /// the Spark connection associated with the procedure (if it is provided), or from the default key of the Spark
+        /// connection's project if the CMEK organization policy is enforced. Example: *
         /// `projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
@@ -10569,6 +10612,13 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("numTotalPhysicalBytes")]
         public virtual System.Nullable<long> NumTotalPhysicalBytes { get; set; }
 
+        /// <summary>
+        /// Output only. The partition information for all table formats, including managed partitioned tables, hive
+        /// partitioned tables, and iceberg partitioned tables.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partitionDefinition")]
+        public virtual PartitioningDefinition PartitionDefinition { get; set; }
+
         /// <summary>If specified, configures range partitioning for this table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rangePartitioning")]
         public virtual RangePartitioning RangePartitioning { get; set; }
@@ -10932,7 +10982,8 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>
         /// Required. The field data type. Possible values include: * STRING * BYTES * INTEGER (or INT64) * FLOAT (or
         /// FLOAT64) * BOOLEAN (or BOOL) * TIMESTAMP * DATE * TIME * DATETIME * GEOGRAPHY * NUMERIC * BIGNUMERIC * JSON
-        /// * RECORD (or STRUCT) Use of RECORD/STRUCT indicates that the field contains a nested schema.
+        /// * RECORD (or STRUCT) * RANGE ([Preview](/products/#product-launch-stages)) Use of RECORD/STRUCT indicates
+        /// that the field contains a nested schema.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -10965,7 +11016,9 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Represents the type of a field element.</summary>
         public class RangeElementTypeData
         {
-            /// <summary>Required. The type of a field element. See TableFieldSchema.type.</summary>
+            /// <summary>
+            /// Required. The type of a field element. For more information, see TableFieldSchema.type.
+            /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("type")]
             public virtual string Type { get; set; }
         }

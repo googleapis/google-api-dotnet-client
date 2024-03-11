@@ -11188,8 +11188,8 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         public virtual string Image { get; set; }
 
         /// <summary>
-        /// Required. The OS image to be used for each node in a node pool. Currently `cos`, `ubuntu`,
-        /// `ubuntu_containerd` and `windows` are supported.
+        /// Required. The OS image to be used for each node in a node pool. Currently `cos`, `cos_cgv2`, `ubuntu`,
+        /// `ubuntu_cgv2`, `ubuntu_containerd` and `windows` are supported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageType")]
         public virtual string ImageType { get; set; }

@@ -7075,7 +7075,7 @@ namespace Google.Apis.Monitoring.v3
             /// <summary>Update the given ServiceLevelObjective.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Resource name for this ServiceLevelObjective. The format is:
+            /// Identifier. Resource name for this ServiceLevelObjective. The format is:
             /// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME]
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Monitoring.v3.Data.ServiceLevelObjective body, string name)
@@ -7095,7 +7095,7 @@ namespace Google.Apis.Monitoring.v3
                 }
 
                 /// <summary>
-                /// Resource name for this ServiceLevelObjective. The format is:
+                /// Identifier. Resource name for this ServiceLevelObjective. The format is:
                 /// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME]
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -7431,7 +7431,8 @@ namespace Google.Apis.Monitoring.v3
         /// <summary>Update this Service.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
-        /// Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
+        /// Identifier. Resource name for this Service. The format is:
+        /// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
         /// </param>
         public virtual PatchRequest Patch(Google.Apis.Monitoring.v3.Data.Service body, string name)
         {
@@ -7450,7 +7451,8 @@ namespace Google.Apis.Monitoring.v3
             }
 
             /// <summary>
-            /// Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
+            /// Identifier. Resource name for this Service. The format is:
+            /// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -10825,7 +10827,8 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual MeshIstio MeshIstio { get; set; }
 
         /// <summary>
-        /// Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
+        /// Identifier. Resource name for this Service. The format is:
+        /// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -10904,7 +10907,7 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual System.Nullable<double> Goal { get; set; }
 
         /// <summary>
-        /// Resource name for this ServiceLevelObjective. The format is:
+        /// Identifier. Resource name for this ServiceLevelObjective. The format is:
         /// projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME]
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]

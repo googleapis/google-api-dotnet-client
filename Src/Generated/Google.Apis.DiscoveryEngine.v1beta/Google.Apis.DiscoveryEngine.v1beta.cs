@@ -4389,7 +4389,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// suggestions generated from user-imported search events. * `document-completable` - Using
                         /// suggestions taken directly from user-imported document fields marked as completable. Default
                         /// values: * `document` is the default model for regular dataStores. * `search-history` is the
-                        /// default model for site search dataStores.
+                        /// default model for site search dataStores. *
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("queryModel", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string QueryModel { get; set; }
@@ -9677,7 +9677,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     /// no traffic for Search API. * `user-event` - Using suggestions generated from user-imported
                     /// search events. * `document-completable` - Using suggestions taken directly from user-imported
                     /// document fields marked as completable. Default values: * `document` is the default model for
-                    /// regular dataStores. * `search-history` is the default model for site search dataStores.
+                    /// regular dataStores. * `search-history` is the default model for site search dataStores. *
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("queryModel", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string QueryModel { get; set; }
@@ -13954,6 +13954,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// </summary>
     public class GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Whether chunking mode is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunkingConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfig ChunkingConfig { get; set; }
+
         /// <summary>
         /// Configurations for default Document parser. If not specified, we will configure it as default
         /// DigitalParsingConfig, and the default parsing config will be applied to all file types for Document parsing.
@@ -13984,6 +13988,37 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parsingConfigOverrides")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfig> ParsingConfigOverrides { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for chunking config.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Configuration for the layout based chunking.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("layoutBasedChunkingConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig LayoutBasedChunkingConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for the layout based chunking.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The token size limit for each chunk. Supported values: 100-500 (inclusive). Default value: 500.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunkSize")]
+        public virtual System.Nullable<int> ChunkSize { get; set; }
+
+        /// <summary>
+        /// Whether to include appending different levels of headings to chunks from the middle of the document to
+        /// prevent context loss. Default value: False.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeAncestorHeadings")]
+        public virtual System.Nullable<bool> IncludeAncestorHeadings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

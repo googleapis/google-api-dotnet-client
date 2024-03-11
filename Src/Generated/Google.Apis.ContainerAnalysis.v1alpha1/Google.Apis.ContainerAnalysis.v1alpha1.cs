@@ -3727,6 +3727,10 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
+        /// <summary>Potential impact of the suggested remediation</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("impact")]
+        public virtual string Impact { get; set; }
+
         /// <summary>A rationale for the existence of this compliance check.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rationale")]
         public virtual string Rationale { get; set; }

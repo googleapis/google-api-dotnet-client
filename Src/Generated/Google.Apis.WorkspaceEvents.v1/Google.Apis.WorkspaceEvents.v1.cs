@@ -92,6 +92,14 @@ namespace Google.Apis.WorkspaceEvents.v1
 
             /// <summary>View chat and spaces in Google Chat</summary>
             public static string ChatSpacesReadonly = "https://www.googleapis.com/auth/chat.spaces.readonly";
+
+            /// <summary>
+            /// Create, edit, and see information about your Google Meet conferences created by the app.
+            /// </summary>
+            public static string MeetingsSpaceCreated = "https://www.googleapis.com/auth/meetings.space.created";
+
+            /// <summary>Read information about any of your Google Meet conferences</summary>
+            public static string MeetingsSpaceReadonly = "https://www.googleapis.com/auth/meetings.space.readonly";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Google Workspace Events API.</summary>
@@ -128,6 +136,14 @@ namespace Google.Apis.WorkspaceEvents.v1
 
             /// <summary>View chat and spaces in Google Chat</summary>
             public const string ChatSpacesReadonly = "https://www.googleapis.com/auth/chat.spaces.readonly";
+
+            /// <summary>
+            /// Create, edit, and see information about your Google Meet conferences created by the app.
+            /// </summary>
+            public const string MeetingsSpaceCreated = "https://www.googleapis.com/auth/meetings.space.created";
+
+            /// <summary>Read information about any of your Google Meet conferences</summary>
+            public const string MeetingsSpaceReadonly = "https://www.googleapis.com/auth/meetings.space.readonly";
         }
 
         /// <summary>Gets the Operations resource.</summary>

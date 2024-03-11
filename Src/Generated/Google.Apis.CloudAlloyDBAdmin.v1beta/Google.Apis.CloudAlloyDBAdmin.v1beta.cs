@@ -5394,6 +5394,12 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual System.Collections.Generic.IList<string> OutgoingServiceAttachmentLinks { get; set; }
 
         /// <summary>
+        /// Output only. The DNS name of the instance for PSC connectivity. Name convention: ...alloydb-psc.goog
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscDnsName")]
+        public virtual string PscDnsName { get; set; }
+
+        /// <summary>
         /// Optional. Whether PSC connectivity is enabled for this instance. This is populated by referencing the value
         /// from the parent cluster.
         /// </summary>
@@ -6151,7 +6157,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         /// <summary>
         /// Identifier for this resource's immediate parent/primary resource if the current resource is a replica or
         /// derived form of another Database resource. Else it would be NULL. REQUIRED if the immediate parent exists
-        /// when first time resource is getting ingested
+        /// when first time resource is getting ingested, otherwise optional.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryResourceId")]
         public virtual StorageDatabasecenterPartnerapiV1mainDatabaseResourceId PrimaryResourceId { get; set; }

@@ -1357,6 +1357,81 @@ namespace Google.Apis.SQLAdmin.v1beta4
             this.service = service;
         }
 
+        /// <summary>Acquire a lease for the setup of SQL Server Reporting Services (SSRS).</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Required. ID of the project that contains the instance (Example: project-id).</param>
+        /// <param name="instance">
+        /// Required. Cloud SQL instance ID. This doesn't include the project ID. It's composed of lowercase letters,
+        /// numbers, and hyphens, and it must start with a letter. The total length must be 98 characters or less
+        /// (Example: instance-id).
+        /// </param>
+        public virtual AcquireSsrsLeaseRequest AcquireSsrsLease(Google.Apis.SQLAdmin.v1beta4.Data.InstancesAcquireSsrsLeaseRequest body, string project, string instance)
+        {
+            return new AcquireSsrsLeaseRequest(this.service, body, project, instance);
+        }
+
+        /// <summary>Acquire a lease for the setup of SQL Server Reporting Services (SSRS).</summary>
+        public class AcquireSsrsLeaseRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.SqlInstancesAcquireSsrsLeaseResponse>
+        {
+            /// <summary>Constructs a new AcquireSsrsLease request.</summary>
+            public AcquireSsrsLeaseRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.InstancesAcquireSsrsLeaseRequest body, string project, string instance) : base(service)
+            {
+                Project = project;
+                Instance = instance;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. ID of the project that contains the instance (Example: project-id).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>
+            /// Required. Cloud SQL instance ID. This doesn't include the project ID. It's composed of lowercase
+            /// letters, numbers, and hyphens, and it must start with a letter. The total length must be 98 characters
+            /// or less (Example: instance-id).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.SQLAdmin.v1beta4.Data.InstancesAcquireSsrsLeaseRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "acquireSsrsLease";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}/acquireSsrsLease";
+
+            /// <summary>Initializes AcquireSsrsLease parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
         /// <summary>
         /// Add a new trusted Certificate Authority (CA) version for the specified instance. Required to prepare for a
         /// certificate rotation. If a CA version was previously added but never used in a certificate rotation, this
@@ -2393,6 +2468,75 @@ namespace Google.Apis.SQLAdmin.v1beta4
             public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}/reencrypt";
 
             /// <summary>Initializes Reencrypt parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Release a lease for the setup of SQL Server Reporting Services (SSRS).</summary>
+        /// <param name="project">
+        /// Required. The ID of the project that contains the instance (Example: project-id).
+        /// </param>
+        /// <param name="instance">
+        /// Required. The Cloud SQL instance ID. This doesn't include the project ID. It's composed of lowercase
+        /// letters, numbers, and hyphens, and it must start with a letter. The total length must be 98 characters or
+        /// less (Example: instance-id).
+        /// </param>
+        public virtual ReleaseSsrsLeaseRequest ReleaseSsrsLease(string project, string instance)
+        {
+            return new ReleaseSsrsLeaseRequest(this.service, project, instance);
+        }
+
+        /// <summary>Release a lease for the setup of SQL Server Reporting Services (SSRS).</summary>
+        public class ReleaseSsrsLeaseRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.SqlInstancesReleaseSsrsLeaseResponse>
+        {
+            /// <summary>Constructs a new ReleaseSsrsLease request.</summary>
+            public ReleaseSsrsLeaseRequest(Google.Apis.Services.IClientService service, string project, string instance) : base(service)
+            {
+                Project = project;
+                Instance = instance;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of the project that contains the instance (Example: project-id).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>
+            /// Required. The Cloud SQL instance ID. This doesn't include the project ID. It's composed of lowercase
+            /// letters, numbers, and hyphens, and it must start with a letter. The total length must be 98 characters
+            /// or less (Example: instance-id).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "releaseSsrsLease";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}/releaseSsrsLease";
+
+            /// <summary>Initializes ReleaseSsrsLease parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -4630,6 +4774,33 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Acquire SSRS lease context.</summary>
+    public class AcquireSsrsLeaseContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Lease duration needed for the SSRS setup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
+        public virtual object Duration { get; set; }
+
+        /// <summary>The report database to be used for the SSRS setup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportDatabase")]
+        public virtual string ReportDatabase { get; set; }
+
+        /// <summary>
+        /// The username to be used as the service login to connect to the report database for SSRS setup.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceLogin")]
+        public virtual string ServiceLogin { get; set; }
+
+        /// <summary>
+        /// The username to be used as the setup login to connect to the database server for SSRS setup.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("setupLogin")]
+        public virtual string SetupLogin { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Specifies options for controlling advanced machine features.</summary>
     public class AdvancedMachineFeatures : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6263,6 +6434,17 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request to acquire an SSRS lease for an instance.</summary>
+    public class InstancesAcquireSsrsLeaseRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Contains details about the acquire SSRS lease operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acquireSsrsLeaseContext")]
+        public virtual AcquireSsrsLeaseContext AcquireSsrsLeaseContext { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Database instance clone request.</summary>
     public class InstancesCloneRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6739,6 +6921,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
     /// </summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The context for acquire SSRS lease operation, if applicable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acquireSsrsLeaseContext")]
+        public virtual AcquireSsrsLeaseContext AcquireSsrsLeaseContext { get; set; }
+
         /// <summary>An Admin API warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiWarning")]
         public virtual ApiWarning ApiWarning { get; set; }
@@ -7430,6 +7616,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("edition")]
         public virtual string Edition { get; set; }
 
+        /// <summary>Optional. Configuration to enable Cloud SQL Vertex AI Integration</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableGoogleMlIntegration")]
+        public virtual System.Nullable<bool> EnableGoogleMlIntegration { get; set; }
+
         /// <summary>Insights configuration, for now relevant only for Postgres.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insightsConfig")]
         public virtual InsightsConfig InsightsConfig { get; set; }
@@ -7556,6 +7746,17 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Acquire SSRS lease response.</summary>
+    public class SqlInstancesAcquireSsrsLeaseResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The unique identifier for this operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
+        public virtual string OperationId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Instance get disk shrink config response.</summary>
     public class SqlInstancesGetDiskShrinkConfigResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7625,6 +7826,17 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The response for the release of the SSRS lease.</summary>
+    public class SqlInstancesReleaseSsrsLeaseResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The operation ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
+        public virtual string OperationId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Reschedule options for maintenance windows.</summary>
     public class SqlInstancesRescheduleMaintenanceRequestBody : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7674,6 +7886,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>External sync mode</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("syncMode")]
         public virtual string SyncMode { get; set; }
+
+        /// <summary>Optional. Parallel level for initial data sync. Currently only applicable for PostgreSQL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("syncParallelLevel")]
+        public virtual string SyncParallelLevel { get; set; }
 
         /// <summary>Flag to enable verifying connection only</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verifyConnectionOnly")]

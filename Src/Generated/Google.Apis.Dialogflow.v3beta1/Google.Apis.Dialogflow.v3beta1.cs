@@ -10201,6 +10201,13 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("loggingSettings")]
         public virtual GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings LoggingSettings { get; set; }
 
+        /// <summary>
+        /// Settings for speech to text detection. Exposed at the following levels: - Agent level - Flow level - Page
+        /// level - Parameter level
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speechSettings")]
+        public virtual GoogleCloudDialogflowCxV3AdvancedSettingsSpeechSettings SpeechSettings { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -10239,6 +10246,35 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>If true, StackDriver logging is currently enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableStackdriverLogging")]
         public virtual System.Nullable<bool> EnableStackdriverLogging { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Define behaviors of speech to text detection.</summary>
+    public class GoogleCloudDialogflowCxV3AdvancedSettingsSpeechSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Sensitivity of the speech model that detects the end of speech. Scale from 0 to 100.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpointerSensitivity")]
+        public virtual System.Nullable<int> EndpointerSensitivity { get; set; }
+
+        /// <summary>
+        /// Mapping from language to Speech-to-Text model. The mapped Speech-to-Text model will be selected for requests
+        /// from its corresponding language. For more information, see [Speech
+        /// models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("models")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Models { get; set; }
+
+        /// <summary>Timeout before detecting no speech.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noSpeechTimeout")]
+        public virtual object NoSpeechTimeout { get; set; }
+
+        /// <summary>
+        /// Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useTimeoutBasedEndpointing")]
+        public virtual System.Nullable<bool> UseTimeoutBasedEndpointing { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12867,6 +12903,13 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("loggingSettings")]
         public virtual GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings LoggingSettings { get; set; }
 
+        /// <summary>
+        /// Settings for speech to text detection. Exposed at the following levels: - Agent level - Flow level - Page
+        /// level - Parameter level
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speechSettings")]
+        public virtual GoogleCloudDialogflowCxV3beta1AdvancedSettingsSpeechSettings SpeechSettings { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -12905,6 +12948,35 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>If true, StackDriver logging is currently enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableStackdriverLogging")]
         public virtual System.Nullable<bool> EnableStackdriverLogging { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Define behaviors of speech to text detection.</summary>
+    public class GoogleCloudDialogflowCxV3beta1AdvancedSettingsSpeechSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Sensitivity of the speech model that detects the end of speech. Scale from 0 to 100.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpointerSensitivity")]
+        public virtual System.Nullable<int> EndpointerSensitivity { get; set; }
+
+        /// <summary>
+        /// Mapping from language to Speech-to-Text model. The mapped Speech-to-Text model will be selected for requests
+        /// from its corresponding language. For more information, see [Speech
+        /// models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("models")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Models { get; set; }
+
+        /// <summary>Timeout before detecting no speech.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noSpeechTimeout")]
+        public virtual object NoSpeechTimeout { get; set; }
+
+        /// <summary>
+        /// Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useTimeoutBasedEndpointing")]
+        public virtual System.Nullable<bool> UseTimeoutBasedEndpointing { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

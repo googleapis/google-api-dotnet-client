@@ -2970,6 +2970,13 @@ namespace Google.Apis.WorkloadManager.v1.Data
     /// <summary>The component of sap workload</summary>
     public class SapComponent : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// A list of host URIs that are part of the HA configuration if present. An empty list indicates the component
+        /// is not configured for HA.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("haHosts")]
+        public virtual System.Collections.Generic.IList<string> HaHosts { get; set; }
+
         /// <summary>Output only. resources in the component</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<CloudResource> Resources { get; set; }
@@ -2977,6 +2984,10 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// <summary>Output only. sid is the sap component identificator</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sid")]
         public virtual string Sid { get; set; }
+
+        /// <summary>The detected topology of the component.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topologyType")]
+        public virtual string TopologyType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

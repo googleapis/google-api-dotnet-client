@@ -4044,6 +4044,26 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Defines an automated backup policy for a table</summary>
+    public class AutomatedBackupPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. How frequently automated backups should occur. The only supported value at this time is 24 hours.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frequency")]
+        public virtual object Frequency { get; set; }
+
+        /// <summary>
+        /// Required. How long the automated backups should be retained. The only supported value at this time is 3
+        /// days.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retentionPeriod")]
+        public virtual object RetentionPeriod { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Limits for the number of nodes a Cluster can autoscale up/down to.</summary>
     public class AutoscalingLimits : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5681,6 +5701,13 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("update")]
         public virtual ColumnFamily Update { get; set; }
 
+        /// <summary>
+        /// Optional. A mask specifying which fields (e.g. `gc_rule`) in the `update` mod should be updated, ignored for
+        /// other modification types. If unset or empty, we treat it as updating `gc_rule` to be backward compatible.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6231,6 +6258,12 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     /// </summary>
     public class Table : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// If specified, automated backups are enabled for this table. Otherwise, automated backups are disabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("automatedBackupPolicy")]
+        public virtual AutomatedBackupPolicy AutomatedBackupPolicy { get; set; }
+
         /// <summary>
         /// If specified, enable the change stream on this table. Otherwise, the change stream is disabled and the
         /// change stream is not retained.
