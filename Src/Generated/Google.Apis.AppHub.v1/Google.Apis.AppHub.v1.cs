@@ -337,7 +337,10 @@ namespace Google.Apis.AppHub.v1
 
                     /// <summary>Creates a Service in an Application.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="parent">Required. Value for parent.</param>
+                    /// <param name="parent">
+                    /// Required. Fully qualified name of the parent Application to create the Service in. Expected
+                    /// format: `projects/{project}/locations/{location}/applications/{application}`.
+                    /// </param>
                     public virtual CreateRequest Create(Google.Apis.AppHub.v1.Data.Service body, string parent)
                     {
                         return new CreateRequest(this.service, body, parent);
@@ -354,7 +357,10 @@ namespace Google.Apis.AppHub.v1
                             InitParameters();
                         }
 
-                        /// <summary>Required. Value for parent.</summary>
+                        /// <summary>
+                        /// Required. Fully qualified name of the parent Application to create the Service in. Expected
+                        /// format: `projects/{project}/locations/{location}/applications/{application}`.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
@@ -426,14 +432,17 @@ namespace Google.Apis.AppHub.v1
                         }
                     }
 
-                    /// <summary>Deletes a Service in an Application.</summary>
-                    /// <param name="name">Required. Value for name.</param>
+                    /// <summary>Deletes a Service from an Application.</summary>
+                    /// <param name="name">
+                    /// Required. Fully qualified name of the Service to delete from an Application. Expected format:
+                    /// `projects/{project}/locations/{location}/applications/{application}/services/{service}`.
+                    /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
                         return new DeleteRequest(this.service, name);
                     }
 
-                    /// <summary>Deletes a Service in an Application.</summary>
+                    /// <summary>Deletes a Service from an Application.</summary>
                     public class DeleteRequest : AppHubBaseServiceRequest<Google.Apis.AppHub.v1.Data.Operation>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
@@ -443,7 +452,11 @@ namespace Google.Apis.AppHub.v1
                             InitParameters();
                         }
 
-                        /// <summary>Required. Value for name.</summary>
+                        /// <summary>
+                        /// Required. Fully qualified name of the Service to delete from an Application. Expected
+                        /// format:
+                        /// `projects/{project}/locations/{location}/applications/{application}/services/{service}`.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -494,7 +507,10 @@ namespace Google.Apis.AppHub.v1
                     }
 
                     /// <summary>Gets a Service in an Application.</summary>
-                    /// <param name="name">Required. Value for name.</param>
+                    /// <param name="name">
+                    /// Required. Fully qualified name of the Service to fetch. Expected format:
+                    /// `projects/{project}/locations/{location}/applications/{application}/services/{service}`.
+                    /// </param>
                     public virtual GetRequest Get(string name)
                     {
                         return new GetRequest(this.service, name);
@@ -510,7 +526,10 @@ namespace Google.Apis.AppHub.v1
                             InitParameters();
                         }
 
-                        /// <summary>Required. Value for name.</summary>
+                        /// <summary>
+                        /// Required. Fully qualified name of the Service to fetch. Expected format:
+                        /// `projects/{project}/locations/{location}/applications/{application}/services/{service}`.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -538,14 +557,17 @@ namespace Google.Apis.AppHub.v1
                         }
                     }
 
-                    /// <summary>List Services in an Application.</summary>
-                    /// <param name="parent">Required. Value for parent.</param>
+                    /// <summary>Lists Services in an Application.</summary>
+                    /// <param name="parent">
+                    /// Required. Fully qualified name of the parent Application to list Services for. Expected format:
+                    /// `projects/{project}/locations/{location}/applications/{application}`.
+                    /// </param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(this.service, parent);
                     }
 
-                    /// <summary>List Services in an Application.</summary>
+                    /// <summary>Lists Services in an Application.</summary>
                     public class ListRequest : AppHubBaseServiceRequest<Google.Apis.AppHub.v1.Data.ListServicesResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -555,7 +577,10 @@ namespace Google.Apis.AppHub.v1
                             InitParameters();
                         }
 
-                        /// <summary>Required. Value for parent.</summary>
+                        /// <summary>
+                        /// Required. Fully qualified name of the parent Application to list Services for. Expected
+                        /// format: `projects/{project}/locations/{location}/applications/{application}`.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
@@ -754,7 +779,10 @@ namespace Google.Apis.AppHub.v1
 
                     /// <summary>Creates a Workload in an Application.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="parent">Required. Value for parent.</param>
+                    /// <param name="parent">
+                    /// Required. Fully qualified name of the Application to create Workload in. Expected format:
+                    /// `projects/{project}/locations/{location}/applications/{application}`.
+                    /// </param>
                     public virtual CreateRequest Create(Google.Apis.AppHub.v1.Data.Workload body, string parent)
                     {
                         return new CreateRequest(this.service, body, parent);
@@ -771,7 +799,10 @@ namespace Google.Apis.AppHub.v1
                             InitParameters();
                         }
 
-                        /// <summary>Required. Value for parent.</summary>
+                        /// <summary>
+                        /// Required. Fully qualified name of the Application to create Workload in. Expected format:
+                        /// `projects/{project}/locations/{location}/applications/{application}`.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
@@ -843,14 +874,17 @@ namespace Google.Apis.AppHub.v1
                         }
                     }
 
-                    /// <summary>Deletes a Workload in an Application.</summary>
-                    /// <param name="name">Required. Value for name.</param>
+                    /// <summary>Deletes a Workload from an Application.</summary>
+                    /// <param name="name">
+                    /// Required. Fully qualified name of the Workload to delete from an Application. Expected format:
+                    /// `projects/{project}/locations/{location}/applications/{application}/workloads/{workload}`.
+                    /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
                         return new DeleteRequest(this.service, name);
                     }
 
-                    /// <summary>Deletes a Workload in an Application.</summary>
+                    /// <summary>Deletes a Workload from an Application.</summary>
                     public class DeleteRequest : AppHubBaseServiceRequest<Google.Apis.AppHub.v1.Data.Operation>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
@@ -860,7 +894,11 @@ namespace Google.Apis.AppHub.v1
                             InitParameters();
                         }
 
-                        /// <summary>Required. Value for name.</summary>
+                        /// <summary>
+                        /// Required. Fully qualified name of the Workload to delete from an Application. Expected
+                        /// format:
+                        /// `projects/{project}/locations/{location}/applications/{application}/workloads/{workload}`.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -911,7 +949,10 @@ namespace Google.Apis.AppHub.v1
                     }
 
                     /// <summary>Gets a Workload in an Application.</summary>
-                    /// <param name="name">Required. Value for name.</param>
+                    /// <param name="name">
+                    /// Required. Fully qualified name of the Workload to fetch. Expected format:
+                    /// `projects/{project}/locations/{location}/applications/{application}/workloads/{workload}`.
+                    /// </param>
                     public virtual GetRequest Get(string name)
                     {
                         return new GetRequest(this.service, name);
@@ -927,7 +968,10 @@ namespace Google.Apis.AppHub.v1
                             InitParameters();
                         }
 
-                        /// <summary>Required. Value for name.</summary>
+                        /// <summary>
+                        /// Required. Fully qualified name of the Workload to fetch. Expected format:
+                        /// `projects/{project}/locations/{location}/applications/{application}/workloads/{workload}`.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -956,7 +1000,10 @@ namespace Google.Apis.AppHub.v1
                     }
 
                     /// <summary>Lists Workloads in an Application.</summary>
-                    /// <param name="parent">Required. Value for parent.</param>
+                    /// <param name="parent">
+                    /// Required. Fully qualified name of the parent Application to list Workloads for. Expected format:
+                    /// `projects/{project}/locations/{location}/applications/{application}`.
+                    /// </param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(this.service, parent);
@@ -972,15 +1019,18 @@ namespace Google.Apis.AppHub.v1
                             InitParameters();
                         }
 
-                        /// <summary>Required. Value for parent.</summary>
+                        /// <summary>
+                        /// Required. Fully qualified name of the parent Application to list Workloads for. Expected
+                        /// format: `projects/{project}/locations/{location}/applications/{application}`.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Optional. Filtering results</summary>
+                        /// <summary>Optional. Filtering results.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
-                        /// <summary>Optional. Hint for how to order the results</summary>
+                        /// <summary>Optional. Hint for how to order the results.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string OrderBy { get; set; }
 
@@ -1154,7 +1204,10 @@ namespace Google.Apis.AppHub.v1
 
                 /// <summary>Creates an Application in a host project and location.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. Value for parent.</param>
+                /// <param name="parent">
+                /// Required. Project and location to create Application in. Expected format:
+                /// `projects/{project}/locations/{location}`.
+                /// </param>
                 public virtual CreateRequest Create(Google.Apis.AppHub.v1.Data.Application body, string parent)
                 {
                     return new CreateRequest(this.service, body, parent);
@@ -1171,7 +1224,10 @@ namespace Google.Apis.AppHub.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Value for parent.</summary>
+                    /// <summary>
+                    /// Required. Project and location to create Application in. Expected format:
+                    /// `projects/{project}/locations/{location}`.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -1242,7 +1298,10 @@ namespace Google.Apis.AppHub.v1
                 }
 
                 /// <summary>Deletes an Application in a host project and location.</summary>
-                /// <param name="name">Required. Value for name.</param>
+                /// <param name="name">
+                /// Required. Fully qualified name of the Application to delete. Expected format:
+                /// `projects/{project}/locations/{location}/applications/{application}`.
+                /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(this.service, name);
@@ -1258,7 +1317,10 @@ namespace Google.Apis.AppHub.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Value for name.</summary>
+                    /// <summary>
+                    /// Required. Fully qualified name of the Application to delete. Expected format:
+                    /// `projects/{project}/locations/{location}/applications/{application}`.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -1308,7 +1370,10 @@ namespace Google.Apis.AppHub.v1
                 }
 
                 /// <summary>Gets an Application in a host project and location.</summary>
-                /// <param name="name">Required. Value for name.</param>
+                /// <param name="name">
+                /// Required. Fully qualified name of the Application to fetch. Expected format:
+                /// `projects/{project}/locations/{location}/applications/{application}`.
+                /// </param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(this.service, name);
@@ -1324,7 +1389,10 @@ namespace Google.Apis.AppHub.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Value for name.</summary>
+                    /// <summary>
+                    /// Required. Fully qualified name of the Application to fetch. Expected format:
+                    /// `projects/{project}/locations/{location}/applications/{application}`.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -1433,7 +1501,10 @@ namespace Google.Apis.AppHub.v1
                 }
 
                 /// <summary>Lists Applications in a host project and location.</summary>
-                /// <param name="parent">Required. Value for parent.</param>
+                /// <param name="parent">
+                /// Required. Project and location to list Applications on. Expected format:
+                /// `projects/{project}/locations/{location}`.
+                /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
@@ -1449,15 +1520,18 @@ namespace Google.Apis.AppHub.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Value for parent.</summary>
+                    /// <summary>
+                    /// Required. Project and location to list Applications on. Expected format:
+                    /// `projects/{project}/locations/{location}`.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. Filtering results</summary>
+                    /// <summary>Optional. Filtering results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Optional. Hint for how to order the results</summary>
+                    /// <summary>Optional. Hint for how to order the results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
@@ -1783,14 +1857,17 @@ namespace Google.Apis.AppHub.v1
                     this.service = service;
                 }
 
-                /// <summary>Gets a discovered service in a host project and location.</summary>
-                /// <param name="name">Required. Value for name.</param>
+                /// <summary>Gets a Discovered Service in a host project and location.</summary>
+                /// <param name="name">
+                /// Required. Fully qualified name of the Discovered Service to fetch. Expected format:
+                /// `projects/{project}/locations/{location}/discoveredServices/{discoveredService}`.
+                /// </param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(this.service, name);
                 }
 
-                /// <summary>Gets a discovered service in a host project and location.</summary>
+                /// <summary>Gets a Discovered Service in a host project and location.</summary>
                 public class GetRequest : AppHubBaseServiceRequest<Google.Apis.AppHub.v1.Data.DiscoveredService>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -1800,7 +1877,10 @@ namespace Google.Apis.AppHub.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Value for name.</summary>
+                    /// <summary>
+                    /// Required. Fully qualified name of the Discovered Service to fetch. Expected format:
+                    /// `projects/{project}/locations/{location}/discoveredServices/{discoveredService}`.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -1829,16 +1909,19 @@ namespace Google.Apis.AppHub.v1
                 }
 
                 /// <summary>
-                /// Lists discovered services that can be added to an application in a host project and location.
+                /// Lists Discovered Services that can be added to an Application in a host project and location.
                 /// </summary>
-                /// <param name="parent">Required. Value for parent.</param>
+                /// <param name="parent">
+                /// Required. Project and location to list Discovered Services on. Expected format:
+                /// `projects/{project}/locations/{location}`.
+                /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
-                /// Lists discovered services that can be added to an application in a host project and location.
+                /// Lists Discovered Services that can be added to an Application in a host project and location.
                 /// </summary>
                 public class ListRequest : AppHubBaseServiceRequest<Google.Apis.AppHub.v1.Data.ListDiscoveredServicesResponse>
                 {
@@ -1849,15 +1932,18 @@ namespace Google.Apis.AppHub.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Value for parent.</summary>
+                    /// <summary>
+                    /// Required. Project and location to list Discovered Services on. Expected format:
+                    /// `projects/{project}/locations/{location}`.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. Filtering results</summary>
+                    /// <summary>Optional. Filtering results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Optional. Hint for how to order the results</summary>
+                    /// <summary>Optional. Hint for how to order the results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
@@ -1929,16 +2015,19 @@ namespace Google.Apis.AppHub.v1
                 }
 
                 /// <summary>
-                /// Looks up a discovered service in a host project and location and with a given resource URI.
+                /// Lists a Discovered Service in a host project and location, with a given resource URI.
                 /// </summary>
-                /// <param name="parent">Required. Value for parent.</param>
+                /// <param name="parent">
+                /// Required. Host project ID and location to lookup Discovered Service in. Expected format:
+                /// `projects/{project}/locations/{location}`.
+                /// </param>
                 public virtual LookupRequest Lookup(string parent)
                 {
                     return new LookupRequest(this.service, parent);
                 }
 
                 /// <summary>
-                /// Looks up a discovered service in a host project and location and with a given resource URI.
+                /// Lists a Discovered Service in a host project and location, with a given resource URI.
                 /// </summary>
                 public class LookupRequest : AppHubBaseServiceRequest<Google.Apis.AppHub.v1.Data.LookupDiscoveredServiceResponse>
                 {
@@ -1949,13 +2038,16 @@ namespace Google.Apis.AppHub.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Value for parent.</summary>
+                    /// <summary>
+                    /// Required. Host project ID and location to lookup Discovered Service in. Expected format:
+                    /// `projects/{project}/locations/{location}`.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Required. Resource URI to find service for. Accepts both project number and project id and does
-                    /// translation when needed.
+                    /// Required. Resource URI to find DiscoveredService for. Accepts both project number and project ID
+                    /// and does translation when needed.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("uri", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Uri { get; set; }
@@ -2010,14 +2102,17 @@ namespace Google.Apis.AppHub.v1
                     this.service = service;
                 }
 
-                /// <summary>Gets a discovered workload in a host project and location.</summary>
-                /// <param name="name">Required. Value for name.</param>
+                /// <summary>Gets a Discovered Workload in a host project and location.</summary>
+                /// <param name="name">
+                /// Required. Fully qualified name of the Discovered Workload to fetch. Expected format:
+                /// `projects/{project}/locations/{location}/discoveredWorkloads/{discoveredWorkload}`.
+                /// </param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(this.service, name);
                 }
 
-                /// <summary>Gets a discovered workload in a host project and location.</summary>
+                /// <summary>Gets a Discovered Workload in a host project and location.</summary>
                 public class GetRequest : AppHubBaseServiceRequest<Google.Apis.AppHub.v1.Data.DiscoveredWorkload>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -2027,7 +2122,10 @@ namespace Google.Apis.AppHub.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Value for name.</summary>
+                    /// <summary>
+                    /// Required. Fully qualified name of the Discovered Workload to fetch. Expected format:
+                    /// `projects/{project}/locations/{location}/discoveredWorkloads/{discoveredWorkload}`.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -2056,16 +2154,19 @@ namespace Google.Apis.AppHub.v1
                 }
 
                 /// <summary>
-                /// Lists discovered workloads that can be added to an application in a host project and location.
+                /// Lists Discovered Workloads that can be added to an Application in a host project and location.
                 /// </summary>
-                /// <param name="parent">Required. Value for parent.</param>
+                /// <param name="parent">
+                /// Required. Project and location to list Discovered Workloads on. Expected format:
+                /// `projects/{project}/locations/{location}`.
+                /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
                 }
 
                 /// <summary>
-                /// Lists discovered workloads that can be added to an application in a host project and location.
+                /// Lists Discovered Workloads that can be added to an Application in a host project and location.
                 /// </summary>
                 public class ListRequest : AppHubBaseServiceRequest<Google.Apis.AppHub.v1.Data.ListDiscoveredWorkloadsResponse>
                 {
@@ -2076,15 +2177,18 @@ namespace Google.Apis.AppHub.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Value for parent.</summary>
+                    /// <summary>
+                    /// Required. Project and location to list Discovered Workloads on. Expected format:
+                    /// `projects/{project}/locations/{location}`.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. Filtering results</summary>
+                    /// <summary>Optional. Filtering results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Optional. Hint for how to order the results</summary>
+                    /// <summary>Optional. Hint for how to order the results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
@@ -2156,16 +2260,19 @@ namespace Google.Apis.AppHub.v1
                 }
 
                 /// <summary>
-                /// Looks up a discovered Workload in a host project and location and with a given resource URI.
+                /// Lists a Discovered Workload in a host project and location, with a given resource URI.
                 /// </summary>
-                /// <param name="parent">Required. Value for parent.</param>
+                /// <param name="parent">
+                /// Required. Host project ID and location to lookup Discovered Workload in. Expected format:
+                /// `projects/{project}/locations/{location}`.
+                /// </param>
                 public virtual LookupRequest Lookup(string parent)
                 {
                     return new LookupRequest(this.service, parent);
                 }
 
                 /// <summary>
-                /// Looks up a discovered Workload in a host project and location and with a given resource URI.
+                /// Lists a Discovered Workload in a host project and location, with a given resource URI.
                 /// </summary>
                 public class LookupRequest : AppHubBaseServiceRequest<Google.Apis.AppHub.v1.Data.LookupDiscoveredWorkloadResponse>
                 {
@@ -2176,13 +2283,16 @@ namespace Google.Apis.AppHub.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Value for parent.</summary>
+                    /// <summary>
+                    /// Required. Host project ID and location to lookup Discovered Workload in. Expected format:
+                    /// `projects/{project}/locations/{location}`.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Required. Resource URI to find workload for. Accepts both project number and project id and does
-                    /// translation when needed.
+                    /// Required. Resource URI to find Discovered Workload for. Accepts both project number and project
+                    /// ID and does translation when needed.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("uri", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Uri { get; set; }
@@ -2515,7 +2625,10 @@ namespace Google.Apis.AppHub.v1
 
                 /// <summary>Attaches a service project to the host project.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. Value for parent.</param>
+                /// <param name="parent">
+                /// Required. Host project ID and location to which service project is being attached. Only global
+                /// location is supported. Expected format: `projects/{project}/locations/{location}`.
+                /// </param>
                 public virtual CreateRequest Create(Google.Apis.AppHub.v1.Data.ServiceProjectAttachment body, string parent)
                 {
                     return new CreateRequest(this.service, body, parent);
@@ -2532,7 +2645,10 @@ namespace Google.Apis.AppHub.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Value for parent.</summary>
+                    /// <summary>
+                    /// Required. Host project ID and location to which service project is being attached. Only global
+                    /// location is supported. Expected format: `projects/{project}/locations/{location}`.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -2550,9 +2666,8 @@ namespace Google.Apis.AppHub.v1
                     public virtual string RequestId { get; set; }
 
                     /// <summary>
-                    /// Required. The service project attachment identifier must contain the project_id of the service
-                    /// project specified in the service_project_attachment.service_project field. Hint:
-                    /// "projects/{project_id}"
+                    /// Required. The service project attachment identifier must contain the project id of the service
+                    /// project specified in the service_project_attachment.service_project field.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("serviceProjectAttachmentId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ServiceProjectAttachmentId { get; set; }
@@ -2603,14 +2718,17 @@ namespace Google.Apis.AppHub.v1
                     }
                 }
 
-                /// <summary>Deletes a service project attached to the host project.</summary>
-                /// <param name="name">Required. Value for name.</param>
+                /// <summary>Deletes a service project attachment.</summary>
+                /// <param name="name">
+                /// Required. Fully qualified name of the service project attachment to delete. Expected format:
+                /// `projects/{project}/locations/{location}/serviceProjectAttachments/{serviceProjectAttachment}`.
+                /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(this.service, name);
                 }
 
-                /// <summary>Deletes a service project attached to the host project.</summary>
+                /// <summary>Deletes a service project attachment.</summary>
                 public class DeleteRequest : AppHubBaseServiceRequest<Google.Apis.AppHub.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -2620,7 +2738,10 @@ namespace Google.Apis.AppHub.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Value for name.</summary>
+                    /// <summary>
+                    /// Required. Fully qualified name of the service project attachment to delete. Expected format:
+                    /// `projects/{project}/locations/{location}/serviceProjectAttachments/{serviceProjectAttachment}`.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -2669,14 +2790,17 @@ namespace Google.Apis.AppHub.v1
                     }
                 }
 
-                /// <summary>Gets a service project attached to the host project.</summary>
-                /// <param name="name">Required. Value for name.</param>
+                /// <summary>Gets a service project attachment.</summary>
+                /// <param name="name">
+                /// Required. Fully qualified name of the service project attachment to retrieve. Expected format:
+                /// `projects/{project}/locations/{location}/serviceProjectAttachments/{serviceProjectAttachment}`.
+                /// </param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(this.service, name);
                 }
 
-                /// <summary>Gets a service project attached to the host project.</summary>
+                /// <summary>Gets a service project attachment.</summary>
                 public class GetRequest : AppHubBaseServiceRequest<Google.Apis.AppHub.v1.Data.ServiceProjectAttachment>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -2686,7 +2810,10 @@ namespace Google.Apis.AppHub.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Value for name.</summary>
+                    /// <summary>
+                    /// Required. Fully qualified name of the service project attachment to retrieve. Expected format:
+                    /// `projects/{project}/locations/{location}/serviceProjectAttachments/{serviceProjectAttachment}`.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -2714,14 +2841,17 @@ namespace Google.Apis.AppHub.v1
                     }
                 }
 
-                /// <summary>List service projects attached to the host project.</summary>
-                /// <param name="parent">Required. Value for parent.</param>
+                /// <summary>Lists service projects attached to the host project.</summary>
+                /// <param name="parent">
+                /// Required. Host project ID and location to list service project attachments. Only global location is
+                /// supported. Expected format: `projects/{project}/locations/{location}`.
+                /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>List service projects attached to the host project.</summary>
+                /// <summary>Lists service projects attached to the host project.</summary>
                 public class ListRequest : AppHubBaseServiceRequest<Google.Apis.AppHub.v1.Data.ListServiceProjectAttachmentsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -2731,15 +2861,18 @@ namespace Google.Apis.AppHub.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. Value for parent.</summary>
+                    /// <summary>
+                    /// Required. Host project ID and location to list service project attachments. Only global location
+                    /// is supported. Expected format: `projects/{project}/locations/{location}`.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. Filtering results</summary>
+                    /// <summary>Optional. Filtering results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Optional. Hint for how to order the results</summary>
+                    /// <summary>Optional. Hint for how to order the results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
@@ -2812,19 +2945,22 @@ namespace Google.Apis.AppHub.v1
             }
 
             /// <summary>
-            /// Detaches a service project from a host project. You can call this API from either a host or service
-            /// project.
+            /// Detaches a service project from a host project. You can call this API from any service project without
+            /// needing access to the host project that it is attached to.
             /// </summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Required. Value for name.</param>
+            /// <param name="name">
+            /// Required. Service project id and location to detach from a host project. Only global location is
+            /// supported. Expected format: `projects/{project}/locations/{location}`.
+            /// </param>
             public virtual DetachServiceProjectAttachmentRequest DetachServiceProjectAttachment(Google.Apis.AppHub.v1.Data.DetachServiceProjectAttachmentRequest body, string name)
             {
                 return new DetachServiceProjectAttachmentRequest(this.service, body, name);
             }
 
             /// <summary>
-            /// Detaches a service project from a host project. You can call this API from either a host or service
-            /// project.
+            /// Detaches a service project from a host project. You can call this API from any service project without
+            /// needing access to the host project that it is attached to.
             /// </summary>
             public class DetachServiceProjectAttachmentRequest : AppHubBaseServiceRequest<Google.Apis.AppHub.v1.Data.DetachServiceProjectAttachmentResponse>
             {
@@ -2836,7 +2972,10 @@ namespace Google.Apis.AppHub.v1
                     InitParameters();
                 }
 
-                /// <summary>Required. Value for name.</summary>
+                /// <summary>
+                /// Required. Service project id and location to detach from a host project. Only global location is
+                /// supported. Expected format: `projects/{project}/locations/{location}`.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -3005,16 +3144,21 @@ namespace Google.Apis.AppHub.v1
             }
 
             /// <summary>
-            /// Looks up a service project attachment. You can call this API from either a host or service project.
+            /// Lists a service project attachment for a given service project. You can call this API from any project
+            /// to find if it is attached to a host project.
             /// </summary>
-            /// <param name="name">Required. Value for name.</param>
+            /// <param name="name">
+            /// Required. Service project ID and location to lookup service project attachment for. Only global location
+            /// is supported. Expected format: `projects/{project}/locations/{location}`.
+            /// </param>
             public virtual LookupServiceProjectAttachmentRequest LookupServiceProjectAttachment(string name)
             {
                 return new LookupServiceProjectAttachmentRequest(this.service, name);
             }
 
             /// <summary>
-            /// Looks up a service project attachment. You can call this API from either a host or service project.
+            /// Lists a service project attachment for a given service project. You can call this API from any project
+            /// to find if it is attached to a host project.
             /// </summary>
             public class LookupServiceProjectAttachmentRequest : AppHubBaseServiceRequest<Google.Apis.AppHub.v1.Data.LookupServiceProjectAttachmentResponse>
             {
@@ -3025,7 +3169,10 @@ namespace Google.Apis.AppHub.v1
                     InitParameters();
                 }
 
-                /// <summary>Required. Value for name.</summary>
+                /// <summary>
+                /// Required. Service project ID and location to lookup service project attachment for. Only global
+                /// location is supported. Expected format: `projects/{project}/locations/{location}`.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -3526,7 +3673,7 @@ namespace Google.Apis.AppHub.v1.Data
     /// <summary>Response for ListDiscoveredServices.</summary>
     public class ListDiscoveredServicesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of discovered services.</summary>
+        /// <summary>List of Discovered Services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("discoveredServices")]
         public virtual System.Collections.Generic.IList<DiscoveredService> DiscoveredServices { get; set; }
 
@@ -3545,7 +3692,7 @@ namespace Google.Apis.AppHub.v1.Data
     /// <summary>Response for ListDiscoveredWorkloads.</summary>
     public class ListDiscoveredWorkloadsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of discovered workloads.</summary>
+        /// <summary>List of Discovered Workloads.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("discoveredWorkloads")]
         public virtual System.Collections.Generic.IList<DiscoveredWorkload> DiscoveredWorkloads { get; set; }
 
@@ -3683,7 +3830,7 @@ namespace Google.Apis.AppHub.v1.Data
     /// <summary>Response for LookupDiscoveredService.</summary>
     public class LookupDiscoveredServiceResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Discovered service if exists, empty otherwise.</summary>
+        /// <summary>Discovered Service if exists, empty otherwise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("discoveredService")]
         public virtual DiscoveredService DiscoveredService { get; set; }
 
@@ -3694,7 +3841,7 @@ namespace Google.Apis.AppHub.v1.Data
     /// <summary>Response for LookupDiscoveredWorkload.</summary>
     public class LookupDiscoveredWorkloadResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Discovered workload if exists, empty otherwise.</summary>
+        /// <summary>Discovered Workload if exists, empty otherwise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("discoveredWorkload")]
         public virtual DiscoveredWorkload DiscoveredWorkload { get; set; }
 

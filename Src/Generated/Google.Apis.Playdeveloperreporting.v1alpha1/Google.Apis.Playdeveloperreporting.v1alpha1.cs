@@ -1112,6 +1112,13 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
+                    /// <summary>
+                    /// Optional. Number of sample error reports to return per ErrorIssue. If unspecified, 0 will be
+                    /// used. *Note:* currently only 0 and 1 are supported.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("sampleErrorReportLimit", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> SampleErrorReportLimit { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "search";
 
@@ -1325,6 +1332,14 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1
                             DefaultValue = null,
                             Pattern = null,
                         });
+                        RequestParameters.Add("sampleErrorReportLimit", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "sampleErrorReportLimit",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                     }
                 }
             }
@@ -1387,20 +1402,22 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1
                     /// requested types only. Valid candidates: `JAVA_CRASH`, `NATIVE_CRASH`, `ANR`. Example:
                     /// `errorIssueType = JAVA_CRASH OR errorIssueType = NATIVE_CRASH`. * `errorIssueId`: Matches error
                     /// reports belonging to the requested error issue ids only. Example: `errorIssueId = 1234 OR
-                    /// errorIssueId = 4567`. * `appProcessState`: Matches error reports on the process state of an app,
-                    /// indicating whether an app runs in the foreground (user-visible) or background. Valid candidates:
-                    /// `FOREGROUND`, `BACKGROUND`. Example: `appProcessState = FOREGROUND`. * `isUserPerceived`:
-                    /// Matches error reports that are user-perceived. It is not accompanied by any operators. Example:
-                    /// `isUserPerceived`. ** Supported operators:** * Comparison operators: The only supported
-                    /// comparison operator is equality. The filtered field must appear on the left hand side of the
-                    /// comparison. * Logical Operators: Logical operators `AND` and `OR` can be used to build complex
-                    /// filters following a conjunctive normal form (CNF), i.e., conjunctions of disjunctions. The `OR`
-                    /// operator takes precedence over `AND` so the use of parenthesis is not necessary when building
-                    /// CNF. The `OR` operator is only supported to build disjunctions that apply to the same field,
-                    /// e.g., `versionCode = 123 OR versionCode = ANR`. The filter expression `versionCode = 123 OR
-                    /// errorIssueType = ANR` is not valid. ** Examples ** Some valid filtering expressions: *
-                    /// `versionCode = 123 AND errorIssueType = ANR` * `versionCode = 123 AND errorIssueType = OR
-                    /// errorIssueType = CRASH` * `versionCode = 123 AND (errorIssueType = OR errorIssueType = CRASH)`
+                    /// errorIssueId = 4567`. * `errorReportId`: Matches error reports with the requested error report
+                    /// id. Example: `errorReportId = 1234 OR errorReportId = 4567`. * `appProcessState`: Matches error
+                    /// reports on the process state of an app, indicating whether an app runs in the foreground
+                    /// (user-visible) or background. Valid candidates: `FOREGROUND`, `BACKGROUND`. Example:
+                    /// `appProcessState = FOREGROUND`. * `isUserPerceived`: Matches error reports that are
+                    /// user-perceived. It is not accompanied by any operators. Example: `isUserPerceived`. ** Supported
+                    /// operators:** * Comparison operators: The only supported comparison operator is equality. The
+                    /// filtered field must appear on the left hand side of the comparison. * Logical Operators: Logical
+                    /// operators `AND` and `OR` can be used to build complex filters following a conjunctive normal
+                    /// form (CNF), i.e., conjunctions of disjunctions. The `OR` operator takes precedence over `AND` so
+                    /// the use of parenthesis is not necessary when building CNF. The `OR` operator is only supported
+                    /// to build disjunctions that apply to the same field, e.g., `versionCode = 123 OR versionCode =
+                    /// ANR`. The filter expression `versionCode = 123 OR errorIssueType = ANR` is not valid. **
+                    /// Examples ** Some valid filtering expressions: * `versionCode = 123 AND errorIssueType = ANR` *
+                    /// `versionCode = 123 AND errorIssueType = OR errorIssueType = CRASH` * `versionCode = 123 AND
+                    /// (errorIssueType = OR errorIssueType = CRASH)`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -2653,6 +2670,13 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
         /// <summary>Identifier. The resource name of the issue. Format: apps/{app}/{issue}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. Sample error reports which belong to this ErrorIssue. *Note:* currently a maximum of 1 per
+        /// ErrorIssue is supported. Format: "apps/{app}/{report}"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleErrorReports")]
+        public virtual System.Collections.Generic.IList<string> SampleErrorReports { get; set; }
 
         /// <summary>Type of the errors grouped in this issue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]

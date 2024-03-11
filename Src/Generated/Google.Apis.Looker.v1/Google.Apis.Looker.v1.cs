@@ -2147,6 +2147,10 @@ namespace Google.Apis.Looker.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastDenyMaintenancePeriod")]
         public virtual DenyMaintenancePeriod LastDenyMaintenancePeriod { get; set; }
 
+        /// <summary>Optional. Linked Google Cloud Project Number for Looker Studio Pro.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkedLspProjectNumber")]
+        public virtual System.Nullable<long> LinkedLspProjectNumber { get; set; }
+
         /// <summary>Output only. Looker instance URI which can be used to access the Looker Instance UI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lookerUri")]
         public virtual string LookerUri { get; set; }
@@ -2178,19 +2182,6 @@ namespace Google.Apis.Looker.v1.Data
         /// <summary>Whether private IP is enabled on the Looker instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateIpEnabled")]
         public virtual System.Nullable<bool> PrivateIpEnabled { get; set; }
-
-        /// <summary>
-        /// Optional. PSC configuration. Used when `enable_private_ip` and `psc_enabled` are both true.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pscConfig")]
-        public virtual PscConfig PscConfig { get; set; }
-
-        /// <summary>
-        /// Optional. Whether to use Private Service Connect (PSC) for private IP connectivity. If true, VPC peering
-        /// (PSA) will not be used.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pscEnabled")]
-        public virtual System.Nullable<bool> PscEnabled { get; set; }
 
         /// <summary>Whether public IP is enabled on the Looker instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicIpEnabled")]
@@ -2682,56 +2673,9 @@ namespace Google.Apis.Looker.v1.Data
         public virtual System.Nullable<int> Version { get; set; }
     }
 
-    /// <summary>Information for Private Service Connect (PSC) setup for a Looker instance.</summary>
-    public class PscConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Optional. List of VPCs that are allowed ingress into looker. Format:
-        /// projects/{project}/global/networks/{network}
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("allowedVpcs")]
-        public virtual System.Collections.Generic.IList<string> AllowedVpcs { get; set; }
-
-        /// <summary>Output only. URI of the Looker service attachment.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("lookerServiceAttachmentUri")]
-        public virtual string LookerServiceAttachmentUri { get; set; }
-
-        /// <summary>Optional. List of egress service attachment configurations.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("serviceAttachments")]
-        public virtual System.Collections.Generic.IList<ServiceAttachment> ServiceAttachments { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Request options for restarting an instance.</summary>
     public class RestartInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Service attachment configuration.</summary>
-    public class ServiceAttachment : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. Connection status.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("connectionStatus")]
-        public virtual string ConnectionStatus { get; set; }
-
-        /// <summary>
-        /// Required. Fully qualified domain name that will be used in the private DNS record created for the service
-        /// attachment.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("localFqdn")]
-        public virtual string LocalFqdn { get; set; }
-
-        /// <summary>
-        /// Required. URI of the service attachment to connect to. Format:
-        /// projects/{project}/regions/{region}/serviceAttachments/{service_attachment}
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("targetServiceAttachmentUri")]
-        public virtual string TargetServiceAttachmentUri { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

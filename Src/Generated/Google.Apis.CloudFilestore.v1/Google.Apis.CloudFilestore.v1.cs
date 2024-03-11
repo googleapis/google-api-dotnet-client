@@ -1525,8 +1525,8 @@ namespace Google.Apis.CloudFilestore.v1
                 /// <summary>Revert an existing instance's file system to a specified snapshot.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. `projects/{project_id}/locations/{location_id}/instances/{instance_id}`. The resource name
-                /// of the instance, in the format
+                /// Required. The resource name of the instance, in the format
+                /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.
                 /// </param>
                 public virtual RevertRequest Revert(Google.Apis.CloudFilestore.v1.Data.RevertInstanceRequest body, string name)
                 {
@@ -1545,8 +1545,8 @@ namespace Google.Apis.CloudFilestore.v1
                     }
 
                     /// <summary>
-                    /// Required. `projects/{project_id}/locations/{location_id}/instances/{instance_id}`. The resource
-                    /// name of the instance, in the format
+                    /// Required. The resource name of the instance, in the format
+                    /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }

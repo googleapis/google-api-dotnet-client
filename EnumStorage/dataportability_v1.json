@@ -1,0 +1,11 @@
+{
+  "Google.Apis.DataPortability.v1.DataPortabilityBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.DataPortability.v1.DataPortabilityBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

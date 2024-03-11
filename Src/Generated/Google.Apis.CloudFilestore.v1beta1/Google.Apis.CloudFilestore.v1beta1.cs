@@ -1786,7 +1786,7 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     /// <summary>
                     /// Required. Mask of fields to update. At least one path must be supplied in this field. The
                     /// elements of the repeated paths field may only include these fields: * "description" *
-                    /// "file_shares" * "labels"
+                    /// "directory_services" * "file_shares" * "labels"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -1825,6 +1825,65 @@ namespace Google.Apis.CloudFilestore.v1beta1
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Promote an standby instance (replica).</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The resource name of the instance, in the format
+                /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.
+                /// </param>
+                public virtual PromoteReplicaRequest PromoteReplica(Google.Apis.CloudFilestore.v1beta1.Data.PromoteReplicaRequest body, string name)
+                {
+                    return new PromoteReplicaRequest(this.service, body, name);
+                }
+
+                /// <summary>Promote an standby instance (replica).</summary>
+                public class PromoteReplicaRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new PromoteReplica request.</summary>
+                    public PromoteReplicaRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudFilestore.v1beta1.Data.PromoteReplicaRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the instance, in the format
+                    /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudFilestore.v1beta1.Data.PromoteReplicaRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "promoteReplica";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}:promoteReplica";
+
+                    /// <summary>Initializes PromoteReplica parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
                         });
                     }
                 }
@@ -1899,8 +1958,8 @@ namespace Google.Apis.CloudFilestore.v1beta1
                 /// <summary>Revert an existing instance's file system to a specified snapshot.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. `projects/{project_id}/locations/{location_id}/instances/{instance_id}`. The resource name
-                /// of the instance, in the format
+                /// Required. The resource name of the instance, in the format
+                /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.
                 /// </param>
                 public virtual RevertRequest Revert(Google.Apis.CloudFilestore.v1beta1.Data.RevertInstanceRequest body, string name)
                 {
@@ -1919,8 +1978,8 @@ namespace Google.Apis.CloudFilestore.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. `projects/{project_id}/locations/{location_id}/instances/{instance_id}`. The resource
-                    /// name of the instance, in the format
+                    /// Required. The resource name of the instance, in the format
+                    /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -3187,8 +3246,8 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Directory Services configuration for Kerberos-based authentication. Should only be set if protocol is
-        /// "NFS_V4_1".
+        /// Optional. Directory Services configuration for Kerberos-based authentication. Should only be set if protocol
+        /// is "NFS_V4_1".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("directoryServices")]
         public virtual DirectoryServicesConfig DirectoryServices { get; set; }
@@ -3563,13 +3622,15 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
     public class ManagedActiveDirectoryConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The computer name is used as a prefix to the mount remote target. Example: if the computer_name is
-        /// `my-computer`, the mount command will look like: `$mount -o vers=4,sec=krb5 my-computer.filestore.:`.
+        /// Required. The computer name is used as a prefix to the mount remote target. Example: if the computer is
+        /// `my-computer`, the mount command will look like: `$mount -o vers=4.1,sec=krb5 my-computer.filestore.: `.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("computer")]
         public virtual string Computer { get; set; }
 
-        /// <summary>Fully qualified domain name.</summary>
+        /// <summary>
+        /// Required. The domain resource name, in the format `projects/{project_id}/locations/global/domains/{domain}`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
         public virtual string Domain { get; set; }
 
@@ -3822,6 +3883,13 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("verb")]
         public virtual string Verb { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>PromoteReplicaRequest promotes a Filestore standby instance (replica).</summary>
+    public class PromoteReplicaRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

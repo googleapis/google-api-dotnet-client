@@ -12366,6 +12366,12 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bigqueryExport")]
         public virtual GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport BigqueryExport { get; set; }
 
+        /// <summary>
+        /// Optional. If set, results will be sent to the provided notification receipts upon triggers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notificationReport")]
+        public virtual GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport NotificationReport { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -12379,6 +12385,67 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resultsTable")]
         public virtual string ResultsTable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>This trigger is triggered whenever a scan job run ends, regardless of the result.</summary>
+    public class GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTrigger : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>This trigger is triggered when the scan job itself fails, regardless of the result.</summary>
+    public class GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTrigger : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The configuration of notification report post scan action.</summary>
+    public class GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. If set, report will be sent when a scan job ends.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobEndTrigger")]
+        public virtual GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTrigger JobEndTrigger { get; set; }
+
+        /// <summary>Optional. If set, report will be sent when a scan job fails.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobFailureTrigger")]
+        public virtual GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTrigger JobFailureTrigger { get; set; }
+
+        /// <summary>Required. The recipients who will receive the notification report.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recipients")]
+        public virtual GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients Recipients { get; set; }
+
+        /// <summary>Optional. If set, report will be sent when score threshold is met.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scoreThresholdTrigger")]
+        public virtual GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger ScoreThresholdTrigger { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The individuals or groups who are designated to receive notifications upon triggers.</summary>
+    public class GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The email recipients who will receive the DataQualityScan results report.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("emails")]
+        public virtual System.Collections.Generic.IList<string> Emails { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// This trigger is triggered when the DQ score in the job result is less than a specified input score.
+    /// </summary>
+    public class GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The score range is in 0,100.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scoreThreshold")]
+        public virtual System.Nullable<float> ScoreThreshold { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -4737,7 +4737,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// suggestions generated from user-imported search events. * `document-completable` - Using
                         /// suggestions taken directly from user-imported document fields marked as completable. Default
                         /// values: * `document` is the default model for regular dataStores. * `search-history` is the
-                        /// default model for site search dataStores.
+                        /// default model for site search dataStores. *
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("queryModel", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string QueryModel { get; set; }
@@ -10495,7 +10495,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// no traffic for Search API. * `user-event` - Using suggestions generated from user-imported
                     /// search events. * `document-completable` - Using suggestions taken directly from user-imported
                     /// document fields marked as completable. Default values: * `document` is the default model for
-                    /// regular dataStores. * `search-history` is the default model for site search dataStores.
+                    /// regular dataStores. * `search-history` is the default model for site search dataStores. *
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("queryModel", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string QueryModel { get; set; }
@@ -14281,6 +14281,57 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Chunk captures all raw metadata information of items to be recommended or searched in the chunk mode.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaChunk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Content is a string from a document (parsed content).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>
+        /// Output only. This field is OUTPUT_ONLY. It contains derived data that are not in the original input
+        /// document.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("derivedStructData")]
+        public virtual System.Collections.Generic.IDictionary<string, object> DerivedStructData { get; set; }
+
+        /// <summary>Metadata of the document from the current chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentMetadata")]
+        public virtual GoogleCloudDiscoveryengineV1alphaChunkDocumentMetadata DocumentMetadata { get; set; }
+
+        /// <summary>Unique chunk id of the current chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// The full resource name of the chunk. Format:
+        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document_id}/chunks/{chunk_id}`.
+        /// This field must be a UTF-8 encoded string with a length limit of 1024 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Document metadata contains the information of the document of the current chunk.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaChunkDocumentMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Title of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>Uri of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for CompletionService.CompleteQuery method.</summary>
     public class GoogleCloudDiscoveryengineV1alphaCompleteQueryRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14313,7 +14364,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// `user-event` - Using suggestions generated from user-imported search events. * `document-completable` -
         /// Using suggestions taken directly from user-imported document fields marked as completable. Default values: *
         /// `document` is the default model for regular dataStores. * `search-history` is the default model for site
-        /// search dataStores.
+        /// search dataStores. *
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryModel")]
         public virtual string QueryModel { get; set; }
@@ -15808,6 +15859,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// </summary>
     public class GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Whether chunking mode is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunkingConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfig ChunkingConfig { get; set; }
+
         /// <summary>
         /// Configurations for default Document parser. If not specified, we will configure it as default
         /// DigitalParsingConfig, and the default parsing config will be applied to all file types for Document parsing.
@@ -15838,6 +15893,37 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parsingConfigOverrides")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfig> ParsingConfigOverrides { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for chunking config.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Configuration for the layout based chunking.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("layoutBasedChunkingConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig LayoutBasedChunkingConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for the layout based chunking.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The token size limit for each chunk. Supported values: 100-500 (inclusive). Default value: 500.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunkSize")]
+        public virtual System.Nullable<int> ChunkSize { get; set; }
+
+        /// <summary>
+        /// Whether to include appending different levels of headings to chunks from the middle of the document to
+        /// prevent context loss. Default value: False.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeAncestorHeadings")]
+        public virtual System.Nullable<bool> IncludeAncestorHeadings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -18616,6 +18702,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("extractiveContentSpec")]
         public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecExtractiveContentSpec ExtractiveContentSpec { get; set; }
 
+        /// <summary>
+        /// Specifies the search result mode. If unspecified, the search result mode is based on
+        /// DataStore.DocumentProcessingConfig.chunking_config: * If DataStore.DocumentProcessingConfig.chunking_config
+        /// is specified, it defaults to `CHUNKS`. * Otherwise, it defaults to `DOCUMENTS`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchResultMode")]
+        public virtual string SearchResultMode { get; set; }
+
         /// <summary>If `snippetSpec` is not specified, snippets are not included in the search response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snippetSpec")]
         public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSnippetSpec SnippetSpec { get; set; }
@@ -19163,6 +19257,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Represents the search results.</summary>
     public class GoogleCloudDiscoveryengineV1alphaSearchResponseSearchResult : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The chunk data in the search response if the SearchRequest.ContentSearchSpec.search_result_mode is set to
+        /// CHUNKS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunk")]
+        public virtual GoogleCloudDiscoveryengineV1alphaChunk Chunk { get; set; }
+
         /// <summary>
         /// The document data snippet in the search response. Only fields that are marked as retrievable are populated.
         /// </summary>
