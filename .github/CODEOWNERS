@@ -5,6 +5,4 @@
 # https://help.github.com/en/github/creating-cloning-and-archiving-repositories/about-code-owners#codeowners-syntax
 
 
-# The yoshi-dotnet team is the default owner for anything not
-# explicitly taken by someone else.
-*                                   @googleapis/yoshi-dotnet
+* @googleapis/cloud-libraries-dotnet
