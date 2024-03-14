@@ -16261,8 +16261,9 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string Country { get; set; }
 
         /// <summary>
-        /// The list of destinations to exclude for this target (corresponds to cleared check boxes in Merchant Center).
-        /// Products that are excluded from all destinations for more than 7 days are automatically deleted.
+        /// The list of [destinations to exclude](//support.google.com/merchants/answer/6324486) for this target
+        /// (corresponds to cleared check boxes in Merchant Center). Products that are excluded from all destinations
+        /// for more than 7 days are automatically deleted.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedDestinations")]
         public virtual System.Collections.Generic.IList<string> ExcludedDestinations { get; set; }
@@ -16276,8 +16277,9 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string FeedLabel { get; set; }
 
         /// <summary>
-        /// The list of destinations to include for this target (corresponds to checked check boxes in Merchant Center).
-        /// Default destinations are always included unless provided in `excludedDestinations`.
+        /// The list of [destinations to include](//support.google.com/merchants/answer/7501026) for this target
+        /// (corresponds to checked check boxes in Merchant Center). Default destinations are always included unless
+        /// provided in `excludedDestinations`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includedDestinations")]
         public virtual System.Collections.Generic.IList<string> IncludedDestinations { get; set; }
@@ -18155,17 +18157,24 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class MethodQuota : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The method name, for example `products.list`. Method name does not contain version because quota can be
-        /// shared between different API versions of the same method.
+        /// Output only. The method name, for example `products.list`. Method name does not contain version because
+        /// quota can be shared between different API versions of the same method.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
         public virtual string Method { get; set; }
 
-        /// <summary>The current quota limit per day, meaning the maximum number of calls for the method.</summary>
+        /// <summary>Output only. The maximum number of calls allowed per day for the method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quotaLimit")]
         public virtual System.Nullable<long> QuotaLimit { get; set; }
 
-        /// <summary>The current quota usage, meaning the number of calls already made to the method.</summary>
+        /// <summary>Output only. The maximum number of calls allowed per minute for the method.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quotaMinuteLimit")]
+        public virtual System.Nullable<long> QuotaMinuteLimit { get; set; }
+
+        /// <summary>
+        /// Output only. The current quota usage, meaning the number of calls already made to the method per day. Usage
+        /// is reset every day at 12 PM midday UTC.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quotaUsage")]
         public virtual System.Nullable<long> QuotaUsage { get; set; }
 
@@ -21905,8 +21914,9 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string EnergyEfficiencyClass { get; set; }
 
         /// <summary>
-        /// The list of destinations to exclude for this target (corresponds to cleared check boxes in Merchant Center).
-        /// Products that are excluded from all destinations for more than 7 days are automatically deleted.
+        /// The list of [destinations to exclude](//support.google.com/merchants/answer/6324486) for this target
+        /// (corresponds to cleared check boxes in Merchant Center). Products that are excluded from all destinations
+        /// for more than 7 days are automatically deleted.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedDestinations")]
         public virtual System.Collections.Generic.IList<string> ExcludedDestinations { get; set; }
@@ -21971,8 +21981,9 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ImageLink { get; set; }
 
         /// <summary>
-        /// The list of destinations to include for this target (corresponds to checked check boxes in Merchant Center).
-        /// Default destinations are always included unless provided in `excludedDestinations`.
+        /// The list of [destinations to include](//support.google.com/merchants/answer/7501026) for this target
+        /// (corresponds to checked check boxes in Merchant Center). Default destinations are always included unless
+        /// provided in `excludedDestinations`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includedDestinations")]
         public virtual System.Collections.Generic.IList<string> IncludedDestinations { get; set; }
@@ -22913,6 +22924,17 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Channel of the product (online versus local).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channel")]
         public virtual string Channel { get; set; }
+
+        /// <summary>Estimated performance potential compared to highest performing products of the merchant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clickPotential")]
+        public virtual string ClickPotential { get; set; }
+
+        /// <summary>
+        /// Rank of the product based on its click potential. A product with `click_potential_rank` 1 has the highest
+        /// click potential among the merchant's products that fulfill the search query conditions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clickPotentialRank")]
+        public virtual System.Nullable<long> ClickPotentialRank { get; set; }
 
         /// <summary>Condition of the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
@@ -24267,6 +24289,13 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("segments")]
         public virtual Segments Segments { get; set; }
+
+        /// <summary>
+        /// Topic trends fields requested by the merchant in the query. Field values are only set if the merchant
+        /// queries `TopicTrendsView`. https://support.google.com/merchants/answer/13542370.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topicTrends")]
+        public virtual TopicTrends TopicTrends { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26312,6 +26341,76 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Optional. IANA Time Zone Database version number, e.g. "2019a".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Topic trends fields requested by the merchant in the query. Field values are only set if the merchant queries
+    /// `TopicTrendsView`.
+    /// </summary>
+    public class TopicTrends : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Country trends are calculated for. Must be a two-letter country code (ISO 3166-1-alpha-2 code), for example,
+        /// `“US”`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerCountryCode")]
+        public virtual string CustomerCountryCode { get; set; }
+
+        /// <summary>Date the trend score was retrieved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("date")]
+        public virtual Date Date { get; set; }
+
+        /// <summary>
+        /// Search interest in the last 120 days, with the same normalization as search_interest. This field is only
+        /// present for a past date.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("last120DaysSearchInterest")]
+        public virtual System.Nullable<double> Last120DaysSearchInterest { get; set; }
+
+        /// <summary>
+        /// Search interest in the last 30 days, with the same normalization as search_interest. This field is only
+        /// present for a past date.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("last30DaysSearchInterest")]
+        public virtual System.Nullable<double> Last30DaysSearchInterest { get; set; }
+
+        /// <summary>
+        /// Search interest in the last 7 days, with the same normalization as search_interest. This field is only
+        /// present for a past date.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("last7DaysSearchInterest")]
+        public virtual System.Nullable<double> Last7DaysSearchInterest { get; set; }
+
+        /// <summary>
+        /// Search interest in the last 90 days, with the same normalization as search_interest. This field is only
+        /// present for a past date.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("last90DaysSearchInterest")]
+        public virtual System.Nullable<double> Last90DaysSearchInterest { get; set; }
+
+        /// <summary>
+        /// Estimated search interest in the next 7 days, with the same normalization as search_interest. This field is
+        /// only present for a future date.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("next7DaysSearchInterest")]
+        public virtual System.Nullable<double> Next7DaysSearchInterest { get; set; }
+
+        /// <summary>
+        /// Daily search interest, normalized to the time and country to make comparisons easier, with 100 representing
+        /// peak popularity (from 0 to 100) for the requested time period and location.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchInterest")]
+        public virtual System.Nullable<double> SearchInterest { get; set; }
+
+        /// <summary>
+        /// Google-provided topic trends are calculated for. Only top eight topics are returned. Topic is what shoppers
+        /// are searching for on Google, grouped by the same concept.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topic")]
+        public virtual string Topic { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

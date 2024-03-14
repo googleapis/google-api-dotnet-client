@@ -7038,28 +7038,26 @@ namespace Google.Apis.Storage.v1
         }
 
         /// <summary>Restores a soft-deleted object.</summary>
-        /// <param name="body">The body of the request.</param>
         /// <param name="generation">Selects a specific revision of this object.</param>
         /// <param name="bucket">Name of the bucket in which the object resides.</param>
         /// <param name="storageObject">
         /// Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI
         /// Path Parts.
         /// </param>
-        public virtual RestoreRequest Restore(Google.Apis.Storage.v1.Data.Object body, long generation, string bucket, string storageObject)
+        public virtual RestoreRequest Restore(long generation, string bucket, string storageObject)
         {
-            return new RestoreRequest(this.service, body, generation, bucket, storageObject);
+            return new RestoreRequest(this.service, generation, bucket, storageObject);
         }
 
         /// <summary>Restores a soft-deleted object.</summary>
         public class RestoreRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.Object>
         {
             /// <summary>Constructs a new Restore request.</summary>
-            public RestoreRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.Object body, long generation, string bucket, string storageObject) : base(service)
+            public RestoreRequest(Google.Apis.Services.IClientService service, long generation, string bucket, string storageObject) : base(service)
             {
                 Generation = generation;
                 Bucket = bucket;
                 Object = storageObject;
-                Body = body;
                 InitParameters();
             }
 
@@ -7132,12 +7130,6 @@ namespace Google.Apis.Storage.v1
             /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Storage.v1.Data.Object Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
 
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "restore";

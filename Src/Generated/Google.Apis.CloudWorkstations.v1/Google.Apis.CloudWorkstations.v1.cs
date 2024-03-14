@@ -2657,6 +2657,23 @@ namespace Google.Apis.CloudWorkstations.v1
 }
 namespace Google.Apis.CloudWorkstations.v1.Data
 {
+    /// <summary>An accelerator card attached to the instance.</summary>
+    public class Accelerator : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Number of accelerator cards exposed to the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<int> Count { get; set; }
+
+        /// <summary>
+        /// Optional. Type of accelerator resource to attach to the instance, for example, `"nvidia-tesla-p100"`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Specifies the audit configuration for a service. The configuration determines which permission types are logged,
     /// and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If
@@ -2870,6 +2887,24 @@ namespace Google.Apis.CloudWorkstations.v1.Data
     }
 
     /// <summary>
+    /// An ephemeral directory which won't persist across workstation sessions. It is freshly created on every
+    /// workstation start operation.
+    /// </summary>
+    public class EphemeralDirectory : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An EphemeralDirectory backed by a Compute Engine persistent disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcePd")]
+        public virtual GcePersistentDisk GcePd { get; set; }
+
+        /// <summary>Required. Location of this directory in the running workstation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mountPath")]
+        public virtual string MountPath { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression
     /// language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example
     /// (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars"
@@ -2927,6 +2962,10 @@ namespace Google.Apis.CloudWorkstations.v1.Data
     /// <summary>A runtime using a Compute Engine instance.</summary>
     public class GceInstance : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. A list of the type and count of accelerator cards attached to the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accelerators")]
+        public virtual System.Collections.Generic.IList<Accelerator> Accelerators { get; set; }
+
         /// <summary>
         /// Optional. The size of the boot disk for the VM in gigabytes (GB). The minimum boot disk size is `30` GB.
         /// Defaults to `50` GB.
@@ -2948,8 +2987,12 @@ namespace Google.Apis.CloudWorkstations.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disablePublicIpAddresses")]
         public virtual System.Nullable<bool> DisablePublicIpAddresses { get; set; }
 
+        /// <summary>Optional. Whether to disable SSH access to the VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableSsh")]
+        public virtual System.Nullable<bool> DisableSsh { get; set; }
+
         /// <summary>
-        /// Optional. Whether to enable nested virtualization on Cloud Workstations VMs created under this workstation
+        /// Optional. Whether to enable nested virtualization on Cloud Workstations VMs created using this workstation
         /// configuration. Nested virtualization lets you run virtual machine (VM) instances inside your workstation.
         /// Before enabling nested virtualization, consider the following important considerations. Cloud Workstations
         /// instances are subject to the [same restrictions as Compute Engine
@@ -3031,8 +3074,42 @@ namespace Google.Apis.CloudWorkstations.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>An EphemeralDirectory is backed by a Compute Engine persistent disk.</summary>
+    public class GcePersistentDisk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Type of the disk to use. Defaults to `"pd-standard"`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
+        public virtual string DiskType { get; set; }
+
+        /// <summary>
+        /// Optional. Whether the disk is read only. If true, the disk may be shared by multiple VMs and source_snapshot
+        /// must be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readOnly")]
+        public virtual System.Nullable<bool> ReadOnly__ { get; set; }
+
+        /// <summary>
+        /// Optional. Name of the disk image to use as the source for the disk. Must be empty if source_snapshot is set.
+        /// Updating source_image will update content in the ephemeral directory after the workstation is restarted.
+        /// This field is mutable.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceImage")]
+        public virtual string SourceImage { get; set; }
+
+        /// <summary>
+        /// Optional. Name of the snapshot to use as the source for the disk. Must be empty if source_image is set. Must
+        /// be empty if read_only is false. Updating source_snapshot will update content in the ephemeral directory
+        /// after the workstation is restarted. This field is mutable.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceSnapshot")]
+        public virtual string SourceSnapshot { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
-    /// A PersistentDirectory backed by a Compute Engine regional persistent disk. The persistent_directories field is
+    /// A Persistent Directory backed by a Compute Engine regional persistent disk. The persistent_directories field is
     /// repeated, but it may contain only one entry. It creates a [persistent
     /// disk](https://cloud.google.com/compute/docs/disks/persistent-disks) that mounts to the workstation VM at `/home`
     /// when the session starts and detaches when the session ends. If this field is empty, workstations created with
@@ -4306,9 +4383,9 @@ namespace Google.Apis.CloudWorkstations.v1.Data
 
         /// <summary>
         /// Optional. Disables support for plain TCP connections in the workstation. By default the service supports TCP
-        /// connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage
-        /// of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over
-        /// https or wss.
+        /// connections through a websocket relay. Setting this option to true disables that relay, which prevents the
+        /// usage of services that require plain TCP connections, such as SSH. When enabled, all communication must
+        /// occur over HTTPS or WSS.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableTcpConnections")]
         public virtual System.Nullable<bool> DisableTcpConnections { get; set; }
@@ -4338,6 +4415,10 @@ namespace Google.Apis.CloudWorkstations.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionKey")]
         public virtual CustomerEncryptionKey EncryptionKey { get; set; }
+
+        /// <summary>Optional. Ephemeral directories which won't persist across workstation sessions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ephemeralDirectories")]
+        public virtual System.Collections.Generic.IList<EphemeralDirectory> EphemeralDirectories { get; set; }
 
         /// <summary>
         /// Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the

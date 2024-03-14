@@ -3243,6 +3243,14 @@ namespace Google.Apis.SecretManager.v1beta2.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>
+        /// Optional. The customer-managed encryption configuration of the Regionalised Secrets. If no configuration is
+        /// provided, Google-managed default encryption is used. Updates to the Secret encryption configuration only
+        /// apply to SecretVersions added afterwards. They do not apply retroactively to existing SecretVersions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerManagedEncryption")]
+        public virtual CustomerManagedEncryption CustomerManagedEncryption { get; set; }
+
         /// <summary>Optional. Etag of the currently stored Secret.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
@@ -3335,6 +3343,14 @@ namespace Google.Apis.SecretManager.v1beta2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionAliases")]
         public virtual System.Collections.Generic.IDictionary<string, System.Nullable<long>> VersionAliases { get; set; }
+
+        /// <summary>
+        /// Optional. Secret Version TTL after destruction request This is a part of the Delayed secret version destroy
+        /// feature. For secret with TTL&amp;gt;0, version destruction doesn't happen immediately on calling destroy
+        /// instead the version goes to a disabled state and destruction happens after the TTL expires.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionDestroyTtl")]
+        public virtual object VersionDestroyTtl { get; set; }
     }
 
     /// <summary>
@@ -3409,6 +3425,13 @@ namespace Google.Apis.SecretManager.v1beta2.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>
+        /// Output only. The customer-managed encryption status of the SecretVersion. Only populated if customer-managed
+        /// encryption is used and Secret is a Regionalised Secret.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerManagedEncryption")]
+        public virtual CustomerManagedEncryptionStatus CustomerManagedEncryption { get; set; }
+
         private string _destroyTimeRaw;
 
         private object _destroyTime;
@@ -3462,6 +3485,50 @@ namespace Google.Apis.SecretManager.v1beta2.Data
         /// <summary>The replication status of the SecretVersion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replicationStatus")]
         public virtual ReplicationStatus ReplicationStatus { get; set; }
+
+        private string _scheduledDestroyTimeRaw;
+
+        private object _scheduledDestroyTime;
+
+        /// <summary>
+        /// Optional. Output only. Scheduled destroy time for secret version. This is a part of the Delayed secret
+        /// version destroy feature. For a Secret with a valid version destroy TTL, when a secert version is destroyed,
+        /// version is moved to disabled state and it is scheduled for destruction Version is destroyed only after the
+        /// scheduled_destroy_time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheduledDestroyTime")]
+        public virtual string ScheduledDestroyTimeRaw
+        {
+            get => _scheduledDestroyTimeRaw;
+            set
+            {
+                _scheduledDestroyTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _scheduledDestroyTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ScheduledDestroyTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ScheduledDestroyTimeDateTimeOffset instead.")]
+        public virtual object ScheduledDestroyTime
+        {
+            get => _scheduledDestroyTime;
+            set
+            {
+                _scheduledDestroyTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _scheduledDestroyTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ScheduledDestroyTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ScheduledDestroyTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ScheduledDestroyTimeRaw);
+            set => ScheduledDestroyTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>Output only. The current state of the SecretVersion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]

@@ -7332,6 +7332,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredEnableFqdnNetworkPolicy")]
         public virtual System.Nullable<bool> DesiredEnableFqdnNetworkPolicy { get; set; }
 
+        /// <summary>Enable/Disable Multi-Networking for the cluster</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredEnableMultiNetworking")]
+        public virtual System.Nullable<bool> DesiredEnableMultiNetworking { get; set; }
+
         /// <summary>Enable/Disable private endpoint for the cluster's master.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredEnablePrivateEndpoint")]
         public virtual System.Nullable<bool> DesiredEnablePrivateEndpoint { get; set; }
@@ -9095,6 +9099,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sandboxConfig")]
         public virtual SandboxConfig SandboxConfig { get; set; }
 
+        /// <summary>Secondary boot disk update strategy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secondaryBootDiskUpdateStrategy")]
+        public virtual SecondaryBootDiskUpdateStrategy SecondaryBootDiskUpdateStrategy { get; set; }
+
         /// <summary>List of secondary boot disks attached to the nodes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secondaryBootDisks")]
         public virtual System.Collections.Generic.IList<SecondaryBootDisk> SecondaryBootDisks { get; set; }
@@ -10138,6 +10146,16 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
         public virtual string Mode { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// SecondaryBootDiskUpdateStrategy is a placeholder which will be extended in the future to define different
+    /// options for updating secondary boot disks.
+    /// </summary>
+    public class SecondaryBootDiskUpdateStrategy : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

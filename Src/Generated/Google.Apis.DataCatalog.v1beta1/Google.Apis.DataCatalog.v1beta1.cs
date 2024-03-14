@@ -734,7 +734,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                         /// <summary>Updates an existing tag.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
-                        /// The resource name of the tag in URL format. Example: *
+                        /// Identifier. The resource name of the tag in URL format. Example: *
                         /// projects/{project_id}/locations/{location}/entrygroups/{entry_group_id}/entries/{entry_id}/tags/{tag_id}
                         /// where `tag_id` is a system-generated identifier. Note that this Tag may not actually be
                         /// stored in the location in this name.
@@ -756,7 +756,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                             }
 
                             /// <summary>
-                            /// The resource name of the tag in URL format. Example: *
+                            /// Identifier. The resource name of the tag in URL format. Example: *
                             /// projects/{project_id}/locations/{location}/entrygroups/{entry_group_id}/entries/{entry_id}/tags/{tag_id}
                             /// where `tag_id` is a system-generated identifier. Note that this Tag may not actually be
                             /// stored in the location in this name.
@@ -1193,7 +1193,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Output only. The Data Catalog resource name of the entry in URL format. Example: *
+                    /// Output only. Identifier. The Data Catalog resource name of the entry in URL format. Example: *
                     /// projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id} Note
                     /// that this Entry and its child resources may not actually be stored in the location in this name.
                     /// </param>
@@ -1218,8 +1218,8 @@ namespace Google.Apis.DataCatalog.v1beta1
                         }
 
                         /// <summary>
-                        /// Output only. The Data Catalog resource name of the entry in URL format. Example: *
-                        /// projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id}
+                        /// Output only. Identifier. The Data Catalog resource name of the entry in URL format. Example:
+                        /// * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id}
                         /// Note that this Entry and its child resources may not actually be stored in the location in
                         /// this name.
                         /// </summary>
@@ -1579,7 +1579,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                     /// <summary>Updates an existing tag.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// The resource name of the tag in URL format. Example: *
+                    /// Identifier. The resource name of the tag in URL format. Example: *
                     /// projects/{project_id}/locations/{location}/entrygroups/{entry_group_id}/entries/{entry_id}/tags/{tag_id}
                     /// where `tag_id` is a system-generated identifier. Note that this Tag may not actually be stored
                     /// in the location in this name.
@@ -1601,7 +1601,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                         }
 
                         /// <summary>
-                        /// The resource name of the tag in URL format. Example: *
+                        /// Identifier. The resource name of the tag in URL format. Example: *
                         /// projects/{project_id}/locations/{location}/entrygroups/{entry_group_id}/entries/{entry_id}/tags/{tag_id}
                         /// where `tag_id` is a system-generated identifier. Note that this Tag may not actually be
                         /// stored in the location in this name.
@@ -2046,7 +2046,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// The resource name of the entry group in URL format. Example: *
+                /// Identifier. The resource name of the entry group in URL format. Example: *
                 /// projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} Note that this EntryGroup
                 /// and its child resources may not actually be stored in the location in this name.
                 /// </param>
@@ -2071,7 +2071,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                     }
 
                     /// <summary>
-                    /// The resource name of the entry group in URL format. Example: *
+                    /// Identifier. The resource name of the entry group in URL format. Example: *
                     /// projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} Note that this
                     /// EntryGroup and its child resources may not actually be stored in the location in this name.
                     /// </summary>
@@ -3014,7 +3014,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// The resource name of the tag template in URL format. Example: *
+                /// Identifier. The resource name of the tag template in URL format. Example: *
                 /// projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate
                 /// and its child resources may not actually be stored in the location in this name.
                 /// </param>
@@ -3041,7 +3041,7 @@ namespace Google.Apis.DataCatalog.v1beta1
                     }
 
                     /// <summary>
-                    /// The resource name of the tag template in URL format. Example: *
+                    /// Identifier. The resource name of the tag template in URL format. Example: *
                     /// projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this
                     /// TagTemplate and its child resources may not actually be stored in the location in this name.
                     /// </summary>
@@ -5207,8 +5207,8 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         public virtual GoogleCloudDatacatalogV1ModelSpec ModelSpec { get; set; }
 
         /// <summary>
-        /// Output only. The resource name of an entry in URL format. Note: The entry itself and its child resources
-        /// might not be stored in the location specified in its name.
+        /// Output only. Identifier. The resource name of an entry in URL format. Note: The entry itself and its child
+        /// resources might not be stored in the location specified in its name.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -5912,8 +5912,8 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDatacatalogV1TagField> Fields { get; set; }
 
         /// <summary>
-        /// The resource name of the tag in URL format where tag ID is a system-generated identifier. Note: The tag
-        /// itself might not be stored in the location specified in its name.
+        /// Identifier. The resource name of the tag in URL format where tag ID is a system-generated identifier. Note:
+        /// The tag itself might not be stored in the location specified in its name.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -6361,7 +6361,7 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         public virtual string LinkedResource { get; set; }
 
         /// <summary>
-        /// Output only. The Data Catalog resource name of the entry in URL format. Example: *
+        /// Output only. Identifier. The Data Catalog resource name of the entry in URL format. Example: *
         /// projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id} Note that this
         /// Entry and its child resources may not actually be stored in the location in this name.
         /// </summary>
@@ -6436,7 +6436,7 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// The resource name of the entry group in URL format. Example: *
+        /// Identifier. The resource name of the entry group in URL format. Example: *
         /// projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} Note that this EntryGroup and its
         /// child resources may not actually be stored in the location in this name.
         /// </summary>
@@ -7154,7 +7154,7 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDatacatalogV1beta1TagField> Fields { get; set; }
 
         /// <summary>
-        /// The resource name of the tag in URL format. Example: *
+        /// Identifier. The resource name of the tag in URL format. Example: *
         /// projects/{project_id}/locations/{location}/entrygroups/{entry_group_id}/entries/{entry_id}/tags/{tag_id}
         /// where `tag_id` is a system-generated identifier. Note that this Tag may not actually be stored in the
         /// location in this name.
@@ -7291,7 +7291,7 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDatacatalogV1beta1TagTemplateField> Fields { get; set; }
 
         /// <summary>
-        /// The resource name of the tag template in URL format. Example: *
+        /// Identifier. The resource name of the tag template in URL format. Example: *
         /// projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its
         /// child resources may not actually be stored in the location in this name.
         /// </summary>
@@ -7318,7 +7318,7 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         public virtual System.Nullable<bool> IsRequired { get; set; }
 
         /// <summary>
-        /// Output only. The resource name of the tag template field in URL format. Example: *
+        /// Output only. Identifier. The resource name of the tag template field in URL format. Example: *
         /// projects/{project_id}/locations/{location}/tagTemplates/{tag_template}/fields/{field} Note that this
         /// TagTemplateField may not actually be stored in the location in this name.
         /// </summary>

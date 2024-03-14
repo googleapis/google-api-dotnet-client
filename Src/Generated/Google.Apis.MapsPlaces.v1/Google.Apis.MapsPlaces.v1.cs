@@ -2028,6 +2028,10 @@ namespace Google.Apis.MapsPlaces.v1.Data
     /// <summary>Request proto for SearchText. </summary>
     public class GoogleMapsPlacesV1SearchTextRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Set the searchable EV options of a place search request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evOptions")]
+        public virtual GoogleMapsPlacesV1SearchTextRequestEVOptions EvOptions { get; set; }
+
         /// <summary>
         /// The requested place type. Full list of types supported:
         /// https://developers.google.com/maps/documentation/places/web-service/place-types. Only support one included
@@ -2111,6 +2115,27 @@ namespace Google.Apis.MapsPlaces.v1.Data
         /// <summary>Required. The text query for textual search.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textQuery")]
         public virtual string TextQuery { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Searchable EV options of a place search request.</summary>
+    public class GoogleMapsPlacesV1SearchTextRequestEVOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The list of preferred EV connector types. A place that does not support any of the listed
+        /// connector types are filter out.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectorTypes")]
+        public virtual System.Collections.Generic.IList<string> ConnectorTypes { get; set; }
+
+        /// <summary>
+        /// Optional. Filtering places by minimum charging rate. Any places with charging a rate less than the minimum
+        /// charging rate are filtered out.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimumChargingRateKw")]
+        public virtual System.Nullable<double> MinimumChargingRateKw { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

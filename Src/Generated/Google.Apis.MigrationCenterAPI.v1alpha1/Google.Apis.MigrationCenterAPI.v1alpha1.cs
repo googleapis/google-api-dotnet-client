@@ -5245,8 +5245,9 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
     public class ComputeEnginePreferences : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// License type to consider when calculating costs for virtual machine insights and recommendations. If
-        /// unspecified, costs are calculated based on the default licensing plan.
+        /// Overridden by os_pricing_preferences if specified. License type to consider when calculating costs for
+        /// virtual machine insights and recommendations. If unspecified, costs are calculated based on the default
+        /// licensing plan.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("licenseType")]
         public virtual string LicenseType { get; set; }

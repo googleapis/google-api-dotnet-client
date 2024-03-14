@@ -3526,7 +3526,9 @@ namespace Google.Apis.CloudBuild.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("security")]
         public virtual Security Security { get; set; }
 
-        /// <summary>Service account used in the Pipeline.</summary>
+        /// <summary>
+        /// Service account used in the Pipeline. Deprecated; please use security.service_account instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
 

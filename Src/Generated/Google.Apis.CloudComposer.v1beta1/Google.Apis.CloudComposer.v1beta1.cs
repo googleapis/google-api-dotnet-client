@@ -2516,7 +2516,10 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Configuration for resources used by Airflow DAG processors.</summary>
+    /// <summary>
+    /// Configuration for resources used by Airflow DAG processors. This field is supported for Cloud Composer
+    /// environments in versions composer-3.*.*-airflow-*.*.* and newer.
+    /// </summary>
     public class DagProcessorResource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -2840,8 +2843,9 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         /// defined so that maintenance is not executed during peak hours or critical time periods. The system will not
         /// be under maintenance for every occurrence of this window, but when maintenance is planned, it will be
         /// scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This
-        /// may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, Cloud
-        /// Composer components may be subject to maintenance at any time.
+        /// may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, the
+        /// default value for maintenance window is applied. By default, maintenance windows are from 00:00:00 to
+        /// 04:00:00 (GMT) on Friday, Saturday, and Sunday every week.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceWindow")]
         public virtual MaintenanceWindow MaintenanceWindow { get; set; }
@@ -4074,10 +4078,7 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
     /// <summary>The configuration setting for Task Logs.</summary>
     public class TaskLogsRetentionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Optional. The mode of storage for Airflow workers task logs. For details, see
-        /// go/composer-store-task-logs-in-cloud-logging-only-design-doc
-        /// </summary>
+        /// <summary>Optional. The mode of storage for Airflow workers task logs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageMode")]
         public virtual string StorageMode { get; set; }
 

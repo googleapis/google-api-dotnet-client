@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.DiscoveryEngine.v1beta Client Library</Title>
-    <Version>1.67.0.3351</Version>
+    <Version>1.67.0.3358</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2024 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>

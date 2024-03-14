@@ -3488,7 +3488,7 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>LINT.IfChange Defines policies to service maintenance events.</summary>
+    /// <summary>Defines policies to service maintenance events.</summary>
     public class MaintenancePolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;

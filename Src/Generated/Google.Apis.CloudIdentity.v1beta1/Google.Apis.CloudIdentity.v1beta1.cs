@@ -6259,6 +6259,172 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Contains information about browser profiles reported by the [Endpoint Verification
+    /// extension](https://chromewebstore.google.com/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg?pli=1).
+    /// </summary>
+    public class GoogleAppsCloudidentityDevicesV1BrowserAttributes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Represents the current state of the [Chrome browser
+        /// attributes](https://cloud.google.com/access-context-manager/docs/browser-attributes) sent by the [Endpoint
+        /// Verification
+        /// extension](https://chromewebstore.google.com/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg?pli=1).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chromeBrowserInfo")]
+        public virtual GoogleAppsCloudidentityDevicesV1BrowserInfo ChromeBrowserInfo { get; set; }
+
+        /// <summary>Chrome profile ID that is exposed by the Chrome API. It is unique for each device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chromeProfileId")]
+        public virtual string ChromeProfileId { get; set; }
+
+        private string _lastProfileSyncTimeRaw;
+
+        private object _lastProfileSyncTime;
+
+        /// <summary>Timestamp in milliseconds since Epoch when the profile/gcm id was last synced.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastProfileSyncTime")]
+        public virtual string LastProfileSyncTimeRaw
+        {
+            get => _lastProfileSyncTimeRaw;
+            set
+            {
+                _lastProfileSyncTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastProfileSyncTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastProfileSyncTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastProfileSyncTimeDateTimeOffset instead.")]
+        public virtual object LastProfileSyncTime
+        {
+            get => _lastProfileSyncTime;
+            set
+            {
+                _lastProfileSyncTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastProfileSyncTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastProfileSyncTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastProfileSyncTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastProfileSyncTimeRaw);
+            set => LastProfileSyncTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Browser-specific fields reported by the [Endpoint Verification
+    /// extension](https://chromewebstore.google.com/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg?pli=1).
+    /// LINT.IfChange
+    /// </summary>
+    public class GoogleAppsCloudidentityDevicesV1BrowserInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Browser's management state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("browserManagementState")]
+        public virtual string BrowserManagementState { get; set; }
+
+        /// <summary>Version of the request initiating browser.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("browserVersion")]
+        public virtual string BrowserVersion { get; set; }
+
+        /// <summary>
+        /// Current state of [built-in DNS client](https://chromeenterprise.google/policies/#BuiltInDnsClientEnabled).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isBuiltInDnsClientEnabled")]
+        public virtual System.Nullable<bool> IsBuiltInDnsClientEnabled { get; set; }
+
+        /// <summary>
+        /// Current state of [bulk data
+        /// analysis](https://chromeenterprise.google/policies/#OnBulkDataEntryEnterpriseConnector). Set to true if
+        /// provider list from Chrome is non-empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isBulkDataEntryAnalysisEnabled")]
+        public virtual System.Nullable<bool> IsBulkDataEntryAnalysisEnabled { get; set; }
+
+        /// <summary>
+        /// Current state of [Chrome Cleanup](https://chromeenterprise.google/policies/#ChromeCleanupEnabled).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isChromeCleanupEnabled")]
+        public virtual System.Nullable<bool> IsChromeCleanupEnabled { get; set; }
+
+        /// <summary>
+        /// Current state of [Chrome Remote Desktop app](https://chromeenterprise.google/policies/#URLBlocklist).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isChromeRemoteDesktopAppBlocked")]
+        public virtual System.Nullable<bool> IsChromeRemoteDesktopAppBlocked { get; set; }
+
+        /// <summary>
+        /// Current state of [file download
+        /// analysis](https://chromeenterprise.google/policies/#OnFileDownloadedEnterpriseConnector). Set to true if
+        /// provider list from Chrome is non-empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isFileDownloadAnalysisEnabled")]
+        public virtual System.Nullable<bool> IsFileDownloadAnalysisEnabled { get; set; }
+
+        /// <summary>
+        /// Current state of [file upload
+        /// analysis](https://chromeenterprise.google/policies/#OnFileAttachedEnterpriseConnector). Set to true if
+        /// provider list from Chrome is non-empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isFileUploadAnalysisEnabled")]
+        public virtual System.Nullable<bool> IsFileUploadAnalysisEnabled { get; set; }
+
+        /// <summary>
+        /// Current state of [real-time URL
+        /// check](https://chromeenterprise.google/policies/#EnterpriseRealTimeUrlCheckMode). Set to true if provider
+        /// list from Chrome is non-empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isRealtimeUrlCheckEnabled")]
+        public virtual System.Nullable<bool> IsRealtimeUrlCheckEnabled { get; set; }
+
+        /// <summary>
+        /// Current state of [security event
+        /// analysis](https://chromeenterprise.google/policies/#OnSecurityEventEnterpriseConnector). Set to true if
+        /// provider list from Chrome is non-empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isSecurityEventAnalysisEnabled")]
+        public virtual System.Nullable<bool> IsSecurityEventAnalysisEnabled { get; set; }
+
+        /// <summary>
+        /// Current state of [site isolation](https://chromeenterprise.google/policies/?policy=IsolateOrigins).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isSiteIsolationEnabled")]
+        public virtual System.Nullable<bool> IsSiteIsolationEnabled { get; set; }
+
+        /// <summary>
+        /// Current state of [third-party
+        /// blocking](https://chromeenterprise.google/policies/#ThirdPartyBlockingEnabled).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isThirdPartyBlockingEnabled")]
+        public virtual System.Nullable<bool> IsThirdPartyBlockingEnabled { get; set; }
+
+        /// <summary>
+        /// Current state of [password protection
+        /// trigger](https://chromeenterprise.google/policies/#PasswordProtectionWarningTrigger).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("passwordProtectionWarningTrigger")]
+        public virtual string PasswordProtectionWarningTrigger { get; set; }
+
+        /// <summary>
+        /// Current state of [Safe Browsing protection
+        /// level](https://chromeenterprise.google/policies/#SafeBrowsingProtectionLevel).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("safeBrowsingProtectionLevel")]
+        public virtual string SafeBrowsingProtectionLevel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for CancelWipeDevice LRO.</summary>
     public class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6292,6 +6458,141 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         /// <summary>Resultant DeviceUser object for the action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceUser")]
         public virtual GoogleAppsCloudidentityDevicesV1DeviceUser DeviceUser { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Stores information about a certificate.</summary>
+    public class GoogleAppsCloudidentityDevicesV1CertificateAttributes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The X.509 extension for CertificateTemplate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certificateTemplate")]
+        public virtual GoogleAppsCloudidentityDevicesV1CertificateTemplate CertificateTemplate { get; set; }
+
+        /// <summary>The encoded certificate fingerprint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
+        public virtual string Fingerprint { get; set; }
+
+        /// <summary>The name of the issuer of this certificate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issuer")]
+        public virtual string Issuer { get; set; }
+
+        /// <summary>Serial number of the certificate, Example: "123456789".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serialNumber")]
+        public virtual string SerialNumber { get; set; }
+
+        /// <summary>The subject name of this certificate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subject")]
+        public virtual string Subject { get; set; }
+
+        /// <summary>The certificate thumbprint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thumbprint")]
+        public virtual string Thumbprint { get; set; }
+
+        /// <summary>Output only. Validation state of this certificate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validationState")]
+        public virtual string ValidationState { get; set; }
+
+        private string _validityExpirationTimeRaw;
+
+        private object _validityExpirationTime;
+
+        /// <summary>Certificate not valid at or after this timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validityExpirationTime")]
+        public virtual string ValidityExpirationTimeRaw
+        {
+            get => _validityExpirationTimeRaw;
+            set
+            {
+                _validityExpirationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _validityExpirationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ValidityExpirationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ValidityExpirationTimeDateTimeOffset instead.")]
+        public virtual object ValidityExpirationTime
+        {
+            get => _validityExpirationTime;
+            set
+            {
+                _validityExpirationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _validityExpirationTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ValidityExpirationTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ValidityExpirationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ValidityExpirationTimeRaw);
+            set => ValidityExpirationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _validityStartTimeRaw;
+
+        private object _validityStartTime;
+
+        /// <summary>Certificate not valid before this timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validityStartTime")]
+        public virtual string ValidityStartTimeRaw
+        {
+            get => _validityStartTimeRaw;
+            set
+            {
+                _validityStartTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _validityStartTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ValidityStartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ValidityStartTimeDateTimeOffset instead.")]
+        public virtual object ValidityStartTime
+        {
+            get => _validityStartTime;
+            set
+            {
+                _validityStartTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _validityStartTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ValidityStartTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ValidityStartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ValidityStartTimeRaw);
+            set => ValidityStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>CertificateTemplate (v3 Extension in X.509).</summary>
+    public class GoogleAppsCloudidentityDevicesV1CertificateTemplate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The template id of the template. Example:
+        /// "1.3.6.1.4.1.311.21.8.15608621.11768144.5720724.16068415.6889630.81.2472537.7784047".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The Major version of the template. Example: 100.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("majorVersion")]
+        public virtual System.Nullable<int> MajorVersion { get; set; }
+
+        /// <summary>The minor version of the template. Example: 12.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minorVersion")]
+        public virtual System.Nullable<int> MinorVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6576,6 +6877,13 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         /// <summary>Output only. Device encryption state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionState")]
         public virtual string EncryptionState { get; set; }
+
+        /// <summary>
+        /// Output only. Attributes specific to [Endpoint
+        /// Verification](https://cloud.google.com/endpoint-verification/docs/overview) devices.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpointVerificationSpecificAttributes")]
+        public virtual GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes EndpointVerificationSpecificAttributes { get; set; }
 
         /// <summary>Host name of the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hostname")]
@@ -6873,6 +7181,34 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         /// <summary>Email address of the user registered on the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userEmail")]
         public virtual string UserEmail { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Resource representing the [Endpoint Verification-specific
+    /// attributes](https://cloud.google.com/endpoint-verification/docs/device-information) of a device.
+    /// </summary>
+    public class GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Additional signals reported by Endpoint Verification. It includes the following attributes: 1.
+        /// Non-configurable attributes: hotfixes, av_installed, av_enabled, windows_domain_name,
+        /// is_os_native_firewall_enabled, and is_secure_boot_enabled. 2. [Configurable
+        /// attributes](https://cloud.google.com/endpoint-verification/docs/collect-config-attributes): file, folder,
+        /// and binary attributes; registry entries; and properties in a plist.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalSignals")]
+        public virtual System.Collections.Generic.IDictionary<string, object> AdditionalSignals { get; set; }
+
+        /// <summary>Details of browser profiles reported by Endpoint Verification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("browserAttributes")]
+        public virtual System.Collections.Generic.IList<GoogleAppsCloudidentityDevicesV1BrowserAttributes> BrowserAttributes { get; set; }
+
+        /// <summary>Details of certificates.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certificateAttributes")]
+        public virtual System.Collections.Generic.IList<GoogleAppsCloudidentityDevicesV1CertificateAttributes> CertificateAttributes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -6812,14 +6812,14 @@ namespace Google.Apis.Walletobjects.v1.Data
     {
         /// <summary>
         /// URL for the merchant endpoint that would be called to request updates. The URL should be hosted on HTTPS and
-        /// robots.txt should allow the URL path to be accessible by UserAgent:Google-Valuables. Deprecated.
+        /// robots.txt should allow the URL path to be accessible by UserAgent:Googlebot. Deprecated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateRequestUrl")]
         public virtual string UpdateRequestUrl { get; set; }
 
         /// <summary>
         /// The HTTPS url configured by the merchant. The URL should be hosted on HTTPS and robots.txt should allow the
-        /// URL path to be accessible by UserAgent:Google-Valuables.
+        /// URL path to be accessible by UserAgent:Googlebot.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; }

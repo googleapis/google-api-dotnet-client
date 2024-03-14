@@ -1744,6 +1744,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
     /// <summary>A Connectivity Test for a network reachability analysis.</summary>
     public class ConnectivityTest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Whether the test should skip firewall checking. If not provided, we assume false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bypassFirewallChecks")]
+        public virtual System.Nullable<bool> BypassFirewallChecks { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;

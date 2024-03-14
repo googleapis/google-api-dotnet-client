@@ -2344,6 +2344,36 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Specifies the configuration for running a replication job.</summary>
+    public class ReplicationSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies cloud Storage data sink.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsDataSink")]
+        public virtual GcsData GcsDataSink { get; set; }
+
+        /// <summary>Specifies cloud Storage data source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsDataSource")]
+        public virtual GcsData GcsDataSource { get; set; }
+
+        /// <summary>
+        /// Specifies the object conditions to only include objects that satisfy these conditions in the set of data
+        /// source objects. Object conditions based on objects' "last modification time" do not exclude objects in a
+        /// data sink.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectConditions")]
+        public virtual ObjectConditions ObjectConditions { get; set; }
+
+        /// <summary>
+        /// Specifies the actions to be performed on the object during replication. Delete options are not supported for
+        /// replication and when specified, the request fails with an INVALID_ARGUMENT error.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transferOptions")]
+        public virtual TransferOptions TransferOptions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request passed to ResumeTransferOperation.</summary>
     public class ResumeTransferOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2798,6 +2828,10 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// <summary>The ID of the Google Cloud project that owns the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
+
+        /// <summary>Replication specification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replicationSpec")]
+        public virtual ReplicationSpec ReplicationSpec { get; set; }
 
         /// <summary>
         /// Specifies schedule for the transfer job. This is an optional field. When the field is not set, the job never

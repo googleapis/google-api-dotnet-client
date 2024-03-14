@@ -2182,6 +2182,10 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
         public virtual Size Size { get; set; }
 
+        /// <summary>A Speaker Spotlight.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speakerSpotlight")]
+        public virtual SpeakerSpotlight SpeakerSpotlight { get; set; }
+
         /// <summary>A table page element.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("table")]
         public virtual Table Table { get; set; }
@@ -3208,6 +3212,32 @@ namespace Google.Apis.Slides.v1.Data
         /// <summary>The color value of the solid fill.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("color")]
         public virtual OpaqueColor Color { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A PageElement kind representing a Speaker Spotlight.</summary>
+    public class SpeakerSpotlight : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The properties of the Speaker Spotlight.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speakerSpotlightProperties")]
+        public virtual SpeakerSpotlightProperties SpeakerSpotlightProperties { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The properties of the SpeakerSpotlight.</summary>
+    public class SpeakerSpotlightProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The outline of the Speaker Spotlight. If not set, it has no outline.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outline")]
+        public virtual Outline Outline { get; set; }
+
+        /// <summary>The shadow of the Speaker Spotlight. If not set, it has no shadow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shadow")]
+        public virtual Shadow Shadow { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -11262,6 +11262,15 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string Name { get; set; }
 
         /// <summary>
+        /// Optional. If true, this channel group will be used as the default channel group for reports. Only one
+        /// channel group can be set as `primary` at any time. If the `primary` field gets set on a channel group, it
+        /// will get unset on the previous primary channel group. The Google Analytics predefined channel group is the
+        /// primary by default.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primary")]
+        public virtual System.Nullable<bool> Primary { get; set; }
+
+        /// <summary>
         /// Output only. If true, then this channel group is the Default Channel Group predefined by Google Analytics.
         /// Display name and grouping rules cannot be updated for this channel group.
         /// </summary>

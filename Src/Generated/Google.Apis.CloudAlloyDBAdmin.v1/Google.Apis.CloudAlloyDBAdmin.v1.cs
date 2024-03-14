@@ -2542,75 +2542,6 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
                     }
                 }
 
-                /// <summary>
-                /// Generate a client certificate signed by a Cluster CA. The sole purpose of this endpoint is to
-                /// support AlloyDB connectors and the Auth Proxy client. The endpoint's behavior is subject to change
-                /// without notice, so do not rely on its behavior remaining constant. Future changes will not break
-                /// AlloyDB connectors or the Auth Proxy client.
-                /// </summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="parent">
-                /// Required. The name of the parent resource. The required format is: *
-                /// projects/{project}/locations/{location}/clusters/{cluster}
-                /// </param>
-                public virtual GenerateClientCertificateRequest GenerateClientCertificate(Google.Apis.CloudAlloyDBAdmin.v1.Data.GenerateClientCertificateRequest body, string parent)
-                {
-                    return new GenerateClientCertificateRequest(this.service, body, parent);
-                }
-
-                /// <summary>
-                /// Generate a client certificate signed by a Cluster CA. The sole purpose of this endpoint is to
-                /// support AlloyDB connectors and the Auth Proxy client. The endpoint's behavior is subject to change
-                /// without notice, so do not rely on its behavior remaining constant. Future changes will not break
-                /// AlloyDB connectors or the Auth Proxy client.
-                /// </summary>
-                public class GenerateClientCertificateRequest : CloudAlloyDBAdminBaseServiceRequest<Google.Apis.CloudAlloyDBAdmin.v1.Data.GenerateClientCertificateResponse>
-                {
-                    /// <summary>Constructs a new GenerateClientCertificate request.</summary>
-                    public GenerateClientCertificateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudAlloyDBAdmin.v1.Data.GenerateClientCertificateRequest body, string parent) : base(service)
-                    {
-                        Parent = parent;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. The name of the parent resource. The required format is: *
-                    /// projects/{project}/locations/{location}/clusters/{cluster}
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.CloudAlloyDBAdmin.v1.Data.GenerateClientCertificateRequest Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "generateClientCertificate";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+parent}:generateClientCertificate";
-
-                    /// <summary>Initializes GenerateClientCertificate parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
-                        });
-                    }
-                }
-
                 /// <summary>Gets details of a single Cluster.</summary>
                 /// <param name="name">
                 /// Required. The name of the resource. For the required format, see the comment on the Cluster.name
@@ -4483,62 +4414,6 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for requests to generate a client certificate signed by the Cluster CA.</summary>
-    public class GenerateClientCertificateRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Optional. An optional hint to the endpoint to generate the client certificate with the requested duration.
-        /// The duration can be from 1 hour to 24 hours. The endpoint may or may not honor the hint. If the hint is left
-        /// unspecified or is not honored, then the endpoint will pick an appropriate default duration.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("certDuration")]
-        public virtual object CertDuration { get; set; }
-
-        /// <summary>Optional. The public key from the client.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("publicKey")]
-        public virtual string PublicKey { get; set; }
-
-        /// <summary>
-        /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry
-        /// your request, the server will know to ignore the request if it has already been completed. The server will
-        /// guarantee that for at least 60 minutes after the first request. For example, consider a situation where you
-        /// make an initial request and the request times out. If you make the request again with the same request ID,
-        /// the server can check if original operation with the same request ID was received, and if so, will ignore the
-        /// second request. This prevents clients from accidentally creating duplicate commitments. The request ID must
-        /// be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
-        public virtual string RequestId { get; set; }
-
-        /// <summary>
-        /// Optional. An optional hint to the endpoint to generate a client ceritificate that can be used by AlloyDB
-        /// connectors to exchange additional metadata with the server after TLS handshake.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("useMetadataExchange")]
-        public virtual System.Nullable<bool> UseMetadataExchange { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Message returned by a GenerateClientCertificate operation.</summary>
-    public class GenerateClientCertificateResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. The pem-encoded cluster ca X.509 certificate.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("caCert")]
-        public virtual string CaCert { get; set; }
-
-        /// <summary>
-        /// Output only. The pem-encoded chain that may be used to verify the X.509 certificate. Expected to be in
-        /// issuer-to-root order according to RFC 5246.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pemCertificateChain")]
-        public virtual System.Collections.Generic.IList<string> PemCertificateChain { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>The response message for Locations.ListLocations.</summary>
     public class GoogleCloudLocationListLocationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6057,6 +5932,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
             set => UpdationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>User-provided labels associated with the resource</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userLabelSet")]
+        public virtual StorageDatabasecenterPartnerapiV1mainUserLabels UserLabelSet { get; set; }
+
         /// <summary>
         /// User-provided labels, represented as a dictionary where each label is a single key value pair.
         /// </summary>
@@ -6200,6 +6079,19 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("timeBasedRetention")]
         public virtual object TimeBasedRetention { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Message type for storing user labels. User labels are used to tag App Engine resources, allowing users to search
+    /// for resources matching a set of labels and to aggregate usage data by labels.
+    /// </summary>
+    public class StorageDatabasecenterPartnerapiV1mainUserLabels : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

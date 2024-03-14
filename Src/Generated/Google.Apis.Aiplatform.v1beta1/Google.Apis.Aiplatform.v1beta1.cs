@@ -7652,8 +7652,8 @@ namespace Google.Apis.Aiplatform.v1beta1
                     /// the Endpoint ID, i.e. the last segment of the Endpoint's resource name. * `display_name`
                     /// supports = and, != * `labels` supports general map functions that is: * `labels.key=value` -
                     /// key:value equality * `labels.key:* or labels:key - key existence * A key including a space must
-                    /// be quoted. `labels."a key"`. Some examples: * `endpoint=1` * `displayName="myDisplayName"` *
-                    /// `labels.myKey="myValue"`
+                    /// be quoted. `labels."a key"`. * `base_model_name` only supports = Some examples: * `endpoint=1` *
+                    /// `displayName="myDisplayName"` * `labels.myKey="myValue"` * `baseModelName="text-bison"`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -12283,6 +12283,87 @@ namespace Google.Apis.Aiplatform.v1beta1
                         }
                     }
 
+                    /// <summary>
+                    /// Gets the access control policy for a resource. Returns an empty policy if the resource exists
+                    /// and does not have a policy set.
+                    /// </summary>
+                    /// <param name="resource">
+                    /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </param>
+                    public virtual GetIamPolicyRequest GetIamPolicy(string resource)
+                    {
+                        return new GetIamPolicyRequest(this.service, resource);
+                    }
+
+                    /// <summary>
+                    /// Gets the access control policy for a resource. Returns an empty policy if the resource exists
+                    /// and does not have a policy set.
+                    /// </summary>
+                    public class GetIamPolicyRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleIamV1Policy>
+                    {
+                        /// <summary>Constructs a new GetIamPolicy request.</summary>
+                        public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+                        {
+                            Resource = resource;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for
+                        /// this field.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Resource { get; private set; }
+
+                        /// <summary>
+                        /// Optional. The maximum policy version that will be used to format the policy. Valid values
+                        /// are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for
+                        /// policies with any conditional role bindings must specify version 3. Policies with no
+                        /// conditional role bindings may specify any valid value or leave the field unset. The policy
+                        /// in the response might use the policy version that you specified, or it might use a lower
+                        /// policy version. For example, if you specify version 3, but the policy has no conditional
+                        /// role bindings, the response uses version 1. To learn which resources support conditions in
+                        /// their IAM policies, see the [IAM
+                        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "getIamPolicy";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+resource}:getIamPolicy";
+
+                        /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/featureOnlineStores/[^/]+/featureViews/[^/]+$",
+                            });
+                            RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "options.requestedPolicyVersion",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
                     /// <summary>Lists FeatureViews in a given FeatureOnlineStore.</summary>
                     /// <param name="parent">
                     /// Required. The resource name of the FeatureOnlineStore to list FeatureViews. Format:
@@ -12548,6 +12629,73 @@ namespace Google.Apis.Aiplatform.v1beta1
                         }
                     }
 
+                    /// <summary>
+                    /// Sets the access control policy on the specified resource. Replaces any existing policy. Can
+                    /// return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="resource">
+                    /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </param>
+                    public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Aiplatform.v1beta1.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
+                    {
+                        return new SetIamPolicyRequest(this.service, body, resource);
+                    }
+
+                    /// <summary>
+                    /// Sets the access control policy on the specified resource. Replaces any existing policy. Can
+                    /// return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+                    /// </summary>
+                    public class SetIamPolicyRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleIamV1Policy>
+                    {
+                        /// <summary>Constructs a new SetIamPolicy request.</summary>
+                        public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1beta1.Data.GoogleIamV1SetIamPolicyRequest body, string resource) : base(service)
+                        {
+                            Resource = resource;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for
+                        /// this field.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Resource { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Aiplatform.v1beta1.Data.GoogleIamV1SetIamPolicyRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "setIamPolicy";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+resource}:setIamPolicy";
+
+                        /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/featureOnlineStores/[^/]+/featureViews/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Triggers on-demand sync for the FeatureView.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="featureView">
@@ -12603,6 +12751,85 @@ namespace Google.Apis.Aiplatform.v1beta1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/featureOnlineStores/[^/]+/featureViews/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
+                    /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
+                    /// designed to be used for building permission-aware UIs and command-line tools, not for
+                    /// authorization checking. This operation may "fail open" without warning.
+                    /// </summary>
+                    /// <param name="resource">
+                    /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </param>
+                    public virtual TestIamPermissionsRequest TestIamPermissions(string resource)
+                    {
+                        return new TestIamPermissionsRequest(this.service, resource);
+                    }
+
+                    /// <summary>
+                    /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
+                    /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
+                    /// designed to be used for building permission-aware UIs and command-line tools, not for
+                    /// authorization checking. This operation may "fail open" without warning.
+                    /// </summary>
+                    public class TestIamPermissionsRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleIamV1TestIamPermissionsResponse>
+                    {
+                        /// <summary>Constructs a new TestIamPermissions request.</summary>
+                        public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+                        {
+                            Resource = resource;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for
+                        /// this field.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Resource { get; private set; }
+
+                        /// <summary>
+                        /// The set of permissions to check for the `resource`. Permissions with wildcards (such as `*`
+                        /// or `storage.*`) are not allowed. For more information see [IAM
+                        /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("permissions", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual Google.Apis.Util.Repeatable<string> Permissions { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "testIamPermissions";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+resource}:testIamPermissions";
+
+                        /// <summary>Initializes TestIamPermissions parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/featureOnlineStores/[^/]+/featureViews/[^/]+$",
+                            });
+                            RequestParameters.Add("permissions", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "permissions",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                         }
                     }
@@ -13085,6 +13312,86 @@ namespace Google.Apis.Aiplatform.v1beta1
                     }
                 }
 
+                /// <summary>
+                /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
+                /// does not have a policy set.
+                /// </summary>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
+                /// </param>
+                public virtual GetIamPolicyRequest GetIamPolicy(string resource)
+                {
+                    return new GetIamPolicyRequest(this.service, resource);
+                }
+
+                /// <summary>
+                /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
+                /// does not have a policy set.
+                /// </summary>
+                public class GetIamPolicyRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleIamV1Policy>
+                {
+                    /// <summary>Constructs a new GetIamPolicy request.</summary>
+                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum policy version that will be used to format the policy. Valid values are 0,
+                    /// 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any
+                    /// conditional role bindings must specify version 3. Policies with no conditional role bindings may
+                    /// specify any valid value or leave the field unset. The policy in the response might use the
+                    /// policy version that you specified, or it might use a lower policy version. For example, if you
+                    /// specify version 3, but the policy has no conditional role bindings, the response uses version 1.
+                    /// To learn which resources support conditions in their IAM policies, see the [IAM
+                    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "getIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+resource}:getIamPolicy";
+
+                    /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/featureOnlineStores/[^/]+$",
+                        });
+                        RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
                 /// <summary>Lists FeatureOnlineStores in a given project and location.</summary>
                 /// <param name="parent">
                 /// Required. The resource name of the Location to list FeatureOnlineStores. Format:
@@ -13275,6 +13582,152 @@ namespace Google.Apis.Aiplatform.v1beta1
                         RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                         {
                             Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
+                /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
+                /// </param>
+                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Aiplatform.v1beta1.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
+                {
+                    return new SetIamPolicyRequest(this.service, body, resource);
+                }
+
+                /// <summary>
+                /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
+                /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+                /// </summary>
+                public class SetIamPolicyRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleIamV1Policy>
+                {
+                    /// <summary>Constructs a new SetIamPolicy request.</summary>
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1beta1.Data.GoogleIamV1SetIamPolicyRequest body, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Aiplatform.v1beta1.Data.GoogleIamV1SetIamPolicyRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "setIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+resource}:setIamPolicy";
+
+                    /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/featureOnlineStores/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
+                /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
+                /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
+                /// checking. This operation may "fail open" without warning.
+                /// </summary>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
+                /// </param>
+                public virtual TestIamPermissionsRequest TestIamPermissions(string resource)
+                {
+                    return new TestIamPermissionsRequest(this.service, resource);
+                }
+
+                /// <summary>
+                /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
+                /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
+                /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
+                /// checking. This operation may "fail open" without warning.
+                /// </summary>
+                public class TestIamPermissionsRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleIamV1TestIamPermissionsResponse>
+                {
+                    /// <summary>Constructs a new TestIamPermissions request.</summary>
+                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>
+                    /// The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or
+                    /// `storage.*`) are not allowed. For more information see [IAM
+                    /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("permissions", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<string> Permissions { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "testIamPermissions";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+resource}:testIamPermissions";
+
+                    /// <summary>Initializes TestIamPermissions parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/featureOnlineStores/[^/]+$",
+                        });
+                        RequestParameters.Add("permissions", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "permissions",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -26579,7 +27032,8 @@ namespace Google.Apis.Aiplatform.v1beta1
                     /// last segment of the Model's resource name. * `display_name` supports = and != * `labels`
                     /// supports general map functions that is: * `labels.key=value` - key:value equality *
                     /// `labels.key:* or labels:key - key existence * A key including a space must be quoted. `labels."a
-                    /// key"`. Some examples: * `model=1234` * `displayName="myDisplayName"` * `labels.myKey="myValue"`
+                    /// key"`. * `base_model_name` only supports = Some examples: * `model=1234` *
+                    /// `displayName="myDisplayName"` * `labels.myKey="myValue"` * `baseModelName="text-bison"`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -41173,6 +41627,13 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
     /// <summary>A single part of a message.</summary>
     public class CloudAiNlLlmProtoServicePart : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Document metadata. The metadata should only be used by the Cloud LLM when supporting document mime types. It
+        /// will only be populated when this image input part is converted from a document input part.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentMetadata")]
+        public virtual CloudAiNlLlmProtoServicePartDocumentMetadata DocumentMetadata { get; set; }
+
         /// <summary>URI-based data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileData")]
         public virtual CloudAiNlLlmProtoServicePartFileData FileData { get; set; }
@@ -41218,6 +41679,24 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// <summary>Original file data where the blob comes from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalFileData")]
         public virtual CloudAiNlLlmProtoServicePartFileData OriginalFileData { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata describes the original input document content.</summary>
+    public class CloudAiNlLlmProtoServicePartDocumentMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The original document blob.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originalDocumentBlob")]
+        public virtual CloudAiNlLlmProtoServicePartBlob OriginalDocumentBlob { get; set; }
+
+        /// <summary>
+        /// The (1-indexed) page number of the image in the original document. The first page carries the original
+        /// document content and mime type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageNumber")]
+        public virtual System.Nullable<int> PageNumber { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -41337,6 +41816,10 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("flagged")]
         public virtual System.Nullable<bool> Flagged { get; set; }
 
+        /// <summary>The influential terms that could potentially block the response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("influentialTerms")]
+        public virtual System.Collections.Generic.IList<CloudAiNlLlmProtoServiceRaiSignalInfluentialTerm> InfluentialTerms { get; set; }
+
         /// <summary>The RAI category.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("raiCategory")]
         public virtual string RaiCategory { get; set; }
@@ -41344,6 +41827,29 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// <summary>The score for the category, in the range [0.0, 1.0].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("score")]
         public virtual System.Nullable<float> Score { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The influential term that could potentially block the response.</summary>
+    public class CloudAiNlLlmProtoServiceRaiSignalInfluentialTerm : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The beginning offset of the influential term.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("beginOffset")]
+        public virtual System.Nullable<int> BeginOffset { get; set; }
+
+        /// <summary>The confidence score of the influential term.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; }
+
+        /// <summary>The source of the influential term, prompt or response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
+        /// <summary>The influential term.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("term")]
+        public virtual string Term { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -48521,10 +49027,9 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
 
         /// <summary>
         /// Optional. Service agent type used during data sync. By default, the Vertex AI Service Agent is used. When
-        /// using an IAM Policy to isolate this FeatureView within a project
-        /// (https://cloud.google.com/vertex-ai/docs/featurestore/latest/resource-policy) a separate service account
-        /// should be provisioned by setting this field to `SERVICE_AGENT_TYPE_FEATURE_VIEW`. This will generate a
-        /// separate service account to access the BigQuery source table.
+        /// using an IAM Policy to isolate this FeatureView within a project, a separate service account should be
+        /// provisioned by setting this field to `SERVICE_AGENT_TYPE_FEATURE_VIEW`. This will generate a separate
+        /// service account to access the BigQuery source table.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAgentType")]
         public virtual string ServiceAgentType { get; set; }
@@ -49248,7 +49753,7 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The request message for MatchService.FindNeighbors.</summary>
+    /// <summary>LINT.IfChange The request message for MatchService.FindNeighbors.</summary>
     public class GoogleCloudAiplatformV1beta1FindNeighborsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
