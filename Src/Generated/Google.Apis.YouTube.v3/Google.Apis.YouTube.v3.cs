@@ -13953,6 +13953,10 @@ namespace Google.Apis.YouTube.v3.Data
 
     public class LiveChatMessageListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Set when there is an active poll.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activePollItem")]
+        public virtual LiveChatMessage ActivePollItem { get; set; }
+
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }

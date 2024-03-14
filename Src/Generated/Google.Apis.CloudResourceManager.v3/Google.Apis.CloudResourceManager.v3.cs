@@ -5004,7 +5004,8 @@ namespace Google.Apis.CloudResourceManager.v3.Data
 
         /// <summary>
         /// Optional. Input only. Immutable. Tag keys/values directly bound to this folder. Each item in the map must be
-        /// expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing"
+        /// expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" Note:
+        /// Currently this field is in Preview.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
@@ -5808,7 +5809,8 @@ namespace Google.Apis.CloudResourceManager.v3.Data
 
         /// <summary>
         /// Optional. Input only. Immutable. Tag keys/values directly bound to this project. Each item in the map must
-        /// be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing"
+        /// be expressed as " : ". For example: "123/environment" : "production", "123/costCenter" : "marketing" Note:
+        /// Currently this field is in Preview.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }

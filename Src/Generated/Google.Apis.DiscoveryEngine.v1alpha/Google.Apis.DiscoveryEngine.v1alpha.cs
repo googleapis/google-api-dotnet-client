@@ -819,6 +819,173 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             public DocumentsResource(Google.Apis.Services.IClientService service)
                             {
                                 this.service = service;
+                                Chunks = new ChunksResource(service);
+                            }
+
+                            /// <summary>Gets the Chunks resource.</summary>
+                            public virtual ChunksResource Chunks { get; }
+
+                            /// <summary>The "chunks" collection of methods.</summary>
+                            public class ChunksResource
+                            {
+                                private const string Resource = "chunks";
+
+                                /// <summary>The service which this resource belongs to.</summary>
+                                private readonly Google.Apis.Services.IClientService service;
+
+                                /// <summary>Constructs a new resource.</summary>
+                                public ChunksResource(Google.Apis.Services.IClientService service)
+                                {
+                                    this.service = service;
+                                }
+
+                                /// <summary>Gets a Document.</summary>
+                                /// <param name="name">
+                                /// Required. Full resource name of Chunk, such as
+                                /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document}/chunks/{chunk}`.
+                                /// If the caller does not have permission to access the Chunk, regardless of whether or
+                                /// not it exists, a `PERMISSION_DENIED` error is returned. If the requested Chunk does
+                                /// not exist, a `NOT_FOUND` error is returned.
+                                /// </param>
+                                public virtual GetRequest Get(string name)
+                                {
+                                    return new GetRequest(this.service, name);
+                                }
+
+                                /// <summary>Gets a Document.</summary>
+                                public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaChunk>
+                                {
+                                    /// <summary>Constructs a new Get request.</summary>
+                                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                                    {
+                                        Name = name;
+                                        InitParameters();
+                                    }
+
+                                    /// <summary>
+                                    /// Required. Full resource name of Chunk, such as
+                                    /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document}/chunks/{chunk}`.
+                                    /// If the caller does not have permission to access the Chunk, regardless of
+                                    /// whether or not it exists, a `PERMISSION_DENIED` error is returned. If the
+                                    /// requested Chunk does not exist, a `NOT_FOUND` error is returned.
+                                    /// </summary>
+                                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                    public virtual string Name { get; private set; }
+
+                                    /// <summary>Gets the method name.</summary>
+                                    public override string MethodName => "get";
+
+                                    /// <summary>Gets the HTTP method.</summary>
+                                    public override string HttpMethod => "GET";
+
+                                    /// <summary>Gets the REST path.</summary>
+                                    public override string RestPath => "v1alpha/{+name}";
+
+                                    /// <summary>Initializes Get parameter list.</summary>
+                                    protected override void InitParameters()
+                                    {
+                                        base.InitParameters();
+                                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "name",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+/branches/[^/]+/documents/[^/]+/chunks/[^/]+$",
+                                        });
+                                    }
+                                }
+
+                                /// <summary>Gets a list of Chunks.</summary>
+                                /// <param name="parent">
+                                /// Required. The parent document resource name, such as
+                                /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document}`.
+                                /// If the caller does not have permission to list Chunks under this document,
+                                /// regardless of whether or not this document exists, a `PERMISSION_DENIED` error is
+                                /// returned.
+                                /// </param>
+                                public virtual ListRequest List(string parent)
+                                {
+                                    return new ListRequest(this.service, parent);
+                                }
+
+                                /// <summary>Gets a list of Chunks.</summary>
+                                public class ListRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaListChunksResponse>
+                                {
+                                    /// <summary>Constructs a new List request.</summary>
+                                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                                    {
+                                        Parent = parent;
+                                        InitParameters();
+                                    }
+
+                                    /// <summary>
+                                    /// Required. The parent document resource name, such as
+                                    /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document}`.
+                                    /// If the caller does not have permission to list Chunks under this document,
+                                    /// regardless of whether or not this document exists, a `PERMISSION_DENIED` error
+                                    /// is returned.
+                                    /// </summary>
+                                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                    public virtual string Parent { get; private set; }
+
+                                    /// <summary>
+                                    /// Maximum number of Chunks to return. If unspecified, defaults to 100. The maximum
+                                    /// allowed value is 1000. Values above 1000 will be coerced to 1000. If this field
+                                    /// is negative, an `INVALID_ARGUMENT` error is returned.
+                                    /// </summary>
+                                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                                    /// <summary>
+                                    /// A page token ListChunksResponse.next_page_token, received from a previous
+                                    /// ChunkService.ListChunks call. Provide this to retrieve the subsequent page. When
+                                    /// paginating, all other parameters provided to ChunkService.ListChunks must match
+                                    /// the call that provided the page token. Otherwise, an `INVALID_ARGUMENT` error is
+                                    /// returned.
+                                    /// </summary>
+                                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                                    public virtual string PageToken { get; set; }
+
+                                    /// <summary>Gets the method name.</summary>
+                                    public override string MethodName => "list";
+
+                                    /// <summary>Gets the HTTP method.</summary>
+                                    public override string HttpMethod => "GET";
+
+                                    /// <summary>Gets the REST path.</summary>
+                                    public override string RestPath => "v1alpha/{+parent}/chunks";
+
+                                    /// <summary>Initializes List parameter list.</summary>
+                                    protected override void InitParameters()
+                                    {
+                                        base.InitParameters();
+                                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "parent",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+/branches/[^/]+/documents/[^/]+$",
+                                        });
+                                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "pageSize",
+                                            IsRequired = false,
+                                            ParameterType = "query",
+                                            DefaultValue = null,
+                                            Pattern = null,
+                                        });
+                                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "pageToken",
+                                            IsRequired = false,
+                                            ParameterType = "query",
+                                            DefaultValue = null,
+                                            Pattern = null,
+                                        });
+                                    }
+                                }
                             }
 
                             /// <summary>Creates a Document.</summary>
@@ -2811,7 +2978,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// </summary>
                         /// <param name="name">
                         /// Required. The resource name of the ServingConfig to get. Format:
-                        /// `projects/{project_number}/locations/{location}/collections/{collection}/dataStores/{data_store}/servingConfigs/{serving_config_id}`
+                        /// `projects/{project_number}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}`
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
@@ -2832,7 +2999,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
 
                             /// <summary>
                             /// Required. The resource name of the ServingConfig to get. Format:
-                            /// `projects/{project_number}/locations/{location}/collections/{collection}/dataStores/{data_store}/servingConfigs/{serving_config_id}`
+                            /// `projects/{project_number}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -2863,8 +3030,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
 
                         /// <summary>Lists all ServingConfigs linked to this dataStore.</summary>
                         /// <param name="parent">
-                        /// Required. The dataStore resource name. Format:
-                        /// `projects/{project_number}/locations/{location}/collections/{collection}/dataStores/{data_store}`
+                        /// Required. Full resource name of the parent resource. Format:
+                        /// `projects/{project_number}/locations/{location}/collections/{collection}/engines/{engine}`
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
@@ -2882,8 +3049,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             }
 
                             /// <summary>
-                            /// Required. The dataStore resource name. Format:
-                            /// `projects/{project_number}/locations/{location}/collections/{collection}/dataStores/{data_store}`
+                            /// Required. Full resource name of the parent resource. Format:
+                            /// `projects/{project_number}/locations/{location}/collections/{collection}/engines/{engine}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -2948,7 +3115,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
                         /// Immutable. Fully qualified name
-                        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/servingConfigs/{serving_config_id}`
+                        /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}/servingConfigs/{serving_config_id}`
                         /// </param>
                         public virtual PatchRequest Patch(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaServingConfig body, string name)
                         {
@@ -2970,7 +3137,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
 
                             /// <summary>
                             /// Immutable. Fully qualified name
-                            /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/servingConfigs/{serving_config_id}`
+                            /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}/servingConfigs/{serving_config_id}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -4737,7 +4904,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// suggestions generated from user-imported search events. * `document-completable` - Using
                         /// suggestions taken directly from user-imported document fields marked as completable. Default
                         /// values: * `document` is the default model for regular dataStores. * `search-history` is the
-                        /// default model for site search dataStores. *
+                        /// default model for site search dataStores.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("queryModel", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string QueryModel { get; set; }
@@ -6101,7 +6268,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// </summary>
                         /// <param name="name">
                         /// Required. The resource name of the ServingConfig to get. Format:
-                        /// `projects/{project_number}/locations/{location}/collections/{collection}/dataStores/{data_store}/servingConfigs/{serving_config_id}`
+                        /// `projects/{project_number}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}`
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
@@ -6122,7 +6289,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
 
                             /// <summary>
                             /// Required. The resource name of the ServingConfig to get. Format:
-                            /// `projects/{project_number}/locations/{location}/collections/{collection}/dataStores/{data_store}/servingConfigs/{serving_config_id}`
+                            /// `projects/{project_number}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -6153,8 +6320,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
 
                         /// <summary>Lists all ServingConfigs linked to this dataStore.</summary>
                         /// <param name="parent">
-                        /// Required. The dataStore resource name. Format:
-                        /// `projects/{project_number}/locations/{location}/collections/{collection}/dataStores/{data_store}`
+                        /// Required. Full resource name of the parent resource. Format:
+                        /// `projects/{project_number}/locations/{location}/collections/{collection}/engines/{engine}`
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
@@ -6172,8 +6339,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             }
 
                             /// <summary>
-                            /// Required. The dataStore resource name. Format:
-                            /// `projects/{project_number}/locations/{location}/collections/{collection}/dataStores/{data_store}`
+                            /// Required. Full resource name of the parent resource. Format:
+                            /// `projects/{project_number}/locations/{location}/collections/{collection}/engines/{engine}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -6238,7 +6405,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
                         /// Immutable. Fully qualified name
-                        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/servingConfigs/{serving_config_id}`
+                        /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}/servingConfigs/{serving_config_id}`
                         /// </param>
                         public virtual PatchRequest Patch(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaServingConfig body, string name)
                         {
@@ -6260,7 +6427,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
 
                             /// <summary>
                             /// Immutable. Fully qualified name
-                            /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/servingConfigs/{serving_config_id}`
+                            /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}/servingConfigs/{serving_config_id}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -7213,6 +7380,172 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         public DocumentsResource(Google.Apis.Services.IClientService service)
                         {
                             this.service = service;
+                            Chunks = new ChunksResource(service);
+                        }
+
+                        /// <summary>Gets the Chunks resource.</summary>
+                        public virtual ChunksResource Chunks { get; }
+
+                        /// <summary>The "chunks" collection of methods.</summary>
+                        public class ChunksResource
+                        {
+                            private const string Resource = "chunks";
+
+                            /// <summary>The service which this resource belongs to.</summary>
+                            private readonly Google.Apis.Services.IClientService service;
+
+                            /// <summary>Constructs a new resource.</summary>
+                            public ChunksResource(Google.Apis.Services.IClientService service)
+                            {
+                                this.service = service;
+                            }
+
+                            /// <summary>Gets a Document.</summary>
+                            /// <param name="name">
+                            /// Required. Full resource name of Chunk, such as
+                            /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document}/chunks/{chunk}`.
+                            /// If the caller does not have permission to access the Chunk, regardless of whether or not
+                            /// it exists, a `PERMISSION_DENIED` error is returned. If the requested Chunk does not
+                            /// exist, a `NOT_FOUND` error is returned.
+                            /// </param>
+                            public virtual GetRequest Get(string name)
+                            {
+                                return new GetRequest(this.service, name);
+                            }
+
+                            /// <summary>Gets a Document.</summary>
+                            public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaChunk>
+                            {
+                                /// <summary>Constructs a new Get request.</summary>
+                                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                                {
+                                    Name = name;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. Full resource name of Chunk, such as
+                                /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document}/chunks/{chunk}`.
+                                /// If the caller does not have permission to access the Chunk, regardless of whether or
+                                /// not it exists, a `PERMISSION_DENIED` error is returned. If the requested Chunk does
+                                /// not exist, a `NOT_FOUND` error is returned.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Name { get; private set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "get";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "GET";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1alpha/{+name}";
+
+                                /// <summary>Initializes Get parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+/branches/[^/]+/documents/[^/]+/chunks/[^/]+$",
+                                    });
+                                }
+                            }
+
+                            /// <summary>Gets a list of Chunks.</summary>
+                            /// <param name="parent">
+                            /// Required. The parent document resource name, such as
+                            /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document}`.
+                            /// If the caller does not have permission to list Chunks under this document, regardless of
+                            /// whether or not this document exists, a `PERMISSION_DENIED` error is returned.
+                            /// </param>
+                            public virtual ListRequest List(string parent)
+                            {
+                                return new ListRequest(this.service, parent);
+                            }
+
+                            /// <summary>Gets a list of Chunks.</summary>
+                            public class ListRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaListChunksResponse>
+                            {
+                                /// <summary>Constructs a new List request.</summary>
+                                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                                {
+                                    Parent = parent;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. The parent document resource name, such as
+                                /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document}`.
+                                /// If the caller does not have permission to list Chunks under this document,
+                                /// regardless of whether or not this document exists, a `PERMISSION_DENIED` error is
+                                /// returned.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Parent { get; private set; }
+
+                                /// <summary>
+                                /// Maximum number of Chunks to return. If unspecified, defaults to 100. The maximum
+                                /// allowed value is 1000. Values above 1000 will be coerced to 1000. If this field is
+                                /// negative, an `INVALID_ARGUMENT` error is returned.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual System.Nullable<int> PageSize { get; set; }
+
+                                /// <summary>
+                                /// A page token ListChunksResponse.next_page_token, received from a previous
+                                /// ChunkService.ListChunks call. Provide this to retrieve the subsequent page. When
+                                /// paginating, all other parameters provided to ChunkService.ListChunks must match the
+                                /// call that provided the page token. Otherwise, an `INVALID_ARGUMENT` error is
+                                /// returned.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual string PageToken { get; set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "list";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "GET";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1alpha/{+parent}/chunks";
+
+                                /// <summary>Initializes List parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "parent",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+/branches/[^/]+/documents/[^/]+$",
+                                    });
+                                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "pageSize",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "pageToken",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                }
+                            }
                         }
 
                         /// <summary>Creates a Document.</summary>
@@ -9046,7 +9379,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// </summary>
                     /// <param name="name">
                     /// Required. The resource name of the ServingConfig to get. Format:
-                    /// `projects/{project_number}/locations/{location}/collections/{collection}/dataStores/{data_store}/servingConfigs/{serving_config_id}`
+                    /// `projects/{project_number}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}`
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
@@ -9067,7 +9400,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
 
                         /// <summary>
                         /// Required. The resource name of the ServingConfig to get. Format:
-                        /// `projects/{project_number}/locations/{location}/collections/{collection}/dataStores/{data_store}/servingConfigs/{serving_config_id}`
+                        /// `projects/{project_number}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -9098,8 +9431,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
 
                     /// <summary>Lists all ServingConfigs linked to this dataStore.</summary>
                     /// <param name="parent">
-                    /// Required. The dataStore resource name. Format:
-                    /// `projects/{project_number}/locations/{location}/collections/{collection}/dataStores/{data_store}`
+                    /// Required. Full resource name of the parent resource. Format:
+                    /// `projects/{project_number}/locations/{location}/collections/{collection}/engines/{engine}`
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -9117,8 +9450,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         }
 
                         /// <summary>
-                        /// Required. The dataStore resource name. Format:
-                        /// `projects/{project_number}/locations/{location}/collections/{collection}/dataStores/{data_store}`
+                        /// Required. Full resource name of the parent resource. Format:
+                        /// `projects/{project_number}/locations/{location}/collections/{collection}/engines/{engine}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -9183,7 +9516,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// Immutable. Fully qualified name
-                    /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/servingConfigs/{serving_config_id}`
+                    /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}/servingConfigs/{serving_config_id}`
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaServingConfig body, string name)
                     {
@@ -9205,7 +9538,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
 
                         /// <summary>
                         /// Immutable. Fully qualified name
-                        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/servingConfigs/{serving_config_id}`
+                        /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}/servingConfigs/{serving_config_id}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -10495,7 +10828,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// no traffic for Search API. * `user-event` - Using suggestions generated from user-imported
                     /// search events. * `document-completable` - Using suggestions taken directly from user-imported
                     /// document fields marked as completable. Default values: * `document` is the default model for
-                    /// regular dataStores. * `search-history` is the default model for site search dataStores. *
+                    /// regular dataStores. * `search-history` is the default model for site search dataStores.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("queryModel", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string QueryModel { get; set; }
@@ -12667,13 +13000,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The digital parsing configurations for documents.</summary>
-    public class GoogleCloudDiscoveryengineV1DigitalParsingConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// Metadata related to the progress of the SiteSearchEngineService.DisableAdvancedSiteSearch operation. This will
     /// be returned by the google.longrunning.Operation.metadata field.
@@ -12804,11 +13130,36 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     {
         /// <summary>Configurations applied to digital parser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("digitalParsingConfig")]
-        public virtual GoogleCloudDiscoveryengineV1DigitalParsingConfig DigitalParsingConfig { get; set; }
+        public virtual GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigDigitalParsingConfig DigitalParsingConfig { get; set; }
 
         /// <summary>Configurations applied to OCR parser. Currently it only applies to PDFs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ocrParsingConfig")]
-        public virtual GoogleCloudDiscoveryengineV1OcrParsingConfig OcrParsingConfig { get; set; }
+        public virtual GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigOcrParsingConfig OcrParsingConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The digital parsing configurations for documents.</summary>
+    public class GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigDigitalParsingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The OCR parsing configurations for documents.</summary>
+    public class GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigOcrParsingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Apply additional enhanced OCR processing to a list of document elements. Supported values: * `table`:
+        /// advanced table parsing model.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enhancedDocumentElements")]
+        public virtual System.Collections.Generic.IList<string> EnhancedDocumentElements { get; set; }
+
+        /// <summary>If true, will use native text instead of OCR text on pages containing native text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useNativeText")]
+        public virtual System.Nullable<bool> UseNativeText { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13502,24 +13853,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unjoinedEventsCount")]
         public virtual System.Nullable<long> UnjoinedEventsCount { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The OCR parsing configurations for documents.</summary>
-    public class GoogleCloudDiscoveryengineV1OcrParsingConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Apply additional enhanced OCR processing to a list of document elements. Supported values: * `table`:
-        /// advanced table parsing model.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enhancedDocumentElements")]
-        public virtual System.Collections.Generic.IList<string> EnhancedDocumentElements { get; set; }
-
-        /// <summary>If true, will use native text instead of OCR text on pages containing native text.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("useNativeText")]
-        public virtual System.Nullable<bool> UseNativeText { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14364,7 +14697,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// `user-event` - Using suggestions generated from user-imported search events. * `document-completable` -
         /// Using suggestions taken directly from user-imported document fields marked as completable. Default values: *
         /// `document` is the default model for regular dataStores. * `search-history` is the default model for site
-        /// search dataStores. *
+        /// search dataStores.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryModel")]
         public virtual string QueryModel { get; set; }
@@ -15545,13 +15878,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The digital parsing configurations for documents.</summary>
-    public class GoogleCloudDiscoveryengineV1alphaDigitalParsingConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// Metadata related to the progress of the SiteSearchEngineService.DisableAdvancedSiteSearch operation. This will
     /// be returned by the google.longrunning.Operation.metadata field.
@@ -15759,6 +16085,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>ACL Information of the Document.</summary>
     public class GoogleCloudDiscoveryengineV1alphaDocumentAclInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Readers of the document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readers")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaDocumentAclInfoAccessRestriction> Readers { get; set; }
 
@@ -15878,13 +16205,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// [DEPRECATED] This field is deprecated. To specify OCR parsing config, please specify `ocr_parsing_config` in
-        /// `default_parsing_config` field The OCR config. Currently it only applies to PDFs.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ocrConfig")]
-        public virtual GoogleCloudDiscoveryengineV1alphaOcrConfig OcrConfig { get; set; }
-
-        /// <summary>
         /// Map from file type to override the default parsing configuration based on the file type. Supported keys: *
         /// `pdf`: Override parsing config for PDF files, either digital parsing, ocr parsing or layout parsing is
         /// supported. * `html`: Override parsing config for HTML files, only digital parsing and or layout parsing are
@@ -15934,15 +16254,47 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     {
         /// <summary>Configurations applied to digital parser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("digitalParsingConfig")]
-        public virtual GoogleCloudDiscoveryengineV1alphaDigitalParsingConfig DigitalParsingConfig { get; set; }
+        public virtual GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigDigitalParsingConfig DigitalParsingConfig { get; set; }
 
         /// <summary>Configurations applied to layout parser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("layoutParsingConfig")]
-        public virtual GoogleCloudDiscoveryengineV1alphaLayoutParsingConfig LayoutParsingConfig { get; set; }
+        public virtual GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigLayoutParsingConfig LayoutParsingConfig { get; set; }
 
         /// <summary>Configurations applied to OCR parser. Currently it only applies to PDFs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ocrParsingConfig")]
-        public virtual GoogleCloudDiscoveryengineV1alphaOcrParsingConfig OcrParsingConfig { get; set; }
+        public virtual GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigOcrParsingConfig OcrParsingConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The digital parsing configurations for documents.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigDigitalParsingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The layout parsing configurations for documents.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigLayoutParsingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The OCR parsing configurations for documents.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigOcrParsingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Apply additional enhanced OCR processing to a list of document elements. Supported values: * `table`:
+        /// advanced table parsing model.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enhancedDocumentElements")]
+        public virtual System.Collections.Generic.IList<string> EnhancedDocumentElements { get; set; }
+
+        /// <summary>If true, will use native text instead of OCR text on pages containing native text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useNativeText")]
+        public virtual System.Nullable<bool> UseNativeText { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16071,13 +16423,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Metadata that describes the training and serving parameters of an Engine.</summary>
     public class GoogleCloudDiscoveryengineV1alphaEngine : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Whether the search engine can associate with multiple data stores. If true, the generic search engine can
-        /// associate with one or more data stores. This is an input-only field.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("allowMultipleDataStoresSearchEngine")]
-        public virtual System.Nullable<bool> AllowMultipleDataStoresSearchEngine { get; set; }
-
         /// <summary>
         /// Configurations for the Chat Engine. Only applicable if solution_type is SOLUTION_TYPE_CHAT.
         /// </summary>
@@ -17316,9 +17661,20 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The layout parsing configurations for documents.</summary>
-    public class GoogleCloudDiscoveryengineV1alphaLayoutParsingConfig : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>Response message for ChunkService.ListChunks method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaListChunksResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The Chunks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunks")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaChunk> Chunks { get; set; }
+
+        /// <summary>
+        /// A token that can be sent as ListChunksRequest.page_token to retrieve the next page. If this field is
+        /// omitted, there are no subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -17485,49 +17841,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mediaProgressPercentage")]
         public virtual System.Nullable<float> MediaProgressPercentage { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The OCR options for parsing documents.</summary>
-    public class GoogleCloudDiscoveryengineV1alphaOcrConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. If OCR is enabled or not. OCR must be enabled for other OcrConfig options to apply. We will only
-        /// perform OCR on the first 80 pages of the PDF files.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; }
-
-        /// <summary>
-        /// Apply additional enhanced OCR processing to a list of document elements. Supported values: * `table`:
-        /// advanced table parsing model.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enhancedDocumentElements")]
-        public virtual System.Collections.Generic.IList<string> EnhancedDocumentElements { get; set; }
-
-        /// <summary>If true, will use native text instead of OCR text on pages containing native text.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("useNativeText")]
-        public virtual System.Nullable<bool> UseNativeText { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The OCR parsing configurations for documents.</summary>
-    public class GoogleCloudDiscoveryengineV1alphaOcrParsingConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Apply additional enhanced OCR processing to a list of document elements. Supported values: * `table`:
-        /// advanced table parsing model.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enhancedDocumentElements")]
-        public virtual System.Collections.Generic.IList<string> EnhancedDocumentElements { get; set; }
-
-        /// <summary>If true, will use native text instead of OCR text on pages containing native text.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("useNativeText")]
-        public virtual System.Nullable<bool> UseNativeText { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -18491,6 +18804,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customFineTuningSpec")]
         public virtual GoogleCloudDiscoveryengineV1alphaCustomFineTuningSpec CustomFineTuningSpec { get; set; }
 
+        /// <summary>A list of data store specs to apply on a search call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataStoreSpecs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaSearchRequestDataStoreSpec> DataStoreSpecs { get; set; }
+
         /// <summary>
         /// Uses the provided embedding to do additional semantic document retrieval. The retrieval is based on the dot
         /// product of SearchRequest.EmbeddingSpec.EmbeddingVector.vector and the document embedding that is provided in
@@ -18683,8 +19000,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>
         /// An expression which specifies a boost condition. The syntax and supported fields are the same as a filter
         /// expression. See SearchRequest.filter for detail syntax and limitations. Examples: * To boost documents with
-        /// document ID "doc_1" or "doc_2", and color "Red" or "Blue": * (document_id: ANY("doc_1", "doc_2")) AND
-        /// (color: ANY("Red", "Blue"))
+        /// document ID "doc_1" or "doc_2", and color "Red" or "Blue": `(document_id: ANY("doc_1", "doc_2")) AND (color:
+        /// ANY("Red", "Blue"))`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual string Condition { get; set; }
@@ -18757,6 +19074,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numPreviousSegments")]
         public virtual System.Nullable<int> NumPreviousSegments { get; set; }
+
+        /// <summary>
+        /// Specifies whether to return the confidence score from the extractive segments in each search result. This
+        /// feature is available only for new or allowlisted data stores. To allowlist your data store, please contact
+        /// your Customer Engineer. The default value is `false`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnExtractiveSegmentScore")]
+        public virtual System.Nullable<bool> ReturnExtractiveSegmentScore { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -18842,7 +19167,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
 
         /// <summary>
         /// The number of top results to generate the summary from. If the number of results returned is less than
-        /// `summaryResultCount`, the summary is generated from all of the results. At most five results can be used to
+        /// `summaryResultCount`, the summary is generated from all of the results. At most 10 results can be used to
         /// generate a summary.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("summaryResultCount")]
@@ -18870,12 +19195,28 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     {
         /// <summary>
         /// The model version used to generate the summary. Supported values are: * `stable`: string. Default value when
-        /// no value is specified. Uses a generally available, fine-tuned version of the text-bison@001 model. *
-        /// `preview`: string. (Public preview) Uses a fine-tuned version of the text-bison@002 model. This model works
-        /// only for summaries in English.
+        /// no value is specified. Uses a generally available, fine-tuned model. For more information, see [Answer
+        /// generation model versions and
+        /// lifecycle](https://cloud.google.com/generative-ai-app-builder/docs/answer-generation-models). * `preview`:
+        /// string. (Public preview) Uses a preview model. For more information, see [Answer generation model versions
+        /// and lifecycle](https://cloud.google.com/generative-ai-app-builder/docs/answer-generation-models).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A struct to define data stores to filter on in a search call.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaSearchRequestDataStoreSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Full resource name of DataStore, such as
+        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataStore")]
+        public virtual string DataStore { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -19537,7 +19878,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
 
         /// <summary>
         /// Immutable. Fully qualified name
-        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/servingConfigs/{serving_config_id}`
+        /// `projects/{project}/locations/{location}/collections/{collection_id}/engines/{engine_id}/servingConfigs/{serving_config_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -19669,10 +20010,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentFreshnessCutoffDays")]
         public virtual System.Nullable<int> ContentFreshnessCutoffDays { get; set; }
-
-        /// <summary>Specifies the content watched minutes threshold for demotion.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("contentWatchedMinutesThreshold")]
-        public virtual System.Nullable<float> ContentWatchedMinutesThreshold { get; set; }
 
         /// <summary>
         /// Specifies the content watched percentage threshold for demotion. Threshold value must be between [0, 1.0]
@@ -20020,15 +20357,15 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     public class GoogleCloudDiscoveryengineV1alphaTrainCustomModelRequestGcsTrainingInput : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The Cloud Storage corpus data which could be associated in train data. The data path format is gs:///. A
+        /// The Cloud Storage corpus data which could be associated in train data. The data path format is `gs:///`. A
         /// newline delimited jsonl/ndjson file. For search-tuning model, each line should have the _id, title and text.
-        /// Example: {"_id": "doc1", title: "relevant doc", "text": "relevant text"}
+        /// Example: `{"_id": "doc1", title: "relevant doc", "text": "relevant text"}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("corpusDataPath")]
         public virtual string CorpusDataPath { get; set; }
 
         /// <summary>
-        /// The gcs query data which could be associated in train data. The data path format is gs:///. A newline
+        /// The gcs query data which could be associated in train data. The data path format is `gs:///`. A newline
         /// delimited jsonl/ndjson file. For search-tuning model, each line should have the _id and text. Example:
         /// {"_id": "query1", "text": "example query"}
         /// </summary>
@@ -20043,10 +20380,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string TestDataPath { get; set; }
 
         /// <summary>
-        /// Cloud Storage training data path whose format should be gs:///. The file should be in tsv format. Each line
-        /// should have the doc_id and query_id and score (number). For search-tuning model, it should have the query-id
-        /// corpus-id score as tsv file header. The score should be a number in [0, inf+). The larger the number is, the
-        /// more relevant the pair is. Example: query-id\tcorpus-id\tscore query1\tdoc1\t1
+        /// Cloud Storage training data path whose format should be `gs:///`. The file should be in tsv format. Each
+        /// line should have the doc_id and query_id and score (number). For search-tuning model, it should have the
+        /// query-id corpus-id score as tsv file header. The score should be a number in `[0, inf+)`. The larger the
+        /// number is, the more relevant the pair is. Example: * `query-id\tcorpus-id\tscore` * `query1\tdoc1\t1`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trainDataPath")]
         public virtual string TrainDataPath { get; set; }
@@ -20608,6 +20945,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allowlistedDomains")]
         public virtual System.Collections.Generic.IList<string> AllowlistedDomains { get; set; }
 
+        /// <summary>
+        /// Output only. Collection components that lists all collections and child data stores associated with the
+        /// widget config, those data sources can be used for filtering in widget service APIs, users can return results
+        /// that from selected data sources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("collectionComponents")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaWidgetConfigCollectionComponent> CollectionComponents { get; set; }
+
         /// <summary>Output only. Unique obfuscated identifier of a WidgetConfig.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configId")]
         public virtual string ConfigId { get; set; }
@@ -20656,6 +21001,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Output only. The type of the parent data store.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStoreType")]
         public virtual string DataStoreType { get; set; }
+
+        /// <summary>Configurable UI configurations per data store.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataStoreUiConfigs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaWidgetConfigDataStoreUiConfig> DataStoreUiConfigs { get; set; }
 
         /// <summary>
         /// Required. The human readable widget config display name. Used in Discovery UI. This field must be a UTF-8
@@ -20779,6 +21128,102 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Read-only collection component that contains data store collections fields that may be used for filtering
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaWidgetConfigCollectionComponent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>For the data store collection, list of the children data stores.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataStoreComponents")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaWidgetConfigDataStoreComponent> DataStoreComponents { get; set; }
+
+        /// <summary>The display name of the collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Output only. the identifier of the collection, used for widget service. For now it refers to collection_id,
+        /// in the future we will migrate the field to encrypted collection name UUID.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// The name of the collection. It should be collection resource name. Format:
+        /// `projects/{project_number}/locations/{location}/collections/{collection_id}`. For widget service usage, such
+        /// look up widget config, returned name should be skipped.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Read-only data store component that contains data stores fields that may be used for filtering, it's the child
+    /// of `CollectionComponent`.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaWidgetConfigDataStoreComponent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The display name of the data store.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Output only. the identifier of the data store, used for widget service. For now it refers to data_store_id,
+        /// in the future we will migrate the field to encrypted data store name UUID.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// The name of the data store. It should be data store resource name Format:
+        /// `projects/{project_number}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. For
+        /// widget service usage, such look up widget config, returned name should be skipped.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>UI component configuration for data store.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaWidgetConfigDataStoreUiConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Facet fields that store the mapping of fields to end user widget appearance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("facetField")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaWidgetConfigFacetField> FacetField { get; set; }
+
+        /// <summary>
+        /// The key is the UI component. Mock. Currently supported `title`, `thumbnail`, `url`, `custom1`, `custom2`,
+        /// `custom3`. The value is the name of the field along with its device visibility. The 3 custom fields are
+        /// optional and can be added or removed. `title`, `thumbnail`, `url` are required UI components that cannot be
+        /// removed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldsUiComponentsMap")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDiscoveryengineV1alphaWidgetConfigUIComponentField> FieldsUiComponentsMap { get; set; }
+
+        /// <summary>
+        /// Output only. the identifier of the data store, used for widget service. For now it refers to data_store_id,
+        /// in the future we will migrate the field to encrypted data store name UUID.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// The name of the data store. It should be data store resource name Format:
+        /// `projects/{project_number}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. For
+        /// widget service usage, such look up widget config, returned name should be skipped.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21769,13 +22214,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The digital parsing configurations for documents.</summary>
-    public class GoogleCloudDiscoveryengineV1betaDigitalParsingConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// Metadata related to the progress of the SiteSearchEngineService.DisableAdvancedSiteSearch operation. This will
     /// be returned by the google.longrunning.Operation.metadata field.
@@ -21906,11 +22344,36 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     {
         /// <summary>Configurations applied to digital parser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("digitalParsingConfig")]
-        public virtual GoogleCloudDiscoveryengineV1betaDigitalParsingConfig DigitalParsingConfig { get; set; }
+        public virtual GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfig DigitalParsingConfig { get; set; }
 
         /// <summary>Configurations applied to OCR parser. Currently it only applies to PDFs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ocrParsingConfig")]
-        public virtual GoogleCloudDiscoveryengineV1betaOcrParsingConfig OcrParsingConfig { get; set; }
+        public virtual GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfig OcrParsingConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The digital parsing configurations for documents.</summary>
+    public class GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The OCR parsing configurations for documents.</summary>
+    public class GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Apply additional enhanced OCR processing to a list of document elements. Supported values: * `table`:
+        /// advanced table parsing model.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enhancedDocumentElements")]
+        public virtual System.Collections.Generic.IList<string> EnhancedDocumentElements { get; set; }
+
+        /// <summary>If true, will use native text instead of OCR text on pages containing native text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useNativeText")]
+        public virtual System.Nullable<bool> UseNativeText { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22609,24 +23072,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The OCR parsing configurations for documents.</summary>
-    public class GoogleCloudDiscoveryengineV1betaOcrParsingConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Apply additional enhanced OCR processing to a list of document elements. Supported values: * `table`:
-        /// advanced table parsing model.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enhancedDocumentElements")]
-        public virtual System.Collections.Generic.IList<string> EnhancedDocumentElements { get; set; }
-
-        /// <summary>If true, will use native text instead of OCR text on pages containing native text.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("useNativeText")]
-        public virtual System.Nullable<bool> UseNativeText { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// Metadata related to the progress of the PurgeDocuments operation. This will be returned by the
     /// google.longrunning.Operation.metadata field.
@@ -23020,6 +23465,116 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalRequiredQuota")]
         public virtual System.Nullable<long> TotalRequiredQuota { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the TrainCustomModel operation. This is returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaTrainCustomModelMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response of the TrainCustomModelRequest. This message is returned by the google.longrunning.Operations.response
+    /// field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaTrainCustomModelResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Echoes the destination for the complete errors in the request if set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaImportErrorConfig ErrorConfig { get; set; }
+
+        /// <summary>A sample of errors encountered while processing the data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorSamples")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorSamples { get; set; }
+
+        /// <summary>
+        /// The trained model status. Possible values are: * **bad-data**: The training data quality is bad. *
+        /// **no-improvement**: Tuning didn't improve performance. Won't deploy. * **in-progress**: Model training is in
+        /// progress. * **ready**: The model is ready for serving.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelStatus")]
+        public virtual string ModelStatus { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

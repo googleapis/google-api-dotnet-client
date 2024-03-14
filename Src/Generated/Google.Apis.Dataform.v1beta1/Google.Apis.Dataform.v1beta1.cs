@@ -4048,7 +4048,7 @@ namespace Google.Apis.Dataform.v1beta1
 
                 /// <summary>Updates a single Repository.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Output only. The repository's name.</param>
+                /// <param name="name">Identifier. The repository's name.</param>
                 public virtual PatchRequest Patch(Google.Apis.Dataform.v1beta1.Data.Repository body, string name)
                 {
                     return new PatchRequest(this.service, body, name);
@@ -4065,7 +4065,7 @@ namespace Google.Apis.Dataform.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>Output only. The repository's name.</summary>
+                    /// <summary>Identifier. The repository's name.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -6257,7 +6257,7 @@ namespace Google.Apis.Dataform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Output only. The repository's name.</summary>
+        /// <summary>Identifier. The repository's name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -6713,7 +6713,7 @@ namespace Google.Apis.Dataform.v1beta1.Data
     /// <summary>Represents a Dataform Git workspace.</summary>
     public class Workspace : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The workspace's name.</summary>
+        /// <summary>Identifier. The workspace's name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 

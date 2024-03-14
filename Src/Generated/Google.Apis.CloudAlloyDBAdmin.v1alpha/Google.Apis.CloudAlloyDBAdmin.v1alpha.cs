@@ -2542,75 +2542,6 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha
                     }
                 }
 
-                /// <summary>
-                /// Generate a client certificate signed by a Cluster CA. The sole purpose of this endpoint is to
-                /// support AlloyDB connectors and the Auth Proxy client. The endpoint's behavior is subject to change
-                /// without notice, so do not rely on its behavior remaining constant. Future changes will not break
-                /// AlloyDB connectors or the Auth Proxy client.
-                /// </summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="parent">
-                /// Required. The name of the parent resource. The required format is: *
-                /// projects/{project}/locations/{location}/clusters/{cluster}
-                /// </param>
-                public virtual GenerateClientCertificateRequest GenerateClientCertificate(Google.Apis.CloudAlloyDBAdmin.v1alpha.Data.GenerateClientCertificateRequest body, string parent)
-                {
-                    return new GenerateClientCertificateRequest(this.service, body, parent);
-                }
-
-                /// <summary>
-                /// Generate a client certificate signed by a Cluster CA. The sole purpose of this endpoint is to
-                /// support AlloyDB connectors and the Auth Proxy client. The endpoint's behavior is subject to change
-                /// without notice, so do not rely on its behavior remaining constant. Future changes will not break
-                /// AlloyDB connectors or the Auth Proxy client.
-                /// </summary>
-                public class GenerateClientCertificateRequest : CloudAlloyDBAdminBaseServiceRequest<Google.Apis.CloudAlloyDBAdmin.v1alpha.Data.GenerateClientCertificateResponse>
-                {
-                    /// <summary>Constructs a new GenerateClientCertificate request.</summary>
-                    public GenerateClientCertificateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudAlloyDBAdmin.v1alpha.Data.GenerateClientCertificateRequest body, string parent) : base(service)
-                    {
-                        Parent = parent;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. The name of the parent resource. The required format is: *
-                    /// projects/{project}/locations/{location}/clusters/{cluster}
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.CloudAlloyDBAdmin.v1alpha.Data.GenerateClientCertificateRequest Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "generateClientCertificate";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1alpha/{+parent}:generateClientCertificate";
-
-                    /// <summary>Initializes GenerateClientCertificate parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
-                        });
-                    }
-                }
-
                 /// <summary>Gets details of a single Cluster.</summary>
                 /// <param name="name">
                 /// Required. The name of the resource. For the required format, see the comment on the Cluster.name
@@ -4115,6 +4046,13 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
 
         /// <summary>
+        /// Optional. Configuration parameters related to the Gemini in Databases add-on. See
+        /// go/prd-enable-duet-ai-databases for more details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geminiConfig")]
+        public virtual GeminiClusterConfig GeminiConfig { get; set; }
+
+        /// <summary>
         /// Input only. Initial user to setup during cluster creation. Required. If used in `RestoreCluster` this is
         /// ignored.
         /// </summary>
@@ -4124,6 +4062,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         /// <summary>Labels as key value pairs</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Optional. The maintenance update policy determines when to allow or deny updates.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceUpdatePolicy")]
+        public virtual MaintenanceUpdatePolicy MaintenanceUpdatePolicy { get; set; }
 
         /// <summary>Output only. Cluster created via DMS migration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("migrationSource")]
@@ -4454,6 +4396,38 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
     }
 
     /// <summary>
+    /// DenyMaintenancePeriod definition. Excepting emergencies, maintenance will not be scheduled to start within this
+    /// deny period. The start_date must be less than the end_date.
+    /// </summary>
+    public class DenyMaintenancePeriod : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Deny period end date. This can be: * A full date, with non-zero year, month and day values. * A month and
+        /// day value, with a zero year for recurring. Date matching this period will have to be before the end.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
+        public virtual GoogleTypeDate EndDate { get; set; }
+
+        /// <summary>
+        /// Deny period start date. This can be: * A full date, with non-zero year, month and day values. * A month and
+        /// day value, with a zero year for recurring. Date matching this period will have to be the same or after the
+        /// start.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
+        public virtual GoogleTypeDate StartDate { get; set; }
+
+        /// <summary>
+        /// Time in UTC when the deny period starts on start_date and ends on end_date. This can be: * Full time. * All
+        /// zeros for 00:00:00 UTC
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("time")]
+        public virtual GoogleTypeTimeOfDay Time { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
     /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
@@ -4524,68 +4498,37 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message for requests to generate a client certificate signed by the Cluster CA.</summary>
-    public class GenerateClientCertificateRequest : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>
+    /// Cluster level configuration parameters related to the Gemini in Databases add-on. See
+    /// go/prd-enable-duet-ai-databases for more details.
+    /// </summary>
+    public class GeminiClusterConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. An optional hint to the endpoint to generate the client certificate with the requested duration.
-        /// The duration can be from 1 hour to 24 hours. The endpoint may or may not honor the hint. If the hint is left
-        /// unspecified or is not honored, then the endpoint will pick an appropriate default duration.
+        /// Output only. Whether the Gemini in Databases add-on is enabled for the cluster. It will be true only if the
+        /// add-on has been enabled for the billing account corresponding to the cluster. Its status is toggled from the
+        /// Admin Control Center (ACC) and cannot be toggled using AlloyDB's APIs.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("certDuration")]
-        public virtual object CertDuration { get; set; }
-
-        /// <summary>
-        /// Optional. A pem-encoded X.509 certificate signing request (CSR). It is recommended to use public_key
-        /// instead.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pemCsr")]
-        public virtual string PemCsr { get; set; }
-
-        /// <summary>Optional. The public key from the client.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("publicKey")]
-        public virtual string PublicKey { get; set; }
-
-        /// <summary>
-        /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry
-        /// your request, the server will know to ignore the request if it has already been completed. The server will
-        /// guarantee that for at least 60 minutes after the first request. For example, consider a situation where you
-        /// make an initial request and the request times out. If you make the request again with the same request ID,
-        /// the server can check if original operation with the same request ID was received, and if so, will ignore the
-        /// second request. This prevents clients from accidentally creating duplicate commitments. The request ID must
-        /// be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
-        public virtual string RequestId { get; set; }
-
-        /// <summary>
-        /// Optional. An optional hint to the endpoint to generate a client ceritificate that can be used by AlloyDB
-        /// connectors to exchange additional metadata with the server after TLS handshake.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("useMetadataExchange")]
-        public virtual System.Nullable<bool> UseMetadataExchange { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("entitled")]
+        public virtual System.Nullable<bool> Entitled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message returned by a GenerateClientCertificate operation.</summary>
-    public class GenerateClientCertificateResponse : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>
+    /// Instance level configuration parameters related to the Gemini in Databases add-on. See
+    /// go/prd-enable-duet-ai-databases for more details.
+    /// </summary>
+    public class GeminiInstanceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The pem-encoded cluster ca X.509 certificate.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("caCert")]
-        public virtual string CaCert { get; set; }
-
-        /// <summary>Output only. The pem-encoded, signed X.509 certificate.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pemCertificate")]
-        public virtual string PemCertificate { get; set; }
-
         /// <summary>
-        /// Output only. The pem-encoded chain that may be used to verify the X.509 certificate. Expected to be in
-        /// issuer-to-root order according to RFC 5246.
+        /// Output only. Whether the Gemini in Databases add-on is enabled for the instance. It will be true only if the
+        /// add-on has been enabled for the billing account corresponding to the instance. Its status is toggled from
+        /// the Admin Control Center (ACC) and cannot be toggled using AlloyDB's APIs.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pemCertificateChain")]
-        public virtual System.Collections.Generic.IList<string> PemCertificateChain { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("entitled")]
+        public virtual System.Nullable<bool> Entitled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4633,6 +4576,35 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
+    /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
+    /// of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year
+    /// (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a
+    /// zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay *
+    /// google.type.DateTime * google.protobuf.Timestamp
+    /// </summary>
+    public class GoogleTypeDate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a
+        /// year and month where the day isn't significant.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("day")]
+        public virtual System.Nullable<int> Day { get; set; }
+
+        /// <summary>Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("month")]
+        public virtual System.Nullable<int> Month { get; set; }
+
+        /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("year")]
+        public virtual System.Nullable<int> Year { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4828,6 +4800,13 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gceZone")]
         public virtual string GceZone { get; set; }
 
+        /// <summary>
+        /// Optional. Configuration parameters related to the Gemini in Databases add-on. See
+        /// go/prd-enable-duet-ai-databases for more details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geminiConfig")]
+        public virtual GeminiInstanceConfig GeminiConfig { get; set; }
+
         /// <summary>Required. The type of the instance. Specified at creation time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceType")]
         public virtual string InstanceType { get; set; }
@@ -4866,6 +4845,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodes")]
         public virtual System.Collections.Generic.IList<Node> Nodes { get; set; }
+
+        /// <summary>Configuration for observability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("observabilityConfig")]
+        public virtual ObservabilityInstanceConfig ObservabilityConfig { get; set; }
 
         /// <summary>Optional. The configuration for Private Service Connect (PSC) for the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pscInstanceConfig")]
@@ -5113,6 +5096,39 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>MaintenanceUpdatePolicy defines the policy for system updates.</summary>
+    public class MaintenanceUpdatePolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Periods to deny maintenance. Currently limited to 1.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("denyMaintenancePeriods")]
+        public virtual System.Collections.Generic.IList<DenyMaintenancePeriod> DenyMaintenancePeriods { get; set; }
+
+        /// <summary>Preferred windows to perform maintenance. Currently limited to 1.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceWindows")]
+        public virtual System.Collections.Generic.IList<MaintenanceWindow> MaintenanceWindows { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>MaintenanceWindow specifies a preferred day and time for maintenance.</summary>
+    public class MaintenanceWindow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Preferred day of the week for maintenance, e.g. MONDAY, TUESDAY, etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("day")]
+        public virtual string Day { get; set; }
+
+        /// <summary>
+        /// Preferred time to start the maintenance operation on the specified day. Maintenance will start within 1 hour
+        /// of this time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual GoogleTypeTimeOfDay StartTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Subset of the source instance configuration that is available when reading the cluster resource.
     /// </summary>
@@ -5186,6 +5202,60 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         /// <summary>The Compute Engine zone of the VM e.g. "us-central1-b".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zoneId")]
         public virtual string ZoneId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Observability Instance specific configuration.</summary>
+    public class ObservabilityInstanceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Observability feature status for an instance. This is a read-only flag and modifiable only by producer API.
+        /// This flag is turned "off" by default.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>Query string length. The default value is 10k.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxQueryStringLength")]
+        public virtual System.Nullable<int> MaxQueryStringLength { get; set; }
+
+        /// <summary>Preserve comments in query string for an instance. This flag is turned "off" by default.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preserveComments")]
+        public virtual System.Nullable<bool> PreserveComments { get; set; }
+
+        /// <summary>
+        /// Number of query execution plans captured by Insights per minute for all queries combined. The default value
+        /// is 5. Any integer between 0 to 20 is considered valid.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryPlansPerMinute")]
+        public virtual System.Nullable<int> QueryPlansPerMinute { get; set; }
+
+        /// <summary>Record application tags for an instance. This flag is turned "off" by default.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recordApplicationTags")]
+        public virtual System.Nullable<bool> RecordApplicationTags { get; set; }
+
+        /// <summary>
+        /// Track actively running queries on the instance. If not set, this flag is "off" by default.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trackActiveQueries")]
+        public virtual System.Nullable<bool> TrackActiveQueries { get; set; }
+
+        /// <summary>
+        /// Output only. Track wait event types during query execution for an instance. This flag is turned "on" by
+        /// default but tracking is enabled only after observability enabled flag is also turned on. This is read-only
+        /// flag and only modifiable by producer API.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trackWaitEventTypes")]
+        public virtual System.Nullable<bool> TrackWaitEventTypes { get; set; }
+
+        /// <summary>
+        /// Track wait events during query execution for an instance. This flag is turned "on" by default but tracking
+        /// is enabled only after observability enabled flag is also turned on.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trackWaitEvents")]
+        public virtual System.Nullable<bool> TrackWaitEvents { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6246,6 +6316,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
             set => UpdationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>User-provided labels associated with the resource</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userLabelSet")]
+        public virtual StorageDatabasecenterPartnerapiV1mainUserLabels UserLabelSet { get; set; }
+
         /// <summary>
         /// User-provided labels, represented as a dictionary where each label is a single key value pair.
         /// </summary>
@@ -6389,6 +6463,19 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("timeBasedRetention")]
         public virtual object TimeBasedRetention { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Message type for storing user labels. User labels are used to tag App Engine resources, allowing users to search
+    /// for resources matching a set of labels and to aggregate usage data by labels.
+    /// </summary>
+    public class StorageDatabasecenterPartnerapiV1mainUserLabels : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

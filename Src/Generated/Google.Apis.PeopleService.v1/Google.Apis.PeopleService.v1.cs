@@ -1061,6 +1061,10 @@ namespace Google.Apis.PeopleService.v1
                 /// <summary>Returns SourceType.DOMAIN_CONTACT.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_DOMAIN_CONTACT")]
                 READSOURCETYPEDOMAINCONTACT = 3,
+
+                /// <summary>Returns SourceType.OTHER_CONTACT.</summary>
+                [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_OTHER_CONTACT")]
+                READSOURCETYPEOTHERCONTACT = 4,
             }
 
             /// <summary>
@@ -1424,6 +1428,10 @@ namespace Google.Apis.PeopleService.v1
                     /// <summary>Returns SourceType.DOMAIN_CONTACT.</summary>
                     [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_DOMAIN_CONTACT")]
                     READSOURCETYPEDOMAINCONTACT = 3,
+
+                    /// <summary>Returns SourceType.OTHER_CONTACT.</summary>
+                    [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_OTHER_CONTACT")]
+                    READSOURCETYPEOTHERCONTACT = 4,
                 }
 
                 /// <summary>
@@ -1740,6 +1748,10 @@ namespace Google.Apis.PeopleService.v1
                 /// <summary>Returns SourceType.DOMAIN_CONTACT.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_DOMAIN_CONTACT")]
                 READSOURCETYPEDOMAINCONTACT = 3,
+
+                /// <summary>Returns SourceType.OTHER_CONTACT.</summary>
+                [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_OTHER_CONTACT")]
+                READSOURCETYPEOTHERCONTACT = 4,
             }
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -1912,6 +1924,10 @@ namespace Google.Apis.PeopleService.v1
                 /// <summary>Returns SourceType.DOMAIN_CONTACT.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_DOMAIN_CONTACT")]
                 READSOURCETYPEDOMAINCONTACT = 3,
+
+                /// <summary>Returns SourceType.OTHER_CONTACT.</summary>
+                [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_OTHER_CONTACT")]
+                READSOURCETYPEOTHERCONTACT = 4,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -2052,6 +2068,10 @@ namespace Google.Apis.PeopleService.v1
                 /// <summary>Returns SourceType.DOMAIN_CONTACT.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_DOMAIN_CONTACT")]
                 READSOURCETYPEDOMAINCONTACT = 3,
+
+                /// <summary>Returns SourceType.OTHER_CONTACT.</summary>
+                [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_OTHER_CONTACT")]
+                READSOURCETYPEOTHERCONTACT = 4,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -2198,6 +2218,10 @@ namespace Google.Apis.PeopleService.v1
                 /// <summary>Returns SourceType.DOMAIN_CONTACT.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_DOMAIN_CONTACT")]
                 READSOURCETYPEDOMAINCONTACT = 3,
+
+                /// <summary>Returns SourceType.OTHER_CONTACT.</summary>
+                [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_OTHER_CONTACT")]
+                READSOURCETYPEOTHERCONTACT = 4,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -2554,6 +2578,10 @@ namespace Google.Apis.PeopleService.v1
                 /// <summary>Returns SourceType.DOMAIN_CONTACT.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_DOMAIN_CONTACT")]
                 READSOURCETYPEDOMAINCONTACT = 3,
+
+                /// <summary>Returns SourceType.OTHER_CONTACT.</summary>
+                [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_OTHER_CONTACT")]
+                READSOURCETYPEOTHERCONTACT = 4,
             }
 
             /// <summary>Gets the method name.</summary>
@@ -2896,6 +2924,10 @@ namespace Google.Apis.PeopleService.v1
                 /// <summary>Returns SourceType.DOMAIN_CONTACT.</summary>
                 [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_DOMAIN_CONTACT")]
                 READSOURCETYPEDOMAINCONTACT = 3,
+
+                /// <summary>Returns SourceType.OTHER_CONTACT.</summary>
+                [Google.Apis.Util.StringValueAttribute("READ_SOURCE_TYPE_OTHER_CONTACT")]
+                READSOURCETYPEOTHERCONTACT = 4,
             }
 
             /// <summary>

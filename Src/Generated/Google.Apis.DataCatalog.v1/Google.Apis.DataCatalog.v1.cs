@@ -779,8 +779,8 @@ namespace Google.Apis.DataCatalog.v1
                         /// <summary>Updates an existing tag.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
-                        /// The resource name of the tag in URL format where tag ID is a system-generated identifier.
-                        /// Note: The tag itself might not be stored in the location specified in its name.
+                        /// Identifier. The resource name of the tag in URL format where tag ID is a system-generated
+                        /// identifier. Note: The tag itself might not be stored in the location specified in its name.
                         /// </param>
                         public virtual PatchRequest Patch(Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1Tag body, string name)
                         {
@@ -799,9 +799,9 @@ namespace Google.Apis.DataCatalog.v1
                             }
 
                             /// <summary>
-                            /// The resource name of the tag in URL format where tag ID is a system-generated
-                            /// identifier. Note: The tag itself might not be stored in the location specified in its
-                            /// name.
+                            /// Identifier. The resource name of the tag in URL format where tag ID is a
+                            /// system-generated identifier. Note: The tag itself might not be stored in the location
+                            /// specified in its name.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -1481,8 +1481,8 @@ namespace Google.Apis.DataCatalog.v1
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Output only. The resource name of an entry in URL format. Note: The entry itself and its child
-                    /// resources might not be stored in the location specified in its name.
+                    /// Output only. Identifier. The resource name of an entry in URL format. Note: The entry itself and
+                    /// its child resources might not be stored in the location specified in its name.
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1Entry body, string name)
                     {
@@ -1505,8 +1505,8 @@ namespace Google.Apis.DataCatalog.v1
                         }
 
                         /// <summary>
-                        /// Output only. The resource name of an entry in URL format. Note: The entry itself and its
-                        /// child resources might not be stored in the location specified in its name.
+                        /// Output only. Identifier. The resource name of an entry in URL format. Note: The entry itself
+                        /// and its child resources might not be stored in the location specified in its name.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -1974,8 +1974,8 @@ namespace Google.Apis.DataCatalog.v1
                     /// <summary>Updates an existing tag.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// The resource name of the tag in URL format where tag ID is a system-generated identifier. Note:
-                    /// The tag itself might not be stored in the location specified in its name.
+                    /// Identifier. The resource name of the tag in URL format where tag ID is a system-generated
+                    /// identifier. Note: The tag itself might not be stored in the location specified in its name.
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1Tag body, string name)
                     {
@@ -1994,8 +1994,8 @@ namespace Google.Apis.DataCatalog.v1
                         }
 
                         /// <summary>
-                        /// The resource name of the tag in URL format where tag ID is a system-generated identifier.
-                        /// Note: The tag itself might not be stored in the location specified in its name.
+                        /// Identifier. The resource name of the tag in URL format where tag ID is a system-generated
+                        /// identifier. Note: The tag itself might not be stored in the location specified in its name.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -2436,8 +2436,8 @@ namespace Google.Apis.DataCatalog.v1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// The resource name of the entry group in URL format. Note: The entry group itself and its child
-                /// resources might not be stored in the location specified in its name.
+                /// Identifier. The resource name of the entry group in URL format. Note: The entry group itself and its
+                /// child resources might not be stored in the location specified in its name.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1EntryGroup body, string name)
                 {
@@ -2460,8 +2460,8 @@ namespace Google.Apis.DataCatalog.v1
                     }
 
                     /// <summary>
-                    /// The resource name of the entry group in URL format. Note: The entry group itself and its child
-                    /// resources might not be stored in the location specified in its name.
+                    /// Identifier. The resource name of the entry group in URL format. Note: The entry group itself and
+                    /// its child resources might not be stored in the location specified in its name.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -3624,8 +3624,8 @@ namespace Google.Apis.DataCatalog.v1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// The resource name of the tag template in URL format. Note: The tag template itself and its child
-                /// resources might not be stored in the location specified in its name.
+                /// Identifier. The resource name of the tag template in URL format. Note: The tag template itself and
+                /// its child resources might not be stored in the location specified in its name.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.DataCatalog.v1.Data.GoogleCloudDatacatalogV1TagTemplate body, string name)
                 {
@@ -3649,8 +3649,8 @@ namespace Google.Apis.DataCatalog.v1
                     }
 
                     /// <summary>
-                    /// The resource name of the tag template in URL format. Note: The tag template itself and its child
-                    /// resources might not be stored in the location specified in its name.
+                    /// Identifier. The resource name of the tag template in URL format. Note: The tag template itself
+                    /// and its child resources might not be stored in the location specified in its name.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -5913,8 +5913,8 @@ namespace Google.Apis.DataCatalog.v1.Data
         public virtual GoogleCloudDatacatalogV1ModelSpec ModelSpec { get; set; }
 
         /// <summary>
-        /// Output only. The resource name of an entry in URL format. Note: The entry itself and its child resources
-        /// might not be stored in the location specified in its name.
+        /// Output only. Identifier. The resource name of an entry in URL format. Note: The entry itself and its child
+        /// resources might not be stored in the location specified in its name.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -6009,8 +6009,8 @@ namespace Google.Apis.DataCatalog.v1.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// The resource name of the entry group in URL format. Note: The entry group itself and its child resources
-        /// might not be stored in the location specified in its name.
+        /// Identifier. The resource name of the entry group in URL format. Note: The entry group itself and its child
+        /// resources might not be stored in the location specified in its name.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -7287,8 +7287,8 @@ namespace Google.Apis.DataCatalog.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDatacatalogV1TagField> Fields { get; set; }
 
         /// <summary>
-        /// The resource name of the tag in URL format where tag ID is a system-generated identifier. Note: The tag
-        /// itself might not be stored in the location specified in its name.
+        /// Identifier. The resource name of the tag in URL format where tag ID is a system-generated identifier. Note:
+        /// The tag itself might not be stored in the location specified in its name.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -7441,8 +7441,8 @@ namespace Google.Apis.DataCatalog.v1.Data
         public virtual System.Nullable<bool> IsPubliclyReadable { get; set; }
 
         /// <summary>
-        /// The resource name of the tag template in URL format. Note: The tag template itself and its child resources
-        /// might not be stored in the location specified in its name.
+        /// Identifier. The resource name of the tag template in URL format. Note: The tag template itself and its child
+        /// resources might not be stored in the location specified in its name.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -7471,7 +7471,7 @@ namespace Google.Apis.DataCatalog.v1.Data
         public virtual System.Nullable<bool> IsRequired { get; set; }
 
         /// <summary>
-        /// Output only. The resource name of the tag template field in URL format. Example:
+        /// Identifier. The resource name of the tag template field in URL format. Example:
         /// `projects/{PROJECT_ID}/locations/{LOCATION}/tagTemplates/{TAG_TEMPLATE}/fields/{FIELD}` Note: The tag
         /// template field itself might not be stored in the location specified in its name. The name must contain only
         /// letters (a-z, A-Z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The

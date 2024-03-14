@@ -644,6 +644,208 @@ namespace Google.Apis.ChromeManagement.v1
                     });
                 }
             }
+
+            /// <summary>Get a list of devices that have requested to install an extension.</summary>
+            /// <param name="customer">Required. The customer ID or "my_customer" prefixed with "customers/".</param>
+            public virtual FetchDevicesRequestingExtensionRequest FetchDevicesRequestingExtension(string customer)
+            {
+                return new FetchDevicesRequestingExtensionRequest(this.service, customer);
+            }
+
+            /// <summary>Get a list of devices that have requested to install an extension.</summary>
+            public class FetchDevicesRequestingExtensionRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementV1FetchDevicesRequestingExtensionResponse>
+            {
+                /// <summary>Constructs a new FetchDevicesRequestingExtension request.</summary>
+                public FetchDevicesRequestingExtensionRequest(Google.Apis.Services.IClientService service, string customer) : base(service)
+                {
+                    Customer = customer;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The customer ID or "my_customer" prefixed with "customers/".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Customer { get; private set; }
+
+                /// <summary>Required. The extension for which we want to find requesting devices.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("extensionId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ExtensionId { get; set; }
+
+                /// <summary>
+                /// The ID of the organizational unit. Only consider devices that directly belong to this org unit, i.e.
+                /// sub-orgunits are not counted. If omitted, all data will be returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("orgUnitId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrgUnitId { get; set; }
+
+                /// <summary>
+                /// Optional. Maximum number of results to return. Maximum and default are 50. Any page size larger than
+                /// 50 will be coerced to 50.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. Token to specify the page of the request to be returned. Token expires after 1 day.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "fetchDevicesRequestingExtension";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+customer}/apps:fetchDevicesRequestingExtension";
+
+                /// <summary>Initializes FetchDevicesRequestingExtension parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("customer", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customer",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^customers/[^/]+$",
+                    });
+                    RequestParameters.Add("extensionId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "extensionId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orgUnitId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orgUnitId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Get a list of users that have requested to install an extension.</summary>
+            /// <param name="customer">Required. The customer ID or "my_customer" prefixed with "customers/".</param>
+            public virtual FetchUsersRequestingExtensionRequest FetchUsersRequestingExtension(string customer)
+            {
+                return new FetchUsersRequestingExtensionRequest(this.service, customer);
+            }
+
+            /// <summary>Get a list of users that have requested to install an extension.</summary>
+            public class FetchUsersRequestingExtensionRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementV1FetchUsersRequestingExtensionResponse>
+            {
+                /// <summary>Constructs a new FetchUsersRequestingExtension request.</summary>
+                public FetchUsersRequestingExtensionRequest(Google.Apis.Services.IClientService service, string customer) : base(service)
+                {
+                    Customer = customer;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The customer ID or "my_customer" prefixed with "customers/".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Customer { get; private set; }
+
+                /// <summary>Required. The extension for which we want to find the requesting users.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("extensionId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ExtensionId { get; set; }
+
+                /// <summary>
+                /// The ID of the organizational unit. Only consider devices that directly belong to this org unit, i.e.
+                /// sub-orgunits are not counted. If omitted, all data will be returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("orgUnitId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrgUnitId { get; set; }
+
+                /// <summary>
+                /// Optional. Maximum number of results to return. Maximum and default are 50. Any page size larger than
+                /// 50 will be coerced to 50.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. Token to specify the page of the request to be returned. Token expires after 1 day.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "fetchUsersRequestingExtension";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+customer}/apps:fetchUsersRequestingExtension";
+
+                /// <summary>Initializes FetchUsersRequestingExtension parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("customer", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customer",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^customers/[^/]+$",
+                    });
+                    RequestParameters.Add("extensionId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "extensionId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orgUnitId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orgUnitId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
 
         /// <summary>Gets the Reports resource.</summary>
@@ -3733,6 +3935,24 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Details of a device requesting an extension, including the name of the device and the justification of the
+    /// request.
+    /// </summary>
+    public class GoogleChromeManagementV1DeviceRequestingExtensionDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of a device that has requested the extension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceName")]
+        public virtual string DeviceName { get; set; }
+
+        /// <summary>Request justification as entered by the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("justification")]
+        public virtual string Justification { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Status of the single storage device.</summary>
     public class GoogleChromeManagementV1DiskInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3881,6 +4101,44 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// <summary>Total number of print jobs matching request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
         public virtual System.Nullable<long> TotalSize { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response containing a list of devices that have requested the queried extension.</summary>
+    public class GoogleChromeManagementV1FetchDevicesRequestingExtensionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Details of devices that have requested the queried extension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceDetails")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1DeviceRequestingExtensionDetails> DeviceDetails { get; set; }
+
+        /// <summary>Optional. Token to specify the next page in the list. Token expires after 1 day.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Optional. Total number of devices in response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
+        public virtual System.Nullable<int> TotalSize { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response containing a list of users that have requested the queried extension.</summary>
+    public class GoogleChromeManagementV1FetchUsersRequestingExtensionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Token to specify the next page in the list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Total number of users in response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
+        public virtual System.Nullable<int> TotalSize { get; set; }
+
+        /// <summary>Details of users that have requested the queried extension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userDetails")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1UserRequestingExtensionDetails> UserDetails { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5798,6 +6056,21 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// <summary>The unique Directory API ID of the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
         public virtual string UserId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of a user requesting an extension, including the email and the justification.</summary>
+    public class GoogleChromeManagementV1UserRequestingExtensionDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The e-mail address of a user that has requested the extension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; }
+
+        /// <summary>Request justification as entered by the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("justification")]
+        public virtual string Justification { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

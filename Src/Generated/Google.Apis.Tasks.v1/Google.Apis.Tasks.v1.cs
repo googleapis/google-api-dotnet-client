@@ -1343,6 +1343,10 @@ namespace Google.Apis.Tasks.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("updated")]
         public virtual string Updated { get; set; }
 
+        /// <summary>An absolute link to the task in the Google Tasks Web UI. This field is read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webViewLink")]
+        public virtual string WebViewLink { get; set; }
+
         /// <summary>Collection of links. This collection is read-only.</summary>
         public class LinksData
         {

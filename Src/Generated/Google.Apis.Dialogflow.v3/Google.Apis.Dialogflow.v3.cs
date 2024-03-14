@@ -11110,6 +11110,169 @@ namespace Google.Apis.Dialogflow.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Data store connection feature output signals. Might be only partially field if processing stop before the final
+    /// answer. Reasons for this can be, but are not limited to: empty UCS search results, positive RAI check outcome,
+    /// grounding failure, ...
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3DataStoreConnectionSignals : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The final compiled answer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answer")]
+        public virtual string Answer { get; set; }
+
+        /// <summary>Optional. Diagnostic info related to the answer generation model call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerGenerationModelCallSignals")]
+        public virtual GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerGenerationModelCallSignals AnswerGenerationModelCallSignals { get; set; }
+
+        /// <summary>
+        /// Optional. Answer parts with relevant citations. Concatenation of texts should add up the `answer` (not
+        /// counting whitespaces).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerParts")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerPart> AnswerParts { get; set; }
+
+        /// <summary>Optional. Snippets cited by the answer generation model from the most to least relevant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("citedSnippets")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3DataStoreConnectionSignalsCitedSnippet> CitedSnippets { get; set; }
+
+        /// <summary>Optional. Grounding signals.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groundingSignals")]
+        public virtual GoogleCloudDialogflowCxV3DataStoreConnectionSignalsGroundingSignals GroundingSignals { get; set; }
+
+        /// <summary>Optional. Diagnostic info related to the rewriter model call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rewriterModelCallSignals")]
+        public virtual GoogleCloudDialogflowCxV3DataStoreConnectionSignalsRewriterModelCallSignals RewriterModelCallSignals { get; set; }
+
+        /// <summary>Optional. Rewritten string query used for search.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rewrittenQuery")]
+        public virtual string RewrittenQuery { get; set; }
+
+        /// <summary>Optional. Safety check result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("safetySignals")]
+        public virtual GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSafetySignals SafetySignals { get; set; }
+
+        /// <summary>Optional. Search snippets included in the answer generation prompt.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchSnippets")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSearchSnippet> SearchSnippets { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Diagnostic info related to the answer generation model call.</summary>
+    public class GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerGenerationModelCallSignals : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output of the generative model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelOutput")]
+        public virtual string ModelOutput { get; set; }
+
+        /// <summary>Prompt as sent to the model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("renderedPrompt")]
+        public virtual string RenderedPrompt { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Answer part with citation.</summary>
+    public class GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerPart : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Citations for this answer part. Indices of `search_snippets`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportingIndices")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> SupportingIndices { get; set; }
+
+        /// <summary>Substring of the answer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Snippet cited by the answer generation model.</summary>
+    public class GoogleCloudDialogflowCxV3DataStoreConnectionSignalsCitedSnippet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Details of the snippet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchSnippet")]
+        public virtual GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSearchSnippet SearchSnippet { get; set; }
+
+        /// <summary>Index of the snippet in `search_snippets` field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snippetIndex")]
+        public virtual System.Nullable<int> SnippetIndex { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Grounding signals.</summary>
+    public class GoogleCloudDialogflowCxV3DataStoreConnectionSignalsGroundingSignals : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Represents the decision of the grounding check.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("decision")]
+        public virtual string Decision { get; set; }
+
+        /// <summary>Grounding score bucket setting.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual string Score { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Diagnostic info related to the rewriter model call.</summary>
+    public class GoogleCloudDialogflowCxV3DataStoreConnectionSignalsRewriterModelCallSignals : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output of the generative model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelOutput")]
+        public virtual string ModelOutput { get; set; }
+
+        /// <summary>Prompt as sent to the model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("renderedPrompt")]
+        public virtual string RenderedPrompt { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Safety check results.</summary>
+    public class GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSafetySignals : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies banned phrase match subject.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bannedPhraseMatch")]
+        public virtual string BannedPhraseMatch { get; set; }
+
+        /// <summary>Safety decision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("decision")]
+        public virtual string Decision { get; set; }
+
+        /// <summary>The matched banned phrase if there was a match.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchedBannedPhrase")]
+        public virtual string MatchedBannedPhrase { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Search snippet details.</summary>
+    public class GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSearchSnippet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Title of the enclosing document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentTitle")]
+        public virtual string DocumentTitle { get; set; }
+
+        /// <summary>Uri for the document. Present if specified for the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentUri")]
+        public virtual string DocumentUri { get; set; }
+
+        /// <summary>Text included in the prompt.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for DeleteDocument operation.</summary>
     public class GoogleCloudDialogflowCxV3DeleteDocumentOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14391,6 +14554,14 @@ namespace Google.Apis.Dialogflow.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual System.Collections.Generic.IDictionary<string, object> Payload { get; set; }
 
+        /// <summary>
+        /// Optional. If set to true and data stores are involved in serving the request then
+        /// DetectIntentResponse.query_result.data_store_connection_signals will be filled with data that can help
+        /// evaluations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("populateDataStoreConnectionSignals")]
+        public virtual System.Nullable<bool> PopulateDataStoreConnectionSignals { get; set; }
+
         /// <summary>Optional. Search configuration for UCS search queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchConfig")]
         public virtual GoogleCloudDialogflowCxV3SearchConfig SearchConfig { get; set; }
@@ -14457,6 +14628,14 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentPage")]
         public virtual GoogleCloudDialogflowCxV3Page CurrentPage { get; set; }
+
+        /// <summary>
+        /// Optional. Data store connection feature output signals. Filled only when data stores are involved in serving
+        /// the query and DetectIntentRequest.populate data_store_connection_quality_signals is set to true in the
+        /// request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataStoreConnectionSignals")]
+        public virtual GoogleCloudDialogflowCxV3DataStoreConnectionSignals DataStoreConnectionSignals { get; set; }
 
         /// <summary>
         /// The free-form diagnostic info. For example, this field could contain webhook call latency. The fields of
@@ -16261,6 +16440,13 @@ namespace Google.Apis.Dialogflow.v3.Data
         public virtual string HttpMethod { get; set; }
 
         /// <summary>
+        /// Optional. The OAuth configuration of the webhook. If specified, Dialogflow will initiate the OAuth client
+        /// credential flow to exchange an access token from the 3rd party platform and put it in the auth header.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauthConfig")]
+        public virtual GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig OauthConfig { get; set; }
+
+        /// <summary>
         /// Optional. Maps the values extracted from specific fields of the flexible webhook response into session
         /// parameters. - Key: session parameter name - Value: field path in the webhook response
         /// </summary>
@@ -16279,6 +16465,14 @@ namespace Google.Apis.Dialogflow.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requestHeaders")]
         public virtual System.Collections.Generic.IDictionary<string, string> RequestHeaders { get; set; }
 
+        /// <summary>
+        /// Optional. Indicate the auth token type generated from the [Diglogflow service
+        /// agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent). The generated token is
+        /// sent in the Authorization header.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAgentAuth")]
+        public virtual string ServiceAgentAuth { get; set; }
+
         /// <summary>Required. The webhook URI for receiving POST requests. It must use https protocol.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
@@ -16290,6 +16484,31 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// <summary>Optional. Type of the webhook.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webhookType")]
         public virtual string WebhookType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents configuration of OAuth client credential flow for 3rd party API authentication.</summary>
+    public class GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The client ID provided by the 3rd party platform.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
+        public virtual string ClientId { get; set; }
+
+        /// <summary>Required. The client secret provided by the 3rd party platform.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientSecret")]
+        public virtual string ClientSecret { get; set; }
+
+        /// <summary>Optional. The OAuth scopes to grant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
+        public virtual System.Collections.Generic.IList<string> Scopes { get; set; }
+
+        /// <summary>
+        /// Required. The token endpoint provided by the 3rd party platform to exchange an access token.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tokenEndpoint")]
+        public virtual string TokenEndpoint { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -18959,6 +19178,13 @@ namespace Google.Apis.Dialogflow.v3.Data
         public virtual string HttpMethod { get; set; }
 
         /// <summary>
+        /// Optional. The OAuth configuration of the webhook. If specified, Dialogflow will initiate the OAuth client
+        /// credential flow to exchange an access token from the 3rd party platform and put it in the auth header.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauthConfig")]
+        public virtual GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceOAuthConfig OauthConfig { get; set; }
+
+        /// <summary>
         /// Optional. Maps the values extracted from specific fields of the flexible webhook response into session
         /// parameters. - Key: session parameter name - Value: field path in the webhook response
         /// </summary>
@@ -18977,6 +19203,14 @@ namespace Google.Apis.Dialogflow.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requestHeaders")]
         public virtual System.Collections.Generic.IDictionary<string, string> RequestHeaders { get; set; }
 
+        /// <summary>
+        /// Optional. Indicate the auth token type generated from the [Diglogflow service
+        /// agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent). The generated token is
+        /// sent in the Authorization header.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAgentAuth")]
+        public virtual string ServiceAgentAuth { get; set; }
+
         /// <summary>Required. The webhook URI for receiving POST requests. It must use https protocol.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
@@ -18988,6 +19222,31 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// <summary>Optional. Type of the webhook.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webhookType")]
         public virtual string WebhookType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents configuration of OAuth client credential flow for 3rd party API authentication.</summary>
+    public class GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceOAuthConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The client ID provided by the 3rd party platform.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
+        public virtual string ClientId { get; set; }
+
+        /// <summary>Required. The client secret provided by the 3rd party platform.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientSecret")]
+        public virtual string ClientSecret { get; set; }
+
+        /// <summary>Optional. The OAuth scopes to grant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
+        public virtual System.Collections.Generic.IList<string> Scopes { get; set; }
+
+        /// <summary>
+        /// Required. The token endpoint provided by the 3rd party platform to exchange an access token.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tokenEndpoint")]
+        public virtual string TokenEndpoint { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

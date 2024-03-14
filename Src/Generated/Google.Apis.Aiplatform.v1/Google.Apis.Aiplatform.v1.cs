@@ -333,6 +333,7 @@ namespace Google.Apis.Aiplatform.v1
                 Studies = new StudiesResource(service);
                 Tensorboards = new TensorboardsResource(service);
                 TrainingPipelines = new TrainingPipelinesResource(service);
+                TuningJobs = new TuningJobsResource(service);
             }
 
             /// <summary>Gets the BatchPredictionJobs resource.</summary>
@@ -7195,8 +7196,8 @@ namespace Google.Apis.Aiplatform.v1
                     /// the Endpoint ID, i.e. the last segment of the Endpoint's resource name. * `display_name`
                     /// supports = and, != * `labels` supports general map functions that is: * `labels.key=value` -
                     /// key:value equality * `labels.key:* or labels:key - key existence * A key including a space must
-                    /// be quoted. `labels."a key"`. Some examples: * `endpoint=1` * `displayName="myDisplayName"` *
-                    /// `labels.myKey="myValue"`
+                    /// be quoted. `labels."a key"`. * `base_model_name` only supports = Some examples: * `endpoint=1` *
+                    /// `displayName="myDisplayName"` * `labels.myKey="myValue"` * `baseModelName="text-bison"`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -23936,7 +23937,8 @@ namespace Google.Apis.Aiplatform.v1
                     /// last segment of the Model's resource name. * `display_name` supports = and != * `labels`
                     /// supports general map functions that is: * `labels.key=value` - key:value equality *
                     /// `labels.key:* or labels:key - key existence * A key including a space must be quoted. `labels."a
-                    /// key"`. Some examples: * `model=1234` * `displayName="myDisplayName"` * `labels.myKey="myValue"`
+                    /// key"`. * `base_model_name` only supports = Some examples: * `model=1234` *
+                    /// `displayName="myDisplayName"` * `labels.myKey="myValue"` * `baseModelName="text-bison"`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -35352,6 +35354,155 @@ namespace Google.Apis.Aiplatform.v1
                 }
             }
 
+            /// <summary>Gets the TuningJobs resource.</summary>
+            public virtual TuningJobsResource TuningJobs { get; }
+
+            /// <summary>The "tuningJobs" collection of methods.</summary>
+            public class TuningJobsResource
+            {
+                private const string Resource = "tuningJobs";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public TuningJobsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Operations = new OperationsResource(service);
+                }
+
+                /// <summary>Gets the Operations resource.</summary>
+                public virtual OperationsResource Operations { get; }
+
+                /// <summary>The "operations" collection of methods.</summary>
+                public class OperationsResource
+                {
+                    private const string Resource = "operations";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public OperationsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
+                    /// cancel the operation, but success is not guaranteed. If the server doesn't support this method,
+                    /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
+                    /// methods to check whether the cancellation succeeded or whether the operation completed despite
+                    /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
+                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// `Code.CANCELLED`.
+                    /// </summary>
+                    /// <param name="name">The name of the operation resource to be cancelled.</param>
+                    public virtual CancelRequest Cancel(string name)
+                    {
+                        return new CancelRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
+                    /// cancel the operation, but success is not guaranteed. If the server doesn't support this method,
+                    /// it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other
+                    /// methods to check whether the cancellation succeeded or whether the operation completed despite
+                    /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
+                    /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                    /// `Code.CANCELLED`.
+                    /// </summary>
+                    public class CancelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleProtobufEmpty>
+                    {
+                        /// <summary>Constructs a new Cancel request.</summary>
+                        public CancelRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>The name of the operation resource to be cancelled.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "cancel";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:cancel";
+
+                        /// <summary>Initializes Cancel parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/tuningJobs/[^/]+/operations/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                    /// operation result at intervals as recommended by the API service.
+                    /// </summary>
+                    /// <param name="name">The name of the operation resource.</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                    /// operation result at intervals as recommended by the API service.
+                    /// </summary>
+                    public class GetRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>The name of the operation resource.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/tuningJobs/[^/]+/operations/[^/]+$",
+                            });
+                        }
+                    }
+                }
+            }
+
             /// <summary>Gets information about a location.</summary>
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
@@ -36085,6 +36236,13 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// <summary>A single part of a message.</summary>
     public class CloudAiNlLlmProtoServicePart : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Document metadata. The metadata should only be used by the Cloud LLM when supporting document mime types. It
+        /// will only be populated when this image input part is converted from a document input part.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentMetadata")]
+        public virtual CloudAiNlLlmProtoServicePartDocumentMetadata DocumentMetadata { get; set; }
+
         /// <summary>URI-based data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileData")]
         public virtual CloudAiNlLlmProtoServicePartFileData FileData { get; set; }
@@ -36130,6 +36288,24 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Original file data where the blob comes from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalFileData")]
         public virtual CloudAiNlLlmProtoServicePartFileData OriginalFileData { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata describes the original input document content.</summary>
+    public class CloudAiNlLlmProtoServicePartDocumentMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The original document blob.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originalDocumentBlob")]
+        public virtual CloudAiNlLlmProtoServicePartBlob OriginalDocumentBlob { get; set; }
+
+        /// <summary>
+        /// The (1-indexed) page number of the image in the original document. The first page carries the original
+        /// document content and mime type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageNumber")]
+        public virtual System.Nullable<int> PageNumber { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -36249,6 +36425,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("flagged")]
         public virtual System.Nullable<bool> Flagged { get; set; }
 
+        /// <summary>The influential terms that could potentially block the response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("influentialTerms")]
+        public virtual System.Collections.Generic.IList<CloudAiNlLlmProtoServiceRaiSignalInfluentialTerm> InfluentialTerms { get; set; }
+
         /// <summary>The RAI category.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("raiCategory")]
         public virtual string RaiCategory { get; set; }
@@ -36256,6 +36436,29 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>The score for the category, in the range [0.0, 1.0].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("score")]
         public virtual System.Nullable<float> Score { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The influential term that could potentially block the response.</summary>
+    public class CloudAiNlLlmProtoServiceRaiSignalInfluentialTerm : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The beginning offset of the influential term.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("beginOffset")]
+        public virtual System.Nullable<int> BeginOffset { get; set; }
+
+        /// <summary>The confidence score of the influential term.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; }
+
+        /// <summary>The source of the influential term, prompt or response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
+        /// <summary>The influential term.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("term")]
+        public virtual string Term { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -43904,7 +44107,7 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The request message for MatchService.FindNeighbors.</summary>
+    /// <summary>LINT.IfChange The request message for MatchService.FindNeighbors.</summary>
     public class GoogleCloudAiplatformV1FindNeighborsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

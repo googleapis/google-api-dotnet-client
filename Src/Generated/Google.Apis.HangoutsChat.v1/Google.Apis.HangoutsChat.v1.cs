@@ -2932,6 +2932,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("length")]
         public virtual System.Nullable<int> Length { get; set; }
 
+        /// <summary>The metadata for a rich link.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("richLinkMetadata")]
+        public virtual RichLinkMetadata RichLinkMetadata { get; set; }
+
         /// <summary>The metadata for a slash command.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("slashCommand")]
         public virtual SlashCommandMetadata SlashCommand { get; set; }
@@ -3533,6 +3537,25 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>The ID for the drive file. Use with the Drive API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driveFileId")]
         public virtual string DriveFileId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Data for Google Drive links.</summary>
+    public class DriveLinkData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A
+        /// [DriveDataRef](https://developers.google.com/chat/api/reference/rest/v1/spaces.messages.attachments#drivedataref)
+        /// which references a Google Drive file.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("driveDataRef")]
+        public virtual DriveDataRef DriveDataRef { get; set; }
+
+        /// <summary>The mime type of the linked Google Drive resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5741,6 +5764,25 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>Output only. The user who created the reaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("user")]
         public virtual User User { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A rich link to a resource.</summary>
+    public class RichLinkMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Data for a drive link.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("driveLinkData")]
+        public virtual DriveLinkData DriveLinkData { get; set; }
+
+        /// <summary>The rich link type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("richLinkType")]
+        public virtual string RichLinkType { get; set; }
+
+        /// <summary>The URI of this link.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

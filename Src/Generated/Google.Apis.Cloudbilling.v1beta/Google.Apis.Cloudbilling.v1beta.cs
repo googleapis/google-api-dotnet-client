@@ -2739,7 +2739,7 @@ namespace Google.Apis.Cloudbilling.v1beta.Data
 
         /// <summary>
         /// The resource name of the cause. project: projects/{project}. service: services/{service}. sku:
-        /// services/{service}/skus/{sku}.
+        /// services/{service}/skus/{sku}. location: locations/{location}.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual string Resource { get; set; }

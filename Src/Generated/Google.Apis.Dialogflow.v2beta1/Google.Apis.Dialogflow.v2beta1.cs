@@ -21016,6 +21016,13 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string HttpMethod { get; set; }
 
         /// <summary>
+        /// Optional. The OAuth configuration of the webhook. If specified, Dialogflow will initiate the OAuth client
+        /// credential flow to exchange an access token from the 3rd party platform and put it in the auth header.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauthConfig")]
+        public virtual GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig OauthConfig { get; set; }
+
+        /// <summary>
         /// Optional. Maps the values extracted from specific fields of the flexible webhook response into session
         /// parameters. - Key: session parameter name - Value: field path in the webhook response
         /// </summary>
@@ -21034,6 +21041,14 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requestHeaders")]
         public virtual System.Collections.Generic.IDictionary<string, string> RequestHeaders { get; set; }
 
+        /// <summary>
+        /// Optional. Indicate the auth token type generated from the [Diglogflow service
+        /// agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent). The generated token is
+        /// sent in the Authorization header.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAgentAuth")]
+        public virtual string ServiceAgentAuth { get; set; }
+
         /// <summary>Required. The webhook URI for receiving POST requests. It must use https protocol.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
@@ -21045,6 +21060,31 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// <summary>Optional. Type of the webhook.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webhookType")]
         public virtual string WebhookType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents configuration of OAuth client credential flow for 3rd party API authentication.</summary>
+    public class GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The client ID provided by the 3rd party platform.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
+        public virtual string ClientId { get; set; }
+
+        /// <summary>Required. The client secret provided by the 3rd party platform.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientSecret")]
+        public virtual string ClientSecret { get; set; }
+
+        /// <summary>Optional. The OAuth scopes to grant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
+        public virtual System.Collections.Generic.IList<string> Scopes { get; set; }
+
+        /// <summary>
+        /// Required. The token endpoint provided by the 3rd party platform to exchange an access token.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tokenEndpoint")]
+        public virtual string TokenEndpoint { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23714,6 +23754,13 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string HttpMethod { get; set; }
 
         /// <summary>
+        /// Optional. The OAuth configuration of the webhook. If specified, Dialogflow will initiate the OAuth client
+        /// credential flow to exchange an access token from the 3rd party platform and put it in the auth header.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauthConfig")]
+        public virtual GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceOAuthConfig OauthConfig { get; set; }
+
+        /// <summary>
         /// Optional. Maps the values extracted from specific fields of the flexible webhook response into session
         /// parameters. - Key: session parameter name - Value: field path in the webhook response
         /// </summary>
@@ -23732,6 +23779,14 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requestHeaders")]
         public virtual System.Collections.Generic.IDictionary<string, string> RequestHeaders { get; set; }
 
+        /// <summary>
+        /// Optional. Indicate the auth token type generated from the [Diglogflow service
+        /// agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent). The generated token is
+        /// sent in the Authorization header.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAgentAuth")]
+        public virtual string ServiceAgentAuth { get; set; }
+
         /// <summary>Required. The webhook URI for receiving POST requests. It must use https protocol.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
@@ -23743,6 +23798,31 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// <summary>Optional. Type of the webhook.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webhookType")]
         public virtual string WebhookType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents configuration of OAuth client credential flow for 3rd party API authentication.</summary>
+    public class GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceOAuthConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The client ID provided by the 3rd party platform.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
+        public virtual string ClientId { get; set; }
+
+        /// <summary>Required. The client secret provided by the 3rd party platform.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientSecret")]
+        public virtual string ClientSecret { get; set; }
+
+        /// <summary>Optional. The OAuth scopes to grant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
+        public virtual System.Collections.Generic.IList<string> Scopes { get; set; }
+
+        /// <summary>
+        /// Required. The token endpoint provided by the 3rd party platform to exchange an access token.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tokenEndpoint")]
+        public virtual string TokenEndpoint { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

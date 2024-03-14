@@ -874,7 +874,10 @@ namespace Google.Apis.DoubleClickBidManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("includeOnlyTargetedUserLists")]
         public virtual System.Nullable<bool> IncludeOnlyTargetedUserLists { get; set; }
 
-        /// <summary>Options that contain Path Filters and Custom Channel Groupings.</summary>
+        /// <summary>
+        /// Options that contain Path Filters and Custom Channel Groupings. This field is deprecated and will sunset on
+        /// **May 1, 2024**. After sunset, requests using this field will return an error.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pathQueryOptions")]
         public virtual PathQueryOptions PathQueryOptions { get; set; }
 
