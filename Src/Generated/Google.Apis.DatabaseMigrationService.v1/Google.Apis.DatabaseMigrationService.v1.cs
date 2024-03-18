@@ -5637,6 +5637,10 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("provider")]
         public virtual string Provider { get; set; }
 
+        /// <summary>Connection profile for a SQL Server data source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlserver")]
+        public virtual SqlServerConnectionProfile Sqlserver { get; set; }
+
         /// <summary>The current connection profile state (e.g. DRAFT, READY, or FAILED).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
@@ -7271,6 +7275,10 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sourceDatabase")]
         public virtual DatabaseType SourceDatabase { get; set; }
 
+        /// <summary>Optional. Configuration for SQL Server homogeneous migration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlserverHomogeneousMigrationJobConfig")]
+        public virtual SqlServerHomogeneousMigrationJobConfig SqlserverHomogeneousMigrationJobConfig { get; set; }
+
         /// <summary>The current migration job state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
@@ -8453,6 +8461,152 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         /// <summary>Whether SSL connections over IP should be enforced or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requireSsl")]
         public virtual System.Nullable<bool> RequireSsl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specifies the backup details in Cloud Storage for homogeneous migration to Cloud SQL for SQL Server.
+    /// </summary>
+    public class SqlServerBackups : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The Cloud Storage bucket that stores backups for all replicated databases.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsBucket")]
+        public virtual string GcsBucket { get; set; }
+
+        /// <summary>Optional. Cloud Storage path inside the bucket that stores backups.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsPrefix")]
+        public virtual string GcsPrefix { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies connection parameters required specifically for SQL Server databases.</summary>
+    public class SqlServerConnectionProfile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The backup details in Cloud Storage for homogeneous migration to Cloud SQL for SQL Server.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backups")]
+        public virtual SqlServerBackups Backups { get; set; }
+
+        /// <summary>
+        /// If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudSqlId")]
+        public virtual string CloudSqlId { get; set; }
+
+        /// <summary>Forward SSH tunnel connectivity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("forwardSshConnectivity")]
+        public virtual ForwardSshTunnelConnectivity ForwardSshConnectivity { get; set; }
+
+        /// <summary>Required. The IP or hostname of the source SQL Server database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("host")]
+        public virtual string Host { get; set; }
+
+        /// <summary>
+        /// Required. Input only. The password for the user that Database Migration Service will be using to connect to
+        /// the database. This field is not returned on request, and the value is encrypted when stored in Database
+        /// Migration Service.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("password")]
+        public virtual string Password { get; set; }
+
+        /// <summary>Output only. Indicates whether a new password is included in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("passwordSet")]
+        public virtual System.Nullable<bool> PasswordSet { get; set; }
+
+        /// <summary>Required. The network port of the source SQL Server database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("port")]
+        public virtual System.Nullable<int> Port { get; set; }
+
+        /// <summary>Private connectivity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateConnectivity")]
+        public virtual PrivateConnectivity PrivateConnectivity { get; set; }
+
+        /// <summary>Private Service Connect connectivity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateServiceConnectConnectivity")]
+        public virtual PrivateServiceConnectConnectivity PrivateServiceConnectConnectivity { get; set; }
+
+        /// <summary>SSL configuration for the destination to connect to the source database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ssl")]
+        public virtual SslConfig Ssl { get; set; }
+
+        /// <summary>Static IP connectivity data (default, no additional details needed).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("staticIpConnectivity")]
+        public virtual StaticIpConnectivity StaticIpConnectivity { get; set; }
+
+        /// <summary>
+        /// Required. The username that Database Migration Service will use to connect to the database. The value is
+        /// encrypted when stored in Database Migration Service.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("username")]
+        public virtual string Username { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specifies the backup details for a single database in Cloud Storage for homogeneous migration to Cloud SQL for
+    /// SQL Server.
+    /// </summary>
+    public class SqlServerDatabaseBackup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Name of a SQL Server database for which to define backup configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual string Database { get; set; }
+
+        /// <summary>
+        /// Optional. Encryption settings for the database. Required if provided database backups are encrypted.
+        /// Encryption settings include path to certificate, path to certificate private key, and key password.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionOptions")]
+        public virtual SqlServerEncryptionOptions EncryptionOptions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Encryption settings for the SQL Server database.</summary>
+    public class SqlServerEncryptionOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Path to certificate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certPath")]
+        public virtual string CertPath { get; set; }
+
+        /// <summary>Required. Input only. Private key password.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pvkPassword")]
+        public virtual string PvkPassword { get; set; }
+
+        /// <summary>Required. Path to certificate private key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pvkPath")]
+        public virtual string PvkPath { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for homogeneous migration to Cloud SQL for SQL Server.</summary>
+    public class SqlServerHomogeneousMigrationJobConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Pattern that describes the default backup naming strategy. The specified pattern should ensure
+        /// lexicographical order of backups. The pattern must define one of the following capture group sets: Capture
+        /// group set #1 yy/yyyy - year, 2 or 4 digits mm - month number, 1-12 dd - day of month, 1-31 hh - hour of day,
+        /// 00-23 mi - minutes, 00-59 ss - seconds, 00-59 Example: For backup file TestDB_backup_20230802_155400.trn,
+        /// use pattern: (?.*)_backup_(?\d{4})(?\d{2})(?\d{2})_(?\d{2})(?\d{2})(?\d{2}).trn Capture group set #2
+        /// timestamp - unix timestamp Example: For backup file TestDB_backup_1691448254.trn, use pattern:
+        /// (?.*)_backup_(?.*).trn
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupFilePattern")]
+        public virtual string BackupFilePattern { get; set; }
+
+        /// <summary>Required. Backup details per database in Cloud Storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseBackups")]
+        public virtual System.Collections.Generic.IList<SqlServerDatabaseBackup> DatabaseBackups { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

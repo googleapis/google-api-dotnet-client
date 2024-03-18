@@ -2244,6 +2244,473 @@ namespace Google.Apis.BigtableAdmin.v2
                 public TablesResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    AuthorizedViews = new AuthorizedViewsResource(service);
+                }
+
+                /// <summary>Gets the AuthorizedViews resource.</summary>
+                public virtual AuthorizedViewsResource AuthorizedViews { get; }
+
+                /// <summary>The "authorizedViews" collection of methods.</summary>
+                public class AuthorizedViewsResource
+                {
+                    private const string Resource = "authorizedViews";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public AuthorizedViewsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Creates a new AuthorizedView in a table.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. This is the name of the table the AuthorizedView belongs to. Values are of the form
+                    /// `projects/{project}/instances/{instance}/tables/{table}`.
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.BigtableAdmin.v2.Data.AuthorizedView body, string parent)
+                    {
+                        return new CreateRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>Creates a new AuthorizedView in a table.</summary>
+                    public class CreateRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.BigtableAdmin.v2.Data.AuthorizedView body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. This is the name of the table the AuthorizedView belongs to. Values are of the
+                        /// form `projects/{project}/instances/{instance}/tables/{table}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Required. The id of the AuthorizedView to create. This AuthorizedView must not already
+                        /// exist. The `authorized_view_id` appended to `parent` forms the full AuthorizedView name of
+                        /// the form
+                        /// `projects/{project}/instances/{instance}/tables/{table}/authorizedView/{authorized_view}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("authorizedViewId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string AuthorizedViewId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.BigtableAdmin.v2.Data.AuthorizedView Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+parent}/authorizedViews";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/instances/[^/]+/tables/[^/]+$",
+                            });
+                            RequestParameters.Add("authorizedViewId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "authorizedViewId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Permanently deletes a specified AuthorizedView.</summary>
+                    /// <param name="name">
+                    /// Required. The unique name of the AuthorizedView to be deleted. Values are of the form
+                    /// `projects/{project}/instances/{instance}/tables/{table}/authorizedViews/{authorized_view}`.
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(this.service, name);
+                    }
+
+                    /// <summary>Permanently deletes a specified AuthorizedView.</summary>
+                    public class DeleteRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.Empty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The unique name of the AuthorizedView to be deleted. Values are of the form
+                        /// `projects/{project}/instances/{instance}/tables/{table}/authorizedViews/{authorized_view}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. The current etag of the AuthorizedView. If an etag is provided and does not match
+                        /// the current etag of the AuthorizedView, deletion will be blocked and an ABORTED error will
+                        /// be returned.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Etag { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/instances/[^/]+/tables/[^/]+/authorizedViews/[^/]+$",
+                            });
+                            RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "etag",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets information from a specified AuthorizedView.</summary>
+                    /// <param name="name">
+                    /// Required. The unique name of the requested AuthorizedView. Values are of the form
+                    /// `projects/{project}/instances/{instance}/tables/{table}/authorizedViews/{authorized_view}`.
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Gets information from a specified AuthorizedView.</summary>
+                    public class GetRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.AuthorizedView>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The unique name of the requested AuthorizedView. Values are of the form
+                        /// `projects/{project}/instances/{instance}/tables/{table}/authorizedViews/{authorized_view}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. The resource_view to be applied to the returned AuthorizedView's fields. Default
+                        /// to BASIC.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                        /// <summary>
+                        /// Optional. The resource_view to be applied to the returned AuthorizedView's fields. Default
+                        /// to BASIC.
+                        /// </summary>
+                        public enum ViewEnum
+                        {
+                            /// <summary>Uses the default view for each method as documented in the request.</summary>
+                            [Google.Apis.Util.StringValueAttribute("RESPONSE_VIEW_UNSPECIFIED")]
+                            RESPONSEVIEWUNSPECIFIED = 0,
+
+                            /// <summary>Only populates `name`.</summary>
+                            [Google.Apis.Util.StringValueAttribute("NAME_ONLY")]
+                            NAMEONLY = 1,
+
+                            /// <summary>
+                            /// Only populates the AuthorizedView's basic metadata. This includes: name,
+                            /// deletion_protection, etag.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("BASIC")]
+                            BASIC = 2,
+
+                            /// <summary>Populates every fields.</summary>
+                            [Google.Apis.Util.StringValueAttribute("FULL")]
+                            FULL = 3,
+                        }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/instances/[^/]+/tables/[^/]+/authorizedViews/[^/]+$",
+                            });
+                            RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "view",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists all AuthorizedViews from a specific table.</summary>
+                    /// <param name="parent">
+                    /// Required. The unique name of the table for which AuthorizedViews should be listed. Values are of
+                    /// the form `projects/{project}/instances/{instance}/tables/{table}`.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists all AuthorizedViews from a specific table.</summary>
+                    public class ListRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.ListAuthorizedViewsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The unique name of the table for which AuthorizedViews should be listed. Values
+                        /// are of the form `projects/{project}/instances/{instance}/tables/{table}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Maximum number of results per page. A page_size of zero lets the server choose the
+                        /// number of items to return. A page_size which is strictly positive will return at most that
+                        /// many items. A negative page_size will cause an error. Following the first request,
+                        /// subsequent paginated calls are not required to pass a page_size. If a page_size is set in
+                        /// subsequent calls, it must match the page_size given in the first request.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Optional. The value of `next_page_token` returned by a previous call.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>
+                        /// Optional. The resource_view to be applied to the returned views' fields. Default to
+                        /// NAME_ONLY.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                        /// <summary>
+                        /// Optional. The resource_view to be applied to the returned views' fields. Default to
+                        /// NAME_ONLY.
+                        /// </summary>
+                        public enum ViewEnum
+                        {
+                            /// <summary>Uses the default view for each method as documented in the request.</summary>
+                            [Google.Apis.Util.StringValueAttribute("RESPONSE_VIEW_UNSPECIFIED")]
+                            RESPONSEVIEWUNSPECIFIED = 0,
+
+                            /// <summary>Only populates `name`.</summary>
+                            [Google.Apis.Util.StringValueAttribute("NAME_ONLY")]
+                            NAMEONLY = 1,
+
+                            /// <summary>
+                            /// Only populates the AuthorizedView's basic metadata. This includes: name,
+                            /// deletion_protection, etag.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("BASIC")]
+                            BASIC = 2,
+
+                            /// <summary>Populates every fields.</summary>
+                            [Google.Apis.Util.StringValueAttribute("FULL")]
+                            FULL = 3,
+                        }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+parent}/authorizedViews";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/instances/[^/]+/tables/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "view",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Updates an AuthorizedView in a table.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Identifier. The name of this AuthorizedView. Values are of the form
+                    /// `projects/{project}/instances/{instance}/tables/{table}/authorizedViews/{authorized_view}`
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.BigtableAdmin.v2.Data.AuthorizedView body, string name)
+                    {
+                        return new PatchRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Updates an AuthorizedView in a table.</summary>
+                    public class PatchRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.BigtableAdmin.v2.Data.AuthorizedView body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Identifier. The name of this AuthorizedView. Values are of the form
+                        /// `projects/{project}/instances/{instance}/tables/{table}/authorizedViews/{authorized_view}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. If true, ignore the safety checks when updating the AuthorizedView.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("ignoreWarnings", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> IgnoreWarnings { get; set; }
+
+                        /// <summary>
+                        /// Optional. The list of fields to update. A mask specifying which fields in the AuthorizedView
+                        /// resource should be updated. This mask is relative to the AuthorizedView resource, not to the
+                        /// request message. A field will be overwritten if it is in the mask. If empty, all fields set
+                        /// in the request will be overwritten. A special value `*` means to overwrite all fields
+                        /// (including fields not set in the request).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.BigtableAdmin.v2.Data.AuthorizedView Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/instances/[^/]+/tables/[^/]+/authorizedViews/[^/]+$",
+                            });
+                            RequestParameters.Add("ignoreWarnings", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "ignoreWarnings",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>
@@ -4044,6 +4511,35 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Placeholder for admin API work while we work out the internals.</summary>
+    public class AuthorizedView : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Set to true to make the AuthorizedView protected against deletion. The parent Table and containing Instance
+        /// cannot be deleted if an AuthorizedView has this bit set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deletionProtection")]
+        public virtual System.Nullable<bool> DeletionProtection { get; set; }
+
+        /// <summary>
+        /// The etag for this AuthorizedView. If this is provided on update, it must match the server's etag. The server
+        /// returns ABORTED error on a mismatched etag.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Identifier. The name of this AuthorizedView. Values are of the form
+        /// `projects/{project}/instances/{instance}/tables/{table}/authorizedViews/{authorized_view}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>An AuthorizedView permitting access to an explicit subset of a Table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subsetView")]
+        public virtual GoogleBigtableAdminV2AuthorizedViewSubsetView SubsetView { get; set; }
+    }
+
     /// <summary>Defines an automated backup policy for a table</summary>
     public class AutomatedBackupPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4726,6 +5222,117 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The metadata for the Operation returned by CreateAuthorizedView.</summary>
+    public class CreateAuthorizedViewMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _finishTimeRaw;
+
+        private object _finishTime;
+
+        /// <summary>The time at which the operation failed or was completed successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finishTime")]
+        public virtual string FinishTimeRaw
+        {
+            get => _finishTimeRaw;
+            set
+            {
+                _finishTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _finishTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="FinishTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use FinishTimeDateTimeOffset instead.")]
+        public virtual object FinishTime
+        {
+            get => _finishTime;
+            set
+            {
+                _finishTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _finishTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="FinishTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? FinishTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(FinishTimeRaw);
+            set => FinishTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The request that prompted the initiation of this CreateInstance operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originalRequest")]
+        public virtual CreateAuthorizedViewRequest OriginalRequest { get; set; }
+
+        private string _requestTimeRaw;
+
+        private object _requestTime;
+
+        /// <summary>The time at which the original request was received.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestTime")]
+        public virtual string RequestTimeRaw
+        {
+            get => _requestTimeRaw;
+            set
+            {
+                _requestTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _requestTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="RequestTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use RequestTimeDateTimeOffset instead.")]
+        public virtual object RequestTime
+        {
+            get => _requestTime;
+            set
+            {
+                _requestTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _requestTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="RequestTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? RequestTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RequestTimeRaw);
+            set => RequestTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request for CreateAuthorizedView</summary>
+    public class CreateAuthorizedViewRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The AuthorizedView to create.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorizedView")]
+        public virtual AuthorizedView AuthorizedView { get; set; }
+
+        /// <summary>
+        /// Required. The id of the AuthorizedView to create. This AuthorizedView must not already exist. The
+        /// `authorized_view_id` appended to `parent` forms the full AuthorizedView name of the form
+        /// `projects/{project}/instances/{instance}/tables/{table}/authorizedView/{authorized_view}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorizedViewId")]
+        public virtual string AuthorizedViewId { get; set; }
+
+        /// <summary>
+        /// Required. This is the name of the table the AuthorizedView belongs to. Values are of the form
+        /// `projects/{project}/instances/{instance}/tables/{table}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata type for the operation returned by CreateBackup.</summary>
     public class CreateBackupMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5271,6 +5878,45 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Subsets of a column family that are included in this AuthorizedView.</summary>
+    public class GoogleBigtableAdminV2AuthorizedViewFamilySubsets : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Prefixes for qualifiers to be included in the AuthorizedView. Every qualifier starting with one of these
+        /// prefixes is included in the AuthorizedView. To provide access to all qualifiers, include the empty string as
+        /// a prefix ("").
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qualifierPrefixes")]
+        public virtual System.Collections.Generic.IList<string> QualifierPrefixes { get; set; }
+
+        /// <summary>Individual exact column qualifiers to be included in the AuthorizedView.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qualifiers")]
+        public virtual System.Collections.Generic.IList<string> Qualifiers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines a simple AuthorizedView that is a subset of the underlying Table.</summary>
+    public class GoogleBigtableAdminV2AuthorizedViewSubsetView : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Map from column family name to the columns in this family to be included in the AuthorizedView.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("familySubsets")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleBigtableAdminV2AuthorizedViewFamilySubsets> FamilySubsets { get; set; }
+
+        /// <summary>
+        /// Row prefixes to be included in the AuthorizedView. To provide access to all rows, include the empty string
+        /// as a prefix ("").
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rowPrefixes")]
+        public virtual System.Collections.Generic.IList<string> RowPrefixes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A tablet is a defined by a start and end key and is explained in
     /// https://cloud.google.com/bigtable/docs/overview#architecture and
@@ -5502,6 +6148,24 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// <summary>
         /// Set if not all app profiles could be returned in a single response. Pass this value to `page_token` in
         /// another request to get the next page of results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for google.bigtable.admin.v2.BigtableTableAdmin.ListAuthorizedViews</summary>
+    public class ListAuthorizedViewsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The AuthorizedViews present in the requested table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorizedViews")]
+        public virtual System.Collections.Generic.IList<AuthorizedView> AuthorizedViews { get; set; }
+
+        /// <summary>
+        /// Set if not all tables could be returned in a single response. Pass this value to `page_token` in another
+        /// request to get the next page of results.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -6526,6 +7190,118 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     /// <summary>The metadata for the Operation returned by UpdateAppProfile.</summary>
     public class UpdateAppProfileMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for the google.longrunning.Operation returned by UpdateAuthorizedView.</summary>
+    public class UpdateAuthorizedViewMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _finishTimeRaw;
+
+        private object _finishTime;
+
+        /// <summary>The time at which the operation failed or was completed successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finishTime")]
+        public virtual string FinishTimeRaw
+        {
+            get => _finishTimeRaw;
+            set
+            {
+                _finishTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _finishTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="FinishTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use FinishTimeDateTimeOffset instead.")]
+        public virtual object FinishTime
+        {
+            get => _finishTime;
+            set
+            {
+                _finishTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _finishTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="FinishTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? FinishTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(FinishTimeRaw);
+            set => FinishTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The request that prompted the initiation of this UpdateAuthorizedView operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originalRequest")]
+        public virtual UpdateAuthorizedViewRequest OriginalRequest { get; set; }
+
+        private string _requestTimeRaw;
+
+        private object _requestTime;
+
+        /// <summary>The time at which the original request was received.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestTime")]
+        public virtual string RequestTimeRaw
+        {
+            get => _requestTimeRaw;
+            set
+            {
+                _requestTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _requestTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="RequestTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use RequestTimeDateTimeOffset instead.")]
+        public virtual object RequestTime
+        {
+            get => _requestTime;
+            set
+            {
+                _requestTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _requestTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="RequestTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? RequestTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RequestTimeRaw);
+            set => RequestTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request for UpdateAuthorizedView.</summary>
+    public class UpdateAuthorizedViewRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The AuthorizedView to update. The `name` in `authorized_view` is used to identify the
+        /// AuthorizedView. AuthorizedView name must in this format projects//instances//tables//authorizedViews/
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorizedView")]
+        public virtual AuthorizedView AuthorizedView { get; set; }
+
+        /// <summary>Optional. If true, ignore the safety checks when updating the AuthorizedView.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreWarnings")]
+        public virtual System.Nullable<bool> IgnoreWarnings { get; set; }
+
+        /// <summary>
+        /// Optional. The list of fields to update. A mask specifying which fields in the AuthorizedView resource should
+        /// be updated. This mask is relative to the AuthorizedView resource, not to the request message. A field will
+        /// be overwritten if it is in the mask. If empty, all fields set in the request will be overwritten. A special
+        /// value `*` means to overwrite all fields (including fields not set in the request).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

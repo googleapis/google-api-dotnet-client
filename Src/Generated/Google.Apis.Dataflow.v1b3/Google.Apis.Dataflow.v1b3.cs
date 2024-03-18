@@ -6195,7 +6195,9 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>
         /// Optional. Specifies the Streaming Engine message processing guarantees. Reduces cost and latency but might
         /// result in duplicate messages committed to storage. Designed to run simple mapping streaming ETL jobs at the
-        /// lowest cost. For example, Change Data Capture (CDC) to BigQuery is a canonical use case.
+        /// lowest cost. For example, Change Data Capture (CDC) to BigQuery is a canonical use case. For more
+        /// information, see [Set the pipeline streaming
+        /// mode](https://cloud.google.com/dataflow/docs/guides/streaming-modes).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("streamingMode")]
         public virtual string StreamingMode { get; set; }
@@ -6496,7 +6498,9 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>
         /// Optional. Specifies the Streaming Engine message processing guarantees. Reduces cost and latency but might
         /// result in duplicate messages committed to storage. Designed to run simple mapping streaming ETL jobs at the
-        /// lowest cost. For example, Change Data Capture (CDC) to BigQuery is a canonical use case.
+        /// lowest cost. For example, Change Data Capture (CDC) to BigQuery is a canonical use case. For more
+        /// information, see [Set the pipeline streaming
+        /// mode](https://cloud.google.com/dataflow/docs/guides/streaming-modes).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("streamingMode")]
         public virtual string StreamingMode { get; set; }
@@ -8772,7 +8776,9 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>
         /// Optional. Specifies the Streaming Engine message processing guarantees. Reduces cost and latency but might
         /// result in duplicate messages committed to storage. Designed to run simple mapping streaming ETL jobs at the
-        /// lowest cost. For example, Change Data Capture (CDC) to BigQuery is a canonical use case.
+        /// lowest cost. For example, Change Data Capture (CDC) to BigQuery is a canonical use case. For more
+        /// information, see [Set the pipeline streaming
+        /// mode](https://cloud.google.com/dataflow/docs/guides/streaming-modes).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("streamingMode")]
         public virtual string StreamingMode { get; set; }
@@ -8860,7 +8866,8 @@ namespace Google.Apis.Dataflow.v1b3.Data
 
         /// <summary>
         /// Target worker utilization, compared against the aggregate utilization of the worker pool by autoscaler, to
-        /// determine upscaling and downscaling when absent other constraints such as backlog.
+        /// determine upscaling and downscaling when absent other constraints such as backlog. For more information, see
+        /// [Update an existing pipeline](https://cloud.google.com/dataflow/docs/guides/updating-a-pipeline).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerUtilizationHint")]
         public virtual System.Nullable<double> WorkerUtilizationHint { get; set; }

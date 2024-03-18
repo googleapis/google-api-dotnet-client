@@ -2334,6 +2334,13 @@ namespace Google.Apis.AnalyticsHub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataset")]
         public virtual string Dataset { get; set; }
 
+        /// <summary>
+        /// Optional. Resources in this dataset that are selectively shared. If this field is empty, then the entire
+        /// dataset (all resources) are shared. This field is only valid for data clean room exchanges.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selectedResources")]
+        public virtual System.Collections.Generic.IList<SelectedResource> SelectedResources { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3122,6 +3129,20 @@ namespace Google.Apis.AnalyticsHub.v1.Data
     /// <summary>Message for response when you revoke a subscription.</summary>
     public class RevokeSubscriptionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Resource in this dataset that are selectively shared.</summary>
+    public class SelectedResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Format: For table: `projects/{projectId}/datasets/{datasetId}/tables/{tableId}`
+        /// Example:"projects/test_project/datasets/test_dataset/tables/test_table"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("table")]
+        public virtual string Table { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

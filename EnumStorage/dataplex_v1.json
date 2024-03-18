@@ -18,6 +18,13 @@
     "BASIC",
     "FULL"
   ],
+  "Google.Apis.CloudDataplex.v1.ProjectsResource+LocationsResource+EntryGroupsResource+EntriesResource+GetRequest.ViewEnum": [
+    "ENTRY_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL",
+    "CUSTOM",
+    "ALL"
+  ],
   "Google.Apis.CloudDataplex.v1.ProjectsResource+LocationsResource+LakesResource+ContentitemsResource+GetRequest.ViewEnum": [
     "CONTENT_VIEW_UNSPECIFIED",
     "BASIC",
@@ -38,5 +45,12 @@
     "ENTITY_VIEW_UNSPECIFIED",
     "TABLES",
     "FILESETS"
+  ],
+  "Google.Apis.CloudDataplex.v1.ProjectsResource+LocationsResource+LookupEntryRequest.ViewEnum": [
+    "ENTRY_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL",
+    "CUSTOM",
+    "ALL"
   ]
 }

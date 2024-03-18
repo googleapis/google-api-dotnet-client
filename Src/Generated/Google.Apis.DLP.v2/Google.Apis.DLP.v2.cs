@@ -1448,17 +1448,17 @@ namespace Google.Apis.DLP.v2
                     }
                 }
 
-                /// <summary>Lists data profiles for an organization.</summary>
+                /// <summary>Lists column data profiles for an organization.</summary>
                 /// <param name="parent">
                 /// Required. Resource name of the organization or project, for example
-                /// `organizations/433245324/locations/europe` or projects/project-id/locations/asia.
+                /// `organizations/433245324/locations/europe` or `projects/project-id/locations/asia`.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>Lists data profiles for an organization.</summary>
+                /// <summary>Lists column data profiles for an organization.</summary>
                 public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListColumnDataProfilesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -1470,7 +1470,7 @@ namespace Google.Apis.DLP.v2
 
                     /// <summary>
                     /// Required. Resource name of the organization or project, for example
-                    /// `organizations/433245324/locations/europe` or projects/project-id/locations/asia.
+                    /// `organizations/433245324/locations/europe` or `projects/project-id/locations/asia`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -3470,14 +3470,14 @@ namespace Google.Apis.DLP.v2
                     }
                 }
 
-                /// <summary>Lists data profiles for an organization.</summary>
+                /// <summary>Lists project data profiles for an organization.</summary>
                 /// <param name="parent">Required. organizations/{org_id}/locations/{loc_id}</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>Lists data profiles for an organization.</summary>
+                /// <summary>Lists project data profiles for an organization.</summary>
                 public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListProjectDataProfilesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -3498,8 +3498,8 @@ namespace Google.Apis.DLP.v2
                     /// {value}`. * Supported fields/values: - `sensitivity_level` - HIGH|MODERATE|LOW -
                     /// `data_risk_level` - HIGH|MODERATE|LOW - `status_code` - an RPC status code as defined in
                     /// https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto * The operator must
-                    /// be `=` or `!=`. Examples: * project_id = 12345 AND status_code = 1 * project_id = 12345 AND
-                    /// sensitivity_level = HIGH The length of this field should be no more than 500 characters.
+                    /// be `=` or `!=`. Examples: * `project_id = 12345 AND status_code = 1` * `project_id = 12345 AND
+                    /// sensitivity_level = HIGH` The length of this field should be no more than 500 characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -3508,7 +3508,7 @@ namespace Google.Apis.DLP.v2
                     /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
                     /// case insensitive. The default sorting order is ascending. Redundant space characters are
                     /// insignificant. Only one order field at a time is allowed. Examples: * `project_id` *
-                    /// `sensitivity_level desc` Supported fields are: - `project_id`: GCP project ID -
+                    /// `sensitivity_level desc` Supported fields are: - `project_id`: Google Cloud project ID -
                     /// `sensitivity_level`: How sensitive the data in a project is, at most. - `data_risk_level`: How
                     /// much risk is associated with this data. - `profile_last_generated`: When the profile was last
                     /// updated in epoch seconds.
@@ -4064,7 +4064,7 @@ namespace Google.Apis.DLP.v2
                     }
                 }
 
-                /// <summary>Lists data profiles for an organization.</summary>
+                /// <summary>Lists table data profiles for an organization.</summary>
                 /// <param name="parent">
                 /// Required. Resource name of the organization or project, for example
                 /// `organizations/433245324/locations/europe` or `projects/project-id/locations/asia`.
@@ -4074,7 +4074,7 @@ namespace Google.Apis.DLP.v2
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>Lists data profiles for an organization.</summary>
+                /// <summary>Lists table data profiles for an organization.</summary>
                 public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListTableDataProfilesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -4095,13 +4095,13 @@ namespace Google.Apis.DLP.v2
                     /// Allows filtering. Supported syntax: * Filter expressions are made up of one or more
                     /// restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of
                     /// restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator}
-                    /// {value}`. * Supported fields/values: - `project_id` - The GCP project ID. - `dataset_id` - The
-                    /// BigQuery dataset ID. - `table_id` - The ID of the BigQuery table. - `sensitivity_level` -
-                    /// HIGH|MODERATE|LOW - `data_risk_level` - HIGH|MODERATE|LOW - `resource_visibility`:
-                    /// PUBLIC|RESTRICTED - `status_code` - an RPC status code as defined in
+                    /// {value}`. * Supported fields/values: - `project_id` - The Google Cloud project ID. -
+                    /// `dataset_id` - The BigQuery dataset ID. - `table_id` - The ID of the BigQuery table. -
+                    /// `sensitivity_level` - HIGH|MODERATE|LOW - `data_risk_level` - HIGH|MODERATE|LOW -
+                    /// `resource_visibility`: PUBLIC|RESTRICTED - `status_code` - an RPC status code as defined in
                     /// https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto * The operator must
-                    /// be `=` or `!=`. Examples: * project_id = 12345 AND status_code = 1 * project_id = 12345 AND
-                    /// sensitivity_level = HIGH * project_id = 12345 AND resource_visibility = PUBLIC The length of
+                    /// be `=` or `!=`. Examples: * `project_id = 12345 AND status_code = 1` * `project_id = 12345 AND
+                    /// sensitivity_level = HIGH` * `project_id = 12345 AND resource_visibility = PUBLIC` The length of
                     /// this field should be no more than 500 characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
@@ -4111,13 +4111,13 @@ namespace Google.Apis.DLP.v2
                     /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
                     /// case insensitive. The default sorting order is ascending. Redundant space characters are
                     /// insignificant. Only one order field at a time is allowed. Examples: * `project_id asc` *
-                    /// `table_id` * `sensitivity_level desc` Supported fields are: - `project_id`: The GCP project ID.
-                    /// - `dataset_id`: The ID of a BigQuery dataset. - `table_id`: The ID of a BigQuery table. -
-                    /// `sensitivity_level`: How sensitive the data in a table is, at most. - `data_risk_level`: How
-                    /// much risk is associated with this data. - `profile_last_generated`: When the profile was last
-                    /// updated in epoch seconds. - `last_modified`: The last time the resource was modified. -
-                    /// `resource_visibility`: Visibility restriction for this resource. - `row_count`: Number of rows
-                    /// in this resource.
+                    /// `table_id` * `sensitivity_level desc` Supported fields are: - `project_id`: The Google Cloud
+                    /// project ID. - `dataset_id`: The ID of a BigQuery dataset. - `table_id`: The ID of a BigQuery
+                    /// table. - `sensitivity_level`: How sensitive the data in a table is, at most. -
+                    /// `data_risk_level`: How much risk is associated with this data. - `profile_last_generated`: When
+                    /// the profile was last updated in epoch seconds. - `last_modified`: The last time the resource was
+                    /// modified. - `resource_visibility`: Visibility restriction for this resource. - `row_count`:
+                    /// Number of rows in this resource.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
@@ -6855,17 +6855,17 @@ namespace Google.Apis.DLP.v2
                     }
                 }
 
-                /// <summary>Lists data profiles for an organization.</summary>
+                /// <summary>Lists column data profiles for an organization.</summary>
                 /// <param name="parent">
                 /// Required. Resource name of the organization or project, for example
-                /// `organizations/433245324/locations/europe` or projects/project-id/locations/asia.
+                /// `organizations/433245324/locations/europe` or `projects/project-id/locations/asia`.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>Lists data profiles for an organization.</summary>
+                /// <summary>Lists column data profiles for an organization.</summary>
                 public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListColumnDataProfilesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -6877,7 +6877,7 @@ namespace Google.Apis.DLP.v2
 
                     /// <summary>
                     /// Required. Resource name of the organization or project, for example
-                    /// `organizations/433245324/locations/europe` or projects/project-id/locations/asia.
+                    /// `organizations/433245324/locations/europe` or `projects/project-id/locations/asia`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -9749,14 +9749,14 @@ namespace Google.Apis.DLP.v2
                     }
                 }
 
-                /// <summary>Lists data profiles for an organization.</summary>
+                /// <summary>Lists project data profiles for an organization.</summary>
                 /// <param name="parent">Required. organizations/{org_id}/locations/{loc_id}</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>Lists data profiles for an organization.</summary>
+                /// <summary>Lists project data profiles for an organization.</summary>
                 public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListProjectDataProfilesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -9777,8 +9777,8 @@ namespace Google.Apis.DLP.v2
                     /// {value}`. * Supported fields/values: - `sensitivity_level` - HIGH|MODERATE|LOW -
                     /// `data_risk_level` - HIGH|MODERATE|LOW - `status_code` - an RPC status code as defined in
                     /// https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto * The operator must
-                    /// be `=` or `!=`. Examples: * project_id = 12345 AND status_code = 1 * project_id = 12345 AND
-                    /// sensitivity_level = HIGH The length of this field should be no more than 500 characters.
+                    /// be `=` or `!=`. Examples: * `project_id = 12345 AND status_code = 1` * `project_id = 12345 AND
+                    /// sensitivity_level = HIGH` The length of this field should be no more than 500 characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -9787,7 +9787,7 @@ namespace Google.Apis.DLP.v2
                     /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
                     /// case insensitive. The default sorting order is ascending. Redundant space characters are
                     /// insignificant. Only one order field at a time is allowed. Examples: * `project_id` *
-                    /// `sensitivity_level desc` Supported fields are: - `project_id`: GCP project ID -
+                    /// `sensitivity_level desc` Supported fields are: - `project_id`: Google Cloud project ID -
                     /// `sensitivity_level`: How sensitive the data in a project is, at most. - `data_risk_level`: How
                     /// much risk is associated with this data. - `profile_last_generated`: When the profile was last
                     /// updated in epoch seconds.
@@ -10343,7 +10343,7 @@ namespace Google.Apis.DLP.v2
                     }
                 }
 
-                /// <summary>Lists data profiles for an organization.</summary>
+                /// <summary>Lists table data profiles for an organization.</summary>
                 /// <param name="parent">
                 /// Required. Resource name of the organization or project, for example
                 /// `organizations/433245324/locations/europe` or `projects/project-id/locations/asia`.
@@ -10353,7 +10353,7 @@ namespace Google.Apis.DLP.v2
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>Lists data profiles for an organization.</summary>
+                /// <summary>Lists table data profiles for an organization.</summary>
                 public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListTableDataProfilesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -10374,13 +10374,13 @@ namespace Google.Apis.DLP.v2
                     /// Allows filtering. Supported syntax: * Filter expressions are made up of one or more
                     /// restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of
                     /// restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator}
-                    /// {value}`. * Supported fields/values: - `project_id` - The GCP project ID. - `dataset_id` - The
-                    /// BigQuery dataset ID. - `table_id` - The ID of the BigQuery table. - `sensitivity_level` -
-                    /// HIGH|MODERATE|LOW - `data_risk_level` - HIGH|MODERATE|LOW - `resource_visibility`:
-                    /// PUBLIC|RESTRICTED - `status_code` - an RPC status code as defined in
+                    /// {value}`. * Supported fields/values: - `project_id` - The Google Cloud project ID. -
+                    /// `dataset_id` - The BigQuery dataset ID. - `table_id` - The ID of the BigQuery table. -
+                    /// `sensitivity_level` - HIGH|MODERATE|LOW - `data_risk_level` - HIGH|MODERATE|LOW -
+                    /// `resource_visibility`: PUBLIC|RESTRICTED - `status_code` - an RPC status code as defined in
                     /// https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto * The operator must
-                    /// be `=` or `!=`. Examples: * project_id = 12345 AND status_code = 1 * project_id = 12345 AND
-                    /// sensitivity_level = HIGH * project_id = 12345 AND resource_visibility = PUBLIC The length of
+                    /// be `=` or `!=`. Examples: * `project_id = 12345 AND status_code = 1` * `project_id = 12345 AND
+                    /// sensitivity_level = HIGH` * `project_id = 12345 AND resource_visibility = PUBLIC` The length of
                     /// this field should be no more than 500 characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
@@ -10390,13 +10390,13 @@ namespace Google.Apis.DLP.v2
                     /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
                     /// case insensitive. The default sorting order is ascending. Redundant space characters are
                     /// insignificant. Only one order field at a time is allowed. Examples: * `project_id asc` *
-                    /// `table_id` * `sensitivity_level desc` Supported fields are: - `project_id`: The GCP project ID.
-                    /// - `dataset_id`: The ID of a BigQuery dataset. - `table_id`: The ID of a BigQuery table. -
-                    /// `sensitivity_level`: How sensitive the data in a table is, at most. - `data_risk_level`: How
-                    /// much risk is associated with this data. - `profile_last_generated`: When the profile was last
-                    /// updated in epoch seconds. - `last_modified`: The last time the resource was modified. -
-                    /// `resource_visibility`: Visibility restriction for this resource. - `row_count`: Number of rows
-                    /// in this resource.
+                    /// `table_id` * `sensitivity_level desc` Supported fields are: - `project_id`: The Google Cloud
+                    /// project ID. - `dataset_id`: The ID of a BigQuery dataset. - `table_id`: The ID of a BigQuery
+                    /// table. - `sensitivity_level`: How sensitive the data in a table is, at most. -
+                    /// `data_risk_level`: How much risk is associated with this data. - `profile_last_generated`: When
+                    /// the profile was last updated in epoch seconds. - `last_modified`: The last time the resource was
+                    /// modified. - `resource_visibility`: Visibility restriction for this resource. - `row_count`:
+                    /// Number of rows in this resource.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }

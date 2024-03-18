@@ -6026,6 +6026,10 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("documentSchema")]
         public virtual GoogleCloudDocumentaiV1DocumentSchema DocumentSchema { get; set; }
 
+        /// <summary>Options to control foundation model tuning of a processor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("foundationModelTuningOptions")]
+        public virtual GoogleCloudDocumentaiV1TrainProcessorVersionRequestFoundationModelTuningOptions FoundationModelTuningOptions { get; set; }
+
         /// <summary>Optional. The input data used to train the ProcessorVersion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputData")]
         public virtual GoogleCloudDocumentaiV1TrainProcessorVersionRequestInputData InputData { get; set; }
@@ -6044,6 +6048,27 @@ namespace Google.Apis.Document.v1.Data
         /// <summary>Training method to use for CDE training.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trainingMethod")]
         public virtual string TrainingMethod { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Options to control foundation model tuning of the processor.</summary>
+    public class GoogleCloudDocumentaiV1TrainProcessorVersionRequestFoundationModelTuningOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The multiplier to apply to the recommended learning rate. Valid values are between 0.1 and 10. If
+        /// not provided, recommended learning rate will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("learningRateMultiplier")]
+        public virtual System.Nullable<float> LearningRateMultiplier { get; set; }
+
+        /// <summary>
+        /// Optional. The number of steps to run for model tuning. Valid values are between 1 and 400. If not provided,
+        /// recommended steps will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trainSteps")]
+        public virtual System.Nullable<int> TrainSteps { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -930,6 +930,95 @@ namespace Google.Apis.ChromeManagement.v1
                 }
             }
 
+            /// <summary>Get a count of Chrome crash events.</summary>
+            /// <param name="customer">Customer ID.</param>
+            public virtual CountChromeCrashEventsRequest CountChromeCrashEvents(string customer)
+            {
+                return new CountChromeCrashEventsRequest(this.service, customer);
+            }
+
+            /// <summary>Get a count of Chrome crash events.</summary>
+            public class CountChromeCrashEventsRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementV1CountChromeCrashEventsResponse>
+            {
+                /// <summary>Constructs a new CountChromeCrashEvents request.</summary>
+                public CountChromeCrashEventsRequest(Google.Apis.Services.IClientService service, string customer) : base(service)
+                {
+                    Customer = customer;
+                    InitParameters();
+                }
+
+                /// <summary>Customer ID.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Customer { get; private set; }
+
+                /// <summary>
+                /// Query string to filter results, AND-separated fields in EBNF syntax. Supported filter fields: *
+                /// major_browser_version * minor_browser_version * browser_channel * device_platform * past_number_days
+                /// Example: `major_browser_version = 'M115' AND past_number_days = '28'`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
+                /// Field used to order results. Supported order by fields: * browser_version * count * date
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>
+                /// If specified, only count the number of crash events of the devices in this organizational unit.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("orgUnitId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrgUnitId { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "countChromeCrashEvents";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+customer}/reports:countChromeCrashEvents";
+
+                /// <summary>Initializes CountChromeCrashEvents parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("customer", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customer",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^customers/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orgUnitId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orgUnitId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
             /// <summary>
             /// Generate report of the number of devices expiring in each month of the selected time frame. Devices are
             /// grouped by auto update expiration date and model. Further information can be found
@@ -3531,6 +3620,38 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// <summary>Number of browsers that have been recently enrolled</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recentlyEnrolledCount")]
         public virtual System.Nullable<long> RecentlyEnrolledCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response contains a list of CrashEventCountByVersionPerDay which count the chrome crash at the certain date.
+    /// </summary>
+    public class GoogleChromeManagementV1CountChromeCrashEventsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Crash event counts grouped by date and browser version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crashEventCounts")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCount> CrashEventCounts { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The `count` of the Chrome crash events at the `date`.</summary>
+    public class GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCount : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Browser version this is counting.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("browserVersion")]
+        public virtual string BrowserVersion { get; set; }
+
+        /// <summary>Total count of crash events.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<long> Count { get; set; }
+
+        /// <summary>Date of the crash event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("date")]
+        public virtual GoogleTypeDate Date { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -294,8 +294,148 @@ namespace Google.Apis.OSConfig.v1
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                Global = new GlobalResource(service);
                 Instances = new InstancesResource(service);
                 OsPolicyAssignments = new OsPolicyAssignmentsResource(service);
+            }
+
+            /// <summary>Gets the Global resource.</summary>
+            public virtual GlobalResource Global { get; }
+
+            /// <summary>The "global" collection of methods.</summary>
+            public class GlobalResource
+            {
+                private const string Resource = "global";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public GlobalResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>GetProjectFeatureSettings returns the feature settings for a project</summary>
+                /// <param name="name">
+                /// Required. Name of the billing config. "projects//locations/global/projectFeatureSettings"
+                /// </param>
+                public virtual GetProjectFeatureSettingsRequest GetProjectFeatureSettings(string name)
+                {
+                    return new GetProjectFeatureSettingsRequest(this.service, name);
+                }
+
+                /// <summary>GetProjectFeatureSettings returns the feature settings for a project</summary>
+                public class GetProjectFeatureSettingsRequest : OSConfigBaseServiceRequest<Google.Apis.OSConfig.v1.Data.ProjectFeatureSettings>
+                {
+                    /// <summary>Constructs a new GetProjectFeatureSettings request.</summary>
+                    public GetProjectFeatureSettingsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the billing config. "projects//locations/global/projectFeatureSettings"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "getProjectFeatureSettings";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes GetProjectFeatureSettings parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/global/projectFeatureSettings$",
+                        });
+                    }
+                }
+
+                /// <summary>UpdateProjectFeatureSettings sets the feature settings for a project.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Immutable. Name of the config, e.g. projects/12345/locations/global/projectFeatureSettings
+                /// </param>
+                public virtual UpdateProjectFeatureSettingsRequest UpdateProjectFeatureSettings(Google.Apis.OSConfig.v1.Data.ProjectFeatureSettings body, string name)
+                {
+                    return new UpdateProjectFeatureSettingsRequest(this.service, body, name);
+                }
+
+                /// <summary>UpdateProjectFeatureSettings sets the feature settings for a project.</summary>
+                public class UpdateProjectFeatureSettingsRequest : OSConfigBaseServiceRequest<Google.Apis.OSConfig.v1.Data.ProjectFeatureSettings>
+                {
+                    /// <summary>Constructs a new UpdateProjectFeatureSettings request.</summary>
+                    public UpdateProjectFeatureSettingsRequest(Google.Apis.Services.IClientService service, Google.Apis.OSConfig.v1.Data.ProjectFeatureSettings body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Immutable. Name of the config, e.g.
+                    /// projects/12345/locations/global/projectFeatureSettings
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Field mask that controls which fields of the ProjectFeatureSettings should be updated.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.OSConfig.v1.Data.ProjectFeatureSettings Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "updateProjectFeatureSettings";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes UpdateProjectFeatureSettings parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/global/projectFeatureSettings$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the Instances resource.</summary>
@@ -5166,6 +5306,26 @@ namespace Google.Apis.OSConfig.v1.Data
     /// <summary>A request message for pausing a patch deployment.</summary>
     public class PausePatchDeploymentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// ProjectFeatureSettings represents the features settings for the VM Manager. The project features settings can be
+    /// set for a project.
+    /// </summary>
+    public class ProjectFeatureSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Immutable. Name of the config, e.g. projects/12345/locations/global/projectFeatureSettings
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Currently set PatchAndConfigFeatureSet for name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("patchAndConfigFeatureSet")]
+        public virtual string PatchAndConfigFeatureSet { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
