@@ -113,6 +113,11 @@ namespace Google.Apis.Tests.Apis.Requests
                 });
             }
 
+            // Normally requests override the ApiVersion with a constant (if at all) but it's
+            // convenient for us to be able to do it on mutable basis for tests.
+            public override string ApiVersion => ApiVersionImpl;
+            public string ApiVersionImpl { get; set; }
+
             public override string MethodName => httpMethod;
 
             public override string RestPath => OverrideRestPath ?? "restPath" + CallNum;
@@ -1516,6 +1521,51 @@ namespace Google.Apis.Tests.Apis.Requests
                 Required = requiredValue,
                 Optional = optionalValue
             };
+        }
+
+        [Fact]
+        public async Task ApiVersion_NotSet()
+        {
+            HttpRequestMessage lastRequest = null;
+            var handler = new TestHttpHandler(req =>
+            {
+                lastRequest = req;
+                return new HttpResponseMessage();
+            });
+            var initializer = new BaseClientService.Initializer
+            {
+                HttpClientFactory = new MockHttpClientFactory(handler)
+            };
+
+            var service = new MockClientService(initializer);
+            var request = new TestClientServiceRequest(service, "GET", null);
+            await request.ExecuteAsync();
+
+            Assert.NotNull(lastRequest);
+            Assert.False(lastRequest.Headers.Contains(ClientServiceRequest<MockRequest>.ApiVersionHeaderName));
+        }
+
+        [Fact]
+        public async Task ApiVersion_Set()
+        {
+            HttpRequestMessage lastRequest = null;
+            var handler = new TestHttpHandler(req =>
+            {
+                lastRequest = req;
+                return new HttpResponseMessage();
+            });
+            var initializer = new BaseClientService.Initializer
+            {
+                HttpClientFactory = new MockHttpClientFactory(handler)
+            };
+
+            var service = new MockClientService(initializer);
+            var request = new TestClientServiceRequest(service, "GET", null) { ApiVersionImpl = "test-version" };
+            await request.ExecuteAsync();
+
+            Assert.NotNull(lastRequest);
+            var value = Assert.Single(lastRequest.Headers.GetValues(ClientServiceRequest<MockRequest>.ApiVersionHeaderName));
+            Assert.Equal("test-version", value);
         }
     }
 }

@@ -101,6 +101,8 @@ namespace Google.Apis.Requests
     /// <typeparam name="TResponse">The type of the response object</typeparam>
     public abstract class ClientServiceRequest<TResponse> : ClientServiceRequest, IClientServiceRequest<TResponse>
     {
+        internal const string ApiVersionHeaderName = "x-goog-api-version";
+
         /// <summary>The class logger.</summary>
         private static readonly ILogger Logger = ApplicationContext.Logger.ForType<ClientServiceRequest<TResponse>>();
 
@@ -122,6 +124,13 @@ namespace Google.Apis.Requests
         /// whatever value is specified in the service.
         /// </summary>
         public bool? ValidateParameters { get; set; }
+
+        /// <summary>
+        /// The precise API version represented by this request.
+        /// Subclasses generated from a specific known version should override this property,
+        /// which will result in an x-api-version header being sent on the HTTP request.
+        /// </summary>
+        public virtual string ApiVersion => null;
 
         #region IClientServiceRequest Properties
 
@@ -286,6 +295,10 @@ namespace Google.Apis.Requests
             if (Credential != null)
             {
                 request.SetOption(ConfigurableMessageHandler.CredentialKey, Credential);
+            }
+            if (ApiVersion is string apiVersion)
+            {
+                request.Headers.Add(ApiVersionHeaderName, apiVersion);
             }
 
             ModifyRequest?.Invoke(request);
