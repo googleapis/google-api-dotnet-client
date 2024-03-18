@@ -9582,7 +9582,8 @@ namespace Google.Apis.Document.v1beta3.Data
 
         /// <summary>
         /// The source processor version to import from. The source processor version and destination processor need to
-        /// be in the same environment and region.
+        /// be in the same environment and region. Note that ProcessorVersions with `model_type` `MODEL_TYPE_LLM` are
+        /// not supported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processorVersionSource")]
         public virtual string ProcessorVersionSource { get; set; }

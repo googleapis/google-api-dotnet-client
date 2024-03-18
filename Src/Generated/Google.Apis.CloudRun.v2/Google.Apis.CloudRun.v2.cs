@@ -2449,6 +2449,10 @@ namespace Google.Apis.CloudRun.v2
                     [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> AllowMissing { get; set; }
 
+                    /// <summary>Optional. The list of fields to be updated.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
                     /// <summary>
                     /// Indicates that the request should be validated and default values populated, without persisting
                     /// the request or updating any resources.
@@ -2486,6 +2490,14 @@ namespace Google.Apis.CloudRun.v2
                         RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
                         {
                             Name = "allowMissing",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

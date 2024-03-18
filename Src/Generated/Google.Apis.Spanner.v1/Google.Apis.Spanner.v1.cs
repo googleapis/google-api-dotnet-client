@@ -1431,6 +1431,7 @@ namespace Google.Apis.Spanner.v1
                 Backups = new BackupsResource(service);
                 DatabaseOperations = new DatabaseOperationsResource(service);
                 Databases = new DatabasesResource(service);
+                InstancePartitionOperations = new InstancePartitionOperationsResource(service);
                 InstancePartitions = new InstancePartitionsResource(service);
                 Operations = new OperationsResource(service);
             }
@@ -5254,6 +5255,197 @@ namespace Google.Apis.Spanner.v1
                 }
             }
 
+            /// <summary>Gets the InstancePartitionOperations resource.</summary>
+            public virtual InstancePartitionOperationsResource InstancePartitionOperations { get; }
+
+            /// <summary>The "instancePartitionOperations" collection of methods.</summary>
+            public class InstancePartitionOperationsResource
+            {
+                private const string Resource = "instancePartitionOperations";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public InstancePartitionOperationsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Lists instance partition long-running operations in the given instance. An instance partition
+                /// operation has a name of the form `projects//instances//instancePartitions//operations/`. The
+                /// long-running operation metadata field type `metadata.type_url` describes the type of the metadata.
+                /// Operations returned include those that have completed/failed/canceled within the last 7 days, and
+                /// pending operations. Operations returned are ordered by `operation.metadata.value.start_time` in
+                /// descending order starting from the most recently started operation. Authorization requires
+                /// `spanner.instancePartitionOperations.list` permission on the resource parent.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. The parent instance of the instance partition operations. Values are of the form
+                /// `projects//instances/`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>
+                /// Lists instance partition long-running operations in the given instance. An instance partition
+                /// operation has a name of the form `projects//instances//instancePartitions//operations/`. The
+                /// long-running operation metadata field type `metadata.type_url` describes the type of the metadata.
+                /// Operations returned include those that have completed/failed/canceled within the last 7 days, and
+                /// pending operations. Operations returned are ordered by `operation.metadata.value.start_time` in
+                /// descending order starting from the most recently started operation. Authorization requires
+                /// `spanner.instancePartitionOperations.list` permission on the resource parent.
+                /// </summary>
+                public class ListRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.ListInstancePartitionOperationsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent instance of the instance partition operations. Values are of the form
+                    /// `projects//instances/`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An expression that filters the list of returned operations. A filter expression
+                    /// consists of a field name, a comparison operator, and a value for filtering. The value must be a
+                    /// string, a number, or a boolean. The comparison operator must be one of: `&amp;lt;`, `&amp;gt;`,
+                    /// `&amp;lt;=`, `&amp;gt;=`, `!=`, `=`, or `:`. Colon `:` is the contains operator. Filter rules
+                    /// are not case sensitive. The following fields in the Operation are eligible for filtering: *
+                    /// `name` - The name of the long-running operation * `done` - False if the operation is in
+                    /// progress, else true. * `metadata.@type` - the type of metadata. For example, the type string for
+                    /// CreateInstancePartitionMetadata is
+                    /// `type.googleapis.com/google.spanner.admin.instance.v1.CreateInstancePartitionMetadata`. *
+                    /// `metadata.` - any field in metadata.value. `metadata.@type` must be specified first, if
+                    /// filtering on metadata fields. * `error` - Error associated with the long-running operation. *
+                    /// `response.@type` - the type of response. * `response.` - any field in response.value. You can
+                    /// combine multiple expressions by enclosing each expression in parentheses. By default,
+                    /// expressions are combined with AND logic. However, you can specify AND, OR, and NOT logic
+                    /// explicitly. Here are a few examples: * `done:true` - The operation is complete. *
+                    /// `(metadata.@type=` \
+                    /// `type.googleapis.com/google.spanner.admin.instance.v1.CreateInstancePartitionMetadata) AND` \
+                    /// `(metadata.instance_partition.name:custom-instance-partition) AND` \ `(metadata.start_time
+                    /// &amp;lt; \"2021-03-28T14:50:00Z\") AND` \ `(error:*)` - Return operations where: * The
+                    /// operation's metadata type is CreateInstancePartitionMetadata. * The instance partition name
+                    /// contains "custom-instance-partition". * The operation started before 2021-03-28T14:50:00Z. * The
+                    /// operation resulted in an error.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    private object _instancePartitionDeadline;
+
+                    /// <summary>
+                    /// String representation of <see cref="InstancePartitionDeadlineDateTimeOffset"/>, formatted for
+                    /// inclusion in the HTTP request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("instancePartitionDeadline", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string InstancePartitionDeadlineRaw { get; private set; }
+
+                    /// <summary>
+                    /// <seealso cref="object"/> representation of <see cref="InstancePartitionDeadlineRaw"/>.
+                    /// </summary>
+                    [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use InstancePartitionDeadlineDateTimeOffset instead.")]
+                    public virtual object InstancePartitionDeadline
+                    {
+                        get => _instancePartitionDeadline;
+                        set
+                        {
+                            InstancePartitionDeadlineRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                            _instancePartitionDeadline = value;
+                        }
+                    }
+
+                    public virtual System.DateTimeOffset? InstancePartitionDeadlineDateTimeOffset
+                    {
+                        get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(InstancePartitionDeadlineRaw);
+                        set
+                        {
+                            InstancePartitionDeadlineRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                            _instancePartitionDeadline = value;
+                        }
+                    }
+
+                    /// <summary>
+                    /// Optional. Number of operations to be returned in the response. If 0 or less, defaults to the
+                    /// server's maximum allowed page size.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. If non-empty, `page_token` should contain a next_page_token from a previous
+                    /// ListInstancePartitionOperationsResponse to the same `parent` and with the same `filter`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/instancePartitionOperations";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/instances/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("instancePartitionDeadline", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "instancePartitionDeadline",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the InstancePartitions resource.</summary>
             public virtual InstancePartitionsResource InstancePartitions { get; }
 
@@ -5539,6 +5731,444 @@ namespace Google.Apis.Spanner.v1
                                 Pattern = null,
                             });
                         }
+                    }
+                }
+
+                /// <summary>
+                /// Creates an instance partition and begins preparing it to be used. The returned long-running
+                /// operation can be used to track the progress of preparing the new instance partition. The instance
+                /// partition name is assigned by the caller. If the named instance partition already exists,
+                /// `CreateInstancePartition` returns `ALREADY_EXISTS`. Immediately upon completion of this request: *
+                /// The instance partition is readable via the API, with all requested attributes but no allocated
+                /// resources. Its state is `CREATING`. Until completion of the returned operation: * Cancelling the
+                /// operation renders the instance partition immediately unreadable via the API. * The instance
+                /// partition can be deleted. * All other attempts to modify the instance partition are rejected. Upon
+                /// completion of the returned operation: * Billing for all successfully-allocated resources begins
+                /// (some types may have lower than the requested levels). * Databases can start using this instance
+                /// partition. * The instance partition's allocated resource levels are readable via the API. * The
+                /// instance partition's state becomes `READY`. The returned long-running operation will have a name of
+                /// the format `/operations/` and can be used to track creation of the instance partition. The metadata
+                /// field type is CreateInstancePartitionMetadata. The response field type is InstancePartition, if
+                /// successful.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The name of the instance in which to create the instance partition. Values are of the form
+                /// `projects//instances/`.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.Spanner.v1.Data.CreateInstancePartitionRequest body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>
+                /// Creates an instance partition and begins preparing it to be used. The returned long-running
+                /// operation can be used to track the progress of preparing the new instance partition. The instance
+                /// partition name is assigned by the caller. If the named instance partition already exists,
+                /// `CreateInstancePartition` returns `ALREADY_EXISTS`. Immediately upon completion of this request: *
+                /// The instance partition is readable via the API, with all requested attributes but no allocated
+                /// resources. Its state is `CREATING`. Until completion of the returned operation: * Cancelling the
+                /// operation renders the instance partition immediately unreadable via the API. * The instance
+                /// partition can be deleted. * All other attempts to modify the instance partition are rejected. Upon
+                /// completion of the returned operation: * Billing for all successfully-allocated resources begins
+                /// (some types may have lower than the requested levels). * Databases can start using this instance
+                /// partition. * The instance partition's allocated resource levels are readable via the API. * The
+                /// instance partition's state becomes `READY`. The returned long-running operation will have a name of
+                /// the format `/operations/` and can be used to track creation of the instance partition. The metadata
+                /// field type is CreateInstancePartitionMetadata. The response field type is InstancePartition, if
+                /// successful.
+                /// </summary>
+                public class CreateRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Spanner.v1.Data.CreateInstancePartitionRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the instance in which to create the instance partition. Values are of the
+                    /// form `projects//instances/`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Spanner.v1.Data.CreateInstancePartitionRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/instancePartitions";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/instances/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Deletes an existing instance partition. Requires that the instance partition is not used by any
+                /// database or backup and is not the default instance partition of an instance. Authorization requires
+                /// `spanner.instancePartitions.delete` permission on the resource name.
+                /// </summary>
+                /// <param name="name">
+                /// Required. The name of the instance partition to be deleted. Values are of the form
+                /// `projects/{project}/instances/{instance}/instancePartitions/{instance_partition}`
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>
+                /// Deletes an existing instance partition. Requires that the instance partition is not used by any
+                /// database or backup and is not the default instance partition of an instance. Authorization requires
+                /// `spanner.instancePartitions.delete` permission on the resource name.
+                /// </summary>
+                public class DeleteRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the instance partition to be deleted. Values are of the form
+                    /// `projects/{project}/instances/{instance}/instancePartitions/{instance_partition}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. If not empty, the API only deletes the instance partition when the etag provided
+                    /// matches the current status of the requested instance partition. Otherwise, deletes the instance
+                    /// partition without checking the current status of the requested instance partition.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Etag { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/instances/[^/]+/instancePartitions/[^/]+$",
+                        });
+                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "etag",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets information about a particular instance partition.</summary>
+                /// <param name="name">
+                /// Required. The name of the requested instance partition. Values are of the form
+                /// `projects/{project}/instances/{instance}/instancePartitions/{instance_partition}`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets information about a particular instance partition.</summary>
+                public class GetRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.InstancePartition>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the requested instance partition. Values are of the form
+                    /// `projects/{project}/instances/{instance}/instancePartitions/{instance_partition}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/instances/[^/]+/instancePartitions/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists all instance partitions for the given instance.</summary>
+                /// <param name="parent">
+                /// Required. The instance whose instance partitions should be listed. Values are of the form
+                /// `projects//instances/`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists all instance partitions for the given instance.</summary>
+                public class ListRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.ListInstancePartitionsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The instance whose instance partitions should be listed. Values are of the form
+                    /// `projects//instances/`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    private object _instancePartitionDeadline;
+
+                    /// <summary>
+                    /// String representation of <see cref="InstancePartitionDeadlineDateTimeOffset"/>, formatted for
+                    /// inclusion in the HTTP request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("instancePartitionDeadline", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string InstancePartitionDeadlineRaw { get; private set; }
+
+                    /// <summary>
+                    /// <seealso cref="object"/> representation of <see cref="InstancePartitionDeadlineRaw"/>.
+                    /// </summary>
+                    [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use InstancePartitionDeadlineDateTimeOffset instead.")]
+                    public virtual object InstancePartitionDeadline
+                    {
+                        get => _instancePartitionDeadline;
+                        set
+                        {
+                            InstancePartitionDeadlineRaw = Google.Apis.Util.Utilities.ConvertToString(value);
+                            _instancePartitionDeadline = value;
+                        }
+                    }
+
+                    public virtual System.DateTimeOffset? InstancePartitionDeadlineDateTimeOffset
+                    {
+                        get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(InstancePartitionDeadlineRaw);
+                        set
+                        {
+                            InstancePartitionDeadlineRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+                            _instancePartitionDeadline = value;
+                        }
+                    }
+
+                    /// <summary>
+                    /// Number of instance partitions to be returned in the response. If 0 or less, defaults to the
+                    /// server's maximum allowed page size.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// If non-empty, `page_token` should contain a next_page_token from a previous
+                    /// ListInstancePartitionsResponse.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/instancePartitions";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/instances/[^/]+$",
+                        });
+                        RequestParameters.Add("instancePartitionDeadline", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "instancePartitionDeadline",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Updates an instance partition, and begins allocating or releasing resources as requested. The
+                /// returned long-running operation can be used to track the progress of updating the instance
+                /// partition. If the named instance partition does not exist, returns `NOT_FOUND`. Immediately upon
+                /// completion of this request: * For resource types for which a decrease in the instance partition's
+                /// allocation has been requested, billing is based on the newly-requested level. Until completion of
+                /// the returned operation: * Cancelling the operation sets its metadata's cancel_time, and begins
+                /// restoring resources to their pre-request values. The operation is guaranteed to succeed at undoing
+                /// all resource changes, after which point it terminates with a `CANCELLED` status. * All other
+                /// attempts to modify the instance partition are rejected. * Reading the instance partition via the API
+                /// continues to give the pre-request resource levels. Upon completion of the returned operation: *
+                /// Billing begins for all successfully-allocated resources (some types may have lower than the
+                /// requested levels). * All newly-reserved resources are available for serving the instance partition's
+                /// tables. * The instance partition's new resource levels are readable via the API. The returned
+                /// long-running operation will have a name of the format `/operations/` and can be used to track the
+                /// instance partition modification. The metadata field type is UpdateInstancePartitionMetadata. The
+                /// response field type is InstancePartition, if successful. Authorization requires
+                /// `spanner.instancePartitions.update` permission on the resource name.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. A unique identifier for the instance partition. Values are of the form
+                /// `projects//instances//instancePartitions/a-z*[a-z0-9]`. The final segment of the name must be
+                /// between 2 and 64 characters in length. An instance partition's name cannot be changed after the
+                /// instance partition is created.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Spanner.v1.Data.UpdateInstancePartitionRequest body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Updates an instance partition, and begins allocating or releasing resources as requested. The
+                /// returned long-running operation can be used to track the progress of updating the instance
+                /// partition. If the named instance partition does not exist, returns `NOT_FOUND`. Immediately upon
+                /// completion of this request: * For resource types for which a decrease in the instance partition's
+                /// allocation has been requested, billing is based on the newly-requested level. Until completion of
+                /// the returned operation: * Cancelling the operation sets its metadata's cancel_time, and begins
+                /// restoring resources to their pre-request values. The operation is guaranteed to succeed at undoing
+                /// all resource changes, after which point it terminates with a `CANCELLED` status. * All other
+                /// attempts to modify the instance partition are rejected. * Reading the instance partition via the API
+                /// continues to give the pre-request resource levels. Upon completion of the returned operation: *
+                /// Billing begins for all successfully-allocated resources (some types may have lower than the
+                /// requested levels). * All newly-reserved resources are available for serving the instance partition's
+                /// tables. * The instance partition's new resource levels are readable via the API. The returned
+                /// long-running operation will have a name of the format `/operations/` and can be used to track the
+                /// instance partition modification. The metadata field type is UpdateInstancePartitionMetadata. The
+                /// response field type is InstancePartition, if successful. Authorization requires
+                /// `spanner.instancePartitions.update` permission on the resource name.
+                /// </summary>
+                public class PatchRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Spanner.v1.Data.UpdateInstancePartitionRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A unique identifier for the instance partition. Values are of the form
+                    /// `projects//instances//instancePartitions/a-z*[a-z0-9]`. The final segment of the name must be
+                    /// between 2 and 64 characters in length. An instance partition's name cannot be changed after the
+                    /// instance partition is created.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Spanner.v1.Data.UpdateInstancePartitionRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/instances/[^/]+/instancePartitions/[^/]+$",
+                        });
                     }
                 }
             }
@@ -7871,6 +8501,152 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata type for the operation returned by CreateInstancePartition.</summary>
+    public class CreateInstancePartitionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _cancelTimeRaw;
+
+        private object _cancelTime;
+
+        /// <summary>
+        /// The time at which this operation was cancelled. If set, this operation is in the process of undoing itself
+        /// (which is guaranteed to succeed) and cannot be cancelled again.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cancelTime")]
+        public virtual string CancelTimeRaw
+        {
+            get => _cancelTimeRaw;
+            set
+            {
+                _cancelTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _cancelTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CancelTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CancelTimeDateTimeOffset instead.")]
+        public virtual object CancelTime
+        {
+            get => _cancelTime;
+            set
+            {
+                _cancelTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _cancelTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CancelTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CancelTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CancelTimeRaw);
+            set => CancelTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>The time at which this operation failed or was completed successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The instance partition being created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instancePartition")]
+        public virtual InstancePartition InstancePartition { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>The time at which the CreateInstancePartition request was received.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request for CreateInstancePartition.</summary>
+    public class CreateInstancePartitionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The instance partition to create. The instance_partition.name may be omitted, but if specified
+        /// must be `/instancePartitions/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instancePartition")]
+        public virtual InstancePartition InstancePartition { get; set; }
+
+        /// <summary>
+        /// Required. The ID of the instance partition to create. Valid identifiers are of the form `a-z*[a-z0-9]` and
+        /// must be between 2 and 64 characters in length.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instancePartitionId")]
+        public virtual string InstancePartitionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request for CreateInstance.</summary>
     public class CreateInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9059,6 +9835,155 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>An isolated set of Cloud Spanner resources that databases can define placements on.</summary>
+    public class InstancePartition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The name of the instance partition's configuration. Values are of the form
+        /// `projects//instanceConfigs/`. See also InstanceConfig and ListInstanceConfigs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("config")]
+        public virtual string Config { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time at which the instance partition was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Required. The descriptive name for this instance partition as it appears in UIs. Must be unique per project
+        /// and between 4 and 30 characters in length.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Used for optimistic concurrency control as a way to help prevent simultaneous updates of a instance
+        /// partition from overwriting each other. It is strongly suggested that systems make use of the etag in the
+        /// read-modify-write cycle to perform instance partition updates in order to avoid race conditions: An etag is
+        /// returned in the response which contains instance partitions, and systems are expected to put that etag in
+        /// the request to update instance partitions to ensure that their change will be applied to the same version of
+        /// the instance partition. If no etag is provided in the call to update instance partition, then the existing
+        /// instance partition is overwritten blindly.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Required. A unique identifier for the instance partition. Values are of the form
+        /// `projects//instances//instancePartitions/a-z*[a-z0-9]`. The final segment of the name must be between 2 and
+        /// 64 characters in length. An instance partition's name cannot be changed after the instance partition is
+        /// created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The number of nodes allocated to this instance partition. Users can set the node_count field to specify the
+        /// target number of nodes allocated to the instance partition. This may be zero in API responses for instance
+        /// partitions that are not yet in state `READY`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeCount")]
+        public virtual System.Nullable<int> NodeCount { get; set; }
+
+        /// <summary>
+        /// The number of processing units allocated to this instance partition. Users can set the processing_units
+        /// field to specify the target number of processing units allocated to the instance partition. This may be zero
+        /// in API responses for instance partitions that are not yet in state `READY`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processingUnits")]
+        public virtual System.Nullable<int> ProcessingUnits { get; set; }
+
+        /// <summary>
+        /// Output only. The names of the backups that reference this instance partition. Referencing backups should
+        /// share the parent instance. The existence of any referencing backup prevents the instance partition from
+        /// being deleted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referencingBackups")]
+        public virtual System.Collections.Generic.IList<string> ReferencingBackups { get; set; }
+
+        /// <summary>
+        /// Output only. The names of the databases that reference this instance partition. Referencing databases should
+        /// share the parent instance. The existence of any referencing database prevents the instance partition from
+        /// being deleted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referencingDatabases")]
+        public virtual System.Collections.Generic.IList<string> ReferencingDatabases { get; set; }
+
+        /// <summary>Output only. The current instance partition state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The time at which the instance partition was most recently updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+    }
+
     /// <summary>
     /// KeyRange represents a range of rows in a table or index. A range has a start key and an end key. These keys can
     /// be open or closed, indicating if the range includes rows with that key. Keys are represented by lists, where the
@@ -9345,6 +10270,60 @@ namespace Google.Apis.Spanner.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for ListInstancePartitionOperations.</summary>
+    public class ListInstancePartitionOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// `next_page_token` can be sent in a subsequent ListInstancePartitionOperations call to fetch more of the
+        /// matching metadata.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>
+        /// The list of matching instance partition long-running operations. Each operation's name will be prefixed by
+        /// the instance partition's name. The operation's metadata field type `metadata.type_url` describes the type of
+        /// the metadata.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operations")]
+        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
+
+        /// <summary>
+        /// The list of unreachable instance partitions. It includes the names of instance partitions whose operation
+        /// metadata could not be retrieved within instance_partition_deadline.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachableInstancePartitions")]
+        public virtual System.Collections.Generic.IList<string> UnreachableInstancePartitions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for ListInstancePartitions.</summary>
+    public class ListInstancePartitionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of requested instancePartitions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instancePartitions")]
+        public virtual System.Collections.Generic.IList<InstancePartition> InstancePartitions { get; set; }
+
+        /// <summary>
+        /// `next_page_token` can be sent in a subsequent ListInstancePartitions call to fetch more of the matching
+        /// instance partitions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>
+        /// The list of unreachable instance partitions. It includes the names of instance partitions whose metadata
+        /// could not be retrieved within instance_partition_deadline.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11844,6 +12823,153 @@ namespace Google.Apis.Spanner.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
             set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata type for the operation returned by UpdateInstancePartition.</summary>
+    public class UpdateInstancePartitionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _cancelTimeRaw;
+
+        private object _cancelTime;
+
+        /// <summary>
+        /// The time at which this operation was cancelled. If set, this operation is in the process of undoing itself
+        /// (which is guaranteed to succeed) and cannot be cancelled again.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cancelTime")]
+        public virtual string CancelTimeRaw
+        {
+            get => _cancelTimeRaw;
+            set
+            {
+                _cancelTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _cancelTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CancelTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CancelTimeDateTimeOffset instead.")]
+        public virtual object CancelTime
+        {
+            get => _cancelTime;
+            set
+            {
+                _cancelTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _cancelTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CancelTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CancelTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CancelTimeRaw);
+            set => CancelTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>The time at which this operation failed or was completed successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The desired end state of the update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instancePartition")]
+        public virtual InstancePartition InstancePartition { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>The time at which UpdateInstancePartition request was received.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request for UpdateInstancePartition.</summary>
+    public class UpdateInstancePartitionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A mask specifying which fields in InstancePartition should be updated. The field mask must always
+        /// be specified; this prevents any future fields in InstancePartition from being erased accidentally by clients
+        /// that do not know about them.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldMask")]
+        public virtual object FieldMask { get; set; }
+
+        /// <summary>
+        /// Required. The instance partition to update, which must always include the instance partition name.
+        /// Otherwise, only fields mentioned in field_mask need be included.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instancePartition")]
+        public virtual InstancePartition InstancePartition { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

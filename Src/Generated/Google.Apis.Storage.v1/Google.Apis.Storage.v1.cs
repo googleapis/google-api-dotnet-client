@@ -3479,6 +3479,14 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("managedFolder", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ManagedFolder { get; private set; }
 
+            /// <summary>
+            /// Allows the deletion of a managed folder even if it is not empty. A managed folder is empty if there are
+            /// no objects or managed folders that it applies to. Callers must have storage.managedFolders.setIamPolicy
+            /// permission.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("allowNonEmpty", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> AllowNonEmpty { get; set; }
+
             /// <summary>If set, only deletes the managed folder if its metageneration matches this value.</summary>
             [Google.Apis.Util.RequestParameterAttribute("ifMetagenerationMatch", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> IfMetagenerationMatch { get; set; }
@@ -3515,6 +3523,14 @@ namespace Google.Apis.Storage.v1
                     Name = "managedFolder",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("allowNonEmpty", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "allowNonEmpty",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });

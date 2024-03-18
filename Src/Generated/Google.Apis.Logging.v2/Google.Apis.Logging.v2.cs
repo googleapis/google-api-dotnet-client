@@ -3402,6 +3402,16 @@ namespace Google.Apis.Logging.v2
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
+                /// Optional. A filter expression to constrain the sinks returned. Today, this only supports the
+                /// following strings: '' 'in_scope("ALL")', 'in_scope("ANCESTOR")', 'in_scope("DEFAULT")'.Description
+                /// of scopes below. ALL: Includes all of the sinks which can be returned in any other scope. ANCESTOR:
+                /// Includes intercepting sinks owned by ancestor resources. DEFAULT: Includes sinks owned by
+                /// parent.When the empty string is provided, then the filter 'in_scope("DEFAULT")' is applied.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
                 /// Optional. The maximum number of results to return from this request. Non-positive values are
                 /// ignored. The presence of nextPageToken in the response indicates that more results might be
                 /// available.
@@ -3437,6 +3447,14 @@ namespace Google.Apis.Logging.v2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^billingAccounts/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                     {
@@ -7478,6 +7496,16 @@ namespace Google.Apis.Logging.v2
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
+                /// Optional. A filter expression to constrain the sinks returned. Today, this only supports the
+                /// following strings: '' 'in_scope("ALL")', 'in_scope("ANCESTOR")', 'in_scope("DEFAULT")'.Description
+                /// of scopes below. ALL: Includes all of the sinks which can be returned in any other scope. ANCESTOR:
+                /// Includes intercepting sinks owned by ancestor resources. DEFAULT: Includes sinks owned by
+                /// parent.When the empty string is provided, then the filter 'in_scope("DEFAULT")' is applied.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
                 /// Optional. The maximum number of results to return from this request. Non-positive values are
                 /// ignored. The presence of nextPageToken in the response indicates that more results might be
                 /// available.
@@ -7513,6 +7541,14 @@ namespace Google.Apis.Logging.v2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^folders/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                     {
@@ -13064,6 +13100,16 @@ namespace Google.Apis.Logging.v2
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
+                /// Optional. A filter expression to constrain the sinks returned. Today, this only supports the
+                /// following strings: '' 'in_scope("ALL")', 'in_scope("ANCESTOR")', 'in_scope("DEFAULT")'.Description
+                /// of scopes below. ALL: Includes all of the sinks which can be returned in any other scope. ANCESTOR:
+                /// Includes intercepting sinks owned by ancestor resources. DEFAULT: Includes sinks owned by
+                /// parent.When the empty string is provided, then the filter 'in_scope("DEFAULT")' is applied.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
                 /// Optional. The maximum number of results to return from this request. Non-positive values are
                 /// ignored. The presence of nextPageToken in the response indicates that more results might be
                 /// available.
@@ -13099,6 +13145,14 @@ namespace Google.Apis.Logging.v2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^organizations/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                     {
@@ -17089,6 +17143,16 @@ namespace Google.Apis.Logging.v2
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
+                /// Optional. A filter expression to constrain the sinks returned. Today, this only supports the
+                /// following strings: '' 'in_scope("ALL")', 'in_scope("ANCESTOR")', 'in_scope("DEFAULT")'.Description
+                /// of scopes below. ALL: Includes all of the sinks which can be returned in any other scope. ANCESTOR:
+                /// Includes intercepting sinks owned by ancestor resources. DEFAULT: Includes sinks owned by
+                /// parent.When the empty string is provided, then the filter 'in_scope("DEFAULT")' is applied.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
                 /// Optional. The maximum number of results to return from this request. Non-positive values are
                 /// ignored. The presence of nextPageToken in the response indicates that more results might be
                 /// available.
@@ -17124,6 +17188,14 @@ namespace Google.Apis.Logging.v2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                     {
@@ -17797,6 +17869,16 @@ namespace Google.Apis.Logging.v2
             public virtual string Parent { get; private set; }
 
             /// <summary>
+            /// Optional. A filter expression to constrain the sinks returned. Today, this only supports the following
+            /// strings: '' 'in_scope("ALL")', 'in_scope("ANCESTOR")', 'in_scope("DEFAULT")'.Description of scopes
+            /// below. ALL: Includes all of the sinks which can be returned in any other scope. ANCESTOR: Includes
+            /// intercepting sinks owned by ancestor resources. DEFAULT: Includes sinks owned by parent.When the empty
+            /// string is provided, then the filter 'in_scope("DEFAULT")' is applied.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>
             /// Optional. The maximum number of results to return from this request. Non-positive values are ignored.
             /// The presence of nextPageToken in the response indicates that more results might be available.
             /// </summary>
@@ -17831,6 +17913,14 @@ namespace Google.Apis.Logging.v2
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^[^/]+/[^/]+$",
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
                 RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                 {
@@ -20510,6 +20600,17 @@ namespace Google.Apis.Logging.v2.Data
         public virtual System.Nullable<bool> IncludeChildren { get; set; }
 
         /// <summary>
+        /// Optional. This field applies only to sinks owned by organizations and folders.When the value of
+        /// 'intercept_children' is true, the following restrictions apply: The sink must have the include_children flag
+        /// set to true. The sink destination must be a Cloud project.Also, the following behaviors apply: Any logs
+        /// matched by the sink won't be included by non-_Required sinks owned by child resources. The sink appears in
+        /// the results of a ListSinks call from a child resource if the value of the filter field in its request is
+        /// either 'in_scope("ALL")' or 'in_scope("ANCESTOR")'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interceptChildren")]
+        public virtual System.Nullable<bool> InterceptChildren { get; set; }
+
+        /// <summary>
         /// Output only. The client-assigned sink identifier, unique within the project.For example:
         /// "my-syslog-errors-to-pubsub".Sink identifiers are limited to 100 characters and can include only the
         /// following characters: upper and lower-case alphanumeric characters, underscores, hyphens, periods.First
@@ -20521,6 +20622,14 @@ namespace Google.Apis.Logging.v2.Data
         /// <summary>Deprecated. This field is unused.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputVersionFormat")]
         public virtual string OutputVersionFormat { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of the sink. "projects/[PROJECT_ID]/sinks/[SINK_NAME]
+        /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_NAME] "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_NAME]
+        /// "folders/[FOLDER_ID]/sinks/[SINK_NAME] For example: projects/my_project/sinks/SINK_NAME
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
 
         private string _updateTimeRaw;
 

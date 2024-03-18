@@ -2657,6 +2657,10 @@ namespace Google.Apis.CloudRedis.v1.Data
             set => UpdationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>User-provided labels associated with the resource</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userLabelSet")]
+        public virtual UserLabels UserLabelSet { get; set; }
+
         /// <summary>
         /// User-provided labels, represented as a dictionary where each label is a single key value pair.
         /// </summary>
@@ -4275,6 +4279,19 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// <summary>Required. Specifies the target version of Redis software to upgrade to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redisVersion")]
         public virtual string RedisVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Message type for storing user labels. User labels are used to tag App Engine resources, allowing users to search
+    /// for resources matching a set of labels and to aggregate usage data by labels.
+    /// </summary>
+    public class UserLabels : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

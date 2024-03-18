@@ -8,6 +8,18 @@
     "1",
     "2"
   ],
+  "Google.Apis.BigtableAdmin.v2.ProjectsResource+InstancesResource+TablesResource+AuthorizedViewsResource+GetRequest.ViewEnum": [
+    "RESPONSE_VIEW_UNSPECIFIED",
+    "NAME_ONLY",
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.BigtableAdmin.v2.ProjectsResource+InstancesResource+TablesResource+AuthorizedViewsResource+ListRequest.ViewEnum": [
+    "RESPONSE_VIEW_UNSPECIFIED",
+    "NAME_ONLY",
+    "BASIC",
+    "FULL"
+  ],
   "Google.Apis.BigtableAdmin.v2.ProjectsResource+InstancesResource+TablesResource+GetRequest.ViewEnum": [
     "VIEW_UNSPECIFIED",
     "NAME_ONLY",
