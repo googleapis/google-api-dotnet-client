@@ -14,13 +14,14 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System;
+using Google.Apis.Json;
 using System.Threading.Tasks;
 
 namespace Google.Apis.Util.Store
 {
     /// <summary>
     /// Stores and manages data objects, where the key is a string and the value is an object.
+    /// The store will use <see cref="NewtonsoftJsonSerializer.Instance"/> for serialization.
     /// <para>
     /// <c>null</c> keys are not allowed.
     /// </para>
@@ -30,7 +31,7 @@ namespace Google.Apis.Util.Store
         /// <summary>Asynchronously stores the given value for the given key (replacing any existing value).</summary>
         /// <typeparam name="T">The type to store in the data store.</typeparam>
         /// <param name="key">The key.</param>
-        /// <param name="value">The value to store.</param>
+        /// <param name="value">The value to store. Will be serialized using <see cref="NewtonsoftJsonSerializer.Instance"/>.</param>
         Task StoreAsync<T>(string key, T value);
 
         /// <summary>
@@ -44,7 +45,7 @@ namespace Google.Apis.Util.Store
         /// <summary>Asynchronously returns the stored value for the given key or <c>null</c> if not found.</summary>
         /// <typeparam name="T">The type to retrieve from the data store.</typeparam>
         /// <param name="key">The key to retrieve its value.</param>
-        /// <returns>The stored object.</returns>
+        /// <returns>The stored object deserialized using <see cref="NewtonsoftJsonSerializer.Instance"/>.</returns>
         Task<T> GetAsync<T>(string key);
 
         /// <summary>Asynchronously clears all values in the data store.</summary>
