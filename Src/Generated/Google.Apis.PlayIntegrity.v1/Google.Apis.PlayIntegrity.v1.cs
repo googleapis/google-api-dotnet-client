@@ -428,7 +428,7 @@ namespace Google.Apis.PlayIntegrity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Contains the device attestation information.</summary>
+    /// <summary>Contains the device attestation information. Next tag: 4</summary>
     public class DeviceIntegrity : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Details about the integrity of the device the app is running on.</summary>

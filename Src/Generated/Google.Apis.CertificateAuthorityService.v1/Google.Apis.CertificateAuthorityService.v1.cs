@@ -4529,7 +4529,7 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
     public class CertificateConfigKeyId : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1
+        /// Required. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1
         /// hash of the public key.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyId")]

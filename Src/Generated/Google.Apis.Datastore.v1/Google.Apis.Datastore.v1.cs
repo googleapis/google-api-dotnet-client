@@ -1914,6 +1914,68 @@ namespace Google.Apis.Datastore.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Execution statistics for the query.</summary>
+    public class ExecutionStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Debugging statistics from the execution of the query. Note that the debugging stats are subject to change as
+        /// Firestore evolves. It could include: { "indexes_entries_scanned": "1000", "documents_scanned": "20",
+        /// "billing_details" : { "documents_billable": "20", "index_entries_billable": "1000", "min_query_cost": "0" }
+        /// }
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("debugStats")]
+        public virtual System.Collections.Generic.IDictionary<string, object> DebugStats { get; set; }
+
+        /// <summary>Total time to execute the query in the backend.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionDuration")]
+        public virtual object ExecutionDuration { get; set; }
+
+        /// <summary>Total billable read operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readOperations")]
+        public virtual System.Nullable<long> ReadOperations { get; set; }
+
+        /// <summary>
+        /// Total number of results returned, including documents, projections, aggregation results, keys.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resultsReturned")]
+        public virtual System.Nullable<long> ResultsReturned { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Explain metrics for the query.</summary>
+    public class ExplainMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Aggregated stats from the execution of the query. Only present when ExplainOptions.analyze is set to true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionStats")]
+        public virtual ExecutionStats ExecutionStats { get; set; }
+
+        /// <summary>Planning phase information for the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("planSummary")]
+        public virtual PlanSummary PlanSummary { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Explain options for the query.</summary>
+    public class ExplainOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Whether to execute this query. When false (the default), the query will be planned, returning only
+        /// metrics from the planning stages. When true, the query will be planned and executed, returning the full
+        /// query results along with both planning and execution stage metrics.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analyze")]
+        public virtual System.Nullable<bool> Analyze { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A holder for any type of filter.</summary>
     public class Filter : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2775,6 +2837,14 @@ namespace Google.Apis.Datastore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("keys")]
         public virtual System.Collections.Generic.IList<Key> Keys { get; set; }
 
+        /// <summary>
+        /// The properties to return. Defaults to returning all properties. If this field is set and an entity has a
+        /// property not referenced in the mask, it will be absent from LookupResponse.found.entity.properties. The
+        /// entity's key is always returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("propertyMask")]
+        public virtual PropertyMask PropertyMask { get; set; }
+
         /// <summary>The options for this lookup request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readOptions")]
         public virtual ReadOptions ReadOptions { get; set; }
@@ -2878,6 +2948,15 @@ namespace Google.Apis.Datastore.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insert")]
         public virtual Entity Insert { get; set; }
+
+        /// <summary>
+        /// The properties to write in this mutation. None of the properties in the mask may have a reserved name,
+        /// except for `__key__`. This field is ignored for `delete`. If the entity already exists, only properties
+        /// referenced in the mask are updated, others are left untouched. Properties referenced in the mask but not in
+        /// the entity are deleted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("propertyMask")]
+        public virtual PropertyMask PropertyMask { get; set; }
 
         /// <summary>The entity to update. The entity must already exist. Must have a complete key path.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("update")]
@@ -3099,6 +3178,20 @@ namespace Google.Apis.Datastore.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Planning phase information for the query.</summary>
+    public class PlanSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The indexes selected for the query. For example: [ {"query_scope": "Collection", "properties": "(foo ASC,
+        /// __name__ ASC)"}, {"query_scope": "Collection", "properties": "(bar ASC, __name__ ASC)"} ]
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexesUsed")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> IndexesUsed { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A representation of a property in a projection.</summary>
     public class Projection : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3124,6 +3217,25 @@ namespace Google.Apis.Datastore.v1.Data
         /// <summary>The value to compare the property to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual Value Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The set of arbitrarily nested property paths used to restrict an operation to only a subset of properties in an
+    /// entity.
+    /// </summary>
+    public class PropertyMask : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The paths to the properties covered by this mask. A path is a list of property names separated by dots
+        /// (`.`), for example `foo.bar` means the property `bar` inside the entity property `foo` inside the entity
+        /// associated with this path. If a property name contains a dot `.` or a backslash `\`, then that name must be
+        /// escaped. A path must not be empty, and may not reference a value inside an array value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("paths")]
+        public virtual System.Collections.Generic.IList<string> Paths { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3499,6 +3611,13 @@ namespace Google.Apis.Datastore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("databaseId")]
         public virtual string DatabaseId { get; set; }
 
+        /// <summary>
+        /// Optional. Explain options for the query. If set, additional query statistics will be returned. If not, only
+        /// query results will be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("explainOptions")]
+        public virtual ExplainOptions ExplainOptions { get; set; }
+
         /// <summary>The GQL query to run. This query must be an aggregation query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gqlQuery")]
         public virtual GqlQuery GqlQuery { get; set; }
@@ -3525,6 +3644,13 @@ namespace Google.Apis.Datastore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("batch")]
         public virtual AggregationResultBatch Batch { get; set; }
 
+        /// <summary>
+        /// Query explain metrics. This is only present when the RunAggregationQueryRequest.explain_options is provided,
+        /// and it is sent only once with the last response in the stream.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("explainMetrics")]
+        public virtual ExplainMetrics ExplainMetrics { get; set; }
+
         /// <summary>The parsed form of the `GqlQuery` from the request, if it was set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual AggregationQuery Query { get; set; }
@@ -3550,6 +3676,13 @@ namespace Google.Apis.Datastore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("databaseId")]
         public virtual string DatabaseId { get; set; }
 
+        /// <summary>
+        /// Optional. Explain options for the query. If set, additional query statistics will be returned. If not, only
+        /// query results will be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("explainOptions")]
+        public virtual ExplainOptions ExplainOptions { get; set; }
+
         /// <summary>The GQL query to run. This query must be a non-aggregation query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gqlQuery")]
         public virtual GqlQuery GqlQuery { get; set; }
@@ -3560,6 +3693,13 @@ namespace Google.Apis.Datastore.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partitionId")]
         public virtual PartitionId PartitionId { get; set; }
+
+        /// <summary>
+        /// The properties to return. This field must not be set for a projection query. See
+        /// LookupRequest.property_mask.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("propertyMask")]
+        public virtual PropertyMask PropertyMask { get; set; }
 
         /// <summary>The query to run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
@@ -3579,6 +3719,13 @@ namespace Google.Apis.Datastore.v1.Data
         /// <summary>A batch of query results (always present).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batch")]
         public virtual QueryResultBatch Batch { get; set; }
+
+        /// <summary>
+        /// Query explain metrics. This is only present when the RunQueryRequest.explain_options is provided, and it is
+        /// sent only once with the last response in the stream.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("explainMetrics")]
+        public virtual ExplainMetrics ExplainMetrics { get; set; }
 
         /// <summary>The parsed form of the `GqlQuery` from the request, if it was set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]

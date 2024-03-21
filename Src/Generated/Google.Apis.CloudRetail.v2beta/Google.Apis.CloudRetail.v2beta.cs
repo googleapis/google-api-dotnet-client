@@ -8832,8 +8832,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
     public class GoogleCloudRetailV2betaExperimentInfoServingConfigExperiment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The fully qualified resource name of the serving config VariantArm.serving_config_id responsible for
-        /// generating the search response. For example: `projects/*/locations/*/catalogs/*/servingConfigs/*`.
+        /// The fully qualified resource name of the serving config Experiment.VariantArm.serving_config_id responsible
+        /// for generating the search response. For example: `projects/*/locations/*/catalogs/*/servingConfigs/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("experimentServingConfig")]
         public virtual string ExperimentServingConfig { get; set; }

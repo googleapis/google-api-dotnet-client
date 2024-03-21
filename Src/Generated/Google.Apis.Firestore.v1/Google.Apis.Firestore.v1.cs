@@ -389,7 +389,7 @@ namespace Google.Apis.Firestore.v1
 
                 /// <summary>Deletes a backup schedule.</summary>
                 /// <param name="name">
-                /// Required. The name of backup schedule. Format
+                /// Required. The name of the backup schedule. Format
                 /// `projects/{project}/databases/{database}/backupSchedules/{backup_schedule}`
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
@@ -408,7 +408,7 @@ namespace Google.Apis.Firestore.v1
                     }
 
                     /// <summary>
-                    /// Required. The name of backup schedule. Format
+                    /// Required. The name of the backup schedule. Format
                     /// `projects/{project}/databases/{database}/backupSchedules/{backup_schedule}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -4717,6 +4717,36 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Execution statistics for the query.</summary>
+    public class ExecutionStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Debugging statistics from the execution of the query. Note that the debugging stats are subject to change as
+        /// Firestore evolves. It could include: { "indexes_entries_scanned": "1000", "documents_scanned": "20",
+        /// "billing_details" : { "documents_billable": "20", "index_entries_billable": "1000", "min_query_cost": "0" }
+        /// }
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("debugStats")]
+        public virtual System.Collections.Generic.IDictionary<string, object> DebugStats { get; set; }
+
+        /// <summary>Total time to execute the query in the backend.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionDuration")]
+        public virtual object ExecutionDuration { get; set; }
+
+        /// <summary>Total billable read operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readOperations")]
+        public virtual System.Nullable<long> ReadOperations { get; set; }
+
+        /// <summary>
+        /// Total number of results returned, including documents, projections, aggregation results, keys.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resultsReturned")]
+        public virtual System.Nullable<long> ResultsReturned { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A digest of all the documents that match a given target.</summary>
     public class ExistenceFilter : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4745,6 +4775,38 @@ namespace Google.Apis.Firestore.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unchangedNames")]
         public virtual BloomFilter UnchangedNames { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Explain metrics for the query.</summary>
+    public class ExplainMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Aggregated stats from the execution of the query. Only present when ExplainOptions.analyze is set to true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionStats")]
+        public virtual ExecutionStats ExecutionStats { get; set; }
+
+        /// <summary>Planning phase information for the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("planSummary")]
+        public virtual PlanSummary PlanSummary { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Explain options for the query.</summary>
+    public class ExplainOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Whether to execute this query. When false (the default), the query will be planned, returning only
+        /// metrics from the planning stages. When true, the query will be planned and executed, returning the full
+        /// query results along with both planning and execution stage metrics.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analyze")]
+        public virtual System.Nullable<bool> Analyze { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5139,7 +5201,7 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represent a recurring schedule that runs at a specific time every day. The time zone is UTC.</summary>
+    /// <summary>Represents a recurring schedule that runs at a specific time every day. The time zone is UTC.</summary>
     public class GoogleFirestoreAdminV1DailyRecurrence : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -6880,6 +6942,20 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Planning phase information for the query.</summary>
+    public class PlanSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The indexes selected for the query. For example: [ {"query_scope": "Collection", "properties": "(foo ASC,
+        /// __name__ ASC)"}, {"query_scope": "Collection", "properties": "(bar ASC, __name__ ASC)"} ]
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexesUsed")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> IndexesUsed { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A precondition on a document, used for conditional operations.</summary>
     public class Precondition : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7044,6 +7120,13 @@ namespace Google.Apis.Firestore.v1.Data
     public class RunAggregationQueryRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. Explain options for the query. If set, additional query statistics will be returned. If not, only
+        /// query results will be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("explainOptions")]
+        public virtual ExplainOptions ExplainOptions { get; set; }
+
+        /// <summary>
         /// Starts a new transaction as part of the query, defaulting to read-only. The new transaction ID will be
         /// returned as the first response in the stream.
         /// </summary>
@@ -7109,6 +7192,13 @@ namespace Google.Apis.Firestore.v1.Data
     /// <summary>The response for Firestore.RunAggregationQuery.</summary>
     public class RunAggregationQueryResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Query explain metrics. This is only present when the RunAggregationQueryRequest.explain_options is provided,
+        /// and it is sent only once with the last response in the stream.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("explainMetrics")]
+        public virtual ExplainMetrics ExplainMetrics { get; set; }
+
         private string _readTimeRaw;
 
         private object _readTime;
@@ -7169,6 +7259,13 @@ namespace Google.Apis.Firestore.v1.Data
     /// <summary>The request for Firestore.RunQuery.</summary>
     public class RunQueryRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Explain options for the query. If set, additional query statistics will be returned. If not, only
+        /// query results will be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("explainOptions")]
+        public virtual ExplainOptions ExplainOptions { get; set; }
+
         /// <summary>
         /// Starts a new transaction and reads the documents. Defaults to a read-only transaction. The new transaction
         /// ID will be returned as the first response in the stream.
@@ -7244,6 +7341,13 @@ namespace Google.Apis.Firestore.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
         public virtual System.Nullable<bool> Done { get; set; }
+
+        /// <summary>
+        /// Query explain metrics. This is only present when the RunQueryRequest.explain_options is provided, and it is
+        /// sent only once with the last response in the stream.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("explainMetrics")]
+        public virtual ExplainMetrics ExplainMetrics { get; set; }
 
         private string _readTimeRaw;
 

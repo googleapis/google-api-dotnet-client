@@ -8582,6 +8582,21 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Operation metadata returned by the CLH during resource state reconciliation.</summary>
+    public class ReconciliationOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>DEPRECATED. Use exclusive_action instead.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteResource")]
+        public virtual System.Nullable<bool> DeleteResource { get; set; }
+
+        /// <summary>Excluisive action returned by the CLH.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exclusiveAction")]
+        public virtual string ExclusiveAction { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A role in the Identity and Access Management API.</summary>
     public class Role : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8607,8 +8622,8 @@ namespace Google.Apis.Iam.v1.Data
         /// <summary>
         /// The name of the role. When `Role` is used in `CreateRole`, the role name must not be set. When `Role` is
         /// used in output and other input such as `UpdateRole`, the role name is the complete path. For example,
-        /// `roles/logging.viewer` for predefined roles, `organizations/{ORGANIZATION_ID}/roles/my-role` for
-        /// organization-level custom roles, and `projects/{PROJECT_ID}/roles/my-role` for project-level custom roles.
+        /// `roles/logging.viewer` for predefined roles, `organizations/{ORGANIZATION_ID}/roles/myRole` for
+        /// organization-level custom roles, and `projects/{PROJECT_ID}/roles/myRole` for project-level custom roles.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -8631,16 +8646,14 @@ namespace Google.Apis.Iam.v1.Data
     public class Saml : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. SAML Identity provider configuration metadata xml doc. The xml document should comply with [SAML
-        /// 2.0
-        /// specification](https://www.oasis-open.org/committees/download.php/56785/sstc-saml-metadata-errata-2.0-wd-05.pdf).
-        /// The max size of the acceptable xml document will be bounded to 128k characters. The metadata xml document
-        /// should satisfy the following constraints: 1) Must contain an Identity Provider Entity ID. 2) Must contain at
-        /// least one non-expired signing key certificate. 3) For each signing key: a) Valid from should be no more than
-        /// 7 days from now. b) Valid to should be no more than 15 years in the future. 4) Upto 3 IdP signing keys are
-        /// allowed in the metadata xml. When updating the provider's metadata xml, at lease one non-expired signing key
-        /// must overlap with the existing metadata. This requirement is skipped if there are no non-expired signing
-        /// keys present in the existing metadata
+        /// Required. SAML identity provider (IdP) configuration metadata XML doc. The XML document must comply with the
+        /// [SAML 2.0 specification](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf). The
+        /// maximum size of an acceptable XML document is 128K characters. The SAML metadata XML document must satisfy
+        /// the following constraints: * Must contain an IdP Entity ID. * Must contain at least one non-expired signing
+        /// certificate. * For each signing certificate, the expiration must be: * From no more than 7 days in the
+        /// future. * To no more than 15 years in the future. * Up to three IdP signing keys are allowed. When updating
+        /// the provider's metadata XML, at least one non-expired signing key must overlap with the existing metadata.
+        /// This requirement is skipped if there are no non-expired signing keys present in the existing metadata.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idpMetadataXml")]
         public virtual string IdpMetadataXml { get; set; }
@@ -9256,7 +9269,7 @@ namespace Google.Apis.Iam.v1.Data
         /// `google.profile_photo`: The URL that specifies the authenticated user's thumbnail photo. This is an optional
         /// field. When set, the image will be visible as the user's profile picture. If not set, a generic user icon
         /// will be displayed instead. This attribute cannot be referenced in IAM bindings. * `google.posix_username`:
-        /// The linux username used by OS login. This is an optional field and the mapped posix username cannot exceed
+        /// The Linux username used by OS Login. This is an optional field and the mapped POSIX username cannot exceed
         /// 32 characters, The key must match the regex "^a-zA-Z0-9._{0,31}$". This attribute cannot be referenced in
         /// IAM bindings. You can also provide custom attributes by specifying `attribute.{custom_attribute}`, where
         /// {custom_attribute} is the name of the custom attribute to be mapped. You can define a maximum of 50 custom
@@ -9640,6 +9653,10 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
+        /// <summary>An X.509-type identity provider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("x509")]
+        public virtual X509 X509 { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9707,6 +9724,16 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("use")]
         public virtual string Use { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An X.509-type identity provider represents a CA. It is trusted to assert a client identity if the client has a
+    /// certificate that chains up to this CA.
+    /// </summary>
+    public class X509 : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

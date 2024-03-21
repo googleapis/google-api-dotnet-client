@@ -7276,6 +7276,10 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
     /// </summary>
     public class GoogleCloudDatacatalogV1beta1TagTemplate : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Transfer status of the TagTemplate</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataplexTransferStatus")]
+        public virtual string DataplexTransferStatus { get; set; }
+
         /// <summary>The display name for this template. Defaults to an empty string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }

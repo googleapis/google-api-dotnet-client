@@ -5194,9 +5194,9 @@ namespace Google.Apis.AndroidPublisher.v3
 
             /// <summary>
             /// Required. The id to use for the external transaction. Must be unique across all other transactions for
-            /// the app. This value should be 1-63 characters and valid characters are /a-z0-9_-/. Do not use this field
-            /// to store any Personally Identifiable Information (PII) such as emails. Attempting to store PII in this
-            /// field may result in requests being blocked.
+            /// the app. This value should be 1-63 characters and valid characters are /a-zA-Z0-9_-/. Do not use this
+            /// field to store any Personally Identifiable Information (PII) such as emails. Attempting to store PII in
+            /// this field may result in requests being blocked.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("externalTransactionId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ExternalTransactionId { get; set; }
@@ -10674,6 +10674,15 @@ namespace Google.Apis.AndroidPublisher.v3
                 public virtual System.Nullable<long> EndTime { get; set; }
 
                 /// <summary>
+                /// Optional. Whether to include voided purchases of quantity-based partial refunds, which are
+                /// applicable only to multi-quantity purchases. If true, additional voided purchases may be returned
+                /// with voidedQuantity that indicates the refund quantity of a quantity-based partial refund. The
+                /// default value is false.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("includeQuantityBasedPartialRefund", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> IncludeQuantityBasedPartialRefund { get; set; }
+
+                /// <summary>
                 /// Defines how many results the list operation should return. The default number depends on the
                 /// resource collection.
                 /// </summary>
@@ -10740,6 +10749,14 @@ namespace Google.Apis.AndroidPublisher.v3
                     RequestParameters.Add("endTime", new Google.Apis.Discovery.Parameter
                     {
                         Name = "endTime",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("includeQuantityBasedPartialRefund", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "includeQuantityBasedPartialRefund",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -17057,6 +17074,13 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseToken")]
         public virtual string PurchaseToken { get; set; }
+
+        /// <summary>
+        /// The voided quantity as the result of a quantity-based partial refund. Voided purchases of quantity-based
+        /// partial refunds may only be returned when includeQuantityBasedPartialRefund is set to true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("voidedQuantity")]
+        public virtual System.Nullable<int> VoidedQuantity { get; set; }
 
         /// <summary>
         /// The reason why the purchase was voided, possible values are: 0. Other 1. Remorse 2. Not_received 3.

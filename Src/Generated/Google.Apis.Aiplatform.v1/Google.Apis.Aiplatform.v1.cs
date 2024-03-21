@@ -326,6 +326,7 @@ namespace Google.Apis.Aiplatform.v1
                 NotebookRuntimeTemplates = new NotebookRuntimeTemplatesResource(service);
                 NotebookRuntimes = new NotebookRuntimesResource(service);
                 Operations = new OperationsResource(service);
+                PersistentResources = new PersistentResourcesResource(service);
                 PipelineJobs = new PipelineJobsResource(service);
                 Publishers = new PublishersResource(service);
                 Schedules = new SchedulesResource(service);
@@ -25821,11 +25822,12 @@ namespace Google.Apis.Aiplatform.v1
                     /// the NotebookRuntimeTemplate's resource name. * `healthState` supports = and !=. healthState
                     /// enum: [HEALTHY, UNHEALTHY, HEALTH_STATE_UNSPECIFIED]. * `runtimeState` supports = and !=.
                     /// runtimeState enum: [RUNTIME_STATE_UNSPECIFIED, RUNNING, BEING_STARTED, BEING_STOPPED, STOPPED,
-                    /// BEING_UPGRADED]. * `runtimeUser` supports = and !=. * API version is UI only: `uiState` supports
-                    /// = and !=. uiState enum: [UI_RESOURCE_STATE_UNSPECIFIED, UI_RESOURCE_STATE_BEING_CREATED,
-                    /// UI_RESOURCE_STATE_ACTIVE, UI_RESOURCE_STATE_BEING_DELETED, UI_RESOURCE_STATE_CREATION_FAILED]. *
-                    /// `notebookRuntimeType` supports = and !=. notebookRuntimeType enum: [USER_DEFINED, ONE_CLICK].
-                    /// Some examples: * `notebookRuntime="notebookRuntime123"` * `displayName="myDisplayName"` and
+                    /// BEING_UPGRADED, ERROR, INVALID]. * `runtimeUser` supports = and !=. * API version is UI only:
+                    /// `uiState` supports = and !=. uiState enum: [UI_RESOURCE_STATE_UNSPECIFIED,
+                    /// UI_RESOURCE_STATE_BEING_CREATED, UI_RESOURCE_STATE_ACTIVE, UI_RESOURCE_STATE_BEING_DELETED,
+                    /// UI_RESOURCE_STATE_CREATION_FAILED]. * `notebookRuntimeType` supports = and !=.
+                    /// notebookRuntimeType enum: [USER_DEFINED, ONE_CLICK]. Some examples: *
+                    /// `notebookRuntime="notebookRuntime123"` * `displayName="myDisplayName"` and
                     /// `displayName=~"myDisplayNameRegex"` * `notebookRuntimeTemplate="notebookRuntimeTemplate321"` *
                     /// `healthState=HEALTHY` * `runtimeState=RUNNING` * `runtimeUser="test@google.com"` *
                     /// `uiState=UI_RESOURCE_STATE_BEING_DELETED` * `notebookRuntimeType=USER_DEFINED`
@@ -26380,6 +26382,347 @@ namespace Google.Apis.Aiplatform.v1
                         RequestParameters.Add("timeout", new Google.Apis.Discovery.Parameter
                         {
                             Name = "timeout",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the PersistentResources resource.</summary>
+            public virtual PersistentResourcesResource PersistentResources { get; }
+
+            /// <summary>The "persistentResources" collection of methods.</summary>
+            public class PersistentResourcesResource
+            {
+                private const string Resource = "persistentResources";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public PersistentResourcesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a PersistentResource.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The resource name of the Location to create the PersistentResource in. Format:
+                /// `projects/{project}/locations/{location}`
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1PersistentResource body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a PersistentResource.</summary>
+                public class CreateRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1PersistentResource body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the Location to create the PersistentResource in. Format:
+                    /// `projects/{project}/locations/{location}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. The ID to use for the PersistentResource, which become the final component of the
+                    /// PersistentResource's resource name. The maximum length is 63 characters, and valid characters
+                    /// are `/^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$/`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("persistentResourceId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PersistentResourceId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1PersistentResource Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/persistentResources";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("persistentResourceId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "persistentResourceId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a PersistentResource.</summary>
+                /// <param name="name">
+                /// Required. The name of the PersistentResource to be deleted. Format:
+                /// `projects/{project}/locations/{location}/persistentResources/{persistent_resource}`
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a PersistentResource.</summary>
+                public class DeleteRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the PersistentResource to be deleted. Format:
+                    /// `projects/{project}/locations/{location}/persistentResources/{persistent_resource}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/persistentResources/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets a PersistentResource.</summary>
+                /// <param name="name">
+                /// Required. The name of the PersistentResource resource. Format:
+                /// `projects/{project_id_or_number}/locations/{location_id}/persistentResources/{persistent_resource_id}`
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets a PersistentResource.</summary>
+                public class GetRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1PersistentResource>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the PersistentResource resource. Format:
+                    /// `projects/{project_id_or_number}/locations/{location_id}/persistentResources/{persistent_resource_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/persistentResources/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists PersistentResources in a Location.</summary>
+                /// <param name="parent">
+                /// Required. The resource name of the Location to list the PersistentResources from. Format:
+                /// `projects/{project}/locations/{location}`
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists PersistentResources in a Location.</summary>
+                public class ListRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1ListPersistentResourcesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the Location to list the PersistentResources from. Format:
+                    /// `projects/{project}/locations/{location}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. The standard list page size.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. The standard list page token. Typically obtained via
+                    /// ListPersistentResourceResponse.next_page_token of the previous
+                    /// PersistentResourceService.ListPersistentResource call.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/persistentResources";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates a PersistentResource.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Immutable. Resource name of a PersistentResource.</param>
+                public virtual PatchRequest Patch(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1PersistentResource body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates a PersistentResource.</summary>
+                public class PatchRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1PersistentResource body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Immutable. Resource name of a PersistentResource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Required. Specify the fields to be overwritten in the PersistentResource by the update method.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1PersistentResource Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/persistentResources/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -38965,6 +39308,21 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details of operations that perform create PersistentResource.</summary>
+    public class GoogleCloudAiplatformV1CreatePersistentResourceOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Operation metadata for PersistentResource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
+        public virtual GoogleCloudAiplatformV1GenericOperationMetadata GenericMetadata { get; set; }
+
+        /// <summary>Progress Message for Create LRO</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progressMessage")]
+        public virtual string ProgressMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for PipelineService.CreatePipelineJob.</summary>
     public class GoogleCloudAiplatformV1CreatePipelineJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -40971,13 +41329,6 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Configures the request-response logging for online prediction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("predictRequestResponseLoggingConfig")]
         public virtual GoogleCloudAiplatformV1PredictRequestResponseLoggingConfig PredictRequestResponseLoggingConfig { get; set; }
-
-        /// <summary>
-        /// Optional. Configuration for private service connect. network and private_service_connect_config are mutually
-        /// exclusive.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("privateServiceConnectConfig")]
-        public virtual GoogleCloudAiplatformV1PrivateServiceConnectConfig PrivateServiceConnectConfig { get; set; }
 
         /// <summary>
         /// A map from a DeployedModel's ID to the percentage of this Endpoint's traffic that should be forwarded to
@@ -44284,7 +44635,7 @@ namespace Google.Apis.Aiplatform.v1.Data
 
         /// <summary>
         /// Required. The name of the function to call. Must start with a letter or an underscore. Must be a-z, A-Z,
-        /// 0-9, or contain underscores and dashes, with a maximum length of 64.
+        /// 0-9, or contain underscores, dots and dashes, with a maximum length of 64.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -44293,8 +44644,9 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// Optional. Describes the parameters to this function in JSON Schema Object format. Reflects the Open API 3.03
         /// Parameter Object. string Key: the name of the parameter. Parameter names are case sensitive. Schema Value:
         /// the Schema defining the type used for the parameter. For function with no parameters, this can be left
-        /// unset. Example with 1 required and 1 optional parameter: type: OBJECT properties: param1: type: STRING
-        /// param2: type: INTEGER required: - param1
+        /// unset. Parameter names must start with a letter or an underscore and must only contain chars a-z, A-Z, 0-9,
+        /// or underscores with a maximum length of 64. Example with 1 required and 1 optional parameter: type: OBJECT
+        /// properties: param1: type: STRING param2: type: INTEGER required: - param1
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual GoogleCloudAiplatformV1Schema Parameters { get; set; }
@@ -44372,6 +44724,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("safetySettings")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1SafetySetting> SafetySettings { get; set; }
+
+        /// <summary>Optional. The user provided system instructions for the model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemInstructions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1Content> SystemInstructions { get; set; }
 
         /// <summary>
         /// Optional. A list of `Tools` the model may use to generate the next response. A `Tool` is a piece of code
@@ -44572,6 +44928,20 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Required. The public base model URI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("baseModelUri")]
         public virtual string BaseModelUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Tool to retrieve public web data for grounding, powered by Google.</summary>
+    public class GoogleCloudAiplatformV1GoogleSearchRetrieval : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Disable using the result from this tool in detecting grounding attribution. This does not affect
+        /// how the result is given to the model for generation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableAttribution")]
+        public virtual System.Nullable<bool> DisableAttribution { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -46392,6 +46762,23 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("optimalTrials")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1Trial> OptimalTrials { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for PersistentResourceService.ListPersistentResources</summary>
+    public class GoogleCloudAiplatformV1ListPersistentResourcesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token to retrieve next page of results. Pass to ListPersistentResourcesRequest.page_token to obtain that
+        /// page.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("persistentResources")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1PersistentResource> PersistentResources { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -50239,6 +50626,199 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Represents long-lasting resources that are dedicated to users to runs custom workloads. A PersistentResource can
+    /// have multiple node pools and each node pool can have its own machine spec.
+    /// </summary>
+    public class GoogleCloudAiplatformV1PersistentResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Time when the PersistentResource was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Optional. The display name of the PersistentResource. The name can be up to 128 characters long and can
+        /// consist of any UTF-8 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Optional. Customer-managed encryption key spec for a PersistentResource. If set, this PersistentResource and
+        /// all sub-resources of this PersistentResource will be secured by this key.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionSpec")]
+        public virtual GoogleCloudAiplatformV1EncryptionSpec EncryptionSpec { get; set; }
+
+        /// <summary>Output only. Only populated when persistent resource's state is `STOPPING` or `ERROR`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual GoogleRpcStatus Error { get; set; }
+
+        /// <summary>
+        /// Optional. The labels with user-defined metadata to organize PersistentResource. Label keys and values can be
+        /// no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters,
+        /// underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information
+        /// and examples of labels.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Immutable. Resource name of a PersistentResource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. The full name of the Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to
+        /// peered with Vertex AI to host the persistent resources. For example, `projects/12345/global/networks/myVPC`.
+        /// [Format](/compute/docs/reference/rest/v1/networks/insert) is of the form
+        /// `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and
+        /// {network} is a network name. To specify this field, you must have already [configured VPC Network Peering
+        /// for Vertex AI](https://cloud.google.com/vertex-ai/docs/general/vpc-peering). If this field is left
+        /// unspecified, the resources aren't peered with any network.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
+
+        /// <summary>
+        /// Optional. A list of names for the reserved IP ranges under the VPC network that can be used for this
+        /// persistent resource. If set, we will deploy the persistent resource within the provided IP ranges.
+        /// Otherwise, the persistent resource is deployed to any IP ranges under the provided VPC network. Example:
+        /// ['vertex-ai-ip-range'].
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reservedIpRanges")]
+        public virtual System.Collections.Generic.IList<string> ReservedIpRanges { get; set; }
+
+        /// <summary>Required. The spec of the pools of different resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourcePools")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1ResourcePool> ResourcePools { get; set; }
+
+        /// <summary>Output only. Runtime information of the Persistent Resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceRuntime")]
+        public virtual GoogleCloudAiplatformV1ResourceRuntime ResourceRuntime { get; set; }
+
+        /// <summary>
+        /// Optional. Persistent Resource runtime spec. For example, used for Ray cluster configuration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceRuntimeSpec")]
+        public virtual GoogleCloudAiplatformV1ResourceRuntimeSpec ResourceRuntimeSpec { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>
+        /// Output only. Time when the PersistentResource for the first time entered the `RUNNING` state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The detailed state of a Study.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Time when the PersistentResource was most recently updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>An instance of a machine learning PipelineJob.</summary>
     public class GoogleCloudAiplatformV1PipelineJob : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -51730,6 +52310,58 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for the Ray metrics.</summary>
+    public class GoogleCloudAiplatformV1RayMetricSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Flag to disable the Ray metrics collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual System.Nullable<bool> Disabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configuration information for the Ray cluster. For experimental launch, Ray cluster creation and Persistent
+    /// cluster creation are 1:1 mapping: We will provision all the nodes within the Persistent cluster as Ray nodes.
+    /// </summary>
+    public class GoogleCloudAiplatformV1RaySpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. This will be used to indicate which resource pool will serve as the Ray head node(the first node
+        /// within that pool). Will use the machine from the first workerpool as the head node by default if this field
+        /// isn't set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headNodeResourcePoolId")]
+        public virtual string HeadNodeResourcePoolId { get; set; }
+
+        /// <summary>
+        /// Optional. Default image for user to choose a preferred ML framework (for example, TensorFlow or Pytorch) by
+        /// choosing from [Vertex prebuilt
+        /// images](https://cloud.google.com/vertex-ai/docs/training/pre-built-containers). Either this or the
+        /// resource_pool_images is required. Use this field if you need all the resource pools to have the same Ray
+        /// image. Otherwise, use the {@code resource_pool_images} field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
+        public virtual string ImageUri { get; set; }
+
+        /// <summary>Optional. Ray metrics configurations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rayMetricSpec")]
+        public virtual GoogleCloudAiplatformV1RayMetricSpec RayMetricSpec { get; set; }
+
+        /// <summary>
+        /// Optional. Required if image_uri isn't set. A map of resource_pool_id to prebuild Ray image if user need to
+        /// use different images for different head/worker pools. This map needs to cover all the resource pool ids.
+        /// Example: { "ray_head_node_pool": "head image" "ray_worker_node_pool1": "worker image"
+        /// "ray_worker_node_pool2": "another worker image" }
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourcePoolImages")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ResourcePoolImages { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for FeaturestoreOnlineServingService.ReadFeatureValues.</summary>
     public class GoogleCloudAiplatformV1ReadFeatureValuesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -51934,6 +52566,21 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details of operations that perform reboot PersistentResource.</summary>
+    public class GoogleCloudAiplatformV1RebootPersistentResourceOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Operation metadata for PersistentResource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
+        public virtual GoogleCloudAiplatformV1GenericOperationMetadata GenericMetadata { get; set; }
+
+        /// <summary>Progress Message for Reboot LRO</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progressMessage")]
+        public virtual string ProgressMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for MetadataService.DeleteContextChildrenRequest.</summary>
     public class GoogleCloudAiplatformV1RemoveContextChildrenRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -51966,6 +52613,110 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// <summary>Response message for IndexService.RemoveDatapoints</summary>
     public class GoogleCloudAiplatformV1RemoveDatapointsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents the spec of a group of resources of the same type, for example machine type, disk, and accelerators,
+    /// in a PersistentResource.
+    /// </summary>
+    public class GoogleCloudAiplatformV1ResourcePool : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Optional spec to configure GKE autoscaling</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoscalingSpec")]
+        public virtual GoogleCloudAiplatformV1ResourcePoolAutoscalingSpec AutoscalingSpec { get; set; }
+
+        /// <summary>Optional. Disk spec for the machine in this node pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskSpec")]
+        public virtual GoogleCloudAiplatformV1DiskSpec DiskSpec { get; set; }
+
+        /// <summary>
+        /// Immutable. The unique ID in a PersistentResource for referring to this resource pool. User can specify it if
+        /// necessary. Otherwise, it's generated automatically.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Required. Immutable. The specification of a single machine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineSpec")]
+        public virtual GoogleCloudAiplatformV1MachineSpec MachineSpec { get; set; }
+
+        /// <summary>Optional. The total number of machines to use for this resource pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replicaCount")]
+        public virtual System.Nullable<long> ReplicaCount { get; set; }
+
+        /// <summary>
+        /// Output only. The number of machines currently in use by training jobs for this resource pool. Will replace
+        /// idle_replica_count.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usedReplicaCount")]
+        public virtual System.Nullable<long> UsedReplicaCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The min/max number of replicas allowed if enabling autoscaling</summary>
+    public class GoogleCloudAiplatformV1ResourcePoolAutoscalingSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. max replicas in the node pool, must be ≥ replica_count and &amp;gt; min_replica_count or will
+        /// throw error
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxReplicaCount")]
+        public virtual System.Nullable<long> MaxReplicaCount { get; set; }
+
+        /// <summary>
+        /// Optional. min replicas in the node pool, must be ≤ replica_count and &amp;lt; max_replica_count or will
+        /// throw error
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minReplicaCount")]
+        public virtual System.Nullable<long> MinReplicaCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Persistent Cluster runtime information as output</summary>
+    public class GoogleCloudAiplatformV1ResourceRuntime : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. URIs for user to connect to the Cluster. Example: { "RAY_HEAD_NODE_INTERNAL_IP":
+        /// "head-node-IP:10001" "RAY_DASHBOARD_URI": "ray-dashboard-address:8888" }
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessUris")]
+        public virtual System.Collections.Generic.IDictionary<string, string> AccessUris { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of NotebookRuntimeTemplate for the RoV Persistent Cluster The
+        /// NotebokRuntimeTemplate is created in the same VPC (if set), and with the same Ray and Python version as the
+        /// Persistent Cluster. Example: "projects/1000/locations/us-central1/notebookRuntimeTemplates/abc123"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notebookRuntimeTemplate")]
+        public virtual string NotebookRuntimeTemplate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configuration for the runtime on a PersistentResource instance, including but not limited to: * Service accounts
+    /// used to run the workloads. * Whether to make it a dedicated Ray Cluster.
+    /// </summary>
+    public class GoogleCloudAiplatformV1ResourceRuntimeSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Ray cluster configuration. Required when creating a dedicated RayCluster on the
+        /// PersistentResource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("raySpec")]
+        public virtual GoogleCloudAiplatformV1RaySpec RaySpec { get; set; }
+
+        /// <summary>Optional. Configure the use of workload identity on the PersistentResource</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountSpec")]
+        public virtual GoogleCloudAiplatformV1ServiceAccountSpec ServiceAccountSpec { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -52017,6 +52768,24 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Defines a retrieval tool that model can call to access external knowledge.</summary>
+    public class GoogleCloudAiplatformV1Retrieval : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Disable using the result from this tool in detecting grounding attribution. This does not affect
+        /// how the result is given to the model for generation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableAttribution")]
+        public virtual System.Nullable<bool> DisableAttribution { get; set; }
+
+        /// <summary>Set to use data source powered by Vertex AI Search.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vertexAiSearch")]
+        public virtual GoogleCloudAiplatformV1VertexAISearch VertexAiSearch { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Safety rating corresponding to the generated content.</summary>
     public class GoogleCloudAiplatformV1SafetyRating : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -52054,6 +52823,13 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Required. Harm category.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("category")]
         public virtual string Category { get; set; }
+
+        /// <summary>
+        /// Optional. Specify if the threshold is used for probability or severity score. If not specified, the
+        /// threshold is used for probability score.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("method")]
+        public virtual string Method { get; set; }
 
         /// <summary>Required. The harm block threshold.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threshold")]
@@ -57075,6 +57851,31 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for the use of custom service account to run the workloads.</summary>
+    public class GoogleCloudAiplatformV1ServiceAccountSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. If true, custom user-managed service account is enforced to run any workloads (for example, Vertex
+        /// Jobs) on the resource. Otherwise, uses the [Vertex AI Custom Code Service
+        /// Agent](https://cloud.google.com/vertex-ai/docs/general/access-control#service-agents).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableCustomServiceAccount")]
+        public virtual System.Nullable<bool> EnableCustomServiceAccount { get; set; }
+
+        /// <summary>
+        /// Optional. Default service account that this PersistentResource's workloads run as. The workloads include: *
+        /// Any runtime specified via `ResourceRuntimeSpec` on creation time, for example, Ray. * Jobs submitted to
+        /// PersistentResource, if no other service account specified in the job specs. Only works when custom service
+        /// account is enabled and users have the `iam.serviceAccounts.actAs` permission on this service account.
+        /// Required if any containers are specified in `ResourceRuntimeSpec`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A set of Shielded Instance options. See [Images using supported Shielded VM
     /// features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
@@ -58903,6 +59704,19 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("functionDeclarations")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1FunctionDeclaration> FunctionDeclarations { get; set; }
 
+        /// <summary>
+        /// Optional. GoogleSearchRetrieval tool type. Specialized retrieval tool that is powered by Google search.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleSearchRetrieval")]
+        public virtual GoogleCloudAiplatformV1GoogleSearchRetrieval GoogleSearchRetrieval { get; set; }
+
+        /// <summary>
+        /// Optional. Retrieval tool type. System will always execute the provided retrieval tool(s) to get external
+        /// knowledge to answer the prompt. Retrieval results are presented to the model for generation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retrieval")]
+        public virtual GoogleCloudAiplatformV1Retrieval Retrieval { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -59590,6 +60404,21 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details of operations that perform update PersistentResource.</summary>
+    public class GoogleCloudAiplatformV1UpdatePersistentResourceOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Operation metadata for PersistentResource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
+        public virtual GoogleCloudAiplatformV1GenericOperationMetadata GenericMetadata { get; set; }
+
+        /// <summary>Progress Message for Update LRO</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progressMessage")]
+        public virtual string ProgressMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Runtime operation metadata for SpecialistPoolService.UpdateSpecialistPool.</summary>
     public class GoogleCloudAiplatformV1UpdateSpecialistPoolOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -59776,6 +60605,23 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>A string value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
         public virtual string StringValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Retrieve from Vertex AI Search datastore for grounding. See
+    /// https://cloud.google.com/vertex-ai-search-and-conversation
+    /// </summary>
+    public class GoogleCloudAiplatformV1VertexAISearch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Fully-qualified Vertex AI Search's datastore resource ID.
+        /// projects/&amp;lt;&amp;gt;/locations/&amp;lt;&amp;gt;/collections/&amp;lt;&amp;gt;/dataStores/&amp;lt;&amp;gt;
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datastore")]
+        public virtual string Datastore { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

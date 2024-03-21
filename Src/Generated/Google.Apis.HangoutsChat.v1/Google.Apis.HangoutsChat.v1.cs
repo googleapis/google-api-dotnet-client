@@ -3375,9 +3375,12 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
     /// <summary>
     /// A Google Chat app interaction event. To learn about interaction events, see [Receive and respond to interactions
-    /// with your Google Chat app](https://developers.google.com/chat/api/guides/message-formats). To learn about event
-    /// types and for example event payloads, see [Types of Google Chat app interaction
-    /// events](https://developers.google.com/chat/api/guides/message-formats/events).
+    /// with your Google Chat app](https://developers.google.com/workspace/chat/api/guides/message-formats). To learn
+    /// about event types and for example event payloads, see [Types of Google Chat app interaction
+    /// events](https://developers.google.com/workspace/chat/events). In addition to receiving events from user
+    /// interactions, Chat apps can receive events about changes to spaces, such as when a new member is added to a
+    /// space. To learn about space events, see [Work with events from Google
+    /// Chat](https://developers.google.com/workspace/chat/events-overview).
     /// </summary>
     public class DeprecatedEvent : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3483,7 +3486,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// The type of interaction event. For details, see [Types of Google Chat app interaction
-        /// events](https://developers.google.com/chat/api/guides/message-formats/events).
+        /// events](https://developers.google.com/workspace/chat/events).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -4290,6 +4293,16 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("knownIcon")]
         public virtual string KnownIcon { get; set; }
 
+        /// <summary>
+        /// Display one of the [Google Material Icons](https://fonts.google.com/icons). For example, to display a
+        /// [checkbox
+        /// icon](https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Acheck_box%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048),
+        /// use "material_icon": { "name": "check_box" } Available for Chat apps and in [Developer
+        /// Preview](https://developers.google.com/workspace/preview) for Google Workspace Add-ons.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("materialIcon")]
+        public virtual GoogleAppsCardV1MaterialIcon MaterialIcon { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4369,6 +4382,52 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>The crop type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A [Google Material Icon](https://fonts.google.com/icons), which includes over 2500+ options. For example, to
+    /// display a [checkbox
+    /// icon](https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Acheck_box%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048)
+    /// with customized weight and grade, write { "name": "check_box", "fill": true, "weight": 300, "grade": -25 }
+    /// Available for Chat apps and in [Developer Preview](https://developers.google.com/workspace/preview) for Google
+    /// Workspace Add-ons.
+    /// </summary>
+    public class GoogleAppsCardV1MaterialIcon : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether it renders a filled icon. Default value is false. See Customization in [Google Font
+        /// Icon](https://fonts.google.com/icons) for details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fill")]
+        public virtual System.Nullable<bool> Fill { get; set; }
+
+        /// <summary>
+        /// Weight and grade affect a symbol’s thickness. Adjustments to grade are more granular than adjustments to
+        /// weight and have a small impact on the size of the symbol. Choose from {-25, 0, 200}. If absent, default
+        /// value is 0. If any other value is specified, a broken image icon is displayed. See Customization in [Google
+        /// Font Icon](https://fonts.google.com/icons) for details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("grade")]
+        public virtual System.Nullable<int> Grade { get; set; }
+
+        /// <summary>
+        /// The icon name defined in the [Google Material Icon Icon](https://fonts.google.com/icons) in snake_case. e.g.
+        /// "check_box". Any invalid names are abandoned and replaced with empty string and results in the icon failing
+        /// to render.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The stroke weight of the icon. Choose from {100, 200, 300, 400, 500, 600, 700}. If absent, default value is
+        /// 400. If any other value is specified, a broken image icon is displayed. See Customization in [Google Font
+        /// Icon](https://fonts.google.com/icons) for details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("weight")]
+        public virtual System.Nullable<int> Weight { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

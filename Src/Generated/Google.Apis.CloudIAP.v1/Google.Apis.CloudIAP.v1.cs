@@ -1557,14 +1557,14 @@ namespace Google.Apis.CloudIAP.v1
             }
         }
 
-        /// <summary>Validates a given CEL expression conforms to IAP restrictions.</summary>
+        /// <summary>Validates that a given CEL expression conforms to IAP restrictions.</summary>
         /// <param name="name">Required. The resource name of the IAP protected resource.</param>
         public virtual ValidateAttributeExpressionRequest ValidateAttributeExpression(string name)
         {
             return new ValidateAttributeExpressionRequest(this.service, name);
         }
 
-        /// <summary>Validates a given CEL expression conforms to IAP restrictions.</summary>
+        /// <summary>Validates that a given CEL expression conforms to IAP restrictions.</summary>
         public class ValidateAttributeExpressionRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1.Data.ValidateIapAttributeExpressionResponse>
         {
             /// <summary>Constructs a new ValidateAttributeExpression request.</summary>
@@ -1580,8 +1580,8 @@ namespace Google.Apis.CloudIAP.v1
 
             /// <summary>
             /// Required. User input string expression. Should be of the form
-            /// 'attributes.saml_attributes.filter(attribute, attribute.name in ['{attribute_name}',
-            /// '{attribute_name}'])'
+            /// `attributes.saml_attributes.filter(attribute, attribute.name in ['{attribute_name}',
+            /// '{attribute_name}'])`
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("expression", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Expression { get; set; }

@@ -739,6 +739,21 @@ namespace Google.Apis.Iam.v2beta
 }
 namespace Google.Apis.Iam.v2beta.Data
 {
+    /// <summary>Operation metadata returned by the CLH during resource state reconciliation.</summary>
+    public class CloudControl2SharedOperationsReconciliationOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>DEPRECATED. Use exclusive_action instead.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteResource")]
+        public virtual System.Nullable<bool> DeleteResource { get; set; }
+
+        /// <summary>Excluisive action returned by the CLH.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exclusiveAction")]
+        public virtual string ExclusiveAction { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents the metadata of the long-running operation.</summary>
     public class GoogleCloudCommonOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {

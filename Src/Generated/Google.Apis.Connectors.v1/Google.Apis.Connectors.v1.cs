@@ -2189,6 +2189,76 @@ namespace Google.Apis.Connectors.v1
                 public CustomConnectorsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    CustomConnectorVersions = new CustomConnectorVersionsResource(service);
+                }
+
+                /// <summary>Gets the CustomConnectorVersions resource.</summary>
+                public virtual CustomConnectorVersionsResource CustomConnectorVersions { get; }
+
+                /// <summary>The "customConnectorVersions" collection of methods.</summary>
+                public class CustomConnectorVersionsResource
+                {
+                    private const string Resource = "customConnectorVersions";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public CustomConnectorVersionsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Deletes a single CustomConnectorVersion.</summary>
+                    /// <param name="name">
+                    /// Required. Resource name of the form:
+                    /// `projects/{project}/locations/{location}/customConnectors/{custom_connector}/customConnectorVersions/{custom_connector_version}`
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(this.service, name);
+                    }
+
+                    /// <summary>Deletes a single CustomConnectorVersion.</summary>
+                    public class DeleteRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Resource name of the form:
+                        /// `projects/{project}/locations/{location}/customConnectors/{custom_connector}/customConnectorVersions/{custom_connector_version}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/customConnectors/[^/]+/customConnectorVersions/[^/]+$",
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Validates a Custom Connector Spec.</summary>
@@ -5998,6 +6068,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("authConfigTemplates")]
         public virtual System.Collections.Generic.IList<AuthConfigTemplate> AuthConfigTemplates { get; set; }
 
+        /// <summary>Output only. Flag to mark the dynamic auth override.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authOverrideEnabled")]
+        public virtual System.Nullable<bool> AuthOverrideEnabled { get; set; }
+
         /// <summary>Output only. List of config variables needed to create a connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configVariableTemplates")]
         public virtual System.Collections.Generic.IList<ConfigVariableTemplate> ConfigVariableTemplates { get; set; }
@@ -6091,6 +6165,10 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Output only. Role grant configurations for this connector version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("roleGrants")]
         public virtual System.Collections.Generic.IList<RoleGrant> RoleGrants { get; set; }
+
+        /// <summary>Connection Schema Refresh Config</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemaRefreshConfig")]
+        public virtual SchemaRefreshConfig SchemaRefreshConfig { get; set; }
 
         /// <summary>Output only. Ssl configuration supported by the Connector.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sslConfigTemplate")]
@@ -8144,7 +8222,7 @@ namespace Google.Apis.Connectors.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>LINT.IfChange Defines policies to service maintenance events.</summary>
+    /// <summary>Defines policies to service maintenance events.</summary>
     public class MaintenancePolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
@@ -9367,6 +9445,21 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Time within the window to start the operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual TimeOfDay StartTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Config for connection schema refresh</summary>
+    public class SchemaRefreshConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether to use displayName for actions in UI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useActionDisplayNames")]
+        public virtual System.Nullable<bool> UseActionDisplayNames { get; set; }
+
+        /// <summary>Whether to use synchronous schema refresh.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useSynchronousSchemaRefresh")]
+        public virtual System.Nullable<bool> UseSynchronousSchemaRefresh { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
