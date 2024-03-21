@@ -1181,6 +1181,119 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                 }
                             }
 
+                            /// <summary>Gets the parsed layout information for a Document.</summary>
+                            /// <param name="name">
+                            /// Required. Full resource name of Document, such as
+                            /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document}`.
+                            /// If the caller does not have permission to access the Document, regardless of whether or
+                            /// not it exists, a `PERMISSION_DENIED` error is returned. If the requested Document does
+                            /// not exist, a `NOT_FOUND` error is returned.
+                            /// </param>
+                            public virtual GetProcessedDocumentRequest GetProcessedDocument(string name)
+                            {
+                                return new GetProcessedDocumentRequest(this.service, name);
+                            }
+
+                            /// <summary>Gets the parsed layout information for a Document.</summary>
+                            public class GetProcessedDocumentRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaProcessedDocument>
+                            {
+                                /// <summary>Constructs a new GetProcessedDocument request.</summary>
+                                public GetProcessedDocumentRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                                {
+                                    Name = name;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. Full resource name of Document, such as
+                                /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document}`.
+                                /// If the caller does not have permission to access the Document, regardless of whether
+                                /// or not it exists, a `PERMISSION_DENIED` error is returned. If the requested Document
+                                /// does not exist, a `NOT_FOUND` error is returned.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Name { get; private set; }
+
+                                /// <summary>What format output should be. If unspecified, defaults to JSON.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("processedDocumentFormat", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual System.Nullable<ProcessedDocumentFormatEnum> ProcessedDocumentFormat { get; set; }
+
+                                /// <summary>What format output should be. If unspecified, defaults to JSON.</summary>
+                                public enum ProcessedDocumentFormatEnum
+                                {
+                                    /// <summary>Default value.</summary>
+                                    [Google.Apis.Util.StringValueAttribute("PROCESSED_DOCUMENT_FORMAT_UNSPECIFIED")]
+                                    PROCESSEDDOCUMENTFORMATUNSPECIFIED = 0,
+
+                                    /// <summary>
+                                    /// output format will be a JSON string representation of processed document.
+                                    /// </summary>
+                                    [Google.Apis.Util.StringValueAttribute("JSON")]
+                                    JSON = 1,
+                                }
+
+                                /// <summary>Required. What type of processing to return.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("processedDocumentType", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual System.Nullable<ProcessedDocumentTypeEnum> ProcessedDocumentType { get; set; }
+
+                                /// <summary>Required. What type of processing to return.</summary>
+                                public enum ProcessedDocumentTypeEnum
+                                {
+                                    /// <summary>Default value.</summary>
+                                    [Google.Apis.Util.StringValueAttribute("PROCESSED_DOCUMENT_TYPE_UNSPECIFIED")]
+                                    PROCESSEDDOCUMENTTYPEUNSPECIFIED = 0,
+
+                                    /// <summary>Available for all data store parsing configs.</summary>
+                                    [Google.Apis.Util.StringValueAttribute("PARSED_DOCUMENT")]
+                                    PARSEDDOCUMENT = 1,
+
+                                    /// <summary>
+                                    /// Only available if ChunkingConfig is enabeld on the data store.
+                                    /// </summary>
+                                    [Google.Apis.Util.StringValueAttribute("CHUNKED_DOCUMENT")]
+                                    CHUNKEDDOCUMENT = 2,
+                                }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "getProcessedDocument";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "GET";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1alpha/{+name}:getProcessedDocument";
+
+                                /// <summary>Initializes GetProcessedDocument parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+/branches/[^/]+/documents/[^/]+$",
+                                    });
+                                    RequestParameters.Add("processedDocumentFormat", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "processedDocumentFormat",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("processedDocumentType", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "processedDocumentType",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                }
+                            }
+
                             /// <summary>
                             /// Bulk import of multiple Documents. Request processing may be synchronous. Non-existing
                             /// items will be created. Note: It is possible for a subset of the Documents to be
@@ -7737,6 +7850,117 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                     ParameterType = "path",
                                     DefaultValue = null,
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+/branches/[^/]+/documents/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Gets the parsed layout information for a Document.</summary>
+                        /// <param name="name">
+                        /// Required. Full resource name of Document, such as
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document}`.
+                        /// If the caller does not have permission to access the Document, regardless of whether or not
+                        /// it exists, a `PERMISSION_DENIED` error is returned. If the requested Document does not
+                        /// exist, a `NOT_FOUND` error is returned.
+                        /// </param>
+                        public virtual GetProcessedDocumentRequest GetProcessedDocument(string name)
+                        {
+                            return new GetProcessedDocumentRequest(this.service, name);
+                        }
+
+                        /// <summary>Gets the parsed layout information for a Document.</summary>
+                        public class GetProcessedDocumentRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaProcessedDocument>
+                        {
+                            /// <summary>Constructs a new GetProcessedDocument request.</summary>
+                            public GetProcessedDocumentRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. Full resource name of Document, such as
+                            /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document}`.
+                            /// If the caller does not have permission to access the Document, regardless of whether or
+                            /// not it exists, a `PERMISSION_DENIED` error is returned. If the requested Document does
+                            /// not exist, a `NOT_FOUND` error is returned.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>What format output should be. If unspecified, defaults to JSON.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("processedDocumentFormat", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<ProcessedDocumentFormatEnum> ProcessedDocumentFormat { get; set; }
+
+                            /// <summary>What format output should be. If unspecified, defaults to JSON.</summary>
+                            public enum ProcessedDocumentFormatEnum
+                            {
+                                /// <summary>Default value.</summary>
+                                [Google.Apis.Util.StringValueAttribute("PROCESSED_DOCUMENT_FORMAT_UNSPECIFIED")]
+                                PROCESSEDDOCUMENTFORMATUNSPECIFIED = 0,
+
+                                /// <summary>
+                                /// output format will be a JSON string representation of processed document.
+                                /// </summary>
+                                [Google.Apis.Util.StringValueAttribute("JSON")]
+                                JSON = 1,
+                            }
+
+                            /// <summary>Required. What type of processing to return.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("processedDocumentType", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<ProcessedDocumentTypeEnum> ProcessedDocumentType { get; set; }
+
+                            /// <summary>Required. What type of processing to return.</summary>
+                            public enum ProcessedDocumentTypeEnum
+                            {
+                                /// <summary>Default value.</summary>
+                                [Google.Apis.Util.StringValueAttribute("PROCESSED_DOCUMENT_TYPE_UNSPECIFIED")]
+                                PROCESSEDDOCUMENTTYPEUNSPECIFIED = 0,
+
+                                /// <summary>Available for all data store parsing configs.</summary>
+                                [Google.Apis.Util.StringValueAttribute("PARSED_DOCUMENT")]
+                                PARSEDDOCUMENT = 1,
+
+                                /// <summary>Only available if ChunkingConfig is enabeld on the data store.</summary>
+                                [Google.Apis.Util.StringValueAttribute("CHUNKED_DOCUMENT")]
+                                CHUNKEDDOCUMENT = 2,
+                            }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "getProcessedDocument";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+name}:getProcessedDocument";
+
+                            /// <summary>Initializes GetProcessedDocument parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+/branches/[^/]+/documents/[^/]+$",
+                                });
+                                RequestParameters.Add("processedDocumentFormat", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "processedDocumentFormat",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("processedDocumentType", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "processedDocumentType",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
                                 });
                             }
                         }
@@ -17948,6 +18172,24 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Document captures all raw metadata information of items to be recommended or searched.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaProcessedDocument : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Full resource name of the referenced document, in the format
+        /// `projects/*/locations/*/collections/*/dataStores/*/branches/*/documents/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("document")]
+        public virtual string Document { get; set; }
+
+        /// <summary>The JSON string representation of the processed document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jsonData")]
+        public virtual string JsonData { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Metadata related to the progress of the PurgeDocuments operation. This will be returned by the
     /// google.longrunning.Operation.metadata field.
@@ -18992,7 +19234,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// the search query can still trump your heavily favored but irrelevant documents. Setting to -1.0 gives the
         /// document a big demotion. However, results that are deeply relevant might still be shown. The document will
         /// have an upstream battle to get a fairly high ranking, but it is not blocked out completely. Setting to 0.0
-        /// means no boost applied. The boosting condition is ignored.
+        /// means no boost applied. The boosting condition is ignored. Only one of the (condition, boost) combination or
+        /// the boost_control_spec below are set. If both are set then the global boost is ignored and the more
+        /// fine-grained boost_control_spec is applied.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boost")]
         public virtual System.Nullable<float> Boost { get; set; }
@@ -19172,6 +19416,15 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("summaryResultCount")]
         public virtual System.Nullable<int> SummaryResultCount { get; set; }
+
+        /// <summary>
+        /// If true, answer will be generated from most relevant chunks from top search results. This feature will
+        /// improve summary quality. Please note that with this feature enabled, not all top search results will be
+        /// referenced and included in the reference list, so the citation source index only points to the search
+        /// results listed in the reference list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useSemanticChunks")]
+        public virtual System.Nullable<bool> UseSemanticChunks { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

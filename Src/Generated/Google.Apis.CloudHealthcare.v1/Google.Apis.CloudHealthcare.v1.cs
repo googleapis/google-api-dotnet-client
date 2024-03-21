@@ -14855,8 +14855,8 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         public virtual System.Nullable<bool> Force { get; set; }
 
         /// <summary>
-        /// Optional. GCS object containing list of {resourceType}/{resourceId} lines, identifying resources to be
-        /// reverted
+        /// Optional. Cloud Storage object containing list of {resourceType}/{resourceId} lines, identifying resources
+        /// to be reverted
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputGcsObject")]
         public virtual string InputGcsObject { get; set; }

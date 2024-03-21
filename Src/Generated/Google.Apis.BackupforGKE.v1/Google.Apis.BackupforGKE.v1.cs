@@ -4055,7 +4055,7 @@ namespace Google.Apis.BackupforGKE.v1.Data
     /// <summary>
     /// Represents a request to perform a single point-in-time capture of some portion of the state of a GKE cluster,
     /// the record of the backup operation itself, and an anchor for the underlying artifacts that comprise the Backup
-    /// (the config backup and VolumeBackups). Next id: 29
+    /// (the config backup and VolumeBackups).
     /// </summary>
     public class Backup : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5335,7 +5335,7 @@ namespace Google.Apis.BackupforGKE.v1.Data
 
     /// <summary>
     /// Represents both a request to Restore some portion of a Backup into a target GKE cluster and a record of the
-    /// restore operation itself. Next id: 20
+    /// restore operation itself.
     /// </summary>
     public class Restore : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5530,7 +5530,7 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual System.Nullable<int> VolumesRestoredCount { get; set; }
     }
 
-    /// <summary>Configuration of a restore. Next id: 14</summary>
+    /// <summary>Configuration of a restore.</summary>
     public class RestoreConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -5619,7 +5619,7 @@ namespace Google.Apis.BackupforGKE.v1.Data
 
     /// <summary>
     /// The configuration of a potential series of Restore operations to be performed against Backups belong to a
-    /// particular BackupPlan. Next id: 13
+    /// particular BackupPlan.
     /// </summary>
     public class RestorePlan : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5993,7 +5993,7 @@ namespace Google.Apis.BackupforGKE.v1.Data
 
     /// <summary>
     /// Represents the backup of a specific persistent volume as a component of a Backup - both the record of the
-    /// operation and a pointer to the underlying storage-specific artifacts. Next id: 14
+    /// operation and a pointer to the underlying storage-specific artifacts.
     /// </summary>
     public class VolumeBackup : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6170,7 +6170,7 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual string VolumeBackupHandle { get; set; }
     }
 
-    /// <summary>Represents the operation of restoring a volume from a VolumeBackup. Next id: 13</summary>
+    /// <summary>Represents the operation of restoring a volume from a VolumeBackup.</summary>
     public class VolumeRestore : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _completeTimeRaw;

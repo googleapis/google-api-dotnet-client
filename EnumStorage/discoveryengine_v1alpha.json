@@ -7,5 +7,23 @@
   "Google.Apis.DiscoveryEngine.v1alpha.DiscoveryEngineBaseServiceRequest<<TResponse>>.XgafvEnum": [
     "1",
     "2"
+  ],
+  "Google.Apis.DiscoveryEngine.v1alpha.ProjectsResource+LocationsResource+CollectionsResource+DataStoresResource+BranchesResource+DocumentsResource+GetProcessedDocumentRequest.ProcessedDocumentFormatEnum": [
+    "PROCESSED_DOCUMENT_FORMAT_UNSPECIFIED",
+    "JSON"
+  ],
+  "Google.Apis.DiscoveryEngine.v1alpha.ProjectsResource+LocationsResource+CollectionsResource+DataStoresResource+BranchesResource+DocumentsResource+GetProcessedDocumentRequest.ProcessedDocumentTypeEnum": [
+    "PROCESSED_DOCUMENT_TYPE_UNSPECIFIED",
+    "PARSED_DOCUMENT",
+    "CHUNKED_DOCUMENT"
+  ],
+  "Google.Apis.DiscoveryEngine.v1alpha.ProjectsResource+LocationsResource+DataStoresResource+BranchesResource+DocumentsResource+GetProcessedDocumentRequest.ProcessedDocumentFormatEnum": [
+    "PROCESSED_DOCUMENT_FORMAT_UNSPECIFIED",
+    "JSON"
+  ],
+  "Google.Apis.DiscoveryEngine.v1alpha.ProjectsResource+LocationsResource+DataStoresResource+BranchesResource+DocumentsResource+GetProcessedDocumentRequest.ProcessedDocumentTypeEnum": [
+    "PROCESSED_DOCUMENT_TYPE_UNSPECIFIED",
+    "PARSED_DOCUMENT",
+    "CHUNKED_DOCUMENT"
   ]
 }

@@ -19598,7 +19598,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// the search query can still trump your heavily favored but irrelevant documents. Setting to -1.0 gives the
         /// document a big demotion. However, results that are deeply relevant might still be shown. The document will
         /// have an upstream battle to get a fairly high ranking, but it is not blocked out completely. Setting to 0.0
-        /// means no boost applied. The boosting condition is ignored.
+        /// means no boost applied. The boosting condition is ignored. Only one of the (condition, boost) combination or
+        /// the boost_control_spec below are set. If both are set then the global boost is ignored and the more
+        /// fine-grained boost_control_spec is applied.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boost")]
         public virtual System.Nullable<float> Boost { get; set; }
@@ -19770,6 +19772,15 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("summaryResultCount")]
         public virtual System.Nullable<int> SummaryResultCount { get; set; }
+
+        /// <summary>
+        /// If true, answer will be generated from most relevant chunks from top search results. This feature will
+        /// improve summary quality. Please note that with this feature enabled, not all top search results will be
+        /// referenced and included in the reference list, so the citation source index only points to the search
+        /// results listed in the reference list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useSemanticChunks")]
+        public virtual System.Nullable<bool> UseSemanticChunks { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -2565,7 +2565,7 @@
    }
   }
  },
- "revision": "20240213",
+ "revision": "20240304",
  "rootUrl": "https://container.googleapis.com/",
  "schemas": {
   "AcceleratorConfig": {
@@ -3715,6 +3715,10 @@
     },
     "desiredEnableFqdnNetworkPolicy": {
      "description": "Enable/Disable FQDN Network Policy for the cluster.",
+     "type": "boolean"
+    },
+    "desiredEnableMultiNetworking": {
+     "description": "Enable/Disable Multi-Networking for the cluster",
      "type": "boolean"
     },
     "desiredEnablePrivateEndpoint": {
@@ -5670,6 +5674,10 @@
      "$ref": "SandboxConfig",
      "description": "Sandbox configuration for this node."
     },
+    "secondaryBootDiskUpdateStrategy": {
+     "$ref": "SecondaryBootDiskUpdateStrategy",
+     "description": "Secondary boot disk update strategy."
+    },
     "secondaryBootDisks": {
      "description": "List of secondary boot disks attached to the nodes.",
      "items": {
@@ -6797,6 +6805,12 @@
      "type": "string"
     }
    },
+   "type": "object"
+  },
+  "SecondaryBootDiskUpdateStrategy": {
+   "description": "SecondaryBootDiskUpdateStrategy is a placeholder which will be extended in the future to define different options for updating secondary boot disks.",
+   "id": "SecondaryBootDiskUpdateStrategy",
+   "properties": {},
    "type": "object"
   },
   "SecretManagerConfig": {

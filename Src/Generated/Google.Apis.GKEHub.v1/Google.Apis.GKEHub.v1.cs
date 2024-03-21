@@ -3964,6 +3964,189 @@ namespace Google.Apis.GKEHub.v1
                     }
                 }
 
+                /// <summary>
+                /// Lists Memberships bound to a Scope. The response includes relevant Memberships from all regions.
+                /// </summary>
+                /// <param name="scopeName">
+                /// Required. Name of the Scope, in the format `projects/*/locations/global/scopes/*`, to which the
+                /// Memberships are bound.
+                /// </param>
+                public virtual ListMembershipsRequest ListMemberships(string scopeName)
+                {
+                    return new ListMembershipsRequest(this.service, scopeName);
+                }
+
+                /// <summary>
+                /// Lists Memberships bound to a Scope. The response includes relevant Memberships from all regions.
+                /// </summary>
+                public class ListMembershipsRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1.Data.ListBoundMembershipsResponse>
+                {
+                    /// <summary>Constructs a new ListMemberships request.</summary>
+                    public ListMembershipsRequest(Google.Apis.Services.IClientService service, string scopeName) : base(service)
+                    {
+                        ScopeName = scopeName;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the Scope, in the format `projects/*/locations/global/scopes/*`, to which the
+                    /// Memberships are bound.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("scopeName", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ScopeName { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Lists Memberships that match the filter expression, following the syntax outlined in
+                    /// https://google.aip.dev/160. Currently, filtering can be done only based on Memberships's `name`,
+                    /// `labels`, `create_time`, `update_time`, and `unique_id`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. When requesting a 'page' of resources, `page_size` specifies number of resources to
+                    /// return. If unspecified or set to 0, all resources will be returned. Pagination is currently not
+                    /// supported; therefore, setting this field does not have any impact for now.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. Token returned by previous call to `ListBoundMemberships` which specifies the position
+                    /// in the list from where to continue listing the resources.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "listMemberships";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+scopeName}:listMemberships";
+
+                    /// <summary>Initializes ListMemberships parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("scopeName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "scopeName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/scopes/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Lists permitted Scopes.</summary>
+                /// <param name="parent">
+                /// Required. The parent (project and location) where the Scope will be listed. Specified in the format
+                /// `projects/*/locations/*`.
+                /// </param>
+                public virtual ListPermittedRequest ListPermitted(string parent)
+                {
+                    return new ListPermittedRequest(this.service, parent);
+                }
+
+                /// <summary>Lists permitted Scopes.</summary>
+                public class ListPermittedRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1.Data.ListPermittedScopesResponse>
+                {
+                    /// <summary>Constructs a new ListPermitted request.</summary>
+                    public ListPermittedRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent (project and location) where the Scope will be listed. Specified in the
+                    /// format `projects/*/locations/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. When requesting a 'page' of resources, `page_size` specifies number of resources to
+                    /// return. If unspecified or set to 0, all resources will be returned.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. Token returned by previous call to `ListPermittedScopes` which specifies the position
+                    /// in the list from where to continue listing the resources.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "listPermitted";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/scopes:listPermitted";
+
+                    /// <summary>Initializes ListPermitted parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
                 /// <summary>Updates a scopes.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -6444,6 +6627,10 @@ namespace Google.Apis.GKEHub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("googleConfig")]
         public virtual IdentityServiceGoogleConfig GoogleConfig { get; set; }
 
+        /// <summary>LDAP specific configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ldapConfig")]
+        public virtual IdentityServiceLdapConfig LdapConfig { get; set; }
+
         /// <summary>Identifier for auth config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -6511,6 +6698,62 @@ namespace Google.Apis.GKEHub.v1.Data
         /// <summary>Disable automatic configuration of Google Plugin on supported platforms.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disable")]
         public virtual System.Nullable<bool> Disable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains the properties for locating and authenticating groups in the directory.</summary>
+    public class IdentityServiceGroupConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The location of the subtree in the LDAP directory to search for group entries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseDn")]
+        public virtual string BaseDn { get; set; }
+
+        /// <summary>
+        /// Optional. Optional filter to be used when searching for groups a user belongs to. This can be used to
+        /// explicitly match only certain groups in order to reduce the amount of groups returned for each user. This
+        /// defaults to "(objectClass=Group)".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// Optional. The identifying name of each group a user belongs to. For example, if this is set to
+        /// "distinguishedName" then RBACs and other group expectations should be written as full DNs. This defaults to
+        /// "distinguishedName".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idAttribute")]
+        public virtual string IdAttribute { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for the LDAP Auth flow.</summary>
+    public class IdentityServiceLdapConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Contains the properties for locating and authenticating groups in the directory.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("group")]
+        public virtual IdentityServiceGroupConfig Group { get; set; }
+
+        /// <summary>Required. Server settings for the external LDAP server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("server")]
+        public virtual IdentityServiceServerConfig Server { get; set; }
+
+        /// <summary>
+        /// Required. Contains the credentials of the service account which is authorized to perform the LDAP search in
+        /// the directory. The credentials can be supplied by the combination of the DN and password or the client
+        /// certificate.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual IdentityServiceServiceAccountConfig ServiceAccount { get; set; }
+
+        /// <summary>Required. Defines where users exist in the LDAP directory.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("user")]
+        public virtual IdentityServiceUserConfig User { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6672,6 +6915,104 @@ namespace Google.Apis.GKEHub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Server settings for the external LDAP server.</summary>
+    public class IdentityServiceServerConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Contains a Base64 encoded, PEM formatted certificate authority certificate for the LDAP server.
+        /// This must be provided for the "ldaps" and "startTLS" connections.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certificateAuthorityData")]
+        public virtual string CertificateAuthorityData { get; set; }
+
+        /// <summary>
+        /// Optional. Defines the connection type to communicate with the LDAP server. If `starttls` or `ldaps` is
+        /// specified, the certificate_authority_data should not be empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionType")]
+        public virtual string ConnectionType { get; set; }
+
+        /// <summary>
+        /// Required. Defines the hostname or IP of the LDAP server. Port is optional and will default to 389, if
+        /// unspecified. For example, "ldap.server.example" or "10.10.10.10:389".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("host")]
+        public virtual string Host { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Contains the credentials of the service account which is authorized to perform the LDAP search in the directory.
+    /// The credentials can be supplied by the combination of the DN and password or the client certificate.
+    /// </summary>
+    public class IdentityServiceServiceAccountConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Credentials for basic auth.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("simpleBindCredentials")]
+        public virtual IdentityServiceSimpleBindCredentials SimpleBindCredentials { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The structure holds the LDAP simple binding credential.</summary>
+    public class IdentityServiceSimpleBindCredentials : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The distinguished name(DN) of the service account object/user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dn")]
+        public virtual string Dn { get; set; }
+
+        /// <summary>Output only. The encrypted password of the service account object/user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptedPassword")]
+        public virtual string EncryptedPassword { get; set; }
+
+        /// <summary>Required. Input only. The password of the service account object/user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("password")]
+        public virtual string Password { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines where users exist in the LDAP directory.</summary>
+    public class IdentityServiceUserConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The location of the subtree in the LDAP directory to search for user entries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseDn")]
+        public virtual string BaseDn { get; set; }
+
+        /// <summary>
+        /// Optional. Filter to apply when searching for the user. This can be used to further restrict the user
+        /// accounts which are allowed to login. This defaults to "(objectClass=User)".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// Optional. Determines which attribute to use as the user's identity after they are authenticated. This is
+        /// distinct from the loginAttribute field to allow users to login with a username, but then have their actual
+        /// identifier be an email address or full Distinguished Name (DN). For example, setting loginAttribute to
+        /// "sAMAccountName" and identifierAttribute to "userPrincipalName" would allow a user to login as "bsmith", but
+        /// actual RBAC policies for the user would be written as "bsmith@example.com". Using "userPrincipalName" is
+        /// recommended since this will be unique for each user. This defaults to "userPrincipalName".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idAttribute")]
+        public virtual string IdAttribute { get; set; }
+
+        /// <summary>
+        /// Optional. The name of the attribute which matches against the input username. This is used to find the user
+        /// in the LDAP database e.g. "(=)" and is combined with the optional filter field. This defaults to
+        /// "userPrincipalName".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loginAttribute")]
+        public virtual string LoginAttribute { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// KubernetesMetadata provides informational metadata for Memberships representing Kubernetes clusters.
     /// </summary>
@@ -6790,6 +7131,28 @@ namespace Google.Apis.GKEHub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>List of Memberships bound to a Scope.</summary>
+    public class ListBoundMembershipsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of Memberships bound to the given Scope.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memberships")]
+        public virtual System.Collections.Generic.IList<Membership> Memberships { get; set; }
+
+        /// <summary>
+        /// A token to request the next page of resources from the `ListBoundMemberships` method. The value of an empty
+        /// string means that there are no more resources to return.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>List of locations that could not be reached while fetching this list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for the `GkeHub.ListFeatures` method.</summary>
     public class ListFeaturesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6891,6 +7254,24 @@ namespace Google.Apis.GKEHub.v1.Data
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>List of permitted Scopes.</summary>
+    public class ListPermittedScopesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token to request the next page of resources from the `ListPermittedScopes` method. The value of an empty
+        /// string means that there are no more resources to return.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of permitted Scopes</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
+        public virtual System.Collections.Generic.IList<Scope> Scopes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -7616,6 +7616,13 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual CellFormat DefaultFormat { get; set; }
 
         /// <summary>
+        /// Whether to allow external url access for image and import functions. Read only when true. When false, you
+        /// can set to true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("importFunctionsExternalUrlAccessAllowed")]
+        public virtual System.Nullable<bool> ImportFunctionsExternalUrlAccessAllowed { get; set; }
+
+        /// <summary>
         /// Determines whether and how circular references are resolved with iterative calculation. Absence of this
         /// field means that circular references result in calculation errors.
         /// </summary>

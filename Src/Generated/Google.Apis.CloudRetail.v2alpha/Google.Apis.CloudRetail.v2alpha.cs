@@ -5999,8 +5999,8 @@ namespace Google.Apis.CloudRetail.v2alpha
 
             /// <summary>
             /// Indicates which fields in the provided LoggingConfig to update. The following are the only supported
-            /// fields: * default_log_generation_rule * per_service_log_generation_rules If not set, all supported
-            /// fields are updated.
+            /// fields: * LoggingConfig.default_log_generation_rule * LoggingConfig.per_service_log_generation_rules If
+            /// not set, all supported fields are updated.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
@@ -8527,8 +8527,8 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
     public class GoogleCloudRetailV2alphaExperimentInfoServingConfigExperiment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The fully qualified resource name of the serving config VariantArm.serving_config_id responsible for
-        /// generating the search response. For example: `projects/*/locations/*/catalogs/*/servingConfigs/*`.
+        /// The fully qualified resource name of the serving config Experiment.VariantArm.serving_config_id responsible
+        /// for generating the search response. For example: `projects/*/locations/*/catalogs/*/servingConfigs/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("experimentServingConfig")]
         public virtual string ExperimentServingConfig { get; set; }

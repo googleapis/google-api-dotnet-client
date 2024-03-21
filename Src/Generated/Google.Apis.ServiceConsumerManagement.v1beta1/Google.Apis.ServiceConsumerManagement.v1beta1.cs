@@ -446,7 +446,8 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1
                         /// <summary>
                         /// Whether to force the creation of the quota override. Setting the force parameter to 'true'
                         /// ignores all quota safety checks that would fail the request. QuotaSafetyCheck lists all such
-                        /// validations.
+                        /// validations. If force is set to true, it is recommended to include a case id in
+                        /// "X-Goog-Request-Reason" header when sending the request.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<bool> Force { get; set; }
@@ -455,7 +456,8 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1
                         /// The list of quota safety checks to ignore before the override mutation. Unlike 'force' field
                         /// that ignores all the quota safety checks, the 'force_only' field ignores only the specified
                         /// checks; other checks are still enforced. The 'force' and 'force_only' fields cannot both be
-                        /// set.
+                        /// set. If force_only is specified, it is recommended to include a case id in
+                        /// "X-Goog-Request-Reason" header when sending the request.
                         /// </summary>
                         /// <remarks>
                         /// Use this property to set a single value for the parameter, or <see cref="ForceOnlyList"/> to
@@ -468,7 +470,8 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1
                         /// The list of quota safety checks to ignore before the override mutation. Unlike 'force' field
                         /// that ignores all the quota safety checks, the 'force_only' field ignores only the specified
                         /// checks; other checks are still enforced. The 'force' and 'force_only' fields cannot both be
-                        /// set.
+                        /// set. If force_only is specified, it is recommended to include a case id in
+                        /// "X-Goog-Request-Reason" header when sending the request.
                         /// </summary>
                         /// <remarks>
                         /// Use this property to set one or more values for the parameter. Do not set both this property
@@ -481,7 +484,8 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1
                         /// The list of quota safety checks to ignore before the override mutation. Unlike 'force' field
                         /// that ignores all the quota safety checks, the 'force_only' field ignores only the specified
                         /// checks; other checks are still enforced. The 'force' and 'force_only' fields cannot both be
-                        /// set.
+                        /// set. If force_only is specified, it is recommended to include a case id in
+                        /// "X-Goog-Request-Reason" header when sending the request.
                         /// </summary>
                         public enum ForceOnlyEnum
                         {
@@ -580,7 +584,8 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1
                         /// <summary>
                         /// Whether to force the deletion of the quota override. Setting the force parameter to 'true'
                         /// ignores all quota safety checks that would fail the request. QuotaSafetyCheck lists all such
-                        /// validations.
+                        /// validations. If force is set to true, it is recommended to include a case id in
+                        /// "X-Goog-Request-Reason" header when sending the request.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<bool> Force { get; set; }
@@ -589,7 +594,8 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1
                         /// The list of quota safety checks to ignore before the override mutation. Unlike 'force' field
                         /// that ignores all the quota safety checks, the 'force_only' field ignores only the specified
                         /// checks; other checks are still enforced. The 'force' and 'force_only' fields cannot both be
-                        /// set.
+                        /// set. If force_only is specified, it is recommended to include a case id in
+                        /// "X-Goog-Request-Reason" header when sending the request.
                         /// </summary>
                         /// <remarks>
                         /// Use this property to set a single value for the parameter, or <see cref="ForceOnlyList"/> to
@@ -602,7 +608,8 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1
                         /// The list of quota safety checks to ignore before the override mutation. Unlike 'force' field
                         /// that ignores all the quota safety checks, the 'force_only' field ignores only the specified
                         /// checks; other checks are still enforced. The 'force' and 'force_only' fields cannot both be
-                        /// set.
+                        /// set. If force_only is specified, it is recommended to include a case id in
+                        /// "X-Goog-Request-Reason" header when sending the request.
                         /// </summary>
                         /// <remarks>
                         /// Use this property to set one or more values for the parameter. Do not set both this property
@@ -615,7 +622,8 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1
                         /// The list of quota safety checks to ignore before the override mutation. Unlike 'force' field
                         /// that ignores all the quota safety checks, the 'force_only' field ignores only the specified
                         /// checks; other checks are still enforced. The 'force' and 'force_only' fields cannot both be
-                        /// set.
+                        /// set. If force_only is specified, it is recommended to include a case id in
+                        /// "X-Goog-Request-Reason" header when sending the request.
                         /// </summary>
                         public enum ForceOnlyEnum
                         {
@@ -789,7 +797,8 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1
                         /// <summary>
                         /// Whether to force the update of the quota override. Setting the force parameter to 'true'
                         /// ignores all quota safety checks that would fail the request. QuotaSafetyCheck lists all such
-                        /// validations.
+                        /// validations. If force is set to true, it is recommended to include a case id in
+                        /// "X-Goog-Request-Reason" header when sending the request.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<bool> Force { get; set; }
@@ -798,7 +807,8 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1
                         /// The list of quota safety checks to ignore before the override mutation. Unlike 'force' field
                         /// that ignores all the quota safety checks, the 'force_only' field ignores only the specified
                         /// checks; other checks are still enforced. The 'force' and 'force_only' fields cannot both be
-                        /// set.
+                        /// set. If force_only is specified, it is recommended to include a case id in
+                        /// "X-Goog-Request-Reason" header when sending the request.
                         /// </summary>
                         /// <remarks>
                         /// Use this property to set a single value for the parameter, or <see cref="ForceOnlyList"/> to
@@ -811,7 +821,8 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1
                         /// The list of quota safety checks to ignore before the override mutation. Unlike 'force' field
                         /// that ignores all the quota safety checks, the 'force_only' field ignores only the specified
                         /// checks; other checks are still enforced. The 'force' and 'force_only' fields cannot both be
-                        /// set.
+                        /// set. If force_only is specified, it is recommended to include a case id in
+                        /// "X-Goog-Request-Reason" header when sending the request.
                         /// </summary>
                         /// <remarks>
                         /// Use this property to set one or more values for the parameter. Do not set both this property
@@ -824,7 +835,8 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1
                         /// The list of quota safety checks to ignore before the override mutation. Unlike 'force' field
                         /// that ignores all the quota safety checks, the 'force_only' field ignores only the specified
                         /// checks; other checks are still enforced. The 'force' and 'force_only' fields cannot both be
-                        /// set.
+                        /// set. If force_only is specified, it is recommended to include a case id in
+                        /// "X-Goog-Request-Reason" header when sending the request.
                         /// </summary>
                         public enum ForceOnlyEnum
                         {
@@ -3886,7 +3898,9 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1.Data
     {
         /// <summary>
         /// Whether to force the creation of the quota overrides. Setting the force parameter to 'true' ignores all
-        /// quota safety checks that would fail the request. QuotaSafetyCheck lists all such validations.
+        /// quota safety checks that would fail the request. QuotaSafetyCheck lists all such validations. If force is
+        /// set to true, it is recommended to include a case id in "X-Goog-Request-Reason" header when sending the
+        /// request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("force")]
         public virtual System.Nullable<bool> Force { get; set; }
@@ -3894,7 +3908,8 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1.Data
         /// <summary>
         /// The list of quota safety checks to ignore before the override mutation. Unlike 'force' field that ignores
         /// all the quota safety checks, the 'force_only' field ignores only the specified checks; other checks are
-        /// still enforced. The 'force' and 'force_only' fields cannot both be set.
+        /// still enforced. The 'force' and 'force_only' fields cannot both be set. If force_only is specified, it is
+        /// recommended to include a case id in "X-Goog-Request-Reason" header when sending the request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forceOnly")]
         public virtual System.Collections.Generic.IList<string> ForceOnly { get; set; }

@@ -4521,7 +4521,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                     /// <param name="resource">
                                     /// Required. The path of the resource for which the storage info is requested (for
                                     /// exaxmple for a DICOM Instance:
-                                    /// `projects/{projectid}/datasets/{datasetid}/dicomStores/{dicomStoreId}/dicomWeb/studies/{study_uid}/series/{series_uid}/instances/{instance_uid}`)
+                                    /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreId}/dicomWeb/studies/{study_uid}/series/{series_uid}/instances/{instance_uid}`)
                                     /// </param>
                                     public virtual GetStorageInfoRequest GetStorageInfo(string resource)
                                     {
@@ -4543,7 +4543,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                         /// <summary>
                                         /// Required. The path of the resource for which the storage info is requested
                                         /// (for exaxmple for a DICOM Instance:
-                                        /// `projects/{projectid}/datasets/{datasetid}/dicomStores/{dicomStoreId}/dicomWeb/studies/{study_uid}/series/{series_uid}/instances/{instance_uid}`)
+                                        /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreId}/dicomWeb/studies/{study_uid}/series/{series_uid}/instances/{instance_uid}`)
                                         /// </summary>
                                         [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                                         public virtual string Resource { get; private set; }
@@ -4682,13 +4682,13 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                             /// <param name="body">The body of the request.</param>
                             /// <param name="resource">
                             /// Required. The path of the resource to update the blob storage settings in the format of
-                            /// `projects/{projectID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}`,
-                            /// `projects/{projectID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}/series/{seriesUID}/`,
+                            /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}`,
+                            /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}/series/{seriesUID}/`,
                             /// or
-                            /// `projects/{projectID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}/series/{seriesUID}/instances/{instanceUID}`.
+                            /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}/series/{seriesUID}/instances/{instanceUID}`.
                             /// If `filter_config` is specified, set the value of `resource` to the resource name of a
                             /// DICOM store in the format
-                            /// `projects/{projectID}/datasets/{datasetID}/dicomStores/{dicomStoreID}`.
+                            /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}`.
                             /// </param>
                             public virtual SetBlobStorageSettingsRequest SetBlobStorageSettings(Google.Apis.CloudHealthcare.v1beta1.Data.SetBlobStorageSettingsRequest body, string resource)
                             {
@@ -4711,13 +4711,13 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                 /// <summary>
                                 /// Required. The path of the resource to update the blob storage settings in the format
                                 /// of
-                                /// `projects/{projectID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}`,
-                                /// `projects/{projectID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}/series/{seriesUID}/`,
+                                /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}`,
+                                /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}/series/{seriesUID}/`,
                                 /// or
-                                /// `projects/{projectID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}/series/{seriesUID}/instances/{instanceUID}`.
+                                /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}/series/{seriesUID}/instances/{instanceUID}`.
                                 /// If `filter_config` is specified, set the value of `resource` to the resource name of
                                 /// a DICOM store in the format
-                                /// `projects/{projectID}/datasets/{datasetID}/dicomStores/{dicomStoreID}`.
+                                /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}`.
                                 /// </summary>
                                 [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                                 public virtual string Resource { get; private set; }
@@ -7286,12 +7286,13 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="resource">
                     /// Required. The path of the resource to update the blob storage settings in the format of
-                    /// `projects/{projectID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}`,
-                    /// `projects/{projectID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}/series/{seriesUID}/`,
+                    /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}`,
+                    /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}/series/{seriesUID}/`,
                     /// or
-                    /// `projects/{projectID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}/series/{seriesUID}/instances/{instanceUID}`.
+                    /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}/series/{seriesUID}/instances/{instanceUID}`.
                     /// If `filter_config` is specified, set the value of `resource` to the resource name of a DICOM
-                    /// store in the format `projects/{projectID}/datasets/{datasetID}/dicomStores/{dicomStoreID}`.
+                    /// store in the format
+                    /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}`.
                     /// </param>
                     public virtual SetBlobStorageSettingsRequest SetBlobStorageSettings(Google.Apis.CloudHealthcare.v1beta1.Data.SetBlobStorageSettingsRequest body, string resource)
                     {
@@ -7313,12 +7314,13 @@ namespace Google.Apis.CloudHealthcare.v1beta1
 
                         /// <summary>
                         /// Required. The path of the resource to update the blob storage settings in the format of
-                        /// `projects/{projectID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}`,
-                        /// `projects/{projectID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}/series/{seriesUID}/`,
+                        /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}`,
+                        /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}/series/{seriesUID}/`,
                         /// or
-                        /// `projects/{projectID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}/series/{seriesUID}/instances/{instanceUID}`.
+                        /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}/series/{seriesUID}/instances/{instanceUID}`.
                         /// If `filter_config` is specified, set the value of `resource` to the resource name of a DICOM
-                        /// store in the format `projects/{projectID}/datasets/{datasetID}/dicomStores/{dicomStoreID}`.
+                        /// store in the format
+                        /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Resource { get; private set; }
@@ -15128,12 +15130,12 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
 
         /// <summary>
         /// An abstract identifier that describes the environment or conditions under which the accessor is acting. Can
-        /// be “*” if it applies to all environments.
+        /// be "*" if it applies to all environments.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
         public virtual string Environment { get; set; }
 
-        /// <summary>The intent of data use. Can be “*” if it applies to all purposes.</summary>
+        /// <summary>The intent of data use. Can be "*" if it applies to all purposes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purpose")]
         public virtual string Purpose { get; set; }
 
@@ -16057,7 +16059,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
 
         /// <summary>
         /// The resource name of this consent resource. Format:
-        /// `projects/{projectId}/datasets/{datasetId}/fhirStores/{fhirStoreId}/fhir/{resourceType}/{id}`.
+        /// `projects/{projectId}/locations/{locationId}/datasets/{datasetId}/fhirStores/{fhirStoreId}/fhir/{resourceType}/{id}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consentResource")]
         public virtual string ConsentResource { get; set; }
@@ -19297,7 +19299,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// <summary>
         /// Optional. A filter configuration. If `filter_config` is specified, set the value of `resource` to the
         /// resource name of a DICOM store in the format
-        /// `projects/{projectID}/datasets/{datasetID}/dicomStores/{dicomStoreID}`.
+        /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterConfig")]
         public virtual DicomFilterConfig FilterConfig { get; set; }
@@ -19431,7 +19433,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
 
         /// <summary>
         /// The resource whose storage info is returned. For example, to specify the resource path of a DICOM Instance:
-        /// `projects/{projectid}/datasets/{datasetid}/dicomStores/{dicom_store_id}/dicomWeb/studi/{study_uid}/series/{series_uid}/instances/{instance_uid}`
+        /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicom_store_id}/dicomWeb/studi/{study_uid}/series/{series_uid}/instances/{instance_uid}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referencedResource")]
         public virtual string ReferencedResource { get; set; }

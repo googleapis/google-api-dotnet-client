@@ -691,7 +691,7 @@ namespace Google.Apis.CloudBuild.v2
                         [Google.Apis.Util.RequestParameterAttribute("repository", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Repository { get; private set; }
 
-                        /// <summary>Optional. Number of results to return in the list. Default to 100.</summary>
+                        /// <summary>Optional. Number of results to return in the list. Default to 20.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 

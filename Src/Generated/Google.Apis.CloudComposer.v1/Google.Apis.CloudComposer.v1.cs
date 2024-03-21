@@ -2387,9 +2387,7 @@ namespace Google.Apis.CloudComposer.v1.Data
     /// <summary>The configuration setting for Airflow database data retention mechanism.</summary>
     public class DataRetentionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Optional. The retention policy for airflow metadata database. Details: go/composer-database-retention-2
-        /// </summary>
+        /// <summary>Optional. The retention policy for airflow metadata database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("airflowMetadataRetentionConfig")]
         public virtual AirflowMetadataRetentionPolicyConfig AirflowMetadataRetentionConfig { get; set; }
 

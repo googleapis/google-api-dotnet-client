@@ -1707,7 +1707,8 @@ namespace Google.Apis.Batch.v1.Data
         public virtual AgentEnvironment Environment { get; set; }
 
         /// <summary>
-        /// Maximum duration the task should run. The task will be killed and marked as FAILED if over this limit.
+        /// Maximum duration the task should run. The task will be killed and marked as FAILED if over this limit. The
+        /// valid value range for max_run_duration in seconds is [0, 315576000000.999999999],
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxRunDuration")]
         public virtual object MaxRunDuration { get; set; }
@@ -3333,7 +3334,8 @@ namespace Google.Apis.Batch.v1.Data
         public virtual System.Nullable<int> MaxRetryCount { get; set; }
 
         /// <summary>
-        /// Maximum duration the task should run. The task will be killed and marked as FAILED if over this limit.
+        /// Maximum duration the task should run. The task will be killed and marked as FAILED if over this limit. The
+        /// valid value range for max_run_duration in seconds is [0, 315576000000.999999999],
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxRunDuration")]
         public virtual object MaxRunDuration { get; set; }

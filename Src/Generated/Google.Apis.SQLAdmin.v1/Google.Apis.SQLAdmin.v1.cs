@@ -4875,6 +4875,13 @@ namespace Google.Apis.SQLAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("transactionLogRetentionDays")]
         public virtual System.Nullable<int> TransactionLogRetentionDays { get; set; }
 
+        /// <summary>
+        /// Output only. This value contains the storage location of transactional logs for the database for
+        /// point-in-time recovery.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transactionalLogStorageState")]
+        public virtual string TransactionalLogStorageState { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5526,6 +5533,10 @@ namespace Google.Apis.SQLAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gceZone")]
         public virtual string GceZone { get; set; }
 
+        /// <summary>Gemini configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geminiConfig")]
+        public virtual GeminiInstanceConfig GeminiConfig { get; set; }
+
         /// <summary>The instance type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceType")]
         public virtual string InstanceType { get; set; }
@@ -5602,6 +5613,13 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// <summary>The replicas of the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replicaNames")]
         public virtual System.Collections.Generic.IList<string> ReplicaNames { get; set; }
+
+        /// <summary>
+        /// Optional. The pair of a primary instance and disaster recovery (DR) replica. A DR replica is a cross-region
+        /// replica that you designate for failover in the event that the primary instance has regional failure.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replicationCluster")]
+        public virtual ReplicationCluster ReplicationCluster { get; set; }
 
         /// <summary>
         /// Initial root password. Use only on creation. You must set root passwords before you can connect to
@@ -6119,6 +6137,37 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// <summary>This is always `sql#flagsList`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Gemini configuration.</summary>
+    public class GeminiInstanceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Whether active query is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeQueryEnabled")]
+        public virtual System.Nullable<bool> ActiveQueryEnabled { get; set; }
+
+        /// <summary>Output only. Whether gemini is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entitled")]
+        public virtual System.Nullable<bool> Entitled { get; set; }
+
+        /// <summary>Output only. Whether flag recommender is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flagRecommenderEnabled")]
+        public virtual System.Nullable<bool> FlagRecommenderEnabled { get; set; }
+
+        /// <summary>Output only. Whether vacuum management is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleVacuumMgmtEnabled")]
+        public virtual System.Nullable<bool> GoogleVacuumMgmtEnabled { get; set; }
+
+        /// <summary>Output only. Whether index advisor is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexAdvisorEnabled")]
+        public virtual System.Nullable<bool> IndexAdvisorEnabled { get; set; }
+
+        /// <summary>Output only. Whether oom session cancel is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oomSessionCancelEnabled")]
+        public virtual System.Nullable<bool> OomSessionCancelEnabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7420,6 +7469,28 @@ namespace Google.Apis.SQLAdmin.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Primary-DR replica pair</summary>
+    public class ReplicationCluster : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. read-only field that indicates if the replica is a dr_replica; not set for a primary.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("drReplica")]
+        public virtual System.Nullable<bool> DrReplica { get; set; }
+
+        /// <summary>
+        /// Optional. If the instance is a primary instance, then this field identifies the disaster recovery (DR)
+        /// replica. A DR replica is an optional configuration for Enterprise Plus edition instances. If the instance is
+        /// a read replica, then the field is not set. Users can set this field to set a designated DR replica for a
+        /// primary. Removing this field removes the DR replica.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failoverDrReplicaName")]
+        public virtual string FailoverDrReplicaName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class Reschedule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The type of the reschedule.</summary>
@@ -7611,7 +7682,11 @@ namespace Google.Apis.SQLAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("edition")]
         public virtual string Edition { get; set; }
 
-        /// <summary>Optional. Configuration to enable Cloud SQL Vertex AI Integration</summary>
+        /// <summary>
+        /// Optional. When this parameter is set to true, Cloud SQL instances can connect to Vertex AI to pass requests
+        /// for real-time predictions and insights to the AI. The default value is false. This applies only to Cloud SQL
+        /// for PostgreSQL instances.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableGoogleMlIntegration")]
         public virtual System.Nullable<bool> EnableGoogleMlIntegration { get; set; }
 
@@ -7853,6 +7928,12 @@ namespace Google.Apis.SQLAdmin.v1.Data
     /// <summary>Instance start external sync request.</summary>
     public class SqlInstancesStartExternalSyncRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. MigrationType decides if the migration is a physical file based migration or logical migration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("migrationType")]
+        public virtual string MigrationType { get; set; }
+
         /// <summary>MySQL-specific settings for start external sync.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mysqlSyncConfig")]
         public virtual MySqlSyncConfig MysqlSyncConfig { get; set; }
@@ -7876,6 +7957,12 @@ namespace Google.Apis.SQLAdmin.v1.Data
     /// <summary>Instance verify external sync settings request.</summary>
     public class SqlInstancesVerifyExternalSyncSettingsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. MigrationType decides if the migration is a physical file based migration or logical migration
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("migrationType")]
+        public virtual string MigrationType { get; set; }
+
         /// <summary>Optional. MySQL-specific settings for start external sync.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mysqlSyncConfig")]
         public virtual MySqlSyncConfig MysqlSyncConfig { get; set; }
