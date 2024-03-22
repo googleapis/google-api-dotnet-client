@@ -15,10 +15,12 @@ limitations under the License.
 */
 
 using System;
+using System.ComponentModel;
 
 namespace Google.Apis.Logging
 {
     /// <summary>Describes a logging interface which is used for outputting messages.</summary>
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public interface ILogger
     {
         /// <summary>Gets an indication whether debug output is logged or not.</summary>
