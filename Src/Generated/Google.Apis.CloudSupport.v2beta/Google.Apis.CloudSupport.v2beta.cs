@@ -345,30 +345,6 @@ namespace Google.Apis.CloudSupport.v2beta
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>The Product Line of the Product.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("product.productLine", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<ProductProductLineEnum> ProductProductLine { get; set; }
-
-            /// <summary>The Product Line of the Product.</summary>
-            public enum ProductProductLineEnum
-            {
-                /// <summary>Unknown product type.</summary>
-                [Google.Apis.Util.StringValueAttribute("PRODUCT_LINE_UNSPECIFIED")]
-                PRODUCTLINEUNSPECIFIED = 0,
-
-                /// <summary>Google Cloud</summary>
-                [Google.Apis.Util.StringValueAttribute("GOOGLE_CLOUD")]
-                GOOGLECLOUD = 1,
-
-                /// <summary>Google Maps</summary>
-                [Google.Apis.Util.StringValueAttribute("GOOGLE_MAPS")]
-                GOOGLEMAPS = 2,
-            }
-
-            /// <summary>The Product Subline of the Product, such as "Maps Billing".</summary>
-            [Google.Apis.Util.RequestParameterAttribute("product.productSubline", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ProductProductSubline { get; set; }
-
             /// <summary>
             /// An expression used to filter case classifications. If it's an empty string, then no filtering happens.
             /// Otherwise, case classifications will be returned that match the filter.
@@ -400,22 +376,6 @@ namespace Google.Apis.CloudSupport.v2beta
                 RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                 {
                     Name = "pageToken",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("product.productLine", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "product.productLine",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("product.productSubline", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "product.productSubline",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -1204,32 +1164,6 @@ namespace Google.Apis.CloudSupport.v2beta
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>
-            /// The product line for which to request cases for. If unspecified, only Google Cloud cases will be
-            /// returned.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("productLine", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<ProductLineEnum> ProductLine { get; set; }
-
-            /// <summary>
-            /// The product line for which to request cases for. If unspecified, only Google Cloud cases will be
-            /// returned.
-            /// </summary>
-            public enum ProductLineEnum
-            {
-                /// <summary>Unknown product type.</summary>
-                [Google.Apis.Util.StringValueAttribute("PRODUCT_LINE_UNSPECIFIED")]
-                PRODUCTLINEUNSPECIFIED = 0,
-
-                /// <summary>Google Cloud</summary>
-                [Google.Apis.Util.StringValueAttribute("GOOGLE_CLOUD")]
-                GOOGLECLOUD = 1,
-
-                /// <summary>Google Maps</summary>
-                [Google.Apis.Util.StringValueAttribute("GOOGLE_MAPS")]
-                GOOGLEMAPS = 2,
-            }
-
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "list";
 
@@ -1270,14 +1204,6 @@ namespace Google.Apis.CloudSupport.v2beta
                 RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                 {
                     Name = "pageToken",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("productLine", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "productLine",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -2291,10 +2217,6 @@ namespace Google.Apis.CloudSupport.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
-        /// <summary>The full product the classification corresponds to.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("product")]
-        public virtual Product Product { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2787,21 +2709,6 @@ namespace Google.Apis.CloudSupport.v2beta.Data
         /// <summary># gdata.* are outside protos with mising documentation</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectName")]
         public virtual string ObjectName { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The full product a case may be associated with, including Product Line and Product Subline.</summary>
-    public class Product : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The Product Line of the Product.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("productLine")]
-        public virtual string ProductLine { get; set; }
-
-        /// <summary>The Product Subline of the Product, such as "Maps Billing".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("productSubline")]
-        public virtual string ProductSubline { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

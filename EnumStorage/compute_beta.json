@@ -8,6 +8,16 @@
     "1",
     "2"
   ],
+  "Google.Apis.Compute.beta.InstancesResource+GetRequest.ViewEnum": [
+    "BASIC",
+    "FULL",
+    "INSTANCE_VIEW_UNSPECIFIED"
+  ],
+  "Google.Apis.Compute.beta.InstancesResource+ListRequest.ViewEnum": [
+    "BASIC",
+    "FULL",
+    "INSTANCE_VIEW_UNSPECIFIED"
+  ],
   "Google.Apis.Compute.beta.InstancesResource+UpdateRequest.MinimalActionEnum": [
     "INVALID",
     "NO_EFFECT",
@@ -20,8 +30,38 @@
     "REFRESH",
     "RESTART"
   ],
+  "Google.Apis.Compute.beta.InstanceTemplatesResource+GetRequest.ViewEnum": [
+    "BASIC",
+    "FULL",
+    "INSTANCE_VIEW_UNSPECIFIED"
+  ],
+  "Google.Apis.Compute.beta.InstanceTemplatesResource+ListRequest.ViewEnum": [
+    "BASIC",
+    "FULL",
+    "INSTANCE_VIEW_UNSPECIFIED"
+  ],
   "Google.Apis.Compute.beta.NetworksResource+ListPeeringRoutesRequest.DirectionEnum": [
     "INCOMING",
     "OUTGOING"
+  ],
+  "Google.Apis.Compute.beta.RegionInstanceTemplatesResource+GetRequest.ViewEnum": [
+    "BASIC",
+    "FULL",
+    "INSTANCE_VIEW_UNSPECIFIED"
+  ],
+  "Google.Apis.Compute.beta.RegionInstanceTemplatesResource+ListRequest.ViewEnum": [
+    "BASIC",
+    "FULL",
+    "INSTANCE_VIEW_UNSPECIFIED"
+  ],
+  "Google.Apis.Compute.beta.RoutersResource+ListBgpRoutesRequest.AddressFamilyEnum": [
+    "IPV4",
+    "IPV6",
+    "UNSPECIFIED_IP_VERSION"
+  ],
+  "Google.Apis.Compute.beta.RoutersResource+ListBgpRoutesRequest.RouteTypeEnum": [
+    "ADVERTISED",
+    "LEARNED",
+    "UNSPECIFIED_ROUTE_TYPE"
   ]
 }

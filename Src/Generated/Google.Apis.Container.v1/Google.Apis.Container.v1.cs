@@ -7332,6 +7332,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredEnableFqdnNetworkPolicy")]
         public virtual System.Nullable<bool> DesiredEnableFqdnNetworkPolicy { get; set; }
 
+        /// <summary>Enable/Disable Multi-Networking for the cluster</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredEnableMultiNetworking")]
+        public virtual System.Nullable<bool> DesiredEnableMultiNetworking { get; set; }
+
         /// <summary>Enable/Disable private endpoint for the cluster's master.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredEnablePrivateEndpoint")]
         public virtual System.Nullable<bool> DesiredEnablePrivateEndpoint { get; set; }
@@ -7761,12 +7765,27 @@ namespace Google.Apis.Container.v1.Data
     /// <summary>Configuration of etcd encryption.</summary>
     public class DatabaseEncryption : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The current state of etcd encryption.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currentState")]
+        public virtual string CurrentState { get; set; }
+
+        /// <summary>
+        /// Output only. Keys in use by the cluster for decrypting existing objects, in addition to the key in
+        /// `key_name`. Each item is a CloudKMS key resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("decryptionKeys")]
+        public virtual System.Collections.Generic.IList<string> DecryptionKeys { get; set; }
+
         /// <summary>
         /// Name of CloudKMS key to use for the encryption of secrets in etcd. Ex.
         /// projects/my-project/locations/global/keyRings/my-ring/cryptoKeys/my-key
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyName")]
         public virtual string KeyName { get; set; }
+
+        /// <summary>Output only. Records errors seen during DatabaseEncryption update operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastOperationErrors")]
+        public virtual System.Collections.Generic.IList<OperationError> LastOperationErrors { get; set; }
 
         /// <summary>The desired state of etcd encryption.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -9095,6 +9114,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sandboxConfig")]
         public virtual SandboxConfig SandboxConfig { get; set; }
 
+        /// <summary>Secondary boot disk update strategy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secondaryBootDiskUpdateStrategy")]
+        public virtual SecondaryBootDiskUpdateStrategy SecondaryBootDiskUpdateStrategy { get; set; }
+
         /// <summary>List of secondary boot disks attached to the nodes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secondaryBootDisks")]
         public virtual System.Collections.Generic.IList<SecondaryBootDisk> SecondaryBootDisks { get; set; }
@@ -9693,6 +9716,61 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// OperationError records errors seen from CloudKMS keys encountered during updates to DatabaseEncryption
+    /// configuration.
+    /// </summary>
+    public class OperationError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Description of the error seen during the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; }
+
+        /// <summary>CloudKMS key resource that had the error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyName")]
+        public virtual string KeyName { get; set; }
+
+        private string _timestampRaw;
+
+        private object _timestamp;
+
+        /// <summary>Time when the CloudKMS error was seen.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
+        public virtual string TimestampRaw
+        {
+            get => _timestampRaw;
+            set
+            {
+                _timestamp = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _timestampRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TimestampDateTimeOffset instead.")]
+        public virtual object Timestamp
+        {
+            get => _timestamp;
+            set
+            {
+                _timestampRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _timestamp = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="TimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TimestampDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimestampRaw);
+            set => TimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Information about operation (or operation stage) progress.</summary>
     public class OperationProgress : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10138,6 +10216,16 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
         public virtual string Mode { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// SecondaryBootDiskUpdateStrategy is a placeholder which will be extended in the future to define different
+    /// options for updating secondary boot disks.
+    /// </summary>
+    public class SecondaryBootDiskUpdateStrategy : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

@@ -1965,6 +1965,17 @@ namespace Google.Apis.CloudRedis.v1
 }
 namespace Google.Apis.CloudRedis.v1.Data
 {
+    /// <summary>Configuration of the AOF based persistence.</summary>
+    public class AOFConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. fsync configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appendFsync")]
+        public virtual string AppendFsync { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for availability of database instance</summary>
     public class AvailabilityConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2188,6 +2199,10 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Optional. Persistence config (RDB, AOF) for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("persistenceConfig")]
+        public virtual ClusterPersistenceConfig PersistenceConfig { get; set; }
+
         /// <summary>
         /// Required. Each PscConfig configures the consumer network where IPs will be designated to the cluster for
         /// client access through Private Service Connect Automation. Currently, only one PscConfig is supported.
@@ -2200,6 +2215,10 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pscConnections")]
         public virtual System.Collections.Generic.IList<PscConnection> PscConnections { get; set; }
+
+        /// <summary>Optional. Key/Value pairs of customer overrides for mutable Redis Configs</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redisConfigs")]
+        public virtual System.Collections.Generic.IDictionary<string, string> RedisConfigs { get; set; }
 
         /// <summary>Optional. The number of replica nodes per shard.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replicaCount")]
@@ -2235,6 +2254,25 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// <summary>Output only. System assigned, unique identifier for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration of the persistence functionality.</summary>
+    public class ClusterPersistenceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. AOF configuration. This field will be ignored if mode is not AOF.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aofConfig")]
+        public virtual AOFConfig AofConfig { get; set; }
+
+        /// <summary>Optional. The mode of persistence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
+
+        /// <summary>Optional. RDB configuration. This field will be ignored if mode is not RDB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rdbConfig")]
+        public virtual RDBConfig RdbConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4000,6 +4038,59 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pscConnectionId")]
         public virtual string PscConnectionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration of the RDB based persistence.</summary>
+    public class RDBConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Period between RDB snapshots.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rdbSnapshotPeriod")]
+        public virtual string RdbSnapshotPeriod { get; set; }
+
+        private string _rdbSnapshotStartTimeRaw;
+
+        private object _rdbSnapshotStartTime;
+
+        /// <summary>
+        /// Optional. The time that the first snapshot was/will be attempted, and to which future snapshots will be
+        /// aligned. If not provided, the current time will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rdbSnapshotStartTime")]
+        public virtual string RdbSnapshotStartTimeRaw
+        {
+            get => _rdbSnapshotStartTimeRaw;
+            set
+            {
+                _rdbSnapshotStartTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _rdbSnapshotStartTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="RdbSnapshotStartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use RdbSnapshotStartTimeDateTimeOffset instead.")]
+        public virtual object RdbSnapshotStartTime
+        {
+            get => _rdbSnapshotStartTime;
+            set
+            {
+                _rdbSnapshotStartTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _rdbSnapshotStartTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="RdbSnapshotStartTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? RdbSnapshotStartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RdbSnapshotStartTimeRaw);
+            set => RdbSnapshotStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

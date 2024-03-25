@@ -7467,6 +7467,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("googleConfig")]
         public virtual IdentityServiceGoogleConfig GoogleConfig { get; set; }
 
+        /// <summary>LDAP specific configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ldapConfig")]
+        public virtual IdentityServiceLdapConfig LdapConfig { get; set; }
+
         /// <summary>Identifier for auth config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -7534,6 +7538,62 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>Disable automatic configuration of Google Plugin on supported platforms.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disable")]
         public virtual System.Nullable<bool> Disable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains the properties for locating and authenticating groups in the directory.</summary>
+    public class IdentityServiceGroupConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The location of the subtree in the LDAP directory to search for group entries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseDn")]
+        public virtual string BaseDn { get; set; }
+
+        /// <summary>
+        /// Optional. Optional filter to be used when searching for groups a user belongs to. This can be used to
+        /// explicitly match only certain groups in order to reduce the amount of groups returned for each user. This
+        /// defaults to "(objectClass=Group)".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// Optional. The identifying name of each group a user belongs to. For example, if this is set to
+        /// "distinguishedName" then RBACs and other group expectations should be written as full DNs. This defaults to
+        /// "distinguishedName".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idAttribute")]
+        public virtual string IdAttribute { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for the LDAP Auth flow.</summary>
+    public class IdentityServiceLdapConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Contains the properties for locating and authenticating groups in the directory.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("group")]
+        public virtual IdentityServiceGroupConfig Group { get; set; }
+
+        /// <summary>Required. Server settings for the external LDAP server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("server")]
+        public virtual IdentityServiceServerConfig Server { get; set; }
+
+        /// <summary>
+        /// Required. Contains the credentials of the service account which is authorized to perform the LDAP search in
+        /// the directory. The credentials can be supplied by the combination of the DN and password or the client
+        /// certificate.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual IdentityServiceServiceAccountConfig ServiceAccount { get; set; }
+
+        /// <summary>Required. Defines where users exist in the LDAP directory.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("user")]
+        public virtual IdentityServiceUserConfig User { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7690,6 +7750,104 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>Optional. Prefix to prepend to user name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userPrefix")]
         public virtual string UserPrefix { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Server settings for the external LDAP server.</summary>
+    public class IdentityServiceServerConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Contains a Base64 encoded, PEM formatted certificate authority certificate for the LDAP server.
+        /// This must be provided for the "ldaps" and "startTLS" connections.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certificateAuthorityData")]
+        public virtual string CertificateAuthorityData { get; set; }
+
+        /// <summary>
+        /// Optional. Defines the connection type to communicate with the LDAP server. If `starttls` or `ldaps` is
+        /// specified, the certificate_authority_data should not be empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionType")]
+        public virtual string ConnectionType { get; set; }
+
+        /// <summary>
+        /// Required. Defines the hostname or IP of the LDAP server. Port is optional and will default to 389, if
+        /// unspecified. For example, "ldap.server.example" or "10.10.10.10:389".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("host")]
+        public virtual string Host { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Contains the credentials of the service account which is authorized to perform the LDAP search in the directory.
+    /// The credentials can be supplied by the combination of the DN and password or the client certificate.
+    /// </summary>
+    public class IdentityServiceServiceAccountConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Credentials for basic auth.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("simpleBindCredentials")]
+        public virtual IdentityServiceSimpleBindCredentials SimpleBindCredentials { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The structure holds the LDAP simple binding credential.</summary>
+    public class IdentityServiceSimpleBindCredentials : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The distinguished name(DN) of the service account object/user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dn")]
+        public virtual string Dn { get; set; }
+
+        /// <summary>Output only. The encrypted password of the service account object/user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptedPassword")]
+        public virtual string EncryptedPassword { get; set; }
+
+        /// <summary>Required. Input only. The password of the service account object/user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("password")]
+        public virtual string Password { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines where users exist in the LDAP directory.</summary>
+    public class IdentityServiceUserConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The location of the subtree in the LDAP directory to search for user entries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseDn")]
+        public virtual string BaseDn { get; set; }
+
+        /// <summary>
+        /// Optional. Filter to apply when searching for the user. This can be used to further restrict the user
+        /// accounts which are allowed to login. This defaults to "(objectClass=User)".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// Optional. Determines which attribute to use as the user's identity after they are authenticated. This is
+        /// distinct from the loginAttribute field to allow users to login with a username, but then have their actual
+        /// identifier be an email address or full Distinguished Name (DN). For example, setting loginAttribute to
+        /// "sAMAccountName" and identifierAttribute to "userPrincipalName" would allow a user to login as "bsmith", but
+        /// actual RBAC policies for the user would be written as "bsmith@example.com". Using "userPrincipalName" is
+        /// recommended since this will be unique for each user. This defaults to "userPrincipalName".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idAttribute")]
+        public virtual string IdAttribute { get; set; }
+
+        /// <summary>
+        /// Optional. The name of the attribute which matches against the input username. This is used to find the user
+        /// in the LDAP database e.g. "(=)" and is combined with the optional filter field. This defaults to
+        /// "userPrincipalName".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loginAttribute")]
+        public virtual string LoginAttribute { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

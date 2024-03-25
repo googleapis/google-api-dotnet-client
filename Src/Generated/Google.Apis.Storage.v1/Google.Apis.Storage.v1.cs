@@ -7054,32 +7054,28 @@ namespace Google.Apis.Storage.v1
         }
 
         /// <summary>Restores a soft-deleted object.</summary>
-        /// <param name="generation">Selects a specific revision of this object.</param>
         /// <param name="bucket">Name of the bucket in which the object resides.</param>
         /// <param name="storageObject">
         /// Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI
         /// Path Parts.
         /// </param>
-        public virtual RestoreRequest Restore(long generation, string bucket, string storageObject)
+        /// <param name="generation">Selects a specific revision of this object.</param>
+        public virtual RestoreRequest Restore(string bucket, string storageObject, long generation)
         {
-            return new RestoreRequest(this.service, generation, bucket, storageObject);
+            return new RestoreRequest(this.service, bucket, storageObject, generation);
         }
 
         /// <summary>Restores a soft-deleted object.</summary>
         public class RestoreRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.Object>
         {
             /// <summary>Constructs a new Restore request.</summary>
-            public RestoreRequest(Google.Apis.Services.IClientService service, long generation, string bucket, string storageObject) : base(service)
+            public RestoreRequest(Google.Apis.Services.IClientService service, string bucket, string storageObject, long generation) : base(service)
             {
-                Generation = generation;
                 Bucket = bucket;
                 Object = storageObject;
+                Generation = generation;
                 InitParameters();
             }
-
-            /// <summary>Selects a specific revision of this object.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("generation", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual long Generation { get; private set; }
 
             /// <summary>Name of the bucket in which the object resides.</summary>
             [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
@@ -7091,6 +7087,10 @@ namespace Google.Apis.Storage.v1
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("object", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Object { get; private set; }
+
+            /// <summary>Selects a specific revision of this object.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("generation", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual long Generation { get; private set; }
 
             /// <summary>
             /// If true, copies the source object's ACL; otherwise, uses the bucket's default object ACL. The default is
@@ -7160,14 +7160,6 @@ namespace Google.Apis.Storage.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-                RequestParameters.Add("generation", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "generation",
-                    IsRequired = true,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
                 RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
                 {
                     Name = "bucket",
@@ -7181,6 +7173,14 @@ namespace Google.Apis.Storage.v1
                     Name = "object",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("generation", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "generation",
+                    IsRequired = true,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });

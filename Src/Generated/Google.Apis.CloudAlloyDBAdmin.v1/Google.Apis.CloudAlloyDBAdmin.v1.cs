@@ -3514,6 +3514,17 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1
 }
 namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
 {
+    /// <summary>AuthorizedNetwork contains metadata for an authorized network.</summary>
+    public class AuthorizedNetwork : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>CIDR range for one authorzied network of the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cidrRange")]
+        public virtual string CidrRange { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Message describing the user-specified automated backup policy. All fields in the automated backup policy are
     /// optional. Defaults for each field are provided if they are not set.
@@ -4163,6 +4174,13 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Output only. The public IP addresses for the Instance. This is available ONLY when enable_public_ip is set.
+        /// This is the connection endpoint for an end-user application.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicIpAddress")]
+        public virtual string PublicIpAddress { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4680,11 +4698,22 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Optional. Instance level network configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkConfig")]
+        public virtual InstanceNetworkConfig NetworkConfig { get; set; }
+
         /// <summary>
         /// Output only. List of available read-only VMs in this instance, including the standby for a PRIMARY instance.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodes")]
         public virtual System.Collections.Generic.IList<Node> Nodes { get; set; }
+
+        /// <summary>
+        /// Output only. The public IP addresses for the Instance. This is available ONLY when enable_public_ip is set.
+        /// This is the connection endpoint for an end-user application.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicIpAddress")]
+        public virtual string PublicIpAddress { get; set; }
 
         /// <summary>Configuration for query insights.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryInsightsConfig")]
@@ -4760,6 +4789,21 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         /// <summary>Output only. This is set for the read-write VM of the PRIMARY instance only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("writableNode")]
         public virtual Node WritableNode { get; set; }
+    }
+
+    /// <summary>Metadata related to instance level network configuration.</summary>
+    public class InstanceNetworkConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. A list of external network authorized to access this instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorizedExternalNetworks")]
+        public virtual System.Collections.Generic.IList<AuthorizedNetwork> AuthorizedExternalNetworks { get; set; }
+
+        /// <summary>Optional. Enabling public ip for the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enablePublicIp")]
+        public virtual System.Nullable<bool> EnablePublicIp { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>Restrictions on INTEGER type values.</summary>

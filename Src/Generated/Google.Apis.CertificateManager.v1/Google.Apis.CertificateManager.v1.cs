@@ -2895,6 +2895,20 @@ namespace Google.Apis.CertificateManager.v1
 }
 namespace Google.Apis.CertificateManager.v1.Data
 {
+    /// <summary>Defines an allowlisted certificate.</summary>
+    public class AllowlistedCertificate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. PEM certificate that is allowlisted. The certificate can be up to 5k bytes, and must be a
+        /// parseable X.509 certificate.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pemCertificate")]
+        public virtual string PemCertificate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>State of the latest attempt to authorize a domain for certificate issuance.</summary>
     public class AuthorizationAttemptInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4131,6 +4145,14 @@ namespace Google.Apis.CertificateManager.v1.Data
     /// <summary>Defines a trust config.</summary>
     public class TrustConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. A certificate matching an allowlisted certificate is always considered valid as long as the
+        /// certificate is parseable, proof of private key possession is established, and constraints on the
+        /// certificate’s SAN field are met.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowlistedCertificates")]
+        public virtual System.Collections.Generic.IList<AllowlistedCertificate> AllowlistedCertificates { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;

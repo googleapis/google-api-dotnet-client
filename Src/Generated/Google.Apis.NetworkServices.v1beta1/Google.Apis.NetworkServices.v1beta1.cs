@@ -6145,7 +6145,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         /// <summary>
         /// Required. A Common Expression Language (CEL) expression that is used to match requests for which the
         /// extension chain is executed. For more information, see [CEL matcher language
-        /// reference](/service-extensions/docs/cel-matcher-language-reference).
+        /// reference](https://cloud.google.com/service-extensions/docs/cel-matcher-language-reference).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("celExpression")]
         public virtual string CelExpression { get; set; }
@@ -7549,7 +7549,8 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
 
         /// <summary>
         /// Optional. Set of labels associated with the `LbRouteExtension` resource. The format must comply with [the
-        /// requirements for labels](/compute/docs/labeling-resources#requirements) for Google Cloud resources.
+        /// requirements for labels](https://cloud.google.com/compute/docs/labeling-resources#requirements) for Google
+        /// Cloud resources.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -7677,7 +7678,8 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
 
         /// <summary>
         /// Optional. Set of labels associated with the `LbTrafficExtension` resource. The format must comply with [the
-        /// requirements for labels](/compute/docs/labeling-resources#requirements) for Google Cloud resources.
+        /// requirements for labels](https://cloud.google.com/compute/docs/labeling-resources#requirements) for Google
+        /// Cloud resources.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }

@@ -14089,39 +14089,6 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The output of a DataDocumentation scan.</summary>
-    public class GoogleCloudDataplexV1DataDocumentationResult : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. The list of generated queries.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("queries")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1DataDocumentationResultQuery> Queries { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A query in data documentation</summary>
-    public class GoogleCloudDataplexV1DataDocumentationResultQuery : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. The description for the query.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        /// <summary>Output only. The SQL query string which can be executed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sql")]
-        public virtual string Sql { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>DataDocumentation scan related spec.</summary>
-    public class GoogleCloudDataplexV1DataDocumentationSpec : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// DataProfileResult defines the output of DataProfileScan. Each field of the table will have field type specific
     /// profile result.
@@ -15074,14 +15041,6 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual GoogleCloudDataplexV1DataSource Data { get; set; }
 
-        /// <summary>Output only. The result of the data documentation scan.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dataDocumentationResult")]
-        public virtual GoogleCloudDataplexV1DataDocumentationResult DataDocumentationResult { get; set; }
-
-        /// <summary>DataDocumentationScan related setting.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dataDocumentationSpec")]
-        public virtual GoogleCloudDataplexV1DataDocumentationSpec DataDocumentationSpec { get; set; }
-
         /// <summary>Output only. The result of the data profile scan.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataProfileResult")]
         public virtual GoogleCloudDataplexV1DataProfileResult DataProfileResult { get; set; }
@@ -15587,14 +15546,6 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>A DataScanJob represents an instance of DataScan execution.</summary>
     public class GoogleCloudDataplexV1DataScanJob : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The result of the data documentation scan.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dataDocumentationResult")]
-        public virtual GoogleCloudDataplexV1DataDocumentationResult DataDocumentationResult { get; set; }
-
-        /// <summary>Output only. DataDocumentationScan related setting.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dataDocumentationSpec")]
-        public virtual GoogleCloudDataplexV1DataDocumentationSpec DataDocumentationSpec { get; set; }
-
         /// <summary>Output only. The result of the data profile scan.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataProfileResult")]
         public virtual GoogleCloudDataplexV1DataProfileResult DataProfileResult { get; set; }
