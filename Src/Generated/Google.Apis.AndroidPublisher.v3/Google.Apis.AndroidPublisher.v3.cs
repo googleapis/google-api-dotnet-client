@@ -14821,6 +14821,13 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
         public virtual System.Nullable<int> Quantity { get; set; }
 
+        /// <summary>
+        /// The quantity eligible for refund, i.e. quantity that hasn't been refunded. The value reflects quantity-based
+        /// partial refunds and full refunds.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refundableQuantity")]
+        public virtual System.Nullable<int> RefundableQuantity { get; set; }
+
         /// <summary>ISO 3166-1 alpha-2 billing region code of the user at the time the product was granted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
         public virtual string RegionCode { get; set; }

@@ -2173,7 +2173,9 @@ namespace Google.Apis.ChromeManagement.v1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Optional. Only include resources that match the filter. Supported filter fields: - org_unit_id -
+                    /// Optional. Only include resources that match the filter. Requests that don't specify a
+                    /// "reports_timestamp" value will default to returning only recent reports. Specify
+                    /// "reports_timestamp&amp;gt;=0" to get all report data. Supported filter fields: - org_unit_id -
                     /// serial_number - device_id - reports_timestamp The "reports_timestamp" filter accepts either the
                     /// Unix Epoch milliseconds format or the RFC3339 UTC "Zulu" format with nanosecond resolution and
                     /// up to nine fractional digits. Both formats should be surrounded by simple double quotes.

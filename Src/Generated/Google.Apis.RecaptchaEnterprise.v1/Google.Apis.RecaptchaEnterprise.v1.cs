@@ -2379,7 +2379,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response to request to list firewall policies belonging to a key.</summary>
+    /// <summary>Response to request to list firewall policies belonging to a project.</summary>
     public class GoogleCloudRecaptchaenterpriseV1ListFirewallPoliciesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Policy details.</summary>

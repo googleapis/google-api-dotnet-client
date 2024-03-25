@@ -886,6 +886,65 @@ namespace Google.Apis.Dataproc.v1
                     this.service = service;
                 }
 
+                /// <summary>Analyze a Batch for possible recommendations and insights.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The fully qualified name of the batch to analyze in the format
+                /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID"
+                /// </param>
+                public virtual AnalyzeRequest Analyze(Google.Apis.Dataproc.v1.Data.AnalyzeBatchRequest body, string name)
+                {
+                    return new AnalyzeRequest(this.service, body, name);
+                }
+
+                /// <summary>Analyze a Batch for possible recommendations and insights.</summary>
+                public class AnalyzeRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Analyze request.</summary>
+                    public AnalyzeRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.AnalyzeBatchRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The fully qualified name of the batch to analyze in the format
+                    /// "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataproc.v1.Data.AnalyzeBatchRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "analyze";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:analyze";
+
+                    /// <summary>Initializes Analyze parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/batches/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Creates a batch workload that executes asynchronously.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The parent resource where this batch will be created.</param>
@@ -7257,6 +7316,24 @@ namespace Google.Apis.Dataproc.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acceleratorTypeUri")]
         public virtual string AcceleratorTypeUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A request to analyze a batch workload.</summary>
+    public class AnalyzeBatchRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A unique ID used to identify the request. If the service receives two AnalyzeBatchRequest
+        /// (http://cloud/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.AnalyzeBatchRequest)s
+        /// with the same request_id, the second request is ignored and the Operation that corresponds to the first
+        /// request created and stored in the backend is returned.Recommendation: Set this value to a UUID
+        /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The value must contain only letters (a-z,
+        /// A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

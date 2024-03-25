@@ -737,6 +737,13 @@ namespace Google.Apis.CustomSearchAPI.v1
                 }
 
                 /// <summary>
+                /// Optional. Maximum length of snippet text, in characters, to be returned with results. * Valid values
+                /// are integers between 1 and 160, inclusive.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("snippetLength", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> SnippetLength { get; set; }
+
+                /// <summary>
                 /// The sort expression to apply to the results. The sort parameter specifies that the results be sorted
                 /// according to the specified expression i.e. sort by date. [Example:
                 /// sort=date](https://developers.google.com/custom-search/docs/structured_search#sort-by-attribute).
@@ -994,6 +1001,14 @@ namespace Google.Apis.CustomSearchAPI.v1
                     RequestParameters.Add("siteSearchFilter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "siteSearchFilter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("snippetLength", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "snippetLength",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1479,6 +1494,13 @@ namespace Google.Apis.CustomSearchAPI.v1
             }
 
             /// <summary>
+            /// Optional. Maximum length of snippet text, in characters, to be returned with results. * Valid values are
+            /// integers between 1 and 160, inclusive.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("snippetLength", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> SnippetLength { get; set; }
+
+            /// <summary>
             /// The sort expression to apply to the results. The sort parameter specifies that the results be sorted
             /// according to the specified expression i.e. sort by date. [Example:
             /// sort=date](https://developers.google.com/custom-search/docs/structured_search#sort-by-attribute).
@@ -1736,6 +1758,14 @@ namespace Google.Apis.CustomSearchAPI.v1
                 RequestParameters.Add("siteSearchFilter", new Google.Apis.Discovery.Parameter
                 {
                     Name = "siteSearchFilter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("snippetLength", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "snippetLength",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,

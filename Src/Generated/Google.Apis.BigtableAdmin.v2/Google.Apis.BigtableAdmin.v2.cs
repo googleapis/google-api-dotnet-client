@@ -4418,6 +4418,12 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     /// </summary>
     public class AppProfile : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Specifies that this app profile is intended for read-only usage via the Data Boost feature.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataBoostIsolationReadOnly")]
+        public virtual DataBoostIsolationReadOnly DataBoostIsolationReadOnly { get; set; }
+
         /// <summary>Long form description of the use case for this AppProfile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
@@ -4960,6 +4966,20 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("consistencyToken")]
         public virtual string ConsistencyToken { get; set; }
 
+        /// <summary>
+        /// Checks that reads using an app profile with `DataBoostIsolationReadOnly` can see all writes committed before
+        /// the token was created, but only if the read and write target the same cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataBoostReadLocalWrites")]
+        public virtual DataBoostReadLocalWrites DataBoostReadLocalWrites { get; set; }
+
+        /// <summary>
+        /// Checks that reads using an app profile with `StandardIsolation` can see all writes committed before the
+        /// token was created, even if the read and write target different clusters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("standardReadRemoteWrites")]
+        public virtual StandardReadRemoteWrites StandardReadRemoteWrites { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5090,6 +5110,15 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stats")]
         public virtual ColumnFamilyStats Stats { get; set; }
+
+        /// <summary>
+        /// The type of data stored in each of this family's cell values, including its full encoding. If omitted, the
+        /// family only serves raw untyped bytes. For now, only the `Aggregate` type is supported. `Aggregate` can only
+        /// be set at family creation and is immutable afterwards. If `value_type` is `Aggregate`, written data must be
+        /// compatible with: * `value_type.input_type` for `AddInput` mutations
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueType")]
+        public virtual Type ValueType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5689,6 +5718,34 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Data Boost is a serverless compute capability that lets you run high-throughput read jobs on your Bigtable data,
+    /// without impacting the performance of the clusters that handle your application traffic. Currently, Data Boost
+    /// exclusively supports read-only use-cases with single-cluster routing. Data Boost reads are only guaranteed to
+    /// see the results of writes that were written at least 30 minutes ago. This means newly written values may not
+    /// become visible for up to 30m, and also means that old values may remain visible for up to 30m after being
+    /// deleted or overwritten. To mitigate the staleness of the data, users may either wait 30m, or use
+    /// CheckConsistency.
+    /// </summary>
+    public class DataBoostIsolationReadOnly : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Compute Billing Owner for this Data Boost App Profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("computeBillingOwner")]
+        public virtual string ComputeBillingOwner { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Checks that all writes before the consistency token was generated in the same cluster are readable by Databoost.
+    /// </summary>
+    public class DataBoostReadLocalWrites : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for google.bigtable.admin.v2.BigtableTableAdmin.DropRowRange</summary>
     public class DropRowRangeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5912,6 +5969,108 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowPrefixes")]
         public virtual System.Collections.Generic.IList<string> RowPrefixes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A value that combines incremental updates into a summarized value. Data is never directly written or read using
+    /// type `Aggregate`. Writes will provide either the `input_type` or `state_type`, and reads will always return the
+    /// `state_type` .
+    /// </summary>
+    public class GoogleBigtableAdminV2TypeAggregate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Type of the inputs that are accumulated by this `Aggregate`, which must specify a full encoding. Use
+        /// `AddInput` mutations to accumulate new inputs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputType")]
+        public virtual Type InputType { get; set; }
+
+        /// <summary>
+        /// Output only. Type that holds the internal accumulator state for the `Aggregate`. This is a function of the
+        /// `input_type` and `aggregator` chosen, and will always specify a full encoding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateType")]
+        public virtual Type StateType { get; set; }
+
+        /// <summary>Sum aggregator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sum")]
+        public virtual GoogleBigtableAdminV2TypeAggregateSum Sum { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Computes the sum of the input values. Allowed input: `Int64` State: same as input</summary>
+    public class GoogleBigtableAdminV2TypeAggregateSum : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Bytes Values of type `Bytes` are stored in `Value.bytes_value`.</summary>
+    public class GoogleBigtableAdminV2TypeBytes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The encoding to use when converting to/from lower level types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encoding")]
+        public virtual GoogleBigtableAdminV2TypeBytesEncoding Encoding { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Rules used to convert to/from lower level types.</summary>
+    public class GoogleBigtableAdminV2TypeBytesEncoding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Use `Raw` encoding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("raw")]
+        public virtual GoogleBigtableAdminV2TypeBytesEncodingRaw Raw { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Leaves the value "as-is" * Natural sort? Yes * Self-delimiting? No * Compatibility? N/A</summary>
+    public class GoogleBigtableAdminV2TypeBytesEncodingRaw : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Int64 Values of type `Int64` are stored in `Value.int_value`.</summary>
+    public class GoogleBigtableAdminV2TypeInt64 : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The encoding to use when converting to/from lower level types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encoding")]
+        public virtual GoogleBigtableAdminV2TypeInt64Encoding Encoding { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Rules used to convert to/from lower level types.</summary>
+    public class GoogleBigtableAdminV2TypeInt64Encoding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Use `BigEndianBytes` encoding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigEndianBytes")]
+        public virtual GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes BigEndianBytes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Encodes the value as an 8-byte big endian twos complement `Bytes` value. * Natural sort? No (positive values
+    /// only) * Self-delimiting? Yes * Compatibility? - BigQuery Federation `BINARY` encoding - HBase `Bytes.toBytes` -
+    /// Java `ByteBuffer.putLong()` with `ByteOrder.BIG_ENDIAN`
+    /// </summary>
+    public class GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The underlying `Bytes` type, which may be able to encode further.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bytesType")]
+        public virtual GoogleBigtableAdminV2TypeBytes BytesType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6888,6 +7047,15 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     }
 
     /// <summary>
+    /// Checks that all writes before the consistency token was generated are replicated in every cluster and readable.
+    /// </summary>
+    public class StandardReadRemoteWrites : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// The `Status` type defines a logical error model that is suitable for different programming environments,
     /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
     /// three pieces of data: error code, error message, and error details. You can find out more about this error model
@@ -7077,6 +7245,43 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// `Type` represents the type of data that is written to, read from, or stored in Bigtable. It is heavily based on
+    /// the GoogleSQL standard to help maintain familiarity and consistency across products and features. For
+    /// compatibility with Bigtable's existing untyped APIs, each `Type` includes an `Encoding` which describes how to
+    /// convert to/from the underlying data. This might involve composing a series of steps into an "encoding chain,"
+    /// for example to convert from INT64 -&amp;gt; STRING -&amp;gt; raw bytes. In most cases, a "link" in the encoding
+    /// chain will be based an on existing GoogleSQL conversion function like `CAST`. Each link in the encoding chain
+    /// also defines the following properties: * Natural sort: Does the encoded value sort consistently with the
+    /// original typed value? Note that Bigtable will always sort data based on the raw encoded value, *not* the decoded
+    /// type. - Example: STRING values sort in the same order as their UTF-8 encodings. - Counterexample: Encoding INT64
+    /// to a fixed-width STRING does *not* preserve sort order when dealing with negative numbers. INT64(1) &amp;gt;
+    /// INT64(-1), but STRING("-00001") &amp;gt; STRING("00001). - The overall encoding chain sorts naturally if *every*
+    /// link does. * Self-delimiting: If we concatenate two encoded values, can we always tell where the first one ends
+    /// and the second one begins? - Example: If we encode INT64s to fixed-width STRINGs, the first value will always
+    /// contain exactly N digits, possibly preceded by a sign. - Counterexample: If we concatenate two UTF-8 encoded
+    /// STRINGs, we have no way to tell where the first one ends. - The overall encoding chain is self-delimiting if
+    /// *any* link is. * Compatibility: Which other systems have matching encoding schemes? For example, does this
+    /// encoding have a GoogleSQL equivalent? HBase? Java?
+    /// </summary>
+    public class Type : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Aggregate</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregateType")]
+        public virtual GoogleBigtableAdminV2TypeAggregate AggregateType { get; set; }
+
+        /// <summary>Bytes</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bytesType")]
+        public virtual GoogleBigtableAdminV2TypeBytes BytesType { get; set; }
+
+        /// <summary>Int64</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("int64Type")]
+        public virtual GoogleBigtableAdminV2TypeInt64 Int64Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

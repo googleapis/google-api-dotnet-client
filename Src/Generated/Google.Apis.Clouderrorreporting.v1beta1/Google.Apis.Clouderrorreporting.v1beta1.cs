@@ -491,7 +491,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
             /// use an API key, append it to the URL as the value of a `key` parameter. For example: `POST
             /// https://clouderrorreporting.googleapis.com/v1beta1/{projectName}/events:report?key=123ABC456` **Note:**
             /// [Error Reporting] (https://cloud.google.com/error-reporting) is a global service built on Cloud Logging
-            /// and doesn't analyze logs stored in regional log buckets or logs routed to other Google Cloud projects.
+            /// and doesn't analyze logs stored in regional log buckets.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="projectName">
@@ -510,7 +510,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
             /// use an API key, append it to the URL as the value of a `key` parameter. For example: `POST
             /// https://clouderrorreporting.googleapis.com/v1beta1/{projectName}/events:report?key=123ABC456` **Note:**
             /// [Error Reporting] (https://cloud.google.com/error-reporting) is a global service built on Cloud Logging
-            /// and doesn't analyze logs stored in regional log buckets or logs routed to other Google Cloud projects.
+            /// and doesn't analyze logs stored in regional log buckets.
             /// </summary>
             public class ReportRequest : ClouderrorreportingBaseServiceRequest<Google.Apis.Clouderrorreporting.v1beta1.Data.ReportErrorEventResponse>
             {

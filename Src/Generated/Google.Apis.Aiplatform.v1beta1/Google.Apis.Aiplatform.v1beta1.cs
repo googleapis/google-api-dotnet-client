@@ -7648,12 +7648,13 @@ namespace Google.Apis.Aiplatform.v1beta1
 
                     /// <summary>
                     /// Optional. An expression for filtering the results of the request. For field names both
-                    /// snake_case and camelCase are supported. * `endpoint` supports = and !=. `endpoint` represents
-                    /// the Endpoint ID, i.e. the last segment of the Endpoint's resource name. * `display_name`
-                    /// supports = and, != * `labels` supports general map functions that is: * `labels.key=value` -
-                    /// key:value equality * `labels.key:* or labels:key - key existence * A key including a space must
-                    /// be quoted. `labels."a key"`. * `base_model_name` only supports = Some examples: * `endpoint=1` *
-                    /// `displayName="myDisplayName"` * `labels.myKey="myValue"` * `baseModelName="text-bison"`
+                    /// snake_case and camelCase are supported. * `endpoint` supports `=` and `!=`. `endpoint`
+                    /// represents the Endpoint ID, i.e. the last segment of the Endpoint's resource name. *
+                    /// `display_name` supports `=` and `!=`. * `labels` supports general map functions that is: *
+                    /// `labels.key=value` - key:value equality * `labels.key:*` or `labels:key` - key existence * A key
+                    /// including a space must be quoted. `labels."a key"`. * `base_model_name` only supports `=`. Some
+                    /// examples: * `endpoint=1` * `displayName="myDisplayName"` * `labels.myKey="myValue"` *
+                    /// `baseModelName="text-bison"`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -10443,7 +10444,7 @@ namespace Google.Apis.Aiplatform.v1beta1
 
                     /// <summary>
                     /// Required. Mask specifying which fields to update. Supported fields: * `display_name` *
-                    /// `description`
+                    /// `description` * `tool_use_examples`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -10482,6 +10483,65 @@ namespace Google.Apis.Aiplatform.v1beta1
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Queries an extension with a default controller.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Name (identifier) of the extension; Format:
+                /// `projects/{project}/locations/{location}/extensions/{extension}`
+                /// </param>
+                public virtual QueryRequest Query(Google.Apis.Aiplatform.v1beta1.Data.GoogleCloudAiplatformV1beta1QueryExtensionRequest body, string name)
+                {
+                    return new QueryRequest(this.service, body, name);
+                }
+
+                /// <summary>Queries an extension with a default controller.</summary>
+                public class QueryRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleCloudAiplatformV1beta1QueryExtensionResponse>
+                {
+                    /// <summary>Constructs a new Query request.</summary>
+                    public QueryRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1beta1.Data.GoogleCloudAiplatformV1beta1QueryExtensionRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name (identifier) of the extension; Format:
+                    /// `projects/{project}/locations/{location}/extensions/{extension}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Aiplatform.v1beta1.Data.GoogleCloudAiplatformV1beta1QueryExtensionRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "query";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}:query";
+
+                    /// <summary>Initializes Query parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/extensions/[^/]+$",
                         });
                     }
                 }
@@ -13082,6 +13142,71 @@ namespace Google.Apis.Aiplatform.v1beta1
                             RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/featureOnlineStores/[^/]+/featureViews/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Bidirectional streaming RPC to fetch feature values under a FeatureView. Requests may not have a
+                    /// one-to-one mapping to responses and responses may be returned out-of-order to reduce latency.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="featureView">
+                    /// Required. FeatureView resource format
+                    /// `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}/featureViews/{featureView}`
+                    /// </param>
+                    public virtual StreamingFetchFeatureValuesRequest StreamingFetchFeatureValues(Google.Apis.Aiplatform.v1beta1.Data.GoogleCloudAiplatformV1beta1StreamingFetchFeatureValuesRequest body, string featureView)
+                    {
+                        return new StreamingFetchFeatureValuesRequest(this.service, body, featureView);
+                    }
+
+                    /// <summary>
+                    /// Bidirectional streaming RPC to fetch feature values under a FeatureView. Requests may not have a
+                    /// one-to-one mapping to responses and responses may be returned out-of-order to reduce latency.
+                    /// </summary>
+                    public class StreamingFetchFeatureValuesRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleCloudAiplatformV1beta1StreamingFetchFeatureValuesResponse>
+                    {
+                        /// <summary>Constructs a new StreamingFetchFeatureValues request.</summary>
+                        public StreamingFetchFeatureValuesRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1beta1.Data.GoogleCloudAiplatformV1beta1StreamingFetchFeatureValuesRequest body, string featureView) : base(service)
+                        {
+                            FeatureView = featureView;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. FeatureView resource format
+                        /// `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}/featureViews/{featureView}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("featureView", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string FeatureView { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Aiplatform.v1beta1.Data.GoogleCloudAiplatformV1beta1StreamingFetchFeatureValuesRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "streamingFetchFeatureValues";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+featureView}:streamingFetchFeatureValues";
+
+                        /// <summary>Initializes StreamingFetchFeatureValues parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("featureView", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "featureView",
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
@@ -30820,6 +30945,65 @@ namespace Google.Apis.Aiplatform.v1beta1
                         });
                     }
                 }
+
+                /// <summary>Reboots a PersistentResource.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name of the PersistentResource resource. Format:
+                /// `projects/{project_id_or_number}/locations/{location_id}/persistentResources/{persistent_resource_id}`
+                /// </param>
+                public virtual RebootRequest Reboot(Google.Apis.Aiplatform.v1beta1.Data.GoogleCloudAiplatformV1beta1RebootPersistentResourceRequest body, string name)
+                {
+                    return new RebootRequest(this.service, body, name);
+                }
+
+                /// <summary>Reboots a PersistentResource.</summary>
+                public class RebootRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Reboot request.</summary>
+                    public RebootRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1beta1.Data.GoogleCloudAiplatformV1beta1RebootPersistentResourceRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the PersistentResource resource. Format:
+                    /// `projects/{project_id_or_number}/locations/{location_id}/persistentResources/{persistent_resource_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Aiplatform.v1beta1.Data.GoogleCloudAiplatformV1beta1RebootPersistentResourceRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "reboot";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}:reboot";
+
+                    /// <summary>Initializes Reboot parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/persistentResources/[^/]+$",
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the PipelineJobs resource.</summary>
@@ -42982,7 +43166,9 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
     {
         /// <summary>
         /// Required. The name of the SecretManager secret version resource storing the API key. Format:
-        /// `projects/{project}/secrets/{secrete}/versions/{version}`
+        /// `projects/{project}/secrets/{secrete}/versions/{version}` - If specified, the
+        /// `secretmanager.versions.access` permission should be granted to Vertex AI Extension Service Agent
+        /// (https://cloud.google.com/vertex-ai/docs/general/access-control#service-agents) on the specified resource.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiKeySecret")]
         public virtual string ApiKeySecret { get; set; }
@@ -43006,11 +43192,11 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
     public class GoogleCloudAiplatformV1beta1AuthConfigGoogleServiceAccountConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The service account that the extension execution service runs as. - If it is not specified, the
-        /// Vertex AI Extension Service Agent
-        /// (https://cloud.google.com/vertex-ai/docs/general/access-control#service-agents) will be used. - If the
-        /// service account is provided, the service account should grant Vertex AI Extension Service Agent
-        /// `iam.serviceAccounts.getAccessToken` permission.
+        /// Optional. The service account that the extension execution service runs as. - If the service account is
+        /// specified, the `iam.serviceAccounts.getAccessToken` permission should be granted to Vertex AI Extension
+        /// Service Agent (https://cloud.google.com/vertex-ai/docs/general/access-control#service-agents) on the
+        /// specified service account. - If not specified, the Vertex AI Extension Service Agent will be used to execute
+        /// the Extension.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
@@ -43024,7 +43210,9 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
     {
         /// <summary>
         /// Required. The name of the SecretManager secret version resource storing the base64 encoded credentials.
-        /// Format: `projects/{project}/secrets/{secrete}/versions/{version}`
+        /// Format: `projects/{project}/secrets/{secrete}/versions/{version}` - If specified, the
+        /// `secretmanager.versions.access` permission should be granted to Vertex AI Extension Service Agent
+        /// (https://cloud.google.com/vertex-ai/docs/general/access-control#service-agents) on the specified resource.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("credentialSecret")]
         public virtual string CredentialSecret { get; set; }
@@ -43045,15 +43233,16 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
     {
         /// <summary>
         /// Access token for extension endpoint. Only used to propagate token from
-        /// ExecuteExtensionRequest.runtime_auth_config at request time.
+        /// [[ExecuteExtensionRequest.runtime_auth_config]] at request time.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessToken")]
         public virtual string AccessToken { get; set; }
 
         /// <summary>
-        /// The service account that the extension execution service will use to query extension. Used for generating
-        /// OAuth token on behalf of provided service account. - If the service account is provided, the service account
-        /// should grant Vertex AI Service Agent `iam.serviceAccounts.getAccessToken` permission.
+        /// The service account used to generate access tokens for executing the Extension. - If the service account is
+        /// specified, the `iam.serviceAccounts.getAccessToken` permission should be granted to Vertex AI Extension
+        /// Service Agent (https://cloud.google.com/vertex-ai/docs/general/access-control#service-agents) on the
+        /// provided service account.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
@@ -43067,10 +43256,22 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
     {
         /// <summary>
         /// OpenID Connect formatted ID token for extension endpoint. Only used to propagate token from
-        /// ExecuteExtensionRequest.runtime_auth_config at request time.
+        /// [[ExecuteExtensionRequest.runtime_auth_config]] at request time.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idToken")]
         public virtual string IdToken { get; set; }
+
+        /// <summary>
+        /// The service account used to generate an OpenID Connect (OIDC)-compatible JWT token signed by the Google OIDC
+        /// Provider (accounts.google.com) for extension endpoint
+        /// (https://cloud.google.com/iam/docs/create-short-lived-credentials-direct#sa-credentials-oidc). - The
+        /// audience for the token will be set to the URL in the server url defined in the OpenApi spec. - If the
+        /// service account is provided, the service account should grant `iam.serviceAccounts.getOpenIdToken`
+        /// permission to Vertex AI Extension Service Agent
+        /// (https://cloud.google.com/vertex-ai/docs/general/access-control#service-agents).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -44231,6 +44432,20 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("safetyRatings")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1SafetyRating> SafetyRatings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Placeholder for all checkpoint related data. Any data needed to restore a request and more
+    /// go/vertex-extension-query-operation
+    /// </summary>
+    public class GoogleCloudAiplatformV1beta1CheckPoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. encoded checkpoint</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -47500,7 +47715,8 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
     public class GoogleCloudAiplatformV1beta1ExecuteExtensionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The operation to be executed in this extension as defined in ExtensionOperation.operation_id.
+        /// Required. The desired ID of the operation to be executed in this extension as defined in
+        /// ExtensionOperation.operation_id.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
         public virtual string OperationId { get; set; }
@@ -47533,14 +47749,6 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
-
-        /// <summary>
-        /// Output from the extension. The output should be conformant to the extension's manifest/OpenAPI spec. The
-        /// output can contain values for keys like "content", "headers", etc. This field is deprecated, please use
-        /// content field below for the extension execution result.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("output")]
-        public virtual System.Collections.Generic.IDictionary<string, object> Output { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -47681,6 +47889,54 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+    }
+
+    /// <summary>Execution plan for a request.</summary>
+    public class GoogleCloudAiplatformV1beta1ExecutionPlan : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Sequence of steps to execute a request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("steps")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1ExecutionPlanStep> Steps { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Single step in query execution plan.</summary>
+    public class GoogleCloudAiplatformV1beta1ExecutionPlanStep : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Extension execution step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extensionExecution")]
+        public virtual GoogleCloudAiplatformV1beta1ExecutionPlanStepExtensionExecution ExtensionExecution { get; set; }
+
+        /// <summary>Respond to user step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("respondToUser")]
+        public virtual GoogleCloudAiplatformV1beta1ExecutionPlanStepRespondToUser RespondToUser { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Extension execution step.</summary>
+    public class GoogleCloudAiplatformV1beta1ExecutionPlanStepExtensionExecution : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. extension resource name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extension")]
+        public virtual string Extension { get; set; }
+
+        /// <summary>Required. the operation id</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
+        public virtual string OperationId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Respond to user step.</summary>
+    public class GoogleCloudAiplatformV1beta1ExecutionPlanStepRespondToUser : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>Request message for PredictionService.Explain.</summary>
@@ -50410,6 +50666,13 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
     /// <summary>Response message for FeatureOnlineStoreService.FetchFeatureValues</summary>
     public class GoogleCloudAiplatformV1beta1FetchFeatureValuesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The data key associated with this response. Will only be populated for
+        /// FeatureOnlineStoreService.StreamingFetchFeatureValues RPCs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataKey")]
+        public virtual GoogleCloudAiplatformV1beta1FeatureViewDataKey DataKey { get; set; }
+
         /// <summary>Feature values in KeyValue format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyValues")]
         public virtual GoogleCloudAiplatformV1beta1FetchFeatureValuesResponseFeatureNameValuePairList KeyValues { get; set; }
@@ -50811,10 +51074,6 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("safetySettings")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1SafetySetting> SafetySettings { get; set; }
-
-        /// <summary>Optional. The user provided system instructions for the model.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("systemInstructions")]
-        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1Content> SystemInstructions { get; set; }
 
         /// <summary>
         /// Optional. A list of `Tools` the model may use to generate the next response. A `Tool` is a piece of code
@@ -57996,6 +58255,10 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deployGke")]
         public virtual GoogleCloudAiplatformV1beta1PublisherModelCallToActionDeployGke DeployGke { get; set; }
 
+        /// <summary>Optional. Multiple setups to deploy the PublisherModel to Vertex Endpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multiDeployVertex")]
+        public virtual GoogleCloudAiplatformV1beta1PublisherModelCallToActionDeployVertex MultiDeployVertex { get; set; }
+
         /// <summary>Optional. Open evaluation pipeline of the PublisherModel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("openEvaluationPipeline")]
         public virtual GoogleCloudAiplatformV1beta1PublisherModelCallToActionRegionalResourceReferences OpenEvaluationPipeline { get; set; }
@@ -58103,6 +58366,17 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// <summary>Optional. GKE deployment configuration in yaml format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gkeYamlConfigs")]
         public virtual System.Collections.Generic.IList<string> GkeYamlConfigs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Multiple setups to deploy the PublisherModel.</summary>
+    public class GoogleCloudAiplatformV1beta1PublisherModelCallToActionDeployVertex : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. One click deployment configurations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multiDeployVertex")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1PublisherModelCallToActionDeploy> MultiDeployVertex { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -58456,6 +58730,137 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for ExtensionExecutionService.QueryExtension.</summary>
+    public class GoogleCloudAiplatformV1beta1QueryExtensionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The content of the current conversation with the model. For single-turn queries, this is a single
+        /// instance. For multi-turn queries, this is a repeated field that contains conversation history + latest
+        /// request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contents")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1Content> Contents { get; set; }
+
+        /// <summary>Required. User provided input query message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual GoogleCloudAiplatformV1beta1QueryRequestQuery Query { get; set; }
+
+        /// <summary>Optional. Experiment control on whether to use function call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useFunctionCall")]
+        public virtual System.Nullable<bool> UseFunctionCall { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ExtensionExecutionService.QueryExtension.</summary>
+    public class GoogleCloudAiplatformV1beta1QueryExtensionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Failure message if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureMessage")]
+        public virtual string FailureMessage { get; set; }
+
+        /// <summary>Metadata related to the query execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual GoogleCloudAiplatformV1beta1QueryResponseResponseMetadata Metadata { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("queryResponseMetadata")]
+        public virtual GoogleCloudAiplatformV1beta1QueryResponseQueryResponseMetadata QueryResponseMetadata { get; set; }
+
+        /// <summary>Response to the user's query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual string Response { get; set; }
+
+        /// <summary>
+        /// Steps of extension or LLM interaction, can contain function call, function response, or text response. The
+        /// last step contains the final response to the query.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("steps")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1Content> Steps { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>User provided query message.</summary>
+    public class GoogleCloudAiplatformV1beta1QueryRequestQuery : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The query from user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual string Query { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudAiplatformV1beta1QueryResponseQueryResponseMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>ReAgent execution steps.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("steps")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1QueryResponseQueryResponseMetadataReAgentSteps> Steps { get; set; }
+
+        /// <summary>
+        /// Whether the reasoning agent used creativity (instead of extensions provided) to build the response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useCreativity")]
+        public virtual System.Nullable<bool> UseCreativity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ReAgent execution steps.</summary>
+    public class GoogleCloudAiplatformV1beta1QueryResponseQueryResponseMetadataReAgentSteps : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Error messages from the extension or during response parsing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual string Error { get; set; }
+
+        /// <summary>Planner's instruction to the extension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extensionInstruction")]
+        public virtual string ExtensionInstruction { get; set; }
+
+        /// <summary>Planner's choice of extension to invoke.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extensionInvoked")]
+        public virtual string ExtensionInvoked { get; set; }
+
+        /// <summary>Response of the extension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual string Response { get; set; }
+
+        /// <summary>
+        /// When set to False, either the extension fails to execute or the response cannot be summarized.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("success")]
+        public virtual System.Nullable<bool> Success { get; set; }
+
+        /// <summary>Planner's thought.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thought")]
+        public virtual string Thought { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for response</summary>
+    public class GoogleCloudAiplatformV1beta1QueryResponseResponseMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Checkpoint to restore a request</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("checkpoint")]
+        public virtual GoogleCloudAiplatformV1beta1CheckPoint Checkpoint { get; set; }
+
+        /// <summary>Optional. Execution plan for the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionPlan")]
+        public virtual GoogleCloudAiplatformV1beta1ExecutionPlan ExecutionPlan { get; set; }
+
+        /// <summary>To surface the v2 flow output.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flowOutputs")]
+        public virtual System.Collections.Generic.IDictionary<string, object> FlowOutputs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for PredictionService.RawPredict.</summary>
     public class GoogleCloudAiplatformV1beta1RawPredictRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -58741,6 +59146,13 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("progressMessage")]
         public virtual string ProgressMessage { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for PersistentResourceService.RebootPersistentResource.</summary>
+    public class GoogleCloudAiplatformV1beta1RebootPersistentResourceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -59716,6 +60128,10 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
     /// </summary>
     public class GoogleCloudAiplatformV1beta1Schema : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Default value of the data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("default")]
+        public virtual object Default__ { get; set; }
+
         /// <summary>Optional. The description of the data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
@@ -59732,27 +60148,69 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         public virtual object Example { get; set; }
 
         /// <summary>
-        /// Optional. The format of the data. Supported formats: for NUMBER type: float, double for INTEGER type: int32,
-        /// int64
+        /// Optional. The format of the data. Supported formats: for NUMBER type: "float", "double" for INTEGER type:
+        /// "int32", "int64" for STRING type: "email", "byte", etc
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
         public virtual string Format { get; set; }
 
-        /// <summary>Optional. Schema of the elements of Type.ARRAY.</summary>
+        /// <summary>Optional. SCHEMA FIELDS FOR TYPE ARRAY Schema of the elements of Type.ARRAY.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual GoogleCloudAiplatformV1beta1Schema Items { get; set; }
+
+        /// <summary>Optional. Maximum number of the elements for Type.ARRAY.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxItems")]
+        public virtual System.Nullable<long> MaxItems { get; set; }
+
+        /// <summary>Optional. Maximum length of the Type.STRING</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxLength")]
+        public virtual System.Nullable<long> MaxLength { get; set; }
+
+        /// <summary>Optional. Maximum number of the properties for Type.OBJECT.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxProperties")]
+        public virtual System.Nullable<long> MaxProperties { get; set; }
+
+        /// <summary>Optional. Maximum value of the Type.INTEGER and Type.NUMBER</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maximum")]
+        public virtual System.Nullable<double> Maximum { get; set; }
+
+        /// <summary>Optional. Minimum number of the elements for Type.ARRAY.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minItems")]
+        public virtual System.Nullable<long> MinItems { get; set; }
+
+        /// <summary>Optional. SCHEMA FIELDS FOR TYPE STRING Minimum length of the Type.STRING</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minLength")]
+        public virtual System.Nullable<long> MinLength { get; set; }
+
+        /// <summary>Optional. Minimum number of the properties for Type.OBJECT.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minProperties")]
+        public virtual System.Nullable<long> MinProperties { get; set; }
+
+        /// <summary>
+        /// Optional. SCHEMA FIELDS FOR TYPE INTEGER and NUMBER Minimum value of the Type.INTEGER and Type.NUMBER
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimum")]
+        public virtual System.Nullable<double> Minimum { get; set; }
 
         /// <summary>Optional. Indicates if the value may be null.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nullable")]
         public virtual System.Nullable<bool> Nullable { get; set; }
 
-        /// <summary>Optional. Properties of Type.OBJECT.</summary>
+        /// <summary>Optional. Pattern of the Type.STRING to restrict a string to a regular expression.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pattern")]
+        public virtual string Pattern { get; set; }
+
+        /// <summary>Optional. SCHEMA FIELDS FOR TYPE OBJECT Properties of Type.OBJECT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudAiplatformV1beta1Schema> Properties { get; set; }
 
         /// <summary>Optional. Required properties of Type.OBJECT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("required")]
         public virtual System.Collections.Generic.IList<string> Required { get; set; }
+
+        /// <summary>Optional. The title of the Schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
 
         /// <summary>Optional. The type of the data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
@@ -64173,6 +64631,45 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
     }
 
     /// <summary>
+    /// Request message for FeatureOnlineStoreService.StreamingFetchFeatureValues. For the entities requested, all
+    /// features under the requested feature view will be returned.
+    /// </summary>
+    public class GoogleCloudAiplatformV1beta1StreamingFetchFeatureValuesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specify response data format. If not set, KeyValue format will be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataFormat")]
+        public virtual string DataFormat { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("dataKeys")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1FeatureViewDataKey> DataKeys { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for FeatureOnlineStoreService.StreamingFetchFeatureValues.</summary>
+    public class GoogleCloudAiplatformV1beta1StreamingFetchFeatureValuesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1FetchFeatureValuesResponse> Data { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("dataKeysWithError")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1FeatureViewDataKey> DataKeysWithError { get; set; }
+
+        /// <summary>
+        /// Response status. If OK, then StreamingFetchFeatureValuesResponse.data will be populated. Otherwise
+        /// StreamingFetchFeatureValuesResponse.data_keys_with_error will be populated with the appropriate data keys.
+        /// The error only applies to the listed data keys - the stream will remain open for further
+        /// FeatureOnlineStoreService.StreamingFetchFeatureValuesRequest requests.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual GoogleRpcStatus Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Request message for PredictionService.StreamingPredict. The first message must contain endpoint field and
     /// optionally input. The subsequent messages must contain input.
     /// </summary>
@@ -66882,8 +67379,8 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
     public class GoogleCloudAiplatformV1beta1VertexAISearch : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Fully-qualified Vertex AI Search's datastore resource ID.
-        /// projects/&amp;lt;&amp;gt;/locations/&amp;lt;&amp;gt;/collections/&amp;lt;&amp;gt;/dataStores/&amp;lt;&amp;gt;
+        /// Required. Fully-qualified Vertex AI Search's datastore resource ID. Format:
+        /// projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datastore")]
         public virtual string Datastore { get; set; }
@@ -68386,7 +68883,7 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
     {
         /// <summary>
         /// Index in the prediction output where the citation ends (exclusive). Must be &amp;gt; start_index and
-        /// &amp;lt; len(output).
+        /// &amp;lt;= len(output).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endIndex")]
         public virtual System.Nullable<int> EndIndex { get; set; }

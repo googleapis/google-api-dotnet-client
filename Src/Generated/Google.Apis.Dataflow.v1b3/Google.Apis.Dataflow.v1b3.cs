@@ -4377,8 +4377,8 @@ namespace Google.Apis.Dataflow.v1b3
                     public virtual string Location { get; private set; }
 
                     /// <summary>
-                    /// Path to dynamic template spec file on Cloud Storage. The file must be a Json serialized
-                    /// DynamicTemplateFieSpec object.
+                    /// Path to the dynamic template specification file on Cloud Storage. The file must be a JSON
+                    /// serialized `DynamicTemplateFileSpec` object.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("dynamicTemplate.gcsPath", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string DynamicTemplateGcsPath { get; set; }
@@ -4391,8 +4391,8 @@ namespace Google.Apis.Dataflow.v1b3
                     public virtual string DynamicTemplateStagingLocation { get; set; }
 
                     /// <summary>
-                    /// A Cloud Storage path to the template from which to create the job. Must be valid Cloud Storage
-                    /// URL, beginning with 'gs://'.
+                    /// A Cloud Storage path to the template to use to create the job. Must be valid Cloud Storage URL,
+                    /// beginning with `gs://`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("gcsPath", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string GcsPath { get; set; }
@@ -4901,8 +4901,8 @@ namespace Google.Apis.Dataflow.v1b3
                 public virtual string ProjectId { get; private set; }
 
                 /// <summary>
-                /// Path to dynamic template spec file on Cloud Storage. The file must be a Json serialized
-                /// DynamicTemplateFieSpec object.
+                /// Path to the dynamic template specification file on Cloud Storage. The file must be a JSON serialized
+                /// `DynamicTemplateFileSpec` object.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("dynamicTemplate.gcsPath", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string DynamicTemplateGcsPath { get; set; }
@@ -4915,8 +4915,8 @@ namespace Google.Apis.Dataflow.v1b3
                 public virtual string DynamicTemplateStagingLocation { get; set; }
 
                 /// <summary>
-                /// A Cloud Storage path to the template from which to create the job. Must be valid Cloud Storage URL,
-                /// beginning with 'gs://'.
+                /// A Cloud Storage path to the template to use to create the job. Must be valid Cloud Storage URL,
+                /// beginning with `gs://`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("gcsPath", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string GcsPath { get; set; }
@@ -8699,7 +8699,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The environment values to set at runtime.</summary>
+    /// <summary>The environment values to set at runtime. LINT.IfChange</summary>
     public class RuntimeEnvironment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

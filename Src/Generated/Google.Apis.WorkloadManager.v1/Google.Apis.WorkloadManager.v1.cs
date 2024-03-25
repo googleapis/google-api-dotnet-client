@@ -959,6 +959,12 @@ namespace Google.Apis.WorkloadManager.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
+                    /// Optional. Followed the best practice from https://aip.dev/135#cascading-delete
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> Force { get; set; }
+
+                    /// <summary>
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
                     /// you must retry your request, the server will know to ignore the request if it has already been
                     /// completed. The server will guarantee that for at least 60 minutes after the first request. For
@@ -991,6 +997,14 @@ namespace Google.Apis.WorkloadManager.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/evaluations/[^/]+$",
+                        });
+                        RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "force",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
                         {
@@ -2723,17 +2737,21 @@ namespace Google.Apis.WorkloadManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("abap")]
         public virtual System.Nullable<bool> Abap { get; set; }
 
+        /// <summary>Optional. Instance number of the SAP application instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appInstanceNumber")]
+        public virtual string AppInstanceNumber { get; set; }
+
         /// <summary>Required. Type of the application. Netweaver, etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("applicationType")]
         public virtual string ApplicationType { get; set; }
 
+        /// <summary>Optional. Instance number of the ASCS instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ascsInstanceNumber")]
+        public virtual string AscsInstanceNumber { get; set; }
+
         /// <summary>Optional. Resource URI of the recognized ASCS host of the application.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ascsUri")]
         public virtual string AscsUri { get; set; }
-
-        /// <summary>Optional. Instance number of the SAP instance.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("instanceNumber")]
-        public virtual string InstanceNumber { get; set; }
 
         /// <summary>Optional. Kernel version for Netweaver running in the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kernelVersion")]
@@ -2753,6 +2771,10 @@ namespace Google.Apis.WorkloadManager.v1.Data
     /// <summary>A set of properties describing an SAP Database layer.</summary>
     public class SapDiscoveryComponentDatabaseProperties : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. SID of the system database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseSid")]
+        public virtual string DatabaseSid { get; set; }
+
         /// <summary>Required. Type of the database. HANA, DB2, etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseType")]
         public virtual string DatabaseType { get; set; }
@@ -2873,6 +2895,10 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// <summary>Optional. A list of instance URIs that are part of a cluster with this one.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterInstances")]
         public virtual System.Collections.Generic.IList<string> ClusterInstances { get; set; }
+
+        /// <summary>Optional. The VM's instance number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceNumber")]
+        public virtual System.Nullable<long> InstanceNumber { get; set; }
 
         /// <summary>Optional. A virtual hostname of the instance if it has one.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("virtualHostname")]
