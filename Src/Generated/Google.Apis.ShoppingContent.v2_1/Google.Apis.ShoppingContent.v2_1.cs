@@ -21799,6 +21799,15 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ageGroup")]
         public virtual string AgeGroup { get; set; }
 
+        /// <summary>
+        /// A safeguard in the [Automated Discounts](https://support.google.com/merchants/answer/10295759?hl=en) and
+        /// [Dynamic Promotions](https://support.google.com/merchants/answer/13949249?hl=en) projects, ensuring that
+        /// discounts on merchants' offers do not fall below this value, thereby preserving the offer's value and
+        /// profitability.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoPricingMinPrice")]
+        public virtual Price AutoPricingMinPrice { get; set; }
+
         /// <summary>Availability status of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availability")]
         public virtual string Availability { get; set; }

@@ -6274,6 +6274,10 @@ namespace Google.Apis.SQLAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
+        /// <summary>Optional. Options for importing data from SQL statements.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlImportOptions")]
+        public virtual SqlImportOptionsData SqlImportOptions { get; set; }
+
         /// <summary>
         /// Path to the import file in Cloud Storage, in the form `gs://bucketName/fileName`. Compressed gzip files
         /// (.gz) are supported when `fileType` is `SQL`. The instance must have write permissions to the bucket and
@@ -6420,6 +6424,18 @@ namespace Google.Apis.SQLAdmin.v1.Data
             /// <summary>The table to which CSV data is imported.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("table")]
             public virtual string Table { get; set; }
+        }
+
+        /// <summary>Optional. Options for importing data from SQL statements.</summary>
+        public class SqlImportOptionsData
+        {
+            /// <summary>Optional. Whether or not the import should be parallel.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("parallel")]
+            public virtual System.Nullable<bool> Parallel { get; set; }
+
+            /// <summary>Optional. The number of threads to use for parallel import.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("threads")]
+            public virtual System.Nullable<int> Threads { get; set; }
         }
     }
 
@@ -6690,25 +6706,25 @@ namespace Google.Apis.SQLAdmin.v1.Data
         public virtual PscConfig PscConfig { get; set; }
 
         /// <summary>
-        /// Use `ssl_mode` instead for MySQL and PostgreSQL. SQL Server uses this flag. Whether SSL/TLS connections over
-        /// IP are enforced. If set to false, then allow both non-SSL/non-TLS and SSL/TLS connections. For SSL/TLS
-        /// connections, the client certificate won't be verified. If set to true, then only allow connections encrypted
-        /// with SSL/TLS and with valid client certificates. If you want to enforce SSL/TLS without enforcing the
-        /// requirement for valid client certificates, then use the `ssl_mode` flag instead of the `require_ssl` flag.
+        /// Use `ssl_mode` instead. Whether SSL/TLS connections over IP are enforced. If set to false, then allow both
+        /// non-SSL/non-TLS and SSL/TLS connections. For SSL/TLS connections, the client certificate won't be verified.
+        /// If set to true, then only allow connections encrypted with SSL/TLS and with valid client certificates. If
+        /// you want to enforce SSL/TLS without enforcing the requirement for valid client certificates, then use the
+        /// `ssl_mode` flag instead of the `require_ssl` flag.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requireSsl")]
         public virtual System.Nullable<bool> RequireSsl { get; set; }
 
         /// <summary>
-        /// Specify how SSL/TLS is enforced in database connections. MySQL and PostgreSQL use the `ssl_mode` flag. If
-        /// you must use the `require_ssl` flag for backward compatibility, then only the following value pairs are
-        /// valid: * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and
-        /// `require_ssl=false` * `ssl_mode=TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` The value of
-        /// `ssl_mode` gets priority over the value of `require_ssl`. For example, for the pair
-        /// `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false`, the `ssl_mode=ENCRYPTED_ONLY` means only accept SSL
-        /// connections, while the `require_ssl=false` means accept both non-SSL and SSL connections. MySQL and
-        /// PostgreSQL databases respect `ssl_mode` in this case and accept only SSL connections. SQL Server uses the
-        /// `require_ssl` flag. You can set the value for this flag to `true` or `false`.
+        /// Specify how SSL/TLS is enforced in database connections. If you must use the `require_ssl` flag for backward
+        /// compatibility, then only the following value pairs are valid: For PostgreSQL and MySQL: *
+        /// `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and
+        /// `require_ssl=false` * `ssl_mode=TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` For SQL Server:
+        /// * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and
+        /// `require_ssl=true` The value of `ssl_mode` gets priority over the value of `require_ssl`. For example, for
+        /// the pair `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false`, the `ssl_mode=ENCRYPTED_ONLY` means only accept
+        /// SSL connections, while the `require_ssl=false` means accept both non-SSL and SSL connections. MySQL and
+        /// PostgreSQL databases respect `ssl_mode` in this case and accept only SSL connections.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sslMode")]
         public virtual string SslMode { get; set; }

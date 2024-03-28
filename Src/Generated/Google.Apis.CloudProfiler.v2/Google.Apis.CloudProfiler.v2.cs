@@ -480,14 +480,14 @@ namespace Google.Apis.CloudProfiler.v2
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// The maximum number of items to return. Default page_size is 1000. Max limit is 1000.
+                /// Optional. The maximum number of items to return. Default page_size is 1000. Max limit is 1000.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>
-                /// The token to continue pagination and get profiles from a particular page. When paginating, all other
-                /// parameters provided to `ListProfiles` must match the call that provided the page token.
+                /// Optional. The token to continue pagination and get profiles from a particular page. When paginating,
+                /// all other parameters provided to `ListProfiles` must match the call that provided the page token.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }

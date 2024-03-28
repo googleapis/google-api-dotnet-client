@@ -1400,6 +1400,75 @@ namespace Google.Apis.BigQueryReservation.v1
                     }
                 }
 
+                /// <summary>
+                /// Failover a reservation to the secondary location. The operation should be done in the current
+                /// secondary location, which will be promoted to the new primary location for the reservation.
+                /// Attempting to failover a reservation in the current primary location will fail with the error code
+                /// `google.rpc.Code.FAILED_PRECONDITION`.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Resource name of the reservation to failover. E.g.,
+                /// `projects/myproject/locations/US/reservations/team1-prod`
+                /// </param>
+                public virtual FailoverReservationRequest FailoverReservation(Google.Apis.BigQueryReservation.v1.Data.FailoverReservationRequest body, string name)
+                {
+                    return new FailoverReservationRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Failover a reservation to the secondary location. The operation should be done in the current
+                /// secondary location, which will be promoted to the new primary location for the reservation.
+                /// Attempting to failover a reservation in the current primary location will fail with the error code
+                /// `google.rpc.Code.FAILED_PRECONDITION`.
+                /// </summary>
+                public class FailoverReservationRequest : BigQueryReservationBaseServiceRequest<Google.Apis.BigQueryReservation.v1.Data.Reservation>
+                {
+                    /// <summary>Constructs a new FailoverReservation request.</summary>
+                    public FailoverReservationRequest(Google.Apis.Services.IClientService service, Google.Apis.BigQueryReservation.v1.Data.FailoverReservationRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name of the reservation to failover. E.g.,
+                    /// `projects/myproject/locations/US/reservations/team1-prod`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.BigQueryReservation.v1.Data.FailoverReservationRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "failoverReservation";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:failoverReservation";
+
+                    /// <summary>Initializes FailoverReservation parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/reservations/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Returns information about the reservation.</summary>
                 /// <param name="name">
                 /// Required. Resource name of the reservation to retrieve. E.g.,
@@ -2222,6 +2291,13 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The request for ReservationService.FailoverReservation.</summary>
+    public class FailoverReservationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response for ReservationService.ListAssignments.</summary>
     public class ListAssignmentsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2393,6 +2469,32 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. The original primary location of the reservation which is set only during its creation and remains
+        /// unchanged afterwards. It can be used by the customer to answer questions about disaster recovery billing.
+        /// The field is output only for customers and should not be specified, however, the google.api.field_behavior
+        /// is not set to OUTPUT_ONLY since these fields are set in rerouted requests sent across regions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originalPrimaryLocation")]
+        public virtual string OriginalPrimaryLocation { get; set; }
+
+        /// <summary>
+        /// Optional. The primary location of the reservation. The field is only meaningful for reservation used for
+        /// cross region disaster recovery. The field is output only for customers and should not be specified, however,
+        /// the google.api.field_behavior is not set to OUTPUT_ONLY since these fields are set in rerouted requests sent
+        /// across regions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryLocation")]
+        public virtual string PrimaryLocation { get; set; }
+
+        /// <summary>
+        /// Optional. The secondary location of the reservation which is used for cross region disaster recovery
+        /// purposes. Customer can set this in create/update reservation calls to create a failover reservation or
+        /// convert a non-failover reservation to a failover reservation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secondaryLocation")]
+        public virtual string SecondaryLocation { get; set; }
 
         /// <summary>
         /// Baseline slots available to this reservation. A slot is a unit of computational power in BigQuery, and

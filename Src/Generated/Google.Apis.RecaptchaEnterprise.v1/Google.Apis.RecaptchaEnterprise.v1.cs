@@ -1909,6 +1909,10 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("firewallPolicyEvaluation")]
         public virtual System.Nullable<bool> FirewallPolicyEvaluation { get; set; }
 
+        /// <summary>Optional. The Fraud Prevention setting for this assessment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fraudPrevention")]
+        public virtual string FraudPrevention { get; set; }
+
         /// <summary>
         /// Optional. Deprecated: use `user_info.account_id` instead. Unique stable hashed user identifier for the
         /// request. The identifier must be hashed using hmac-sha256 with stable secret.

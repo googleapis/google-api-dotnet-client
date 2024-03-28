@@ -370,14 +370,20 @@ namespace Google.Apis.Tasks.v1
             }
         }
 
-        /// <summary>Creates a new task list and adds it to the authenticated user's task lists.</summary>
+        /// <summary>
+        /// Creates a new task list and adds it to the authenticated user's task lists. A user can have up to 2000 lists
+        /// at a time.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual InsertRequest Insert(Google.Apis.Tasks.v1.Data.TaskList body)
         {
             return new InsertRequest(this.service, body);
         }
 
-        /// <summary>Creates a new task list and adds it to the authenticated user's task lists.</summary>
+        /// <summary>
+        /// Creates a new task list and adds it to the authenticated user's task lists. A user can have up to 2000 lists
+        /// at a time.
+        /// </summary>
         public class InsertRequest : TasksBaseServiceRequest<Google.Apis.Tasks.v1.Data.TaskList>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -409,13 +415,17 @@ namespace Google.Apis.Tasks.v1
             }
         }
 
-        /// <summary>Returns all the authenticated user's task lists.</summary>
+        /// <summary>
+        /// Returns all the authenticated user's task lists. A user can have up to 2000 lists at a time.
+        /// </summary>
         public virtual ListRequest List()
         {
             return new ListRequest(this.service);
         }
 
-        /// <summary>Returns all the authenticated user's task lists.</summary>
+        /// <summary>
+        /// Returns all the authenticated user's task lists. A user can have up to 2000 lists at a time.
+        /// </summary>
         public class ListRequest : TasksBaseServiceRequest<Google.Apis.Tasks.v1.Data.TaskLists>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -760,7 +770,10 @@ namespace Google.Apis.Tasks.v1
             }
         }
 
-        /// <summary>Creates a new task on the specified task list.</summary>
+        /// <summary>
+        /// Creates a new task on the specified task list. A user can have up to 20,000 uncompleted tasks per list and
+        /// up to 100,000 tasks in total at a time.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="tasklist">Task list identifier.</param>
         public virtual InsertRequest Insert(Google.Apis.Tasks.v1.Data.Task body, string tasklist)
@@ -768,7 +781,10 @@ namespace Google.Apis.Tasks.v1
             return new InsertRequest(this.service, body, tasklist);
         }
 
-        /// <summary>Creates a new task on the specified task list.</summary>
+        /// <summary>
+        /// Creates a new task on the specified task list. A user can have up to 20,000 uncompleted tasks per list and
+        /// up to 100,000 tasks in total at a time.
+        /// </summary>
         public class InsertRequest : TasksBaseServiceRequest<Google.Apis.Tasks.v1.Data.Task>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -842,14 +858,20 @@ namespace Google.Apis.Tasks.v1
             }
         }
 
-        /// <summary>Returns all tasks in the specified task list.</summary>
+        /// <summary>
+        /// Returns all tasks in the specified task list. A user can have up to 20,000 uncompleted tasks per list and up
+        /// to 100,000 tasks in total at a time.
+        /// </summary>
         /// <param name="tasklist">Task list identifier.</param>
         public virtual ListRequest List(string tasklist)
         {
             return new ListRequest(this.service, tasklist);
         }
 
-        /// <summary>Returns all tasks in the specified task list.</summary>
+        /// <summary>
+        /// Returns all tasks in the specified task list. A user can have up to 20,000 uncompleted tasks per list and up
+        /// to 100,000 tasks in total at a time.
+        /// </summary>
         public class ListRequest : TasksBaseServiceRequest<Google.Apis.Tasks.v1.Data.Tasks>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -1034,7 +1056,8 @@ namespace Google.Apis.Tasks.v1
 
         /// <summary>
         /// Moves the specified task to another position in the task list. This can include putting it as a child task
-        /// under a new parent and/or move it to a different position among its sibling tasks.
+        /// under a new parent and/or move it to a different position among its sibling tasks. A user can have up to
+        /// 2,000 subtasks per task.
         /// </summary>
         /// <param name="tasklist">Task list identifier.</param>
         /// <param name="task">Task identifier.</param>
@@ -1045,7 +1068,8 @@ namespace Google.Apis.Tasks.v1
 
         /// <summary>
         /// Moves the specified task to another position in the task list. This can include putting it as a child task
-        /// under a new parent and/or move it to a different position among its sibling tasks.
+        /// under a new parent and/or move it to a different position among its sibling tasks. A user can have up to
+        /// 2,000 subtasks per task.
         /// </summary>
         public class MoveRequest : TasksBaseServiceRequest<Google.Apis.Tasks.v1.Data.Task>
         {
@@ -1307,7 +1331,7 @@ namespace Google.Apis.Tasks.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("links")]
         public virtual System.Collections.Generic.IList<LinksData> Links { get; set; }
 
-        /// <summary>Notes describing the task. Optional.</summary>
+        /// <summary>Notes describing the task. Optional. Maximum length allowed: 8192 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notes")]
         public virtual string Notes { get; set; }
 
@@ -1335,7 +1359,7 @@ namespace Google.Apis.Tasks.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
 
-        /// <summary>Title of the task.</summary>
+        /// <summary>Title of the task. Maximum length allowed: 1024 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
 
@@ -1382,7 +1406,7 @@ namespace Google.Apis.Tasks.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; }
 
-        /// <summary>Title of the task list.</summary>
+        /// <summary>Title of the task list. Maximum length allowed: 1024 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
 

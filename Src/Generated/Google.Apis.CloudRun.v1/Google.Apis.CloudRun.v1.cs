@@ -8938,7 +8938,7 @@ namespace Google.Apis.CloudRun.v1.Data
 
     /// <summary>
     /// Represents a persistent volume that will be mounted using NFS. This volume will be shared between all instances
-    /// of the Service and data will not be deleted when the instance is shut down.
+    /// of the resource and data will not be deleted when the instance is shut down.
     /// </summary>
     public class NFSVolumeSource : Google.Apis.Requests.IDirectResponseSchema
     {

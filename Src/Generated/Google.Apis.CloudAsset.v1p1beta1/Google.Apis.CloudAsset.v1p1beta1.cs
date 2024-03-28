@@ -284,8 +284,8 @@ namespace Google.Apis.CloudAsset.v1p1beta1
         /// Searches all the IAM policies within a given accessible Resource Manager scope
         /// (project/folder/organization). This RPC gives callers especially administrators the ability to search all
         /// the IAM policies within a scope, even if they don't have `.getIamPolicy` permission of all the IAM policies.
-        /// Callers should have `cloud.assets.SearchAllIamPolicies` permission on the requested scope, otherwise the
-        /// request will be rejected.
+        /// Callers should have `cloudasset.assets.searchAllIamPolicies` permission on the requested scope, otherwise
+        /// the request will be rejected.
         /// </summary>
         /// <param name="scope">
         /// Required. The relative name of an asset. The search is limited to the resources within the `scope`. The
@@ -301,8 +301,8 @@ namespace Google.Apis.CloudAsset.v1p1beta1
         /// Searches all the IAM policies within a given accessible Resource Manager scope
         /// (project/folder/organization). This RPC gives callers especially administrators the ability to search all
         /// the IAM policies within a scope, even if they don't have `.getIamPolicy` permission of all the IAM policies.
-        /// Callers should have `cloud.assets.SearchAllIamPolicies` permission on the requested scope, otherwise the
-        /// request will be rejected.
+        /// Callers should have `cloudasset.assets.searchAllIamPolicies` permission on the requested scope, otherwise
+        /// the request will be rejected.
         /// </summary>
         public class SearchAllRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1p1beta1.Data.SearchAllIamPoliciesResponse>
         {
@@ -411,7 +411,8 @@ namespace Google.Apis.CloudAsset.v1p1beta1
         /// Searches all the resources within a given accessible Resource Manager scope (project/folder/organization).
         /// This RPC gives callers especially administrators the ability to search all the resources within a scope,
         /// even if they don't have `.get` permission of all the resources. Callers should have
-        /// `cloud.assets.SearchAllResources` permission on the requested scope, otherwise the request will be rejected.
+        /// `cloudasset.assets.searchAllResources` permission on the requested scope, otherwise the request will be
+        /// rejected.
         /// </summary>
         /// <param name="scope">
         /// Required. The relative name of an asset. The search is limited to the resources within the `scope`. The
@@ -427,7 +428,8 @@ namespace Google.Apis.CloudAsset.v1p1beta1
         /// Searches all the resources within a given accessible Resource Manager scope (project/folder/organization).
         /// This RPC gives callers especially administrators the ability to search all the resources within a scope,
         /// even if they don't have `.get` permission of all the resources. Callers should have
-        /// `cloud.assets.SearchAllResources` permission on the requested scope, otherwise the request will be rejected.
+        /// `cloudasset.assets.searchAllResources` permission on the requested scope, otherwise the request will be
+        /// rejected.
         /// </summary>
         public class SearchAllRequest : CloudAssetBaseServiceRequest<Google.Apis.CloudAsset.v1p1beta1.Data.SearchAllResourcesResponse>
         {

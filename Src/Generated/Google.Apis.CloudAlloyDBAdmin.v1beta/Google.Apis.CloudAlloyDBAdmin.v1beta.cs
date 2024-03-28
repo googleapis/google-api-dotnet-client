@@ -4044,6 +4044,13 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
+        /// <summary>
+        /// Output only. The maintenance schedule for the cluster, generated for a specific rollout if a maintenance
+        /// window is set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceSchedule")]
+        public virtual MaintenanceSchedule MaintenanceSchedule { get; set; }
+
         /// <summary>Optional. The maintenance update policy determines when to allow or deny updates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceUpdatePolicy")]
         public virtual MaintenanceUpdatePolicy MaintenanceUpdatePolicy { get; set; }
@@ -5069,6 +5076,55 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// MaintenanceSchedule stores the maintenance schedule generated from the MaintenanceUpdatePolicy, once a
+    /// maintenance rollout is triggered, if MaintenanceWindow is set, and if there is no conflicting DenyPeriod. The
+    /// schedule is cleared once the update takes place. This field cannot be manually changed; modify the
+    /// MaintenanceUpdatePolicy instead.
+    /// </summary>
+    public class MaintenanceSchedule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>Output only. The scheduled start time for the maintenance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>MaintenanceUpdatePolicy defines the policy for system updates.</summary>
     public class MaintenanceUpdatePolicy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5443,25 +5499,11 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
     public class PscInstanceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. List of consumer networks that are allowed to create PSC endpoints to service-attachments to this
-        /// instance.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("allowedConsumerNetworks")]
-        public virtual System.Collections.Generic.IList<string> AllowedConsumerNetworks { get; set; }
-
-        /// <summary>
         /// Optional. List of consumer projects that are allowed to create PSC endpoints to service-attachments to this
         /// instance.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedConsumerProjects")]
         public virtual System.Collections.Generic.IList<string> AllowedConsumerProjects { get; set; }
-
-        /// <summary>
-        /// Optional. List of service attachments that this instance has created endpoints to connect with. Currently,
-        /// only a single outgoing service attachment is supported per instance.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("outgoingServiceAttachmentLinks")]
-        public virtual System.Collections.Generic.IList<string> OutgoingServiceAttachmentLinks { get; set; }
 
         /// <summary>
         /// Output only. The DNS name of the instance for PSC connectivity. Name convention: ...alloydb-psc.goog
@@ -5470,52 +5512,11 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string PscDnsName { get; set; }
 
         /// <summary>
-        /// Optional. Whether PSC connectivity is enabled for this instance. This is populated by referencing the value
-        /// from the parent cluster.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pscEnabled")]
-        public virtual System.Nullable<bool> PscEnabled { get; set; }
-
-        /// <summary>
-        /// Optional. Configurations for setting up PSC interfaces attached to the instance which are used for outbound
-        /// connectivity. Only primary instances can have PSC interface attached. All the VMs created for the primary
-        /// instance will share the same configurations. Currently we only support 0 or 1 PSC interface.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pscInterfaceConfigs")]
-        public virtual System.Collections.Generic.IList<PscInterfaceConfig> PscInterfaceConfigs { get; set; }
-
-        /// <summary>
         /// Output only. The service attachment created when Private Service Connect (PSC) is enabled for the instance.
         /// The name of the resource will be in the format of `projects//regions//serviceAttachments/`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAttachmentLink")]
         public virtual string ServiceAttachmentLink { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Configuration for setting up a PSC interface. This information needs to be provided by the customer. PSC
-    /// interfaces will be created and added to VMs via SLM (adding a network interface will require recreating the VM).
-    /// For HA instances this will be done via LDTM.
-    /// </summary>
-    public class PscInterfaceConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// A list of endpoints in the consumer VPC the interface might initiate outbound connections to. This list has
-        /// to be provided when the PSC interface is created.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("consumerEndpointIps")]
-        public virtual System.Collections.Generic.IList<string> ConsumerEndpointIps { get; set; }
-
-        /// <summary>
-        /// The NetworkAttachment resource created in the consumer VPC to which the PSC interface will be linked, in the
-        /// form of: `projects/${CONSUMER_PROJECT}/regions/${REGION}/networkAttachments/${NETWORK_ATTACHMENT_NAME}`.
-        /// NetworkAttachment has to be provided when the PSC interface is created.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("networkAttachment")]
-        public virtual string NetworkAttachment { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -733,6 +733,13 @@ namespace Google.Apis.Discovery.v1.Data
 
     public class RestMethod : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The API Version of this method, as passed in via the `X-Goog-Api-Version` header or `$apiVersion` query
+        /// parameter.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
+        public virtual string ApiVersion { get; set; }
+
         /// <summary>Whether this method is deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deprecated")]
         public virtual System.Nullable<bool> Deprecated { get; set; }
