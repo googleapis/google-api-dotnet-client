@@ -561,6 +561,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                 Collections = new CollectionsResource(service);
                 DataStores = new DataStoresResource(service);
                 Operations = new OperationsResource(service);
+                RankingConfigs = new RankingConfigsResource(service);
             }
 
             /// <summary>Gets the Collections resource.</summary>
@@ -11861,6 +11862,83 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                 }
             }
 
+            /// <summary>Gets the RankingConfigs resource.</summary>
+            public virtual RankingConfigsResource RankingConfigs { get; }
+
+            /// <summary>The "rankingConfigs" collection of methods.</summary>
+            public class RankingConfigsResource
+            {
+                private const string Resource = "rankingConfigs";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public RankingConfigsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Ranks a list of text records based on the given input query.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="rankingConfig">
+                /// Required. The resource name of the rank service config, such as
+                /// `projects/{project_num}/locations/{location_id}/rankingConfigs/default_ranking_config`.
+                /// </param>
+                public virtual RankRequest Rank(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaRankRequest body, string rankingConfig)
+                {
+                    return new RankRequest(this.service, body, rankingConfig);
+                }
+
+                /// <summary>Ranks a list of text records based on the given input query.</summary>
+                public class RankRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaRankResponse>
+                {
+                    /// <summary>Constructs a new Rank request.</summary>
+                    public RankRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaRankRequest body, string rankingConfig) : base(service)
+                    {
+                        RankingConfig = rankingConfig;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the rank service config, such as
+                    /// `projects/{project_num}/locations/{location_id}/rankingConfigs/default_ranking_config`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("rankingConfig", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string RankingConfig { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaRankRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "rank";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+rankingConfig}:rank";
+
+                    /// <summary>Initializes Rank parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("rankingConfig", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "rankingConfig",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/rankingConfigs/[^/]+$",
+                        });
+                    }
+                }
+            }
+
             /// <summary>Estimates the data size to be used by a customer.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="location">
@@ -14843,6 +14921,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// </summary>
     public class GoogleCloudDiscoveryengineV1alphaChunk : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Metadata of the current chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunkMetadata")]
+        public virtual GoogleCloudDiscoveryengineV1alphaChunkChunkMetadata ChunkMetadata { get; set; }
+
         /// <summary>Content is a string from a document (parsed content).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
@@ -14870,6 +14952,33 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Page span of the chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageSpan")]
+        public virtual GoogleCloudDiscoveryengineV1alphaChunkPageSpan PageSpan { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata of the current chunk. This field is only populated on SearchService.Search API.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaChunkChunkMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The next chunks of the current chunk. The number is controlled by
+        /// SearchRequest.ContentSearchSpec.ChunkSpec.num_next_chunks. This field is only populated on
+        /// SearchService.Search API.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextChunks")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaChunk> NextChunks { get; set; }
+
+        /// <summary>
+        /// The previous chunks of the current chunk. The number is controlled by
+        /// SearchRequest.ContentSearchSpec.ChunkSpec.num_previous_chunks. This field is only populated on
+        /// SearchService.Search API.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("previousChunks")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaChunk> PreviousChunks { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -14884,6 +14993,21 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Uri of the document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Page span of the chunk.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaChunkPageSpan : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The end page of the chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageEnd")]
+        public virtual System.Nullable<int> PageEnd { get; set; }
+
+        /// <summary>The start page of the chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageStart")]
+        public virtual System.Nullable<int> PageStart { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17206,6 +17330,27 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Cloud FhirStore source import data from.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaFhirStoreSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The full resource name of the FHIR store to import data from, in the format of
+        /// `projects/{project}/locations/{location}/datasets/{dataset}/fhirStores/{fhir_store}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fhirStore")]
+        public virtual string FhirStore { get; set; }
+
+        /// <summary>
+        /// Intermediate Cloud Storage directory used for the import with a length limit of 2,000 characters. Can be
+        /// specified if one wants to have the FhirStore export to a specific Cloud Storage directory.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsStagingDir")]
+        public virtual string GcsStagingDir { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Configurations for fields of a schema. For example, configuring a field is indexable, or searchable.
     /// </summary>
@@ -17330,6 +17475,20 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Grounding configuration.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaGroundingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Name of the GroundingConfig, of the form
+        /// `projects/{project}/locations/{location}/groundingConfig`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Defines guided search spec.</summary>
     public class GoogleCloudDiscoveryengineV1alphaGuidedSearchSpec : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -17373,6 +17532,112 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Workforce pool name. Example: "locations/global/workforcePools/pool_id"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workforcePoolName")]
         public virtual string WorkforcePoolName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the ImportCompletionSuggestions operation. This will be returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response of the CompletionService.ImportCompletionSuggestions method. If the long running operation is done,
+    /// this message is returned by the google.longrunning.Operations.response field if the operation is successful.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A sample of errors encountered while processing the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorSamples")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorSamples { get; set; }
+
+        /// <summary>Count of CompletionSuggestions that failed to be imported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureCount")]
+        public virtual System.Nullable<long> FailureCount { get; set; }
+
+        /// <summary>Count of CompletionSuggestions successfully imported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successCount")]
+        public virtual System.Nullable<long> SuccessCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17478,8 +17743,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// automatically generated based on the hash of the payload, where IDs may not be consistent during multiple
         /// imports. In which case ReconciliationMode.FULL is highly recommended to avoid duplicate contents. If unset
         /// or set to `false`, Document.ids have to be specified using id_field, otherwise, documents without IDs fail
-        /// to be imported. Only set this field when using GcsSource or BigQuerySource, and when GcsSource.data_schema
-        /// or BigQuerySource.data_schema is `custom` or `csv`. Otherwise, an INVALID_ARGUMENT error is thrown.
+        /// to be imported. Supported data sources: * GcsSource. GcsSource.data_schema must be `custom` or `csv`.
+        /// Otherwise, an INVALID_ARGUMENT error is thrown. * BigQuerySource. BigQuerySource.data_schema must be
+        /// `custom` or `csv`. Otherwise, an INVALID_ARGUMENT error is thrown. * SpannerSource * CloudSqlSource *
+        /// FirestoreSource * BigtableSource
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoGenerateIds")]
         public virtual System.Nullable<bool> AutoGenerateIds { get; set; }
@@ -17492,21 +17759,26 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("errorConfig")]
         public virtual GoogleCloudDiscoveryengineV1alphaImportErrorConfig ErrorConfig { get; set; }
 
+        /// <summary>FhirStore input source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fhirStoreSource")]
+        public virtual GoogleCloudDiscoveryengineV1alphaFhirStoreSource FhirStoreSource { get; set; }
+
         /// <summary>Cloud Storage location for the input content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
         public virtual GoogleCloudDiscoveryengineV1alphaGcsSource GcsSource { get; set; }
 
         /// <summary>
-        /// The field in the Cloud Storage and BigQuery sources that indicates the unique IDs of the documents. For
-        /// GcsSource it is the key of the JSON field. For instance, `my_id` for JSON `{"my_id": "some_uuid"}`. For
-        /// BigQuerySource it is the column name of the BigQuery table where the unique ids are stored. The values of
-        /// the JSON field or the BigQuery column are used as the Document.ids. The JSON field or the BigQuery column
-        /// must be of string type, and the values must be set as valid strings conform to
-        /// [RFC-1034](https://tools.ietf.org/html/rfc1034) with 1-63 characters. Otherwise, documents without valid IDs
-        /// fail to be imported. Only set this field when using GcsSource or BigQuerySource, and when
-        /// GcsSource.data_schema or BigQuerySource.data_schema is `custom`. And only set this field when
+        /// The field indicates the ID field or column to be used as unique IDs of the documents. For GcsSource it is
+        /// the key of the JSON field. For instance, `my_id` for JSON `{"my_id": "some_uuid"}`. For others, it may be
+        /// the column name of the table where the unique ids are stored. The values of the JSON field or the table
+        /// column are used as the Document.ids. The JSON field or the table column must be of string type, and the
+        /// values must be set as valid strings conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) with 1-63
+        /// characters. Otherwise, documents without valid IDs fail to be imported. Only set this field when
         /// auto_generate_ids is unset or set as `false`. Otherwise, an INVALID_ARGUMENT error is thrown. If it is
-        /// unset, a default value `_id` is used when importing from the allowed data sources.
+        /// unset, a default value `_id` is used when importing from the allowed data sources. Supported data sources: *
+        /// GcsSource. GcsSource.data_schema must be `custom` or `csv`. Otherwise, an INVALID_ARGUMENT error is thrown.
+        /// * BigQuerySource. BigQuerySource.data_schema must be `custom` or `csv`. Otherwise, an INVALID_ARGUMENT error
+        /// is thrown. * SpannerSource * CloudSqlSource * FirestoreSource * BigtableSource
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idField")]
         public virtual string IdField { get; set; }
@@ -18593,6 +18865,81 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for RankService.Rank method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaRankRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If true, the response will contain only record ID and score. By default, it is false, the response will
+        /// contain record details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreRecordDetailsInResponse")]
+        public virtual System.Nullable<bool> IgnoreRecordDetailsInResponse { get; set; }
+
+        /// <summary>
+        /// The identifier of the model to use. It is one of: * `semantic-ranker-512@latest`: Semantic ranking model
+        /// with maxiumn input token size 512. It is set to `semantic-ranker-512@latest` by default if unspecified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("model")]
+        public virtual string Model { get; set; }
+
+        /// <summary>The query to use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual string Query { get; set; }
+
+        /// <summary>Required. A list of records to rank.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("records")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaRankingRecord> Records { get; set; }
+
+        /// <summary>
+        /// The number of results to return. If this is unset or no bigger than zero, returns all results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topN")]
+        public virtual System.Nullable<int> TopN { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for RankService.Rank method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaRankResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of records sorted by descending score.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("records")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaRankingRecord> Records { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Record message for RankService.Rank method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaRankingRecord : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The content of the record. Empty by default. At least one of title or content should be set otherwise an
+        /// INVALID_ARGUMENT error is thrown.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>The unique ID to represent the record.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The score of this record based on the given query and selected model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<float> Score { get; set; }
+
+        /// <summary>
+        /// The title of the record. Empty by default. At least one of title or content should be set otherwise an
+        /// INVALID_ARGUMENT error is thrown.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for Recommend method.</summary>
     public class GoogleCloudDiscoveryengineV1alphaRecommendRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -19258,6 +19605,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     public class GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Specifies the chunk spec to be returned from the search response. Only available if the
+        /// SearchRequest.ContentSearchSpec.search_result_mode is set to CHUNKS
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunkSpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecChunkSpec ChunkSpec { get; set; }
+
+        /// <summary>
         /// If there is no extractive_content_spec provided, there will be no extractive answer in the search response.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extractiveContentSpec")]
@@ -19278,6 +19632,30 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>If `summarySpec` is not specified, summaries are not included in the search response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("summarySpec")]
         public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSummarySpec SummarySpec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specifies the chunk spec to be returned from the search response. Only available if the
+    /// SearchRequest.ContentSearchSpec.search_result_mode is set to CHUNKS
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecChunkSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The number of next chunks to be returned of the current chunk. The maximum allowed value is 3. If not
+        /// specified, no next chunks will be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numNextChunks")]
+        public virtual System.Nullable<int> NumNextChunks { get; set; }
+
+        /// <summary>
+        /// The number of previous chunks to be returned of the current chunk. The maximum allowed value is 3. If not
+        /// specified, no previous chunks will be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numPreviousChunks")]
+        public virtual System.Nullable<int> NumPreviousChunks { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -19949,6 +20327,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Document reference.</summary>
     public class GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryReference : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>List of cited chunk contents derived from document content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunkContents")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryReferenceChunkContent> ChunkContents { get; set; }
+
         /// <summary>
         /// Required. Document.name of the document. Full resource name of the referenced document, in the format
         /// `projects/*/locations/*/collections/*/dataStores/*/branches/*/documents/*`.
@@ -19963,6 +20345,21 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Cloud Storage or HTTP uri for the document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Chunk content.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaSearchResponseSummaryReferenceChunkContent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Chunk textual content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>Page identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageIdentifier")]
+        public virtual string PageIdentifier { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20659,6 +21056,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("errorSamples")]
         public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorSamples { get; set; }
 
+        /// <summary>The metrics of the trained model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<double>> Metrics { get; set; }
+
         /// <summary>
         /// The trained model status. Possible values are: * **bad-data**: The training data quality is bad. *
         /// **no-improvement**: Tuning didn't improve performance. Won't deploy. * **in-progress**: Model training is in
@@ -21286,6 +21687,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableSafeSearch")]
         public virtual System.Nullable<bool> EnableSafeSearch { get; set; }
 
+        /// <summary>Whether to enable search-as-you-type behavior for the search widget</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableSearchAsYouType")]
+        public virtual System.Nullable<bool> EnableSearchAsYouType { get; set; }
+
         /// <summary>Turn on or off summary for each snippets result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableSnippetResultSummary")]
         public virtual System.Nullable<bool> EnableSnippetResultSummary { get; set; }
@@ -21408,8 +21813,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
 
         /// <summary>
         /// The name of the collection. It should be collection resource name. Format:
-        /// `projects/{project_number}/locations/{location}/collections/{collection_id}`. For widget service usage, such
-        /// look up widget config, returned name should be skipped.
+        /// `projects/{project_number}/locations/{location}/collections/{collection_id}`. For APIs under WidgetService,
+        /// such as LookUpWidgetConfig, the project number and location part is erased in this field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -21438,7 +21843,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>
         /// The name of the data store. It should be data store resource name Format:
         /// `projects/{project_number}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. For
-        /// widget service usage, such look up widget config, returned name should be skipped.
+        /// APIs under WidgetService, such as LookUpWidgetConfig, the project number and location part is erased in this
+        /// field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -21473,7 +21879,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>
         /// The name of the data store. It should be data store resource name Format:
         /// `projects/{project_number}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. For
-        /// widget service usage, such look up widget config, returned name should be skipped.
+        /// APIs under WidgetService, such as LookUpWidgetConfig, the project number and location part is erased in this
+        /// field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -22977,6 +23384,20 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Grounding configuration.</summary>
+    public class GoogleCloudDiscoveryengineV1betaGroundingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Name of the GroundingConfig, of the form
+        /// `projects/{project}/locations/{location}/groundingConfig`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Metadata related to the progress of the ImportDocuments operation. This is returned by the
     /// google.longrunning.Operation.metadata field.
@@ -23821,6 +24242,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("errorSamples")]
         public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorSamples { get; set; }
 
+        /// <summary>The metrics of the trained model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<double>> Metrics { get; set; }
+
         /// <summary>
         /// The trained model status. Possible values are: * **bad-data**: The training data quality is bad. *
         /// **no-improvement**: Tuning didn't improve performance. Won't deploy. * **in-progress**: Model training is in
@@ -23828,6 +24253,20 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelStatus")]
         public virtual string ModelStatus { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata associated with a tune operation.</summary>
+    public class GoogleCloudDiscoveryengineV1betaTuneEngineMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The resource name of the engine that this tune applies to. Format:
+        /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/engines/{engine_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("engine")]
+        public virtual string Engine { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

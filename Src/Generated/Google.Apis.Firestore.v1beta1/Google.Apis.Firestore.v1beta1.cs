@@ -3335,6 +3335,36 @@ namespace Google.Apis.Firestore.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Nearest Neighbors search config.</summary>
+    public class FindNearest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The Distance Measure to use, required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("distanceMeasure")]
+        public virtual string DistanceMeasure { get; set; }
+
+        /// <summary>
+        /// Required. The number of nearest neighbors to return. Must be a positive integer of no more than 1000.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("limit")]
+        public virtual System.Nullable<int> Limit { get; set; }
+
+        /// <summary>
+        /// Required. The query vector that we are searching on. Must be a vector of no more than 2048 dimensions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryVector")]
+        public virtual Value QueryVector { get; set; }
+
+        /// <summary>
+        /// Required. An indexed vector field to search upon. Only documents which contain vectors whose dimensionality
+        /// match the query_vector can be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vectorField")]
+        public virtual FieldReference VectorField { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata related to the create database operation.</summary>
     public class GoogleFirestoreAdminV1CreateDatabaseMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4791,6 +4821,13 @@ namespace Google.Apis.Firestore.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endAt")]
         public virtual Cursor EndAt { get; set; }
+
+        /// <summary>
+        /// Optional. A potential Nearest Neighbors Search. Applies after all other filters and ordering. Finds the
+        /// closest vector embeddings to the given query vector.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("findNearest")]
+        public virtual FindNearest FindNearest { get; set; }
 
         /// <summary>The collections to query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("from")]

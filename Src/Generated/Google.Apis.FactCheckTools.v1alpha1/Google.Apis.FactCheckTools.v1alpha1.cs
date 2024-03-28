@@ -274,6 +274,116 @@ namespace Google.Apis.FactCheckTools.v1alpha1
             this.service = service;
         }
 
+        /// <summary>Search through fact-checked claims using an image as the query.</summary>
+        public virtual ImageSearchRequest ImageSearch()
+        {
+            return new ImageSearchRequest(this.service);
+        }
+
+        /// <summary>Search through fact-checked claims using an image as the query.</summary>
+        public class ImageSearchRequest : FactCheckToolsBaseServiceRequest<Google.Apis.FactCheckTools.v1alpha1.Data.GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse>
+        {
+            /// <summary>Constructs a new ImageSearch request.</summary>
+            public ImageSearchRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The URI of the source image. This must be a publicly-accessible image HTTP/HTTPS URL. When
+            /// fetching images from HTTP/HTTPS URLs, Google cannot guarantee that the request will be completed. Your
+            /// request may fail if the specified host denies the request (e.g. due to request throttling or DOS
+            /// prevention), or if Google throttles requests to the site for abuse prevention. You should not depend on
+            /// externally-hosted images for production applications.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("imageUri", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ImageUri { get; set; }
+
+            /// <summary>
+            /// Optional. The BCP-47 language code, such as "en-US" or "sr-Latn". Can be used to restrict results by
+            /// language, though we do not currently consider the region.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string LanguageCode { get; set; }
+
+            /// <summary>
+            /// Optional. An integer that specifies the current offset (that is, starting result location) in search
+            /// results. This field is only considered if `page_token` is unset. For example, 0 means to return results
+            /// starting from the first matching result, and 10 means to return from the 11th result.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("offset", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> Offset { get; set; }
+
+            /// <summary>
+            /// Optional. The pagination size. We will return up to that many results. Defaults to 10 if not set.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>
+            /// Optional. The pagination token. You may provide the `next_page_token` returned from a previous List
+            /// request, if any, in order to get the next page. All other fields must have the same values as in the
+            /// previous request.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "imageSearch";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1alpha1/claims:imageSearch";
+
+            /// <summary>Initializes ImageSearch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("imageUri", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "imageUri",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "languageCode",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("offset", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "offset",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
         /// <summary>Search through fact-checked claims.</summary>
         public virtual SearchRequest Search()
         {
@@ -1035,6 +1145,35 @@ namespace Google.Apis.FactCheckTools.v1alpha1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionId")]
         public virtual string VersionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response from searching fact-checked claims by image.</summary>
+    public class GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The next pagination token in the Search response. It should be used as the `page_token` for the following
+        /// request. An empty value means no more results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of claims and all of their associated information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("results")]
+        public virtual System.Collections.Generic.IList<GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult> Results { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A claim and its associated information.</summary>
+    public class GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A claim which matched the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("claim")]
+        public virtual GoogleFactcheckingFactchecktoolsV1alpha1Claim Claim { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

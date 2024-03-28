@@ -10163,12 +10163,41 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Condition being reported.</summary>
+    public class ServiceMeshCondition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Unique identifier of the condition which describes the condition recognizable to the user.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
+        /// <summary>A short summary about the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual string Details { get; set; }
+
+        /// <summary>Links contains actionable information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentationLink")]
+        public virtual string DocumentationLink { get; set; }
+
+        /// <summary>Severity level of the condition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Status of control plane management.</summary>
     public class ServiceMeshControlPlaneManagement : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Explanation of state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<ServiceMeshStatusDetails> Details { get; set; }
+
+        /// <summary>Output only. Implementation of managed control plane.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("implementation")]
+        public virtual string Implementation { get; set; }
 
         /// <summary>LifecycleState of control plane management.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -10231,6 +10260,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>Output only. Results of running Service Mesh analyzers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("analysisMessages")]
         public virtual System.Collections.Generic.IList<ServiceMeshAnalysisMessage> AnalysisMessages { get; set; }
+
+        /// <summary>Output only. List of condition reporting membership statues</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
+        public virtual System.Collections.Generic.IList<ServiceMeshCondition> Conditions { get; set; }
 
         /// <summary>
         /// The API version (i.e. Istio CRD version) for configuring service mesh in this cluster. This version is

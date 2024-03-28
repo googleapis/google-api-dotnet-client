@@ -641,6 +641,79 @@ namespace Google.Apis.CloudRun.v2
                         }
                     }
 
+                    /// <summary>Read the status of an image export operation.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the resource of which image export operation status has to be fetched.
+                    /// Format:
+                    /// `projects/{project_id_or_number}/locations/{location}/services/{service}/revisions/{revision}`
+                    /// for Revision
+                    /// `projects/{project_id_or_number}/locations/{location}/jobs/{job}/executions/{execution}` for
+                    /// Execution
+                    /// </param>
+                    /// <param name="operationId">Required. The operation id returned from ExportImage.</param>
+                    public virtual ExportStatusRequest ExportStatus(string name, string operationId)
+                    {
+                        return new ExportStatusRequest(this.service, name, operationId);
+                    }
+
+                    /// <summary>Read the status of an image export operation.</summary>
+                    public class ExportStatusRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2ExportStatusResponse>
+                    {
+                        /// <summary>Constructs a new ExportStatus request.</summary>
+                        public ExportStatusRequest(Google.Apis.Services.IClientService service, string name, string operationId) : base(service)
+                        {
+                            Name = name;
+                            OperationId = operationId;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the resource of which image export operation status has to be fetched.
+                        /// Format:
+                        /// `projects/{project_id_or_number}/locations/{location}/services/{service}/revisions/{revision}`
+                        /// for Revision
+                        /// `projects/{project_id_or_number}/locations/{location}/jobs/{job}/executions/{execution}` for
+                        /// Execution
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Required. The operation id returned from ExportImage.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("operationId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string OperationId { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "exportStatus";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+name}/{+operationId}:exportStatus";
+
+                        /// <summary>Initializes ExportStatus parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/jobs/[^/]+/executions/[^/]+$",
+                            });
+                            RequestParameters.Add("operationId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "operationId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Gets information about an Execution.</summary>
                     /// <param name="name">
                     /// Required. The full name of the Execution. Format:
@@ -1861,6 +1934,79 @@ namespace Google.Apis.CloudRun.v2
                         }
                     }
 
+                    /// <summary>Read the status of an image export operation.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the resource of which image export operation status has to be fetched.
+                    /// Format:
+                    /// `projects/{project_id_or_number}/locations/{location}/services/{service}/revisions/{revision}`
+                    /// for Revision
+                    /// `projects/{project_id_or_number}/locations/{location}/jobs/{job}/executions/{execution}` for
+                    /// Execution
+                    /// </param>
+                    /// <param name="operationId">Required. The operation id returned from ExportImage.</param>
+                    public virtual ExportStatusRequest ExportStatus(string name, string operationId)
+                    {
+                        return new ExportStatusRequest(this.service, name, operationId);
+                    }
+
+                    /// <summary>Read the status of an image export operation.</summary>
+                    public class ExportStatusRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2ExportStatusResponse>
+                    {
+                        /// <summary>Constructs a new ExportStatus request.</summary>
+                        public ExportStatusRequest(Google.Apis.Services.IClientService service, string name, string operationId) : base(service)
+                        {
+                            Name = name;
+                            OperationId = operationId;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the resource of which image export operation status has to be fetched.
+                        /// Format:
+                        /// `projects/{project_id_or_number}/locations/{location}/services/{service}/revisions/{revision}`
+                        /// for Revision
+                        /// `projects/{project_id_or_number}/locations/{location}/jobs/{job}/executions/{execution}` for
+                        /// Execution
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Required. The operation id returned from ExportImage.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("operationId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string OperationId { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "exportStatus";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+name}/{+operationId}:exportStatus";
+
+                        /// <summary>Initializes ExportStatus parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/services/[^/]+/revisions/[^/]+$",
+                            });
+                            RequestParameters.Add("operationId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "operationId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Gets information about a Revision.</summary>
                     /// <param name="name">
                     /// Required. The full name of the Revision. Format:
@@ -2646,6 +2792,181 @@ namespace Google.Apis.CloudRun.v2
                     }
                 }
             }
+
+            /// <summary>Export image for a given resource.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. The name of the resource of which image metadata should be exported. Format:
+            /// `projects/{project_id_or_number}/locations/{location}/services/{service}/revisions/{revision}` for
+            /// Revision `projects/{project_id_or_number}/locations/{location}/jobs/{job}/executions/{execution}` for
+            /// Execution
+            /// </param>
+            public virtual ExportImageRequest ExportImage(Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2ExportImageRequest body, string name)
+            {
+                return new ExportImageRequest(this.service, body, name);
+            }
+
+            /// <summary>Export image for a given resource.</summary>
+            public class ExportImageRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2ExportImageResponse>
+            {
+                /// <summary>Constructs a new ExportImage request.</summary>
+                public ExportImageRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2ExportImageRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the resource of which image metadata should be exported. Format:
+                /// `projects/{project_id_or_number}/locations/{location}/services/{service}/revisions/{revision}` for
+                /// Revision `projects/{project_id_or_number}/locations/{location}/jobs/{job}/executions/{execution}`
+                /// for Execution
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2ExportImageRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "exportImage";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2/{+name}:exportImage";
+
+                /// <summary>Initializes ExportImage parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+/.*$",
+                    });
+                }
+            }
+
+            /// <summary>Export image metadata for a given resource.</summary>
+            /// <param name="name">
+            /// Required. The name of the resource of which image metadata should be exported. Format:
+            /// `projects/{project_id_or_number}/locations/{location}/services/{service}/revisions/{revision}` for
+            /// Revision `projects/{project_id_or_number}/locations/{location}/jobs/{job}/executions/{execution}` for
+            /// Execution
+            /// </param>
+            public virtual ExportImageMetadataRequest ExportImageMetadata(string name)
+            {
+                return new ExportImageMetadataRequest(this.service, name);
+            }
+
+            /// <summary>Export image metadata for a given resource.</summary>
+            public class ExportImageMetadataRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2Metadata>
+            {
+                /// <summary>Constructs a new ExportImageMetadata request.</summary>
+                public ExportImageMetadataRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the resource of which image metadata should be exported. Format:
+                /// `projects/{project_id_or_number}/locations/{location}/services/{service}/revisions/{revision}` for
+                /// Revision `projects/{project_id_or_number}/locations/{location}/jobs/{job}/executions/{execution}`
+                /// for Execution
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "exportImageMetadata";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2/{+name}:exportImageMetadata";
+
+                /// <summary>Initializes ExportImageMetadata parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+/.*$",
+                    });
+                }
+            }
+
+            /// <summary>Export generated customer metadata for a given resource.</summary>
+            /// <param name="name">
+            /// Required. The name of the resource of which metadata should be exported. Format:
+            /// `projects/{project_id_or_number}/locations/{location}/services/{service}` for Service
+            /// `projects/{project_id_or_number}/locations/{location}/services/{service}/revisions/{revision}` for
+            /// Revision `projects/{project_id_or_number}/locations/{location}/jobs/{job}/executions/{execution}` for
+            /// Execution
+            /// </param>
+            public virtual ExportMetadataRequest ExportMetadata(string name)
+            {
+                return new ExportMetadataRequest(this.service, name);
+            }
+
+            /// <summary>Export generated customer metadata for a given resource.</summary>
+            public class ExportMetadataRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2Metadata>
+            {
+                /// <summary>Constructs a new ExportMetadata request.</summary>
+                public ExportMetadataRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the resource of which metadata should be exported. Format:
+                /// `projects/{project_id_or_number}/locations/{location}/services/{service}` for Service
+                /// `projects/{project_id_or_number}/locations/{location}/services/{service}/revisions/{revision}` for
+                /// Revision `projects/{project_id_or_number}/locations/{location}/jobs/{job}/executions/{execution}`
+                /// for Execution
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "exportMetadata";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2/{+name}:exportMetadata";
+
+                /// <summary>Initializes ExportMetadata parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+/.*$",
+                    });
+                }
+            }
         }
     }
 }
@@ -2661,6 +2982,12 @@ namespace Google.Apis.CloudRun.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("breakglassJustification")]
         public virtual string BreakglassJustification { get; set; }
+
+        /// <summary>
+        /// The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
+        public virtual string Policy { get; set; }
 
         /// <summary>
         /// If True, indicates to use the default project's binary authorization policy. If False, binary authorization
@@ -3478,14 +3805,59 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents a GCS Bucket mounted as a volume.</summary>
+    /// <summary>Request message for exporting Cloud Run image.</summary>
+    public class GoogleCloudRunV2ExportImageRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The export destination url (the Artifact Registry repo).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationRepo")]
+        public virtual string DestinationRepo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ExportImageResponse contains an operation Id to track the image export operation.</summary>
+    public class GoogleCloudRunV2ExportImageResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// An operation ID used to track the status of image exports tied to the original pod ID in the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
+        public virtual string OperationId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// ExportStatusResponse contains the status of image export operation, with the status of each image export job.
+    /// </summary>
+    public class GoogleCloudRunV2ExportStatusResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status of each image export job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageExportStatuses")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRunV2ImageExportStatus> ImageExportStatuses { get; set; }
+
+        /// <summary>The operation id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
+        public virtual string OperationId { get; set; }
+
+        /// <summary>Output only. The state of the overall export operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationState")]
+        public virtual string OperationState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a volume backed by a Cloud Storage bucket using Cloud Storage FUSE.</summary>
     public class GoogleCloudRunV2GCSVolumeSource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>GCS Bucket name</summary>
+        /// <summary>Cloud Storage Bucket name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
         public virtual string Bucket { get; set; }
 
-        /// <summary>If true, mount the GCS bucket as read-only</summary>
+        /// <summary>If true, the volume will be mounted as read only for all mounts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readOnly")]
         public virtual System.Nullable<bool> ReadOnly__ { get; set; }
 
@@ -3547,6 +3919,29 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>The header field value</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The status of an image export job.</summary>
+    public class GoogleCloudRunV2ImageExportStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Has the image export job finished (regardless of successful or failure).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exportJobState")]
+        public virtual string ExportJobState { get; set; }
+
+        /// <summary>The exported image ID as it will appear in Artifact Registry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exportedImageDigest")]
+        public virtual string ExportedImageDigest { get; set; }
+
+        /// <summary>The status of the export task if done.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual UtilStatusProto Status { get; set; }
+
+        /// <summary>The image tag as it will appear in Artifact Registry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tag")]
+        public virtual string Tag { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3926,6 +4321,17 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata represents the JSON encoded generated customer metadata.</summary>
+    public class GoogleCloudRunV2Metadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>JSON encoded Google-generated Customer Metadata for a given resource/project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual string Metadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents an NFS mount.</summary>
     public class GoogleCloudRunV2NFSVolumeSource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3933,7 +4339,7 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
 
-        /// <summary>If true, mount the NFS volume as read only</summary>
+        /// <summary>If true, the volume will be mounted as read only for all mounts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readOnly")]
         public virtual System.Nullable<bool> ReadOnly__ { get; set; }
 
@@ -7439,6 +7845,46 @@ namespace Google.Apis.CloudRun.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>This is proto2's version of MessageSet.</summary>
+    public class Proto2BridgeMessageSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Wire-format for a Status object</summary>
+    public class UtilStatusProto : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The canonical error code (see codes.proto) that most closely corresponds to this status. This may be
+        /// missing, and in the common case of the generic space, it definitely will be.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canonicalCode")]
+        public virtual System.Nullable<int> CanonicalCode { get; set; }
+
+        /// <summary>
+        /// Numeric code drawn from the space specified below. Often, this is the canonical error space, and code is
+        /// drawn from google3/util/task/codes.proto
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual System.Nullable<int> Code { get; set; }
+
+        /// <summary>Detail message</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>message_set associates an arbitrary proto message with the status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageSet")]
+        public virtual Proto2BridgeMessageSet MessageSet { get; set; }
+
+        /// <summary>The following are usually only present when code != 0 Space to which this status belongs</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("space")]
+        public virtual string Space { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

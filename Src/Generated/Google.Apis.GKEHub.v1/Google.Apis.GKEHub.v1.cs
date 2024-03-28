@@ -9095,6 +9095,31 @@ namespace Google.Apis.GKEHub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Condition being reported.</summary>
+    public class ServiceMeshCondition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Unique identifier of the condition which describes the condition recognizable to the user.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
+        /// <summary>A short summary about the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual string Details { get; set; }
+
+        /// <summary>Links contains actionable information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentationLink")]
+        public virtual string DocumentationLink { get; set; }
+
+        /// <summary>Severity level of the condition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Status of control plane management.</summary>
     public class ServiceMeshControlPlaneManagement : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9145,6 +9170,10 @@ namespace Google.Apis.GKEHub.v1.Data
     /// </summary>
     public class ServiceMeshMembershipState : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. List of condition reporting membership statues</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
+        public virtual System.Collections.Generic.IList<ServiceMeshCondition> Conditions { get; set; }
+
         /// <summary>Output only. Status of control plane management</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("controlPlaneManagement")]
         public virtual ServiceMeshControlPlaneManagement ControlPlaneManagement { get; set; }

@@ -1,0 +1,11 @@
+{
+  "Google.Apis.CloudControlsPartnerService.v1.CloudControlsPartnerServiceBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.CloudControlsPartnerService.v1.CloudControlsPartnerServiceBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

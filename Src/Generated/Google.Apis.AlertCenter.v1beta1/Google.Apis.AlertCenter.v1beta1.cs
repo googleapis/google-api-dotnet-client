@@ -2082,9 +2082,17 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("iosVendorId")]
         public virtual string IosVendorId { get; set; }
 
+        /// <summary>Obfuscated ID of the owner of the device</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ownerId")]
+        public virtual string OwnerId { get; set; }
+
         /// <summary>The device resource ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
         public virtual string ResourceId { get; set; }
+
+        /// <summary>Action taken as result of the rule</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleAction")]
+        public virtual string RuleAction { get; set; }
 
         /// <summary>The serial number of the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serialNumber")]

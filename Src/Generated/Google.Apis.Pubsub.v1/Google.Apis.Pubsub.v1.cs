@@ -3828,6 +3828,14 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string Bucket { get; set; }
 
         /// <summary>
+        /// Optional. User-provided format string specifying how to represent datetimes in Cloud Storage filenames. See
+        /// the [datetime format
+        /// guidance](https://cloud.google.com/pubsub/docs/create-cloudstorage-subscription#file_names).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filenameDatetimeFormat")]
+        public virtual string FilenameDatetimeFormat { get; set; }
+
+        /// <summary>
         /// Optional. User-provided prefix for Cloud Storage filename. See the [object naming
         /// requirements](https://cloud.google.com/storage/docs/objects#naming).
         /// </summary>
