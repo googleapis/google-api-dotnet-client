@@ -1533,7 +1533,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// The resource name of the transfer config. Transfer config names have the form either
+                /// Identifier. The resource name of the transfer config. Transfer config names have the form either
                 /// `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or
                 /// `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is usually a UUID, even
                 /// though it is not guaranteed or required. The name is ignored when creating a transfer config.
@@ -1557,7 +1557,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     }
 
                     /// <summary>
-                    /// The resource name of the transfer config. Transfer config names have the form either
+                    /// Identifier. The resource name of the transfer config. Transfer config names have the form either
                     /// `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or
                     /// `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is usually a UUID, even
                     /// though it is not guaranteed or required. The name is ignored when creating a transfer config.
@@ -1743,7 +1743,8 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Transfer configuration name in the form: `projects/{project_id}/transferConfigs/{config_id}` or
+                /// Required. Transfer configuration name in the form:
+                /// `projects/{project_id}/transferConfigs/{config_id}` or
                 /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
                 /// </param>
                 public virtual StartManualRunsRequest StartManualRuns(Google.Apis.BigQueryDataTransfer.v1.Data.StartManualTransferRunsRequest body, string parent)
@@ -1767,7 +1768,8 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     }
 
                     /// <summary>
-                    /// Transfer configuration name in the form: `projects/{project_id}/transferConfigs/{config_id}` or
+                    /// Required. Transfer configuration name in the form:
+                    /// `projects/{project_id}/transferConfigs/{config_id}` or
                     /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -1812,7 +1814,9 @@ namespace Google.Apis.BigQueryDataTransfer.v1
             /// Service](https://cloud.google.com/bigquery/docs/working-with-transfers).
             /// </summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">The name of the project resource in the form: `projects/{project_id}`</param>
+            /// <param name="name">
+            /// Required. The name of the project resource in the form: `projects/{project_id}`
+            /// </param>
             public virtual EnrollDataSourcesRequest EnrollDataSources(Google.Apis.BigQueryDataTransfer.v1.Data.EnrollDataSourcesRequest body, string name)
             {
                 return new EnrollDataSourcesRequest(this.service, body, name);
@@ -1835,7 +1839,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     InitParameters();
                 }
 
-                /// <summary>The name of the project resource in the form: `projects/{project_id}`</summary>
+                /// <summary>Required. The name of the project resource in the form: `projects/{project_id}`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -2010,7 +2014,9 @@ namespace Google.Apis.BigQueryDataTransfer.v1
             /// unenrolled data sources will not be scheduled.
             /// </summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">The name of the project resource in the form: `projects/{project_id}`</param>
+            /// <param name="name">
+            /// Required. The name of the project resource in the form: `projects/{project_id}`
+            /// </param>
             public virtual UnenrollDataSourcesRequest UnenrollDataSources(Google.Apis.BigQueryDataTransfer.v1.Data.UnenrollDataSourcesRequest body, string name)
             {
                 return new UnenrollDataSourcesRequest(this.service, body, name);
@@ -2032,7 +2038,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     InitParameters();
                 }
 
-                /// <summary>The name of the project resource in the form: `projects/{project_id}`</summary>
+                /// <summary>Required. The name of the project resource in the form: `projects/{project_id}`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -2847,7 +2853,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// The resource name of the transfer config. Transfer config names have the form either
+            /// Identifier. The resource name of the transfer config. Transfer config names have the form either
             /// `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or
             /// `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is usually a UUID, even though it
             /// is not guaranteed or required. The name is ignored when creating a transfer config.
@@ -2871,7 +2877,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 }
 
                 /// <summary>
-                /// The resource name of the transfer config. Transfer config names have the form either
+                /// Identifier. The resource name of the transfer config. Transfer config names have the form either
                 /// `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or
                 /// `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is usually a UUID, even
                 /// though it is not guaranteed or required. The name is ignored when creating a transfer config.
@@ -3054,8 +3060,8 @@ namespace Google.Apis.BigQueryDataTransfer.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Transfer configuration name in the form: `projects/{project_id}/transferConfigs/{config_id}` or
-            /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
+            /// Required. Transfer configuration name in the form: `projects/{project_id}/transferConfigs/{config_id}`
+            /// or `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
             /// </param>
             public virtual StartManualRunsRequest StartManualRuns(Google.Apis.BigQueryDataTransfer.v1.Data.StartManualTransferRunsRequest body, string parent)
             {
@@ -3078,7 +3084,8 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 }
 
                 /// <summary>
-                /// Transfer configuration name in the form: `projects/{project_id}/transferConfigs/{config_id}` or
+                /// Required. Transfer configuration name in the form:
+                /// `projects/{project_id}/transferConfigs/{config_id}` or
                 /// `projects/{project_id}/locations/{location_id}/transferConfigs/{config_id}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -3123,7 +3130,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
         /// Service](https://cloud.google.com/bigquery/docs/working-with-transfers).
         /// </summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="name">The name of the project resource in the form: `projects/{project_id}`</param>
+        /// <param name="name">Required. The name of the project resource in the form: `projects/{project_id}`</param>
         public virtual EnrollDataSourcesRequest EnrollDataSources(Google.Apis.BigQueryDataTransfer.v1.Data.EnrollDataSourcesRequest body, string name)
         {
             return new EnrollDataSourcesRequest(this.service, body, name);
@@ -3146,7 +3153,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 InitParameters();
             }
 
-            /// <summary>The name of the project resource in the form: `projects/{project_id}`</summary>
+            /// <summary>Required. The name of the project resource in the form: `projects/{project_id}`</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -3983,7 +3990,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         public virtual EncryptionConfiguration EncryptionConfiguration { get; set; }
 
         /// <summary>
-        /// The resource name of the transfer config. Transfer config names have the form either
+        /// Identifier. The resource name of the transfer config. Transfer config names have the form either
         /// `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or
         /// `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is usually a UUID, even though it is
         /// not guaranteed or required. The name is ignored when creating a transfer config.
@@ -4230,7 +4237,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         public virtual Status ErrorStatus { get; set; }
 
         /// <summary>
-        /// The resource name of the transfer run. Transfer run names have the form
+        /// Identifier. The resource name of the transfer run. Transfer run names have the form
         /// `projects/{project_id}/locations/{location}/transferConfigs/{config_id}/runs/{run_id}`. The name is ignored
         /// when creating a transfer run.
         /// </summary>

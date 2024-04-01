@@ -8,6 +8,15 @@
     "1",
     "2"
   ],
+  "Google.Apis.Aiplatform.v1beta1.MediaResource+UploadMediaUpload.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Aiplatform.v1beta1.MediaResource+UploadMediaUpload.XgafvEnum": [
+    "1",
+    "2"
+  ],
   "Google.Apis.Aiplatform.v1beta1.PublishersResource+ModelsResource+GetRequest.ViewEnum": [
     "PUBLISHER_MODEL_VIEW_UNSPECIFIED",
     "PUBLISHER_MODEL_VIEW_BASIC",

@@ -14447,7 +14447,9 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents a custom tag specified for base plans and subscription offers.</summary>
+    /// <summary>
+    /// Represents a custom tag specified for one-time products, purchase options, base plans and offers.
+    /// </summary>
     public class OfferTag : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

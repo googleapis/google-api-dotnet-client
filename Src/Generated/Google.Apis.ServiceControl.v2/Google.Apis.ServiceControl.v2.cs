@@ -961,6 +961,13 @@ namespace Google.Apis.ServiceControl.v2.Data
     /// <summary>Response message for the Report method.</summary>
     public class ReportResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The extension field to store serialized OTel responses. e.g. ExportLogsServiceResponse,
+        /// ExportMetricsServiceResponse.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extensions")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Extensions { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

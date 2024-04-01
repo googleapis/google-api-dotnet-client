@@ -6854,6 +6854,105 @@ namespace Google.Apis.Spanner.v1
             }
 
             /// <summary>
+            /// Moves the instance to the target instance config. The returned long-running operation can be used to
+            /// track the progress of moving the instance. `MoveInstance` returns `FAILED_PRECONDITION` if the instance
+            /// meets any of the following criteria: * Has an ongoing move to a different instance config * Has backups
+            /// * Has an ongoing update * Is under free trial * Contains any CMEK-enabled databases While the operation
+            /// is pending: * All other attempts to modify the instance, including changes to its compute capacity, are
+            /// rejected. * The following database and backup admin operations are rejected: *
+            /// DatabaseAdmin.CreateDatabase, * DatabaseAdmin.UpdateDatabaseDdl (Disabled if default_leader is specified
+            /// in the request.) * DatabaseAdmin.RestoreDatabase * DatabaseAdmin.CreateBackup * DatabaseAdmin.CopyBackup
+            /// * Both the source and target instance configs are subject to hourly compute and storage charges. * The
+            /// instance may experience higher read-write latencies and a higher transaction abort rate. However, moving
+            /// an instance does not cause any downtime. The returned long-running operation will have a name of the
+            /// format `/operations/` and can be used to track the move instance operation. The metadata field type is
+            /// MoveInstanceMetadata. The response field type is Instance, if successful. Cancelling the operation sets
+            /// its metadata's cancel_time. Cancellation is not immediate since it involves moving any data previously
+            /// moved to target instance config back to the original instance config. The same operation can be used to
+            /// track the progress of the cancellation. Upon successful completion of the cancellation, the operation
+            /// terminates with CANCELLED status. Upon completion(if not cancelled) of the returned operation: *
+            /// Instance would be successfully moved to the target instance config. * You are billed for compute and
+            /// storage in target instance config. Authorization requires `spanner.instances.update` permission on the
+            /// resource instance. For more details, please see
+            /// [documentation](https://cloud.google.com/spanner/docs/move-instance).
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. The instance to move. Values are of the form `projects//instances/`.
+            /// </param>
+            public virtual MoveRequest Move(Google.Apis.Spanner.v1.Data.MoveInstanceRequest body, string name)
+            {
+                return new MoveRequest(this.service, body, name);
+            }
+
+            /// <summary>
+            /// Moves the instance to the target instance config. The returned long-running operation can be used to
+            /// track the progress of moving the instance. `MoveInstance` returns `FAILED_PRECONDITION` if the instance
+            /// meets any of the following criteria: * Has an ongoing move to a different instance config * Has backups
+            /// * Has an ongoing update * Is under free trial * Contains any CMEK-enabled databases While the operation
+            /// is pending: * All other attempts to modify the instance, including changes to its compute capacity, are
+            /// rejected. * The following database and backup admin operations are rejected: *
+            /// DatabaseAdmin.CreateDatabase, * DatabaseAdmin.UpdateDatabaseDdl (Disabled if default_leader is specified
+            /// in the request.) * DatabaseAdmin.RestoreDatabase * DatabaseAdmin.CreateBackup * DatabaseAdmin.CopyBackup
+            /// * Both the source and target instance configs are subject to hourly compute and storage charges. * The
+            /// instance may experience higher read-write latencies and a higher transaction abort rate. However, moving
+            /// an instance does not cause any downtime. The returned long-running operation will have a name of the
+            /// format `/operations/` and can be used to track the move instance operation. The metadata field type is
+            /// MoveInstanceMetadata. The response field type is Instance, if successful. Cancelling the operation sets
+            /// its metadata's cancel_time. Cancellation is not immediate since it involves moving any data previously
+            /// moved to target instance config back to the original instance config. The same operation can be used to
+            /// track the progress of the cancellation. Upon successful completion of the cancellation, the operation
+            /// terminates with CANCELLED status. Upon completion(if not cancelled) of the returned operation: *
+            /// Instance would be successfully moved to the target instance config. * You are billed for compute and
+            /// storage in target instance config. Authorization requires `spanner.instances.update` permission on the
+            /// resource instance. For more details, please see
+            /// [documentation](https://cloud.google.com/spanner/docs/move-instance).
+            /// </summary>
+            public class MoveRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.Operation>
+            {
+                /// <summary>Constructs a new Move request.</summary>
+                public MoveRequest(Google.Apis.Services.IClientService service, Google.Apis.Spanner.v1.Data.MoveInstanceRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The instance to move. Values are of the form `projects//instances/`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Spanner.v1.Data.MoveInstanceRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "move";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}:move";
+
+                /// <summary>Initializes Move parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/instances/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
             /// Updates an instance, and begins allocating or releasing resources as requested. The returned
             /// long-running operation can be used to track the progress of updating the instance. If the named instance
             /// does not exist, returns `NOT_FOUND`. Immediately upon completion of this request: * For resource types
@@ -10515,6 +10614,20 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>The columns of the row.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cols")]
         public virtual System.Collections.Generic.IList<System.Nullable<float>> Cols { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request for MoveInstance.</summary>
+    public class MoveInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The target instance config for the instance to move. Values are of the form
+        /// `projects//instanceConfigs/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetConfig")]
+        public virtual string TargetConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

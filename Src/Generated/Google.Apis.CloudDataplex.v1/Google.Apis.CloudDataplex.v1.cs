@@ -4203,13 +4203,15 @@ namespace Google.Apis.CloudDataplex.v1
 
                         /// <summary>
                         /// Optional. A filter on the entries to return. Filters are case-sensitive. The request can be
-                        /// filtered by the following fields: entry_type, display_name. The comparison operators are =,
-                        /// !=, &amp;lt;, &amp;gt;, &amp;lt;=, &amp;gt;= (strings are compared according to lexical
-                        /// order) The logical operators AND, OR, NOT can be used in the filter. Example filter
-                        /// expressions: "display_name=AnExampleDisplayName"
+                        /// filtered by the following fields: entry_type, entry_source.display_name. The comparison
+                        /// operators are =, !=, &amp;lt;, &amp;gt;, &amp;lt;=, &amp;gt;= (strings are compared
+                        /// according to lexical order) The logical operators AND, OR, NOT can be used in the filter.
+                        /// Wildcard "*" can be used, but for entry_type the full project id or number needs to be
+                        /// provided. Example filter expressions: "entry_source.display_name=AnExampleDisplayName"
                         /// "entry_type=projects/example-project/locations/global/entryTypes/example-entry_type"
-                        /// "entry_type=projects/a* OR "entry_type=projects/k*" "NOT
-                        /// display_name=AnotherExampleDisplayName"
+                        /// "entry_type=projects/example-project/locations/us/entryTypes/a* OR
+                        /// entry_type=projects/another-project/locations/*" "NOT
+                        /// entry_source.display_name=AnotherExampleDisplayName"
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
@@ -14596,6 +14598,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("setExpectation")]
         public virtual GoogleCloudDataplexV1DataQualityRuleSetExpectation SetExpectation { get; set; }
 
+        /// <summary>Aggregate rule which evaluates the number of rows returned for the provided statement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlAssertion")]
+        public virtual GoogleCloudDataplexV1DataQualityRuleSqlAssertion SqlAssertion { get; set; }
+
         /// <summary>
         /// Aggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
         /// </summary>
@@ -14678,6 +14684,13 @@ namespace Google.Apis.CloudDataplex.v1.Data
     public class GoogleCloudDataplexV1DataQualityRuleResult : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Output only. The number of rows returned by the sql statement in the SqlAssertion rule.This field is only
+        /// valid for SqlAssertion rules.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assertionRowCount")]
+        public virtual System.Nullable<long> AssertionRowCount { get; set; }
+
+        /// <summary>
         /// The number of rows a rule was evaluated against.This field is only valid for row-level type rules.Evaluated
         /// count can be configured to either include all rows (default) - with null rows automatically failing rule
         /// evaluation, or exclude null rows from the evaluated_count, by setting ignore_nulls = true.
@@ -14739,6 +14752,22 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// <summary>Optional. Expected values for the column value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<string> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Queries for rows returned by the provided SQL statement. If any rows are are returned, this rule fails.The SQL
+    /// statement needs to use BigQuery standard SQL syntax, and must not contain any semicolons.${data()} can be used
+    /// to reference the rows being evaluated, i.e. the table after all additional filters (row filters, incremental
+    /// data filters, sampling) are applied.Example: SELECT * FROM ${data()} WHERE price &amp;lt; 0
+    /// </summary>
+    public class GoogleCloudDataplexV1DataQualityRuleSqlAssertion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The SQL statement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlStatement")]
+        public virtual string SqlStatement { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
