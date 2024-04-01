@@ -14916,6 +14916,128 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The Bigtable Options object that contains information to support the import.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaBigtableOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The mapping from family names to an object that contains column families level information for the given
+        /// column family. If a family is not present in this map it will be ignored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("families")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDiscoveryengineV1alphaBigtableOptionsBigtableColumnFamily> Families { get; set; }
+
+        /// <summary>
+        /// The field name used for saving row key value in the UCS document. The name has to match a-zA-Z0-9*
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyFieldName")]
+        public virtual string KeyFieldName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDiscoveryengineV1alphaBigtableOptionsBigtableColumn : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The encoding mode of the values when the type is not STRING. Acceptable encoding values are: TEXT
+        /// - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase
+        /// Bytes.toBytes family of functions. This can be overridden for a specific column by listing that column in
+        /// 'columns' and specifying an encoding for it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encoding")]
+        public virtual string Encoding { get; set; }
+
+        /// <summary>
+        /// The field name to use for this column in the UCS document. The name has to match a-zA-Z0-9* If not set, we
+        /// will parse it from the qualifier bytes with best effort. However, field name collisions could happen, where
+        /// parsing behavior is undefined.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldName")]
+        public virtual string FieldName { get; set; }
+
+        /// <summary>
+        /// Required. Qualifier of the column. If cannot decode with utf-8, store a base-64 encoded string.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qualifier")]
+        public virtual string Qualifier { get; set; }
+
+        /// <summary>
+        /// Optional. The type of values in this column family. The values are expected to be encoded using HBase
+        /// Bytes.toBytes function when the encoding value is set to BINARY.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDiscoveryengineV1alphaBigtableOptionsBigtableColumnFamily : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The list of objects that contains column level information for each column. If a column is not present in
+        /// this list it will be ignored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columns")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaBigtableOptionsBigtableColumn> Columns { get; set; }
+
+        /// <summary>
+        /// Optional. The encoding mode of the values when the type is not STRING. Acceptable encoding values are: TEXT
+        /// - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase
+        /// Bytes.toBytes family of functions. This can be overridden for a specific column by listing that column in
+        /// 'columns' and specifying an encoding for it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encoding")]
+        public virtual string Encoding { get; set; }
+
+        /// <summary>
+        /// The field name to use for this column family in the UCS document. The name has to match a-zA-Z0-9* If not
+        /// set, we will parse it from the family name with best effort. However, due to difference naming pattern,
+        /// there could be field name collisions, where parsing behavior is undefined.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldName")]
+        public virtual string FieldName { get; set; }
+
+        /// <summary>
+        /// Optional. The type of values in this column family. The values are expected to be encoded using HBase
+        /// Bytes.toBytes function when the encoding value is set to BINARY.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The Cloud Bigtable source for importing data</summary>
+    public class GoogleCloudDiscoveryengineV1alphaBigtableSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Bigtable options that contains information needed when parsing data into typed structures. For
+        /// example, column type annotations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigtableOptions")]
+        public virtual GoogleCloudDiscoveryengineV1alphaBigtableOptions BigtableOptions { get; set; }
+
+        /// <summary>Required. The instance ID of the Cloud Bigtable that needs to be exported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceId")]
+        public virtual string InstanceId { get; set; }
+
+        /// <summary>
+        /// The project ID (can be project # or ID) that the Bigtable source is in with a length limit of 128
+        /// characters. If not specified, inherits the project ID from the parent request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; }
+
+        /// <summary>Required. The table ID of the Cloud Bigtable that needs to be exported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
+        public virtual string TableId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Chunk captures all raw metadata information of items to be recommended or searched in the chunk mode.
     /// </summary>
@@ -15008,6 +15130,54 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>The start page of the chunk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageStart")]
         public virtual System.Nullable<int> PageStart { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Cloud SQL source import data from.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaCloudSqlSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The Cloud SQL database to copy the data from with a length limit of 256 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseId")]
+        public virtual string DatabaseId { get; set; }
+
+        /// <summary>
+        /// Optional. Intermediate Cloud Storage directory used for the import with a length limit of 2,000 characters.
+        /// Can be specified if one wants to have the Cloud SQL export to a specific Cloud Storage directory. Please
+        /// ensure that the Cloud SQL service account has the necessary GCS Storage Admin permissions to access the
+        /// specified GCS directory.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsStagingDir")]
+        public virtual string GcsStagingDir { get; set; }
+
+        /// <summary>
+        /// Required. The Cloud SQL instance to copy the data from with a length limit of 256 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceId")]
+        public virtual string InstanceId { get; set; }
+
+        /// <summary>
+        /// Optional. Option for serverless export. Enabling this option will incur additional cost. More info:
+        /// https://cloud.google.com/sql/pricing#serverless
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offload")]
+        public virtual System.Nullable<bool> Offload { get; set; }
+
+        /// <summary>
+        /// Optional. The project ID (can be project # or ID) that the Cloud SQL source is in with a length limit of 128
+        /// characters. If not specified, inherits the project ID from the parent request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; }
+
+        /// <summary>
+        /// Required. The Cloud SQL table to copy the data from with a length limit of 256 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
+        public virtual string TableId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17446,6 +17616,41 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Firestore source import data from.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaFirestoreSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The Firestore collection to copy the data from with a length limit of 1500 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("collectionId")]
+        public virtual string CollectionId { get; set; }
+
+        /// <summary>
+        /// Required. The Firestore database to copy the data from with a length limit of 256 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseId")]
+        public virtual string DatabaseId { get; set; }
+
+        /// <summary>
+        /// Optional. Intermediate Cloud Storage directory used for the import with a length limit of 2,000 characters.
+        /// Can be specified if one wants to have the Firestore export to a specific Cloud Storage directory. Please
+        /// ensure that the Firestore service account has the necessary GCS Storage Admin permissions to access the
+        /// specified GCS directory.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsStagingDir")]
+        public virtual string GcsStagingDir { get; set; }
+
+        /// <summary>
+        /// Optional. The project ID (can be project # or ID) that the Cloud SQL source is in with a length limit of 128
+        /// characters. If not specified, inherits the project ID from the parent request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Cloud Storage location for input content.</summary>
     public class GoogleCloudDiscoveryengineV1alphaGcsSource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -17755,6 +17960,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bigquerySource")]
         public virtual GoogleCloudDiscoveryengineV1alphaBigQuerySource BigquerySource { get; set; }
 
+        /// <summary>Cloud Bigtable input source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigtableSource")]
+        public virtual GoogleCloudDiscoveryengineV1alphaBigtableSource BigtableSource { get; set; }
+
+        /// <summary>Cloud SQL input source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudSqlSource")]
+        public virtual GoogleCloudDiscoveryengineV1alphaCloudSqlSource CloudSqlSource { get; set; }
+
         /// <summary>The desired location of errors incurred during the Import.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorConfig")]
         public virtual GoogleCloudDiscoveryengineV1alphaImportErrorConfig ErrorConfig { get; set; }
@@ -17762,6 +17975,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>FhirStore input source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fhirStoreSource")]
         public virtual GoogleCloudDiscoveryengineV1alphaFhirStoreSource FhirStoreSource { get; set; }
+
+        /// <summary>Firestore input source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firestoreSource")]
+        public virtual GoogleCloudDiscoveryengineV1alphaFirestoreSource FirestoreSource { get; set; }
 
         /// <summary>Cloud Storage location for the input content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
@@ -17793,6 +18010,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reconciliationMode")]
         public virtual string ReconciliationMode { get; set; }
+
+        /// <summary>Spanner input source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spannerSource")]
+        public virtual GoogleCloudDiscoveryengineV1alphaSpannerSource SpannerSource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20745,6 +20966,39 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(VerifyTimeRaw);
             set => VerifyTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The Spanner source for importing data</summary>
+    public class GoogleCloudDiscoveryengineV1alphaSpannerSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The database ID of the source Spanner table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseId")]
+        public virtual string DatabaseId { get; set; }
+
+        /// <summary>
+        /// Optional. Whether to apply data boost on Spanner export. Enabling this option will incur additional cost.
+        /// More info: https://cloud.google.com/spanner/docs/databoost/databoost-overview#billing_and_quotas
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableDataBoost")]
+        public virtual System.Nullable<bool> EnableDataBoost { get; set; }
+
+        /// <summary>Required. The instance ID of the source Spanner table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceId")]
+        public virtual string InstanceId { get; set; }
+
+        /// <summary>
+        /// The project ID that the Spanner source is in with a length limit of 128 characters. If not specified,
+        /// inherits the project ID from the parent request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; }
+
+        /// <summary>Required. The table name of the Spanner database that needs to be imported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
+        public virtual string TableId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -937,57 +937,6 @@ namespace Google.Apis.BackupforGKE.v1
                         }
                     }
 
-                    /// <summary>Retrieve the link to the backupIndex.</summary>
-                    /// <param name="backup">
-                    /// Required. Full name of Backup resource. Format:
-                    /// projects/{project}/locations/{location}/backupPlans/{backup_plan}/backups/{backup}
-                    /// </param>
-                    public virtual GetBackupIndexDownloadUrlRequest GetBackupIndexDownloadUrl(string backup)
-                    {
-                        return new GetBackupIndexDownloadUrlRequest(this.service, backup);
-                    }
-
-                    /// <summary>Retrieve the link to the backupIndex.</summary>
-                    public class GetBackupIndexDownloadUrlRequest : BackupforGKEBaseServiceRequest<Google.Apis.BackupforGKE.v1.Data.GetBackupIndexDownloadUrlResponse>
-                    {
-                        /// <summary>Constructs a new GetBackupIndexDownloadUrl request.</summary>
-                        public GetBackupIndexDownloadUrlRequest(Google.Apis.Services.IClientService service, string backup) : base(service)
-                        {
-                            Backup = backup;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// Required. Full name of Backup resource. Format:
-                        /// projects/{project}/locations/{location}/backupPlans/{backup_plan}/backups/{backup}
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("backup", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Backup { get; private set; }
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "getBackupIndexDownloadUrl";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "GET";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1/{+backup}:getBackupIndexDownloadUrl";
-
-                        /// <summary>Initializes GetBackupIndexDownloadUrl parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("backup", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "backup",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/backupPlans/[^/]+/backups/[^/]+$",
-                            });
-                        }
-                    }
-
                     /// <summary>
                     /// Gets the access control policy for a resource. Returns an empty policy if the resource exists
                     /// and does not have a policy set.
@@ -4574,20 +4523,6 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual RetentionPolicy RetentionPolicy { get; set; }
 
         /// <summary>
-        /// Output only. A number that represents the current risk level of this BackupPlan from RPO perspective with 1
-        /// being no risk and 5 being highest risk.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rpoRiskLevel")]
-        public virtual System.Nullable<int> RpoRiskLevel { get; set; }
-
-        /// <summary>
-        /// Output only. Human-readable description of why the BackupPlan is in the current rpo_risk_level and action
-        /// items if any.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rpoRiskReason")]
-        public virtual string RpoRiskReason { get; set; }
-
-        /// <summary>
         /// Output only. State of the BackupPlan. This State field reflects the various stages a BackupPlan can be in
         /// during the Create operation. It will be set to "DEACTIVATED" if the BackupPlan is deactivated on an Update
         /// </summary>
@@ -4791,46 +4726,6 @@ namespace Google.Apis.BackupforGKE.v1.Data
     }
 
     /// <summary>
-    /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
-    /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
-    /// of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year
-    /// (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a
-    /// zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay *
-    /// google.type.DateTime * google.protobuf.Timestamp
-    /// </summary>
-    public class Date : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a
-        /// year and month where the day isn't significant.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("day")]
-        public virtual System.Nullable<int> Day { get; set; }
-
-        /// <summary>Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("month")]
-        public virtual System.Nullable<int> Month { get; set; }
-
-        /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("year")]
-        public virtual System.Nullable<int> Year { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Holds repeated DaysOfWeek values as a container.</summary>
-    public class DayOfWeekList : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. A list of days of week.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("daysOfWeek")]
-        public virtual System.Collections.Generic.IList<string> DaysOfWeek { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
     /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
@@ -4849,41 +4744,6 @@ namespace Google.Apis.BackupforGKE.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcpKmsEncryptionKey")]
         public virtual string GcpKmsEncryptionKey { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Defines a time window during which no backup should happen. All time and date are in UTC.</summary>
-    public class ExclusionWindow : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The exclusion window occurs every day if set to "True". Specifying this field to "False" is an error.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("daily")]
-        public virtual System.Nullable<bool> Daily { get; set; }
-
-        /// <summary>The exclusion window occurs on these days of each week in UTC.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("daysOfWeek")]
-        public virtual DayOfWeekList DaysOfWeek { get; set; }
-
-        /// <summary>
-        /// Required. Specifies duration of the window. Restrictions for duration based on the recurrence type to allow
-        /// some time for backup to happen: - single_occurrence_date: no restriction, but UI may warn about this when
-        /// duration &amp;gt;= target RPO - daily window: duration &amp;lt; 24 hours - weekly window: - days of week
-        /// includes all seven days of a week: duration &amp;lt; 24 hours - all other weekly window: duration &amp;lt;
-        /// 168 hours (i.e., 24 * 7 hours)
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
-        public virtual object Duration { get; set; }
-
-        /// <summary>No recurrence. The exclusion window occurs only once and on this date in UTC.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("singleOccurrenceDate")]
-        public virtual Date SingleOccurrenceDate { get; set; }
-
-        /// <summary>Required. Specifies the start time of the window using time of the day in UTC.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual TimeOfDay StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4928,16 +4788,6 @@ namespace Google.Apis.BackupforGKE.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response message for GetBackupIndexDownloadUrl.</summary>
-    public class GetBackupIndexDownloadUrlResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("signedUrl")]
-        public virtual string SignedUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5947,32 +5797,6 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Defines RPO scheduling configuration for automatically creating Backups via this BackupPlan.</summary>
-    public class RpoConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Optional. User specified time windows during which backup can NOT happen for this BackupPlan - backups
-        /// should start and finish outside of any given exclusion window. Note: backup jobs will be scheduled to start
-        /// and finish outside the duration of the window as much as possible, but running jobs will not get canceled
-        /// when it runs into the window. All the time and date values in exclusion_windows entry in the API are in UTC.
-        /// We only allow &amp;lt;=1 recurrence (daily or weekly) exclusion window for a BackupPlan while no restriction
-        /// on number of single occurrence windows.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("exclusionWindows")]
-        public virtual System.Collections.Generic.IList<ExclusionWindow> ExclusionWindows { get; set; }
-
-        /// <summary>
-        /// Required. Defines the target RPO for the BackupPlan in minutes, which means the target maximum data loss in
-        /// time that is acceptable for this BackupPlan. This must be at least 60, i.e., 1 hour, and at most 86400,
-        /// i.e., 60 days.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("targetRpoMinutes")]
-        public virtual System.Nullable<int> TargetRpoMinutes { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Defines scheduling parameters for automatically creating Backups via this BackupPlan.</summary>
     public class Schedule : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5985,61 +5809,11 @@ namespace Google.Apis.BackupforGKE.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cronSchedule")]
         public virtual string CronSchedule { get; set; }
 
-        private string _nextScheduledBackupTimeRaw;
-
-        private object _nextScheduledBackupTime;
-
-        /// <summary>
-        /// Output only. Start time of next scheduled backup under this BackupPlan by either cron_schedule or rpo
-        /// config.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextScheduledBackupTime")]
-        public virtual string NextScheduledBackupTimeRaw
-        {
-            get => _nextScheduledBackupTimeRaw;
-            set
-            {
-                _nextScheduledBackupTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _nextScheduledBackupTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="NextScheduledBackupTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use NextScheduledBackupTimeDateTimeOffset instead.")]
-        public virtual object NextScheduledBackupTime
-        {
-            get => _nextScheduledBackupTime;
-            set
-            {
-                _nextScheduledBackupTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _nextScheduledBackupTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="NextScheduledBackupTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? NextScheduledBackupTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(NextScheduledBackupTimeRaw);
-            set => NextScheduledBackupTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
         /// <summary>
         /// Optional. This flag denotes whether automatic Backup creation is paused for this BackupPlan. Default: False
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paused")]
         public virtual System.Nullable<bool> Paused { get; set; }
-
-        /// <summary>
-        /// Optional. Defines the RPO schedule configuration for this BackupPlan. This is mutually exclusive with the
-        /// cron_schedule field since at most one schedule can be defined for a BackupPLan. If this is defined, then
-        /// backup_retain_days must also be defined. Default (empty): no automatic backup creation will occur.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rpoConfig")]
-        public virtual RpoConfig RpoConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6145,38 +5919,6 @@ namespace Google.Apis.BackupforGKE.v1.Data
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API
-    /// may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
-    /// </summary>
-    public class TimeOfDay : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for
-        /// scenarios like business closing time.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("hours")]
-        public virtual System.Nullable<int> Hours { get; set; }
-
-        /// <summary>Minutes of hour of day. Must be from 0 to 59.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("minutes")]
-        public virtual System.Nullable<int> Minutes { get; set; }
-
-        /// <summary>Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
-        public virtual System.Nullable<int> Nanos { get; set; }
-
-        /// <summary>
-        /// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows
-        /// leap-seconds.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
-        public virtual System.Nullable<int> Seconds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

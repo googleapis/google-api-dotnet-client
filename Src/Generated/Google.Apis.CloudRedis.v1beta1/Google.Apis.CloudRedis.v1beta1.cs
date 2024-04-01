@@ -2199,9 +2199,20 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Optional. The type of a redis node in the cluster. NodeType determines the underlying machine-type of a
+        /// redis node.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeType")]
+        public virtual string NodeType { get; set; }
+
         /// <summary>Optional. Persistence config (RDB, AOF) for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("persistenceConfig")]
         public virtual ClusterPersistenceConfig PersistenceConfig { get; set; }
+
+        /// <summary>Output only. Precise value of redis memory size in GB for the entire cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preciseSizeGb")]
+        public virtual System.Nullable<double> PreciseSizeGb { get; set; }
 
         /// <summary>
         /// Required. Each PscConfig configures the consumer network where IPs will be designated to the cluster for

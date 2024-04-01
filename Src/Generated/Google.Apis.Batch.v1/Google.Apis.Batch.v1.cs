@@ -1904,7 +1904,14 @@ namespace Google.Apis.Batch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("placement")]
         public virtual PlacementPolicy Placement { get; set; }
 
-        /// <summary>Service account that VMs will run as.</summary>
+        /// <summary>
+        /// Defines the service account for Batch-created VMs. If omitted, the [default Compute Engine service
+        /// account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
+        /// Must match the service account specified in any used instance template configured in the Batch job. Includes
+        /// the following fields: * email: The service account's email address. If not set, the default Compute Engine
+        /// service account is used. * scopes: Additional OAuth scopes to grant the service account, beyond the default
+        /// cloud-platform scope. (list of strings)
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual ServiceAccount ServiceAccount { get; set; }
 
@@ -3069,18 +3076,11 @@ namespace Google.Apis.Batch.v1.Data
     /// <summary>Carries information about a Google Cloud service account.</summary>
     public class ServiceAccount : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Email address of the service account. If not specified, the default Compute Engine service account for the
-        /// project will be used. If instance template is being used, the service account has to be specified in the
-        /// instance template and it has to match the email field here.
-        /// </summary>
+        /// <summary>Email address of the service account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; }
 
-        /// <summary>
-        /// List of scopes to be enabled for this service account on the VM, in addition to the cloud-platform API scope
-        /// that will be added by default.
-        /// </summary>
+        /// <summary>List of scopes to be enabled for this service account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
         public virtual System.Collections.Generic.IList<string> Scopes { get; set; }
 

@@ -4642,9 +4642,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>
         /// Weight and grade affect a symbol’s thickness. Adjustments to grade are more granular than adjustments to
         /// weight and have a small impact on the size of the symbol. Choose from {-25, 0, 200}. If absent, default
-        /// value is 0. If any other value is specified, a broken image icon is displayed. To preview different icon
-        /// settings, go to [Google Font Icons](https://fonts.google.com/icons) and adjust the settings under
-        /// **Customize**.
+        /// value is 0. If any other value is specified, the default value is used. To preview different icon settings,
+        /// go to [Google Font Icons](https://fonts.google.com/icons) and adjust the settings under **Customize**.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("grade")]
         public virtual System.Nullable<int> Grade { get; set; }
@@ -4659,8 +4658,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// The stroke weight of the icon. Choose from {100, 200, 300, 400, 500, 600, 700}. If absent, default value is
-        /// 400. If any other value is specified, a broken image icon is displayed. To preview different icon settings,
-        /// go to [Google Font Icons](https://fonts.google.com/icons) and adjust the settings under **Customize**.
+        /// 400. If any other value is specified, the default value is used. To preview different icon settings, go to
+        /// [Google Font Icons](https://fonts.google.com/icons) and adjust the settings under **Customize**.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("weight")]
         public virtual System.Nullable<int> Weight { get; set; }
@@ -4830,9 +4829,9 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual System.Nullable<int> MultiSelectMaxSelectedItems { get; set; }
 
         /// <summary>
-        /// For multiselect menus, the number of text characters that a user inputs before the Chat app queries
-        /// autocomplete and displays suggested items in the menu. If unspecified, defaults to 0 characters for static
-        /// data sources and 3 characters for external data sources.
+        /// For multiselect menus, the number of text characters that a user inputs before the app queries autocomplete
+        /// and displays suggested items in the menu. If unspecified, defaults to 0 characters for static data sources
+        /// and 3 characters for external data sources.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("multiSelectMinQueryLength")]
         public virtual System.Nullable<int> MultiSelectMinQueryLength { get; set; }

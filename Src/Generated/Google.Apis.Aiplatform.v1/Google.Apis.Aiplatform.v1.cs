@@ -36251,6 +36251,93 @@ namespace Google.Apis.Aiplatform.v1
                             });
                         }
                     }
+
+                    /// <summary>
+                    /// Lists operations that match the specified filter in the request. If the server doesn't support
+                    /// this method, it returns `UNIMPLEMENTED`.
+                    /// </summary>
+                    /// <param name="name">The name of the operation's parent resource.</param>
+                    public virtual ListRequest List(string name)
+                    {
+                        return new ListRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Lists operations that match the specified filter in the request. If the server doesn't support
+                    /// this method, it returns `UNIMPLEMENTED`.
+                    /// </summary>
+                    public class ListRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningListOperationsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>The name of the operation's parent resource.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>The standard list filter.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>The standard list page size.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>The standard list page token.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}/operations";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/tuningJobs/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
                 }
             }
 
@@ -37010,6 +37097,13 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inlineData")]
         public virtual CloudAiNlLlmProtoServicePartBlob InlineData { get; set; }
 
+        /// <summary>
+        /// Metadata provides extra info for building the LM Root request. Note: High enough tag number for internal
+        /// only fields.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lmRootMetadata")]
+        public virtual CloudAiNlLlmProtoServicePartLMRootMetadata LmRootMetadata { get; set; }
+
         /// <summary>Text input.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
@@ -37072,6 +37166,17 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>The mime type corresponding to this input.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata provides extra info for building the LM Root request.</summary>
+    public class CloudAiNlLlmProtoServicePartLMRootMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Chunk id that will be used when mapping the part to the LM Root's chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunkId")]
+        public virtual string ChunkId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -38892,10 +38997,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Raw media bytes. Text should not be sent as raw bytes, use the 'text' field.</summary>
+    /// <summary>Content blob. It's preferred to send as text directly rather than raw bytes.</summary>
     public class GoogleCloudAiplatformV1Blob : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Raw bytes for media formats.</summary>
+        /// <summary>Required. Raw bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual string Data { get; set; }
 
@@ -41365,6 +41470,13 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual System.Nullable<bool> DisableContainerLogging { get; set; }
 
         /// <summary>
+        /// If true, deploy the model without explainable feature, regardless the existence of Model.explanation_spec or
+        /// explanation_spec.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableExplanations")]
+        public virtual System.Nullable<bool> DisableExplanations { get; set; }
+
+        /// <summary>
         /// The display name of the DeployedModel. If not provided upon creation, the Model's display_name is used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
@@ -43780,6 +43892,13 @@ namespace Google.Apis.Aiplatform.v1.Data
         }
 
         /// <summary>
+        /// Optional. The dedicated serving endpoint for this FeatureOnlineStore, which is different from common Vertex
+        /// service endpoint.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dedicatedServingEndpoint")]
+        public virtual GoogleCloudAiplatformV1FeatureOnlineStoreDedicatedServingEndpoint DedicatedServingEndpoint { get; set; }
+
+        /// <summary>
         /// Optional. Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update
         /// happens.
         /// </summary>
@@ -43803,6 +43922,15 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Contains settings for the Optimized store that will be created to serve featureValues for all FeatureViews
+        /// under this FeatureOnlineStore. When choose Optimized storage type, need to set
+        /// PrivateServiceConnectConfig.enable_private_service_connect to use private endpoint. Otherwise will use
+        /// public endpoint by default.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("optimized")]
+        public virtual GoogleCloudAiplatformV1FeatureOnlineStoreOptimized Optimized { get; set; }
 
         /// <summary>Output only. State of the featureOnlineStore.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -43879,6 +44007,29 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("minNodeCount")]
         public virtual System.Nullable<int> MinNodeCount { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The dedicated serving endpoint for this FeatureOnlineStore. Only need to set when you choose Optimized storage
+    /// type. Public endpoint is provisioned by default.
+    /// </summary>
+    public class GoogleCloudAiplatformV1FeatureOnlineStoreDedicatedServingEndpoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. This field will be populated with the domain name to use for this FeatureOnlineStore
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicEndpointDomainName")]
+        public virtual string PublicEndpointDomainName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Optimized storage type</summary>
+    public class GoogleCloudAiplatformV1FeatureOnlineStoreOptimized : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -44229,6 +44380,14 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual GoogleCloudAiplatformV1FeatureViewFeatureRegistrySource FeatureRegistrySource { get; set; }
 
         /// <summary>
+        /// Optional. Configuration for index preparation for vector search. It contains the required configurations to
+        /// create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be
+        /// performed during online serving.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexConfig")]
+        public virtual GoogleCloudAiplatformV1FeatureViewIndexConfig IndexConfig { get; set; }
+
+        /// <summary>
         /// Optional. The labels with user-defined metadata to organize your FeatureViews. Label keys and values can be
         /// no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters,
         /// underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information
@@ -44365,6 +44524,74 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Required. Identifiers of features under the feature group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("featureIds")]
         public virtual System.Collections.Generic.IList<string> FeatureIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for vector indexing.</summary>
+    public class GoogleCloudAiplatformV1FeatureViewIndexConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Configuration options for using brute force search, which simply implements the standard linear
+        /// search in the database for each query. It is primarily meant for benchmarking and to generate the ground
+        /// truth for approximate search.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bruteForceConfig")]
+        public virtual GoogleCloudAiplatformV1FeatureViewIndexConfigBruteForceConfig BruteForceConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Column of crowding. This column contains crowding attribute which is a constraint on a neighbor
+        /// list produced by FeatureOnlineStoreService.SearchNearestEntities to diversify search results. If
+        /// NearestNeighborQuery.per_crowding_attribute_neighbor_count is set to K in SearchNearestEntitiesRequest, it's
+        /// guaranteed that no more than K entities of the same crowding attribute are returned in the response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crowdingColumn")]
+        public virtual string CrowdingColumn { get; set; }
+
+        /// <summary>Optional. The distance measure used in nearest neighbor search.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("distanceMeasureType")]
+        public virtual string DistanceMeasureType { get; set; }
+
+        /// <summary>
+        /// Optional. Column of embedding. This column contains the source data to create index for vector search.
+        /// embedding_column must be set when using vector search.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("embeddingColumn")]
+        public virtual string EmbeddingColumn { get; set; }
+
+        /// <summary>Optional. The number of dimensions of the input embedding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("embeddingDimension")]
+        public virtual System.Nullable<int> EmbeddingDimension { get; set; }
+
+        /// <summary>Optional. Columns of features that're used to filter vector search results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterColumns")]
+        public virtual System.Collections.Generic.IList<string> FilterColumns { get; set; }
+
+        /// <summary>
+        /// Optional. Configuration options for the tree-AH algorithm (Shallow tree + Asymmetric Hashing). Please refer
+        /// to this paper for more details: https://arxiv.org/abs/1908.10396
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("treeAhConfig")]
+        public virtual GoogleCloudAiplatformV1FeatureViewIndexConfigTreeAHConfig TreeAhConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration options for using brute force search.</summary>
+    public class GoogleCloudAiplatformV1FeatureViewIndexConfigBruteForceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration options for the tree-AH algorithm.</summary>
+    public class GoogleCloudAiplatformV1FeatureViewIndexConfigTreeAHConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Number of embeddings on each leaf node. The default value is 1000 if not set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("leafNodeEmbeddingCount")]
+        public virtual System.Nullable<long> LeafNodeEmbeddingCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -45150,6 +45377,13 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1SafetySetting> SafetySettings { get; set; }
 
         /// <summary>
+        /// Optional. The user provided system instructions for the model. Note: only text should be used in parts and
+        /// content in each part will be in a separate paragraph.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemInstruction")]
+        public virtual GoogleCloudAiplatformV1Content SystemInstruction { get; set; }
+
+        /// <summary>
         /// Optional. A list of `Tools` the model may use to generate the next response. A `Tool` is a piece of code
         /// that enables the system to interact with external systems to perform an action, or set of actions, outside
         /// of knowledge and scope of the model.
@@ -45227,9 +45461,17 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("candidateCount")]
         public virtual System.Nullable<int> CandidateCount { get; set; }
 
+        /// <summary>Optional. Frequency penalties.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frequencyPenalty")]
+        public virtual System.Nullable<float> FrequencyPenalty { get; set; }
+
         /// <summary>Optional. The maximum number of output tokens to generate per message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxOutputTokens")]
         public virtual System.Nullable<int> MaxOutputTokens { get; set; }
+
+        /// <summary>Optional. Positive penalties.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("presencePenalty")]
+        public virtual System.Nullable<float> PresencePenalty { get; set; }
 
         /// <summary>Optional. Stop sequences.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stopSequences")]
@@ -45409,6 +45651,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Optional. List of grounding attributions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groundingAttributions")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1GroundingAttribution> GroundingAttributions { get; set; }
+
+        /// <summary>Optional. Queries executed by the retrieval tools.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retrievalQueries")]
+        public virtual System.Collections.Generic.IList<string> RetrievalQueries { get; set; }
 
         /// <summary>Optional. Web search queries for the following-up web search.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webSearchQueries")]
@@ -62609,6 +62855,9 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("grailTextHarmType")]
         public virtual LearningGenaiRootHarmGrailTextHarmType GrailTextHarmType { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("imageChild")]
+        public virtual System.Nullable<bool> ImageChild { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("imageCsam")]
         public virtual System.Nullable<bool> ImageCsam { get; set; }
 
@@ -62638,6 +62887,9 @@ namespace Google.Apis.Aiplatform.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("threshold")]
         public virtual System.Nullable<double> Threshold { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("videoFrameChild")]
+        public virtual System.Nullable<bool> VideoFrameChild { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("videoFrameCsam")]
         public virtual System.Nullable<bool> VideoFrameCsam { get; set; }
@@ -62874,6 +63126,14 @@ namespace Google.Apis.Aiplatform.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("modelId")]
         public virtual string ModelId { get; set; }
+
+        /// <summary>If true, the model was selected as a fallback, since no model met requirements.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pickedAsFallback")]
+        public virtual System.Nullable<bool> PickedAsFallback { get; set; }
+
+        /// <summary>If true, the model was selected since it met the requriements.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selected")]
+        public virtual System.Nullable<bool> Selected { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

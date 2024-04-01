@@ -1908,7 +1908,7 @@ namespace Google.Apis.Drive.v3
             }
         }
 
-        /// <summary>Updates the metadate for a shared drive.</summary>
+        /// <summary>Updates the metadata for a shared drive.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="driveId">The ID of the shared drive.</param>
         public virtual UpdateRequest Update(Google.Apis.Drive.v3.Data.Drive body, string driveId)
@@ -1916,7 +1916,7 @@ namespace Google.Apis.Drive.v3
             return new UpdateRequest(this.service, body, driveId);
         }
 
-        /// <summary>Updates the metadate for a shared drive.</summary>
+        /// <summary>Updates the metadata for a shared drive.</summary>
         public class UpdateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Drive>
         {
             /// <summary>Constructs a new Update request.</summary>

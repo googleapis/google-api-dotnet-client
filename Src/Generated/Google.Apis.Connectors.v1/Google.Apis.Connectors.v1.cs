@@ -1937,7 +1937,7 @@ namespace Google.Apis.Connectors.v1
                     /// `lock_config` To suspend/resume a connection: * `suspended` To update the connection details: *
                     /// `description` * `labels` * `connector_version` * `config_variables` * `auth_config` *
                     /// `destination_configs` * `node_config` * `log_config` * `ssl_config` * `eventing_enablement_type`
-                    /// * `eventing_config`
+                    /// * `eventing_config` * `auth_override_enabled`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }

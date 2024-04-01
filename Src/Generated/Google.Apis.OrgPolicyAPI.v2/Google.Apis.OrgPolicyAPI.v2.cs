@@ -2346,6 +2346,10 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("constraintDefault")]
         public virtual string ConstraintDefault { get; set; }
 
+        /// <summary>Defines this constraint as being a CustomConstraint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customConstraint")]
+        public virtual GoogleCloudOrgpolicyV2ConstraintGoogleDefinedCustomConstraint CustomConstraint { get; set; }
+
         /// <summary>
         /// Detailed description of what this constraint controls as well as how and where it is enforced. Mutable.
         /// </summary>
@@ -2385,6 +2389,38 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
     /// </summary>
     public class GoogleCloudOrgpolicyV2ConstraintBooleanConstraint : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A Google defined custom constraint. This represents a subset of fields missing from Constraint proto that are
+    /// required to describe CustomConstraint
+    /// </summary>
+    public class GoogleCloudOrgpolicyV2ConstraintGoogleDefinedCustomConstraint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Allow or deny type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actionType")]
+        public virtual string ActionType { get; set; }
+
+        /// <summary>
+        /// Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")`
+        /// or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual string Condition { get; set; }
+
+        /// <summary>All the operations being applied for this constraint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("methodTypes")]
+        public virtual System.Collections.Generic.IList<string> MethodTypes { get; set; }
+
+        /// <summary>
+        /// The resource instance type on which this policy applies. Format will be of the form : `/` Example: *
+        /// `compute.googleapis.com/Instance`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceTypes")]
+        public virtual System.Collections.Generic.IList<string> ResourceTypes { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

@@ -3724,12 +3724,15 @@ namespace Google.Apis.AppHub.v1alpha.Data
     {
         /// <summary>
         /// Optional. Criticality level. Can contain only lowercase letters, numeric characters, underscores, and
-        /// dashes. Can have a maximum length of 63 characters.
+        /// dashes. Can have a maximum length of 63 characters. Deprecated: Please refer to type instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("level")]
         public virtual string Level { get; set; }
 
-        /// <summary>Optional. Indicates mission-critical Application, Service, or Workload.</summary>
+        /// <summary>
+        /// Optional. Indicates mission-critical Application, Service, or Workload. Deprecated: Please refer to type
+        /// instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("missionCritical")]
         public virtual System.Nullable<bool> MissionCritical { get; set; }
 
@@ -3831,7 +3834,7 @@ namespace Google.Apis.AppHub.v1alpha.Data
     {
         /// <summary>
         /// Optional. Environment name. Can contain only lowercase letters, numeric characters, underscores, and dashes.
-        /// Can have a maximum length of 63 characters.
+        /// Can have a maximum length of 63 characters. Deprecated: Please refer to type instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
         public virtual string EnvironmentValue { get; set; }
