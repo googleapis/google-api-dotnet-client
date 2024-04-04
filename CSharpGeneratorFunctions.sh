@@ -42,7 +42,12 @@ install_csharp_generator() {
 # - Features file
 # - Enum storage file
 run_csharp_generator() {
-  dotnet run --no-build -c Release \
-    --project $CSHARP_GENERATOR_DIR/Google.Api.Generator.Rest \
-    -- "$1" "$2" "$3" "$4"
+  # We call the generator frequently; dotnet run takes a while to start it,
+  # even with --no-build and --no-restore.
+  # Using "dotnet" with the DLL is more portable than executing the .exe file directly.
+  # TODO: Rather than hard-coding this, we could build into a new directory (once)
+  # where we'd always have a fresh copy.
+  dotnet \
+    $CSHARP_GENERATOR_DIR/Google.Api.Generator.Rest/bin/Release/net6.0/Google.Api.Generator.Rest.dll \
+    "$1" "$2" "$3" "$4"
 }
