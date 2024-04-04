@@ -36339,6 +36339,279 @@ namespace Google.Apis.Aiplatform.v1
                         }
                     }
                 }
+
+                /// <summary>
+                /// Cancels a TuningJob. Starts asynchronous cancellation on the TuningJob. The server makes a best
+                /// effort to cancel the job, but success is not guaranteed. Clients can use
+                /// GenAiTuningService.GetTuningJob or other methods to check whether the cancellation succeeded or
+                /// whether the job completed despite cancellation. On successful cancellation, the TuningJob is not
+                /// deleted; instead it becomes a job with a TuningJob.error value with a google.rpc.Status.code of 1,
+                /// corresponding to `Code.CANCELLED`, and TuningJob.state is set to `CANCELLED`.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name of the TuningJob to cancel. Format:
+                /// `projects/{project}/locations/{location}/tuningJobs/{tuning_job}`
+                /// </param>
+                public virtual CancelRequest Cancel(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1CancelTuningJobRequest body, string name)
+                {
+                    return new CancelRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Cancels a TuningJob. Starts asynchronous cancellation on the TuningJob. The server makes a best
+                /// effort to cancel the job, but success is not guaranteed. Clients can use
+                /// GenAiTuningService.GetTuningJob or other methods to check whether the cancellation succeeded or
+                /// whether the job completed despite cancellation. On successful cancellation, the TuningJob is not
+                /// deleted; instead it becomes a job with a TuningJob.error value with a google.rpc.Status.code of 1,
+                /// corresponding to `Code.CANCELLED`, and TuningJob.state is set to `CANCELLED`.
+                /// </summary>
+                public class CancelRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleProtobufEmpty>
+                {
+                    /// <summary>Constructs a new Cancel request.</summary>
+                    public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1CancelTuningJobRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the TuningJob to cancel. Format:
+                    /// `projects/{project}/locations/{location}/tuningJobs/{tuning_job}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1CancelTuningJobRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "cancel";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:cancel";
+
+                    /// <summary>Initializes Cancel parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/tuningJobs/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Creates a TuningJob. A created TuningJob right away will be attempted to be run.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The resource name of the Location to create the TuningJob in. Format:
+                /// `projects/{project}/locations/{location}`
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1TuningJob body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a TuningJob. A created TuningJob right away will be attempted to be run.</summary>
+                public class CreateRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1TuningJob>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1TuningJob body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the Location to create the TuningJob in. Format:
+                    /// `projects/{project}/locations/{location}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1TuningJob Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/tuningJobs";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets a TuningJob.</summary>
+                /// <param name="name">
+                /// Required. The name of the TuningJob resource. Format:
+                /// `projects/{project}/locations/{location}/tuningJobs/{tuning_job}`
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets a TuningJob.</summary>
+                public class GetRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1TuningJob>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the TuningJob resource. Format:
+                    /// `projects/{project}/locations/{location}/tuningJobs/{tuning_job}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/tuningJobs/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists TuningJobs in a Location.</summary>
+                /// <param name="parent">
+                /// Required. The resource name of the Location to list the TuningJobs from. Format:
+                /// `projects/{project}/locations/{location}`
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists TuningJobs in a Location.</summary>
+                public class ListRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1ListTuningJobsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the Location to list the TuningJobs from. Format:
+                    /// `projects/{project}/locations/{location}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. The standard list filter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. The standard list page size.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. The standard list page token. Typically obtained via ListTuningJob.next_page_token of
+                    /// the previous GenAiTuningService.ListTuningJob][] call.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/tuningJobs";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets information about a location.</summary>
@@ -37055,6 +37328,10 @@ namespace Google.Apis.Aiplatform.v1.Data
 
     public class CloudAiNlLlmProtoServiceMessageMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Factuality-related debug metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("factualityDebugMetadata")]
+        public virtual LearningGenaiRootPerRequestProcessorDebugMetadataFactualityDebugMetadata FactualityDebugMetadata { get; set; }
+
         /// <summary>Filter metadata of the input messages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputFilterInfo")]
         public virtual LearningServingLlmMessageMetadata InputFilterInfo { get; set; }
@@ -37245,6 +37522,13 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>The RAI signals for the text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("raiSignals")]
         public virtual System.Collections.Generic.IList<CloudAiNlLlmProtoServiceRaiSignal> RaiSignals { get; set; }
+
+        /// <summary>
+        /// Translation request info during RAI for debugging purpose. Each TranslationRequestInfo corresponds to a
+        /// request sent to the translation server.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("translationRequestInfos")]
+        public virtual System.Collections.Generic.IList<LearningGenaiRootTranslationRequestInfo> TranslationRequestInfos { get; set; }
 
         /// <summary>Whether the text triggered the blocklist.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("triggeredBlocklist")]
@@ -39086,6 +39370,13 @@ namespace Google.Apis.Aiplatform.v1.Data
 
     /// <summary>Request message for PipelineService.CancelTrainingPipeline.</summary>
     public class GoogleCloudAiplatformV1CancelTrainingPipelineRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for GenAiTuningService.CancelTuningJob.</summary>
+    public class GoogleCloudAiplatformV1CancelTuningJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -45109,7 +45400,7 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>LINT.IfChange The request message for MatchService.FindNeighbors.</summary>
+    /// <summary>The request message for MatchService.FindNeighbors.</summary>
     public class GoogleCloudAiplatformV1FindNeighborsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -45473,6 +45764,14 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("presencePenalty")]
         public virtual System.Nullable<float> PresencePenalty { get; set; }
 
+        /// <summary>
+        /// Optional. Output response mimetype of the generated candidate text. Supported mimetype: `text/plain`:
+        /// (default) Text output. `application/json`: JSON response in the candidates. The model needs to be prompted
+        /// to output the appropriate response type, otherwise the behavior is undefined. This is a preview feature.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responseMimeType")]
+        public virtual string ResponseMimeType { get; set; }
+
         /// <summary>Optional. Stop sequences.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stopSequences")]
         public virtual System.Collections.Generic.IList<string> StopSequences { get; set; }
@@ -45651,10 +45950,6 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Optional. List of grounding attributions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groundingAttributions")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1GroundingAttribution> GroundingAttributions { get; set; }
-
-        /// <summary>Optional. Queries executed by the retrieval tools.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("retrievalQueries")]
-        public virtual System.Collections.Generic.IList<string> RetrievalQueries { get; set; }
 
         /// <summary>Optional. Web search queries for the following-up web search.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webSearchQueries")]
@@ -47636,6 +47931,23 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>The Trials associated with the Study.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trials")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1Trial> Trials { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for GenAiTuningService.ListTuningJobs</summary>
+    public class GoogleCloudAiplatformV1ListTuningJobsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token to retrieve the next page of results. Pass to ListTuningJobsRequest.page_token to obtain that page.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>List of TuningJobs in the requested page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tuningJobs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1TuningJob> TuningJobs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -52515,10 +52827,6 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deployGke")]
         public virtual GoogleCloudAiplatformV1PublisherModelCallToActionDeployGke DeployGke { get; set; }
 
-        /// <summary>Optional. Multiple setups to deploy the PublisherModel to Vertex Endpoint.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("multiDeployVertex")]
-        public virtual GoogleCloudAiplatformV1PublisherModelCallToActionDeployVertex MultiDeployVertex { get; set; }
-
         /// <summary>Optional. Open evaluation pipeline of the PublisherModel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("openEvaluationPipeline")]
         public virtual GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences OpenEvaluationPipeline { get; set; }
@@ -52626,17 +52934,6 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Optional. GKE deployment configuration in yaml format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gkeYamlConfigs")]
         public virtual System.Collections.Generic.IList<string> GkeYamlConfigs { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Multiple setups to deploy the PublisherModel.</summary>
-    public class GoogleCloudAiplatformV1PublisherModelCallToActionDeployVertex : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. One click deployment configurations.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("multiDeployVertex")]
-        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1PublisherModelCallToActionDeploy> MultiDeployVertex { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -52991,54 +53288,12 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Configuration for the Ray metrics.</summary>
-    public class GoogleCloudAiplatformV1RayMetricSpec : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. Flag to disable the Ray metrics collection.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
-        public virtual System.Nullable<bool> Disabled { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// Configuration information for the Ray cluster. For experimental launch, Ray cluster creation and Persistent
     /// cluster creation are 1:1 mapping: We will provision all the nodes within the Persistent cluster as Ray nodes.
     /// </summary>
     public class GoogleCloudAiplatformV1RaySpec : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Optional. This will be used to indicate which resource pool will serve as the Ray head node(the first node
-        /// within that pool). Will use the machine from the first workerpool as the head node by default if this field
-        /// isn't set.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("headNodeResourcePoolId")]
-        public virtual string HeadNodeResourcePoolId { get; set; }
-
-        /// <summary>
-        /// Optional. Default image for user to choose a preferred ML framework (for example, TensorFlow or Pytorch) by
-        /// choosing from [Vertex prebuilt
-        /// images](https://cloud.google.com/vertex-ai/docs/training/pre-built-containers). Either this or the
-        /// resource_pool_images is required. Use this field if you need all the resource pools to have the same Ray
-        /// image. Otherwise, use the {@code resource_pool_images} field.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
-        public virtual string ImageUri { get; set; }
-
-        /// <summary>Optional. Ray metrics configurations.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rayMetricSpec")]
-        public virtual GoogleCloudAiplatformV1RayMetricSpec RayMetricSpec { get; set; }
-
-        /// <summary>
-        /// Optional. Required if image_uri isn't set. A map of resource_pool_id to prebuild Ray image if user need to
-        /// use different images for different head/worker pools. This map needs to cover all the resource pool ids.
-        /// Example: { "ray_head_node_pool": "head image" "ray_worker_node_pool1": "worker image"
-        /// "ray_worker_node_pool2": "another worker image" }
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourcePoolImages")]
-        public virtual System.Collections.Generic.IDictionary<string, string> ResourcePoolImages { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -53369,21 +53624,6 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// <summary>Persistent Cluster runtime information as output</summary>
     public class GoogleCloudAiplatformV1ResourceRuntime : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Output only. URIs for user to connect to the Cluster. Example: { "RAY_HEAD_NODE_INTERNAL_IP":
-        /// "head-node-IP:10001" "RAY_DASHBOARD_URI": "ray-dashboard-address:8888" }
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("accessUris")]
-        public virtual System.Collections.Generic.IDictionary<string, string> AccessUris { get; set; }
-
-        /// <summary>
-        /// Output only. The resource name of NotebookRuntimeTemplate for the RoV Persistent Cluster The
-        /// NotebokRuntimeTemplate is created in the same VPC (if set), and with the same Ray and Python version as the
-        /// Persistent Cluster. Example: "projects/1000/locations/us-central1/notebookRuntimeTemplates/abc123"
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("notebookRuntimeTemplate")]
-        public virtual string NotebookRuntimeTemplate { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -54826,6 +55066,82 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Recall (True Positive Rate) for the given confidence threshold.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recall")]
         public virtual System.Nullable<float> Recall { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metrics for general pairwise text generation evaluation results.</summary>
+    public class GoogleCloudAiplatformV1SchemaModelevaluationMetricsPairwiseTextGenerationEvaluationMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Fraction of cases where the autorater agreed with the human raters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accuracy")]
+        public virtual System.Nullable<float> Accuracy { get; set; }
+
+        /// <summary>Percentage of time the autorater decided the baseline model had the better response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baselineModelWinRate")]
+        public virtual System.Nullable<float> BaselineModelWinRate { get; set; }
+
+        /// <summary>
+        /// A measurement of agreement between the autorater and human raters that takes the likelihood of random
+        /// agreement into account.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cohensKappa")]
+        public virtual System.Nullable<float> CohensKappa { get; set; }
+
+        /// <summary>Harmonic mean of precision and recall.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("f1Score")]
+        public virtual System.Nullable<float> F1Score { get; set; }
+
+        /// <summary>
+        /// Number of examples where the autorater chose the baseline model, but humans preferred the model.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("falseNegativeCount")]
+        public virtual System.Nullable<long> FalseNegativeCount { get; set; }
+
+        /// <summary>
+        /// Number of examples where the autorater chose the model, but humans preferred the baseline model.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("falsePositiveCount")]
+        public virtual System.Nullable<long> FalsePositiveCount { get; set; }
+
+        /// <summary>Percentage of time humans decided the baseline model had the better response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("humanPreferenceBaselineModelWinRate")]
+        public virtual System.Nullable<float> HumanPreferenceBaselineModelWinRate { get; set; }
+
+        /// <summary>Percentage of time humans decided the model had the better response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("humanPreferenceModelWinRate")]
+        public virtual System.Nullable<float> HumanPreferenceModelWinRate { get; set; }
+
+        /// <summary>Percentage of time the autorater decided the model had the better response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelWinRate")]
+        public virtual System.Nullable<float> ModelWinRate { get; set; }
+
+        /// <summary>
+        /// Fraction of cases where the autorater and humans thought the model had a better response out of all cases
+        /// where the autorater thought the model had a better response. True positive divided by all positive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("precision")]
+        public virtual System.Nullable<float> Precision { get; set; }
+
+        /// <summary>
+        /// Fraction of cases where the autorater and humans thought the model had a better response out of all cases
+        /// where the humans thought the model had a better response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recall")]
+        public virtual System.Nullable<float> Recall { get; set; }
+
+        /// <summary>
+        /// Number of examples where both the autorater and humans decided that the model had the worse response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trueNegativeCount")]
+        public virtual System.Nullable<long> TrueNegativeCount { get; set; }
+
+        /// <summary>
+        /// Number of examples where both the autorater and humans decided that the model had the better response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("truePositiveCount")]
+        public virtual System.Nullable<long> TruePositiveCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -58597,11 +58913,11 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual System.Nullable<bool> EnableCustomServiceAccount { get; set; }
 
         /// <summary>
-        /// Optional. Default service account that this PersistentResource's workloads run as. The workloads include: *
-        /// Any runtime specified via `ResourceRuntimeSpec` on creation time, for example, Ray. * Jobs submitted to
-        /// PersistentResource, if no other service account specified in the job specs. Only works when custom service
-        /// account is enabled and users have the `iam.serviceAccounts.actAs` permission on this service account.
-        /// Required if any containers are specified in `ResourceRuntimeSpec`.
+        /// Optional. Required when all below conditions are met * `enable_custom_service_account` is true; * any
+        /// runtime is specified via `ResourceRuntimeSpec` on creation time, for example, Ray The users must have
+        /// `iam.serviceAccounts.actAs` permission on this service account and then the specified runtime containers
+        /// will run as it. Do not set this field if you want to submit jobs using custom service account to this
+        /// PersistentResource after creation, but only specify the `service_account` inside the job.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
@@ -59570,6 +59886,141 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>A list of Trials.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trials")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1Trial> Trials { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Hyperparameters for SFT.</summary>
+    public class GoogleCloudAiplatformV1SupervisedHyperParameters : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Adapter size for tuning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adapterSize")]
+        public virtual string AdapterSize { get; set; }
+
+        /// <summary>Optional. Number of training epoches for this tuning job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("epochCount")]
+        public virtual System.Nullable<long> EpochCount { get; set; }
+
+        /// <summary>Optional. Learning rate multiplier for tuning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("learningRateMultiplier")]
+        public virtual System.Nullable<double> LearningRateMultiplier { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Tuning data statistics for Supervised Tuning.</summary>
+    public class GoogleCloudAiplatformV1SupervisedTuningDataStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Number of billable characters in the tuning dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalBillableCharacterCount")]
+        public virtual System.Nullable<long> TotalBillableCharacterCount { get; set; }
+
+        /// <summary>Output only. Number of tuning characters in the tuning dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalTuningCharacterCount")]
+        public virtual System.Nullable<long> TotalTuningCharacterCount { get; set; }
+
+        /// <summary>Output only. Number of examples in the tuning dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tuningDatasetExampleCount")]
+        public virtual System.Nullable<long> TuningDatasetExampleCount { get; set; }
+
+        /// <summary>Output only. Number of tuning steps for this Tuning Job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tuningStepCount")]
+        public virtual System.Nullable<long> TuningStepCount { get; set; }
+
+        /// <summary>Output only. Sample user messages in the training dataset uri.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userDatasetExamples")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1Content> UserDatasetExamples { get; set; }
+
+        /// <summary>Output only. Dataset distributions for the user input tokens.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userInputTokenDistribution")]
+        public virtual GoogleCloudAiplatformV1SupervisedTuningDatasetDistribution UserInputTokenDistribution { get; set; }
+
+        /// <summary>Output only. Dataset distributions for the messages per example.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userMessagePerExampleDistribution")]
+        public virtual GoogleCloudAiplatformV1SupervisedTuningDatasetDistribution UserMessagePerExampleDistribution { get; set; }
+
+        /// <summary>Output only. Dataset distributions for the user output tokens.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userOutputTokenDistribution")]
+        public virtual GoogleCloudAiplatformV1SupervisedTuningDatasetDistribution UserOutputTokenDistribution { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Dataset distribution for Supervised Tuning.</summary>
+    public class GoogleCloudAiplatformV1SupervisedTuningDatasetDistribution : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Defines the histogram bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buckets")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1SupervisedTuningDatasetDistributionDatasetBucket> Buckets { get; set; }
+
+        /// <summary>Output only. The maximum of the population values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("max")]
+        public virtual System.Nullable<double> Max { get; set; }
+
+        /// <summary>Output only. The arithmetic mean of the values in the population.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mean")]
+        public virtual System.Nullable<double> Mean { get; set; }
+
+        /// <summary>Output only. The median of the values in the population.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("median")]
+        public virtual System.Nullable<double> Median { get; set; }
+
+        /// <summary>Output only. The minimum of the population values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("min")]
+        public virtual System.Nullable<double> Min { get; set; }
+
+        /// <summary>Output only. The 5th percentile of the values in the population.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("p5")]
+        public virtual System.Nullable<double> P5 { get; set; }
+
+        /// <summary>Output only. The 95th percentile of the values in the population.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("p95")]
+        public virtual System.Nullable<double> P95 { get; set; }
+
+        /// <summary>Output only. Sum of a given population of values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sum")]
+        public virtual System.Nullable<long> Sum { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Dataset bucket used to create a histogram for the distribution given a population of values.</summary>
+    public class GoogleCloudAiplatformV1SupervisedTuningDatasetDistributionDatasetBucket : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Number of values in the bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<double> Count { get; set; }
+
+        /// <summary>Output only. Left bound of the bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("left")]
+        public virtual System.Nullable<double> Left { get; set; }
+
+        /// <summary>Output only. Right bound of the bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("right")]
+        public virtual System.Nullable<double> Right { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Tuning Spec for Supervised Tuning.</summary>
+    public class GoogleCloudAiplatformV1SupervisedTuningSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Hyperparameters for SFT.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hyperParameters")]
+        public virtual GoogleCloudAiplatformV1SupervisedHyperParameters HyperParameters { get; set; }
+
+        /// <summary>Required. Cloud Storage path to file containing training dataset for tuning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trainingDatasetUri")]
+        public virtual string TrainingDatasetUri { get; set; }
+
+        /// <summary>Optional. Cloud Storage path to file containing validation dataset for tuning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validationDatasetUri")]
+        public virtual string ValidationDatasetUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -60922,6 +61373,255 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual object Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The Model Registry Model and Online Prediction Endpoint assiociated with this TuningJob.</summary>
+    public class GoogleCloudAiplatformV1TunedModel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. A resource name of an Endpoint. Format:
+        /// `projects/{project}/locations/{location}/endpoints/{endpoint}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpoint")]
+        public virtual string Endpoint { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of the TunedModel. Format:
+        /// `projects/{project}/locations/{location}/models/{model}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("model")]
+        public virtual string Model { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The tuning data statistic values for TuningJob.</summary>
+    public class GoogleCloudAiplatformV1TuningDataStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The SFT Tuning data stats.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supervisedTuningDataStats")]
+        public virtual GoogleCloudAiplatformV1SupervisedTuningDataStats SupervisedTuningDataStats { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a TuningJob that runs with Google owned models.</summary>
+    public class GoogleCloudAiplatformV1TuningJob : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Model name for tuning, e.g., "gemini-1.0-pro-002".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseModel")]
+        public virtual string BaseModel { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Time when the TuningJob was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. The description of the TuningJob.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>
+        /// Output only. Time when the TuningJob entered any of the following JobStates: `JOB_STATE_SUCCEEDED`,
+        /// `JOB_STATE_FAILED`, `JOB_STATE_CANCELLED`, `JOB_STATE_EXPIRED`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. Only populated when job's state is `JOB_STATE_FAILED` or `JOB_STATE_CANCELLED`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual GoogleRpcStatus Error { get; set; }
+
+        /// <summary>Output only. The Experiment associated with this TuningJob.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("experiment")]
+        public virtual string Experiment { get; set; }
+
+        /// <summary>
+        /// Optional. The labels with user-defined metadata to organize TuningJob and generated resources such as Model
+        /// and Endpoint. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only
+        /// contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed.
+        /// See https://goo.gl/xmQnxf for more information and examples of labels.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Output only. Identifier. Resource name of a TuningJob. Format:
+        /// `projects/{project}/locations/{location}/tuningJobs/{tuning_job}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>
+        /// Output only. Time when the TuningJob for the first time entered the `JOB_STATE_RUNNING` state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The detailed state of the job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Tuning Spec for Supervised Fine Tuning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supervisedTuningSpec")]
+        public virtual GoogleCloudAiplatformV1SupervisedTuningSpec SupervisedTuningSpec { get; set; }
+
+        /// <summary>Output only. The tuned model resources assiociated with this TuningJob.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tunedModel")]
+        public virtual GoogleCloudAiplatformV1TunedModel TunedModel { get; set; }
+
+        /// <summary>
+        /// Optional. The display name of the TunedModel. The name can be up to 128 characters long and can consist of
+        /// any UTF-8 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tunedModelDisplayName")]
+        public virtual string TunedModelDisplayName { get; set; }
+
+        /// <summary>Output only. The tuning data statistics associated with this TuningJob.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tuningDataStats")]
+        public virtual GoogleCloudAiplatformV1TuningDataStats TuningDataStats { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Time when the TuningJob was most recently updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -63001,6 +63701,24 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class LearningGenaiRootPerRequestProcessorDebugMetadataFactualityDebugMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Latency spent on fact retrievals. There might be multiple retrievals from different fact providers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("factRetrievalMillisecondsByProvider")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<long>> FactRetrievalMillisecondsByProvider { get; set; }
+
+        /// <summary>
+        /// Latency spent on prompt2query. The procedure generates a search-friendly query given the original prompt.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prompt2queryMilliseconds")]
+        public virtual System.Nullable<long> Prompt2queryMilliseconds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>This is per harm.</summary>
     public class LearningGenaiRootRAIOutput : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -63378,6 +64096,25 @@ namespace Google.Apis.Aiplatform.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("score")]
         public virtual System.Nullable<float> Score { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Each TranslationRequestInfo corresponds to a request sent to the translation server.</summary>
+    public class LearningGenaiRootTranslationRequestInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The ISO-639 language code of source text in the initial request, detected automatically, if no source
+        /// language was passed within the initial request. If the source language was passed, auto-detection of the
+        /// language does not occur and this field is empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectedLanguageCodes")]
+        public virtual System.Collections.Generic.IList<string> DetectedLanguageCodes { get; set; }
+
+        /// <summary>The sum of the size of all the contents in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalContentSize")]
+        public virtual System.Nullable<long> TotalContentSize { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

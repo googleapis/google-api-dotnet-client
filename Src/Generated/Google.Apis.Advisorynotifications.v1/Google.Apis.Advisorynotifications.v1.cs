@@ -389,7 +389,7 @@ namespace Google.Apis.Advisorynotifications.v1
                 /// <summary>Lists notifications under a given parent.</summary>
                 /// <param name="parent">
                 /// Required. The parent, which owns this collection of notifications. Must be of the form
-                /// "organizations/{organization}/locations/{location}" or "projects/{project}/locations/{location}"
+                /// "organizations/{organization}/locations/{location}" or "projects/{project}/locations/{location}".
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -408,7 +408,8 @@ namespace Google.Apis.Advisorynotifications.v1
 
                     /// <summary>
                     /// Required. The parent, which owns this collection of notifications. Must be of the form
-                    /// "organizations/{organization}/locations/{location}" or "projects/{project}/locations/{location}"
+                    /// "organizations/{organization}/locations/{location}" or
+                    /// "projects/{project}/locations/{location}".
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -525,7 +526,8 @@ namespace Google.Apis.Advisorynotifications.v1
             /// <summary>Get notification settings.</summary>
             /// <param name="name">
             /// Required. The resource name of the settings to retrieve. Format:
-            /// organizations/{organization}/locations/{location}/settings.
+            /// organizations/{organization}/locations/{location}/settings or
+            /// projects/{projects}/locations/{location}/settings.
             /// </param>
             public virtual GetSettingsRequest GetSettings(string name)
             {
@@ -544,7 +546,8 @@ namespace Google.Apis.Advisorynotifications.v1
 
                 /// <summary>
                 /// Required. The resource name of the settings to retrieve. Format:
-                /// organizations/{organization}/locations/{location}/settings.
+                /// organizations/{organization}/locations/{location}/settings or
+                /// projects/{projects}/locations/{location}/settings.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -577,7 +580,8 @@ namespace Google.Apis.Advisorynotifications.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Identifier. The resource name of the settings to retrieve. Format:
-            /// organizations/{organization}/locations/{location}/settings.
+            /// organizations/{organization}/locations/{location}/settings or
+            /// projects/{projects}/locations/{location}/settings.
             /// </param>
             public virtual UpdateSettingsRequest UpdateSettings(Google.Apis.Advisorynotifications.v1.Data.GoogleCloudAdvisorynotificationsV1Settings body, string name)
             {
@@ -597,7 +601,8 @@ namespace Google.Apis.Advisorynotifications.v1
 
                 /// <summary>
                 /// Identifier. The resource name of the settings to retrieve. Format:
-                /// organizations/{organization}/locations/{location}/settings.
+                /// organizations/{organization}/locations/{location}/settings or
+                /// projects/{projects}/locations/{location}/settings.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -757,7 +762,7 @@ namespace Google.Apis.Advisorynotifications.v1
                 /// <summary>Lists notifications under a given parent.</summary>
                 /// <param name="parent">
                 /// Required. The parent, which owns this collection of notifications. Must be of the form
-                /// "organizations/{organization}/locations/{location}" or "projects/{project}/locations/{location}"
+                /// "organizations/{organization}/locations/{location}" or "projects/{project}/locations/{location}".
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -776,7 +781,8 @@ namespace Google.Apis.Advisorynotifications.v1
 
                     /// <summary>
                     /// Required. The parent, which owns this collection of notifications. Must be of the form
-                    /// "organizations/{organization}/locations/{location}" or "projects/{project}/locations/{location}"
+                    /// "organizations/{organization}/locations/{location}" or
+                    /// "projects/{project}/locations/{location}".
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -887,6 +893,120 @@ namespace Google.Apis.Advisorynotifications.v1
                             Pattern = null,
                         });
                     }
+                }
+            }
+
+            /// <summary>Get notification settings.</summary>
+            /// <param name="name">
+            /// Required. The resource name of the settings to retrieve. Format:
+            /// organizations/{organization}/locations/{location}/settings or
+            /// projects/{projects}/locations/{location}/settings.
+            /// </param>
+            public virtual GetSettingsRequest GetSettings(string name)
+            {
+                return new GetSettingsRequest(this.service, name);
+            }
+
+            /// <summary>Get notification settings.</summary>
+            public class GetSettingsRequest : AdvisorynotificationsBaseServiceRequest<Google.Apis.Advisorynotifications.v1.Data.GoogleCloudAdvisorynotificationsV1Settings>
+            {
+                /// <summary>Constructs a new GetSettings request.</summary>
+                public GetSettingsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The resource name of the settings to retrieve. Format:
+                /// organizations/{organization}/locations/{location}/settings or
+                /// projects/{projects}/locations/{location}/settings.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getSettings";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes GetSettings parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+/settings$",
+                    });
+                }
+            }
+
+            /// <summary>Update notification settings.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Identifier. The resource name of the settings to retrieve. Format:
+            /// organizations/{organization}/locations/{location}/settings or
+            /// projects/{projects}/locations/{location}/settings.
+            /// </param>
+            public virtual UpdateSettingsRequest UpdateSettings(Google.Apis.Advisorynotifications.v1.Data.GoogleCloudAdvisorynotificationsV1Settings body, string name)
+            {
+                return new UpdateSettingsRequest(this.service, body, name);
+            }
+
+            /// <summary>Update notification settings.</summary>
+            public class UpdateSettingsRequest : AdvisorynotificationsBaseServiceRequest<Google.Apis.Advisorynotifications.v1.Data.GoogleCloudAdvisorynotificationsV1Settings>
+            {
+                /// <summary>Constructs a new UpdateSettings request.</summary>
+                public UpdateSettingsRequest(Google.Apis.Services.IClientService service, Google.Apis.Advisorynotifications.v1.Data.GoogleCloudAdvisorynotificationsV1Settings body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Identifier. The resource name of the settings to retrieve. Format:
+                /// organizations/{organization}/locations/{location}/settings or
+                /// projects/{projects}/locations/{location}/settings.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Advisorynotifications.v1.Data.GoogleCloudAdvisorynotificationsV1Settings Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "updateSettings";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes UpdateSettings parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+/settings$",
+                    });
                 }
             }
         }
@@ -1153,7 +1273,8 @@ namespace Google.Apis.Advisorynotifications.v1.Data
 
         /// <summary>
         /// Identifier. The resource name of the settings to retrieve. Format:
-        /// organizations/{organization}/locations/{location}/settings.
+        /// organizations/{organization}/locations/{location}/settings or
+        /// projects/{projects}/locations/{location}/settings.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

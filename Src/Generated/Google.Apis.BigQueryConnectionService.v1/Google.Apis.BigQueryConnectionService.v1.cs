@@ -1256,6 +1256,10 @@ namespace Google.Apis.BigQueryConnectionService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("endpoint")]
         public virtual ConnectorConfigurationEndpoint Endpoint { get; set; }
 
+        /// <summary>Networking configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual ConnectorConfigurationNetwork Network { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1280,6 +1284,31 @@ namespace Google.Apis.BigQueryConnectionService.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hostPort")]
         public virtual string HostPort { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Network related configuration.</summary>
+    public class ConnectorConfigurationNetwork : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Private Service Connect networking configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateServiceConnect")]
+        public virtual ConnectorConfigurationPrivateServiceConnect PrivateServiceConnect { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Private Service Connect configuration.</summary>
+    public class ConnectorConfigurationPrivateServiceConnect : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Network Attachment name in the format of
+        /// `projects/{project}/regions/{region}/networkAttachments/{networkattachment}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkAttachment")]
+        public virtual string NetworkAttachment { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

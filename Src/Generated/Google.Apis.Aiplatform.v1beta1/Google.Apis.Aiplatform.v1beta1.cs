@@ -6801,7 +6801,85 @@ namespace Google.Apis.Aiplatform.v1beta1
                 public EndpointsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    Chat = new ChatResource(service);
                     Operations = new OperationsResource(service);
+                }
+
+                /// <summary>Gets the Chat resource.</summary>
+                public virtual ChatResource Chat { get; }
+
+                /// <summary>The "chat" collection of methods.</summary>
+                public class ChatResource
+                {
+                    private const string Resource = "chat";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ChatResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Exposes an OpenAI-compatible endpoint for chat completions.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="endpoint">
+                    /// Required. The name of the Endpoint requested to serve the prediction. Format:
+                    /// `projects/{project}/locations/{location}/endpoints/openapi`
+                    /// </param>
+                    public virtual CompletionsRequest Completions(Google.Apis.Aiplatform.v1beta1.Data.GoogleApiHttpBody body, string endpoint)
+                    {
+                        return new CompletionsRequest(this.service, body, endpoint);
+                    }
+
+                    /// <summary>Exposes an OpenAI-compatible endpoint for chat completions.</summary>
+                    public class CompletionsRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleApiHttpBody>
+                    {
+                        /// <summary>Constructs a new Completions request.</summary>
+                        public CompletionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1beta1.Data.GoogleApiHttpBody body, string endpoint) : base(service)
+                        {
+                            Endpoint = endpoint;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the Endpoint requested to serve the prediction. Format:
+                        /// `projects/{project}/locations/{location}/endpoints/openapi`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("endpoint", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Endpoint { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Aiplatform.v1beta1.Data.GoogleApiHttpBody Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "completions";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+endpoint}/chat/completions";
+
+                        /// <summary>Initializes Completions parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("endpoint", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "endpoint",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/endpoints/[^/]+$",
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Gets the Operations resource.</summary>
@@ -42597,6 +42675,104 @@ namespace Google.Apis.Aiplatform.v1beta1
                 }
             }
         }
+
+        /// <summary>Gets a GenAI cache config.</summary>
+        /// <param name="name">Required. Name of the cache config. Format: - `projects/{project}/cacheConfig`.</param>
+        public virtual GetCacheConfigRequest GetCacheConfig(string name)
+        {
+            return new GetCacheConfigRequest(this.service, name);
+        }
+
+        /// <summary>Gets a GenAI cache config.</summary>
+        public class GetCacheConfigRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleCloudAiplatformV1beta1CacheConfig>
+        {
+            /// <summary>Constructs a new GetCacheConfig request.</summary>
+            public GetCacheConfigRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>Required. Name of the cache config. Format: - `projects/{project}/cacheConfig`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getCacheConfig";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta1/{+name}";
+
+            /// <summary>Initializes GetCacheConfig parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+/cacheConfig$",
+                });
+            }
+        }
+
+        /// <summary>Updates a cache config.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">Identifier. Name of the cache config. Format: - `projects/{project}/cacheConfig`.</param>
+        public virtual UpdateCacheConfigRequest UpdateCacheConfig(Google.Apis.Aiplatform.v1beta1.Data.GoogleCloudAiplatformV1beta1CacheConfig body, string name)
+        {
+            return new UpdateCacheConfigRequest(this.service, body, name);
+        }
+
+        /// <summary>Updates a cache config.</summary>
+        public class UpdateCacheConfigRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleLongrunningOperation>
+        {
+            /// <summary>Constructs a new UpdateCacheConfig request.</summary>
+            public UpdateCacheConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1beta1.Data.GoogleCloudAiplatformV1beta1CacheConfig body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Identifier. Name of the cache config. Format: - `projects/{project}/cacheConfig`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Aiplatform.v1beta1.Data.GoogleCloudAiplatformV1beta1CacheConfig Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "updateCacheConfig";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta1/{+name}";
+
+            /// <summary>Initializes UpdateCacheConfig parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+/cacheConfig$",
+                });
+            }
+        }
     }
 
     /// <summary>The "publishers" collection of methods.</summary>
@@ -43330,6 +43506,10 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
 
     public class CloudAiNlLlmProtoServiceMessageMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Factuality-related debug metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("factualityDebugMetadata")]
+        public virtual LearningGenaiRootPerRequestProcessorDebugMetadataFactualityDebugMetadata FactualityDebugMetadata { get; set; }
+
         /// <summary>Filter metadata of the input messages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputFilterInfo")]
         public virtual LearningServingLlmMessageMetadata InputFilterInfo { get; set; }
@@ -43520,6 +43700,13 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// <summary>The RAI signals for the text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("raiSignals")]
         public virtual System.Collections.Generic.IList<CloudAiNlLlmProtoServiceRaiSignal> RaiSignals { get; set; }
+
+        /// <summary>
+        /// Translation request info during RAI for debugging purpose. Each TranslationRequestInfo corresponds to a
+        /// request sent to the translation server.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("translationRequestInfos")]
+        public virtual System.Collections.Generic.IList<LearningGenaiRootTranslationRequestInfo> TranslationRequestInfos { get; set; }
 
         /// <summary>Whether the text triggered the blocklist.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("triggeredBlocklist")]
@@ -45562,6 +45749,21 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// <summary>A list of bool values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<System.Nullable<bool>> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Config of GenAI caching features. This is a singleton resource.</summary>
+    public class GoogleCloudAiplatformV1beta1CacheConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If set to true, disables GenAI caching. Otherwise caching is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableCache")]
+        public virtual System.Nullable<bool> DisableCache { get; set; }
+
+        /// <summary>Identifier. Name of the cache config. Format: - `projects/{project}/cacheConfig`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -48793,14 +48995,6 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("questionAnsweringRelevanceInput")]
         public virtual GoogleCloudAiplatformV1beta1QuestionAnsweringRelevanceInput QuestionAnsweringRelevanceInput { get; set; }
 
-        /// <summary>Input for rag context recall metric.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ragContextRecallInput")]
-        public virtual GoogleCloudAiplatformV1beta1RagContextRecallInput RagContextRecallInput { get; set; }
-
-        /// <summary>Input for response recall metric.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("responseRecallInput")]
-        public virtual GoogleCloudAiplatformV1beta1ResponseRecallInput ResponseRecallInput { get; set; }
-
         /// <summary>Instances and metric spec for rouge metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rougeInput")]
         public virtual GoogleCloudAiplatformV1beta1RougeInput RougeInput { get; set; }
@@ -48894,14 +49088,6 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// <summary>Result for question answering relevance metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("questionAnsweringRelevanceResult")]
         public virtual GoogleCloudAiplatformV1beta1QuestionAnsweringRelevanceResult QuestionAnsweringRelevanceResult { get; set; }
-
-        /// <summary>RAG only metrics. Result for context recall metric.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ragContextRecallResult")]
-        public virtual GoogleCloudAiplatformV1beta1RagContextRecallResult RagContextRecallResult { get; set; }
-
-        /// <summary>Result for response recall metric.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("responseRecallResult")]
-        public virtual GoogleCloudAiplatformV1beta1ResponseRecallResult ResponseRecallResult { get; set; }
 
         /// <summary>Results for rouge metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rougeResults")]
@@ -50462,6 +50648,20 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Optional. The PrivateServiceConnect config for the extension. If specified, the service endpoints associated
+        /// with the Extension should be registered with private network access in the provided Service Directory
+        /// (https://cloud.google.com/service-directory/docs/configuring-private-network-access). If the service
+        /// contains more than one endpoint with a network, the service will arbitrarilty choose one of the endpoints to
+        /// use for extension execution.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateServiceConnectConfig")]
+        public virtual GoogleCloudAiplatformV1beta1ExtensionPrivateServiceConnectConfig PrivateServiceConnectConfig { get; set; }
+
+        /// <summary>Optional. Runtime config controlling the runtime behavior of this Extension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimeConfig")]
+        public virtual GoogleCloudAiplatformV1beta1RuntimeConfig RuntimeConfig { get; set; }
+
         /// <summary>Optional. Examples to illustrate the usage of the extension as a tool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("toolUseExamples")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1ToolUseExample> ToolUseExamples { get; set; }
@@ -50561,6 +50761,24 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
         public virtual string OperationId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>PrivateExtensionConfig configuration for the extension.</summary>
+    public class GoogleCloudAiplatformV1beta1ExtensionPrivateServiceConnectConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The Service Directory resource name in which the service endpoints associated to the extension are
+        /// registered. Format:
+        /// `projects/{project_id}/locations/{location_id}/namespaces/{namespace_id}/services/{service_id}` - The Vertex
+        /// AI Extension Service Agent (https://cloud.google.com/vertex-ai/docs/general/access-control#service-agents)
+        /// should be granted `servicedirectory.viewer` and `servicedirectory.pscAuthorizedService` roles on the
+        /// resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceDirectory")]
+        public virtual string ServiceDirectory { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -52335,7 +52553,7 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>LINT.IfChange The request message for MatchService.FindNeighbors.</summary>
+    /// <summary>The request message for MatchService.FindNeighbors.</summary>
     public class GoogleCloudAiplatformV1beta1FindNeighborsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -52887,6 +53105,14 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// <summary>Optional. Positive penalties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("presencePenalty")]
         public virtual System.Nullable<float> PresencePenalty { get; set; }
+
+        /// <summary>
+        /// Optional. Output response mimetype of the generated candidate text. Supported mimetype: `text/plain`:
+        /// (default) Text output. `application/json`: JSON response in the candidates. The model needs to be prompted
+        /// to output the appropriate response type, otherwise the behavior is undefined. This is a preview feature.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responseMimeType")]
+        public virtual string ResponseMimeType { get; set; }
 
         /// <summary>Optional. Stop sequences.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stopSequences")]
@@ -58897,7 +59123,7 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("baselinePrediction")]
         public virtual string BaselinePrediction { get; set; }
 
-        /// <summary>Optional. Text to answer the question.</summary>
+        /// <summary>Required. Text to answer the question.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("context")]
         public virtual string Context { get; set; }
 
@@ -60340,10 +60566,6 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deployGke")]
         public virtual GoogleCloudAiplatformV1beta1PublisherModelCallToActionDeployGke DeployGke { get; set; }
 
-        /// <summary>Optional. Multiple setups to deploy the PublisherModel to Vertex Endpoint.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("multiDeployVertex")]
-        public virtual GoogleCloudAiplatformV1beta1PublisherModelCallToActionDeployVertex MultiDeployVertex { get; set; }
-
         /// <summary>Optional. Open evaluation pipeline of the PublisherModel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("openEvaluationPipeline")]
         public virtual GoogleCloudAiplatformV1beta1PublisherModelCallToActionRegionalResourceReferences OpenEvaluationPipeline { get; set; }
@@ -60451,17 +60673,6 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// <summary>Optional. GKE deployment configuration in yaml format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gkeYamlConfigs")]
         public virtual System.Collections.Generic.IList<string> GkeYamlConfigs { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Multiple setups to deploy the PublisherModel.</summary>
-    public class GoogleCloudAiplatformV1beta1PublisherModelCallToActionDeployVertex : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. One click deployment configurations.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("multiDeployVertex")]
-        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1PublisherModelCallToActionDeploy> MultiDeployVertex { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -61035,7 +61246,7 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
     /// <summary>Spec for question answering quality instance.</summary>
     public class GoogleCloudAiplatformV1beta1QuestionAnsweringQualityInstance : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Text to answer the question.</summary>
+        /// <summary>Required. Text to answer the question.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("context")]
         public virtual string Context { get; set; }
 
@@ -61153,66 +61364,6 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("useReference")]
         public virtual System.Nullable<bool> UseReference { get; set; }
 
-        /// <summary>Optional. Which version to use for evaluation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<int> Version { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Input for rag context recall metric.</summary>
-    public class GoogleCloudAiplatformV1beta1RagContextRecallInput : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. Rag context recall instance.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("instance")]
-        public virtual GoogleCloudAiplatformV1beta1RagContextRecallInstance Instance { get; set; }
-
-        /// <summary>Required. Spec for rag context recall metric.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metricSpec")]
-        public virtual GoogleCloudAiplatformV1beta1RagContextRecallSpec MetricSpec { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Spec for rag context recall instance.</summary>
-    public class GoogleCloudAiplatformV1beta1RagContextRecallInstance : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. Retrieved facts from RAG pipeline as context to be evaluated.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("context")]
-        public virtual string Context { get; set; }
-
-        /// <summary>Required. Ground truth used to compare against the context.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("reference")]
-        public virtual string Reference { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Spec for rag context recall result.</summary>
-    public class GoogleCloudAiplatformV1beta1RagContextRecallResult : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. Confidence for rag context recall score.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
-        public virtual System.Nullable<float> Confidence { get; set; }
-
-        /// <summary>Output only. Explanation for rag context recall score.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("explanation")]
-        public virtual string Explanation { get; set; }
-
-        /// <summary>Output only. RagContextRecall score.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("score")]
-        public virtual System.Nullable<float> Score { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Spec for rag context recall metric.</summary>
-    public class GoogleCloudAiplatformV1beta1RagContextRecallSpec : Google.Apis.Requests.IDirectResponseSchema
-    {
         /// <summary>Optional. Which version to use for evaluation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; }
@@ -62168,66 +62319,6 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Input for response recall metric.</summary>
-    public class GoogleCloudAiplatformV1beta1ResponseRecallInput : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. Response recall instance.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("instance")]
-        public virtual GoogleCloudAiplatformV1beta1ResponseRecallInstance Instance { get; set; }
-
-        /// <summary>Required. Spec for response recall score metric.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metricSpec")]
-        public virtual GoogleCloudAiplatformV1beta1ResponseRecallSpec MetricSpec { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Spec for response recall instance.</summary>
-    public class GoogleCloudAiplatformV1beta1ResponseRecallInstance : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. Output of the evaluated model.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("prediction")]
-        public virtual string Prediction { get; set; }
-
-        /// <summary>Required. Ground truth used to compare against the prediction.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("reference")]
-        public virtual string Reference { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Spec for response recall result.</summary>
-    public class GoogleCloudAiplatformV1beta1ResponseRecallResult : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. Confidence for fulfillment score.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
-        public virtual System.Nullable<float> Confidence { get; set; }
-
-        /// <summary>Output only. Explanation for response recall score.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("explanation")]
-        public virtual string Explanation { get; set; }
-
-        /// <summary>Output only. ResponseRecall score.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("score")]
-        public virtual System.Nullable<float> Score { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Spec for response recall metric.</summary>
-    public class GoogleCloudAiplatformV1beta1ResponseRecallSpec : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. Which version to use for evaluation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<int> Version { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Runtime operation information for DatasetService.RestoreDatasetVersion.</summary>
     public class GoogleCloudAiplatformV1beta1RestoreDatasetVersionOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -62396,6 +62487,68 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// <summary>Optional. Whether to use stemmer to compute rouge score.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useStemmer")]
         public virtual System.Nullable<bool> UseStemmer { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Runtime configuration to run the extension.</summary>
+    public class GoogleCloudAiplatformV1beta1RuntimeConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Code execution runtime configurations for code interpreter extension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("codeInterpreterRuntimeConfig")]
+        public virtual GoogleCloudAiplatformV1beta1RuntimeConfigCodeInterpreterRuntimeConfig CodeInterpreterRuntimeConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Default parameters that will be set for all the execution of this extension. If specified, the
+        /// parameter values can be overridden by values in [[ExecuteExtensionRequest.operation_params]] at request
+        /// time. The struct should be in a form of map with param name as the key and actual param value as the value.
+        /// E.g. If this operation requires a param "name" to be set to "abc". you can set this to something like
+        /// {"name": "abc"}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultParams")]
+        public virtual System.Collections.Generic.IDictionary<string, object> DefaultParams { get; set; }
+
+        /// <summary>Runtime configuration for Vertext AI Search extension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vertexAiSearchRuntimeConfig")]
+        public virtual GoogleCloudAiplatformV1beta1RuntimeConfigVertexAISearchRuntimeConfig VertexAiSearchRuntimeConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudAiplatformV1beta1RuntimeConfigCodeInterpreterRuntimeConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The GCS bucket for file input of this Extension. If specified, support input from the GCS bucket.
+        /// Vertex Extension Custom Code Service Agent should be granted file reader to this bucket. If not specified,
+        /// the extension will only accept file contents from request body and reject GCS file inputs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileInputGcsBucket")]
+        public virtual string FileInputGcsBucket { get; set; }
+
+        /// <summary>
+        /// Optional. The GCS bucket for file output of this Extension. If specified, write all output files to the GCS
+        /// bucket. Vertex Extension Custom Code Service Agent should be granted file writer to this bucket. If not
+        /// specified, the file content will be output in response body.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileOutputGcsBucket")]
+        public virtual string FileOutputGcsBucket { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudAiplatformV1beta1RuntimeConfigVertexAISearchRuntimeConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Vertext AI Search serving config name. Format:
+        /// `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config}`
+        /// or
+        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/servingConfigs/{serving_config}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servingConfigName")]
+        public virtual string ServingConfigName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -63809,6 +63962,82 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// <summary>Recall (True Positive Rate) for the given confidence threshold.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recall")]
         public virtual System.Nullable<float> Recall { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metrics for general pairwise text generation evaluation results.</summary>
+    public class GoogleCloudAiplatformV1beta1SchemaModelevaluationMetricsPairwiseTextGenerationEvaluationMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Fraction of cases where the autorater agreed with the human raters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accuracy")]
+        public virtual System.Nullable<float> Accuracy { get; set; }
+
+        /// <summary>Percentage of time the autorater decided the baseline model had the better response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baselineModelWinRate")]
+        public virtual System.Nullable<float> BaselineModelWinRate { get; set; }
+
+        /// <summary>
+        /// A measurement of agreement between the autorater and human raters that takes the likelihood of random
+        /// agreement into account.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cohensKappa")]
+        public virtual System.Nullable<float> CohensKappa { get; set; }
+
+        /// <summary>Harmonic mean of precision and recall.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("f1Score")]
+        public virtual System.Nullable<float> F1Score { get; set; }
+
+        /// <summary>
+        /// Number of examples where the autorater chose the baseline model, but humans preferred the model.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("falseNegativeCount")]
+        public virtual System.Nullable<long> FalseNegativeCount { get; set; }
+
+        /// <summary>
+        /// Number of examples where the autorater chose the model, but humans preferred the baseline model.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("falsePositiveCount")]
+        public virtual System.Nullable<long> FalsePositiveCount { get; set; }
+
+        /// <summary>Percentage of time humans decided the baseline model had the better response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("humanPreferenceBaselineModelWinRate")]
+        public virtual System.Nullable<float> HumanPreferenceBaselineModelWinRate { get; set; }
+
+        /// <summary>Percentage of time humans decided the model had the better response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("humanPreferenceModelWinRate")]
+        public virtual System.Nullable<float> HumanPreferenceModelWinRate { get; set; }
+
+        /// <summary>Percentage of time the autorater decided the model had the better response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelWinRate")]
+        public virtual System.Nullable<float> ModelWinRate { get; set; }
+
+        /// <summary>
+        /// Fraction of cases where the autorater and humans thought the model had a better response out of all cases
+        /// where the autorater thought the model had a better response. True positive divided by all positive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("precision")]
+        public virtual System.Nullable<float> Precision { get; set; }
+
+        /// <summary>
+        /// Fraction of cases where the autorater and humans thought the model had a better response out of all cases
+        /// where the humans thought the model had a better response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recall")]
+        public virtual System.Nullable<float> Recall { get; set; }
+
+        /// <summary>
+        /// Number of examples where both the autorater and humans decided that the model had the worse response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trueNegativeCount")]
+        public virtual System.Nullable<long> TrueNegativeCount { get; set; }
+
+        /// <summary>
+        /// Number of examples where both the autorater and humans decided that the model had the better response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("truePositiveCount")]
+        public virtual System.Nullable<long> TruePositiveCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -67478,11 +67707,11 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         public virtual System.Nullable<bool> EnableCustomServiceAccount { get; set; }
 
         /// <summary>
-        /// Optional. Default service account that this PersistentResource's workloads run as. The workloads include: *
-        /// Any runtime specified via `ResourceRuntimeSpec` on creation time, for example, Ray. * Jobs submitted to
-        /// PersistentResource, if no other service account specified in the job specs. Only works when custom service
-        /// account is enabled and users have the `iam.serviceAccounts.actAs` permission on this service account.
-        /// Required if any containers are specified in `ResourceRuntimeSpec`.
+        /// Optional. Required when all below conditions are met * `enable_custom_service_account` is true; * any
+        /// runtime is specified via `ResourceRuntimeSpec` on creation time, for example, Ray The users must have
+        /// `iam.serviceAccounts.actAs` permission on this service account and then the specified runtime containers
+        /// will run as it. Do not set this field if you want to submit jobs using custom service account to this
+        /// PersistentResource after creation, but only specify the `service_account` inside the job.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
@@ -72626,6 +72855,24 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class LearningGenaiRootPerRequestProcessorDebugMetadataFactualityDebugMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Latency spent on fact retrievals. There might be multiple retrievals from different fact providers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("factRetrievalMillisecondsByProvider")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<long>> FactRetrievalMillisecondsByProvider { get; set; }
+
+        /// <summary>
+        /// Latency spent on prompt2query. The procedure generates a search-friendly query given the original prompt.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prompt2queryMilliseconds")]
+        public virtual System.Nullable<long> Prompt2queryMilliseconds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>This is per harm.</summary>
     public class LearningGenaiRootRAIOutput : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -73003,6 +73250,25 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("score")]
         public virtual System.Nullable<float> Score { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Each TranslationRequestInfo corresponds to a request sent to the translation server.</summary>
+    public class LearningGenaiRootTranslationRequestInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The ISO-639 language code of source text in the initial request, detected automatically, if no source
+        /// language was passed within the initial request. If the source language was passed, auto-detection of the
+        /// language does not occur and this field is empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectedLanguageCodes")]
+        public virtual System.Collections.Generic.IList<string> DetectedLanguageCodes { get; set; }
+
+        /// <summary>The sum of the size of all the contents in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalContentSize")]
+        public virtual System.Nullable<long> TotalContentSize { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -7182,6 +7182,12 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         public virtual string DumpPath { get; set; }
 
         /// <summary>
+        /// Optional. The type of the data dump. Supported for MySQL to CloudSQL for MySQL migrations only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dumpType")]
+        public virtual string DumpType { get; set; }
+
+        /// <summary>
         /// Output only. The duration of the migration job (in seconds). A duration in seconds with up to nine
         /// fractional digits, terminated by 's'. Example: "3.5s".
         /// </summary>
@@ -7985,6 +7991,12 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     /// <summary>Request message for 'ResumeMigrationJob' request.</summary>
     public class ResumeMigrationJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Resume the migration job without running prior configuration verification. Defaults to `false`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skipValidation")]
+        public virtual System.Nullable<bool> SkipValidation { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
