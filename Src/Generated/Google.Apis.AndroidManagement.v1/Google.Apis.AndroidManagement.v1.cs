@@ -7095,7 +7095,9 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lostOrganization")]
         public virtual UserFacingMessage LostOrganization { get; set; }
 
-        /// <summary>The phone number displayed to the user when the device is in lost mode.</summary>
+        /// <summary>
+        /// The phone number that will be called when the device is in lost mode and the call owner button is tapped.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lostPhoneNumber")]
         public virtual UserFacingMessage LostPhoneNumber { get; set; }
 

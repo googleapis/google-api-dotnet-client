@@ -2684,7 +2684,7 @@ namespace Google.Apis.Calendar.v3
 
             /// <summary>
             /// Event types to return. Optional. This parameter can be repeated multiple times to return events of
-            /// different types. The default is ["default", "focusTime", "outOfOffice"].
+            /// different types. If unset, returns all event types.
             /// </summary>
             /// <remarks>
             /// Use this property to set a single value for the parameter, or <see cref="EventTypesList"/> to set
@@ -2695,7 +2695,7 @@ namespace Google.Apis.Calendar.v3
 
             /// <summary>
             /// Event types to return. Optional. This parameter can be repeated multiple times to return events of
-            /// different types. The default is ["default", "focusTime", "outOfOffice"].
+            /// different types. If unset, returns all event types.
             /// </summary>
             /// <remarks>
             /// Use this property to set one or more values for the parameter. Do not set both this property and
@@ -2706,7 +2706,7 @@ namespace Google.Apis.Calendar.v3
 
             /// <summary>
             /// Event types to return. Optional. This parameter can be repeated multiple times to return events of
-            /// different types. The default is ["default", "focusTime", "outOfOffice"].
+            /// different types. If unset, returns all event types.
             /// </summary>
             public enum EventTypesEnum
             {
@@ -3746,7 +3746,7 @@ namespace Google.Apis.Calendar.v3
 
             /// <summary>
             /// Event types to return. Optional. This parameter can be repeated multiple times to return events of
-            /// different types. The default is ["default", "focusTime", "outOfOffice"].
+            /// different types. If unset, returns all event types.
             /// </summary>
             /// <remarks>
             /// Use this property to set a single value for the parameter, or <see cref="EventTypesList"/> to set
@@ -3757,7 +3757,7 @@ namespace Google.Apis.Calendar.v3
 
             /// <summary>
             /// Event types to return. Optional. This parameter can be repeated multiple times to return events of
-            /// different types. The default is ["default", "focusTime", "outOfOffice"].
+            /// different types. If unset, returns all event types.
             /// </summary>
             /// <remarks>
             /// Use this property to set one or more values for the parameter. Do not set both this property and
@@ -3768,7 +3768,7 @@ namespace Google.Apis.Calendar.v3
 
             /// <summary>
             /// Event types to return. Optional. This parameter can be repeated multiple times to return events of
-            /// different types. The default is ["default", "focusTime", "outOfOffice"].
+            /// different types. If unset, returns all event types.
             /// </summary>
             public enum EventTypesEnum
             {

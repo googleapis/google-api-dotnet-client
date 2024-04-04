@@ -2433,6 +2433,71 @@ namespace Google.Apis.Bigquery.v2
             }
         }
 
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not
+        /// have a policy set.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="resource">
+        /// REQUIRED: The resource for which the policy is being requested. See [Resource
+        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+        /// </param>
+        public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.Bigquery.v2.Data.GetIamPolicyRequest body, string resource)
+        {
+            return new GetIamPolicyRequest(this.service, body, resource);
+        }
+
+        /// <summary>
+        /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not
+        /// have a policy set.
+        /// </summary>
+        public class GetIamPolicyRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Policy>
+        {
+            /// <summary>Constructs a new GetIamPolicy request.</summary>
+            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.GetIamPolicyRequest body, string resource) : base(service)
+            {
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// REQUIRED: The resource for which the policy is being requested. See [Resource
+            /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Bigquery.v2.Data.GetIamPolicyRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getIamPolicy";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+resource}:getIamPolicy";
+
+            /// <summary>Initializes GetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+/datasets/[^/]+/routines/[^/]+$",
+                });
+            }
+        }
+
         /// <summary>Creates a new routine in the dataset.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="projectId">Required. Project ID of the new routine</param>
@@ -2614,6 +2679,71 @@ namespace Google.Apis.Bigquery.v2
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
+        /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="resource">
+        /// REQUIRED: The resource for which the policy is being specified. See [Resource
+        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+        /// </param>
+        public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Bigquery.v2.Data.SetIamPolicyRequest body, string resource)
+        {
+            return new SetIamPolicyRequest(this.service, body, resource);
+        }
+
+        /// <summary>
+        /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
+        /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+        /// </summary>
+        public class SetIamPolicyRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Policy>
+        {
+            /// <summary>Constructs a new SetIamPolicy request.</summary>
+            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.SetIamPolicyRequest body, string resource) : base(service)
+            {
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// REQUIRED: The resource for which the policy is being specified. See [Resource
+            /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Bigquery.v2.Data.SetIamPolicyRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "setIamPolicy";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{+resource}:setIamPolicy";
+
+            /// <summary>Initializes SetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resource",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+/datasets/[^/]+/routines/[^/]+$",
                 });
             }
         }
@@ -5214,6 +5344,13 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
 
         /// <summary>
+        /// Optional. Options defining open source compatible datasets living in the BigQuery catalog. Contains metadata
+        /// of open source database, schema or namespace represented by the current dataset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalCatalogDatasetOptions")]
+        public virtual ExternalCatalogDatasetOptions ExternalCatalogDatasetOptions { get; set; }
+
+        /// <summary>
         /// Optional. Reference to a read-only external dataset defined in data catalogs outside of BigQuery. Filled out
         /// when the dataset type is EXTERNAL.
         /// </summary>
@@ -5581,6 +5718,70 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents privacy policy associated with "differential privacy" method.</summary>
+    public class DifferentialPrivacyPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The total delta budget for all queries against the privacy-protected view. Each subscriber query
+        /// against this view charges the amount of delta that is pre-defined by the contributor through the privacy
+        /// policy delta_per_query field. If there is sufficient budget, then the subscriber query attempts to complete.
+        /// It might still fail due to other reasons, in which case the charge is refunded. If there is insufficient
+        /// budget the query is rejected. There might be multiple charge attempts if a single query references multiple
+        /// views. In this case there must be sufficient budget for all charges or the query is rejected and charges are
+        /// refunded in best effort. The budget does not have a refresh policy and can only be updated via ALTER VIEW or
+        /// circumvented by creating a new view that can be queried with a fresh budget.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deltaBudget")]
+        public virtual System.Nullable<double> DeltaBudget { get; set; }
+
+        /// <summary>
+        /// Optional. The delta value that is used per query. Delta represents the probability that any row will fail to
+        /// be epsilon differentially private. Indicates the risk associated with exposing aggregate rows in the result
+        /// of a query.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deltaPerQuery")]
+        public virtual System.Nullable<double> DeltaPerQuery { get; set; }
+
+        /// <summary>
+        /// Optional. The total epsilon budget for all queries against the privacy-protected view. Each subscriber query
+        /// against this view charges the amount of epsilon they request in their query. If there is sufficient budget,
+        /// then the subscriber query attempts to complete. It might still fail due to other reasons, in which case the
+        /// charge is refunded. If there is insufficient budget the query is rejected. There might be multiple charge
+        /// attempts if a single query references multiple views. In this case there must be sufficient budget for all
+        /// charges or the query is rejected and charges are refunded in best effort. The budget does not have a refresh
+        /// policy and can only be updated via ALTER VIEW or circumvented by creating a new view that can be queried
+        /// with a fresh budget.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("epsilonBudget")]
+        public virtual System.Nullable<double> EpsilonBudget { get; set; }
+
+        /// <summary>
+        /// Optional. The maximum epsilon value that a query can consume. If the subscriber specifies epsilon as a
+        /// parameter in a SELECT query, it must be less than or equal to this value. The epsilon parameter controls the
+        /// amount of noise that is added to the groups — a higher epsilon means less noise.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxEpsilonPerQuery")]
+        public virtual System.Nullable<double> MaxEpsilonPerQuery { get; set; }
+
+        /// <summary>
+        /// Optional. The maximum groups contributed value that is used per query. Represents the maximum number of
+        /// groups to which each protected entity can contribute. Changing this value does not improve or worsen
+        /// privacy. The best value for accuracy and utility depends on the query and data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxGroupsContributed")]
+        public virtual System.Nullable<long> MaxGroupsContributed { get; set; }
+
+        /// <summary>
+        /// Optional. The privacy unit column associated with this policy. Differential privacy policies can only have
+        /// one privacy unit column per data source object (table, view).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privacyUnitColumn")]
+        public virtual string PrivacyUnitColumn { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5974,6 +6175,61 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Options defining open source compatible datasets living in the BigQuery catalog. Contains metadata of open
+    /// source database, schema or namespace represented by the current dataset.
+    /// </summary>
+    public class ExternalCatalogDatasetOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The storage location URI for all tables in the dataset. Equivalent to hive metastore's database
+        /// locationUri. Maximum length of 1024 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultStorageLocationUri")]
+        public virtual string DefaultStorageLocationUri { get; set; }
+
+        /// <summary>
+        /// Optional. A map of key value pairs defining the parameters and properties of the open source schema. Maximum
+        /// size of 2Mib.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Parameters { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata about open source compatible table. The fields contained in these options correspond to hive
+    /// metastore's table level properties.
+    /// </summary>
+    public class ExternalCatalogTableOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The connection specifying the credentials to be used to read external storage, such as Azure Blob,
+        /// Cloud Storage, or S3. The connection is needed to read the open source table from BigQuery Engine. The
+        /// connection_id can have the form `..` or `projects//locations//connections/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionId")]
+        public virtual string ConnectionId { get; set; }
+
+        /// <summary>
+        /// Optional. A map of key value pairs defining the parameters and properties of the open source table.
+        /// Corresponds with hive meta store table parameters. Maximum size of 4Mib.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Parameters { get; set; }
+
+        /// <summary>
+        /// Optional. A storage descriptor containing information about the physical storage of this table.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageDescriptor")]
+        public virtual StorageDescriptor StorageDescriptor { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8236,6 +8492,30 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Represents privacy policy associated with "join restrictions". Join restriction gives data providers the ability
+    /// to enforce joins on the 'join_allowed_columns' when data is queried from a privacy protected view.
+    /// </summary>
+    public class JoinRestrictionPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The only columns that joins are allowed on. This field is must be specified for join_conditions
+        /// JOIN_ANY and JOIN_ALL and it cannot be set for JOIN_BLOCKED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("joinAllowedColumns")]
+        public virtual System.Collections.Generic.IList<string> JoinAllowedColumns { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies if a join is required or not on queries for the view. Default is
+        /// JOIN_CONDITION_UNSPECIFIED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("joinCondition")]
+        public virtual string JoinCondition { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Json Options for load and make external tables.</summary>
     public class JsonOptions : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8808,6 +9088,17 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Partition skew detailed information.</summary>
+    public class PartitionSkew : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Source stages which produce skewed data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skewSources")]
+        public virtual System.Collections.Generic.IList<SkewSource> SkewSources { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The partitioning column information.</summary>
     public class PartitionedColumn : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8977,6 +9268,18 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Optional. Policy used for aggregation thresholds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aggregationThresholdPolicy")]
         public virtual AggregationThresholdPolicy AggregationThresholdPolicy { get; set; }
+
+        /// <summary>Optional. Policy used for differential privacy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("differentialPrivacyPolicy")]
+        public virtual DifferentialPrivacyPolicy DifferentialPrivacyPolicy { get; set; }
+
+        /// <summary>
+        /// Optional. Join restriction policy is outside of the one of policies, since this policy can be set along with
+        /// other policies. This policy gives data providers the ability to enforce joins on the 'join_allowed_columns'
+        /// when data is queried from a privacy protected view.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("joinRestrictionPolicy")]
+        public virtual JoinRestrictionPolicy JoinRestrictionPolicy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10045,6 +10348,32 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Serializer and deserializer information.</summary>
+    public class SerDeInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Name of the SerDe. The maximum length is 256 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. Key-value pairs that define the initialization parameters for the serialization library. Maximum
+        /// size 10 Kib.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Parameters { get; set; }
+
+        /// <summary>
+        /// Required. Specifies a fully-qualified class name of the serialization library that is responsible for the
+        /// translation of data between table representation and the underlying low-level input and output format
+        /// structures. The maximum length is 256 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serializationLibrary")]
+        public virtual string SerializationLibrary { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>[Preview] Information related to sessions.</summary>
     public class SessionInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10073,6 +10402,17 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details about source stages which produce skewed data.</summary>
+    public class SkewSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Stage id of the skew source stage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stageId")]
+        public virtual System.Nullable<long> StageId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10288,6 +10628,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("insufficientShuffleQuota")]
         public virtual System.Nullable<bool> InsufficientShuffleQuota { get; set; }
 
+        /// <summary>Output only. Partition skew in the stage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partitionSkew")]
+        public virtual PartitionSkew PartitionSkew { get; set; }
+
         /// <summary>Output only. True if the stage has a slot contention issue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("slotContention")]
         public virtual System.Nullable<bool> SlotContention { get; set; }
@@ -10365,6 +10709,40 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>The columns in this table type</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columns")]
         public virtual System.Collections.Generic.IList<StandardSqlField> Columns { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Contains information about how a table's data is stored and accessed by open source query engines.
+    /// </summary>
+    public class StorageDescriptor : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Specifies the fully qualified class name of the InputFormat (e.g.
+        /// "org.apache.hadoop.hive.ql.io.orc.OrcInputFormat"). The maximum length is 128 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputFormat")]
+        public virtual string InputFormat { get; set; }
+
+        /// <summary>
+        /// Optional. The physical location of the table (e.g. 'gs://spark-dataproc-data/pangea-data/case_sensitive/' or
+        /// 'gs://spark-dataproc-data/pangea-data/*'). The maximum length is 2056 bytes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationUri")]
+        public virtual string LocationUri { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the fully qualified class name of the OutputFormat (e.g.
+        /// "org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat"). The maximum length is 128 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputFormat")]
+        public virtual string OutputFormat { get; set; }
+
+        /// <summary>Optional. Serializer and deserializer information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serdeInfo")]
+        public virtual SerDeInfo SerdeInfo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10483,6 +10861,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expirationTime")]
         public virtual System.Nullable<long> ExpirationTime { get; set; }
+
+        /// <summary>Optional. Options defining open source compatible table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalCatalogTableOptions")]
+        public virtual ExternalCatalogTableOptions ExternalCatalogTableOptions { get; set; }
 
         /// <summary>
         /// Optional. Describes the data format, location, and other properties of a table stored outside of BigQuery.
@@ -11854,8 +12236,8 @@ namespace Google.Apis.Bigquery.v2.Data
         private object _deletionTime;
 
         /// <summary>
-        /// Optional. The exact time when the dataset was deleted. If not specified, it will undelete the most recently
-        /// deleted version.
+        /// Optional. The exact time when the dataset was deleted. If not specified, the most recently deleted version
+        /// is undeleted.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deletionTime")]
         public virtual string DeletionTimeRaw

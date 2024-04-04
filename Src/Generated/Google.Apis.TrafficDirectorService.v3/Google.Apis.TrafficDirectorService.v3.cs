@@ -1697,7 +1697,7 @@ namespace Google.Apis.TrafficDirectorService.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Specifies the way to match a string. [#next-free-field: 8]</summary>
+    /// <summary>Specifies the way to match a string. [#next-free-field: 9]</summary>
     public class StringMatcher : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -1706,6 +1706,10 @@ namespace Google.Apis.TrafficDirectorService.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contains")]
         public virtual string Contains { get; set; }
+
+        /// <summary>Use an extension as the matcher type. [#extension-category: envoy.string_matcher]</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("custom")]
+        public virtual TypedExtensionConfig Custom { get; set; }
 
         /// <summary>
         /// The input string must match exactly the string specified here. Examples: * ``abc`` only matches the value
@@ -1764,6 +1768,29 @@ namespace Google.Apis.TrafficDirectorService.v3.Data
         /// <summary>The StructMatcher is matched if the value retrieved by path is matched to this value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual ValueMatcher Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message type for extension configuration.</summary>
+    public class TypedExtensionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The name of an extension. This is not used to select the extension, instead it serves the role of an opaque
+        /// identifier.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The typed config for the extension. The type URL will be used to identify the extension. In the case that
+        /// the type URL is *xds.type.v3.TypedStruct* (or, for historical reasons, *udpa.type.v1.TypedStruct*), the
+        /// inner type URL of *TypedStruct* will be utilized. See the :ref:`extension configuration overview ` for
+        /// further details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("typedConfig")]
+        public virtual System.Collections.Generic.IDictionary<string, object> TypedConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

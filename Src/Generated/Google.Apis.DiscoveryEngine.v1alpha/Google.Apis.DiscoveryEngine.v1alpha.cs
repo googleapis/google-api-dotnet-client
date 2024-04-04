@@ -560,6 +560,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                 this.service = service;
                 Collections = new CollectionsResource(service);
                 DataStores = new DataStoresResource(service);
+                Evaluations = new EvaluationsResource(service);
+                GroundingConfigs = new GroundingConfigsResource(service);
                 Operations = new OperationsResource(service);
                 RankingConfigs = new RankingConfigsResource(service);
             }
@@ -781,6 +783,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         Operations = new OperationsResource(service);
                         Schemas = new SchemasResource(service);
                         ServingConfigs = new ServingConfigsResource(service);
+                        Sessions = new SessionsResource(service);
                         SiteSearchEngine = new SiteSearchEngineResource(service);
                         SuggestionDenyListEntries = new SuggestionDenyListEntriesResource(service);
                         UserEvents = new UserEventsResource(service);
@@ -3087,6 +3090,73 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             this.service = service;
                         }
 
+                        /// <summary>Answer query method.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="servingConfig">
+                        /// Required. The resource name of the Search serving config, such as
+                        /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`,
+                        /// or
+                        /// `projects/*/locations/global/collections/default_collection/dataStores/*/servingConfigs/default_serving_config`.
+                        /// This field is used to identify the serving configuration name, set of models used to make
+                        /// the search.
+                        /// </param>
+                        public virtual AnswerRequest Answer(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAnswerQueryRequest body, string servingConfig)
+                        {
+                            return new AnswerRequest(this.service, body, servingConfig);
+                        }
+
+                        /// <summary>Answer query method.</summary>
+                        public class AnswerRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAnswerQueryResponse>
+                        {
+                            /// <summary>Constructs a new Answer request.</summary>
+                            public AnswerRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAnswerQueryRequest body, string servingConfig) : base(service)
+                            {
+                                ServingConfig = servingConfig;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource name of the Search serving config, such as
+                            /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`,
+                            /// or
+                            /// `projects/*/locations/global/collections/default_collection/dataStores/*/servingConfigs/default_serving_config`.
+                            /// This field is used to identify the serving configuration name, set of models used to
+                            /// make the search.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("servingConfig", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string ServingConfig { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAnswerQueryRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "answer";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+servingConfig}:answer";
+
+                            /// <summary>Initializes Answer parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("servingConfig", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "servingConfig",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+/servingConfigs/[^/]+$",
+                                });
+                            }
+                        }
+
                         /// <summary>
                         /// Gets a ServingConfig. Returns a NotFound error if the ServingConfig does not exist.
                         /// </summary>
@@ -3435,6 +3505,457 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                     ParameterType = "path",
                                     DefaultValue = null,
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+/servingConfigs/[^/]+$",
+                                });
+                            }
+                        }
+                    }
+
+                    /// <summary>Gets the Sessions resource.</summary>
+                    public virtual SessionsResource Sessions { get; }
+
+                    /// <summary>The "sessions" collection of methods.</summary>
+                    public class SessionsResource
+                    {
+                        private const string Resource = "sessions";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public SessionsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                            Answers = new AnswersResource(service);
+                        }
+
+                        /// <summary>Gets the Answers resource.</summary>
+                        public virtual AnswersResource Answers { get; }
+
+                        /// <summary>The "answers" collection of methods.</summary>
+                        public class AnswersResource
+                        {
+                            private const string Resource = "answers";
+
+                            /// <summary>The service which this resource belongs to.</summary>
+                            private readonly Google.Apis.Services.IClientService service;
+
+                            /// <summary>Constructs a new resource.</summary>
+                            public AnswersResource(Google.Apis.Services.IClientService service)
+                            {
+                                this.service = service;
+                            }
+
+                            /// <summary>Gets a Answer.</summary>
+                            /// <param name="name">
+                            /// Required. The resource name of the Answer to get. Format:
+                            /// `projects/{project_number}/locations/{location_id}/collections/{collection}/engines/{engine_id}/sessions/{session_id}/answers/{answer_id}`
+                            /// </param>
+                            public virtual GetRequest Get(string name)
+                            {
+                                return new GetRequest(this.service, name);
+                            }
+
+                            /// <summary>Gets a Answer.</summary>
+                            public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAnswer>
+                            {
+                                /// <summary>Constructs a new Get request.</summary>
+                                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                                {
+                                    Name = name;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. The resource name of the Answer to get. Format:
+                                /// `projects/{project_number}/locations/{location_id}/collections/{collection}/engines/{engine_id}/sessions/{session_id}/answers/{answer_id}`
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Name { get; private set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "get";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "GET";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1alpha/{+name}";
+
+                                /// <summary>Initializes Get parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+/sessions/[^/]+/answers/[^/]+$",
+                                    });
+                                }
+                            }
+                        }
+
+                        /// <summary>
+                        /// Creates a Session. If the Session to create already exists, an ALREADY_EXISTS error is
+                        /// returned.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">
+                        /// Required. Full resource name of parent data store. Format:
+                        /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}`
+                        /// </param>
+                        public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSession body, string parent)
+                        {
+                            return new CreateRequest(this.service, body, parent);
+                        }
+
+                        /// <summary>
+                        /// Creates a Session. If the Session to create already exists, an ALREADY_EXISTS error is
+                        /// returned.
+                        /// </summary>
+                        public class CreateRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSession>
+                        {
+                            /// <summary>Constructs a new Create request.</summary>
+                            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSession body, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. Full resource name of parent data store. Format:
+                            /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSession Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "create";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+parent}/sessions";
+
+                            /// <summary>Initializes Create parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Deletes a Session. If the Session to delete does not exist, a NOT_FOUND error is returned.
+                        /// </summary>
+                        /// <param name="name">
+                        /// Required. The resource name of the Session to delete. Format:
+                        /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}`
+                        /// </param>
+                        public virtual DeleteRequest Delete(string name)
+                        {
+                            return new DeleteRequest(this.service, name);
+                        }
+
+                        /// <summary>
+                        /// Deletes a Session. If the Session to delete does not exist, a NOT_FOUND error is returned.
+                        /// </summary>
+                        public class DeleteRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleProtobufEmpty>
+                        {
+                            /// <summary>Constructs a new Delete request.</summary>
+                            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource name of the Session to delete. Format:
+                            /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "delete";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "DELETE";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+name}";
+
+                            /// <summary>Initializes Delete parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+/sessions/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Gets a Session.</summary>
+                        /// <param name="name">
+                        /// Required. The resource name of the Session to get. Format:
+                        /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}`
+                        /// </param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(this.service, name);
+                        }
+
+                        /// <summary>Gets a Session.</summary>
+                        public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSession>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource name of the Session to get. Format:
+                            /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+/sessions/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Lists all Sessions by their parent DataStore.</summary>
+                        /// <param name="parent">
+                        /// Required. The data store resource name. Format:
+                        /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}`
+                        /// </param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(this.service, parent);
+                        }
+
+                        /// <summary>Lists all Sessions by their parent DataStore.</summary>
+                        public class ListRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaListSessionsResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The data store resource name. Format:
+                            /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// A filter to apply on the list results. The supported features are: user_pseudo_id,
+                            /// state. Example: "user_pseudo_id = some_id"
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Filter { get; set; }
+
+                            /// <summary>
+                            /// A comma-separated list of fields to order by, sorted in ascending order. Use "desc"
+                            /// after a field name for descending. Supported fields: * `update_time` * `create_time` *
+                            /// `session_name` Example: "update_time desc" "create_time"
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string OrderBy { get; set; }
+
+                            /// <summary>
+                            /// Maximum number of results to return. If unspecified, defaults to 50. Max allowed value
+                            /// is 1000.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>
+                            /// A page token, received from a previous `ListSessions` call. Provide this to retrieve the
+                            /// subsequent page.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+parent}/sessions";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+$",
+                                });
+                                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "orderBy",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Updates a Session. Session action type cannot be changed. If the Session to update does not
+                        /// exist, a NOT_FOUND error is returned.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">
+                        /// Immutable. Fully qualified name
+                        /// `project/*/locations/global/collections/{collection}/engines/{engine}/sessions/*`
+                        /// </param>
+                        public virtual PatchRequest Patch(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSession body, string name)
+                        {
+                            return new PatchRequest(this.service, body, name);
+                        }
+
+                        /// <summary>
+                        /// Updates a Session. Session action type cannot be changed. If the Session to update does not
+                        /// exist, a NOT_FOUND error is returned.
+                        /// </summary>
+                        public class PatchRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSession>
+                        {
+                            /// <summary>Constructs a new Patch request.</summary>
+                            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSession body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Immutable. Fully qualified name
+                            /// `project/*/locations/global/collections/{collection}/engines/{engine}/sessions/*`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>
+                            /// Indicates which fields in the provided Session to update. The following are NOT
+                            /// supported: * Session.name If not set or empty, all supported fields are updated.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual object UpdateMask { get; set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSession Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "patch";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "PATCH";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+name}";
+
+                            /// <summary>Initializes Patch parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+/sessions/[^/]+$",
+                                });
+                                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "updateMask",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
                                 });
                             }
                         }
@@ -5750,6 +6271,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         Conversations = new ConversationsResource(service);
                         Operations = new OperationsResource(service);
                         ServingConfigs = new ServingConfigsResource(service);
+                        Sessions = new SessionsResource(service);
                     }
 
                     /// <summary>Gets the Conversations resource.</summary>
@@ -6377,6 +6899,73 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             this.service = service;
                         }
 
+                        /// <summary>Answer query method.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="servingConfig">
+                        /// Required. The resource name of the Search serving config, such as
+                        /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`,
+                        /// or
+                        /// `projects/*/locations/global/collections/default_collection/dataStores/*/servingConfigs/default_serving_config`.
+                        /// This field is used to identify the serving configuration name, set of models used to make
+                        /// the search.
+                        /// </param>
+                        public virtual AnswerRequest Answer(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAnswerQueryRequest body, string servingConfig)
+                        {
+                            return new AnswerRequest(this.service, body, servingConfig);
+                        }
+
+                        /// <summary>Answer query method.</summary>
+                        public class AnswerRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAnswerQueryResponse>
+                        {
+                            /// <summary>Constructs a new Answer request.</summary>
+                            public AnswerRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAnswerQueryRequest body, string servingConfig) : base(service)
+                            {
+                                ServingConfig = servingConfig;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource name of the Search serving config, such as
+                            /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`,
+                            /// or
+                            /// `projects/*/locations/global/collections/default_collection/dataStores/*/servingConfigs/default_serving_config`.
+                            /// This field is used to identify the serving configuration name, set of models used to
+                            /// make the search.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("servingConfig", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string ServingConfig { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAnswerQueryRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "answer";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+servingConfig}:answer";
+
+                            /// <summary>Initializes Answer parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("servingConfig", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "servingConfig",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/servingConfigs/[^/]+$",
+                                });
+                            }
+                        }
+
                         /// <summary>
                         /// Gets a ServingConfig. Returns a NotFound error if the ServingConfig does not exist.
                         /// </summary>
@@ -6725,6 +7314,457 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                     ParameterType = "path",
                                     DefaultValue = null,
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/servingConfigs/[^/]+$",
+                                });
+                            }
+                        }
+                    }
+
+                    /// <summary>Gets the Sessions resource.</summary>
+                    public virtual SessionsResource Sessions { get; }
+
+                    /// <summary>The "sessions" collection of methods.</summary>
+                    public class SessionsResource
+                    {
+                        private const string Resource = "sessions";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public SessionsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                            Answers = new AnswersResource(service);
+                        }
+
+                        /// <summary>Gets the Answers resource.</summary>
+                        public virtual AnswersResource Answers { get; }
+
+                        /// <summary>The "answers" collection of methods.</summary>
+                        public class AnswersResource
+                        {
+                            private const string Resource = "answers";
+
+                            /// <summary>The service which this resource belongs to.</summary>
+                            private readonly Google.Apis.Services.IClientService service;
+
+                            /// <summary>Constructs a new resource.</summary>
+                            public AnswersResource(Google.Apis.Services.IClientService service)
+                            {
+                                this.service = service;
+                            }
+
+                            /// <summary>Gets a Answer.</summary>
+                            /// <param name="name">
+                            /// Required. The resource name of the Answer to get. Format:
+                            /// `projects/{project_number}/locations/{location_id}/collections/{collection}/engines/{engine_id}/sessions/{session_id}/answers/{answer_id}`
+                            /// </param>
+                            public virtual GetRequest Get(string name)
+                            {
+                                return new GetRequest(this.service, name);
+                            }
+
+                            /// <summary>Gets a Answer.</summary>
+                            public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAnswer>
+                            {
+                                /// <summary>Constructs a new Get request.</summary>
+                                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                                {
+                                    Name = name;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. The resource name of the Answer to get. Format:
+                                /// `projects/{project_number}/locations/{location_id}/collections/{collection}/engines/{engine_id}/sessions/{session_id}/answers/{answer_id}`
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Name { get; private set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "get";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "GET";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1alpha/{+name}";
+
+                                /// <summary>Initializes Get parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/sessions/[^/]+/answers/[^/]+$",
+                                    });
+                                }
+                            }
+                        }
+
+                        /// <summary>
+                        /// Creates a Session. If the Session to create already exists, an ALREADY_EXISTS error is
+                        /// returned.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">
+                        /// Required. Full resource name of parent data store. Format:
+                        /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}`
+                        /// </param>
+                        public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSession body, string parent)
+                        {
+                            return new CreateRequest(this.service, body, parent);
+                        }
+
+                        /// <summary>
+                        /// Creates a Session. If the Session to create already exists, an ALREADY_EXISTS error is
+                        /// returned.
+                        /// </summary>
+                        public class CreateRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSession>
+                        {
+                            /// <summary>Constructs a new Create request.</summary>
+                            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSession body, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. Full resource name of parent data store. Format:
+                            /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSession Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "create";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+parent}/sessions";
+
+                            /// <summary>Initializes Create parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Deletes a Session. If the Session to delete does not exist, a NOT_FOUND error is returned.
+                        /// </summary>
+                        /// <param name="name">
+                        /// Required. The resource name of the Session to delete. Format:
+                        /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}`
+                        /// </param>
+                        public virtual DeleteRequest Delete(string name)
+                        {
+                            return new DeleteRequest(this.service, name);
+                        }
+
+                        /// <summary>
+                        /// Deletes a Session. If the Session to delete does not exist, a NOT_FOUND error is returned.
+                        /// </summary>
+                        public class DeleteRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleProtobufEmpty>
+                        {
+                            /// <summary>Constructs a new Delete request.</summary>
+                            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource name of the Session to delete. Format:
+                            /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "delete";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "DELETE";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+name}";
+
+                            /// <summary>Initializes Delete parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/sessions/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Gets a Session.</summary>
+                        /// <param name="name">
+                        /// Required. The resource name of the Session to get. Format:
+                        /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}`
+                        /// </param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(this.service, name);
+                        }
+
+                        /// <summary>Gets a Session.</summary>
+                        public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSession>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource name of the Session to get. Format:
+                            /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/sessions/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Lists all Sessions by their parent DataStore.</summary>
+                        /// <param name="parent">
+                        /// Required. The data store resource name. Format:
+                        /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}`
+                        /// </param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(this.service, parent);
+                        }
+
+                        /// <summary>Lists all Sessions by their parent DataStore.</summary>
+                        public class ListRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaListSessionsResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The data store resource name. Format:
+                            /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// A filter to apply on the list results. The supported features are: user_pseudo_id,
+                            /// state. Example: "user_pseudo_id = some_id"
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Filter { get; set; }
+
+                            /// <summary>
+                            /// A comma-separated list of fields to order by, sorted in ascending order. Use "desc"
+                            /// after a field name for descending. Supported fields: * `update_time` * `create_time` *
+                            /// `session_name` Example: "update_time desc" "create_time"
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string OrderBy { get; set; }
+
+                            /// <summary>
+                            /// Maximum number of results to return. If unspecified, defaults to 50. Max allowed value
+                            /// is 1000.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>
+                            /// A page token, received from a previous `ListSessions` call. Provide this to retrieve the
+                            /// subsequent page.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+parent}/sessions";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+$",
+                                });
+                                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "orderBy",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Updates a Session. Session action type cannot be changed. If the Session to update does not
+                        /// exist, a NOT_FOUND error is returned.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">
+                        /// Immutable. Fully qualified name
+                        /// `project/*/locations/global/collections/{collection}/engines/{engine}/sessions/*`
+                        /// </param>
+                        public virtual PatchRequest Patch(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSession body, string name)
+                        {
+                            return new PatchRequest(this.service, body, name);
+                        }
+
+                        /// <summary>
+                        /// Updates a Session. Session action type cannot be changed. If the Session to update does not
+                        /// exist, a NOT_FOUND error is returned.
+                        /// </summary>
+                        public class PatchRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSession>
+                        {
+                            /// <summary>Constructs a new Patch request.</summary>
+                            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSession body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Immutable. Fully qualified name
+                            /// `project/*/locations/global/collections/{collection}/engines/{engine}/sessions/*`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>
+                            /// Indicates which fields in the provided Session to update. The following are NOT
+                            /// supported: * Session.name If not set or empty, all supported fields are updated.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual object UpdateMask { get; set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSession Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "patch";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "PATCH";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+name}";
+
+                            /// <summary>Initializes Patch parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/sessions/[^/]+$",
+                                });
+                                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "updateMask",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
                                 });
                             }
                         }
@@ -7455,6 +8495,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     Operations = new OperationsResource(service);
                     Schemas = new SchemasResource(service);
                     ServingConfigs = new ServingConfigsResource(service);
+                    Sessions = new SessionsResource(service);
                     SiteSearchEngine = new SiteSearchEngineResource(service);
                     SuggestionDenyListEntries = new SuggestionDenyListEntriesResource(service);
                     UserEvents = new UserEventsResource(service);
@@ -9599,6 +10640,73 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         this.service = service;
                     }
 
+                    /// <summary>Answer query method.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="servingConfig">
+                    /// Required. The resource name of the Search serving config, such as
+                    /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`,
+                    /// or
+                    /// `projects/*/locations/global/collections/default_collection/dataStores/*/servingConfigs/default_serving_config`.
+                    /// This field is used to identify the serving configuration name, set of models used to make the
+                    /// search.
+                    /// </param>
+                    public virtual AnswerRequest Answer(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAnswerQueryRequest body, string servingConfig)
+                    {
+                        return new AnswerRequest(this.service, body, servingConfig);
+                    }
+
+                    /// <summary>Answer query method.</summary>
+                    public class AnswerRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAnswerQueryResponse>
+                    {
+                        /// <summary>Constructs a new Answer request.</summary>
+                        public AnswerRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAnswerQueryRequest body, string servingConfig) : base(service)
+                        {
+                            ServingConfig = servingConfig;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the Search serving config, such as
+                        /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`,
+                        /// or
+                        /// `projects/*/locations/global/collections/default_collection/dataStores/*/servingConfigs/default_serving_config`.
+                        /// This field is used to identify the serving configuration name, set of models used to make
+                        /// the search.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("servingConfig", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ServingConfig { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAnswerQueryRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "answer";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+servingConfig}:answer";
+
+                        /// <summary>Initializes Answer parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("servingConfig", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "servingConfig",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+/servingConfigs/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>
                     /// Gets a ServingConfig. Returns a NotFound error if the ServingConfig does not exist.
                     /// </summary>
@@ -9947,6 +11055,455 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+/servingConfigs/[^/]+$",
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the Sessions resource.</summary>
+                public virtual SessionsResource Sessions { get; }
+
+                /// <summary>The "sessions" collection of methods.</summary>
+                public class SessionsResource
+                {
+                    private const string Resource = "sessions";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public SessionsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                        Answers = new AnswersResource(service);
+                    }
+
+                    /// <summary>Gets the Answers resource.</summary>
+                    public virtual AnswersResource Answers { get; }
+
+                    /// <summary>The "answers" collection of methods.</summary>
+                    public class AnswersResource
+                    {
+                        private const string Resource = "answers";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public AnswersResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>Gets a Answer.</summary>
+                        /// <param name="name">
+                        /// Required. The resource name of the Answer to get. Format:
+                        /// `projects/{project_number}/locations/{location_id}/collections/{collection}/engines/{engine_id}/sessions/{session_id}/answers/{answer_id}`
+                        /// </param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(this.service, name);
+                        }
+
+                        /// <summary>Gets a Answer.</summary>
+                        public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaAnswer>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource name of the Answer to get. Format:
+                            /// `projects/{project_number}/locations/{location_id}/collections/{collection}/engines/{engine_id}/sessions/{session_id}/answers/{answer_id}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+/sessions/[^/]+/answers/[^/]+$",
+                                });
+                            }
+                        }
+                    }
+
+                    /// <summary>
+                    /// Creates a Session. If the Session to create already exists, an ALREADY_EXISTS error is returned.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. Full resource name of parent data store. Format:
+                    /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}`
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSession body, string parent)
+                    {
+                        return new CreateRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>
+                    /// Creates a Session. If the Session to create already exists, an ALREADY_EXISTS error is returned.
+                    /// </summary>
+                    public class CreateRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSession>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSession body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Full resource name of parent data store. Format:
+                        /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSession Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+parent}/sessions";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Deletes a Session. If the Session to delete does not exist, a NOT_FOUND error is returned.
+                    /// </summary>
+                    /// <param name="name">
+                    /// Required. The resource name of the Session to delete. Format:
+                    /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}`
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Deletes a Session. If the Session to delete does not exist, a NOT_FOUND error is returned.
+                    /// </summary>
+                    public class DeleteRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleProtobufEmpty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the Session to delete. Format:
+                        /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+/sessions/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets a Session.</summary>
+                    /// <param name="name">
+                    /// Required. The resource name of the Session to get. Format:
+                    /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}`
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Gets a Session.</summary>
+                    public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSession>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the Session to get. Format:
+                        /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/sessions/{session_id}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+/sessions/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists all Sessions by their parent DataStore.</summary>
+                    /// <param name="parent">
+                    /// Required. The data store resource name. Format:
+                    /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}`
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists all Sessions by their parent DataStore.</summary>
+                    public class ListRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaListSessionsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The data store resource name. Format:
+                        /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// A filter to apply on the list results. The supported features are: user_pseudo_id, state.
+                        /// Example: "user_pseudo_id = some_id"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>
+                        /// A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a
+                        /// field name for descending. Supported fields: * `update_time` * `create_time` *
+                        /// `session_name` Example: "update_time desc" "create_time"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
+
+                        /// <summary>
+                        /// Maximum number of results to return. If unspecified, defaults to 50. Max allowed value is
+                        /// 1000.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// A page token, received from a previous `ListSessions` call. Provide this to retrieve the
+                        /// subsequent page.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+parent}/sessions";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Updates a Session. Session action type cannot be changed. If the Session to update does not
+                    /// exist, a NOT_FOUND error is returned.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Immutable. Fully qualified name
+                    /// `project/*/locations/global/collections/{collection}/engines/{engine}/sessions/*`
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSession body, string name)
+                    {
+                        return new PatchRequest(this.service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Updates a Session. Session action type cannot be changed. If the Session to update does not
+                    /// exist, a NOT_FOUND error is returned.
+                    /// </summary>
+                    public class PatchRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSession>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSession body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Immutable. Fully qualified name
+                        /// `project/*/locations/global/collections/{collection}/engines/{engine}/sessions/*`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Indicates which fields in the provided Session to update. The following are NOT supported: *
+                        /// Session.name If not set or empty, all supported fields are updated.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSession Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+/sessions/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                         }
                     }
@@ -11701,6 +13258,171 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the Evaluations resource.</summary>
+            public virtual EvaluationsResource Evaluations { get; }
+
+            /// <summary>The "evaluations" collection of methods.</summary>
+            public class EvaluationsResource
+            {
+                private const string Resource = "evaluations";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public EvaluationsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Operations = new OperationsResource(service);
+                }
+
+                /// <summary>Gets the Operations resource.</summary>
+                public virtual OperationsResource Operations { get; }
+
+                /// <summary>The "operations" collection of methods.</summary>
+                public class OperationsResource
+                {
+                    private const string Resource = "operations";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public OperationsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                    /// operation result at intervals as recommended by the API service.
+                    /// </summary>
+                    /// <param name="name">The name of the operation resource.</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                    /// operation result at intervals as recommended by the API service.
+                    /// </summary>
+                    public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>The name of the operation resource.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/evaluations/[^/]+/operations/[^/]+$",
+                            });
+                        }
+                    }
+                }
+            }
+
+            /// <summary>Gets the GroundingConfigs resource.</summary>
+            public virtual GroundingConfigsResource GroundingConfigs { get; }
+
+            /// <summary>The "groundingConfigs" collection of methods.</summary>
+            public class GroundingConfigsResource
+            {
+                private const string Resource = "groundingConfigs";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public GroundingConfigsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Performs a grounding check.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="groundingConfig">
+                /// Required. The resource name of the grounding config, such as
+                /// `projects/*/locations/global/groundingConfigs/default_grounding_config`.
+                /// </param>
+                public virtual CheckRequest Check(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCheckGroundingRequest body, string groundingConfig)
+                {
+                    return new CheckRequest(this.service, body, groundingConfig);
+                }
+
+                /// <summary>Performs a grounding check.</summary>
+                public class CheckRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCheckGroundingResponse>
+                {
+                    /// <summary>Constructs a new Check request.</summary>
+                    public CheckRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCheckGroundingRequest body, string groundingConfig) : base(service)
+                    {
+                        GroundingConfig = groundingConfig;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the grounding config, such as
+                    /// `projects/*/locations/global/groundingConfigs/default_grounding_config`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("groundingConfig", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string GroundingConfig { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCheckGroundingRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "check";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+groundingConfig}:check";
+
+                    /// <summary>Initializes Check parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("groundingConfig", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "groundingConfig",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/groundingConfigs/[^/]+$",
                         });
                     }
                 }
@@ -13863,6 +15585,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("successCount")]
         public virtual System.Nullable<long> SuccessCount { get; set; }
 
+        /// <summary>Total count of entries that were processed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalCount")]
+        public virtual System.Nullable<long> TotalCount { get; set; }
+
         private string _updateTimeRaw;
 
         private object _updateTime;
@@ -14753,6 +16479,808 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Defines an answer.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAnswer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Additional answer-skipped reasons. This provides the reason for ignored cases. If nothing is skipped, this
+        /// field is not set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerSkippedReasons")]
+        public virtual System.Collections.Generic.IList<string> AnswerSkippedReasons { get; set; }
+
+        /// <summary>The textual answer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerText")]
+        public virtual string AnswerText { get; set; }
+
+        /// <summary>Citations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("citations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAnswerCitation> Citations { get; set; }
+
+        private string _completeTimeRaw;
+
+        private object _completeTime;
+
+        /// <summary>Output only. Answer completed timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completeTime")]
+        public virtual string CompleteTimeRaw
+        {
+            get => _completeTimeRaw;
+            set
+            {
+                _completeTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _completeTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CompleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CompleteTimeDateTimeOffset instead.")]
+        public virtual object CompleteTime
+        {
+            get => _completeTime;
+            set
+            {
+                _completeTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _completeTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CompleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CompleteTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CompleteTimeRaw);
+            set => CompleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Answer creation timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Immutable. Fully qualified name
+        /// `project/*/locations/global/collections/{collection}/engines/{engine}/sessions/*/answers/*`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Query understanding information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryUnderstandingInfo")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAnswerQueryUnderstandingInfo QueryUnderstandingInfo { get; set; }
+
+        /// <summary>References.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("references")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAnswerReference> References { get; set; }
+
+        /// <summary>Suggested related questions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relatedQuestions")]
+        public virtual System.Collections.Generic.IList<string> RelatedQuestions { get; set; }
+
+        /// <summary>The state of the answer generation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Answer generation steps.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("steps")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAnswerStep> Steps { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Citation info for a segment.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAnswerCitation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>End of the attributed segment, exclusive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endIndex")]
+        public virtual System.Nullable<long> EndIndex { get; set; }
+
+        /// <summary>Citation sources for the attributed segment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sources")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAnswerCitationSource> Sources { get; set; }
+
+        /// <summary>Index indicates the start of the segment, measured in bytes (UTF-8 unicode).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
+        public virtual System.Nullable<long> StartIndex { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Citation source.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAnswerCitationSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>ID of the citation source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referenceId")]
+        public virtual string ReferenceId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for ConversationalSearchService.AnswerQuery method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAnswerQueryRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Answer generation specification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerGenerationSpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestAnswerGenerationSpec AnswerGenerationSpec { get; set; }
+
+        /// <summary>
+        /// Asynchronous mode control. If enabled, the response will be returned with answer/session resource name
+        /// without final answer. The API users need to do the polling to get the latest status of answer/session by
+        /// calling ConversationalSearchService.GetAnswer or ConversationalSearchService.GetSession method.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("asynchronousMode")]
+        public virtual System.Nullable<bool> AsynchronousMode { get; set; }
+
+        /// <summary>Required. Current user query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual GoogleCloudDiscoveryengineV1alphaQuery Query { get; set; }
+
+        /// <summary>Query understanding specification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryUnderstandingSpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestQueryUnderstandingSpec QueryUnderstandingSpec { get; set; }
+
+        /// <summary>Related questions specification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relatedQuestionsSpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestRelatedQuestionsSpec RelatedQuestionsSpec { get; set; }
+
+        /// <summary>Model specification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("safetySpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSafetySpec SafetySpec { get; set; }
+
+        /// <summary>Search specification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchSpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpec SearchSpec { get; set; }
+
+        /// <summary>
+        /// The session resource name. Not required. When session field is not set, the API is in sessionless mode. We
+        /// support auto session mode: users can use the wildcard symbol “-” as session id. A new id will be
+        /// automatically generated and assigned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("session")]
+        public virtual string Session { get; set; }
+
+        /// <summary>
+        /// A unique identifier for tracking visitors. For example, this could be implemented with an HTTP cookie, which
+        /// should be able to uniquely identify a visitor on a single device. This unique identifier should not change
+        /// if the visitor logs in or out of the website. This field should NOT have a fixed value such as
+        /// `unknown_visitor`. The field must be a UTF-8 encoded string with a length limit of 128 characters.
+        /// Otherwise, an `INVALID_ARGUMENT` error is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userPseudoId")]
+        public virtual string UserPseudoId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Answer generation specification.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestAnswerGenerationSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Language code for Answer. Use language tags defined by
+        /// [BCP47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). Note: This is an experimental feature.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerLanguageCode")]
+        public virtual string AnswerLanguageCode { get; set; }
+
+        /// <summary>
+        /// Specifies whether to filter out adversarial queries. The default value is `false`. Google employs
+        /// search-query classification to detect adversarial queries. No answer is returned if the search query is
+        /// classified as an adversarial query. For example, a user might ask a question regarding negative comments
+        /// about the company or submit a query designed to generate unsafe, policy-violating output. If this field is
+        /// set to `true`, we skip generating answers for adversarial queries and return fallback messages instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreAdversarialQuery")]
+        public virtual System.Nullable<bool> IgnoreAdversarialQuery { get; set; }
+
+        /// <summary>
+        /// Specifies whether to filter out queries that are not answer-seeking. The default value is `false`. Google
+        /// employs search-query classification to detect answer-seeking queries. No answer is returned if the search
+        /// query is classified as a non-answer seeking query. If this field is set to `true`, we skip generating
+        /// answers for non-answer seeking queries and return fallback messages instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreNonAnswerSeekingQuery")]
+        public virtual System.Nullable<bool> IgnoreNonAnswerSeekingQuery { get; set; }
+
+        /// <summary>
+        /// Specifies whether to include citation metadata in the answer. The default value is `false`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeCitations")]
+        public virtual System.Nullable<bool> IncludeCitations { get; set; }
+
+        /// <summary>Answer generation model specification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelSpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestAnswerGenerationSpecModelSpec ModelSpec { get; set; }
+
+        /// <summary>Answer generation prompt specification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promptSpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestAnswerGenerationSpecPromptSpec PromptSpec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Answer Generation Model specification.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestAnswerGenerationSpecModelSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Model version. If not set, it will use the default stable model. Allowed values are: stable, preview.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelVersion")]
+        public virtual string ModelVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Answer generation prompt specification.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestAnswerGenerationSpecPromptSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Customized preamble.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preamble")]
+        public virtual string Preamble { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Query understanding specification.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestQueryUnderstandingSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Query classification specification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryClassificationSpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpec QueryClassificationSpec { get; set; }
+
+        /// <summary>Query rephraser specification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryRephraserSpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestQueryUnderstandingSpecQueryRephraserSpec QueryRephraserSpec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Query classification specification.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestQueryUnderstandingSpecQueryClassificationSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Enabled query classification types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("types")]
+        public virtual System.Collections.Generic.IList<string> Types { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Query rephraser specification.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestQueryUnderstandingSpecQueryRephraserSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Disable query rephraser.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disable")]
+        public virtual System.Nullable<bool> Disable { get; set; }
+
+        /// <summary>
+        /// Max rephrase steps. The max number is 10 steps. If not set or set to &amp;lt; 1, it will be set to 1 by
+        /// default.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxRephraseSteps")]
+        public virtual System.Nullable<int> MaxRephraseSteps { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Related questions specification.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestRelatedQuestionsSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Enable related questions feature if true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enable")]
+        public virtual System.Nullable<bool> Enable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Safety specification.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSafetySpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Enable the safety filtering on the answer response. It is false by default.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enable")]
+        public virtual System.Nullable<bool> Enable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Search specification.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Search parameters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchParams")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchParams SearchParams { get; set; }
+
+        /// <summary>Search result list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchResultList")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultList SearchResultList { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Search parameters.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchParams : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Boost specification to boost certain documents in search results which may affect the answer query response.
+        /// For more information on boosting, see [Boosting](https://cloud.google.com/retail/docs/boosting#boost)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boostSpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpec BoostSpec { get; set; }
+
+        /// <summary>
+        /// The filter syntax consists of an expression language for constructing a predicate from one or more fields of
+        /// the documents being filtered. Filter expression is case-sensitive. This will be used to filter search
+        /// results which may affect the Answer response. If this field is unrecognizable, an `INVALID_ARGUMENT` is
+        /// returned. Filtering in Vertex AI Search is done by mapping the LHS filter key to a key property defined in
+        /// the Vertex AI Search backend -- this mapping is defined by the customer in their schema. For example a media
+        /// customers might have a field 'name' in their schema. In this case the filter would look like this: filter
+        /// --&amp;gt; name:'ANY("king kong")' For more information about filtering including syntax and filter
+        /// operators, see [Filter](https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>Number of search results to return. The default value is 10.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxReturnResults")]
+        public virtual System.Nullable<int> MaxReturnResults { get; set; }
+
+        /// <summary>
+        /// The order in which documents are returned. Documents can be ordered by a field in an Document object. Leave
+        /// it unset if ordered by relevance. `order_by` expression is case-sensitive. For more information on ordering,
+        /// see [Ordering](https://cloud.google.com/retail/docs/filter-and-order#order) If this field is unrecognizable,
+        /// an `INVALID_ARGUMENT` is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orderBy")]
+        public virtual string OrderBy { get; set; }
+
+        /// <summary>
+        /// Specifies the search result mode. If unspecified, the search result mode is based on
+        /// DataStore.DocumentProcessingConfig.chunking_config: * If DataStore.DocumentProcessingConfig.chunking_config
+        /// is specified, it defaults to `CHUNKS`. * Otherwise, it defaults to `DOCUMENTS`. See [parse and chunk
+        /// documents](https://cloud.google.com/generative-ai-app-builder/docs/parse-chunk-documents)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchResultMode")]
+        public virtual string SearchResultMode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Search result list.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Search results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchResults")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResult> SearchResults { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Search result.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Chunk information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunkInfo")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultChunkInfo ChunkInfo { get; set; }
+
+        /// <summary>Unstructured document information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unstructuredDocumentInfo")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfo UnstructuredDocumentInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Chunk information.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultChunkInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Chunk resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunk")]
+        public virtual string Chunk { get; set; }
+
+        /// <summary>Chunk textual content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Unstructured document information.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Document resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("document")]
+        public virtual string Document { get; set; }
+
+        /// <summary>List of document contexts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentContexts")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoDocumentContext> DocumentContexts { get; set; }
+
+        /// <summary>List of extractive answers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extractiveAnswers")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveAnswer> ExtractiveAnswers { get; set; }
+
+        /// <summary>List of extractive segments.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extractiveSegments")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegment> ExtractiveSegments { get; set; }
+
+        /// <summary>Title.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>URI for the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Document context.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoDocumentContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Document content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>Page identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageIdentifier")]
+        public virtual string PageIdentifier { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Extractive answer. [Guide](https://cloud.google.com/generative-ai-app-builder/docs/snippets#get-answers)
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveAnswer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Extractive answer content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>Page identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageIdentifier")]
+        public virtual string PageIdentifier { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Extractive segment.
+    /// [Guide](https://cloud.google.com/generative-ai-app-builder/docs/snippets#extractive-segments)
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaAnswerQueryRequestSearchSpecSearchResultListSearchResultUnstructuredDocumentInfoExtractiveSegment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Extractive segment content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>Page identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageIdentifier")]
+        public virtual string PageIdentifier { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ConversationalSearchService.AnswerQuery method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAnswerQueryResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Answer resource object. If AnswerQueryRequest.StepSpec.max_step_count is greater than 1, use Answer.name to
+        /// fetch answer information using ConversationalSearchService.GetAnswer API.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answer")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAnswer Answer { get; set; }
+
+        /// <summary>
+        /// Session resource object. It will be only available when session field is set and valid in the
+        /// AnswerQueryRequest request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("session")]
+        public virtual GoogleCloudDiscoveryengineV1alphaSession Session { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Query understanding information.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAnswerQueryUnderstandingInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Query classification information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryClassificationInfo")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAnswerQueryUnderstandingInfoQueryClassificationInfo> QueryClassificationInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Query classification information.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAnswerQueryUnderstandingInfoQueryClassificationInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Classification output.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("positive")]
+        public virtual System.Nullable<bool> Positive { get; set; }
+
+        /// <summary>Query classification type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Reference.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAnswerReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Chunk information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunkInfo")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAnswerReferenceChunkInfo ChunkInfo { get; set; }
+
+        /// <summary>Unstructured document information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unstructuredDocumentInfo")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAnswerReferenceUnstructuredDocumentInfo UnstructuredDocumentInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Chunk information.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAnswerReferenceChunkInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Chunk resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunk")]
+        public virtual string Chunk { get; set; }
+
+        /// <summary>Chunk textual content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>Document metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentMetadata")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAnswerReferenceChunkInfoDocumentMetadata DocumentMetadata { get; set; }
+
+        /// <summary>Relevance score.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relevanceScore")]
+        public virtual System.Nullable<float> RelevanceScore { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Document metadata.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAnswerReferenceChunkInfoDocumentMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Document resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("document")]
+        public virtual string Document { get; set; }
+
+        /// <summary>Page identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageIdentifier")]
+        public virtual string PageIdentifier { get; set; }
+
+        /// <summary>Title.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>URI for the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Unstructured document information.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAnswerReferenceUnstructuredDocumentInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of cited chunk contents derived from document content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunkContents")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAnswerReferenceUnstructuredDocumentInfoChunkContent> ChunkContents { get; set; }
+
+        /// <summary>Document resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("document")]
+        public virtual string Document { get; set; }
+
+        /// <summary>Title.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>URI for the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Chunk content.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAnswerReferenceUnstructuredDocumentInfoChunkContent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Chunk textual content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>Page identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageIdentifier")]
+        public virtual string PageIdentifier { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Step information.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAnswerStep : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Actions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAnswerStepAction> Actions { get; set; }
+
+        /// <summary>The description of the step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>The state of the step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The thought of the step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thought")]
+        public virtual string Thought { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Action.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAnswerStepAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Observation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("observation")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAnswerStepActionObservation Observation { get; set; }
+
+        /// <summary>Search action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchAction")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAnswerStepActionSearchAction SearchAction { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Observation.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAnswerStepActionObservation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Search results observed by the search action, it can be snippets info or chunk info, depending on the
+        /// citation type set by the user.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchResults")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAnswerStepActionObservationSearchResult> SearchResults { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDiscoveryengineV1alphaAnswerStepActionObservationSearchResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If citation_type is CHUNK_LEVEL_CITATION and chunk mode is on, populate chunk info.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunkInfo")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAnswerStepActionObservationSearchResultChunkInfo> ChunkInfo { get; set; }
+
+        /// <summary>Document resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("document")]
+        public virtual string Document { get; set; }
+
+        /// <summary>If citation_type is DOCUMENT_LEVEL_CITATION, populate document level snippets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snippetInfo")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAnswerStepActionObservationSearchResultSnippetInfo> SnippetInfo { get; set; }
+
+        /// <summary>Title.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>URI for the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Chunk information.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAnswerStepActionObservationSearchResultChunkInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Chunk resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunk")]
+        public virtual string Chunk { get; set; }
+
+        /// <summary>Chunk textual content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>Relevance score.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relevanceScore")]
+        public virtual System.Nullable<float> RelevanceScore { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Snippet information.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAnswerStepActionObservationSearchResultSnippetInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Snippet content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
+        public virtual string Snippet { get; set; }
+
+        /// <summary>Status of the snippet defined by the search team.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snippetStatus")]
+        public virtual string SnippetStatus { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Search action.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAnswerStepActionSearchAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The query to search.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual string Query { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Metadata related to the progress of the SiteSearchEngineService.BatchCreateTargetSites operation. This will be
     /// returned by the google.longrunning.Operation.metadata field.
@@ -14877,7 +17405,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// `user_event` (default): One UserEvent per row. Supported values for document imports: * `document`
         /// (default): One Document format per row. Each document must have a valid Document.id and one of
         /// Document.json_data or Document.struct_data. * `custom`: One custom data per row in arbitrary format that
-        /// conforms to the defined Schema of the data store. This can only be used by Gen App Builder.
+        /// conforms to the defined Schema of the data store. This can only be used by the GENERIC Data Store vertical.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSchema")]
         public virtual string DataSchema { get; set; }
@@ -14927,7 +17455,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDiscoveryengineV1alphaBigtableOptionsBigtableColumnFamily> Families { get; set; }
 
         /// <summary>
-        /// The field name used for saving row key value in the UCS document. The name has to match a-zA-Z0-9*
+        /// The field name used for saving row key value in the document. The name has to match the pattern
+        /// `a-zA-Z0-9*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyFieldName")]
         public virtual string KeyFieldName { get; set; }
@@ -14936,34 +17465,35 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The column of the Bigtable.</summary>
     public class GoogleCloudDiscoveryengineV1alphaBigtableOptionsBigtableColumn : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The encoding mode of the values when the type is not STRING. Acceptable encoding values are: TEXT
-        /// - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase
-        /// Bytes.toBytes family of functions. This can be overridden for a specific column by listing that column in
-        /// 'columns' and specifying an encoding for it.
+        /// The encoding mode of the values when the type is not `STRING`. Acceptable encoding values are: * `TEXT`:
+        /// indicates values are alphanumeric text strings. * `BINARY`: indicates values are encoded using `HBase
+        /// Bytes.toBytes` family of functions. This can be overridden for a specific column by listing that column in
+        /// `columns` and specifying an encoding for it.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encoding")]
         public virtual string Encoding { get; set; }
 
         /// <summary>
-        /// The field name to use for this column in the UCS document. The name has to match a-zA-Z0-9* If not set, we
-        /// will parse it from the qualifier bytes with best effort. However, field name collisions could happen, where
-        /// parsing behavior is undefined.
+        /// The field name to use for this column in the document. The name has to match the pattern `a-zA-Z0-9*`. If
+        /// not set, it is parsed from the qualifier bytes with best effort. However, due to different naming patterns,
+        /// field name collisions could happen, where parsing behavior is undefined.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldName")]
         public virtual string FieldName { get; set; }
 
         /// <summary>
-        /// Required. Qualifier of the column. If cannot decode with utf-8, store a base-64 encoded string.
+        /// Required. Qualifier of the column. If it cannot be decoded with utf-8, use a base-64 encoded string instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("qualifier")]
         public virtual string Qualifier { get; set; }
 
         /// <summary>
-        /// Optional. The type of values in this column family. The values are expected to be encoded using HBase
-        /// Bytes.toBytes function when the encoding value is set to BINARY.
+        /// The type of values in this column family. The values are expected to be encoded using `HBase Bytes.toBytes`
+        /// function when the encoding value is set to `BINARY`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -14972,6 +17502,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The column family of the Bigtable.</summary>
     public class GoogleCloudDiscoveryengineV1alphaBigtableOptionsBigtableColumnFamily : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -14982,25 +17513,25 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaBigtableOptionsBigtableColumn> Columns { get; set; }
 
         /// <summary>
-        /// Optional. The encoding mode of the values when the type is not STRING. Acceptable encoding values are: TEXT
-        /// - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase
-        /// Bytes.toBytes family of functions. This can be overridden for a specific column by listing that column in
-        /// 'columns' and specifying an encoding for it.
+        /// The encoding mode of the values when the type is not STRING. Acceptable encoding values are: * `TEXT`:
+        /// indicates values are alphanumeric text strings. * `BINARY`: indicates values are encoded using `HBase
+        /// Bytes.toBytes` family of functions. This can be overridden for a specific column by listing that column in
+        /// `columns` and specifying an encoding for it.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encoding")]
         public virtual string Encoding { get; set; }
 
         /// <summary>
-        /// The field name to use for this column family in the UCS document. The name has to match a-zA-Z0-9* If not
-        /// set, we will parse it from the family name with best effort. However, due to difference naming pattern,
-        /// there could be field name collisions, where parsing behavior is undefined.
+        /// The field name to use for this column family in the document. The name has to match the pattern
+        /// `a-zA-Z0-9*`. If not set, it is parsed from the family name with best effort. However, due to different
+        /// naming patterns, field name collisions could happen, where parsing behavior is undefined.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldName")]
         public virtual string FieldName { get; set; }
 
         /// <summary>
-        /// Optional. The type of values in this column family. The values are expected to be encoded using HBase
-        /// Bytes.toBytes function when the encoding value is set to BINARY.
+        /// The type of values in this column family. The values are expected to be encoded using `HBase Bytes.toBytes`
+        /// function when the encoding value is set to `BINARY`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -15009,7 +17540,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The Cloud Bigtable source for importing data</summary>
+    /// <summary>The Cloud Bigtable source for importing data.</summary>
     public class GoogleCloudDiscoveryengineV1alphaBigtableSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -15019,20 +17550,111 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bigtableOptions")]
         public virtual GoogleCloudDiscoveryengineV1alphaBigtableOptions BigtableOptions { get; set; }
 
-        /// <summary>Required. The instance ID of the Cloud Bigtable that needs to be exported.</summary>
+        /// <summary>Required. The instance ID of the Cloud Bigtable that needs to be imported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceId")]
         public virtual string InstanceId { get; set; }
 
         /// <summary>
-        /// The project ID (can be project # or ID) that the Bigtable source is in with a length limit of 128
-        /// characters. If not specified, inherits the project ID from the parent request.
+        /// The project ID that the Bigtable source is in with a length limit of 128 characters. If not specified,
+        /// inherits the project ID from the parent request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
 
-        /// <summary>Required. The table ID of the Cloud Bigtable that needs to be exported.</summary>
+        /// <summary>Required. The table ID of the Cloud Bigtable that needs to be imported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
         public virtual string TableId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for GroundedGenerationService.CheckGrounding method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaCheckGroundingRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Answer candidate to check.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerCandidate")]
+        public virtual string AnswerCandidate { get; set; }
+
+        /// <summary>List of facts for the grounding check. We support up to 200 facts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("facts")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaGroundingFact> Facts { get; set; }
+
+        /// <summary>Configuration of the grounding check.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groundingSpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaCheckGroundingSpec GroundingSpec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for the GroundedGenerationService.CheckGrounding method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaCheckGroundingResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// List of facts cited across all claims in the answer candidate. These are derived from the facts supplied in
+        /// the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("citedChunks")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaFactChunk> CitedChunks { get; set; }
+
+        /// <summary>Claim texts and citation info across all claims in the answer candidate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("claims")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaCheckGroundingResponseClaim> Claims { get; set; }
+
+        /// <summary>
+        /// The support score for the input answer candidate. Higher the score, higher is the fraction of claims that
+        /// are supported by the provided facts. This is always set when a response is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportScore")]
+        public virtual System.Nullable<float> SupportScore { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Text and citation info for a claim in the answer candidate.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaCheckGroundingResponseClaim : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A list of indices (into 'cited_chunks') specifying the citations associated with the claim. For instance
+        /// [1,3,4] means that cited_chunks[1], cited_chunks[3], cited_chunks[4] are the facts cited supporting for the
+        /// claim. A citation to a fact indicates that the claim is supported by the fact.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("citationIndices")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> CitationIndices { get; set; }
+
+        /// <summary>
+        /// Text for the claim in the answer candidate. Always provided regardless of whether citations or
+        /// anti-citations are found.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("claimText")]
+        public virtual string ClaimText { get; set; }
+
+        /// <summary>Position indicating the end of the claim in the answer candidate, exclusive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endPos")]
+        public virtual System.Nullable<int> EndPos { get; set; }
+
+        /// <summary>
+        /// Position indicating the start of the claim in the answer candidate, measured in bytes/unicode.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startPos")]
+        public virtual System.Nullable<int> StartPos { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specification for the grounding check.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaCheckGroundingSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The threshold (in [0,1]) used for determining whether a fact must be cited for a claim in the answer
+        /// candidate. Choosing a higher threshold will lead to fewer but very strong citations, while choosing a lower
+        /// threshold may lead to more but somewhat weaker citations. If unset, the threshold will default to 0.6.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("citationThreshold")]
+        public virtual System.Nullable<double> CitationThreshold { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15062,7 +17684,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("documentMetadata")]
         public virtual GoogleCloudDiscoveryengineV1alphaChunkDocumentMetadata DocumentMetadata { get; set; }
 
-        /// <summary>Unique chunk id of the current chunk.</summary>
+        /// <summary>Unique chunk ID of the current chunk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
@@ -15145,10 +17767,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string DatabaseId { get; set; }
 
         /// <summary>
-        /// Optional. Intermediate Cloud Storage directory used for the import with a length limit of 2,000 characters.
-        /// Can be specified if one wants to have the Cloud SQL export to a specific Cloud Storage directory. Please
-        /// ensure that the Cloud SQL service account has the necessary GCS Storage Admin permissions to access the
-        /// specified GCS directory.
+        /// Intermediate Cloud Storage directory used for the import with a length limit of 2,000 characters. Can be
+        /// specified if one wants to have the Cloud SQL export to a specific Cloud Storage directory. Please ensure
+        /// that the Cloud SQL service account has the necessary Cloud Storage Admin permissions to access the specified
+        /// Cloud Storage directory.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsStagingDir")]
         public virtual string GcsStagingDir { get; set; }
@@ -15160,15 +17782,15 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string InstanceId { get; set; }
 
         /// <summary>
-        /// Optional. Option for serverless export. Enabling this option will incur additional cost. More info:
-        /// https://cloud.google.com/sql/pricing#serverless
+        /// Option for serverless export. Enabling this option will incur additional cost. More info can be found
+        /// [here](https://cloud.google.com/sql/pricing#serverless).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offload")]
         public virtual System.Nullable<bool> Offload { get; set; }
 
         /// <summary>
-        /// Optional. The project ID (can be project # or ID) that the Cloud SQL source is in with a length limit of 128
-        /// characters. If not specified, inherits the project ID from the parent request.
+        /// The project ID that the Cloud SQL source is in with a length limit of 128 characters. If not specified,
+        /// inherits the project ID from the parent request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
@@ -17476,6 +20098,28 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Fact Chunk.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaFactChunk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Text content of the fact chunk. Can be at most 10K characters long.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunkText")]
+        public virtual string ChunkText { get; set; }
+
+        /// <summary>
+        /// Source from which this fact chunk was retrieved. If it was retrieved from the GroundingFacts provided in the
+        /// request then this field will contain the index of the specific fact from which this chunk was retrieved.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
+        /// <summary>More fine-grained information for the source reference.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceMetadata")]
+        public virtual System.Collections.Generic.IDictionary<string, string> SourceMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for SiteSearchEngineService.FetchDomainVerificationStatus method.</summary>
     public class GoogleCloudDiscoveryengineV1alphaFetchDomainVerificationStatusResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -17620,7 +20264,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     public class GoogleCloudDiscoveryengineV1alphaFirestoreSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The Firestore collection to copy the data from with a length limit of 1500 characters.
+        /// Required. The Firestore collection to copy the data from with a length limit of 1,500 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("collectionId")]
         public virtual string CollectionId { get; set; }
@@ -17632,17 +20276,17 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string DatabaseId { get; set; }
 
         /// <summary>
-        /// Optional. Intermediate Cloud Storage directory used for the import with a length limit of 2,000 characters.
-        /// Can be specified if one wants to have the Firestore export to a specific Cloud Storage directory. Please
-        /// ensure that the Firestore service account has the necessary GCS Storage Admin permissions to access the
-        /// specified GCS directory.
+        /// Intermediate Cloud Storage directory used for the import with a length limit of 2,000 characters. Can be
+        /// specified if one wants to have the Firestore export to a specific Cloud Storage directory. Please ensure
+        /// that the Firestore service account has the necessary Cloud Storage Admin permissions to access the specified
+        /// Cloud Storage directory.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsStagingDir")]
         public virtual string GcsStagingDir { get; set; }
 
         /// <summary>
-        /// Optional. The project ID (can be project # or ID) that the Cloud SQL source is in with a length limit of 128
-        /// characters. If not specified, inherits the project ID from the parent request.
+        /// The project ID that the Cloud SQL source is in with a length limit of 128 characters. If not specified,
+        /// inherits the project ID from the parent request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
@@ -17659,10 +20303,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// (default): One JSON Document per line. Each document must have a valid Document.id. * `content`:
         /// Unstructured data (e.g. PDF, HTML). Each file matched by `input_uris` becomes a document, with the ID set to
         /// the first 128 bits of SHA256(URI) encoded as a hex string. * `custom`: One custom data JSON per row in
-        /// arbitrary format that conforms to the defined Schema of the data store. This can only be used by Gen App
-        /// Builder. * `csv`: A CSV file with header conforming to the defined Schema of the data store. Each entry
-        /// after the header is imported as a Document. This can only be used by Gen App Builder. Supported values for
-        /// user even imports: * `user_event` (default): One JSON UserEvent per line.
+        /// arbitrary format that conforms to the defined Schema of the data store. This can only be used by the GENERIC
+        /// Data Store vertical. * `csv`: A CSV file with header conforming to the defined Schema of the data store.
+        /// Each entry after the header is imported as a Document. This can only be used by the GENERIC Data Store
+        /// vertical. Supported values for user even imports: * `user_event` (default): One JSON UserEvent per line.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSchema")]
         public virtual string DataSchema { get; set; }
@@ -17680,15 +20324,19 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Grounding configuration.</summary>
-    public class GoogleCloudDiscoveryengineV1alphaGroundingConfig : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>Grounding Fact.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaGroundingFact : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Name of the GroundingConfig, of the form
-        /// `projects/{project}/locations/{location}/groundingConfig`.
+        /// Attributes associated with the fact. Common attributes include `source` (indicating where the fact was
+        /// sourced from), `author` (indicating the author of the fact), and so on.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Attributes { get; set; }
+
+        /// <summary>Text content of the fact. Can be at most 10K characters long.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("factText")]
+        public virtual string FactText { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17899,6 +20547,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("successCount")]
         public virtual System.Nullable<long> SuccessCount { get; set; }
 
+        /// <summary>Total count of entries that were processed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalCount")]
+        public virtual System.Nullable<long> TotalCount { get; set; }
+
         private string _updateTimeRaw;
 
         private object _updateTime;
@@ -17950,8 +20602,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// or set to `false`, Document.ids have to be specified using id_field, otherwise, documents without IDs fail
         /// to be imported. Supported data sources: * GcsSource. GcsSource.data_schema must be `custom` or `csv`.
         /// Otherwise, an INVALID_ARGUMENT error is thrown. * BigQuerySource. BigQuerySource.data_schema must be
-        /// `custom` or `csv`. Otherwise, an INVALID_ARGUMENT error is thrown. * SpannerSource * CloudSqlSource *
-        /// FirestoreSource * BigtableSource
+        /// `custom` or `csv`. Otherwise, an INVALID_ARGUMENT error is thrown. * SpannerSource. * CloudSqlSource. *
+        /// FirestoreSource. * BigtableSource.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoGenerateIds")]
         public virtual System.Nullable<bool> AutoGenerateIds { get; set; }
@@ -17995,7 +20647,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// unset, a default value `_id` is used when importing from the allowed data sources. Supported data sources: *
         /// GcsSource. GcsSource.data_schema must be `custom` or `csv`. Otherwise, an INVALID_ARGUMENT error is thrown.
         /// * BigQuerySource. BigQuerySource.data_schema must be `custom` or `csv`. Otherwise, an INVALID_ARGUMENT error
-        /// is thrown. * SpannerSource * CloudSqlSource * FirestoreSource * BigtableSource
+        /// is thrown. * SpannerSource. * CloudSqlSource. * FirestoreSource. * BigtableSource.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idField")]
         public virtual string IdField { get; set; }
@@ -18014,6 +20666,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Spanner input source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spannerSource")]
         public virtual GoogleCloudDiscoveryengineV1alphaSpannerSource SpannerSource { get; set; }
+
+        /// <summary>
+        /// Indicates which fields in the provided imported documents to update. If not set, the default is to update
+        /// all fields.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -18490,6 +21149,21 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>All the ServingConfigs for a given dataStore.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servingConfigs")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaServingConfig> ServingConfigs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for ListSessions method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaListSessionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Pagination token, if not returned indicates the last page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>All the Sessions for a given data store.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaSession> Sessions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -19086,6 +21760,21 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Defines a user inputed query.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaQuery : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Unique Id for the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryId")]
+        public virtual string QueryId { get; set; }
+
+        /// <summary>Plain text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for RankService.Rank method.</summary>
     public class GoogleCloudDiscoveryengineV1alphaRankRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -19107,7 +21796,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual string Query { get; set; }
 
-        /// <summary>Required. A list of records to rank.</summary>
+        /// <summary>Required. A list of records to rank. At most 100 records to rank.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("records")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaRankingRecord> Records { get; set; }
 
@@ -19670,9 +22359,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string OrderBy { get; set; }
 
         /// <summary>
-        /// Maximum number of Documents to return. If unspecified, defaults to a reasonable value. The maximum allowed
-        /// value is 100. Values above 100 are coerced to 100. If this field is negative, an `INVALID_ARGUMENT` is
-        /// returned.
+        /// Maximum number of Documents to return. The maximum allowed value depends on the data type. Values above the
+        /// maximum value are coerced to the maximum value. * Websites with basic indexing: Default `10`, Maximum `25`.
+        /// * Websites with advanced indexing: Default `25`, Maximum `50`. * Other: Default `50`, Maximum `100`. If this
+        /// field is negative, an `INVALID_ARGUMENT` is returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
         public virtual System.Nullable<int> PageSize { get; set; }
@@ -19809,6 +22499,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("boost")]
         public virtual System.Nullable<float> Boost { get; set; }
 
+        /// <summary>Complex specification for custom ranking based on customer defined attribute value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boostControlSpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpecConditionBoostSpecBoostControlSpec BoostControlSpec { get; set; }
+
         /// <summary>
         /// An expression which specifies a boost condition. The syntax and supported fields are the same as a filter
         /// expression. See SearchRequest.filter for detail syntax and limitations. Examples: * To boost documents with
@@ -19817,6 +22511,65 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual string Condition { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specification for custom ranking based on customer specified attribute value. It provides more controls for
+    /// customized ranking than the simple (condition, boost) combination above.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpecConditionBoostSpecBoostControlSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The attribute type to be used to determine the boost amount. The attribute value can be derived from the
+        /// field value of the specified field_name. In the case of numerical it is straightforward i.e. attribute_value
+        /// = numerical_field_value. In the case of freshness however, attribute_value = (time.now() -
+        /// datetime_field_value).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributeType")]
+        public virtual string AttributeType { get; set; }
+
+        /// <summary>
+        /// The control points used to define the curve. The monotonic function (defined through the interpolation_type
+        /// above) passes through the control points listed here.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("controlPoints")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpecConditionBoostSpecBoostControlSpecControlPoint> ControlPoints { get; set; }
+
+        /// <summary>The name of the field whose value will be used to determine the boost amount.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldName")]
+        public virtual string FieldName { get; set; }
+
+        /// <summary>The interpolation type to be applied to connect the control points listed below.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interpolationType")]
+        public virtual string InterpolationType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The control points used to define the curve. The curve defined through these control points can only be
+    /// monotonically increasing or decreasing(constant values are acceptable).
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpecConditionBoostSpecBoostControlSpecControlPoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Can be one of: 1. The numerical field value. 2. The duration spec for freshness: The value must be formatted
+        /// as an XSD `dayTimeDuration` value (a restricted subset of an ISO 8601 duration value). The pattern for this
+        /// is: `nDnM]`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributeValue")]
+        public virtual string AttributeValue { get; set; }
+
+        /// <summary>
+        /// The value between -1 to 1 by which to boost the score if the attribute_value evaluates to the value
+        /// specified above.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boostAmount")]
+        public virtual System.Nullable<float> BoostAmount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20906,6 +23659,121 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>External session proto definition.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaSession : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Output only. The time the session finished.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Immutable. Fully qualified name
+        /// `project/*/locations/global/collections/{collection}/engines/{engine}/sessions/*`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>Output only. The time the session started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The state of the session.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Turns.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("turns")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaSessionTurn> Turns { get; set; }
+
+        /// <summary>A unique identifier for tracking users.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userPseudoId")]
+        public virtual string UserPseudoId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a turn, including a query from the user and a answer from service.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaSessionTurn : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resource name of the answer to the user query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answer")]
+        public virtual string Answer { get; set; }
+
+        /// <summary>The user query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual GoogleCloudDiscoveryengineV1alphaQuery Query { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// SiteSearchEngine captures DataStore level site search persisting configurations. It is a singleton value per
     /// data store.
@@ -20979,8 +23847,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string DatabaseId { get; set; }
 
         /// <summary>
-        /// Optional. Whether to apply data boost on Spanner export. Enabling this option will incur additional cost.
-        /// More info: https://cloud.google.com/spanner/docs/databoost/databoost-overview#billing_and_quotas
+        /// Whether to apply data boost on Spanner export. Enabling this option will incur additional cost. More info
+        /// can be found [here](https://cloud.google.com/spanner/docs/databoost/databoost-overview#billing_and_quotas).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableDataBoost")]
         public virtual System.Nullable<bool> EnableDataBoost { get; set; }
@@ -21316,8 +24184,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
 
         /// <summary>
         /// The trained model status. Possible values are: * **bad-data**: The training data quality is bad. *
-        /// **no-improvement**: Tuning didn't improve performance. Won't deploy. * **in-progress**: Model training is in
-        /// progress. * **ready**: The model is ready for serving.
+        /// **no-improvement**: Tuning didn't improve performance. Won't deploy. * **in-progress**: Model training job
+        /// creation is in progress. * **training**: Model is actively training. * **evaluating**: The model is
+        /// evaluating trained metrics. * **indexing**: The model trained metrics are indexing. * **ready**: The model
+        /// is ready for serving.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelStatus")]
         public virtual string ModelStatus { get; set; }
@@ -23638,20 +26508,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Grounding configuration.</summary>
-    public class GoogleCloudDiscoveryengineV1betaGroundingConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. Name of the GroundingConfig, of the form
-        /// `projects/{project}/locations/{location}/groundingConfig`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// Metadata related to the progress of the ImportDocuments operation. This is returned by the
     /// google.longrunning.Operation.metadata field.
@@ -23702,6 +26558,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Count of entries that were processed successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("successCount")]
         public virtual System.Nullable<long> SuccessCount { get; set; }
+
+        /// <summary>Total count of entries that were processed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalCount")]
+        public virtual System.Nullable<long> TotalCount { get; set; }
 
         private string _updateTimeRaw;
 
@@ -24502,8 +27362,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
 
         /// <summary>
         /// The trained model status. Possible values are: * **bad-data**: The training data quality is bad. *
-        /// **no-improvement**: Tuning didn't improve performance. Won't deploy. * **in-progress**: Model training is in
-        /// progress. * **ready**: The model is ready for serving.
+        /// **no-improvement**: Tuning didn't improve performance. Won't deploy. * **in-progress**: Model training job
+        /// creation is in progress. * **training**: Model is actively training. * **evaluating**: The model is
+        /// evaluating trained metrics. * **indexing**: The model trained metrics are indexing. * **ready**: The model
+        /// is ready for serving.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelStatus")]
         public virtual string ModelStatus { get; set; }

@@ -2237,9 +2237,9 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         public virtual System.Nullable<int> LineItemIndex { get; set; }
 
         /// <summary>
-        /// Optional. The promotions applied on the line item. It can be: - a free trial promotion, which overrides the
-        /// subscription-level free trial promotion. - an introductory pricing promotion. When used as input in Create
-        /// or Provision API, specify its resource name only.
+        /// Optional. The promotions applied on the line item. It can be: - an introductory pricing promotion. - a free
+        /// trial promotion. This feature is not enabled. If used, the request will be rejected. When used as input in
+        /// Create or Provision API, specify its resource name only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemPromotionSpecs")]
         public virtual System.Collections.Generic.IList<GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec> LineItemPromotionSpecs { get; set; }

@@ -2262,14 +2262,17 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// Returns a SpaceEvent. You can request events from up to 28 days before the time of the request. The
-            /// server will return the most recent version of the resource. For example, if a
-            /// `google.workspace.chat.message.v1.created` event is requested and the message has since been deleted,
-            /// the returned event will contain the deleted message resource in the payload. Requires [user
-            /// authentication](https://developers.google.com/chat/api/guides/auth/users).
+            /// Returns an event from a Google Chat space. The [event
+            /// payload](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces.spaceEvents#SpaceEvent.FIELDS.oneof_payload)
+            /// contains the most recent version of the resource that changed. For example, if you request an event
+            /// about a new message but the message was later updated, the server returns the updated `Message` resource
+            /// in the event payload. Requires [user
+            /// authentication](https://developers.google.com/chat/api/guides/auth/users). To get an event, the
+            /// authenticated user must be a member of the space. For an example, see [Get details about an event from a
+            /// Google Chat space](https://developers.google.com/workspace/chat/get-space-event).
             /// </summary>
             /// <param name="name">
-            /// Required. The resource name of the event. Format: `spaces/{space}/spaceEvents/{spaceEvent}`
+            /// Required. The resource name of the space event. Format: `spaces/{space}/spaceEvents/{spaceEvent}`
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -2277,11 +2280,14 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// Returns a SpaceEvent. You can request events from up to 28 days before the time of the request. The
-            /// server will return the most recent version of the resource. For example, if a
-            /// `google.workspace.chat.message.v1.created` event is requested and the message has since been deleted,
-            /// the returned event will contain the deleted message resource in the payload. Requires [user
-            /// authentication](https://developers.google.com/chat/api/guides/auth/users).
+            /// Returns an event from a Google Chat space. The [event
+            /// payload](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces.spaceEvents#SpaceEvent.FIELDS.oneof_payload)
+            /// contains the most recent version of the resource that changed. For example, if you request an event
+            /// about a new message but the message was later updated, the server returns the updated `Message` resource
+            /// in the event payload. Requires [user
+            /// authentication](https://developers.google.com/chat/api/guides/auth/users). To get an event, the
+            /// authenticated user must be a member of the space. For an example, see [Get details about an event from a
+            /// Google Chat space](https://developers.google.com/workspace/chat/get-space-event).
             /// </summary>
             public class GetRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.SpaceEvent>
             {
@@ -2293,7 +2299,7 @@ namespace Google.Apis.HangoutsChat.v1
                 }
 
                 /// <summary>
-                /// Required. The resource name of the event. Format: `spaces/{space}/spaceEvents/{spaceEvent}`
+                /// Required. The resource name of the space event. Format: `spaces/{space}/spaceEvents/{spaceEvent}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -2323,14 +2329,19 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// Lists SpaceEvents in a space that the caller is a member of. You can request events from up to 28 days
-            /// before the time of the request. The server will return the most recent version of the resources. For
-            /// example, if a `google.workspace.chat.message.v1.created` event is requested and the message has since
-            /// been deleted, the returned event will contain the deleted message resource in the payload. Requires
-            /// [user authentication](https://developers.google.com/chat/api/guides/auth/users).
+            /// Lists events from a Google Chat space. For each event, the
+            /// [payload](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces.spaceEvents#SpaceEvent.FIELDS.oneof_payload)
+            /// contains the most recent version of the Chat resource. For example, if you list events about new space
+            /// members, the server returns `Membership` resources that contain the latest membership details. If new
+            /// members were removed during the requested period, the event payload contains an empty `Membership`
+            /// resource. Requires [user authentication](https://developers.google.com/chat/api/guides/auth/users). To
+            /// list events, the authenticated user must be a member of the space. For an example, see [List events from
+            /// a Google Chat space](https://developers.google.com/workspace/chat/list-space-events).
             /// </summary>
             /// <param name="parent">
-            /// Required. The resource name of the space from which to list events. Format: `spaces/{space}`.
+            /// Required. Resource name of the [Google Chat
+            /// space](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces) where the events
+            /// occurred. Format: `spaces/{space}`.
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -2338,11 +2349,14 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// Lists SpaceEvents in a space that the caller is a member of. You can request events from up to 28 days
-            /// before the time of the request. The server will return the most recent version of the resources. For
-            /// example, if a `google.workspace.chat.message.v1.created` event is requested and the message has since
-            /// been deleted, the returned event will contain the deleted message resource in the payload. Requires
-            /// [user authentication](https://developers.google.com/chat/api/guides/auth/users).
+            /// Lists events from a Google Chat space. For each event, the
+            /// [payload](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces.spaceEvents#SpaceEvent.FIELDS.oneof_payload)
+            /// contains the most recent version of the Chat resource. For example, if you list events about new space
+            /// members, the server returns `Membership` resources that contain the latest membership details. If new
+            /// members were removed during the requested period, the event payload contains an empty `Membership`
+            /// resource. Requires [user authentication](https://developers.google.com/chat/api/guides/auth/users). To
+            /// list events, the authenticated user must be a member of the space. For an example, see [List events from
+            /// a Google Chat space](https://developers.google.com/workspace/chat/list-space-events).
             /// </summary>
             public class ListRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.ListSpaceEventsResponse>
             {
@@ -2354,22 +2368,28 @@ namespace Google.Apis.HangoutsChat.v1
                 }
 
                 /// <summary>
-                /// Required. The resource name of the space from which to list events. Format: `spaces/{space}`.
+                /// Required. Resource name of the [Google Chat
+                /// space](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces) where the events
+                /// occurred. Format: `spaces/{space}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// Required. A query filter. This method supports filtering by: `event_types`, `start_time`, and
-                /// `end_time`. `event_types`: You must specify at least one event type in your query. `event_types`
-                /// supports the has `:` operator. To filter by multiple event types, use the `OR` operator. To see the
-                /// list of currently supported event types, see google.chat.v1.SpaceEvent.event_type `start_time`:
-                /// Exclusive timestamp from which to start listing space events. You can list events that occurred up
-                /// to 28 days ago. If unspecified, lists space events from the 28 days ago up to end time. `end_time`:
-                /// Inclusive timestamp up to which space events are listed. Default value is the present. `start_time`
-                /// and `end_time` accept a timestamp in [RFC-3339](https://www.rfc-editor.org/rfc/rfc3339) format and
-                /// support the equals `=` comparison operator. To filter by both `start_time` and `end_time`, use the
-                /// `AND` operator. For example, the following queries are valid:
+                /// Required. A query filter. You must specify at least one event type (`event_type`) using the has `:`
+                /// operator. To filter by multiple event types, use the `OR` operator. Omit batch event types in your
+                /// filter. The request automatically returns any related batch events. For example, if you filter by
+                /// new reactions (`google.workspace.chat.reaction.v1.created`), the server also returns batch new
+                /// reactions events (`google.workspace.chat.reaction.v1.batchCreated`). For a list of supported event
+                /// types, see the [`SpaceEvents` reference
+                /// documentation](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces.spaceEvents#SpaceEvent.FIELDS.event_type).
+                /// Optionally, you can also filter by start time (`start_time`) and end time (`end_time`): *
+                /// `start_time`: Exclusive timestamp from which to start listing space events. You can list events that
+                /// occurred up to 28 days ago. If unspecified, lists space events from the past 28 days. * `end_time`:
+                /// Inclusive timestamp until which space events are listed. If unspecified, lists events up to the time
+                /// of the request. To specify a start or end time, use the equals `=` operator and format in
+                /// [RFC-3339](https://www.rfc-editor.org/rfc/rfc3339). To filter by both `start_time` and `end_time`,
+                /// use the `AND` operator. For example, the following queries are valid:
                 /// ```
                 /// start_time="2023-08-23T19:20:33+00:00" AND end_time="2023-08-23T19:21:54+00:00"
                 /// ```
@@ -2392,8 +2412,8 @@ namespace Google.Apis.HangoutsChat.v1
                 public virtual string Filter { get; set; }
 
                 /// <summary>
-                /// Optional. The maximum number of space events returned. The service may return fewer than this value.
-                /// Negative values return an `INVALID_ARGUMENT` error.
+                /// Optional. The maximum number of space events returned. The service might return fewer than this
+                /// value. Negative values return an `INVALID_ARGUMENT` error.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -5687,12 +5707,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// Payload for batch new membership events where the `EventType` field is
-    /// `google.workspace.chat.membership.v1.batchCreated`.
+    /// Event payload for multiple new memberships. Event type: `google.workspace.chat.membership.v1.batchCreated`
     /// </summary>
     public class MembershipBatchCreatedEventData : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of created memberships.</summary>
+        /// <summary>A list of new memberships.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memberships")]
         public virtual System.Collections.Generic.IList<MembershipCreatedEventData> Memberships { get; set; }
 
@@ -5701,8 +5720,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// Payload for batch deleted membership events where the `EventType` field is
-    /// `google.workspace.chat.membership.v1.batchDeleted`.
+    /// Event payload for multiple deleted memberships. Event type: `google.workspace.chat.membership.v1.batchDeleted`
     /// </summary>
     public class MembershipBatchDeletedEventData : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5715,8 +5733,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// Payload for batch updated membership events where the `EventType` field is
-    /// `google.workspace.chat.membership.v1.batchUpdated`.
+    /// Event payload for multiple updated memberships. Event type: `google.workspace.chat.membership.v1.batchUpdated`
     /// </summary>
     public class MembershipBatchUpdatedEventData : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5729,11 +5746,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// Payload for new membership events where the `EventType` field is `google.workspace.chat.membership.v1.created`.
+    /// Event payload for a new membership. Event type: `google.workspace.chat.membership.v1.created`.
     /// </summary>
     public class MembershipCreatedEventData : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The most recent version of membership.</summary>
+        /// <summary>The new membership.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("membership")]
         public virtual Membership Membership { get; set; }
 
@@ -5742,12 +5759,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// Payload for deleted membership events where the `EventType` field is
-    /// `google.workspace.chat.membership.v1.deleted`.
+    /// Event payload for a deleted membership. Event type: `google.workspace.chat.membership.v1.deleted`
     /// </summary>
     public class MembershipDeletedEventData : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The deleted membership. Only `name` and `state` are populated.</summary>
+        /// <summary>The deleted membership. Only the `name` and `state` fields are populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("membership")]
         public virtual Membership Membership { get; set; }
 
@@ -5756,12 +5772,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// Payload for updated membership events where the `EventType` field is
-    /// `google.workspace.chat.membership.v1.updated`.
+    /// Event payload for an updated membership. Event type: `google.workspace.chat.membership.v1.updated`
     /// </summary>
     public class MembershipUpdatedEventData : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The most recent version of membership.</summary>
+        /// <summary>The updated membership.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("membership")]
         public virtual Membership Membership { get; set; }
 
@@ -6074,12 +6089,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// Payload for batch new message events where the `EventType` field is
-    /// `google.workspace.chat.message.v1.batchCreated`.
+    /// Event payload for multiple new messages. Event type: `google.workspace.chat.message.v1.batchCreated`
     /// </summary>
     public class MessageBatchCreatedEventData : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of created messages.</summary>
+        /// <summary>A list of new messages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messages")]
         public virtual System.Collections.Generic.IList<MessageCreatedEventData> Messages { get; set; }
 
@@ -6088,8 +6102,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// Payload for batch deleted message events where the `EventType` field is
-    /// `google.workspace.chat.message.v1.batchDeleted`.
+    /// Event payload for multiple deleted messages. Event type: `google.workspace.chat.message.v1.batchDeleted`
     /// </summary>
     public class MessageBatchDeletedEventData : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6102,8 +6115,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// Payload for batch updated message events where the `EventType` field is
-    /// `google.workspace.chat.message.v1.batchUpdated`.
+    /// Event payload for multiple updated messages. Event type: `google.workspace.chat.message.v1.batchUpdated`
     /// </summary>
     public class MessageBatchUpdatedEventData : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6115,12 +6127,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Payload for new message events where the `EventType` field is `google.workspace.chat.message.v1.created`.
-    /// </summary>
+    /// <summary>Event payload for a new message. Event type: `google.workspace.chat.message.v1.created`</summary>
     public class MessageCreatedEventData : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The most recent version of the message.</summary>
+        /// <summary>The new message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual Message Message { get; set; }
 
@@ -6128,13 +6138,12 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Payload for deleted message events where the `EventType` field is `google.workspace.chat.message.v1.deleted`.
-    /// </summary>
+    /// <summary>Event payload for a deleted message. Event type: `google.workspace.chat.message.v1.deleted`</summary>
     public class MessageDeletedEventData : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The deleted message. Only `name`, `createTime`, `deleteTime`, and `deletionMetadata` are populated.
+        /// The deleted message. Only the `name`, `createTime`, `deleteTime`, and `deletionMetadata` fields are
+        /// populated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual Message Message { get; set; }
@@ -6143,12 +6152,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Payload for updated message events where the `EventType` field is `google.workspace.chat.message.v1.updated`.
-    /// </summary>
+    /// <summary>Event payload for an updated message. Event type: `google.workspace.chat.message.v1.updated`</summary>
     public class MessageUpdatedEventData : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The most recent version of the message.</summary>
+        /// <summary>The updated message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual Message Message { get; set; }
 
@@ -6258,12 +6265,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// Payload for batch new reaction events where the `EventType` field is
-    /// `google.workspace.chat.reaction.v1.batchCreated`.
+    /// Event payload for multiple new reactions. Event type: `google.workspace.chat.reaction.v1.batchCreated`
     /// </summary>
     public class ReactionBatchCreatedEventData : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of created reactions.</summary>
+        /// <summary>A list of new reactions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reactions")]
         public virtual System.Collections.Generic.IList<ReactionCreatedEventData> Reactions { get; set; }
 
@@ -6272,8 +6278,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// Payload for batch deleted reaction events where the `EventType` field is
-    /// `google.workspace.chat.reaction.v1.batchDeleted`.
+    /// Event payload for multiple deleted reactions. Event type: `google.workspace.chat.reaction.v1.batchDeleted`
     /// </summary>
     public class ReactionBatchDeletedEventData : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6285,12 +6290,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Payload for new reaction events where the `EventType` field is `google.workspace.chat.reaction.v1.created`.
-    /// </summary>
+    /// <summary>Event payload for a new reaction. Event type: `google.workspace.chat.reaction.v1.created`</summary>
     public class ReactionCreatedEventData : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The created reaction.</summary>
+        /// <summary>The new reaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reaction")]
         public virtual Reaction Reaction { get; set; }
 
@@ -6298,9 +6301,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Payload for deleted reaction events where the `EventType` field is `google.workspace.chat.reaction.v1.deleted`.
-    /// </summary>
+    /// <summary>Event payload for a deleted reaction. Type: `google.workspace.chat.reaction.v1.deleted`</summary>
     public class ReactionDeletedEventData : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The deleted reaction.</summary>
@@ -6574,8 +6575,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// Payload for batch updated space events where the `EventType` field is
-    /// `google.workspace.chat.space.v1.batchUpdated`.
+    /// Event payload for multiple updates to a space. Event type: `google.workspace.chat.space.v1.batchUpdated`
     /// </summary>
     public class SpaceBatchUpdatedEventData : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6623,14 +6623,17 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>An event that happens in a specific space.</summary>
+    /// <summary>
+    /// An event that represents a change or activity in a Google Chat space. To learn more, see [Work with events from
+    /// Google Chat](https://developers.google.com/workspace/chat/events-overview).
+    /// </summary>
     public class SpaceEvent : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _eventTimeRaw;
 
         private object _eventTime;
 
-        /// <summary>Time of the event.</summary>
+        /// <summary>Time when the event occurred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
         public virtual string EventTimeRaw
         {
@@ -6664,146 +6667,139 @@ namespace Google.Apis.HangoutsChat.v1.Data
         }
 
         /// <summary>
-        /// Type of the space event. The following event types are supported: * New membership:
-        /// `google.workspace.chat.membership.v1.created` * Deleted membership:
-        /// `google.workspace.chat.membership.v1.deleted` * Updated membership:
-        /// `google.workspace.chat.membership.v1.updated` * New message: `google.workspace.chat.message.v1.created` *
-        /// Deleted message: `google.workspace.chat.message.v1.deleted` * Updated message:
-        /// `google.workspace.chat.message.v1.updated` * New reaction: `google.workspace.chat.reaction.v1.created` *
-        /// Deleted reaction: `google.workspace.chat.reaction.v1.deleted` * Updated space:
-        /// `google.workspace.chat.space.v1.updated` Note that requesting or subscribing to the preceding event types
-        /// automatically sets up the subscription or response to also return batched versions of the event type. For
-        /// example, if you subscribe to `google.workspace.chat.membership.v1.created`, you also receive events for
-        /// `google.workspace.chat.membership.v1.batchCreated`. For more details see
-        /// https://developers.google.com/workspace/events/guides/events-chat#output_only_event_types.
+        /// Type of space event. Each event type has a batch version, which represents multiple instances of the event
+        /// type that occur in a short period of time. For `spaceEvents.list()` requests, omit batch event types in your
+        /// query filter. By default, the server returns both event type and its batch version. Supported event types
+        /// for [messages](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces.messages): * New
+        /// message: `google.workspace.chat.message.v1.created` * Updated message:
+        /// `google.workspace.chat.message.v1.updated` * Deleted message: `google.workspace.chat.message.v1.deleted` *
+        /// Multiple new messages: `google.workspace.chat.message.v1.batchCreated` * Multiple updated messages:
+        /// `google.workspace.chat.message.v1.batchUpdated` * Multiple deleted messages:
+        /// `google.workspace.chat.message.v1.batchDeleted` Supported event types for
+        /// [memberships](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces.members): * New
+        /// membership: `google.workspace.chat.membership.v1.created` * Updated membership:
+        /// `google.workspace.chat.membership.v1.updated` * Deleted membership:
+        /// `google.workspace.chat.membership.v1.deleted` * Multiple new memberships:
+        /// `google.workspace.chat.membership.v1.batchCreated` * Multiple updated memberships:
+        /// `google.workspace.chat.membership.v1.batchUpdated` * Multiple deleted memberships:
+        /// `google.workspace.chat.membership.v1.batchDeleted` Supported event types for
+        /// [reactions](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces.messages.reactions): *
+        /// New reaction: `google.workspace.chat.reaction.v1.created` * Deleted reaction:
+        /// `google.workspace.chat.reaction.v1.deleted` * Multiple new reactions:
+        /// `google.workspace.chat.reaction.v1.batchCreated` * Multiple deleted reactions:
+        /// `google.workspace.chat.reaction.v1.batchDeleted` Supported event types about the
+        /// [space](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces): * Updated space:
+        /// `google.workspace.chat.space.v1.updated` * Multiple space updates:
+        /// `google.workspace.chat.space.v1.batchUpdated`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
         public virtual string EventType { get; set; }
 
         /// <summary>
-        /// Payload for batch new membership events where the `EventType` field is
-        /// `google.workspace.chat.membership.v1.batchCreated`.
+        /// Event payload for multiple new memberships. Event type: `google.workspace.chat.membership.v1.batchCreated`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("membershipBatchCreatedEventData")]
         public virtual MembershipBatchCreatedEventData MembershipBatchCreatedEventData { get; set; }
 
         /// <summary>
-        /// Payload for batch deleted membership events where the `EventType` field is
-        /// `google.workspace.chat.membership.v1.batchDeleted`.
+        /// Event payload for multiple deleted memberships. Event type:
+        /// `google.workspace.chat.membership.v1.batchDeleted`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("membershipBatchDeletedEventData")]
         public virtual MembershipBatchDeletedEventData MembershipBatchDeletedEventData { get; set; }
 
         /// <summary>
-        /// Payload for batch updated membership events where the `EventType` field is
-        /// `google.workspace.chat.membership.v1.batchUpdated`.
+        /// Event payload for multiple updated memberships. Event type:
+        /// `google.workspace.chat.membership.v1.batchUpdated`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("membershipBatchUpdatedEventData")]
         public virtual MembershipBatchUpdatedEventData MembershipBatchUpdatedEventData { get; set; }
 
         /// <summary>
-        /// Payload for new membership events where the `EventType` field is
-        /// `google.workspace.chat.membership.v1.created`.
+        /// Event payload for a new membership. Event type: `google.workspace.chat.membership.v1.created`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("membershipCreatedEventData")]
         public virtual MembershipCreatedEventData MembershipCreatedEventData { get; set; }
 
         /// <summary>
-        /// Payload for deleted membership events where the `EventType` field is
-        /// `google.workspace.chat.membership.v1.deleted`.
+        /// Event payload for a deleted membership. Event type: `google.workspace.chat.membership.v1.deleted`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("membershipDeletedEventData")]
         public virtual MembershipDeletedEventData MembershipDeletedEventData { get; set; }
 
         /// <summary>
-        /// Payload for updated membership events where the `EventType` field is
-        /// `google.workspace.chat.membership.v1.updated`.
+        /// Event payload for an updated membership. Event type: `google.workspace.chat.membership.v1.updated`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("membershipUpdatedEventData")]
         public virtual MembershipUpdatedEventData MembershipUpdatedEventData { get; set; }
 
         /// <summary>
-        /// Payload for batch new message events where the `EventType` field is
-        /// `google.workspace.chat.message.v1.batchCreated`.
+        /// Event payload for multiple new messages. Event type: `google.workspace.chat.message.v1.batchCreated`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageBatchCreatedEventData")]
         public virtual MessageBatchCreatedEventData MessageBatchCreatedEventData { get; set; }
 
         /// <summary>
-        /// Payload for batch deleted message events where the `EventType` field is
-        /// `google.workspace.chat.message.v1.batchDeleted`.
+        /// Event payload for multiple deleted messages. Event type: `google.workspace.chat.message.v1.batchDeleted`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageBatchDeletedEventData")]
         public virtual MessageBatchDeletedEventData MessageBatchDeletedEventData { get; set; }
 
         /// <summary>
-        /// Payload for batch updated message events where the `EventType` field is
-        /// `google.workspace.chat.message.v1.batchUpdated`.
+        /// Event payload for multiple updated messages. Event type: `google.workspace.chat.message.v1.batchUpdated`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageBatchUpdatedEventData")]
         public virtual MessageBatchUpdatedEventData MessageBatchUpdatedEventData { get; set; }
 
-        /// <summary>
-        /// Payload for new message events where the `EventType` field is `google.workspace.chat.message.v1.created`.
-        /// </summary>
+        /// <summary>Event payload for a new message. Event type: `google.workspace.chat.message.v1.created`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageCreatedEventData")]
         public virtual MessageCreatedEventData MessageCreatedEventData { get; set; }
 
         /// <summary>
-        /// Payload for deleted message events where the `EventType` field is
-        /// `google.workspace.chat.message.v1.deleted`.
+        /// Event payload for a deleted message. Event type: `google.workspace.chat.message.v1.deleted`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageDeletedEventData")]
         public virtual MessageDeletedEventData MessageDeletedEventData { get; set; }
 
         /// <summary>
-        /// Payload for updated message events where the `EventType` field is
-        /// `google.workspace.chat.message.v1.updated`.
+        /// Event payload for an updated message. Event type: `google.workspace.chat.message.v1.updated`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageUpdatedEventData")]
         public virtual MessageUpdatedEventData MessageUpdatedEventData { get; set; }
 
-        /// <summary>The resource name of the space event. Format: `spaces/{space}/spaceEvents/{spaceEvent}`</summary>
+        /// <summary>Resource name of the space event. Format: `spaces/{space}/spaceEvents/{spaceEvent}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Payload for batch new reaction events where the `EventType` field is
-        /// `google.workspace.chat.reaction.v1.batchCreated`.
+        /// Event payload for multiple new reactions. Event type: `google.workspace.chat.reaction.v1.batchCreated`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reactionBatchCreatedEventData")]
         public virtual ReactionBatchCreatedEventData ReactionBatchCreatedEventData { get; set; }
 
         /// <summary>
-        /// Payload for batch deleted reaction events where the `EventType` field is
-        /// `google.workspace.chat.reaction.v1.batchDeleted`.
+        /// Event payload for multiple deleted reactions. Event type: `google.workspace.chat.reaction.v1.batchDeleted`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reactionBatchDeletedEventData")]
         public virtual ReactionBatchDeletedEventData ReactionBatchDeletedEventData { get; set; }
 
-        /// <summary>
-        /// Payload for new reaction events where the `EventType` field is `google.workspace.chat.reaction.v1.created`.
-        /// </summary>
+        /// <summary>Event payload for a new reaction. Event type: `google.workspace.chat.reaction.v1.created`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reactionCreatedEventData")]
         public virtual ReactionCreatedEventData ReactionCreatedEventData { get; set; }
 
         /// <summary>
-        /// Payload for deleted reaction events where the `EventType` field is
-        /// `google.workspace.chat.reaction.v1.deleted`.
+        /// Event payload for a deleted reaction. Event type: `google.workspace.chat.reaction.v1.deleted`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reactionDeletedEventData")]
         public virtual ReactionDeletedEventData ReactionDeletedEventData { get; set; }
 
         /// <summary>
-        /// Payload for batch updated space events where the `EventType` field is
-        /// `google.workspace.chat.space.v1.batchUpdated`.
+        /// Event payload for multiple updates to a space. Event type: `google.workspace.chat.space.v1.batchUpdated`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spaceBatchUpdatedEventData")]
         public virtual SpaceBatchUpdatedEventData SpaceBatchUpdatedEventData { get; set; }
 
-        /// <summary>
-        /// Payload for updated space events where the `EventType` field is `google.workspace.chat.space.v1.updated`.
-        /// </summary>
+        /// <summary>Event payload for a space update. Event type: `google.workspace.chat.space.v1.updated`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spaceUpdatedEventData")]
         public virtual SpaceUpdatedEventData SpaceUpdatedEventData { get; set; }
 
@@ -6811,12 +6807,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Payload for updated space events where the `EventType` field is `google.workspace.chat.space.v1.updated`.
-    /// </summary>
+    /// <summary>Event payload for an updated space. Event type: `google.workspace.chat.space.v1.updated`</summary>
     public class SpaceUpdatedEventData : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The recent version of the space.</summary>
+        /// <summary>The updated space.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("space")]
         public virtual Space Space { get; set; }
 

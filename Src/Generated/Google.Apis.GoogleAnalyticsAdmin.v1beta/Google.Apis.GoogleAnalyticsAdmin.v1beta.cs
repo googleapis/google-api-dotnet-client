@@ -887,6 +887,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
             DataStreams = new DataStreamsResource(service);
             FirebaseLinks = new FirebaseLinksResource(service);
             GoogleAdsLinks = new GoogleAdsLinksResource(service);
+            KeyEvents = new KeyEventsResource(service);
         }
 
         /// <summary>Gets the ConversionEvents resource.</summary>
@@ -3008,6 +3009,342 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
             }
         }
 
+        /// <summary>Gets the KeyEvents resource.</summary>
+        public virtual KeyEventsResource KeyEvents { get; }
+
+        /// <summary>The "keyEvents" collection of methods.</summary>
+        public class KeyEventsResource
+        {
+            private const string Resource = "keyEvents";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public KeyEventsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Creates a Key Event.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The resource name of the parent property where this Key Event will be created. Format:
+            /// properties/123
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.GoogleAnalyticsAdmin.v1beta.Data.GoogleAnalyticsAdminV1betaKeyEvent body, string parent)
+            {
+                return new CreateRequest(this.service, body, parent);
+            }
+
+            /// <summary>Creates a Key Event.</summary>
+            public class CreateRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1beta.Data.GoogleAnalyticsAdminV1betaKeyEvent>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1beta.Data.GoogleAnalyticsAdminV1betaKeyEvent body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The resource name of the parent property where this Key Event will be created. Format:
+                /// properties/123
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.GoogleAnalyticsAdmin.v1beta.Data.GoogleAnalyticsAdminV1betaKeyEvent Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta/{+parent}/keyEvents";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Deletes a Key Event.</summary>
+            /// <param name="name">
+            /// Required. The resource name of the Key Event to delete. Format:
+            /// properties/{property}/keyEvents/{key_event} Example: "properties/123/keyEvents/456"
+            /// </param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(this.service, name);
+            }
+
+            /// <summary>Deletes a Key Event.</summary>
+            public class DeleteRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1beta.Data.GoogleProtobufEmpty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The resource name of the Key Event to delete. Format:
+                /// properties/{property}/keyEvents/{key_event} Example: "properties/123/keyEvents/456"
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+/keyEvents/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Retrieve a single Key Event.</summary>
+            /// <param name="name">
+            /// Required. The resource name of the Key Event to retrieve. Format:
+            /// properties/{property}/keyEvents/{key_event} Example: "properties/123/keyEvents/456"
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(this.service, name);
+            }
+
+            /// <summary>Retrieve a single Key Event.</summary>
+            public class GetRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1beta.Data.GoogleAnalyticsAdminV1betaKeyEvent>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The resource name of the Key Event to retrieve. Format:
+                /// properties/{property}/keyEvents/{key_event} Example: "properties/123/keyEvents/456"
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+/keyEvents/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Returns a list of Key Events in the specified parent property. Returns an empty list if no Key Events
+            /// are found.
+            /// </summary>
+            /// <param name="parent">
+            /// Required. The resource name of the parent property. Example: 'properties/123'
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(this.service, parent);
+            }
+
+            /// <summary>
+            /// Returns a list of Key Events in the specified parent property. Returns an empty list if no Key Events
+            /// are found.
+            /// </summary>
+            public class ListRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1beta.Data.GoogleAnalyticsAdminV1betaListKeyEventsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The resource name of the parent property. Example: 'properties/123'</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// The maximum number of resources to return. If unspecified, at most 50 resources will be returned.
+                /// The maximum value is 200; (higher values will be coerced to the maximum)
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// A page token, received from a previous `ListKeyEvents` call. Provide this to retrieve the subsequent
+                /// page. When paginating, all other parameters provided to `ListKeyEvents` must match the call that
+                /// provided the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta/{+parent}/keyEvents";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Updates a Key Event.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Output only. Resource name of this key event. Format: properties/{property}/keyEvents/{key_event}
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1beta.Data.GoogleAnalyticsAdminV1betaKeyEvent body, string name)
+            {
+                return new PatchRequest(this.service, body, name);
+            }
+
+            /// <summary>Updates a Key Event.</summary>
+            public class PatchRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1beta.Data.GoogleAnalyticsAdminV1betaKeyEvent>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1beta.Data.GoogleAnalyticsAdminV1betaKeyEvent body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Output only. Resource name of this key event. Format: properties/{property}/keyEvents/{key_event}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Required. The list of fields to be updated. Field names must be in snake case (e.g.,
+                /// "field_to_update"). Omitted fields will not be updated. To replace the entire entity, use one path
+                /// with the string "*" to match all fields.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.GoogleAnalyticsAdmin.v1beta.Data.GoogleAnalyticsAdminV1betaKeyEvent Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+/keyEvents/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
         /// <summary>
         /// Acknowledges the terms of user data collection for the specified property. This acknowledgement must be
         /// completed (either in the Google Analytics UI or through this API) before MeasurementProtocolSecret resources
@@ -4026,6 +4363,13 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
+        /// Output only. The URI for a Google Marketing Platform organization resource. Only set when this account is
+        /// connected to a GMP organization. Format: marketingplatformadmin.googleapis.com/organizations/{org_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gmpOrganization")]
+        public virtual string GmpOrganization { get; set; }
+
+        /// <summary>
         /// Output only. Resource name of this account. Format: accounts/{account} Example: "accounts/100"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -4896,6 +5240,105 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A key event in a Google Analytics property.</summary>
+    public class GoogleAnalyticsAdminV1betaKeyEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The method by which Key Events will be counted across multiple events within a session.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countingMethod")]
+        public virtual string CountingMethod { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Time when this key event was created in the property.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. If set to true, this key event refers to a custom event. If set to false, this key event refers
+        /// to a default event in GA. Default events typically have special meaning in GA. Default events are usually
+        /// created for you by the GA system, but in some cases can be created by property admins. Custom events count
+        /// towards the maximum number of custom key events that may be created per property.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("custom")]
+        public virtual System.Nullable<bool> Custom { get; set; }
+
+        /// <summary>Optional. Defines a default value/currency for a key event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultValue")]
+        public virtual GoogleAnalyticsAdminV1betaKeyEventDefaultValue DefaultValue { get; set; }
+
+        /// <summary>Output only. If set to true, this event can be deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deletable")]
+        public virtual System.Nullable<bool> Deletable { get; set; }
+
+        /// <summary>Immutable. The event name for this key event. Examples: 'click', 'purchase'</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventName")]
+        public virtual string EventName { get; set; }
+
+        /// <summary>
+        /// Output only. Resource name of this key event. Format: properties/{property}/keyEvents/{key_event}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines a default value/currency for a key event.</summary>
+    public class GoogleAnalyticsAdminV1betaKeyEventDefaultValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. When an occurrence of this Key Event (specified by event_name) has no set currency this currency
+        /// will be applied as the default. Must be in ISO 4217 currency code format. See
+        /// https://en.wikipedia.org/wiki/ISO_4217 for more information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
+        public virtual string CurrencyCode { get; set; }
+
+        /// <summary>
+        /// Required. This will be used to populate the "value" parameter for all occurrences of this Key Event
+        /// (specified by event_name) where that parameter is unset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numericValue")]
+        public virtual System.Nullable<double> NumericValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for ListAccountSummaries RPC.</summary>
     public class GoogleAnalyticsAdminV1betaListAccountSummariesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5029,6 +5472,24 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta.Data
         /// <summary>List of GoogleAdsLinks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleAdsLinks")]
         public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1betaGoogleAdsLink> GoogleAdsLinks { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ListKeyEvents RPC.</summary>
+    public class GoogleAnalyticsAdminV1betaListKeyEventsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The requested Key Events</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyEvents")]
+        public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1betaKeyEvent> KeyEvents { get; set; }
 
         /// <summary>
         /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no

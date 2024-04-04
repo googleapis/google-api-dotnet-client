@@ -13066,6 +13066,13 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
+        /// <summary>
+        /// Optional. Enable training multi-lingual models for this agent. These models will be trained on all the
+        /// languages supported by the agent.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableMultiLanguageTraining")]
+        public virtual System.Nullable<bool> EnableMultiLanguageTraining { get; set; }
+
         /// <summary>Indicates if automatic spell correction is enabled in detect intent requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableSpellCorrection")]
         public virtual System.Nullable<bool> EnableSpellCorrection { get; set; }
@@ -15258,6 +15265,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("knowledgeConnectorSettings")]
         public virtual GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings KnowledgeConnectorSettings { get; set; }
 
+        /// <summary>Optional. Multi-lingual agent settings for this flow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multiLanguageSettings")]
+        public virtual GoogleCloudDialogflowCxV3beta1FlowMultiLanguageSettings MultiLanguageSettings { get; set; }
+
         /// <summary>The unique identifier of the flow. Format: `projects//locations//agents//flows/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -15304,6 +15315,29 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("globalImportStrategy")]
         public virtual string GlobalImportStrategy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings for multi-lingual agents.</summary>
+    public class GoogleCloudDialogflowCxV3beta1FlowMultiLanguageSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Enable multi-language detection for this flow. This can be set only if agent level multi language
+        /// setting is enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableMultiLanguageDetection")]
+        public virtual System.Nullable<bool> EnableMultiLanguageDetection { get; set; }
+
+        /// <summary>
+        /// Optional. Agent will respond in the detected language if the detected language code is in the supported
+        /// resolved languages for this flow. This will be used only if multi-language training is enabled in the agent
+        /// and multi-language detection is enabled in the flow. The supported languages must be a subset of the
+        /// languages supported by the agent.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportedResponseLanguageCodes")]
+        public virtual System.Collections.Generic.IList<string> SupportedResponseLanguageCodes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
