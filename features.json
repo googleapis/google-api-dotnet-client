@@ -1,10 +1,13 @@
-{	
-  "language": "csharp",	
-  "description": "C# libraries for Google APIs.",	
-  "releaseVersion": "1.67.0", "comment1": "Version of generated package.",	
-  "currentSupportVersion": "1.67.0", "comment2": "Version of support library upon which to depend.",	
+{
+  "language": "csharp",
+  "description": "C# libraries for Google APIs.",
+  // Version of the generated packages
+  "releaseVersion": "1.67.0",
+  
+  // Version of the support libraries upon which to depend.
+  "currentSupportVersion": "1.67.0",
 
-  "clouds_comment": "Defines the map of Google.Cloud packages that supercede Google.Apis packages",	
+  // Defines the map of Google.Cloud packages that supercede Google.Apis packages
   "cloudPackageMap": {
     "Google.Apis.CloudAsset.v1": "Google.Cloud.Asset.V1",	
     "Google.Apis.Bigquerydatatransfer.v1": "Google.Cloud.BigQuery.DataTransfer.V1",	
@@ -38,7 +41,7 @@
     "Google.Apis.Vision.v1": "Google.Cloud.Vision.V1",
   },
 
-  "majorVersion_comment": "Defines the major version for packages that need to override the one in releaseVersion",
+  // Defines the major version for packages that need to override the one in releaseVersion
   "majorVersionOverrideMap": {
   }
 }
