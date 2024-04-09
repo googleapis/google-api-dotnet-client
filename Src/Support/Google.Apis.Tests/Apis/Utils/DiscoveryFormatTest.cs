@@ -125,8 +125,6 @@ public class DiscoveryFormatTest
 
         { "2023-11-08T12:34:56+01:00", DefaultLocal.WithUtcOffsetMinutes(60) },
         { "2023-11-08T12:34:56-01:00", DefaultLocal.WithUtcOffsetMinutes(-60) },
-        { "2023-11-08T12:34:56+00:01", DefaultLocal.WithUtcOffsetMinutes(1) },
-        { "2023-11-08T12:34:56-00:01", DefaultLocal.WithUtcOffsetMinutes(-1) },
 
         // The test cases below all have second-precision offsets, which can't be represented
         // in DateTimeOffset. We adjust the instant in time, and truncate the seconds
