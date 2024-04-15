@@ -6881,6 +6881,27 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// CertificateAuthorityDomainConfig configures one or more fully qualified domain names (FQDN) to a specific
+    /// certificate.
+    /// </summary>
+    public class CertificateAuthorityDomainConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// List of fully qualified domain names (FQDN). Specifying port is supported. Wilcards are NOT supported.
+        /// Examples: - my.customdomain.com - 10.0.1.2:5000
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fqdns")]
+        public virtual System.Collections.Generic.IList<string> Fqdns { get; set; }
+
+        /// <summary>Google Secret Manager (GCP) certificate configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcpSecretManagerCertificateConfig")]
+        public virtual GCPSecretManagerCertificateConfig GcpSecretManagerCertificateConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>CheckAutopilotCompatibilityResponse has a list of compatibility issues.</summary>
     public class CheckAutopilotCompatibilityResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6971,6 +6992,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Telemetry integration for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterTelemetry")]
         public virtual ClusterTelemetry ClusterTelemetry { get; set; }
+
+        /// <summary>Enable/Disable Compliance Posture features for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compliancePostureConfig")]
+        public virtual CompliancePostureConfig CompliancePostureConfig { get; set; }
 
         /// <summary>Which conditions caused the current cluster state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
@@ -7497,6 +7522,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredClusterTelemetry")]
         public virtual ClusterTelemetry DesiredClusterTelemetry { get; set; }
 
+        /// <summary>The desired containerd config for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredContainerdConfig")]
+        public virtual ContainerdConfig DesiredContainerdConfig { get; set; }
+
         /// <summary>The desired configuration for the fine-grained cost management feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredCostManagementConfig")]
         public virtual CostManagementConfig DesiredCostManagementConfig { get; set; }
@@ -7696,7 +7725,11 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredPodSecurityPolicyConfig")]
         public virtual PodSecurityPolicyConfig DesiredPodSecurityPolicyConfig { get; set; }
 
-        /// <summary>The desired private cluster configuration.</summary>
+        /// <summary>
+        /// The desired private cluster configuration. master_global_access_config is the only field that can be changed
+        /// via this field. See also ClusterUpdate.desired_enable_private_endpoint for modifying other fields within
+        /// PrivateClusterConfig.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredPrivateClusterConfig")]
         public virtual PrivateClusterConfig DesiredPrivateClusterConfig { get; set; }
 
@@ -7775,6 +7808,12 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
 
         /// <summary>
+        /// The desired private cluster configuration. Has no effect. Use desired_private_cluster_config instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateClusterConfig")]
+        public virtual PrivateClusterConfig PrivateClusterConfig { get; set; }
+
+        /// <summary>
         /// The additional pod ranges that are to be removed from the cluster. The pod ranges specified here must have
         /// been specified earlier in the 'additional_pod_ranges_config' argument.
         /// </summary>
@@ -7827,6 +7866,34 @@ namespace Google.Apis.Container.v1beta1.Data
     }
 
     /// <summary>
+    /// CompliancePostureConfig defines the settings needed to enable/disable features for the Compliance Posture.
+    /// </summary>
+    public class CompliancePostureConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of enabled compliance standards.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("complianceStandards")]
+        public virtual System.Collections.Generic.IList<ComplianceStandard> ComplianceStandards { get; set; }
+
+        /// <summary>Defines the enablement mode for Compliance Posture.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines the details of a compliance standard.</summary>
+    public class ComplianceStandard : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the compliance standard.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("standard")]
+        public virtual string Standard { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// ConfidentialNodes is configuration for the confidential nodes feature, which makes nodes run on confidential
     /// VMs.
     /// </summary>
@@ -7860,6 +7927,19 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ContainerdConfig contains configuration to customize containerd.</summary>
+    public class ContainerdConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// PrivateRegistryAccessConfig is used to configure access configuration for private container registries.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateRegistryAccessConfig")]
+        public virtual PrivateRegistryAccessConfig PrivateRegistryAccessConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7957,6 +8037,10 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>DNSConfig contains the desired set of options for configuring clusterDNS.</summary>
     public class DNSConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The domain used in Additive VPC scope.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additiveVpcScopeDnsDomain")]
+        public virtual string AdditiveVpcScopeDnsDomain { get; set; }
+
         /// <summary>cluster_dns indicates which in-cluster DNS provider should be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterDns")]
         public virtual string ClusterDns { get; set; }
@@ -8197,6 +8281,23 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// GCPSecretManagerCertificateConfig configures a secret from [Google Secret
+    /// Manager](https://cloud.google.com/secret-manager).
+    /// </summary>
+    public class GCPSecretManagerCertificateConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Secret URI, in the form "projects/$PROJECT_ID/secrets/$SECRET_NAME/versions/$VERSION". Version can be fixed
+        /// (e.g. "2") or "latest"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretUri")]
+        public virtual string SecretUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>GPUDriverInstallationConfig specifies the version of GPU driver to be auto installed.</summary>
     public class GPUDriverInstallationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8415,6 +8516,21 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
         public virtual System.Nullable<bool> Disabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Hugepages amount in both 2m and 1g size</summary>
+    public class HugepagesConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Amount of 1G hugepages</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hugepageSize1g")]
+        public virtual System.Nullable<int> HugepageSize1g { get; set; }
+
+        /// <summary>Optional. Amount of 2M hugepages</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hugepageSize2m")]
+        public virtual System.Nullable<int> HugepageSize2m { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8734,6 +8850,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>cgroup_mode specifies the cgroup mode to be used on the node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cgroupMode")]
         public virtual string CgroupMode { get; set; }
+
+        /// <summary>Optional. Amounts for 2M and 1G hugepages</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hugepages")]
+        public virtual HugepagesConfig Hugepages { get; set; }
 
         /// <summary>
         /// The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following
@@ -9345,6 +9465,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("confidentialNodes")]
         public virtual ConfidentialNodes ConfidentialNodes { get; set; }
 
+        /// <summary>Parameters for containerd customization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containerdConfig")]
+        public virtual ContainerdConfig ContainerdConfig { get; set; }
+
         /// <summary>
         /// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If
         /// unspecified, the default disk size is 100GB.
@@ -9574,6 +9698,10 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>Subset of NodeConfig message that has defaults.</summary>
     public class NodeConfigDefaults : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Parameters for containerd customization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containerdConfig")]
+        public virtual ContainerdConfig ContainerdConfig { get; set; }
+
         /// <summary>GCFS (Google Container File System, also known as Riptide) options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcfsConfig")]
         public virtual GcfsConfig GcfsConfig { get; set; }
@@ -10369,6 +10497,21 @@ namespace Google.Apis.Container.v1beta1.Data
     public class PrivateClusterMasterGlobalAccessConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Whenever master is accessible globally or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>PrivateRegistryAccessConfig contains access configuration for private container registries.</summary>
+    public class PrivateRegistryAccessConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Private registry access configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certificateAuthorityDomainConfig")]
+        public virtual System.Collections.Generic.IList<CertificateAuthorityDomainConfig> CertificateAuthorityDomainConfig { get; set; }
+
+        /// <summary>Private registry access is enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
 
@@ -11783,6 +11926,13 @@ namespace Google.Apis.Container.v1beta1.Data
     public class UpdateNodePoolRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// A list of hardware accelerators to be attached to each node. See https://cloud.google.com/compute/docs/gpus
+        /// for more information about support for GPUs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accelerators")]
+        public virtual System.Collections.Generic.IList<AcceleratorConfig> Accelerators { get; set; }
+
+        /// <summary>
         /// Required. Deprecated. The name of the cluster to upgrade. This field has been deprecated and replaced by the
         /// name field.
         /// </summary>
@@ -11794,6 +11944,13 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidentialNodes")]
         public virtual ConfidentialNodes ConfidentialNodes { get; set; }
+
+        /// <summary>
+        /// The desired containerd config for nodes in the node pool. Initiates an upgrade operation that recreates the
+        /// nodes with the new config.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containerdConfig")]
+        public virtual ContainerdConfig ContainerdConfig { get; set; }
 
         /// <summary>
         /// Optional. The desired disk size for nodes in the node pool. Initiates an upgrade operation that migrates the

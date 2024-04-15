@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.PaymentsResellerSubscription.v1 Client Library</Title>
-    <Version>1.67.0.3379</Version>
+    <Version>1.67.0.3387</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2024 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>

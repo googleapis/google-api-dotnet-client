@@ -6306,6 +6306,88 @@ namespace Google.Apis.ShoppingContent.v2_1
                 });
             }
         }
+
+        /// <summary>
+        /// Start an action. The action can be requested by merchants in third-party application. Before merchants can
+        /// request the action, the third-party application needs to show them action specific content and display a
+        /// user input form. The action can be successfully started only once all `required` inputs are provided. If any
+        /// `required` input is missing, or invalid value was provided, the service will return 400 error. Validation
+        /// errors will contain Ids for all problematic field together with translated, human readable error messages
+        /// that can be shown to the user.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">Required. The ID of the merchant's account.</param>
+        public virtual TriggeractionRequest Triggeraction(Google.Apis.ShoppingContent.v2_1.Data.TriggerActionPayload body, long merchantId)
+        {
+            return new TriggeractionRequest(this.service, body, merchantId);
+        }
+
+        /// <summary>
+        /// Start an action. The action can be requested by merchants in third-party application. Before merchants can
+        /// request the action, the third-party application needs to show them action specific content and display a
+        /// user input form. The action can be successfully started only once all `required` inputs are provided. If any
+        /// `required` input is missing, or invalid value was provided, the service will return 400 error. Validation
+        /// errors will contain Ids for all problematic field together with translated, human readable error messages
+        /// that can be shown to the user.
+        /// </summary>
+        public class TriggeractionRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.TriggerActionResponse>
+        {
+            /// <summary>Constructs a new Triggeraction request.</summary>
+            public TriggeractionRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.TriggerActionPayload body, long merchantId) : base(service)
+            {
+                MerchantId = merchantId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of the merchant's account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>
+            /// Optional. Language code [IETF BCP 47 syntax](https://tools.ietf.org/html/bcp47) used to localize the
+            /// response. If not set, the result will be in default language `en-US`.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string LanguageCode { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2_1.Data.TriggerActionPayload Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "triggeraction";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{merchantId}/merchantsupport/triggeraction";
+
+            /// <summary>Initializes Triggeraction parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "languageCode",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
     }
 
     /// <summary>The "orderinvoices" collection of methods.</summary>
@@ -14362,7 +14444,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("paymentsManager")]
         public virtual System.Nullable<bool> PaymentsManager { get; set; }
 
-        /// <summary>Whether user is a reporting manager.</summary>
+        /// <summary>
+        /// Whether user is a reporting manager. This role is equivalent to the Performance and insights role in
+        /// Merchant Center.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportingManager")]
         public virtual System.Nullable<bool> ReportingManager { get; set; }
 
@@ -14888,6 +14973,14 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("builtinSimpleAction")]
         public virtual BuiltInSimpleAction BuiltinSimpleAction { get; set; }
 
+        /// <summary>
+        /// Action implemented and performed in (your) third-party application. The application needs to show an
+        /// additional content and input form to the merchant as specified for given action. They can trigger the action
+        /// only when they provided all required inputs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("builtinUserInputAction")]
+        public virtual BuiltInUserInputAction BuiltinUserInputAction { get; set; }
+
         /// <summary>Label of the action button.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buttonLabel")]
         public virtual string ButtonLabel { get; set; }
@@ -14915,6 +15008,72 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reasons")]
         public virtual System.Collections.Generic.IList<ActionReason> Reasons { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Flow that can be selected for an action. When merchant selects a flow, application should open a dialog with
+    /// more information and input form.
+    /// </summary>
+    public class ActionFlow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Label for the button to trigger the action from the action dialog. For example: "Request review"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogButtonLabel")]
+        public virtual string DialogButtonLabel { get; set; }
+
+        /// <summary>
+        /// Important message to be highlighted in the request dialog. For example: "You can only request a review for
+        /// disagreeing with this issue once. If it's not approved, you'll need to fix the issue and wait a few days
+        /// before you can request another review."
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogCallout")]
+        public virtual Callout DialogCallout { get; set; }
+
+        /// <summary>
+        /// Message displayed in the request dialog. For example: "Make sure you've fixed all your country-specific
+        /// issues. If not, you may have to wait 7 days to request another review". There may be an more information to
+        /// be shown in a tooltip.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogMessage")]
+        public virtual TextWithTooltip DialogMessage { get; set; }
+
+        /// <summary>Title of the request dialog. For example: "Before you request a review"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogTitle")]
+        public virtual string DialogTitle { get; set; }
+
+        /// <summary>Not for display but need to be sent back for the selected action flow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>A list of input fields.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputs")]
+        public virtual System.Collections.Generic.IList<InputField> Inputs { get; set; }
+
+        /// <summary>
+        /// Text value describing the intent for the action flow. It can be used as an input label if merchant needs to
+        /// pick one of multiple flows. For example: "I disagree with the issue"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Input provided by the merchant.</summary>
+    public class ActionInput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Id of the selected action flow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actionFlowId")]
+        public virtual string ActionFlowId { get; set; }
+
+        /// <summary>Required. Values for input fields.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputValues")]
+        public virtual System.Collections.Generic.IList<InputValue> InputValues { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15242,6 +15401,30 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Action that is implemented and performed in (your) third-party application. The application needs to show an
+    /// additional content and input form to the merchant. They can start the action only when they provided all
+    /// required inputs. The application will request processing of the action by calling the [triggeraction
+    /// method](https://developers.google.com/shopping-content/reference/rest/v2.1/merchantsupport/triggeraction).
+    /// </summary>
+    public class BuiltInUserInputAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Internal details. Not for display but need to be sent back when triggering the action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actionContext")]
+        public virtual string ActionContext { get; set; }
+
+        /// <summary>
+        /// Actions may provide multiple different flows. Merchant selects one that fits best to their intent. Selecting
+        /// the flow is the first step in user's interaction with the action. It affects what input fields will be
+        /// available and required and also how the request will be processed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flows")]
+        public virtual System.Collections.Generic.IList<ActionFlow> Flows { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class BusinessDayConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Regular business days, such as '"monday"'. May not be empty.</summary>
@@ -15307,6 +15490,24 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Output only. The current participation stage for the program.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("participationStage")]
         public virtual string ParticipationStage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An important message that should be highlighted. Usually displayed as a banner.</summary>
+    public class Callout : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A full message that needs to be shown to the merchant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullMessage")]
+        public virtual TextWithTooltip FullMessage { get; set; }
+
+        /// <summary>
+        /// Can be used to render messages with different severity in different styles. Snippets off all types contain
+        /// important information that should be displayed to merchants.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("styleHint")]
+        public virtual string StyleHint { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17168,6 +17369,195 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Input field that needs to be available to the merchant. If the field is marked as required, then a value needs
+    /// to be provided for a successful processing of the request.
+    /// </summary>
+    public class InputField : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Input field to provide a boolean value. Corresponds to the [html input
+        /// type=checkbox](https://www.w3.org/TR/2012/WD-html-markup-20121025/input.checkbox.html#input.checkbox).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("checkboxInput")]
+        public virtual InputFieldCheckboxInput CheckboxInput { get; set; }
+
+        /// <summary>
+        /// Input field to select one of the offered choices. Corresponds to the [html input
+        /// type=radio](https://www.w3.org/TR/2012/WD-html-markup-20121025/input.radio.html#input.radio).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("choiceInput")]
+        public virtual InputFieldChoiceInput ChoiceInput { get; set; }
+
+        /// <summary>Not for display but need to be sent back for the given input field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Input field label. There may be more information to be shown in a tooltip.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual TextWithTooltip Label { get; set; }
+
+        /// <summary>
+        /// Whether the field is required. The action button needs to stay disabled till values for all required fields
+        /// are provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("required")]
+        public virtual System.Nullable<bool> Required { get; set; }
+
+        /// <summary>
+        /// Input field to provide text information. Corresponds to the [html input
+        /// type=text](https://www.w3.org/TR/2012/WD-html-markup-20121025/input.text.html#input.text) or [html
+        /// textarea](https://www.w3.org/TR/2012/WD-html-markup-20121025/textarea.html#textarea).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textInput")]
+        public virtual InputFieldTextInput TextInput { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Checkbox input allows merchants to provide a boolean value. Corresponds to the [html input
+    /// type=checkbox](https://www.w3.org/TR/2012/WD-html-markup-20121025/input.checkbox.html#input.checkbox). If
+    /// merchant checks the box, the input value for the field is `true`, otherwise it is `false`. This type of input is
+    /// often used as a confirmation that the merchant completed required steps before they are allowed to start the
+    /// action. In such a case, the input field is marked as required and the button to trigger the action should stay
+    /// disabled until the merchant checks the box.
+    /// </summary>
+    public class InputFieldCheckboxInput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Choice input allows merchants to select one of the offered choices. Some choices may be linked to additional
+    /// input fields that should be displayed under or next to the choice option. The value for the additional input
+    /// field needs to be provided only when the specific choice is selected by the merchant. For example, additional
+    /// input field can be hidden or disabled until the merchant selects the specific choice.
+    /// </summary>
+    public class InputFieldChoiceInput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of choices. Only one option can be selected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("options")]
+        public virtual System.Collections.Generic.IList<InputFieldChoiceInputChoiceInputOption> Options { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A choice that merchant can select.</summary>
+    public class InputFieldChoiceInputChoiceInputOption : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Input that should be displayed when this option is selected. The additional input will not contain a
+        /// `ChoiceInput`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalInput")]
+        public virtual InputField AdditionalInput { get; set; }
+
+        /// <summary>Not for display but need to be sent back for the selected choice option.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// Short description of the choice option. There may be more information to be shown as a tooltip.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual TextWithTooltip Label { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Text input allows merchants to provide a text value.</summary>
+    public class InputFieldTextInput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Additional info regarding the field to be displayed to merchant. For example, warning to not include
+        /// personal identifiable information. There may be more information to be shown in a tooltip.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalInfo")]
+        public virtual TextWithTooltip AdditionalInfo { get; set; }
+
+        /// <summary>
+        /// Text to be used as the [aria label](https://www.w3.org/TR/WCAG20-TECHS/ARIA14.html) for the input.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ariaLabel")]
+        public virtual string AriaLabel { get; set; }
+
+        /// <summary>
+        /// Information about the required format. If present, it should be shown close to the input field to help
+        /// merchants to provide a correct value. For example: "VAT numbers should be in a format similar to
+        /// SK9999999999"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("formatInfo")]
+        public virtual string FormatInfo { get; set; }
+
+        /// <summary>Type of the text input</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Input provided by the merchant for input field.</summary>
+    public class InputValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Value for checkbox input field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("checkboxInputValue")]
+        public virtual InputValueCheckboxInputValue CheckboxInputValue { get; set; }
+
+        /// <summary>Value for choice input field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("choiceInputValue")]
+        public virtual InputValueChoiceInputValue ChoiceInputValue { get; set; }
+
+        /// <summary>Required. Id of the corresponding input field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputFieldId")]
+        public virtual string InputFieldId { get; set; }
+
+        /// <summary>Value for text input field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textInputValue")]
+        public virtual InputValueTextInputValue TextInputValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Value for checkbox input field.</summary>
+    public class InputValueCheckboxInputValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. True if the merchant checked the box field. False otherwise.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Nullable<bool> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Value for choice input field.</summary>
+    public class InputValueChoiceInputValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Id of the option that was selected by the merchant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("choiceInputOptionId")]
+        public virtual string ChoiceInputOptionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Value for text input field.</summary>
+    public class InputValueTextInputValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Text provided by the merchant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22217,6 +22607,14 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual string Source { get; set; }
 
+        /// <summary>Structured description, for algorithmically (AI)-generated descriptions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structuredDescription")]
+        public virtual ProductStructuredDescription StructuredDescription { get; set; }
+
+        /// <summary>Structured title, for algorithmically (AI)-generated titles.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structuredTitle")]
+        public virtual ProductStructuredTitle StructuredTitle { get; set; }
+
         /// <summary>
         /// Number of periods (months or years) and amount of payment per period for an item with an associated
         /// subscription contract.
@@ -22791,6 +23189,46 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>How this issue affects serving of the offer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servability")]
         public virtual string Servability { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Structured description, for algorithmically (AI)-generated descriptions. See
+    /// [description](https://support.google.com/merchants/answer/6324468#When_to_use) for more information.
+    /// </summary>
+    public class ProductStructuredDescription : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The description text. Maximum length is 5000 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>
+        /// Optional. The digital source type. Acceptable values are: - "`trained_algorithmic_media`" - "`default`"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("digitalSourceType")]
+        public virtual string DigitalSourceType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Structured title, for algorithmically (AI)-generated titles. See
+    /// [title](https://support.google.com/merchants/answer/6324415#Whentouse) for more information.
+    /// </summary>
+    public class ProductStructuredTitle : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The title text. Maximum length is 150 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>
+        /// Optional. The digital source type. Acceptable values are: - "`trained_algorithmic_media`" - "`default`"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("digitalSourceType")]
+        public virtual string DigitalSourceType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24136,6 +24574,13 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("contentOption")]
         public virtual string ContentOption { get; set; }
 
+        /// <summary>
+        /// Optional. How actions with user input form should be handled. If not provided, actions will be returned as
+        /// links that points merchant to Merchant Center where they can request the action.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userInputActionOption")]
+        public virtual string UserInputActionOption { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -24174,6 +24619,13 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentOption")]
         public virtual string ContentOption { get; set; }
+
+        /// <summary>
+        /// Optional. How actions with user input form should be handled. If not provided, actions will be returned as
+        /// links that points merchant to Merchant Center where they can request the action.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userInputActionOption")]
+        public virtual string UserInputActionOption { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26259,6 +26711,25 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Block of text that may contain a tooltip with more information.</summary>
+    public class TextWithTooltip : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Value of the tooltip as a simple text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("simpleTooltipValue")]
+        public virtual string SimpleTooltipValue { get; set; }
+
+        /// <summary>Value of the message as a simple text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("simpleValue")]
+        public virtual string SimpleValue { get; set; }
+
+        /// <summary>The suggested type of an icon for tooltip, if a tooltip is present.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tooltipIconStyle")]
+        public virtual string TooltipIconStyle { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A message that represents a time period.</summary>
     public class TimePeriod : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -26473,6 +26944,35 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minTransitTimeInDays")]
         public virtual System.Nullable<long> MinTransitTimeInDays { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The payload for the triggered action.</summary>
+    public class TriggerActionPayload : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The context from the selected action. The value is obtained from rendered issues and needs to be
+        /// sent back to identify the action that is being triggered.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actionContext")]
+        public virtual string ActionContext { get; set; }
+
+        /// <summary>Required. Input provided by the merchant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actionInput")]
+        public virtual ActionInput ActionInput { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response informing about the started action.</summary>
+    public class TriggerActionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The message for merchant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

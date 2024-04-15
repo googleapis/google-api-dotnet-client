@@ -1371,6 +1371,7 @@ namespace Google.Apis.DLP.v2
             {
                 this.service = service;
                 ColumnDataProfiles = new ColumnDataProfilesResource(service);
+                Connections = new ConnectionsResource(service);
                 DeidentifyTemplates = new DeidentifyTemplatesResource(service);
                 DiscoveryConfigs = new DiscoveryConfigsResource(service);
                 DlpJobs = new DlpJobsResource(service);
@@ -1550,6 +1551,114 @@ namespace Google.Apis.DLP.v2
                         RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
                         {
                             Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the Connections resource.</summary>
+            public virtual ConnectionsResource Connections { get; }
+
+            /// <summary>The "connections" collection of methods.</summary>
+            public class ConnectionsResource
+            {
+                private const string Resource = "connections";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ConnectionsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Searches for Connections in a parent.</summary>
+                /// <param name="parent">
+                /// Required. Parent name, typically an organization, without location. For example:
+                /// "organizations/12345678".
+                /// </param>
+                public virtual SearchRequest Search(string parent)
+                {
+                    return new SearchRequest(this.service, parent);
+                }
+
+                /// <summary>Searches for Connections in a parent.</summary>
+                public class SearchRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2SearchConnectionsResponse>
+                {
+                    /// <summary>Constructs a new Search request.</summary>
+                    public SearchRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Parent name, typically an organization, without location. For example:
+                    /// "organizations/12345678".
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. * Supported fields/values - `state` - MISSING|AVAILABLE|ERROR</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. Number of results per page, max 1000.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. Page token from a previous page to return the next set of results. If set, all other
+                    /// request fields must match the original request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "search";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/connections:search";
+
+                    /// <summary>Initializes Search parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4012,6 +4121,57 @@ namespace Google.Apis.DLP.v2
                 public TableDataProfilesResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                }
+
+                /// <summary>
+                /// Delete a TableDataProfile. Will not prevent the profile from being regenerated if the table is still
+                /// included in a discovery configuration.
+                /// </summary>
+                /// <param name="name">Required. Resource name of the table data profile.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>
+                /// Delete a TableDataProfile. Will not prevent the profile from being regenerated if the table is still
+                /// included in a discovery configuration.
+                /// </summary>
+                public class DeleteRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GoogleProtobufEmpty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Resource name of the table data profile.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/tableDataProfiles/[^/]+$",
+                        });
+                    }
                 }
 
                 /// <summary>Gets a table data profile.</summary>
@@ -6776,6 +6936,7 @@ namespace Google.Apis.DLP.v2
             {
                 this.service = service;
                 ColumnDataProfiles = new ColumnDataProfilesResource(service);
+                Connections = new ConnectionsResource(service);
                 Content = new ContentResource(service);
                 DeidentifyTemplates = new DeidentifyTemplatesResource(service);
                 DiscoveryConfigs = new DiscoveryConfigsResource(service);
@@ -6957,6 +7118,418 @@ namespace Google.Apis.DLP.v2
                         RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
                         {
                             Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the Connections resource.</summary>
+            public virtual ConnectionsResource Connections { get; }
+
+            /// <summary>The "connections" collection of methods.</summary>
+            public class ConnectionsResource
+            {
+                private const string Resource = "connections";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ConnectionsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Create a Connection to an external data source.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. Parent resource name in the format: "projects/{project}/locations/{location}".
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateConnectionRequest body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Create a Connection to an external data source.</summary>
+                public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2Connection>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateConnectionRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Parent resource name in the format: "projects/{project}/locations/{location}".
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateConnectionRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/connections";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Delete a Connection.</summary>
+                /// <param name="name">
+                /// Required. Resource name of the Connection to be deleted, in the format:
+                /// "projects/{project}/locations/{location}/connections/{connection}".
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Delete a Connection.</summary>
+                public class DeleteRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GoogleProtobufEmpty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name of the Connection to be deleted, in the format:
+                    /// "projects/{project}/locations/{location}/connections/{connection}".
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Get a Connection by name.</summary>
+                /// <param name="name">
+                /// Required. Resource name in the format:
+                /// "projects/{project}/locations/{location}/connections/{connection}".
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Get a Connection by name.</summary>
+                public class GetRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2Connection>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name in the format:
+                    /// "projects/{project}/locations/{location}/connections/{connection}".
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists Connections in a parent.</summary>
+                /// <param name="parent">
+                /// Required. Parent name, for example: "projects/project-id/locations/global".
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists Connections in a parent.</summary>
+                public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListConnectionsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Parent name, for example: "projects/project-id/locations/global".</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. * Supported fields/values - `state` - MISSING|AVAILABLE|ERROR</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. Number of results per page, max 1000.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. Page token from a previous page to return the next set of results. If set, all other
+                    /// request fields must match the original request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/connections";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Update a Connection.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Resource name in the format:
+                /// "projects/{project}/locations/{location}/connections/{connection}".
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateConnectionRequest body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Update a Connection.</summary>
+                public class PatchRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2Connection>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateConnectionRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name in the format:
+                    /// "projects/{project}/locations/{location}/connections/{connection}".
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateConnectionRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Searches for Connections in a parent.</summary>
+                /// <param name="parent">
+                /// Required. Parent name, typically an organization, without location. For example:
+                /// "organizations/12345678".
+                /// </param>
+                public virtual SearchRequest Search(string parent)
+                {
+                    return new SearchRequest(this.service, parent);
+                }
+
+                /// <summary>Searches for Connections in a parent.</summary>
+                public class SearchRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2SearchConnectionsResponse>
+                {
+                    /// <summary>Constructs a new Search request.</summary>
+                    public SearchRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Parent name, typically an organization, without location. For example:
+                    /// "organizations/12345678".
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. * Supported fields/values - `state` - MISSING|AVAILABLE|ERROR</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. Number of results per page, max 1000.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. Page token from a previous page to return the next set of results. If set, all other
+                    /// request fields must match the original request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "search";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/connections:search";
+
+                    /// <summary>Initializes Search parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -10293,6 +10866,57 @@ namespace Google.Apis.DLP.v2
                     this.service = service;
                 }
 
+                /// <summary>
+                /// Delete a TableDataProfile. Will not prevent the profile from being regenerated if the table is still
+                /// included in a discovery configuration.
+                /// </summary>
+                /// <param name="name">Required. Resource name of the table data profile.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>
+                /// Delete a TableDataProfile. Will not prevent the profile from being regenerated if the table is still
+                /// included in a discovery configuration.
+                /// </summary>
+                public class DeleteRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GoogleProtobufEmpty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Resource name of the table data profile.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/tableDataProfiles/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Gets a table data profile.</summary>
                 /// <param name="name">
                 /// Required. Resource name, for example `organizations/12345/locations/us/tableDataProfiles/53234423`.
@@ -10957,6 +11581,13 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Match database resources not covered by any other filter.</summary>
+    public class GooglePrivacyDlpV2AllOtherDatabaseResources : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Apply to all text.</summary>
     public class GooglePrivacyDlpV2AllText : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11449,6 +12080,83 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Target used to match against for discovery with Cloud SQL tables.</summary>
+    public class GooglePrivacyDlpV2CloudSqlDiscoveryTarget : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// In addition to matching the filter, these conditions must be true before a profile is generated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
+        public virtual GooglePrivacyDlpV2DiscoveryCloudSqlConditions Conditions { get; set; }
+
+        /// <summary>Disable profiling for database resources that match this filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual GooglePrivacyDlpV2Disabled Disabled { get; set; }
+
+        /// <summary>
+        /// Required. The tables the discovery cadence applies to. The first target with a matching filter will be the
+        /// one to apply to a table.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual GooglePrivacyDlpV2DiscoveryCloudSqlFilter Filter { get; set; }
+
+        /// <summary>
+        /// How often and when to update profiles. New tables that match both the filter and conditions are scanned as
+        /// quickly as possible depending on system capacity.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generationCadence")]
+        public virtual GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence GenerationCadence { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Use IAM auth to connect. This requires the Cloud SQL IAM feature to be enabled on the instance, which is not the
+    /// default for Cloud SQL. See https://cloud.google.com/sql/docs/postgres/authentication and
+    /// https://cloud.google.com/sql/docs/mysql/authentication.
+    /// </summary>
+    public class GooglePrivacyDlpV2CloudSqlIamCredential : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Cloud SQL connection properties.</summary>
+    public class GooglePrivacyDlpV2CloudSqlProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Built-in IAM authentication (must be configured in Cloud SQL).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudSqlIam")]
+        public virtual GooglePrivacyDlpV2CloudSqlIamCredential CloudSqlIam { get; set; }
+
+        /// <summary>
+        /// Optional. Immutable. The Cloud SQL instance for which the connection is defined. Only one connection per
+        /// instance is allowed. This can only be set at creation time, and cannot be updated. It is an error to use a
+        /// connection_name from different project or region than the one that holds the connection. For example, a
+        /// Connection resource for Cloud SQL connection_name "project-id:us-central1:sql-instance" must be created
+        /// under the parent "projects/project-id/locations/us-central1"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionName")]
+        public virtual string ConnectionName { get; set; }
+
+        /// <summary>
+        /// Required. The database engine used by the Cloud SQL instance that this connection configures.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseEngine")]
+        public virtual string DatabaseEngine { get; set; }
+
+        /// <summary>Required. DLP will limit its connections to max_connections. Must be 2 or greater.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxConnections")]
+        public virtual System.Nullable<int> MaxConnections { get; set; }
+
+        /// <summary>A username and password stored in Secret Manager.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usernamePassword")]
+        public virtual GooglePrivacyDlpV2SecretManagerCredential UsernamePassword { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message representing a set of files in Cloud Storage.</summary>
     public class GooglePrivacyDlpV2CloudStorageFileSet : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11765,6 +12473,36 @@ namespace Google.Apis.DLP.v2.Data
     }
 
     /// <summary>
+    /// A data connection to allow DLP to profile data in locations that require additional configuration.
+    /// </summary>
+    public class GooglePrivacyDlpV2Connection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Connect to a Cloud SQL instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudSql")]
+        public virtual GooglePrivacyDlpV2CloudSqlProperties CloudSql { get; set; }
+
+        /// <summary>
+        /// Output only. Set if status == ERROR, to provide additional details. Will store the last 10 errors sorted
+        /// with the most recent first.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Error> Errors { get; set; }
+
+        /// <summary>
+        /// Output only. Name of the connection: projects/{project}/locations/{location}/connections/{name}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. The connection's state in its lifecycle.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Represents a container that may contain DLP findings. Examples of a container include a file, table, or database
     /// record.
     /// </summary>
@@ -11948,6 +12686,17 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>Location within a row or record of a database table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recordLocation")]
         public virtual GooglePrivacyDlpV2RecordLocation RecordLocation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for CreateConnection.</summary>
+    public class GooglePrivacyDlpV2CreateConnectionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The connection resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connection")]
+        public virtual GooglePrivacyDlpV2Connection Connection { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12528,6 +13277,85 @@ namespace Google.Apis.DLP.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSource")]
         public virtual string DataSource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Match database resources using regex filters. Examples of database resources are tables, views, and stored
+    /// procedures.
+    /// </summary>
+    public class GooglePrivacyDlpV2DatabaseResourceCollection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A collection of regular expressions to match a database resource against.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeRegexes")]
+        public virtual GooglePrivacyDlpV2DatabaseResourceRegexes IncludeRegexes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Identifies a single database resource, like a table within a database.</summary>
+    public class GooglePrivacyDlpV2DatabaseResourceReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The instance where this resource is located. For example: Cloud SQL's instance id.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instance")]
+        public virtual string Instance { get; set; }
+
+        /// <summary>Required. If within a project-level config, then this must match the config's project id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A pattern to match against one or more database resources. At least one pattern must be specified. Regular
+    /// expressions use RE2 [syntax](https://github.com/google/re2/wiki/Syntax); a guide can be found under the
+    /// google/re2 repository on GitHub.
+    /// </summary>
+    public class GooglePrivacyDlpV2DatabaseResourceRegex : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Regex to test the database name against. If empty, all databases match.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseRegex")]
+        public virtual string DatabaseRegex { get; set; }
+
+        /// <summary>
+        /// Regex to test the database resource's name against. An example of a database resource name is a table's
+        /// name. Other database resource names like view names could be included in the future. If empty, all database
+        /// resources match.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseResourceNameRegex")]
+        public virtual string DatabaseResourceNameRegex { get; set; }
+
+        /// <summary>Regex to test the instance name against. If empty, all instances match.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceRegex")]
+        public virtual string InstanceRegex { get; set; }
+
+        /// <summary>
+        /// For organizations, if unset, will match all projects. Has no effect for Data Profile configurations created
+        /// within a project.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectIdRegex")]
+        public virtual string ProjectIdRegex { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A collection of regular expressions to determine what database resources to match against.</summary>
+    public class GooglePrivacyDlpV2DatabaseResourceRegexes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A group of regular expression patterns to match against one or more database resources. Maximum of 100
+        /// entries. The sum of all regular expression's length can't exceed 10 KiB.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("patterns")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2DatabaseResourceRegex> Patterns { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13143,6 +13971,77 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Requirements that must be true before a table is profiled for the first time.</summary>
+    public class GooglePrivacyDlpV2DiscoveryCloudSqlConditions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Database engines that should be profiled. Optional. Defaults to ALL_SUPPORTED_DATABASE_ENGINES if
+        /// unspecified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseEngines")]
+        public virtual System.Collections.Generic.IList<string> DatabaseEngines { get; set; }
+
+        /// <summary>
+        /// Data profiles will only be generated for the database resource types specified in this field. If not
+        /// specified, defaults to [DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES].
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("types")]
+        public virtual System.Collections.Generic.IList<string> Types { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Determines what tables will have profiles generated within an organization or project. Includes the ability to
+    /// filter by regular expression patterns on project ID, location, instance, database, and database resource name.
+    /// </summary>
+    public class GooglePrivacyDlpV2DiscoveryCloudSqlFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A specific set of database resources for this filter to apply to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("collection")]
+        public virtual GooglePrivacyDlpV2DatabaseResourceCollection Collection { get; set; }
+
+        /// <summary>
+        /// The database resource to scan. Targets including this can only include one target (the target with this
+        /// database resource reference).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseResourceReference")]
+        public virtual GooglePrivacyDlpV2DatabaseResourceReference DatabaseResourceReference { get; set; }
+
+        /// <summary>
+        /// Catch-all. This should always be the last target in the list because anything above it will apply first.
+        /// Should only appear once in a configuration. If none is specified, a default one will be added automatically.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("others")]
+        public virtual GooglePrivacyDlpV2AllOtherDatabaseResources Others { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// How often existing tables should have their profiles refreshed. New tables are scanned as quickly as possible
+    /// depending on system capacity.
+    /// </summary>
+    public class GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Data changes (non-schema changes) in Cloud SQL tables can't trigger reprofiling. If you set this field,
+        /// profiles are refreshed at this frequency regardless of whether the underlying tables have changes. Defaults
+        /// to never.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refreshFrequency")]
+        public virtual string RefreshFrequency { get; set; }
+
+        /// <summary>When to reprofile if the schema has changed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemaModifiedCadence")]
+        public virtual GooglePrivacyDlpV2SchemaModifiedCadence SchemaModifiedCadence { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Configuration for discovery to scan resources for profile generation. Only one discovery configuration may exist
     /// per organization, folder, or project. The generated data profiles are retained according to the [data retention
@@ -13389,6 +14288,12 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>BigQuery target for Discovery. The first target to match a table will be the one applied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigQueryTarget")]
         public virtual GooglePrivacyDlpV2BigQueryDiscoveryTarget BigQueryTarget { get; set; }
+
+        /// <summary>
+        /// Cloud SQL target for Discovery. The first target to match a table will be the one applied.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudSqlTarget")]
+        public virtual GooglePrivacyDlpV2CloudSqlDiscoveryTarget CloudSqlTarget { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14809,7 +15714,7 @@ namespace Google.Apis.DLP.v2.Data
     }
 
     /// <summary>
-    /// Contains a configuration to make dlp api calls on a repeating basis. See
+    /// Contains a configuration to make api calls on a repeating basis. See
     /// https://cloud.google.com/sensitive-data-protection/docs/concepts-job-triggers to learn more.
     /// </summary>
     public class GooglePrivacyDlpV2JobTrigger : Google.Apis.Requests.IDirectResponseSchema
@@ -15379,6 +16284,23 @@ namespace Google.Apis.DLP.v2.Data
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2ColumnDataProfile> ColumnDataProfiles { get; set; }
 
         /// <summary>The next page token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ListConnections.</summary>
+    public class GooglePrivacyDlpV2ListConnectionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of connections.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connections")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Connection> Connections { get; set; }
+
+        /// <summary>
+        /// Token to retrieve the next page of results. An empty value means there are no more results.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -16658,6 +17580,62 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>How frequency to modify the profile when the table's schema is modified.</summary>
+    public class GooglePrivacyDlpV2SchemaModifiedCadence : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Frequency to regenerate data profiles when the schema is modified. Defaults to monthly.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frequency")]
+        public virtual string Frequency { get; set; }
+
+        /// <summary>The types of schema modifications to consider. Defaults to NEW_COLUMNS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("types")]
+        public virtual System.Collections.Generic.IList<string> Types { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for SearchConnections.</summary>
+    public class GooglePrivacyDlpV2SearchConnectionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// List of connections that match the search query. Note that only a subset of the fields will be populated,
+        /// and only "name" is guaranteed to be set. For full details of a Connection, call GetConnection with the name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connections")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Connection> Connections { get; set; }
+
+        /// <summary>
+        /// Token to retrieve the next page of results. An empty value means there are no more results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A credential consisting of a username and password, where the password is stored in a Secret Manager resource.
+    /// Note: Secret Manager [charges apply](https://cloud.google.com/secret-manager/pricing).
+    /// </summary>
+    public class GooglePrivacyDlpV2SecretManagerCredential : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The name of the Secret Manager resource that stores the password, in the form
+        /// "projects/project-id/secrets/secret-name/versions/version".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("passwordSecretVersionName")]
+        public virtual string PasswordSecretVersionName { get; set; }
+
+        /// <summary>Required. The username.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("username")]
+        public virtual string Username { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Apply transformation to the selected info_types.</summary>
     public class GooglePrivacyDlpV2SelectedInfoTypes : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -17764,6 +18742,21 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>Required. A 128/192/256 bit key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for UpdateConnection.</summary>
+    public class GooglePrivacyDlpV2UpdateConnectionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The connection with new values for the relevant fields.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connection")]
+        public virtual GooglePrivacyDlpV2Connection Connection { get; set; }
+
+        /// <summary>Optional. Mask to control which fields get updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

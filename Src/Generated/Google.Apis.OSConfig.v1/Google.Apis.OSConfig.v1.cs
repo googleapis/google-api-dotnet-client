@@ -316,16 +316,17 @@ namespace Google.Apis.OSConfig.v1
                     this.service = service;
                 }
 
-                /// <summary>GetProjectFeatureSettings returns the feature settings for a project</summary>
+                /// <summary>GetProjectFeatureSettings returns the VM Manager feature settings for a project.</summary>
                 /// <param name="name">
-                /// Required. Name of the billing config. "projects//locations/global/projectFeatureSettings"
+                /// Required. Name specifies the URL for the ProjectFeatureSettings resource:
+                /// projects/project_id/locations/global/projectFeatureSettings.
                 /// </param>
                 public virtual GetProjectFeatureSettingsRequest GetProjectFeatureSettings(string name)
                 {
                     return new GetProjectFeatureSettingsRequest(this.service, name);
                 }
 
-                /// <summary>GetProjectFeatureSettings returns the feature settings for a project</summary>
+                /// <summary>GetProjectFeatureSettings returns the VM Manager feature settings for a project.</summary>
                 public class GetProjectFeatureSettingsRequest : OSConfigBaseServiceRequest<Google.Apis.OSConfig.v1.Data.ProjectFeatureSettings>
                 {
                     /// <summary>Constructs a new GetProjectFeatureSettings request.</summary>
@@ -336,7 +337,8 @@ namespace Google.Apis.OSConfig.v1
                     }
 
                     /// <summary>
-                    /// Required. Name of the billing config. "projects//locations/global/projectFeatureSettings"
+                    /// Required. Name specifies the URL for the ProjectFeatureSettings resource:
+                    /// projects/project_id/locations/global/projectFeatureSettings.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -365,17 +367,18 @@ namespace Google.Apis.OSConfig.v1
                     }
                 }
 
-                /// <summary>UpdateProjectFeatureSettings sets the feature settings for a project.</summary>
+                /// <summary>UpdateProjectFeatureSettings sets the VM Manager features for a project.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. Immutable. Name of the config, e.g. projects/12345/locations/global/projectFeatureSettings
+                /// Required. Immutable. Name specifies the URL for the ProjectFeatureSettings resource:
+                /// projects/project_id/locations/global/projectFeatureSettings.
                 /// </param>
                 public virtual UpdateProjectFeatureSettingsRequest UpdateProjectFeatureSettings(Google.Apis.OSConfig.v1.Data.ProjectFeatureSettings body, string name)
                 {
                     return new UpdateProjectFeatureSettingsRequest(this.service, body, name);
                 }
 
-                /// <summary>UpdateProjectFeatureSettings sets the feature settings for a project.</summary>
+                /// <summary>UpdateProjectFeatureSettings sets the VM Manager features for a project.</summary>
                 public class UpdateProjectFeatureSettingsRequest : OSConfigBaseServiceRequest<Google.Apis.OSConfig.v1.Data.ProjectFeatureSettings>
                 {
                     /// <summary>Constructs a new UpdateProjectFeatureSettings request.</summary>
@@ -387,8 +390,8 @@ namespace Google.Apis.OSConfig.v1
                     }
 
                     /// <summary>
-                    /// Required. Immutable. Name of the config, e.g.
-                    /// projects/12345/locations/global/projectFeatureSettings
+                    /// Required. Immutable. Name specifies the URL for the ProjectFeatureSettings resource:
+                    /// projects/project_id/locations/global/projectFeatureSettings.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -5311,18 +5314,19 @@ namespace Google.Apis.OSConfig.v1.Data
     }
 
     /// <summary>
-    /// ProjectFeatureSettings represents the features settings for the VM Manager. The project features settings can be
-    /// set for a project.
+    /// ProjectFeatureSettings represents the VM Manager feature settings in a project. For more information, see Enable
+    /// full VM Manager functionality.
     /// </summary>
     public class ProjectFeatureSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Immutable. Name of the config, e.g. projects/12345/locations/global/projectFeatureSettings
+        /// Required. Immutable. Name specifies the URL for the ProjectFeatureSettings resource:
+        /// projects/project_id/locations/global/projectFeatureSettings.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Currently set PatchAndConfigFeatureSet for name.</summary>
+        /// <summary>Set PatchAndConfigFeatureSet for the project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("patchAndConfigFeatureSet")]
         public virtual string PatchAndConfigFeatureSet { get; set; }
 

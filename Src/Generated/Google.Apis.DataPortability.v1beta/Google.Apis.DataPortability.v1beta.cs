@@ -62,9 +62,6 @@ namespace Google.Apis.DataPortability.v1beta
         /// <summary>Available OAuth 2.0 scopes for use with the Data Portability API.</summary>
         public class Scope
         {
-            /// <summary>Move a copy of the Google Alerts subscriptions you created.</summary>
-            public static string DataportabilityAlertsSubscriptions = "https://www.googleapis.com/auth/dataportability.alerts.subscriptions";
-
             /// <summary>
             /// Move a copy of messages between you and the businesses you have conversations with across Google
             /// services.
@@ -121,9 +118,6 @@ namespace Google.Apis.DataPortability.v1beta
 
             /// <summary>Move a copy of the photos and videos you posted on Maps.</summary>
             public static string DataportabilityMapsPhotosVideos = "https://www.googleapis.com/auth/dataportability.maps.photos_videos";
-
-            /// <summary>Move a copy of feedback you gave after completing trips using Maps directions.</summary>
-            public static string DataportabilityMapsPostTripFeedback = "https://www.googleapis.com/auth/dataportability.maps.post_trip_feedback";
 
             /// <summary>Move a copy of the questions and answers you posted on Maps.</summary>
             public static string DataportabilityMapsQuestionsAnswers = "https://www.googleapis.com/auth/dataportability.maps.questions_answers";
@@ -273,9 +267,6 @@ namespace Google.Apis.DataPortability.v1beta
         /// <summary>Available OAuth 2.0 scope constants for use with the Data Portability API.</summary>
         public static class ScopeConstants
         {
-            /// <summary>Move a copy of the Google Alerts subscriptions you created.</summary>
-            public const string DataportabilityAlertsSubscriptions = "https://www.googleapis.com/auth/dataportability.alerts.subscriptions";
-
             /// <summary>
             /// Move a copy of messages between you and the businesses you have conversations with across Google
             /// services.
@@ -332,9 +323,6 @@ namespace Google.Apis.DataPortability.v1beta
 
             /// <summary>Move a copy of the photos and videos you posted on Maps.</summary>
             public const string DataportabilityMapsPhotosVideos = "https://www.googleapis.com/auth/dataportability.maps.photos_videos";
-
-            /// <summary>Move a copy of feedback you gave after completing trips using Maps directions.</summary>
-            public const string DataportabilityMapsPostTripFeedback = "https://www.googleapis.com/auth/dataportability.maps.post_trip_feedback";
 
             /// <summary>Move a copy of the questions and answers you posted on Maps.</summary>
             public const string DataportabilityMapsQuestionsAnswers = "https://www.googleapis.com/auth/dataportability.maps.questions_answers";

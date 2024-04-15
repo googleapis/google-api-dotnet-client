@@ -960,8 +960,8 @@ namespace Google.Apis.MapsPlaces.v1.Data
 
         /// <summary>
         /// The predicted text. This text does not represent a Place, but rather a text query that could be used in a
-        /// search endpoint (for example, TextSearch). `text` is recommended for developers who wish to show a single UI
-        /// element. Developers who wish to show two separate, but related, UI elements may want to use
+        /// search endpoint (for example, Text Search). `text` is recommended for developers who wish to show a single
+        /// UI element. Developers who wish to show two separate, but related, UI elements may want to use
         /// `structured_format` instead. They are two different ways to represent a query prediction. Users should not
         /// try to parse `structured_format` into `text` or vice versa. May be in mixed languages if the request `input`
         /// and `language_code` are in different languages or if part of the query does not have a translation from the
