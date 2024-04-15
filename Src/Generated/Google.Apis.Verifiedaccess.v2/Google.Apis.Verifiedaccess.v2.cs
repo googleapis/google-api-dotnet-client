@@ -493,6 +493,10 @@ namespace Google.Apis.Verifiedaccess.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("profileAffiliationIds")]
         public virtual System.Collections.Generic.IList<string> ProfileAffiliationIds { get; set; }
 
+        /// <summary>Enrollment domain of the customer which is currently managing the profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("profileEnrollmentDomain")]
+        public virtual string ProfileEnrollmentDomain { get; set; }
+
         /// <summary>
         /// Whether Enterprise-grade (i.e. custom) unsafe URL scanning is enabled or not. This setting may be controlled
         /// by an enterprise policy: https://chromeenterprise.google/policies/#EnterpriseRealTimeUrlCheckMode

@@ -2039,6 +2039,46 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("promotions")]
         public virtual System.Collections.Generic.IList<string> Promotions { get; set; }
 
+        private string _purchaseTimeRaw;
+
+        private object _purchaseTime;
+
+        /// <summary>
+        /// Optional. The timestamp when the user transaction was made with the Partner. Specify for the case of "bundle
+        /// with choice", and it must be before the provision_time (when the user makes a selection).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purchaseTime")]
+        public virtual string PurchaseTimeRaw
+        {
+            get => _purchaseTimeRaw;
+            set
+            {
+                _purchaseTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _purchaseTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="PurchaseTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use PurchaseTimeDateTimeOffset instead.")]
+        public virtual object PurchaseTime
+        {
+            get => _purchaseTime;
+            set
+            {
+                _purchaseTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _purchaseTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="PurchaseTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? PurchaseTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(PurchaseTimeRaw);
+            set => PurchaseTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>
         /// Output only. The place where partners should redirect the end-user to after creation. This field might also
         /// be populated when creation failed. However, Partners should always prepare a default URL to redirect the

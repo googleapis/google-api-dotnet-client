@@ -10204,13 +10204,13 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ModelType { get; set; }
 
         /// <summary>
-        /// The resource name of the processor version. Format:
+        /// Identifier. The resource name of the processor version. Format:
         /// `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processor_version}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The state of the processor version.</summary>
+        /// <summary>Output only. The state of the processor version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 

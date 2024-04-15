@@ -2078,6 +2078,10 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; }
 
+        /// <summary>ID of the rule that triggered the alert</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
         /// <summary>Required for iOS, empty for others.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iosVendorId")]
         public virtual string IosVendorId { get; set; }

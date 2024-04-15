@@ -4624,9 +4624,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
     /// not be placed into the restricted App Standby Bucket
     /// (https://developer.android.com/topic/performance/appstandby#restricted-bucket). Extensions apps are also
     /// protected against users clearing their data or force-closing the application, although admins can continue to
-    /// use the clear app data command
-    /// (https://developer.android.com/management/reference/rest/v1/enterprises.devices/issueCommand#CommandType) on
-    /// extension apps if needed for Android 13 and above.
+    /// use the clear app data command on extension apps if needed for Android 13 and above.
     /// </summary>
     public class ExtensionConfig : Google.Apis.Requests.IDirectResponseSchema
     {

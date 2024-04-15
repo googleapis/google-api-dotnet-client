@@ -14812,7 +14812,8 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>
         /// The type of purchase of the inapp product. This field is only set if this purchase was not made using the
         /// standard in-app billing flow. Possible values are: 0. Test (i.e. purchased from a license testing account)
-        /// 1. Promo (i.e. purchased using a promo code) 2. Rewarded (i.e. from watching a video ad instead of paying)
+        /// 1. Promo (i.e. purchased using a promo code). Does not include Play Points purchases. 2. Rewarded (i.e. from
+        /// watching a video ad instead of paying)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseType")]
         public virtual System.Nullable<int> PurchaseType { get; set; }
@@ -16355,6 +16356,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     /// </summary>
     public class TargetingRuleScope : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The scope of the current targeting rule is any subscription in the parent app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("anySubscriptionInApp")]
+        public virtual TargetingRuleScopeAnySubscriptionInApp AnySubscriptionInApp { get; set; }
+
         /// <summary>
         /// The scope of the current targeting rule is the subscription with the specified subscription ID. Must be a
         /// subscription within the same parent app.
@@ -16362,6 +16367,28 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("specificSubscriptionInApp")]
         public virtual string SpecificSubscriptionInApp { get; set; }
 
+        /// <summary>
+        /// The scope of the current targeting rule is the subscription in which this offer is defined.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thisSubscription")]
+        public virtual TargetingRuleScopeThisSubscription ThisSubscription { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the targeting rule scope corresponding to any subscription in the parent app.</summary>
+    public class TargetingRuleScopeAnySubscriptionInApp : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents the targeting rule scope corresponding to the subscriptions in which this offer is defined.
+    /// </summary>
+    public class TargetingRuleScopeThisSubscription : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

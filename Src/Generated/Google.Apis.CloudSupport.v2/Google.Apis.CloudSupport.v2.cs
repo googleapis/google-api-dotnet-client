@@ -2227,12 +2227,13 @@ namespace Google.Apis.CloudSupport.v2.Data
     }
 
     /// <summary>
-    /// Case comments are the main way Google Support communicates with a user who has opened a case. When a user
-    /// responds to Google Support, the user's responses also appear as comments.
+    /// A comment associated with a support case. Case comments are the primary way for Google Support to communicate
+    /// with a user who has opened a case. When a user responds to Google Support, the user's responses also appear as
+    /// comments.
     /// </summary>
     public class Comment : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The full comment body. Maximum of 12800 characters. This can contain rich text syntax.</summary>
+        /// <summary>The full comment body. Maximum of 12800 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("body")]
         public virtual string Body { get; set; }
 
@@ -2240,7 +2241,7 @@ namespace Google.Apis.CloudSupport.v2.Data
 
         private object _createTime;
 
-        /// <summary>Output only. The time when this comment was created.</summary>
+        /// <summary>Output only. The time when the comment was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -2273,17 +2274,17 @@ namespace Google.Apis.CloudSupport.v2.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Output only. The user or Google Support agent created this comment.</summary>
+        /// <summary>Output only. The user or Google Support agent who created the comment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creator")]
         public virtual Actor Creator { get; set; }
 
-        /// <summary>Output only. The resource name for the comment.</summary>
+        /// <summary>Output only. Identifier. The resource name of the comment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Output only. DEPRECATED. An automatically generated plain text version of body with all rich text syntax
-        /// stripped.
+        /// Output only. DEPRECATED. DO NOT USE. A duplicate of the `body` field. This field is only present for legacy
+        /// reasons.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("plainTextBody")]
         public virtual string PlainTextBody { get; set; }

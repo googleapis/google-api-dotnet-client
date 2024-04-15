@@ -1,0 +1,11 @@
+{
+  "Google.Apis.AddressValidation.v1.AddressValidationBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.AddressValidation.v1.AddressValidationBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}
