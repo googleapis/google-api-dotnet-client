@@ -4052,6 +4052,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
+        /// <summary>Optional. The maintenance update policy determines when to allow or deny updates.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceUpdatePolicy")]
+        public virtual MaintenanceUpdatePolicy MaintenanceUpdatePolicy { get; set; }
+
         /// <summary>Output only. Cluster created via DMS migration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("migrationSource")]
         public virtual MigrationSource MigrationSource { get; set; }
@@ -4080,6 +4084,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         /// <summary>Output only. Cross Region replication config specific to PRIMARY cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryConfig")]
         public virtual PrimaryConfig PrimaryConfig { get; set; }
+
+        /// <summary>Optional. The configuration for Private Service Connect (PSC) for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscConfig")]
+        public virtual PscConfig PscConfig { get; set; }
 
         /// <summary>
         /// Output only. Reconciling (https://google.aip.dev/128#reconciliation). Set to true if the current state of
@@ -4708,6 +4716,10 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nodes")]
         public virtual System.Collections.Generic.IList<Node> Nodes { get; set; }
 
+        /// <summary>Optional. The configuration for Private Service Connect (PSC) for the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscInstanceConfig")]
+        public virtual PscInstanceConfig PscInstanceConfig { get; set; }
+
         /// <summary>
         /// Output only. The public IP addresses for the Instance. This is available ONLY when enable_public_ip is set.
         /// This is the connection endpoint for an end-user application.
@@ -4933,6 +4945,35 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         /// <summary>The number of CPU's in the VM instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuCount")]
         public virtual System.Nullable<int> CpuCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>MaintenanceUpdatePolicy defines the policy for system updates.</summary>
+    public class MaintenanceUpdatePolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Preferred windows to perform maintenance. Currently limited to 1.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceWindows")]
+        public virtual System.Collections.Generic.IList<MaintenanceWindow> MaintenanceWindows { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>MaintenanceWindow specifies a preferred day and time for maintenance.</summary>
+    public class MaintenanceWindow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Preferred day of the week for maintenance, e.g. MONDAY, TUESDAY, etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("day")]
+        public virtual string Day { get; set; }
+
+        /// <summary>
+        /// Preferred time to start the maintenance operation on the specified day. Maintenance will start within 1 hour
+        /// of this time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual GoogleTypeTimeOfDay StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5206,6 +5247,46 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
         public virtual System.Nullable<bool> ValidateOnly { get; set; }
+    }
+
+    /// <summary>PscConfig contains PSC related configuration at a cluster level.</summary>
+    public class PscConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Create an instance that allows connections from Private Service Connect endpoints to the instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscEnabled")]
+        public virtual System.Nullable<bool> PscEnabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>PscInstanceConfig contains PSC related configuration at an instance level.</summary>
+    public class PscInstanceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. List of consumer projects that are allowed to create PSC endpoints to service-attachments to this
+        /// instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedConsumerProjects")]
+        public virtual System.Collections.Generic.IList<string> AllowedConsumerProjects { get; set; }
+
+        /// <summary>
+        /// Output only. The DNS name of the instance for PSC connectivity. Name convention: ...alloydb-psc.goog
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscDnsName")]
+        public virtual string PscDnsName { get; set; }
+
+        /// <summary>
+        /// Output only. The service attachment created when Private Service Connect (PSC) is enabled for the instance.
+        /// The name of the resource will be in the format of `projects//regions//serviceAttachments/`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAttachmentLink")]
+        public virtual string ServiceAttachmentLink { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>

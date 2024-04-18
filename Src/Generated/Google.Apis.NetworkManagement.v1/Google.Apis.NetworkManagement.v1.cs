@@ -723,7 +723,7 @@ namespace Google.Apis.NetworkManagement.v1
                     /// contain non-existent resources in the network, or the user does not have read permissions to the
                     /// network configurations of listed projects), then the reachability result returns a value of
                     /// UNKNOWN. If the endpoint specifications in `ConnectivityTest` are incomplete, the reachability
-                    /// result returns a value of `AMBIGUOUS`. See the documentation in `ConnectivityTest` for for more
+                    /// result returns a value of `AMBIGUOUS`. See the documentation in `ConnectivityTest` for more
                     /// details.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
@@ -744,7 +744,7 @@ namespace Google.Apis.NetworkManagement.v1
                     /// contain non-existent resources in the network, or the user does not have read permissions to the
                     /// network configurations of listed projects), then the reachability result returns a value of
                     /// UNKNOWN. If the endpoint specifications in `ConnectivityTest` are incomplete, the reachability
-                    /// result returns a value of `AMBIGUOUS`. See the documentation in `ConnectivityTest` for for more
+                    /// result returns a value of `AMBIGUOUS`. See the documentation in `ConnectivityTest` for more
                     /// details.
                     /// </summary>
                     public class PatchRequest : NetworkManagementBaseServiceRequest<Google.Apis.NetworkManagement.v1.Data.Operation>

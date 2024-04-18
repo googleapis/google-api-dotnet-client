@@ -1074,7 +1074,7 @@ namespace Google.Apis.Iam.v1
 
                 /// <summary>
                 /// Deletes a WorkforcePoolProvider. Deleting a provider does not revoke credentials that have already
-                /// been\ issued; they continue to grant access. You can undelete a provider for 30 days. After 30 days,
+                /// been issued; they continue to grant access. You can undelete a provider for 30 days. After 30 days,
                 /// deletion is permanent. You cannot update deleted providers. However, you can view and list them.
                 /// </summary>
                 /// <param name="name">
@@ -1088,7 +1088,7 @@ namespace Google.Apis.Iam.v1
 
                 /// <summary>
                 /// Deletes a WorkforcePoolProvider. Deleting a provider does not revoke credentials that have already
-                /// been\ issued; they continue to grant access. You can undelete a provider for 30 days. After 30 days,
+                /// been issued; they continue to grant access. You can undelete a provider for 30 days. After 30 days,
                 /// deletion is permanent. You cannot update deleted providers. However, you can view and list them.
                 /// </summary>
                 public class DeleteRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Operation>
@@ -1506,14 +1506,17 @@ namespace Google.Apis.Iam.v1
                 /// <summary>
                 /// Deletes a WorkforcePoolSubject. Subject must not already be in a deleted state. A
                 /// WorkforcePoolSubject is automatically created the first time an external credential is exchanged for
-                /// a Google Cloud credential with a mapped `google.subject` attribute. There is no path to manually
-                /// create WorkforcePoolSubjects. Once deleted, the WorkforcePoolSubject may not be used for 30 days.
-                /// After 30 days, the WorkforcePoolSubject will be deleted forever and can be reused in token exchanges
-                /// with Google Cloud STS. This will automatically create a new WorkforcePoolSubject that is independent
-                /// of the previously deleted WorkforcePoolSubject with the same google.subject value.
+                /// a Google Cloud credential using a mapped `google.subject` attribute. There is no endpoint to
+                /// manually create a WorkforcePoolSubject. For 30 days after a WorkforcePoolSubject is deleted, using
+                /// the same `google.subject` attribute in token exchanges with Google Cloud STS fails. Call
+                /// UndeleteWorkforcePoolSubject to undelete a WorkforcePoolSubject that has been deleted, within within
+                /// 30 days of deleting it. After 30 days, the WorkforcePoolSubject is permanently deleted. At this
+                /// point, a token exchange with Google Cloud STS that uses the same mapped `google.subject` attribute
+                /// automatically creates a new WorkforcePoolSubject that is unrelated to the previously deleted
+                /// WorkforcePoolSubject but has the same `google.subject` value.
                 /// </summary>
                 /// <param name="name">
-                /// Required. The resource name of the WorkforcePoolSubject. Special characters, like '/' and ':', must
+                /// Required. The resource name of the WorkforcePoolSubject. Special characters, like `/` and `:`, must
                 /// be escaped, because all URLs need to conform to the "When to Escape and Unescape" section of
                 /// [RFC3986](https://www.ietf.org/rfc/rfc2396.txt). Format:
                 /// `locations/{location}/workforcePools/{workforce_pool_id}/subjects/{subject_id}`
@@ -1526,11 +1529,14 @@ namespace Google.Apis.Iam.v1
                 /// <summary>
                 /// Deletes a WorkforcePoolSubject. Subject must not already be in a deleted state. A
                 /// WorkforcePoolSubject is automatically created the first time an external credential is exchanged for
-                /// a Google Cloud credential with a mapped `google.subject` attribute. There is no path to manually
-                /// create WorkforcePoolSubjects. Once deleted, the WorkforcePoolSubject may not be used for 30 days.
-                /// After 30 days, the WorkforcePoolSubject will be deleted forever and can be reused in token exchanges
-                /// with Google Cloud STS. This will automatically create a new WorkforcePoolSubject that is independent
-                /// of the previously deleted WorkforcePoolSubject with the same google.subject value.
+                /// a Google Cloud credential using a mapped `google.subject` attribute. There is no endpoint to
+                /// manually create a WorkforcePoolSubject. For 30 days after a WorkforcePoolSubject is deleted, using
+                /// the same `google.subject` attribute in token exchanges with Google Cloud STS fails. Call
+                /// UndeleteWorkforcePoolSubject to undelete a WorkforcePoolSubject that has been deleted, within within
+                /// 30 days of deleting it. After 30 days, the WorkforcePoolSubject is permanently deleted. At this
+                /// point, a token exchange with Google Cloud STS that uses the same mapped `google.subject` attribute
+                /// automatically creates a new WorkforcePoolSubject that is unrelated to the previously deleted
+                /// WorkforcePoolSubject but has the same `google.subject` value.
                 /// </summary>
                 public class DeleteRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Operation>
                 {
@@ -1542,7 +1548,7 @@ namespace Google.Apis.Iam.v1
                     }
 
                     /// <summary>
-                    /// Required. The resource name of the WorkforcePoolSubject. Special characters, like '/' and ':',
+                    /// Required. The resource name of the WorkforcePoolSubject. Special characters, like `/` and `:`,
                     /// must be escaped, because all URLs need to conform to the "When to Escape and Unescape" section
                     /// of [RFC3986](https://www.ietf.org/rfc/rfc2396.txt). Format:
                     /// `locations/{location}/workforcePools/{workforce_pool_id}/subjects/{subject_id}`
@@ -1579,7 +1585,7 @@ namespace Google.Apis.Iam.v1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. The resource name of the WorkforcePoolSubject. Special characters, like '/' and ':', must
+                /// Required. The resource name of the WorkforcePoolSubject. Special characters, like `/` and `:`, must
                 /// be escaped, because all URLs need to conform to the "When to Escape and Unescape" section of
                 /// [RFC3986](https://www.ietf.org/rfc/rfc2396.txt). Format:
                 /// `locations/{location}/workforcePools/{workforce_pool_id}/subjects/{subject_id}`
@@ -1603,7 +1609,7 @@ namespace Google.Apis.Iam.v1
                     }
 
                     /// <summary>
-                    /// Required. The resource name of the WorkforcePoolSubject. Special characters, like '/' and ':',
+                    /// Required. The resource name of the WorkforcePoolSubject. Special characters, like `/` and `:`,
                     /// must be escaped, because all URLs need to conform to the "When to Escape and Unescape" section
                     /// of [RFC3986](https://www.ietf.org/rfc/rfc2396.txt). Format:
                     /// `locations/{location}/workforcePools/{workforce_pool_id}/subjects/{subject_id}`
@@ -2129,8 +2135,8 @@ namespace Google.Apis.Iam.v1
             }
 
             /// <summary>
-            /// Returns the caller's permissions on the WorkforcePool. If the pool does not exist, this will return an
-            /// empty set of permissions, not a `NOT_FOUND` error.
+            /// Returns the caller's permissions on the WorkforcePool. If the pool doesn't exist, this call returns an
+            /// empty set of permissions. It doesn't return a `NOT_FOUND` error.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="resource">
@@ -2143,8 +2149,8 @@ namespace Google.Apis.Iam.v1
             }
 
             /// <summary>
-            /// Returns the caller's permissions on the WorkforcePool. If the pool does not exist, this will return an
-            /// empty set of permissions, not a `NOT_FOUND` error.
+            /// Returns the caller's permissions on the WorkforcePool. If the pool doesn't exist, this call returns an
+            /// empty set of permissions. It doesn't return a `NOT_FOUND` error.
             /// </summary>
             public class TestIamPermissionsRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.TestIamPermissionsResponse>
             {
@@ -2994,7 +3000,761 @@ namespace Google.Apis.Iam.v1
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                OauthClients = new OauthClientsResource(service);
                 WorkloadIdentityPools = new WorkloadIdentityPoolsResource(service);
+            }
+
+            /// <summary>Gets the OauthClients resource.</summary>
+            public virtual OauthClientsResource OauthClients { get; }
+
+            /// <summary>The "oauthClients" collection of methods.</summary>
+            public class OauthClientsResource
+            {
+                private const string Resource = "oauthClients";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public OauthClientsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Credentials = new CredentialsResource(service);
+                }
+
+                /// <summary>Gets the Credentials resource.</summary>
+                public virtual CredentialsResource Credentials { get; }
+
+                /// <summary>The "credentials" collection of methods.</summary>
+                public class CredentialsResource
+                {
+                    private const string Resource = "credentials";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public CredentialsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Creates a new OauthClientCredential.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The parent resource to create the oauth client Credential in.
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.Iam.v1.Data.OauthClientCredential body, string parent)
+                    {
+                        return new CreateRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>Creates a new OauthClientCredential.</summary>
+                    public class CreateRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.OauthClientCredential>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Iam.v1.Data.OauthClientCredential body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The parent resource to create the oauth client Credential in.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Required. The ID to use for the oauth client credential, which becomes the final component
+                        /// of the resource name. This value should be 4-32 characters, and may contain the characters
+                        /// [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may not be specified.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("oauthClientCredentialId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OauthClientCredentialId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Iam.v1.Data.OauthClientCredential Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/credentials";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/oauthClients/[^/]+$",
+                            });
+                            RequestParameters.Add("oauthClientCredentialId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "oauthClientCredentialId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Deletes a OauthClientCredential. Before deleting an oauth client credential, it should first be
+                    /// disabled.
+                    /// </summary>
+                    /// <param name="name">
+                    /// Required. The name of the oauth client credential to delete. Format:
+                    /// `projects/{project}/locations/{location}/oauthClients/{oauth_client}/credentials/{credential}`.
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Deletes a OauthClientCredential. Before deleting an oauth client credential, it should first be
+                    /// disabled.
+                    /// </summary>
+                    public class DeleteRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Empty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the oauth client credential to delete. Format:
+                        /// `projects/{project}/locations/{location}/oauthClients/{oauth_client}/credentials/{credential}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/oauthClients/[^/]+/credentials/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets an individual OauthClientCredential.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the oauth client credential to retrieve. Format:
+                    /// `projects/{project}/locations/{location}/oauthClients/{oauth_client}/credentials/{credential}`.
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Gets an individual OauthClientCredential.</summary>
+                    public class GetRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.OauthClientCredential>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the oauth client credential to retrieve. Format:
+                        /// `projects/{project}/locations/{location}/oauthClients/{oauth_client}/credentials/{credential}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/oauthClients/[^/]+/credentials/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists all OauthClientCredentialss in a OauthClient.</summary>
+                    /// <param name="parent">Required. The parent to list oauth client credentials for.</param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists all OauthClientCredentialss in a OauthClient.</summary>
+                    public class ListRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.ListOauthClientCredentialsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The parent to list oauth client credentials for.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/credentials";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/oauthClients/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Updates an existing OauthClientCredential.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Immutable. The resource name of the oauth client credential. Format:
+                    /// `projects/{project}/locations/{location}/oauthClients/{oauth_client}/credentials/{credential}`
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.Iam.v1.Data.OauthClientCredential body, string name)
+                    {
+                        return new PatchRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Updates an existing OauthClientCredential.</summary>
+                    public class PatchRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.OauthClientCredential>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Iam.v1.Data.OauthClientCredential body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Immutable. The resource name of the oauth client credential. Format:
+                        /// `projects/{project}/locations/{location}/oauthClients/{oauth_client}/credentials/{credential}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Required. The list of fields to update.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Iam.v1.Data.OauthClientCredential Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/oauthClients/[^/]+/credentials/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>
+                /// Creates a new OauthClient. You cannot reuse the name of a deleted oauth client until 30 days after
+                /// deletion.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource to create the oauth client in. The only supported location is
+                /// `global`.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.Iam.v1.Data.OauthClient body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>
+                /// Creates a new OauthClient. You cannot reuse the name of a deleted oauth client until 30 days after
+                /// deletion.
+                /// </summary>
+                public class CreateRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.OauthClient>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Iam.v1.Data.OauthClient body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource to create the oauth client in. The only supported location is
+                    /// `global`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. The ID to use for the oauth client, which becomes the final component of the resource
+                    /// name. This value should be a string of 6 to 63 lowercase letters, digits, or hyphens. It must
+                    /// start with a letter, and cannot have a trailing hyphen. The prefix `gcp-` is reserved for use by
+                    /// Google, and may not be specified.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("oauthClientId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OauthClientId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Iam.v1.Data.OauthClient Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/oauthClients";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("oauthClientId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "oauthClientId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Deletes a OauthClient. You cannot use a deleted oauth client. However, deletion does not revoke
+                /// access tokens that have already been issued; they continue to grant access. Deletion does revoke
+                /// refresh tokens that have already been issued; They cannot be used to renew an access token. If the
+                /// oauth client is undeleted, and the refresh tokens are not expired, they are valid for token exchange
+                /// again. You can undelete an oauth client for 30 days. After 30 days, deletion is permanent. You
+                /// cannot update deleted oauth clients. However, you can view and list them.
+                /// </summary>
+                /// <param name="name">
+                /// Required. The name of the oauth client to delete. Format:
+                /// `projects/{project}/locations/{location}/oauthClients/{oauth_client}`.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>
+                /// Deletes a OauthClient. You cannot use a deleted oauth client. However, deletion does not revoke
+                /// access tokens that have already been issued; they continue to grant access. Deletion does revoke
+                /// refresh tokens that have already been issued; They cannot be used to renew an access token. If the
+                /// oauth client is undeleted, and the refresh tokens are not expired, they are valid for token exchange
+                /// again. You can undelete an oauth client for 30 days. After 30 days, deletion is permanent. You
+                /// cannot update deleted oauth clients. However, you can view and list them.
+                /// </summary>
+                public class DeleteRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.OauthClient>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the oauth client to delete. Format:
+                    /// `projects/{project}/locations/{location}/oauthClients/{oauth_client}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/oauthClients/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets an individual OauthClient.</summary>
+                /// <param name="name">
+                /// Required. The name of the oauth client to retrieve. Format:
+                /// `projects/{project}/locations/{location}/oauthClients/{oauth_client}`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets an individual OauthClient.</summary>
+                public class GetRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.OauthClient>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the oauth client to retrieve. Format:
+                    /// `projects/{project}/locations/{location}/oauthClients/{oauth_client}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/oauthClients/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Lists all non-deleted OauthClientss in a project. If `show_deleted` is set to `true`, then deleted
+                /// oauth clients are also listed.
+                /// </summary>
+                /// <param name="parent">Required. The parent to list oauth clients for.</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>
+                /// Lists all non-deleted OauthClientss in a project. If `show_deleted` is set to `true`, then deleted
+                /// oauth clients are also listed.
+                /// </summary>
+                public class ListRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.ListOauthClientsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent to list oauth clients for.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of oauth clients to return. If unspecified, at most 50 oauth
+                    /// clients will be returned. The maximum value is 100; values above 100 are truncated to 100.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `ListOauthClients` call. Provide this to
+                    /// retrieve the subsequent page.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Optional. Whether to return soft-deleted oauth clients.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ShowDeleted { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/oauthClients";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("showDeleted", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "showDeleted",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates an existing OauthClient.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Immutable. The resource name of the oauth client.
+                /// Format:`projects/{project}/locations/{location}/oauthClients/{oauth_client}`.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Iam.v1.Data.OauthClient body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates an existing OauthClient.</summary>
+                public class PatchRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.OauthClient>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Iam.v1.Data.OauthClient body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Immutable. The resource name of the oauth client.
+                    /// Format:`projects/{project}/locations/{location}/oauthClients/{oauth_client}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Required. The list of fields to update.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Iam.v1.Data.OauthClient Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/oauthClients/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Undeletes a OauthClient, as long as it was deleted fewer than 30 days ago.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name of the oauth client to undelete. Format:
+                /// `projects/{project}/locations/{location}/oauthClients/{oauth_client}`.
+                /// </param>
+                public virtual UndeleteRequest Undelete(Google.Apis.Iam.v1.Data.UndeleteOauthClientRequest body, string name)
+                {
+                    return new UndeleteRequest(this.service, body, name);
+                }
+
+                /// <summary>Undeletes a OauthClient, as long as it was deleted fewer than 30 days ago.</summary>
+                public class UndeleteRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.OauthClient>
+                {
+                    /// <summary>Constructs a new Undelete request.</summary>
+                    public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Iam.v1.Data.UndeleteOauthClientRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the oauth client to undelete. Format:
+                    /// `projects/{project}/locations/{location}/oauthClients/{oauth_client}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Iam.v1.Data.UndeleteOauthClientRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "undelete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:undelete";
+
+                    /// <summary>Initializes Undelete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/oauthClients/[^/]+$",
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the WorkloadIdentityPools resource.</summary>
@@ -5823,6 +6583,65 @@ namespace Google.Apis.Iam.v1
                     }
                 }
 
+                /// <summary>Patches a ServiceAccountKey.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// The resource name of the service account key in the following format
+                /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}`.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Iam.v1.Data.PatchServiceAccountKeyRequest body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Patches a ServiceAccountKey.</summary>
+                public class PatchRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.ServiceAccountKey>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Iam.v1.Data.PatchServiceAccountKeyRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// The resource name of the service account key in the following format
+                    /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Iam.v1.Data.PatchServiceAccountKeyRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:patch";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/serviceAccounts/[^/]+/keys/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>
                 /// Uploads the public key portion of a key pair that you manage, and associates the public key with a
                 /// ServiceAccount. After you upload the public key, you can use the private key from the key pair as a
@@ -7567,6 +8386,21 @@ namespace Google.Apis.Iam.v1.Data
     /// <summary>The service account key disable request.</summary>
     public class DisableServiceAccountKeyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Usable by internal google services only. An extended_status_message can be used to include
+        /// additional information about the key, such as its private key data being exposed on a public repository like
+        /// GitHub.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extendedStatusMessage")]
+        public virtual string ExtendedStatusMessage { get; set; }
+
+        /// <summary>
+        /// Optional. Describes the reason this key is being disabled. If unspecified, the default value of
+        /// SERVICE_ACCOUNT_KEY_DISABLE_REASON_USER_INITIATED will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountKeyDisableReason")]
+        public virtual string ServiceAccountKeyDisableReason { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7647,6 +8481,24 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Extended status can store additional metadata. For example, for keys disabled due to their private key data
+    /// being expoesed we may include a message with more information about the exposure.
+    /// </summary>
+    public class ExtendedStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The key for this extended status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>The value for the extended status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for `GetIamPolicy` method.</summary>
     public class GetIamPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7677,6 +8529,62 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Represents the OAuth 2.0 client credential configuration for retrieving additional user attributes that are not
+    /// present in the initial authentication credentials from the identity provider, e.g. groups. See
+    /// https://datatracker.ietf.org/doc/html/rfc6749#section-4.4 for more details on client credentials grant flow.
+    /// </summary>
+    public class GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Represents the IdP and type of claims that should be fetched.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributesType")]
+        public virtual string AttributesType { get; set; }
+
+        /// <summary>
+        /// Required. The OAuth 2.0 client ID for retrieving extra attributes from the identity provider. Required to
+        /// get the Access Token using client credentials grant flow.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
+        public virtual string ClientId { get; set; }
+
+        /// <summary>
+        /// Required. The OAuth 2.0 client secret for retrieving extra attributes from the identity provider. Required
+        /// to get the Access Token using client credentials grant flow.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientSecret")]
+        public virtual GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret ClientSecret { get; set; }
+
+        /// <summary>
+        /// Required. The OIDC identity provider's issuer URI. Must be a valid URI using the `https` scheme. Required to
+        /// get the OIDC discovery document.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issuerUri")]
+        public virtual string IssuerUri { get; set; }
+
+        /// <summary>Optional. Represents the parameters to control which claims are fetched from an IdP.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryParameters")]
+        public virtual GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2ClientQueryParameters QueryParameters { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the parameters to control which claims are fetched from an IdP.</summary>
+    public class GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2ClientQueryParameters : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The filter used to request specific records from IdP. In case of attributes type as
+        /// AZURE_AD_GROUPS_MAIL, it represents the filter used to request specific groups for users from IdP. By
+        /// default all the groups associated with the user are fetched. The groups that are used should be mail enabled
+        /// and security enabled. See https://learn.microsoft.com/en-us/graph/search-query-parameter for more details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents an OpenId Connect 1.0 identity provider.</summary>
     public class GoogleIamAdminV1WorkforcePoolProviderOidc : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7690,7 +8598,7 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clientSecret")]
         public virtual GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret ClientSecret { get; set; }
 
-        /// <summary>Required. The OIDC issuer URI. Must be a valid URI using the 'https' scheme.</summary>
+        /// <summary>Required. The OIDC issuer URI. Must be a valid URI using the `https` scheme.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("issuerUri")]
         public virtual string IssuerUri { get; set; }
 
@@ -7967,6 +8875,35 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for ListOauthClientCredentials.</summary>
+    public class ListOauthClientCredentialsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of oauth client credentials.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauthClientCredentials")]
+        public virtual System.Collections.Generic.IList<OauthClientCredential> OauthClientCredentials { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ListOauthClients.</summary>
+    public class ListOauthClientsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted,
+        /// there are no subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>A list of oauth clients.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauthClients")]
+        public virtual System.Collections.Generic.IList<OauthClient> OauthClients { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response containing the roles defined under a resource.</summary>
     public class ListRolesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8113,6 +9050,142 @@ namespace Google.Apis.Iam.v1.Data
         /// <summary>A list of pools.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workloadIdentityPools")]
         public virtual System.Collections.Generic.IList<WorkloadIdentityPool> WorkloadIdentityPools { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents an oauth client. Used to access Google Cloud resources on behave of a user by using OAuth2 Protocol
+    /// to obtain an access token from Google Cloud Platform.
+    /// </summary>
+    public class OauthClient : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The list of OAuth grant type is allowed for the oauth client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedGrantTypes")]
+        public virtual System.Collections.Generic.IList<string> AllowedGrantTypes { get; set; }
+
+        /// <summary>
+        /// Required. The list of redirect uris that is allowed to redirect back when authorization process is
+        /// completed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedRedirectUris")]
+        public virtual System.Collections.Generic.IList<string> AllowedRedirectUris { get; set; }
+
+        /// <summary>
+        /// Required. The list of scopes that the oauth client is allowed to request during OAuth flows. The following
+        /// scopes are supported: * `https://www.googleapis.com/auth/cloud-platform`: See, edit, configure, and delete
+        /// your Google Cloud data and see the email address for your Google Account. * `openid`: Associate you with
+        /// your personal info on Google Cloud. * `email`: See your Google Cloud Account email address.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedScopes")]
+        public virtual System.Collections.Generic.IList<string> AllowedScopes { get; set; }
+
+        /// <summary>Output only. The system-generated oauth client id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
+        public virtual string ClientId { get; set; }
+
+        /// <summary>Immutable. The type of oauth client. either public or private.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientType")]
+        public virtual string ClientType { get; set; }
+
+        /// <summary>Optional. A user-specified description of the oauth client. Cannot exceed 256 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. Whether the oauth client is disabled. You cannot use a disabled oauth client for login.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual System.Nullable<bool> Disabled { get; set; }
+
+        /// <summary>Optional. A user-specified display name of the oauth client. Cannot exceed 32 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        private string _expireTimeRaw;
+
+        private object _expireTime;
+
+        /// <summary>
+        /// Output only. Time after which the oauth client will be permanently purged and cannot be recovered.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual string ExpireTimeRaw
+        {
+            get => _expireTimeRaw;
+            set
+            {
+                _expireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireTimeDateTimeOffset instead.")]
+        public virtual object ExpireTime
+        {
+            get => _expireTime;
+            set
+            {
+                _expireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expireTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Immutable. The resource name of the oauth client.
+        /// Format:`projects/{project}/locations/{location}/oauthClients/{oauth_client}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The state of the oauth client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents an oauth client credential. Used to authenticate an oauth client while accessing Google Cloud
+    /// resources on behalf of a user by using OAuth2 Protocol.
+    /// </summary>
+    public class OauthClientCredential : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The system-generated oauth client secret.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientSecret")]
+        public virtual string ClientSecret { get; set; }
+
+        /// <summary>
+        /// Optional. Whether the oauth client credential is disabled. You cannot use a disabled oauth client credential
+        /// for OAuth.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual System.Nullable<bool> Disabled { get; set; }
+
+        /// <summary>
+        /// Optional. A user-specified display name of the oauth client credential Cannot exceed 32 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource name of the oauth client credential. Format:
+        /// `projects/{project}/locations/{location}/oauthClients/{oauth_client}/credentials/{credential}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8296,6 +9369,24 @@ namespace Google.Apis.Iam.v1.Data
         /// <summary>Output only. Name of the verb executed by the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verb")]
         public virtual string Verb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The service account key patch request.</summary>
+    public class PatchServiceAccountKeyRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The service account key to update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountKey")]
+        public virtual ServiceAccountKey ServiceAccountKey { get; set; }
+
+        /// <summary>
+        /// Required. The update mask to apply to the service account key. Only the following fields are eligible for
+        /// patching: - contact - description
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8742,9 +9833,41 @@ namespace Google.Apis.Iam.v1.Data
     /// </summary>
     public class ServiceAccountKey : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. A user provided email address as the point of contact for this service account key. Must be an
+        /// email address. Limit 64 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contact")]
+        public virtual string Contact { get; set; }
+
+        /// <summary>
+        /// Output only. The cloud identity that created this service account key. Populated automatically when the key
+        /// is created and not editable by the user.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creator")]
+        public virtual string Creator { get; set; }
+
+        /// <summary>Optional. A user provided description of this service account key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// optional. If the key is disabled, it may have a DisableReason describing why it was disabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableReason")]
+        public virtual string DisableReason { get; set; }
+
         /// <summary>The key status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
         public virtual System.Nullable<bool> Disabled { get; set; }
+
+        /// <summary>
+        /// Extended Status provides permanent information about a service account key. For example, if this key was
+        /// detected as exposed or compromised, that information will remain for the lifetime of the key in the
+        /// extended_status.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extendedStatus")]
+        public virtual System.Collections.Generic.IList<ExtendedStatus> ExtendedStatus { get; set; }
 
         /// <summary>Specifies the algorithm (and possibly key size) for the key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyAlgorithm")]
@@ -9043,6 +10166,13 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for UndeleteOauthClient.</summary>
+    public class UndeleteOauthClientRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9350,6 +10480,14 @@ namespace Google.Apis.Iam.v1.Data
         }
 
         /// <summary>
+        /// Optional. The configuration for OAuth 2.0 client used to get the additional user attributes. This should be
+        /// used when users can't get the desired claims in authentication credentials. Currently this configuration is
+        /// only supported with OIDC protocol.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extraAttributesOauth2Client")]
+        public virtual GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client ExtraAttributesOauth2Client { get; set; }
+
+        /// <summary>
         /// Output only. The resource name of the provider. Format:
         /// `locations/{location}/workforcePools/{workforce_pool_id}/providers/{provider_id}`
         /// </summary>
@@ -9653,10 +10791,6 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
-        /// <summary>An X.509-type identity provider.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("x509")]
-        public virtual X509 X509 { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9724,16 +10858,6 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("use")]
         public virtual string Use { get; set; }
 
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// An X.509-type identity provider represents a CA. It is trusted to assert a client identity if the client has a
-    /// certificate that chains up to this CA.
-    /// </summary>
-    public class X509 : Google.Apis.Requests.IDirectResponseSchema
-    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

@@ -533,6 +533,15 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
+                /// Optional. Optional query string using the [Cloud API list filtering
+                /// syntax](https://developers.google.com/authorized-buyers/apis/guides/list-filters) Only supported
+                /// when parent is bidder. Supported columns for filtering are: * displayName * createTime * updateTime
+                /// * eligibleSeatIds
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
                 /// Requested page size. The server may return fewer results than requested. Max allowed page size is
                 /// 500.
                 /// </summary>
@@ -563,6 +572,14 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^buyers/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                     {

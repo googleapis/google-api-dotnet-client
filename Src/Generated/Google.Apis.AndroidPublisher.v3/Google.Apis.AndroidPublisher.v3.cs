@@ -14447,9 +14447,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Represents a custom tag specified for one-time products, purchase options, base plans and offers.
-    /// </summary>
+    /// <summary>Represents a custom tag specified for base plans and subscription offers.</summary>
     public class OfferTag : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -15063,6 +15061,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("absoluteDiscount")]
         public virtual Money AbsoluteDiscount { get; set; }
 
+        /// <summary>Set to specify this offer is free to obtain.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("free")]
+        public virtual RegionalSubscriptionOfferPhaseFreePriceOverride Free { get; set; }
+
         /// <summary>
         /// The absolute price the user pays for this offer phase. The price must not be smaller than the minimum price
         /// allowed for this region.
@@ -15085,6 +15087,13 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("relativeDiscount")]
         public virtual System.Nullable<double> RelativeDiscount { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the free price override configuration for a single phase of a subscription offer</summary>
+    public class RegionalSubscriptionOfferPhaseFreePriceOverride : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

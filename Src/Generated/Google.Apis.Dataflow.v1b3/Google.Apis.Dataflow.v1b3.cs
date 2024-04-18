@@ -10336,6 +10336,14 @@ namespace Google.Apis.Dataflow.v1b3.Data
     /// <summary>Metadata describing a template.</summary>
     public class TemplateMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Indicates the default streaming mode for a streaming template. Only valid if both
+        /// supports_at_least_once and supports_exactly_once are true. Possible values: UNSPECIFIED, EXACTLY_ONCE and
+        /// AT_LEAST_ONCE
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultStreamingMode")]
+        public virtual string DefaultStreamingMode { get; set; }
+
         /// <summary>Optional. A description of the template.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }

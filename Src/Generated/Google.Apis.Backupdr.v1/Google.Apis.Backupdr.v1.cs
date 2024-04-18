@@ -1632,6 +1632,12 @@ namespace Google.Apis.Backupdr.v1.Data
     /// <summary>ManagementServer describes a single BackupDR ManagementServer instance.</summary>
     public class ManagementServer : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. The hostname or ip address of the exposed AGM endpoints, used by BAs to connect to BA proxy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baProxyUri")]
+        public virtual System.Collections.Generic.IList<string> BaProxyUri { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;

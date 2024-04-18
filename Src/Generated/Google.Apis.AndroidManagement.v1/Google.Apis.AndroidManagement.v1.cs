@@ -1259,11 +1259,13 @@ namespace Google.Apis.AndroidManagement.v1
 
             /// <summary>
             /// Creates a migration token, to migrate an existing device from being managed by the EMM's Device Policy
-            /// Controller (DPC) to being managed by the Android Management API.
+            /// Controller (DPC) to being managed by the Android Management API. See the guide
+            /// (https://developers.google.com/android/management/dpc-migration) for more details.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. The enterprise in which this migration token will be created. Format: enterprises/{enterprise}
+            /// Required. The enterprise in which this migration token is created. This must be the same enterprise
+            /// which already manages the device in the Play EMM API. Format: enterprises/{enterprise}
             /// </param>
             public virtual CreateRequest Create(Google.Apis.AndroidManagement.v1.Data.MigrationToken body, string parent)
             {
@@ -1272,7 +1274,8 @@ namespace Google.Apis.AndroidManagement.v1
 
             /// <summary>
             /// Creates a migration token, to migrate an existing device from being managed by the EMM's Device Policy
-            /// Controller (DPC) to being managed by the Android Management API.
+            /// Controller (DPC) to being managed by the Android Management API. See the guide
+            /// (https://developers.google.com/android/management/dpc-migration) for more details.
             /// </summary>
             public class CreateRequest : AndroidManagementBaseServiceRequest<Google.Apis.AndroidManagement.v1.Data.MigrationToken>
             {
@@ -1285,8 +1288,8 @@ namespace Google.Apis.AndroidManagement.v1
                 }
 
                 /// <summary>
-                /// Required. The enterprise in which this migration token will be created. Format:
-                /// enterprises/{enterprise}
+                /// Required. The enterprise in which this migration token is created. This must be the same enterprise
+                /// which already manages the device in the Play EMM API. Format: enterprises/{enterprise}
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -4534,11 +4537,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("qrCode")]
         public virtual string QrCode { get; set; }
 
-        /// <summary>
-        /// The user associated with this enrollment token. If it's specified when the enrollment token is created and
-        /// the user does not exist, the user will be created. This field must not contain personally identifiable
-        /// information. Only the account_identifier field needs to be set.
-        /// </summary>
+        /// <summary>This field is deprecated and the value is ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("user")]
         public virtual User User { get; set; }
 
@@ -5538,7 +5537,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
 
     /// <summary>
     /// A token to initiate the migration of a device from being managed by a third-party DPC to being managed by
-    /// Android Management API. A migration token is valid only for a single device.
+    /// Android Management API. A migration token is valid only for a single device. See the guide
+    /// (https://developers.google.com/android/management/dpc-migration) for more details.
     /// </summary>
     public class MigrationToken : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6772,9 +6772,17 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enterprise")]
         public virtual string Enterprise { get; set; }
 
+        /// <summary>IMEI number of the GSM device. For example, A1000031212.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imei")]
+        public virtual string Imei { get; set; }
+
         /// <summary>The management mode of the device or profile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managementMode")]
         public virtual string ManagementMode { get; set; }
+
+        /// <summary>MEID number of the CDMA device. For example, A00000292788E1.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("meid")]
+        public virtual string Meid { get; set; }
 
         /// <summary>The model of the device. For example, Asus Nexus 7.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
@@ -6787,6 +6795,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>Ownership of the managed device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ownership")]
         public virtual string Ownership { get; set; }
+
+        /// <summary>The device serial number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serialNumber")]
+        public virtual string SerialNumber { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -2664,15 +2664,16 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1.Data
         /// Describes settings to use for long-running operations when generating API methods for RPCs. Complements RPCs
         /// that use the annotations in google/longrunning/operations.proto. Example of a YAML configuration::
         /// publishing: method_settings: - selector: google.cloud.speech.v2.Speech.BatchRecognize long_running:
-        /// initial_poll_delay: seconds: 60 # 1 minute poll_delay_multiplier: 1.5 max_poll_delay: seconds: 360 # 6
-        /// minutes total_poll_timeout: seconds: 54000 # 90 minutes
+        /// initial_poll_delay: 60s # 1 minute poll_delay_multiplier: 1.5 max_poll_delay: 360s # 6 minutes
+        /// total_poll_timeout: 54000s # 90 minutes
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("longRunning")]
         public virtual LongRunning LongRunning { get; set; }
 
         /// <summary>
         /// The fully qualified name of the method, for which the options below apply. This is used to find the method
-        /// to apply the options.
+        /// to apply the options. Example: publishing: method_settings: - selector:
+        /// google.storage.control.v2.StorageControl.CreateFolder # method settings for CreateFolder...
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selector")]
         public virtual string Selector { get; set; }
@@ -4082,6 +4083,13 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("producerQuotaPolicy")]
         public virtual V1Beta1ProducerQuotaPolicy ProducerQuotaPolicy { get; set; }
 
+        /// <summary>
+        /// Rollout information of this quota bucket. This field is present only if the effective limit will change due
+        /// to the ongoing rollout of the service config.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rolloutInfo")]
+        public virtual V1Beta1RolloutInfo RolloutInfo { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4149,6 +4157,17 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1.Data
     /// </summary>
     public class V1Beta1RefreshConsumerResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>[Output only] Rollout information of a quota.</summary>
+    public class V1Beta1RolloutInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether there is an ongoing rollout for the default limit or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultLimitOngoingRollout")]
+        public virtual System.Nullable<bool> DefaultLimitOngoingRollout { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

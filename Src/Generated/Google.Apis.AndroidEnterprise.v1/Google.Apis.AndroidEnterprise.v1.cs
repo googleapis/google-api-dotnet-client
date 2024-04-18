@@ -1036,7 +1036,7 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         /// <summary>
         /// Returns a unique token to access an embeddable UI. To generate a web UI, pass the generated token into the
-        /// managed Google Play javascript API. Each token may only be used to start one UI session. See the javascript
+        /// managed Google Play javascript API. Each token may only be used to start one UI session. See the JavaScript
         /// API documentation for further information.
         /// </summary>
         /// <param name="body">The body of the request.</param>
@@ -1048,7 +1048,7 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         /// <summary>
         /// Returns a unique token to access an embeddable UI. To generate a web UI, pass the generated token into the
-        /// managed Google Play javascript API. Each token may only be used to start one UI session. See the javascript
+        /// managed Google Play javascript API. Each token may only be used to start one UI session. See the JavaScript
         /// API documentation for further information.
         /// </summary>
         public class CreateWebTokenRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.AdministratorWebToken>

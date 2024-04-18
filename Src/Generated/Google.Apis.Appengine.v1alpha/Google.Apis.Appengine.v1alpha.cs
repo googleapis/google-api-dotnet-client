@@ -2975,6 +2975,10 @@ namespace Google.Apis.Appengine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
         public virtual string EventId { get; set; }
 
+        /// <summary>
+        /// Phase indicates when in the container event propagation this event is being communicated. Events are sent
+        /// before and after the per-resource events are propagated. required
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phase")]
         public virtual string Phase { get; set; }
 
@@ -2982,7 +2986,7 @@ namespace Google.Apis.Appengine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("projectMetadata")]
         public virtual ProjectsMetadata ProjectMetadata { get; set; }
 
-        /// <summary>The state of the project that led to this event.</summary>
+        /// <summary>The state of the organization that led to this event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual ContainerState State { get; set; }
 

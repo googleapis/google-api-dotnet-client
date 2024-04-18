@@ -3206,7 +3206,7 @@ namespace Google.Apis.NetworkServices.v1
                     public virtual string RequestId { get; set; }
 
                     /// <summary>
-                    /// Required. Used to specify the fields to be overwritten in the `LbRouteExtension` resource by the
+                    /// Optional. Used to specify the fields to be overwritten in the `LbRouteExtension` resource by the
                     /// update. The fields specified in the update_mask are relative to the resource, not the full
                     /// request. A field is overwritten if it is in the mask. If the user does not specify a mask, then
                     /// all fields are overwritten.
@@ -3640,7 +3640,7 @@ namespace Google.Apis.NetworkServices.v1
                     public virtual string RequestId { get; set; }
 
                     /// <summary>
-                    /// Required. Used to specify the fields to be overwritten in the `LbTrafficExtension` resource by
+                    /// Optional. Used to specify the fields to be overwritten in the `LbTrafficExtension` resource by
                     /// the update. The fields specified in the update_mask are relative to the resource, not the full
                     /// request. A field is overwritten if it is in the mask. If the user does not specify a mask, then
                     /// all fields are overwritten.
@@ -9848,7 +9848,7 @@ namespace Google.Apis.NetworkServices.v1.Data
         /// Optional. SNI (server name indicator) to match against. SNI will be matched against all wildcard domains,
         /// i.e. `www.example.com` will be first matched against `www.example.com`, then `*.example.com`, then `*.com.`
         /// Partial wildcards are not supported, and values like *w.example.com are invalid. At least one of sni_host
-        /// and alpn is required. Up to 5 sni hosts across all matches can be set.
+        /// and alpn is required. Up to 100 sni hosts across all matches can be set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sniHost")]
         public virtual System.Collections.Generic.IList<string> SniHost { get; set; }

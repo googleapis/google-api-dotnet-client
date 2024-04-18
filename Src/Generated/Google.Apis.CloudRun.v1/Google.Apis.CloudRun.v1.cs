@@ -8541,6 +8541,20 @@ namespace Google.Apis.CloudRun.v1.Data
     /// <summary>JobSpec describes how the job will look.</summary>
     public class JobSpec : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// A unique string used as a suffix for creating a new execution. The Job will become ready when the execution
+        /// is successfully completed. The sum of job name and token length must be fewer than 63 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runExecutionToken")]
+        public virtual string RunExecutionToken { get; set; }
+
+        /// <summary>
+        /// A unique string used as a suffix for creating a new execution. The Job will become ready when the execution
+        /// is successfully started. The sum of job name and token length must be fewer than 63 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startExecutionToken")]
+        public virtual string StartExecutionToken { get; set; }
+
         /// <summary>Optional. Describes the execution that will be created when running a job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("template")]
         public virtual ExecutionTemplateSpec Template { get; set; }

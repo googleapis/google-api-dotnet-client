@@ -4985,7 +4985,7 @@ namespace Google.Apis.Recommender.v1beta1.Data
             set => LastRefreshTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Name of the insight.</summary>
+        /// <summary>Identifier. Name of the insight.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -5471,7 +5471,7 @@ namespace Google.Apis.Recommender.v1beta1.Data
             set => LastRefreshTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Name of recommendation.</summary>
+        /// <summary>Identifier. Name of recommendation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 

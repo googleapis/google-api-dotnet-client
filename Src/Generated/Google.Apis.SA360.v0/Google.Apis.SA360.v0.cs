@@ -2857,6 +2857,210 @@ namespace Google.Apis.SA360.v0.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Represents a view of BiddingStrategies owned by and shared with the customer. In contrast to BiddingStrategy,
+    /// this resource includes strategies owned by managers of the customer and shared with this customer - in addition
+    /// to strategies owned by this customer. This resource does not provide metrics and only exposes a limited subset
+    /// of the BiddingStrategy attributes.
+    /// </summary>
+    public class GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The ID of the bidding strategy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<long> Id { get; set; }
+
+        /// <summary>
+        /// Output only. An automated bidding strategy to help get the most conversion value for your campaigns while
+        /// spending your budget.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maximizeConversionValue")]
+        public virtual GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategyMaximizeConversionValue MaximizeConversionValue { get; set; }
+
+        /// <summary>
+        /// Output only. An automated bidding strategy to help get the most conversions for your campaigns while
+        /// spending your budget.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maximizeConversions")]
+        public virtual GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategyMaximizeConversions MaximizeConversions { get; set; }
+
+        /// <summary>Output only. The name of the bidding strategy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The ID of the Customer which owns the bidding strategy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ownerCustomerId")]
+        public virtual System.Nullable<long> OwnerCustomerId { get; set; }
+
+        /// <summary>Output only. descriptive_name of the Customer which owns the bidding strategy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ownerDescriptiveName")]
+        public virtual string OwnerDescriptiveName { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of the accessible bidding strategy. AccessibleBiddingStrategy resource names
+        /// have the form: `customers/{customer_id}/accessibleBiddingStrategies/{bidding_strategy_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>
+        /// Output only. A bidding strategy that sets bids to help get as many conversions as possible at the target
+        /// cost-per-acquisition (CPA) you set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetCpa")]
+        public virtual GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategyTargetCpa TargetCpa { get; set; }
+
+        /// <summary>
+        /// Output only. A bidding strategy that automatically optimizes towards a chosen percentage of impressions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetImpressionShare")]
+        public virtual GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategyTargetImpressionShare TargetImpressionShare { get; set; }
+
+        /// <summary>
+        /// Output only. A bidding strategy that helps you maximize revenue while averaging a specific target Return On
+        /// Ad Spend (ROAS).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetRoas")]
+        public virtual GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategyTargetRoas TargetRoas { get; set; }
+
+        /// <summary>
+        /// Output only. A bid strategy that sets your bids to help get as many clicks as possible within your budget.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetSpend")]
+        public virtual GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategyTargetSpend TargetSpend { get; set; }
+
+        /// <summary>Output only. The type of the bidding strategy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An automated bidding strategy to help get the most conversion value for your campaigns while spending your
+    /// budget.
+    /// </summary>
+    public class GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategyMaximizeConversionValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The target return on ad spend (ROAS) option. If set, the bid strategy will maximize revenue
+        /// while averaging the target return on ad spend. If the target ROAS is high, the bid strategy may not be able
+        /// to spend the full budget. If the target ROAS is not set, the bid strategy will aim to achieve the highest
+        /// possible ROAS for the budget.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetRoas")]
+        public virtual System.Nullable<double> TargetRoas { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An automated bidding strategy to help get the most conversions for your campaigns while spending your budget.
+    /// </summary>
+    public class GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategyMaximizeConversions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The target cost per acquisition (CPA) option. This is the average amount that you would like to
+        /// spend per acquisition.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetCpa")]
+        public virtual System.Nullable<long> TargetCpa { get; set; }
+
+        /// <summary>
+        /// Output only. The target cost per acquisition (CPA) option. This is the average amount that you would like to
+        /// spend per acquisition.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetCpaMicros")]
+        public virtual System.Nullable<long> TargetCpaMicros { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An automated bid strategy that sets bids to help get as many conversions as possible at the target
+    /// cost-per-acquisition (CPA) you set.
+    /// </summary>
+    public class GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategyTargetCpa : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Average CPA target. This target should be greater than or equal to minimum billable unit based
+        /// on the currency for the account.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetCpaMicros")]
+        public virtual System.Nullable<long> TargetCpaMicros { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An automated bidding strategy that sets bids so that a certain percentage of search ads are shown at the top of
+    /// the first page (or other targeted location).
+    /// </summary>
+    public class GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategyTargetImpressionShare : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The highest CPC bid the automated bidding system is permitted to specify. This is a required
+        /// field entered by the advertiser that sets the ceiling and specified in local micros.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpcBidCeilingMicros")]
+        public virtual System.Nullable<long> CpcBidCeilingMicros { get; set; }
+
+        /// <summary>Output only. The targeted location on the search results page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>
+        /// The chosen fraction of ads to be shown in the targeted location in micros. For example, 1% equals 10,000.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationFractionMicros")]
+        public virtual System.Nullable<long> LocationFractionMicros { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An automated bidding strategy that helps you maximize revenue while averaging a specific target return on ad
+    /// spend (ROAS).
+    /// </summary>
+    public class GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategyTargetRoas : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The chosen revenue (based on conversion data) per unit of spend.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetRoas")]
+        public virtual System.Nullable<double> TargetRoas { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An automated bid strategy that sets your bids to help get as many clicks as possible within your budget.
+    /// </summary>
+    public class GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategyTargetSpend : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Maximum bid limit that can be set by the bid strategy. The limit applies to all keywords
+        /// managed by the strategy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpcBidCeilingMicros")]
+        public virtual System.Nullable<long> CpcBidCeilingMicros { get; set; }
+
+        /// <summary>
+        /// Output only. The spend target under which to maximize clicks. A TargetSpend bidder will attempt to spend the
+        /// smaller of this value or the natural throttling spend amount. If not specified, the budget is used as the
+        /// spend target. This field is deprecated and should no longer be used. See
+        /// https://ads-developers.googleblog.com/2020/05/reminder-about-sunset-creation-of.html for details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetSpendMicros")]
+        public virtual System.Nullable<long> TargetSpendMicros { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>An ad.</summary>
     public class GoogleAdsSearchads360V0ResourcesAd : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3317,10 +3521,7 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
-        /// <summary>
-        /// Immutable. User List. The Similar Audiences sunset starts May 2023. Refer to
-        /// https://ads-developers.googleblog.com/2022/11/announcing-deprecation-and-sunset-of.html for other options.
-        /// </summary>
+        /// <summary>Immutable. User List.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userList")]
         public virtual GoogleAdsSearchads360V0CommonUserListInfo UserList { get; set; }
 
@@ -3936,6 +4137,17 @@ namespace Google.Apis.SA360.v0.Data
     /// <summary>A campaign.</summary>
     public class GoogleAdsSearchads360V0ResourcesCampaign : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. Resource name of AccessibleBiddingStrategy, a read-only view of the unrestricted attributes of
+        /// the attached portfolio bidding strategy identified by 'bidding_strategy'. Empty, if the campaign does not
+        /// use a portfolio strategy. Unrestricted strategy attributes are available to all customers with whom the
+        /// strategy is shared and are read from the AccessibleBiddingStrategy resource. In contrast, restricted
+        /// attributes are only available to the owner customer of the strategy and their managers. Restricted
+        /// attributes can only be read from the BiddingStrategy resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessibleBiddingStrategy")]
+        public virtual string AccessibleBiddingStrategy { get; set; }
+
         /// <summary>The ad serving optimization status of the campaign.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adServingOptimizationStatus")]
         public virtual string AdServingOptimizationStatus { get; set; }
@@ -4377,10 +4589,7 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
-        /// <summary>
-        /// Immutable. User List. The Similar Audiences sunset starts May 2023. Refer to
-        /// https://ads-developers.googleblog.com/2022/11/announcing-deprecation-and-sunset-of.html for other options.
-        /// </summary>
+        /// <summary>Immutable. User List.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userList")]
         public virtual GoogleAdsSearchads360V0CommonUserListInfo UserList { get; set; }
 
@@ -6047,6 +6256,10 @@ namespace Google.Apis.SA360.v0.Data
     /// <summary>A returned row from the query.</summary>
     public class GoogleAdsSearchads360V0ServicesSearchAds360Row : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The accessible bidding strategy referenced in the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessibleBiddingStrategy")]
+        public virtual GoogleAdsSearchads360V0ResourcesAccessibleBiddingStrategy AccessibleBiddingStrategy { get; set; }
+
         /// <summary>The ad group referenced in the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adGroup")]
         public virtual GoogleAdsSearchads360V0ResourcesAdGroup AdGroup { get; set; }

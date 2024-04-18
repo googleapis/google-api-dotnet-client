@@ -1018,9 +1018,9 @@ namespace Google.Apis.CertificateAuthorityService.v1
                         public virtual System.Nullable<bool> IgnoreActiveCertificates { get; set; }
 
                         /// <summary>
-                        /// Optional. This field allows this ca to be deleted even if it's being depended on by another
+                        /// Optional. This field allows this CA to be deleted even if it's being depended on by another
                         /// resource. However, doing so may result in unintended and unrecoverable effects on any
-                        /// dependent resource(s) since the CA will no longer be able to issue certificates.
+                        /// dependent resources since the CA will no longer be able to issue certificates.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("ignoreDependentResources", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<bool> IgnoreDependentResources { get; set; }
@@ -2181,7 +2181,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
                     /// <summary>
                     /// Optional. This field allows this pool to be deleted even if it's being depended on by another
                     /// resource. However, doing so may result in unintended and unrecoverable effects on any dependent
-                    /// resource(s) since the pool will no longer be able to issue certificates.
+                    /// resources since the pool will no longer be able to issue certificates.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("ignoreDependentResources", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> IgnoreDependentResources { get; set; }
@@ -2241,7 +2241,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
 
                 /// <summary>
                 /// FetchCaCerts returns the current trust anchor for the CaPool. This will include CA certificate
-                /// chains for all Certificate Authorities in the ENABLED, DISABLED, or STAGED states.
+                /// chains for all certificate authorities in the ENABLED, DISABLED, or STAGED states.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="caPool">
@@ -2254,7 +2254,7 @@ namespace Google.Apis.CertificateAuthorityService.v1
 
                 /// <summary>
                 /// FetchCaCerts returns the current trust anchor for the CaPool. This will include CA certificate
-                /// chains for all Certificate Authorities in the ENABLED, DISABLED, or STAGED states.
+                /// chains for all certificate authorities in the ENABLED, DISABLED, or STAGED states.
                 /// </summary>
                 public class FetchCaCertsRequest : CertificateAuthorityServiceBaseServiceRequest<Google.Apis.CertificateAuthorityService.v1.Data.FetchCaCertsResponse>
                 {
@@ -4509,8 +4509,8 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
 
         /// <summary>
         /// Optional. When specified this provides a custom SKI to be used in the certificate. This should only be used
-        /// to maintain a SKI of an existing CA originally created outside CAS, which was not generated using method (1)
-        /// described in RFC 5280 section 4.2.1.2.
+        /// to maintain a SKI of an existing CA originally created outside CA service, which was not generated using
+        /// method (1) described in RFC 5280 section 4.2.1.2.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subjectKeyId")]
         public virtual CertificateConfigKeyId SubjectKeyId { get; set; }
@@ -4834,8 +4834,8 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Optional. The maximum lifetime allowed for issued Certificates that use this template. If the issuing
-        /// CaPool's IssuancePolicy specifies a maximum_lifetime the minimum of the two durations will be the maximum
+        /// Optional. The maximum lifetime allowed for issued Certificates that use this template. If the issuing CaPool
+        /// resource's IssuancePolicy specifies a maximum_lifetime the minimum of the two durations will be the maximum
         /// lifetime for issued Certificates. Note that if the issuing CertificateAuthority expires before a
         /// Certificate's requested maximum_lifetime, the effective lifetime will be explicitly truncated to match it.
         /// </summary>
@@ -4915,8 +4915,8 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
     {
         /// <summary>
         /// Optional. This field allows this CA to be disabled even if it's being depended on by another resource.
-        /// However, doing so may result in unintended and unrecoverable effects on any dependent resource(s) since the
-        /// CA will no longer be able to issue certificates.
+        /// However, doing so may result in unintended and unrecoverable effects on any dependent resources since the CA
+        /// will no longer be able to issue certificates.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ignoreDependentResources")]
         public virtual System.Nullable<bool> IgnoreDependentResources { get; set; }
@@ -5093,7 +5093,7 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
     public class FetchCaCertsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The PEM encoded CA certificate chains of all Certificate Authorities in this CaPool in the ENABLED,
+        /// The PEM encoded CA certificate chains of all certificate authorities in this CaPool in the ENABLED,
         /// DISABLED, or STAGED states.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("caCerts")]
@@ -5167,8 +5167,8 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
 
         /// <summary>
         /// Optional. The maximum lifetime allowed for issued Certificates. Note that if the issuing
-        /// CertificateAuthority expires before a Certificate's requested maximum_lifetime, the effective lifetime will
-        /// be explicitly truncated to match it.
+        /// CertificateAuthority expires before a Certificate resource's requested maximum_lifetime, the effective
+        /// lifetime will be explicitly truncated to match it.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maximumLifetime")]
         public virtual object MaximumLifetime { get; set; }
@@ -5803,8 +5803,8 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
     public class PublishingOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Specifies the encoding format of each CertificateAuthority's CA certificate and CRLs. If this is
-        /// omitted, CA certificates and CRLs will be published in PEM.
+        /// Optional. Specifies the encoding format of each CertificateAuthority resource's CA certificate and CRLs. If
+        /// this is omitted, CA certificates and CRLs will be published in PEM.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encodingFormat")]
         public virtual string EncodingFormat { get; set; }

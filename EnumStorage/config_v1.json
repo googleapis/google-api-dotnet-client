@@ -1,0 +1,16 @@
+{
+  "Google.Apis.Config.v1.ConfigBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Config.v1.ConfigBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.Config.v1.ProjectsResource+LocationsResource+DeploymentsResource+DeleteRequest.DeletePolicyEnum": [
+    "DELETE_POLICY_UNSPECIFIED",
+    "DELETE",
+    "ABANDON"
+  ]
+}
