@@ -2068,7 +2068,7 @@ namespace Google.Apis.Looker.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A Looker instance.</summary>
+    /// <summary>A Looker instance. LINT.IfChange</summary>
     public class Instance : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Looker Instance Admin settings.</summary>

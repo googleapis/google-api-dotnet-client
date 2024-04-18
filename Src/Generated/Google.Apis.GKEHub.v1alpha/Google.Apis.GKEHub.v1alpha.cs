@@ -10261,7 +10261,7 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("analysisMessages")]
         public virtual System.Collections.Generic.IList<ServiceMeshAnalysisMessage> AnalysisMessages { get; set; }
 
-        /// <summary>Output only. List of condition reporting membership statues</summary>
+        /// <summary>Output only. List of conditions reported for this membership.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
         public virtual System.Collections.Generic.IList<ServiceMeshCondition> Conditions { get; set; }
 

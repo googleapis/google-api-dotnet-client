@@ -5152,7 +5152,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("aggregations")]
         public virtual System.Collections.Generic.IList<Aggregation> Aggregations { get; set; }
 
-        /// <summary>The aggregation will be performed on assets that match the provided filter.</summary>
+        /// <summary>Optional. The aggregation will be performed on assets that match the provided filter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
 
@@ -5386,6 +5386,14 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Output only. Asset information specific for database deployments.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseDeploymentDetails")]
+        public virtual DatabaseDeploymentDetails DatabaseDeploymentDetails { get; set; }
+
+        /// <summary>Output only. Asset information specific for logical databases.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseDetails")]
+        public virtual DatabaseDetails DatabaseDetails { get; set; }
+
         /// <summary>Optional. Indicates if the asset is hidden.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hidden")]
         public virtual System.Nullable<bool> Hidden { get; set; }
@@ -5451,6 +5459,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sources")]
         public virtual System.Collections.Generic.IList<string> Sources { get; set; }
 
+        /// <summary>Output only. Server generated human readable name of the asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
         private string _updateTimeRaw;
 
         private object _updateTime;
@@ -5509,6 +5521,14 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("collectionType")]
         public virtual string CollectionType { get; set; }
+
+        /// <summary>Asset information specific for database deployments.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseDeploymentDetails")]
+        public virtual DatabaseDeploymentDetails DatabaseDeploymentDetails { get; set; }
+
+        /// <summary>Asset information specific for logical databases.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseDetails")]
+        public virtual DatabaseDetails DatabaseDetails { get; set; }
 
         /// <summary>Labels as key value pairs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
@@ -5708,6 +5728,144 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Cloud database migration target.</summary>
+    public class CloudDatabaseMigrationTarget : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Cloud SQL for MySQL database shape.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudSqlForMysqlShape")]
+        public virtual CloudSqlForMySqlShape CloudSqlForMysqlShape { get; set; }
+
+        /// <summary>Cloud SQL for Postgres database shape.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudSqlForPostgresqlShape")]
+        public virtual CloudSqlForPostgreSqlShape CloudSqlForPostgresqlShape { get; set; }
+
+        /// <summary>Cloud SQL for SQL Server database shape.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudSqlShape")]
+        public virtual CloudSqlForSqlServerShape CloudSqlShape { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Cloud SQL for MySQL database shape.</summary>
+    public class CloudSqlForMySqlShape : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Predicted backup storage size in GiB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupStorageGb")]
+        public virtual System.Nullable<int> BackupStorageGb { get; set; }
+
+        /// <summary>Output only. Cloud SQL edition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("edition")]
+        public virtual string Edition { get; set; }
+
+        /// <summary>Output only. Predicted Network Out traffic GiB per month.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("egressGbPerMonth")]
+        public virtual System.Nullable<long> EgressGbPerMonth { get; set; }
+
+        /// <summary>Output only. Number of logical cores.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logicalCoreCount")]
+        public virtual System.Nullable<int> LogicalCoreCount { get; set; }
+
+        /// <summary>Output only. Predicted amount of memory in MiB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryMb")]
+        public virtual System.Nullable<int> MemoryMb { get; set; }
+
+        /// <summary>Output only. Predicted storage shape.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storage")]
+        public virtual ComputeStorageDescriptor Storage { get; set; }
+
+        /// <summary>Output only. MySQL version to be used on the Cloud SQL for MySQL instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>Output only. Cloud SQL zone availability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zoneAvailability")]
+        public virtual string ZoneAvailability { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Cloud SQL for Postgres database shape.</summary>
+    public class CloudSqlForPostgreSqlShape : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Predicted backup storage size in GiB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupStorageGb")]
+        public virtual System.Nullable<int> BackupStorageGb { get; set; }
+
+        /// <summary>Output only. Cloud SQL edition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("edition")]
+        public virtual string Edition { get; set; }
+
+        /// <summary>Output only. Predicted Network Out traffic GiB per month.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("egressGbPerMonth")]
+        public virtual System.Nullable<long> EgressGbPerMonth { get; set; }
+
+        /// <summary>Output only. Number of logical cores.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logicalCoreCount")]
+        public virtual System.Nullable<int> LogicalCoreCount { get; set; }
+
+        /// <summary>Output only. Predicted amount of memory in MiB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryMb")]
+        public virtual System.Nullable<int> MemoryMb { get; set; }
+
+        /// <summary>Output only. Predicted storage shape.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storage")]
+        public virtual ComputeStorageDescriptor Storage { get; set; }
+
+        /// <summary>Output only. PostgreSql version to be used on the Cloud SQL for PostgreSql instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>Output only. Cloud SQL zone availability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zoneAvailability")]
+        public virtual string ZoneAvailability { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Cloud SQL for SQL Server database shape.</summary>
+    public class CloudSqlForSqlServerShape : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Predicted backup storage size in GiB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupStorageGb")]
+        public virtual System.Nullable<int> BackupStorageGb { get; set; }
+
+        /// <summary>Output only. Cloud SQL edition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("edition")]
+        public virtual string Edition { get; set; }
+
+        /// <summary>Output only. Predicted Network Out traffic GiB per month.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("egressGbPerMonth")]
+        public virtual System.Nullable<long> EgressGbPerMonth { get; set; }
+
+        /// <summary>Output only. Number of logical cores.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logicalCoreCount")]
+        public virtual System.Nullable<int> LogicalCoreCount { get; set; }
+
+        /// <summary>Output only. Predicted amount of memory in MiB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryMb")]
+        public virtual System.Nullable<int> MemoryMb { get; set; }
+
+        /// <summary>Output only. Predicted storage shape.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storage")]
+        public virtual ComputeStorageDescriptor Storage { get; set; }
+
+        /// <summary>
+        /// Output only. Microsoft SQL Server version to be used on the Cloud SQL for SQL server instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>Output only. Cloud SQL zone availability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zoneAvailability")]
+        public virtual string ZoneAvailability { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Compute engine migration target.</summary>
     public class ComputeEngineMigrationTarget : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5748,27 +5906,27 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
     /// <summary>Compute Engine target shape descriptor.</summary>
     public class ComputeEngineShapeDescriptor : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Number of logical cores.</summary>
+        /// <summary>Output only. Number of logical cores.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logicalCoreCount")]
         public virtual System.Nullable<int> LogicalCoreCount { get; set; }
 
-        /// <summary>Compute Engine machine type.</summary>
+        /// <summary>Output only. Compute Engine machine type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; }
 
-        /// <summary>Memory in mebibytes.</summary>
+        /// <summary>Output only. Memory in mebibytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memoryMb")]
         public virtual System.Nullable<int> MemoryMb { get; set; }
 
-        /// <summary>Number of physical cores.</summary>
+        /// <summary>Output only. Number of physical cores.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("physicalCoreCount")]
         public virtual System.Nullable<int> PhysicalCoreCount { get; set; }
 
-        /// <summary>Compute Engine machine series.</summary>
+        /// <summary>Output only. Compute Engine machine series.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("series")]
         public virtual string Series { get; set; }
 
-        /// <summary>Compute Engine storage. Never empty.</summary>
+        /// <summary>Output only. Compute Engine storage. Never empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storage")]
         public virtual System.Collections.Generic.IList<ComputeStorageDescriptor> Storage { get; set; }
 
@@ -5857,6 +6015,14 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("iops")]
         public virtual DailyResourceUsageAggregationStats Iops { get; set; }
 
+        /// <summary>Disk read I/O operations per second.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readIops")]
+        public virtual DailyResourceUsageAggregationStats ReadIops { get; set; }
+
+        /// <summary>Disk write I/O operations per second.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("writeIops")]
+        public virtual DailyResourceUsageAggregationStats WriteIops { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5905,6 +6071,316 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>Peak usage value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("peak")]
         public virtual System.Nullable<float> Peak { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The details of a database deployment asset.</summary>
+    public class DatabaseDeploymentDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Aggregated stats for the database deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregatedStats")]
+        public virtual DatabaseDeploymentDetailsAggregatedStats AggregatedStats { get; set; }
+
+        /// <summary>The database deployment edition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("edition")]
+        public virtual string Edition { get; set; }
+
+        /// <summary>The database deployment generated ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatedId")]
+        public virtual string GeneratedId { get; set; }
+
+        /// <summary>A manual unique ID set by the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("manualUniqueId")]
+        public virtual string ManualUniqueId { get; set; }
+
+        /// <summary>Details of a MYSQL database deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mysql")]
+        public virtual MysqlDatabaseDeployment Mysql { get; set; }
+
+        /// <summary>Details of a PostgreSQL database deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postgresql")]
+        public virtual PostgreSqlDatabaseDeployment Postgresql { get; set; }
+
+        /// <summary>Details of a Microsoft SQL Server database deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlServer")]
+        public virtual SqlServerDatabaseDeployment SqlServer { get; set; }
+
+        /// <summary>Details of the database deployment topology.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topology")]
+        public virtual DatabaseDeploymentTopology Topology { get; set; }
+
+        /// <summary>The database deployment version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Aggregated stats for the database deployment.</summary>
+    public class DatabaseDeploymentDetailsAggregatedStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The number of databases in the deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseCount")]
+        public virtual System.Nullable<int> DatabaseCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of database deployment's topology.</summary>
+    public class DatabaseDeploymentTopology : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Number of total cores.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("coreCount")]
+        public virtual System.Nullable<int> CoreCount { get; set; }
+
+        /// <summary>Optional. Number of total cores limited by db deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("coreLimit")]
+        public virtual System.Nullable<int> CoreLimit { get; set; }
+
+        /// <summary>Optional. Disk allocated in bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskAllocatedBytes")]
+        public virtual System.Nullable<long> DiskAllocatedBytes { get; set; }
+
+        /// <summary>Optional. Disk used in bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskUsedBytes")]
+        public virtual System.Nullable<long> DiskUsedBytes { get; set; }
+
+        /// <summary>Optional. List of database instances.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instances")]
+        public virtual System.Collections.Generic.IList<DatabaseInstance> Instances { get; set; }
+
+        /// <summary>Optional. Total memory in bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryBytes")]
+        public virtual System.Nullable<long> MemoryBytes { get; set; }
+
+        /// <summary>Optional. Total memory in bytes limited by db deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryLimitBytes")]
+        public virtual System.Nullable<long> MemoryLimitBytes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of a logical database.</summary>
+    public class DatabaseDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The allocated storage for the database in bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allocatedStorageBytes")]
+        public virtual System.Nullable<long> AllocatedStorageBytes { get; set; }
+
+        /// <summary>The name of the database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseName")]
+        public virtual string DatabaseName { get; set; }
+
+        /// <summary>The parent database deployment that contains the logical database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentDatabaseDeployment")]
+        public virtual DatabaseDetailsParentDatabaseDeployment ParentDatabaseDeployment { get; set; }
+
+        /// <summary>The database schemas.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemas")]
+        public virtual System.Collections.Generic.IList<DatabaseSchema> Schemas { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The identifiers of the parent database deployment.</summary>
+    public class DatabaseDetailsParentDatabaseDeployment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The parent database deployment generated ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatedId")]
+        public virtual string GeneratedId { get; set; }
+
+        /// <summary>The parent database deployment optional manual unique ID set by the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("manualUniqueId")]
+        public virtual string ManualUniqueId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of a database instance.</summary>
+    public class DatabaseInstance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The instance's hosts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hosts")]
+        public virtual System.Collections.Generic.IList<DatabaseInstanceHost> Hosts { get; set; }
+
+        /// <summary>The instance's name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceName")]
+        public virtual string InstanceName { get; set; }
+
+        /// <summary>The instance role in the database engine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("role")]
+        public virtual string Role { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of a host of a database instance.</summary>
+    public class DatabaseInstanceHost : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The host name of the host.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostName")]
+        public virtual string HostName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of a group of database objects.</summary>
+    public class DatabaseObjects : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The category of the objects.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; }
+
+        /// <summary>The number of objects.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<long> Count { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>DatabasePreferences enables you to create sets of preferences for your migrated databases.</summary>
+    public class DatabasePreferences : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Preferences for target SQL Server on Cloud SQL when migrating from source Microsoft SQL server.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mssqlToCloudSqlForSqlServerPreferences")]
+        public virtual DatabasePreferencesCloudSqlSqlServer MssqlToCloudSqlForSqlServerPreferences { get; set; }
+
+        /// <summary>Optional. Preferences for target MySQL on Cloud SQL when migrating from source MySQL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mysqlToCloudSqlForMysqlPreferences")]
+        public virtual DatabasePreferencesCloudSqlMySql MysqlToCloudSqlForMysqlPreferences { get; set; }
+
+        /// <summary>
+        /// Optional. Preferences for target PostgreSQL on Cloud SQL when migrating from source PostgreSQL.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postgresqlToCloudSqlForPostgresqlPreferences")]
+        public virtual DatabasePreferencesCloudSqlPostgreSql PostgresqlToCloudSqlForPostgresqlPreferences { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Preferences common to Cloud SQL databases.</summary>
+    public class DatabasePreferencesCloudSqlCommon : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Preferences for database backups.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backup")]
+        public virtual DatabasePreferencesCloudSqlCommonBackup Backup { get; set; }
+
+        /// <summary>
+        /// Optional. Commitment plan to consider when calculating costs. Only regular CUDs (not flexible) are currently
+        /// available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commitmentPlan")]
+        public virtual string CommitmentPlan { get; set; }
+
+        /// <summary>Optional. Cloud SQL edition. For SQL Server, only Enterprise is available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("edition")]
+        public virtual string Edition { get; set; }
+
+        /// <summary>
+        /// Optional. Persistent disk type to use. If unspecified, a disk type is recommended based on available usage
+        /// data. For SQL Server, only SSD is available. For MySQL and PostgreSQL, only STANDARD (HDD) and SSD types are
+        /// available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("persistentDiskType")]
+        public virtual string PersistentDiskType { get; set; }
+
+        /// <summary>
+        /// Optional. Sizing optimization strategy of the database. Currently supported for Cloud SQL are just two
+        /// values: SIZING_OPTIMIZATION_STRATEGY_MODERATE and SIZING_OPTIMIZATION_STRATEGY_SAME_AS_SOURCE.
+        /// SIZING_OPTIMIZATION_STRATEGY_UNSPECIFIED will behave like SIZING_OPTIMIZATION_STRATEGY_MODERATE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizingOptimizationStrategy")]
+        public virtual string SizingOptimizationStrategy { get; set; }
+
+        /// <summary>Optional. Preferred zone availability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zoneAvailability")]
+        public virtual string ZoneAvailability { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Preferences for database backups.</summary>
+    public class DatabasePreferencesCloudSqlCommonBackup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Mode of automated backups.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupMode")]
+        public virtual string BackupMode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Preferences for MySQL on Cloud SQL.</summary>
+    public class DatabasePreferencesCloudSqlMySql : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Preferences to Cloud SQL databases.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("common")]
+        public virtual DatabasePreferencesCloudSqlCommon Common { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Preferences for PostgreSQL on Cloud SQL.</summary>
+    public class DatabasePreferencesCloudSqlPostgreSql : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Preferences to Cloud SQL databases.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("common")]
+        public virtual DatabasePreferencesCloudSqlCommon Common { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Preferences for SQL Server on Cloud SQL.</summary>
+    public class DatabasePreferencesCloudSqlSqlServer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Preferences to Cloud SQL databases.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("common")]
+        public virtual DatabasePreferencesCloudSqlCommon Common { get; set; }
+
+        /// <summary>Optional. Preferences for multithreading support.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multithreading")]
+        public virtual string Multithreading { get; set; }
+
+        /// <summary>
+        /// Optional. Edition of Microsoft SQL version that is used on a Cloud SQL for SQL server instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionType")]
+        public virtual string VersionType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of a database schema.</summary>
+    public class DatabaseSchema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of details of objects by category.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objects")]
+        public virtual System.Collections.Generic.IList<DatabaseObjects> Objects { get; set; }
+
+        /// <summary>The name of the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemaName")]
+        public virtual string SchemaName { get; set; }
+
+        /// <summary>The total size of tables in bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tablesSizeBytes")]
+        public virtual System.Nullable<long> TablesSizeBytes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6347,6 +6823,14 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("averageIops")]
         public virtual System.Nullable<float> AverageIops { get; set; }
+
+        /// <summary>Average read IOPS sampled over a short window. Must be non-negative.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageReadIops")]
+        public virtual System.Nullable<float> AverageReadIops { get; set; }
+
+        /// <summary>Average write IOPS sampled over a short window. Must be non-negative.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("averageWriteIops")]
+        public virtual System.Nullable<float> AverageWriteIops { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7096,9 +7580,25 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
     /// <summary>A resource that reports the import job errors at row level.</summary>
     public class ImportRowError : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Error details for an archive file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("archiveError")]
+        public virtual ImportRowErrorArchiveErrorDetails ArchiveError { get; set; }
+
+        /// <summary>The asset title.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetTitle")]
+        public virtual string AssetTitle { get; set; }
+
+        /// <summary>Error details for a CSV file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("csvError")]
+        public virtual ImportRowErrorCsvErrorDetails CsvError { get; set; }
+
         /// <summary>The list of errors detected in the row.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
         public virtual System.Collections.Generic.IList<ImportError> Errors { get; set; }
+
+        /// <summary>Error details for a JSON file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jsonError")]
+        public virtual ImportRowErrorJsonErrorDetails JsonError { get; set; }
 
         /// <summary>The row number where the error was detected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowNumber")]
@@ -7111,6 +7611,58 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>The VM UUID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmUuid")]
         public virtual string VmUuid { get; set; }
+
+        /// <summary>Error details for an XLSX file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("xlsxError")]
+        public virtual ImportRowErrorXlsxErrorDetails XlsxError { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Error details for an archive file.</summary>
+    public class ImportRowErrorArchiveErrorDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Error details for a CSV file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("csvError")]
+        public virtual ImportRowErrorCsvErrorDetails CsvError { get; set; }
+
+        /// <summary>The file path inside the archive where the error was detected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filePath")]
+        public virtual string FilePath { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Error details for a CSV file.</summary>
+    public class ImportRowErrorCsvErrorDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The row number where the error was detected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rowNumber")]
+        public virtual System.Nullable<int> RowNumber { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Error details for a JSON file.</summary>
+    public class ImportRowErrorJsonErrorDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Error details for an XLSX file.</summary>
+    public class ImportRowErrorXlsxErrorDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The row number where the error was detected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rowNumber")]
+        public virtual System.Nullable<int> RowNumber { get; set; }
+
+        /// <summary>The name of the sheet where the error was detected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sheet")]
+        public virtual string Sheet { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7193,6 +7745,54 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An issue associated with a migration.</summary>
+    public class Issue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Details about a compatibility issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compatibilityIssue")]
+        public virtual IssueCompatibilityIssue CompatibilityIssue { get; set; }
+
+        /// <summary>Output only. English description of the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Output only. Unique identifier for this issue type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueCode")]
+        public virtual string IssueCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details about a compatibility issue.</summary>
+    public class IssueCompatibilityIssue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Name of the object associated with this compatibility issue relative to the relevant asset.
+        /// Does not represent a fully qualified resource name and is not intended for programmatic use.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("associatedObject")]
+        public virtual string AssociatedObject { get; set; }
+
+        /// <summary>Output only. Type of object associated with this migration compatibility issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("associatedObjectType")]
+        public virtual string AssociatedObjectType { get; set; }
+
+        /// <summary>
+        /// Output only. A string representation of actual value associated with this issue. Some values may contain
+        /// aggregated information, such as a flag name and the actual value assigned to it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("associatedValue")]
+        public virtual string AssociatedValue { get; set; }
+
+        /// <summary>Output only. Category of this compatibility issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7473,13 +8073,13 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A Compute Engine machine series.</summary>
+    /// <summary>A machine series, for a target product (e.g. Compute Engine, Google Cloud VMware Engine).</summary>
     public class MachineSeries : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Code to identify a Compute Engine machine series. Consult
-        /// https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison for more details on the
-        /// available series.
+        /// Code to identify a machine series. Consult this for more details on the available series for Compute Engine:
+        /// https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison Consult this for more details
+        /// on the available series for Google Cloud VMware Engine: https://cloud.google.com/vmware-engine/pricing
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual string Code { get; set; }
@@ -7502,6 +8102,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
     /// <summary>An insight about potential migrations for an asset.</summary>
     public class MigrationInsight : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. A Cloud database migration target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudDatabaseTarget")]
+        public virtual CloudDatabaseMigrationTarget CloudDatabaseTarget { get; set; }
+
         /// <summary>Output only. A Google Compute Engine Sole Tenant target.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("computeEngineSoleTenantTarget")]
         public virtual ComputeEngineSoleTenantMigrationTarget ComputeEngineSoleTenantTarget { get; set; }
@@ -7519,6 +8123,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>Output only. A Google Kubernetes Engine target.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gkeTarget")]
         public virtual GoogleKubernetesEngineMigrationTarget GkeTarget { get; set; }
+
+        /// <summary>Output only. Issues associated with this migration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issues")]
+        public virtual System.Collections.Generic.IList<Issue> Issues { get; set; }
 
         /// <summary>Output only. A VMWare Engine target.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmwareEngineTarget")]
@@ -7549,6 +8157,36 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("units")]
         public virtual System.Nullable<long> Units { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specific details for a Mysql database deployment.</summary>
+    public class MysqlDatabaseDeployment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. List of Mysql plugins.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("plugins")]
+        public virtual System.Collections.Generic.IList<MysqlPlugin> Plugins { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Mysql plugin.</summary>
+    public class MysqlPlugin : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The plugin is active.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>Required. The plugin name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("plugin")]
+        public virtual string Plugin { get; set; }
+
+        /// <summary>Required. The plugin version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8010,6 +8648,13 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Specific details for a PostgreSQL database deployment.</summary>
+    public class PostgreSqlDatabaseDeployment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The preferences that apply to all assets in a given context.</summary>
     public class PreferenceSet : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8050,6 +8695,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Optional. A set of preferences that applies to all databases in the context.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databasePreferences")]
+        public virtual DatabasePreferences DatabasePreferences { get; set; }
+
         /// <summary>A description of the preference set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
@@ -8061,6 +8710,14 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>Output only. Name of the preference set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. Region preferences for assets using this preference set. If you are unsure which value to set, the
+        /// migration service API region is often a good value to start with. If unspecified,
+        /// VirtualMachinePreferences.RegionPreferences is used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionPreferences")]
+        public virtual RegionPreferences RegionPreferences { get; set; }
 
         private string _updateTimeRaw;
 
@@ -8389,9 +9046,19 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allAssetsStats")]
         public virtual ReportSummaryAssetAggregateStats AllAssetsStats { get; set; }
 
+        /// <summary>Output only. Aggregate statistics for unique database assets across all the groups.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseStats")]
+        public virtual ReportSummaryAssetAggregateStats DatabaseStats { get; set; }
+
         /// <summary>Findings for each Group included in this report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupFindings")]
         public virtual System.Collections.Generic.IList<ReportSummaryGroupFinding> GroupFindings { get; set; }
+
+        /// <summary>
+        /// Output only. Aggregate statistics for unique virtual machine assets across all the groups.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("virtualMachineStats")]
+        public virtual ReportSummaryAssetAggregateStats VirtualMachineStats { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8407,6 +9074,13 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>Histogram showing a distribution of CPU core counts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("coreCountHistogram")]
         public virtual ReportSummaryHistogramChartData CoreCountHistogram { get; set; }
+
+        /// <summary>
+        /// Output only. Count of assets grouped by database type. Keys here are taken from DatabaseType enum. Only
+        /// present for databases.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseTypes")]
+        public virtual ReportSummaryChartData DatabaseTypes { get; set; }
 
         /// <summary>Histogram showing a distribution of memory sizes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memoryBytesHistogram")]
@@ -8485,12 +9159,37 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>DatabaseFinding contains an aggregate costs and shapes for a single database type.</summary>
+    public class ReportSummaryDatabaseFinding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Number of database assets which were successfully assigned in this finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allocatedAssetCount")]
+        public virtual System.Nullable<long> AllocatedAssetCount { get; set; }
+
+        /// <summary>Output only. Number of database assets in this finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalAssets")]
+        public virtual System.Nullable<long> TotalAssets { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Summary Findings for a specific Group.</summary>
     public class ReportSummaryGroupFinding : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Summary statistics for all the assets in this group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assetAggregateStats")]
         public virtual ReportSummaryAssetAggregateStats AssetAggregateStats { get; set; }
+
+        /// <summary>Output only. Asset type for the group finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetType")]
+        public virtual string AssetType { get; set; }
+
+        /// <summary>
+        /// Output only. Source asset database type for the group finding. Only present for databases.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseType")]
+        public virtual string DatabaseType { get; set; }
 
         /// <summary>Description for this group finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
@@ -8499,6 +9198,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>Display Name for this group finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
+
+        /// <summary>Output only. Full name of the group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("group")]
+        public virtual string Group { get; set; }
 
         /// <summary>This field is deprecated, do not rely on it having a value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("overlappingAssetCount")]
@@ -8515,6 +9218,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
     /// <summary>Summary Findings for a specific Group/PreferenceSet combination.</summary>
     public class ReportSummaryGroupPreferenceSetFinding : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Details about databases in this finding. Only present for databases.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseFinding")]
+        public virtual ReportSummaryDatabaseFinding DatabaseFinding { get; set; }
+
         /// <summary>Description for the Preference Set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
@@ -8538,6 +9245,17 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("monthlyCostCompute")]
         public virtual Money MonthlyCostCompute { get; set; }
 
+        /// <summary>Output only. Backup monthly cost for this preference set. Only present for databases.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("monthlyCostDatabaseBackup")]
+        public virtual Money MonthlyCostDatabaseBackup { get; set; }
+
+        /// <summary>
+        /// Output only. Database licensing monthly cost for this preference set. For virtual machines denotes the cost
+        /// of licenses for hosted databases.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("monthlyCostDatabaseLicensing")]
+        public virtual Money MonthlyCostDatabaseLicensing { get; set; }
+
         /// <summary>Network Egress monthly cost for this preference set. Only present for virtual machines.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monthlyCostNetworkEgress")]
         public virtual Money MonthlyCostNetworkEgress { get; set; }
@@ -8559,6 +9277,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>Total monthly cost for this preference set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monthlyCostTotal")]
         public virtual Money MonthlyCostTotal { get; set; }
+
+        /// <summary>Output only. A copy of the preference set used for this finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preferenceSet")]
+        public virtual PreferenceSet PreferenceSet { get; set; }
 
         /// <summary>Target region for this Preference Set</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preferredRegion")]
@@ -9112,6 +9834,78 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specific details for a Microsoft SQL Server database deployment.</summary>
+    public class SqlServerDatabaseDeployment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. List of SQL Server features.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("features")]
+        public virtual System.Collections.Generic.IList<SqlServerFeature> Features { get; set; }
+
+        /// <summary>Optional. List of SQL Server server flags.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverFlags")]
+        public virtual System.Collections.Generic.IList<SqlServerServerFlag> ServerFlags { get; set; }
+
+        /// <summary>Optional. List of SQL Server trace flags.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("traceFlags")]
+        public virtual System.Collections.Generic.IList<SqlServerTraceFlag> TraceFlags { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>SQL Server feature details.</summary>
+    public class SqlServerFeature : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Field enabled is set when a feature is used on the source deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>Required. The feature name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("featureName")]
+        public virtual string FeatureName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>SQL Server server flag details.</summary>
+    public class SqlServerServerFlag : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The server flag name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverFlagName")]
+        public virtual string ServerFlagName { get; set; }
+
+        /// <summary>Required. The server flag value set by the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>
+        /// Required. The server flag actual value. If `value_in_use` is different from `value` it means that either the
+        /// configuration change was not applied or it is an expected behavior. See SQL Server documentation for more
+        /// details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueInUse")]
+        public virtual string ValueInUse { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>SQL Server trace flag details.</summary>
+    public class SqlServerTraceFlag : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The trace flag scope.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual string Scope { get; set; }
+
+        /// <summary>Required. The trace flag name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("traceFlagName")]
+        public virtual string TraceFlagName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

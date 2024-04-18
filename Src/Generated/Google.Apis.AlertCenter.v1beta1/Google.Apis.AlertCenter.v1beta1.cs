@@ -2648,6 +2648,21 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
     /// <summary>Proto that contains resource information.</summary>
     public class ResourceInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Chat attachment ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chatAttachmentId")]
+        public virtual string ChatAttachmentId { get; set; }
+
+        /// <summary>Chat message ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chatMessageId")]
+        public virtual string ChatMessageId { get; set; }
+
+        /// <summary>
+        /// Id to identify a device. For example, for Android devices, this is the "Android Device Id" and for Chrome OS
+        /// devices, it's the "Device Virtual Id".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
+        public virtual string DeviceId { get; set; }
+
         /// <summary>Drive file ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentId")]
         public virtual string DocumentId { get; set; }
@@ -2683,6 +2698,10 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         /// <summary>Source of the data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSource")]
         public virtual string DataSource { get; set; }
+
+        /// <summary>Event associated with this alert after applying the rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
+        public virtual string EventType { get; set; }
 
         /// <summary>List of matches that were found in the resource content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchInfo")]

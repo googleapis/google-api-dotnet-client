@@ -5500,8 +5500,10 @@ namespace Google.Apis.CloudAsset.v1.Data
     public class GoogleIdentityAccesscontextmanagerV1EgressFrom : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A list of identities that are allowed access through this [EgressPolicy], in the format of `user:{email_id}`
-        /// or `serviceAccount:{email_id}`.
+        /// A list of identities that are allowed access through [EgressPolicy]. Identities can be an individual user,
+        /// service account, Google group, or third-party identity. The `v1` identities that have the prefix `user`,
+        /// `group`, `serviceAccount`, `principal`, and `principalSet` in
+        /// https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("identities")]
         public virtual System.Collections.Generic.IList<string> Identities { get; set; }
@@ -5589,9 +5591,10 @@ namespace Google.Apis.CloudAsset.v1.Data
     {
         /// <summary>
         /// A list of external resources that are allowed to be accessed. Only AWS and Azure resources are supported.
-        /// For Amazon S3, the supported format is s3://BUCKET_NAME. For Azure Storage, the supported format is
-        /// azure://myaccount.blob.core.windows.net/CONTAINER_NAME. A request matches if it contains an external
-        /// resource in this list (Example: s3://bucket/path). Currently '*' is not allowed.
+        /// For Amazon S3, the supported formats are s3://BUCKET_NAME, s3a://BUCKET_NAME, and s3n://BUCKET_NAME. For
+        /// Azure Storage, the supported format is azure://myaccount.blob.core.windows.net/CONTAINER_NAME. A request
+        /// matches if it contains an external resource in this list (Example: s3://bucket/path). Currently '*' is not
+        /// allowed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalResources")]
         public virtual System.Collections.Generic.IList<string> ExternalResources { get; set; }
@@ -5624,8 +5627,10 @@ namespace Google.Apis.CloudAsset.v1.Data
     public class GoogleIdentityAccesscontextmanagerV1IngressFrom : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A list of identities that are allowed access through this ingress policy, in the format of `user:{email_id}`
-        /// or `serviceAccount:{email_id}`.
+        /// A list of identities that are allowed access through [IngressPolicy]. Identities can be an individual user,
+        /// service account, Google group, or third-party identity. The `v1` identities that have the prefix `user`,
+        /// `group`, `serviceAccount`, `principal`, and `principalSet` in
+        /// https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("identities")]
         public virtual System.Collections.Generic.IList<string> Identities { get; set; }
@@ -7293,8 +7298,8 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// are collectively called the effective tags. For more information, see [tag
         /// inheritance](https://cloud.google.com/resource-manager/docs/tags/tags-overview#inheritance). To search
         /// against the `effective_tags`: * Use a field query. Example: - `effectiveTagKeys:"123456789/env*"` -
-        /// `effectiveTagKeys="123456789/env"` - `effectiveTagKeys:"env"` - `effectiveTagValues:"env"` -
-        /// `effectiveTagValues:"env/prod"` - `effectiveTagValues:"123456789/env/prod*"` -
+        /// `effectiveTagKeys="123456789/env"` - `effectiveTagKeys:"env"` - `effectiveTagKeyIds="tagKeys/123"` -
+        /// `effectiveTagValues:"env"` - `effectiveTagValues:"env/prod"` - `effectiveTagValues:"123456789/env/prod*"` -
         /// `effectiveTagValues="123456789/env/prod"` - `effectiveTagValueIds="tagValues/456"`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("effectiveTags")]
@@ -7469,9 +7474,10 @@ namespace Google.Apis.CloudAsset.v1.Data
 
         /// <summary>
         /// The tags directly attached to this resource. To search against the `tags`: * Use a field query. Example: -
-        /// `tagKeys:"123456789/env*"` - `tagKeys="123456789/env"` - `tagKeys:"env"` - `tagValues:"env"` -
-        /// `tagValues:"env/prod"` - `tagValues:"123456789/env/prod*"` - `tagValues="123456789/env/prod"` -
-        /// `tagValueIds="tagValues/456"` * Use a free text query. Example: - `env/prod`
+        /// `tagKeys:"123456789/env*"` - `tagKeys="123456789/env"` - `tagKeys:"env"` - `tagKeyIds="tagKeys/123"` -
+        /// `tagValues:"env"` - `tagValues:"env/prod"` - `tagValues:"123456789/env/prod*"` -
+        /// `tagValues="123456789/env/prod"` - `tagValueIds="tagValues/456"` * Use a free text query. Example: -
+        /// `env/prod`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IList<Tag> Tags { get; set; }
@@ -7850,6 +7856,10 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// <summary>TagKey namespaced name, in the format of {ORG_ID}/{TAG_KEY_SHORT_NAME}.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagKey")]
         public virtual string TagKey { get; set; }
+
+        /// <summary>TagKey ID, in the format of tagKeys/{TAG_KEY_ID}.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tagKeyId")]
+        public virtual string TagKeyId { get; set; }
 
         /// <summary>
         /// TagValue namespaced name, in the format of {ORG_ID}/{TAG_KEY_SHORT_NAME}/{TAG_VALUE_SHORT_NAME}.

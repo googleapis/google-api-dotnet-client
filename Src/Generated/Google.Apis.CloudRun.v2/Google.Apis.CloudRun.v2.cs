@@ -1280,8 +1280,8 @@ namespace Google.Apis.CloudRun.v2
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// If set to true, and if the Job does not exist, it will create a new one. Caller must have both
-                    /// create and update permissions for this call if this is set to true.
+                    /// Optional. If set to true, and if the Job does not exist, it will create a new one. Caller must
+                    /// have both create and update permissions for this call if this is set to true.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> AllowMissing { get; set; }
@@ -2589,8 +2589,9 @@ namespace Google.Apis.CloudRun.v2
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// If set to true, and if the Service does not exist, it will create a new one. The caller must
-                    /// have 'run.services.create' permissions if this is set to true and the Service does not exist.
+                    /// Optional. If set to true, and if the Service does not exist, it will create a new one. The
+                    /// caller must have 'run.services.create' permissions if this is set to true and the Service does
+                    /// not exist.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> AllowMissing { get; set; }
@@ -2976,22 +2977,23 @@ namespace Google.Apis.CloudRun.v2.Data
     public class GoogleCloudRunV2BinaryAuthorization : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// If present, indicates to use Breakglass using this justification. If use_default is False, then it must be
-        /// empty. For more information on breakglass, see
+        /// Optional. If present, indicates to use Breakglass using this justification. If use_default is False, then it
+        /// must be empty. For more information on breakglass, see
         /// https://cloud.google.com/binary-authorization/docs/using-breakglass
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("breakglassJustification")]
         public virtual string BreakglassJustification { get; set; }
 
         /// <summary>
-        /// The path to a binary authorization policy. Format: projects/{project}/platforms/cloudRun/{policy-name}
+        /// Optional. The path to a binary authorization policy. Format:
+        /// projects/{project}/platforms/cloudRun/{policy-name}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
         public virtual string Policy { get; set; }
 
         /// <summary>
-        /// If True, indicates to use the default project's binary authorization policy. If False, binary authorization
-        /// will be disabled.
+        /// Optional. If True, indicates to use the default project's binary authorization policy. If False, binary
+        /// authorization will be disabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useDefault")]
         public virtual System.Nullable<bool> UseDefault { get; set; }
@@ -3037,7 +3039,7 @@ namespace Google.Apis.CloudRun.v2.Data
     /// <summary>Defines a status condition for a resource.</summary>
     public class GoogleCloudRunV2Condition : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A reason for the execution condition.</summary>
+        /// <summary>Output only. A reason for the execution condition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionReason")]
         public virtual string ExecutionReason { get; set; }
 
@@ -3084,11 +3086,11 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
 
-        /// <summary>A common (service-level) reason for this condition.</summary>
+        /// <summary>Output only. A common (service-level) reason for this condition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; }
 
-        /// <summary>A reason for the revision condition.</summary>
+        /// <summary>Output only. A reason for the revision condition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revisionReason")]
         public virtual string RevisionReason { get; set; }
 
@@ -3869,14 +3871,14 @@ namespace Google.Apis.CloudRun.v2.Data
     public class GoogleCloudRunV2GRPCAction : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the
-        /// exposed port of the container, which is the value of container.ports[0].containerPort.
+        /// Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified,
+        /// defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
         public virtual System.Nullable<int> Port { get; set; }
 
         /// <summary>
-        /// Service is the name of the service to place in the gRPC HealthCheckRequest (see
+        /// Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see
         /// https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default
         /// behavior is defined by gRPC.
         /// </summary>
@@ -3890,17 +3892,17 @@ namespace Google.Apis.CloudRun.v2.Data
     /// <summary>HTTPGetAction describes an action based on HTTP Get requests.</summary>
     public class GoogleCloudRunV2HTTPGetAction : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Custom headers to set in the request. HTTP allows repeated headers.</summary>
+        /// <summary>Optional. Custom headers to set in the request. HTTP allows repeated headers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpHeaders")]
         public virtual System.Collections.Generic.IList<GoogleCloudRunV2HTTPHeader> HttpHeaders { get; set; }
 
-        /// <summary>Path to access on the HTTP server. Defaults to '/'.</summary>
+        /// <summary>Optional. Path to access on the HTTP server. Defaults to '/'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
 
         /// <summary>
-        /// Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the
-        /// exposed port of the container, which is the value of container.ports[0].containerPort.
+        /// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified,
+        /// defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
         public virtual System.Nullable<int> Port { get; set; }
@@ -3916,7 +3918,7 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The header field value</summary>
+        /// <summary>Optional. The header field value</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
 
@@ -4178,6 +4180,13 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
         public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
+        /// <summary>
+        /// A unique string used as a suffix creating a new execution. The Job will become ready when the execution is
+        /// successfully started. The sum of job name and token length must be fewer than 63 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startExecutionToken")]
+        public virtual string StartExecutionToken { get; set; }
+
         /// <summary>Required. The template used to create executions for this Job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("template")]
         public virtual GoogleCloudRunV2ExecutionTemplate Template { get; set; }
@@ -4355,23 +4364,24 @@ namespace Google.Apis.CloudRun.v2.Data
     public class GoogleCloudRunV2NetworkInterface : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or
-        /// subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must
-        /// belong to the given VPC network. If network is not specified, it will be looked up from the subnetwork.
+        /// Optional. The VPC network that the Cloud Run resource will be able to send traffic to. At least one of
+        /// network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC
+        /// subnetwork must belong to the given VPC network. If network is not specified, it will be looked up from the
+        /// subnetwork.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
 
         /// <summary>
-        /// The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must
-        /// be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the
-        /// given VPC network. If subnetwork is not specified, the subnetwork with the same name with the network will
-        /// be used.
+        /// Optional. The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or
+        /// subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must
+        /// belong to the given VPC network. If subnetwork is not specified, the subnetwork with the same name with the
+        /// network will be used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
         public virtual string Subnetwork { get; set; }
 
-        /// <summary>Network tags applied to this Cloud Run resource.</summary>
+        /// <summary>Optional. Network tags applied to this Cloud Run resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IList<string> Tags { get; set; }
 
@@ -4410,50 +4420,52 @@ namespace Google.Apis.CloudRun.v2.Data
     public class GoogleCloudRunV2Probe : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3.
-        /// Minimum value is 1.
+        /// Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded.
+        /// Defaults to 3. Minimum value is 1.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failureThreshold")]
         public virtual System.Nullable<int> FailureThreshold { get; set; }
 
         /// <summary>
-        /// GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be
+        /// Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be
         /// specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("grpc")]
         public virtual GoogleCloudRunV2GRPCAction Grpc { get; set; }
 
         /// <summary>
-        /// HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+        /// Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be
+        /// specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpGet")]
         public virtual GoogleCloudRunV2HTTPGetAction HttpGet { get; set; }
 
         /// <summary>
-        /// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds.
-        /// Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
+        /// Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0
+        /// seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is
+        /// 240.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("initialDelaySeconds")]
         public virtual System.Nullable<int> InitialDelaySeconds { get; set; }
 
         /// <summary>
-        /// How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for
-        /// liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than
+        /// Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum
+        /// value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than
         /// timeout_seconds.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("periodSeconds")]
         public virtual System.Nullable<int> PeriodSeconds { get; set; }
 
         /// <summary>
-        /// TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be
-        /// specified.
+        /// Optional. TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc
+        /// must be specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tcpSocket")]
         public virtual GoogleCloudRunV2TCPSocketAction TcpSocket { get; set; }
 
         /// <summary>
-        /// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value
-        /// is 3600. Must be smaller than period_seconds.
+        /// Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1.
+        /// Maximum value is 3600. Must be smaller than period_seconds.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeoutSeconds")]
         public virtual System.Nullable<int> TimeoutSeconds { get; set; }
@@ -4803,11 +4815,11 @@ namespace Google.Apis.CloudRun.v2.Data
     /// <summary>Settings for revision-level scaling settings.</summary>
     public class GoogleCloudRunV2RevisionScaling : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Maximum number of serving instances that this resource should have.</summary>
+        /// <summary>Optional. Maximum number of serving instances that this resource should have.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxInstanceCount")]
         public virtual System.Nullable<int> MaxInstanceCount { get; set; }
 
-        /// <summary>Minimum number of serving instances that this resource should have.</summary>
+        /// <summary>Optional. Minimum number of serving instances that this resource should have.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minInstanceCount")]
         public virtual System.Nullable<int> MinInstanceCount { get; set; }
 
@@ -4830,11 +4842,12 @@ namespace Google.Apis.CloudRun.v2.Data
     public class GoogleCloudRunV2RevisionTemplate : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not
-        /// queryable and should be preserved when modifying objects. Cloud Run API v2 does not support annotations with
-        /// `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev`
-        /// namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2
-        /// RevisionTemplate. This field follows Kubernetes annotations' namespacing, limits, and rules.
+        /// Optional. Unstructured key value map that may be set by external tools to store and arbitrary metadata. They
+        /// are not queryable and should be preserved when modifying objects. Cloud Run API v2 does not support
+        /// annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or
+        /// `autoscaling.knative.dev` namespaces, and they will be rejected. All system annotations in v1 now have a
+        /// corresponding field in v2 RevisionTemplate. This field follows Kubernetes annotations' namespacing, limits,
+        /// and rules.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
@@ -4850,7 +4863,7 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionKey")]
         public virtual string EncryptionKey { get; set; }
 
-        /// <summary>The sandbox environment to host this Revision.</summary>
+        /// <summary>Optional. The sandbox environment to host this Revision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionEnvironment")]
         public virtual string ExecutionEnvironment { get; set; }
 
@@ -4859,9 +4872,9 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual System.Nullable<bool> HealthCheckDisabled { get; set; }
 
         /// <summary>
-        /// Unstructured key value map that can be used to organize and categorize objects. User-provided labels are
-        /// shared with Google's billing system, so they can be used to filter, or break down billing charges by team,
-        /// component, environment, state, etc. For more information, visit
+        /// Optional. Unstructured key value map that can be used to organize and categorize objects. User-provided
+        /// labels are shared with Google's billing system, so they can be used to filter, or break down billing charges
+        /// by team, component, environment, state, etc. For more information, visit
         /// https://cloud.google.com/resource-manager/docs/creating-managing-labels or
         /// https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with
         /// `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev`
@@ -4871,25 +4884,25 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Sets the maximum number of requests that each serving instance can receive.</summary>
+        /// <summary>Optional. Sets the maximum number of requests that each serving instance can receive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxInstanceRequestConcurrency")]
         public virtual System.Nullable<int> MaxInstanceRequestConcurrency { get; set; }
 
         /// <summary>
-        /// The unique name for the revision. If this field is omitted, it will be automatically generated based on the
-        /// Service name.
+        /// Optional. The unique name for the revision. If this field is omitted, it will be automatically generated
+        /// based on the Service name.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revision")]
         public virtual string Revision { get; set; }
 
-        /// <summary>Scaling settings for this Revision.</summary>
+        /// <summary>Optional. Scaling settings for this Revision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scaling")]
         public virtual GoogleCloudRunV2RevisionScaling Scaling { get; set; }
 
         /// <summary>
-        /// Email address of the IAM service account associated with the revision of the service. The service account
-        /// represents the identity of the running revision, and determines what permissions the revision has. If not
-        /// provided, the revision will use the project's default service account.
+        /// Optional. Email address of the IAM service account associated with the revision of the service. The service
+        /// account represents the identity of the running revision, and determines what permissions the revision has.
+        /// If not provided, the revision will use the project's default service account.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
@@ -4898,16 +4911,16 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sessionAffinity")]
         public virtual System.Nullable<bool> SessionAffinity { get; set; }
 
-        /// <summary>Max allowed time for an instance to respond to a request.</summary>
+        /// <summary>Optional. Max allowed time for an instance to respond to a request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
         public virtual object Timeout { get; set; }
 
-        /// <summary>A list of Volumes to make available to containers.</summary>
+        /// <summary>Optional. A list of Volumes to make available to containers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumes")]
         public virtual System.Collections.Generic.IList<GoogleCloudRunV2Volume> Volumes { get; set; }
 
         /// <summary>
-        /// VPC Access configuration to use for this Revision. For more information, visit
+        /// Optional. VPC Access configuration to use for this Revision. For more information, visit
         /// https://cloud.google.com/run/docs/configuring/connecting-vpc.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpcAccess")]
@@ -5018,7 +5031,7 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
 
-        /// <summary>Settings for the Binary Authorization feature.</summary>
+        /// <summary>Optional. Settings for the Binary Authorization feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("binaryAuthorization")]
         public virtual GoogleCloudRunV2BinaryAuthorization BinaryAuthorization { get; set; }
 
@@ -5185,8 +5198,8 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual System.Nullable<long> Generation { get; set; }
 
         /// <summary>
-        /// Provides the ingress settings for this Service. On output, returns the currently observed ingress settings,
-        /// or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
+        /// Optional. Provides the ingress settings for this Service. On output, returns the currently observed ingress
+        /// settings, or INGRESS_TRAFFIC_UNSPECIFIED if no revision is active.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ingress")]
         public virtual string Ingress { get; set; }
@@ -5222,7 +5235,7 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string LatestReadyRevision { get; set; }
 
         /// <summary>
-        /// The launch stage as defined by [Google Cloud Platform Launch
+        /// Optional. The launch stage as defined by [Google Cloud Platform Launch
         /// Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no
         /// value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview
         /// features in that stage. On read (or output), describes whether the resource uses preview features. For
@@ -5286,8 +5299,8 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual GoogleCloudRunV2Condition TerminalCondition { get; set; }
 
         /// <summary>
-        /// Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If traffic is
-        /// empty or not provided, defaults to 100% traffic to the latest `Ready` Revision.
+        /// Optional. Specifies how to distribute traffic over a collection of Revisions belonging to the Service. If
+        /// traffic is empty or not provided, defaults to 100% traffic to the latest `Ready` Revision.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("traffic")]
         public virtual System.Collections.Generic.IList<GoogleCloudRunV2TrafficTarget> Traffic { get; set; }
@@ -5352,8 +5365,8 @@ namespace Google.Apis.CloudRun.v2.Data
     public class GoogleCloudRunV2ServiceScaling : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// total min instances for the service. This number of instances is divided among all revisions with specified
-        /// traffic based on the percent of traffic they are receiving. (BETA)
+        /// Optional. total min instances for the service. This number of instances is divided among all revisions with
+        /// specified traffic based on the percent of traffic they are receiving. (BETA)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minInstanceCount")]
         public virtual System.Nullable<int> MinInstanceCount { get; set; }
@@ -5366,8 +5379,8 @@ namespace Google.Apis.CloudRun.v2.Data
     public class GoogleCloudRunV2TCPSocketAction : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the
-        /// exposed port of the container, which is the value of container.ports[0].containerPort.
+        /// Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified,
+        /// defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
         public virtual System.Nullable<int> Port { get; set; }
@@ -5832,7 +5845,7 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionKey")]
         public virtual string EncryptionKey { get; set; }
 
-        /// <summary>The execution environment being used to host this Task.</summary>
+        /// <summary>Optional. The execution environment being used to host this Task.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionEnvironment")]
         public virtual string ExecutionEnvironment { get; set; }
 
@@ -5841,27 +5854,27 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual System.Nullable<int> MaxRetries { get; set; }
 
         /// <summary>
-        /// Email address of the IAM service account associated with the Task of a Job. The service account represents
-        /// the identity of the running task, and determines what permissions the task has. If not provided, the task
-        /// will use the project's default service account.
+        /// Optional. Email address of the IAM service account associated with the Task of a Job. The service account
+        /// represents the identity of the running task, and determines what permissions the task has. If not provided,
+        /// the task will use the project's default service account.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
 
         /// <summary>
-        /// Max allowed time duration the Task may be active before the system will actively try to mark it failed and
-        /// kill associated containers. This applies per attempt of a task, meaning each retry can run for the full
-        /// timeout. Defaults to 600 seconds.
+        /// Optional. Max allowed time duration the Task may be active before the system will actively try to mark it
+        /// failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for
+        /// the full timeout. Defaults to 600 seconds.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
         public virtual object Timeout { get; set; }
 
-        /// <summary>A list of Volumes to make available to containers.</summary>
+        /// <summary>Optional. A list of Volumes to make available to containers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumes")]
         public virtual System.Collections.Generic.IList<GoogleCloudRunV2Volume> Volumes { get; set; }
 
         /// <summary>
-        /// VPC Access configuration to use for this Task. For more information, visit
+        /// Optional. VPC Access configuration to use for this Task. For more information, visit
         /// https://cloud.google.com/run/docs/configuring/connecting-vpc.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpcAccess")]
@@ -6026,11 +6039,15 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("connector")]
         public virtual string Connector { get; set; }
 
-        /// <summary>Traffic VPC egress settings. If not provided, it defaults to PRIVATE_RANGES_ONLY.</summary>
+        /// <summary>
+        /// Optional. Traffic VPC egress settings. If not provided, it defaults to PRIVATE_RANGES_ONLY.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("egress")]
         public virtual string Egress { get; set; }
 
-        /// <summary>Direct VPC egress settings. Currently only single network interface is supported.</summary>
+        /// <summary>
+        /// Optional. Direct VPC egress settings. Currently only single network interface is supported.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkInterfaces")]
         public virtual System.Collections.Generic.IList<GoogleCloudRunV2NetworkInterface> NetworkInterfaces { get; set; }
 

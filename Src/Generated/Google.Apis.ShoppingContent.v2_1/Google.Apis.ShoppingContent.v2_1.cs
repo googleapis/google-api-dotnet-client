@@ -17163,6 +17163,26 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Conditions to be met for a product to have free shipping.</summary>
+    public class FreeShippingThreshold : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The [CLDR territory code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml) of the
+        /// country to which an item will ship.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("country")]
+        public virtual string Country { get; set; }
+
+        /// <summary>
+        /// Required. The minimum product price for the shipping cost to become free. Represented as a number.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priceThreshold")]
+        public virtual Price PriceThreshold { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response containing generated recommendations.</summary>
     public class GenerateRecommendationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -17486,7 +17506,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual TextWithTooltip AdditionalInfo { get; set; }
 
         /// <summary>
-        /// Text to be used as the [aria label](https://www.w3.org/TR/WCAG20-TECHS/ARIA14.html) for the input.
+        /// Text to be used as the [aria-label](https://www.w3.org/TR/WCAG20-TECHS/ARIA14.html) for the input.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ariaLabel")]
         public virtual string AriaLabel { get; set; }
@@ -18377,25 +18397,41 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }
 
-    public class LoyaltyPoints : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>
+    /// Allows the setting up of loyalty program benefits (for example price or points).
+    /// https://support.google.com/merchants/answer/12922446
+    /// </summary>
+    public class LoyaltyProgram : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Name of loyalty points program. It is recommended to limit the name to 12 full-width characters or 24 Roman
-        /// characters.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
+        /// <summary>Optional. The cashback that can be used for future purchases.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cashbackForFutureUse")]
+        public virtual Price CashbackForFutureUse { get; set; }
 
-        /// <summary>The retailer's loyalty points in absolute value.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pointsValue")]
-        public virtual System.Nullable<long> PointsValue { get; set; }
+        /// <summary>Optional. The amount of loyalty points earned on a purchase.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loyaltyPoints")]
+        public virtual System.Nullable<long> LoyaltyPoints { get; set; }
 
         /// <summary>
-        /// The ratio of a point when converted to currency. Google assumes currency based on Merchant Center settings.
-        /// If ratio is left out, it defaults to 1.0.
+        /// Optional. The price for members of the given tier (instant discount price). Must be smaller or equal to the
+        /// regular price.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ratio")]
-        public virtual System.Nullable<double> Ratio { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("price")]
+        public virtual Price Price { get; set; }
+
+        /// <summary>
+        /// Required. The label of the loyalty program. This is an internal label that uniquely identifies the
+        /// relationship between a merchant entity and a loyalty program entity. It must be provided so that system can
+        /// associate the assets below (for example, price and points) with a merchant. The corresponding program must
+        /// be linked to the merchant account.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("programLabel")]
+        public virtual string ProgramLabel { get; set; }
+
+        /// <summary>
+        /// Required. The label of the tier within the loyalty program. Must match one of the labels within the program.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tierLabel")]
+        public virtual string TierLabel { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22190,10 +22226,9 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string AgeGroup { get; set; }
 
         /// <summary>
-        /// A safeguard in the [Automated Discounts](https://support.google.com/merchants/answer/10295759?hl=en) and
-        /// [Dynamic Promotions](https://support.google.com/merchants/answer/13949249?hl=en) projects, ensuring that
-        /// discounts on merchants' offers do not fall below this value, thereby preserving the offer's value and
-        /// profitability.
+        /// A safeguard in the [Automated Discounts](//support.google.com/merchants/answer/10295759) and [Dynamic
+        /// Promotions](//support.google.com/merchants/answer/13949249) projects, ensuring that discounts on merchants'
+        /// offers do not fall below this value, thereby preserving the offer's value and profitability.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoPricingMinPrice")]
         public virtual Price AutoPricingMinPrice { get; set; }
@@ -22342,6 +22377,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("feedLabel")]
         public virtual string FeedLabel { get; set; }
 
+        /// <summary>Optional. Conditions to be met for a product to have free shipping.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("freeShippingThreshold")]
+        public virtual System.Collections.Generic.IList<FreeShippingThreshold> FreeShippingThreshold { get; set; }
+
         /// <summary>Target gender of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gender")]
         public virtual string Gender { get; set; }
@@ -22421,9 +22460,12 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("linkTemplate")]
         public virtual string LinkTemplate { get; set; }
 
-        /// <summary>Loyalty points that users receive after purchasing the item. Japan only.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("loyaltyPoints")]
-        public virtual LoyaltyPoints LoyaltyPoints { get; set; }
+        /// <summary>
+        /// Loyalty program information that is used to surface loyalty benefits ( for example pricing, points, etc) to
+        /// the user for this item.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loyaltyProgram")]
+        public virtual LoyaltyProgram LoyaltyProgram { get; set; }
 
         /// <summary>The material of which the item is made.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("material")]

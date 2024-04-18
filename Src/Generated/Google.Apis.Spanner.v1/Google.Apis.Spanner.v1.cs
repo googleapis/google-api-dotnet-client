@@ -7966,9 +7966,9 @@ namespace Google.Apis.Spanner.v1.Data
     public class CommitRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The amount of latency this request is willing to incur in order to improve throughput. If this
+        /// Optional. The amount of latency this request is configured to incur in order to improve throughput. If this
         /// field is not set, Spanner assumes requests are relatively latency sensitive and automatically determines an
-        /// appropriate delay time. You can specify a batching delay value between 0 and 500 ms.
+        /// appropriate delay time. You can specify a commit delay value between 0 and 500 ms.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxCommitDelay")]
         public virtual object MaxCommitDelay { get; set; }

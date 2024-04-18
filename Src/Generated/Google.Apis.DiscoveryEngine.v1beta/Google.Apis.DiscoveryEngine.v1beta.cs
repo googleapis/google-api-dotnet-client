@@ -298,6 +298,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                 GroundingConfigs = new GroundingConfigsResource(service);
                 Operations = new OperationsResource(service);
                 RankingConfigs = new RankingConfigsResource(service);
+                UserEvents = new UserEventsResource(service);
             }
 
             /// <summary>Gets the Collections resource.</summary>
@@ -950,6 +951,13 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                                 [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
                                 public virtual System.Nullable<bool> AllowMissing { get; set; }
 
+                                /// <summary>
+                                /// Indicates which fields in the provided imported 'document' to update. If not set,
+                                /// will by default update all fields.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual object UpdateMask { get; set; }
+
                                 /// <summary>Gets or sets the body of this request.</summary>
                                 Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaDocument Body { get; set; }
 
@@ -980,6 +988,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                                     RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
                                     {
                                         Name = "allowMissing",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "updateMask",
                                         IsRequired = false,
                                         ParameterType = "query",
                                         DefaultValue = null,
@@ -1593,8 +1609,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
                         /// Immutable. Fully qualified name
-                        /// `project/*/locations/global/collections/{collection}/dataStore/*/conversations/*` or
-                        /// `project/*/locations/global/collections/{collection}/engines/*/conversations/*`.
+                        /// `projects/{project}/locations/global/collections/{collection}/dataStore/*/conversations/*`
+                        /// or `projects/{project}/locations/global/collections/{collection}/engines/*/conversations/*`.
                         /// </param>
                         public virtual PatchRequest Patch(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaConversation body, string name)
                         {
@@ -1617,8 +1633,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Immutable. Fully qualified name
-                            /// `project/*/locations/global/collections/{collection}/dataStore/*/conversations/*` or
-                            /// `project/*/locations/global/collections/{collection}/engines/*/conversations/*`.
+                            /// `projects/{project}/locations/global/collections/{collection}/dataStore/*/conversations/*`
+                            /// or
+                            /// `projects/{project}/locations/global/collections/{collection}/engines/*/conversations/*`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -3326,7 +3343,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
                         /// Immutable. Fully qualified name
-                        /// `project/*/locations/global/collections/{collection}/engines/{engine}/sessions/*`
+                        /// `projects/{project}/locations/global/collections/{collection}/engines/{engine}/sessions/*`
                         /// </param>
                         public virtual PatchRequest Patch(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaSession body, string name)
                         {
@@ -3349,7 +3366,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Immutable. Fully qualified name
-                            /// `project/*/locations/global/collections/{collection}/engines/{engine}/sessions/*`
+                            /// `projects/{project}/locations/global/collections/{collection}/engines/{engine}/sessions/*`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -4803,8 +4820,12 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// <summary>Writes a single user event.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">
-                        /// Required. The parent DataStore resource name, such as
+                        /// Required. The parent resource name. If the write user event action is applied in DataStore
+                        /// level, the format is:
                         /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`.
+                        /// If the write user event action is applied in Location level, for example, the event with
+                        /// Document across multiple DataStore, the format is:
+                        /// `projects/{project}/locations/{location}`.
                         /// </param>
                         public virtual WriteRequest Write(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaUserEvent body, string parent)
                         {
@@ -4823,8 +4844,12 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                             }
 
                             /// <summary>
-                            /// Required. The parent DataStore resource name, such as
+                            /// Required. The parent resource name. If the write user event action is applied in
+                            /// DataStore level, the format is:
                             /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`.
+                            /// If the write user event action is applied in Location level, for example, the event with
+                            /// Document across multiple DataStore, the format is:
+                            /// `projects/{project}/locations/{location}`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -5887,8 +5912,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
                         /// Immutable. Fully qualified name
-                        /// `project/*/locations/global/collections/{collection}/dataStore/*/conversations/*` or
-                        /// `project/*/locations/global/collections/{collection}/engines/*/conversations/*`.
+                        /// `projects/{project}/locations/global/collections/{collection}/dataStore/*/conversations/*`
+                        /// or `projects/{project}/locations/global/collections/{collection}/engines/*/conversations/*`.
                         /// </param>
                         public virtual PatchRequest Patch(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaConversation body, string name)
                         {
@@ -5911,8 +5936,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Immutable. Fully qualified name
-                            /// `project/*/locations/global/collections/{collection}/dataStore/*/conversations/*` or
-                            /// `project/*/locations/global/collections/{collection}/engines/*/conversations/*`.
+                            /// `projects/{project}/locations/global/collections/{collection}/dataStore/*/conversations/*`
+                            /// or
+                            /// `projects/{project}/locations/global/collections/{collection}/engines/*/conversations/*`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -6933,7 +6959,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
                         /// Immutable. Fully qualified name
-                        /// `project/*/locations/global/collections/{collection}/engines/{engine}/sessions/*`
+                        /// `projects/{project}/locations/global/collections/{collection}/engines/{engine}/sessions/*`
                         /// </param>
                         public virtual PatchRequest Patch(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaSession body, string name)
                         {
@@ -6956,7 +6982,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Immutable. Fully qualified name
-                            /// `project/*/locations/global/collections/{collection}/engines/{engine}/sessions/*`
+                            /// `projects/{project}/locations/global/collections/{collection}/engines/{engine}/sessions/*`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -8164,6 +8190,13 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                             [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<bool> AllowMissing { get; set; }
 
+                            /// <summary>
+                            /// Indicates which fields in the provided imported 'document' to update. If not set, will
+                            /// by default update all fields.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual object UpdateMask { get; set; }
+
                             /// <summary>Gets or sets the body of this request.</summary>
                             Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaDocument Body { get; set; }
 
@@ -8194,6 +8227,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                                 RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "allowMissing",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "updateMask",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -8807,8 +8848,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// Immutable. Fully qualified name
-                    /// `project/*/locations/global/collections/{collection}/dataStore/*/conversations/*` or
-                    /// `project/*/locations/global/collections/{collection}/engines/*/conversations/*`.
+                    /// `projects/{project}/locations/global/collections/{collection}/dataStore/*/conversations/*` or
+                    /// `projects/{project}/locations/global/collections/{collection}/engines/*/conversations/*`.
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaConversation body, string name)
                     {
@@ -8831,8 +8872,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                         /// <summary>
                         /// Immutable. Fully qualified name
-                        /// `project/*/locations/global/collections/{collection}/dataStore/*/conversations/*` or
-                        /// `project/*/locations/global/collections/{collection}/engines/*/conversations/*`.
+                        /// `projects/{project}/locations/global/collections/{collection}/dataStore/*/conversations/*`
+                        /// or `projects/{project}/locations/global/collections/{collection}/engines/*/conversations/*`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -10380,7 +10421,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// Immutable. Fully qualified name
-                    /// `project/*/locations/global/collections/{collection}/engines/{engine}/sessions/*`
+                    /// `projects/{project}/locations/global/collections/{collection}/engines/{engine}/sessions/*`
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaSession body, string name)
                     {
@@ -10403,7 +10444,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                         /// <summary>
                         /// Immutable. Fully qualified name
-                        /// `project/*/locations/global/collections/{collection}/engines/{engine}/sessions/*`
+                        /// `projects/{project}/locations/global/collections/{collection}/engines/{engine}/sessions/*`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -11382,8 +11423,11 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     /// <summary>Writes a single user event.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
-                    /// Required. The parent DataStore resource name, such as
-                    /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`.
+                    /// Required. The parent resource name. If the write user event action is applied in DataStore
+                    /// level, the format is:
+                    /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`. If
+                    /// the write user event action is applied in Location level, for example, the event with Document
+                    /// across multiple DataStore, the format is: `projects/{project}/locations/{location}`.
                     /// </param>
                     public virtual WriteRequest Write(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaUserEvent body, string parent)
                     {
@@ -11402,8 +11446,12 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         }
 
                         /// <summary>
-                        /// Required. The parent DataStore resource name, such as
+                        /// Required. The parent resource name. If the write user event action is applied in DataStore
+                        /// level, the format is:
                         /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`.
+                        /// If the write user event action is applied in Location level, for example, the event with
+                        /// Document across multiple DataStore, the format is:
+                        /// `projects/{project}/locations/{location}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -12312,6 +12360,89 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/rankingConfigs/[^/]+$",
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the UserEvents resource.</summary>
+            public virtual UserEventsResource UserEvents { get; }
+
+            /// <summary>The "userEvents" collection of methods.</summary>
+            public class UserEventsResource
+            {
+                private const string Resource = "userEvents";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public UserEventsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Writes a single user event.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource name. If the write user event action is applied in DataStore level,
+                /// the format is:
+                /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`. If the
+                /// write user event action is applied in Location level, for example, the event with Document across
+                /// multiple DataStore, the format is: `projects/{project}/locations/{location}`.
+                /// </param>
+                public virtual WriteRequest Write(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaUserEvent body, string parent)
+                {
+                    return new WriteRequest(this.service, body, parent);
+                }
+
+                /// <summary>Writes a single user event.</summary>
+                public class WriteRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaUserEvent>
+                {
+                    /// <summary>Constructs a new Write request.</summary>
+                    public WriteRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaUserEvent body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource name. If the write user event action is applied in DataStore
+                    /// level, the format is:
+                    /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`. If
+                    /// the write user event action is applied in Location level, for example, the event with Document
+                    /// across multiple DataStore, the format is: `projects/{project}/locations/{location}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaUserEvent Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "write";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta/{+parent}/userEvents:write";
+
+                    /// <summary>Initializes Write parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
                         });
                     }
                 }
@@ -13654,8 +13785,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     public class GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigOcrParsingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Apply additional enhanced OCR processing to a list of document elements. Supported values: * `table`:
-        /// advanced table parsing model.
+        /// [DEPRECATED] This field is deprecated. To use the additional enhanced document elements processing, please
+        /// switch to `layout_parsing_config`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enhancedDocumentElements")]
         public virtual System.Collections.Generic.IList<string> EnhancedDocumentElements { get; set; }
@@ -13917,8 +14048,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// `agent_creation_config` to create agent or provide an agent name that links the agent with the Chat engine.
         /// Format: `projects//locations//agents/`. Note that the `dialogflow_agent_to_link` are one-time consumed by
         /// and passed to Dialogflow service. It means they cannot be retrieved using EngineService.GetEngine or
-        /// EngineService.ListEngines API after engine creation. Please use ChatEngineMetadata.dialogflow_agent for
-        /// actual agent association after Engine is created.
+        /// EngineService.ListEngines API after engine creation. Use ChatEngineMetadata.dialogflow_agent for actual
+        /// agent association after Engine is created.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dialogflowAgentToLink")]
         public virtual string DialogflowAgentToLink { get; set; }
@@ -14003,8 +14134,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual System.Collections.Generic.IList<string> SearchAddOns { get; set; }
 
         /// <summary>
-        /// The search feature tier of this engine. Different tiers might have different pricing. To learn more, please
-        /// check the pricing documentation. Defaults to SearchTier.SEARCH_TIER_STANDARD if not specified.
+        /// The search feature tier of this engine. Different tiers might have different pricing. To learn more, check
+        /// the pricing documentation. Defaults to SearchTier.SEARCH_TIER_STANDARD if not specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchTier")]
         public virtual string SearchTier { get; set; }
@@ -15041,7 +15172,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// Immutable. Fully qualified name
-        /// `project/*/locations/global/collections/{collection}/engines/{engine}/sessions/*/answers/*`
+        /// `projects/{project}/locations/global/collections/{collection}/engines/{engine}/sessions/*/answers/*`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -16417,8 +16548,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     public class GoogleCloudDiscoveryengineV1alphaDocumentProcessingConfigParsingConfigOcrParsingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Apply additional enhanced OCR processing to a list of document elements. Supported values: * `table`:
-        /// advanced table parsing model.
+        /// [DEPRECATED] This field is deprecated. To use the additional enhanced document elements processing, please
+        /// switch to `layout_parsing_config`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enhancedDocumentElements")]
         public virtual System.Collections.Generic.IList<string> EnhancedDocumentElements { get; set; }
@@ -16698,8 +16829,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// `agent_creation_config` to create agent or provide an agent name that links the agent with the Chat engine.
         /// Format: `projects//locations//agents/`. Note that the `dialogflow_agent_to_link` are one-time consumed by
         /// and passed to Dialogflow service. It means they cannot be retrieved using EngineService.GetEngine or
-        /// EngineService.ListEngines API after engine creation. Please use ChatEngineMetadata.dialogflow_agent for
-        /// actual agent association after Engine is created.
+        /// EngineService.ListEngines API after engine creation. Use ChatEngineMetadata.dialogflow_agent for actual
+        /// agent association after Engine is created.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dialogflowAgentToLink")]
         public virtual string DialogflowAgentToLink { get; set; }
@@ -16912,8 +17043,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual System.Collections.Generic.IList<string> SearchAddOns { get; set; }
 
         /// <summary>
-        /// The search feature tier of this engine. Different tiers might have different pricing. To learn more, please
-        /// check the pricing documentation. Defaults to SearchTier.SEARCH_TIER_STANDARD if not specified.
+        /// The search feature tier of this engine. Different tiers might have different pricing. To learn more, check
+        /// the pricing documentation. Defaults to SearchTier.SEARCH_TIER_STANDARD if not specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchTier")]
         public virtual string SearchTier { get; set; }
@@ -16999,6 +17130,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// </summary>
     public class GoogleCloudDiscoveryengineV1alphaFieldConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// If this field is set, only the corresponding source will be indexed for this field. Otherwise, the values
+        /// from different sources are merged. Assuming a page with `` in meta tag, and `` in page map: if this enum is
+        /// set to METATAGS, we will only index ``; if this enum is not set, we will merge them and index ``.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advancedSiteSearchDataSources")]
+        public virtual System.Collections.Generic.IList<string> AdvancedSiteSearchDataSources { get; set; }
+
         /// <summary>
         /// If completable_option is COMPLETABLE_ENABLED, field values are directly used and returned as suggestions for
         /// Autocomplete in CompletionService.CompleteQuery. If completable_option is unset, the server behavior
@@ -17110,112 +17249,6 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>Workforce pool name. Example: "locations/global/workforcePools/pool_id"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workforcePoolName")]
         public virtual string WorkforcePoolName { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Metadata related to the progress of the ImportCompletionSuggestions operation. This will be returned by the
-    /// google.longrunning.Operation.metadata field.
-    /// </summary>
-    public class GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        private string _createTimeRaw;
-
-        private object _createTime;
-
-        /// <summary>Operation create time.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
-        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Response of the CompletionService.ImportCompletionSuggestions method. If the long running operation is done,
-    /// this message is returned by the google.longrunning.Operations.response field if the operation is successful.
-    /// </summary>
-    public class GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A sample of errors encountered while processing the request.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("errorSamples")]
-        public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorSamples { get; set; }
-
-        /// <summary>Count of CompletionSuggestions that failed to be imported.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("failureCount")]
-        public virtual System.Nullable<long> FailureCount { get; set; }
-
-        /// <summary>Count of CompletionSuggestions successfully imported.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("successCount")]
-        public virtual System.Nullable<long> SuccessCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17569,6 +17602,210 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("unjoinedEventsCount")]
         public virtual System.Nullable<long> UnjoinedEventsCount { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata and configurations for a Google Cloud project in the service.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaProject : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The timestamp when this project is created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. Full resource name of the project, for example `projects/{project_number}`. Note that when
+        /// making requests, project number and project id are both acceptable, but the server will always respond in
+        /// project number.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _provisionCompletionTimeRaw;
+
+        private object _provisionCompletionTime;
+
+        /// <summary>
+        /// Output only. The timestamp when this project is successfully provisioned. Empty value means this project is
+        /// still provisioning and is not ready for use.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provisionCompletionTime")]
+        public virtual string ProvisionCompletionTimeRaw
+        {
+            get => _provisionCompletionTimeRaw;
+            set
+            {
+                _provisionCompletionTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _provisionCompletionTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ProvisionCompletionTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ProvisionCompletionTimeDateTimeOffset instead.")]
+        public virtual object ProvisionCompletionTime
+        {
+            get => _provisionCompletionTime;
+            set
+            {
+                _provisionCompletionTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _provisionCompletionTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ProvisionCompletionTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ProvisionCompletionTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ProvisionCompletionTimeRaw);
+            set => ProvisionCompletionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. A map of terms of services. The key is the `id` of ServiceTerms.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceTermsMap")]
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDiscoveryengineV1alphaProjectServiceTerms> ServiceTermsMap { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata about the terms of service.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaProjectServiceTerms : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _acceptTimeRaw;
+
+        private object _acceptTime;
+
+        /// <summary>The last time when the project agreed to the terms of service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acceptTime")]
+        public virtual string AcceptTimeRaw
+        {
+            get => _acceptTimeRaw;
+            set
+            {
+                _acceptTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _acceptTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="AcceptTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use AcceptTimeDateTimeOffset instead.")]
+        public virtual object AcceptTime
+        {
+            get => _acceptTime;
+            set
+            {
+                _acceptTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _acceptTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="AcceptTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? AcceptTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(AcceptTimeRaw);
+            set => AcceptTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _declineTimeRaw;
+
+        private object _declineTime;
+
+        /// <summary>The last time when the project declined or revoked the agreement to terms of service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("declineTime")]
+        public virtual string DeclineTimeRaw
+        {
+            get => _declineTimeRaw;
+            set
+            {
+                _declineTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _declineTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DeclineTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DeclineTimeDateTimeOffset instead.")]
+        public virtual object DeclineTime
+        {
+            get => _declineTime;
+            set
+            {
+                _declineTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _declineTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DeclineTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DeclineTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(DeclineTimeRaw);
+            set => DeclineTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// The unique identifier of this terms of service. Available terms: * `GA_DATA_USE_TERMS`: [Terms for data
+        /// use](https://cloud.google.com/retail/data-use-terms). When using this as `id`, the acceptable version to
+        /// provide is `2022-11-23`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Whether the project has accepted/rejected the service terms or it is still pending.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>
+        /// The version string of the terms of service. For acceptable values, see the comments for id above.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata associated with a project provision operation.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaProvisionProjectMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -18137,7 +18374,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// Immutable. Fully qualified name
-        /// `project/*/locations/global/collections/{collection}/engines/{engine}/sessions/*`
+        /// `projects/{project}/locations/global/collections/{collection}/engines/{engine}/sessions/*`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -18765,7 +19002,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// Immutable. Fully qualified name
-        /// `project/*/locations/global/collections/{collection}/engines/{engine}/sessions/*/answers/*`
+        /// `projects/{project}/locations/global/collections/{collection}/engines/{engine}/sessions/*/answers/*`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -18986,7 +19223,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual System.Nullable<bool> Disable { get; set; }
 
         /// <summary>
-        /// Max rephrase steps. The max number is 10 steps. If not set or set to &amp;lt; 1, it will be set to 1 by
+        /// Max rephrase steps. The max number is 5 steps. If not set or set to &amp;lt; 1, it will be set to 1 by
         /// default.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxRephraseSteps")]
@@ -19204,6 +19441,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("answer")]
         public virtual GoogleCloudDiscoveryengineV1betaAnswer Answer { get; set; }
+
+        /// <summary>A global unique ID used for logging.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerQueryToken")]
+        public virtual string AnswerQueryToken { get; set; }
 
         /// <summary>
         /// Session resource object. It will be only available when session field is set and valid in the
@@ -19818,9 +20059,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("endPos")]
         public virtual System.Nullable<int> EndPos { get; set; }
 
-        /// <summary>
-        /// Position indicating the start of the claim in the answer candidate, measured in bytes/unicode.
-        /// </summary>
+        /// <summary>Position indicating the start of the claim in the answer candidate, measured in bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startPos")]
         public virtual System.Nullable<int> StartPos { get; set; }
 
@@ -19854,9 +20093,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// Intermediate Cloud Storage directory used for the import with a length limit of 2,000 characters. Can be
-        /// specified if one wants to have the Cloud SQL export to a specific Cloud Storage directory. Please ensure
-        /// that the Cloud SQL service account has the necessary Cloud Storage Admin permissions to access the specified
-        /// Cloud Storage directory.
+        /// specified if one wants to have the Cloud SQL export to a specific Cloud Storage directory. Ensure that the
+        /// Cloud SQL service account has the necessary Cloud Storage Admin permissions to access the specified Cloud
+        /// Storage directory.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsStagingDir")]
         public virtual string GcsStagingDir { get; set; }
@@ -19996,8 +20235,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// Immutable. Fully qualified name
-        /// `project/*/locations/global/collections/{collection}/dataStore/*/conversations/*` or
-        /// `project/*/locations/global/collections/{collection}/engines/*/conversations/*`.
+        /// `projects/{project}/locations/global/collections/{collection}/dataStore/*/conversations/*` or
+        /// `projects/{project}/locations/global/collections/{collection}/engines/*/conversations/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -21344,8 +21583,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     public class GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigOcrParsingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Apply additional enhanced OCR processing to a list of document elements. Supported values: * `table`:
-        /// advanced table parsing model.
+        /// [DEPRECATED] This field is deprecated. To use the additional enhanced document elements processing, please
+        /// switch to `layout_parsing_config`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enhancedDocumentElements")]
         public virtual System.Collections.Generic.IList<string> EnhancedDocumentElements { get; set; }
@@ -21636,8 +21875,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// `agent_creation_config` to create agent or provide an agent name that links the agent with the Chat engine.
         /// Format: `projects//locations//agents/`. Note that the `dialogflow_agent_to_link` are one-time consumed by
         /// and passed to Dialogflow service. It means they cannot be retrieved using EngineService.GetEngine or
-        /// EngineService.ListEngines API after engine creation. Please use ChatEngineMetadata.dialogflow_agent for
-        /// actual agent association after Engine is created.
+        /// EngineService.ListEngines API after engine creation. Use ChatEngineMetadata.dialogflow_agent for actual
+        /// agent association after Engine is created.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dialogflowAgentToLink")]
         public virtual string DialogflowAgentToLink { get; set; }
@@ -21722,8 +21961,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual System.Collections.Generic.IList<string> SearchAddOns { get; set; }
 
         /// <summary>
-        /// The search feature tier of this engine. Different tiers might have different pricing. To learn more, please
-        /// check the pricing documentation. Defaults to SearchTier.SEARCH_TIER_STANDARD if not specified.
+        /// The search feature tier of this engine. Different tiers might have different pricing. To learn more, check
+        /// the pricing documentation. Defaults to SearchTier.SEARCH_TIER_STANDARD if not specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchTier")]
         public virtual string SearchTier { get; set; }
@@ -21816,9 +22055,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// Intermediate Cloud Storage directory used for the import with a length limit of 2,000 characters. Can be
-        /// specified if one wants to have the Firestore export to a specific Cloud Storage directory. Please ensure
-        /// that the Firestore service account has the necessary Cloud Storage Admin permissions to access the specified
-        /// Cloud Storage directory.
+        /// specified if one wants to have the Firestore export to a specific Cloud Storage directory. Ensure that the
+        /// Firestore service account has the necessary Cloud Storage Admin permissions to access the specified Cloud
+        /// Storage directory.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsStagingDir")]
         public virtual string GcsStagingDir { get; set; }
@@ -22587,11 +22826,11 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     {
         /// <summary>
         /// The most specific category associated with a category page. To represent full path of category, use
-        /// '&amp;gt;' sign to separate different hierarchies. If '&amp;gt;' is part of the category name, please
-        /// replace it with other character(s). Category pages include special pages such as sales or promotions. For
-        /// instance, a special sale page may have the category hierarchy: `"pageCategory" : "Sales &amp;gt; 2017 Black
-        /// Friday Deals"`. Required for `view-category-page` events. Other event types should not set this field.
-        /// Otherwise, an `INVALID_ARGUMENT` error is returned.
+        /// '&amp;gt;' sign to separate different hierarchies. If '&amp;gt;' is part of the category name, replace it
+        /// with other character(s). Category pages include special pages such as sales or promotions. For instance, a
+        /// special sale page may have the category hierarchy: `"pageCategory" : "Sales &amp;gt; 2017 Black Friday
+        /// Deals"`. Required for `view-category-page` events. Other event types should not set this field. Otherwise,
+        /// an `INVALID_ARGUMENT` error is returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageCategory")]
         public virtual string PageCategory { get; set; }
@@ -22940,7 +23179,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual string Query { get; set; }
 
-        /// <summary>Required. A list of records to rank. At most 100 records to rank.</summary>
+        /// <summary>Required. A list of records to rank. At most 200 records to rank.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("records")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaRankingRecord> Records { get; set; }
 
@@ -23602,8 +23841,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// Specifies whether to return the confidence score from the extractive segments in each search result. This
-        /// feature is available only for new or allowlisted data stores. To allowlist your data store, please contact
-        /// your Customer Engineer. The default value is `false`.
+        /// feature is available only for new or allowlisted data stores. To allowlist your data store, contact your
+        /// Customer Engineer. The default value is `false`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnExtractiveSegmentScore")]
         public virtual System.Nullable<bool> ReturnExtractiveSegmentScore { get; set; }
@@ -23692,17 +23931,18 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// The number of top results to generate the summary from. If the number of results returned is less than
-        /// `summaryResultCount`, the summary is generated from all of the results. At most 10 results can be used to
-        /// generate a summary.
+        /// `summaryResultCount`, the summary is generated from all of the results. At most 10 results for documents
+        /// mode, or 50 for chunks mode, can be used to generate a summary. The chunks mode is used when
+        /// SearchRequest.ContentSearchSpec.search_result_mode is set to CHUNKS.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("summaryResultCount")]
         public virtual System.Nullable<int> SummaryResultCount { get; set; }
 
         /// <summary>
         /// If true, answer will be generated from most relevant chunks from top search results. This feature will
-        /// improve summary quality. Please note that with this feature enabled, not all top search results will be
-        /// referenced and included in the reference list, so the citation source index only points to the search
-        /// results listed in the reference list.
+        /// improve summary quality. Note that with this feature enabled, not all top search results will be referenced
+        /// and included in the reference list, so the citation source index only points to the search results listed in
+        /// the reference list.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useSemanticChunks")]
         public virtual System.Nullable<bool> UseSemanticChunks { get; set; }
@@ -24615,7 +24855,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// Immutable. Fully qualified name
-        /// `project/*/locations/global/collections/{collection}/engines/{engine}/sessions/*`
+        /// `projects/{project}/locations/global/collections/{collection}/engines/{engine}/sessions/*`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -25172,6 +25412,13 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// happen).
     /// </summary>
     public class GoogleCloudDiscoveryengineV1betaTuneEngineRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response associated with a tune operation.</summary>
+    public class GoogleCloudDiscoveryengineV1betaTuneEngineResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

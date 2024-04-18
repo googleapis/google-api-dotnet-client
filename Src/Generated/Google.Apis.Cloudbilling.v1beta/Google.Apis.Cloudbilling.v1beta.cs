@@ -2788,7 +2788,7 @@ namespace Google.Apis.Cloudbilling.v1beta.Data
 
     /// <summary>
     /// Encapsulates a stock keeping unit (SKU) visible to a billing account. A SKU distinctly identifies a resource
-    /// that you can purchase, such as `Nvidia Tesla K80 GPU attached to Spot Preemptible VMs running in Warsaw`.
+    /// that you can purchase. For a list of available SKUs, see [SKUs](https://cloud.google.com/skus).
     /// </summary>
     public class GoogleCloudBillingBillingaccountskusV1betaBillingAccountSku : Google.Apis.Requests.IDirectResponseSchema
     {

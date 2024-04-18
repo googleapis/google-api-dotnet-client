@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.DiscoveryEngine.v1beta Client Library</Title>
-    <Version>1.67.0.3378</Version>
+    <Version>1.67.0.3392</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2024 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
@@ -14,7 +14,8 @@
     <PackageIconUrl>https://www.gstatic.com/images/branding/product/1x/google_developers_64dp.png</PackageIconUrl>
     <PackageIcon>NuGetIcon.png</PackageIcon>
     <Description>
-      Google APIs Client Library for working with Discoveryengine v1beta.
+      This is not the recommended package for working with Discoveryengine, please use the Google.Cloud.DiscoveryEngine.V1Beta package.
+      This Google APIs Client Library for working with Discoveryengine v1beta uses older code generation, and is harder to use.
 
       Supported Platforms:
       - .NET Framework 4.6.2+

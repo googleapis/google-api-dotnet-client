@@ -14962,6 +14962,25 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Information about [Google Cloud Armor Adaptive
+    /// Protection](https://cloud.google.com/armor/docs/cloud-armor-overview#google-cloud-armor-adaptive-protection).
+    /// </summary>
+    public class AdaptiveProtection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A score of 0 means that there is low confidence that the detected event is an actual attack. A score of 1
+        /// means that there is high confidence that the detected event is an attack. See the [Adaptive Protection
+        /// documentation](https://cloud.google.com/armor/docs/adaptive-protection-overview#configure-alert-tuning) for
+        /// further explanation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<double> Confidence { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents an application associated with a finding.</summary>
     public class Application : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -15129,6 +15148,25 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// <summary>The project ids to use for filtering asset discovery.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectIds")]
         public virtual System.Collections.Generic.IList<string> ProjectIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about DDoS attack volume and classification.</summary>
+    public class Attack : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Type of attack, for example, ‘SYN-flood’, ‘NTP-udp’, or ‘CHARGEN-udp’.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("classification")]
+        public virtual string Classification { get; set; }
+
+        /// <summary>Total BPS (bytes per second) volume of attack.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volumeBps")]
+        public virtual System.Nullable<int> VolumeBps { get; set; }
+
+        /// <summary>Total PPS (packets per second) volume of attack.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volumePps")]
+        public virtual System.Nullable<int> VolumePps { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15359,6 +15397,86 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// <summary>The log type that this config enables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logType")]
         public virtual string LogType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An AWS account that is a member of an organization.</summary>
+    public class AwsAccount : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The unique identifier (ID) of the account, containing exactly 12 digits.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The friendly name of this account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// AWS metadata associated with the resource, only applicable if the finding's cloud provider is Amazon Web
+    /// Services.
+    /// </summary>
+    public class AwsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The AWS account associated with the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("account")]
+        public virtual AwsAccount Account { get; set; }
+
+        /// <summary>The AWS organization associated with the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organization")]
+        public virtual AwsOrganization Organization { get; set; }
+
+        /// <summary>
+        /// A list of AWS organizational units associated with the resource, ordered from lowest level (closest to the
+        /// account) to highest level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organizationalUnits")]
+        public virtual System.Collections.Generic.IList<AwsOrganizationalUnit> OrganizationalUnits { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An organization is a collection of accounts that are centrally managed together using consolidated billing,
+    /// organized hierarchically with organizational units (OUs), and controlled with policies.
+    /// </summary>
+    public class AwsOrganization : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The unique identifier (ID) for the organization. The regex pattern for an organization ID string requires
+        /// "o-" followed by from 10 to 32 lowercase letters or digits.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An Organizational Unit (OU) is a container of AWS accounts within a root of an organization. Policies that are
+    /// attached to an OU apply to all accounts contained in that OU and in any child OUs.
+    /// </summary>
+    public class AwsOrganizationalUnit : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The unique identifier (ID) associated with this OU. The regex pattern for an organizational unit ID string
+        /// requires "ou-" followed by from 4 to 32 lowercase letters or digits (the ID of the root that contains the
+        /// OU). This string is followed by a second "-" dash and from 8 to 32 additional lowercase letters or digits.
+        /// For example, "ou-ab12-cd34ef56".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The friendly name of the OU.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15607,6 +15725,49 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Fields related to Google Cloud Armor findings.</summary>
+    public class CloudArmor : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Information about potential Layer 7 DDoS attacks identified by [Google Cloud Armor Adaptive
+        /// Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adaptiveProtection")]
+        public virtual AdaptiveProtection AdaptiveProtection { get; set; }
+
+        /// <summary>Information about DDoS attack volume and classification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attack")]
+        public virtual Attack Attack { get; set; }
+
+        /// <summary>Duration of attack from the start until the current moment (updated every 5 minutes).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
+        public virtual object Duration { get; set; }
+
+        /// <summary>
+        /// Information about incoming requests evaluated by [Google Cloud Armor security
+        /// policies](https://cloud.google.com/armor/docs/security-policy-overview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
+        public virtual Requests Requests { get; set; }
+
+        /// <summary>
+        /// Information about the [Google Cloud Armor security
+        /// policy](https://cloud.google.com/armor/docs/security-policy-overview) relevant to the finding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityPolicy")]
+        public virtual SecurityPolicy SecurityPolicy { get; set; }
+
+        /// <summary>
+        /// Distinguish between volumetric &amp;amp; protocol DDoS attack and application layer attacks. For example,
+        /// “L3_4” for Layer 3 and Layer 4 DDoS attacks, or “L_7” for Layer 7 DDoS attacks.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threatVector")]
+        public virtual string ThreatVector { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The [data profile](https://cloud.google.com/dlp/docs/data-profiles) associated with the finding.
     /// </summary>
@@ -15748,6 +15909,10 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("category")]
         public virtual string Category { get; set; }
 
+        /// <summary>The cloud provider for the compliance snapshot.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudProvider")]
+        public virtual string CloudProvider { get; set; }
+
         /// <summary>The compliance standard (ie CIS).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("complianceStandard")]
         public virtual string ComplianceStandard { get; set; }
@@ -15767,10 +15932,6 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// <summary>The compliance snapshot name. Format: //sources//complianceSnapshots/</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
-
-        /// <summary>The CRM resource display name that is closest to the snapshot the Findings belong to.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("projectDisplayName")]
-        public virtual string ProjectDisplayName { get; set; }
 
         private string _snapshotTimeRaw;
 
@@ -16531,6 +16692,10 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("category")]
         public virtual string Category { get; set; }
 
+        /// <summary>Fields related to Cloud Armor findings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudArmor")]
+        public virtual CloudArmor CloudArmor { get; set; }
+
         /// <summary>Cloud DLP data profile that is associated with the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudDlpDataProfile")]
         public virtual CloudDlpDataProfile CloudDlpDataProfile { get; set; }
@@ -16789,6 +16954,10 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextSteps")]
         public virtual string NextSteps { get; set; }
 
+        /// <summary>Notebook associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notebook")]
+        public virtual Notebook Notebook { get; set; }
+
         /// <summary>Contains information about the org policies associated with the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orgPolicies")]
         public virtual System.Collections.Generic.IList<OrgPolicy> OrgPolicies { get; set; }
@@ -16872,6 +17041,43 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// <summary>The user defined display name for this folder.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceFolderDisplayName")]
         public virtual string ResourceFolderDisplayName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// GCP metadata associated with the resource, only applicable if the finding's cloud provider is Google Cloud
+    /// Platform.
+    /// </summary>
+    public class GcpMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Contains a Folder message for each folder in the assets ancestry. The first folder is the
+        /// deepest nested folder, and the last folder is the folder directly under the Organization.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("folders")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV2Folder> Folders { get; set; }
+
+        /// <summary>The name of the organization that the resource belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organization")]
+        public virtual string Organization { get; set; }
+
+        /// <summary>The full resource name of resource's parent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>The human readable name of resource's parent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentDisplayName")]
+        public virtual string ParentDisplayName { get; set; }
+
+        /// <summary>The full resource name of project that the resource belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("project")]
+        public virtual string Project { get; set; }
+
+        /// <summary>The project ID that the resource belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectDisplayName")]
+        public virtual string ProjectDisplayName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17557,6 +17763,14 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
     /// <summary>Information related to the Google Cloud resource.</summary>
     public class GoogleCloudSecuritycenterV1Resource : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The AWS metadata associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsMetadata")]
+        public virtual AwsMetadata AwsMetadata { get; set; }
+
+        /// <summary>Indicates which cloud provider the resource resides in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudProvider")]
+        public virtual string CloudProvider { get; set; }
+
         /// <summary>The human readable name of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -17568,12 +17782,20 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("folders")]
         public virtual System.Collections.Generic.IList<Folder> Folders { get; set; }
 
+        /// <summary>The region or location of the service (if applicable).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
         /// <summary>
         /// The full resource name of the resource. See:
         /// https://cloud.google.com/apis/design/resource_names#full_resource_name
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Indicates which organization or tenant in the cloud provider the finding applies to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organization")]
+        public virtual string Organization { get; set; }
 
         /// <summary>The full resource name of resource's parent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
@@ -17590,6 +17812,28 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// <summary>The project ID that the resource belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectDisplayName")]
         public virtual string ProjectDisplayName { get; set; }
+
+        /// <summary>Provides the path to the resource within the resource hierarchy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourcePath")]
+        public virtual ResourcePath ResourcePath { get; set; }
+
+        /// <summary>
+        /// A string representation of the resource path. For GCP, it has the format of:
+        /// organizations/{organization_id}/folders/{folder_id}/folders/{folder_id}/projects/{project_id} where there
+        /// can be any number of folders. For AWS, it has the format of:
+        /// org/{organization_id}/ou/{organizational_unit_id}/ou/{organizational_unit_id}/account/{account_id} where
+        /// there can be any number of organizational units. For Azure, it has the format of:
+        /// mg/{management_group_id}/mg/{management_group_id}/subscription/{subscription_id}/rg/{resource_group_name}
+        /// where there can be any number of management groups.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourcePathString")]
+        public virtual string ResourcePathString { get; set; }
+
+        /// <summary>
+        /// The parent service or product from which the resource is provided, for example, GKE or SNS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; }
 
         /// <summary>The full resource type of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
@@ -17616,6 +17860,10 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
     /// </summary>
     public class GoogleCloudSecuritycenterV1ResourceValueConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Cloud provider this configuration applies to</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudProvider")]
+        public virtual string CloudProvider { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -18297,6 +18545,25 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Information about [Google Cloud Armor Adaptive
+    /// Protection](https://cloud.google.com/armor/docs/cloud-armor-overview#google-cloud-armor-adaptive-protection).
+    /// </summary>
+    public class GoogleCloudSecuritycenterV2AdaptiveProtection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A score of 0 means that there is low confidence that the detected event is an actual attack. A score of 1
+        /// means that there is high confidence that the detected event is an attack. See the [Adaptive Protection
+        /// documentation](https://cloud.google.com/armor/docs/adaptive-protection-overview#configure-alert-tuning) for
+        /// further explanation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<double> Confidence { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents an application associated with a finding.</summary>
     public class GoogleCloudSecuritycenterV2Application : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -18313,6 +18580,25 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullUri")]
         public virtual string FullUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about DDoS attack volume and classification.</summary>
+    public class GoogleCloudSecuritycenterV2Attack : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Type of attack, for example, ‘SYN-flood’, ‘NTP-udp’, or ‘CHARGEN-udp’.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("classification")]
+        public virtual string Classification { get; set; }
+
+        /// <summary>Total BPS (bytes per second) volume of attack.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volumeBps")]
+        public virtual System.Nullable<int> VolumeBps { get; set; }
+
+        /// <summary>Total PPS (packets per second) volume of attack.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volumePps")]
+        public virtual System.Nullable<int> VolumePps { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -18392,6 +18678,86 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An AWS account that is a member of an organization.</summary>
+    public class GoogleCloudSecuritycenterV2AwsAccount : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The unique identifier (ID) of the account, containing exactly 12 digits.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The friendly name of this account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// AWS metadata associated with the resource, only applicable if the finding's cloud provider is Amazon Web
+    /// Services.
+    /// </summary>
+    public class GoogleCloudSecuritycenterV2AwsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The AWS account associated with the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("account")]
+        public virtual GoogleCloudSecuritycenterV2AwsAccount Account { get; set; }
+
+        /// <summary>The AWS organization associated with the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organization")]
+        public virtual GoogleCloudSecuritycenterV2AwsOrganization Organization { get; set; }
+
+        /// <summary>
+        /// A list of AWS organizational units associated with the resource, ordered from lowest level (closest to the
+        /// account) to highest level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organizationalUnits")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV2AwsOrganizationalUnit> OrganizationalUnits { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An organization is a collection of accounts that are centrally managed together using consolidated billing,
+    /// organized hierarchically with organizational units (OUs), and controlled with policies.
+    /// </summary>
+    public class GoogleCloudSecuritycenterV2AwsOrganization : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The unique identifier (ID) for the organization. The regex pattern for an organization ID string requires
+        /// "o-" followed by from 10 to 32 lowercase letters or digits.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An Organizational Unit (OU) is a container of AWS accounts within a root of an organization. Policies that are
+    /// attached to an OU apply to all accounts contained in that OU and in any child OUs.
+    /// </summary>
+    public class GoogleCloudSecuritycenterV2AwsOrganizationalUnit : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The unique identifier (ID) associated with this OU. The regex pattern for an organizational unit ID string
+        /// requires "ou-" followed by from 4 to 32 lowercase letters or digits (the ID of the root that contains the
+        /// OU). This string is followed by a second "-" dash and from 8 to 32 additional lowercase letters or digits.
+        /// For example, "ou-ab12-cd34ef56".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The friendly name of the OU.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -18680,6 +19046,49 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
     /// <summary>The response to a BulkMute request. Contains the LRO information.</summary>
     public class GoogleCloudSecuritycenterV2BulkMuteFindingsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Fields related to Google Cloud Armor findings.</summary>
+    public class GoogleCloudSecuritycenterV2CloudArmor : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Information about potential Layer 7 DDoS attacks identified by [Google Cloud Armor Adaptive
+        /// Protection](https://cloud.google.com/armor/docs/adaptive-protection-overview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adaptiveProtection")]
+        public virtual GoogleCloudSecuritycenterV2AdaptiveProtection AdaptiveProtection { get; set; }
+
+        /// <summary>Information about DDoS attack volume and classification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attack")]
+        public virtual GoogleCloudSecuritycenterV2Attack Attack { get; set; }
+
+        /// <summary>Duration of attack from the start until the current moment (updated every 5 minutes).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
+        public virtual object Duration { get; set; }
+
+        /// <summary>
+        /// Information about incoming requests evaluated by [Google Cloud Armor security
+        /// policies](https://cloud.google.com/armor/docs/security-policy-overview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
+        public virtual GoogleCloudSecuritycenterV2Requests Requests { get; set; }
+
+        /// <summary>
+        /// Information about the [Google Cloud Armor security
+        /// policy](https://cloud.google.com/armor/docs/security-policy-overview) relevant to the finding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityPolicy")]
+        public virtual GoogleCloudSecuritycenterV2SecurityPolicy SecurityPolicy { get; set; }
+
+        /// <summary>
+        /// Distinguish between volumetric &amp;amp; protocol DDoS attack and application layer attacks. For example,
+        /// “L3_4” for Layer 3 and Layer 4 DDoS attacks, or “L_7” for Layer 7 DDoS attacks.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threatVector")]
+        public virtual string ThreatVector { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -19485,6 +19894,10 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("category")]
         public virtual string Category { get; set; }
 
+        /// <summary>Fields related to Cloud Armor findings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudArmor")]
+        public virtual GoogleCloudSecuritycenterV2CloudArmor CloudArmor { get; set; }
+
         /// <summary>Cloud DLP data profile that is associated with the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudDlpDataProfile")]
         public virtual GoogleCloudSecuritycenterV2CloudDlpDataProfile CloudDlpDataProfile { get; set; }
@@ -19747,6 +20160,10 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextSteps")]
         public virtual string NextSteps { get; set; }
 
+        /// <summary>Notebook associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notebook")]
+        public virtual GoogleCloudSecuritycenterV2Notebook Notebook { get; set; }
+
         /// <summary>Contains information about the org policies associated with the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orgPolicies")]
         public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV2OrgPolicy> OrgPolicies { get; set; }
@@ -19816,6 +20233,24 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vulnerability")]
         public virtual GoogleCloudSecuritycenterV2Vulnerability Vulnerability { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message that contains the resource name and display name of a folder resource.</summary>
+    public class GoogleCloudSecuritycenterV2Folder : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Full resource name of this folder. See:
+        /// https://cloud.google.com/apis/design/resource_names#full_resource_name
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceFolder")]
+        public virtual string ResourceFolder { get; set; }
+
+        /// <summary>The user defined display name for this folder.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceFolderDisplayName")]
+        public virtual string ResourceFolderDisplayName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20251,6 +20686,67 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Represents a Jupyter notebook IPYNB file, such as a [Colab Enterprise
+    /// notebook](https://cloud.google.com/colab/docs/introduction) file, that is associated with a finding.
+    /// </summary>
+    public class GoogleCloudSecuritycenterV2Notebook : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The user ID of the latest author to modify the notebook.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastAuthor")]
+        public virtual string LastAuthor { get; set; }
+
+        /// <summary>The name of the notebook.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _notebookUpdateTimeRaw;
+
+        private object _notebookUpdateTime;
+
+        /// <summary>The most recent time the notebook was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notebookUpdateTime")]
+        public virtual string NotebookUpdateTimeRaw
+        {
+            get => _notebookUpdateTimeRaw;
+            set
+            {
+                _notebookUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _notebookUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="NotebookUpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use NotebookUpdateTimeDateTimeOffset instead.")]
+        public virtual object NotebookUpdateTime
+        {
+            get => _notebookUpdateTime;
+            set
+            {
+                _notebookUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _notebookUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="NotebookUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? NotebookUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(NotebookUpdateTimeRaw);
+            set => NotebookUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The source notebook service, for example, "Colab Enterprise".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Cloud SCC's Notification</summary>
     public class GoogleCloudSecuritycenterV2NotificationMessage : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -20481,12 +20977,55 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Information about the requests relevant to the finding.</summary>
+    public class GoogleCloudSecuritycenterV2Requests : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Allowed RPS (requests per second) over the long term.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("longTermAllowed")]
+        public virtual System.Nullable<int> LongTermAllowed { get; set; }
+
+        /// <summary>Denied RPS (requests per second) over the long term.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("longTermDenied")]
+        public virtual System.Nullable<int> LongTermDenied { get; set; }
+
+        /// <summary>
+        /// For 'Increasing deny ratio', the ratio is the denied traffic divided by the allowed traffic. For 'Allowed
+        /// traffic spike', the ratio is the allowed traffic in the short term divided by allowed traffic in the long
+        /// term.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ratio")]
+        public virtual System.Nullable<double> Ratio { get; set; }
+
+        /// <summary>Allowed RPS (requests per second) in the short term.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shortTermAllowed")]
+        public virtual System.Nullable<int> ShortTermAllowed { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Information related to the Google Cloud resource.</summary>
     public class GoogleCloudSecuritycenterV2Resource : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The AWS metadata associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsMetadata")]
+        public virtual GoogleCloudSecuritycenterV2AwsMetadata AwsMetadata { get; set; }
+
+        /// <summary>Indicates which cloud provider the finding is from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudProvider")]
+        public virtual string CloudProvider { get; set; }
+
         /// <summary>The human readable name of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
+
+        /// <summary>The GCP metadata associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcpMetadata")]
+        public virtual GcpMetadata GcpMetadata { get; set; }
+
+        /// <summary>The region or location of the service (if applicable).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
 
         /// <summary>
         /// The full resource name of the resource. See:
@@ -20495,9 +21034,63 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Provides the path to the resource within the resource hierarchy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourcePath")]
+        public virtual GoogleCloudSecuritycenterV2ResourcePath ResourcePath { get; set; }
+
+        /// <summary>
+        /// A string representation of the resource path. For GCP, it has the format of:
+        /// organizations/{organization_id}/folders/{folder_id}/folders/{folder_id}/projects/{project_id} where there
+        /// can be any number of folders. For AWS, it has the format of:
+        /// org/{organization_id}/ou/{organizational_unit_id}/ou/{organizational_unit_id}/account/{account_id} where
+        /// there can be any number of organizational units. For Azure, it has the format of:
+        /// mg/{management_group_id}/mg/{management_group_id}/subscription/{subscription_id}/rg/{resource_group_name}
+        /// where there can be any number of management groups.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourcePathString")]
+        public virtual string ResourcePathString { get; set; }
+
+        /// <summary>The service or resource provider associated with the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; }
+
         /// <summary>The full resource type of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the path of resources leading up to the resource this finding is about.</summary>
+    public class GoogleCloudSecuritycenterV2ResourcePath : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The list of nodes that make the up resource path, ordered from lowest level to highest level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodes")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV2ResourcePathNode> Nodes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A node within the resource path. Each node represents a resource within the resource hierarchy.
+    /// </summary>
+    public class GoogleCloudSecuritycenterV2ResourcePathNode : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The display name of the resource this node represents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The ID of the resource this node represents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The type of resource this node represents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeType")]
+        public virtual string NodeType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20509,6 +21102,10 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
     /// </summary>
     public class GoogleCloudSecuritycenterV2ResourceValueConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Cloud provider this configuration applies to</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudProvider")]
+        public virtual string CloudProvider { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -20725,15 +21322,15 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
     {
         /// <summary>
         /// The canonical name of the marks. The following list shows some examples: +
-        /// `organizations/{organization_id}/assets/{asset_id}/securityMarks" +
-        /// `organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks" +
-        /// `organizations/{organization_id}/sources/{source_id}/locations/{location}/findings/{finding_id}/securityMarks"
-        /// + `folders/{folder_id}/assets/{asset_id}/securityMarks" +
-        /// `folders/{folder_id}/sources/{source_id}/findings/{finding_id}/securityMarks" +
-        /// `folders/{folder_id}/sources/{source_id}/locations/{location}/findings/{finding_id}/securityMarks" +
-        /// `projects/{project_number}/assets/{asset_id}/securityMarks" +
-        /// `projects/{project_number}/sources/{source_id}/findings/{finding_id}/securityMarks" +
-        /// `projects/{project_number}/sources/{source_id}/locations/{location}/findings/{finding_id}/securityMarks"
+        /// `organizations/{organization_id}/assets/{asset_id}/securityMarks` +
+        /// `organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks` +
+        /// `organizations/{organization_id}/sources/{source_id}/locations/{location}/findings/{finding_id}/securityMarks`
+        /// + `folders/{folder_id}/assets/{asset_id}/securityMarks` +
+        /// `folders/{folder_id}/sources/{source_id}/findings/{finding_id}/securityMarks` +
+        /// `folders/{folder_id}/sources/{source_id}/locations/{location}/findings/{finding_id}/securityMarks` +
+        /// `projects/{project_number}/assets/{asset_id}/securityMarks` +
+        /// `projects/{project_number}/sources/{source_id}/findings/{finding_id}/securityMarks` +
+        /// `projects/{project_number}/sources/{source_id}/locations/{location}/findings/{finding_id}/securityMarks`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canonicalName")]
         public virtual string CanonicalName { get; set; }
@@ -20756,6 +21353,31 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Information about the [Google Cloud Armor security
+    /// policy](https://cloud.google.com/armor/docs/security-policy-overview) relevant to the finding.
+    /// </summary>
+    public class GoogleCloudSecuritycenterV2SecurityPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the Google Cloud Armor security policy, for example, "my-security-policy".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Whether or not the associated rule or policy is in preview mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preview")]
+        public virtual System.Nullable<bool> Preview { get; set; }
+
+        /// <summary>
+        /// The type of Google Cloud Armor security policy for example, ‘backend security policy’, ‘edge security
+        /// policy’, ‘network edge security policy’, or ‘always-on DDoS protection’.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22021,6 +22643,67 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
     }
 
     /// <summary>
+    /// Represents a Jupyter notebook IPYNB file, such as a [Colab Enterprise
+    /// notebook](https://cloud.google.com/colab/docs/introduction) file, that is associated with a finding.
+    /// </summary>
+    public class Notebook : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The user ID of the latest author to modify the notebook.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastAuthor")]
+        public virtual string LastAuthor { get; set; }
+
+        /// <summary>The name of the notebook.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _notebookUpdateTimeRaw;
+
+        private object _notebookUpdateTime;
+
+        /// <summary>The most recent time the notebook was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notebookUpdateTime")]
+        public virtual string NotebookUpdateTimeRaw
+        {
+            get => _notebookUpdateTimeRaw;
+            set
+            {
+                _notebookUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _notebookUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="NotebookUpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use NotebookUpdateTimeDateTimeOffset instead.")]
+        public virtual object NotebookUpdateTime
+        {
+            get => _notebookUpdateTime;
+            set
+            {
+                _notebookUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _notebookUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="NotebookUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? NotebookUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(NotebookUpdateTimeRaw);
+            set => NotebookUpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The source notebook service, for example, "Colab Enterprise".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Cloud Security Command Center (Cloud SCC) notification configs. A notification config is a Cloud SCC resource
     /// that contains the configuration to send notifications for create/update events of findings, assets and etc.
     /// </summary>
@@ -22453,9 +23136,44 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Information about the requests relevant to the finding.</summary>
+    public class Requests : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Allowed RPS (requests per second) over the long term.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("longTermAllowed")]
+        public virtual System.Nullable<int> LongTermAllowed { get; set; }
+
+        /// <summary>Denied RPS (requests per second) over the long term.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("longTermDenied")]
+        public virtual System.Nullable<int> LongTermDenied { get; set; }
+
+        /// <summary>
+        /// For 'Increasing deny ratio', the ratio is the denied traffic divided by the allowed traffic. For 'Allowed
+        /// traffic spike', the ratio is the allowed traffic in the short term divided by allowed traffic in the long
+        /// term.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ratio")]
+        public virtual System.Nullable<double> Ratio { get; set; }
+
+        /// <summary>Allowed RPS (requests per second) in the short term.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shortTermAllowed")]
+        public virtual System.Nullable<int> ShortTermAllowed { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Information related to the Google Cloud resource that is associated with this finding.</summary>
     public class Resource : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The AWS metadata associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("awsMetadata")]
+        public virtual AwsMetadata AwsMetadata { get; set; }
+
+        /// <summary>Indicates which cloud provider the finding is from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudProvider")]
+        public virtual string CloudProvider { get; set; }
+
         /// <summary>The human readable name of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -22467,12 +23185,20 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("folders")]
         public virtual System.Collections.Generic.IList<Folder> Folders { get; set; }
 
+        /// <summary>The region or location of the service (if applicable).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
         /// <summary>
         /// The full resource name of the resource. See:
         /// https://cloud.google.com/apis/design/resource_names#full_resource_name
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Indicates which organization / tenant the finding is for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organization")]
+        public virtual string Organization { get; set; }
 
         /// <summary>The human readable name of resource's parent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentDisplayName")]
@@ -22490,9 +23216,63 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("projectName")]
         public virtual string ProjectName { get; set; }
 
+        /// <summary>Provides the path to the resource within the resource hierarchy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourcePath")]
+        public virtual ResourcePath ResourcePath { get; set; }
+
+        /// <summary>
+        /// A string representation of the resource path. For GCP, it has the format of:
+        /// org/{organization_id}/folder/{folder_id}/folder/{folder_id}/project/{project_id} where there can be any
+        /// number of folders. For AWS, it has the format of:
+        /// org/{organization_id}/ou/{organizational_unit_id}/ou/{organizational_unit_id}/account/{account_id} where
+        /// there can be any number of organizational units. For Azure, it has the format of:
+        /// mg/{management_group_id}/mg/{management_group_id}/subscription/{subscription_id}/rg/{resource_group_name}
+        /// where there can be any number of management groups.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourcePathString")]
+        public virtual string ResourcePathString { get; set; }
+
+        /// <summary>The service or resource provider associated with the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; }
+
         /// <summary>The full resource type of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the path of resources leading up to the resource this finding is about.</summary>
+    public class ResourcePath : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The list of nodes that make the up resource path, ordered from lowest level to highest level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodes")]
+        public virtual System.Collections.Generic.IList<ResourcePathNode> Nodes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A node within the resource path. Each node represents a resource within the resource hierarchy.
+    /// </summary>
+    public class ResourcePathNode : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The display name of the resource this node represents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The ID of the resource this node represents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The type of resource this node represents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeType")]
+        public virtual string NodeType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22689,6 +23469,31 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Information about the [Google Cloud Armor security
+    /// policy](https://cloud.google.com/armor/docs/security-policy-overview) relevant to the finding.
+    /// </summary>
+    public class SecurityPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the Google Cloud Armor security policy, for example, "my-security-policy".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Whether or not the associated rule or policy is in preview mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preview")]
+        public virtual System.Nullable<bool> Preview { get; set; }
+
+        /// <summary>
+        /// The type of Google Cloud Armor security policy for example, ‘backend security policy’, ‘edge security
+        /// policy’, ‘network edge security policy’, or ‘always-on DDoS protection’.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22924,6 +23729,10 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
     /// <summary>Attack path simulation</summary>
     public class Simulation : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Indicates which cloud provider was used in this simulation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudProvider")]
+        public virtual string CloudProvider { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -23271,6 +24080,73 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// <summary>The security bulletin is relevant to this finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityBulletin")]
         public virtual SecurityBulletin SecurityBulletin { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Vulnerability count by severity.</summary>
+    public class VulnerabilityCountBySeverity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Key is the Severity enum.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severityToFindingCount")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<long>> SeverityToFindingCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Result containing the properties and count of a VulnerabilitySnapshot request.</summary>
+    public class VulnerabilitySnapshot : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The cloud provider for the vulnerability snapshot.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudProvider")]
+        public virtual string CloudProvider { get; set; }
+
+        /// <summary>The vulnerability count by severity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("findingCount")]
+        public virtual VulnerabilityCountBySeverity FindingCount { get; set; }
+
+        /// <summary>Identifier. The vulnerability snapshot name. Format: //locations//vulnerabilitySnapshots/</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _snapshotTimeRaw;
+
+        private object _snapshotTime;
+
+        /// <summary>The time that the snapshot was taken.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshotTime")]
+        public virtual string SnapshotTimeRaw
+        {
+            get => _snapshotTimeRaw;
+            set
+            {
+                _snapshotTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _snapshotTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="SnapshotTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SnapshotTimeDateTimeOffset instead.")]
+        public virtual object SnapshotTime
+        {
+            get => _snapshotTime;
+            set
+            {
+                _snapshotTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _snapshotTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="SnapshotTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? SnapshotTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SnapshotTimeRaw);
+            set => SnapshotTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

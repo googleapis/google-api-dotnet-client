@@ -925,7 +925,8 @@ namespace Google.Apis.HangoutsChat.v1
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
             /// </summary>
             /// <param name="name">
-            /// Required. Resource name of the membership to retrieve. To get the app's own membership, you can
+            /// Required. Resource name of the membership to retrieve. To get the app's own membership [by using user
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user), you can
             /// optionally use `spaces/{space}/members/app`. Format: `spaces/{space}/members/{member}` or
             /// `spaces/{space}/members/app` When [authenticated as a
             /// user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user), you can use the
@@ -954,8 +955,9 @@ namespace Google.Apis.HangoutsChat.v1
                 }
 
                 /// <summary>
-                /// Required. Resource name of the membership to retrieve. To get the app's own membership, you can
-                /// optionally use `spaces/{space}/members/app`. Format: `spaces/{space}/members/{member}` or
+                /// Required. Resource name of the membership to retrieve. To get the app's own membership [by using
+                /// user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user),
+                /// you can optionally use `spaces/{space}/members/app`. Format: `spaces/{space}/members/{member}` or
                 /// `spaces/{space}/members/app` When [authenticated as a
                 /// user](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user), you can use
                 /// the user's email as an alias for `{member}`. For example, `spaces/{space}/members/example@gmail.com`
@@ -998,7 +1000,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// memberships in spaces that the authenticated user has access to. Requires
             /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize). Supports [app
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) and [user
-            /// authentication](hhttps://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
             /// </summary>
             /// <param name="parent">
             /// Required. The resource name of the space for which to fetch a membership list. Format: spaces/{space}
@@ -1018,7 +1020,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// memberships in spaces that the authenticated user has access to. Requires
             /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize). Supports [app
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) and [user
-            /// authentication](hhttps://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
             /// </summary>
             public class ListRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.ListMembershipsResponse>
             {
@@ -1158,6 +1160,84 @@ namespace Google.Apis.HangoutsChat.v1
                     });
                 }
             }
+
+            /// <summary>
+            /// Updates a membership. Requires [user
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Resource name of the membership, assigned by the server. Format: `spaces/{space}/members/{member}`
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.HangoutsChat.v1.Data.Membership body, string name)
+            {
+                return new PatchRequest(this.service, body, name);
+            }
+
+            /// <summary>
+            /// Updates a membership. Requires [user
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+            /// </summary>
+            public class PatchRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Membership>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.HangoutsChat.v1.Data.Membership body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Resource name of the membership, assigned by the server. Format: `spaces/{space}/members/{member}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Required. The field paths to update. Separate multiple values with commas or use `*` to update all
+                /// field paths. Currently supported field paths: - `role`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.HangoutsChat.v1.Data.Membership Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^spaces/[^/]+/members/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
 
         /// <summary>Gets the Messages resource.</summary>
@@ -1276,8 +1356,8 @@ namespace Google.Apis.HangoutsChat.v1
                 }
 
                 /// <summary>
-                /// Creates a reaction and adds it to a message. Only unicode emojis are supported.For an example, see
-                /// [Add a reaction to a reaction](https://developers.google.com/workspace/chat/create-reactions).
+                /// Creates a reaction and adds it to a message. Only unicode emojis are supported. For an example, see
+                /// [Add a reaction to a message](https://developers.google.com/workspace/chat/create-reactions).
                 /// Requires [user
                 /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
                 /// </summary>
@@ -1291,8 +1371,8 @@ namespace Google.Apis.HangoutsChat.v1
                 }
 
                 /// <summary>
-                /// Creates a reaction and adds it to a message. Only unicode emojis are supported.For an example, see
-                /// [Add a reaction to a reaction](https://developers.google.com/workspace/chat/create-reactions).
+                /// Creates a reaction and adds it to a message. Only unicode emojis are supported. For an example, see
+                /// [Add a reaction to a message](https://developers.google.com/workspace/chat/create-reactions).
                 /// Requires [user
                 /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
                 /// </summary>
@@ -2274,7 +2354,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// contains the most recent version of the resource that changed. For example, if you request an event
             /// about a new message but the message was later updated, the server returns the updated `Message` resource
             /// in the event payload. Requires [user
-            /// authentication](hhttps://developers.google.com/workspace/chat/authenticate-authorize-chat-user). To get
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user). To get
             /// an event, the authenticated user must be a member of the space. For an example, see [Get details about
             /// an event from a Google Chat space](https://developers.google.com/workspace/chat/get-space-event).
             /// </summary>
@@ -2292,7 +2372,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// contains the most recent version of the resource that changed. For example, if you request an event
             /// about a new message but the message was later updated, the server returns the updated `Message` resource
             /// in the event payload. Requires [user
-            /// authentication](hhttps://developers.google.com/workspace/chat/authenticate-authorize-chat-user). To get
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user). To get
             /// an event, the authenticated user must be a member of the space. For an example, see [Get details about
             /// an event from a Google Chat space](https://developers.google.com/workspace/chat/get-space-event).
             /// </summary>
@@ -3281,6 +3361,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A reference to the attachment data.</summary>
     public class AttachmentDataRef : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -3574,6 +3655,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for completing the import process for a space.</summary>
     public class CompleteImportSpaceResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The import mode space.</summary>
@@ -5510,6 +5592,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response to list memberships of the space.</summary>
     public class ListMembershipsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Unordered list. List of memberships in the requested (or first) page.</summary>
@@ -5527,6 +5610,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for listing messages.</summary>
     public class ListMessagesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>List of messages.</summary>
@@ -5544,6 +5628,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response to a list reactions request.</summary>
     public class ListReactionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -5577,6 +5662,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The response for a list spaces request.</summary>
     public class ListSpacesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -5728,9 +5814,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Optional. User's role within a Chat space, which determines their permitted actions in the space. [Developer
-        /// Preview](https://developers.google.com/workspace/preview): This field can only be used as input in
-        /// `UpdateMembership`.
+        /// Optional. User's role within a Chat space, which determines their permitted actions in the space. This field
+        /// can only be used as input in `UpdateMembership`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
@@ -6404,6 +6489,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request to create a space and add specified users to it.</summary>
     public class SetUpSpaceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -6560,8 +6646,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// Google Workspace organization. Omit this field when creating spaces in the following conditions: * The
         /// authenticated user uses a consumer account (unmanaged user account). By default, a space created by a
         /// consumer account permits any Google Chat user. * The space is used to [import data to Google Chat]
-        /// (https://developers.google.com/workspace/chat/import-data). Import mode spaces must only permit members from
-        /// the same Google Workspace organization. For existing spaces, this field is output only.
+        /// (https://developers.google.com/chat/api/guides/import-data-overview) because import mode spaces must only
+        /// permit members from the same Google Workspace organization. However, as part of the [Google Workspace
+        /// Developer Preview Program](https://developers.google.com/workspace/preview), import mode spaces can permit
+        /// any Google Chat user so this field can then be set for import mode spaces. For existing spaces, this field
+        /// is output only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalUserAllowed")]
         public virtual System.Nullable<bool> ExternalUserAllowed { get; set; }
@@ -7011,6 +7100,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request to upload an attachment.</summary>
     public class UploadAttachmentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The filename of the attachment, including the file extension.</summary>
@@ -7021,6 +7111,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response of uploading an attachment.</summary>
     public class UploadAttachmentResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Reference to the uploaded attachment.</summary>

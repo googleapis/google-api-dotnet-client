@@ -10507,10 +10507,10 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// Clothing" -&amp;gt; "Shoes"], it could be represented as: "categories": [ "Shoes &amp;amp; Accessories
         /// &amp;gt; Shoes", "Sports &amp;amp; Fitness &amp;gt; Athletic Clothing &amp;gt; Shoes" ] Must be set for
         /// Type.PRIMARY Product otherwise an INVALID_ARGUMENT error is returned. At most 250 values are allowed per
-        /// Product unless overridden via pantheon UI. Empty values are not allowed. Each value must be a UTF-8 encoded
-        /// string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned.
-        /// Corresponding properties: Google Merchant Center property google_product_category. Schema.org property
-        /// [Product.category] (https://schema.org/category). [mc_google_product_category]:
+        /// Product unless overridden through the Google Cloud console. Empty values are not allowed. Each value must be
+        /// a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is
+        /// returned. Corresponding properties: Google Merchant Center property google_product_category. Schema.org
+        /// property [Product.category] (https://schema.org/category). [mc_google_product_category]:
         /// https://support.google.com/merchants/answer/6324436
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categories")]

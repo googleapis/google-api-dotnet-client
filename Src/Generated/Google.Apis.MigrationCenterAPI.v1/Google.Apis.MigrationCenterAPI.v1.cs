@@ -5135,7 +5135,7 @@ namespace Google.Apis.MigrationCenterAPI.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("aggregations")]
         public virtual System.Collections.Generic.IList<Aggregation> Aggregations { get; set; }
 
-        /// <summary>The aggregation will be performed on assets that match the provided filter.</summary>
+        /// <summary>Optional. The aggregation will be performed on assets that match the provided filter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
 
@@ -7498,13 +7498,13 @@ namespace Google.Apis.MigrationCenterAPI.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A Compute Engine machine series.</summary>
+    /// <summary>A machine series, for a target product (e.g. Compute Engine, Google Cloud VMware Engine).</summary>
     public class MachineSeries : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Code to identify a Compute Engine machine series. Consult
-        /// https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison for more details on the
-        /// available series.
+        /// Code to identify a machine series. Consult this for more details on the available series for Compute Engine:
+        /// https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison Consult this for more details
+        /// on the available series for Google Cloud VMware Engine: https://cloud.google.com/vmware-engine/pricing
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual string Code { get; set; }
@@ -8097,7 +8097,7 @@ namespace Google.Apis.MigrationCenterAPI.v1.Data
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>A set of preferences that applies to all virtual machines in the context.</summary>
+        /// <summary>Optional. A set of preferences that applies to all virtual machines in the context.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("virtualMachinePreferences")]
         public virtual VirtualMachinePreferences VirtualMachinePreferences { get; set; }
 

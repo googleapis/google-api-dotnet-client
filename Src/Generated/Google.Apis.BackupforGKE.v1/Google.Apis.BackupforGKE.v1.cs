@@ -4868,11 +4868,11 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual DayOfWeekList DaysOfWeek { get; set; }
 
         /// <summary>
-        /// Required. Specifies duration of the window. Restrictions for duration based on the recurrence type to allow
-        /// some time for backup to happen: - single_occurrence_date: no restriction, but UI may warn about this when
-        /// duration &amp;gt;= target RPO - daily window: duration &amp;lt; 24 hours - weekly window: - days of week
-        /// includes all seven days of a week: duration &amp;lt; 24 hours - all other weekly window: duration &amp;lt;
-        /// 168 hours (i.e., 24 * 7 hours)
+        /// Required. Specifies duration of the window. Duration must be &amp;gt;= 5 minutes and &amp;lt; (target RPO -
+        /// 20 minutes). Additional restrictions based on the recurrence type to allow some time for backup to happen: -
+        /// single_occurrence_date: no restriction, but UI may warn about this when duration &amp;gt;= target RPO -
+        /// daily window: duration &amp;lt; 24 hours - weekly window: - days of week includes all seven days of a week:
+        /// duration &amp;lt; 24 hours - all other weekly window: duration &amp;lt; 168 hours (i.e., 24 * 7 hours)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
         public virtual object Duration { get; set; }

@@ -6613,7 +6613,7 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Optional. Immutable. The encryption to apply to the image.</summary>
+        /// <summary>Immutable. The encryption to apply to the image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryption")]
         public virtual Encryption Encryption { get; set; }
 

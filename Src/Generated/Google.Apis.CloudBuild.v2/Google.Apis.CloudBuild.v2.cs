@@ -3503,6 +3503,10 @@ namespace Google.Apis.CloudBuild.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pipelineSpec")]
         public virtual PipelineSpec PipelineSpec { get; set; }
 
+        /// <summary>Output only. Inline pipelineSpec yaml string, used by workflow run requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pipelineSpecYaml")]
+        public virtual string PipelineSpecYaml { get; set; }
+
         /// <summary>Optional. Provenance configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
         public virtual Provenance Provenance { get; set; }

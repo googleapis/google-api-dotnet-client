@@ -1444,7 +1444,7 @@ namespace Google.Apis.Storagetransfer.v1
 }
 namespace Google.Apis.Storagetransfer.v1.Data
 {
-    /// <summary>Represents an On-Premises Agent pool.</summary>
+    /// <summary>Represents an agent pool.</summary>
     public class AgentPool : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -2083,7 +2083,8 @@ namespace Google.Apis.Storagetransfer.v1.Data
 
         /// <summary>
         /// Specifies how each object's `timeCreated` metadata is preserved for transfers. If unspecified, the default
-        /// behavior is the same as TIME_CREATED_SKIP.
+        /// behavior is the same as TIME_CREATED_SKIP. This behavior is supported for transfers to GCS buckets from GCS,
+        /// S3, Azure, S3 Compatible, and Azure sources.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeCreated")]
         public virtual string TimeCreated { get; set; }
@@ -2819,9 +2820,7 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>
-        /// Notification configuration. This is not supported for transfers involving PosixFilesystem.
-        /// </summary>
+        /// <summary>Notification configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationConfig")]
         public virtual NotificationConfig NotificationConfig { get; set; }
 

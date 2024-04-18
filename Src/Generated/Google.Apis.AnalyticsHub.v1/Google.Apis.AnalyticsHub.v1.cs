@@ -2018,7 +2018,15 @@ namespace Google.Apis.AnalyticsHub.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>The filter expression may be used to filter by Data Exchange or Listing.</summary>
+                    /// <summary>
+                    /// An expression for filtering the results of the request. Eligible fields for filtering are: +
+                    /// `listing` + `data_exchange` Alternatively, a literal wrapped in double quotes may be provided.
+                    /// This will be checked for an exact match against both fields above. In all cases, the full Data
+                    /// Exchange or Listing resource name must be provided. Some example of using filters: +
+                    /// data_exchange="projects/myproject/locations/us/dataExchanges/123" +
+                    /// listing="projects/123/locations/us/dataExchanges/456/listings/789" +
+                    /// "projects/myproject/locations/us/dataExchanges/123"
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
@@ -2333,6 +2341,12 @@ namespace Google.Apis.AnalyticsHub.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataset")]
         public virtual string Dataset { get; set; }
+
+        /// <summary>
+        /// Optional. If set, restricted export policy will be propagated and enforced on the linked dataset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restrictedExportPolicy")]
+        public virtual RestrictedExportPolicy RestrictedExportPolicy { get; set; }
 
         /// <summary>
         /// Optional. Resources in this dataset that are selectively shared. If this field is empty, then the entire
@@ -3119,6 +3133,29 @@ namespace Google.Apis.AnalyticsHub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Restricted export policy used to configure restricted export on linked dataset.</summary>
+    public class RestrictedExportPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. If true, enable restricted export.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>
+        /// Optional. If true, restrict direct table access (read api/tabledata.list) on linked table.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restrictDirectTableAccess")]
+        public virtual System.Nullable<bool> RestrictDirectTableAccess { get; set; }
+
+        /// <summary>
+        /// Optional. If true, restrict export of query result derived from restricted linked dataset table.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restrictQueryResult")]
+        public virtual System.Nullable<bool> RestrictQueryResult { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message for revoking a subscription.</summary>
     public class RevokeSubscriptionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3251,7 +3288,7 @@ namespace Google.Apis.AnalyticsHub.v1.Data
     /// <summary>Message for subscribing to a listing.</summary>
     public class SubscribeListingRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>BigQuery destination dataset to create for the subscriber.</summary>
+        /// <summary>Input only. BigQuery destination dataset to create for the subscriber.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationDataset")]
         public virtual DestinationDataset DestinationDataset { get; set; }
 

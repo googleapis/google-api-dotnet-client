@@ -3338,7 +3338,7 @@ namespace Google.Apis.Firestore.v1beta1.Data
     /// <summary>Nearest Neighbors search config.</summary>
     public class FindNearest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The Distance Measure to use, required.</summary>
+        /// <summary>Required. The distance measure to use, required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("distanceMeasure")]
         public virtual string DistanceMeasure { get; set; }
 
@@ -4823,7 +4823,7 @@ namespace Google.Apis.Firestore.v1beta1.Data
         public virtual Cursor EndAt { get; set; }
 
         /// <summary>
-        /// Optional. A potential Nearest Neighbors Search. Applies after all other filters and ordering. Finds the
+        /// Optional. A potential nearest neighbors search. Applies after all other filters and ordering. Finds the
         /// closest vector embeddings to the given query vector.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("findNearest")]
@@ -5113,8 +5113,8 @@ namespace Google.Apis.Firestore.v1beta1.Data
     public class Value : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// An array value. Cannot directly contain another array value, though can contain an map which contains
-        /// another array.
+        /// An array value. Cannot directly contain another array value, though can contain a map which contains another
+        /// array.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("arrayValue")]
         public virtual ArrayValue ArrayValue { get; set; }
