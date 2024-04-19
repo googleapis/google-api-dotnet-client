@@ -477,11 +477,8 @@ namespace Google.Apis.Auth.OAuth2
                     return false;
                 }
 
-                string productName;
-                using (var streamReader = new StreamReader(new FileStream("/sys/class/dmi/id/product_name", FileMode.Open, FileAccess.Read)))
-                {
-                    productName = await streamReader.ReadLineAsync().ConfigureAwait(false);
-                }
+                using var reader = File.OpenText(fileName);
+                string productName = await reader.ReadLineAsync().ConfigureAwait(false);
                 productName = productName?.Trim();
                 return productName == "Google" || productName == "Google Compute Engine";
             }
