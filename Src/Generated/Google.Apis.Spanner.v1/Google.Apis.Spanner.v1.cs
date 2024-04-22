@@ -7758,13 +7758,13 @@ namespace Google.Apis.Spanner.v1.Data
     public class BatchWriteRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. When `exclude_txn_from_change_streams` is set to `true`: * Mutations from all transactions in this
-        /// batch write operation will not be recorded in change streams with DDL option `allow_txn_exclusion=true` that
-        /// are tracking columns modified by these transactions. * Mutations from all transactions in this batch write
-        /// operation will be recorded in change streams with DDL option `allow_txn_exclusion=false or not set` that are
-        /// tracking columns modified by these transactions. When `exclude_txn_from_change_streams` is set to `false` or
-        /// not set, mutations from all transactions in this batch write operation will be recorded in all change
-        /// streams that are tracking columns modified by these transactions.
+        /// Optional. When `exclude_txn_from_change_streams` is set to `true`: * Modifications from all transactions in
+        /// this batch write operation will not be recorded in change streams with DDL option `allow_txn_exclusion=true`
+        /// that are tracking columns modified by these transactions. * Modifications from all transactions in this
+        /// batch write operation will be recorded in change streams with DDL option `allow_txn_exclusion=false or not
+        /// set` that are tracking columns modified by these transactions. When `exclude_txn_from_change_streams` is set
+        /// to `false` or not set, Modifications from all transactions in this batch write operation will be recorded in
+        /// all change streams that are tracking columns modified by these transactions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludeTxnFromChangeStreams")]
         public virtual System.Nullable<bool> ExcludeTxnFromChangeStreams { get; set; }
@@ -12458,11 +12458,11 @@ namespace Google.Apis.Spanner.v1.Data
     public class TransactionOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// When `exclude_txn_from_change_streams` is set to `true`: * Mutations from this transaction will not be
+        /// When `exclude_txn_from_change_streams` is set to `true`: * Modifications from this transaction will not be
         /// recorded in change streams with DDL option `allow_txn_exclusion=true` that are tracking columns modified by
-        /// these transactions. * Mutations from this transaction will be recorded in change streams with DDL option
+        /// these transactions. * Modifications from this transaction will be recorded in change streams with DDL option
         /// `allow_txn_exclusion=false or not set` that are tracking columns modified by these transactions. When
-        /// `exclude_txn_from_change_streams` is set to `false` or not set, mutations from this transaction will be
+        /// `exclude_txn_from_change_streams` is set to `false` or not set, Modifications from this transaction will be
         /// recorded in all change streams that are tracking columns modified by these transactions.
         /// `exclude_txn_from_change_streams` may only be specified for read-write or partitioned-dml transactions,
         /// otherwise the API will return an `INVALID_ARGUMENT` error.
