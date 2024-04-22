@@ -974,8 +974,8 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Required. A comma-separated list of names of fields in the AppAttestConfig Gets to update.
-                    /// Example: `token_ttl`.
+                    /// Required. A comma-separated list of names of fields in the AppAttestConfig to update. Example:
+                    /// `token_ttl`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -1619,8 +1619,8 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Required. A comma-separated list of names of fields in the DeviceCheckConfig Gets to update.
-                    /// Example: `key_id,private_key`.
+                    /// Required. A comma-separated list of names of fields in the DeviceCheckConfig to update. Example:
+                    /// `key_id,private_key`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -1855,7 +1855,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Required. A comma-separated list of names of fields in the PlayIntegrityConfig Gets to update.
+                    /// Required. A comma-separated list of names of fields in the PlayIntegrityConfig to update.
                     /// Example: `token_ttl`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
@@ -2829,8 +2829,8 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Required. A comma-separated list of names of fields in the SafetyNetConfig Gets to update.
-                    /// Example: `token_ttl`.
+                    /// Required. A comma-separated list of names of fields in the SafetyNetConfig to update. Example:
+                    /// `token_ttl`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -3903,12 +3903,12 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 /// <summary>Atomically updates the specified ResourcePolicy configurations.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The parent project name and the service, in the format
+                /// Required. The parent service name, in the format
                 /// ```
                 /// projects/{project_number}/services/{service_id}
                 /// ```
-                /// The parent collection in the `name` field of any
-                /// resource being updated must match this field, or the entire batch fails.
+                /// The parent collection in the `name` field of any resource being updated must match this field,
+                /// or the entire batch fails.
                 /// </param>
                 public virtual BatchUpdateRequest BatchUpdate(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaBatchUpdateResourcePoliciesRequest body, string parent)
                 {
@@ -3927,7 +3927,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                     }
 
                     /// <summary>
-                    /// Required. The parent project name and the service, in the format
+                    /// Required. The parent service name, in the format
                     /// ```
                     /// projects/{project_number}/services/{service_id}
                     /// ```
@@ -4042,7 +4042,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 /// <param name="name">
                 /// Required. The relative resource name of the ResourcePolicy to delete, in the format:
                 /// ```
-                /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_name}
+                /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_policy_id}
                 /// ```
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
@@ -4063,7 +4063,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                     /// <summary>
                     /// Required. The relative resource name of the ResourcePolicy to delete, in the format:
                     /// ```
-                    /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_name}
+                    /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_policy_id}
                     /// ```
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -4071,8 +4071,11 @@ namespace Google.Apis.Firebaseappcheck.v1beta
 
                     /// <summary>
                     /// The checksum to be validated against the current ResourcePolicy, to ensure the client has an
-                    /// up-to-date value before proceeding. The user can obtain this from the ResourcePolicy object that
-                    /// they last received. This etag is strongly validated.
+                    /// up-to-date value before proceeding. This checksum is computed by the server based on the values
+                    /// of fields in the ResourcePolicy object, and can be obtained from the ResourcePolicy object
+                    /// received from the last CreateResourcePolicy, GetResourcePolicy, ListResourcePolicies,
+                    /// UpdateResourcePolicy, or BatchUpdateResourcePolicies call. This etag is strongly validated as
+                    /// defined by RFC 7232.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Etag { get; set; }
@@ -4174,11 +4177,14 @@ namespace Google.Apis.Firebaseappcheck.v1beta
 
                 /// <summary>Lists all ResourcePolicy configurations for the specified project and service.</summary>
                 /// <param name="parent">
-                /// Required. The relative resource name of the parent project and service for which to list each
-                /// associated ResourcePolicy, in the format:
+                /// Required. The relative resource name of the parent service for which to list each associated
+                /// ResourcePolicy, in the format:
                 /// ```
-                /// projects/{project_number}/services/{service_name}
+                /// projects/{project_number}/services/{service_id}
                 /// ```
+                /// Note that the
+                /// `service_id` element must be a supported service ID. Currently, the following service IDs are
+                /// supported: * `oauth2.googleapis.com` (Google Identity for iOS)
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -4196,11 +4202,14 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                     }
 
                     /// <summary>
-                    /// Required. The relative resource name of the parent project and service for which to list each
-                    /// associated ResourcePolicy, in the format:
+                    /// Required. The relative resource name of the parent service for which to list each associated
+                    /// ResourcePolicy, in the format:
                     /// ```
-                    /// projects/{project_number}/services/{service_name}
+                    /// projects/{project_number}/services/{service_id}
                     /// ```
+                    /// Note that
+                    /// the `service_id` element must be a supported service ID. Currently, the following service IDs
+                    /// are supported: * `oauth2.googleapis.com` (Google Identity for iOS)
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -4218,16 +4227,16 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                     public virtual string Filter { get; set; }
 
                     /// <summary>
-                    /// The maximum number of ResourcePolicys to return in the response. Only explicitly configured
-                    /// policies are returned. The server may return fewer than this at its own discretion. If no value
-                    /// is specified (or too large a value is specified), the server will impose its own limit.
+                    /// The maximum number of ResourcePolicy objects to return in the response. The server may return
+                    /// fewer than this at its own discretion. If no value is specified (or too large a value is
+                    /// specified), the server will impose its own limit.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
                     /// Token returned from a previous call to ListResourcePolicies indicating where in the set of
-                    /// ResourcePolicys to resume listing. Provide this to retrieve the subsequent page. When
+                    /// ResourcePolicy objects to resume listing. Provide this to retrieve the subsequent page. When
                     /// paginating, all other parameters provided to ListResourcePolicies must match the call that
                     /// provided the page token; if they do not match, the result is undefined.
                     /// </summary>
@@ -4958,8 +4967,8 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
     public class GoogleFirebaseAppcheckV1betaBatchUpdateResourcePoliciesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The request messages specifying the ResourcePolicys to update. A maximum of 100 objects can be
-        /// updated in a batch.
+        /// Required. The request messages specifying the ResourcePolicy objects to update. A maximum of 100 objects can
+        /// be updated in a batch.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requests")]
         public virtual System.Collections.Generic.IList<GoogleFirebaseAppcheckV1betaUpdateResourcePolicyRequest> Requests { get; set; }
@@ -5432,7 +5441,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>The ResourcePolicys retrieved.</summary>
+        /// <summary>The ResourcePolicy objects retrieved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourcePolicies")]
         public virtual System.Collections.Generic.IList<GoogleFirebaseAppcheckV1betaResourcePolicy> ResourcePolicies { get; set; }
 
@@ -5668,8 +5677,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
     {
         /// <summary>
         /// Required. The App Check enforcement mode for this resource. This will override the EnforcementMode setting
-        /// on the service. For new resources that you are creating, you should consider setting an override and enable
-        /// enforcement on the resource immediately, if there are no outdated clients that can use it.
+        /// on the parent service.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enforcementMode")]
         public virtual string EnforcementMode { get; set; }
@@ -5677,7 +5685,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
         /// <summary>
         /// This checksum is computed by the server based on the value of other fields, and may be sent on update and
         /// delete requests to ensure the client has an up-to-date value before proceeding. This etag is strongly
-        /// validated.
+        /// validated as defined by RFC 7232.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
@@ -5697,9 +5705,11 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
 
         /// <summary>
         /// Required. Service specific name of the resource object to which this policy applies, in the format: *
-        /// `//oauth2.googleapis.com/projects/{project}/oauthClients/{oauth_client_id}` (Google Identity for iOS) NOTE
+        /// `//oauth2.googleapis.com/projects/{project}/oauthClients/{oauth_client_id}` (Google Identity for iOS) Note
         /// that the resource must belong to the service specified in the `name` and be from the same project as this
-        /// policy, but it may or may not exist at the time of creation of the policy.
+        /// policy, but the resource is allowed to be missing at the time of creation of this policy; in that case, we
+        /// make a best-effort attempt at respecting this policy, but it may not have any effect until the resource is
+        /// fully created.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetResource")]
         public virtual string TargetResource { get; set; }
@@ -5708,7 +5718,9 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
 
         private object _updateTime;
 
-        /// <summary>Output only. Timestamp when this service configuration object was most recently updated.</summary>
+        /// <summary>
+        /// Output only. Timestamp when this resource policy configuration object was most recently updated.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -5848,13 +5860,11 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
         /// Required. The ResourcePolicy to update. The ResourcePolicy's `name` field is used to identify the
         /// ResourcePolicy to be updated, in the format:
         /// ```
-        /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_name}
+        /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_policy_id}
         /// ```
         /// Note that the
         /// `service_id` element must be a supported service ID. Currently, the following service IDs are supported: *
-        /// `oauth2.googleapis.com` (Google Identity for iOS) Only the top-level resources are supported for each of the
-        /// services. The resources must belong to the service specified and `resource_name` should be formatted as: *
-        /// `oauthClients/{oauth_client_id}` (Google Identity for iOS)
+        /// `oauth2.googleapis.com` (Google Identity for iOS)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourcePolicy")]
         public virtual GoogleFirebaseAppcheckV1betaResourcePolicy ResourcePolicy { get; set; }

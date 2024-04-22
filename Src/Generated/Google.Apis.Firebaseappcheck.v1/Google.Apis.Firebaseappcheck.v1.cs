@@ -574,8 +574,8 @@ namespace Google.Apis.Firebaseappcheck.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Required. A comma-separated list of names of fields in the AppAttestConfig Gets to update.
-                    /// Example: `token_ttl`.
+                    /// Required. A comma-separated list of names of fields in the AppAttestConfig to update. Example:
+                    /// `token_ttl`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -1219,8 +1219,8 @@ namespace Google.Apis.Firebaseappcheck.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Required. A comma-separated list of names of fields in the DeviceCheckConfig Gets to update.
-                    /// Example: `key_id,private_key`.
+                    /// Required. A comma-separated list of names of fields in the DeviceCheckConfig to update. Example:
+                    /// `key_id,private_key`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -1455,7 +1455,7 @@ namespace Google.Apis.Firebaseappcheck.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Required. A comma-separated list of names of fields in the PlayIntegrityConfig Gets to update.
+                    /// Required. A comma-separated list of names of fields in the PlayIntegrityConfig to update.
                     /// Example: `token_ttl`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
@@ -2180,8 +2180,8 @@ namespace Google.Apis.Firebaseappcheck.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Required. A comma-separated list of names of fields in the SafetyNetConfig Gets to update.
-                    /// Example: `token_ttl`.
+                    /// Required. A comma-separated list of names of fields in the SafetyNetConfig to update. Example:
+                    /// `token_ttl`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }

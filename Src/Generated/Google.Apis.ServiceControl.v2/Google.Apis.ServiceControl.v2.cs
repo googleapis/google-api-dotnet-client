@@ -777,6 +777,13 @@ namespace Google.Apis.ServiceControl.v2.Data
         public virtual string Permission { get; set; }
 
         /// <summary>
+        /// The type of the permission that was checked. For data access audit logs this corresponds with the permission
+        /// type that must be enabled in the project/folder/organization IAM policy in order for the log to be written.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permissionType")]
+        public virtual string PermissionType { get; set; }
+
+        /// <summary>
         /// The resource being accessed, as a REST-style or cloud resource string. For example:
         /// bigquery.googleapis.com/projects/PROJECTID/datasets/DATASETID or projects/PROJECTID/datasets/DATASETID
         /// </summary>

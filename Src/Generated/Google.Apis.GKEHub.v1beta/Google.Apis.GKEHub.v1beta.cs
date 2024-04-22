@@ -9804,7 +9804,7 @@ namespace Google.Apis.GKEHub.v1beta.Data
     /// </summary>
     public class ServiceMeshMembershipState : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. List of condition reporting membership statues</summary>
+        /// <summary>Output only. List of conditions reported for this membership.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
         public virtual System.Collections.Generic.IList<ServiceMeshCondition> Conditions { get; set; }
 

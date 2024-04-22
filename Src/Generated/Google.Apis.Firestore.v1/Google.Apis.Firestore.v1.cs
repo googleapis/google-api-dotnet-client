@@ -324,7 +324,8 @@ namespace Google.Apis.Firestore.v1
 
                 /// <summary>
                 /// Creates a backup schedule on a database. At most two backup schedules can be configured on a
-                /// database, one daily backup schedule and one weekly backup schedule.
+                /// database, one daily backup schedule with retention up to 7 days and one weekly backup schedule with
+                /// retention up to 14 weeks.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -337,7 +338,8 @@ namespace Google.Apis.Firestore.v1
 
                 /// <summary>
                 /// Creates a backup schedule on a database. At most two backup schedules can be configured on a
-                /// database, one daily backup schedule and one weekly backup schedule.
+                /// database, one daily backup schedule with retention up to 7 days and one weekly backup schedule with
+                /// retention up to 14 weeks.
                 /// </summary>
                 public class CreateRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1BackupSchedule>
                 {
@@ -4935,7 +4937,7 @@ namespace Google.Apis.Firestore.v1.Data
     /// <summary>Nearest Neighbors search config.</summary>
     public class FindNearest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The distance measure to use, required.</summary>
+        /// <summary>Required. The Distance Measure to use, required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("distanceMeasure")]
         public virtual string DistanceMeasure { get; set; }
 
@@ -5125,7 +5127,7 @@ namespace Google.Apis.Firestore.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>For a schedule that runs daily.</summary>
+        /// <summary>For a schedule that runs daily at a specified time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dailyRecurrence")]
         public virtual GoogleFirestoreAdminV1DailyRecurrence DailyRecurrence { get; set; }
 
@@ -5184,7 +5186,7 @@ namespace Google.Apis.Firestore.v1.Data
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>For a schedule that runs weekly on a specific day.</summary>
+        /// <summary>For a schedule that runs weekly on a specific day and time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("weeklyRecurrence")]
         public virtual GoogleFirestoreAdminV1WeeklyRecurrence WeeklyRecurrence { get; set; }
 
@@ -5229,7 +5231,7 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents a recurring schedule that runs every day. The time zone is UTC.</summary>
+    /// <summary>Represents a recurring schedule that runs at a specific time every day. The time zone is UTC.</summary>
     public class GoogleFirestoreAdminV1DailyRecurrence : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -6128,7 +6130,7 @@ namespace Google.Apis.Firestore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("order")]
         public virtual string Order { get; set; }
 
-        /// <summary>Indicates that this field supports nearest neighbor and distance operations on vector.</summary>
+        /// <summary>Indicates that this field supports nearest neighbors and distance operations on vector.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vectorConfig")]
         public virtual GoogleFirestoreAdminV1VectorConfig VectorConfig { get; set; }
 
@@ -7500,7 +7502,7 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual Cursor EndAt { get; set; }
 
         /// <summary>
-        /// Optional. A potential nearest neighbors search. Applies after all other filters and ordering. Finds the
+        /// Optional. A potential Nearest Neighbors Search. Applies after all other filters and ordering. Finds the
         /// closest vector embeddings to the given query vector.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("findNearest")]
@@ -7790,8 +7792,8 @@ namespace Google.Apis.Firestore.v1.Data
     public class Value : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// An array value. Cannot directly contain another array value, though can contain a map which contains another
-        /// array.
+        /// An array value. Cannot directly contain another array value, though can contain an map which contains
+        /// another array.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("arrayValue")]
         public virtual ArrayValue ArrayValue { get; set; }

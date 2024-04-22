@@ -2035,6 +2035,91 @@ namespace Google.Apis.Connectors.v1
                     }
                 }
 
+                /// <summary>Returns Top matching Connections for a given query.</summary>
+                /// <param name="name">
+                /// Required. Parent resource of the Connection, of the form: `projects/*/locations/*/connections`
+                /// </param>
+                public virtual SearchRequest Search(string name)
+                {
+                    return new SearchRequest(this.service, name);
+                }
+
+                /// <summary>Returns Top matching Connections for a given query.</summary>
+                public class SearchRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.SearchConnectionsResponse>
+                {
+                    /// <summary>Constructs a new Search request.</summary>
+                    public SearchRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Parent resource of the Connection, of the form: `projects/*/locations/*/connections`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Optional. The number of top matching connectors to return</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. page_token</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Required. The query against which the search needs to be done.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Query { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "search";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:search";
+
+                    /// <summary>Initializes Search parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/connections$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("query", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "query",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
                 /// <summary>
                 /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
                 /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -5381,6 +5466,17 @@ namespace Google.Apis.Connectors.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Billing config for the connection.</summary>
+    public class BillingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Billing category for the connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billingCategory")]
+        public virtual string BillingCategory { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Associates `members`, or principals, with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5570,6 +5666,10 @@ namespace Google.Apis.Connectors.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authConfig")]
         public virtual AuthConfig AuthConfig { get; set; }
+
+        /// <summary>Output only. Billing config for the connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billingConfig")]
+        public virtual BillingConfig BillingConfig { get; set; }
 
         /// <summary>Optional. Configuration for configuring the connection with an external system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configVariables")]
@@ -6279,9 +6379,13 @@ namespace Google.Apis.Connectors.v1.Data
     /// <summary>CustomConnector represents the custom connector defined by the customer as part of byoc.</summary>
     public class CustomConnector : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Active connector versions.</summary>
+        /// <summary>Output only. Active connector versions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activeConnectorVersions")]
         public virtual System.Collections.Generic.IList<string> ActiveConnectorVersions { get; set; }
+
+        /// <summary>Output only. All connector versions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allConnectorVersions")]
+        public virtual System.Collections.Generic.IList<string> AllConnectorVersions { get; set; }
 
         private string _createTimeRaw;
 
@@ -9427,6 +9531,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("jsonSchema")]
         public virtual JsonSchema JsonSchema { get; set; }
 
+        /// <summary>List of operations supported by this entity</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operations")]
+        public virtual System.Collections.Generic.IList<string> Operations { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9460,6 +9568,44 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Whether to use synchronous schema refresh.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useSynchronousSchemaRefresh")]
         public virtual System.Nullable<bool> UseSynchronousSchemaRefresh { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>SearchConnectionInstance represents an instance of connector with specific fields</summary>
+    public class SearchConnectionInstance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Schema of a runtime action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actionSchema")]
+        public virtual RuntimeActionSchema ActionSchema { get; set; }
+
+        /// <summary>Output only. Connection details</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connection")]
+        public virtual Connection Connection { get; set; }
+
+        /// <summary>Output only. Schema of a runtime entity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entitySchema")]
+        public virtual RuntimeEntitySchema EntitySchema { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for Connectors.SearchConnections.</summary>
+    public class SearchConnectionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of connectors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connections")]
+        public virtual System.Collections.Generic.IList<SearchConnectionInstance> Connections { get; set; }
+
+        /// <summary>Optional. page_token</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

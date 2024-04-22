@@ -3982,8 +3982,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
     public class GoogleAppsCardV1Action : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A custom function to invoke when the containing element is clicked or othrwise activated. For example usage,
-        /// see [Read form data](https://developers.google.com/workspace/chat/read-form-data).
+        /// A custom function to invoke when the containing element is clicked or otherwise activated. For example
+        /// usage, see [Read form data](https://developers.google.com/workspace/chat/read-form-data).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("function")]
         public virtual string Function { get; set; }

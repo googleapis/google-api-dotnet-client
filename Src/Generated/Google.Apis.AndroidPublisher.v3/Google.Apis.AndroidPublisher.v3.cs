@@ -14475,6 +14475,15 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Details of a recurring external transaction product which doesn't belong to any other more specific category.
+    /// </summary>
+    public class OtherRecurringProduct : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Pricing information for any new locations Play may launch in.</summary>
     public class OtherRegionsBasePlanConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14524,6 +14533,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("absoluteDiscounts")]
         public virtual OtherRegionsSubscriptionOfferPhasePrices AbsoluteDiscounts { get; set; }
 
+        /// <summary>Set to specify this offer is free to obtain.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("free")]
+        public virtual OtherRegionsSubscriptionOfferPhaseFreePriceOverride Free { get; set; }
+
         /// <summary>
         /// The absolute price the user pays for this offer phase. The price must not be smaller than the minimum price
         /// allowed for any new locations Play may launch in.
@@ -14543,6 +14556,15 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("relativeDiscount")]
         public virtual System.Nullable<double> RelativeDiscount { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents the free price override configuration for any new locations Play may launch for a single offer phase.
+    /// </summary>
+    public class OtherRegionsSubscriptionOfferPhaseFreePriceOverride : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -14879,6 +14901,12 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("migratedTransactionProgram")]
         public virtual string MigratedTransactionProgram { get; set; }
+
+        /// <summary>
+        /// Details of a recurring external transaction product which doesn't belong to any other specific category.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("otherRecurringProduct")]
+        public virtual OtherRecurringProduct OtherRecurringProduct { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

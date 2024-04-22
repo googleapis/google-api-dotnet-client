@@ -10475,7 +10475,7 @@ namespace Google.Apis.DisplayVideo.v2
                 /// <param name="targetingType">
                 /// Required. Identifies the type of this assigned targeting option. Supported targeting types: *
                 /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID`
-                /// * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
+                /// * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.DisplayVideo.v2.Data.AssignedTargetingOption body, long advertiserId, CreateRequest.TargetingTypeEnum targetingType)
                 {
@@ -10503,7 +10503,7 @@ namespace Google.Apis.DisplayVideo.v2
                     /// <summary>
                     /// Required. Identifies the type of this assigned targeting option. Supported targeting types: *
                     /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
-                    /// `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
+                    /// `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("targetingType", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual TargetingTypeEnum TargetingType { get; private set; }
@@ -10511,7 +10511,7 @@ namespace Google.Apis.DisplayVideo.v2
                     /// <summary>
                     /// Required. Identifies the type of this assigned targeting option. Supported targeting types: *
                     /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
-                    /// `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
+                    /// `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
                     /// </summary>
                     public enum TargetingTypeEnum
                     {
@@ -10801,7 +10801,7 @@ namespace Google.Apis.DisplayVideo.v2
                 /// <param name="targetingType">
                 /// Required. Identifies the type of this assigned targeting option. Supported targeting types: *
                 /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID`
-                /// * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
+                /// * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
                 /// </param>
                 /// <param name="assignedTargetingOptionId">
                 /// Required. The ID of the assigned targeting option to delete.
@@ -10830,7 +10830,7 @@ namespace Google.Apis.DisplayVideo.v2
                     /// <summary>
                     /// Required. Identifies the type of this assigned targeting option. Supported targeting types: *
                     /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
-                    /// `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
+                    /// `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("targetingType", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual TargetingTypeEnum TargetingType { get; private set; }
@@ -10838,7 +10838,7 @@ namespace Google.Apis.DisplayVideo.v2
                     /// <summary>
                     /// Required. Identifies the type of this assigned targeting option. Supported targeting types: *
                     /// `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` *
-                    /// `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
+                    /// `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
                     /// </summary>
                     public enum TargetingTypeEnum
                     {
@@ -23396,7 +23396,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
         /// The assigned targeting options to create in batch, specified as a list of
         /// `CreateAssignedTargetingOptionsRequest`. Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
         /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` *
-        /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
+        /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createRequests")]
         public virtual System.Collections.Generic.IList<CreateAssignedTargetingOptionsRequest> CreateRequests { get; set; }
@@ -23405,7 +23405,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
         /// The assigned targeting options to delete in batch, specified as a list of
         /// `DeleteAssignedTargetingOptionsRequest`. Supported targeting types: * `TARGETING_TYPE_CHANNEL` *
         /// `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` *
-        /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
+        /// `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteRequests")]
         public virtual System.Collections.Generic.IList<DeleteAssignedTargetingOptionsRequest> DeleteRequests { get; set; }

@@ -2829,6 +2829,13 @@ namespace Google.Apis.Datastream.v1
 }
 namespace Google.Apis.Datastream.v1.Data
 {
+    /// <summary>AppendOnly mode defines that all changes to a table will be written to the destination table.</summary>
+    public class AppendOnly : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>AVRO file format configuration.</summary>
     public class AvroFileFormat : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2964,6 +2971,10 @@ namespace Google.Apis.Datastream.v1.Data
     /// <summary>BigQuery destination configuration</summary>
     public class BigQueryDestinationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Append only mode</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appendOnly")]
+        public virtual AppendOnly AppendOnly { get; set; }
+
         /// <summary>
         /// The guaranteed data freshness (in seconds) when querying tables created by the stream. Editing this field
         /// will only affect new tables created in the future, but existing tables will not be impacted. Lower values
@@ -2971,6 +2982,10 @@ namespace Google.Apis.Datastream.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataFreshness")]
         public virtual object DataFreshness { get; set; }
+
+        /// <summary>The standard mode</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("merge")]
+        public virtual Merge Merge { get; set; }
 
         /// <summary>Single destination dataset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("singleTargetDataset")]
@@ -3614,6 +3629,13 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sourceObjectIdentifier")]
         public virtual SourceObjectIdentifier SourceObjectIdentifier { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Merge mode defines that all changes to a table will be merged at the destination table.</summary>
+    public class Merge : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

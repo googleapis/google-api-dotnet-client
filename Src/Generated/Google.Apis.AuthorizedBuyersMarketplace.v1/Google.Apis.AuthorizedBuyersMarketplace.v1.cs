@@ -272,7 +272,133 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
         public BiddersResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            AuctionPackages = new AuctionPackagesResource(service);
             FinalizedDeals = new FinalizedDealsResource(service);
+        }
+
+        /// <summary>Gets the AuctionPackages resource.</summary>
+        public virtual AuctionPackagesResource AuctionPackages { get; }
+
+        /// <summary>The "auctionPackages" collection of methods.</summary>
+        public class AuctionPackagesResource
+        {
+            private const string Resource = "auctionPackages";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public AuctionPackagesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// List the auction packages. Buyers can use the URL path "/v1/buyers/{accountId}/auctionPackages" to list
+            /// auction packages for the current buyer and its clients. Bidders can use the URL path
+            /// "/v1/bidders/{accountId}/auctionPackages" to list auction packages for the bidder, its media planners,
+            /// its buyers, and all their clients.
+            /// </summary>
+            /// <param name="parent">
+            /// Required. Name of the parent buyer that can access the auction package. Format: `buyers/{accountId}`.
+            /// When used with a bidder account, the auction packages that the bidder, its media planners, its buyers
+            /// and clients are subscribed to will be listed, in the format `bidders/{accountId}`.
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(this.service, parent);
+            }
+
+            /// <summary>
+            /// List the auction packages. Buyers can use the URL path "/v1/buyers/{accountId}/auctionPackages" to list
+            /// auction packages for the current buyer and its clients. Bidders can use the URL path
+            /// "/v1/bidders/{accountId}/auctionPackages" to list auction packages for the bidder, its media planners,
+            /// its buyers, and all their clients.
+            /// </summary>
+            public class ListRequest : AuthorizedBuyersMarketplaceBaseServiceRequest<Google.Apis.AuthorizedBuyersMarketplace.v1.Data.ListAuctionPackagesResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Name of the parent buyer that can access the auction package. Format:
+                /// `buyers/{accountId}`. When used with a bidder account, the auction packages that the bidder, its
+                /// media planners, its buyers and clients are subscribed to will be listed, in the format
+                /// `bidders/{accountId}`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. Optional query string using the [Cloud API list filtering
+                /// syntax](/authorized-buyers/apis/guides/list-filters). Only supported when parent is bidder.
+                /// Supported columns for filtering are: * displayName * createTime * updateTime * eligibleSeatIds
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
+                /// Requested page size. The server may return fewer results than requested. Max allowed page size is
+                /// 500.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The page token as returned. ListAuctionPackagesResponse.nextPageToken</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/auctionPackages";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^bidders/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
 
         /// <summary>Gets the FinalizedDeals resource.</summary>
@@ -507,16 +633,28 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
                 }
             }
 
-            /// <summary>List the auction packages subscribed by a buyer and its clients.</summary>
+            /// <summary>
+            /// List the auction packages. Buyers can use the URL path "/v1/buyers/{accountId}/auctionPackages" to list
+            /// auction packages for the current buyer and its clients. Bidders can use the URL path
+            /// "/v1/bidders/{accountId}/auctionPackages" to list auction packages for the bidder, its media planners,
+            /// its buyers, and all their clients.
+            /// </summary>
             /// <param name="parent">
-            /// Required. Name of the parent buyer that can access the auction package. Format: `buyers/{accountId}`
+            /// Required. Name of the parent buyer that can access the auction package. Format: `buyers/{accountId}`.
+            /// When used with a bidder account, the auction packages that the bidder, its media planners, its buyers
+            /// and clients are subscribed to will be listed, in the format `bidders/{accountId}`.
             /// </param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(this.service, parent);
             }
 
-            /// <summary>List the auction packages subscribed by a buyer and its clients.</summary>
+            /// <summary>
+            /// List the auction packages. Buyers can use the URL path "/v1/buyers/{accountId}/auctionPackages" to list
+            /// auction packages for the current buyer and its clients. Bidders can use the URL path
+            /// "/v1/bidders/{accountId}/auctionPackages" to list auction packages for the bidder, its media planners,
+            /// its buyers, and all their clients.
+            /// </summary>
             public class ListRequest : AuthorizedBuyersMarketplaceBaseServiceRequest<Google.Apis.AuthorizedBuyersMarketplace.v1.Data.ListAuctionPackagesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -527,16 +665,18 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
                 }
 
                 /// <summary>
-                /// Required. Name of the parent buyer that can access the auction package. Format: `buyers/{accountId}`
+                /// Required. Name of the parent buyer that can access the auction package. Format:
+                /// `buyers/{accountId}`. When used with a bidder account, the auction packages that the bidder, its
+                /// media planners, its buyers and clients are subscribed to will be listed, in the format
+                /// `bidders/{accountId}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
                 /// Optional. Optional query string using the [Cloud API list filtering
-                /// syntax](https://developers.google.com/authorized-buyers/apis/guides/list-filters) Only supported
-                /// when parent is bidder. Supported columns for filtering are: * displayName * createTime * updateTime
-                /// * eligibleSeatIds
+                /// syntax](/authorized-buyers/apis/guides/list-filters). Only supported when parent is bidder.
+                /// Supported columns for filtering are: * displayName * createTime * updateTime * eligibleSeatIds
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -3237,6 +3377,13 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
+        /// Output only. If set, this field contains the list of DSP specific seat ids set by media planners that are
+        /// eligible to transact on this deal. The seat ID is in the calling DSP's namespace.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eligibleSeatIds")]
+        public virtual System.Collections.Generic.IList<string> EligibleSeatIds { get; set; }
+
+        /// <summary>
         /// Immutable. The unique identifier for the auction package. Format:
         /// `buyers/{accountId}/auctionPackages/{auctionPackageId}` The auction_package_id part of name is sent in the
         /// BidRequest to all RTB bidders and is returned as deal_id by the bidder in the BidResponse.
@@ -3245,11 +3392,26 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Output only. The list of clients of the current buyer that are subscribed to the AuctionPackage. Format:
-        /// `buyers/{buyerAccountId}/clients/{clientAccountId}`
+        /// Output only. The list of buyers that are subscribed to the AuctionPackage. This field is only populated when
+        /// calling as a bidder. Format: `buyers/{buyerAccountId}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscribedBuyers")]
+        public virtual System.Collections.Generic.IList<string> SubscribedBuyers { get; set; }
+
+        /// <summary>
+        /// Output only. When calling as a buyer, the list of clients of the current buyer that are subscribed to the
+        /// AuctionPackage. When calling as a bidder, the list of clients that are subscribed to the AuctionPackage
+        /// owned by the bidder or its buyers. Format: `buyers/{buyerAccountId}/clients/{clientAccountId}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscribedClients")]
         public virtual System.Collections.Generic.IList<string> SubscribedClients { get; set; }
+
+        /// <summary>
+        /// Output only. The list of media planners that are subscribed to the AuctionPackage. This field is only
+        /// populated when calling as a bidder.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscribedMediaPlanners")]
+        public virtual System.Collections.Generic.IList<MediaPlanner> SubscribedMediaPlanners { get; set; }
 
         private string _updateTimeRaw;
 

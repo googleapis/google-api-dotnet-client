@@ -950,7 +950,7 @@
    }
   }
  },
- "revision": "20240415",
+ "revision": "20240324",
  "rootUrl": "https://firestore.googleapis.com/",
  "schemas": {
   "Aggregation": {
@@ -1636,7 +1636,7 @@
    "id": "FindNearest",
    "properties": {
     "distanceMeasure": {
-     "description": "Required. The distance measure to use, required.",
+     "description": "Required. The Distance Measure to use, required.",
      "enum": [
       "DISTANCE_MEASURE_UNSPECIFIED",
       "EUCLIDEAN",
@@ -2586,7 +2586,7 @@
     },
     "findNearest": {
      "$ref": "FindNearest",
-     "description": "Optional. A potential nearest neighbors search. Applies after all other filters and ordering. Finds the closest vector embeddings to the given query vector."
+     "description": "Optional. A potential Nearest Neighbors Search. Applies after all other filters and ordering. Finds the closest vector embeddings to the given query vector."
     },
     "from": {
      "description": "The collections to query.",
@@ -2774,7 +2774,7 @@
    "properties": {
     "arrayValue": {
      "$ref": "ArrayValue",
-     "description": "An array value. Cannot directly contain another array value, though can contain a map which contains another array."
+     "description": "An array value. Cannot directly contain another array value, though can contain an map which contains another array."
     },
     "booleanValue": {
      "description": "A boolean value.",

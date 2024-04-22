@@ -4441,19 +4441,19 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pixelFontSize")]
         public virtual System.Nullable<double> PixelFontSize { get; set; }
 
-        /// <summary>Whether the text is in small caps.</summary>
+        /// <summary>Whether the text is in small caps. This feature is not supported yet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("smallcaps")]
         public virtual System.Nullable<bool> Smallcaps { get; set; }
 
-        /// <summary>Whether the text is strikethrough.</summary>
+        /// <summary>Whether the text is strikethrough. This feature is not supported yet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("strikeout")]
         public virtual System.Nullable<bool> Strikeout { get; set; }
 
-        /// <summary>Whether the text is a subscript.</summary>
+        /// <summary>Whether the text is a subscript. This feature is not supported yet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscript")]
         public virtual System.Nullable<bool> Subscript { get; set; }
 
-        /// <summary>Whether the text is a superscript.</summary>
+        /// <summary>Whether the text is a superscript. This feature is not supported yet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("superscript")]
         public virtual System.Nullable<bool> Superscript { get; set; }
 
@@ -6998,19 +6998,19 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pixelFontSize")]
         public virtual System.Nullable<double> PixelFontSize { get; set; }
 
-        /// <summary>Whether the text is in small caps.</summary>
+        /// <summary>Whether the text is in small caps. This feature is not supported yet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("smallcaps")]
         public virtual System.Nullable<bool> Smallcaps { get; set; }
 
-        /// <summary>Whether the text is strikethrough.</summary>
+        /// <summary>Whether the text is strikethrough. This feature is not supported yet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("strikeout")]
         public virtual System.Nullable<bool> Strikeout { get; set; }
 
-        /// <summary>Whether the text is a subscript.</summary>
+        /// <summary>Whether the text is a subscript. This feature is not supported yet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscript")]
         public virtual System.Nullable<bool> Subscript { get; set; }
 
-        /// <summary>Whether the text is a superscript.</summary>
+        /// <summary>Whether the text is a superscript. This feature is not supported yet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("superscript")]
         public virtual System.Nullable<bool> Superscript { get; set; }
 
@@ -8431,19 +8431,19 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pixelFontSize")]
         public virtual System.Nullable<double> PixelFontSize { get; set; }
 
-        /// <summary>Whether the text is in small caps.</summary>
+        /// <summary>Whether the text is in small caps. This feature is not supported yet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("smallcaps")]
         public virtual System.Nullable<bool> Smallcaps { get; set; }
 
-        /// <summary>Whether the text is strikethrough.</summary>
+        /// <summary>Whether the text is strikethrough. This feature is not supported yet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("strikeout")]
         public virtual System.Nullable<bool> Strikeout { get; set; }
 
-        /// <summary>Whether the text is a subscript.</summary>
+        /// <summary>Whether the text is a subscript. This feature is not supported yet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscript")]
         public virtual System.Nullable<bool> Subscript { get; set; }
 
-        /// <summary>Whether the text is a superscript.</summary>
+        /// <summary>Whether the text is a superscript. This feature is not supported yet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("superscript")]
         public virtual System.Nullable<bool> Superscript { get; set; }
 
