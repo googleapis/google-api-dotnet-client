@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.DataPortability.v1beta Client Library</Title>
-    <Version>1.67.0.3388</Version>
+    <Version>1.68.0.3388</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2024 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
@@ -15,6 +15,15 @@
     <PackageIcon>NuGetIcon.png</PackageIcon>
     <Description>
       Google APIs Client Library for working with Dataportability v1beta.
+
+      Product documentation is available at:
+      https://developers.google.com/data-portability
+
+      API reference documentation for this package is available at:
+      https://googleapis.dev/dotnet/Google.Apis.DataPortability.v1beta/latest/api/Google.Apis.DataPortability.v1beta.html
+
+      The source code for this package is available at:
+      https://github.com/google/google-api-dotnet-client/tree/master/Src/Generated/Google.Apis.DataPortability.v1beta
 
       Supported Platforms:
       - .NET Framework 4.6.2+
@@ -29,12 +38,6 @@
       - Windows 8 Apps
       - Windows Phone 8.1
       - Windows Phone Silverlight 8.0
-
-      More documentation on the API is available at:
-      https://developers.google.com/api-client-library/dotnet/apis/dataportability/v1beta
-
-      The package source code is available at:
-      https://github.com/google/google-api-dotnet-client/tree/master/Src/Generated
     </Description>
   </PropertyGroup>
 
@@ -58,8 +61,8 @@
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="All" />
     <PackageReference Include="ConfigureAwaitChecker.Analyzer" Version="5.0.0" PrivateAssets="All" />
     <PackageReference Include="SourceLink.Create.CommandLine" Version="2.8.3" PrivateAssets="All" />
-    <PackageReference Include="Google.Apis" Version="1.67.0" />
-    <PackageReference Include="Google.Apis.Auth" Version="1.67.0" />
+    <PackageReference Include="Google.Apis" Version="1.68.0" />
+    <PackageReference Include="Google.Apis.Auth" Version="1.68.0" />
   </ItemGroup>
 
 </Project>
