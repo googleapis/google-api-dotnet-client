@@ -58,6 +58,7 @@ rm -f DiscoveryJson/contentwarehouse_v1.json
 # b/299569133 method.request.type instead of method.request.$ref
 # type is not a supported field in method.request.
 rm -f DiscoveryJson/integrations_v1alpha.json
+rm -f DiscoveryJson/integrations_v1.json
 # b/299567447 method.request.type instead of method.request.$ref
 # type is not a supported field in method.request.
 rm -f DiscoveryJson/datalineage_v1.json
