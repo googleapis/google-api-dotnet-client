@@ -1188,7 +1188,7 @@ namespace Google.Apis.CCAIPlatform.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing ContactCenter object Next ID: 20</summary>
+    /// <summary>Message describing ContactCenter object Next ID: 22</summary>
     public class ContactCenter : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Info about the first admin user, such as given name and family name.</summary>
@@ -1250,6 +1250,10 @@ namespace Google.Apis.CCAIPlatform.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
+        /// <summary>Optional. Early release channel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("early")]
+        public virtual Early Early { get; set; }
+
         /// <summary>The configuration of this instance, it is currently immutable once created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceConfig")]
         public virtual InstanceConfig InstanceConfig { get; set; }
@@ -1265,6 +1269,10 @@ namespace Google.Apis.CCAIPlatform.v1alpha1.Data
         /// <summary>name of resource</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Optional. Normal release channel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("normal")]
+        public virtual Normal Normal { get; set; }
 
         /// <summary>
         /// Output only. A list of UJET components that should be privately accessed. This field is set by reading
@@ -1351,6 +1359,13 @@ namespace Google.Apis.CCAIPlatform.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("quotas")]
         public virtual System.Collections.Generic.IList<Quota> Quotas { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>First Channel to receive the updates. Meant to dev/test instances</summary>
+    public class Early : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1559,6 +1574,15 @@ namespace Google.Apis.CCAIPlatform.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Instances in this Channel will receive updates after all instances in `Early` were updated + 2 days.
+    /// </summary>
+    public class Normal : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

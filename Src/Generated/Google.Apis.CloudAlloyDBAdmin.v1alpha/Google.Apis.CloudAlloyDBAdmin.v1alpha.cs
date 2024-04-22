@@ -4403,38 +4403,6 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
     }
 
     /// <summary>
-    /// DenyMaintenancePeriod definition. Excepting emergencies, maintenance will not be scheduled to start within this
-    /// deny period. The start_date must be less than the end_date.
-    /// </summary>
-    public class DenyMaintenancePeriod : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Deny period end date. This can be: * A full date, with non-zero year, month and day values. * A month and
-        /// day value, with a zero year for recurring. Date matching this period will have to be before the end.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
-        public virtual GoogleTypeDate EndDate { get; set; }
-
-        /// <summary>
-        /// Deny period start date. This can be: * A full date, with non-zero year, month and day values. * A month and
-        /// day value, with a zero year for recurring. Date matching this period will have to be the same or after the
-        /// start.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
-        public virtual GoogleTypeDate StartDate { get; set; }
-
-        /// <summary>
-        /// Time in UTC when the deny period starts on start_date and ends on end_date. This can be: * Full time. * All
-        /// zeros for 00:00:00 UTC
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("time")]
-        public virtual GoogleTypeTimeOfDay Time { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
     /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
@@ -4583,35 +4551,6 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
-    /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
-    /// of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year
-    /// (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a
-    /// zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay *
-    /// google.type.DateTime * google.protobuf.Timestamp
-    /// </summary>
-    public class GoogleTypeDate : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a
-        /// year and month where the day isn't significant.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("day")]
-        public virtual System.Nullable<int> Day { get; set; }
-
-        /// <summary>Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("month")]
-        public virtual System.Nullable<int> Month { get; set; }
-
-        /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("year")]
-        public virtual System.Nullable<int> Year { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5155,10 +5094,6 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
     /// <summary>MaintenanceUpdatePolicy defines the policy for system updates.</summary>
     public class MaintenanceUpdatePolicy : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Periods to deny maintenance. Currently limited to 1.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("denyMaintenancePeriods")]
-        public virtual System.Collections.Generic.IList<DenyMaintenancePeriod> DenyMaintenancePeriods { get; set; }
-
         /// <summary>Preferred windows to perform maintenance. Currently limited to 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceWindows")]
         public virtual System.Collections.Generic.IList<MaintenanceWindow> MaintenanceWindows { get; set; }

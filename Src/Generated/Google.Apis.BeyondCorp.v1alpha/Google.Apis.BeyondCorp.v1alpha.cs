@@ -12950,25 +12950,6 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Message contains the configuration for each supported region for the securityGateway instance.
-    /// </summary>
-    public class GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Output only. External IP addresses that will be used for establishing connection to the egress endpoints.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("egressIpAddresses")]
-        public virtual System.Collections.Generic.IList<string> EgressIpAddresses { get; set; }
-
-        /// <summary>Required. The region where the egress connectivity is required.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("region")]
-        public virtual string Region { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Information about a BeyoncCorp SecurityGateway resource.</summary>
     public class GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGateway : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13015,13 +12996,13 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
+        /// <summary>Output only. IP addresses that will be used for establishing connection to the endpoints.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalIps")]
+        public virtual System.Collections.Generic.IList<string> ExternalIps { get; set; }
+
         /// <summary>Identifier. Name of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
-
-        /// <summary>Optional. List of regions where the egress connectivity is required.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("regionConfigs")]
-        public virtual System.Collections.Generic.IList<GoogleCloudBeyondcorpSecuritygatewaysV1alphaRegionConfig> RegionConfigs { get; set; }
 
         /// <summary>Output only. The operational state of the SecurityGateway.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]

@@ -15221,7 +15221,8 @@ namespace Google.Apis.DLP.v2.Data
     }
 
     /// <summary>
-    /// Classification of infoTypes to organize them according to geographic location, industry, and data type.
+    /// Classification of infoTypes to organize them according to geographic location, industry, and data type. NEXT_ID:
+    /// 47
     /// </summary>
     public class GooglePrivacyDlpV2InfoTypeCategory : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -18341,7 +18342,11 @@ namespace Google.Apis.DLP.v2.Data
         /// When the job is started by a JobTrigger we will automatically figure out a valid start_time to avoid
         /// scanning files that have not been modified since the last time the JobTrigger executed. This will be based
         /// on the time of the execution of the last run of the JobTrigger or the timespan end_time used in the last run
-        /// of the JobTrigger.
+        /// of the JobTrigger. *For BigQuery* Inspect jobs triggered by automatic population will scan data that is at
+        /// least three hours old when the job starts. This is because streaming buffer rows are not read during
+        /// inspection and reading up to the current timestamp will result in skipped rows. See the [known
+        /// issue](https://cloud.google.com/sensitive-data-protection/docs/known-issues#recently-streamed-data) related
+        /// to this operation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableAutoPopulationOfTimespanConfig")]
         public virtual System.Nullable<bool> EnableAutoPopulationOfTimespanConfig { get; set; }

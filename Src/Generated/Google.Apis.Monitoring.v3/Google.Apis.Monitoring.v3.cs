@@ -8494,7 +8494,7 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A content string and a MIME type that describes the content string's format.</summary>
+    /// <summary>Documentation that is included in the notifications and incidents pertaining to this policy.</summary>
     public class Documentation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -9033,7 +9033,10 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("acceptedResponseStatusCodes")]
         public virtual System.Collections.Generic.IList<ResponseStatusCode> AcceptedResponseStatusCodes { get; set; }
 
-        /// <summary>The authentication information. Optional when creating an HTTP check; defaults to empty.</summary>
+        /// <summary>
+        /// The authentication information. Optional when creating an HTTP check; defaults to empty. Do not set both
+        /// auth_method and auth_info.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authInfo")]
         public virtual BasicAuthentication AuthInfo { get; set; }
 
@@ -9110,6 +9113,13 @@ namespace Google.Apis.Monitoring.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestMethod")]
         public virtual string RequestMethod { get; set; }
+
+        /// <summary>
+        /// If specified, Uptime will generate and attach an OIDC JWT token for the Monitoring service agent service
+        /// account as an Authorization header in the HTTP request when probing.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAgentAuthentication")]
+        public virtual ServiceAgentAuthentication ServiceAgentAuthentication { get; set; }
 
         /// <summary>If true, use HTTPS instead of HTTP to run the check.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useSsl")]
@@ -10845,6 +10855,21 @@ namespace Google.Apis.Monitoring.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userLabels")]
         public virtual System.Collections.Generic.IDictionary<string, string> UserLabels { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Contains information needed for generating an OpenID Connect token
+    /// (https://developers.google.com/identity/protocols/OpenIDConnect). The OIDC token will be generated for the
+    /// Monitoring service agent service account.
+    /// </summary>
+    public class ServiceAgentAuthentication : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Type of authentication.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

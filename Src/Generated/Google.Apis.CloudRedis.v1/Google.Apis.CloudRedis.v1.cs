@@ -2185,6 +2185,10 @@ namespace Google.Apis.CloudRedis.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Optional. The delete operation will fail when the value is set to true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deletionProtectionEnabled")]
+        public virtual System.Nullable<bool> DeletionProtectionEnabled { get; set; }
+
         /// <summary>
         /// Output only. Endpoints created on each given network, for Redis clients to connect to the cluster. Currently
         /// only one discovery endpoint is supported.
