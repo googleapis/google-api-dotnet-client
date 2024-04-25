@@ -7774,7 +7774,9 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
 
     /// <summary>
     /// Definition of a managed Google Play store page, made of a localized name and links to other pages. A page also
-    /// contains clusters defined as a subcollection.
+    /// contains clusters defined as a subcollection. *Deprecated* The managed Google Play Store homepage shows all apps
+    /// listed in the Devices policy. If IT admins want to customize the homepage layout, they can organize apps into
+    /// collections in the managed Google Play iframe.
     /// </summary>
     public class StorePage : Google.Apis.Requests.IDirectResponseSchema
     {

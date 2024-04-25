@@ -728,7 +728,7 @@ namespace Google.Apis.NetworkManagement.v1
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Required. Unique name of the resource using the form:
+                    /// Identifier. Unique name of the resource using the form:
                     /// `projects/{project_id}/locations/global/connectivityTests/{test_id}`
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.NetworkManagement.v1.Data.ConnectivityTest body, string name)
@@ -758,7 +758,7 @@ namespace Google.Apis.NetworkManagement.v1
                         }
 
                         /// <summary>
-                        /// Required. Unique name of the resource using the form:
+                        /// Identifier. Unique name of the resource using the form:
                         /// `projects/{project_id}/locations/global/connectivityTests/{test_id}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1806,7 +1806,7 @@ namespace Google.Apis.NetworkManagement.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Required. Unique name of the resource using the form:
+        /// Identifier. Unique name of the resource using the form:
         /// `projects/{project_id}/locations/global/connectivityTests/{test_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]

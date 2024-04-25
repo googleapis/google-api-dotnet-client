@@ -7,5 +7,15 @@
   "Google.Apis.CloudRetail.v2alpha.CloudRetailBaseServiceRequest<<TResponse>>.XgafvEnum": [
     "1",
     "2"
+  ],
+  "Google.Apis.CloudRetail.v2alpha.ProjectsResource+LocationsResource+CatalogsResource+BranchesResource+GetRequest.ViewEnum": [
+    "BRANCH_VIEW_UNSPECIFIED",
+    "BRANCH_VIEW_BASIC",
+    "BRANCH_VIEW_FULL"
+  ],
+  "Google.Apis.CloudRetail.v2alpha.ProjectsResource+LocationsResource+CatalogsResource+BranchesResource+ListRequest.ViewEnum": [
+    "BRANCH_VIEW_UNSPECIFIED",
+    "BRANCH_VIEW_BASIC",
+    "BRANCH_VIEW_FULL"
   ]
 }

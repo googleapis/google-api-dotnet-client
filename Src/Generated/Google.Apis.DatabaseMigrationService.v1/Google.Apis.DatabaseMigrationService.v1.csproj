@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.DatabaseMigrationService.v1 Client Library</Title>
-    <Version>1.68.0.3373</Version>
+    <Version>1.68.0.3398</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2024 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>

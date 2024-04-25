@@ -15156,7 +15156,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
     /// <summary>Information about DDoS attack volume and classification.</summary>
     public class Attack : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Type of attack, for example, ‘SYN-flood’, ‘NTP-udp’, or ‘CHARGEN-udp’.</summary>
+        /// <summary>Type of attack, for example, 'SYN-flood', 'NTP-udp', or 'CHARGEN-udp'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("classification")]
         public virtual string Classification { get; set; }
 
@@ -15759,7 +15759,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
 
         /// <summary>
         /// Distinguish between volumetric &amp;amp; protocol DDoS attack and application layer attacks. For example,
-        /// “L3_4” for Layer 3 and Layer 4 DDoS attacks, or “L_7” for Layer 7 DDoS attacks.
+        /// "L3_4" for Layer 3 and Layer 4 DDoS attacks, or "L_7" for Layer 7 DDoS attacks.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threatVector")]
         public virtual string ThreatVector { get; set; }
@@ -17818,11 +17818,11 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual ResourcePath ResourcePath { get; set; }
 
         /// <summary>
-        /// A string representation of the resource path. For GCP, it has the format of:
+        /// A string representation of the resource path. For Google Cloud, it has the format of
         /// organizations/{organization_id}/folders/{folder_id}/folders/{folder_id}/projects/{project_id} where there
-        /// can be any number of folders. For AWS, it has the format of:
+        /// can be any number of folders. For AWS, it has the format of
         /// org/{organization_id}/ou/{organizational_unit_id}/ou/{organizational_unit_id}/account/{account_id} where
-        /// there can be any number of organizational units. For Azure, it has the format of:
+        /// there can be any number of organizational units. For Azure, it has the format of
         /// mg/{management_group_id}/mg/{management_group_id}/subscription/{subscription_id}/rg/{resource_group_name}
         /// where there can be any number of management groups.
         /// </summary>
@@ -18588,7 +18588,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
     /// <summary>Information about DDoS attack volume and classification.</summary>
     public class GoogleCloudSecuritycenterV2Attack : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Type of attack, for example, ‘SYN-flood’, ‘NTP-udp’, or ‘CHARGEN-udp’.</summary>
+        /// <summary>Type of attack, for example, 'SYN-flood', 'NTP-udp', or 'CHARGEN-udp'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("classification")]
         public virtual string Classification { get; set; }
 
@@ -19084,7 +19084,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
 
         /// <summary>
         /// Distinguish between volumetric &amp;amp; protocol DDoS attack and application layer attacks. For example,
-        /// “L3_4” for Layer 3 and Layer 4 DDoS attacks, or “L_7” for Layer 7 DDoS attacks.
+        /// "L3_4" for Layer 3 and Layer 4 DDoS attacks, or "L_7" for Layer 7 DDoS attacks.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threatVector")]
         public virtual string ThreatVector { get; set; }
@@ -21039,11 +21039,11 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual GoogleCloudSecuritycenterV2ResourcePath ResourcePath { get; set; }
 
         /// <summary>
-        /// A string representation of the resource path. For GCP, it has the format of:
+        /// A string representation of the resource path. For Google Cloud, it has the format of
         /// organizations/{organization_id}/folders/{folder_id}/folders/{folder_id}/projects/{project_id} where there
-        /// can be any number of folders. For AWS, it has the format of:
+        /// can be any number of folders. For AWS, it has the format of
         /// org/{organization_id}/ou/{organizational_unit_id}/ou/{organizational_unit_id}/account/{account_id} where
-        /// there can be any number of organizational units. For Azure, it has the format of:
+        /// there can be any number of organizational units. For Azure, it has the format of
         /// mg/{management_group_id}/mg/{management_group_id}/subscription/{subscription_id}/rg/{resource_group_name}
         /// where there can be any number of management groups.
         /// </summary>
@@ -21373,8 +21373,8 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual System.Nullable<bool> Preview { get; set; }
 
         /// <summary>
-        /// The type of Google Cloud Armor security policy for example, ‘backend security policy’, ‘edge security
-        /// policy’, ‘network edge security policy’, or ‘always-on DDoS protection’.
+        /// The type of Google Cloud Armor security policy for example, 'backend security policy', 'edge security
+        /// policy', 'network edge security policy', or 'always-on DDoS protection'.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -23221,11 +23221,11 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual ResourcePath ResourcePath { get; set; }
 
         /// <summary>
-        /// A string representation of the resource path. For GCP, it has the format of:
+        /// A string representation of the resource path. For Google Cloud, it has the format of
         /// org/{organization_id}/folder/{folder_id}/folder/{folder_id}/project/{project_id} where there can be any
-        /// number of folders. For AWS, it has the format of:
+        /// number of folders. For AWS, it has the format of
         /// org/{organization_id}/ou/{organizational_unit_id}/ou/{organizational_unit_id}/account/{account_id} where
-        /// there can be any number of organizational units. For Azure, it has the format of:
+        /// there can be any number of organizational units. For Azure, it has the format of
         /// mg/{management_group_id}/mg/{management_group_id}/subscription/{subscription_id}/rg/{resource_group_name}
         /// where there can be any number of management groups.
         /// </summary>
@@ -23489,8 +23489,8 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual System.Nullable<bool> Preview { get; set; }
 
         /// <summary>
-        /// The type of Google Cloud Armor security policy for example, ‘backend security policy’, ‘edge security
-        /// policy’, ‘network edge security policy’, or ‘always-on DDoS protection’.
+        /// The type of Google Cloud Armor security policy for example, 'backend security policy', 'edge security
+        /// policy', 'network edge security policy', or 'always-on DDoS protection'.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }

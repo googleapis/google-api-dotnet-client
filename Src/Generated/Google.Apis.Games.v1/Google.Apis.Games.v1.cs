@@ -1888,6 +1888,65 @@ namespace Google.Apis.Games.v1
         }
 
         /// <summary>
+        /// Retrieve the last Recall token from all developer games that is associated with the PGS Player principal
+        /// encoded in the provided recall session id. The API is only available for users that have active PGS Player
+        /// profile.
+        /// </summary>
+        /// <param name="sessionId">
+        /// Required. Opaque server-generated string that encodes all the necessary information to identify the PGS
+        /// player / Google user and application.
+        /// </param>
+        public virtual LastTokenFromAllDeveloperGamesRequest LastTokenFromAllDeveloperGames(string sessionId)
+        {
+            return new LastTokenFromAllDeveloperGamesRequest(this.service, sessionId);
+        }
+
+        /// <summary>
+        /// Retrieve the last Recall token from all developer games that is associated with the PGS Player principal
+        /// encoded in the provided recall session id. The API is only available for users that have active PGS Player
+        /// profile.
+        /// </summary>
+        public class LastTokenFromAllDeveloperGamesRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.RetrieveDeveloperGamesLastPlayerTokenResponse>
+        {
+            /// <summary>Constructs a new LastTokenFromAllDeveloperGames request.</summary>
+            public LastTokenFromAllDeveloperGamesRequest(Google.Apis.Services.IClientService service, string sessionId) : base(service)
+            {
+                SessionId = sessionId;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. Opaque server-generated string that encodes all the necessary information to identify the PGS
+            /// player / Google user and application.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("sessionId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string SessionId { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "lastTokenFromAllDeveloperGames";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "games/v1/recall/developerGamesLastPlayerToken/{sessionId}";
+
+            /// <summary>Initializes LastTokenFromAllDeveloperGames parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("sessionId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sessionId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
         /// Associate the PGS Player principal encoded in the provided recall session id with an in-game account
         /// </summary>
         /// <param name="body">The body of the request.</param>
@@ -4778,6 +4837,20 @@ namespace Google.Apis.Games.v1.Data
         /// <summary>Required. Whether any tokens were unlinked as a result of this request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unlinked")]
         public virtual System.Nullable<bool> Unlinked { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Recall token data returned from for the RetrieveDeveloperGamesLastPlayerToken RPC</summary>
+    public class RetrieveDeveloperGamesLastPlayerTokenResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The recall token associated with the requested PGS Player principal. It can be unset if there is no recall
+        /// token associated with the requested principal.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("token")]
+        public virtual RecallToken Token { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

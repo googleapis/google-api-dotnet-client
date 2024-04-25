@@ -3396,6 +3396,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sentiments")]
         public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1ConversationLevelSentiment> Sentiments { get; set; }
 
+        /// <summary>Overall conversation-level silence during the call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("silence")]
+        public virtual GoogleCloudContactcenterinsightsV1ConversationLevelSilence Silence { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4312,6 +4316,21 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>Data specifying sentiment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sentimentData")]
         public virtual GoogleCloudContactcenterinsightsV1SentimentData SentimentData { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Conversation-level silence data.</summary>
+    public class GoogleCloudContactcenterinsightsV1ConversationLevelSilence : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Amount of time calculated to be in silence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("silenceDuration")]
+        public virtual object SilenceDuration { get; set; }
+
+        /// <summary>Percentage of the total conversation spent in silence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("silencePercentage")]
+        public virtual System.Nullable<float> SilencePercentage { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7748,6 +7767,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sentiments")]
         public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSentiment> Sentiments { get; set; }
 
+        /// <summary>Overall conversation-level silence during the call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("silence")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSilence Silence { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -8526,6 +8549,21 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>Data specifying sentiment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sentimentData")]
         public virtual GoogleCloudContactcenterinsightsV1alpha1SentimentData SentimentData { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Conversation-level silence data.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSilence : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Amount of time calculated to be in silence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("silenceDuration")]
+        public virtual object SilenceDuration { get; set; }
+
+        /// <summary>Percentage of the total conversation spent in silence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("silencePercentage")]
+        public virtual System.Nullable<float> SilencePercentage { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -3970,7 +3970,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 /// <summary>Creates the specified ResourcePolicy configuration.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The relative resource name of the parent service in which the specified ResourcePolicy
+                /// Required. The relative resource name of the parent Service in which the specified ResourcePolicy
                 /// will be created, in the format:
                 /// ```
                 /// projects/{project_number}/services/{service_id}
@@ -3996,7 +3996,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                     }
 
                     /// <summary>
-                    /// Required. The relative resource name of the parent service in which the specified ResourcePolicy
+                    /// Required. The relative resource name of the parent Service in which the specified ResourcePolicy
                     /// will be created, in the format:
                     /// ```
                     /// projects/{project_number}/services/{service_id}
@@ -4120,8 +4120,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 /// ```
                 /// Note that
                 /// the `service_id` element must be a supported service ID. Currently, the following service IDs are
-                /// supported: * `oauth2.googleapis.com` (Google Identity for iOS) `resource_policy_id` is a
-                /// system-generated UID used as the resource ID for the policy.
+                /// supported: * `oauth2.googleapis.com` (Google Identity for iOS)
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -4145,8 +4144,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                     /// ```
                     /// Note
                     /// that the `service_id` element must be a supported service ID. Currently, the following service
-                    /// IDs are supported: * `oauth2.googleapis.com` (Google Identity for iOS) `resource_policy_id` is a
-                    /// system-generated UID used as the resource ID for the policy.
+                    /// IDs are supported: * `oauth2.googleapis.com` (Google Identity for iOS)
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -4177,7 +4175,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
 
                 /// <summary>Lists all ResourcePolicy configurations for the specified project and service.</summary>
                 /// <param name="parent">
-                /// Required. The relative resource name of the parent service for which to list each associated
+                /// Required. The relative resource name of the parent Service for which to list each associated
                 /// ResourcePolicy, in the format:
                 /// ```
                 /// projects/{project_number}/services/{service_id}
@@ -4202,7 +4200,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                     }
 
                     /// <summary>
-                    /// Required. The relative resource name of the parent service for which to list each associated
+                    /// Required. The relative resource name of the parent Service for which to list each associated
                     /// ResourcePolicy, in the format:
                     /// ```
                     /// projects/{project_number}/services/{service_id}
@@ -4294,14 +4292,14 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 /// <summary>Updates the specified ResourcePolicy configuration.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. The relative name of the resource configuration object, in the format:
+                /// Required. The relative name of the resource policy object, in the format:
                 /// ```
                 /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_policy_id}
                 /// ```
                 /// Note that
                 /// the `service_id` element must be a supported service ID. Currently, the following service IDs are
                 /// supported: * `oauth2.googleapis.com` (Google Identity for iOS) `resource_policy_id` is a
-                /// system-generated UID used as the resource ID for the policy.
+                /// system-generated UID.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaResourcePolicy body, string name)
                 {
@@ -4320,14 +4318,14 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                     }
 
                     /// <summary>
-                    /// Required. The relative name of the resource configuration object, in the format:
+                    /// Required. The relative name of the resource policy object, in the format:
                     /// ```
                     /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_policy_id}
                     /// ```
                     /// Note
                     /// that the `service_id` element must be a supported service ID. Currently, the following service
                     /// IDs are supported: * `oauth2.googleapis.com` (Google Identity for iOS) `resource_policy_id` is a
-                    /// system-generated UID used as the resource ID for the policy.
+                    /// system-generated UID.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -5671,7 +5669,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
 
     /// <summary>
     /// App Check enforcement policy for a specific resource of a Firebase service supported by App Check. Note that
-    /// this policy will override the Service level enforcement mode configuration.
+    /// this policy will override the service-level configuration.
     /// </summary>
     public class GoogleFirebaseAppcheckV1betaResourcePolicy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5691,25 +5689,24 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
         public virtual string ETag { get; set; }
 
         /// <summary>
-        /// Required. The relative name of the resource configuration object, in the format:
+        /// Required. The relative name of the resource policy object, in the format:
         /// ```
         /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_policy_id}
         /// ```
         /// Note that the
         /// `service_id` element must be a supported service ID. Currently, the following service IDs are supported: *
-        /// `oauth2.googleapis.com` (Google Identity for iOS) `resource_policy_id` is a system-generated UID used as the
-        /// resource ID for the policy.
+        /// `oauth2.googleapis.com` (Google Identity for iOS) `resource_policy_id` is a system-generated UID.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
         /// Required. Service specific name of the resource object to which this policy applies, in the format: *
-        /// `//oauth2.googleapis.com/projects/{project}/oauthClients/{oauth_client_id}` (Google Identity for iOS) Note
-        /// that the resource must belong to the service specified in the `name` and be from the same project as this
-        /// policy, but the resource is allowed to be missing at the time of creation of this policy; in that case, we
-        /// make a best-effort attempt at respecting this policy, but it may not have any effect until the resource is
-        /// fully created.
+        /// `//oauth2.googleapis.com/projects/{project_number}/oauthClients/{oauth_client_id}` (Google Identity for iOS)
+        /// Note that the resource must belong to the service specified in the `name` and be from the same project as
+        /// this policy, but the resource is allowed to be missing at the time of creation of this policy; in that case,
+        /// we make a best-effort attempt at respecting this policy, but it may not have any effect until the resource
+        /// is fully created.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetResource")]
         public virtual string TargetResource { get; set; }

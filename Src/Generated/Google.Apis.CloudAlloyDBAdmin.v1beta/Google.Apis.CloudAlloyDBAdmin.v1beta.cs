@@ -4026,10 +4026,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>
-        /// Optional. Configuration parameters related to the Gemini in Databases add-on. See
-        /// go/prd-enable-duet-ai-databases for more details.
-        /// </summary>
+        /// <summary>Optional. Configuration parameters related to the Gemini in Databases add-on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("geminiConfig")]
         public virtual GeminiClusterConfig GeminiConfig { get; set; }
 
@@ -4450,10 +4447,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Cluster level configuration parameters related to the Gemini in Databases add-on. See
-    /// go/prd-enable-duet-ai-databases for more details.
-    /// </summary>
+    /// <summary>Cluster level configuration parameters related to the Gemini in Databases add-on.</summary>
     public class GeminiClusterConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -4468,10 +4462,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Instance level configuration parameters related to the Gemini in Databases add-on. See
-    /// go/prd-enable-duet-ai-databases for more details.
-    /// </summary>
+    /// <summary>Instance level configuration parameters related to the Gemini in Databases add-on.</summary>
     public class GeminiInstanceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -4723,10 +4714,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gceZone")]
         public virtual string GceZone { get; set; }
 
-        /// <summary>
-        /// Optional. Configuration parameters related to the Gemini in Databases add-on. See
-        /// go/prd-enable-duet-ai-databases for more details.
-        /// </summary>
+        /// <summary>Optional. Configuration parameters related to the Gemini in Databases add-on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("geminiConfig")]
         public virtual GeminiInstanceConfig GeminiConfig { get; set; }
 
@@ -5683,6 +5671,12 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availabilityType")]
         public virtual string AvailabilityType { get; set; }
+
+        /// <summary>
+        /// Checks for resources that are configured to have redundancy, and ongoing replication across regions
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crossRegionReplicaConfigured")]
+        public virtual System.Nullable<bool> CrossRegionReplicaConfigured { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("externalReplicaConfigured")]
         public virtual System.Nullable<bool> ExternalReplicaConfigured { get; set; }
