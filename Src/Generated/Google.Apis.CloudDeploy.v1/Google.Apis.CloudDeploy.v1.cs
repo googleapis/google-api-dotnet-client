@@ -8960,6 +8960,28 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Cloud Build V2 Repository containing Skaffold Configs.</summary>
+    public class SkaffoldGCBRepoSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Relative path from the repository root to the Skaffold Config file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>Optional. Branch or tag to use when cloning the repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ref")]
+        public virtual string Ref__ { get; set; }
+
+        /// <summary>
+        /// Required. Name of the Cloud Build V2 Repository. Format is
+        /// projects/{project}/locations/{location}/connections/{connection}/repositories/{repository}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repository")]
+        public virtual string Repository { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Cloud Storage bucket containing Skaffold Config modules.</summary>
     public class SkaffoldGCSSource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8986,7 +9008,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
 
-        /// <summary>Optional. Git ref the package should be cloned from.</summary>
+        /// <summary>Optional. Git branch or tag to use when cloning the repository.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ref")]
         public virtual string Ref__ { get; set; }
 
@@ -9008,6 +9030,10 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>Remote git repository containing the Skaffold Config modules.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("git")]
         public virtual SkaffoldGitSource Git { get; set; }
+
+        /// <summary>Cloud Build V2 repository containing the Skaffold Config modules.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleCloudBuildRepo")]
+        public virtual SkaffoldGCBRepoSource GoogleCloudBuildRepo { get; set; }
 
         /// <summary>Cloud Storage bucket containing the Skaffold Config modules.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleCloudStorage")]

@@ -5516,6 +5516,12 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("availabilityType")]
         public virtual string AvailabilityType { get; set; }
 
+        /// <summary>
+        /// Checks for resources that are configured to have redundancy, and ongoing replication across regions
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crossRegionReplicaConfigured")]
+        public virtual System.Nullable<bool> CrossRegionReplicaConfigured { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("externalReplicaConfigured")]
         public virtual System.Nullable<bool> ExternalReplicaConfigured { get; set; }
 

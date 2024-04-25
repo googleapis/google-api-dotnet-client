@@ -361,15 +361,15 @@ namespace Google.Apis.PlayIntegrity.v1.Data
     public class AppAccessRiskVerdict : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. App access risk verdict related to apps that are not installed by Google Play, and are not
-        /// preloaded on the system image by the device manufacturer.
+        /// App access risk verdict related to apps that are not installed by Google Play, and are not preloaded on the
+        /// system image by the device manufacturer.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("otherApps")]
         public virtual string OtherApps { get; set; }
 
         /// <summary>
-        /// Required. App access risk verdict related to apps that are not installed by the Google Play Store, and are
-        /// not preloaded on the system image by the device manufacturer.
+        /// App access risk verdict related to apps that are not installed by the Google Play Store, and are not
+        /// preloaded on the system image by the device manufacturer.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("playOrSystemApps")]
         public virtual string PlayOrSystemApps { get; set; }

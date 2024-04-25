@@ -6694,6 +6694,14 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tableColumns")]
         public virtual System.Collections.Generic.IList<string> TableColumns { get; set; }
 
+        /// <summary>
+        /// For each table_column, mark whether it's sorting order is ascending (false) or descending (true). If no
+        /// value is defined, assume all columns are sorted in ascending order. Otherwise, the number of items must
+        /// match that of table_columns with each value specifying the direction of the matched column by its index.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableColumnsDescending")]
+        public virtual System.Collections.Generic.IList<System.Nullable<bool>> TableColumnsDescending { get; set; }
+
         /// <summary>Type of index, for example B-TREE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -7258,10 +7266,7 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>
-        /// Optional. Data dump parallelism settings used by the migration. Currently applicable only for MySQL to Cloud
-        /// SQL for MySQL migrations only.
-        /// </summary>
+        /// <summary>Optional. Data dump parallelism settings used by the migration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("performanceConfig")]
         public virtual PerformanceConfig PerformanceConfig { get; set; }
 

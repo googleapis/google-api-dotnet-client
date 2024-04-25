@@ -771,8 +771,8 @@ namespace Google.Apis.Tasks.v1
         }
 
         /// <summary>
-        /// Creates a new task on the specified task list. A user can have up to 20,000 uncompleted tasks per list and
-        /// up to 100,000 tasks in total at a time.
+        /// Creates a new task on the specified task list. A user can have up to 20,000 non-hidden tasks per list and up
+        /// to 100,000 tasks in total at a time.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="tasklist">Task list identifier.</param>
@@ -782,8 +782,8 @@ namespace Google.Apis.Tasks.v1
         }
 
         /// <summary>
-        /// Creates a new task on the specified task list. A user can have up to 20,000 uncompleted tasks per list and
-        /// up to 100,000 tasks in total at a time.
+        /// Creates a new task on the specified task list. A user can have up to 20,000 non-hidden tasks per list and up
+        /// to 100,000 tasks in total at a time.
         /// </summary>
         public class InsertRequest : TasksBaseServiceRequest<Google.Apis.Tasks.v1.Data.Task>
         {
@@ -859,7 +859,7 @@ namespace Google.Apis.Tasks.v1
         }
 
         /// <summary>
-        /// Returns all tasks in the specified task list. A user can have up to 20,000 uncompleted tasks per list and up
+        /// Returns all tasks in the specified task list. A user can have up to 20,000 non-hidden tasks per list and up
         /// to 100,000 tasks in total at a time.
         /// </summary>
         /// <param name="tasklist">Task list identifier.</param>
@@ -869,7 +869,7 @@ namespace Google.Apis.Tasks.v1
         }
 
         /// <summary>
-        /// Returns all tasks in the specified task list. A user can have up to 20,000 uncompleted tasks per list and up
+        /// Returns all tasks in the specified task list. A user can have up to 20,000 non-hidden tasks per list and up
         /// to 100,000 tasks in total at a time.
         /// </summary>
         public class ListRequest : TasksBaseServiceRequest<Google.Apis.Tasks.v1.Data.Tasks>

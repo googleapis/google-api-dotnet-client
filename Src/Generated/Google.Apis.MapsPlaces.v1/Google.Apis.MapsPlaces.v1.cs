@@ -2125,14 +2125,14 @@ namespace Google.Apis.MapsPlaces.v1.Data
     {
         /// <summary>
         /// Optional. The list of preferred EV connector types. A place that does not support any of the listed
-        /// connector types are filter out.
+        /// connector types is filtered out.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectorTypes")]
         public virtual System.Collections.Generic.IList<string> ConnectorTypes { get; set; }
 
         /// <summary>
-        /// Optional. Filtering places by minimum charging rate. Any places with charging a rate less than the minimum
-        /// charging rate are filtered out.
+        /// Optional. Minimum required charging rate in kilowatts. A place with a charging rate less than the specified
+        /// rate is filtered out.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimumChargingRateKw")]
         public virtual System.Nullable<double> MinimumChargingRateKw { get; set; }

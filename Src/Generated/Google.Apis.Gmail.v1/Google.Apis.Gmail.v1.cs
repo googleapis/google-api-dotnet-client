@@ -1927,6 +1927,9 @@ namespace Google.Apis.Gmail.v1
                     [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Id { get; private set; }
 
+                    [Google.Apis.Util.RequestParameterAttribute("temporaryEeccBypass", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> TemporaryEeccBypass { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
@@ -1962,6 +1965,14 @@ namespace Google.Apis.Gmail.v1
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("temporaryEeccBypass", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "temporaryEeccBypass",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = "false",
                             Pattern = null,
                         });
                     }
@@ -2232,6 +2243,9 @@ namespace Google.Apis.Gmail.v1
                 [Google.Apis.Util.RequestParameterAttribute("metadataHeaders", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> MetadataHeaders { get; set; }
 
+                [Google.Apis.Util.RequestParameterAttribute("temporaryEeccBypass", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> TemporaryEeccBypass { get; set; }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
@@ -2275,6 +2289,14 @@ namespace Google.Apis.Gmail.v1
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("temporaryEeccBypass", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "temporaryEeccBypass",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
                         Pattern = null,
                     });
                 }
@@ -2935,6 +2957,9 @@ namespace Google.Apis.Gmail.v1
                 [Google.Apis.Util.RequestParameterAttribute("q", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Q { get; set; }
 
+                [Google.Apis.Util.RequestParameterAttribute("temporaryEeccBypass", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> TemporaryEeccBypass { get; set; }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
@@ -2994,6 +3019,14 @@ namespace Google.Apis.Gmail.v1
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("temporaryEeccBypass", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "temporaryEeccBypass",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
                         Pattern = null,
                     });
                 }
@@ -6758,6 +6791,9 @@ namespace Google.Apis.Gmail.v1
                 [Google.Apis.Util.RequestParameterAttribute("metadataHeaders", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> MetadataHeaders { get; set; }
 
+                [Google.Apis.Util.RequestParameterAttribute("temporaryEeccBypass", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> TemporaryEeccBypass { get; set; }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
@@ -6801,6 +6837,14 @@ namespace Google.Apis.Gmail.v1
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("temporaryEeccBypass", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "temporaryEeccBypass",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
                         Pattern = null,
                     });
                 }
@@ -6857,6 +6901,9 @@ namespace Google.Apis.Gmail.v1
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("q", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Q { get; set; }
+
+                [Google.Apis.Util.RequestParameterAttribute("temporaryEeccBypass", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> TemporaryEeccBypass { get; set; }
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -6917,6 +6964,14 @@ namespace Google.Apis.Gmail.v1
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("temporaryEeccBypass", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "temporaryEeccBypass",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
                         Pattern = null,
                     });
                 }
@@ -7161,6 +7216,9 @@ namespace Google.Apis.Gmail.v1
             [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UserId { get; private set; }
 
+            [Google.Apis.Util.RequestParameterAttribute("temporaryEeccBypass", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> TemporaryEeccBypass { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "getProfile";
 
@@ -7180,6 +7238,14 @@ namespace Google.Apis.Gmail.v1
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = "me",
+                    Pattern = null,
+                });
+                RequestParameters.Add("temporaryEeccBypass", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "temporaryEeccBypass",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
                     Pattern = null,
                 });
             }

@@ -17596,11 +17596,23 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Details of a monthly installment payment offering. [Learn
+    /// more](https://support.google.com/merchants/answer/6324474) about installments.
+    /// </summary>
     public class Installment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The amount the buyer has to pay per month.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("amount")]
         public virtual Price Amount { get; set; }
+
+        /// <summary>Optional. Type of installment payments. Supported values are: - "`finance`" - "`lease`" </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creditType")]
+        public virtual string CreditType { get; set; }
+
+        /// <summary>Optional. The initial down payment amount the buyer has to pay.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("downpayment")]
+        public virtual Price Downpayment { get; set; }
 
         /// <summary>The number of installments the buyer has to pay.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("months")]
@@ -17652,8 +17664,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class LiaAboutPageSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The status of the verification process for the About page. Acceptable values are: - "`active`" -
-        /// "`inactive`" - "`pending`"
+        /// The status of the verification process for the About page. Supported values are: - "`active`" - "`inactive`"
+        /// - "`pending`"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
@@ -23282,7 +23294,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("amount")]
         public virtual Price Amount { get; set; }
 
-        /// <summary>The type of subscription period.</summary>
+        /// <summary>The type of subscription period. - "`month`" - "`year`" </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("period")]
         public virtual string Period { get; set; }
 

@@ -1839,6 +1839,184 @@ namespace Google.Apis.CloudRetail.v2alpha
                             }
                         }
                     }
+
+                    /// <summary>Retrieves a Branch.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the branch to retrieve. Format:
+                    /// `projects/*/locations/global/catalogs/default_catalog/branches/some_branch_id`. "default_branch"
+                    /// can be used as a special branch_id, it returns the default branch that has been set for the
+                    /// catalog.
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Retrieves a Branch.</summary>
+                    public class GetRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaBranch>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the branch to retrieve. Format:
+                        /// `projects/*/locations/global/catalogs/default_catalog/branches/some_branch_id`.
+                        /// "default_branch" can be used as a special branch_id, it returns the default branch that has
+                        /// been set for the catalog.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// The view to apply to the returned Branch. Defaults to [Branch.BranchView.BASIC] if
+                        /// unspecified. See documentation of fields of Branch to find what fields are excluded from
+                        /// BASIC view.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                        /// <summary>
+                        /// The view to apply to the returned Branch. Defaults to [Branch.BranchView.BASIC] if
+                        /// unspecified. See documentation of fields of Branch to find what fields are excluded from
+                        /// BASIC view.
+                        /// </summary>
+                        public enum ViewEnum
+                        {
+                            /// <summary>The value when it's unspecified. This defaults to the BASIC view.</summary>
+                            [Google.Apis.Util.StringValueAttribute("BRANCH_VIEW_UNSPECIFIED")]
+                            BRANCHVIEWUNSPECIFIED = 0,
+
+                            /// <summary>
+                            /// Includes basic metadata about the branch, but not statistical fields. See documentation
+                            /// of fields of Branch to find what fields are excluded from BASIC view.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("BRANCH_VIEW_BASIC")]
+                            BRANCHVIEWBASIC = 1,
+
+                            /// <summary>Includes all fields of a Branch.</summary>
+                            [Google.Apis.Util.StringValueAttribute("BRANCH_VIEW_FULL")]
+                            BRANCHVIEWFULL = 2,
+                        }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2alpha/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/branches/[^/]+$",
+                            });
+                            RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "view",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists all Branchs under the specified parent Catalog.</summary>
+                    /// <param name="parent">Required. The parent catalog resource name.</param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists all Branchs under the specified parent Catalog.</summary>
+                    public class ListRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaListBranchesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The parent catalog resource name.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// The view to apply to the returned Branch. Defaults to [Branch.BranchView.BASIC] if
+                        /// unspecified. See documentation of fields of Branch to find what fields are excluded from
+                        /// BASIC view.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                        /// <summary>
+                        /// The view to apply to the returned Branch. Defaults to [Branch.BranchView.BASIC] if
+                        /// unspecified. See documentation of fields of Branch to find what fields are excluded from
+                        /// BASIC view.
+                        /// </summary>
+                        public enum ViewEnum
+                        {
+                            /// <summary>The value when it's unspecified. This defaults to the BASIC view.</summary>
+                            [Google.Apis.Util.StringValueAttribute("BRANCH_VIEW_UNSPECIFIED")]
+                            BRANCHVIEWUNSPECIFIED = 0,
+
+                            /// <summary>
+                            /// Includes basic metadata about the branch, but not statistical fields. See documentation
+                            /// of fields of Branch to find what fields are excluded from BASIC view.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("BRANCH_VIEW_BASIC")]
+                            BRANCHVIEWBASIC = 1,
+
+                            /// <summary>Includes all fields of a Branch.</summary>
+                            [Google.Apis.Util.StringValueAttribute("BRANCH_VIEW_FULL")]
+                            BRANCHVIEWFULL = 2,
+                        }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2alpha/{+parent}/branches";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+$",
+                            });
+                            RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "view",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Gets the CompletionData resource.</summary>
@@ -7551,6 +7729,188 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A data branch that stores Products.</summary>
+    public class GoogleCloudRetailV2alphaBranch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Human readable name of the branch to display in the UI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Output only. Indicates whether this branch is set as the default branch of its parent catalog.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isDefault")]
+        public virtual System.Nullable<bool> IsDefault { get; set; }
+
+        private string _lastProductImportTimeRaw;
+
+        private object _lastProductImportTime;
+
+        /// <summary>
+        /// Output only. Timestamp of last import through ProductService.ImportProducts. Empty value means no import has
+        /// been made to this branch.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastProductImportTime")]
+        public virtual string LastProductImportTimeRaw
+        {
+            get => _lastProductImportTimeRaw;
+            set
+            {
+                _lastProductImportTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastProductImportTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastProductImportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastProductImportTimeDateTimeOffset instead.")]
+        public virtual object LastProductImportTime
+        {
+            get => _lastProductImportTime;
+            set
+            {
+                _lastProductImportTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastProductImportTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastProductImportTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastProductImportTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastProductImportTimeRaw);
+            set => LastProductImportTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Immutable. Full resource name of the branch, such as
+        /// `projects/*/locations/global/catalogs/default_catalog/branches/branch_id`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. Statistics for number of products in the branch, provided for different scopes. This field is
+        /// not populated in BranchView.BASIC view.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productCountStats")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaBranchProductCountStatistic> ProductCountStats { get; set; }
+
+        /// <summary>
+        /// Output only. The number of products in different groups that this branch has. The key is a group
+        /// representing a set of products, and the value is the number of products in that group. Note: keys in this
+        /// map may change over time. Possible keys: * "primary-in-stock", products have Product.Type.PRIMARY type and
+        /// Product.Availability.IN_STOCK availability. * "primary-out-of-stock", products have Product.Type.PRIMARY
+        /// type and Product.Availability.OUT_OF_STOCK availability. * "primary-preorder", products have
+        /// Product.Type.PRIMARY type and Product.Availability.PREORDER availability. * "primary-backorder", products
+        /// have Product.Type.PRIMARY type and Product.Availability.BACKORDER availability. * "variant-in-stock",
+        /// products have Product.Type.VARIANT type and Product.Availability.IN_STOCK availability. *
+        /// "variant-out-of-stock", products have Product.Type.VARIANT type and Product.Availability.OUT_OF_STOCK
+        /// availability. * "variant-preorder", products have Product.Type.VARIANT type and
+        /// Product.Availability.PREORDER availability. * "variant-backorder", products have Product.Type.VARIANT type
+        /// and Product.Availability.BACKORDER availability. * "price-discounted", products have
+        /// [Product.price_info.price] &amp;lt; [Product.price_info.original_price]. This field is not populated in
+        /// BranchView.BASIC view.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productCounts")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<long>> ProductCounts { get; set; }
+
+        /// <summary>
+        /// Output only. The quality metrics measured among products of this branch. See QualityMetric.requirement_key
+        /// for supported metrics. Metrics could be missing if failed to retrieve. This field is not populated in
+        /// BranchView.BASIC view.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qualityMetrics")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaBranchQualityMetric> QualityMetrics { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A statistic about the number of products in a branch.</summary>
+    public class GoogleCloudRetailV2alphaBranchProductCountStatistic : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The number of products in scope broken down into different groups. The key is a group representing a set of
+        /// products, and the value is the number of products in that group. Note: keys in this map may change over
+        /// time. Possible keys: * "primary-in-stock", products have Product.Type.PRIMARY type and
+        /// Product.Availability.IN_STOCK availability. * "primary-out-of-stock", products have Product.Type.PRIMARY
+        /// type and Product.Availability.OUT_OF_STOCK availability. * "primary-preorder", products have
+        /// Product.Type.PRIMARY type and Product.Availability.PREORDER availability. * "primary-backorder", products
+        /// have Product.Type.PRIMARY type and Product.Availability.BACKORDER availability. * "variant-in-stock",
+        /// products have Product.Type.VARIANT type and Product.Availability.IN_STOCK availability. *
+        /// "variant-out-of-stock", products have Product.Type.VARIANT type and Product.Availability.OUT_OF_STOCK
+        /// availability. * "variant-preorder", products have Product.Type.VARIANT type and
+        /// Product.Availability.PREORDER availability. * "variant-backorder", products have Product.Type.VARIANT type
+        /// and Product.Availability.BACKORDER availability. * "price-discounted", products have
+        /// [Product.price_info.price] &amp;lt; [Product.price_info.original_price].
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("counts")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<long>> Counts { get; set; }
+
+        /// <summary>[ProductCountScope] of the [counts].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual string Scope { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metric measured on a group of Products against a certain quality requirement. Contains the number of products
+    /// that pass the check and the number of products that don't.
+    /// </summary>
+    public class GoogleCloudRetailV2alphaBranchQualityMetric : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Number of products passing the quality requirement check. We only check searchable products.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qualifiedProductCount")]
+        public virtual System.Nullable<int> QualifiedProductCount { get; set; }
+
+        /// <summary>
+        /// The key that represents a quality requirement rule. Supported keys: * "has-valid-uri": product has a valid
+        /// and accessible uri. * "available-expire-time-conformance": Product.available_time is early than "now", and
+        /// Product.expire_time is greater than "now". * "has-searchable-attributes": product has at least one attribute
+        /// set to searchable. * "has-description": product has non-empty description. * "has-at-least-bigram-title":
+        /// Product title has at least two words. A comprehensive title helps to improve search quality. *
+        /// "variant-has-image": the variant products has at least one image. You may ignore this metric if all your
+        /// products are at primary level. * "variant-has-price-info": the variant products has price_info set. You may
+        /// ignore this metric if all your products are at primary level. * "has-publish-time": product has non-empty
+        /// publish_time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requirementKey")]
+        public virtual string RequirementKey { get; set; }
+
+        /// <summary>
+        /// Value from 0 to 100 representing the suggested percentage of products that meet the quality requirements to
+        /// get good search and recommendation performance. 100 * (qualified_product_count) / (qualified_product_count +
+        /// unqualified_product_count) should be greater or equal to this suggestion.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestedQualityPercentThreshold")]
+        public virtual System.Nullable<double> SuggestedQualityPercentThreshold { get; set; }
+
+        /// <summary>
+        /// Number of products failing the quality requirement check. We only check searchable products.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unqualifiedProductCount")]
+        public virtual System.Nullable<int> UnqualifiedProductCount { get; set; }
+
+        /// <summary>
+        /// A list of a maximum of 100 sample products that do not qualify for this requirement. This field is only
+        /// populated in the response to BranchService.GetBranch API, and is always empty for
+        /// BranchService.ListBranches. Only the following fields are set in the Product. * Product.name * Product.id *
+        /// Product.title
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unqualifiedSampleProducts")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaProduct> UnqualifiedSampleProducts { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The catalog configuration.</summary>
     public class GoogleCloudRetailV2alphaCatalog : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9174,6 +9534,17 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// <summary>Inclusive lower bound.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimum")]
         public virtual System.Nullable<double> Minimum { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for BranchService.ListBranches method.</summary>
+    public class GoogleCloudRetailV2alphaListBranchesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Branches.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("branches")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaBranch> Branches { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

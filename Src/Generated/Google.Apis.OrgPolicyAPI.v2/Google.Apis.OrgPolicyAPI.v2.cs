@@ -2346,10 +2346,6 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("constraintDefault")]
         public virtual string ConstraintDefault { get; set; }
 
-        /// <summary>Defines this constraint as being a CustomConstraint.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("customConstraint")]
-        public virtual GoogleCloudOrgpolicyV2ConstraintGoogleDefinedCustomConstraint CustomConstraint { get; set; }
-
         /// <summary>
         /// Detailed description of what this constraint controls as well as how and where it is enforced. Mutable.
         /// </summary>
@@ -2359,6 +2355,10 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
         /// <summary>The human readable name. Mutable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
+
+        /// <summary>Defines this constraint as being a GoogleManagedConstraint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleManagedConstraint")]
+        public virtual GoogleCloudOrgpolicyV2ConstraintGoogleManagedConstraint GoogleManagedConstraint { get; set; }
 
         /// <summary>Defines this constraint as being a ListConstraint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("listConstraint")]
@@ -2394,10 +2394,10 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
     }
 
     /// <summary>
-    /// A Google defined custom constraint. This represents a subset of fields missing from Constraint proto that are
-    /// required to describe CustomConstraint
+    /// A Google managed constraint. This represents a subset of fields missing from Constraint proto that are required
+    /// to describe CustomConstraint
     /// </summary>
-    public class GoogleCloudOrgpolicyV2ConstraintGoogleDefinedCustomConstraint : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudOrgpolicyV2ConstraintGoogleManagedConstraint : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Allow or deny type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actionType")]

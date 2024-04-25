@@ -2929,6 +2929,12 @@ namespace Google.Apis.Eventarc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pubsubTopic")]
         public virtual string PubsubTopic { get; set; }
 
+        /// <summary>
+        /// Output only. Whether or not this Channel satisfies the requirements of physical zone separation
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
         /// <summary>Output only. The state of a Channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
@@ -4055,6 +4061,12 @@ namespace Google.Apis.Eventarc.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. Whether or not this Trigger satisfies the requirements of physical zone separation
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
         /// <summary>
         /// Optional. The IAM service account email associated with the trigger. The service account represents the

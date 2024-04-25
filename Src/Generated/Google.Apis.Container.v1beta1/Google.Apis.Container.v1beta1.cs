@@ -6474,6 +6474,10 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>Specifies options for controlling advanced machine features.</summary>
     public class AdvancedMachineFeatures : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Whether or not to enable nested virtualization (defaults to false).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableNestedVirtualization")]
+        public virtual System.Nullable<bool> EnableNestedVirtualization { get; set; }
+
         /// <summary>
         /// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If
         /// unset, the maximum number of threads supported per core by the underlying processor is assumed.
@@ -7590,7 +7594,9 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredImageType")]
         public virtual string DesiredImageType { get; set; }
 
-        /// <summary>Specify the details of in-transit encryption.</summary>
+        /// <summary>
+        /// Specify the details of in-transit encryption. Now named inter-node transparent encryption.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredInTransitEncryptionConfig")]
         public virtual string DesiredInTransitEncryptionConfig { get; set; }
 
@@ -10434,7 +10440,7 @@ namespace Google.Apis.Container.v1beta1.Data
     public class PolicyBinding : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The relative resource name of the binauthz platform policy to audit. GKE platform policies have the
+        /// The relative resource name of the binauthz platform policy to evaluate. GKE platform policies have the
         /// following format: `projects/{project_number}/platforms/gke/policies/{policy_id}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]

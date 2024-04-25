@@ -1226,8 +1226,8 @@ namespace Google.Apis.BigtableAdmin.v2
                     }
 
                     /// <summary>
-                    /// Gets the access control policy for a Table or Backup resource. Returns an empty policy if the
-                    /// resource exists but does not have a policy set.
+                    /// Gets the access control policy for a Bigtable resource. Returns an empty policy if the resource
+                    /// exists but does not have a policy set.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="resource">
@@ -1241,8 +1241,8 @@ namespace Google.Apis.BigtableAdmin.v2
                     }
 
                     /// <summary>
-                    /// Gets the access control policy for a Table or Backup resource. Returns an empty policy if the
-                    /// resource exists but does not have a policy set.
+                    /// Gets the access control policy for a Bigtable resource. Returns an empty policy if the resource
+                    /// exists but does not have a policy set.
                     /// </summary>
                     public class GetIamPolicyRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.Policy>
                     {
@@ -1512,7 +1512,7 @@ namespace Google.Apis.BigtableAdmin.v2
                     }
 
                     /// <summary>
-                    /// Sets the access control policy on a Table or Backup resource. Replaces any existing policy.
+                    /// Sets the access control policy on a Bigtable resource. Replaces any existing policy.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="resource">
@@ -1526,7 +1526,7 @@ namespace Google.Apis.BigtableAdmin.v2
                     }
 
                     /// <summary>
-                    /// Sets the access control policy on a Table or Backup resource. Replaces any existing policy.
+                    /// Sets the access control policy on a Bigtable resource. Replaces any existing policy.
                     /// </summary>
                     public class SetIamPolicyRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.Policy>
                     {
@@ -1576,9 +1576,7 @@ namespace Google.Apis.BigtableAdmin.v2
                         }
                     }
 
-                    /// <summary>
-                    /// Returns permissions that the caller has on the specified Table or Backup resource.
-                    /// </summary>
+                    /// <summary>Returns permissions that the caller has on the specified Bigtable resource.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="resource">
                     /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
@@ -1590,9 +1588,7 @@ namespace Google.Apis.BigtableAdmin.v2
                         return new TestIamPermissionsRequest(this.service, body, resource);
                     }
 
-                    /// <summary>
-                    /// Returns permissions that the caller has on the specified Table or Backup resource.
-                    /// </summary>
+                    /// <summary>Returns permissions that the caller has on the specified Bigtable resource.</summary>
                     public class TestIamPermissionsRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.TestIamPermissionsResponse>
                     {
                         /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -2500,8 +2496,8 @@ namespace Google.Apis.BigtableAdmin.v2
                     }
 
                     /// <summary>
-                    /// Gets the access control policy for a Table or Backup resource. Returns an empty policy if the
-                    /// resource exists but does not have a policy set.
+                    /// Gets the access control policy for a Bigtable resource. Returns an empty policy if the resource
+                    /// exists but does not have a policy set.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="resource">
@@ -2515,8 +2511,8 @@ namespace Google.Apis.BigtableAdmin.v2
                     }
 
                     /// <summary>
-                    /// Gets the access control policy for a Table or Backup resource. Returns an empty policy if the
-                    /// resource exists but does not have a policy set.
+                    /// Gets the access control policy for a Bigtable resource. Returns an empty policy if the resource
+                    /// exists but does not have a policy set.
                     /// </summary>
                     public class GetIamPolicyRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.Policy>
                     {
@@ -2780,7 +2776,7 @@ namespace Google.Apis.BigtableAdmin.v2
                     }
 
                     /// <summary>
-                    /// Sets the access control policy on a Table or Backup resource. Replaces any existing policy.
+                    /// Sets the access control policy on a Bigtable resource. Replaces any existing policy.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="resource">
@@ -2794,7 +2790,7 @@ namespace Google.Apis.BigtableAdmin.v2
                     }
 
                     /// <summary>
-                    /// Sets the access control policy on a Table or Backup resource. Replaces any existing policy.
+                    /// Sets the access control policy on a Bigtable resource. Replaces any existing policy.
                     /// </summary>
                     public class SetIamPolicyRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.Policy>
                     {
@@ -2844,9 +2840,7 @@ namespace Google.Apis.BigtableAdmin.v2
                         }
                     }
 
-                    /// <summary>
-                    /// Returns permissions that the caller has on the specified Table or Backup resource.
-                    /// </summary>
+                    /// <summary>Returns permissions that the caller has on the specified Bigtable resource.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="resource">
                     /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
@@ -2858,9 +2852,7 @@ namespace Google.Apis.BigtableAdmin.v2
                         return new TestIamPermissionsRequest(this.service, body, resource);
                     }
 
-                    /// <summary>
-                    /// Returns permissions that the caller has on the specified Table or Backup resource.
-                    /// </summary>
+                    /// <summary>Returns permissions that the caller has on the specified Bigtable resource.</summary>
                     public class TestIamPermissionsRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.TestIamPermissionsResponse>
                     {
                         /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -3332,8 +3324,8 @@ namespace Google.Apis.BigtableAdmin.v2
                 }
 
                 /// <summary>
-                /// Gets the access control policy for a Table or Backup resource. Returns an empty policy if the
-                /// resource exists but does not have a policy set.
+                /// Gets the access control policy for a Bigtable resource. Returns an empty policy if the resource
+                /// exists but does not have a policy set.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">
@@ -3347,8 +3339,8 @@ namespace Google.Apis.BigtableAdmin.v2
                 }
 
                 /// <summary>
-                /// Gets the access control policy for a Table or Backup resource. Returns an empty policy if the
-                /// resource exists but does not have a policy set.
+                /// Gets the access control policy for a Bigtable resource. Returns an empty policy if the resource
+                /// exists but does not have a policy set.
                 /// </summary>
                 public class GetIamPolicyRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.Policy>
                 {
@@ -3749,7 +3741,7 @@ namespace Google.Apis.BigtableAdmin.v2
                 }
 
                 /// <summary>
-                /// Sets the access control policy on a Table or Backup resource. Replaces any existing policy.
+                /// Sets the access control policy on a Bigtable resource. Replaces any existing policy.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">
@@ -3763,7 +3755,7 @@ namespace Google.Apis.BigtableAdmin.v2
                 }
 
                 /// <summary>
-                /// Sets the access control policy on a Table or Backup resource. Replaces any existing policy.
+                /// Sets the access control policy on a Bigtable resource. Replaces any existing policy.
                 /// </summary>
                 public class SetIamPolicyRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.Policy>
                 {
@@ -3813,9 +3805,7 @@ namespace Google.Apis.BigtableAdmin.v2
                     }
                 }
 
-                /// <summary>
-                /// Returns permissions that the caller has on the specified Table or Backup resource.
-                /// </summary>
+                /// <summary>Returns permissions that the caller has on the specified Bigtable resource.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">
                 /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
@@ -3827,9 +3817,7 @@ namespace Google.Apis.BigtableAdmin.v2
                     return new TestIamPermissionsRequest(this.service, body, resource);
                 }
 
-                /// <summary>
-                /// Returns permissions that the caller has on the specified Table or Backup resource.
-                /// </summary>
+                /// <summary>Returns permissions that the caller has on the specified Bigtable resource.</summary>
                 public class TestIamPermissionsRequest : BigtableAdminBaseServiceRequest<Google.Apis.BigtableAdmin.v2.Data.TestIamPermissionsResponse>
                 {
                     /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -4714,7 +4702,7 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Placeholder for admin API work while we work out the internals.</summary>
+    /// <summary>An Authorized View of a Cloud Bigtable Table.</summary>
     public class AuthorizedView : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -5916,13 +5904,9 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     }
 
     /// <summary>
-    /// Data Boost is a serverless compute capability that lets you run high-throughput read jobs on your Bigtable data,
-    /// without impacting the performance of the clusters that handle your application traffic. Currently, Data Boost
-    /// exclusively supports read-only use-cases with single-cluster routing. Data Boost reads are only guaranteed to
-    /// see the results of writes that were written at least 30 minutes ago. This means newly written values may not
-    /// become visible for up to 30m, and also means that old values may remain visible for up to 30m after being
-    /// deleted or overwritten. To mitigate the staleness of the data, users may either wait 30m, or use
-    /// CheckConsistency.
+    /// Data Boost is a serverless compute capability that lets you run high-throughput read jobs and queries on your
+    /// Bigtable data, without impacting the performance of the clusters that handle your application traffic. Data
+    /// Boost supports read-only use cases with single-cluster routing.
     /// </summary>
     public class DataBoostIsolationReadOnly : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7686,7 +7670,8 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     {
         /// <summary>
         /// Required. The AuthorizedView to update. The `name` in `authorized_view` is used to identify the
-        /// AuthorizedView. AuthorizedView name must in this format projects//instances//tables//authorizedViews/
+        /// AuthorizedView. AuthorizedView name must in this format:
+        /// `projects/{project}/instances/{instance}/tables/{table}/authorizedViews/{authorized_view}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorizedView")]
         public virtual AuthorizedView AuthorizedView { get; set; }

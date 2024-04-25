@@ -36925,6 +36925,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("generatedSamples")]
         public virtual System.Collections.Generic.IList<CloudAiLargeModelsVisionMedia> GeneratedSamples { get; set; }
 
+        /// <summary>Returns rai error message for filtered videos.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("raiErrorMessage")]
+        public virtual string RaiErrorMessage { get; set; }
+
         /// <summary>Returns if any videos were filtered due to RAI policies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("raiMediaFilteredCount")]
         public virtual System.Nullable<int> RaiMediaFilteredCount { get; set; }
@@ -42151,6 +42155,13 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual GoogleCloudAiplatformV1PredictRequestResponseLoggingConfig PredictRequestResponseLoggingConfig { get; set; }
 
         /// <summary>
+        /// Optional. Configuration for private service connect. network and private_service_connect_config are mutually
+        /// exclusive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateServiceConnectConfig")]
+        public virtual GoogleCloudAiplatformV1PrivateServiceConnectConfig PrivateServiceConnectConfig { get; set; }
+
+        /// <summary>
         /// A map from a DeployedModel's ID to the percentage of this Endpoint's traffic that should be forwarded to
         /// that DeployedModel. If a DeployedModel's ID is not listed in this map, then it receives no traffic. The
         /// traffic percentage values must add up to 100, or map must be empty if the Endpoint is to not accept any
@@ -45765,8 +45776,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual System.Nullable<float> PresencePenalty { get; set; }
 
         /// <summary>
-        /// Optional. Output response mimetype of the generated candidate text. Supported mimetype: `text/plain`:
-        /// (default) Text output. `application/json`: JSON response in the candidates. The model needs to be prompted
+        /// Optional. Output response mimetype of the generated candidate text. Supported mimetype: - `text/plain`:
+        /// (default) Text output. - `application/json`: JSON response in the candidates. The model needs to be prompted
         /// to output the appropriate response type, otherwise the behavior is undefined. This is a preview feature.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseMimeType")]
@@ -45894,63 +45905,9 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Tool to retrieve public web data for grounding, powered by Google.</summary>
-    public class GoogleCloudAiplatformV1GoogleSearchRetrieval : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Optional. Disable using the result from this tool in detecting grounding attribution. This does not affect
-        /// how the result is given to the model for generation.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("disableAttribution")]
-        public virtual System.Nullable<bool> DisableAttribution { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Grounding attribution.</summary>
-    public class GoogleCloudAiplatformV1GroundingAttribution : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Optional. Output only. Confidence score of the attribution. Ranges from 0 to 1. 1 is the most confident.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("confidenceScore")]
-        public virtual System.Nullable<float> ConfidenceScore { get; set; }
-
-        /// <summary>Output only. Segment of the content this attribution belongs to.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("segment")]
-        public virtual GoogleCloudAiplatformV1Segment Segment { get; set; }
-
-        /// <summary>Optional. Attribution from the web.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("web")]
-        public virtual GoogleCloudAiplatformV1GroundingAttributionWeb Web { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Attribution from the web.</summary>
-    public class GoogleCloudAiplatformV1GroundingAttributionWeb : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. Title of the attribution.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; }
-
-        /// <summary>Output only. URI reference of the attribution.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Metadata returned to client when grounding is enabled.</summary>
     public class GoogleCloudAiplatformV1GroundingMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. List of grounding attributions.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("groundingAttributions")]
-        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1GroundingAttribution> GroundingAttributions { get; set; }
-
         /// <summary>Optional. Web search queries for the following-up web search.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webSearchQueries")]
         public virtual System.Collections.Generic.IList<string> WebSearchQueries { get; set; }
@@ -58876,31 +58833,6 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Segment of the content.</summary>
-    public class GoogleCloudAiplatformV1Segment : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Output only. End index in the given Part, measured in bytes. Offset from the start of the Part, exclusive,
-        /// starting at zero.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endIndex")]
-        public virtual System.Nullable<int> EndIndex { get; set; }
-
-        /// <summary>Output only. The index of a Part object within its parent Content object.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("partIndex")]
-        public virtual System.Nullable<int> PartIndex { get; set; }
-
-        /// <summary>
-        /// Output only. Start index in the given Part, measured in bytes. Offset from the start of the Part, inclusive,
-        /// starting at zero.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
-        public virtual System.Nullable<int> StartIndex { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Configuration for the use of custom service account to run the workloads.</summary>
     public class GoogleCloudAiplatformV1ServiceAccountSpec : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -60890,12 +60822,6 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1FunctionDeclaration> FunctionDeclarations { get; set; }
 
         /// <summary>
-        /// Optional. GoogleSearchRetrieval tool type. Specialized retrieval tool that is powered by Google search.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("googleSearchRetrieval")]
-        public virtual GoogleCloudAiplatformV1GoogleSearchRetrieval GoogleSearchRetrieval { get; set; }
-
-        /// <summary>
         /// Optional. Retrieval tool type. System will always execute the provided retrieval tool(s) to get external
         /// knowledge to answer the prompt. Retrieval results are presented to the model for generation.
         /// </summary>
@@ -62052,7 +61978,7 @@ namespace Google.Apis.Aiplatform.v1.Data
     {
         /// <summary>
         /// Required. Fully-qualified Vertex AI Search's datastore resource ID. Format:
-        /// projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore}
+        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datastore")]
         public virtual string Datastore { get; set; }
@@ -63381,6 +63307,21 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Stores all metadata relating to GenerateCode.</summary>
+    public class LearningGenaiRootCodeyGenerationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Last state of the sample before getting dropped/returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("output")]
+        public virtual string Output { get; set; }
+
+        /// <summary>Last Codey postprocessing step for this sample before getting dropped/returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postInferenceStep")]
+        public virtual string PostInferenceStep { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Top-level wrapper used to store all things codey-related.</summary>
     public class LearningGenaiRootCodeyOutput : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -63389,6 +63330,9 @@ namespace Google.Apis.Aiplatform.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("codeyCompletionMetadata")]
         public virtual LearningGenaiRootCodeyCompletionMetadata CodeyCompletionMetadata { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("codeyGenerationMetadata")]
+        public virtual LearningGenaiRootCodeyGenerationMetadata CodeyGenerationMetadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -63404,6 +63348,66 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Text that was truncated at a specific checkpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("truncatedText")]
         public virtual string TruncatedText { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Score threshold for a category.</summary>
+    public class LearningGenaiRootControlDecodingConfigThreshold : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
+        public virtual string Policy { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("scoreMax")]
+        public virtual System.Nullable<float> ScoreMax { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Holds one control decoding record.</summary>
+    public class LearningGenaiRootControlDecodingRecord : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Prefixes feeded into scorer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prefixes")]
+        public virtual string Prefixes { get; set; }
+
+        /// <summary>
+        /// Per policy scores returned from Scorer. Expect to have the same number of scores as in `thresholds`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scores")]
+        public virtual System.Collections.Generic.IList<LearningGenaiRootControlDecodingRecordPolicyScore> Scores { get; set; }
+
+        /// <summary>Suffixes feeded into scorer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suffiexes")]
+        public virtual string Suffiexes { get; set; }
+
+        /// <summary>Per policy thresholds from user config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thresholds")]
+        public virtual System.Collections.Generic.IList<LearningGenaiRootControlDecodingConfigThreshold> Thresholds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class LearningGenaiRootControlDecodingRecordPolicyScore : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
+        public virtual string Policy { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<float> Score { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class LearningGenaiRootControlDecodingRecords : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>One ControlDecodingRecord record maps to one rewind.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("records")]
+        public virtual System.Collections.Generic.IList<LearningGenaiRootControlDecodingRecord> Records { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -63476,6 +63480,10 @@ namespace Google.Apis.Aiplatform.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("raiSignal")]
         public virtual CloudAiNlLlmProtoServiceRaiSignal RaiSignal { get; set; }
+
+        /// <summary>Number of rewinds by controlled decoding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("records")]
+        public virtual LearningGenaiRootControlDecodingRecords Records { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("streamRecitationResult")]
         public virtual LanguageLabsAidaTrustRecitationProtoStreamRecitationResult StreamRecitationResult { get; set; }

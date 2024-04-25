@@ -947,6 +947,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("retrievalQueries")]
         public virtual System.Collections.Generic.IList<string> RetrievalQueries { get; set; }
 
+        /// <summary>Optional. Google search entry for the following-up web searches.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchEntryPoint")]
+        public virtual SearchEntryPoint SearchEntryPoint { get; set; }
+
         /// <summary>Optional. Web search queries for the following-up web search.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webSearchQueries")]
         public virtual System.Collections.Generic.IList<string> WebSearchQueries { get; set; }
@@ -1207,6 +1211,21 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// <summary>Optional. The type of the data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Google search entry point.</summary>
+    public class SearchEntryPoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Web content snippet that can be embedded in a web page or an app webview.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("renderedContent")]
+        public virtual string RenderedContent { get; set; }
+
+        /// <summary>Optional. Base64 encoded JSON representing array of tuple.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sdkBlob")]
+        public virtual string SdkBlob { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -17,6 +17,16 @@
     "1",
     "2"
   ],
+  "Google.Apis.Aiplatform.v1beta1.ProjectsResource+LocationsResource+NotebookExecutionJobsResource+GetRequest.ViewEnum": [
+    "NOTEBOOK_EXECUTION_JOB_VIEW_UNSPECIFIED",
+    "NOTEBOOK_EXECUTION_JOB_VIEW_BASIC",
+    "NOTEBOOK_EXECUTION_JOB_VIEW_FULL"
+  ],
+  "Google.Apis.Aiplatform.v1beta1.ProjectsResource+LocationsResource+NotebookExecutionJobsResource+ListRequest.ViewEnum": [
+    "NOTEBOOK_EXECUTION_JOB_VIEW_UNSPECIFIED",
+    "NOTEBOOK_EXECUTION_JOB_VIEW_BASIC",
+    "NOTEBOOK_EXECUTION_JOB_VIEW_FULL"
+  ],
   "Google.Apis.Aiplatform.v1beta1.PublishersResource+ModelsResource+GetRequest.ViewEnum": [
     "PUBLISHER_MODEL_VIEW_UNSPECIFIED",
     "PUBLISHER_MODEL_VIEW_BASIC",
