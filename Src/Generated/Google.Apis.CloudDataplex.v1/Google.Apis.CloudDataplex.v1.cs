@@ -14838,6 +14838,13 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// </summary>
     public class GoogleCloudDataplexV1DataQualityScanRuleResult : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The number of rows returned by the sql statement in the SqlAssertion rule. This field is only valid for
+        /// SqlAssertion rules.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assertionRowCount")]
+        public virtual System.Nullable<long> AssertionRowCount { get; set; }
+
         /// <summary>The column which this rule is evaluated against.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("column")]
         public virtual string Column { get; set; }
@@ -16163,8 +16170,9 @@ namespace Google.Apis.CloudDataplex.v1.Data
     public class GoogleCloudDataplexV1Entry : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The Aspects attached to the Entry. The key is either the resource name of the aspect type (if the
-        /// aspect is attached directly to the entry) or "aspectType@path" if the aspect is attached to an entry's path.
+        /// Optional. The Aspects attached to the Entry. The format for the key can be one of the following: 1.
+        /// {projectId}.{locationId}.{aspectTypeId} (if the aspect is attached directly to the entry) 2.
+        /// {projectId}.{locationId}.{aspectTypeId}@{path} (if the aspect is attached to an entry's path)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aspects")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDataplexV1Aspect> Aspects { get; set; }
@@ -18163,70 +18171,9 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataplexEntry")]
         public virtual GoogleCloudDataplexV1Entry DataplexEntry { get; set; }
 
-        /// <summary>Entry description.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        /// <summary>Display name.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; }
-
-        /// <summary>Resource name of the entry.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("entry")]
-        public virtual string Entry { get; set; }
-
-        /// <summary>The entry type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("entryType")]
-        public virtual string EntryType { get; set; }
-
-        /// <summary>Fully qualified name.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fullyQualifiedName")]
-        public virtual string FullyQualifiedName { get; set; }
-
         /// <summary>Linked resource name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkedResource")]
         public virtual string LinkedResource { get; set; }
-
-        private string _modifyTimeRaw;
-
-        private object _modifyTime;
-
-        /// <summary>The last modification timestamp.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("modifyTime")]
-        public virtual string ModifyTimeRaw
-        {
-            get => _modifyTimeRaw;
-            set
-            {
-                _modifyTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _modifyTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="ModifyTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ModifyTimeDateTimeOffset instead.")]
-        public virtual object ModifyTime
-        {
-            get => _modifyTime;
-            set
-            {
-                _modifyTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _modifyTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ModifyTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? ModifyTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ModifyTimeRaw);
-            set => ModifyTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>Relative resource name.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("relativeResource")]
-        public virtual string RelativeResource { get; set; }
 
         /// <summary>Snippets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snippets")]

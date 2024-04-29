@@ -1147,8 +1147,8 @@ namespace Google.Apis.Texttospeech.v1beta1.Data
         public virtual string LanguageCode { get; set; }
 
         /// <summary>
-        /// The name of the voice. If not set, the service will choose a voice based on the other parameters such as
-        /// language_code and gender.
+        /// The name of the voice. If both the name and the gender are not set, the service will choose a voice based on
+        /// the other parameters such as language_code.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

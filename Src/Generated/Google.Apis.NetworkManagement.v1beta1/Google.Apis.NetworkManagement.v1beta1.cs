@@ -729,7 +729,7 @@ namespace Google.Apis.NetworkManagement.v1beta1
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Required. Unique name of the resource using the form:
+                    /// Identifier. Unique name of the resource using the form:
                     /// `projects/{project_id}/locations/global/connectivityTests/{test}`
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.NetworkManagement.v1beta1.Data.ConnectivityTest body, string name)
@@ -759,7 +759,7 @@ namespace Google.Apis.NetworkManagement.v1beta1
                         }
 
                         /// <summary>
-                        /// Required. Unique name of the resource using the form:
+                        /// Identifier. Unique name of the resource using the form:
                         /// `projects/{project_id}/locations/global/connectivityTests/{test}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -2189,7 +2189,7 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Required. Unique name of the resource using the form:
+        /// Identifier. Unique name of the resource using the form:
         /// `projects/{project_id}/locations/global/connectivityTests/{test}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -3887,6 +3887,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interconnectAttachment")]
         public virtual string InterconnectAttachment { get; set; }
+
+        /// <summary>Optional. Resource labels to represent user-provided metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
         /// Optional. Configures whether all, none or a subset of metadata fields should be added to the reported VPC

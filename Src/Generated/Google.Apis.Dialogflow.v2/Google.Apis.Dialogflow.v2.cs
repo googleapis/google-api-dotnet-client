@@ -20880,6 +20880,25 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents the language information of the request.</summary>
+    public class GoogleCloudDialogflowCxV3LanguageInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The confidence score of the detected language between 0 and 1.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidenceScore")]
+        public virtual System.Nullable<float> ConfidenceScore { get; set; }
+
+        /// <summary>The language code specified in the original request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputLanguageCode")]
+        public virtual string InputLanguageCode { get; set; }
+
+        /// <summary>The language code detected for this request based on the user conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolvedLanguageCode")]
+        public virtual string ResolvedLanguageCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A Dialogflow CX conversation (session) can be described and visualized as a state machine. The states of a CX
     /// session are represented by pages. For each flow, you define many pages, where your combined pages can handle a
@@ -21980,6 +21999,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>The language code specified in the original request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
+
+        /// <summary>Information about the language of the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageInfo")]
+        public virtual GoogleCloudDialogflowCxV3LanguageInfo LanguageInfo { get; set; }
 
         /// <summary>
         /// The list of rich message responses to present to the user. Webhook can choose to append or replace this list
@@ -23622,6 +23645,25 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents the language information of the request.</summary>
+    public class GoogleCloudDialogflowCxV3beta1LanguageInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The confidence score of the detected language between 0 and 1.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidenceScore")]
+        public virtual System.Nullable<float> ConfidenceScore { get; set; }
+
+        /// <summary>The language code specified in the original request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputLanguageCode")]
+        public virtual string InputLanguageCode { get; set; }
+
+        /// <summary>The language code detected for this request based on the user conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolvedLanguageCode")]
+        public virtual string ResolvedLanguageCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A Dialogflow CX conversation (session) can be described and visualized as a state machine. The states of a CX
     /// session are represented by pages. For each flow, you define many pages, where your combined pages can handle a
@@ -24718,6 +24760,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>The language code specified in the original request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
+
+        /// <summary>Information about the language of the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageInfo")]
+        public virtual GoogleCloudDialogflowCxV3beta1LanguageInfo LanguageInfo { get; set; }
 
         /// <summary>
         /// The list of rich message responses to present to the user. Webhook can choose to append or replace this list

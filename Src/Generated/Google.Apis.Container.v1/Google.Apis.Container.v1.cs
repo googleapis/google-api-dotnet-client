@@ -6408,6 +6408,10 @@ namespace Google.Apis.Container.v1.Data
     /// <summary>Specifies options for controlling advanced machine features.</summary>
     public class AdvancedMachineFeatures : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Whether or not to enable nested virtualization (defaults to false).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableNestedVirtualization")]
+        public virtual System.Nullable<bool> EnableNestedVirtualization { get; set; }
+
         /// <summary>
         /// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If
         /// unset, the maximum number of threads supported per core by the underlying processor is assumed.
@@ -8887,7 +8891,9 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gatewayApiConfig")]
         public virtual GatewayAPIConfig GatewayApiConfig { get; set; }
 
-        /// <summary>Specify the details of in-transit encryption.</summary>
+        /// <summary>
+        /// Specify the details of in-transit encryption. Now named inter-node transparent encryption.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inTransitEncryptionConfig")]
         public virtual string InTransitEncryptionConfig { get; set; }
 

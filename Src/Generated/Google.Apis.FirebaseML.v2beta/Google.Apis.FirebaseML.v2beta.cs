@@ -1041,6 +1041,26 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The definition of the Rag resource.</summary>
+    public class RagResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. RagCorpora resource name. Format:
+        /// `projects/{project}/locations/{location}/ragCorpora/{rag_corpus}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ragCorpus")]
+        public virtual string RagCorpus { get; set; }
+
+        /// <summary>
+        /// Optional. rag_file_id. The files should be in the same rag_corpus set in rag_corpus field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ragFileIds")]
+        public virtual System.Collections.Generic.IList<string> RagFileIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Defines a retrieval tool that model can call to access external knowledge.</summary>
     public class Retrieval : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1309,14 +1329,17 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// <summary>Retrieve from Vertex RAG Store for grounding.</summary>
     public class VertexRagStore : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Required. Vertex RAG Store corpus resource name:
-        /// `projects/{project}/locations/{location}/ragCorpora/{ragCorpus}` Currently only one corpus is allowed. In
-        /// the future we may open up multiple corpora support. However, they should be from the same project and
-        /// location.
-        /// </summary>
+        /// <summary>Optional. Deprecated. Please use rag_resources instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ragCorpora")]
         public virtual System.Collections.Generic.IList<string> RagCorpora { get; set; }
+
+        /// <summary>
+        /// Optional. The representation of the rag source. It can be used to specify corpus only or ragfiles. Currently
+        /// only support one corpus or multiple files from one corpus. In the future we may open up multiple corpora
+        /// support.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ragResources")]
+        public virtual System.Collections.Generic.IList<RagResource> RagResources { get; set; }
 
         /// <summary>Optional. Number of top k results to return from the selected corpora.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("similarityTopK")]

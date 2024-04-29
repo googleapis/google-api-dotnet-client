@@ -523,8 +523,8 @@ namespace Google.Apis.CertificateManager.v1
 
                     /// <summary>
                     /// A list of Certificate Config field names used to specify the order of the returned results. The
-                    /// default sorting order is ascending. To specify descending order for a field, add a suffix "
-                    /// desc".
+                    /// default sorting order is ascending. To specify descending order for a field, add a suffix `"
+                    /// desc"`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
@@ -840,7 +840,7 @@ namespace Google.Apis.CertificateManager.v1
                         /// <summary>
                         /// A list of Certificate Map Entry field names used to specify the order of the returned
                         /// results. The default sorting order is ascending. To specify descending order for a field,
-                        /// add a suffix " desc".
+                        /// add a suffix `" desc"`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string OrderBy { get; set; }
@@ -1205,8 +1205,8 @@ namespace Google.Apis.CertificateManager.v1
 
                     /// <summary>
                     /// A list of Certificate Map field names used to specify the order of the returned results. The
-                    /// default sorting order is ascending. To specify descending order for a field, add a suffix "
-                    /// desc".
+                    /// default sorting order is ascending. To specify descending order for a field, add a suffix `"
+                    /// desc"`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
@@ -1576,7 +1576,7 @@ namespace Google.Apis.CertificateManager.v1
 
                     /// <summary>
                     /// A list of Certificate field names used to specify the order of the returned results. The default
-                    /// sorting order is ascending. To specify descending order for a field, add a suffix " desc".
+                    /// sorting order is ascending. To specify descending order for a field, add a suffix `" desc"`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
@@ -1946,8 +1946,8 @@ namespace Google.Apis.CertificateManager.v1
 
                     /// <summary>
                     /// A list of Dns Authorization field names used to specify the order of the returned results. The
-                    /// default sorting order is ascending. To specify descending order for a field, add a suffix "
-                    /// desc".
+                    /// default sorting order is ascending. To specify descending order for a field, add a suffix `"
+                    /// desc"`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
@@ -2610,7 +2610,7 @@ namespace Google.Apis.CertificateManager.v1
 
                     /// <summary>
                     /// A list of TrustConfig field names used to specify the order of the returned results. The default
-                    /// sorting order is ascending. To specify descending order for a field, add a suffix " desc".
+                    /// sorting order is ascending. To specify descending order for a field, add a suffix `" desc"`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
@@ -4148,7 +4148,7 @@ namespace Google.Apis.CertificateManager.v1.Data
         /// <summary>
         /// Optional. A certificate matching an allowlisted certificate is always considered valid as long as the
         /// certificate is parseable, proof of private key possession is established, and constraints on the
-        /// certificate’s SAN field are met.
+        /// certificate's SAN field are met.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowlistedCertificates")]
         public virtual System.Collections.Generic.IList<AllowlistedCertificate> AllowlistedCertificates { get; set; }
