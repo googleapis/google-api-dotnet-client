@@ -295,6 +295,7 @@ namespace Google.Apis.Networkconnectivity.v1
                 Global = new GlobalResource(service);
                 InternalRanges = new InternalRangesResource(service);
                 Operations = new OperationsResource(service);
+                RegionalEndpoints = new RegionalEndpointsResource(service);
                 ServiceClasses = new ServiceClassesResource(service);
                 ServiceConnectionMaps = new ServiceConnectionMapsResource(service);
                 ServiceConnectionPolicies = new ServiceConnectionPoliciesResource(service);
@@ -3105,6 +3106,325 @@ namespace Google.Apis.Networkconnectivity.v1
                         RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the RegionalEndpoints resource.</summary>
+            public virtual RegionalEndpointsResource RegionalEndpoints { get; }
+
+            /// <summary>The "regionalEndpoints" collection of methods.</summary>
+            public class RegionalEndpointsResource
+            {
+                private const string Resource = "regionalEndpoints";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public RegionalEndpointsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new RegionalEndpoint in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. The parent resource's name of the RegionalEndpoint.</param>
+                public virtual CreateRequest Create(Google.Apis.Networkconnectivity.v1.Data.RegionalEndpoint body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new RegionalEndpoint in a given project and location.</summary>
+                public class CreateRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Networkconnectivity.v1.Data.RegionalEndpoint body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent resource's name of the RegionalEndpoint.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Required. Unique id of the Regional Endpoint to be created.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("regionalEndpointId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RegionalEndpointId { get; set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server knows to ignore the request if it has already been
+                    /// completed. The server guarantees that for at least 60 minutes since the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if the original
+                    /// operation with the same request ID was received, and if so, ignores the second request. This
+                    /// prevents clients from accidentally creating duplicate commitments. The request ID must be a
+                    /// valid UUID with the exception that zero UUID is not supported
+                    /// (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Networkconnectivity.v1.Data.RegionalEndpoint Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/regionalEndpoints";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("regionalEndpointId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "regionalEndpointId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single RegionalEndpoint.</summary>
+                /// <param name="name">Required. The name of the RegionalEndpoint to delete.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a single RegionalEndpoint.</summary>
+                public class DeleteRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the RegionalEndpoint to delete.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server knows to ignore the request if it has already been
+                    /// completed. The server guarantees that for at least 60 minutes since the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if the original
+                    /// operation with the same request ID was received, and if so, ignores the second request. This
+                    /// prevents clients from accidentally creating duplicate commitments. The request ID must be a
+                    /// valid UUID with the exception that zero UUID is not supported
+                    /// (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/regionalEndpoints/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single RegionalEndpoint.</summary>
+                /// <param name="name">
+                /// Required. Name of the RegionalEndpoint resource to get. Format:
+                /// `projects/{project}/locations/{location}/regionalEndpoints/{regional_endpoint}`
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of a single RegionalEndpoint.</summary>
+                public class GetRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.RegionalEndpoint>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the RegionalEndpoint resource to get. Format:
+                    /// `projects/{project}/locations/{location}/regionalEndpoints/{regional_endpoint}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/regionalEndpoints/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists RegionalEndpoints in a given project and location.</summary>
+                /// <param name="parent">Required. The parent resource's name of the RegionalEndpoint.</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists RegionalEndpoints in a given project and location.</summary>
+                public class ListRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.ListRegionalEndpointsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent resource's name of the RegionalEndpoint.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>A filter expression that filters the results listed in the response.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Sort the results by a certain order.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Requested page size. Server may return fewer items than requested. If unspecified, server will
+                    /// pick an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>A page token.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/regionalEndpoints";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -6267,6 +6587,10 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
 
+        /// <summary>Immutable. An immutable identifier for the producer instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("producerInstanceId")]
+        public virtual string ProducerInstanceId { get; set; }
+
         /// <summary>The consumer project where PSC connections are allowed to be created in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("project")]
         public virtual string Project { get; set; }
@@ -6320,6 +6644,10 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
+
+        /// <summary>Immutable. An immutable identifier for the producer instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("producerInstanceId")]
+        public virtual string ProducerInstanceId { get; set; }
 
         /// <summary>
         /// The consumer project whose PSC forwarding rule is connected to the service attachments in this service
@@ -6528,11 +6856,11 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string Domain { get; set; }
 
         /// <summary>
-        /// Additional structured details about this error. Keys should match /[a-zA-Z0-9-_]/ and be limited to 64
-        /// characters in length. When identifying the current value of an exceeded limit, the units should be contained
-        /// in the key, not the value. For example, rather than {"instanceLimit": "100/request"}, should be returned as,
-        /// {"instanceLimitPerRequest": "100"}, if the client exceeds the number of instances that can be created in a
-        /// single (batch) request.
+        /// Additional structured details about this error. Keys must match /a-z+/ but should ideally be lowerCamelCase.
+        /// Also they must be limited to 64 characters in length. When identifying the current value of an exceeded
+        /// limit, the units should be contained in the key, not the value. For example, rather than {"instanceLimit":
+        /// "100/request"}, should be returned as, {"instanceLimitPerRequest": "100"}, if the client exceeds the number
+        /// of instances that can be created in a single (batch) request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
@@ -6908,9 +7236,9 @@ namespace Google.Apis.Networkconnectivity.v1.Data
 
         /// <summary>
         /// The URL or resource ID of the network in which to reserve the internal range. The network cannot be deleted
-        /// if there are any reserved internal ranges referring to it. Legacy networks are not supported. This can only
-        /// be specified for a global internal address. Example: - URL:
-        /// /compute/v1/projects/{project}/global/networks/{resourceId} - ID: network123
+        /// if there are any reserved internal ranges referring to it. Legacy networks are not supported. For example:
+        /// https://www.googleapis.com/compute/v1/projects/{project}/locations/global/networks/{network}
+        /// projects/{project}/locations/global/networks/{network} {network}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
@@ -7208,6 +7536,28 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// <summary>Policy-based routes to be returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyBasedRoutes")]
         public virtual System.Collections.Generic.IList<PolicyBasedRoute> PolicyBasedRoutes { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for ListRegionalEndpoints.</summary>
+    public class ListRegionalEndpointsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The next pagination token in the List response. It should be used as page_token for the following request.
+        /// An empty value means no more result.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Regional endpoints to be returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionalEndpoints")]
+        public virtual System.Collections.Generic.IList<RegionalEndpoint> RegionalEndpoints { get; set; }
 
         /// <summary>Locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
@@ -7830,6 +8180,10 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gceOperation")]
         public virtual string GceOperation { get; set; }
 
+        /// <summary>Immutable. An immutable identifier for the producer instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("producerInstanceId")]
+        public virtual string ProducerInstanceId { get; set; }
+
         /// <summary>The PSC connection id of the PSC forwarding rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pscConnectionId")]
         public virtual string PscConnectionId { get; set; }
@@ -7843,6 +8197,152 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// <summary>State of the PSC Connection</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The RegionalEndpoint resource.</summary>
+    public class RegionalEndpoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The access type of this regional endpoint. This field is reflected in the PSC Forwarding Rule
+        /// configuration to enable global access.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessType")]
+        public virtual string AccessType { get; set; }
+
+        /// <summary>
+        /// Optional. The IP Address of the Regional Endpoint. When no address is provided, an IP from the subnetwork is
+        /// allocated. Use one of the following formats: * IPv4 address as in `10.0.0.1` * Address resource URI as in
+        /// `projects/{project}/regions/{region}/addresses/{address_name}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("address")]
+        public virtual string Address { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Time when the RegionalEndpoint was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. A description of this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Output only. The literal IP address of the PSC Forwarding Rule created on behalf of the customer. This field
+        /// is deprecated. Use address instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
+        public virtual string IpAddress { get; set; }
+
+        /// <summary>User-defined labels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Output only. The name of a RegionalEndpoint. Format:
+        /// `projects/{project}/locations/{location}/regionalEndpoints/{regional_endpoint}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The name of the VPC network for this private regional endpoint. Format:
+        /// `projects/{project}/global/networks/{network}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
+
+        /// <summary>
+        /// Output only. The resource reference of the PSC Forwarding Rule created on behalf of the customer. Format:
+        /// `//compute.googleapis.com/projects/{project}/regions/{region}/forwardingRules/{forwarding_rule_name}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscForwardingRule")]
+        public virtual string PscForwardingRule { get; set; }
+
+        /// <summary>
+        /// The name of the subnetwork from which the IP address will be allocated. Format:
+        /// `projects/{project}/regions/{region}/subnetworks/{subnetwork}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
+        public virtual string Subnetwork { get; set; }
+
+        /// <summary>
+        /// Required. The service endpoint this private regional endpoint connects to. Format:
+        /// `{apiname}.{region}.p.rep.googleapis.com` Example: "cloudkms.us-central1.p.rep.googleapis.com".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetGoogleApi")]
+        public virtual string TargetGoogleApi { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Time when the RegionalEndpoint was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -707,6 +707,14 @@ namespace Google.Apis.Dataform.v1beta1
                         public virtual string Filter { get; set; }
 
                         /// <summary>
+                        /// Optional. This field only supports ordering by `name` and `create_time`. If unspecified, the
+                        /// server will choose the ordering. If specified, the default order is ascending for the `name`
+                        /// field.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
+
+                        /// <summary>
                         /// Optional. Maximum number of compilation results to return. The server may return fewer items
                         /// than requested. If unspecified, the server will pick an appropriate default.
                         /// </summary>
@@ -745,6 +753,14 @@ namespace Google.Apis.Dataform.v1beta1
                             RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -4616,6 +4632,13 @@ namespace Google.Apis.Dataform.v1beta1.Data
     /// <summary>Represents a workflow action that will run against BigQuery.</summary>
     public class BigQueryAction : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. The ID of the BigQuery job that executed the SQL in sql_script. Only set once the job has
+        /// started to run.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
+        public virtual string JobId { get; set; }
+
         /// <summary>Output only. The generated BigQuery SQL script that will be executed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sqlScript")]
         public virtual string SqlScript { get; set; }
@@ -4727,6 +4750,9 @@ namespace Google.Apis.Dataform.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultLocation")]
         public virtual string DefaultLocation { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultNotebookRuntimeOptions")]
+        public virtual NotebookRuntimeOptions DefaultNotebookRuntimeOptions { get; set; }
 
         /// <summary>Optional. The default schema (BigQuery dataset ID).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultSchema")]
@@ -5004,6 +5030,10 @@ namespace Google.Apis.Dataform.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filePath")]
         public virtual string FilePath { get; set; }
+
+        /// <summary>The notebook executed by this action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notebook")]
+        public virtual Notebook Notebook { get; set; }
 
         /// <summary>The database operations executed by this action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
@@ -5687,6 +5717,56 @@ namespace Google.Apis.Dataform.v1beta1.Data
     /// <summary>`MoveFile` response message.</summary>
     public class MoveFileResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class Notebook : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The contents of the notebook.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contents")]
+        public virtual string Contents { get; set; }
+
+        /// <summary>A list of actions that this action depends on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dependencyTargets")]
+        public virtual System.Collections.Generic.IList<Target> DependencyTargets { get; set; }
+
+        /// <summary>Whether this action is disabled (i.e. should not be run).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual System.Nullable<bool> Disabled { get; set; }
+
+        /// <summary>Arbitrary, user-defined tags on this action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IList<string> Tags { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a workflow action that will run against a Notebook runtime.</summary>
+    public class NotebookAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The code contents of a Notebook to be run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contents")]
+        public virtual string Contents { get; set; }
+
+        /// <summary>
+        /// Output only. The ID of the Vertex job that executed the notebook in contents and also the ID used for the
+        /// outputs created in GCS buckets. Only set once the job has started to run.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
+        public virtual string JobId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class NotebookRuntimeOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The GCS location to upload the result to. Format: `gs://bucket-name`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsOutputBucket")]
+        public virtual string GcsOutputBucket { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6697,6 +6777,10 @@ namespace Google.Apis.Dataform.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invocationTiming")]
         public virtual Interval InvocationTiming { get; set; }
+
+        /// <summary>Output only. The workflow action's notebook action details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notebookAction")]
+        public virtual NotebookAction NotebookAction { get; set; }
 
         /// <summary>Output only. This action's current state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]

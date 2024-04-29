@@ -763,6 +763,14 @@ namespace Google.Apis.ServiceControl.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, object> Claims { get; set; }
 
         /// <summary>
+        /// Identifies the client credential id used for authentication. credential_id is in the format of
+        /// AUTH_METHOD:IDENTIFIER, e.g. "serviceaccount:XXXXX, apikey:XXXXX" where the format of the IDENTIFIER can
+        /// vary for different AUTH_METHODs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("credentialId")]
+        public virtual string CredentialId { get; set; }
+
+        /// <summary>
         /// The authorized presenter of the credential. Reflects the optional Authorized Presenter (`azp`) claim within
         /// a JWT or the OAuth client id. For example, a Google Cloud Platform client id looks as follows:
         /// "123456789012.apps.googleusercontent.com".

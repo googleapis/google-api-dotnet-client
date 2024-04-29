@@ -14613,7 +14613,11 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>
         /// Store all table and column profiles in an existing table or a new table in an existing dataset. Each
-        /// re-generation will result in a new row in BigQuery.
+        /// re-generation will result in new rows in BigQuery. Data is inserted using [streaming
+        /// insert](https://cloud.google.com/blog/products/bigquery/life-of-a-bigquery-streaming-insert) and so data may
+        /// be in the buffer for a period of time after the profile has finished. The Pub/Sub notification is sent
+        /// before the streaming buffer is guaranteed to be written, so data may not be instantly visible to queries by
+        /// the time your topic receives the Pub/Sub notification.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profileTable")]
         public virtual GooglePrivacyDlpV2BigQueryTable ProfileTable { get; set; }
@@ -17506,6 +17510,12 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>Statistics of how many instances of each info type were found during inspect job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infoTypeStats")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InfoTypeStats> InfoTypeStats { get; set; }
+
+        /// <summary>
+        /// Number of rows scanned post sampling and time filtering (Applicable for row based stores such as BigQuery).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numRowsProcessed")]
+        public virtual System.Nullable<long> NumRowsProcessed { get; set; }
 
         /// <summary>Total size in bytes that were processed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processedBytes")]

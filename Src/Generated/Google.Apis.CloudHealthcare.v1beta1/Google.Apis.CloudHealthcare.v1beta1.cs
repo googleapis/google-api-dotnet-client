@@ -11192,7 +11192,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// Output only. Identifier. Resource name of the FHIR store, of the form
-                    /// `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+                    /// `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.CloudHealthcare.v1beta1.Data.FhirStore body, string name)
                     {
@@ -11212,7 +11212,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1
 
                         /// <summary>
                         /// Output only. Identifier. Resource name of the FHIR store, of the form
-                        /// `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+                        /// `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -16058,8 +16058,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual System.Collections.Generic.IList<string> CascadeOrigins { get; set; }
 
         /// <summary>
-        /// The resource name of this consent resource. Format:
-        /// `projects/{projectId}/locations/{locationId}/datasets/{datasetId}/fhirStores/{fhirStoreId}/fhir/{resourceType}/{id}`.
+        /// The resource name of this consent resource, in the format:
+        /// `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{resource_id}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consentResource")]
         public virtual string ConsentResource { get; set; }
@@ -16294,34 +16294,34 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         }
 
         /// <summary>
-        /// Restricts messages exported to those matching a filter, only applicable to PubsubDestination. The following
-        /// syntax is available: * A string field value can be written as text inside quotation marks, for example
-        /// `"query text"`. The only valid relational operation for text fields is equality (`=`), where text is
-        /// searched within the field, rather than having the field be equal to the text. For example, `"Comment =
-        /// great"` returns messages with `great` in the comment field. * A number field value can be written as an
-        /// integer, a decimal, or an exponential. The valid relational operators for number fields are the equality
-        /// operator (`=`), along with the less than/greater than operators (`&amp;lt;`, `&amp;lt;=`, `&amp;gt;`,
-        /// `&amp;gt;=`). Note that there is no inequality (`!=`) operator. You can prepend the `NOT` operator to an
-        /// expression to negate it. * A date field value must be written in the `yyyy-mm-dd` format. Fields with date
-        /// and time use the RFC3339 time format. Leading zeros are required for one-digit months and days. The valid
-        /// relational operators for date fields are the equality operator (`=`) , along with the less than/greater than
-        /// operators (`&amp;lt;`, `&amp;lt;=`, `&amp;gt;`, `&amp;gt;=`). Note that there is no inequality (`!=`)
-        /// operator. You can prepend the `NOT` operator to an expression to negate it. * Multiple field query
-        /// expressions can be combined in one query by adding `AND` or `OR` operators between the expressions. If a
-        /// boolean operator appears within a quoted string, it is not treated as special, and is just another part of
-        /// the character string to be matched. You can prepend the `NOT` operator to an expression to negate it. The
-        /// following fields and functions are available for filtering: * `message_type`, from the MSH-9.1 field. For
-        /// example, `NOT message_type = "ADT"`. * `send_date` or `sendDate`, the YYYY-MM-DD date the message was sent
-        /// in the dataset's time_zone, from the MSH-7 segment. For example, `send_date &amp;lt; "2017-01-02"`. *
-        /// `send_time`, the timestamp when the message was sent, using the RFC3339 time format for comparisons, from
-        /// the MSH-7 segment. For example, `send_time &amp;lt; "2017-01-02T00:00:00-05:00"`. * `create_time`, the
-        /// timestamp when the message was created in the HL7v2 store. Use the RFC3339 time format for comparisons. For
-        /// example, `create_time &amp;lt; "2017-01-02T00:00:00-05:00"`. * `send_facility`, the care center that the
-        /// message came from, from the MSH-4 segment. For example, `send_facility = "ABC"`. Note: The filter will be
-        /// applied to every message in the HL7v2 store whose `send_time` lies in the range defined by the `start_time`
-        /// and the `end_time`. Even if the filter only matches a small set of messages, the export operation can still
-        /// take a long time to finish when a lot of messages are between the specified `start_time` and `end_time`
-        /// range.
+        /// Restricts messages exported to those matching a filter, only applicable to PubsubDestination and
+        /// GcsDestination. The following syntax is available: * A string field value can be written as text inside
+        /// quotation marks, for example `"query text"`. The only valid relational operation for text fields is equality
+        /// (`=`), where text is searched within the field, rather than having the field be equal to the text. For
+        /// example, `"Comment = great"` returns messages with `great` in the comment field. * A number field value can
+        /// be written as an integer, a decimal, or an exponential. The valid relational operators for number fields are
+        /// the equality operator (`=`), along with the less than/greater than operators (`&amp;lt;`, `&amp;lt;=`,
+        /// `&amp;gt;`, `&amp;gt;=`). Note that there is no inequality (`!=`) operator. You can prepend the `NOT`
+        /// operator to an expression to negate it. * A date field value must be written in the `yyyy-mm-dd` format.
+        /// Fields with date and time use the RFC3339 time format. Leading zeros are required for one-digit months and
+        /// days. The valid relational operators for date fields are the equality operator (`=`) , along with the less
+        /// than/greater than operators (`&amp;lt;`, `&amp;lt;=`, `&amp;gt;`, `&amp;gt;=`). Note that there is no
+        /// inequality (`!=`) operator. You can prepend the `NOT` operator to an expression to negate it. * Multiple
+        /// field query expressions can be combined in one query by adding `AND` or `OR` operators between the
+        /// expressions. If a boolean operator appears within a quoted string, it is not treated as special, and is just
+        /// another part of the character string to be matched. You can prepend the `NOT` operator to an expression to
+        /// negate it. The following fields and functions are available for filtering: * `message_type`, from the
+        /// MSH-9.1 field. For example, `NOT message_type = "ADT"`. * `send_date` or `sendDate`, the YYYY-MM-DD date the
+        /// message was sent in the dataset's time_zone, from the MSH-7 segment. For example, `send_date &amp;lt;
+        /// "2017-01-02"`. * `send_time`, the timestamp when the message was sent, using the RFC3339 time format for
+        /// comparisons, from the MSH-7 segment. For example, `send_time &amp;lt; "2017-01-02T00:00:00-05:00"`. *
+        /// `create_time`, the timestamp when the message was created in the HL7v2 store. Use the RFC3339 time format
+        /// for comparisons. For example, `create_time &amp;lt; "2017-01-02T00:00:00-05:00"`. * `send_facility`, the
+        /// care center that the message came from, from the MSH-4 segment. For example, `send_facility = "ABC"`. Note:
+        /// The filter will be applied to every message in the HL7v2 store whose `send_time` lies in the range defined
+        /// by the `start_time` and the `end_time`. Even if the filter only matches a small set of messages, the export
+        /// operation can still take a long time to finish when a lot of messages are between the specified `start_time`
+        /// and `end_time` range.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
@@ -16697,7 +16697,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
 
         /// <summary>
         /// Output only. Identifier. Resource name of the FHIR store, of the form
-        /// `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+        /// `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

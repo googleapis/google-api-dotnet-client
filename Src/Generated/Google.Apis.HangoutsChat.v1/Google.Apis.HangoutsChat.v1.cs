@@ -36,6 +36,7 @@ namespace Google.Apis.HangoutsChat.v1
         {
             Media = new MediaResource(this);
             Spaces = new SpacesResource(this);
+            Users = new UsersResource(this);
             BaseUri = GetEffectiveUri(BaseUriOverride, "https://chat.googleapis.com/");
             BatchUri = GetEffectiveUri(null, "https://chat.googleapis.com/batch");
         }
@@ -112,6 +113,12 @@ namespace Google.Apis.HangoutsChat.v1
 
             /// <summary>View chat and spaces in Google Chat</summary>
             public static string ChatSpacesReadonly = "https://www.googleapis.com/auth/chat.spaces.readonly";
+
+            /// <summary>View and modify last read time for Google Chat conversations</summary>
+            public static string ChatUsersReadstate = "https://www.googleapis.com/auth/chat.users.readstate";
+
+            /// <summary>View last read time for Google Chat conversations</summary>
+            public static string ChatUsersReadstateReadonly = "https://www.googleapis.com/auth/chat.users.readstate.readonly";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Google Chat API.</summary>
@@ -168,6 +175,12 @@ namespace Google.Apis.HangoutsChat.v1
 
             /// <summary>View chat and spaces in Google Chat</summary>
             public const string ChatSpacesReadonly = "https://www.googleapis.com/auth/chat.spaces.readonly";
+
+            /// <summary>View and modify last read time for Google Chat conversations</summary>
+            public const string ChatUsersReadstate = "https://www.googleapis.com/auth/chat.users.readstate";
+
+            /// <summary>View last read time for Google Chat conversations</summary>
+            public const string ChatUsersReadstateReadonly = "https://www.googleapis.com/auth/chat.users.readstate.readonly";
         }
 
         /// <summary>Gets the Media resource.</summary>
@@ -175,6 +188,9 @@ namespace Google.Apis.HangoutsChat.v1
 
         /// <summary>Gets the Spaces resource.</summary>
         public virtual SpacesResource Spaces { get; }
+
+        /// <summary>Gets the Users resource.</summary>
+        public virtual UsersResource Users { get; }
     }
 
     /// <summary>A base abstract class for HangoutsChat requests.</summary>
@@ -1612,7 +1628,8 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// Creates a message in a Google Chat space. For an example, see [Send a
+            /// Creates a message in a Google Chat space. The maximum message size, including text and cards, is 32,000
+            /// bytes. For an example, see [Send a
             /// message](https://developers.google.com/workspace/chat/create-messages). Calling this method requires
             /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize) and supports the
             /// following authentication types: - For text messages, user authentication or app authentication are
@@ -1629,7 +1646,8 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// Creates a message in a Google Chat space. For an example, see [Send a
+            /// Creates a message in a Google Chat space. The maximum message size, including text and cards, is 32,000
+            /// bytes. For an example, see [Send a
             /// message](https://developers.google.com/workspace/chat/create-messages). Calling this method requires
             /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize) and supports the
             /// following authentication types: - For text messages, user authentication or app authentication are
@@ -3168,6 +3186,274 @@ namespace Google.Apis.HangoutsChat.v1
             }
         }
     }
+
+    /// <summary>The "users" collection of methods.</summary>
+    public class UsersResource
+    {
+        private const string Resource = "users";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public UsersResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            Spaces = new SpacesResource(service);
+        }
+
+        /// <summary>Gets the Spaces resource.</summary>
+        public virtual SpacesResource Spaces { get; }
+
+        /// <summary>The "spaces" collection of methods.</summary>
+        public class SpacesResource
+        {
+            private const string Resource = "spaces";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public SpacesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                Threads = new ThreadsResource(service);
+            }
+
+            /// <summary>Gets the Threads resource.</summary>
+            public virtual ThreadsResource Threads { get; }
+
+            /// <summary>The "threads" collection of methods.</summary>
+            public class ThreadsResource
+            {
+                private const string Resource = "threads";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ThreadsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Returns details about a user's read state within a thread, used to identify read and unread
+                /// messages. Requires [user
+                /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+                /// </summary>
+                /// <param name="name">
+                /// Required. Resource name of the thread read state to retrieve. Only supports getting read state for
+                /// the calling user. To refer to the calling user, set one of the following: - The `me` alias. For
+                /// example, `users/me/spaces/{space}/threads/{thread}/threadReadState`. - Their Workspace email
+                /// address. For example, `users/user@example.com/spaces/{space}/threads/{thread}/threadReadState`. -
+                /// Their user id. For example, `users/123456789/spaces/{space}/threads/{thread}/threadReadState`.
+                /// Format: users/{user}/spaces/{space}/threads/{thread}/threadReadState
+                /// </param>
+                public virtual GetThreadReadStateRequest GetThreadReadState(string name)
+                {
+                    return new GetThreadReadStateRequest(this.service, name);
+                }
+
+                /// <summary>
+                /// Returns details about a user's read state within a thread, used to identify read and unread
+                /// messages. Requires [user
+                /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+                /// </summary>
+                public class GetThreadReadStateRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.ThreadReadState>
+                {
+                    /// <summary>Constructs a new GetThreadReadState request.</summary>
+                    public GetThreadReadStateRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name of the thread read state to retrieve. Only supports getting read state
+                    /// for the calling user. To refer to the calling user, set one of the following: - The `me` alias.
+                    /// For example, `users/me/spaces/{space}/threads/{thread}/threadReadState`. - Their Workspace email
+                    /// address. For example, `users/user@example.com/spaces/{space}/threads/{thread}/threadReadState`.
+                    /// - Their user id. For example, `users/123456789/spaces/{space}/threads/{thread}/threadReadState`.
+                    /// Format: users/{user}/spaces/{space}/threads/{thread}/threadReadState
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "getThreadReadState";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes GetThreadReadState parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^users/[^/]+/spaces/[^/]+/threads/[^/]+/threadReadState$",
+                        });
+                    }
+                }
+            }
+
+            /// <summary>
+            /// Returns details about a user's read state within a space, used to identify read and unread messages.
+            /// Requires [user
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+            /// </summary>
+            /// <param name="name">
+            /// Required. Resource name of the space read state to retrieve. Only supports getting read state for the
+            /// calling user. To refer to the calling user, set one of the following: - The `me` alias. For example,
+            /// `users/me/spaces/{space}/spaceReadState`. - Their Workspace email address. For example,
+            /// `users/user@example.com/spaces/{space}/spaceReadState`. - Their user id. For example,
+            /// `users/123456789/spaces/{space}/spaceReadState`. Format: users/{user}/spaces/{space}/spaceReadState
+            /// </param>
+            public virtual GetSpaceReadStateRequest GetSpaceReadState(string name)
+            {
+                return new GetSpaceReadStateRequest(this.service, name);
+            }
+
+            /// <summary>
+            /// Returns details about a user's read state within a space, used to identify read and unread messages.
+            /// Requires [user
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+            /// </summary>
+            public class GetSpaceReadStateRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.SpaceReadState>
+            {
+                /// <summary>Constructs a new GetSpaceReadState request.</summary>
+                public GetSpaceReadStateRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Resource name of the space read state to retrieve. Only supports getting read state for
+                /// the calling user. To refer to the calling user, set one of the following: - The `me` alias. For
+                /// example, `users/me/spaces/{space}/spaceReadState`. - Their Workspace email address. For example,
+                /// `users/user@example.com/spaces/{space}/spaceReadState`. - Their user id. For example,
+                /// `users/123456789/spaces/{space}/spaceReadState`. Format: users/{user}/spaces/{space}/spaceReadState
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getSpaceReadState";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes GetSpaceReadState parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^users/[^/]+/spaces/[^/]+/spaceReadState$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Updates a user's read state within a space, used to identify read and unread messages. Requires [user
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Resource name of the space read state. Format: `users/{user}/spaces/{space}/spaceReadState`
+            /// </param>
+            public virtual UpdateSpaceReadStateRequest UpdateSpaceReadState(Google.Apis.HangoutsChat.v1.Data.SpaceReadState body, string name)
+            {
+                return new UpdateSpaceReadStateRequest(this.service, body, name);
+            }
+
+            /// <summary>
+            /// Updates a user's read state within a space, used to identify read and unread messages. Requires [user
+            /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
+            /// </summary>
+            public class UpdateSpaceReadStateRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.SpaceReadState>
+            {
+                /// <summary>Constructs a new UpdateSpaceReadState request.</summary>
+                public UpdateSpaceReadStateRequest(Google.Apis.Services.IClientService service, Google.Apis.HangoutsChat.v1.Data.SpaceReadState body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Resource name of the space read state. Format: `users/{user}/spaces/{space}/spaceReadState`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Required. The field paths to update. Currently supported field paths: - `last_read_time` When the
+                /// `last_read_time` is before the latest message create time, the space appears as unread in the UI. To
+                /// mark the space as read, set `last_read_time` to any value later (larger) than the latest message
+                /// create time. The `last_read_time` is coerced to match the latest message create time. Note that the
+                /// space read state only affects the read state of messages that are visible in the space's top-level
+                /// conversation. Replies in threads are unaffected by this timestamp, and instead rely on the thread
+                /// read state.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.HangoutsChat.v1.Data.SpaceReadState Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "updateSpaceReadState";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes UpdateSpaceReadState parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^users/[^/]+/spaces/[^/]+/spaceReadState$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+    }
 }
 namespace Google.Apis.HangoutsChat.v1.Data
 {
@@ -3669,7 +3955,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// <summary>Represents a custom emoji.</summary>
     public class CustomEmoji : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Unique key for the custom emoji resource.</summary>
+        /// <summary>Output only. Unique key for the custom emoji resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
 
@@ -3797,8 +4083,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         }
 
         /// <summary>
-        /// For `CARD_CLICKED` interaction events, whether the user interacted with a
-        /// [dialog](https://developers.google.com/workspace/chat/dialogs).
+        /// For `CARD_CLICKED` and `MESSAGE` interaction events, whether the user is interacting with or about to
+        /// interact with a [dialog](https://developers.google.com/workspace/chat/dialogs).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isDialogEvent")]
         public virtual System.Nullable<bool> IsDialogEvent { get; set; }
@@ -6936,6 +7222,60 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A user's read state within a space, used to identify read and unread messages.</summary>
+    public class SpaceReadState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _lastReadTimeRaw;
+
+        private object _lastReadTime;
+
+        /// <summary>
+        /// Optional. The time when the user's space read state was updated. Usually this corresponds with either the
+        /// timestamp of the last read message, or a timestamp specified by the user to mark the last read position in a
+        /// space.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastReadTime")]
+        public virtual string LastReadTimeRaw
+        {
+            get => _lastReadTimeRaw;
+            set
+            {
+                _lastReadTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastReadTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastReadTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastReadTimeDateTimeOffset instead.")]
+        public virtual object LastReadTime
+        {
+            get => _lastReadTime;
+            set
+            {
+                _lastReadTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastReadTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="LastReadTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastReadTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastReadTimeRaw);
+            set => LastReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Resource name of the space read state. Format: `users/{user}/spaces/{space}/spaceReadState`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Event payload for an updated space. Event type: `google.workspace.chat.space.v1.updated`</summary>
     public class SpaceUpdatedEventData : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7041,6 +7381,60 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threadKey")]
         public virtual string ThreadKey { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A user's read state within a thread, used to identify read and unread messages.</summary>
+    public class ThreadReadState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _lastReadTimeRaw;
+
+        private object _lastReadTime;
+
+        /// <summary>
+        /// The time when the user's thread read state was updated. Usually this corresponds with the timestamp of the
+        /// last read message in a thread.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastReadTime")]
+        public virtual string LastReadTimeRaw
+        {
+            get => _lastReadTimeRaw;
+            set
+            {
+                _lastReadTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastReadTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastReadTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastReadTimeDateTimeOffset instead.")]
+        public virtual object LastReadTime
+        {
+            get => _lastReadTime;
+            set
+            {
+                _lastReadTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastReadTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="LastReadTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastReadTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastReadTimeRaw);
+            set => LastReadTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Resource name of the thread read state. Format:
+        /// `users/{user}/spaces/{space}/threads/{thread}/threadReadState`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
