@@ -1659,6 +1659,13 @@ namespace Google.Apis.CloudIAP.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gcipSettings")]
         public virtual GcipSettings GcipSettings { get; set; }
 
+        /// <summary>
+        /// Optional. Identity sources that IAP can use to authenticate the end user. Only one identity source can be
+        /// configured.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identitySources")]
+        public virtual System.Collections.Generic.IList<string> IdentitySources { get; set; }
+
         /// <summary>Settings to configure IAP's OAuth behavior.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oauthSettings")]
         public virtual OAuthSettings OauthSettings { get; set; }
@@ -1672,6 +1679,13 @@ namespace Google.Apis.CloudIAP.v1.Data
         /// <summary>Settings to configure reauthentication policies in IAP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reauthSettings")]
         public virtual ReauthSettings ReauthSettings { get; set; }
+
+        /// <summary>
+        /// Optional. Settings to configure the workforce identity federation, including workforce pools and OAuth 2.0
+        /// settings.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workforceIdentitySettings")]
+        public virtual WorkforceIdentitySettings WorkforceIdentitySettings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2083,6 +2097,28 @@ namespace Google.Apis.CloudIAP.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The OAuth 2.0 Settings</summary>
+    public class OAuth2 : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The OAuth 2.0 client ID registered in the workforce identity federation OAuth 2.0 Server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
+        public virtual string ClientId { get; set; }
+
+        /// <summary>Input only. The OAuth 2.0 client secret created while registering the client ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientSecret")]
+        public virtual string ClientSecret { get; set; }
+
+        /// <summary>
+        /// Output only. SHA256 hash value for the client secret. This field is returned by IAP when the settings are
+        /// retrieved.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientSecretSha256")]
+        public virtual string ClientSecretSha256 { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for OAuth login&amp;consent flow behavior as well as for OAuth Credentials.</summary>
     public class OAuthSettings : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2408,6 +2444,26 @@ namespace Google.Apis.CloudIAP.v1.Data
     /// </summary>
     public class ValidateIapAttributeExpressionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// WorkforceIdentitySettings allows customers to configure workforce pools and OAuth 2.0 settings to gate their
+    /// applications using a third-party IdP with access control.
+    /// </summary>
+    public class WorkforceIdentitySettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// OAuth 2.0 settings for IAP to perform OIDC flow with workforce identity federation services.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauth2")]
+        public virtual OAuth2 Oauth2 { get; set; }
+
+        /// <summary>The workforce pool resources. Only one workforce pool is accepted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workforcePools")]
+        public virtual System.Collections.Generic.IList<string> WorkforcePools { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

@@ -6181,9 +6181,9 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ServiceKmsKeyName { get; set; }
 
         /// <summary>
-        /// The list of service options to enable. This field should be used for service related experiments only. These
-        /// experiments, when graduating to GA, should be replaced by dedicated fields or become default (i.e. always
-        /// on).
+        /// Optional. The list of service options to enable. This field should be used for service related experiments
+        /// only. These experiments, when graduating to GA, should be replaced by dedicated fields or become default
+        /// (i.e. always on).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceOptions")]
         public virtual System.Collections.Generic.IList<string> ServiceOptions { get; set; }
@@ -6954,7 +6954,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
             set => CurrentStateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>The environment for the job.</summary>
+        /// <summary>Optional. The environment for the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
         public virtual Environment Environment { get; set; }
 
@@ -6993,10 +6993,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string Location { get; set; }
 
         /// <summary>
-        /// The user-specified Dataflow job name. Only one active job with a given name can exist in a project within
-        /// one region at any given time. Jobs in different regions can have the same name. If a caller attempts to
-        /// create a job with the same name as an active job that already exists, the attempt returns the existing job.
-        /// The name must match the regular expression `[a-z]([-a-z0-9]{0,1022}[a-z0-9])?`
+        /// Optional. The user-specified Dataflow job name. Only one active job with a given name can exist in a project
+        /// within one region at any given time. Jobs in different regions can have the same name. If a caller attempts
+        /// to create a job with the same name as an active job that already exists, the attempt returns the existing
+        /// job. The name must match the regular expression `[a-z]([-a-z0-9]{0,1022}[a-z0-9])?`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -7131,7 +7131,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("transformNameMapping")]
         public virtual System.Collections.Generic.IDictionary<string, string> TransformNameMapping { get; set; }
 
-        /// <summary>The type of Dataflow job.</summary>
+        /// <summary>Optional. The type of Dataflow job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -9976,6 +9976,12 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxWorkItemCommitBytes")]
         public virtual System.Nullable<long> MaxWorkItemCommitBytes { get; set; }
 
+        /// <summary>
+        /// Operational limits for the streaming job. Can be used by the worker to validate outputs sent to the backend.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationalLimits")]
+        public virtual StreamingOperationalLimits OperationalLimits { get; set; }
+
         /// <summary>Set of computation configuration information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("streamingComputationConfigs")]
         public virtual System.Collections.Generic.IList<StreamingComputationConfig> StreamingComputationConfigs { get; set; }
@@ -9997,6 +10003,45 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("windmillServicePort")]
         public virtual System.Nullable<long> WindmillServicePort { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Operational limits imposed on streaming jobs by the backend.</summary>
+    public class StreamingOperationalLimits : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The maximum size for an element in bag state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxBagElementBytes")]
+        public virtual System.Nullable<long> MaxBagElementBytes { get; set; }
+
+        /// <summary>The maximum size for an element in global data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxGlobalDataBytes")]
+        public virtual System.Nullable<long> MaxGlobalDataBytes { get; set; }
+
+        /// <summary>The maximum size allowed for a key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxKeyBytes")]
+        public virtual System.Nullable<long> MaxKeyBytes { get; set; }
+
+        /// <summary>The maximum size for a single output element.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxProductionOutputBytes")]
+        public virtual System.Nullable<long> MaxProductionOutputBytes { get; set; }
+
+        /// <summary>The maximum size for an element in sorted list state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxSortedListElementBytes")]
+        public virtual System.Nullable<long> MaxSortedListElementBytes { get; set; }
+
+        /// <summary>The maximum size for a source state update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxSourceStateBytes")]
+        public virtual System.Nullable<long> MaxSourceStateBytes { get; set; }
+
+        /// <summary>The maximum size for a state tag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxTagBytes")]
+        public virtual System.Nullable<long> MaxTagBytes { get; set; }
+
+        /// <summary>The maximum size for a value state field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxValueBytes")]
+        public virtual System.Nullable<long> MaxValueBytes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

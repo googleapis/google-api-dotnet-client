@@ -1504,6 +1504,94 @@ namespace Google.Apis.CloudSupport.v2beta
                 });
             }
         }
+
+        /// <summary>Show items in the feed of this case, including case emails, attachments, and comments.</summary>
+        /// <param name="parent">Required. The resource name of the case for which feed items should be listed.</param>
+        public virtual ShowFeedRequest ShowFeed(string parent)
+        {
+            return new ShowFeedRequest(this.service, parent);
+        }
+
+        /// <summary>Show items in the feed of this case, including case emails, attachments, and comments.</summary>
+        public class ShowFeedRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2beta.Data.ShowFeedResponse>
+        {
+            /// <summary>Constructs a new ShowFeed request.</summary>
+            public ShowFeedRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+            {
+                Parent = parent;
+                InitParameters();
+            }
+
+            /// <summary>Required. The resource name of the case for which feed items should be listed.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Parent { get; private set; }
+
+            /// <summary>
+            /// Optional. Field to order feed items by, followed by `asc` or `desc` postfix. The only valid field is
+            /// `creation_time`. This list is case-insensitive, default sorting order is ascending, and the redundant
+            /// space characters are insignificant. Example: `creation_time desc`
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>Optional. The maximum number of feed items fetched with each request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>
+            /// Optional. A token identifying the page of results to return. If unspecified, it retrieves the first
+            /// page.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "showFeed";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v2beta/{+parent}:showFeed";
+
+            /// <summary>Initializes ShowFeed parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+/[^/]+/cases/[^/]+$",
+                });
+                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "orderBy",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
     }
 
     /// <summary>The "media" collection of methods.</summary>
@@ -2550,6 +2638,79 @@ namespace Google.Apis.CloudSupport.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>An email associated with a support case.</summary>
+    public class EmailMessage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The user or Google Support agent that created this email message. This is inferred from the
+        /// headers on the email message.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actor")]
+        public virtual Actor Actor { get; set; }
+
+        /// <summary>
+        /// Output only. The full email message body. A best-effort attempt is made to remove extraneous reply threads.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bodyContent")]
+        public virtual TextContent BodyContent { get; set; }
+
+        /// <summary>Output only. Email addresses CCed on the email.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ccEmailAddresses")]
+        public virtual System.Collections.Generic.IList<string> CcEmailAddresses { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Time when this email message object was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Identifier. Resource name for the email message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Email addresses the email was sent to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recipientEmailAddresses")]
+        public virtual System.Collections.Generic.IList<string> RecipientEmailAddresses { get; set; }
+
+        /// <summary>Output only. Subject of the email.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subject")]
+        public virtual string Subject { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request message for the EscalateCase endpoint.</summary>
     public class EscalateCaseRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2574,6 +2735,66 @@ namespace Google.Apis.CloudSupport.v2beta.Data
         /// <summary>Required. The reason why the Case is being escalated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A feed item associated with a support case.</summary>
+    public class FeedItem : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. An attachment attached to the case.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attachment")]
+        public virtual Attachment Attachment { get; set; }
+
+        /// <summary>Output only. A comment added to the case.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("comment")]
+        public virtual Comment Comment { get; set; }
+
+        /// <summary>Output only. A deleted attachment that used to be associated with the support case.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deletedAttachment")]
+        public virtual Attachment DeletedAttachment { get; set; }
+
+        /// <summary>Output only. An email message received in reply to the case.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("emailMessage")]
+        public virtual EmailMessage EmailMessage { get; set; }
+
+        private string _eventTimeRaw;
+
+        private object _eventTime;
+
+        /// <summary>Output only. Time corresponding to the event of this item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
+        public virtual string EventTimeRaw
+        {
+            get => _eventTimeRaw;
+            set
+            {
+                _eventTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _eventTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EventTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EventTimeDateTimeOffset instead.")]
+        public virtual object EventTime
+        {
+            get => _eventTime;
+            set
+            {
+                _eventTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _eventTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EventTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EventTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EventTimeRaw);
+            set => EventTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2821,6 +3042,35 @@ namespace Google.Apis.CloudSupport.v2beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for the ShowFeed endpoint.</summary>
+    public class ShowFeedResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of feed items associated with the given Case.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("feedItems")]
+        public virtual System.Collections.Generic.IList<FeedItem> FeedItems { get; set; }
+
+        /// <summary>
+        /// A token to retrieve the next page of results. This should be set in the `page_token` field of subsequent
+        /// `ShowFeedRequests`. If unspecified, there are no more results to retrieve.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Stores text attached to a support object.</summary>
+    public class TextContent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Content in this field should be rendered and interpreted as-is.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("plainText")]
+        public virtual string PlainText { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

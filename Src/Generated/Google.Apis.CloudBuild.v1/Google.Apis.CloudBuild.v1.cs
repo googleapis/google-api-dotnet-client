@@ -6141,6 +6141,10 @@ namespace Google.Apis.CloudBuild.v1.Data
             set => FinishTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Optional. Configuration for git operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gitConfig")]
+        public virtual GitConfig GitConfig { get; set; }
+
         /// <summary>Output only. Unique identifier of the build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -7603,6 +7607,31 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>This config defines the location of a source through Developer Connect.</summary>
+    public class DeveloperConnectConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Directory, relative to the source root, in which to run the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dir")]
+        public virtual string Dir { get; set; }
+
+        /// <summary>
+        /// Required. The Developer Connect Git repository link, formatted as
+        /// `projects/*/locations/*/connections/*/gitRepositoryLink/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gitRepositoryLink")]
+        public virtual string GitRepositoryLink { get; set; }
+
+        /// <summary>
+        /// Required. The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git
+        /// ref.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revision")]
+        public virtual string Revision { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
@@ -7638,6 +7667,17 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// <summary>Collection of file hashes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileHash")]
         public virtual System.Collections.Generic.IList<Hash> FileHash { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>GitConfig is a configuration for git operations.</summary>
+    public class GitConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Configuration for HTTP related git operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("http")]
+        public virtual HttpConfig Http { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8205,6 +8245,20 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extensions")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Extensions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>HttpConfig is a configuration for HTTP related git operations.</summary>
+    public class HttpConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// SecretVersion resource of the HTTP proxy URL. The proxy URL should be in format
+        /// protocol://@]proxyhost[:port].
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proxySecretVersionName")]
+        public virtual string ProxySecretVersionName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9112,6 +9166,10 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectedRepository")]
         public virtual ConnectedRepository ConnectedRepository { get; set; }
+
+        /// <summary>If provided, get the source from this Developer Connect config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("developerConnectConfig")]
+        public virtual DeveloperConnectConfig DeveloperConnectConfig { get; set; }
 
         /// <summary>If provided, get the source from this Git repository.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gitSource")]

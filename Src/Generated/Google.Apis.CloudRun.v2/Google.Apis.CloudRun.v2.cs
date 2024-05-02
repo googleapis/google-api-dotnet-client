@@ -4389,6 +4389,17 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Hardware constraints configuration.</summary>
+    public class GoogleCloudRunV2NodeSelector : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. GPU accelerator type to attach to an instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accelerator")]
+        public virtual string Accelerator { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>RunJob Overrides that contains Execution fields to be overridden.</summary>
     public class GoogleCloudRunV2Overrides : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4711,6 +4722,10 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>The node selector for the revision.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeSelector")]
+        public virtual GoogleCloudRunV2NodeSelector NodeSelector { get; set; }
+
         /// <summary>
         /// Output only. The generation of this Revision currently serving traffic. See comments in `reconciling` for
         /// additional information on reconciliation process in Cloud Run.
@@ -4887,6 +4902,10 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>Optional. Sets the maximum number of requests that each serving instance can receive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxInstanceRequestConcurrency")]
         public virtual System.Nullable<int> MaxInstanceRequestConcurrency { get; set; }
+
+        /// <summary>Optional. The node selector for the revision template.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeSelector")]
+        public virtual GoogleCloudRunV2NodeSelector NodeSelector { get; set; }
 
         /// <summary>
         /// Optional. The unique name for the revision. If this field is omitted, it will be automatically generated
@@ -6327,6 +6346,10 @@ namespace Google.Apis.CloudRun.v2.Data
             set => FinishTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Optional. Configuration for git operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gitConfig")]
+        public virtual GoogleDevtoolsCloudbuildV1GitConfig GitConfig { get; set; }
+
         /// <summary>Output only. Unique identifier of the build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -6791,6 +6814,31 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>This config defines the location of a source through Developer Connect.</summary>
+    public class GoogleDevtoolsCloudbuildV1DeveloperConnectConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Directory, relative to the source root, in which to run the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dir")]
+        public virtual string Dir { get; set; }
+
+        /// <summary>
+        /// Required. The Developer Connect Git repository link, formatted as
+        /// `projects/*/locations/*/connections/*/gitRepositoryLink/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gitRepositoryLink")]
+        public virtual string GitRepositoryLink { get; set; }
+
+        /// <summary>
+        /// Required. The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git
+        /// ref.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revision")]
+        public virtual string Revision { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A fatal problem encountered during the execution of the build.</summary>
     public class GoogleDevtoolsCloudbuildV1FailureInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6815,6 +6863,17 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>Collection of file hashes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileHash")]
         public virtual System.Collections.Generic.IList<GoogleDevtoolsCloudbuildV1Hash> FileHash { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>GitConfig is a configuration for git operations.</summary>
+    public class GoogleDevtoolsCloudbuildV1GitConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Configuration for HTTP related git operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("http")]
+        public virtual GoogleDevtoolsCloudbuildV1HttpConfig Http { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6861,6 +6920,20 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>The hash value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>HttpConfig is a configuration for HTTP related git operations.</summary>
+    public class GoogleDevtoolsCloudbuildV1HttpConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// SecretVersion resource of the HTTP proxy URL. The proxy URL should be in format
+        /// protocol://@]proxyhost[:port].
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proxySecretVersionName")]
+        public virtual string ProxySecretVersionName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7155,6 +7228,10 @@ namespace Google.Apis.CloudRun.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectedRepository")]
         public virtual GoogleDevtoolsCloudbuildV1ConnectedRepository ConnectedRepository { get; set; }
+
+        /// <summary>If provided, get the source from this Developer Connect config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("developerConnectConfig")]
+        public virtual GoogleDevtoolsCloudbuildV1DeveloperConnectConfig DeveloperConnectConfig { get; set; }
 
         /// <summary>If provided, get the source from this Git repository.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gitSource")]

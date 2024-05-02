@@ -373,6 +373,65 @@ namespace Google.Apis.Baremetalsolution.v2
                     }
                 }
 
+                /// <summary>Perform disable hyperthreading operation on a single server.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The `name` field is used to identify the instance. Format:
+                /// projects/{project}/locations/{location}/instances/{instance}
+                /// </param>
+                public virtual DisableHyperthreadingRequest DisableHyperthreading(Google.Apis.Baremetalsolution.v2.Data.DisableHyperthreadingRequest body, string name)
+                {
+                    return new DisableHyperthreadingRequest(this.service, body, name);
+                }
+
+                /// <summary>Perform disable hyperthreading operation on a single server.</summary>
+                public class DisableHyperthreadingRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new DisableHyperthreading request.</summary>
+                    public DisableHyperthreadingRequest(Google.Apis.Services.IClientService service, Google.Apis.Baremetalsolution.v2.Data.DisableHyperthreadingRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The `name` field is used to identify the instance. Format:
+                    /// projects/{project}/locations/{location}/instances/{instance}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Baremetalsolution.v2.Data.DisableHyperthreadingRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "disableHyperthreading";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}:disableHyperthreading";
+
+                    /// <summary>Initializes DisableHyperthreading parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Disable the interactive serial console feature on an instance.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Required. Name of the resource.</param>
@@ -412,6 +471,65 @@ namespace Google.Apis.Baremetalsolution.v2
                     public override string RestPath => "v2/{+name}:disableInteractiveSerialConsole";
 
                     /// <summary>Initializes DisableInteractiveSerialConsole parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Perform enable hyperthreading operation on a single server.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The `name` field is used to identify the instance. Format:
+                /// projects/{project}/locations/{location}/instances/{instance}
+                /// </param>
+                public virtual EnableHyperthreadingRequest EnableHyperthreading(Google.Apis.Baremetalsolution.v2.Data.EnableHyperthreadingRequest body, string name)
+                {
+                    return new EnableHyperthreadingRequest(this.service, body, name);
+                }
+
+                /// <summary>Perform enable hyperthreading operation on a single server.</summary>
+                public class EnableHyperthreadingRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new EnableHyperthreading request.</summary>
+                    public EnableHyperthreadingRequest(Google.Apis.Services.IClientService service, Google.Apis.Baremetalsolution.v2.Data.EnableHyperthreadingRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The `name` field is used to identify the instance. Format:
+                    /// projects/{project}/locations/{location}/instances/{instance}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Baremetalsolution.v2.Data.EnableHyperthreadingRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "enableHyperthreading";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}:enableHyperthreading";
+
+                    /// <summary>Initializes EnableHyperthreading parameter list.</summary>
                     protected override void InitParameters()
                     {
                         base.InitParameters();
@@ -725,6 +843,65 @@ namespace Google.Apis.Baremetalsolution.v2
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Perform reimage operation on a single server.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The `name` field is used to identify the instance. Format:
+                /// projects/{project}/locations/{location}/instances/{instance}
+                /// </param>
+                public virtual ReimageRequest Reimage(Google.Apis.Baremetalsolution.v2.Data.ReimageInstanceRequest body, string name)
+                {
+                    return new ReimageRequest(this.service, body, name);
+                }
+
+                /// <summary>Perform reimage operation on a single server.</summary>
+                public class ReimageRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new Reimage request.</summary>
+                    public ReimageRequest(Google.Apis.Services.IClientService service, Google.Apis.Baremetalsolution.v2.Data.ReimageInstanceRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The `name` field is used to identify the instance. Format:
+                    /// projects/{project}/locations/{location}/instances/{instance}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Baremetalsolution.v2.Data.ReimageInstanceRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "reimage";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}:reimage";
+
+                    /// <summary>Initializes Reimage parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
                         });
                     }
                 }
@@ -3557,6 +3734,13 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message requesting to perform disable hyperthreading operation on a server.</summary>
+    public class DisableHyperthreadingRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message for disabling the interactive serial console on an instance.</summary>
     public class DisableInteractiveSerialConsoleRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3577,6 +3761,13 @@ namespace Google.Apis.Baremetalsolution.v2.Data
     /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message requesting to perform enable hyperthreading operation on a server.</summary>
+    public class EnableHyperthreadingRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4898,6 +5089,29 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         /// <summary>The bandwidth permitted by the QOS policy, in gbps.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bandwidthGbps")]
         public virtual System.Nullable<double> BandwidthGbps { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message requesting to perform reimage operation on a server.</summary>
+    public class ReimageInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Name of the KMS crypto key version used to encrypt the initial passwords. The key has to have
+        /// ASYMMETRIC_DECRYPT purpose. Format is
+        /// `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}/cryptoKeyVersions/{version}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyVersion")]
+        public virtual string KmsKeyVersion { get; set; }
+
+        /// <summary>Required. The OS image code of the image which will be used in the reimage operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osImage")]
+        public virtual string OsImage { get; set; }
+
+        /// <summary>Optional. List of SSH Keys used during reimaging an instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sshKeys")]
+        public virtual System.Collections.Generic.IList<string> SshKeys { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

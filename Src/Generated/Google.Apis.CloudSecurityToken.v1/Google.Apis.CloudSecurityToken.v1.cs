@@ -616,14 +616,6 @@ namespace Google.Apis.CloudSecurityToken.v1.Data
         public virtual GoogleIdentityStsV1AccessBoundary AccessBoundary { get; set; }
 
         /// <summary>
-        /// The intended audience(s) of the credential. The audience value(s) should be the name(s) of services intended
-        /// to receive the credential. Example: `["https://pubsub.googleapis.com/", "https://storage.googleapis.com/"]`.
-        /// A maximum of 5 audiences can be included. For each provided audience, the maximum length is 262 characters.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("audiences")]
-        public virtual System.Collections.Generic.IList<string> Audiences { get; set; }
-
-        /// <summary>
         /// A Google project used for quota and billing purposes when the credential is used to access Google APIs. The
         /// provided project overrides the project bound to the credential. The value must be a project number or a
         /// project ID. Example: `my-sample-project-191923`. The maximum length is 32 characters.
@@ -705,14 +697,6 @@ namespace Google.Apis.CloudSecurityToken.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessBoundary")]
         public virtual GoogleIdentityStsV1betaAccessBoundary AccessBoundary { get; set; }
-
-        /// <summary>
-        /// The intended audience(s) of the credential. The audience value(s) should be the name(s) of services intended
-        /// to receive the credential. Example: `["https://pubsub.googleapis.com/", "https://storage.googleapis.com/"]`.
-        /// A maximum of 5 audiences can be included. For each provided audience, the maximum length is 262 characters.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("audiences")]
-        public virtual System.Collections.Generic.IList<string> Audiences { get; set; }
 
         /// <summary>
         /// A Google project used for quota and billing purposes when the credential is used to access Google APIs. The

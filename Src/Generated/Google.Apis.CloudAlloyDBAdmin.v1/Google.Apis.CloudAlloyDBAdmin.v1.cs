@@ -4052,6 +4052,13 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
+        /// <summary>
+        /// Output only. The maintenance schedule for the cluster, generated for a specific rollout if a maintenance
+        /// window is set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceSchedule")]
+        public virtual MaintenanceSchedule MaintenanceSchedule { get; set; }
+
         /// <summary>Optional. The maintenance update policy determines when to allow or deny updates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceUpdatePolicy")]
         public virtual MaintenanceUpdatePolicy MaintenanceUpdatePolicy { get; set; }
@@ -4945,6 +4952,55 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         /// <summary>The number of CPU's in the VM instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuCount")]
         public virtual System.Nullable<int> CpuCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// MaintenanceSchedule stores the maintenance schedule generated from the MaintenanceUpdatePolicy, once a
+    /// maintenance rollout is triggered, if MaintenanceWindow is set, and if there is no conflicting DenyPeriod. The
+    /// schedule is cleared once the update takes place. This field cannot be manually changed; modify the
+    /// MaintenanceUpdatePolicy instead.
+    /// </summary>
+    public class MaintenanceSchedule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>Output only. The scheduled start time for the maintenance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

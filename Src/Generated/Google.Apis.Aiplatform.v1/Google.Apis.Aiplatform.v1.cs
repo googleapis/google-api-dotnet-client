@@ -8846,7 +8846,7 @@ namespace Google.Apis.Aiplatform.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The resource name of the Location to create FeatureGroups. Format:
-                /// `projects/{project}/locations/{location}'`
+                /// `projects/{project}/locations/{location}`
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1FeatureGroup body, string parent)
                 {
@@ -8866,7 +8866,7 @@ namespace Google.Apis.Aiplatform.v1
 
                     /// <summary>
                     /// Required. The resource name of the Location to create FeatureGroups. Format:
-                    /// `projects/{project}/locations/{location}'`
+                    /// `projects/{project}/locations/{location}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -45517,7 +45517,7 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("datapoint")]
         public virtual GoogleCloudAiplatformV1IndexDatapoint Datapoint { get; set; }
 
-        /// <summary>The distance between the neighbor and the query vector.</summary>
+        /// <summary>The distance between the neighbor and the dense embedding query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("distance")]
         public virtual System.Nullable<double> Distance { get; set; }
 
@@ -45908,6 +45908,10 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// <summary>Metadata returned to client when grounding is enabled.</summary>
     public class GoogleCloudAiplatformV1GroundingMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Google search entry for the following-up web searches.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchEntryPoint")]
+        public virtual GoogleCloudAiplatformV1SearchEntryPoint SearchEntryPoint { get; set; }
+
         /// <summary>Optional. Web search queries for the following-up web search.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webSearchQueries")]
         public virtual System.Collections.Generic.IList<string> WebSearchQueries { get; set; }
@@ -46601,7 +46605,7 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string DatapointId { get; set; }
 
         /// <summary>
-        /// Required. Feature embedding vector. An array of numbers with the length of
+        /// Required. Feature embedding vector for dense index. An array of numbers with the length of
         /// [NearestNeighborSearchConfig.dimensions].
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("featureVector")]
@@ -46891,7 +46895,7 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("shardsCount")]
         public virtual System.Nullable<int> ShardsCount { get; set; }
 
-        /// <summary>Output only. The number of vectors in the Index.</summary>
+        /// <summary>Output only. The number of dense vectors in the Index.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vectorsCount")]
         public virtual System.Nullable<long> VectorsCount { get; set; }
 
@@ -52784,6 +52788,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deployGke")]
         public virtual GoogleCloudAiplatformV1PublisherModelCallToActionDeployGke DeployGke { get; set; }
 
+        /// <summary>Optional. Fine tune the PublisherModel with the third-party model tuning UI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fineTune")]
+        public virtual GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences FineTune { get; set; }
+
         /// <summary>Optional. Open evaluation pipeline of the PublisherModel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("openEvaluationPipeline")]
         public virtual GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences OpenEvaluationPipeline { get; set; }
@@ -52857,6 +52865,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dedicatedResources")]
         public virtual GoogleCloudAiplatformV1DedicatedResources DedicatedResources { get; set; }
+
+        /// <summary>Optional. The name of the deploy task (e.g., "text to image generation").</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployTaskName")]
+        public virtual string DeployTaskName { get; set; }
 
         /// <summary>Optional. Large model reference. When this is set, model_artifact_spec is not needed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("largeModelReference")]
@@ -56437,6 +56449,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("stopSequences")]
         public virtual System.Collections.Generic.IList<string> StopSequences { get; set; }
 
+        /// <summary>The Google Cloud Storage URI that stores the system instruction, starting with gs://.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemInstructionGcsUri")]
+        public virtual string SystemInstructionGcsUri { get; set; }
+
         /// <summary>
         /// Temperature value used for sampling set when the dataset was saved. This value is used to tune the degree of
         /// randomness.
@@ -58580,6 +58596,21 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Google search entry point.</summary>
+    public class GoogleCloudAiplatformV1SearchEntryPoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Web content snippet that can be embedded in a web page or an app webview.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("renderedContent")]
+        public virtual string RenderedContent { get; set; }
+
+        /// <summary>Optional. Base64 encoded JSON representing array of tuple.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sdkBlob")]
+        public virtual string SdkBlob { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -62937,7 +62968,10 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// <summary>The recitation result for each segment in a given input.</summary>
     public class LanguageLabsAidaTrustRecitationProtoSegmentResult : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The dataset the segment came from.</summary>
+        /// <summary>
+        /// The dataset the segment came from. Datasets change often as model evolves. Treat this field as informational
+        /// only and avoid depending on it directly.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributionDataset")]
         public virtual string AttributionDataset { get; set; }
 
@@ -62947,7 +62981,6 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayAttributionMessage")]
         public virtual string DisplayAttributionMessage { get; set; }
 
-        /// <summary>populated when recitation_action == CITE</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("docAttribution")]
         public virtual LanguageLabsAidaTrustRecitationProtoDocAttribution DocAttribution { get; set; }
 
@@ -62967,6 +63000,12 @@ namespace Google.Apis.Aiplatform.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("segmentRecitationAction")]
         public virtual string SegmentRecitationAction { get; set; }
+
+        /// <summary>
+        /// The category of the source dataset where the segment came from. This is more stable than Dataset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceCategory")]
+        public virtual string SourceCategory { get; set; }
 
         /// <summary>
         /// The segment boundary start (inclusive) and end index (exclusive) in the given text. In the streaming RPC,
@@ -63158,7 +63197,10 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// <summary>The recitation result for each segment in a given input.</summary>
     public class LearningGenaiRecitationSegmentResult : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The dataset the segment came from.</summary>
+        /// <summary>
+        /// The dataset the segment came from. Datasets change often as model evolves. Treat this field as informational
+        /// only and avoid depending on it directly.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributionDataset")]
         public virtual string AttributionDataset { get; set; }
 
@@ -63168,7 +63210,6 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayAttributionMessage")]
         public virtual string DisplayAttributionMessage { get; set; }
 
-        /// <summary>populated when recitation_action == CITE</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("docAttribution")]
         public virtual LearningGenaiRecitationDocAttribution DocAttribution { get; set; }
 
@@ -63188,6 +63229,12 @@ namespace Google.Apis.Aiplatform.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("segmentRecitationAction")]
         public virtual string SegmentRecitationAction { get; set; }
+
+        /// <summary>
+        /// The category of the source dataset where the segment came from. This is more stable than Dataset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceCategory")]
+        public virtual string SourceCategory { get; set; }
 
         /// <summary>
         /// The segment boundary start (inclusive) and end index (exclusive) in the given text. In the streaming RPC,
@@ -64234,8 +64281,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual System.Nullable<bool> StreamTerminated { get; set; }
 
         /// <summary>
-        /// NOT YET IMPLEMENTED. Aggregated number of total tokens decoded so far. For streaming, this is sum of all the
-        /// tokens decoded so far i.e. aggregated count.
+        /// Total tokens decoded so far per response_candidate. For streaming: Count of all the tokens decoded so far
+        /// (aggregated count). For unary: Count of all the tokens decoded per response_candidate.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalDecodedTokenCount")]
         public virtual System.Nullable<int> TotalDecodedTokenCount { get; set; }

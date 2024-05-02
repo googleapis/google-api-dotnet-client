@@ -34,6 +34,7 @@ namespace Google.Apis.CloudKMS.v1
         /// <param name="initializer">The service initializer.</param>
         public CloudKMSService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
+            Folders = new FoldersResource(this);
             Projects = new ProjectsResource(this);
             BaseUri = GetEffectiveUri(BaseUriOverride, "https://cloudkms.googleapis.com/");
             BatchUri = GetEffectiveUri(null, "https://cloudkms.googleapis.com/batch");
@@ -84,6 +85,9 @@ namespace Google.Apis.CloudKMS.v1
             /// <summary>View and manage your keys and secrets stored in Cloud Key Management Service</summary>
             public const string Cloudkms = "https://www.googleapis.com/auth/cloudkms";
         }
+
+        /// <summary>Gets the Folders resource.</summary>
+        public virtual FoldersResource Folders { get; }
 
         /// <summary>Gets the Projects resource.</summary>
         public virtual ProjectsResource Projects { get; }
@@ -270,6 +274,147 @@ namespace Google.Apis.CloudKMS.v1
         }
     }
 
+    /// <summary>The "folders" collection of methods.</summary>
+    public class FoldersResource
+    {
+        private const string Resource = "folders";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public FoldersResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Returns the AutokeyConfig for a folder.</summary>
+        /// <param name="name">
+        /// Required. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig`.
+        /// </param>
+        public virtual GetAutokeyConfigRequest GetAutokeyConfig(string name)
+        {
+            return new GetAutokeyConfigRequest(this.service, name);
+        }
+
+        /// <summary>Returns the AutokeyConfig for a folder.</summary>
+        public class GetAutokeyConfigRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.AutokeyConfig>
+        {
+            /// <summary>Constructs a new GetAutokeyConfig request.</summary>
+            public GetAutokeyConfigRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig`.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getAutokeyConfig";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}";
+
+            /// <summary>Initializes GetAutokeyConfig parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^folders/[^/]+/autokeyConfig$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Updates the AutokeyConfig for a folder. The caller must have both `cloudkms.autokeyConfigs.update`
+        /// permission on the parent folder and `cloudkms.cryptoKeys.setIamPolicy` permission on the provided key
+        /// project. An empty key project may be provided to clear the configuration.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">
+        /// Identifier. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig`.
+        /// </param>
+        public virtual UpdateAutokeyConfigRequest UpdateAutokeyConfig(Google.Apis.CloudKMS.v1.Data.AutokeyConfig body, string name)
+        {
+            return new UpdateAutokeyConfigRequest(this.service, body, name);
+        }
+
+        /// <summary>
+        /// Updates the AutokeyConfig for a folder. The caller must have both `cloudkms.autokeyConfigs.update`
+        /// permission on the parent folder and `cloudkms.cryptoKeys.setIamPolicy` permission on the provided key
+        /// project. An empty key project may be provided to clear the configuration.
+        /// </summary>
+        public class UpdateAutokeyConfigRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.AutokeyConfig>
+        {
+            /// <summary>Constructs a new UpdateAutokeyConfig request.</summary>
+            public UpdateAutokeyConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudKMS.v1.Data.AutokeyConfig body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Identifier. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig`.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Required. Masks which fields of the AutokeyConfig to update, e.g. `keyProject`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudKMS.v1.Data.AutokeyConfig Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "updateAutokeyConfig";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}";
+
+            /// <summary>Initializes UpdateAutokeyConfig parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^folders/[^/]+/autokeyConfig$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
     /// <summary>The "projects" collection of methods.</summary>
     public class ProjectsResource
     {
@@ -302,7 +447,9 @@ namespace Google.Apis.CloudKMS.v1
                 this.service = service;
                 EkmConfig = new EkmConfigResource(service);
                 EkmConnections = new EkmConnectionsResource(service);
+                KeyHandles = new KeyHandlesResource(service);
                 KeyRings = new KeyRingsResource(service);
+                Operations = new OperationsResource(service);
             }
 
             /// <summary>Gets the EkmConfig resource.</summary>
@@ -1132,6 +1279,223 @@ namespace Google.Apis.CloudKMS.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/ekmConnections/[^/]+$",
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the KeyHandles resource.</summary>
+            public virtual KeyHandlesResource KeyHandles { get; }
+
+            /// <summary>The "keyHandles" collection of methods.</summary>
+            public class KeyHandlesResource
+            {
+                private const string Resource = "keyHandles";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public KeyHandlesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Creates a new KeyHandle, triggering the provisioning of a new CryptoKey for CMEK use with the given
+                /// resource type in the configured key project and the same location. GetOperation should be used to
+                /// resolve the resulting long-running operation and get the resulting KeyHandle and CryptoKey.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. Name of the resource project and location to create the KeyHandle in, e.g.
+                /// `projects/{PROJECT_ID}/locations/{LOCATION}`.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.CloudKMS.v1.Data.KeyHandle body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>
+                /// Creates a new KeyHandle, triggering the provisioning of a new CryptoKey for CMEK use with the given
+                /// resource type in the configured key project and the same location. GetOperation should be used to
+                /// resolve the resulting long-running operation and get the resulting KeyHandle and CryptoKey.
+                /// </summary>
+                public class CreateRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudKMS.v1.Data.KeyHandle body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the resource project and location to create the KeyHandle in, e.g.
+                    /// `projects/{PROJECT_ID}/locations/{LOCATION}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Id of the KeyHandle. Must be unique to the resource project and location. If not
+                    /// provided by the caller, a new UUID is used.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("keyHandleId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string KeyHandleId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudKMS.v1.Data.KeyHandle Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/keyHandles";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("keyHandleId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "keyHandleId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Returns the KeyHandle.</summary>
+                /// <param name="name">
+                /// Required. Name of the KeyHandle resource, e.g.
+                /// `projects/{PROJECT_ID}/locations/{LOCATION}/keyHandles/{KEY_HANDLE_ID}`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Returns the KeyHandle.</summary>
+                public class GetRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.KeyHandle>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the KeyHandle resource, e.g.
+                    /// `projects/{PROJECT_ID}/locations/{LOCATION}/keyHandles/{KEY_HANDLE_ID}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/keyHandles/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists KeyHandles.</summary>
+                /// <param name="parent">
+                /// Required. Name of the resource project and location from which to list KeyHandles, e.g.
+                /// `projects/{PROJECT_ID}/locations/{LOCATION}`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists KeyHandles.</summary>
+                public class ListRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.ListKeyHandlesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the resource project and location from which to list KeyHandles, e.g.
+                    /// `projects/{PROJECT_ID}/locations/{LOCATION}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Filter to apply when listing KeyHandles, e.g.
+                    /// `resource_type_selector="{SERVICE}.googleapis.com/{TYPE}"`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/keyHandles";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -3822,6 +4186,75 @@ namespace Google.Apis.CloudKMS.v1
                 }
             }
 
+            /// <summary>Gets the Operations resource.</summary>
+            public virtual OperationsResource Operations { get; }
+
+            /// <summary>The "operations" collection of methods.</summary>
+            public class OperationsResource
+            {
+                private const string Resource = "operations";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public OperationsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation
+                /// result at intervals as recommended by the API service.
+                /// </summary>
+                /// <param name="name">The name of the operation resource.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>
+                /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation
+                /// result at intervals as recommended by the API service.
+                /// </summary>
+                public class GetRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>The name of the operation resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                        });
+                    }
+                }
+            }
+
             /// <summary>Generate random bytes using the Cloud KMS randomness source in the provided location.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="location">
@@ -4129,6 +4562,57 @@ namespace Google.Apis.CloudKMS.v1
                 }
             }
         }
+
+        /// <summary>Returns the effective Cloud KMS Autokey configuration for a given project.</summary>
+        /// <param name="parent">
+        /// Required. Name of the resource project to the show effective Cloud KMS Autokey configuration for. This may
+        /// be helpful for interrogating the effect of nested folder configurations on a given resource project.
+        /// </param>
+        public virtual ShowEffectiveAutokeyConfigRequest ShowEffectiveAutokeyConfig(string parent)
+        {
+            return new ShowEffectiveAutokeyConfigRequest(this.service, parent);
+        }
+
+        /// <summary>Returns the effective Cloud KMS Autokey configuration for a given project.</summary>
+        public class ShowEffectiveAutokeyConfigRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.ShowEffectiveAutokeyConfigResponse>
+        {
+            /// <summary>Constructs a new ShowEffectiveAutokeyConfig request.</summary>
+            public ShowEffectiveAutokeyConfigRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+            {
+                Parent = parent;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. Name of the resource project to the show effective Cloud KMS Autokey configuration for. This
+            /// may be helpful for interrogating the effect of nested folder configurations on a given resource project.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Parent { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "showEffectiveAutokeyConfig";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+parent}:showEffectiveAutokeyConfig";
+
+            /// <summary>Initializes ShowEffectiveAutokeyConfig parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+$",
+                });
+            }
+        }
     }
 }
 namespace Google.Apis.CloudKMS.v1.Data
@@ -4342,6 +4826,29 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// <summary>The log type that this config enables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logType")]
         public virtual string LogType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Cloud KMS Autokey configuration for a folder.</summary>
+    public class AutokeyConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Name of the key project, e.g. `projects/{PROJECT_ID}` or `projects/{PROJECT_NUMBER}`, where Cloud
+        /// KMS Autokey will provision new CryptoKeys. On UpdateAutokeyConfig, the caller will require
+        /// `cloudkms.cryptoKeys.setIamPolicy` permission on this key project. Once configured, for Cloud KMS Autokey to
+        /// function properly, this key project must have the Cloud KMS API activated and the Cloud KMS Service Agent
+        /// for this key project must be granted the `cloudkms.admin` role (or pertinent permissions).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyProject")]
+        public virtual string KeyProject { get; set; }
+
+        /// <summary>
+        /// Identifier. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5705,6 +6212,37 @@ namespace Google.Apis.CloudKMS.v1.Data
     }
 
     /// <summary>
+    /// Resource-oriented representation of a request to Cloud KMS Autokey and the resulting provisioning of a
+    /// CryptoKey.
+    /// </summary>
+    public class KeyHandle : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Name of a CryptoKey that has been provisioned for Customer Managed Encryption Key (CMEK) use in
+        /// the KeyHandle's project and location for the requested resource type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
+        public virtual string KmsKey { get; set; }
+
+        /// <summary>
+        /// Output only. Identifier. Name of the [KeyHandle] resource, e.g.
+        /// `projects/{PROJECT_ID}/locations/{LOCATION}/keyHandles/{KEY_HANDLE_ID}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. Indicates the resource type that the resulting CryptoKey is meant to protect, e.g.
+        /// `{SERVICE}.googleapis.com/{TYPE}`. See documentation for supported resource types.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceTypeSelector")]
+        public virtual string ResourceTypeSelector { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Contains an HSM-generated attestation about a key operation. For more information, see [Verifying attestations]
     /// (https://cloud.google.com/kms/docs/attest-key).
     /// </summary>
@@ -5861,6 +6399,17 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// <summary>The total number of ImportJobs that matched the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
         public virtual System.Nullable<int> TotalSize { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for Autokey.ListKeyHandles.</summary>
+    public class ListKeyHandlesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Resulting KeyHandles.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyHandles")]
+        public virtual System.Collections.Generic.IList<KeyHandle> KeyHandles { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6111,6 +6660,49 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verifiedSuccessIntegrity")]
         public virtual System.Nullable<bool> VerifiedSuccessIntegrity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
+    public class Operation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed,
+        /// and either `error` or `response` is available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("done")]
+        public virtual System.Nullable<bool> Done { get; set; }
+
+        /// <summary>The error result of the operation in case of failure or cancellation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; }
+
+        /// <summary>
+        /// Service-specific metadata associated with the operation. It typically contains progress information and
+        /// common metadata such as create time. Some services might not provide such metadata. Any method that returns
+        /// a long-running operation should document the metadata type, if any.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
+        /// <summary>
+        /// The server-assigned name, which is only unique within the same service that originally returns it. If you
+        /// use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The normal, successful response of the operation. If the original method returns no data on success, such as
+        /// `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6587,6 +7179,46 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ShowEffectiveAutokeyConfig.</summary>
+    public class ShowEffectiveAutokeyConfigResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the key project configured in the resource project's folder ancestry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyProject")]
+        public virtual string KeyProject { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The `Status` type defines a logical error model that is suitable for different programming environments,
+    /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
+    /// three pieces of data: error code, error message, and error details. You can find out more about this error model
+    /// and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+    /// </summary>
+    public class Status : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual System.Nullable<int> Code { get; set; }
+
+        /// <summary>
+        /// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
+
+        /// <summary>
+        /// A developer-facing error message, which should be in English. Any user-facing error message should be
+        /// localized and sent in the google.rpc.Status.details field, or localized by the client.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

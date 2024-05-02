@@ -6730,6 +6730,17 @@ namespace Google.Apis.GKEHub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Holds non-protocol-related configuration options.</summary>
+    public class IdentityServiceIdentityServiceOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Determines the lifespan of STS tokens issued by Anthos Identity Service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionDuration")]
+        public virtual object SessionDuration { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for the LDAP Auth flow.</summary>
     public class IdentityServiceLdapConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6765,6 +6776,10 @@ namespace Google.Apis.GKEHub.v1.Data
         /// <summary>A member may support multiple auth methods.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authMethods")]
         public virtual System.Collections.Generic.IList<IdentityServiceAuthMethod> AuthMethods { get; set; }
+
+        /// <summary>Optional. non-protocol-related configuration options.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identityServiceOptions")]
+        public virtual IdentityServiceIdentityServiceOptions IdentityServiceOptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9126,6 +9141,10 @@ namespace Google.Apis.GKEHub.v1.Data
         /// <summary>Explanation of state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<ServiceMeshStatusDetails> Details { get; set; }
+
+        /// <summary>Output only. Implementation of managed control plane.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("implementation")]
+        public virtual string Implementation { get; set; }
 
         /// <summary>LifecycleState of control plane management.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]

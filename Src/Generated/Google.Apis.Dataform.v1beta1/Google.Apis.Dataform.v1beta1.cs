@@ -3478,7 +3478,7 @@ namespace Google.Apis.Dataform.v1beta1
                 /// Applies a Git commit to a Repository. The Repository must not have a value for
                 /// `git_remote_settings.url`.
                 /// </summary>
-                public class CommitRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.Empty>
+                public class CommitRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.CommitRepositoryChangesResponse>
                 {
                     /// <summary>Constructs a new Commit request.</summary>
                     public CommitRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataform.v1beta1.Data.CommitRepositoryChangesRequest body, string name) : base(service)
@@ -4906,6 +4906,17 @@ namespace Google.Apis.Dataform.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>`CommitRepositoryChanges` response message.</summary>
+    public class CommitRepositoryChangesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The commit SHA of the current commit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commitSha")]
+        public virtual string CommitSha { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>`CommitWorkspaceChanges` request message.</summary>
     public class CommitWorkspaceChangesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4966,6 +4977,10 @@ namespace Google.Apis.Dataform.v1beta1.Data
         /// <summary>Output only. Errors encountered during project compilation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compilationErrors")]
         public virtual System.Collections.Generic.IList<CompilationError> CompilationErrors { get; set; }
+
+        /// <summary>Output only. Only set if the repository has a KMS Key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataEncryptionState")]
+        public virtual DataEncryptionState DataEncryptionState { get; set; }
 
         /// <summary>Output only. The version of `@dataform/core` that was used for compilation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataformCoreVersion")]
@@ -5057,6 +5072,17 @@ namespace Google.Apis.Dataform.v1beta1.Data
         /// <summary>Indicates the status of the Git access token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tokenStatus")]
         public virtual string TokenStatus { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes encryption state of a resource.</summary>
+    public class DataEncryptionState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The KMS key version name with which data of a resource is encrypted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyVersionName")]
+        public virtual string KmsKeyVersionName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6325,6 +6351,12 @@ namespace Google.Apis.Dataform.v1beta1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>
+        /// Output only. A data encryption state of a Git repository if this Repository is protected by a KMS key.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataEncryptionState")]
+        public virtual DataEncryptionState DataEncryptionState { get; set; }
+
         /// <summary>Optional. The repository's user-friendly name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -6332,6 +6364,15 @@ namespace Google.Apis.Dataform.v1beta1.Data
         /// <summary>Optional. If set, configures this repository to be linked to a Git remote.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gitRemoteSettings")]
         public virtual GitRemoteSettings GitRemoteSettings { get; set; }
+
+        /// <summary>
+        /// Optional. The reference to a KMS encryption key. If provided, it will be used to encrypt user data in the
+        /// repository and all child resources. It is not possible to add or update the encryption key after the
+        /// repository is created. Example:
+        /// `projects/[kms_project_id]/locations/[region]/keyRings/[key_region]/cryptoKeys/[key]`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
 
         /// <summary>Optional. Repository user labels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
@@ -6719,6 +6760,10 @@ namespace Google.Apis.Dataform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("compilationResult")]
         public virtual string CompilationResult { get; set; }
 
+        /// <summary>Output only. Only set if the repository has a KMS Key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataEncryptionState")]
+        public virtual DataEncryptionState DataEncryptionState { get; set; }
+
         /// <summary>Immutable. If left unset, a default InvocationConfig will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invocationConfig")]
         public virtual InvocationConfig InvocationConfig { get; set; }
@@ -6797,6 +6842,12 @@ namespace Google.Apis.Dataform.v1beta1.Data
     /// <summary>Represents a Dataform Git workspace.</summary>
     public class Workspace : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. A data encryption state of a Git repository if this Workspace is protected by a KMS key.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataEncryptionState")]
+        public virtual DataEncryptionState DataEncryptionState { get; set; }
+
         /// <summary>Identifier. The workspace's name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

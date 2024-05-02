@@ -1543,6 +1543,32 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nonCompliantFiles")]
         public virtual System.Collections.Generic.IList<NonCompliantFile> NonCompliantFiles { get; set; }
 
+        /// <summary>The OS and config version the benchmark was run on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual ComplianceVersion Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes the CIS benchmark version that is applicable to a given OS and os version.</summary>
+    public class ComplianceVersion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the document that defines this benchmark, e.g. "CIS Container-Optimized OS".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("benchmarkDocument")]
+        public virtual string BenchmarkDocument { get; set; }
+
+        /// <summary>The CPE URI (https://cpe.mitre.org/specification/) this benchmark is applicable to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpeUri")]
+        public virtual string CpeUri { get; set; }
+
+        /// <summary>
+        /// The version of the benchmark. This is set to the version of the OS-specific CIS document the benchmark is
+        /// defined in.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

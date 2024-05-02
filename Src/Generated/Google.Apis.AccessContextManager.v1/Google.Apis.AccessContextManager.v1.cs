@@ -3150,6 +3150,21 @@ namespace Google.Apis.AccessContextManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>An application that accesses Google Cloud APIs.</summary>
+    public class Application : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The OAuth client ID of the application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
+        public virtual string ClientId { get; set; }
+
+        /// <summary>The name of the application. Example: "Cloud Console"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Specifies the audit configuration for a service. The configuration determines which permission types are logged,
     /// and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If
@@ -3719,6 +3734,13 @@ namespace Google.Apis.AccessContextManager.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. A list of applications that are subject to this binding's restrictions. If the list is empty, the
+        /// binding restrictions will universally apply to all applications.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restrictedClientApplications")]
+        public virtual System.Collections.Generic.IList<Application> RestrictedClientApplications { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -3396,6 +3396,62 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Cancels one or multiple refreshes of data source objects in the spreadsheet by the specified references.
+    /// </summary>
+    public class CancelDataSourceRefreshRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Reference to a DataSource. If specified, cancels all associated data source object refreshes for this data
+        /// source.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSourceId")]
+        public virtual string DataSourceId { get; set; }
+
+        /// <summary>
+        /// Cancels all existing data source object refreshes for all data sources in the spreadsheet.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isAll")]
+        public virtual System.Nullable<bool> IsAll { get; set; }
+
+        /// <summary>References to data source objects whose refreshes are to be cancelled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("references")]
+        public virtual DataSourceObjectReferences References { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response from cancelling one or multiple data source object refreshes.</summary>
+    public class CancelDataSourceRefreshResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The cancellation statuses of refreshes of all data source objects specified in the request. If is_all is
+        /// specified, the field contains only those in failure status. Refreshing and canceling refresh the same data
+        /// source object is also not allowed in the same `batchUpdate`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statuses")]
+        public virtual System.Collections.Generic.IList<CancelDataSourceRefreshStatus> Statuses { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The status of cancelling a single data source object refresh.</summary>
+    public class CancelDataSourceRefreshStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Reference to the data source object whose refresh is being cancelled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reference")]
+        public virtual DataSourceObjectReference Reference { get; set; }
+
+        /// <summary>The cancellation status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refreshCancellationStatus")]
+        public virtual RefreshCancellationStatus RefreshCancellationStatus { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A candlestick chart.</summary>
     public class CandlestickChartSpec : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6694,6 +6750,24 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// The status of a refresh cancellation. You can send cancel request to explicitly cancel one or multiple data
+    /// source object refreshes.
+    /// </summary>
+    public class RefreshCancellationStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The error code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorCode")]
+        public virtual string ErrorCode { get; set; }
+
+        /// <summary>The state of a call to cancel a refresh in Sheets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The execution status of refreshing one data source object.</summary>
     public class RefreshDataSourceObjectExecutionStatus : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6845,6 +6919,10 @@ namespace Google.Apis.Sheets.v4.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoResizeDimensions")]
         public virtual AutoResizeDimensionsRequest AutoResizeDimensions { get; set; }
+
+        /// <summary>Cancels refreshes of one or multiple data sources and associated dbobjects.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cancelDataSourceRefresh")]
+        public virtual CancelDataSourceRefreshRequest CancelDataSourceRefresh { get; set; }
 
         /// <summary>Clears the basic filter on a sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clearBasicFilter")]
@@ -7092,6 +7170,10 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>A reply from adding a slicer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addSlicer")]
         public virtual AddSlicerResponse AddSlicer { get; set; }
+
+        /// <summary>A reply from cancelling data source object refreshes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cancelDataSourceRefresh")]
+        public virtual CancelDataSourceRefreshResponse CancelDataSourceRefresh { get; set; }
 
         /// <summary>A reply from creating a developer metadata entry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createDeveloperMetadata")]

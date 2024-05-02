@@ -2343,8 +2343,8 @@ namespace Google.Apis.SQLAdmin.v1beta4
         }
 
         /// <summary>
-        /// Promotes the read replica instance to be a stand-alone Cloud SQL instance. Using this operation might cause
-        /// your instance to restart.
+        /// Promotes the read replica instance to be an independent Cloud SQL primary instance. Using this operation
+        /// might cause your instance to restart.
         /// </summary>
         /// <param name="project">ID of the project that contains the read replica.</param>
         /// <param name="instance">Cloud SQL read replica instance name.</param>
@@ -2354,8 +2354,8 @@ namespace Google.Apis.SQLAdmin.v1beta4
         }
 
         /// <summary>
-        /// Promotes the read replica instance to be a stand-alone Cloud SQL instance. Using this operation might cause
-        /// your instance to restart.
+        /// Promotes the read replica instance to be an independent Cloud SQL primary instance. Using this operation
+        /// might cause your instance to restart.
         /// </summary>
         public class PromoteReplicaRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
@@ -2376,9 +2376,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             public virtual string Instance { get; private set; }
 
             /// <summary>
-            /// Set to true if the promote operation should attempt to re-add the original primary as a replica when it
-            /// comes back online. Otherwise, if this value is false or not set, the original primary will be a
-            /// standalone instance.
+            /// Set to true to invoke a replica failover to the designated DR replica. As part of replica failover, the
+            /// promote operation attempts to add the original primary instance as a replica of the promoted DR replica
+            /// when the original primary instance comes back online. If set to false or not specified, then the
+            /// original primary instance becomes an independent Cloud SQL primary instance. Only applicable to MySQL.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("failover", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Failover { get; set; }
@@ -2943,7 +2944,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             }
         }
 
-        /// <summary>Switches over from the primary instance to a replica instance.</summary>
+        /// <summary>Switches over from the primary instance to the designated DR replica instance.</summary>
         /// <param name="project">ID of the project that contains the replica.</param>
         /// <param name="instance">Cloud SQL read replica instance name.</param>
         public virtual SwitchoverRequest Switchover(string project, string instance)
@@ -2951,7 +2952,7 @@ namespace Google.Apis.SQLAdmin.v1beta4
             return new SwitchoverRequest(this.service, project, instance);
         }
 
-        /// <summary>Switches over from the primary instance to a replica instance.</summary>
+        /// <summary>Switches over from the primary instance to the designated DR replica instance.</summary>
         public class SwitchoverRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new Switchover request.</summary>
@@ -5615,8 +5616,9 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual System.Collections.Generic.IList<string> ReplicaNames { get; set; }
 
         /// <summary>
-        /// The pair of a primary instance and disaster recovery (DR) replica. A DR replica is a cross-region replica
-        /// that you designate for failover in the event that the primary instance has regional failure.
+        /// A primary instance and disaster recovery (DR) replica pair. A DR replica is a cross-region replica that you
+        /// designate for failover in the event that the primary instance experiences regional failure. Only applicable
+        /// to MySQL.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replicationCluster")]
         public virtual ReplicationCluster ReplicationCluster { get; set; }
@@ -6143,10 +6145,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Gemini configuration.</summary>
+    /// <summary>Gemini instance configuration.</summary>
     public class GeminiInstanceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Whether active query is enabled.</summary>
+        /// <summary>Output only. Whether the active query is enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activeQueryEnabled")]
         public virtual System.Nullable<bool> ActiveQueryEnabled { get; set; }
 
@@ -6154,19 +6156,19 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("entitled")]
         public virtual System.Nullable<bool> Entitled { get; set; }
 
-        /// <summary>Output only. Whether flag recommender is enabled.</summary>
+        /// <summary>Output only. Whether the flag recommender is enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flagRecommenderEnabled")]
         public virtual System.Nullable<bool> FlagRecommenderEnabled { get; set; }
 
-        /// <summary>Output only. Whether vacuum management is enabled.</summary>
+        /// <summary>Output only. Whether the vacuum management is enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleVacuumMgmtEnabled")]
         public virtual System.Nullable<bool> GoogleVacuumMgmtEnabled { get; set; }
 
-        /// <summary>Output only. Whether index advisor is enabled.</summary>
+        /// <summary>Output only. Whether the index advisor is enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indexAdvisorEnabled")]
         public virtual System.Nullable<bool> IndexAdvisorEnabled { get; set; }
 
-        /// <summary>Output only. Whether oom session cancel is enabled.</summary>
+        /// <summary>Output only. Whether canceling the out-of-memory (OOM) session is enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oomSessionCancelEnabled")]
         public virtual System.Nullable<bool> OomSessionCancelEnabled { get; set; }
 
@@ -6725,10 +6727,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and
         /// `require_ssl=false` * `ssl_mode=TRUSTED_CLIENT_CERTIFICATE_REQUIRED` and `require_ssl=true` For SQL Server:
         /// * `ssl_mode=ALLOW_UNENCRYPTED_AND_ENCRYPTED` and `require_ssl=false` * `ssl_mode=ENCRYPTED_ONLY` and
-        /// `require_ssl=true` The value of `ssl_mode` gets priority over the value of `require_ssl`. For example, for
-        /// the pair `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false`, the `ssl_mode=ENCRYPTED_ONLY` means only accept
-        /// SSL connections, while the `require_ssl=false` means accept both non-SSL and SSL connections. MySQL and
-        /// PostgreSQL databases respect `ssl_mode` in this case and accept only SSL connections.
+        /// `require_ssl=true` The value of `ssl_mode` has priority over the value of `require_ssl`. For example, for
+        /// the pair `ssl_mode=ENCRYPTED_ONLY` and `require_ssl=false`, `ssl_mode=ENCRYPTED_ONLY` means accept only SSL
+        /// connections, while `require_ssl=false` means accept both non-SSL and SSL connections. In this case, MySQL
+        /// and PostgreSQL databases respect `ssl_mode` and accepts only SSL connections.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sslMode")]
         public virtual string SslMode { get; set; }
@@ -7489,11 +7491,15 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Primary-DR replica pair</summary>
+    /// <summary>
+    /// A primary instance and disaster recovery (DR) replica pair. A DR replica is a cross-region replica that you
+    /// designate for failover in the event that the primary instance has regional failure. Only applicable to MySQL.
+    /// </summary>
     public class ReplicationCluster : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. read-only field that indicates if the replica is a dr_replica; not set for a primary.
+        /// Output only. Read-only field that indicates whether the replica is a DR replica. This field is not set if
+        /// the instance is a primary instance.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("drReplica")]
         public virtual System.Nullable<bool> DrReplica { get; set; }
@@ -7501,8 +7507,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>
         /// Optional. If the instance is a primary instance, then this field identifies the disaster recovery (DR)
         /// replica. A DR replica is an optional configuration for Enterprise Plus edition instances. If the instance is
-        /// a read replica, then the field is not set. Users can set this field to set a designated DR replica for a
-        /// primary. Removing this field removes the DR replica.
+        /// a read replica, then the field is not set. Set this field to a replica name to designate a DR replica for a
+        /// primary instance. Remove the replica name to remove the DR replica designation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failoverDrReplicaName")]
         public virtual string FailoverDrReplicaName { get; set; }
@@ -7948,7 +7954,9 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
     public class SqlInstancesStartExternalSyncRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. MigrationType decides if the migration is a physical file based migration or logical migration.
+        /// Optional. MigrationType configures the migration to use physical files or logical dump files. If not set,
+        /// then the logical dump file configuration is used. Valid values are `LOGICAL` or `PHYSICAL`. Only applicable
+        /// to MySQL.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("migrationType")]
         public virtual string MigrationType { get; set; }
@@ -7976,8 +7984,9 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
     public class SqlInstancesVerifyExternalSyncSettingsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. MigrationType field decides if the migration is a physical file based migration or logical
-        /// migration
+        /// Optional. MigrationType configures the migration to use physical files or logical dump files. If not set,
+        /// then the logical dump file configuration is used. Valid values are `LOGICAL` or `PHYSICAL`. Only applicable
+        /// to MySQL.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("migrationType")]
         public virtual string MigrationType { get; set; }
@@ -7990,7 +7999,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("syncMode")]
         public virtual string SyncMode { get; set; }
 
-        /// <summary>Optional. Parallel level for initial data sync. Currently only applicable for PostgreSQL.</summary>
+        /// <summary>Optional. Parallel level for initial data sync. Only applicable for PostgreSQL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("syncParallelLevel")]
         public virtual string SyncParallelLevel { get; set; }
 
