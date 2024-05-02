@@ -621,7 +621,7 @@ namespace Google.Apis.Bigquery.v2
             /// An expression for filtering the results of the request by label. The syntax is
             /// \"labels.&amp;lt;name&amp;gt;[:&amp;lt;value&amp;gt;]\". Multiple filters can be ANDed together by
             /// connecting with a space. Example: \"labels.department:receiving labels.active\". See [Filtering datasets
-            /// using labels](/bigquery/docs/labeling-datasets#filtering_datasets_using_labels) for details.
+            /// using labels](/bigquery/docs/filtering-labels#filtering_datasets_using_labels) for details.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -5177,7 +5177,13 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fieldDelimiter")]
         public virtual string FieldDelimiter { get; set; }
 
-        /// <summary>[Optional] A custom string that will represent a NULL value in CSV import data.</summary>
+        /// <summary>
+        /// Optional. Specifies a string that represents a null value in a CSV file. For example, if you specify "\N",
+        /// BigQuery interprets "\N" as a null value when querying a CSV file. The default value is the empty string. If
+        /// you set this property to a custom value, BigQuery throws an error if an empty string is present for all data
+        /// types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as an
+        /// empty value.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nullMarker")]
         public virtual string NullMarker { get; set; }
 
@@ -5423,6 +5429,14 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxTimeTravelHours")]
         public virtual System.Nullable<long> MaxTimeTravelHours { get; set; }
 
+        /// <summary>
+        /// Optional. Output only. Restriction config for all tables and dataset. If set, restrict certain accesses on
+        /// the dataset and all its tables based on the config. See [Data
+        /// egress](/bigquery/docs/analytics-hub-introduction#data_egress) for more details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restrictions")]
+        public virtual RestrictionConfig Restrictions { get; set; }
+
         /// <summary>Output only. Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
         public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
@@ -5449,8 +5463,7 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>
         /// Output only. Same as `type` in `ListFormatDataset`. The type of the dataset, one of: * DEFAULT - only
         /// accessible by owner and authorized accounts, * PUBLIC - accessible by everyone, * LINKED - linked dataset, *
-        /// EXTERNAL - dataset with definition in external metadata catalog. -- *BIGLAKE_METASTORE - dataset that
-        /// references a database created in BigLakeMetastore service. --
+        /// EXTERNAL - dataset with definition in external metadata catalog.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -5740,6 +5753,14 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual System.Nullable<double> DeltaBudget { get; set; }
 
         /// <summary>
+        /// Output only. The delta budget remaining. If budget is exhausted, no more queries are allowed. Note that the
+        /// budget for queries that are in progress is deducted before the query executes. If the query fails or is
+        /// cancelled then the budget is refunded. In this case the amount of budget remaining can increase.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deltaBudgetRemaining")]
+        public virtual System.Nullable<double> DeltaBudgetRemaining { get; set; }
+
+        /// <summary>
         /// Optional. The delta value that is used per query. Delta represents the probability that any row will fail to
         /// be epsilon differentially private. Indicates the risk associated with exposing aggregate rows in the result
         /// of a query.
@@ -5759,6 +5780,14 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("epsilonBudget")]
         public virtual System.Nullable<double> EpsilonBudget { get; set; }
+
+        /// <summary>
+        /// Output only. The epsilon budget remaining. If budget is exhausted, no more queries are allowed. Note that
+        /// the budget for queries that are in progress is deducted before the query executes. If the query fails or is
+        /// cancelled then the budget is refunded. In this case the amount of budget remaining can increase.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("epsilonBudgetRemaining")]
+        public virtual System.Nullable<double> EpsilonBudgetRemaining { get; set; }
 
         /// <summary>
         /// Optional. The maximum epsilon value that a query can consume. If the subscriber specifies epsilon as a
@@ -6469,6 +6498,19 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>The numerical feature value. This is the centroid value for this feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numericalValue")]
         public virtual System.Nullable<double> NumericalValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata about the foreign data type definition such as the system in which the type is defined.
+    /// </summary>
+    public class ForeignTypeInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Specifies the system which defines the foreign data type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("typeSystem")]
+        public virtual string TypeSystem { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7235,13 +7277,12 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual System.Collections.Generic.IList<ConnectionProperty> ConnectionProperties { get; set; }
 
         /// <summary>
-        /// Optional. [Experimental] Configures the load job to only copy files to the destination BigLake managed table
-        /// with an external storage_uri, without reading file content and writing them to new files. Copying files only
-        /// is supported when: * source_uris are in the same external storage system as the destination table but they
-        /// do not overlap with storage_uri of the destination table. * source_format is the same file format as the
-        /// destination table. * destination_table is an existing BigLake managed table. Its schema does not have
-        /// default value expression. It schema does not have type parameters other than precision and scale. * No
-        /// options other than the above are specified.
+        /// Optional. [Experimental] Configures the load job to copy files directly to the destination BigLake managed
+        /// table, bypassing file content reading and rewriting. Copying files only is supported when all the following
+        /// are true: * `source_uris` are located in the same Cloud Storage location as the destination table's
+        /// `storage_uri` location. * `source_format` is `PARQUET`. * `destination_table` is an existing BigLake managed
+        /// table. The table's schema does not have flexible column names. The table's columns do not have type
+        /// parameters other than precision and scale. * No options other than the above are specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("copyFilesOnly")]
         public virtual System.Nullable<bool> CopyFilesOnly { get; set; }
@@ -8053,7 +8094,9 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         public class ReservationUsageData
         {
-            /// <summary>Reservation name or "unreserved" for on-demand resources usage.</summary>
+            /// <summary>
+            /// Reservation name or "unreserved" for on-demand resource usage and multi-statement queries.
+            /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("name")]
             public virtual string Name { get; set; }
 
@@ -8373,7 +8416,9 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         public class ReservationUsageData
         {
-            /// <summary>Reservation name or "unreserved" for on-demand resources usage.</summary>
+            /// <summary>
+            /// Reservation name or "unreserved" for on-demand resource usage and multi-statement queries.
+            /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("name")]
             public virtual string Name { get; set; }
 
@@ -8700,7 +8745,7 @@ namespace Google.Apis.Bigquery.v2.Data
     public class MaterializedViewDefinition : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. This option declares authors intention to construct a materialized view that will not be refreshed
+        /// Optional. This option declares the intention to construct a materialized view that isn't refreshed
         /// incrementally.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowNonIncrementalDefinition")]
@@ -9083,6 +9128,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enumAsString")]
         public virtual System.Nullable<bool> EnumAsString { get; set; }
+
+        /// <summary>Optional. Will indicate how to represent a parquet map if present.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mapTargetType")]
+        public virtual string MapTargetType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9943,6 +9992,16 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("speechRecognizer")]
         public virtual string SpeechRecognizer { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class RestrictionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Specifies the type of dataset/table restriction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11025,6 +11084,13 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceTags")]
         public virtual System.Collections.Generic.IDictionary<string, string> ResourceTags { get; set; }
 
+        /// <summary>
+        /// Optional. Output only. Restriction config for table. If set, restrict certain accesses on the table based on
+        /// the config. See [Data egress](/bigquery/docs/analytics-hub-introduction#data_egress) for more details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restrictions")]
+        public virtual RestrictionConfig Restrictions { get; set; }
+
         /// <summary>Optional. Describes the schema of this table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]
         public virtual TableSchema Schema { get; set; }
@@ -11300,6 +11366,13 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Optional. Describes the nested schema fields if the type property is set to RECORD.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual System.Collections.Generic.IList<TableFieldSchema> Fields { get; set; }
+
+        /// <summary>
+        /// Optional. Definition of the foreign data type. Only valid for top-level schema fields (not nested fields).
+        /// If the type is FOREIGN, this field is required.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("foreignTypeDefinition")]
+        public virtual string ForeignTypeDefinition { get; set; }
 
         /// <summary>
         /// Optional. Maximum length of values of this field for STRINGS or BYTES. If max_length is not specified, no
@@ -11605,6 +11678,13 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Describes the fields in a table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual System.Collections.Generic.IList<TableFieldSchema> Fields { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies metadata of the foreign data type definition in field schema
+        /// (TableFieldSchema.foreign_type_definition).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("foreignTypeInfo")]
+        public virtual ForeignTypeInfo ForeignTypeInfo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

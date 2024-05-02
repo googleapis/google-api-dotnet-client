@@ -8826,7 +8826,7 @@ namespace Google.Apis.Walletobjects.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Generic Object Next ID: 121</summary>
+    /// <summary>Generic Object</summary>
     public class GenericObject : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

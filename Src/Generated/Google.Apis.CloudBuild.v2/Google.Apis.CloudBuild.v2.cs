@@ -4359,6 +4359,14 @@ namespace Google.Apis.CloudBuild.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Optional. Optional parameters passed to the StepAction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("params")]
+        public virtual System.Collections.Generic.IList<Param> Params__ { get; set; }
+
+        /// <summary>Optional. Optional reference to a remote StepAction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ref")]
+        public virtual StepRef Ref__ { get; set; }
+
         /// <summary>The contents of an executable file to execute.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("script")]
         public virtual string Script { get; set; }
@@ -4382,6 +4390,25 @@ namespace Google.Apis.CloudBuild.v2.Data
         /// <summary>Container's working directory.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workingDir")]
         public virtual string WorkingDir { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A reference to a remote Step, i.e. a StepAction.</summary>
+    public class StepRef : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Name of the step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. Parameters used to control the resolution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("params")]
+        public virtual System.Collections.Generic.IList<Param> Params__ { get; set; }
+
+        /// <summary>Optional. Type of the resolver.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolver")]
+        public virtual string Resolver { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4453,6 +4480,10 @@ namespace Google.Apis.CloudBuild.v2.Data
         /// <summary>The type of data that the result holds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>Optional. Optionally used to initialize a Task's result with a Step's result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual ParamValue Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

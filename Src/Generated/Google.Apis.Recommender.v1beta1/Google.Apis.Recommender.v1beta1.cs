@@ -654,7 +654,7 @@ namespace Google.Apis.Recommender.v1beta1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Name of insight type config. Eg,
+                /// Identifier. Name of insight type config. Eg,
                 /// projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config
                 /// </param>
                 public virtual UpdateConfigRequest UpdateConfig(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1InsightTypeConfig body, string name)
@@ -676,7 +676,7 @@ namespace Google.Apis.Recommender.v1beta1
                     }
 
                     /// <summary>
-                    /// Name of insight type config. Eg,
+                    /// Identifier. Name of insight type config. Eg,
                     /// projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1277,7 +1277,7 @@ namespace Google.Apis.Recommender.v1beta1
                 /// <summary>Updates a Recommender Config. This will create a new revision of the config.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Name of recommender config. Eg,
+                /// Identifier. Name of recommender config. Eg,
                 /// projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config
                 /// </param>
                 public virtual UpdateConfigRequest UpdateConfig(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1RecommenderConfig body, string name)
@@ -1297,7 +1297,7 @@ namespace Google.Apis.Recommender.v1beta1
                     }
 
                     /// <summary>
-                    /// Name of recommender config. Eg,
+                    /// Identifier. Name of recommender config. Eg,
                     /// projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -2769,7 +2769,7 @@ namespace Google.Apis.Recommender.v1beta1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Name of insight type config. Eg,
+                /// Identifier. Name of insight type config. Eg,
                 /// projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config
                 /// </param>
                 public virtual UpdateConfigRequest UpdateConfig(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1InsightTypeConfig body, string name)
@@ -2791,7 +2791,7 @@ namespace Google.Apis.Recommender.v1beta1
                     }
 
                     /// <summary>
-                    /// Name of insight type config. Eg,
+                    /// Identifier. Name of insight type config. Eg,
                     /// projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -3392,7 +3392,7 @@ namespace Google.Apis.Recommender.v1beta1
                 /// <summary>Updates a Recommender Config. This will create a new revision of the config.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Name of recommender config. Eg,
+                /// Identifier. Name of recommender config. Eg,
                 /// projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config
                 /// </param>
                 public virtual UpdateConfigRequest UpdateConfig(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1RecommenderConfig body, string name)
@@ -3412,7 +3412,7 @@ namespace Google.Apis.Recommender.v1beta1
                     }
 
                     /// <summary>
-                    /// Name of recommender config. Eg,
+                    /// Identifier. Name of recommender config. Eg,
                     /// projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -3938,7 +3938,7 @@ namespace Google.Apis.Recommender.v1beta1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Name of insight type config. Eg,
+                /// Identifier. Name of insight type config. Eg,
                 /// projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config
                 /// </param>
                 public virtual UpdateConfigRequest UpdateConfig(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1InsightTypeConfig body, string name)
@@ -3960,7 +3960,7 @@ namespace Google.Apis.Recommender.v1beta1
                     }
 
                     /// <summary>
-                    /// Name of insight type config. Eg,
+                    /// Identifier. Name of insight type config. Eg,
                     /// projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -4561,7 +4561,7 @@ namespace Google.Apis.Recommender.v1beta1
                 /// <summary>Updates a Recommender Config. This will create a new revision of the config.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Name of recommender config. Eg,
+                /// Identifier. Name of recommender config. Eg,
                 /// projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config
                 /// </param>
                 public virtual UpdateConfigRequest UpdateConfig(Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1RecommenderConfig body, string name)
@@ -4581,7 +4581,7 @@ namespace Google.Apis.Recommender.v1beta1
                     }
 
                     /// <summary>
-                    /// Name of recommender config. Eg,
+                    /// Identifier. Name of recommender config. Eg,
                     /// projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -5079,7 +5079,7 @@ namespace Google.Apis.Recommender.v1beta1.Data
         public virtual GoogleCloudRecommenderV1beta1InsightTypeGenerationConfig InsightTypeGenerationConfig { get; set; }
 
         /// <summary>
-        /// Name of insight type config. Eg,
+        /// Identifier. Name of insight type config. Eg,
         /// projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -5581,7 +5581,7 @@ namespace Google.Apis.Recommender.v1beta1.Data
         public virtual string ETag { get; set; }
 
         /// <summary>
-        /// Name of recommender config. Eg,
+        /// Identifier. Name of recommender config. Eg,
         /// projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]

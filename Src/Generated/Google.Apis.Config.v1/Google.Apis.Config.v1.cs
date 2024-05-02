@@ -2969,7 +2969,7 @@ namespace Google.Apis.Config.v1.Data
     public class Deployment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Arbitrary key-value metadata storage e.g. to help client tools identifiy deployments during
+        /// Optional. Arbitrary key-value metadata storage e.g. to help client tools identify deployments during
         /// automation. See https://google.aip.dev/148#annotations for details on format and size limitations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
@@ -3802,6 +3802,13 @@ namespace Google.Apis.Config.v1.Data
     public class Preview : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. Arbitrary key-value metadata storage e.g. to help client tools identifiy preview during
+        /// automation. See https://google.aip.dev/148#annotations for details on format and size limitations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
+
+        /// <summary>
         /// Optional. User-defined location of Cloud Build logs, artifacts, and in Google Cloud Storage. Format:
         /// `gs://{bucket}/{folder}` A default bucket will be bootstrapped if the field is not set or empty Default
         /// Bucket Format: `gs://--blueprint-config` Constraints: - The bucket needs to be in the same project as the
@@ -3919,6 +3926,17 @@ namespace Google.Apis.Config.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tfErrors")]
         public virtual System.Collections.Generic.IList<TerraformError> TfErrors { get; set; }
+
+        /// <summary>
+        /// Output only. The current Terraform version set on the preview. It is in the format of "Major.Minor.Patch",
+        /// for example, "1.3.10".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tfVersion")]
+        public virtual string TfVersion { get; set; }
+
+        /// <summary>Optional. The user-specified Terraform version constraint. Example: "=1.3.10".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tfVersionConstraint")]
+        public virtual string TfVersionConstraint { get; set; }
 
         /// <summary>
         /// Optional. The user-specified Worker Pool resource in which the Cloud Build job will execute. Format

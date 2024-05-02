@@ -714,31 +714,6 @@ namespace Google.Apis.DoubleClickBidManager.v2
 }
 namespace Google.Apis.DoubleClickBidManager.v2.Data
 {
-    /// <summary>
-    /// A channel grouping defines a set of rules that can be used to categorize events in a path report.
-    /// </summary>
-    public class ChannelGrouping : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The name to apply to an event that does not match any of the rules in the channel grouping.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fallbackName")]
-        public virtual string FallbackName { get; set; }
-
-        /// <summary>Channel Grouping name.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>
-        /// Rules within Channel Grouping. There is a limit of 100 rules that can be set per channel grouping.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rules")]
-        public virtual System.Collections.Generic.IList<Rule> Rules { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Report data range.</summary>
     public class DataRange : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -788,28 +763,6 @@ namespace Google.Apis.DoubleClickBidManager.v2.Data
         /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("year")]
         public virtual System.Nullable<int> Year { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>DisjunctiveMatchStatement that OR's all contained filters.</summary>
-    public class DisjunctiveMatchStatement : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Filters. There is a limit of 100 filters that can be set per disjunctive match statement.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("eventFilters")]
-        public virtual System.Collections.Generic.IList<EventFilter> EventFilters { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Defines the type of filter to be applied to the path, a DV360 event dimension filter.</summary>
-    public class EventFilter : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Filter on a dimension.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dimensionFilter")]
-        public virtual PathQueryOptionsFilter DimensionFilter { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -874,13 +827,6 @@ namespace Google.Apis.DoubleClickBidManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("includeOnlyTargetedUserLists")]
         public virtual System.Nullable<bool> IncludeOnlyTargetedUserLists { get; set; }
 
-        /// <summary>
-        /// Options that contain Path Filters and Custom Channel Groupings. This field is deprecated and will sunset on
-        /// **May 1, 2024**. After sunset, requests using this field will return an error.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pathQueryOptions")]
-        public virtual PathQueryOptions PathQueryOptions { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -910,59 +856,6 @@ namespace Google.Apis.DoubleClickBidManager.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Path filters specify which paths to include in a report. A path is the result of combining DV360 events based on
-    /// User ID to create a workflow of users' actions. When a path filter is set, the resulting report will only
-    /// include paths that match the specified event at the specified position. All other paths will be excluded.
-    /// </summary>
-    public class PathFilter : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Filter on an event to be applied to some part of the path.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("eventFilters")]
-        public virtual System.Collections.Generic.IList<EventFilter> EventFilters { get; set; }
-
-        /// <summary>The position of the path the filter should match to (first, last, or any event in path).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pathMatchPosition")]
-        public virtual string PathMatchPosition { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Path Query Options for Report Options.</summary>
-    public class PathQueryOptions : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Custom Channel Groupings.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("channelGrouping")]
-        public virtual ChannelGrouping ChannelGrouping { get; set; }
-
-        /// <summary>Path Filters. There is a limit of 100 path filters that can be set per report.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pathFilters")]
-        public virtual System.Collections.Generic.IList<PathFilter> PathFilters { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Dimension filter on path events.</summary>
-    public class PathQueryOptionsFilter : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Dimension the filter is applied to.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
-        public virtual string Filter { get; set; }
-
-        /// <summary>Match logic of the filter.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("match")]
-        public virtual string Match { get; set; }
-
-        /// <summary>Values to filter on.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<string> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1153,27 +1046,6 @@ namespace Google.Apis.DoubleClickBidManager.v2.Data
         /// <summary>Output only. The state of the report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// A Rule defines a name, and a boolean expression in [conjunctive normal form]
-    /// (http://mathworld.wolfram.com/ConjunctiveNormalForm.html){.external} that can be applied to a path event to
-    /// determine if that name should be applied.
-    /// </summary>
-    public class Rule : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// DisjunctiveMatchStatements within a Rule. DisjunctiveMatchStatement OR's all contained filters.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("disjunctiveMatchStatements")]
-        public virtual System.Collections.Generic.IList<DisjunctiveMatchStatement> DisjunctiveMatchStatements { get; set; }
-
-        /// <summary>Rule name.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

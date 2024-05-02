@@ -6206,10 +6206,6 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
     /// <summary>Details of a database instance.</summary>
     public class DatabaseInstance : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The instance's hosts.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("hosts")]
-        public virtual System.Collections.Generic.IList<DatabaseInstanceHost> Hosts { get; set; }
-
         /// <summary>The instance's name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceName")]
         public virtual string InstanceName { get; set; }
@@ -6217,17 +6213,6 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>The instance role in the database engine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Details of a host of a database instance.</summary>
-    public class DatabaseInstanceHost : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. The host name of the host.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("hostName")]
-        public virtual string HostName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8162,19 +8147,8 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Specific details for a Mysql database deployment.</summary>
-    public class MysqlDatabaseDeployment : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. List of Mysql plugins.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("plugins")]
-        public virtual System.Collections.Generic.IList<MysqlPlugin> Plugins { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Mysql plugin.</summary>
-    public class MysqlPlugin : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>MySql plugin.</summary>
+    public class MySqlPlugin : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The plugin is active.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
@@ -8187,6 +8161,17 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>Required. The plugin version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specific details for a Mysql database deployment.</summary>
+    public class MysqlDatabaseDeployment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. List of MySql plugins.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("plugins")]
+        public virtual System.Collections.Generic.IList<MySqlPlugin> Plugins { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

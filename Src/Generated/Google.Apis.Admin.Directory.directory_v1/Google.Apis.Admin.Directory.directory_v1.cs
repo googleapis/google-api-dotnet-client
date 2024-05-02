@@ -11156,10 +11156,17 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string AnnotatedUser { get; set; }
 
         /// <summary>
-        /// (Read-only) The timestamp after which the device will stop receiving Chrome updates or support
+        /// (Read-only) The timestamp after which the device will stop receiving Chrome updates or support. Please use
+        /// "autoUpdateThrough" instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoUpdateExpiration")]
         public virtual System.Nullable<long> AutoUpdateExpiration { get; set; }
+
+        /// <summary>
+        /// Output only. The timestamp after which the device will stop receiving Chrome updates or support.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoUpdateThrough")]
+        public virtual string AutoUpdateThrough { get; set; }
 
         /// <summary>Output only. Contains backlight information for the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backlightInfo")]
@@ -11226,6 +11233,20 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ethernetMacAddress0")]
         public virtual string EthernetMacAddress0 { get; set; }
+
+        /// <summary>Output only. Whether or not the device requires the extended support opt in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extendedSupportEligible")]
+        public virtual System.Nullable<bool> ExtendedSupportEligible { get; set; }
+
+        /// <summary>Output only. Whether extended support policy is enabled on the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extendedSupportEnabled")]
+        public virtual System.Nullable<bool> ExtendedSupportEnabled { get; set; }
+
+        /// <summary>
+        /// Output only. Date of the device when extended support policy for automatic updates starts.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extendedSupportStart")]
+        public virtual string ExtendedSupportStart { get; set; }
 
         /// <summary>The Chrome device's firmware version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firmwareVersion")]

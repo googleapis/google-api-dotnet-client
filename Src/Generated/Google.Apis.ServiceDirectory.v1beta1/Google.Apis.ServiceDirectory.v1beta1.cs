@@ -572,7 +572,9 @@ namespace Google.Apis.ServiceDirectory.v1beta1
                             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string OrderBy { get; set; }
 
-                            /// <summary>Optional. The maximum number of items to return.</summary>
+                            /// <summary>
+                            /// Optional. The maximum number of items to return. The default value is 100.
+                            /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -993,7 +995,9 @@ namespace Google.Apis.ServiceDirectory.v1beta1
                         [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string OrderBy { get; set; }
 
-                        /// <summary>Optional. The maximum number of items to return.</summary>
+                        /// <summary>
+                        /// Optional. The maximum number of items to return. The default value is 100.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -1804,7 +1808,7 @@ namespace Google.Apis.ServiceDirectory.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
-                    /// <summary>Optional. The maximum number of items to return.</summary>
+                    /// <summary>Optional. The maximum number of items to return. The default value is 100.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 

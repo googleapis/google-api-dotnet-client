@@ -1244,6 +1244,10 @@ namespace Google.Apis.BigQueryConnectionService.v1.Data
     /// <summary>Represents concrete parameter values for Connector Configuration.</summary>
     public class ConnectorConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Data asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("asset")]
+        public virtual ConnectorConfigurationAsset Asset { get; set; }
+
         /// <summary>Client authentication.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authentication")]
         public virtual ConnectorConfigurationAuthentication Authentication { get; set; }
@@ -1259,6 +1263,27 @@ namespace Google.Apis.BigQueryConnectionService.v1.Data
         /// <summary>Networking configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual ConnectorConfigurationNetwork Network { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Data Asset - a resource within instance of the system, reachable under specified endpoint. For example a
+    /// database name in a SQL DB.
+    /// </summary>
+    public class ConnectorConfigurationAsset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Name of the database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual string Database { get; set; }
+
+        /// <summary>
+        /// Full Google Cloud resource name - https://cloud.google.com/apis/design/resource_names#full_resource_name.
+        /// Example: `//library.googleapis.com/shelves/shelf1/books/book2`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleCloudResource")]
+        public virtual string GoogleCloudResource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

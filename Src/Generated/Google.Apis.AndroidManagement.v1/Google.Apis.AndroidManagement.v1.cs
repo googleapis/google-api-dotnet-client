@@ -4251,6 +4251,13 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("wifiDirectSettings")]
         public virtual string WifiDirectSettings { get; set; }
 
+        /// <summary>
+        /// Restrictions on which Wi-Fi SSIDs the device can connect to. Note that this does not affect which networks
+        /// can be configured on the device. Supported on company-owned devices running Android 13 and above.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wifiSsidPolicy")]
+        public virtual WifiSsidPolicy WifiSsidPolicy { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6583,7 +6590,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
 
         /// <summary>
         /// The system update policy, which controls how OS updates are applied. If the update type is WINDOWED, the
-        /// update window will automatically apply to Play app updates as well.
+        /// update window will automatically apply to Play app updates as well.Note: Google Play system updates
+        /// (https://source.android.com/docs/core/ota/modular-system) (also called Mainline updates) are automatically
+        /// downloaded and require a device reboot to be installed. Refer to the mainline section in Manage system
+        /// updates (https://developer.android.com/work/dpc/system-updates#mainline) for further details.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("systemUpdate")]
         public virtual SystemUpdate SystemUpdate { get; set; }
@@ -7248,7 +7258,12 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Configuration for managing system updates</summary>
+    /// <summary>
+    /// Configuration for managing system updatesNote: Google Play system updates
+    /// (https://source.android.com/docs/core/ota/modular-system) (also called Mainline updates) are automatically
+    /// downloaded but require a device reboot to be installed. Refer to the mainline section in Manage system updates
+    /// (https://developer.android.com/work/dpc/system-updates#mainline) for further details.
+    /// </summary>
     public class SystemUpdate : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -7743,6 +7758,40 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a Wi-Fi SSID.</summary>
+    public class WifiSsid : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Wi-Fi SSID represented as a string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wifiSsid")]
+        public virtual string WifiSsidValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Restrictions on which Wi-Fi SSIDs the device can connect to. Note that this does not affect which networks can
+    /// be configured on the device. Supported on company-owned devices running Android 13 and above.
+    /// </summary>
+    public class WifiSsidPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Type of the Wi-Fi SSID policy to be applied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wifiSsidPolicyType")]
+        public virtual string WifiSsidPolicyType { get; set; }
+
+        /// <summary>
+        /// Optional. List of Wi-Fi SSIDs that should be applied in the policy. This field must be non-empty when
+        /// WifiSsidPolicyType is set to WIFI_SSID_ALLOWLIST. If this is set to a non-empty list, then a
+        /// nonComplianceDetail detail with API_LEVEL is reported if the Android version is less than 13 and a
+        /// nonComplianceDetail with MANAGEMENT_MODE is reported for non-company-owned devices.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wifiSsids")]
+        public virtual System.Collections.Generic.IList<WifiSsid> WifiSsids { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

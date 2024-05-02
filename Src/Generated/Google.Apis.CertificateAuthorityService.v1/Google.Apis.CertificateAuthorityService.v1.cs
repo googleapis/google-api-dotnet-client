@@ -4429,6 +4429,14 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pemCaCertificates")]
         public virtual System.Collections.Generic.IList<string> PemCaCertificates { get; set; }
 
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
         /// <summary>Output only. The State for this CertificateAuthority.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
