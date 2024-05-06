@@ -2165,7 +2165,10 @@ namespace Google.Apis.Calendar.v3
         }
 
         /// <summary>
-        /// Imports an event. This operation is used to add a private copy of an existing event to a calendar.
+        /// Imports an event. This operation is used to add a private copy of an existing event to a calendar. Only
+        /// events with an eventType of default may be imported. Deprecated behavior: If a non-default event is
+        /// imported, its type will be changed to default and any event-type-specific properties it may have will be
+        /// dropped.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="calendarId">
@@ -2178,7 +2181,10 @@ namespace Google.Apis.Calendar.v3
         }
 
         /// <summary>
-        /// Imports an event. This operation is used to add a private copy of an existing event to a calendar.
+        /// Imports an event. This operation is used to add a private copy of an existing event to a calendar. Only
+        /// events with an eventType of default may be imported. Deprecated behavior: If a non-default event is
+        /// imported, its type will be changed to default and any event-type-specific properties it may have will be
+        /// dropped.
         /// </summary>
         public class ImportRequest : CalendarBaseServiceRequest<Google.Apis.Calendar.v3.Data.Event>
         {
@@ -5218,9 +5224,7 @@ namespace Google.Apis.Calendar.v3.Data
         /// <summary>
         /// Specific type of the event. This cannot be modified after the event is created. Possible values are:   -
         /// "default" - A regular event or not further specified.  - "outOfOffice" - An out-of-office event.  -
-        /// "focusTime" - A focus-time event.  - "workingLocation" - A working location event.  Currently, only "default
-        /// " and "workingLocation" events can be created using the API. Extended support for other event types will be
-        /// made available in later releases.
+        /// "focusTime" - A focus-time event.  - "workingLocation" - A working location event.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
         public virtual string EventType { get; set; }

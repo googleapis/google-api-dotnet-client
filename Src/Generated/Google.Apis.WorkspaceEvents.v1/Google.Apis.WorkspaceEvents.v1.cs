@@ -64,7 +64,7 @@ namespace Google.Apis.WorkspaceEvents.v1
             /// <summary>Private Service: https://www.googleapis.com/auth/chat.bot</summary>
             public static string ChatBot = "https://www.googleapis.com/auth/chat.bot";
 
-            /// <summary>View, add, and remove members from conversations in Google Chat</summary>
+            /// <summary>View, add, update, and remove members from conversations in Google Chat</summary>
             public static string ChatMemberships = "https://www.googleapis.com/auth/chat.memberships";
 
             /// <summary>View members in Google Chat conversations.</summary>
@@ -108,7 +108,7 @@ namespace Google.Apis.WorkspaceEvents.v1
             /// <summary>Private Service: https://www.googleapis.com/auth/chat.bot</summary>
             public const string ChatBot = "https://www.googleapis.com/auth/chat.bot";
 
-            /// <summary>View, add, and remove members from conversations in Google Chat</summary>
+            /// <summary>View, add, update, and remove members from conversations in Google Chat</summary>
             public const string ChatMemberships = "https://www.googleapis.com/auth/chat.memberships";
 
             /// <summary>View members in Google Chat conversations.</summary>

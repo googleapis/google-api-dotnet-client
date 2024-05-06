@@ -3073,6 +3073,80 @@ namespace Google.Apis.BeyondCorp.v1alpha
                 }
 
                 /// <summary>
+                /// Cancels an existing BeyondCorp Enterprise Subscription in a given organization. Location will always
+                /// be global as BeyondCorp subscriptions are per organization. Returns the timestamp for when the
+                /// cancellation will become effective
+                /// </summary>
+                /// <param name="name">Required. Name of the resource.</param>
+                public virtual CancelRequest Cancel(string name)
+                {
+                    return new CancelRequest(this.service, name);
+                }
+
+                /// <summary>
+                /// Cancels an existing BeyondCorp Enterprise Subscription in a given organization. Location will always
+                /// be global as BeyondCorp subscriptions are per organization. Returns the timestamp for when the
+                /// cancellation will become effective
+                /// </summary>
+                public class CancelRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaCancelSubscriptionResponse>
+                {
+                    /// <summary>Constructs a new Cancel request.</summary>
+                    public CancelRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Name of the resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes after the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "cancel";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}:cancel";
+
+                    /// <summary>Initializes Cancel parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/subscriptions/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
                 /// Creates a new BeyondCorp Enterprise Subscription in a given organization. Location will always be
                 /// global as BeyondCorp subscriptions are per organization.
                 /// </summary>
@@ -3321,8 +3395,8 @@ namespace Google.Apis.BeyondCorp.v1alpha
                     /// <summary>
                     /// Required. Field mask is used to specify the fields to be overwritten in the Subscription
                     /// resource by the update. The fields specified in the update_mask are relative to the resource,
-                    /// not the full request. A field will be overwritten if it is in the mask. If the user does not
-                    /// provide a mask then all mutable fields will be overwritten. Mutable fields: type, state.
+                    /// not the full request. A field will be overwritten if it is in the mask. Mutable fields:
+                    /// seat_count.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -9966,6 +10040,14 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
         /// <summary>Output only. The current state of the AppGateway.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
@@ -10997,6 +11079,14 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
         /// <summary>Output only. The current state of the AppConnection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -12868,6 +12958,52 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for BeyondCorp.CancelSubscription</summary>
+    public class GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaCancelSubscriptionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _effectiveCancellationTimeRaw;
+
+        private object _effectiveCancellationTime;
+
+        /// <summary>Time when the cancellation will become effective</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveCancellationTime")]
+        public virtual string EffectiveCancellationTimeRaw
+        {
+            get => _effectiveCancellationTimeRaw;
+            set
+            {
+                _effectiveCancellationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _effectiveCancellationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EffectiveCancellationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EffectiveCancellationTimeDateTimeOffset instead.")]
+        public virtual object EffectiveCancellationTime
+        {
+            get => _effectiveCancellationTime;
+            set
+            {
+                _effectiveCancellationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _effectiveCancellationTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="EffectiveCancellationTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EffectiveCancellationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EffectiveCancellationTimeRaw);
+            set => EffectiveCancellationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for BeyondCorp.ListSubscriptions.</summary>
     public class GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaListSubscriptionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12894,6 +13030,13 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
         /// <summary>Output only. Represents that, if subscription will renew or end when the term ends.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoRenewEnabled")]
         public virtual System.Nullable<bool> AutoRenewEnabled { get; set; }
+
+        /// <summary>
+        /// Optional. Name of the billing account in the format. e.g. billingAccounts/123456-123456-123456 Required if
+        /// Subscription is of Paid type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billingAccount")]
+        public virtual string BillingAccount { get; set; }
 
         private string _createTimeRaw;
 

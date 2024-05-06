@@ -1567,6 +1567,13 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual string CredentialsSecret { get; set; }
 
         /// <summary>
+        /// Egress bytes over a Google-managed private network. This network is shared between other users of Storage
+        /// Transfer Service.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managedPrivateNetwork")]
+        public virtual System.Nullable<bool> ManagedPrivateNetwork { get; set; }
+
+        /// <summary>
         /// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is
         /// treated as an object prefix. As such, it should generally not begin with a '/'.
         /// </summary>
