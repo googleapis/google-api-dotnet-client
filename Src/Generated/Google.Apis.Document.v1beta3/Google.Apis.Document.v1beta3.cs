@@ -7781,6 +7781,10 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pageSpan")]
         public virtual GoogleCloudDocumentaiV1beta3DocumentChunkedDocumentChunkChunkPageSpan PageSpan { get; set; }
 
+        /// <summary>DO NOT USE. List of all parsed documents layout source blocks used to generate the chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceBlockIds")]
+        public virtual System.Collections.Generic.IList<string> SourceBlockIds { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

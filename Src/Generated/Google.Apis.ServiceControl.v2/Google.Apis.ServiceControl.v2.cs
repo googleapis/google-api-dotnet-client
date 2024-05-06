@@ -1879,6 +1879,50 @@ namespace Google.Apis.ServiceControl.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Report v2 extension proto for passing the resource metadata associated with a resource
+    /// create/update/delete/undelete event from ESF to Chemist. ResourceEvent proto should be serialized into the
+    /// ReportRequest.operations.extensions.
+    /// </summary>
+    public class V2ResourceEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The destinations field determines which backend services should handle the event. This should be specified
+        /// as a comma-delimited string.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinations")]
+        public virtual string Destinations { get; set; }
+
+        /// <summary>The parent resource for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual Resource Parent { get; set; }
+
+        /// <summary>
+        /// The api path the resource event was created in. This should match the source of the `payload` field. For
+        /// direct integrations with Chemist, this should generally be the RESPONSE. go/resource-event-pipeline-type
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>
+        /// The payload contains metadata associated with the resource event. A ResourceEventPayloadStatus is provided
+        /// instead if the original payload cannot be returned due to a limitation (e.g. size limit).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("payload")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Payload { get; set; }
+
+        /// <summary>The resource associated with the event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual Resource Resource { get; set; }
+
+        /// <summary>The resource event type determines how the backend service should process the event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Provides information about the Policy violation info for this request.</summary>
     public class ViolationInfo : Google.Apis.Requests.IDirectResponseSchema
     {

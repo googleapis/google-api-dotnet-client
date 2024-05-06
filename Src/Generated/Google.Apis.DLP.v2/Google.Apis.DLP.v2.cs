@@ -15226,7 +15226,7 @@ namespace Google.Apis.DLP.v2.Data
 
     /// <summary>
     /// Classification of infoTypes to organize them according to geographic location, industry, and data type. NEXT_ID:
-    /// 47
+    /// 48
     /// </summary>
     public class GooglePrivacyDlpV2InfoTypeCategory : Google.Apis.Requests.IDirectResponseSchema
     {

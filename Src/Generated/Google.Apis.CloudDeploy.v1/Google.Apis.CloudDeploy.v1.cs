@@ -5086,8 +5086,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
     public class AnthosCluster : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is
-        /// `projects/{project}/locations/{location}/memberships/{membership_name}`.
+        /// Optional. Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format
+        /// is `projects/{project}/locations/{location}/memberships/{membership_name}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("membership")]
         public virtual string Membership { get; set; }
@@ -6694,7 +6694,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
     public class GkeCluster : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Information specifying a GKE Cluster. Format is
+        /// Optional. Information specifying a GKE Cluster. Format is
         /// `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cluster")]

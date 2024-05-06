@@ -7570,6 +7570,17 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Holds non-protocol-related configuration options.</summary>
+    public class IdentityServiceIdentityServiceOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Determines the lifespan of STS tokens issued by Anthos Identity Service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionDuration")]
+        public virtual object SessionDuration { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for the LDAP Auth flow.</summary>
     public class IdentityServiceLdapConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7605,6 +7616,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>A member may support multiple auth methods.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authMethods")]
         public virtual System.Collections.Generic.IList<IdentityServiceAuthMethod> AuthMethods { get; set; }
+
+        /// <summary>Optional. non-protocol-related configuration options.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identityServiceOptions")]
+        public virtual IdentityServiceIdentityServiceOptions IdentityServiceOptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

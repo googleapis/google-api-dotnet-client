@@ -34,7 +34,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
         /// <param name="initializer">The service initializer.</param>
         public DiscoveryEngineService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
-            Locations = new LocationsResource(this);
             Projects = new ProjectsResource(this);
             BaseUri = GetEffectiveUri(BaseUriOverride, "https://discoveryengine.googleapis.com/");
             BatchUri = GetEffectiveUri(null, "https://discoveryengine.googleapis.com/batch");
@@ -77,9 +76,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
             /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
-
-        /// <summary>Gets the Locations resource.</summary>
-        public virtual LocationsResource Locations { get; }
 
         /// <summary>Gets the Projects resource.</summary>
         public virtual ProjectsResource Projects { get; }
@@ -263,267 +259,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                 DefaultValue = null,
                 Pattern = null,
             });
-        }
-    }
-
-    /// <summary>The "locations" collection of methods.</summary>
-    public class LocationsResource
-    {
-        private const string Resource = "locations";
-
-        /// <summary>The service which this resource belongs to.</summary>
-        private readonly Google.Apis.Services.IClientService service;
-
-        /// <summary>Constructs a new resource.</summary>
-        public LocationsResource(Google.Apis.Services.IClientService service)
-        {
-            this.service = service;
-        }
-
-        /// <summary>Gets the Widget Config using the uuid.</summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="location">
-        /// Required. The location resource where lookup widget will be performed. Format: `locations/{location}`
-        /// </param>
-        public virtual LookupWidgetConfigRequest LookupWidgetConfig(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaLookupWidgetConfigRequest body, string location)
-        {
-            return new LookupWidgetConfigRequest(this.service, body, location);
-        }
-
-        /// <summary>Gets the Widget Config using the uuid.</summary>
-        public class LookupWidgetConfigRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaLookupWidgetConfigResponse>
-        {
-            /// <summary>Constructs a new LookupWidgetConfig request.</summary>
-            public LookupWidgetConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaLookupWidgetConfigRequest body, string location) : base(service)
-            {
-                Location = location;
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>
-            /// Required. The location resource where lookup widget will be performed. Format: `locations/{location}`
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Location { get; private set; }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaLookupWidgetConfigRequest Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "lookupWidgetConfig";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1alpha/{+location}/lookupWidgetConfig";
-
-            /// <summary>Initializes LookupWidgetConfig parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "location",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"^locations/[^/]+$",
-                });
-            }
-        }
-
-        /// <summary>
-        /// Performs a user input completion with keyword suggestion. Similar to the CompletionService.CompleteQuery
-        /// method, but a widget version that allows CompleteQuery without API Key. It supports CompleteQuery with or
-        /// without JWT token.
-        /// </summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="location">
-        /// Required. The location resource where widget complete query will be performed. Format:
-        /// `locations/{location}`
-        /// </param>
-        public virtual WidgetCompleteQueryRequest WidgetCompleteQuery(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaWidgetCompleteQueryRequest body, string location)
-        {
-            return new WidgetCompleteQueryRequest(this.service, body, location);
-        }
-
-        /// <summary>
-        /// Performs a user input completion with keyword suggestion. Similar to the CompletionService.CompleteQuery
-        /// method, but a widget version that allows CompleteQuery without API Key. It supports CompleteQuery with or
-        /// without JWT token.
-        /// </summary>
-        public class WidgetCompleteQueryRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaWidgetCompleteQueryResponse>
-        {
-            /// <summary>Constructs a new WidgetCompleteQuery request.</summary>
-            public WidgetCompleteQueryRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaWidgetCompleteQueryRequest body, string location) : base(service)
-            {
-                Location = location;
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>
-            /// Required. The location resource where widget complete query will be performed. Format:
-            /// `locations/{location}`
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Location { get; private set; }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaWidgetCompleteQueryRequest Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "widgetCompleteQuery";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1alpha/{+location}/widgetCompleteQuery";
-
-            /// <summary>Initializes WidgetCompleteQuery parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "location",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"^locations/[^/]+$",
-                });
-            }
-        }
-
-        /// <summary>Converse a conversation with Widget.</summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="location">
-        /// Required. The location resource where widget converse conversation will be performed. Format:
-        /// `locations/{location}`
-        /// </param>
-        public virtual WidgetConverseConversationRequest WidgetConverseConversation(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaWidgetConverseConversationRequest body, string location)
-        {
-            return new WidgetConverseConversationRequest(this.service, body, location);
-        }
-
-        /// <summary>Converse a conversation with Widget.</summary>
-        public class WidgetConverseConversationRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaWidgetConverseConversationResponse>
-        {
-            /// <summary>Constructs a new WidgetConverseConversation request.</summary>
-            public WidgetConverseConversationRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaWidgetConverseConversationRequest body, string location) : base(service)
-            {
-                Location = location;
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>
-            /// Required. The location resource where widget converse conversation will be performed. Format:
-            /// `locations/{location}`
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Location { get; private set; }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaWidgetConverseConversationRequest Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "widgetConverseConversation";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1alpha/{+location}/widgetConverseConversation";
-
-            /// <summary>Initializes WidgetConverseConversation parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "location",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"^locations/[^/]+$",
-                });
-            }
-        }
-
-        /// <summary>
-        /// Performs a search. Similar to the SearchService.Search method, but a widget version that allows search
-        /// without API Key. It supports search with or without JWT token.
-        /// </summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="location">
-        /// Required. The location resource where widget search will be performed. Format: `locations/{location}`
-        /// </param>
-        public virtual WidgetSearchRequest WidgetSearch(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaWidgetSearchRequest body, string location)
-        {
-            return new WidgetSearchRequest(this.service, body, location);
-        }
-
-        /// <summary>
-        /// Performs a search. Similar to the SearchService.Search method, but a widget version that allows search
-        /// without API Key. It supports search with or without JWT token.
-        /// </summary>
-        public class WidgetSearchRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaWidgetSearchResponse>
-        {
-            /// <summary>Constructs a new WidgetSearch request.</summary>
-            public WidgetSearchRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaWidgetSearchRequest body, string location) : base(service)
-            {
-                Location = location;
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>
-            /// Required. The location resource where widget search will be performed. Format: `locations/{location}`
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Location { get; private set; }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaWidgetSearchRequest Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "widgetSearch";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1alpha/{+location}/widgetSearch";
-
-            /// <summary>Initializes WidgetSearch parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "location",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"^locations/[^/]+$",
-                });
-            }
         }
     }
 
@@ -781,6 +516,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         this.service = service;
                         Branches = new BranchesResource(service);
                         Conversations = new ConversationsResource(service);
+                        CustomModels = new CustomModelsResource(service);
                         Models = new ModelsResource(service);
                         Operations = new OperationsResource(service);
                         Schemas = new SchemasResource(service);
@@ -1254,10 +990,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                     PARSEDDOCUMENT = 1,
 
                                     /// <summary>
-                                    /// Only available if ChunkingConfig is enabeld on the data store.
+                                    /// Only available if ChunkingConfig is enabled on the data store.
                                     /// </summary>
                                     [Google.Apis.Util.StringValueAttribute("CHUNKED_DOCUMENT")]
                                     CHUNKEDDOCUMENT = 2,
+
+                                    /// <summary>Returns the converted PNG Image bytes if available.</summary>
+                                    [Google.Apis.Util.StringValueAttribute("PNG_CONVERTED_DOCUMENT")]
+                                    PNGCONVERTEDDOCUMENT = 3,
                                 }
 
                                 /// <summary>Gets the method name.</summary>
@@ -2228,6 +1968,77 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                     ParameterType = "query",
                                     DefaultValue = null,
                                     Pattern = null,
+                                });
+                            }
+                        }
+                    }
+
+                    /// <summary>Gets the CustomModels resource.</summary>
+                    public virtual CustomModelsResource CustomModels { get; }
+
+                    /// <summary>The "customModels" collection of methods.</summary>
+                    public class CustomModelsResource
+                    {
+                        private const string Resource = "customModels";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public CustomModelsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>Gets a list of all the custom models.</summary>
+                        /// <param name="dataStore">
+                        /// Required. The resource name of the parent Data Store, such as
+                        /// `projects/*/locations/global/collections/default_collection/dataStores/default_data_store`.
+                        /// This field is used to identify the data store where to fetch the models from.
+                        /// </param>
+                        public virtual ListRequest List(string dataStore)
+                        {
+                            return new ListRequest(this.service, dataStore);
+                        }
+
+                        /// <summary>Gets a list of all the custom models.</summary>
+                        public class ListRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaListCustomModelsResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string dataStore) : base(service)
+                            {
+                                DataStore = dataStore;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource name of the parent Data Store, such as
+                            /// `projects/*/locations/global/collections/default_collection/dataStores/default_data_store`.
+                            /// This field is used to identify the data store where to fetch the models from.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("dataStore", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string DataStore { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+dataStore}/customModels";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("dataStore", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "dataStore",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+$",
                                 });
                             }
                         }
@@ -5973,7 +5784,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// Filter by solution type. For example: filter = 'solution_type:SOLUTION_TYPE_SEARCH'
+                        /// Filter by solution type . For example: filter = 'solution_type:SOLUTION_TYPE_SEARCH'
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
@@ -8974,9 +8785,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                 [Google.Apis.Util.StringValueAttribute("PARSED_DOCUMENT")]
                                 PARSEDDOCUMENT = 1,
 
-                                /// <summary>Only available if ChunkingConfig is enabeld on the data store.</summary>
+                                /// <summary>Only available if ChunkingConfig is enabled on the data store.</summary>
                                 [Google.Apis.Util.StringValueAttribute("CHUNKED_DOCUMENT")]
                                 CHUNKEDDOCUMENT = 2,
+
+                                /// <summary>Returns the converted PNG Image bytes if available.</summary>
+                                [Google.Apis.Util.StringValueAttribute("PNG_CONVERTED_DOCUMENT")]
+                                PNGCONVERTEDDOCUMENT = 3,
                             }
 
                             /// <summary>Gets the method name.</summary>
@@ -13052,7 +12867,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Filter by solution type. For example: filter = 'solution_type:SOLUTION_TYPE_SEARCH'
+                    /// Filter by solution type . For example: filter = 'solution_type:SOLUTION_TYPE_SEARCH'
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -16572,6 +16387,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("providedUriPattern")]
         public virtual string ProvidedUriPattern { get; set; }
 
+        /// <summary>Output only. Root domain of the provided_uri_pattern.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rootDomainUri")]
+        public virtual string RootDomainUri { get; set; }
+
         /// <summary>Output only. Site ownership and validity verification status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("siteVerificationInfo")]
         public virtual GoogleCloudDiscoveryengineV1SiteVerificationInfo SiteVerificationInfo { get; set; }
@@ -16824,17 +16643,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>AdditionalParams message for WidgetService methods for security and privacy enhancement.</summary>
-    public class GoogleCloudDiscoveryengineV1alphaAdditionalParams : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Token that used for non-human user check.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("token")]
-        public virtual string Token { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17941,7 +17749,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Request message for GroundedGenerationService.CheckGrounding method.</summary>
     public class GoogleCloudDiscoveryengineV1alphaCheckGroundingRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Answer candidate to check.</summary>
+        /// <summary>Answer candidate to check. Can have a maximum length of 1024 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("answerCandidate")]
         public virtual string AnswerCandidate { get; set; }
 
@@ -17952,6 +17760,20 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Configuration of the grounding check.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groundingSpec")]
         public virtual GoogleCloudDiscoveryengineV1alphaCheckGroundingSpec GroundingSpec { get; set; }
+
+        /// <summary>
+        /// The user labels applied to a resource must meet the following requirements: * Each resource can have
+        /// multiple labels, up to a maximum of 64. * Each label must be a key-value pair. * Keys have a minimum length
+        /// of 1 character and a maximum length of 63 characters and cannot be empty. Values can be empty and have a
+        /// maximum length of 63 characters. * Keys and values can contain only lowercase letters, numeric characters,
+        /// underscores, and dashes. All characters must use UTF-8 encoding, and international characters are allowed. *
+        /// The key portion of a label must be unique. However, you can use the same key with multiple resources. * Keys
+        /// must start with a lowercase letter or international character. See [Google Cloud
+        /// Document](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements) for more
+        /// details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userLabels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> UserLabels { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -18003,6 +17825,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Position indicating the end of the claim in the answer candidate, exclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endPos")]
         public virtual System.Nullable<int> EndPos { get; set; }
+
+        /// <summary>
+        /// Indicates that this claim required grounding check. When the system decided this claim doesn't require
+        /// attribution/grounding check, this field will be set to false. In that case, no grounding check was done for
+        /// the claim and therefore citation_indices, and anti_citation_indices should not be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groundingCheckRequired")]
+        public virtual System.Nullable<bool> GroundingCheckRequired { get; set; }
 
         /// <summary>Position indicating the start of the claim in the answer candidate, measured in bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startPos")]
@@ -18174,58 +18004,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
         public virtual string TableId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request message for CompletionService.CompleteQuery method.</summary>
-    public class GoogleCloudDiscoveryengineV1alphaCompleteQueryRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. The parent data store resource name for which the completion is performed, such as
-        /// `projects/*/locations/global/collections/default_collection/dataStores/default_data_store`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dataStore")]
-        public virtual string DataStore { get; set; }
-
-        /// <summary>
-        /// Indicates if tail suggestions should be returned if there are no suggestions that match the full query. Even
-        /// if set to true, if there are suggestions that match the full query, those are returned and no tail
-        /// suggestions are returned.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("includeTailSuggestions")]
-        public virtual System.Nullable<bool> IncludeTailSuggestions { get; set; }
-
-        /// <summary>
-        /// Required. The typeahead input used to fetch suggestions. Maximum length is 128 characters.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("query")]
-        public virtual string Query { get; set; }
-
-        /// <summary>
-        /// Specifies the autocomplete data model. This overrides any model specified in the Configuration &amp;gt;
-        /// Autocomplete section of the Cloud console. Currently supported values: * `document` - Using suggestions
-        /// generated from user-imported documents. * `search-history` - Using suggestions generated from the past
-        /// history of SearchService.Search API calls. Do not use it when there is no traffic for Search API. *
-        /// `user-event` - Using suggestions generated from user-imported search events. * `document-completable` -
-        /// Using suggestions taken directly from user-imported document fields marked as completable. Default values: *
-        /// `document` is the default model for regular dataStores. * `search-history` is the default model for site
-        /// search dataStores.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("queryModel")]
-        public virtual string QueryModel { get; set; }
-
-        /// <summary>
-        /// A unique identifier for tracking visitors. For example, this could be implemented with an HTTP cookie, which
-        /// should be able to uniquely identify a visitor on a single device. This unique identifier should not change
-        /// if the visitor logs in or out of the website. This field should NOT have a fixed value such as
-        /// `unknown_visitor`. This should be the same identifier as UserEvent.user_pseudo_id and
-        /// SearchRequest.user_pseudo_id. The field must be a UTF-8 encoded string with a length limit of 128
-        /// characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("userPseudoId")]
-        public virtual string UserPseudoId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -18489,17 +18267,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
-
-        /// <summary>
-        /// Required. The resource name of the Conversation to get. Format:
-        /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/conversations/{conversation_id}`.
-        /// Use
-        /// `projects/{project_number}/locations/{location_id}/collections/{collection}/dataStores/{data_store_id}/conversations/-`
-        /// to activate auto session mode, which automatically creates a new conversation inside a ConverseConversation
-        /// session.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
 
         /// <summary>Required. Current user input.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
@@ -18943,6 +18710,108 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Whether or not to enable and include custom fine tuned search adaptor model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableSearchAdaptor")]
         public virtual System.Nullable<bool> EnableSearchAdaptor { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata that describes a custom tuned model.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaCustomTuningModel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Timestamp the Model was created at.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The display name of the model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The state that the model is in (e.g.`TRAINING` or `TRAINING_FAILED`).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelState")]
+        public virtual string ModelState { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("modelVersion")]
+        public virtual System.Nullable<long> ModelVersion { get; set; }
+
+        /// <summary>
+        /// Required. The fully qualified resource name of the model. Format:
+        /// `projects/{project_number}/locations/{location}/collections/{collection}/dataStores/{data_store}/customTuningModels/{custom_tuning_model}`
+        /// model must be an alpha-numerical string with limit of 40 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _trainingStartTimeRaw;
+
+        private object _trainingStartTime;
+
+        /// <summary>Timestamp the model training was initiated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trainingStartTime")]
+        public virtual string TrainingStartTimeRaw
+        {
+            get => _trainingStartTimeRaw;
+            set
+            {
+                _trainingStartTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _trainingStartTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TrainingStartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TrainingStartTimeDateTimeOffset instead.")]
+        public virtual object TrainingStartTime
+        {
+            get => _trainingStartTime;
+            set
+            {
+                _trainingStartTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _trainingStartTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="TrainingStartTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TrainingStartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TrainingStartTimeRaw);
+            set => TrainingStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20479,6 +20348,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("chunkText")]
         public virtual string ChunkText { get; set; }
 
+        /// <summary>The index of this chunk. Currently, only used for the streaming mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("index")]
+        public virtual System.Nullable<int> Index { get; set; }
+
         /// <summary>
         /// Source from which this fact chunk was retrieved. If it was retrieved from the GroundingFacts provided in the
         /// request then this field will contain the index of the specific fact from which this chunk was retrieved.
@@ -21346,6 +21219,17 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for SearchTuningService.ListCustomModels method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaListCustomModelsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of custom tuning models.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("models")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaCustomTuningModel> Models { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for DataStoreService.ListDataStores method.</summary>
     public class GoogleCloudDiscoveryengineV1alphaListDataStoresResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -21464,28 +21348,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
         public virtual System.Nullable<int> TotalSize { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request message for WidgetService.LookupWidgetConfig method.</summary>
-    public class GoogleCloudDiscoveryengineV1alphaLookupWidgetConfigRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. The UUID of the Widget Config.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("widgetConfigId")]
-        public virtual string WidgetConfigId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response message for WidgetService.LookupWidgetConfig method.</summary>
-    public class GoogleCloudDiscoveryengineV1alphaLookupWidgetConfigResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The Anonymous Widget Config associated with the UUID.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("anonymousWidgetConfig")]
-        public virtual GoogleCloudDiscoveryengineV1alphaWidgetConfig AnonymousWidgetConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22879,9 +22741,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
 
         /// <summary>
         /// The order in which documents are returned. Documents can be ordered by a field in an Document object. Leave
-        /// it unset if ordered by relevance. `order_by` expression is case-sensitive. For more information on ordering,
-        /// see [Ordering](https://cloud.google.com/retail/docs/filter-and-order#order) If this field is unrecognizable,
-        /// an `INVALID_ARGUMENT` is returned.
+        /// it unset if ordered by relevance. `order_by` expression is case-sensitive. For more information on ordering
+        /// for retail search, see [Ordering](https://cloud.google.com/retail/docs/filter-and-order#order) If this field
+        /// is unrecognizable, an `INVALID_ARGUMENT` is returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderBy")]
         public virtual string OrderBy { get; set; }
@@ -22941,16 +22803,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Whether to turn on safe search. This is only supported for website search.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("safeSearch")]
         public virtual System.Nullable<bool> SafeSearch { get; set; }
-
-        /// <summary>
-        /// Required. The resource name of the Search serving config, such as
-        /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`,
-        /// or
-        /// `projects/*/locations/global/collections/default_collection/dataStores/default_data_store/servingConfigs/default_serving_config`.
-        /// This field is used to identify the serving configuration name, set of models used to make the search.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("servingConfig")]
-        public virtual string ServingConfig { get; set; }
 
         /// <summary>
         /// The spell correction specification that specifies the mode under which spell correction takes effect.
@@ -24460,6 +24312,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("providedUriPattern")]
         public virtual string ProvidedUriPattern { get; set; }
 
+        /// <summary>Output only. Root domain of the provided_uri_pattern.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rootDomainUri")]
+        public virtual string RootDomainUri { get; set; }
+
         /// <summary>Output only. Site ownership and validity verification status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("siteVerificationInfo")]
         public virtual GoogleCloudDiscoveryengineV1alphaSiteVerificationInfo SiteVerificationInfo { get; set; }
@@ -24643,6 +24499,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gcsTrainingInput")]
         public virtual GoogleCloudDiscoveryengineV1alphaTrainCustomModelRequestGcsTrainingInput GcsTrainingInput { get; set; }
 
+        /// <summary>If not provided, a UUID will be generated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelId")]
+        public virtual string ModelId { get; set; }
+
         /// <summary>
         /// Model to be trained. Supported values are: * **search-tuning**: Fine tuning the search system based on data
         /// provided.
@@ -24710,6 +24570,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>The metrics of the trained model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual System.Collections.Generic.IDictionary<string, System.Nullable<double>> Metrics { get; set; }
+
+        /// <summary>Fully qualified name of the CustomTuningModel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelName")]
+        public virtual string ModelName { get; set; }
 
         /// <summary>
         /// The trained model status. Possible values are: * **bad-data**: The training data quality is bad. *
@@ -25187,488 +25051,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request message for WidgetService.WidgetCompleteQuery method.</summary>
-    public class GoogleCloudDiscoveryengineV1alphaWidgetCompleteQueryRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Additional params for security and privacy enhancement.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("additionalParams")]
-        public virtual GoogleCloudDiscoveryengineV1alphaAdditionalParams AdditionalParams { get; set; }
-
-        /// <summary>Required. The CompleteQuery request to perform auto-complete suggestion query.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("completeQueryRequest")]
-        public virtual GoogleCloudDiscoveryengineV1alphaCompleteQueryRequest CompleteQueryRequest { get; set; }
-
-        /// <summary>
-        /// Required. The UUID of the WidgetConfig. This field is used to identify the widget configuration, set of
-        /// models used to make the auto complete query.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("configId")]
-        public virtual string ConfigId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response message for WidgetService.WidgetCompleteQuery method.</summary>
-    public class GoogleCloudDiscoveryengineV1alphaWidgetCompleteQueryResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The token in response.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uToken")]
-        public virtual string UToken { get; set; }
-
-        /// <summary>
-        /// Results of the matched query suggestions in widget. The result list is ordered and the first result is a top
-        /// suggestion.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("widgetQuerySuggestions")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaWidgetCompleteQueryResponseWidgetQuerySuggestion> WidgetQuerySuggestions { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Suggestions as search queries.</summary>
-    public class GoogleCloudDiscoveryengineV1alphaWidgetCompleteQueryResponseWidgetQuerySuggestion : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The suggestion for the query.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("suggestion")]
-        public virtual string Suggestion { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>WidgetConfig captures configs at the Widget level.</summary>
-    public class GoogleCloudDiscoveryengineV1alphaWidgetConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Whether allow no-auth integration with widget. If set true, public access to search or other solutions from
-        /// widget is allowed without authenication token provided by customer hosted backend server.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("allowPublicAccess")]
-        public virtual System.Nullable<bool> AllowPublicAccess { get; set; }
-
-        /// <summary>Allowlisted domains that can load this widget.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("allowlistedDomains")]
-        public virtual System.Collections.Generic.IList<string> AllowlistedDomains { get; set; }
-
-        /// <summary>
-        /// Output only. Collection components that lists all collections and child data stores associated with the
-        /// widget config, those data sources can be used for filtering in widget service APIs, users can return results
-        /// that from selected data sources.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("collectionComponents")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaWidgetConfigCollectionComponent> CollectionComponents { get; set; }
-
-        /// <summary>Output only. Unique obfuscated identifier of a WidgetConfig.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("configId")]
-        public virtual string ConfigId { get; set; }
-
-        /// <summary>The content search spec that configs the desired behavior of content search.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("contentSearchSpec")]
-        public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpec ContentSearchSpec { get; set; }
-
-        private string _createTimeRaw;
-
-        private object _createTime;
-
-        /// <summary>Output only. Timestamp the WidgetConfig was created.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>Output only. The type of the parent data store.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dataStoreType")]
-        public virtual string DataStoreType { get; set; }
-
-        /// <summary>Configurable UI configurations per data store.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dataStoreUiConfigs")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaWidgetConfigDataStoreUiConfig> DataStoreUiConfigs { get; set; }
-
-        /// <summary>
-        /// Required. The human readable widget config display name. Used in Discovery UI. This field must be a UTF-8
-        /// encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; }
-
-        /// <summary>Whether or not to enable autocomplete.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enableAutocomplete")]
-        public virtual System.Nullable<bool> EnableAutocomplete { get; set; }
-
-        /// <summary>Whether to allow conversational search (LLM, multi-turn) or not (non-LLM, single-turn).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enableConversationalSearch")]
-        public virtual System.Nullable<bool> EnableConversationalSearch { get; set; }
-
-        /// <summary>Turn on or off collecting the search result quality feedback from end users.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enableQualityFeedback")]
-        public virtual System.Nullable<bool> EnableQualityFeedback { get; set; }
-
-        /// <summary>Whether to show the result score.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enableResultScore")]
-        public virtual System.Nullable<bool> EnableResultScore { get; set; }
-
-        /// <summary>Whether to enable safe search.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enableSafeSearch")]
-        public virtual System.Nullable<bool> EnableSafeSearch { get; set; }
-
-        /// <summary>Whether to enable search-as-you-type behavior for the search widget</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enableSearchAsYouType")]
-        public virtual System.Nullable<bool> EnableSearchAsYouType { get; set; }
-
-        /// <summary>Turn on or off summary for each snippets result.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enableSnippetResultSummary")]
-        public virtual System.Nullable<bool> EnableSnippetResultSummary { get; set; }
-
-        /// <summary>Turn on or off summarization for the search response.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enableSummarization")]
-        public virtual System.Nullable<bool> EnableSummarization { get; set; }
-
-        /// <summary>Whether to enable standalone web app.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enableWebApp")]
-        public virtual System.Nullable<bool> EnableWebApp { get; set; }
-
-        /// <summary>The configuration and appearance of facets in the end user view.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("facetField")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaWidgetConfigFacetField> FacetField { get; set; }
-
-        /// <summary>
-        /// The key is the UI component. Mock. Currently supported `title`, `thumbnail`, `url`, `custom1`, `custom2`,
-        /// `custom3`. The value is the name of the field along with its device visibility. The 3 custom fields are
-        /// optional and can be added or removed. `title`, `thumbnail`, `url` are required UI components that cannot be
-        /// removed.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fieldsUiComponentsMap")]
-        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDiscoveryengineV1alphaWidgetConfigUIComponentField> FieldsUiComponentsMap { get; set; }
-
-        /// <summary>
-        /// Output only. The industry vertical that the WidgetConfig registers. The WidgetConfig industry vertical is
-        /// based on the associated Engine.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("industryVertical")]
-        public virtual string IndustryVertical { get; set; }
-
-        /// <summary>Output only. Whether LLM is enabled in the corresponding data store.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("llmEnabled")]
-        public virtual System.Nullable<bool> LlmEnabled { get; set; }
-
-        /// <summary>Output only. Whether the customer accepted data use terms.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("minimumDataTermAccepted")]
-        public virtual System.Nullable<bool> MinimumDataTermAccepted { get; set; }
-
-        /// <summary>
-        /// Immutable. The full resource name of the widget config. Format:
-        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/widgetConfigs/{widget_config_id}`.
-        /// This field must be a UTF-8 encoded string with a length limit of 1024 characters.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>
-        /// The type of snippet to display in UCS widget. - RESULT_DISPLAY_TYPE_UNSPECIFIED for existing users. -
-        /// SNIPPET for new non-enterprise search users. - EXTRACTIVE_ANSWER for new enterprise search users.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resultDisplayType")]
-        public virtual string ResultDisplayType { get; set; }
-
-        /// <summary>Required. Immutable. Specifies the solution type that this WidgetConfig can be used for.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("solutionType")]
-        public virtual string SolutionType { get; set; }
-
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
-        /// <summary>Output only. Timestamp the WidgetConfig was updated.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Read-only collection component that contains data store collections fields that may be used for filtering
-    /// </summary>
-    public class GoogleCloudDiscoveryengineV1alphaWidgetConfigCollectionComponent : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>For the data store collection, list of the children data stores.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dataStoreComponents")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaWidgetConfigDataStoreComponent> DataStoreComponents { get; set; }
-
-        /// <summary>The display name of the collection.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; }
-
-        /// <summary>
-        /// Output only. the identifier of the collection, used for widget service. For now it refers to collection_id,
-        /// in the future we will migrate the field to encrypted collection name UUID.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; }
-
-        /// <summary>
-        /// The name of the collection. It should be collection resource name. Format:
-        /// `projects/{project_number}/locations/{location}/collections/{collection_id}`. For APIs under WidgetService,
-        /// such as LookUpWidgetConfig, the project number and location part is erased in this field.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Read-only data store component that contains data stores fields that may be used for filtering, it's the child
-    /// of `CollectionComponent`.
-    /// </summary>
-    public class GoogleCloudDiscoveryengineV1alphaWidgetConfigDataStoreComponent : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The display name of the data store.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; }
-
-        /// <summary>
-        /// Output only. the identifier of the data store, used for widget service. For now it refers to data_store_id,
-        /// in the future we will migrate the field to encrypted data store name UUID.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; }
-
-        /// <summary>
-        /// The name of the data store. It should be data store resource name Format:
-        /// `projects/{project_number}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. For
-        /// APIs under WidgetService, such as LookUpWidgetConfig, the project number and location part is erased in this
-        /// field.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>UI component configuration for data store.</summary>
-    public class GoogleCloudDiscoveryengineV1alphaWidgetConfigDataStoreUiConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Facet fields that store the mapping of fields to end user widget appearance.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("facetField")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaWidgetConfigFacetField> FacetField { get; set; }
-
-        /// <summary>
-        /// The key is the UI component. Mock. Currently supported `title`, `thumbnail`, `url`, `custom1`, `custom2`,
-        /// `custom3`. The value is the name of the field along with its device visibility. The 3 custom fields are
-        /// optional and can be added or removed. `title`, `thumbnail`, `url` are required UI components that cannot be
-        /// removed.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fieldsUiComponentsMap")]
-        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDiscoveryengineV1alphaWidgetConfigUIComponentField> FieldsUiComponentsMap { get; set; }
-
-        /// <summary>
-        /// Output only. the identifier of the data store, used for widget service. For now it refers to data_store_id,
-        /// in the future we will migrate the field to encrypted data store name UUID.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; }
-
-        /// <summary>
-        /// The name of the data store. It should be data store resource name Format:
-        /// `projects/{project_number}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. For
-        /// APIs under WidgetService, such as LookUpWidgetConfig, the project number and location part is erased in this
-        /// field.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Facet fields that store the mapping of fields to end user widget appearance.</summary>
-    public class GoogleCloudDiscoveryengineV1alphaWidgetConfigFacetField : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. The field name that end users will see.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; }
-
-        /// <summary>Required. Registered field name. The format is `field.abc`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("field")]
-        public virtual string Field { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Facet field that maps to a UI Component.</summary>
-    public class GoogleCloudDiscoveryengineV1alphaWidgetConfigUIComponentField : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The field visibility on different types of devices.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deviceVisibility")]
-        public virtual System.Collections.Generic.IList<string> DeviceVisibility { get; set; }
-
-        /// <summary>
-        /// The template to customize how the field is displayed. An example value would be a string that looks like:
-        /// "Price: {value}".
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayTemplate")]
-        public virtual string DisplayTemplate { get; set; }
-
-        /// <summary>Required. Registered field name. The format is `field.abc`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("field")]
-        public virtual string Field { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request message for WidgetService.WidgetConverseConversation method.</summary>
-    public class GoogleCloudDiscoveryengineV1alphaWidgetConverseConversationRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Additional params for security and privacy enhancement.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("additionalParams")]
-        public virtual GoogleCloudDiscoveryengineV1alphaAdditionalParams AdditionalParams { get; set; }
-
-        /// <summary>
-        /// Required. The UUID of the WidgetConfig. This field is used to identify the widget configuration, set of
-        /// models used to make the user event collection.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("configId")]
-        public virtual string ConfigId { get; set; }
-
-        /// <summary>
-        /// The id of the Conversation to get. Use "-" to activate auto session mode, which automatically creates a new
-        /// conversation inside a ConverseConversation session.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("conversationId")]
-        public virtual string ConversationId { get; set; }
-
-        /// <summary>
-        /// Required. The ConverseConversationRequest request to perform converse a conversation. The ServingConfig id
-        /// will be `default_search` by default.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("converseConversationRequest")]
-        public virtual GoogleCloudDiscoveryengineV1alphaConverseConversationRequest ConverseConversationRequest { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response message for WidgetService.WidgetConverseConversation method.</summary>
-    public class GoogleCloudDiscoveryengineV1alphaWidgetConverseConversationResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The id of the Conversation returned.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("conversationId")]
-        public virtual string ConversationId { get; set; }
-
-        /// <summary>
-        /// ConverseConversationResponse returned from ConversationalSearchService.ConverseConversation.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("converseConversationResponse")]
-        public virtual GoogleCloudDiscoveryengineV1alphaConverseConversationResponse ConverseConversationResponse { get; set; }
-
-        /// <summary>The token in response.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uToken")]
-        public virtual string UToken { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request message for WidgetService.WidgetSearch method.</summary>
-    public class GoogleCloudDiscoveryengineV1alphaWidgetSearchRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Additional params for security and privacy enhancement.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("additionalParams")]
-        public virtual GoogleCloudDiscoveryengineV1alphaAdditionalParams AdditionalParams { get; set; }
-
-        /// <summary>
-        /// Required. The UUID of the Search WidgetConfig. This field is used to identify the search widget
-        /// configuration, set of models used to make the search.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("configId")]
-        public virtual string ConfigId { get; set; }
-
-        /// <summary>Required. The search request to perform search.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("searchRequest")]
-        public virtual GoogleCloudDiscoveryengineV1alphaSearchRequest SearchRequest { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response message for WidgetService.WidgetSearch method.</summary>
-    public class GoogleCloudDiscoveryengineV1alphaWidgetSearchResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The search response after performing search.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("searchResponse")]
-        public virtual GoogleCloudDiscoveryengineV1alphaSearchResponse SearchResponse { get; set; }
-
-        /// <summary>The token in response.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uToken")]
-        public virtual string UToken { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// Metadata related to the progress of the SiteSearchEngineService.BatchCreateTargetSites operation. This will be
     /// returned by the google.longrunning.Operation.metadata field.
@@ -26091,6 +25473,108 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         {
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata that describes a custom tuned model.</summary>
+    public class GoogleCloudDiscoveryengineV1betaCustomTuningModel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Timestamp the Model was created at.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The display name of the model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The state that the model is in (e.g.`TRAINING` or `TRAINING_FAILED`).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelState")]
+        public virtual string ModelState { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("modelVersion")]
+        public virtual System.Nullable<long> ModelVersion { get; set; }
+
+        /// <summary>
+        /// Required. The fully qualified resource name of the model. Format:
+        /// `projects/{project_number}/locations/{location}/collections/{collection}/dataStores/{data_store}/customTuningModels/{custom_tuning_model}`
+        /// model must be an alpha-numerical string with limit of 40 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _trainingStartTimeRaw;
+
+        private object _trainingStartTime;
+
+        /// <summary>Timestamp the model training was initiated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trainingStartTime")]
+        public virtual string TrainingStartTimeRaw
+        {
+            get => _trainingStartTimeRaw;
+            set
+            {
+                _trainingStartTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _trainingStartTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TrainingStartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TrainingStartTimeDateTimeOffset instead.")]
+        public virtual object TrainingStartTime
+        {
+            get => _trainingStartTime;
+            set
+            {
+                _trainingStartTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _trainingStartTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="TrainingStartTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TrainingStartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TrainingStartTimeRaw);
+            set => TrainingStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -27389,6 +26873,17 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for SearchTuningService.ListCustomModels method.</summary>
+    public class GoogleCloudDiscoveryengineV1betaListCustomModelsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of custom tuning models.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("models")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaCustomTuningModel> Models { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Metadata related to the progress of the PurgeDocuments operation. This will be returned by the
     /// google.longrunning.Operation.metadata field.
@@ -27714,6 +27209,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("providedUriPattern")]
         public virtual string ProvidedUriPattern { get; set; }
 
+        /// <summary>Output only. Root domain of the provided_uri_pattern.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rootDomainUri")]
+        public virtual string RootDomainUri { get; set; }
+
         /// <summary>Output only. Site ownership and validity verification status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("siteVerificationInfo")]
         public virtual GoogleCloudDiscoveryengineV1betaSiteVerificationInfo SiteVerificationInfo { get; set; }
@@ -27888,6 +27387,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>The metrics of the trained model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual System.Collections.Generic.IDictionary<string, System.Nullable<double>> Metrics { get; set; }
+
+        /// <summary>Fully qualified name of the CustomTuningModel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelName")]
+        public virtual string ModelName { get; set; }
 
         /// <summary>
         /// The trained model status. Possible values are: * **bad-data**: The training data quality is bad. *

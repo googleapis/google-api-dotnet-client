@@ -514,6 +514,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         this.service = service;
                         Branches = new BranchesResource(service);
                         Conversations = new ConversationsResource(service);
+                        CustomModels = new CustomModelsResource(service);
                         Models = new ModelsResource(service);
                         Operations = new OperationsResource(service);
                         Schemas = new SchemasResource(service);
@@ -1681,6 +1682,77 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                                     ParameterType = "query",
                                     DefaultValue = null,
                                     Pattern = null,
+                                });
+                            }
+                        }
+                    }
+
+                    /// <summary>Gets the CustomModels resource.</summary>
+                    public virtual CustomModelsResource CustomModels { get; }
+
+                    /// <summary>The "customModels" collection of methods.</summary>
+                    public class CustomModelsResource
+                    {
+                        private const string Resource = "customModels";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public CustomModelsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>Gets a list of all the custom models.</summary>
+                        /// <param name="dataStore">
+                        /// Required. The resource name of the parent Data Store, such as
+                        /// `projects/*/locations/global/collections/default_collection/dataStores/default_data_store`.
+                        /// This field is used to identify the data store where to fetch the models from.
+                        /// </param>
+                        public virtual ListRequest List(string dataStore)
+                        {
+                            return new ListRequest(this.service, dataStore);
+                        }
+
+                        /// <summary>Gets a list of all the custom models.</summary>
+                        public class ListRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaListCustomModelsResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string dataStore) : base(service)
+                            {
+                                DataStore = dataStore;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource name of the parent Data Store, such as
+                            /// `projects/*/locations/global/collections/default_collection/dataStores/default_data_store`.
+                            /// This field is used to identify the data store where to fetch the models from.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("dataStore", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string DataStore { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta/{+dataStore}/customModels";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("dataStore", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "dataStore",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+$",
                                 });
                             }
                         }
@@ -5307,7 +5379,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// Filter by solution type. For example: filter = 'solution_type:SOLUTION_TYPE_SEARCH'
+                        /// Filter by solution type . For example: filter = 'solution_type:SOLUTION_TYPE_SEARCH'
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
@@ -11908,7 +11980,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Filter by solution type. For example: filter = 'solution_type:SOLUTION_TYPE_SEARCH'
+                    /// Filter by solution type . For example: filter = 'solution_type:SOLUTION_TYPE_SEARCH'
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -14821,6 +14893,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("providedUriPattern")]
         public virtual string ProvidedUriPattern { get; set; }
 
+        /// <summary>Output only. Root domain of the provided_uri_pattern.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rootDomainUri")]
+        public virtual string RootDomainUri { get; set; }
+
         /// <summary>Output only. Site ownership and validity verification status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("siteVerificationInfo")]
         public virtual GoogleCloudDiscoveryengineV1SiteVerificationInfo SiteVerificationInfo { get; set; }
@@ -15901,6 +15977,108 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         {
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata that describes a custom tuned model.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaCustomTuningModel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Timestamp the Model was created at.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The display name of the model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The state that the model is in (e.g.`TRAINING` or `TRAINING_FAILED`).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelState")]
+        public virtual string ModelState { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("modelVersion")]
+        public virtual System.Nullable<long> ModelVersion { get; set; }
+
+        /// <summary>
+        /// Required. The fully qualified resource name of the model. Format:
+        /// `projects/{project_number}/locations/{location}/collections/{collection}/dataStores/{data_store}/customTuningModels/{custom_tuning_model}`
+        /// model must be an alpha-numerical string with limit of 40 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _trainingStartTimeRaw;
+
+        private object _trainingStartTime;
+
+        /// <summary>Timestamp the model training was initiated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trainingStartTime")]
+        public virtual string TrainingStartTimeRaw
+        {
+            get => _trainingStartTimeRaw;
+            set
+            {
+                _trainingStartTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _trainingStartTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TrainingStartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TrainingStartTimeDateTimeOffset instead.")]
+        public virtual object TrainingStartTime
+        {
+            get => _trainingStartTime;
+            set
+            {
+                _trainingStartTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _trainingStartTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="TrainingStartTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TrainingStartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TrainingStartTimeRaw);
+            set => TrainingStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
         /// <summary>The ETag of the item.</summary>
@@ -17606,6 +17784,17 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for SearchTuningService.ListCustomModels method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaListCustomModelsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of custom tuning models.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("models")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaCustomTuningModel> Models { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata and configurations for a Google Cloud project in the service.</summary>
     public class GoogleCloudDiscoveryengineV1alphaProject : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -18533,6 +18722,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("providedUriPattern")]
         public virtual string ProvidedUriPattern { get; set; }
 
+        /// <summary>Output only. Root domain of the provided_uri_pattern.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rootDomainUri")]
+        public virtual string RootDomainUri { get; set; }
+
         /// <summary>Output only. Site ownership and validity verification status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("siteVerificationInfo")]
         public virtual GoogleCloudDiscoveryengineV1alphaSiteVerificationInfo SiteVerificationInfo { get; set; }
@@ -18707,6 +18900,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>The metrics of the trained model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual System.Collections.Generic.IDictionary<string, System.Nullable<double>> Metrics { get; set; }
+
+        /// <summary>Fully qualified name of the CustomTuningModel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelName")]
+        public virtual string ModelName { get; set; }
 
         /// <summary>
         /// The trained model status. Possible values are: * **bad-data**: The training data quality is bad. *
@@ -19996,7 +20193,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>Request message for GroundedGenerationService.CheckGrounding method.</summary>
     public class GoogleCloudDiscoveryengineV1betaCheckGroundingRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Answer candidate to check.</summary>
+        /// <summary>Answer candidate to check. Can have a maximum length of 1024 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("answerCandidate")]
         public virtual string AnswerCandidate { get; set; }
 
@@ -20007,6 +20204,20 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>Configuration of the grounding check.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groundingSpec")]
         public virtual GoogleCloudDiscoveryengineV1betaCheckGroundingSpec GroundingSpec { get; set; }
+
+        /// <summary>
+        /// The user labels applied to a resource must meet the following requirements: * Each resource can have
+        /// multiple labels, up to a maximum of 64. * Each label must be a key-value pair. * Keys have a minimum length
+        /// of 1 character and a maximum length of 63 characters and cannot be empty. Values can be empty and have a
+        /// maximum length of 63 characters. * Keys and values can contain only lowercase letters, numeric characters,
+        /// underscores, and dashes. All characters must use UTF-8 encoding, and international characters are allowed. *
+        /// The key portion of a label must be unique. However, you can use the same key with multiple resources. * Keys
+        /// must start with a lowercase letter or international character. See [Google Cloud
+        /// Document](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements) for more
+        /// details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userLabels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> UserLabels { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20058,6 +20269,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>Position indicating the end of the claim in the answer candidate, exclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endPos")]
         public virtual System.Nullable<int> EndPos { get; set; }
+
+        /// <summary>
+        /// Indicates that this claim required grounding check. When the system decided this claim doesn't require
+        /// attribution/grounding check, this field will be set to false. In that case, no grounding check was done for
+        /// the claim and therefore citation_indices, and anti_citation_indices should not be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groundingCheckRequired")]
+        public virtual System.Nullable<bool> GroundingCheckRequired { get; set; }
 
         /// <summary>Position indicating the start of the claim in the answer candidate, measured in bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startPos")]
@@ -20820,6 +21039,108 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual System.Collections.Generic.IList<string> Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata that describes a custom tuned model.</summary>
+    public class GoogleCloudDiscoveryengineV1betaCustomTuningModel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Timestamp the Model was created at.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The display name of the model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The state that the model is in (e.g.`TRAINING` or `TRAINING_FAILED`).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelState")]
+        public virtual string ModelState { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("modelVersion")]
+        public virtual System.Nullable<long> ModelVersion { get; set; }
+
+        /// <summary>
+        /// Required. The fully qualified resource name of the model. Format:
+        /// `projects/{project_number}/locations/{location}/collections/{collection}/dataStores/{data_store}/customTuningModels/{custom_tuning_model}`
+        /// model must be an alpha-numerical string with limit of 40 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _trainingStartTimeRaw;
+
+        private object _trainingStartTime;
+
+        /// <summary>Timestamp the model training was initiated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trainingStartTime")]
+        public virtual string TrainingStartTimeRaw
+        {
+            get => _trainingStartTimeRaw;
+            set
+            {
+                _trainingStartTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _trainingStartTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TrainingStartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TrainingStartTimeDateTimeOffset instead.")]
+        public virtual object TrainingStartTime
+        {
+            get => _trainingStartTime;
+            set
+            {
+                _trainingStartTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _trainingStartTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="TrainingStartTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TrainingStartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TrainingStartTimeRaw);
+            set => TrainingStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21978,6 +22299,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("chunkText")]
         public virtual string ChunkText { get; set; }
 
+        /// <summary>The index of this chunk. Currently, only used for the streaming mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("index")]
+        public virtual System.Nullable<int> Index { get; set; }
+
         /// <summary>
         /// Source from which this fact chunk was retrieved. If it was retrieved from the GroundingFacts provided in the
         /// request then this field will contain the index of the specific fact from which this chunk was retrieved.
@@ -22671,6 +22996,17 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>Pagination token, if not returned indicates the last page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for SearchTuningService.ListCustomModels method.</summary>
+    public class GoogleCloudDiscoveryengineV1betaListCustomModelsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of custom tuning models.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("models")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaCustomTuningModel> Models { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23568,9 +23904,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// The order in which documents are returned. Documents can be ordered by a field in an Document object. Leave
-        /// it unset if ordered by relevance. `order_by` expression is case-sensitive. For more information on ordering,
-        /// see [Ordering](https://cloud.google.com/retail/docs/filter-and-order#order) If this field is unrecognizable,
-        /// an `INVALID_ARGUMENT` is returned.
+        /// it unset if ordered by relevance. `order_by` expression is case-sensitive. For more information on ordering
+        /// for retail search, see [Ordering](https://cloud.google.com/retail/docs/filter-and-order#order) If this field
+        /// is unrecognizable, an `INVALID_ARGUMENT` is returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderBy")]
         public virtual string OrderBy { get; set; }
@@ -25085,6 +25421,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("providedUriPattern")]
         public virtual string ProvidedUriPattern { get; set; }
 
+        /// <summary>Output only. Root domain of the provided_uri_pattern.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rootDomainUri")]
+        public virtual string RootDomainUri { get; set; }
+
         /// <summary>Output only. Site ownership and validity verification status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("siteVerificationInfo")]
         public virtual GoogleCloudDiscoveryengineV1betaSiteVerificationInfo SiteVerificationInfo { get; set; }
@@ -25268,6 +25608,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gcsTrainingInput")]
         public virtual GoogleCloudDiscoveryengineV1betaTrainCustomModelRequestGcsTrainingInput GcsTrainingInput { get; set; }
 
+        /// <summary>If not provided, a UUID will be generated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelId")]
+        public virtual string ModelId { get; set; }
+
         /// <summary>
         /// Model to be trained. Supported values are: * **search-tuning**: Fine tuning the search system based on data
         /// provided.
@@ -25335,6 +25679,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>The metrics of the trained model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual System.Collections.Generic.IDictionary<string, System.Nullable<double>> Metrics { get; set; }
+
+        /// <summary>Fully qualified name of the CustomTuningModel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelName")]
+        public virtual string ModelName { get; set; }
 
         /// <summary>
         /// The trained model status. Possible values are: * **bad-data**: The training data quality is bad. *

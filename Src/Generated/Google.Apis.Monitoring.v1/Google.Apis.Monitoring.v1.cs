@@ -2075,6 +2075,10 @@ namespace Google.Apis.Monitoring.v1.Data
     /// <summary>A filter to reduce the amount of data charted in relevant widgets.</summary>
     public class DashboardFilter : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Whether to apply this filter to new widgets by default</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applyToNewWidgets")]
+        public virtual System.Nullable<bool> ApplyToNewWidgets { get; set; }
+
         /// <summary>The specified filter type</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterType")]
         public virtual string FilterType { get; set; }

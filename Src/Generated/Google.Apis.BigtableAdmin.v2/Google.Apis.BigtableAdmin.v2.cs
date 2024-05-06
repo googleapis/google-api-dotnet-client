@@ -2604,15 +2604,15 @@ namespace Google.Apis.BigtableAdmin.v2
                         public virtual string PageToken { get; set; }
 
                         /// <summary>
-                        /// Optional. The resource_view to be applied to the returned views' fields. Default to
-                        /// NAME_ONLY.
+                        /// Optional. The resource_view to be applied to the returned AuthorizedViews' fields. Default
+                        /// to NAME_ONLY.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<ViewEnum> View { get; set; }
 
                         /// <summary>
-                        /// Optional. The resource_view to be applied to the returned views' fields. Default to
-                        /// NAME_ONLY.
+                        /// Optional. The resource_view to be applied to the returned AuthorizedViews' fields. Default
+                        /// to NAME_ONLY.
                         /// </summary>
                         public enum ViewEnum
                         {
@@ -5476,7 +5476,7 @@ namespace Google.Apis.BigtableAdmin.v2.Data
             set => FinishTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>The request that prompted the initiation of this CreateInstance operation.</summary>
+        /// <summary>The request that prompted the initiation of this CreateAuthorizedView operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalRequest")]
         public virtual CreateAuthorizedViewRequest OriginalRequest { get; set; }
 
@@ -6442,6 +6442,10 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
 
         /// <summary>Output only. Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]

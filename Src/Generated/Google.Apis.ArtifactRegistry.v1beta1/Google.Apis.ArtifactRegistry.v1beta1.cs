@@ -1681,7 +1681,8 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
                 /// <summary>Updates a repository.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`.
+                /// The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`. For
+                /// each location in a project, repository names must be unique.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.ArtifactRegistry.v1beta1.Data.Repository body, string name)
                 {
@@ -1701,6 +1702,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta1
 
                     /// <summary>
                     /// The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`.
+                    /// For each location in a project, repository names must be unique.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2185,7 +2187,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
 
         /// <summary>
         /// The name of the file, for example:
-        /// "projects/p1/locations/us-central1/repositories/repo1/files/a%2Fb%2Fc.txt". If the file ID part contains
+        /// `projects/p1/locations/us-central1/repositories/repo1/files/a%2Fb%2Fc.txt`. If the file ID part contains
         /// slashes, they are escaped.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -2662,10 +2664,15 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`.
+        /// The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`. For each
+        /// location in a project, repository names must be unique.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Output only. If set, the repository satisfies physical zone isolation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
 
         /// <summary>Output only. If set, the repository satisfies physical zone separation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
