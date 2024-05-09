@@ -468,8 +468,9 @@ namespace Google.Apis.CloudSecurityToken.v1.Data
         public virtual string Options { get; set; }
 
         /// <summary>
-        /// Required. An identifier for the type of requested security token. Must be
-        /// `urn:ietf:params:oauth:token-type:access_token`.
+        /// Required. An identifier for the type of requested security token. Can be
+        /// `urn:ietf:params:oauth:token-type:access_token` or
+        /// `urn:ietf:params:oauth:token-type:access_boundary_intermediate_token`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedTokenType")]
         public virtual string RequestedTokenType { get; set; }

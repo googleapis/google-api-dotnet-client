@@ -342,6 +342,15 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
                 public virtual string Filter { get; set; }
 
                 /// <summary>
+                /// Optional. An optional query string to sort auction packages using the [Cloud API sorting
+                /// syntax](https://cloud.google.com/apis/design/design_patterns#sorting_order). If no sort order is
+                /// specified, results will be returned in an arbitrary order. Only supported when parent is bidder.
+                /// Supported columns for sorting are: * displayName * createTime * updateTime
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>
                 /// Requested page size. The server may return fewer results than requested. Max allowed page size is
                 /// 500.
                 /// </summary>
@@ -376,6 +385,14 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
                     RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -471,7 +488,6 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
                 /// deal.displayName * deal.createTime * deal.updateTime * deal.flightStartTime * deal.flightEndTime *
                 /// rtbMetrics.bidRequests7Days * rtbMetrics.bids7Days * rtbMetrics.adImpressions7Days *
                 /// rtbMetrics.bidRate7Days * rtbMetrics.filteredBidRate7Days * rtbMetrics.mustBidRateCurrentMonth
-                /// Example: 'deal.displayName, deal.updateTime desc'
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
@@ -682,6 +698,15 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
                 public virtual string Filter { get; set; }
 
                 /// <summary>
+                /// Optional. An optional query string to sort auction packages using the [Cloud API sorting
+                /// syntax](https://cloud.google.com/apis/design/design_patterns#sorting_order). If no sort order is
+                /// specified, results will be returned in an arbitrary order. Only supported when parent is bidder.
+                /// Supported columns for sorting are: * displayName * createTime * updateTime
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>
                 /// Requested page size. The server may return fewer results than requested. Max allowed page size is
                 /// 500.
                 /// </summary>
@@ -716,6 +741,14 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
                     RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1985,7 +2018,6 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
                 /// deal.displayName * deal.createTime * deal.updateTime * deal.flightStartTime * deal.flightEndTime *
                 /// rtbMetrics.bidRequests7Days * rtbMetrics.bids7Days * rtbMetrics.adImpressions7Days *
                 /// rtbMetrics.bidRate7Days * rtbMetrics.filteredBidRate7Days * rtbMetrics.mustBidRateCurrentMonth
-                /// Example: 'deal.displayName, deal.updateTime desc'
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
@@ -4265,15 +4297,22 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1.Data
     }
 
     /// <summary>
-    /// Targeting represents different criteria that can be used to target inventory. For example, they can choose to
-    /// target inventory only if the user is in the US. Multiple types of targeting are always applied as a logical AND,
-    /// unless noted otherwise.
+    /// Targeting represents different criteria that can be used to target deals or auction packages. For example, they
+    /// can choose to target inventory only if the user is in the US. Multiple types of targeting are always applied as
+    /// a logical AND, unless noted otherwise.
     /// </summary>
     public class MarketplaceTargeting : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Daypart targeting information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("daypartTargeting")]
         public virtual DayPartTargeting DaypartTargeting { get; set; }
+
+        /// <summary>
+        /// Output only. The sensitive content category label IDs excluded. Refer to this file
+        /// https://storage.googleapis.com/adx-rtb-dictionaries/content-labels.txt for category IDs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludedSensitiveCategoryIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> ExcludedSensitiveCategoryIds { get; set; }
 
         /// <summary>Output only. Geo criteria IDs to be included/excluded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("geoTargeting")]
@@ -4303,6 +4342,13 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userListTargeting")]
         public virtual CriteriaTargeting UserListTargeting { get; set; }
+
+        /// <summary>
+        /// Output only. The verticals included or excluded as defined in
+        /// https://developers.google.com/authorized-buyers/rtb/downloads/publisher-verticals
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verticalTargeting")]
+        public virtual CriteriaTargeting VerticalTargeting { get; set; }
 
         /// <summary>Output only. Video targeting information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoTargeting")]

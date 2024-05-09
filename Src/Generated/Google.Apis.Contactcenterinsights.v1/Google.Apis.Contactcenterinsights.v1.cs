@@ -746,7 +746,10 @@ namespace Google.Apis.Contactcenterinsights.v1
                     }
                 }
 
-                /// <summary>Creates a conversation.</summary>
+                /// <summary>
+                /// Creates a conversation. DEPRECATED: Use UploadConversation instead. CreateConversation does not
+                /// support audio transcription or DLP redaction.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The parent resource of the conversation.</param>
                 public virtual CreateRequest Create(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1Conversation body, string parent)
@@ -754,7 +757,10 @@ namespace Google.Apis.Contactcenterinsights.v1
                     return new CreateRequest(this.service, body, parent);
                 }
 
-                /// <summary>Creates a conversation.</summary>
+                /// <summary>
+                /// Creates a conversation. DEPRECATED: Use UploadConversation instead. CreateConversation does not
+                /// support audio transcription or DLP redaction.
+                /// </summary>
                 public class CreateRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1Conversation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -5903,6 +5909,14 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual GoogleCloudContactcenterinsightsV1RedactionConfig RedactionConfig { get; set; }
 
         /// <summary>
+        /// Optional. If set, this fields indicates the number of objects to ingest from the Cloud Storage bucket. If
+        /// empty, the entire bucket will be ingested. Note that conversations produced via sampling will not be
+        /// ingested by subsequent ingest requests unless they are first deleted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleSize")]
+        public virtual System.Nullable<int> SampleSize { get; set; }
+
+        /// <summary>
         /// Optional. Default Speech-to-Text configuration. Optional, will default to the config specified in Settings.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("speechConfig")]
@@ -5927,7 +5941,9 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual System.Nullable<int> AgentChannel { get; set; }
 
         /// <summary>
-        /// An opaque, user-specified string representing the human agent who handled the conversations.
+        /// Optional. An opaque, user-specified string representing a human agent who handled all conversations in the
+        /// import. Note that this will be overridden if per-conversation metadata is provided via the
+        /// `metadata_bucket_uri`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentId")]
         public virtual string AgentId { get; set; }
@@ -6687,7 +6703,13 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>DLP resources used for redaction while ingesting conversations.</summary>
+    /// <summary>
+    /// DLP resources used for redaction while ingesting conversations. DLP settings are applied to conversations
+    /// ingested from the UploadConversation and IngestConversations endpoints, including conversation coming from CCAI
+    /// Platform. They are not applied to conversations ingested from the CreateConversation endpoint or the Dialogflow
+    /// / Agent Assist runtime integrations. When using Dialogflow / Agent Assist runtime integrations redaction should
+    /// be performed in Dialogflow / Agent Assist.
+    /// </summary>
     public class GoogleCloudContactcenterinsightsV1RedactionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -6956,13 +6978,18 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pubsubNotificationSettings")]
         public virtual System.Collections.Generic.IDictionary<string, string> PubsubNotificationSettings { get; set; }
 
-        /// <summary>Default DLP redaction resources to be applied while ingesting conversations.</summary>
+        /// <summary>
+        /// Default DLP redaction resources to be applied while ingesting conversations. This applies to conversations
+        /// ingested from the UploadConversation and IngestConversations endpoints, including conversations coming from
+        /// CCAI Platform.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redactionConfig")]
         public virtual GoogleCloudContactcenterinsightsV1RedactionConfig RedactionConfig { get; set; }
 
         /// <summary>
         /// Optional. Default Speech-to-Text resources to be used while ingesting audio files. Optional, CCAI Insights
-        /// will create a default if not provided.
+        /// will create a default if not provided. This applies to conversations ingested from the UploadConversation
+        /// and IngestConversations endpoints, including conversations coming from CCAI Platform.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("speechConfig")]
         public virtual GoogleCloudContactcenterinsightsV1SpeechConfig SpeechConfig { get; set; }
@@ -7103,7 +7130,11 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Speech-to-Text configuration.</summary>
+    /// <summary>
+    /// Speech-to-Text configuration. Speech-to-Text settings are applied to conversations ingested from the
+    /// UploadConversation and IngestConversations endpoints, including conversation coming from CCAI Platform. They are
+    /// not applied to conversations ingested from the CreateConversation endpoint.
+    /// </summary>
     public class GoogleCloudContactcenterinsightsV1SpeechConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -10125,6 +10156,14 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual GoogleCloudContactcenterinsightsV1alpha1RedactionConfig RedactionConfig { get; set; }
 
         /// <summary>
+        /// Optional. If set, this fields indicates the number of objects to ingest from the Cloud Storage bucket. If
+        /// empty, the entire bucket will be ingested. Note that conversations produced via sampling will not be
+        /// ingested by subsequent ingest requests unless they are first deleted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleSize")]
+        public virtual System.Nullable<int> SampleSize { get; set; }
+
+        /// <summary>
         /// Optional. Default Speech-to-Text configuration. Optional, will default to the config specified in Settings.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("speechConfig")]
@@ -10149,7 +10188,9 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual System.Nullable<int> AgentChannel { get; set; }
 
         /// <summary>
-        /// An opaque, user-specified string representing the human agent who handled the conversations.
+        /// Optional. An opaque, user-specified string representing a human agent who handled all conversations in the
+        /// import. Note that this will be overridden if per-conversation metadata is provided via the
+        /// `metadata_bucket_uri`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentId")]
         public virtual string AgentId { get; set; }
@@ -10499,7 +10540,13 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>DLP resources used for redaction while ingesting conversations.</summary>
+    /// <summary>
+    /// DLP resources used for redaction while ingesting conversations. DLP settings are applied to conversations
+    /// ingested from the UploadConversation and IngestConversations endpoints, including conversation coming from CCAI
+    /// Platform. They are not applied to conversations ingested from the CreateConversation endpoint or the Dialogflow
+    /// / Agent Assist runtime integrations. When using Dialogflow / Agent Assist runtime integrations redaction should
+    /// be performed in Dialogflow / Agent Assist.
+    /// </summary>
     public class GoogleCloudContactcenterinsightsV1alpha1RedactionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -10756,7 +10803,11 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Speech-to-Text configuration.</summary>
+    /// <summary>
+    /// Speech-to-Text configuration. Speech-to-Text settings are applied to conversations ingested from the
+    /// UploadConversation and IngestConversations endpoints, including conversation coming from CCAI Platform. They are
+    /// not applied to conversations ingested from the CreateConversation endpoint.
+    /// </summary>
     public class GoogleCloudContactcenterinsightsV1alpha1SpeechConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

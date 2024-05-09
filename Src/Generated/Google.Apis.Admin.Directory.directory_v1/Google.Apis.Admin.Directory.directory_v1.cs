@@ -11248,6 +11248,10 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("extendedSupportStart")]
         public virtual string ExtendedSupportStart { get; set; }
 
+        /// <summary>Output only. Fan information for the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fanInfo")]
+        public virtual System.Collections.Generic.IList<FanInfo> FanInfo { get; set; }
+
         /// <summary>The Chrome device's firmware version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firmwareVersion")]
         public virtual string FirmwareVersion { get; set; }
@@ -12309,6 +12313,17 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// <summary>Id of a failed printer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("printerId")]
         public virtual string PrinterId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about the device's fan.</summary>
+    public class FanInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Fan speed in RPM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speedRpm")]
+        public virtual System.Nullable<int> SpeedRpm { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

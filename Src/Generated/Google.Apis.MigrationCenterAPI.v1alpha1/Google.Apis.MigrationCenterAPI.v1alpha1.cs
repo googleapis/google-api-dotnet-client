@@ -5604,7 +5604,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
     public class AssetPerformanceData : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Daily resource usage aggregations. Contains all of the data available for an asset, up to the last 420 days.
+        /// Daily resource usage aggregations. Contains all of the data available for an asset, up to the last 40 days.
         /// Aggregations are sorted from oldest to most recent.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dailyResourceUsageAggregations")]
@@ -6206,6 +6206,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
     /// <summary>Details of a database instance.</summary>
     public class DatabaseInstance : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The instance's hosts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hosts")]
+        public virtual System.Collections.Generic.IList<DatabaseInstanceHost> Hosts { get; set; }
+
         /// <summary>The instance's name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceName")]
         public virtual string InstanceName { get; set; }
@@ -6213,6 +6217,17 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>The instance role in the database engine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of a host of a database instance.</summary>
+    public class DatabaseInstanceHost : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The host name of the host.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostName")]
+        public virtual string HostName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6355,13 +6370,25 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
     /// <summary>Details of a database schema.</summary>
     public class DatabaseSchema : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Details of a Mysql schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mysql")]
+        public virtual MySqlSchemaDetails Mysql { get; set; }
+
         /// <summary>List of details of objects by category.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objects")]
         public virtual System.Collections.Generic.IList<DatabaseObjects> Objects { get; set; }
 
+        /// <summary>Details of a PostgreSql schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postgresql")]
+        public virtual PostgreSqlSchemaDetails Postgresql { get; set; }
+
         /// <summary>The name of the schema.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schemaName")]
         public virtual string SchemaName { get; set; }
+
+        /// <summary>Details of a SqlServer schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlServer")]
+        public virtual SqlServerSchemaDetails SqlServer { get; set; }
 
         /// <summary>The total size of tables in bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tablesSizeBytes")]
@@ -8166,12 +8193,92 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>MySql property.</summary>
+    public class MySqlProperty : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The property is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>Required. The property numeric value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numericValue")]
+        public virtual System.Nullable<long> NumericValue { get; set; }
+
+        /// <summary>Required. The property name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("property")]
+        public virtual string Property { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specific details for a Mysql database.</summary>
+    public class MySqlSchemaDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Mysql storage engine tables.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageEngines")]
+        public virtual System.Collections.Generic.IList<MySqlStorageEngineDetails> StorageEngines { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Mysql storage engine tables.</summary>
+    public class MySqlStorageEngineDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The number of encrypted tables.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptedTableCount")]
+        public virtual System.Nullable<int> EncryptedTableCount { get; set; }
+
+        /// <summary>Required. The storage engine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("engine")]
+        public virtual string Engine { get; set; }
+
+        /// <summary>Optional. The number of tables.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableCount")]
+        public virtual System.Nullable<int> TableCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>MySql variable.</summary>
+    public class MySqlVariable : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The variable category.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; }
+
+        /// <summary>Required. The variable value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>Required. The variable name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("variable")]
+        public virtual string Variable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Specific details for a Mysql database deployment.</summary>
     public class MysqlDatabaseDeployment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. List of MySql plugins.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("plugins")]
         public virtual System.Collections.Generic.IList<MySqlPlugin> Plugins { get; set; }
+
+        /// <summary>Optional. List of MySql properties.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("properties")]
+        public virtual System.Collections.Generic.IList<MySqlProperty> Properties { get; set; }
+
+        /// <summary>Optional. Number of resource groups.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceGroupsCount")]
+        public virtual System.Nullable<int> ResourceGroupsCount { get; set; }
+
+        /// <summary>Optional. List of MySql variables.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("variables")]
+        public virtual System.Collections.Generic.IList<MySqlVariable> Variables { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8636,6 +8743,98 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
     /// <summary>Specific details for a PostgreSQL database deployment.</summary>
     public class PostgreSqlDatabaseDeployment : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. List of PostgreSql properties.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("properties")]
+        public virtual System.Collections.Generic.IList<PostgreSqlProperty> Properties { get; set; }
+
+        /// <summary>Optional. List of PostgreSql settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("settings")]
+        public virtual System.Collections.Generic.IList<PostgreSqlSetting> Settings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>PostgreSql extension.</summary>
+    public class PostgreSqlExtension : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The extension name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extension")]
+        public virtual string Extension { get; set; }
+
+        /// <summary>Required. The extension version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>PostgreSql property.</summary>
+    public class PostgreSqlProperty : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The property is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>Required. The property numeric value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numericValue")]
+        public virtual System.Nullable<long> NumericValue { get; set; }
+
+        /// <summary>Required. The property name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("property")]
+        public virtual string Property { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specific details for a PostgreSql schema.</summary>
+    public class PostgreSqlSchemaDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. PostgreSql foreign tables.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("foreignTablesCount")]
+        public virtual System.Nullable<int> ForeignTablesCount { get; set; }
+
+        /// <summary>Optional. PostgreSql extensions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postgresqlExtensions")]
+        public virtual System.Collections.Generic.IList<PostgreSqlExtension> PostgresqlExtensions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>PostgreSql setting.</summary>
+    public class PostgreSqlSetting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The setting boolean value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boolValue")]
+        public virtual System.Nullable<bool> BoolValue { get; set; }
+
+        /// <summary>Required. The setting int value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intValue")]
+        public virtual System.Nullable<long> IntValue { get; set; }
+
+        /// <summary>Required. The setting real value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("realValue")]
+        public virtual System.Nullable<float> RealValue { get; set; }
+
+        /// <summary>Required. The setting name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("setting")]
+        public virtual string Setting { get; set; }
+
+        /// <summary>Required. The setting source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
+        /// <summary>Required. The setting string value. Notice that enum values are stored as strings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
+        public virtual string StringValue { get; set; }
+
+        /// <summary>Optional. The setting unit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unit")]
+        public virtual string Unit { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9854,6 +10053,13 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("featureName")]
         public virtual string FeatureName { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specific details for a SqlServer database.</summary>
+    public class SqlServerSchemaDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

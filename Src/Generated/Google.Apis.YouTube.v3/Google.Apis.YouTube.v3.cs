@@ -10671,6 +10671,111 @@ namespace Google.Apis.YouTube.v3
             public V3Resource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                LiveChat = new LiveChatResource(service);
+            }
+
+            /// <summary>Gets the LiveChat resource.</summary>
+            public virtual LiveChatResource LiveChat { get; }
+
+            /// <summary>The "liveChat" collection of methods.</summary>
+            public class LiveChatResource
+            {
+                private const string Resource = "liveChat";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public LiveChatResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Messages = new MessagesResource(service);
+                }
+
+                /// <summary>Gets the Messages resource.</summary>
+                public virtual MessagesResource Messages { get; }
+
+                /// <summary>The "messages" collection of methods.</summary>
+                public class MessagesResource
+                {
+                    private const string Resource = "messages";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public MessagesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Transition a durable chat event.</summary>
+                    public virtual TransitionRequest Transition()
+                    {
+                        return new TransitionRequest(this.service);
+                    }
+
+                    /// <summary>Transition a durable chat event.</summary>
+                    public class TransitionRequest : YouTubeBaseServiceRequest<Google.Apis.YouTube.v3.Data.LiveChatMessage>
+                    {
+                        /// <summary>Constructs a new Transition request.</summary>
+                        public TransitionRequest(Google.Apis.Services.IClientService service) : base(service)
+                        {
+                            InitParameters();
+                        }
+
+                        /// <summary>The ID that uniquely identify the chat message event to transition.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Id { get; set; }
+
+                        /// <summary>The status to which the chat event is going to transition.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("status", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<StatusEnum> Status { get; set; }
+
+                        /// <summary>The status to which the chat event is going to transition.</summary>
+                        public enum StatusEnum
+                        {
+                            /// <summary>Default unknown enum value.</summary>
+                            [Google.Apis.Util.StringValueAttribute("statusUnspecified")]
+                            StatusUnspecified = 0,
+
+                            /// <summary>The durable chat event is over.</summary>
+                            [Google.Apis.Util.StringValueAttribute("closed")]
+                            Closed = 1,
+                        }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "transition";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "youtube/v3/liveChat/messages/transition";
+
+                        /// <summary>Initializes Transition parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "id",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("status", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "status",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
             }
 
             /// <summary>Updates an existing resource.</summary>

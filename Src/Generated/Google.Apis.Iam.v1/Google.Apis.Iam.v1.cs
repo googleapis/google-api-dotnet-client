@@ -9852,7 +9852,7 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// optional. If the key is disabled, it may have a DisableReason describing why it was disabled.
+        /// Output only. optional. If the key is disabled, it may have a DisableReason describing why it was disabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableReason")]
         public virtual string DisableReason { get; set; }
@@ -9862,9 +9862,9 @@ namespace Google.Apis.Iam.v1.Data
         public virtual System.Nullable<bool> Disabled { get; set; }
 
         /// <summary>
-        /// Extended Status provides permanent information about a service account key. For example, if this key was
-        /// detected as exposed or compromised, that information will remain for the lifetime of the key in the
-        /// extended_status.
+        /// Output only. Extended Status provides permanent information about a service account key. For example, if
+        /// this key was detected as exposed or compromised, that information will remain for the lifetime of the key in
+        /// the extended_status.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extendedStatus")]
         public virtual System.Collections.Generic.IList<ExtendedStatus> ExtendedStatus { get; set; }

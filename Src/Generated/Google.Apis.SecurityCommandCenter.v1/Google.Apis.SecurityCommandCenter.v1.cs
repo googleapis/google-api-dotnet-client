@@ -21822,8 +21822,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// <summary>
         /// Required. Expression that defines what assets fields to use for grouping (including `state_change`). The
         /// string value should follow SQL syntax: comma separated list of fields. For example: "parent,resource_name".
-        /// The following fields are supported: * resource_name * category * state * parent * severity The following
-        /// fields are supported when compare_duration is set: * state_change
+        /// The following fields are supported when compare_duration is set: * state_change
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupBy")]
         public virtual string GroupBy { get; set; }
