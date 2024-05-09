@@ -4169,6 +4169,13 @@ namespace Google.Apis.CloudRetail.v2beta
                     public virtual string DeviceType { get; set; }
 
                     /// <summary>
+                    /// If true, attribute suggestions are enabled and provided in response. This field is only
+                    /// available for "cloud-retail" dataset.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("enableAttributeSuggestions", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> EnableAttributeSuggestions { get; set; }
+
+                    /// <summary>
                     /// The entity for customers who run multiple entities, domains, sites, or regions, for example,
                     /// `Google US`, `Google Ads`, `Waymo`, `google.com`, `youtube.com`, etc. If this is set, it must be
                     /// an exact match with UserEvent.entity to get per-entity autocomplete results.
@@ -4244,6 +4251,14 @@ namespace Google.Apis.CloudRetail.v2beta
                         RequestParameters.Add("deviceType", new Google.Apis.Discovery.Parameter
                         {
                             Name = "deviceType",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("enableAttributeSuggestions", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "enableAttributeSuggestions",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

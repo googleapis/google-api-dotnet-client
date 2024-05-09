@@ -6557,10 +6557,7 @@ namespace Google.Apis.Walletobjects.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("androidAppLinkInfo")]
         public virtual AppLinkDataAppLinkInfo AndroidAppLinkInfo { get; set; }
 
-        /// <summary>
-        /// Optional information about the partner app link. If included, the app link link module will be rendered on
-        /// the valuable details on the ios client.
-        /// </summary>
+        /// <summary>Deprecated. Links to open iOS apps are not supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iosAppLinkInfo")]
         public virtual AppLinkDataAppLinkInfo IosAppLinkInfo { get; set; }
 

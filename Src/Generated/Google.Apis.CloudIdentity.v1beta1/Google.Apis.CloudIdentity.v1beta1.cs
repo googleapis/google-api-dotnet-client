@@ -5798,6 +5798,10 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serialNumber")]
         public virtual string SerialNumber { get; set; }
 
+        /// <summary>Output only. Unified device id of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unifiedDeviceId")]
+        public virtual string UnifiedDeviceId { get; set; }
+
         /// <summary>WiFi MAC addresses of device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wifiMacAddresses")]
         public virtual System.Collections.Generic.IList<string> WifiMacAddresses { get; set; }
@@ -7024,6 +7028,10 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         /// <summary>Serial Number of device. Example: HT82V1A01076.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serialNumber")]
         public virtual string SerialNumber { get; set; }
+
+        /// <summary>Output only. Unified device id of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unifiedDeviceId")]
+        public virtual string UnifiedDeviceId { get; set; }
 
         /// <summary>WiFi MAC addresses of device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wifiMacAddresses")]

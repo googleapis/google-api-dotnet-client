@@ -16123,7 +16123,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>
         /// Additional context around canceled subscriptions. Only present if the subscription currently has
-        /// subscription_state SUBSCRIPTION_STATE_CANCELED.
+        /// subscription_state SUBSCRIPTION_STATE_CANCELED or SUBSCRIPTION_STATE_EXPIRED.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canceledStateContext")]
         public virtual CanceledStateContext CanceledStateContext { get; set; }

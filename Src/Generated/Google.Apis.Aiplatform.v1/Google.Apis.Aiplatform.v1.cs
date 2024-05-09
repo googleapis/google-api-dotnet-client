@@ -45477,6 +45477,24 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("perCrowdingAttributeNeighborCount")]
         public virtual System.Nullable<int> PerCrowdingAttributeNeighborCount { get; set; }
 
+        /// <summary>Optional. Represents RRF algorithm that combines search results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rrf")]
+        public virtual GoogleCloudAiplatformV1FindNeighborsRequestQueryRRF Rrf { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Parameters for RRF algorithm that combines search results.</summary>
+    public class GoogleCloudAiplatformV1FindNeighborsRequestQueryRRF : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Users can provide an alpha value to give more weight to dense vs sparse results. For example, if
+        /// the alpha is 0, we only return sparse and if the alpha is 1, we only return dense.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alpha")]
+        public virtual System.Nullable<float> Alpha { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -45520,6 +45538,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>The distance between the neighbor and the dense embedding query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("distance")]
         public virtual System.Nullable<double> Distance { get; set; }
+
+        /// <summary>The distance between the neighbor and the query sparse_embedding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sparseDistance")]
+        public virtual System.Nullable<double> SparseDistance { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -46626,6 +46648,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("restricts")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1IndexDatapointRestriction> Restricts { get; set; }
 
+        /// <summary>Optional. Feature embedding vector for sparse index.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sparseEmbedding")]
+        public virtual GoogleCloudAiplatformV1IndexDatapointSparseEmbedding SparseEmbedding { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -46695,6 +46721,24 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>The namespace of this restriction. e.g.: color.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespace")]
         public virtual string Namespace__ { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Feature embedding vector for sparse index. An array of numbers whose values are located in the specified
+    /// dimensions.
+    /// </summary>
+    public class GoogleCloudAiplatformV1IndexDatapointSparseEmbedding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The list of indexes for the embedding values of the sparse vector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> Dimensions { get; set; }
+
+        /// <summary>Optional. The list of embedding values of the sparse vector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<System.Nullable<float>> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -46894,6 +46938,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Output only. The number of shards in the Index.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shardsCount")]
         public virtual System.Nullable<int> ShardsCount { get; set; }
+
+        /// <summary>Output only. The number of sparse vectors in the Index.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sparseVectorsCount")]
+        public virtual System.Nullable<long> SparseVectorsCount { get; set; }
 
         /// <summary>Output only. The number of dense vectors in the Index.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vectorsCount")]
@@ -51401,7 +51449,7 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("machineSpec")]
         public virtual GoogleCloudAiplatformV1MachineSpec MachineSpec { get; set; }
 
-        /// <summary>Output only. The resource name of the NotebookRuntimeTemplate.</summary>
+        /// <summary>The resource name of the NotebookRuntimeTemplate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -59861,11 +59909,13 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adapterSize")]
         public virtual string AdapterSize { get; set; }
 
-        /// <summary>Optional. Number of training epoches for this tuning job.</summary>
+        /// <summary>
+        /// Optional. Number of complete passes the model makes over the entire training dataset during training.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("epochCount")]
         public virtual System.Nullable<long> EpochCount { get; set; }
 
-        /// <summary>Optional. Learning rate multiplier for tuning.</summary>
+        /// <summary>Optional. Multiplier for adjusting the default learning rate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("learningRateMultiplier")]
         public virtual System.Nullable<double> LearningRateMultiplier { get; set; }
 
@@ -59977,11 +60027,17 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hyperParameters")]
         public virtual GoogleCloudAiplatformV1SupervisedHyperParameters HyperParameters { get; set; }
 
-        /// <summary>Required. Cloud Storage path to file containing training dataset for tuning.</summary>
+        /// <summary>
+        /// Required. Cloud Storage path to file containing training dataset for tuning. The dataset must be formatted
+        /// as a JSONL file.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trainingDatasetUri")]
         public virtual string TrainingDatasetUri { get; set; }
 
-        /// <summary>Optional. Cloud Storage path to file containing validation dataset for tuning.</summary>
+        /// <summary>
+        /// Optional. Cloud Storage path to file containing validation dataset for tuning. The dataset must be formatted
+        /// as a JSONL file.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validationDatasetUri")]
         public virtual string ValidationDatasetUri { get; set; }
 
@@ -61370,7 +61426,7 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// <summary>Represents a TuningJob that runs with Google owned models.</summary>
     public class GoogleCloudAiplatformV1TuningJob : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Model name for tuning, e.g., "gemini-1.0-pro-002".</summary>
+        /// <summary>The base model that is being tuned, e.g., "gemini-1.0-pro-002".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("baseModel")]
         public virtual string BaseModel { get; set; }
 
@@ -64175,9 +64231,26 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>LINT.IfChange This metadata contains additional information required for debugging.</summary>
+    public class LearningServingLlmAtlasOutputMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("requestTopic")]
+        public virtual string RequestTopic { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// LINT.IfChange This metadata contains additional information required for debugging. Next ID: 28
+    /// </summary>
     public class LearningServingLlmMessageMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        [Newtonsoft.Json.JsonPropertyAttribute("atlasMetadata")]
+        public virtual LearningServingLlmAtlasOutputMetadata AtlasMetadata { get; set; }
+
         /// <summary>
         /// Summary of classifier output. We attach this to all messages regardless of whether classification rules
         /// triggered or not.
@@ -64245,12 +64318,19 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string OriginalText { get; set; }
 
         /// <summary>
-        /// NOT YET IMPLEMENTED. Applies to streaming only. Number of tokens decoded / emitted by the model as part of
-        /// this stream. This may be different from token_count, which contains number of tokens returned in this
-        /// response after any response rewriting / truncation.
+        /// Number of tokens decoded by the model as part of a stream. This count may be different from
+        /// `per_stream_returned_token_count` which, is counted after any response rewriting or truncation. Applies to
+        /// streaming response only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("perStreamDecodedTokenCount")]
         public virtual System.Nullable<int> PerStreamDecodedTokenCount { get; set; }
+
+        /// <summary>
+        /// Number of tokens returned per stream in a response candidate after any response rewriting or truncation.
+        /// Applies to streaming response only. Applies to Gemini models only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("perStreamReturnedTokenCount")]
+        public virtual System.Nullable<int> PerStreamReturnedTokenCount { get; set; }
 
         /// <summary>
         /// Results of running RAI on the query or this response candidate. One output per rai_config. It will be
@@ -64266,7 +64346,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("recitationResult")]
         public virtual LearningGenaiRecitationRecitationResult RecitationResult { get; set; }
 
-        /// <summary>NOT YET IMPLEMENTED. Number of tokens returned as part of this candidate.</summary>
+        /// <summary>
+        /// NOT IMPLEMENTED TODO (b/334187574) Remove this field after Labs migrates to per_stream_returned_token_count
+        /// and total_returned_token_count.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("returnTokenCount")]
         public virtual System.Nullable<int> ReturnTokenCount { get; set; }
 
@@ -64286,6 +64369,13 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalDecodedTokenCount")]
         public virtual System.Nullable<int> TotalDecodedTokenCount { get; set; }
+
+        /// <summary>
+        /// Total number of tokens returned in a response candidate. For streaming, it is the aggregated count (i.e.
+        /// total so far) Applies to Gemini models only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalReturnedTokenCount")]
+        public virtual System.Nullable<int> TotalReturnedTokenCount { get; set; }
 
         /// <summary>
         /// Translated user-prompt used for RAI post processing. This is for internal processing only. We will translate

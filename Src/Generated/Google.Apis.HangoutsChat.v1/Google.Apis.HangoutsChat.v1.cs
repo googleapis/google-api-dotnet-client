@@ -73,7 +73,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// <summary>Import spaces, messages, and memberships into Google Chat.</summary>
             public static string ChatImport = "https://www.googleapis.com/auth/chat.import";
 
-            /// <summary>View, add, and remove members from conversations in Google Chat</summary>
+            /// <summary>View, add, update, and remove members from conversations in Google Chat</summary>
             public static string ChatMemberships = "https://www.googleapis.com/auth/chat.memberships";
 
             /// <summary>Add and remove itself from conversations in Google Chat</summary>
@@ -135,7 +135,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// <summary>Import spaces, messages, and memberships into Google Chat.</summary>
             public const string ChatImport = "https://www.googleapis.com/auth/chat.import";
 
-            /// <summary>View, add, and remove members from conversations in Google Chat</summary>
+            /// <summary>View, add, update, and remove members from conversations in Google Chat</summary>
             public const string ChatMemberships = "https://www.googleapis.com/auth/chat.memberships";
 
             /// <summary>Add and remove itself from conversations in Google Chat</summary>
@@ -1178,7 +1178,8 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// Updates a membership. Requires [user
+            /// Updates a membership. For an example, see [Update a user's membership in a
+            /// space](https://developers.google.com/workspace/chat/update-members). Requires [user
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
             /// </summary>
             /// <param name="body">The body of the request.</param>
@@ -1191,7 +1192,8 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// Updates a membership. Requires [user
+            /// Updates a membership. For an example, see [Update a user's membership in a
+            /// space](https://developers.google.com/workspace/chat/update-members). Requires [user
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
             /// </summary>
             public class PatchRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Membership>
@@ -3239,7 +3241,8 @@ namespace Google.Apis.HangoutsChat.v1
 
                 /// <summary>
                 /// Returns details about a user's read state within a thread, used to identify read and unread
-                /// messages. Requires [user
+                /// messages. For an example, see [Get details about a user's thread read
+                /// state](https://developers.google.com/workspace/chat/get-thread-read-state). Requires [user
                 /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
                 /// </summary>
                 /// <param name="name">
@@ -3257,7 +3260,8 @@ namespace Google.Apis.HangoutsChat.v1
 
                 /// <summary>
                 /// Returns details about a user's read state within a thread, used to identify read and unread
-                /// messages. Requires [user
+                /// messages. For an example, see [Get details about a user's thread read
+                /// state](https://developers.google.com/workspace/chat/get-thread-read-state). Requires [user
                 /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
                 /// </summary>
                 public class GetThreadReadStateRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.ThreadReadState>
@@ -3306,8 +3310,9 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// Returns details about a user's read state within a space, used to identify read and unread messages.
-            /// Requires [user
+            /// Returns details about a user's read state within a space, used to identify read and unread messages. For
+            /// an example, see [Get details about a user's space read
+            /// state](https://developers.google.com/workspace/chat/get-space-read-state). Requires [user
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
             /// </summary>
             /// <param name="name">
@@ -3323,8 +3328,9 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// Returns details about a user's read state within a space, used to identify read and unread messages.
-            /// Requires [user
+            /// Returns details about a user's read state within a space, used to identify read and unread messages. For
+            /// an example, see [Get details about a user's space read
+            /// state](https://developers.google.com/workspace/chat/get-space-read-state). Requires [user
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
             /// </summary>
             public class GetSpaceReadStateRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.SpaceReadState>
@@ -3371,7 +3377,9 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// Updates a user's read state within a space, used to identify read and unread messages. Requires [user
+            /// Updates a user's read state within a space, used to identify read and unread messages. For an example,
+            /// see [Update a user's space read
+            /// state](https://developers.google.com/workspace/chat/update-space-read-state). Requires [user
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
             /// </summary>
             /// <param name="body">The body of the request.</param>
@@ -3384,7 +3392,9 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// Updates a user's read state within a space, used to identify read and unread messages. Requires [user
+            /// Updates a user's read state within a space, used to identify read and unread messages. For an example,
+            /// see [Update a user's space read
+            /// state](https://developers.google.com/workspace/chat/update-space-read-state). Requires [user
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
             /// </summary>
             public class UpdateSpaceReadStateRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.SpaceReadState>

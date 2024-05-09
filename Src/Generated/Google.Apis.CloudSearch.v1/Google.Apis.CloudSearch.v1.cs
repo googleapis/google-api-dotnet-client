@@ -9426,6 +9426,39 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The rewritten queries returned by Apps Search Query Understanding service.</summary>
+    public class RewrittenQueries : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("rewrittenQueries")]
+        public virtual System.Collections.Generic.IList<RewrittenQuery> RewrittenQueriesValue { get; set; }
+
+        /// <summary>
+        /// The index of the selected query in `rewritten_queries` that is used by QAPI to call CSSR to get search
+        /// results. If none of the queries were used (i.e. they all give empty search results), `selected_query_index`
+        /// would default to -1.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selectedQueryIndex")]
+        public virtual System.Nullable<int> SelectedQueryIndex { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class RewrittenQuery : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("rewrittenQuery")]
+        public virtual string RewrittenQueryValue { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<double> Score { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("sortBy")]
+        public virtual string SortBy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// IMPORTANT: It is unsafe to accept this message from an untrusted source, since it's trivial for an attacker to
     /// forge serialized messages that don't fulfill the type's safety contract -- for example, it could contain

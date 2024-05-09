@@ -920,6 +920,12 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("responseMimeType")]
         public virtual string ResponseMimeType { get; set; }
 
+        /// <summary>
+        /// Optional. Control Three levels of creativity in the model output. Default: RESPONSE_STYLE_BALANCED
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responseStyle")]
+        public virtual string ResponseStyle { get; set; }
+
         /// <summary>Optional. Stop sequences.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stopSequences")]
         public virtual System.Collections.Generic.IList<string> StopSequences { get; set; }
