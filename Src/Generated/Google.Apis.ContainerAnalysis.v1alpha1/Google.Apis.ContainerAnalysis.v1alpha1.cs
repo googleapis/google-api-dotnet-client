@@ -4146,6 +4146,10 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
             set => FinishTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Optional. Configuration for git operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gitConfig")]
+        public virtual ContaineranalysisGoogleDevtoolsCloudbuildV1GitConfig GitConfig { get; set; }
+
         /// <summary>Output only. Unique identifier of the build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -4646,6 +4650,31 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>This config defines the location of a source through Developer Connect.</summary>
+    public class ContaineranalysisGoogleDevtoolsCloudbuildV1DeveloperConnectConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Directory, relative to the source root, in which to run the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dir")]
+        public virtual string Dir { get; set; }
+
+        /// <summary>
+        /// Required. The Developer Connect Git repository link, formatted as
+        /// `projects/*/locations/*/connections/*/gitRepositoryLink/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gitRepositoryLink")]
+        public virtual string GitRepositoryLink { get; set; }
+
+        /// <summary>
+        /// Required. The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git
+        /// ref.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revision")]
+        public virtual string Revision { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Container message for hashes of byte content of files, used in SourceProvenance messages to verify integrity of
     /// source input to the build.
@@ -4655,6 +4684,31 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// <summary>Collection of file hashes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileHash")]
         public virtual System.Collections.Generic.IList<ContaineranalysisGoogleDevtoolsCloudbuildV1Hash> FileHash { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>GitConfig is a configuration for git operations.</summary>
+    public class ContaineranalysisGoogleDevtoolsCloudbuildV1GitConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Configuration for HTTP related git operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("http")]
+        public virtual ContaineranalysisGoogleDevtoolsCloudbuildV1GitConfigHttpConfig Http { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>HttpConfig is a configuration for HTTP related git operations.</summary>
+    public class ContaineranalysisGoogleDevtoolsCloudbuildV1GitConfigHttpConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// SecretVersion resource of the HTTP proxy URL. The proxy URL should be in format
+        /// protocol://@]proxyhost[:port].
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proxySecretVersionName")]
+        public virtual string ProxySecretVersionName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4803,7 +4857,8 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// <summary>
         /// List of build step outputs, produced by builder images, in the order corresponding to build step indices.
         /// [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by
-        /// writing to `$BUILDER_OUTPUT/output`. Only the first 50KB of data is stored.
+        /// writing to `$BUILDER_OUTPUT/output`. Only the first 50KB of data is stored. Note that the `$BUILDER_OUTPUT`
+        /// variable is read-only and can't be substituted.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buildStepOutputs")]
         public virtual System.Collections.Generic.IList<string> BuildStepOutputs { get; set; }
@@ -4899,6 +4954,10 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectedRepository")]
         public virtual ContaineranalysisGoogleDevtoolsCloudbuildV1ConnectedRepository ConnectedRepository { get; set; }
+
+        /// <summary>If provided, get the source from this Developer Connect config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("developerConnectConfig")]
+        public virtual ContaineranalysisGoogleDevtoolsCloudbuildV1DeveloperConnectConfig DeveloperConnectConfig { get; set; }
 
         /// <summary>If provided, get the source from this Git repository.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gitSource")]

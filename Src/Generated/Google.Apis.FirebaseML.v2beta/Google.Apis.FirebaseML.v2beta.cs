@@ -946,6 +946,13 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Tool to retrieve public web data for grounding, powered by Google.</summary>
+    public class GoogleSearchRetrieval : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata returned to client when grounding is enabled.</summary>
     public class GroundingMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1274,6 +1281,12 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("functionDeclarations")]
         public virtual System.Collections.Generic.IList<FunctionDeclaration> FunctionDeclarations { get; set; }
+
+        /// <summary>
+        /// Optional. GoogleSearchRetrieval tool type. Specialized retrieval tool that is powered by Google search.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleSearchRetrieval")]
+        public virtual GoogleSearchRetrieval GoogleSearchRetrieval { get; set; }
 
         /// <summary>
         /// Optional. Retrieval tool type. System will always execute the provided retrieval tool(s) to get external
