@@ -12666,7 +12666,9 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Information specific to a subscription in canceled state.</summary>
+    /// <summary>
+    /// Information specific to a subscription in the SUBSCRIPTION_STATE_CANCELED or SUBSCRIPTION_STATE_EXPIRED state.
+    /// </summary>
     public class CanceledStateContext : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Subscription was canceled by the developer.</summary>

@@ -786,7 +786,8 @@ namespace Google.Apis.CloudDeploy.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Optional. Name of the `CustomTargetType`. Format is
-                /// `projects/{project}/locations/{location}/customTargetTypes/a-z{0,62}`.
+                /// `projects/{project}/locations/{location}/customTargetTypes/{customTargetType}`. The
+                /// `customTargetType` component must match `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CloudDeploy.v1.Data.CustomTargetType body, string name)
                 {
@@ -806,7 +807,8 @@ namespace Google.Apis.CloudDeploy.v1
 
                     /// <summary>
                     /// Optional. Name of the `CustomTargetType`. Format is
-                    /// `projects/{project}/locations/{location}/customTargetTypes/a-z{0,62}`.
+                    /// `projects/{project}/locations/{location}/customTargetTypes/{customTargetType}`. The
+                    /// `customTargetType` component must match `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -3441,7 +3443,8 @@ namespace Google.Apis.CloudDeploy.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Optional. Name of the `DeliveryPipeline`. Format is
-                /// `projects/{project}/locations/{location}/deliveryPipelines/a-z{0,62}`.
+                /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}`. The
+                /// `deliveryPipeline` component must match `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CloudDeploy.v1.Data.DeliveryPipeline body, string name)
                 {
@@ -3461,7 +3464,8 @@ namespace Google.Apis.CloudDeploy.v1
 
                     /// <summary>
                     /// Optional. Name of the `DeliveryPipeline`. Format is
-                    /// `projects/{project}/locations/{location}/deliveryPipelines/a-z{0,62}`.
+                    /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}`. The
+                    /// `deliveryPipeline` component must match `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -4525,7 +4529,8 @@ namespace Google.Apis.CloudDeploy.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Optional. Name of the `Target`. Format is
-                /// `projects/{project}/locations/{location}/targets/a-z{0,62}`.
+                /// `projects/{project}/locations/{location}/targets/{target}`. The `target` component must match
+                /// `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CloudDeploy.v1.Data.Target body, string name)
                 {
@@ -4545,7 +4550,8 @@ namespace Google.Apis.CloudDeploy.v1
 
                     /// <summary>
                     /// Optional. Name of the `Target`. Format is
-                    /// `projects/{project}/locations/{location}/targets/a-z{0,62}`.
+                    /// `projects/{project}/locations/{location}/targets/{target}`. The `target` component must match
+                    /// `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -4996,7 +5002,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
     {
         /// <summary>
         /// Output only. Name of the `ChildRollout`. Format is
-        /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/a-z{0,62}`.
+        /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/{rollout}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rollout")]
         public virtual string Rollout { get; set; }
@@ -5061,7 +5067,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
 
         /// <summary>
         /// Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs.
-        /// The format is `a-z{0,62}`.
+        /// The format is `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -6005,7 +6011,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
     {
         /// <summary>
         /// Output only. Name of the `ChildRollout`. Format is
-        /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/a-z{0,62}`.
+        /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/{rollout}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rollout")]
         public virtual string Rollout { get; set; }
@@ -6174,7 +6180,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
 
         /// <summary>
         /// Optional. Name of the `CustomTargetType`. Format is
-        /// `projects/{project}/locations/{location}/customTargetTypes/a-z{0,62}`.
+        /// `projects/{project}/locations/{location}/customTargetTypes/{customTargetType}`. The `customTargetType`
+        /// component must match `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -6348,7 +6355,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
 
         /// <summary>
         /// Optional. Name of the `DeliveryPipeline`. Format is
-        /// `projects/{project}/locations/{location}/deliveryPipelines/a-z{0,62}`.
+        /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}`. The `deliveryPipeline`
+        /// component must match `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -7857,7 +7865,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
 
         /// <summary>
         /// Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs.
-        /// The format is `a-z{0,62}`.
+        /// The format is `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -7969,7 +7977,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
 
         /// <summary>
         /// Optional. Name of the `Release`. Format is
-        /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/a-z{0,62}`.
+        /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}`. The
+        /// `release` component must match `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -8275,7 +8284,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
 
         /// <summary>
         /// Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs.
-        /// The format is `a-z{0,62}`.
+        /// The format is `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -8565,7 +8574,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
 
         /// <summary>
         /// Output only. Name of the `ControllerRollout`. Format is
-        /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/a-z{0,62}`.
+        /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/{rollout}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("controllerRollout")]
         public virtual string ControllerRollout { get; set; }
@@ -8765,7 +8774,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
 
         /// <summary>
         /// Optional. Name of the `Rollout`. Format is
-        /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/a-z{0,62}`.
+        /// `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/{rollout}`.
+        /// The `rollout` component must match `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -9430,7 +9440,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual MultiTarget MultiTarget { get; set; }
 
         /// <summary>
-        /// Optional. Name of the `Target`. Format is `projects/{project}/locations/{location}/targets/a-z{0,62}`.
+        /// Optional. Name of the `Target`. Format is `projects/{project}/locations/{location}/targets/{target}`. The
+        /// `target` component must match `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

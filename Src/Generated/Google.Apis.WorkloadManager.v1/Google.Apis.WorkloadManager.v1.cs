@@ -1770,6 +1770,38 @@ namespace Google.Apis.WorkloadManager.v1
 }
 namespace Google.Apis.WorkloadManager.v1.Data
 {
+    /// <summary>
+    /// Provides the mapping of a cloud asset to a direct physical location or to a proxy that defines the location on
+    /// its behalf.
+    /// </summary>
+    public class AssetLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Defines the customer expectation around ZI/ZS for this asset and ZI/ZS state of the region at the time of
+        /// asset creation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expected")]
+        public virtual IsolationExpectations Expected { get; set; }
+
+        /// <summary>Defines extra parameters required for specific asset types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extraParameters")]
+        public virtual System.Collections.Generic.IList<ExtraParameter> ExtraParameters { get; set; }
+
+        /// <summary>Contains all kinds of physical location definitions for this asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationData")]
+        public virtual System.Collections.Generic.IList<LocationData> LocationData { get; set; }
+
+        /// <summary>
+        /// Defines parents assets if any in order to allow later generation of child_asset_location data via child
+        /// assets.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentAsset")]
+        public virtual System.Collections.Generic.IList<CloudAsset> ParentAsset { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message describing big query destination</summary>
     public class BigQueryDestination : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1785,9 +1817,52 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Policy ID that identified data placement in Blobstore as per
+    /// go/blobstore-user-guide#data-metadata-placement-and-failure-domains
+    /// </summary>
+    public class BlobstoreLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("policyId")]
+        public virtual System.Collections.Generic.IList<string> PolicyId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class CloudAsset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("assetName")]
+        public virtual string AssetName { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("assetType")]
+        public virtual string AssetType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class CloudAssetComposition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("childAsset")]
+        public virtual System.Collections.Generic.IList<CloudAsset> ChildAsset { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class DirectLocationAssignment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual System.Collections.Generic.IList<LocationAssignment> Location { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1974,6 +2049,10 @@ namespace Google.Apis.WorkloadManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("evaluationId")]
         public virtual string EvaluationId { get; set; }
 
+        /// <summary>Optional. External data sources</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalDataSources")]
+        public virtual System.Collections.Generic.IList<ExternalDataSources> ExternalDataSources { get; set; }
+
         private string _inventoryTimeRaw;
 
         private object _inventoryTime;
@@ -2105,6 +2184,42 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message for external data sources</summary>
+    public class ExternalDataSources : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Name of external data source. The name will be used inside the rego/sql to refer the external data
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. Type of external data source</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>
+        /// Required. URI of external data source. example of bq table {project_ID}.{dataset_ID}.{table_ID}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines parameters that should only be used for specific asset types.</summary>
+    public class ExtraParameter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Details about zones used by regional compute.googleapis.com/InstanceGroupManager to create instances.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionalMigDistributionPolicy")]
+        public virtual RegionalMigDistributionPolicy RegionalMigDistributionPolicy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message describing compute engine instance filter</summary>
     public class GceInstanceFilter : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2174,6 +2289,41 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// <summary>The insights data for the sqlserver workload validation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sqlserverValidation")]
         public virtual SqlserverValidation SqlserverValidation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class IsolationExpectations : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("ziOrgPolicy")]
+        public virtual string ZiOrgPolicy { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("ziRegionPolicy")]
+        public virtual string ZiRegionPolicy { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("ziRegionState")]
+        public virtual string ZiRegionState { get; set; }
+
+        /// <summary>
+        /// Deprecated: use zi_org_policy, zi_region_policy and zi_region_state instead for setting ZI expectations as
+        /// per go/zicy-publish-physical-location.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zoneIsolation")]
+        public virtual string ZoneIsolation { get; set; }
+
+        /// <summary>
+        /// Deprecated: use zs_org_policy, and zs_region_stateinstead for setting Zs expectations as per
+        /// go/zicy-publish-physical-location.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zoneSeparation")]
+        public virtual string ZoneSeparation { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("zsOrgPolicy")]
+        public virtual string ZsOrgPolicy { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("zsRegionState")]
+        public virtual string ZsRegionState { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2330,6 +2480,39 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class LocationAssignment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("locationType")]
+        public virtual string LocationType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class LocationData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("blobstoreLocation")]
+        public virtual BlobstoreLocation BlobstoreLocation { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("childAssetLocation")]
+        public virtual CloudAssetComposition ChildAssetLocation { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("directLocation")]
+        public virtual DirectLocationAssignment DirectLocation { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("gcpProjectProxy")]
+        public virtual TenantProjectProxy GcpProjectProxy { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("spannerLocation")]
+        public virtual SpannerLocation SpannerLocation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2473,6 +2656,26 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// <summary>Output only. Name of the verb executed by the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verb")]
         public virtual string Verb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// To be used for specifying the intended distribution of regional compute.googleapis.com/InstanceGroupManager
+    /// instances
+    /// </summary>
+    public class RegionalMigDistributionPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The shape in which the group converges around distribution of resources. Instance of proto2 enum
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetShape")]
+        public virtual System.Nullable<int> TargetShape { get; set; }
+
+        /// <summary>Cloud zones used by regional MIG to create instances.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zones")]
+        public virtual System.Collections.Generic.IList<ZoneConfiguration> Zones { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2753,6 +2956,10 @@ namespace Google.Apis.WorkloadManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ascsUri")]
         public virtual string AscsUri { get; set; }
 
+        /// <summary>Optional. Instance number of the ERS instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ersInstanceNumber")]
+        public virtual string ErsInstanceNumber { get; set; }
+
         /// <summary>Optional. Kernel version for Netweaver running in the system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kernelVersion")]
         public virtual string KernelVersion { get; set; }
@@ -2892,6 +3099,10 @@ namespace Google.Apis.WorkloadManager.v1.Data
     /// <summary>A set of properties only present for an instance type resource</summary>
     public class SapDiscoveryResourceInstanceProperties : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. App server instances on the host</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appInstances")]
+        public virtual System.Collections.Generic.IList<SapDiscoveryResourceInstancePropertiesAppInstance> AppInstances { get; set; }
+
         /// <summary>Optional. A list of instance URIs that are part of a cluster with this one.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterInstances")]
         public virtual System.Collections.Generic.IList<string> ClusterInstances { get; set; }
@@ -2900,9 +3111,28 @@ namespace Google.Apis.WorkloadManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("instanceNumber")]
         public virtual System.Nullable<long> InstanceNumber { get; set; }
 
+        /// <summary>Optional. Bitmask of instance role, a resource may have multiple roles at once.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceRole")]
+        public virtual string InstanceRole { get; set; }
+
         /// <summary>Optional. A virtual hostname of the instance if it has one.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("virtualHostname")]
         public virtual string VirtualHostname { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Fields to describe an SAP application server instance.</summary>
+    public class SapDiscoveryResourceInstancePropertiesAppInstance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Instance name of the SAP application instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. Instance number of the SAP application instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("number")]
+        public virtual string Number { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3014,6 +3244,15 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class SpannerLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("dbName")]
+        public virtual System.Collections.Generic.IList<string> DbName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A presentation of SQLServer workload insight. The schema of SqlServer workloads validation related data.
     /// </summary>
@@ -3098,6 +3337,15 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class TenantProjectProxy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("projectNumbers")]
+        public virtual System.Collections.Generic.IList<string> ProjectNumbers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message describing the violdation in execution result</summary>
     public class ViolationDetails : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3147,6 +3395,15 @@ namespace Google.Apis.WorkloadManager.v1.Data
     /// <summary>The response for write insights request.</summary>
     public class WriteInsightResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class ZoneConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("zone")]
+        public virtual string Zone { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

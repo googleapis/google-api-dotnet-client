@@ -8012,7 +8012,8 @@ namespace Google.Apis.CloudRun.v1.Data
         /// <summary>
         /// List of build step outputs, produced by builder images, in the order corresponding to build step indices.
         /// [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by
-        /// writing to `$BUILDER_OUTPUT/output`. Only the first 50KB of data is stored.
+        /// writing to `$BUILDER_OUTPUT/output`. Only the first 50KB of data is stored. Note that the `$BUILDER_OUTPUT`
+        /// variable is read-only and can't be substituted.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buildStepOutputs")]
         public virtual System.Collections.Generic.IList<string> BuildStepOutputs { get; set; }
@@ -9516,6 +9517,10 @@ namespace Google.Apis.CloudRun.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeSelector")]
         public virtual System.Collections.Generic.IDictionary<string, string> NodeSelector { get; set; }
+
+        /// <summary>Runtime. Leave unset for default.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimeClassName")]
+        public virtual string RuntimeClassName { get; set; }
 
         /// <summary>
         /// Email address of the IAM service account associated with the revision of the service. The service account

@@ -7188,6 +7188,14 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUsageExportConfig")]
         public virtual ResourceUsageExportConfig ResourceUsageExportConfig { get; set; }
 
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
         /// <summary>Enable/Disable Security Posture API features for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityPostureConfig")]
         public virtual SecurityPostureConfig SecurityPostureConfig { get; set; }
@@ -7466,6 +7474,17 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>The desired network performance config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredNetworkPerformanceConfig")]
         public virtual ClusterNetworkPerformanceConfig DesiredNetworkPerformanceConfig { get; set; }
+
+        /// <summary>The desired node kubelet config for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredNodeKubeletConfig")]
+        public virtual NodeKubeletConfig DesiredNodeKubeletConfig { get; set; }
+
+        /// <summary>
+        /// The desired node kubelet config for all auto-provisioned node pools in autopilot clusters and node
+        /// auto-provisioning enabled clusters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredNodePoolAutoConfigKubeletConfig")]
+        public virtual NodeKubeletConfig DesiredNodePoolAutoConfigKubeletConfig { get; set; }
 
         /// <summary>
         /// The desired network tags that apply to all auto-provisioned node pools in autopilot clusters and node
@@ -9275,6 +9294,13 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("loggingConfig")]
         public virtual NodePoolLoggingConfig LoggingConfig { get; set; }
 
+        /// <summary>
+        /// NodeKubeletConfig controls the defaults for new node-pools. Currently only
+        /// `insecure_kubelet_readonly_port_enabled` can be set here.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeKubeletConfig")]
+        public virtual NodeKubeletConfig NodeKubeletConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9583,6 +9609,13 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkTags")]
         public virtual NetworkTags NetworkTags { get; set; }
+
+        /// <summary>
+        /// NodeKubeletConfig controls the defaults for autoprovisioned node-pools. Currently only
+        /// `insecure_kubelet_readonly_port_enabled` can be set here.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeKubeletConfig")]
+        public virtual NodeKubeletConfig NodeKubeletConfig { get; set; }
 
         /// <summary>
         /// Resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using
