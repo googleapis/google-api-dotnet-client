@@ -347,7 +347,8 @@ namespace Google.Apis.PagespeedInsights.v5
                 PERFORMANCE = 3,
 
                 /// <summary>
-                /// Progressive Web App (PWA), category pertaining to a website's ability to be run as a PWA.
+                /// Progressive Web App (PWA), category pertaining to a website's ability to be run as a PWA. This is
+                /// deprecated in Lighthouse's 12.0 release.
                 /// </summary>
                 [Google.Apis.Util.StringValueAttribute("PWA")]
                 PWA = 4,
@@ -531,7 +532,10 @@ namespace Google.Apis.PagespeedInsights.v5.Data
         [Newtonsoft.Json.JsonPropertyAttribute("performance")]
         public virtual LighthouseCategoryV5 Performance { get; set; }
 
-        /// <summary>The Progressive-Web-App (PWA) category, containing all pwa related audits.</summary>
+        /// <summary>
+        /// The Progressive-Web-App (PWA) category, containing all pwa related audits. This is deprecated in
+        /// Lighthouse's 12.0 release.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pwa")]
         public virtual LighthouseCategoryV5 Pwa { get; set; }
 

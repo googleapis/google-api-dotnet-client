@@ -2021,6 +2021,10 @@ namespace Google.Apis.Monitoring.v1.Data
     /// </summary>
     public class Dashboard : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Configuration for event annotations to display on this dashboard.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual DashboardAnnotations Annotations { get; set; }
+
         /// <summary>
         /// The content is divided into equally spaced columns and the widgets are arranged vertically.
         /// </summary>
@@ -2070,6 +2074,28 @@ namespace Google.Apis.Monitoring.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowLayout")]
         public virtual RowLayout RowLayout { get; set; }
+    }
+
+    /// <summary>Dashboard-level configuration for annotations</summary>
+    public class DashboardAnnotations : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Dashboard level defaults for names of logging resources to search for events. Currently only projects are
+        /// supported. Each individual EventAnnotation may have its own overrides. If both this field and the per
+        /// annotation field is empty, then the scoping project is used. Limit: 50 projects. For example:
+        /// “projects/some-project-id”
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultResourceNames")]
+        public virtual System.Collections.Generic.IList<string> DefaultResourceNames { get; set; }
+
+        /// <summary>
+        /// List of annotation configurations for this dashboard. Each entry specifies one event type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventAnnotations")]
+        public virtual System.Collections.Generic.IList<EventAnnotation> EventAnnotations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>A filter to reduce the amount of data charted in relevant widgets.</summary>
@@ -2267,6 +2293,40 @@ namespace Google.Apis.Monitoring.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versions")]
         public virtual System.Collections.Generic.IList<string> Versions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Annotation configuration for one event type on a dashboard</summary>
+    public class EventAnnotation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Solely for UI display. Should not be used programmatically.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Whether or not to show the events on the dashboard by default</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The type of event to display.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
+        public virtual string EventType { get; set; }
+
+        /// <summary>
+        /// string filtering the events - event dependant. Example values: "resource.labels.pod_name = 'pod-1'"
+        /// "protoPayload.authenticationInfo.principalEmail='user@example.com'"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// Per annotation level override for the names of logging resources to search for events. Currently only
+        /// projects are supported. If both this field and the per annotation field is empty, it will default to the
+        /// host project. Limit: 50 projects. For example: “projects/another-project-id”
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceNames")]
+        public virtual System.Collections.Generic.IList<string> ResourceNames { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

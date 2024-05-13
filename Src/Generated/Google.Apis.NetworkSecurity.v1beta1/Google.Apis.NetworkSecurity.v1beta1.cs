@@ -7340,6 +7340,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Optional. List of supported purposes of the Address Group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purpose")]
+        public virtual System.Collections.Generic.IList<string> Purpose { get; set; }
+
         /// <summary>Output only. Server-defined fully-qualified URL for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; }
@@ -9114,7 +9118,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
     }
 
     /// <summary>
-    /// SecurityProfile is a resource that defines the behavior for one of many ProfileTypes. Next ID: 9
+    /// SecurityProfile is a resource that defines the behavior for one of many ProfileTypes. Next ID: 10
     /// </summary>
     public class SecurityProfile : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9224,7 +9228,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
     }
 
     /// <summary>
-    /// SecurityProfileGroup is a resource that defines the behavior for various ProfileTypes. Next ID: 8
+    /// SecurityProfileGroup is a resource that defines the behavior for various ProfileTypes. Next ID: 9
     /// </summary>
     public class SecurityProfileGroup : Google.Apis.Requests.IDirectResponseSchema
     {

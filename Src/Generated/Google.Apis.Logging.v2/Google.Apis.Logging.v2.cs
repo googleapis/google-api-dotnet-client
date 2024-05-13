@@ -21439,6 +21439,12 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Output only. The resource name of the metric: "projects/[PROJECT_ID]/metrics/[METRIC_ID]"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
         private string _updateTimeRaw;
 
         private object _updateTime;

@@ -2344,6 +2344,65 @@ namespace Google.Apis.Connectors.v1
                             });
                         }
                     }
+
+                    /// <summary>Deprecates a single CustomConnectorVersion.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. Resource name of the form:
+                    /// `projects/{project}/locations/{location}/customConnectors/{custom_connector}/customConnectorVersions/{custom_connector_version}`
+                    /// </param>
+                    public virtual DeprecateRequest Deprecate(Google.Apis.Connectors.v1.Data.DeprecateCustomConnectorVersionRequest body, string name)
+                    {
+                        return new DeprecateRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Deprecates a single CustomConnectorVersion.</summary>
+                    public class DeprecateRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Deprecate request.</summary>
+                        public DeprecateRequest(Google.Apis.Services.IClientService service, Google.Apis.Connectors.v1.Data.DeprecateCustomConnectorVersionRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Resource name of the form:
+                        /// `projects/{project}/locations/{location}/customConnectors/{custom_connector}/customConnectorVersions/{custom_connector_version}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Connectors.v1.Data.DeprecateCustomConnectorVersionRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "deprecate";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:deprecate";
+
+                        /// <summary>Initializes Deprecate parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/customConnectors/[^/]+/customConnectorVersions/[^/]+$",
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Validates a Custom Connector Spec.</summary>
@@ -6372,6 +6431,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
 
+        /// <summary>Optional. Log configuration level.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("level")]
+        public virtual string Level { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6729,6 +6792,13 @@ namespace Google.Apis.Connectors.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for ConnectorsService.DeprecateCustomConnectorVersion</summary>
+    public class DeprecateCustomConnectorVersionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class Destination : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>For publicly routable host.</summary>
@@ -6936,6 +7006,13 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Optional. Description of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. The Private Service Connect Connection Endpoint Global Access.
+        /// https://cloud.google.com/vpc/docs/about-accessing-vpc-hosted-services-endpoints#global-access
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpointGlobalAccess")]
+        public virtual System.Nullable<bool> EndpointGlobalAccess { get; set; }
 
         /// <summary>Output only. The Private Service Connect connection endpoint ip</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endpointIp")]

@@ -340,8 +340,7 @@ namespace Google.Apis.CloudKMS.v1
         /// <summary>
         /// Updates the AutokeyConfig for a folder. The caller must have both `cloudkms.autokeyConfigs.update`
         /// permission on the parent folder and `cloudkms.cryptoKeys.setIamPolicy` permission on the provided key
-        /// project. A KeyHandle creation in the folder's descendant projects will use this configuration to determine
-        /// where to create the resulting CryptoKey.
+        /// project. An empty key project may be provided to clear the configuration.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
@@ -355,8 +354,7 @@ namespace Google.Apis.CloudKMS.v1
         /// <summary>
         /// Updates the AutokeyConfig for a folder. The caller must have both `cloudkms.autokeyConfigs.update`
         /// permission on the parent folder and `cloudkms.cryptoKeys.setIamPolicy` permission on the provided key
-        /// project. A KeyHandle creation in the folder's descendant projects will use this configuration to determine
-        /// where to create the resulting CryptoKey.
+        /// project. An empty key project may be provided to clear the configuration.
         /// </summary>
         public class UpdateAutokeyConfigRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.AutokeyConfig>
         {
@@ -4838,11 +4836,10 @@ namespace Google.Apis.CloudKMS.v1.Data
     {
         /// <summary>
         /// Optional. Name of the key project, e.g. `projects/{PROJECT_ID}` or `projects/{PROJECT_NUMBER}`, where Cloud
-        /// KMS Autokey will provision a new CryptoKey when a KeyHandle is created. On UpdateAutokeyConfig, the caller
-        /// will require `cloudkms.cryptoKeys.setIamPolicy` permission on this key project. Once configured, for Cloud
-        /// KMS Autokey to function properly, this key project must have the Cloud KMS API activated and the Cloud KMS
-        /// Service Agent for this key project must be granted the `cloudkms.admin` role (or pertinent permissions). A
-        /// request with an empty key project field will clear the configuration.
+        /// KMS Autokey will provision new CryptoKeys. On UpdateAutokeyConfig, the caller will require
+        /// `cloudkms.cryptoKeys.setIamPolicy` permission on this key project. Once configured, for Cloud KMS Autokey to
+        /// function properly, this key project must have the Cloud KMS API activated and the Cloud KMS Service Agent
+        /// for this key project must be granted the `cloudkms.admin` role (or pertinent permissions).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyProject")]
         public virtual string KeyProject { get; set; }
@@ -6222,16 +6219,13 @@ namespace Google.Apis.CloudKMS.v1.Data
     {
         /// <summary>
         /// Output only. Name of a CryptoKey that has been provisioned for Customer Managed Encryption Key (CMEK) use in
-        /// the KeyHandle project and location for the requested resource type. The CryptoKey project will reflect the
-        /// value configured in the AutokeyConfig on the resource project's ancestor folder at the time of the KeyHandle
-        /// creation. If more than one ancestor folder has a configured AutokeyConfig, the nearest of these
-        /// configurations is used.
+        /// the KeyHandle's project and location for the requested resource type.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
         public virtual string KmsKey { get; set; }
 
         /// <summary>
-        /// Output only. Identifier. Name of the KeyHandle resource, e.g.
+        /// Output only. Identifier. Name of the [KeyHandle] resource, e.g.
         /// `projects/{PROJECT_ID}/locations/{LOCATION}/keyHandles/{KEY_HANDLE_ID}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]

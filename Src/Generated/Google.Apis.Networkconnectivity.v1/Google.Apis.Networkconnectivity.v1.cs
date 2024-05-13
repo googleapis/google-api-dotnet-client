@@ -577,6 +577,104 @@ namespace Google.Apis.Networkconnectivity.v1
                             }
                         }
 
+                        /// <summary>Updates the parameters of a Network Connectivity Center group.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">
+                        /// Immutable. The name of the group. Group names must be unique. They use the following form:
+                        /// `projects/{project_number}/locations/global/hubs/{hub}/groups/{group_id}`
+                        /// </param>
+                        public virtual PatchRequest Patch(Google.Apis.Networkconnectivity.v1.Data.Group body, string name)
+                        {
+                            return new PatchRequest(this.service, body, name);
+                        }
+
+                        /// <summary>Updates the parameters of a Network Connectivity Center group.</summary>
+                        public class PatchRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.GoogleLongrunningOperation>
+                        {
+                            /// <summary>Constructs a new Patch request.</summary>
+                            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Networkconnectivity.v1.Data.Group body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Immutable. The name of the group. Group names must be unique. They use the following
+                            /// form: `projects/{project_number}/locations/global/hubs/{hub}/groups/{group_id}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>
+                            /// Optional. A request ID to identify requests. Specify a unique request ID so that if you
+                            /// must retry your request, the server knows to ignore the request if it has already been
+                            /// completed. The server guarantees that a request doesn't result in creation of duplicate
+                            /// commitments for at least 60 minutes. For example, consider a situation where you make an
+                            /// initial request and the request times out. If you make the request again with the same
+                            /// request ID, the server can check to see whether the original operation was received. If
+                            /// it was, the server ignores the second request. This behavior prevents clients from
+                            /// mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the
+                            /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string RequestId { get; set; }
+
+                            /// <summary>
+                            /// Optional. In the case of an update to an existing group, field mask is used to specify
+                            /// the fields to be overwritten. The fields specified in the update_mask are relative to
+                            /// the resource, not the full request. A field is overwritten if it is in the mask. If the
+                            /// user does not provide a mask, then all fields are overwritten.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual object UpdateMask { get; set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Networkconnectivity.v1.Data.Group Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "patch";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "PATCH";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Patch parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/global/hubs/[^/]+/groups/[^/]+$",
+                                });
+                                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "requestId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "updateMask",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
                         /// <summary>
                         /// Sets the access control policy on the specified resource. Replaces any existing policy. Can
                         /// return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -6496,6 +6594,25 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// The auto-accept setting for a group controls whether proposed spokes are automatically attached to the hub. If
+    /// auto-accept is enabled, the spoke immediately is attached to the hub and becomes part of the group. In this
+    /// case, the new spoke is in the ACTIVE state. If auto-accept is disabled, the spoke goes to the INACTIVE state,
+    /// and it must be reviewed and accepted by a hub administrator.
+    /// </summary>
+    public class AutoAccept : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A list of project ids or project numbers for which you want to enable auto-accept. The auto-accept setting
+        /// is applied to spokes being created or updated in these projects.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoAcceptProjects")]
+        public virtual System.Collections.Generic.IList<string> AutoAcceptProjects { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Associates `members`, or principals, with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6909,6 +7026,10 @@ namespace Google.Apis.Networkconnectivity.v1.Data
     /// <summary>A group represents a subset of spokes attached to a hub.</summary>
     public class Group : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The auto-accept setting for this group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoAccept")]
+        public virtual AutoAccept AutoAccept { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -6963,6 +7084,13 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The name of the route table that corresponds to this group. They use the following form:
+        /// `projects/{project_number}/locations/global/hubs/{hub_id}/routeTables/{route_table_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routeTable")]
+        public virtual string RouteTable { get; set; }
 
         /// <summary>Output only. The current lifecycle state of this group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -7067,6 +7195,14 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
+        /// Optional. Whether Private Service Connect transitivity is enabled for the hub. If true, Private Service
+        /// Connect endpoints in VPC spokes attached to the hub are made accessible to other VPC spokes attached to the
+        /// hub. The default value is false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exportPsc")]
+        public virtual System.Nullable<bool> ExportPsc { get; set; }
+
+        /// <summary>
         /// Optional labels in key-value pair format. For more information about labels, see [Requirements for
         /// labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
         /// </summary>
@@ -7079,6 +7215,22 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. The policy mode of this hub. This field can be either PRESET or CUSTOM. If unspecified, the
+        /// policy_mode defaults to PRESET.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyMode")]
+        public virtual string PolicyMode { get; set; }
+
+        /// <summary>
+        /// Optional. The topology implemented in this hub. Currently, this field is only used when policy_mode =
+        /// PRESET. The available preset topologies are MESH and STAR. If preset_topology is unspecified and policy_mode
+        /// = PRESET, the preset_topology defaults to MESH. When policy_mode = CUSTOM, the preset_topology is set to
+        /// PRESET_TOPOLOGY_UNSPECIFIED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("presetTopology")]
+        public virtual string PresetTopology { get; set; }
 
         /// <summary>
         /// Output only. The route tables that belong to this hub. They use the following form:

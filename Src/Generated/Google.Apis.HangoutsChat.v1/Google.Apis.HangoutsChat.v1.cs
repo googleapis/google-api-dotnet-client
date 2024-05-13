@@ -6877,10 +6877,9 @@ namespace Google.Apis.HangoutsChat.v1.Data
     public class Space : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. Whether the Chat app was installed by a Google Workspace administrator. Administrators can
-        /// install a Chat app for their domain, organizational unit, or a group of users. Administrators can only
-        /// install Chat apps for direct messaging between users and the app. To support admin install, your app must
-        /// feature direct messaging.
+        /// Output only. For direct message (DM) spaces with a Chat app, whether the space was created by a Google
+        /// Workspace administrator. Administrators can install and set up a direct message with a Chat app on behalf of
+        /// users in their organization. To support admin install, your Chat app must feature direct messaging.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adminInstalled")]
         public virtual System.Nullable<bool> AdminInstalled { get; set; }

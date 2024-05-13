@@ -19504,9 +19504,17 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
 
+        /// <summary>Endpoint timeout setting for matching dtmf input to regex.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpointingTimeoutDuration")]
+        public virtual object EndpointingTimeoutDuration { get; set; }
+
         /// <summary>The digit that terminates a DTMF digit sequence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finishDigit")]
         public virtual string FinishDigit { get; set; }
+
+        /// <summary>Interdigit timeout setting for matching dtmf input to regex.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interdigitTimeoutDuration")]
+        public virtual object InterdigitTimeoutDuration { get; set; }
 
         /// <summary>Max length of DTMF digits.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxDigits")]
@@ -22269,9 +22277,17 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
 
+        /// <summary>Endpoint timeout setting for matching dtmf input to regex.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpointingTimeoutDuration")]
+        public virtual object EndpointingTimeoutDuration { get; set; }
+
         /// <summary>The digit that terminates a DTMF digit sequence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finishDigit")]
         public virtual string FinishDigit { get; set; }
+
+        /// <summary>Interdigit timeout setting for matching dtmf input to regex.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interdigitTimeoutDuration")]
+        public virtual object InterdigitTimeoutDuration { get; set; }
 
         /// <summary>Max length of DTMF digits.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxDigits")]
