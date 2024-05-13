@@ -10441,9 +10441,17 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
 
+        /// <summary>Endpoint timeout setting for matching dtmf input to regex.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpointingTimeoutDuration")]
+        public virtual object EndpointingTimeoutDuration { get; set; }
+
         /// <summary>The digit that terminates a DTMF digit sequence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finishDigit")]
         public virtual string FinishDigit { get; set; }
+
+        /// <summary>Interdigit timeout setting for matching dtmf input to regex.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interdigitTimeoutDuration")]
+        public virtual object InterdigitTimeoutDuration { get; set; }
 
         /// <summary>Max length of DTMF digits.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxDigits")]
@@ -13206,9 +13214,17 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
 
+        /// <summary>Endpoint timeout setting for matching dtmf input to regex.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpointingTimeoutDuration")]
+        public virtual object EndpointingTimeoutDuration { get; set; }
+
         /// <summary>The digit that terminates a DTMF digit sequence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finishDigit")]
         public virtual string FinishDigit { get; set; }
+
+        /// <summary>Interdigit timeout setting for matching dtmf input to regex.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interdigitTimeoutDuration")]
+        public virtual object InterdigitTimeoutDuration { get; set; }
 
         /// <summary>Max length of DTMF digits.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxDigits")]
@@ -18776,6 +18792,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsBucket")]
         public virtual string GcsBucket { get; set; }
+
+        /// <summary>Whether to store TTS audio. By default, TTS audio from the virtual agent is not exported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storeTtsAudio")]
+        public virtual System.Nullable<bool> StoreTtsAudio { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

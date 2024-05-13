@@ -1014,7 +1014,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             [Google.Apis.Util.RequestParameterAttribute("includeChildOrgunits", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeChildOrgunits { get; set; }
 
-            /// <summary>Maximum number of results to return.</summary>
+            /// <summary>Maximum number of results to return, value should not exceed 300.</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
@@ -1067,11 +1067,15 @@ namespace Google.Apis.Admin.Directory.directory_v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>Restrict information returned to a set of selected fields.</summary>
+            /// <summary>
+            /// Determines whether the response contains the full list of properties or only a subset.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("projection", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ProjectionEnum> Projection { get; set; }
 
-            /// <summary>Restrict information returned to a set of selected fields.</summary>
+            /// <summary>
+            /// Determines whether the response contains the full list of properties or only a subset.
+            /// </summary>
             public enum ProjectionEnum
             {
                 /// <summary>
@@ -1324,11 +1328,15 @@ namespace Google.Apis.Admin.Directory.directory_v1
             [Google.Apis.Util.RequestParameterAttribute("deviceId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string DeviceId { get; private set; }
 
-            /// <summary>Restrict information returned to a set of selected fields.</summary>
+            /// <summary>
+            /// Determines whether the response contains the full list of properties or only a subset.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("projection", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ProjectionEnum> Projection { get; set; }
 
-            /// <summary>Restrict information returned to a set of selected fields.</summary>
+            /// <summary>
+            /// Determines whether the response contains the full list of properties or only a subset.
+            /// </summary>
             public enum ProjectionEnum
             {
                 /// <summary>
@@ -1437,11 +1445,15 @@ namespace Google.Apis.Admin.Directory.directory_v1
             [Google.Apis.Util.RequestParameterAttribute("deviceId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string DeviceId { get; private set; }
 
-            /// <summary>Restrict information returned to a set of selected fields.</summary>
+            /// <summary>
+            /// Determines whether the response contains the full list of properties or only a subset.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("projection", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ProjectionEnum> Projection { get; set; }
 
-            /// <summary>Restrict information returned to a set of selected fields.</summary>
+            /// <summary>
+            /// Determines whether the response contains the full list of properties or only a subset.
+            /// </summary>
             public enum ProjectionEnum
             {
                 /// <summary>
@@ -11180,6 +11192,10 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bootMode")]
         public virtual string BootMode { get; set; }
+
+        /// <summary>Output only. Chrome OS type of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chromeOsType")]
+        public virtual string ChromeOsType { get; set; }
 
         /// <summary>Information regarding CPU specs in the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuInfo")]
