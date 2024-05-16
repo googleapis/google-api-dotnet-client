@@ -492,7 +492,7 @@ namespace Google.Apis.AdMob.v1
             }
 
             /// <summary>
-            /// Generates an AdMob mediation report based on the provided report specification. Returns result of a
+            /// Generates an AdMob Mediation report based on the provided report specification. Returns result of a
             /// server-side streaming RPC. The result is returned in a sequence of responses.
             /// </summary>
             /// <param name="body">The body of the request.</param>
@@ -505,7 +505,7 @@ namespace Google.Apis.AdMob.v1
             }
 
             /// <summary>
-            /// Generates an AdMob mediation report based on the provided report specification. Returns result of a
+            /// Generates an AdMob Mediation report based on the provided report specification. Returns result of a
             /// server-side streaming RPC. The result is returned in a sequence of responses.
             /// </summary>
             public class GenerateRequest : AdMobBaseServiceRequest<Google.Apis.AdMob.v1.Data.GenerateMediationReportResponse[]>
@@ -934,7 +934,7 @@ namespace Google.Apis.AdMob.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request to generate an AdMob mediation report.</summary>
+    /// <summary>Request to generate an AdMob Mediation report.</summary>
     public class GenerateMediationReportRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Network report specification.</summary>
@@ -946,7 +946,7 @@ namespace Google.Apis.AdMob.v1.Data
     }
 
     /// <summary>
-    /// The streaming response for the AdMob mediation report where the first response contains the report header, then
+    /// The streaming response for the AdMob Mediation report where the first response contains the report header, then
     /// a stream of row responses, and finally a footer as the last response message. For example: [{ "header": {
     /// "date_range": { "start_date": {"year": 2018, "month": 9, "day": 1}, "end_date": {"year": 2018, "month": 9,
     /// "day": 1} }, "localization_settings": { "currency_code": "USD", "language_code": "en-US" } } }, { "row": {

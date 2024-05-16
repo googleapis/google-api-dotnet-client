@@ -428,6 +428,10 @@ namespace Google.Apis.Webfonts.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("category")]
         public virtual string Category { get; set; }
 
+        /// <summary>The color format(s) available for this family.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("colorCapabilities")]
+        public virtual System.Collections.Generic.IList<string> ColorCapabilities { get; set; }
+
         /// <summary>The name of the font.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("family")]
         public virtual string Family { get; set; }

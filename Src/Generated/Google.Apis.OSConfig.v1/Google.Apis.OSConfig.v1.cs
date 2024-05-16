@@ -1309,6 +1309,13 @@ namespace Google.Apis.OSConfig.v1
                     [Google.Apis.Util.RequestParameterAttribute("osPolicyAssignmentId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OsPolicyAssignmentId { get; set; }
 
+                    /// <summary>
+                    /// Optional. A unique identifier for this request. Restricted to 36 ASCII characters. A random UUID
+                    /// is recommended. This request is only idempotent if a `request_id` is provided.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.OSConfig.v1.Data.OSPolicyAssignment Body { get; set; }
 
@@ -1339,6 +1346,14 @@ namespace Google.Apis.OSConfig.v1
                         RequestParameters.Add("osPolicyAssignmentId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "osPolicyAssignmentId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1380,6 +1395,13 @@ namespace Google.Apis.OSConfig.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>
+                    /// Optional. A unique identifier for this request. Restricted to 36 ASCII characters. A random UUID
+                    /// is recommended. This request is only idempotent if a `request_id` is provided.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
@@ -1400,6 +1422,14 @@ namespace Google.Apis.OSConfig.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/osPolicyAssignments/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -1655,6 +1685,20 @@ namespace Google.Apis.OSConfig.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
+                    /// Optional. If set to true, and the OS policy assignment is not found, a new OS policy assignment
+                    /// will be created. In this situation, `update_mask` is ignored.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+                    /// <summary>
+                    /// Optional. A unique identifier for this request. Restricted to 36 ASCII characters. A random UUID
+                    /// is recommended. This request is only idempotent if a `request_id` is provided.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
                     /// Optional. Field mask that controls which fields of the assignment should be updated.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
@@ -1686,6 +1730,22 @@ namespace Google.Apis.OSConfig.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/osPolicyAssignments/[^/]+$",
+                        });
+                        RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "allowMissing",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                         {

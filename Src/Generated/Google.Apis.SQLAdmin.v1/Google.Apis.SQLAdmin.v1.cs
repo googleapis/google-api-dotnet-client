@@ -5630,7 +5630,9 @@ namespace Google.Apis.SQLAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rootPassword")]
         public virtual string RootPassword { get; set; }
 
-        /// <summary>The status indicating if instance satisfiesPzs. Reserved for future use.</summary>
+        /// <summary>
+        /// This status indicates whether the instance satisfies PZS. The status is reserved for future use.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
         public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
@@ -7509,6 +7511,16 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failoverDrReplicaName")]
         public virtual string FailoverDrReplicaName { get; set; }
+
+        /// <summary>
+        /// Output only. If set, it indicates this instance has a private service access (PSA) dns endpoint that is
+        /// pointing to the primary instance of the cluster. If this instance is the primary, the dns should be pointing
+        /// to this instance. After Switchover or Replica failover, this DNS endpoint points to the promoted instance.
+        /// This is a read-only field, returned to the user as information. This field can exist even if a standalone
+        /// instance does not yet have a replica, or had a DR replica that was deleted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("psaWriteEndpoint")]
+        public virtual string PsaWriteEndpoint { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

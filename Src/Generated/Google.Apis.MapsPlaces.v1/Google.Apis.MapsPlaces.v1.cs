@@ -1030,6 +1030,160 @@ namespace Google.Apis.MapsPlaces.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A block of content that can be served individually.</summary>
+    public class GoogleMapsPlacesV1ContentBlock : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Content related to the topic.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual GoogleTypeLocalizedText Content { get; set; }
+
+        /// <summary>
+        /// Experimental: See
+        /// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative for more
+        /// details. References that are related to this block of content.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("references")]
+        public virtual GoogleMapsPlacesV1References References { get; set; }
+
+        /// <summary>The topic of the content, for example "overview" or "restaurant".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topic")]
+        public virtual string Topic { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Experimental: See
+    /// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative for more
+    /// details. Content that is contextual to the place query.
+    /// </summary>
+    public class GoogleMapsPlacesV1ContextualContent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Experimental: See
+        /// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative for more
+        /// details. Justifications for the place.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("justifications")]
+        public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1ContextualContentJustification> Justifications { get; set; }
+
+        /// <summary>
+        /// Information (including references) about photos of this place, contexual to the place query.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("photos")]
+        public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1Photo> Photos { get; set; }
+
+        /// <summary>List of reviews about this place, contexual to the place query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reviews")]
+        public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1Review> Reviews { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Experimental: See
+    /// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative for more
+    /// details. Justifications for the place. Justifications answers the question of why a place could interest an end
+    /// user.
+    /// </summary>
+    public class GoogleMapsPlacesV1ContextualContentJustification : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Experimental: See
+        /// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative for more
+        /// details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("businessAvailabilityAttributesJustification")]
+        public virtual GoogleMapsPlacesV1ContextualContentJustificationBusinessAvailabilityAttributesJustification BusinessAvailabilityAttributesJustification { get; set; }
+
+        /// <summary>
+        /// Experimental: See
+        /// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative for more
+        /// details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reviewJustification")]
+        public virtual GoogleMapsPlacesV1ContextualContentJustificationReviewJustification ReviewJustification { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Experimental: See
+    /// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative for more
+    /// details. BusinessAvailabilityAttributes justifications. This shows some attributes a business has that could
+    /// interest an end user.
+    /// </summary>
+    public class GoogleMapsPlacesV1ContextualContentJustificationBusinessAvailabilityAttributesJustification : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If a place provides delivery.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("delivery")]
+        public virtual System.Nullable<bool> Delivery { get; set; }
+
+        /// <summary>If a place provides dine-in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dineIn")]
+        public virtual System.Nullable<bool> DineIn { get; set; }
+
+        /// <summary>If a place provides takeout.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("takeout")]
+        public virtual System.Nullable<bool> Takeout { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Experimental: See
+    /// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative for more
+    /// details. User review justifications. This highlights a section of the user review that would interest an end
+    /// user. For instance, if the search query is "firewood pizza", the review justification highlights the text
+    /// relevant to the search query.
+    /// </summary>
+    public class GoogleMapsPlacesV1ContextualContentJustificationReviewJustification : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("highlightedText")]
+        public virtual GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedText HighlightedText { get; set; }
+
+        /// <summary>The review that the highlighted text is generated from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("review")]
+        public virtual GoogleMapsPlacesV1Review Review { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The text highlighted by the justification. This is a subset of the review itself. The exact word to highlight is
+    /// marked by the HighlightedTextRange. There could be several words in the text being highlighted.
+    /// </summary>
+    public class GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedText : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of the ranges of the highlighted text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("highlightedTextRanges")]
+        public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedTextHighlightedTextRange> HighlightedTextRanges { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The range of highlighted text.</summary>
+    public class GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedTextHighlightedTextRange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("endIndex")]
+        public virtual System.Nullable<int> EndIndex { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
+        public virtual System.Nullable<int> StartIndex { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Information about the EV Charge Station hosted in Place. Terminology follows
     /// https://afdc.energy.gov/fuels/electricity_infrastructure.html One port could charge one car at a time. One port
@@ -1266,6 +1420,14 @@ namespace Google.Apis.MapsPlaces.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allowsDogs")]
         public virtual System.Nullable<bool> AllowsDogs { get; set; }
 
+        /// <summary>
+        /// Experimental: See
+        /// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative for more
+        /// details. AI-generated summary of the area that the place is in.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("areaSummary")]
+        public virtual GoogleMapsPlacesV1PlaceAreaSummary AreaSummary { get; set; }
+
         /// <summary>A set of data provider that must be shown with this result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributions")]
         public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1PlaceAttribution> Attributions { get; set; }
@@ -1333,6 +1495,14 @@ namespace Google.Apis.MapsPlaces.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fuelOptions")]
         public virtual GoogleMapsPlacesV1FuelOptions FuelOptions { get; set; }
+
+        /// <summary>
+        /// Experimental: See
+        /// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative for more
+        /// details. AI-generated summary of the place.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generativeSummary")]
+        public virtual GoogleMapsPlacesV1PlaceGenerativeSummary GenerativeSummary { get; set; }
 
         /// <summary>Place is good for children.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("goodForChildren")]
@@ -1607,6 +1777,23 @@ namespace Google.Apis.MapsPlaces.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Experimental: See
+    /// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative for more
+    /// details. AI-generated summary of the area that the place is in.
+    /// </summary>
+    public class GoogleMapsPlacesV1PlaceAreaSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Content blocks that compose the area summary. Each block has a separate topic about the area.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentBlocks")]
+        public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1ContentBlock> ContentBlocks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Information about data providers of this place.</summary>
     public class GoogleMapsPlacesV1PlaceAttribution : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1617,6 +1804,29 @@ namespace Google.Apis.MapsPlaces.v1.Data
         /// <summary>URI to the Place's data provider.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("providerUri")]
         public virtual string ProviderUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Experimental: See
+    /// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative for more
+    /// details. AI-generated summary of the place.
+    /// </summary>
+    public class GoogleMapsPlacesV1PlaceGenerativeSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The detailed description of the place.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual GoogleTypeLocalizedText Description { get; set; }
+
+        /// <summary>The overview of the place.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overview")]
+        public virtual GoogleTypeLocalizedText Overview { get; set; }
+
+        /// <summary>References that are used to generate the summary description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("references")]
+        public virtual GoogleMapsPlacesV1References References { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1823,6 +2033,28 @@ namespace Google.Apis.MapsPlaces.v1.Data
         /// <summary>The resource name of the sub destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Experimental: See
+    /// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative for more
+    /// details. Reference that the generative content is related to.
+    /// </summary>
+    public class GoogleMapsPlacesV1References : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The list of resource names of the referenced places. This name can be used in other APIs that accept Place
+        /// resource names.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("places")]
+        public virtual System.Collections.Generic.IList<string> Places { get; set; }
+
+        /// <summary>Reviews that serve as references.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reviews")]
+        public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1Review> Reviews { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2064,9 +2296,12 @@ namespace Google.Apis.MapsPlaces.v1.Data
         public virtual GoogleMapsPlacesV1SearchTextRequestLocationRestriction LocationRestriction { get; set; }
 
         /// <summary>
-        /// Maximum number of results to return. It must be between 1 and 20, inclusively. The default is 20. If the
-        /// number is unset, it falls back to the upper limit. If the number is set to negative or exceeds the upper
-        /// limit, an INVALID_ARGUMENT error is returned.
+        /// Deprecated: Use `page_size` instead. The maximum number of results per page that can be returned. If the
+        /// number of available results is larger than `max_result_count`, a `next_page_token` is returned which can be
+        /// passed to `page_token` to get the next page of results in subsequent requests. If 0 or no value is provided,
+        /// a default of 20 is used. The maximum value is 20; values above 20 will be coerced to 20. Negative values
+        /// will return an INVALID_ARGUMENT error. If both `max_result_count` and `page_size` are specified,
+        /// `max_result_count` will be ignored.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxResultCount")]
         public virtual System.Nullable<int> MaxResultCount { get; set; }
@@ -2083,6 +2318,25 @@ namespace Google.Apis.MapsPlaces.v1.Data
         /// <summary>Used to restrict the search to places that are currently open. The default is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("openNow")]
         public virtual System.Nullable<bool> OpenNow { get; set; }
+
+        /// <summary>
+        /// Optional. The maximum number of results per page that can be returned. If the number of available results is
+        /// larger than `page_size`, a `next_page_token` is returned which can be passed to `page_token` to get the next
+        /// page of results in subsequent requests. If 0 or no value is provided, a default of 20 is used. The maximum
+        /// value is 20; values above 20 will be set to 20. Negative values will return an INVALID_ARGUMENT error. If
+        /// both `max_result_count` and `page_size` are specified, `max_result_count` will be ignored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
+        public virtual System.Nullable<int> PageSize { get; set; }
+
+        /// <summary>
+        /// Optional. A page token, received from a previous TextSearch call. Provide this to retrieve the subsequent
+        /// page. When paginating, all parameters other than `page_token`, `page_size`, and `max_result_count` provided
+        /// to TextSearch must match the initial call that provided the page token. Otherwise an INVALID_ARGUMENT error
+        /// is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
+        public virtual string PageToken { get; set; }
 
         /// <summary>
         /// Used to restrict the search to places that are marked as certain price levels. Users can choose any
@@ -2186,6 +2440,25 @@ namespace Google.Apis.MapsPlaces.v1.Data
     /// <summary>Response proto for SearchText. </summary>
     public class GoogleMapsPlacesV1SearchTextResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Experimental: See
+        /// https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative for more
+        /// details. A list of contextual contents where each entry associates to the corresponding place in the same
+        /// index in the places field. The contents that are relevant to the `text_query` in the request are preferred.
+        /// If the contextual content is not available for one of the places, it will return non-contextual content. It
+        /// will be empty only when the content is unavailable for this place. This list should have as many entries as
+        /// the list of places if requested.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contextualContents")]
+        public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1ContextualContent> ContextualContents { get; set; }
+
+        /// <summary>
+        /// A token that can be sent as `page_token` to retrieve the next page. If this field is omitted or empty, there
+        /// are no subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
         /// <summary>A list of places that meet the user's text search criteria.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("places")]
         public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1Place> Places { get; set; }

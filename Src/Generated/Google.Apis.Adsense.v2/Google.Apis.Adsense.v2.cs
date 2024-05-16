@@ -1747,7 +1747,10 @@ namespace Google.Apis.Adsense.v2
                 }
             }
 
-            /// <summary>Lists all the policy issues for the specified account.</summary>
+            /// <summary>
+            /// Lists all the policy issues where the specified account is involved, both directly and through any AFP
+            /// child accounts.
+            /// </summary>
             /// <param name="parent">
             /// Required. The account for which policy issues are being retrieved. Format: accounts/{account}
             /// </param>
@@ -1756,7 +1759,10 @@ namespace Google.Apis.Adsense.v2
                 return new ListRequest(this.service, parent);
             }
 
-            /// <summary>Lists all the policy issues for the specified account.</summary>
+            /// <summary>
+            /// Lists all the policy issues where the specified account is involved, both directly and through any AFP
+            /// child accounts.
+            /// </summary>
             public class ListRequest : AdsenseBaseServiceRequest<Google.Apis.Adsense.v2.Data.ListPolicyIssuesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>

@@ -6868,6 +6868,27 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a storage location in Cloud Storage</summary>
+    public class GoogleDevtoolsCloudbuildV1GCSLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Cloud Storage bucket. See https://cloud.google.com/storage/docs/naming#requirements</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
+        public virtual string Bucket { get; set; }
+
+        /// <summary>
+        /// Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generation")]
+        public virtual System.Nullable<long> Generation { get; set; }
+
+        /// <summary>Cloud Storage object. See https://cloud.google.com/storage/docs/naming#objectnames</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("object")]
+        public virtual string Object__ { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>GitConfig is a configuration for git operations.</summary>
     public class GoogleDevtoolsCloudbuildV1GitConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6934,6 +6955,10 @@ namespace Google.Apis.CloudRun.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proxySecretVersionName")]
         public virtual string ProxySecretVersionName { get; set; }
+
+        /// <summary>Optional. Cloud Storage object storing the certificate to use with the HTTP proxy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proxySslCaInfo")]
+        public virtual GoogleDevtoolsCloudbuildV1GCSLocation ProxySslCaInfo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

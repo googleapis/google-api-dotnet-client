@@ -1139,8 +1139,8 @@ namespace Google.Apis.CloudIAP.v1
                     /// <summary>Updates a TunnelDestGroup.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Required. Immutable. Identifier for the TunnelDestGroup. Must be unique within the project and
-                    /// contain only lower case letters (a-z) and dashes (-).
+                    /// Identifier. Identifier for the TunnelDestGroup. Must be unique within the project and contain
+                    /// only lower case letters (a-z) and dashes (-).
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.CloudIAP.v1.Data.TunnelDestGroup body, string name)
                     {
@@ -1159,8 +1159,8 @@ namespace Google.Apis.CloudIAP.v1
                         }
 
                         /// <summary>
-                        /// Required. Immutable. Identifier for the TunnelDestGroup. Must be unique within the project
-                        /// and contain only lower case letters (a-z) and dashes (-).
+                        /// Identifier. Identifier for the TunnelDestGroup. Must be unique within the project and
+                        /// contain only lower case letters (a-z) and dashes (-).
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -1647,15 +1647,15 @@ namespace Google.Apis.CloudIAP.v1.Data
     /// <summary>Access related settings for IAP protected apps.</summary>
     public class AccessSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Settings to configure and enable allowed domains.</summary>
+        /// <summary>Optional. Settings to configure and enable allowed domains.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedDomainsSettings")]
         public virtual AllowedDomainsSettings AllowedDomainsSettings { get; set; }
 
-        /// <summary>Configuration to allow cross-origin requests via IAP.</summary>
+        /// <summary>Optional. Configuration to allow cross-origin requests via IAP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("corsSettings")]
         public virtual CorsSettings CorsSettings { get; set; }
 
-        /// <summary>GCIP claims and endpoint configurations for 3p identity providers.</summary>
+        /// <summary>Optional. GCIP claims and endpoint configurations for 3p identity providers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcipSettings")]
         public virtual GcipSettings GcipSettings { get; set; }
 
@@ -1666,17 +1666,17 @@ namespace Google.Apis.CloudIAP.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("identitySources")]
         public virtual System.Collections.Generic.IList<string> IdentitySources { get; set; }
 
-        /// <summary>Settings to configure IAP's OAuth behavior.</summary>
+        /// <summary>Optional. Settings to configure IAP's OAuth behavior.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oauthSettings")]
         public virtual OAuthSettings OauthSettings { get; set; }
 
         /// <summary>
-        /// Settings to configure Policy delegation for apps hosted in tenant projects. INTERNAL_ONLY.
+        /// Optional. Settings to configure Policy delegation for apps hosted in tenant projects. INTERNAL_ONLY.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyDelegationSettings")]
         public virtual PolicyDelegationSettings PolicyDelegationSettings { get; set; }
 
-        /// <summary>Settings to configure reauthentication policies in IAP.</summary>
+        /// <summary>Optional. Settings to configure reauthentication policies in IAP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reauthSettings")]
         public virtual ReauthSettings ReauthSettings { get; set; }
 
@@ -1697,11 +1697,11 @@ namespace Google.Apis.CloudIAP.v1.Data
     /// </summary>
     public class AllowedDomainsSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of trusted domains.</summary>
+        /// <summary>Optional. List of trusted domains.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domains")]
         public virtual System.Collections.Generic.IList<string> Domains { get; set; }
 
-        /// <summary>Configuration for customers to opt in for the feature.</summary>
+        /// <summary>Optional. Configuration for customers to opt in for the feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enable")]
         public virtual System.Nullable<bool> Enable { get; set; }
 
@@ -1712,11 +1712,11 @@ namespace Google.Apis.CloudIAP.v1.Data
     /// <summary>Wrapper over application specific settings for IAP.</summary>
     public class ApplicationSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Customization for Access Denied page.</summary>
+        /// <summary>Optional. Customization for Access Denied page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessDeniedPageSettings")]
         public virtual AccessDeniedPageSettings AccessDeniedPageSettings { get; set; }
 
-        /// <summary>Settings to configure attribute propagation.</summary>
+        /// <summary>Optional. Settings to configure attribute propagation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributePropagationSettings")]
         public virtual AttributePropagationSettings AttributePropagationSettings { get; set; }
 
@@ -1727,7 +1727,7 @@ namespace Google.Apis.CloudIAP.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cookieDomain")]
         public virtual string CookieDomain { get; set; }
 
-        /// <summary>Settings to configure IAP's behavior for a service mesh.</summary>
+        /// <summary>Optional. Settings to configure IAP's behavior for a service mesh.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("csmSettings")]
         public virtual CsmSettings CsmSettings { get; set; }
 
@@ -1739,15 +1739,15 @@ namespace Google.Apis.CloudIAP.v1.Data
     public class AttributePropagationSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Whether the provided attribute propagation settings should be evaluated on user requests. If set to true,
-        /// attributes returned from the expression will be propagated in the set output credentials.
+        /// Optional. Whether the provided attribute propagation settings should be evaluated on user requests. If set
+        /// to true, attributes returned from the expression will be propagated in the set output credentials.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enable")]
         public virtual System.Nullable<bool> Enable { get; set; }
 
         /// <summary>
-        /// Raw string CEL expression. Must return a list of attributes. A maximum of 45 attributes can be selected.
-        /// Expressions can select different attribute types from `attributes`: `attributes.saml_attributes`,
+        /// Optional. Raw string CEL expression. Must return a list of attributes. A maximum of 45 attributes can be
+        /// selected. Expressions can select different attribute types from `attributes`: `attributes.saml_attributes`,
         /// `attributes.iap_attributes`. The following functions are supported: - filter `.filter(, )`: Returns a subset
         /// of `` where `` is true for every item. - in ` in `: Returns true if `` contains ``. - selectByName
         /// `.selectByName()`: Returns the attribute in `` with the given `` name, otherwise returns empty. - emitAs
@@ -1761,8 +1761,8 @@ namespace Google.Apis.CloudIAP.v1.Data
         public virtual string Expression { get; set; }
 
         /// <summary>
-        /// Which output credentials attributes selected by the CEL expression should be propagated in. All attributes
-        /// will be fully duplicated in each selected output credential.
+        /// Optional. Which output credentials attributes selected by the CEL expression should be propagated in. All
+        /// attributes will be fully duplicated in each selected output credential.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputCredentials")]
         public virtual System.Collections.Generic.IList<string> OutputCredentials { get; set; }
@@ -1970,10 +1970,10 @@ namespace Google.Apis.CloudIAP.v1.Data
         public virtual string LoginPageUri { get; set; }
 
         /// <summary>
-        /// GCIP tenant ids that are linked to the IAP resource. tenant_ids could be a string beginning with a number
-        /// character to indicate authenticating with GCIP tenant flow, or in the format of _ to indicate authenticating
-        /// with GCIP agent flow. If agent flow is used, tenant_ids should only contain one single element, while for
-        /// tenant flow, tenant_ids can contain multiple elements.
+        /// Optional. GCIP tenant ids that are linked to the IAP resource. tenant_ids could be a string beginning with a
+        /// number character to indicate authenticating with GCIP tenant flow, or in the format of _ to indicate
+        /// authenticating with GCIP agent flow. If agent flow is used, tenant_ids should only contain one single
+        /// element, while for tenant flow, tenant_ids can contain multiple elements.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tenantIds")]
         public virtual System.Collections.Generic.IList<string> TenantIds { get; set; }
@@ -2015,11 +2015,11 @@ namespace Google.Apis.CloudIAP.v1.Data
     /// <summary>The IAP configurable settings.</summary>
     public class IapSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Top level wrapper for all access related setting in IAP</summary>
+        /// <summary>Optional. Top level wrapper for all access related setting in IAP</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessSettings")]
         public virtual AccessSettings AccessSettings { get; set; }
 
-        /// <summary>Top level wrapper for all application related settings in IAP</summary>
+        /// <summary>Optional. Top level wrapper for all application related settings in IAP</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("applicationSettings")]
         public virtual ApplicationSettings ApplicationSettings { get; set; }
 
@@ -2131,7 +2131,7 @@ namespace Google.Apis.CloudIAP.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("loginHint")]
         public virtual string LoginHint { get; set; }
 
-        /// <summary>List of client ids allowed to use IAP programmatically.</summary>
+        /// <summary>Optional. List of client ids allowed to use IAP programmatically.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("programmaticClients")]
         public virtual System.Collections.Generic.IList<string> ProgrammaticClients { get; set; }
 
@@ -2279,7 +2279,7 @@ namespace Google.Apis.CloudIAP.v1.Data
     /// <summary>Configuration for IAP reauthentication policies.</summary>
     public class ReauthSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Reauth session lifetime, how long before a user has to reauthenticate again.</summary>
+        /// <summary>Optional. Reauth session lifetime, how long before a user has to reauthenticate again.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxAge")]
         public virtual object MaxAge { get; set; }
 
@@ -2288,8 +2288,8 @@ namespace Google.Apis.CloudIAP.v1.Data
         public virtual string Method { get; set; }
 
         /// <summary>
-        /// How IAP determines the effective policy in cases of hierarchical policies. Policies are merged from higher
-        /// in the hierarchy to lower in the hierarchy.
+        /// Optional. How IAP determines the effective policy in cases of hierarchical policies. Policies are merged
+        /// from higher in the hierarchy to lower in the hierarchy.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyType")]
         public virtual string PolicyType { get; set; }
@@ -2419,17 +2419,17 @@ namespace Google.Apis.CloudIAP.v1.Data
     /// <summary>A TunnelDestGroup.</summary>
     public class TunnelDestGroup : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Unordered list. List of CIDRs that this group applies to.</summary>
+        /// <summary>Optional. Unordered list. List of CIDRs that this group applies to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cidrs")]
         public virtual System.Collections.Generic.IList<string> Cidrs { get; set; }
 
-        /// <summary>Unordered list. List of FQDNs that this group applies to.</summary>
+        /// <summary>Optional. Unordered list. List of FQDNs that this group applies to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fqdns")]
         public virtual System.Collections.Generic.IList<string> Fqdns { get; set; }
 
         /// <summary>
-        /// Required. Immutable. Identifier for the TunnelDestGroup. Must be unique within the project and contain only
-        /// lower case letters (a-z) and dashes (-).
+        /// Identifier. Identifier for the TunnelDestGroup. Must be unique within the project and contain only lower
+        /// case letters (a-z) and dashes (-).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -2438,10 +2438,7 @@ namespace Google.Apis.CloudIAP.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// API requires a return message, but currently all response strings will fit in the status and public message. In
-    /// the future, this response can hold AST validation info.
-    /// </summary>
+    /// <summary>IAP Expression Linter endpoint returns empty response body.</summary>
     public class ValidateIapAttributeExpressionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
