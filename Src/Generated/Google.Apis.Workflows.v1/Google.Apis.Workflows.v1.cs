@@ -1449,6 +1449,19 @@ namespace Google.Apis.Workflows.v1.Data
     public class Workflow : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Output only. A list of all KMS crypto keys used to encrypt or decrpt the data associated with the workflow.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allKmsKeys")]
+        public virtual System.Collections.Generic.IList<string> AllKmsKeys { get; set; }
+
+        /// <summary>
+        /// Output only. A list of all KMS crypto keys versions used to encrypt or decrpt the data associated with the
+        /// workflow.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allKmsKeysVersions")]
+        public virtual System.Collections.Generic.IList<string> AllKmsKeysVersions { get; set; }
+
+        /// <summary>
         /// Optional. Describes the level of platform logging to apply to calls and call responses during executions of
         /// this workflow. If both the workflow and the execution specify a logging level, the execution level takes
         /// precedence.
@@ -1504,6 +1517,14 @@ namespace Google.Apis.Workflows.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoKeyName")]
         public virtual string CryptoKeyName { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of a KMS crypto key version used to encrypt or decrypt the data associated
+        /// with the workflow. Format:
+        /// projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}/cryptoKeyVersions/{cryptoKeyVersion}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cryptoKeyVersion")]
+        public virtual string CryptoKeyVersion { get; set; }
 
         /// <summary>
         /// Description of the workflow provided by the user. Must be at most 1000 Unicode characters long. This is a

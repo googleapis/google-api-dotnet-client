@@ -6133,11 +6133,11 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
     /// <summary>Details of database deployment's topology.</summary>
     public class DatabaseDeploymentTopology : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Number of total cores.</summary>
+        /// <summary>Optional. Number of total logical cores.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("coreCount")]
         public virtual System.Nullable<int> CoreCount { get; set; }
 
-        /// <summary>Optional. Number of total cores limited by db deployment.</summary>
+        /// <summary>Optional. Number of total logical cores limited by db deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("coreLimit")]
         public virtual System.Nullable<int> CoreLimit { get; set; }
 
@@ -6206,10 +6206,6 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
     /// <summary>Details of a database instance.</summary>
     public class DatabaseInstance : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The instance's hosts.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("hosts")]
-        public virtual System.Collections.Generic.IList<DatabaseInstanceHost> Hosts { get; set; }
-
         /// <summary>The instance's name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceName")]
         public virtual string InstanceName { get; set; }
@@ -6217,17 +6213,6 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>The instance role in the database engine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Details of a host of a database instance.</summary>
-    public class DatabaseInstanceHost : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. The host name of the host.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("hostName")]
-        public virtual string HostName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -1546,6 +1546,55 @@ namespace Google.Apis.AnalyticsData.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Defines an individual comparison. Most requests will include multiple comparisons so that the report compares
+    /// between the comparisons.
+    /// </summary>
+    public class Comparison : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A saved comparison identified by the comparison's resource name. For example, 'comparisons/1234'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("comparison")]
+        public virtual string ComparisonValue { get; set; }
+
+        /// <summary>A basic comparison.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensionFilter")]
+        public virtual FilterExpression DimensionFilter { get; set; }
+
+        /// <summary>
+        /// Each comparison produces separate rows in the response. In the response, this comparison is identified by
+        /// this name. If name is unspecified, we will use the saved comparisons display name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The metadata for a single comparison.</summary>
+    public class ComparisonMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// This comparison's resource name. Useable in [Comparison](#Comparison)'s `comparison` field. For example,
+        /// 'comparisons/1234'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiName")]
+        public virtual string ApiName { get; set; }
+
+        /// <summary>This comparison's description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>This comparison's name within the Google Analytics user interface.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uiName")]
+        public virtual string UiName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Used to combine dimension values to a single dimension.</summary>
     public class ConcatenateExpression : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1878,6 +1927,10 @@ namespace Google.Apis.AnalyticsData.v1beta.Data
     /// <summary>The dimensions, metrics and comparisons currently accepted in reporting methods.</summary>
     public class Metadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The comparison descriptions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("comparisons")]
+        public virtual System.Collections.Generic.IList<ComparisonMetadata> Comparisons { get; set; }
+
         /// <summary>The dimension descriptions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
         public virtual System.Collections.Generic.IList<DimensionMetadata> Dimensions { get; set; }
@@ -2547,6 +2600,13 @@ namespace Google.Apis.AnalyticsData.v1beta.Data
         public virtual CohortSpec CohortSpec { get; set; }
 
         /// <summary>
+        /// Optional. The configuration of comparisons requested and displayed. The request requires both a comparisons
+        /// field and a comparisons dimension to receive a comparison column in the response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("comparisons")]
+        public virtual System.Collections.Generic.IList<Comparison> Comparisons { get; set; }
+
+        /// <summary>
         /// A currency code in ISO4217 format, such as "AED", "USD", "JPY". If the field is empty, the report uses the
         /// property's default currency.
         /// </summary>
@@ -2816,6 +2876,13 @@ namespace Google.Apis.AnalyticsData.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cohortSpec")]
         public virtual CohortSpec CohortSpec { get; set; }
+
+        /// <summary>
+        /// Optional. The configuration of comparisons requested and displayed. The request only requires a comparisons
+        /// field in order to receive a comparison column in the response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("comparisons")]
+        public virtual System.Collections.Generic.IList<Comparison> Comparisons { get; set; }
 
         /// <summary>
         /// A currency code in ISO4217 format, such as "AED", "USD", "JPY". If the field is empty, the report uses the

@@ -10763,6 +10763,83 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         }
                     }
 
+                    /// <summary>
+                    /// Export resources including historical versions from the FHIR store to the specified destination.
+                    /// The exported resource, along with previous versions, will be exported in one or more FHIR
+                    /// history bundles. This method returns an Operation that can be used to track the status of the
+                    /// export by calling GetOperation. Immediate fatal errors appear in the error field, errors are
+                    /// also logged to Cloud Logging (see [Viewing error logs in Cloud
+                    /// Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). Otherwise, when the
+                    /// operation finishes, a detailed response of type ExportResourcesResponse is returned in the
+                    /// response field. The metadata field type for this operation is OperationMetadata.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The name of the FHIR store to export resource from, in the format
+                    /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+                    /// </param>
+                    public virtual ExportHistoryRequest ExportHistory(Google.Apis.CloudHealthcare.v1beta1.Data.ExportResourcesHistoryRequest body, string name)
+                    {
+                        return new ExportHistoryRequest(this.service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Export resources including historical versions from the FHIR store to the specified destination.
+                    /// The exported resource, along with previous versions, will be exported in one or more FHIR
+                    /// history bundles. This method returns an Operation that can be used to track the status of the
+                    /// export by calling GetOperation. Immediate fatal errors appear in the error field, errors are
+                    /// also logged to Cloud Logging (see [Viewing error logs in Cloud
+                    /// Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). Otherwise, when the
+                    /// operation finishes, a detailed response of type ExportResourcesResponse is returned in the
+                    /// response field. The metadata field type for this operation is OperationMetadata.
+                    /// </summary>
+                    public class ExportHistoryRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new ExportHistory request.</summary>
+                        public ExportHistoryRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.ExportResourcesHistoryRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the FHIR store to export resource from, in the format
+                        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudHealthcare.v1beta1.Data.ExportResourcesHistoryRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "exportHistory";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}:exportHistory";
+
+                        /// <summary>Initializes ExportHistory parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Gets the configuration of the specified FHIR store.</summary>
                     /// <param name="name">Required. The resource name of the FHIR store to get.</param>
                     public virtual GetRequest Get(string name)
@@ -11067,6 +11144,83 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         public override string RestPath => "v1beta1/{+name}:import";
 
                         /// <summary>Initializes Import parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/fhirStores/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Import resource historical versions from Cloud Storage source to destination fhir store. The
+                    /// exported resource, along with previous versions, will be exported in one or more FHIR history
+                    /// bundles. This method returns an Operation that can be used to track the status of the export by
+                    /// calling GetOperation. Immediate fatal errors appear in the error field, errors are also logged
+                    /// to Cloud Logging (see [Viewing error logs in Cloud
+                    /// Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). Otherwise, when the
+                    /// operation finishes, a detailed response of type ImportResourcesResponse is returned in the
+                    /// response field. The metadata field type for this operation is OperationMetadata.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The name of the FHIR store to import FHIR resources to, in the format of
+                    /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+                    /// </param>
+                    public virtual ImportHistoryRequest ImportHistory(Google.Apis.CloudHealthcare.v1beta1.Data.ImportResourcesHistoryRequest body, string name)
+                    {
+                        return new ImportHistoryRequest(this.service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Import resource historical versions from Cloud Storage source to destination fhir store. The
+                    /// exported resource, along with previous versions, will be exported in one or more FHIR history
+                    /// bundles. This method returns an Operation that can be used to track the status of the export by
+                    /// calling GetOperation. Immediate fatal errors appear in the error field, errors are also logged
+                    /// to Cloud Logging (see [Viewing error logs in Cloud
+                    /// Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). Otherwise, when the
+                    /// operation finishes, a detailed response of type ImportResourcesResponse is returned in the
+                    /// response field. The metadata field type for this operation is OperationMetadata.
+                    /// </summary>
+                    public class ImportHistoryRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new ImportHistory request.</summary>
+                        public ImportHistoryRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.ImportResourcesHistoryRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the FHIR store to import FHIR resources to, in the format of
+                        /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudHealthcare.v1beta1.Data.ImportResourcesHistoryRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "importHistory";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}:importHistory";
+
+                        /// <summary>Initializes ImportHistory parameter list.</summary>
                         protected override void InitParameters()
                         {
                             base.InitParameters();
@@ -16391,6 +16545,58 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request to export the history of resources.</summary>
+    public class ExportResourcesHistoryRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If provided, only resources versions updated after this time are exported. The time uses the format
+        /// YYYY-MM-DDThh:mm:ss.sss+zz:zz. For example, `2015-02-07T13:28:17.239+02:00` or `2017-01-01T00:00:00Z`. The
+        /// time must be specified to the second and include a time zone.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("_since")]
+        public virtual string Since { get; set; }
+
+        /// <summary>
+        /// String of comma-delimited FHIR resource types. If provided, only resources of the specified resource type(s)
+        /// are exported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("_type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>
+        /// The BigQuery output destination. The Cloud Healthcare Service Agent requires two IAM roles on the BigQuery
+        /// location: `roles/bigquery.dataEditor` and `roles/bigquery.jobUser`. The output is one BigQuery table per
+        /// resource type. Unlike when setting `BigQueryDestination` for `StreamConfig`, `ExportResources` does not
+        /// create BigQuery views.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigqueryDestination")]
+        public virtual GoogleCloudHealthcareV1beta1FhirBigQueryDestination BigqueryDestination { get; set; }
+
+        /// <summary>
+        /// The Cloud Storage output destination. The Healthcare Service Agent account requires the
+        /// `roles/storage.objectAdmin` role on the Cloud Storage location. The exported outputs are organized by FHIR
+        /// resource types. The server creates one or more objects per resource type depending on the volume of the
+        /// resources exported. When there is only one object per resource type, the object name is in the form of
+        /// `{operation_id})_history_{resource_type}`. When there are multiple objects for a given resource type, the
+        /// object names are in the form of `{operation_id}_history_{resource_type}-{index}-of-{total}`. Each object
+        /// contains newline delimited JSON, and each line is a FHIR history bundle containing the history for a single
+        /// resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
+        public virtual GoogleCloudHealthcareV1beta1FhirGcsDestination GcsDestination { get; set; }
+
+        /// <summary>
+        /// If provided and non-zero, places a limit on the number of resource versions that are returned for a given
+        /// resource. For example, if the limit is `100` and a resource has over 100 versions, only the 100 most recent
+        /// versions will be returned. Must be positive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxResourceVersions")]
+        public virtual System.Nullable<long> MaxResourceVersions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request to export resources.</summary>
     public class ExportResourcesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -17716,6 +17922,36 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     /// </summary>
     public class ImportMessagesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to import the history of resources.</summary>
+    public class ImportResourcesHistoryRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The content structure in the source location. If not specified, the server treats the input source files as
+        /// BUNDLE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentStructure")]
+        public virtual string ContentStructure { get; set; }
+
+        /// <summary>
+        /// Cloud Storage source data location and import configuration. The Cloud Healthcare Service Agent requires the
+        /// `roles/storage.objectAdmin` Cloud IAM roles on the Cloud Storage location. The Healthcare Service Agent Each
+        /// Cloud Storage object should be a text file that contains the format specified in ContentStructure.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
+        public virtual GoogleCloudHealthcareV1beta1FhirGcsSource GcsSource { get; set; }
+
+        /// <summary>
+        /// The maximum number of errors before the server cancels the operation. If not specified or set to 0, defaults
+        /// to 100. -1 means no maximum, the server tries to process all input. Since the server executes the operation
+        /// in parallel, it might not stop the operation after exactly this number of errors occur.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxErrorCount")]
+        public virtual System.Nullable<long> MaxErrorCount { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

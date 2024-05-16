@@ -76,6 +76,10 @@
     "live",
     "complete"
   ],
+  "Google.Apis.YouTube.v3.LiveChatMessagesResource+TransitionRequest.StatusEnum": [
+    "statusUnspecified",
+    "closed"
+  ],
   "Google.Apis.YouTube.v3.MembersResource+ListRequest.ModeEnum": [
     "listMembersModeUnknown",
     "updates",

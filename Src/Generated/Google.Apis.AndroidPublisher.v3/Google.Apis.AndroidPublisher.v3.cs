@@ -12379,6 +12379,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("autoRenewEnabled")]
         public virtual System.Nullable<bool> AutoRenewEnabled { get; set; }
 
+        /// <summary>The installment plan commitment and state related info for the auto renewing plan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("installmentDetails")]
+        public virtual InstallmentPlan InstallmentDetails { get; set; }
+
         /// <summary>The information of the last price change for the item since subscription signup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceChangeDetails")]
         public virtual SubscriptionItemPriceChangeDetails PriceChangeDetails { get; set; }
@@ -12401,6 +12405,12 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("basePlanId")]
         public virtual string BasePlanId { get; set; }
+
+        /// <summary>
+        /// Set for installments base plans where a user is committed to a specified number of payments.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("installmentsBasePlanType")]
+        public virtual InstallmentsBasePlanType InstallmentsBasePlanType { get; set; }
 
         /// <summary>
         /// List of up to 20 custom tags specified for this base plan, and returned to the app through the billing
@@ -14026,6 +14036,89 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Information to a installment plan.</summary>
+    public class InstallmentPlan : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Total number of payments the user is initially committed for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("initialCommittedPaymentsCount")]
+        public virtual System.Nullable<int> InitialCommittedPaymentsCount { get; set; }
+
+        /// <summary>
+        /// If present, this installment plan is pending to be canceled. The cancellation will happen only after the
+        /// user finished all committed payments.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pendingCancellation")]
+        public virtual PendingCancellation PendingCancellation { get; set; }
+
+        /// <summary>Total number of committed payments remaining to be paid for in this renewal cycle.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remainingCommittedPaymentsCount")]
+        public virtual System.Nullable<int> RemainingCommittedPaymentsCount { get; set; }
+
+        /// <summary>
+        /// Total number of payments the user will be committed for after each commitment period. Empty means the
+        /// installment plan will fall back to a normal auto-renew subscription after initial commitment.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subsequentCommittedPaymentsCount")]
+        public virtual System.Nullable<int> SubsequentCommittedPaymentsCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an installments base plan where a user commits to a specified number of payments.</summary>
+    public class InstallmentsBasePlanType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Account hold period of the subscription, specified exclusively in days and in ISO 8601 format.
+        /// Acceptable values are P0D (zero days) to P30D (30days). If not specified, the default value is P30D (30
+        /// days).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountHoldDuration")]
+        public virtual string AccountHoldDuration { get; set; }
+
+        /// <summary>
+        /// Required. Subscription period, specified in ISO 8601 format. For a list of acceptable billing periods, refer
+        /// to the help center.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billingPeriodDuration")]
+        public virtual string BillingPeriodDuration { get; set; }
+
+        /// <summary>Required. The number of payments the user is committed to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("committedPaymentsCount")]
+        public virtual System.Nullable<int> CommittedPaymentsCount { get; set; }
+
+        /// <summary>
+        /// Grace period of the subscription, specified in ISO 8601 format. Acceptable values are P0D (zero days), P3D
+        /// (3 days), P7D (7 days), P14D (14 days), and P30D (30 days). If not specified, a default value will be used
+        /// based on the recurring period duration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gracePeriodDuration")]
+        public virtual string GracePeriodDuration { get; set; }
+
+        /// <summary>
+        /// The proration mode for the base plan determines what happens when a user switches to this plan from another
+        /// base plan. If unspecified, defaults to CHARGE_ON_NEXT_BILLING_DATE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prorationMode")]
+        public virtual string ProrationMode { get; set; }
+
+        /// <summary>
+        /// Required. Installments base plan renewal type. Determines the behavior at the end of the initial commitment.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("renewalType")]
+        public virtual string RenewalType { get; set; }
+
+        /// <summary>
+        /// Whether users should be able to resubscribe to this base plan in Google Play surfaces. Defaults to
+        /// RESUBSCRIBE_STATE_ACTIVE if not specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resubscribeState")]
+        public virtual string ResubscribeState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// An artifact resource which gets created when uploading an APK or Android App Bundle through internal app
     /// sharing.
@@ -14680,6 +14773,16 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     }
 
     /// <summary>
+    /// This is an indicator of whether there is a pending cancellation on the virtual installment plan. The
+    /// cancellation will happen only after the user finished all committed payments.
+    /// </summary>
+    public class PendingCancellation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Represents a base plan that does not automatically renew at the end of the base plan, and must be manually
     /// renewed by the user.
     /// </summary>
@@ -15242,6 +15345,22 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Countries where the purchase of this product is restricted to payment methods registered in the same country. If
+    /// empty, no payment location restrictions are imposed.
+    /// </summary>
+    public class RestrictedPaymentCountries : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Region codes to impose payment restrictions on, as defined by ISO 3166-2, e.g. "US".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCodes")]
+        public virtual System.Collections.Generic.IList<string> RegionCodes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>An Android app review.</summary>
     public class Review : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -15556,6 +15675,13 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
         public virtual string ProductId { get; set; }
+
+        /// <summary>
+        /// Optional. Countries where the purchase of this subscription is restricted to payment methods registered in
+        /// the same country. If empty, no payment location restrictions are imposed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restrictedPaymentCountries")]
+        public virtual RestrictedPaymentCountries RestrictedPaymentCountries { get; set; }
 
         /// <summary>Details about taxes and legal compliance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taxAndComplianceSettings")]

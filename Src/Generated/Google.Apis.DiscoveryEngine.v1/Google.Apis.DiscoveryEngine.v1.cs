@@ -295,6 +295,7 @@ namespace Google.Apis.DiscoveryEngine.v1
                 this.service = service;
                 Collections = new CollectionsResource(service);
                 DataStores = new DataStoresResource(service);
+                GroundingConfigs = new GroundingConfigsResource(service);
                 Operations = new OperationsResource(service);
                 UserEvents = new UserEventsResource(service);
             }
@@ -1088,6 +1089,75 @@ namespace Google.Apis.DiscoveryEngine.v1
                             public OperationsResource(Google.Apis.Services.IClientService service)
                             {
                                 this.service = service;
+                            }
+
+                            /// <summary>
+                            /// Starts asynchronous cancellation on a long-running operation. The server makes a best
+                            /// effort to cancel the operation, but success is not guaranteed. If the server doesn't
+                            /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use
+                            /// Operations.GetOperation or other methods to check whether the cancellation succeeded or
+                            /// whether the operation completed despite cancellation. On successful cancellation, the
+                            /// operation is not deleted; instead, it becomes an operation with an Operation.error value
+                            /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                            /// </summary>
+                            /// <param name="body">The body of the request.</param>
+                            /// <param name="name">The name of the operation resource to be cancelled.</param>
+                            public virtual CancelRequest Cancel(Google.Apis.DiscoveryEngine.v1.Data.GoogleLongrunningCancelOperationRequest body, string name)
+                            {
+                                return new CancelRequest(this.service, body, name);
+                            }
+
+                            /// <summary>
+                            /// Starts asynchronous cancellation on a long-running operation. The server makes a best
+                            /// effort to cancel the operation, but success is not guaranteed. If the server doesn't
+                            /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use
+                            /// Operations.GetOperation or other methods to check whether the cancellation succeeded or
+                            /// whether the operation completed despite cancellation. On successful cancellation, the
+                            /// operation is not deleted; instead, it becomes an operation with an Operation.error value
+                            /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                            /// </summary>
+                            public class CancelRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleProtobufEmpty>
+                            {
+                                /// <summary>Constructs a new Cancel request.</summary>
+                                public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1.Data.GoogleLongrunningCancelOperationRequest body, string name) : base(service)
+                                {
+                                    Name = name;
+                                    Body = body;
+                                    InitParameters();
+                                }
+
+                                /// <summary>The name of the operation resource to be cancelled.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Name { get; private set; }
+
+                                /// <summary>Gets or sets the body of this request.</summary>
+                                Google.Apis.DiscoveryEngine.v1.Data.GoogleLongrunningCancelOperationRequest Body { get; set; }
+
+                                /// <summary>Returns the body of the request.</summary>
+                                protected override object GetBody() => Body;
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "cancel";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "POST";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1/{+name}:cancel";
+
+                                /// <summary>Initializes Cancel parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+/branches/[^/]+/operations/[^/]+$",
+                                    });
+                                }
                             }
 
                             /// <summary>
@@ -6610,6 +6680,75 @@ namespace Google.Apis.DiscoveryEngine.v1
                         }
 
                         /// <summary>
+                        /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort
+                        /// to cancel the operation, but success is not guaranteed. If the server doesn't support this
+                        /// method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
+                        /// or other methods to check whether the cancellation succeeded or whether the operation
+                        /// completed despite cancellation. On successful cancellation, the operation is not deleted;
+                        /// instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code
+                        /// of 1, corresponding to `Code.CANCELLED`.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">The name of the operation resource to be cancelled.</param>
+                        public virtual CancelRequest Cancel(Google.Apis.DiscoveryEngine.v1.Data.GoogleLongrunningCancelOperationRequest body, string name)
+                        {
+                            return new CancelRequest(this.service, body, name);
+                        }
+
+                        /// <summary>
+                        /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort
+                        /// to cancel the operation, but success is not guaranteed. If the server doesn't support this
+                        /// method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
+                        /// or other methods to check whether the cancellation succeeded or whether the operation
+                        /// completed despite cancellation. On successful cancellation, the operation is not deleted;
+                        /// instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code
+                        /// of 1, corresponding to `Code.CANCELLED`.
+                        /// </summary>
+                        public class CancelRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleProtobufEmpty>
+                        {
+                            /// <summary>Constructs a new Cancel request.</summary>
+                            public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1.Data.GoogleLongrunningCancelOperationRequest body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>The name of the operation resource to be cancelled.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.DiscoveryEngine.v1.Data.GoogleLongrunningCancelOperationRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "cancel";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}:cancel";
+
+                            /// <summary>Initializes Cancel parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+/branches/[^/]+/operations/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
                         /// Gets the latest state of a long-running operation. Clients can use this method to poll the
                         /// operation result at intervals as recommended by the API service.
                         /// </summary>
@@ -9602,6 +9741,83 @@ namespace Google.Apis.DiscoveryEngine.v1
                 }
             }
 
+            /// <summary>Gets the GroundingConfigs resource.</summary>
+            public virtual GroundingConfigsResource GroundingConfigs { get; }
+
+            /// <summary>The "groundingConfigs" collection of methods.</summary>
+            public class GroundingConfigsResource
+            {
+                private const string Resource = "groundingConfigs";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public GroundingConfigsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Performs a grounding check.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="groundingConfig">
+                /// Required. The resource name of the grounding config, such as
+                /// `projects/*/locations/global/groundingConfigs/default_grounding_config`.
+                /// </param>
+                public virtual CheckRequest Check(Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1CheckGroundingRequest body, string groundingConfig)
+                {
+                    return new CheckRequest(this.service, body, groundingConfig);
+                }
+
+                /// <summary>Performs a grounding check.</summary>
+                public class CheckRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1CheckGroundingResponse>
+                {
+                    /// <summary>Constructs a new Check request.</summary>
+                    public CheckRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1CheckGroundingRequest body, string groundingConfig) : base(service)
+                    {
+                        GroundingConfig = groundingConfig;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the grounding config, such as
+                    /// `projects/*/locations/global/groundingConfigs/default_grounding_config`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("groundingConfig", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string GroundingConfig { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DiscoveryEngine.v1.Data.GoogleCloudDiscoveryengineV1CheckGroundingRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "check";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+groundingConfig}:check";
+
+                    /// <summary>Initializes Check parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("groundingConfig", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "groundingConfig",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/groundingConfigs/[^/]+$",
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the Operations resource.</summary>
             public virtual OperationsResource Operations { get; }
 
@@ -9857,6 +10073,73 @@ namespace Google.Apis.DiscoveryEngine.v1
             public OperationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+            }
+
+            /// <summary>
+            /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel
+            /// the operation, but success is not guaranteed. If the server doesn't support this method, it returns
+            /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check
+            /// whether the cancellation succeeded or whether the operation completed despite cancellation. On
+            /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
+            /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">The name of the operation resource to be cancelled.</param>
+            public virtual CancelRequest Cancel(Google.Apis.DiscoveryEngine.v1.Data.GoogleLongrunningCancelOperationRequest body, string name)
+            {
+                return new CancelRequest(this.service, body, name);
+            }
+
+            /// <summary>
+            /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel
+            /// the operation, but success is not guaranteed. If the server doesn't support this method, it returns
+            /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check
+            /// whether the cancellation succeeded or whether the operation completed despite cancellation. On
+            /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
+            /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+            /// </summary>
+            public class CancelRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleProtobufEmpty>
+            {
+                /// <summary>Constructs a new Cancel request.</summary>
+                public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1.Data.GoogleLongrunningCancelOperationRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>The name of the operation resource to be cancelled.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DiscoveryEngine.v1.Data.GoogleLongrunningCancelOperationRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "cancel";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}:cancel";
+
+                /// <summary>Initializes Cancel parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/operations/[^/]+$",
+                    });
+                }
             }
 
             /// <summary>
@@ -10452,6 +10735,117 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>Required. The table ID of the Cloud Bigtable that needs to be imported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
         public virtual string TableId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for GroundedGenerationService.CheckGrounding method.</summary>
+    public class GoogleCloudDiscoveryengineV1CheckGroundingRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Answer candidate to check. Can have a maximum length of 1024 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerCandidate")]
+        public virtual string AnswerCandidate { get; set; }
+
+        /// <summary>List of facts for the grounding check. We support up to 200 facts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("facts")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1GroundingFact> Facts { get; set; }
+
+        /// <summary>Configuration of the grounding check.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groundingSpec")]
+        public virtual GoogleCloudDiscoveryengineV1CheckGroundingSpec GroundingSpec { get; set; }
+
+        /// <summary>
+        /// The user labels applied to a resource must meet the following requirements: * Each resource can have
+        /// multiple labels, up to a maximum of 64. * Each label must be a key-value pair. * Keys have a minimum length
+        /// of 1 character and a maximum length of 63 characters and cannot be empty. Values can be empty and have a
+        /// maximum length of 63 characters. * Keys and values can contain only lowercase letters, numeric characters,
+        /// underscores, and dashes. All characters must use UTF-8 encoding, and international characters are allowed. *
+        /// The key portion of a label must be unique. However, you can use the same key with multiple resources. * Keys
+        /// must start with a lowercase letter or international character. See [Google Cloud
+        /// Document](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements) for more
+        /// details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userLabels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> UserLabels { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for the GroundedGenerationService.CheckGrounding method.</summary>
+    public class GoogleCloudDiscoveryengineV1CheckGroundingResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// List of facts cited across all claims in the answer candidate. These are derived from the facts supplied in
+        /// the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("citedChunks")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1FactChunk> CitedChunks { get; set; }
+
+        /// <summary>Claim texts and citation info across all claims in the answer candidate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("claims")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1CheckGroundingResponseClaim> Claims { get; set; }
+
+        /// <summary>
+        /// The support score for the input answer candidate. Higher the score, higher is the fraction of claims that
+        /// are supported by the provided facts. This is always set when a response is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportScore")]
+        public virtual System.Nullable<float> SupportScore { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Text and citation info for a claim in the answer candidate.</summary>
+    public class GoogleCloudDiscoveryengineV1CheckGroundingResponseClaim : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A list of indices (into 'cited_chunks') specifying the citations associated with the claim. For instance
+        /// [1,3,4] means that cited_chunks[1], cited_chunks[3], cited_chunks[4] are the facts cited supporting for the
+        /// claim. A citation to a fact indicates that the claim is supported by the fact.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("citationIndices")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> CitationIndices { get; set; }
+
+        /// <summary>
+        /// Text for the claim in the answer candidate. Always provided regardless of whether citations or
+        /// anti-citations are found.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("claimText")]
+        public virtual string ClaimText { get; set; }
+
+        /// <summary>Position indicating the end of the claim in the answer candidate, exclusive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endPos")]
+        public virtual System.Nullable<int> EndPos { get; set; }
+
+        /// <summary>
+        /// Indicates that this claim required grounding check. When the system decided this claim doesn't require
+        /// attribution/grounding check, this field will be set to false. In that case, no grounding check was done for
+        /// the claim and therefore citation_indices, and anti_citation_indices should not be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groundingCheckRequired")]
+        public virtual System.Nullable<bool> GroundingCheckRequired { get; set; }
+
+        /// <summary>Position indicating the start of the claim in the answer candidate, measured in bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startPos")]
+        public virtual System.Nullable<int> StartPos { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specification for the grounding check.</summary>
+    public class GoogleCloudDiscoveryengineV1CheckGroundingSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The threshold (in [0,1]) used for determining whether a fact must be cited for a claim in the answer
+        /// candidate. Choosing a higher threshold will lead to fewer but very strong citations, while choosing a lower
+        /// threshold may lead to more but somewhat weaker citations. If unset, the threshold will default to 0.6.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("citationThreshold")]
+        public virtual System.Nullable<double> CitationThreshold { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12320,6 +12714,32 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Fact Chunk.</summary>
+    public class GoogleCloudDiscoveryengineV1FactChunk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Text content of the fact chunk. Can be at most 10K characters long.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunkText")]
+        public virtual string ChunkText { get; set; }
+
+        /// <summary>The index of this chunk. Currently, only used for the streaming mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("index")]
+        public virtual System.Nullable<int> Index { get; set; }
+
+        /// <summary>
+        /// Source from which this fact chunk was retrieved. If it was retrieved from the GroundingFacts provided in the
+        /// request then this field will contain the index of the specific fact from which this chunk was retrieved.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
+        /// <summary>More fine-grained information for the source reference.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceMetadata")]
+        public virtual System.Collections.Generic.IDictionary<string, string> SourceMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for SiteSearchEngineService.FetchDomainVerificationStatus method.</summary>
     public class GoogleCloudDiscoveryengineV1FetchDomainVerificationStatusResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12424,6 +12844,24 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputUris")]
         public virtual System.Collections.Generic.IList<string> InputUris { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Grounding Fact.</summary>
+    public class GoogleCloudDiscoveryengineV1GroundingFact : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Attributes associated with the fact. Common attributes include `source` (indicating where the fact was
+        /// sourced from), `author` (indicating the author of the fact), and so on.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Attributes { get; set; }
+
+        /// <summary>Text content of the fact. Can be at most 10K characters long.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("factText")]
+        public virtual string FactText { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21692,6 +22130,13 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request message for Operations.CancelOperation.</summary>
+    public class GoogleLongrunningCancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

@@ -6211,7 +6211,7 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
 
-        /// <summary>The location of the source files to build.</summary>
+        /// <summary>Optional. The location of the source files to build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual Source Source { get; set; }
 
@@ -6824,7 +6824,7 @@ namespace Google.Apis.CloudBuild.v1.Data
     /// <summary>Location of the source in a 2nd-gen Google Cloud Build repository resource.</summary>
     public class ConnectedRepository : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Directory, relative to the source root, in which to run the build.</summary>
+        /// <summary>Optional. Directory, relative to the source root, in which to run the build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dir")]
         public virtual string Dir { get; set; }
 
@@ -6836,7 +6836,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string Repository { get; set; }
 
         /// <summary>
-        /// The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref.
+        /// Required. The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git
+        /// ref.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revision")]
         public virtual string Revision { get; set; }
@@ -7672,6 +7673,27 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a storage location in Cloud Storage</summary>
+    public class GCSLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Cloud Storage bucket. See https://cloud.google.com/storage/docs/naming#requirements</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
+        public virtual string Bucket { get; set; }
+
+        /// <summary>
+        /// Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generation")]
+        public virtual System.Nullable<long> Generation { get; set; }
+
+        /// <summary>Cloud Storage object. See https://cloud.google.com/storage/docs/naming#objectnames</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("object")]
+        public virtual string Object__ { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>GitConfig is a configuration for git operations.</summary>
     public class GitConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8175,24 +8197,24 @@ namespace Google.Apis.CloudBuild.v1.Data
     public class GitSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Directory, relative to the source root, in which to run the build. This must be a relative path. If a step's
-        /// `dir` is specified and is an absolute path, this value is ignored for that step's execution.
+        /// Optional. Directory, relative to the source root, in which to run the build. This must be a relative path.
+        /// If a step's `dir` is specified and is an absolute path, this value is ignored for that step's execution.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dir")]
         public virtual string Dir { get; set; }
 
         /// <summary>
-        /// The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref. Cloud
-        /// Build uses `git fetch` to fetch the revision from the Git repository; therefore make sure that the string
-        /// you provide for `revision` is parsable by the command. For information on string values accepted by `git
-        /// fetch`, see https://git-scm.com/docs/gitrevisions#_specifying_revisions. For information on `git fetch`, see
-        /// https://git-scm.com/docs/git-fetch.
+        /// Optional. The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git
+        /// ref. Cloud Build uses `git fetch` to fetch the revision from the Git repository; therefore make sure that
+        /// the string you provide for `revision` is parsable by the command. For information on string values accepted
+        /// by `git fetch`, see https://git-scm.com/docs/gitrevisions#_specifying_revisions. For information on `git
+        /// fetch`, see https://git-scm.com/docs/git-fetch.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revision")]
         public virtual string Revision { get; set; }
 
         /// <summary>
-        /// Location of the Git repo to build. This will be used as a `git remote`, see
+        /// Required. Location of the Git repo to build. This will be used as a `git remote`, see
         /// https://git-scm.com/docs/git-remote.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
@@ -8259,6 +8281,10 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proxySecretVersionName")]
         public virtual string ProxySecretVersionName { get; set; }
+
+        /// <summary>Optional. Cloud Storage object storing the certificate to use with the HTTP proxy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proxySslCaInfo")]
+        public virtual GCSLocation ProxySslCaInfo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8932,28 +8958,30 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string CommitSha { get; set; }
 
         /// <summary>
-        /// Directory, relative to the source root, in which to run the build. This must be a relative path. If a step's
-        /// `dir` is specified and is an absolute path, this value is ignored for that step's execution.
+        /// Optional. Directory, relative to the source root, in which to run the build. This must be a relative path.
+        /// If a step's `dir` is specified and is an absolute path, this value is ignored for that step's execution.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dir")]
         public virtual string Dir { get; set; }
 
-        /// <summary>Only trigger a build if the revision regex does NOT match the revision regex.</summary>
+        /// <summary>Optional. Only trigger a build if the revision regex does NOT match the revision regex.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invertRegex")]
         public virtual System.Nullable<bool> InvertRegex { get; set; }
 
         /// <summary>
-        /// ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is
-        /// assumed.
+        /// Optional. ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the
+        /// build is assumed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
 
-        /// <summary>Name of the Cloud Source Repository.</summary>
+        /// <summary>Required. Name of the Cloud Source Repository.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("repoName")]
         public virtual string RepoName { get; set; }
 
-        /// <summary>Substitutions to use in a triggered build. Should only be used with RunBuildTrigger</summary>
+        /// <summary>
+        /// Optional. Substitutions to use in a triggered build. Should only be used with RunBuildTrigger
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("substitutions")]
         public virtual System.Collections.Generic.IDictionary<string, string> Substitutions { get; set; }
 
@@ -9014,7 +9042,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// <summary>
         /// List of build step outputs, produced by builder images, in the order corresponding to build step indices.
         /// [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by
-        /// writing to `$BUILDER_OUTPUT/output`. Only the first 50KB of data is stored.
+        /// writing to `$BUILDER_OUTPUT/output`. Only the first 50KB of data is stored. Note that the `$BUILDER_OUTPUT`
+        /// variable is read-only and can't be substituted.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buildStepOutputs")]
         public virtual System.Collections.Generic.IList<string> BuildStepOutputs { get; set; }
@@ -9280,14 +9309,15 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string Bucket { get; set; }
 
         /// <summary>
-        /// Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
+        /// Optional. Cloud Storage generation for the object. If the generation is omitted, the latest generation will
+        /// be used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generation")]
         public virtual System.Nullable<long> Generation { get; set; }
 
         /// <summary>
-        /// Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file
-        /// (`.tar.gz`) containing source to build.
+        /// Required. Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped
+        /// archive file (`.tar.gz`) containing source to build.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("object")]
         public virtual string Object__ { get; set; }
@@ -9307,7 +9337,7 @@ namespace Google.Apis.CloudBuild.v1.Data
     public class StorageSourceManifest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Cloud Storage bucket containing the source manifest (see [Bucket Name
+        /// Required. Cloud Storage bucket containing the source manifest (see [Bucket Name
         /// Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
@@ -9319,7 +9349,9 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("generation")]
         public virtual System.Nullable<long> Generation { get; set; }
 
-        /// <summary>Cloud Storage object containing the source manifest. This object must be a JSON file.</summary>
+        /// <summary>
+        /// Required. Cloud Storage object containing the source manifest. This object must be a JSON file.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("object")]
         public virtual string Object__ { get; set; }
 
