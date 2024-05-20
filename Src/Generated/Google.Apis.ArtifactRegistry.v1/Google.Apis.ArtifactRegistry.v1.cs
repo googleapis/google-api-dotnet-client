@@ -791,7 +791,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                         [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string OrderBy { get; set; }
 
-                        /// <summary>The maximum number of artifacts to return.</summary>
+                        /// <summary>The maximum number of artifacts to return. Maximum page size is 1,000.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -1091,7 +1091,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                         [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string OrderBy { get; set; }
 
-                        /// <summary>The maximum number of files to return.</summary>
+                        /// <summary>The maximum number of files to return. Maximum page size is 1,000.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -1174,9 +1174,9 @@ namespace Google.Apis.ArtifactRegistry.v1
                     }
 
                     /// <summary>
-                    /// Directly uploads a Generic artifact. The returned Operation will complete once the resources are
-                    /// uploaded. Package, Version, and File resources are created based on the uploaded artifact.
-                    /// Uploaded artifacts that conflict with existing resources will raise an ALREADY_EXISTS error.
+                    /// Directly uploads a Generic artifact. The returned operation will complete once the resources are
+                    /// uploaded. Package, version, and file resources are created based on the uploaded artifact.
+                    /// Uploaded artifacts that conflict with existing resources will raise an `ALREADY_EXISTS` error.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
@@ -1188,9 +1188,9 @@ namespace Google.Apis.ArtifactRegistry.v1
                     }
 
                     /// <summary>
-                    /// Directly uploads a Generic artifact. The returned Operation will complete once the resources are
-                    /// uploaded. Package, Version, and File resources are created based on the uploaded artifact.
-                    /// Uploaded artifacts that conflict with existing resources will raise an ALREADY_EXISTS error.
+                    /// Directly uploads a Generic artifact. The returned operation will complete once the resources are
+                    /// uploaded. Package, version, and file resources are created based on the uploaded artifact.
+                    /// Uploaded artifacts that conflict with existing resources will raise an `ALREADY_EXISTS` error.
                     /// </summary>
                     public class UploadRequest : ArtifactRegistryBaseServiceRequest<Google.Apis.ArtifactRegistry.v1.Data.UploadGenericArtifactMediaResponse>
                     {
@@ -1239,9 +1239,9 @@ namespace Google.Apis.ArtifactRegistry.v1
                     }
 
                     /// <summary>
-                    /// Directly uploads a Generic artifact. The returned Operation will complete once the resources are
-                    /// uploaded. Package, Version, and File resources are created based on the uploaded artifact.
-                    /// Uploaded artifacts that conflict with existing resources will raise an ALREADY_EXISTS error.
+                    /// Directly uploads a Generic artifact. The returned operation will complete once the resources are
+                    /// uploaded. Package, version, and file resources are created based on the uploaded artifact.
+                    /// Uploaded artifacts that conflict with existing resources will raise an `ALREADY_EXISTS` error.
                     /// </summary>
                     /// <remarks>
                     /// Considerations regarding <paramref name="stream"/>:
@@ -2243,7 +2243,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>The maximum number of artifacts to return.</summary>
+                        /// <summary>The maximum number of artifacts to return. Maximum page size is 1,000.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -2379,7 +2379,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>The maximum number of artifacts to return.</summary>
+                        /// <summary>The maximum number of artifacts to return. Maximum page size is 1,000.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -2656,7 +2656,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Filter { get; set; }
 
-                            /// <summary>The maximum number of tags to return. Maximum page size is 10,000.</summary>
+                            /// <summary>The maximum number of tags to return. Maximum page size is 1,000.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -3459,7 +3459,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>The maximum number of artifacts to return.</summary>
+                        /// <summary>The maximum number of artifacts to return. Maximum page size is 1,000.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -7053,33 +7053,25 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
     public class UploadGenericArtifactRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The name of the file of the generic artifact to be uploaded. E.g. "example-file.zip" The filename should
-        /// only include letters, numbers, and url safe characters, i.e. [a-zA-Z0-9-_.~@].
+        /// The name of the file of the generic artifact to be uploaded. E.g. `example-file.zip` The filename is limited
+        /// to letters, numbers, and url safe characters, i.e. [a-zA-Z0-9-_.~@].
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filename")]
         public virtual string Filename { get; set; }
 
         /// <summary>
-        /// Deprecated. Use package_id, version_id and filename instead. The resource name of the generic artifact. E.g.
-        /// "projects/math/locations/us/repositories/operations/genericArtifacts/addition/1.0.0/add.py"
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>
         /// The ID of the package of the generic artifact. If the package does not exist, a new package will be created.
-        /// E.g. "pkg-1" The package_id must start with a letter, end with a letter or number, only contain letters,
-        /// numbers, hyphens and periods i.e. [a-z0-9-.], and cannot exceed 256 characters.
+        /// The `package_id` must start with a letter, end with a letter or number, only contain letters, numbers,
+        /// hyphens and periods i.e. [a-z0-9-.], and cannot exceed 256 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packageId")]
         public virtual string PackageId { get; set; }
 
         /// <summary>
         /// The ID of the version of the generic artifact. If the version does not exist, a new version will be created.
-        /// E.g."1.0.0" The version_id must start and end with a letter or number, can only contain lowercase letters,
-        /// numbers, hyphens and periods, i.e. [a-z0-9-.] and cannot exceed a total of 128 characters. While "latest" is
-        /// a well-known name for the latest version of a package, it is not yet supported and is reserved for future
-        /// use. Creating a version called "latest" is not allowed.
+        /// The version_id must start and end with a letter or number, can only contain lowercase letters, numbers,
+        /// hyphens and periods, i.e. [a-z0-9-.] and cannot exceed a total of 128 characters. Creating a version called
+        /// `latest` is not allowed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionId")]
         public virtual string VersionId { get; set; }
@@ -7404,7 +7396,7 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>LINT.IfChange Virtual repository configuration.</summary>
+    /// <summary>Virtual repository configuration.</summary>
     public class VirtualRepositoryConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

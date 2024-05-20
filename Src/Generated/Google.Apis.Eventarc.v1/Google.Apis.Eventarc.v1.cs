@@ -3662,11 +3662,11 @@ namespace Google.Apis.Eventarc.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents a network config to be used for destination resolution and connectivity.</summary>
+    /// <summary>Network Configuration that can be inherited by other protos.</summary>
     public class NetworkConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Name of the NetworkAttachment that allows access to the destination VPC. Format:
+        /// Required. Name of the NetworkAttachment that allows access to the customer's VPC. Format:
         /// `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkAttachment")]

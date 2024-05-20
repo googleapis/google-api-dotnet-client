@@ -22758,6 +22758,13 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("certificationName")]
         public virtual string CertificationName { get; set; }
 
+        /// <summary>
+        /// The certification value (also known as class, level or grade), for example "A+", "C", "gold". Maximum length
+        /// is 2000 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certificationValue")]
+        public virtual string CertificationValue { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

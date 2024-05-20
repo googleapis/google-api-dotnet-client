@@ -3307,6 +3307,10 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
         public virtual string Protocol { get; set; }
 
+        /// <summary>Optional. Replicaition configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replication")]
+        public virtual Replication Replication { get; set; }
+
         /// <summary>Output only. Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
         public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
@@ -3890,6 +3894,84 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
     /// <summary>PromoteReplicaRequest promotes a Filestore standby instance (replica).</summary>
     public class PromoteReplicaRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Replica configuration for the instance.</summary>
+    public class ReplicaConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _lastActiveSyncTimeRaw;
+
+        private object _lastActiveSyncTime;
+
+        /// <summary>
+        /// Output only. The timestamp of the latest replication snapshot taken on the active instance and is already
+        /// replicated safely.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastActiveSyncTime")]
+        public virtual string LastActiveSyncTimeRaw
+        {
+            get => _lastActiveSyncTimeRaw;
+            set
+            {
+                _lastActiveSyncTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastActiveSyncTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastActiveSyncTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastActiveSyncTimeDateTimeOffset instead.")]
+        public virtual object LastActiveSyncTime
+        {
+            get => _lastActiveSyncTime;
+            set
+            {
+                _lastActiveSyncTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastActiveSyncTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastActiveSyncTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastActiveSyncTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastActiveSyncTimeRaw);
+            set => LastActiveSyncTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The peer instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peerInstance")]
+        public virtual string PeerInstance { get; set; }
+
+        /// <summary>Output only. The replica state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. Additional information about the replication state, if available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateReasons")]
+        public virtual System.Collections.Generic.IList<string> StateReasons { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Replication specifications.</summary>
+    public class Replication : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Replicas configuration on the instance. For now, only a single replica config is supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replicas")]
+        public virtual System.Collections.Generic.IList<ReplicaConfig> Replicas { get; set; }
+
+        /// <summary>Output only. The replication role.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("role")]
+        public virtual string Role { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

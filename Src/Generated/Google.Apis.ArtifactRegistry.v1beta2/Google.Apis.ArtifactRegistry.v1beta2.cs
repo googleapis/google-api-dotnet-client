@@ -931,7 +931,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta2
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
-                        /// <summary>The maximum number of files to return.</summary>
+                        /// <summary>The maximum number of files to return. Maximum page size is 1,000.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -1216,7 +1216,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta2
                             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Filter { get; set; }
 
-                            /// <summary>The maximum number of tags to return. Maximum page size is 10,000.</summary>
+                            /// <summary>The maximum number of tags to return. Maximum page size is 1,000.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> PageSize { get; set; }
 

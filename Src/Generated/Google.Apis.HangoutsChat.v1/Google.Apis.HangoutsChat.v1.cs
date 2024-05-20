@@ -785,13 +785,13 @@ namespace Google.Apis.HangoutsChat.v1
             /// space invitation before joining. Otherwise, creating a membership adds the member directly to the
             /// specified space. Requires [user
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user). To
-            /// specify the member to add, set the `membership.member.name` in the `CreateMembershipRequest`: - To add
-            /// the calling app to a space or a direct message between two human users, use `users/app`. Unable to add
-            /// other apps to the space. - To add a human user, use `users/{user}`, where `{user}` can be the email
-            /// address for the user. For users in the same Workspace organization `{user}` can also be the `id` for the
-            /// person from the People API, or the `id` for the user in the Directory API. For example, if the People
-            /// API Person profile ID for `user@example.com` is `123456789`, you can add the user to the space by
-            /// setting the `membership.member.name` to `users/user@example.com` or `users/123456789`.
+            /// specify the member to add, set the `membership.member.name` for the human or app member. - To add the
+            /// calling app to a space or a direct message between two human users, use `users/app`. Unable to add other
+            /// apps to the space. - To add a human user, use `users/{user}`, where `{user}` can be the email address
+            /// for the user. For users in the same Workspace organization `{user}` can also be the `id` for the person
+            /// from the People API, or the `id` for the user in the Directory API. For example, if the People API
+            /// Person profile ID for `user@example.com` is `123456789`, you can add the user to the space by setting
+            /// the `membership.member.name` to `users/user@example.com` or `users/123456789`.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -810,13 +810,13 @@ namespace Google.Apis.HangoutsChat.v1
             /// space invitation before joining. Otherwise, creating a membership adds the member directly to the
             /// specified space. Requires [user
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user). To
-            /// specify the member to add, set the `membership.member.name` in the `CreateMembershipRequest`: - To add
-            /// the calling app to a space or a direct message between two human users, use `users/app`. Unable to add
-            /// other apps to the space. - To add a human user, use `users/{user}`, where `{user}` can be the email
-            /// address for the user. For users in the same Workspace organization `{user}` can also be the `id` for the
-            /// person from the People API, or the `id` for the user in the Directory API. For example, if the People
-            /// API Person profile ID for `user@example.com` is `123456789`, you can add the user to the space by
-            /// setting the `membership.member.name` to `users/user@example.com` or `users/123456789`.
+            /// specify the member to add, set the `membership.member.name` for the human or app member. - To add the
+            /// calling app to a space or a direct message between two human users, use `users/app`. Unable to add other
+            /// apps to the space. - To add a human user, use `users/{user}`, where `{user}` can be the email address
+            /// for the user. For users in the same Workspace organization `{user}` can also be the `id` for the person
+            /// from the People API, or the `id` for the user in the Directory API. For example, if the People API
+            /// Person profile ID for `user@example.com` is `123456789`, you can add the user to the space by setting
+            /// the `membership.member.name` to `users/user@example.com` or `users/123456789`.
             /// </summary>
             public class CreateRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Membership>
             {
@@ -3109,18 +3109,18 @@ namespace Google.Apis.HangoutsChat.v1
         /// Creates a space and adds specified users to it. The calling user is automatically added to the space, and
         /// shouldn't be specified as a membership in the request. For an example, see [Set up a space with initial
         /// members](https://developers.google.com/workspace/chat/set-up-spaces). To specify the human members to add,
-        /// add memberships with the appropriate `member.name` in the `SetUpSpaceRequest`. To add a human user, use
-        /// `users/{user}`, where `{user}` can be the email address for the user. For users in the same Workspace
-        /// organization `{user}` can also be the `id` for the person from the People API, or the `id` for the user in
-        /// the Directory API. For example, if the People API Person profile ID for `user@example.com` is `123456789`,
-        /// you can add the user to the space by setting the `membership.member.name` to `users/user@example.com` or
-        /// `users/123456789`. For a space or group chat, if the caller blocks or is blocked by some members, then those
-        /// members aren't added to the created space. To create a direct message (DM) between the calling user and
-        /// another human user, specify exactly one membership to represent the human user. If one user blocks the
-        /// other, the request fails and the DM isn't created. To create a DM between the calling user and the calling
-        /// app, set `Space.singleUserBotDm` to `true` and don't specify any memberships. You can only use this method
-        /// to set up a DM with the calling app. To add the calling app as a member of a space or an existing DM between
-        /// two human users, see [Invite or add a user or app to a
+        /// add memberships with the appropriate `membership.member.name`. To add a human user, use `users/{user}`,
+        /// where `{user}` can be the email address for the user. For users in the same Workspace organization `{user}`
+        /// can also be the `id` for the person from the People API, or the `id` for the user in the Directory API. For
+        /// example, if the People API Person profile ID for `user@example.com` is `123456789`, you can add the user to
+        /// the space by setting the `membership.member.name` to `users/user@example.com` or `users/123456789`. For a
+        /// named space or group chat, if the caller blocks, or is blocked by some members, or doesn't have permission
+        /// to add some members, then those members aren't added to the created space. To create a direct message (DM)
+        /// between the calling user and another human user, specify exactly one membership to represent the human user.
+        /// If one user blocks the other, the request fails and the DM isn't created. To create a DM between the calling
+        /// user and the calling app, set `Space.singleUserBotDm` to `true` and don't specify any memberships. You can
+        /// only use this method to set up a DM with the calling app. To add the calling app as a member of a space or
+        /// an existing DM between two human users, see [Invite or add a user or app to a
         /// space](https://developers.google.com/workspace/chat/create-members). If a DM already exists between two
         /// users, even when one user blocks the other at the time a request is made, then the existing DM is returned.
         /// Spaces with threaded replies aren't supported. If you receive the error message `ALREADY_EXISTS` when
@@ -3138,18 +3138,18 @@ namespace Google.Apis.HangoutsChat.v1
         /// Creates a space and adds specified users to it. The calling user is automatically added to the space, and
         /// shouldn't be specified as a membership in the request. For an example, see [Set up a space with initial
         /// members](https://developers.google.com/workspace/chat/set-up-spaces). To specify the human members to add,
-        /// add memberships with the appropriate `member.name` in the `SetUpSpaceRequest`. To add a human user, use
-        /// `users/{user}`, where `{user}` can be the email address for the user. For users in the same Workspace
-        /// organization `{user}` can also be the `id` for the person from the People API, or the `id` for the user in
-        /// the Directory API. For example, if the People API Person profile ID for `user@example.com` is `123456789`,
-        /// you can add the user to the space by setting the `membership.member.name` to `users/user@example.com` or
-        /// `users/123456789`. For a space or group chat, if the caller blocks or is blocked by some members, then those
-        /// members aren't added to the created space. To create a direct message (DM) between the calling user and
-        /// another human user, specify exactly one membership to represent the human user. If one user blocks the
-        /// other, the request fails and the DM isn't created. To create a DM between the calling user and the calling
-        /// app, set `Space.singleUserBotDm` to `true` and don't specify any memberships. You can only use this method
-        /// to set up a DM with the calling app. To add the calling app as a member of a space or an existing DM between
-        /// two human users, see [Invite or add a user or app to a
+        /// add memberships with the appropriate `membership.member.name`. To add a human user, use `users/{user}`,
+        /// where `{user}` can be the email address for the user. For users in the same Workspace organization `{user}`
+        /// can also be the `id` for the person from the People API, or the `id` for the user in the Directory API. For
+        /// example, if the People API Person profile ID for `user@example.com` is `123456789`, you can add the user to
+        /// the space by setting the `membership.member.name` to `users/user@example.com` or `users/123456789`. For a
+        /// named space or group chat, if the caller blocks, or is blocked by some members, or doesn't have permission
+        /// to add some members, then those members aren't added to the created space. To create a direct message (DM)
+        /// between the calling user and another human user, specify exactly one membership to represent the human user.
+        /// If one user blocks the other, the request fails and the DM isn't created. To create a DM between the calling
+        /// user and the calling app, set `Space.singleUserBotDm` to `true` and don't specify any memberships. You can
+        /// only use this method to set up a DM with the calling app. To add the calling app as a member of a space or
+        /// an existing DM between two human users, see [Invite or add a user or app to a
         /// space](https://developers.google.com/workspace/chat/create-members). If a DM already exists between two
         /// users, even when one user blocks the other at the time a request is made, then the existing DM is returned.
         /// Spaces with threaded replies aren't supported. If you receive the error message `ALREADY_EXISTS` when
@@ -6790,16 +6790,17 @@ namespace Google.Apis.HangoutsChat.v1.Data
     {
         /// <summary>
         /// Optional. The Google Chat users to invite to join the space. Omit the calling user, as they are added
-        /// automatically. The set currently allows up to 20 memberships (in addition to the caller). The
-        /// `Membership.member` field must contain a `user` with `name` populated (format: `users/{user}`) and `type`
-        /// set to `User.Type.HUMAN`. You can only add human users when setting up a space (adding Chat apps is only
-        /// supported for direct message setup with the calling app). You can also add members using the user's email as
-        /// an alias for {user}. For example, the `user.name` can be `users/example@gmail.com`." To invite Gmail users
-        /// or users from external Google Workspace domains, user's email must be used for `{user}`. Optional when
-        /// setting `Space.spaceType` to `SPACE`. Required when setting `Space.spaceType` to `GROUP_CHAT`, along with at
-        /// least two memberships. Required when setting `Space.spaceType` to `DIRECT_MESSAGE` with a human user, along
-        /// with exactly one membership. Must be empty when creating a 1:1 conversation between a human and the calling
-        /// Chat app (when setting `Space.spaceType` to `DIRECT_MESSAGE` and `Space.singleUserBotDm` to `true`).
+        /// automatically. The set currently allows up to 20 memberships (in addition to the caller). For human
+        /// membership, the `Membership.member` field must contain a `user` with `name` populated (format:
+        /// `users/{user}`) and `type` set to `User.Type.HUMAN`. You can only add human users when setting up a space
+        /// (adding Chat apps is only supported for direct message setup with the calling app). You can also add members
+        /// using the user's email as an alias for {user}. For example, the `user.name` can be
+        /// `users/example@gmail.com`. To invite Gmail users or users from external Google Workspace domains, user's
+        /// email must be used for `{user}`. Optional when setting `Space.spaceType` to `SPACE`. Required when setting
+        /// `Space.spaceType` to `GROUP_CHAT`, along with at least two memberships. Required when setting
+        /// `Space.spaceType` to `DIRECT_MESSAGE` with a human user, along with exactly one membership. Must be empty
+        /// when creating a 1:1 conversation between a human and the calling Chat app (when setting `Space.spaceType` to
+        /// `DIRECT_MESSAGE` and `Space.singleUserBotDm` to `true`).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memberships")]
         public virtual System.Collections.Generic.IList<Membership> Memberships { get; set; }
