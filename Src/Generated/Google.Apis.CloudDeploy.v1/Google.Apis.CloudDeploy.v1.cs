@@ -5373,7 +5373,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
     /// </summary>
     public class AutomationRolloutMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The IDs of the AutomationRuns initiated by an advance rollout rule.</summary>
+        /// <summary>Output only. The names of the AutomationRuns initiated by an advance rollout rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advanceAutomationRuns")]
         public virtual System.Collections.Generic.IList<string> AdvanceAutomationRuns { get; set; }
 
@@ -5381,11 +5381,11 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("currentRepairAutomationRun")]
         public virtual string CurrentRepairAutomationRun { get; set; }
 
-        /// <summary>Output only. The ID of the AutomationRun initiated by a promote release rule.</summary>
+        /// <summary>Output only. The name of the AutomationRun initiated by a promote release rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promoteAutomationRun")]
         public virtual string PromoteAutomationRun { get; set; }
 
-        /// <summary>Output only. The IDs of the AutomationRuns initiated by a repair rollout rule.</summary>
+        /// <summary>Output only. The names of the AutomationRuns initiated by a repair rollout rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("repairAutomationRuns")]
         public virtual System.Collections.Generic.IList<string> RepairAutomationRuns { get; set; }
 
@@ -6605,6 +6605,12 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>Required. Usages when this configuration should be applied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usages")]
         public virtual System.Collections.Generic.IList<string> Usages { get; set; }
+
+        /// <summary>
+        /// Optional. If true, additional logging will be enabled when running builds in this execution environment.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verbose")]
+        public virtual System.Nullable<bool> Verbose { get; set; }
 
         /// <summary>
         /// Optional. The resource name of the `WorkerPool`, with the format

@@ -6550,10 +6550,7 @@ namespace Google.Apis.Walletobjects.v1.Data
 
     public class AppLinkData : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Optional information about the partner app link. If included, the app link link module will be rendered on
-        /// the valuable details on the android client.
-        /// </summary>
+        /// <summary>Optional information about the partner app link.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidAppLinkInfo")]
         public virtual AppLinkDataAppLinkInfo AndroidAppLinkInfo { get; set; }
 
@@ -6561,10 +6558,7 @@ namespace Google.Apis.Walletobjects.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("iosAppLinkInfo")]
         public virtual AppLinkDataAppLinkInfo IosAppLinkInfo { get; set; }
 
-        /// <summary>
-        /// Optional information about the partner app link. If included, the app link link module will be rendered on
-        /// the valuable details on the web client.
-        /// </summary>
+        /// <summary>Optional information about the partner web link.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webAppLinkInfo")]
         public virtual AppLinkDataAppLinkInfo WebAppLinkInfo { get; set; }
 
@@ -6574,22 +6568,22 @@ namespace Google.Apis.Walletobjects.v1.Data
 
     public class AppLinkDataAppLinkInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional image to be displayed in the App Link Module</summary>
+        /// <summary>Deprecated. Image isn't supported in the app link module.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appLogoImage")]
         public virtual Image AppLogoImage { get; set; }
 
         /// <summary>
-        /// Url to follow when opening the App Link Module on clients. It will be used by partners to open their webpage
-        /// or deeplink into their app.
+        /// Target to follow when opening the app link on clients. It will be used by partners to open their app or
+        /// webpage.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appTarget")]
         public virtual AppLinkDataAppLinkInfoAppTarget AppTarget { get; set; }
 
-        /// <summary>String to be displayed in the description of the App Link Module Required</summary>
+        /// <summary>Deprecated. Description isn't supported in the app link module.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual LocalizedString Description { get; set; }
 
-        /// <summary>String to be displayed in the title of the App Link Module Required</summary>
+        /// <summary>Deprecated. Title isn't supported in the app link module.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual LocalizedString Title { get; set; }
 
@@ -7475,6 +7469,13 @@ namespace Google.Apis.Walletobjects.v1.Data
         public virtual System.Nullable<bool> AllowMultipleUsersPerObject { get; set; }
 
         /// <summary>
+        /// Optional app or website link that will be displayed as a button on the front of the pass. If AppLinkData is
+        /// provided for the corresponding object that will be used instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appLinkData")]
+        public virtual AppLinkData AppLinkData { get; set; }
+
+        /// <summary>
         /// Callback options to be used to call the issuer back for every save/delete of an object for this class by the
         /// end-user. All objects of this class are eligible for the callback.
         /// </summary>
@@ -7799,7 +7800,10 @@ namespace Google.Apis.Walletobjects.v1.Data
 
     public class EventTicketObject : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional information about the partner app link.</summary>
+        /// <summary>
+        /// Optional app or website link that will be displayed as a button on the front of the pass. If AppLinkData is
+        /// provided for the corresponding class only object AppLinkData will be displayed.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appLinkData")]
         public virtual AppLinkData AppLinkData { get; set; }
 
@@ -8158,6 +8162,13 @@ namespace Google.Apis.Walletobjects.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allowMultipleUsersPerObject")]
         public virtual System.Nullable<bool> AllowMultipleUsersPerObject { get; set; }
 
+        /// <summary>
+        /// Optional app or website link that will be displayed as a button on the front of the pass. If AppLinkData is
+        /// provided for the corresponding object that will be used instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appLinkData")]
+        public virtual AppLinkData AppLinkData { get; set; }
+
         /// <summary>Policies for boarding and seating. These will inform which labels will be shown to users.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boardingAndSeatingPolicy")]
         public virtual BoardingAndSeatingPolicy BoardingAndSeatingPolicy { get; set; }
@@ -8494,7 +8505,10 @@ namespace Google.Apis.Walletobjects.v1.Data
 
     public class FlightObject : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional information about the partner app link.</summary>
+        /// <summary>
+        /// Optional app or website link that will be displayed as a button on the front of the pass. If AppLinkData is
+        /// provided for the corresponding class only object AppLinkData will be displayed.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appLinkData")]
         public virtual AppLinkData AppLinkData { get; set; }
 
@@ -8712,6 +8726,13 @@ namespace Google.Apis.Walletobjects.v1.Data
     public class GenericClass : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional app or website link that will be displayed as a button on the front of the pass. If AppLinkData is
+        /// provided for the corresponding object that will be used instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appLinkData")]
+        public virtual AppLinkData AppLinkData { get; set; }
+
+        /// <summary>
         /// Callback options to be used to call the issuer back for every save/delete of an object for this class by the
         /// end-user. All objects of this class are eligible for the callback.
         /// </summary>
@@ -8827,7 +8848,8 @@ namespace Google.Apis.Walletobjects.v1.Data
     public class GenericObject : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Information about the partner app link. The maximum number of these fields displayed is 10.
+        /// Optional app or website link that will be displayed as a button on the front of the pass. If AppLinkData is
+        /// provided for the corresponding class only object AppLinkData will be displayed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appLinkData")]
         public virtual AppLinkData AppLinkData { get; set; }
@@ -9017,6 +9039,13 @@ namespace Google.Apis.Walletobjects.v1.Data
         /// <summary>Deprecated. Use `multipleDevicesAndHoldersAllowedStatus` instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowMultipleUsersPerObject")]
         public virtual System.Nullable<bool> AllowMultipleUsersPerObject { get; set; }
+
+        /// <summary>
+        /// Optional app or website link that will be displayed as a button on the front of the pass. If AppLinkData is
+        /// provided for the corresponding object that will be used instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appLinkData")]
+        public virtual AppLinkData AppLinkData { get; set; }
 
         /// <summary>
         /// Callback options to be used to call the issuer back for every save/delete of an object for this class by the
@@ -9265,7 +9294,10 @@ namespace Google.Apis.Walletobjects.v1.Data
 
     public class GiftCardObject : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional information about the partner app link.</summary>
+        /// <summary>
+        /// Optional app or website link that will be displayed as a button on the front of the pass. If AppLinkData is
+        /// provided for the corresponding class only object AppLinkData will be displayed.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appLinkData")]
         public virtual AppLinkData AppLinkData { get; set; }
 
@@ -9819,6 +9851,13 @@ namespace Google.Apis.Walletobjects.v1.Data
         public virtual System.Nullable<bool> AllowMultipleUsersPerObject { get; set; }
 
         /// <summary>
+        /// Optional app or website link that will be displayed as a button on the front of the pass. If AppLinkData is
+        /// provided for the corresponding object that will be used instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appLinkData")]
+        public virtual AppLinkData AppLinkData { get; set; }
+
+        /// <summary>
         /// Callback options to be used to call the issuer back for every save/delete of an object for this class by the
         /// end-user. All objects of this class are eligible for the callback.
         /// </summary>
@@ -10117,7 +10156,10 @@ namespace Google.Apis.Walletobjects.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountName")]
         public virtual string AccountName { get; set; }
 
-        /// <summary>Optional information about the partner app link.</summary>
+        /// <summary>
+        /// Optional app or website link that will be displayed as a button on the front of the pass. If AppLinkData is
+        /// provided for the corresponding class only object AppLinkData will be displayed.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appLinkData")]
         public virtual AppLinkData AppLinkData { get; set; }
 
@@ -10718,6 +10760,13 @@ namespace Google.Apis.Walletobjects.v1.Data
         public virtual System.Nullable<bool> AllowMultipleUsersPerObject { get; set; }
 
         /// <summary>
+        /// Optional app or website link that will be displayed as a button on the front of the pass. If AppLinkData is
+        /// provided for the corresponding object that will be used instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appLinkData")]
+        public virtual AppLinkData AppLinkData { get; set; }
+
+        /// <summary>
         /// Callback options to be used to call the issuer back for every save/delete of an object for this class by the
         /// end-user. All objects of this class are eligible for the callback.
         /// </summary>
@@ -10988,7 +11037,10 @@ namespace Google.Apis.Walletobjects.v1.Data
 
     public class OfferObject : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional information about the partner app link.</summary>
+        /// <summary>
+        /// Optional app or website link that will be displayed as a button on the front of the pass. If AppLinkData is
+        /// provided for the corresponding class only object AppLinkData will be displayed.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appLinkData")]
         public virtual AppLinkData AppLinkData { get; set; }
 
@@ -11804,6 +11856,13 @@ namespace Google.Apis.Walletobjects.v1.Data
         public virtual System.Nullable<bool> AllowMultipleUsersPerObject { get; set; }
 
         /// <summary>
+        /// Optional app or website link that will be displayed as a button on the front of the pass. If AppLinkData is
+        /// provided for the corresponding object that will be used instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appLinkData")]
+        public virtual AppLinkData AppLinkData { get; set; }
+
+        /// <summary>
         /// Callback options to be used to call the issuer back for every save/delete of an object for this class by the
         /// end-user. All objects of this class are eligible for the callback.
         /// </summary>
@@ -12148,7 +12207,10 @@ namespace Google.Apis.Walletobjects.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("activationStatus")]
         public virtual ActivationStatus ActivationStatus { get; set; }
 
-        /// <summary>Optional information about the partner app link.</summary>
+        /// <summary>
+        /// Optional app or website link that will be displayed as a button on the front of the pass. If AppLinkData is
+        /// provided for the corresponding class only object AppLinkData will be displayed.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appLinkData")]
         public virtual AppLinkData AppLinkData { get; set; }
 

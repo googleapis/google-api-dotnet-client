@@ -5863,7 +5863,11 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxUploadSize")]
         public virtual System.Nullable<long> MaxUploadSize { get; set; }
 
-        /// <summary>The user's storage quota limits and usage. All fields are measured in bytes.</summary>
+        /// <summary>
+        /// The user's storage quota limits and usage. For users that are part of an organization with pooled storage,
+        /// information about the limit and usage across all services is for the organization, rather than the
+        /// individual user. All fields are measured in bytes.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageQuota")]
         public virtual StorageQuotaData StorageQuota { get; set; }
 
@@ -5894,16 +5898,25 @@ namespace Google.Apis.Drive.v3.Data
             public virtual string Id { get; set; }
         }
 
-        /// <summary>The user's storage quota limits and usage. All fields are measured in bytes.</summary>
+        /// <summary>
+        /// The user's storage quota limits and usage. For users that are part of an organization with pooled storage,
+        /// information about the limit and usage across all services is for the organization, rather than the
+        /// individual user. All fields are measured in bytes.
+        /// </summary>
         public class StorageQuotaData
         {
             /// <summary>
-            /// The usage limit, if applicable. This will not be present if the user has unlimited storage.
+            /// The usage limit, if applicable. This will not be present if the user has unlimited storage. For users
+            /// that are part of an organization with pooled storage, this is the limit for the organization, rather
+            /// than the individual user.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("limit")]
             public virtual System.Nullable<long> Limit { get; set; }
 
-            /// <summary>The total usage across all services.</summary>
+            /// <summary>
+            /// The total usage across all services. For users that are part of an organization with pooled storage,
+            /// this is the usage across all services for the organization, rather than the individual user.
+            /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("usage")]
             public virtual System.Nullable<long> Usage { get; set; }
 

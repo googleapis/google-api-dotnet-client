@@ -8095,6 +8095,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
+        /// <summary>List of locations that could not be reached while fetching this list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -8112,6 +8116,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>The list of Membership RBACRoleBindings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rbacrolebindings")]
         public virtual System.Collections.Generic.IList<RBACRoleBinding> Rbacrolebindings { get; set; }
+
+        /// <summary>List of locations that could not be reached while fetching this list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

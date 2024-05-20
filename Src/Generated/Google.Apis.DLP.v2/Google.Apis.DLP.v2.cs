@@ -1596,7 +1596,7 @@ namespace Google.Apis.DLP.v2
                 /// <summary>Searches for Connections in a parent.</summary>
                 /// <param name="parent">
                 /// Required. Parent name, typically an organization, without location. For example:
-                /// "organizations/12345678".
+                /// `organizations/12345678`.
                 /// </param>
                 public virtual SearchRequest Search(string parent)
                 {
@@ -1615,12 +1615,12 @@ namespace Google.Apis.DLP.v2
 
                     /// <summary>
                     /// Required. Parent name, typically an organization, without location. For example:
-                    /// "organizations/12345678".
+                    /// `organizations/12345678`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. * Supported fields/values - `state` - MISSING|AVAILABLE|ERROR</summary>
+                    /// <summary>Optional. Supported field/value: - `state` - MISSING|AVAILABLE|ERROR</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
@@ -7163,7 +7163,7 @@ namespace Google.Apis.DLP.v2
                 /// <summary>Create a Connection to an external data source.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. Parent resource name in the format: "projects/{project}/locations/{location}".
+                /// Required. Parent resource name in the format: `projects/{project}/locations/{location}`.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2CreateConnectionRequest body, string parent)
                 {
@@ -7182,7 +7182,7 @@ namespace Google.Apis.DLP.v2
                     }
 
                     /// <summary>
-                    /// Required. Parent resource name in the format: "projects/{project}/locations/{location}".
+                    /// Required. Parent resource name in the format: `projects/{project}/locations/{location}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -7220,7 +7220,7 @@ namespace Google.Apis.DLP.v2
                 /// <summary>Delete a Connection.</summary>
                 /// <param name="name">
                 /// Required. Resource name of the Connection to be deleted, in the format:
-                /// "projects/{project}/locations/{location}/connections/{connection}".
+                /// `projects/{project}/locations/{location}/connections/{connection}`.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -7239,7 +7239,7 @@ namespace Google.Apis.DLP.v2
 
                     /// <summary>
                     /// Required. Resource name of the Connection to be deleted, in the format:
-                    /// "projects/{project}/locations/{location}/connections/{connection}".
+                    /// `projects/{project}/locations/{location}/connections/{connection}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -7271,7 +7271,7 @@ namespace Google.Apis.DLP.v2
                 /// <summary>Get a Connection by name.</summary>
                 /// <param name="name">
                 /// Required. Resource name in the format:
-                /// "projects/{project}/locations/{location}/connections/{connection}".
+                /// `projects/{project}/locations/{location}/connections/{connection}`.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -7290,7 +7290,7 @@ namespace Google.Apis.DLP.v2
 
                     /// <summary>
                     /// Required. Resource name in the format:
-                    /// "projects/{project}/locations/{location}/connections/{connection}".
+                    /// `projects/{project}/locations/{location}/connections/{connection}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -7321,7 +7321,7 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>Lists Connections in a parent.</summary>
                 /// <param name="parent">
-                /// Required. Parent name, for example: "projects/project-id/locations/global".
+                /// Required. Parent name, for example: `projects/project-id/locations/global`.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -7338,11 +7338,11 @@ namespace Google.Apis.DLP.v2
                         InitParameters();
                     }
 
-                    /// <summary>Required. Parent name, for example: "projects/project-id/locations/global".</summary>
+                    /// <summary>Required. Parent name, for example: `projects/project-id/locations/global`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. * Supported fields/values - `state` - MISSING|AVAILABLE|ERROR</summary>
+                    /// <summary>Optional. Supported field/value: `state` - MISSING|AVAILABLE|ERROR</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
@@ -7409,7 +7409,7 @@ namespace Google.Apis.DLP.v2
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Required. Resource name in the format:
-                /// "projects/{project}/locations/{location}/connections/{connection}".
+                /// `projects/{project}/locations/{location}/connections/{connection}`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2UpdateConnectionRequest body, string name)
                 {
@@ -7429,7 +7429,7 @@ namespace Google.Apis.DLP.v2
 
                     /// <summary>
                     /// Required. Resource name in the format:
-                    /// "projects/{project}/locations/{location}/connections/{connection}".
+                    /// `projects/{project}/locations/{location}/connections/{connection}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -7467,7 +7467,7 @@ namespace Google.Apis.DLP.v2
                 /// <summary>Searches for Connections in a parent.</summary>
                 /// <param name="parent">
                 /// Required. Parent name, typically an organization, without location. For example:
-                /// "organizations/12345678".
+                /// `organizations/12345678`.
                 /// </param>
                 public virtual SearchRequest Search(string parent)
                 {
@@ -7486,12 +7486,12 @@ namespace Google.Apis.DLP.v2
 
                     /// <summary>
                     /// Required. Parent name, typically an organization, without location. For example:
-                    /// "organizations/12345678".
+                    /// `organizations/12345678`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. * Supported fields/values - `state` - MISSING|AVAILABLE|ERROR</summary>
+                    /// <summary>Optional. Supported field/value: - `state` - MISSING|AVAILABLE|ERROR</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
@@ -12112,8 +12112,8 @@ namespace Google.Apis.DLP.v2.Data
     }
 
     /// <summary>
-    /// Use IAM auth to connect. This requires the Cloud SQL IAM feature to be enabled on the instance, which is not the
-    /// default for Cloud SQL. See https://cloud.google.com/sql/docs/postgres/authentication and
+    /// Use IAM authentication to connect. This requires the Cloud SQL IAM feature to be enabled on the instance, which
+    /// is not the default for Cloud SQL. See https://cloud.google.com/sql/docs/postgres/authentication and
     /// https://cloud.google.com/sql/docs/mysql/authentication.
     /// </summary>
     public class GooglePrivacyDlpV2CloudSqlIamCredential : Google.Apis.Requests.IDirectResponseSchema
@@ -12133,8 +12133,8 @@ namespace Google.Apis.DLP.v2.Data
         /// Optional. Immutable. The Cloud SQL instance for which the connection is defined. Only one connection per
         /// instance is allowed. This can only be set at creation time, and cannot be updated. It is an error to use a
         /// connection_name from different project or region than the one that holds the connection. For example, a
-        /// Connection resource for Cloud SQL connection_name "project-id:us-central1:sql-instance" must be created
-        /// under the parent "projects/project-id/locations/us-central1"
+        /// Connection resource for Cloud SQL connection_name `project-id:us-central1:sql-instance` must be created
+        /// under the parent `projects/project-id/locations/us-central1`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectionName")]
         public virtual string ConnectionName { get; set; }
@@ -12489,7 +12489,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Error> Errors { get; set; }
 
         /// <summary>
-        /// Output only. Name of the connection: projects/{project}/locations/{location}/connections/{name}.
+        /// Output only. Name of the connection: `projects/{project}/locations/{location}/connections/{name}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -13299,13 +13299,21 @@ namespace Google.Apis.DLP.v2.Data
     /// <summary>Identifies a single database resource, like a table within a database.</summary>
     public class GooglePrivacyDlpV2DatabaseResourceReference : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Required. Name of a database within the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual string Database { get; set; }
+
+        /// <summary>Required. Name of a database resource, for example, a table within the database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseResource")]
+        public virtual string DatabaseResource { get; set; }
+
         /// <summary>
-        /// Required. The instance where this resource is located. For example: Cloud SQL's instance id.
+        /// Required. The instance where this resource is located. For example: Cloud SQL instance ID.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instance")]
         public virtual string Instance { get; set; }
 
-        /// <summary>Required. If within a project-level config, then this must match the config's project id.</summary>
+        /// <summary>Required. If within a project-level config, then this must match the config's project ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
 
@@ -13337,8 +13345,8 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string InstanceRegex { get; set; }
 
         /// <summary>
-        /// For organizations, if unset, will match all projects. Has no effect for Data Profile configurations created
-        /// within a project.
+        /// For organizations, if unset, will match all projects. Has no effect for configurations created within a
+        /// project.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectIdRegex")]
         public virtual string ProjectIdRegex { get; set; }
@@ -13960,6 +13968,13 @@ namespace Google.Apis.DLP.v2.Data
         public virtual GooglePrivacyDlpV2AllOtherBigQueryTables OtherTables { get; set; }
 
         /// <summary>
+        /// The table to scan. Discovery configurations including this can only include one DiscoveryTarget (the
+        /// DiscoveryTarget with this TableReference).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableReference")]
+        public virtual GooglePrivacyDlpV2TableReference TableReference { get; set; }
+
+        /// <summary>
         /// A specific set of tables for this filter to apply to. A table collection must be specified in only one
         /// filter per config. If a table id or dataset is empty, Cloud DLP assumes all tables in that collection must
         /// be profiled. Must specify a project ID.
@@ -14294,6 +14309,13 @@ namespace Google.Apis.DLP.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudSqlTarget")]
         public virtual GooglePrivacyDlpV2CloudSqlDiscoveryTarget CloudSqlTarget { get; set; }
+
+        /// <summary>
+        /// Discovery target that looks for credentials and secrets stored in cloud resource metadata and reports them
+        /// as vulnerabilities to Security Command Center. Only one target of this type is allowed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretsTarget")]
+        public virtual GooglePrivacyDlpV2SecretsDiscoveryTarget SecretsTarget { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15225,8 +15247,7 @@ namespace Google.Apis.DLP.v2.Data
     }
 
     /// <summary>
-    /// Classification of infoTypes to organize them according to geographic location, industry, and data type. NEXT_ID:
-    /// 48
+    /// Classification of infoTypes to organize them according to geographic location, industry, and data type.
     /// </summary>
     public class GooglePrivacyDlpV2InfoTypeCategory : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -15719,7 +15740,7 @@ namespace Google.Apis.DLP.v2.Data
     }
 
     /// <summary>
-    /// Contains a configuration to make api calls on a repeating basis. See
+    /// Contains a configuration to make API calls on a repeating basis. See
     /// https://cloud.google.com/sensitive-data-protection/docs/concepts-job-triggers to learn more.
     /// </summary>
     public class GooglePrivacyDlpV2JobTrigger : Google.Apis.Requests.IDirectResponseSchema
@@ -17512,7 +17533,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InfoTypeStats> InfoTypeStats { get; set; }
 
         /// <summary>
-        /// Number of rows scanned post sampling and time filtering (Applicable for row based stores such as BigQuery).
+        /// Number of rows scanned after sampling and time filtering (applicable for row based stores such as BigQuery).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numRowsProcessed")]
         public virtual System.Nullable<long> NumRowsProcessed { get; set; }
@@ -17591,7 +17612,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>How frequency to modify the profile when the table's schema is modified.</summary>
+    /// <summary>How frequently to modify the profile when the table's schema is modified.</summary>
     public class GooglePrivacyDlpV2SchemaModifiedCadence : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Frequency to regenerate data profiles when the schema is modified. Defaults to monthly.</summary>
@@ -17634,7 +17655,7 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>
         /// Required. The name of the Secret Manager resource that stores the password, in the form
-        /// "projects/project-id/secrets/secret-name/versions/version".
+        /// `projects/project-id/secrets/secret-name/versions/version`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passwordSecretVersionName")]
         public virtual string PasswordSecretVersionName { get; set; }
@@ -17643,6 +17664,20 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
         public virtual string Username { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Discovery target for credentials and secrets in Cloud resource metadata. This target does not include any
+    /// filtering or frequency controls. Cloud DLP will scan Cloud resource metadata for secrets daily. No inspect
+    /// template should be included in the discovery config for a security benchmarks scan. Instead, the built-in list
+    /// of Secrets and Credentials infoTypes will be used (see
+    /// https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference#credentials_and_secrets).
+    /// Credentials and secrets discovered will be reported as vulnerabilities to Security Command Center.
+    /// </summary>
+    public class GooglePrivacyDlpV2SecretsDiscoveryTarget : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -18274,6 +18309,23 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Message defining the location of a BigQuery table with the projectId inferred from the parent project.
+    /// </summary>
+    public class GooglePrivacyDlpV2TableReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Dataset ID of the table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datasetId")]
+        public virtual string DatasetId { get; set; }
+
+        /// <summary>Name of the table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
+        public virtual string TableId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A column with a semantic tag attached.</summary>
     public class GooglePrivacyDlpV2TaggedField : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -18352,7 +18404,7 @@ namespace Google.Apis.DLP.v2.Data
         /// When the job is started by a JobTrigger we will automatically figure out a valid start_time to avoid
         /// scanning files that have not been modified since the last time the JobTrigger executed. This will be based
         /// on the time of the execution of the last run of the JobTrigger or the timespan end_time used in the last run
-        /// of the JobTrigger. *For BigQuery* Inspect jobs triggered by automatic population will scan data that is at
+        /// of the JobTrigger. **For BigQuery** Inspect jobs triggered by automatic population will scan data that is at
         /// least three hours old when the job starts. This is because streaming buffer rows are not read during
         /// inspection and reading up to the current timestamp will result in skipped rows. See the [known
         /// issue](https://cloud.google.com/sensitive-data-protection/docs/known-issues#recently-streamed-data) related

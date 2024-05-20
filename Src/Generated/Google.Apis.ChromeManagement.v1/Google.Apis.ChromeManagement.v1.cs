@@ -5536,6 +5536,71 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>App installation data.</summary>
+    public class GoogleChromeManagementV1TelemetryAppInstallEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>App id. For PWAs this is the start URL, and for extensions this is the extension id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appId")]
+        public virtual string AppId { get; set; }
+
+        /// <summary>App installation reason.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appInstallReason")]
+        public virtual string AppInstallReason { get; set; }
+
+        /// <summary>App installation source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appInstallSource")]
+        public virtual string AppInstallSource { get; set; }
+
+        /// <summary>App installation time depending on the app lifecycle.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appInstallTime")]
+        public virtual string AppInstallTime { get; set; }
+
+        /// <summary>Type of app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appType")]
+        public virtual string AppType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>App launch data.</summary>
+    public class GoogleChromeManagementV1TelemetryAppLaunchEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>App id. For PWAs this is the start URL, and for extensions this is the extension id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appId")]
+        public virtual string AppId { get; set; }
+
+        /// <summary>App launch source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appLaunchSource")]
+        public virtual string AppLaunchSource { get; set; }
+
+        /// <summary>Type of app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appType")]
+        public virtual string AppType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>App uninstall data.</summary>
+    public class GoogleChromeManagementV1TelemetryAppUninstallEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>App id. For PWAs this is the start URL, and for extensions this is the extension id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appId")]
+        public virtual string AppId { get; set; }
+
+        /// <summary>Type of app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appType")]
+        public virtual string AppType { get; set; }
+
+        /// <summary>App uninstall source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appUninstallSource")]
+        public virtual string AppUninstallSource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// `TelemetryAudioSevereUnderrunEvent` is triggered when a audio devices run out of buffer data for more than 5
     /// seconds. * Granular permission needed: TELEMETRY_API_AUDIO_REPORT
@@ -5709,6 +5774,24 @@ namespace Google.Apis.ChromeManagement.v1.Data
     /// <summary>Telemetry data reported by a managed device.</summary>
     public class GoogleChromeManagementV1TelemetryEvent : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. Payload for app install event. Present only when `event_type` is `APP_INSTALLED`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appInstallEvent")]
+        public virtual GoogleChromeManagementV1TelemetryAppInstallEvent AppInstallEvent { get; set; }
+
+        /// <summary>
+        /// Output only. Payload for app launch event.Present only when `event_type` is `APP_LAUNCHED`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appLaunchEvent")]
+        public virtual GoogleChromeManagementV1TelemetryAppLaunchEvent AppLaunchEvent { get; set; }
+
+        /// <summary>
+        /// Output only. Payload for app uninstall event. Present only when `event_type` is `APP_UNINSTALLED`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appUninstallEvent")]
+        public virtual GoogleChromeManagementV1TelemetryAppUninstallEvent AppUninstallEvent { get; set; }
+
         /// <summary>
         /// Output only. Payload for audio severe underrun event. Present only when the `event_type` field is
         /// `AUDIO_SEVERE_UNDERRUN`.

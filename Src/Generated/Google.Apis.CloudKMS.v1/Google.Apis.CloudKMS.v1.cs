@@ -6231,7 +6231,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         public virtual string KmsKey { get; set; }
 
         /// <summary>
-        /// Output only. Identifier. Name of the KeyHandle resource, e.g.
+        /// Identifier. Name of the KeyHandle resource, e.g.
         /// `projects/{PROJECT_ID}/locations/{LOCATION}/keyHandles/{KEY_HANDLE_ID}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
