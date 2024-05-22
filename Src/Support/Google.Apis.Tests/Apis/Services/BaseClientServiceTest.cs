@@ -373,6 +373,19 @@ namespace Google.Apis.Tests.Apis.Services
         }
 
         [Fact]
+        public void HttpClientTimeout()
+        {
+            var timeout = TimeSpan.FromHours(10);
+            var service = new MockClientService(new BaseClientService.Initializer
+            {
+                HttpClientTimeout = timeout
+            });
+
+            Assert.Equal(timeout, service.HttpClientTimeout);
+            Assert.Equal(timeout, service.HttpClient.Timeout);
+        }
+
+        [Fact]
         public void VersionHeader()
         {
             var initializer = new BaseClientService.Initializer();

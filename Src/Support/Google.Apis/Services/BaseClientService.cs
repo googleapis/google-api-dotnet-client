@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using Google.Apis.Core;
 using Google.Apis.Discovery;
 using Google.Apis.Http;
 using Google.Apis.Json;
@@ -124,6 +125,13 @@ namespace Google.Apis.Services
             public string UniverseDomain { get; set; }
 
             /// <summary>
+            /// The timeout to set on <see cref="HttpClient"/> instances used by the service.
+            /// May be null, in which case the default timeout values on <see cref="HttpClient"/> instances
+            /// used by this service will be left unchanged.
+            /// </summary>
+            public TimeSpan? HttpClientTimeout { get; set; }
+
+            /// <summary>
             /// Builder for the x-goog-api-client header, collecting version information.
             /// Services automatically add the API library version to this.
             /// Most users will never need to configure this, but higher level abstraction Google libraries
@@ -180,6 +188,7 @@ namespace Google.Apis.Services
             ApplicationName = initializer.ApplicationName;
             BaseUriOverride = initializer.BaseUri;
             UniverseDomain = initializer.UniverseDomain;
+            HttpClientTimeout = initializer.HttpClientTimeout;
             ValidateParameters = initializer.ValidateParameters;
             if (ApplicationName == null)
             {
@@ -213,6 +222,13 @@ namespace Google.Apis.Services
         /// </remarks>
         public string UniverseDomain { get; set; }
 
+        /// <summary>
+        /// The timeout to set on <see cref="HttpClient"/> instances used by the service.
+        /// May be null, in which case the default timeout values on <see cref="HttpClient"/> instances
+        /// used by this service will be left unchanged.
+        /// </summary>
+        public TimeSpan? HttpClientTimeout { get; }
+
         /// <summary>Returns <c>true</c> if this service contains the specified feature.</summary>
         private bool HasFeature(Features feature)
         {
@@ -242,6 +258,12 @@ namespace Google.Apis.Services
             {
                 args.Initializers.Add(new ExponentialBackOffInitializer(initializer.DefaultExponentialBackOffPolicy,
                     CreateBackOffHandler));
+            }
+
+            // Add HTTP client timeout initializer if necessary.
+            if (HttpClientTimeout is not null)
+            {
+                args.Initializers.Add(new HttpTimeoutInitializer(HttpClientTimeout.Value));
             }
 
             var httpClient = factory.CreateHttpClient(args);
