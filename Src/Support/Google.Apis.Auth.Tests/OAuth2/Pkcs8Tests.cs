@@ -15,8 +15,15 @@ limitations under the License.
 */
 
 using Google.Apis.Auth.OAuth2;
+using Org.BouncyCastle.Crypto;
+using Org.BouncyCastle.Crypto.Generators;
+using Org.BouncyCastle.Crypto.Parameters;
+using Org.BouncyCastle.OpenSsl;
+using Org.BouncyCastle.Security;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
+using System.Text;
 using Xunit;
 
 namespace Google.Apis.Auth.Tests.OAuth2
@@ -87,7 +94,6 @@ lK1DcBvq+IFLucBdi0/9hXE=
             Assert.Equal("23B92EA0605DBC81E77B7637B6E710273727608DDBA696E1CA7D5D9A6F23B1A696AED06F16A09BD72D4C8DAA0BE25362F9BADD77A6E9579BB8E3B18141F1BCA372F596E5D392C44F9B087935B8575A5FE27A259CE9640BEACAFC43EBD2603280A3DE73761589BD6B3EFEFECD7D6A0594AD43701BEAF8814BB9C05D8B4FFD8571", ToHex(ps.InverseQ));
         }
 
-#if NET462_OR_GREATER
         [Fact]
         public void RsaFuzzTest()
         {
@@ -95,23 +101,20 @@ lK1DcBvq+IFLucBdi0/9hXE=
             // This test does take a few (possibly 10s of) seconds, longer than most unit tests.
             for (int i = 0; i < 1000; i++)
             {
-                // This SecureRandom constructor is deprecated,
-                // but is the easiest way to create a deterministic SecureRandom.
-#pragma warning disable CS0618
-                var rnd = new Org.BouncyCastle.Security.SecureRandom(new byte[] { (byte)(i & 0xff), (byte)((i >> 8) & 0xff) });
-#pragma warning restore CS0618
-                var rsa = new Org.BouncyCastle.Crypto.Generators.RsaKeyPairGenerator();
+                var rnd = SecureRandom.GetInstance("SHA1PRNG", autoSeed: false);
+                rnd.SetSeed(new byte[] { (byte)(i & 0xff), (byte)((i >> 8) & 0xff) });
+                var rsa = new RsaKeyPairGenerator();
                 // 384 is the shortest valid key length. Use this for speed.
-                rsa.Init(new Org.BouncyCastle.Crypto.KeyGenerationParameters(rnd, 384));
+                rsa.Init(new KeyGenerationParameters(rnd, 384));
                 var keys = rsa.GenerateKeyPair();
-                var pkcs8Generator = new Org.BouncyCastle.OpenSsl.Pkcs8Generator(keys.Private);
+                var pkcs8Generator = new Pkcs8Generator(keys.Private);
                 var pem = pkcs8Generator.Generate();
-                var ms = new System.IO.MemoryStream();
-                var stWriter = new System.IO.StreamWriter(ms);
-                var pemWriter = new Org.BouncyCastle.OpenSsl.PemWriter(stWriter);
+                var ms = new MemoryStream();
+                var stWriter = new StreamWriter(ms);
+                var pemWriter = new PemWriter(stWriter);
                 pemWriter.WriteObject(pem);
                 stWriter.Close();
-                var pkcs8 = System.Text.Encoding.ASCII.GetString(ms.ToArray());
+                var pkcs8 = Encoding.ASCII.GetString(ms.ToArray());
                 var rsaParameters = Pkcs8.DecodeRsaParameters(pkcs8);
                 var key = RSA.Create();
                 try
@@ -127,21 +130,16 @@ lK1DcBvq+IFLucBdi0/9hXE=
                 }
                 // Check that all the parameters exported are equal to the originally created parameters
                 var exportedParams = key.ExportParameters(true);
-                var privateKey = (Org.BouncyCastle.Crypto.Parameters.RsaPrivateCrtKeyParameters)keys.Private;
+                var privateKey = (RsaPrivateCrtKeyParameters)keys.Private;
                 Assert.Equal(privateKey.P.ToByteArrayUnsigned(), Pkcs8.TrimLeadingZeroes(exportedParams.P, false));
                 Assert.Equal(privateKey.Q.ToByteArrayUnsigned(), Pkcs8.TrimLeadingZeroes(exportedParams.Q, false));
                 Assert.Equal(privateKey.DP.ToByteArrayUnsigned(), Pkcs8.TrimLeadingZeroes(exportedParams.DP, false));
                 Assert.Equal(privateKey.DQ.ToByteArrayUnsigned(), Pkcs8.TrimLeadingZeroes(exportedParams.DQ, false));
-                var publicKey = (Org.BouncyCastle.Crypto.Parameters.RsaKeyParameters)keys.Public;
+                var publicKey = (RsaKeyParameters)keys.Public;
                 Assert.Equal(publicKey.Exponent.ToByteArrayUnsigned(), Pkcs8.TrimLeadingZeroes(exportedParams.Exponent, false));
                 Assert.Equal(publicKey.Modulus.ToByteArrayUnsigned(), Pkcs8.TrimLeadingZeroes(exportedParams.Modulus, false));
             }
         }
-#elif NET6_0_OR_GREATER
-        // RsaFuzzTest() can't run on net core.
-#else
-#error Unsupported platform.
-#endif
 
         [Fact]
         public void TrimLeadingZeroes()
