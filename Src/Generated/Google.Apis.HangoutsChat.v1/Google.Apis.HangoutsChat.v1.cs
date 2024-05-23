@@ -1060,20 +1060,20 @@ namespace Google.Apis.HangoutsChat.v1
                 /// and type
                 /// ([`member.type`](https://developers.google.com/workspace/chat/api/reference/rest/v1/User#type)). To
                 /// filter by role, set `role` to `ROLE_MEMBER` or `ROLE_MANAGER`. To filter by type, set `member.type`
-                /// to `HUMAN` or `BOT`. To filter by both role and type, use the `AND` operator. To filter by either
-                /// role or type, use the `OR` operator. For example, the following queries are valid:
+                /// to `HUMAN` or `BOT`. Developer Preview: You can also filter for `member.type` using the `!=`
+                /// operator. To filter by both role and type, use the `AND` operator. To filter by either role or type,
+                /// use the `OR` operator. Either `member.type = "HUMAN"` or `member.type != "BOT"` is required when
+                /// `use_admin_access` is set to true. Other member type filters will be rejected. For example, the
+                /// following queries are valid:
                 /// ```
-                /// role =
-                /// "ROLE_MANAGER" OR role = "ROLE_MEMBER" member.type = "HUMAN" AND role = "ROLE_MANAGER"
+                /// role = "ROLE_MANAGER" OR role = "ROLE_MEMBER" member.type = "HUMAN"
+                /// AND role = "ROLE_MANAGER" member.type != "BOT"
                 /// ```
-                /// The
-                /// following queries are invalid:
+                /// The following queries are invalid:
                 /// ```
-                /// member.type = "HUMAN" AND member.type = "BOT" role =
-                /// "ROLE_MANAGER" AND role = "ROLE_MEMBER"
+                /// member.type = "HUMAN" AND member.type = "BOT" role = "ROLE_MANAGER" AND role = "ROLE_MEMBER"
                 /// ```
-                /// Invalid queries are rejected by the server with an
-                /// `INVALID_ARGUMENT` error.
+                /// Invalid queries are rejected by the server with an `INVALID_ARGUMENT` error.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -1302,7 +1302,8 @@ namespace Google.Apis.HangoutsChat.v1
                 /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app).
                 /// </summary>
                 /// <param name="name">
-                /// Required. Resource name of the attachment, in the form `spaces/*/messages/*/attachments/*`.
+                /// Required. Resource name of the attachment, in the form
+                /// `spaces/{space}/messages/{message}/attachments/{attachment}`.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -1326,7 +1327,8 @@ namespace Google.Apis.HangoutsChat.v1
                     }
 
                     /// <summary>
-                    /// Required. Resource name of the attachment, in the form `spaces/*/messages/*/attachments/*`.
+                    /// Required. Resource name of the attachment, in the form
+                    /// `spaces/{space}/messages/{message}/attachments/{attachment}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2853,7 +2855,7 @@ namespace Google.Apis.HangoutsChat.v1
         /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
         /// </summary>
         /// <param name="name">
-        /// Required. Resource name of the space, in the form "spaces/*". Format: `spaces/{space}`
+        /// Required. Resource name of the space, in the form `spaces/{space}`. Format: `spaces/{space}`
         /// </param>
         public virtual GetRequest Get(string name)
         {
@@ -2877,7 +2879,7 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
-            /// Required. Resource name of the space, in the form "spaces/*". Format: `spaces/{space}`
+            /// Required. Resource name of the space, in the form `spaces/{space}`. Format: `spaces/{space}`
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -2913,7 +2915,8 @@ namespace Google.Apis.HangoutsChat.v1
         /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) and [user
         /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user). Lists spaces
         /// visible to the caller or authenticated user. Group chats and DMs aren't listed until the first message is
-        /// sent.
+        /// sent. To list all named spaces by Google Workspace organization, use the `spaces.search()` method using
+        /// Workspace administrator privileges instead.
         /// </summary>
         public virtual ListRequest List()
         {
@@ -2927,7 +2930,8 @@ namespace Google.Apis.HangoutsChat.v1
         /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) and [user
         /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user). Lists spaces
         /// visible to the caller or authenticated user. Group chats and DMs aren't listed until the first message is
-        /// sent.
+        /// sent. To list all named spaces by Google Workspace organization, use the `spaces.search()` method using
+        /// Workspace administrator privileges instead.
         /// </summary>
         public class ListRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.ListSpacesResponse>
         {
@@ -3638,7 +3642,9 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("driveDataRef")]
         public virtual DriveDataRef DriveDataRef { get; set; }
 
-        /// <summary>Resource name of the attachment, in the form `spaces/*/messages/*/attachments/*`.</summary>
+        /// <summary>
+        /// Resource name of the attachment, in the form `spaces/{space}/messages/{message}/attachments/{attachment}`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 

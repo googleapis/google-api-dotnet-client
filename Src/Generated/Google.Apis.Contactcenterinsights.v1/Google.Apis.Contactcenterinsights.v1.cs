@@ -1181,7 +1181,12 @@ namespace Google.Apis.Contactcenterinsights.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>The list of fields to be updated.</summary>
+                    /// <summary>
+                    /// The list of fields to be updated. All possible fields can be updated by passing `*`, or a subset
+                    /// of the following updateable fields can be provided: * `agent_id` * `language_code` * `labels` *
+                    /// `metadata` * `quality_metadata` * `call_metadata` * `start_time` * `expire_time` or `ttl` *
+                    /// `data_source.gcs_source.audio_uri` or `data_source.dialogflow_source.audio_uri`
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
 

@@ -920,6 +920,15 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("responseMimeType")]
         public virtual string ResponseMimeType { get; set; }
 
+        /// <summary>
+        /// Optional. The `Schema` object allows the definition of input and output data types. These types can be
+        /// objects, but also primitives and arrays. Represents a select subset of an [OpenAPI 3.0 schema
+        /// object](https://spec.openapis.org/oas/v3.0.3#schema). If set, a compatible response_mime_type must also be
+        /// set. Compatible mimetypes: `application/json`: Schema for JSON response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responseSchema")]
+        public virtual Schema ResponseSchema { get; set; }
+
         /// <summary>Optional. Stop sequences.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stopSequences")]
         public virtual System.Collections.Generic.IList<string> StopSequences { get; set; }

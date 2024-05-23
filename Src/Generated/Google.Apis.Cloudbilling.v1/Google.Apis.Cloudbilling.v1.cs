@@ -1677,7 +1677,7 @@ namespace Google.Apis.Cloudbilling.v1
             }
 
             /// <summary>Lists all publicly available SKUs for a given cloud service.</summary>
-            /// <param name="parent">Required. The name of the service. Example: "services/DA34-426B-A397"</param>
+            /// <param name="parent">Required. The name of the service. Example: "services/6F81-5844-456A"</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(this.service, parent);
@@ -1693,7 +1693,7 @@ namespace Google.Apis.Cloudbilling.v1
                     InitParameters();
                 }
 
-                /// <summary>Required. The name of the service. Example: "services/DA34-426B-A397"</summary>
+                /// <summary>Required. The name of the service. Example: "services/6F81-5844-456A"</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -2560,11 +2560,11 @@ namespace Google.Apis.Cloudbilling.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>The resource name for the service. Example: "services/DA34-426B-A397"</summary>
+        /// <summary>The resource name for the service. Example: "services/6F81-5844-456A"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The identifier for the service. Example: "DA34-426B-A397"</summary>
+        /// <summary>The identifier for the service. Example: "6F81-5844-456A"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceId")]
         public virtual string ServiceId { get; set; }
 
@@ -2594,7 +2594,7 @@ namespace Google.Apis.Cloudbilling.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Encapsulates a single SKU in Google Cloud Platform</summary>
+    /// <summary>Encapsulates a single SKU in Google Cloud</summary>
     public class Sku : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The category hierarchy of this SKU, purely for organizational purpose.</summary>
@@ -2609,7 +2609,7 @@ namespace Google.Apis.Cloudbilling.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("geoTaxonomy")]
         public virtual GeoTaxonomy GeoTaxonomy { get; set; }
 
-        /// <summary>The resource name for the SKU. Example: "services/DA34-426B-A397/skus/AA95-CD31-42FE"</summary>
+        /// <summary>The resource name for the SKU. Example: "services/6F81-5844-456A/skus/D041-B8A1-6E0B"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -2630,7 +2630,7 @@ namespace Google.Apis.Cloudbilling.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceRegions")]
         public virtual System.Collections.Generic.IList<string> ServiceRegions { get; set; }
 
-        /// <summary>The identifier for the SKU. Example: "AA95-CD31-42FE"</summary>
+        /// <summary>The identifier for the SKU. Example: "D041-B8A1-6E0B"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skuId")]
         public virtual string SkuId { get; set; }
 

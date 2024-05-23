@@ -591,8 +591,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                                 public virtual string Parent { get; private set; }
 
                                 /// <summary>
-                                /// Required. The ID to use for the Document, which will become the final component of
-                                /// the Document.name. If the caller does not have permission to create the Document,
+                                /// Required. The ID to use for the Document, which becomes the final component of the
+                                /// Document.name. If the caller does not have permission to create the Document,
                                 /// regardless of whether or not it exists, a `PERMISSION_DENIED` error is returned.
                                 /// This field must be unique among all Documents with the same parent. Otherwise, an
                                 /// `ALREADY_EXISTS` error is returned. This field must conform to
@@ -756,8 +756,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Bulk import of multiple Documents. Request processing may be synchronous. Non-existing
-                            /// items will be created. Note: It is possible for a subset of the Documents to be
-                            /// successfully updated.
+                            /// items are created. Note: It is possible for a subset of the Documents to be successfully
+                            /// updated.
                             /// </summary>
                             /// <param name="body">The body of the request.</param>
                             /// <param name="parent">
@@ -772,8 +772,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Bulk import of multiple Documents. Request processing may be synchronous. Non-existing
-                            /// items will be created. Note: It is possible for a subset of the Documents to be
-                            /// successfully updated.
+                            /// items are created. Note: It is possible for a subset of the Documents to be successfully
+                            /// updated.
                             /// </summary>
                             public class ImportRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleLongrunningOperation>
                             {
@@ -859,8 +859,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                                 /// <summary>
                                 /// Maximum number of Documents to return. If unspecified, defaults to 100. The maximum
-                                /// allowed value is 1000. Values above 1000 will be coerced to 1000. If this field is
-                                /// negative, an `INVALID_ARGUMENT` error is returned.
+                                /// allowed value is 1000. Values above 1000 are set to 1000. If this field is negative,
+                                /// an `INVALID_ARGUMENT` error is returned.
                                 /// </summary>
                                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -947,14 +947,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                                 public virtual string Name { get; private set; }
 
                                 /// <summary>
-                                /// If set to true, and the Document is not found, a new Document will be created.
+                                /// If set to `true` and the Document is not found, a new Document is be created.
                                 /// </summary>
                                 [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
                                 public virtual System.Nullable<bool> AllowMissing { get; set; }
 
                                 /// <summary>
-                                /// Indicates which fields in the provided imported 'document' to update. If not set,
-                                /// will by default update all fields.
+                                /// Indicates which fields in the provided imported 'document' to update. If not set, by
+                                /// default updates all fields.
                                 /// </summary>
                                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                                 public virtual object UpdateMask { get; set; }
@@ -2362,7 +2362,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                             public virtual string Parent { get; private set; }
 
                             /// <summary>
-                            /// Required. The ID to use for the Schema, which will become the final component of the
+                            /// Required. The ID to use for the Schema, which becomes the final component of the
                             /// Schema.name. This field should conform to
                             /// [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63
                             /// characters.
@@ -2539,8 +2539,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// The maximum number of Schemas to return. The service may return fewer than this value.
-                            /// If unspecified, at most 100 Schemas will be returned. The maximum value is 1000; values
-                            /// above 1000 will be coerced to 1000.
+                            /// If unspecified, at most 100 Schemas are returned. The maximum value is 1000; values
+                            /// above 1000 are set to 1000.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> PageSize { get; set; }
@@ -2625,8 +2625,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                             public virtual string Name { get; private set; }
 
                             /// <summary>
-                            /// If set to true, and the Schema is not found, a new Schema will be created. In this
-                            /// situation, `update_mask` is ignored.
+                            /// If set to true, and the Schema is not found, a new Schema is created. In this situation,
+                            /// `update_mask` is ignored.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<bool> AllowMissing { get; set; }
@@ -2974,8 +2974,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// Required. Full resource name of a ServingConfig:
                         /// `projects/*/locations/global/collections/*/engines/*/servingConfigs/*`, or
                         /// `projects/*/locations/global/collections/*/dataStores/*/servingConfigs/*` One default
-                        /// serving config is created along with your recommendation engine creation. The engine ID will
-                        /// be used as the ID of the default serving config. For example, for Engine
+                        /// serving config is created along with your recommendation engine creation. The engine ID is
+                        /// used as the ID of the default serving config. For example, for Engine
                         /// `projects/*/locations/global/collections/*/engines/my-engine`, you can use
                         /// `projects/*/locations/global/collections/*/engines/my-engine/servingConfigs/my-engine` for
                         /// your RecommendationService.Recommend requests.
@@ -3001,7 +3001,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                             /// `projects/*/locations/global/collections/*/engines/*/servingConfigs/*`, or
                             /// `projects/*/locations/global/collections/*/dataStores/*/servingConfigs/*` One default
                             /// serving config is created along with your recommendation engine creation. The engine ID
-                            /// will be used as the ID of the default serving config. For example, for Engine
+                            /// is used as the ID of the default serving config. For example, for Engine
                             /// `projects/*/locations/global/collections/*/engines/my-engine`, you can use
                             /// `projects/*/locations/global/collections/*/engines/my-engine/servingConfigs/my-engine`
                             /// for your RecommendationService.Recommend requests.
@@ -4890,7 +4890,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         }
 
                         /// <summary>
-                        /// Bulk import of User events. Request processing might be synchronous. Events that already
+                        /// Bulk import of user events. Request processing might be synchronous. Events that already
                         /// exist are skipped. Use this method for backfilling historical user events.
                         /// Operation.response is of type ImportResponse. Note that it is possible for a subset of the
                         /// items to be successfully inserted. Operation.metadata is of type ImportMetadata.
@@ -4906,7 +4906,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         }
 
                         /// <summary>
-                        /// Bulk import of User events. Request processing might be synchronous. Events that already
+                        /// Bulk import of user events. Request processing might be synchronous. Events that already
                         /// exist are skipped. Use this method for backfilling historical user events.
                         /// Operation.response is of type ImportResponse. Note that it is possible for a subset of the
                         /// items to be successfully inserted. Operation.metadata is of type ImportMetadata.
@@ -6590,8 +6590,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// Required. Full resource name of a ServingConfig:
                         /// `projects/*/locations/global/collections/*/engines/*/servingConfigs/*`, or
                         /// `projects/*/locations/global/collections/*/dataStores/*/servingConfigs/*` One default
-                        /// serving config is created along with your recommendation engine creation. The engine ID will
-                        /// be used as the ID of the default serving config. For example, for Engine
+                        /// serving config is created along with your recommendation engine creation. The engine ID is
+                        /// used as the ID of the default serving config. For example, for Engine
                         /// `projects/*/locations/global/collections/*/engines/my-engine`, you can use
                         /// `projects/*/locations/global/collections/*/engines/my-engine/servingConfigs/my-engine` for
                         /// your RecommendationService.Recommend requests.
@@ -6617,7 +6617,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                             /// `projects/*/locations/global/collections/*/engines/*/servingConfigs/*`, or
                             /// `projects/*/locations/global/collections/*/dataStores/*/servingConfigs/*` One default
                             /// serving config is created along with your recommendation engine creation. The engine ID
-                            /// will be used as the ID of the default serving config. For example, for Engine
+                            /// is used as the ID of the default serving config. For example, for Engine
                             /// `projects/*/locations/global/collections/*/engines/my-engine`, you can use
                             /// `projects/*/locations/global/collections/*/engines/my-engine/servingConfigs/my-engine`
                             /// for your RecommendationService.Recommend requests.
@@ -7971,7 +7971,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                             public virtual string Parent { get; private set; }
 
                             /// <summary>
-                            /// Required. The ID to use for the Document, which will become the final component of the
+                            /// Required. The ID to use for the Document, which becomes the final component of the
                             /// Document.name. If the caller does not have permission to create the Document, regardless
                             /// of whether or not it exists, a `PERMISSION_DENIED` error is returned. This field must be
                             /// unique among all Documents with the same parent. Otherwise, an `ALREADY_EXISTS` error is
@@ -8136,8 +8136,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                         /// <summary>
                         /// Bulk import of multiple Documents. Request processing may be synchronous. Non-existing items
-                        /// will be created. Note: It is possible for a subset of the Documents to be successfully
-                        /// updated.
+                        /// are created. Note: It is possible for a subset of the Documents to be successfully updated.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">
@@ -8152,8 +8151,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                         /// <summary>
                         /// Bulk import of multiple Documents. Request processing may be synchronous. Non-existing items
-                        /// will be created. Note: It is possible for a subset of the Documents to be successfully
-                        /// updated.
+                        /// are created. Note: It is possible for a subset of the Documents to be successfully updated.
                         /// </summary>
                         public class ImportRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleLongrunningOperation>
                         {
@@ -8238,8 +8236,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Maximum number of Documents to return. If unspecified, defaults to 100. The maximum
-                            /// allowed value is 1000. Values above 1000 will be coerced to 1000. If this field is
-                            /// negative, an `INVALID_ARGUMENT` error is returned.
+                            /// allowed value is 1000. Values above 1000 are set to 1000. If this field is negative, an
+                            /// `INVALID_ARGUMENT` error is returned.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> PageSize { get; set; }
@@ -8326,14 +8324,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                             public virtual string Name { get; private set; }
 
                             /// <summary>
-                            /// If set to true, and the Document is not found, a new Document will be created.
+                            /// If set to `true` and the Document is not found, a new Document is be created.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<bool> AllowMissing { get; set; }
 
                             /// <summary>
-                            /// Indicates which fields in the provided imported 'document' to update. If not set, will
-                            /// by default update all fields.
+                            /// Indicates which fields in the provided imported 'document' to update. If not set, by
+                            /// default updates all fields.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual object UpdateMask { get; set; }
@@ -9512,7 +9510,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// Required. The ID to use for the Schema, which will become the final component of the
+                        /// Required. The ID to use for the Schema, which becomes the final component of the
                         /// Schema.name. This field should conform to [RFC-1034](https://tools.ietf.org/html/rfc1034)
                         /// standard with a length limit of 63 characters.
                         /// </summary>
@@ -9688,8 +9686,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                         /// <summary>
                         /// The maximum number of Schemas to return. The service may return fewer than this value. If
-                        /// unspecified, at most 100 Schemas will be returned. The maximum value is 1000; values above
-                        /// 1000 will be coerced to 1000.
+                        /// unspecified, at most 100 Schemas are returned. The maximum value is 1000; values above 1000
+                        /// are set to 1000.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
@@ -9774,8 +9772,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         public virtual string Name { get; private set; }
 
                         /// <summary>
-                        /// If set to true, and the Schema is not found, a new Schema will be created. In this
-                        /// situation, `update_mask` is ignored.
+                        /// If set to true, and the Schema is not found, a new Schema is created. In this situation,
+                        /// `update_mask` is ignored.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<bool> AllowMissing { get; set; }
@@ -10123,8 +10121,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     /// Required. Full resource name of a ServingConfig:
                     /// `projects/*/locations/global/collections/*/engines/*/servingConfigs/*`, or
                     /// `projects/*/locations/global/collections/*/dataStores/*/servingConfigs/*` One default serving
-                    /// config is created along with your recommendation engine creation. The engine ID will be used as
-                    /// the ID of the default serving config. For example, for Engine
+                    /// config is created along with your recommendation engine creation. The engine ID is used as the
+                    /// ID of the default serving config. For example, for Engine
                     /// `projects/*/locations/global/collections/*/engines/my-engine`, you can use
                     /// `projects/*/locations/global/collections/*/engines/my-engine/servingConfigs/my-engine` for your
                     /// RecommendationService.Recommend requests.
@@ -10149,8 +10147,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// Required. Full resource name of a ServingConfig:
                         /// `projects/*/locations/global/collections/*/engines/*/servingConfigs/*`, or
                         /// `projects/*/locations/global/collections/*/dataStores/*/servingConfigs/*` One default
-                        /// serving config is created along with your recommendation engine creation. The engine ID will
-                        /// be used as the ID of the default serving config. For example, for Engine
+                        /// serving config is created along with your recommendation engine creation. The engine ID is
+                        /// used as the ID of the default serving config. For example, for Engine
                         /// `projects/*/locations/global/collections/*/engines/my-engine`, you can use
                         /// `projects/*/locations/global/collections/*/engines/my-engine/servingConfigs/my-engine` for
                         /// your RecommendationService.Recommend requests.
@@ -11562,7 +11560,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     }
 
                     /// <summary>
-                    /// Bulk import of User events. Request processing might be synchronous. Events that already exist
+                    /// Bulk import of user events. Request processing might be synchronous. Events that already exist
                     /// are skipped. Use this method for backfilling historical user events. Operation.response is of
                     /// type ImportResponse. Note that it is possible for a subset of the items to be successfully
                     /// inserted. Operation.metadata is of type ImportMetadata.
@@ -11578,7 +11576,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     }
 
                     /// <summary>
-                    /// Bulk import of User events. Request processing might be synchronous. Events that already exist
+                    /// Bulk import of user events. Request processing might be synchronous. Events that already exist
                     /// are skipped. Use this method for backfilling historical user events. Operation.response is of
                     /// type ImportResponse. Note that it is possible for a subset of the items to be successfully
                     /// inserted. Operation.metadata is of type ImportMetadata.
@@ -14177,7 +14175,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>
         /// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on
         /// DataStore: If unspecified, default to `GENERIC`. Vertical on Engine has to match vertical of the DataStore
-        /// liniked to the engine.
+        /// linked to the engine.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("industryVertical")]
         public virtual string IndustryVertical { get; set; }
@@ -17046,7 +17044,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>
         /// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on
         /// DataStore: If unspecified, default to `GENERIC`. Vertical on Engine has to match vertical of the DataStore
-        /// liniked to the engine.
+        /// linked to the engine.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("industryVertical")]
         public virtual string IndustryVertical { get; set; }
@@ -18762,7 +18760,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>Represents a turn, including a query from the user and a answer from service.</summary>
     public class GoogleCloudDiscoveryengineV1alphaSessionTurn : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The resource name of the answer to the user query.</summary>
+        /// <summary>
+        /// The resource name of the answer to the user query. Only set if the answer generation (/answer API call)
+        /// happened in this turn.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("answer")]
         public virtual string Answer { get; set; }
 
@@ -19433,7 +19434,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// The session resource name. Not required. When session field is not set, the API is in sessionless mode. We
-        /// support auto session mode: users can use the wildcard symbol “-” as session id. A new id will be
+        /// support auto session mode: users can use the wildcard symbol `-` as session ID. A new ID will be
         /// automatically generated and assigned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("session")]
@@ -21967,9 +21968,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual System.Collections.Generic.IList<string> PromotionIds { get; set; }
 
         /// <summary>
-        /// Quantity of the Document associated with the user event. Defaults to 1. For example, this field will be 2 if
-        /// two quantities of the same Document are involved in a `add-to-cart` event. Required for events of the
-        /// following event types: * `add-to-cart` * `purchase`
+        /// Quantity of the Document associated with the user event. Defaults to 1. For example, this field is 2 if two
+        /// quantities of the same Document are involved in a `add-to-cart` event. Required for events of the following
+        /// event types: * `add-to-cart` * `purchase`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
         public virtual System.Nullable<int> Quantity { get; set; }
@@ -22253,7 +22254,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>
         /// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on
         /// DataStore: If unspecified, default to `GENERIC`. Vertical on Engine has to match vertical of the DataStore
-        /// liniked to the engine.
+        /// linked to the engine.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("industryVertical")]
         public virtual string IndustryVertical { get; set; }
@@ -22505,7 +22506,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     public class GoogleCloudDiscoveryengineV1betaFirestoreSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The Firestore collection to copy the data from with a length limit of 1,500 characters.
+        /// Required. The Firestore collection (or entity) to copy the data from with a length limit of 1,500
+        /// characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("collectionId")]
         public virtual string CollectionId { get; set; }
@@ -22547,15 +22549,15 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// arbitrary format that conforms to the defined Schema of the data store. This can only be used by the GENERIC
         /// Data Store vertical. * `csv`: A CSV file with header conforming to the defined Schema of the data store.
         /// Each entry after the header is imported as a Document. This can only be used by the GENERIC Data Store
-        /// vertical. Supported values for user even imports: * `user_event` (default): One JSON UserEvent per line.
+        /// vertical. Supported values for user event imports: * `user_event` (default): One JSON UserEvent per line.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSchema")]
         public virtual string DataSchema { get; set; }
 
         /// <summary>
-        /// Required. Cloud Storage URIs to input files. URI can be up to 2000 characters long. URIs can match the full
-        /// object path (for example, `gs://bucket/directory/object.json`) or a pattern matching one or more files, such
-        /// as `gs://bucket/directory/*.json`. A request can contain at most 100 files (or 100,000 files if
+        /// Required. Cloud Storage URIs to input files. Each URI can be up to 2000 characters long. URIs can match the
+        /// full object path (for example, `gs://bucket/directory/object.json`) or a pattern matching one or more files,
+        /// such as `gs://bucket/directory/*.json`. A request can contain at most 100 files (or 100,000 files if
         /// `data_schema` is `content`). Each file can be up to 2 GB (or 100 MB if `data_schema` is `content`).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputUris")]
@@ -23717,30 +23719,30 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// ANY("Green"))` If `attributeFilteringSyntax` is set to true under the `params` field, then attribute-based
         /// expressions are expected instead of the above described tag-based syntax. Examples: * (launguage: ANY("en",
         /// "es")) AND NOT (categories: ANY("Movie")) * (available: true) AND (launguage: ANY("en", "es")) OR
-        /// (categories: ANY("Movie")) If your filter blocks all results, the API will return generic (unfiltered)
-        /// popular Documents. If you only want results strictly matching the filters, set `strictFiltering` to True in
-        /// RecommendRequest.params to receive empty results instead. Note that the API will never return Documents with
-        /// `storageStatus` of `EXPIRED` or `DELETED` regardless of filter choices.
+        /// (categories: ANY("Movie")) If your filter blocks all results, the API returns generic (unfiltered) popular
+        /// Documents. If you only want results strictly matching the filters, set `strictFiltering` to `true` in
+        /// RecommendRequest.params to receive empty results instead. Note that the API never returns Documents with
+        /// `storageStatus` as `EXPIRED` or `DELETED` regardless of filter choices.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
 
         /// <summary>
         /// Maximum number of results to return. Set this property to the number of recommendation results needed. If
-        /// zero, the service will choose a reasonable default. The maximum allowed value is 100. Values above 100 will
-        /// be coerced to 100.
+        /// zero, the service chooses a reasonable default. The maximum allowed value is 100. Values above 100 are set
+        /// to 100.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
         public virtual System.Nullable<int> PageSize { get; set; }
 
         /// <summary>
         /// Additional domain specific parameters for the recommendations. Allowed values: * `returnDocument`: Boolean.
-        /// If set to true, the associated Document object will be returned in
+        /// If set to `true`, the associated Document object is returned in
         /// RecommendResponse.RecommendationResult.document. * `returnScore`: Boolean. If set to true, the
-        /// recommendation 'score' corresponding to each returned Document will be set in
-        /// RecommendResponse.RecommendationResult.metadata. The given 'score' indicates the probability of a Document
+        /// recommendation score corresponding to each returned Document is set in
+        /// RecommendResponse.RecommendationResult.metadata. The given score indicates the probability of a Document
         /// conversion given the user's context and history. * `strictFiltering`: Boolean. True by default. If set to
-        /// false, the service will return generic (unfiltered) popular Documents instead of empty if your filter blocks
+        /// `false`, the service returns generic (unfiltered) popular Documents instead of empty if your filter blocks
         /// all recommendation results. * `diversityLevel`: String. Default empty. If set to be non-empty, then it needs
         /// to be one of: * `no-diversity` * `low-diversity` * `medium-diversity` * `high-diversity` * `auto-diversity`
         /// This gives request-level control and adjusts recommendation results based on Document category. *
@@ -23776,7 +23778,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual System.Collections.Generic.IDictionary<string, string> UserLabels { get; set; }
 
         /// <summary>
-        /// Use validate only mode for this recommendation query. If set to true, a fake model will be used that returns
+        /// Use validate only mode for this recommendation query. If set to `true`, a fake model is used that returns
         /// arbitrary Document IDs. Note that the validate only mode should only be used for testing the API, or if the
         /// model is not ready.
         /// </summary>
@@ -23831,7 +23833,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual string Id { get; set; }
 
         /// <summary>
-        /// Additional Document metadata / annotations. Possible values: * `score`: Recommendation score in double
+        /// Additional Document metadata or annotations. Possible values: * `score`: Recommendation score in double
         /// value. Is set if `returnScore` is set to true in RecommendRequest.params.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
@@ -23966,7 +23968,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     {
         /// <summary>
         /// Boost specification to boost certain documents. For more information on boosting, see
-        /// [Boosting](https://cloud.google.com/retail/docs/boosting#boost)
+        /// [Boosting](https://cloud.google.com/generative-ai-app-builder/docs/boost-search-results)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boostSpec")]
         public virtual GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpec BoostSpec { get; set; }
@@ -23994,7 +23996,11 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("contentSearchSpec")]
         public virtual GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpec ContentSearchSpec { get; set; }
 
-        /// <summary>A list of data store specs to apply on a search call.</summary>
+        /// <summary>
+        /// Specs defining dataStores to filter on in a search call and configurations for those dataStores. This is
+        /// only considered for engines with multiple dataStores use case. For single dataStore within an engine, they
+        /// should use the specs at the top level.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStoreSpecs")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaSearchRequestDataStoreSpec> DataStoreSpecs { get; set; }
 
@@ -24069,10 +24075,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>
         /// Additional search parameters. For public website search only, supported values are: * `user_country_code`:
         /// string. Default empty. If set to non-empty, results are restricted or boosted based on the location
-        /// provided. Example: user_country_code: "au" For available codes see [Country
+        /// provided. For example, `user_country_code: "au"` For available codes see [Country
         /// Codes](https://developers.google.com/custom-search/docs/json_api_reference#countryCodes) * `search_type`:
         /// double. Default empty. Enables non-webpage searching depending on the value. The only valid non-default
-        /// value is 1, which enables image searching. Example: search_type: 1
+        /// value is 1, which enables image searching. For example, `search_type: 1`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("params")]
         public virtual System.Collections.Generic.IDictionary<string, object> Params__ { get; set; }
@@ -24456,7 +24462,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A struct to define data stores to filter on in a search call.</summary>
+    /// <summary>
+    /// A struct to define data stores to filter on in a search call and configurations for those data stores. A maximum
+    /// of 1 DataStoreSpec per data_store is allowed. Otherwise, an `INVALID_ARGUMENT` error is returned.
+    /// </summary>
     public class GoogleCloudDiscoveryengineV1betaSearchRequestDataStoreSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -24541,9 +24550,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual GoogleCloudDiscoveryengineV1betaSearchRequestFacetSpecFacetKey FacetKey { get; set; }
 
         /// <summary>
-        /// Maximum of facet values that should be returned for this facet. If unspecified, defaults to 20. The maximum
-        /// allowed value is 300. Values above 300 are coerced to 300. If this field is negative, an `INVALID_ARGUMENT`
-        /// is returned.
+        /// Maximum facet values that are returned for this facet. If unspecified, defaults to 20. The maximum allowed
+        /// value is 300. Values above 300 are coerced to 300. If this field is negative, an `INVALID_ARGUMENT` is
+        /// returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("limit")]
         public virtual System.Nullable<int> Limit { get; set; }
@@ -24563,7 +24572,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual System.Nullable<bool> CaseInsensitive { get; set; }
 
         /// <summary>
-        /// Only get facet values that contains the given strings. For example, suppose "category" has three values
+        /// Only get facet values that contain the given strings. For example, suppose "category" has three values
         /// "Action &amp;gt; 2022", "Action &amp;gt; 2021" and "Sci-Fi &amp;gt; 2022". If set "contains" to "2022", the
         /// "category" facet only contains "Action &amp;gt; 2022" and "Sci-Fi &amp;gt; 2022". Only supported on textual
         /// fields. Maximum is 10.
@@ -24650,8 +24659,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     public class GoogleCloudDiscoveryengineV1betaSearchRequestSpellCorrectionSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The mode under which spell correction should take effect to replace the original search query. Default to
-        /// Mode.AUTO.
+        /// The mode under which spell correction replaces the original search query. Defaults to Mode.AUTO.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
         public virtual string Mode { get; set; }
@@ -24740,7 +24748,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual System.Nullable<bool> DynamicFacet { get; set; }
 
         /// <summary>
-        /// The key for this facet. E.g., "colors" or "price". It matches SearchRequest.FacetSpec.FacetKey.key.
+        /// The key for this facet. For example, `"colors"` or `"price"`. It matches
+        /// SearchRequest.FacetSpec.FacetKey.key.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
@@ -24813,11 +24822,11 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>Useful attribute for search result refinements.</summary>
     public class GoogleCloudDiscoveryengineV1betaSearchResponseGuidedSearchResultRefinementAttribute : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Attribute key used to refine the results e.g. 'movie_type'.</summary>
+        /// <summary>Attribute key used to refine the results. For example, `"movie_type"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributeKey")]
         public virtual string AttributeKey { get; set; }
 
-        /// <summary>Attribute value used to refine the results e.g. 'drama'.</summary>
+        /// <summary>Attribute value used to refine the results. For example, `"drama"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributeValue")]
         public virtual string AttributeValue { get; set; }
 
@@ -24847,7 +24856,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     public class GoogleCloudDiscoveryengineV1betaSearchResponseSearchResult : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The document data snippet in the search response. Only fields that are marked as retrievable are populated.
+        /// The document data snippet in the search response. Only fields that are marked as `retrievable` are
+        /// populated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("document")]
         public virtual GoogleCloudDiscoveryengineV1betaDocument Document { get; set; }
@@ -24864,7 +24874,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Summary of the top N search result specified by the summary spec.</summary>
+    /// <summary>Summary of the top N search results specified by the summary spec.</summary>
     public class GoogleCloudDiscoveryengineV1betaSearchResponseSummary : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A collection of Safety Attribute categories and their associated confidence scores.</summary>
@@ -25390,7 +25400,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>Represents a turn, including a query from the user and a answer from service.</summary>
     public class GoogleCloudDiscoveryengineV1betaSessionTurn : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The resource name of the answer to the user query.</summary>
+        /// <summary>
+        /// The resource name of the answer to the user query. Only set if the answer generation (/answer API call)
+        /// happened in this turn.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("answer")]
         public virtual string Answer { get; set; }
 
@@ -26077,7 +26090,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
     /// <summary>
     /// UserEvent captures all metadata information Discovery Engine API needs to know about how end users interact with
-    /// customers' website.
+    /// your website.
     /// </summary>
     public class GoogleCloudDiscoveryengineV1betaUserEvent : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -26241,7 +26254,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// A list of identifiers for the independent experiment groups this user event belongs to. This is used to
-        /// distinguish between user events associated with different experiment setups on the customer end.
+        /// distinguish between user events associated with different experiment setups.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagIds")]
         public virtual System.Collections.Generic.IList<string> TagIds { get; set; }
