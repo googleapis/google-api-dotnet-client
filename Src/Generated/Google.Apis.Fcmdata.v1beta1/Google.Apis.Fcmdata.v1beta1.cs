@@ -430,11 +430,18 @@ namespace Google.Apis.Fcmdata.v1beta1.Data
     public class GoogleFirebaseFcmDataV1beta1Data : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Count of messages accepted by FCM intended to Android devices. The targeted device must have opted in to the
-        /// collection of usage and diagnostic information.
+        /// Count of messages accepted by FCM intended for Android devices. The targeted device must have opted in to
+        /// the collection of usage and diagnostic information.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("countMessagesAccepted")]
         public virtual System.Nullable<long> CountMessagesAccepted { get; set; }
+
+        /// <summary>
+        /// Count of notifications accepted by FCM intended for Android devices. The targeted device must have opted in
+        /// to the collection of usage and diagnostic information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countNotificationsAccepted")]
+        public virtual System.Nullable<long> CountNotificationsAccepted { get; set; }
 
         /// <summary>
         /// Additional information about delivery performance for messages that were successfully delivered.
@@ -449,6 +456,10 @@ namespace Google.Apis.Fcmdata.v1beta1.Data
         /// <summary>Mutually exclusive breakdown of message delivery outcomes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageOutcomePercents")]
         public virtual GoogleFirebaseFcmDataV1beta1MessageOutcomePercents MessageOutcomePercents { get; set; }
+
+        /// <summary>Additional insights about proxy notification delivery.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proxyNotificationInsightPercents")]
+        public virtual GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents ProxyNotificationInsightPercents { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -590,6 +601,58 @@ namespace Google.Apis.Fcmdata.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pending")]
         public virtual System.Nullable<float> Pending { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Additional information about proxy notification delivery. All percentages are calculated with
+    /// countNotificationsAccepted as the denominator.
+    /// </summary>
+    public class GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The percentage of accepted notifications that failed to be proxied. This is usually caused by exceptions
+        /// that occurred while calling
+        /// [notifyAsPackage](https://developer.android.com/reference/android/app/NotificationManager#notifyAsPackage%28java.lang.String,%20java.lang.String,%20int,%20android.app.Notification%29).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failed")]
+        public virtual System.Nullable<float> Failed { get; set; }
+
+        /// <summary>
+        /// The percentage of accepted notifications that were successfully proxied by [Google Play
+        /// services](https://developers.google.com/android/guides/overview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proxied")]
+        public virtual System.Nullable<float> Proxied { get; set; }
+
+        /// <summary>
+        /// The percentage of accepted notifications that were skipped because the messages were not throttled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skippedNotThrottled")]
+        public virtual System.Nullable<float> SkippedNotThrottled { get; set; }
+
+        /// <summary>
+        /// The percentage of accepted notifications that were skipped because the app disallowed these messages to be
+        /// proxied.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skippedOptedOut")]
+        public virtual System.Nullable<float> SkippedOptedOut { get; set; }
+
+        /// <summary>
+        /// The percentage of accepted notifications that were skipped because configurations required for notifications
+        /// to be proxied were missing.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skippedUnconfigured")]
+        public virtual System.Nullable<float> SkippedUnconfigured { get; set; }
+
+        /// <summary>
+        /// The percentage of accepted notifications that were skipped because proxy notification is unsupported for the
+        /// recipient.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skippedUnsupported")]
+        public virtual System.Nullable<float> SkippedUnsupported { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

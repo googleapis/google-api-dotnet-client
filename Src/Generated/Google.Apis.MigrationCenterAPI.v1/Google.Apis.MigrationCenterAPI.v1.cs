@@ -5515,7 +5515,7 @@ namespace Google.Apis.MigrationCenterAPI.v1.Data
     public class AssetPerformanceData : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Daily resource usage aggregations. Contains all of the data available for an asset, up to the last 40 days.
+        /// Daily resource usage aggregations. Contains all of the data available for an asset, up to the last 420 days.
         /// Aggregations are sorted from oldest to most recent.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dailyResourceUsageAggregations")]

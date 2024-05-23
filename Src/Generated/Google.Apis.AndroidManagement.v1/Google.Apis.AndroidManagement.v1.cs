@@ -2564,6 +2564,13 @@ namespace Google.Apis.AndroidManagement.v1
             }
 
             /// <summary>
+            /// Optional. Email address used to prefill the admin field of the enterprise signup form. This value is a
+            /// hint only and can be altered by the user.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("adminEmail", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string AdminEmail { get; set; }
+
+            /// <summary>
             /// The callback URL that the admin will be redirected to after successfully creating an enterprise. Before
             /// redirecting there the system will add a query parameter to this URL named enterpriseToken which will
             /// contain an opaque token to be used for the create enterprise request. The URL will be parsed then
@@ -2590,6 +2597,14 @@ namespace Google.Apis.AndroidManagement.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
+                RequestParameters.Add("adminEmail", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "adminEmail",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
                 RequestParameters.Add("callbackUrl", new Google.Apis.Discovery.Parameter
                 {
                     Name = "callbackUrl",
@@ -3291,7 +3306,9 @@ namespace Google.Apis.AndroidManagement.v1.Data
     /// <summary>Batched event logs of events from the device.</summary>
     public class BatchUsageLogEvents : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The name of the device in the form ‘enterprises/{enterpriseId}/devices/{deviceId}’</summary>
+        /// <summary>
+        /// If present, the name of the device in the form ‘enterprises/{enterpriseId}/devices/{deviceId}’
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("device")]
         public virtual string Device { get; set; }
 
@@ -3339,7 +3356,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual System.Collections.Generic.IList<UsageLogEvent> UsageLogEvents { get; set; }
 
         /// <summary>
-        /// The resource name of the user that owns this device in the form ‘enterprises/{enterpriseId}/users/{userId}’.
+        /// If present, the resource name of the user that owns this device in the form
+        /// ‘enterprises/{enterpriseId}/users/{userId}’.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("user")]
         public virtual string User { get; set; }
@@ -6782,7 +6800,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enterprise")]
         public virtual string Enterprise { get; set; }
 
-        /// <summary>IMEI number of the GSM device. For example, A1000031212.</summary>
+        /// <summary>For corporate-owned devices, IMEI number of the GSM device. For example, A1000031212.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imei")]
         public virtual string Imei { get; set; }
 
@@ -6790,7 +6808,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("managementMode")]
         public virtual string ManagementMode { get; set; }
 
-        /// <summary>MEID number of the CDMA device. For example, A00000292788E1.</summary>
+        /// <summary>For corporate-owned devices, MEID number of the CDMA device. For example, A00000292788E1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("meid")]
         public virtual string Meid { get; set; }
 
@@ -6806,7 +6824,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ownership")]
         public virtual string Ownership { get; set; }
 
-        /// <summary>The device serial number.</summary>
+        /// <summary>For corporate-owned devices, The device serial number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serialNumber")]
         public virtual string SerialNumber { get; set; }
 

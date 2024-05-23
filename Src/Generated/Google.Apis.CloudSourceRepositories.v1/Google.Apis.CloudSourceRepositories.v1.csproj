@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.CloudSourceRepositories.v1 Client Library</Title>
-    <Version>1.68.0.3345</Version>
+    <Version>1.68.0.3427</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2024 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
@@ -17,7 +17,7 @@
       Google APIs Client Library for working with Sourcerepo v1.
 
       Product documentation is available at:
-      https://cloud.google.com/source-repositories/docs/apis
+      https://cloud.google.com/source-repositories/docs
 
       API reference documentation for this package is available at:
       https://googleapis.dev/dotnet/Google.Apis.CloudSourceRepositories.v1/latest/api/Google.Apis.CloudSourceRepositories.v1.html

@@ -5321,8 +5321,7 @@ namespace Google.Apis.Firestore.v1.Data
         private object _deleteTime;
 
         /// <summary>
-        /// Output only. The timestamp at which this database was soft deleted. Only set if the database has been soft
-        /// deleted.
+        /// Output only. The timestamp at which this database was deleted. Only set if the database has been deleted.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
         public virtual string DeleteTimeRaw
@@ -5704,7 +5703,10 @@ namespace Google.Apis.Firestore.v1.Data
     /// <summary>The request for FirestoreAdmin.ExportDocuments.</summary>
     public class GoogleFirestoreAdminV1ExportDocumentsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Which collection ids to export. Unspecified means all collections.</summary>
+        /// <summary>
+        /// Which collection ids to export. Unspecified means all collections. Each collection id in this list must be
+        /// unique.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("collectionIds")]
         public virtual System.Collections.Generic.IList<string> CollectionIds { get; set; }
 
@@ -6055,7 +6057,10 @@ namespace Google.Apis.Firestore.v1.Data
     /// <summary>The request for FirestoreAdmin.ImportDocuments.</summary>
     public class GoogleFirestoreAdminV1ImportDocumentsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Which collection ids to import. Unspecified means all collections included in the import.</summary>
+        /// <summary>
+        /// Which collection ids to import. Unspecified means all collections included in the import. Each collection id
+        /// in this list must be unique.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("collectionIds")]
         public virtual System.Collections.Generic.IList<string> CollectionIds { get; set; }
 

@@ -3571,6 +3571,24 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual System.Nullable<int> Version { get; set; }
     }
 
+    /// <summary>
+    /// A PortsConfig defines a range of ports. Both first and last are inclusive. To specify a single port, both first
+    /// and last should be same.
+    /// </summary>
+    public class PortRange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Starting port number for the current range of ports.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("first")]
+        public virtual System.Nullable<int> First { get; set; }
+
+        /// <summary>Required. Ending port number for the current range of ports.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("last")]
+        public virtual System.Nullable<int> Last { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration options for private workstation clusters.</summary>
     public class PrivateClusterConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4158,6 +4176,13 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
     /// </summary>
     public class WorkstationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Single or Range of ports externally accessible in the workstation. If not specified defaults to
+        /// ports 22, 80 and ports 1024-65535.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedPorts")]
+        public virtual System.Collections.Generic.IList<PortRange> AllowedPorts { get; set; }
+
         /// <summary>Optional. Client-specified annotations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }

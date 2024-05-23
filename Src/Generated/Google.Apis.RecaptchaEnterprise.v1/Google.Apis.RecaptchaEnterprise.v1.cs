@@ -1772,6 +1772,13 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
+        /// Output only. Assessment returned when a site key, a token, and a phone number as `user_id` are provided.
+        /// Account defender and SMS toll fraud protection need to be enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneFraudAssessment")]
+        public virtual GoogleCloudRecaptchaenterpriseV1PhoneFraudAssessment PhoneFraudAssessment { get; set; }
+
+        /// <summary>
         /// Optional. The private password leak verification field contains the parameters that are used to to check for
         /// leaks privately without sharing user credentials.
         /// </summary>
@@ -2535,6 +2542,17 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Assessment for Phone Fraud</summary>
+    public class GoogleCloudRecaptchaenterpriseV1PhoneFraudAssessment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Assessment of this phone event for risk of sms toll fraud.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("smsTollFraudVerdict")]
+        public virtual GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdict SmsTollFraudVerdict { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Private password leak verification info.</summary>
     public class GoogleCloudRecaptchaenterpriseV1PrivatePasswordLeakVerification : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2761,6 +2779,23 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         /// <summary>The queried memberships.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relatedAccountGroupMemberships")]
         public virtual System.Collections.Generic.IList<GoogleCloudRecaptchaenterpriseV1RelatedAccountGroupMembership> RelatedAccountGroupMemberships { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about sms toll fraud</summary>
+    public class GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdict : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Reasons contributing to the SMS toll fraud verdict.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reasons")]
+        public virtual System.Collections.Generic.IList<string> Reasons { get; set; }
+
+        /// <summary>
+        /// Output only. Probability of an sms event being fraudulent. Values are from 0.0 (lowest) to 1.0 (highest).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("risk")]
+        public virtual System.Nullable<float> Risk { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

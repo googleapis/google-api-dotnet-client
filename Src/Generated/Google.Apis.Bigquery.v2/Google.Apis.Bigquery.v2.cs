@@ -11646,10 +11646,7 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("replicationError")]
         public virtual ErrorProto ReplicationError { get; set; }
 
-        /// <summary>
-        /// Optional. Specifies the interval at which the source table is polled for updates. It's Optional. If not
-        /// specified, default replication interval would be applied.
-        /// </summary>
+        /// <summary>Required. Specifies the interval at which the source table is polled for updates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replicationIntervalMs")]
         public virtual System.Nullable<long> ReplicationIntervalMs { get; set; }
 

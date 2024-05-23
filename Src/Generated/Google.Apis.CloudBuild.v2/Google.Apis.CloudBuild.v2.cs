@@ -2120,7 +2120,7 @@ namespace Google.Apis.CloudBuild.v2.Data
         public virtual UserCredential AuthorizerCredential { get; set; }
 
         /// <summary>
-        /// Required. The URI of the Bitbucket Data Center instance or cluster this connection is for.
+        /// Optional. The URI of the Bitbucket Data Center instance or cluster this connection is for.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hostUri")]
         public virtual string HostUri { get; set; }
@@ -2208,7 +2208,7 @@ namespace Google.Apis.CloudBuild.v2.Data
     /// </summary>
     public class Connection : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Allows clients to store small amounts of arbitrary data.</summary>
+        /// <summary>Optional. Allows clients to store small amounts of arbitrary data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
 
@@ -2258,8 +2258,8 @@ namespace Google.Apis.CloudBuild.v2.Data
         }
 
         /// <summary>
-        /// If disabled is set to true, functionality is disabled for this connection. Repository based API methods and
-        /// webhooks processing for repositories in this connection will be disabled.
+        /// Optional. If disabled is set to true, functionality is disabled for this connection. Repository based API
+        /// methods and webhooks processing for repositories in this connection will be disabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
         public virtual System.Nullable<bool> Disabled { get; set; }
@@ -2619,13 +2619,14 @@ namespace Google.Apis.CloudBuild.v2.Data
     /// <summary>Configuration for connections to github.com.</summary>
     public class GitHubConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>GitHub App installation id.</summary>
+        /// <summary>Optional. GitHub App installation id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appInstallationId")]
         public virtual System.Nullable<long> AppInstallationId { get; set; }
 
         /// <summary>
-        /// OAuth credential of the account that authorized the Cloud Build GitHub App. It is recommended to use a robot
-        /// account instead of a human user account. The OAuth token must be tied to the Cloud Build GitHub App.
+        /// Optional. OAuth credential of the account that authorized the Cloud Build GitHub App. It is recommended to
+        /// use a robot account instead of a human user account. The OAuth token must be tied to the Cloud Build GitHub
+        /// App.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorizerCredential")]
         public virtual OAuthCredential AuthorizerCredential { get; set; }
@@ -2709,15 +2710,15 @@ namespace Google.Apis.CloudBuild.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("apiKey")]
         public virtual string ApiKey { get; set; }
 
-        /// <summary>Id of the GitHub App created from the manifest.</summary>
+        /// <summary>Optional. Id of the GitHub App created from the manifest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appId")]
         public virtual System.Nullable<long> AppId { get; set; }
 
-        /// <summary>ID of the installation of the GitHub App.</summary>
+        /// <summary>Optional. ID of the installation of the GitHub App.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appInstallationId")]
         public virtual System.Nullable<long> AppInstallationId { get; set; }
 
-        /// <summary>The URL-friendly name of the GitHub App.</summary>
+        /// <summary>Optional. The URL-friendly name of the GitHub App.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appSlug")]
         public virtual string AppSlug { get; set; }
 
@@ -2726,7 +2727,7 @@ namespace Google.Apis.CloudBuild.v2.Data
         public virtual string HostUri { get; set; }
 
         /// <summary>
-        /// SecretManager resource containing the private key of the GitHub App, formatted as
+        /// Optional. SecretManager resource containing the private key of the GitHub App, formatted as
         /// `projects/*/secrets/*/versions/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateKeySecretVersion")]
@@ -2737,19 +2738,20 @@ namespace Google.Apis.CloudBuild.v2.Data
         public virtual string ServerVersion { get; set; }
 
         /// <summary>
-        /// Configuration for using Service Directory to privately connect to a GitHub Enterprise server. This should
-        /// only be set if the GitHub Enterprise server is hosted on-premises and not reachable by public internet. If
-        /// this field is left empty, calls to the GitHub Enterprise server will be made over the public internet.
+        /// Optional. Configuration for using Service Directory to privately connect to a GitHub Enterprise server. This
+        /// should only be set if the GitHub Enterprise server is hosted on-premises and not reachable by public
+        /// internet. If this field is left empty, calls to the GitHub Enterprise server will be made over the public
+        /// internet.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceDirectoryConfig")]
         public virtual GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig ServiceDirectoryConfig { get; set; }
 
-        /// <summary>SSL certificate to use for requests to GitHub Enterprise.</summary>
+        /// <summary>Optional. SSL certificate to use for requests to GitHub Enterprise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sslCa")]
         public virtual string SslCa { get; set; }
 
         /// <summary>
-        /// SecretManager resource containing the webhook secret of the GitHub App, formatted as
+        /// Optional. SecretManager resource containing the webhook secret of the GitHub App, formatted as
         /// `projects/*/secrets/*/versions/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webhookSecretSecretVersion")]
@@ -2767,8 +2769,8 @@ namespace Google.Apis.CloudBuild.v2.Data
         public virtual UserCredential AuthorizerCredential { get; set; }
 
         /// <summary>
-        /// The URI of the GitLab Enterprise host this connection is for. If not specified, the default value is
-        /// https://gitlab.com.
+        /// Optional. The URI of the GitLab Enterprise host this connection is for. If not specified, the default value
+        /// is https://gitlab.com.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hostUri")]
         public virtual string HostUri { get; set; }
@@ -2782,14 +2784,15 @@ namespace Google.Apis.CloudBuild.v2.Data
         public virtual string ServerVersion { get; set; }
 
         /// <summary>
-        /// Configuration for using Service Directory to privately connect to a GitLab Enterprise server. This should
-        /// only be set if the GitLab Enterprise server is hosted on-premises and not reachable by public internet. If
-        /// this field is left empty, calls to the GitLab Enterprise server will be made over the public internet.
+        /// Optional. Configuration for using Service Directory to privately connect to a GitLab Enterprise server. This
+        /// should only be set if the GitLab Enterprise server is hosted on-premises and not reachable by public
+        /// internet. If this field is left empty, calls to the GitLab Enterprise server will be made over the public
+        /// internet.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceDirectoryConfig")]
         public virtual GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig ServiceDirectoryConfig { get; set; }
 
-        /// <summary>SSL certificate to use for requests to GitLab Enterprise.</summary>
+        /// <summary>Optional. SSL certificate to use for requests to GitLab Enterprise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sslCa")]
         public virtual string SslCa { get; set; }
 
@@ -3066,8 +3069,8 @@ namespace Google.Apis.CloudBuild.v2.Data
     public class OAuthCredential : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A SecretManager resource containing the OAuth token that authorizes the Cloud Build connection. Format:
-        /// `projects/*/secrets/*/versions/*`.
+        /// Optional. A SecretManager resource containing the OAuth token that authorizes the Cloud Build connection.
+        /// Format: `projects/*/secrets/*/versions/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oauthTokenSecretVersion")]
         public virtual string OauthTokenSecretVersion { get; set; }
@@ -3901,7 +3904,7 @@ namespace Google.Apis.CloudBuild.v2.Data
     /// <summary>A repository associated to a parent connection.</summary>
     public class Repository : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Allows clients to store small amounts of arbitrary data.</summary>
+        /// <summary>Optional. Allows clients to store small amounts of arbitrary data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
 
