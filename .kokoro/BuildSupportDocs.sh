@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -ex
 
 declare -r repo_root=$(git rev-parse --show-toplevel)
 
