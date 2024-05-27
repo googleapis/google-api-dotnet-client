@@ -1448,6 +1448,72 @@ namespace Google.Apis.Storage.v1
             }
         }
 
+        /// <summary>
+        /// Returns the storage layout configuration for the specified bucket. Note that this operation requires
+        /// storage.objects.list permission.
+        /// </summary>
+        /// <param name="bucket">Name of a bucket.</param>
+        public virtual GetStorageLayoutRequest GetStorageLayout(string bucket)
+        {
+            return new GetStorageLayoutRequest(this.service, bucket);
+        }
+
+        /// <summary>
+        /// Returns the storage layout configuration for the specified bucket. Note that this operation requires
+        /// storage.objects.list permission.
+        /// </summary>
+        public class GetStorageLayoutRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.BucketStorageLayout>
+        {
+            /// <summary>Constructs a new GetStorageLayout request.</summary>
+            public GetStorageLayoutRequest(Google.Apis.Services.IClientService service, string bucket) : base(service)
+            {
+                Bucket = bucket;
+                InitParameters();
+            }
+
+            /// <summary>Name of a bucket.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Bucket { get; private set; }
+
+            /// <summary>
+            /// An optional prefix used for permission check. It is useful when the caller only has storage.objects.list
+            /// permission under a specific prefix.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("prefix", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Prefix { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getStorageLayout";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "b/{bucket}/storageLayout";
+
+            /// <summary>Initializes GetStorageLayout parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("prefix", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "prefix",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
         /// <summary>Creates a new bucket.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">A valid API project identifier.</param>
@@ -9963,6 +10029,53 @@ namespace Google.Apis.Storage.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The storage layout configuration of a bucket.</summary>
+    public class BucketStorageLayout : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
+        public virtual string Bucket { get; set; }
+
+        /// <summary>The bucket's custom placement configuration for Custom Dual Regions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customPlacementConfig")]
+        public virtual CustomPlacementConfigData CustomPlacementConfig { get; set; }
+
+        /// <summary>The bucket's hierarchical namespace configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hierarchicalNamespace")]
+        public virtual HierarchicalNamespaceData HierarchicalNamespace { get; set; }
+
+        /// <summary>The kind of item this is. For storage layout, this is always storage#storageLayout.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>The location of the bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>The type of the bucket location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationType")]
+        public virtual string LocationType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+
+        /// <summary>The bucket's custom placement configuration for Custom Dual Regions.</summary>
+        public class CustomPlacementConfigData
+        {
+            /// <summary>The list of regional locations in which data is placed.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("dataLocations")]
+            public virtual System.Collections.Generic.IList<string> DataLocations { get; set; }
+        }
+
+        /// <summary>The bucket's hierarchical namespace configuration.</summary>
+        public class HierarchicalNamespaceData
+        {
+            /// <summary>When set to true, hierarchical namespace is enabled for this bucket.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+            public virtual System.Nullable<bool> Enabled { get; set; }
+        }
     }
 
     /// <summary>A list of buckets.</summary>

@@ -2675,6 +2675,36 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accelerators")]
         public virtual System.Collections.Generic.IList<Accelerator> Accelerators { get; set; }
 
+        /// <summary>
+        /// Optional. The size of the boot disk for the VM in gigabytes (GB). The minimum boot disk size is `30` GB.
+        /// Defaults to `50` GB.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootDiskSizeGb")]
+        public virtual System.Nullable<int> BootDiskSizeGb { get; set; }
+
+        /// <summary>
+        /// Optional. Whether to enable nested virtualization on boosted Cloud Workstations VMs running using this boost
+        /// configuration. Nested virtualization lets you run virtual machine (VM) instances inside your workstation.
+        /// Before enabling nested virtualization, consider the following important considerations. Cloud Workstations
+        /// instances are subject to the [same restrictions as Compute Engine
+        /// instances](https://cloud.google.com/compute/docs/instances/nested-virtualization/overview#restrictions): *
+        /// **Organization policy**: projects, folders, or organizations may be restricted from creating nested VMs if
+        /// the **Disable VM nested virtualization** constraint is enforced in the organization policy. For more
+        /// information, see the Compute Engine section, [Checking whether nested virtualization is
+        /// allowed](https://cloud.google.com/compute/docs/instances/nested-virtualization/managing-constraint#checking_whether_nested_virtualization_is_allowed).
+        /// * **Performance**: nested VMs might experience a 10% or greater decrease in performance for workloads that
+        /// are CPU-bound and possibly greater than a 10% decrease for workloads that are input/output bound. *
+        /// **Machine Type**: nested virtualization can only be enabled on boost configurations that specify a
+        /// machine_type in the N1 or N2 machine series. * **GPUs**: nested virtualization may not be enabled on boost
+        /// configurations with accelerators. * **Operating System**: Because [Container-Optimized
+        /// OS](https://cloud.google.com/compute/docs/images/os-details#container-optimized_os_cos) does not support
+        /// nested virtualization, when nested virtualization is enabled, the underlying Compute Engine VM instances
+        /// boot from an [Ubuntu LTS](https://cloud.google.com/compute/docs/images/os-details#ubuntu_lts) image.
+        /// Defaults to false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableNestedVirtualization")]
+        public virtual System.Nullable<bool> EnableNestedVirtualization { get; set; }
+
         /// <summary>Optional. Required. The id to be used for the boost config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -3130,6 +3160,14 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
             set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>
+        /// Optional. Port for which the access token should be generated. If specified, the generated access token will
+        /// grant access only to the specified port of the workstation. If specified, values must be within the range [1
+        /// - 65535]. If not specified, the generated access token will grant access to all ports of the workstation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("port")]
+        public virtual System.Nullable<int> Port { get; set; }
 
         /// <summary>
         /// Desired lifetime duration of the access token. This value must be at most 24 hours. If a value is not

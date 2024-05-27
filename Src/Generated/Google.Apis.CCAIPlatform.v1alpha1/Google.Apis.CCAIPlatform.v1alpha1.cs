@@ -1188,7 +1188,25 @@ namespace Google.Apis.CCAIPlatform.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing ContactCenter object Next ID: 22</summary>
+    /// <summary>
+    /// Defines a logical CCAIP component that e.g. “EMAIL”, "CRM". For more information see go/ccaip-private-path-v2.
+    /// Each logical component is associated with a list of service attachments.
+    /// </summary>
+    public class Component : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the component.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Associated service attachments.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAttachments")]
+        public virtual System.Collections.Generic.IList<ServiceAttachment> ServiceAttachments { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message describing ContactCenter object Next ID: 23</summary>
     public class ContactCenter : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Info about the first admin user, such as given name and family name.</summary>
@@ -1239,6 +1257,10 @@ namespace Google.Apis.CCAIPlatform.v1alpha1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Optional. Critical release channel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("critical")]
+        public virtual Critical Critical { get; set; }
+
         /// <summary>
         /// Required. Immutable. At least 2 and max 16 char long, must conform to [RFC
         /// 1035](https://www.ietf.org/rfc/rfc1035.txt).
@@ -1273,6 +1295,10 @@ namespace Google.Apis.CCAIPlatform.v1alpha1.Data
         /// <summary>Optional. Normal release channel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("normal")]
         public virtual Normal Normal { get; set; }
+
+        /// <summary>Optional. VPC-SC related networking configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateAccess")]
+        public virtual PrivateAccess PrivateAccess { get; set; }
 
         /// <summary>
         /// Output only. A list of UJET components that should be privately accessed. This field is set by reading
@@ -1363,7 +1389,21 @@ namespace Google.Apis.CCAIPlatform.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>First Channel to receive the updates. Meant to dev/test instances</summary>
+    /// <summary>
+    /// Instances in this Channel will receive updates after all instances in `Critical` were updated + 2 days. They
+    /// also will only be updated outside of their peak hours.
+    /// </summary>
+    public class Critical : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Hours during which the instance should not be updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peakHours")]
+        public virtual System.Collections.Generic.IList<WeeklySchedule> PeakHours { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>LINT.IfChange First Channel to receive the updates. Meant to dev/test instances</summary>
     public class Early : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -1739,6 +1779,27 @@ namespace Google.Apis.CCAIPlatform.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Defines ingress and egress private traffic settings for CCAIP instances.</summary>
+    public class PrivateAccess : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// List of egress components that should not be accessed via the Internet. For more information see
+        /// go/ccaip-private-path-v2.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("egressSettings")]
+        public virtual System.Collections.Generic.IList<Component> EgressSettings { get; set; }
+
+        /// <summary>
+        /// List of ingress components that should not be accessed via the Internet. For more information see
+        /// go/ccaip-private-path-v2.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ingressSettings")]
+        public virtual System.Collections.Generic.IList<Component> IngressSettings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Quota details.</summary>
     public class Quota : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1761,6 +1822,10 @@ namespace Google.Apis.CCAIPlatform.v1alpha1.Data
     /// <summary>Message storing SAML params to enable Google as IDP.</summary>
     public class SAMLParams : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Additional contexts used for authentication.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authenticationContexts")]
+        public virtual System.Collections.Generic.IList<string> AuthenticationContexts { get; set; }
+
         /// <summary>SAML certificate</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("certificate")]
         public virtual string Certificate { get; set; }
@@ -1780,6 +1845,20 @@ namespace Google.Apis.CCAIPlatform.v1alpha1.Data
         /// <summary>Email address of the first admin users.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userEmail")]
         public virtual string UserEmail { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Container for the VPC-SC networking configurations.</summary>
+    public class ServiceAttachment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The service attachment name that will be used for sending private traffic to the CCAIP tenant project.
+        /// Example: "projects/${TENANT_PROJECT_ID}/regions/${REGION}/serviceAttachments/ingress-default".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1814,6 +1893,38 @@ namespace Google.Apis.CCAIPlatform.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API
+    /// may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
+    /// </summary>
+    public class TimeOfDay : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for
+        /// scenarios like business closing time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hours")]
+        public virtual System.Nullable<int> Hours { get; set; }
+
+        /// <summary>Minutes of hour of day. Must be from 0 to 59.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minutes")]
+        public virtual System.Nullable<int> Minutes { get; set; }
+
+        /// <summary>Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
+        public virtual System.Nullable<int> Nanos { get; set; }
+
+        /// <summary>
+        /// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows
+        /// leap-seconds.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
+        public virtual System.Nullable<int> Seconds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message storing the URIs of the ContactCenter.</summary>
     public class URIs : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1832,6 +1943,32 @@ namespace Google.Apis.CCAIPlatform.v1alpha1.Data
         /// <summary>Virtual Agent Streaming Service Uri of the ContactCenter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("virtualAgentStreamingServiceUri")]
         public virtual string VirtualAgentStreamingServiceUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message representing a weekly schedule.</summary>
+    public class WeeklySchedule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Days of the week this schedule applies to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("days")]
+        public virtual System.Collections.Generic.IList<string> Days { get; set; }
+
+        /// <summary>Optional. Duration of the schedule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
+        public virtual object Duration { get; set; }
+
+        /// <summary>
+        /// Optional. Daily end time of the schedule. If `end_time` is before `start_time`, the schedule will be
+        /// considered as ending on the next day.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual TimeOfDay EndTime { get; set; }
+
+        /// <summary>Required. Daily start time of the schedule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual TimeOfDay StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -1901,9 +1901,17 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
         public virtual string IpAddress { get; set; }
 
+        /// <summary>PSC Google API target the packet is delivered to (if applicable).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscGoogleApiTarget")]
+        public virtual string PscGoogleApiTarget { get; set; }
+
         /// <summary>URI of the resource that the packet is delivered to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUri")]
         public virtual string ResourceUri { get; set; }
+
+        /// <summary>Name of the Cloud Storage Bucket the packet is delivered to (if applicable).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageBucket")]
+        public virtual string StorageBucket { get; set; }
 
         /// <summary>Target type where the packet is delivered to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
@@ -2230,27 +2238,46 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
     /// <summary>For display only. Metadata associated with a Compute Engine forwarding rule.</summary>
     public class ForwardingRuleInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Name of a Compute Engine forwarding rule.</summary>
+        /// <summary>Name of the forwarding rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>Port range defined in the forwarding rule that matches the test.</summary>
+        /// <summary>
+        /// Name of the load balancer the forwarding rule belongs to. Empty for forwarding rules not related to load
+        /// balancers (like PSC forwarding rules).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loadBalancerName")]
+        public virtual string LoadBalancerName { get; set; }
+
+        /// <summary>Port range defined in the forwarding rule that matches the packet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchedPortRange")]
         public virtual string MatchedPortRange { get; set; }
 
-        /// <summary>Protocol defined in the forwarding rule that matches the test.</summary>
+        /// <summary>Protocol defined in the forwarding rule that matches the packet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchedProtocol")]
         public virtual string MatchedProtocol { get; set; }
 
-        /// <summary>Network URI. Only valid for Internal Load Balancer.</summary>
+        /// <summary>Network URI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
         public virtual string NetworkUri { get; set; }
+
+        /// <summary>PSC Google API target this forwarding rule targets (if applicable).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscGoogleApiTarget")]
+        public virtual string PscGoogleApiTarget { get; set; }
+
+        /// <summary>URI of the PSC service attachment this forwarding rule targets (if applicable).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscServiceAttachmentUri")]
+        public virtual string PscServiceAttachmentUri { get; set; }
+
+        /// <summary>Region of the forwarding rule. Set only for regional forwarding rules.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; }
 
         /// <summary>Target type of the forwarding rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
         public virtual string Target { get; set; }
 
-        /// <summary>URI of a Compute Engine forwarding rule.</summary>
+        /// <summary>URI of the forwarding rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 
@@ -3144,6 +3171,17 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>For display only. Metadata associated with the serverless network endpoint group backend.</summary>
+    public class ServerlessNegInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>URI of the serverless network endpoint group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("negUri")]
+        public virtual string NegUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for `SetIamPolicy` method.</summary>
     public class SetIamPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3299,6 +3337,12 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         /// <summary>Display information of a Compute Engine route.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("route")]
         public virtual RouteInfo Route { get; set; }
+
+        /// <summary>
+        /// Display information of a Serverless network endpoint group backend. Used only for return traces.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverlessNeg")]
+        public virtual ServerlessNegInfo ServerlessNeg { get; set; }
 
         /// <summary>Each step is in one of the pre-defined states.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]

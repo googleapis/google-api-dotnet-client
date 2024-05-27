@@ -4300,6 +4300,14 @@ namespace Google.Apis.BackupforGKE.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Output only. If false, Backup will fail when Backup for GKE detects Kubernetes configuration that is
+        /// non-standard or requires additional setup to restore. Inherited from the parent BackupPlan's permissive_mode
+        /// value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permissiveMode")]
+        public virtual System.Nullable<bool> PermissiveMode { get; set; }
+
         /// <summary>Output only. The total number of Kubernetes Pods contained in the Backup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("podCount")]
         public virtual System.Nullable<int> PodCount { get; set; }
@@ -4460,6 +4468,13 @@ namespace Google.Apis.BackupforGKE.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeVolumeData")]
         public virtual System.Nullable<bool> IncludeVolumeData { get; set; }
+
+        /// <summary>
+        /// Optional. If false, Backups will fail when Backup for GKE detects Kubernetes configuration that is
+        /// non-standard or requires additional setup to restore. Default: False
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permissiveMode")]
+        public virtual System.Nullable<bool> PermissiveMode { get; set; }
 
         /// <summary>If set, include just the resources referenced by the listed ProtectedApplications.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selectedApplications")]
@@ -4933,6 +4948,33 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Defines the filter for `Restore`. This filter can be used to further refine the resource selection of the
+    /// `Restore` beyond the coarse-grained scope defined in the `RestorePlan`. `exclusion_filters` take precedence over
+    /// `inclusion_filters`. If a resource matches both `inclusion_filters` and `exclusion_filters`, it will not be
+    /// restored.
+    /// </summary>
+    public class Filter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Excludes resources from restoration. If specified, a resource will not be restored if it matches
+        /// any `ResourceSelector` of the `exclusion_filters`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exclusionFilters")]
+        public virtual System.Collections.Generic.IList<ResourceSelector> ExclusionFilters { get; set; }
+
+        /// <summary>
+        /// Optional. Selects resources for restoration. If specified, only resources which match `inclusion_filters`
+        /// will be selected for restoration. A resource will be selected if it matches any `ResourceSelector` of the
+        /// `inclusion_filters`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inclusionFilters")]
+        public virtual System.Collections.Generic.IList<ResourceSelector> InclusionFilters { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for GetBackupIndexDownloadUrl.</summary>
     public class GetBackupIndexDownloadUrlResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5057,6 +5099,23 @@ namespace Google.Apis.BackupforGKE.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceKind")]
         public virtual string ResourceKind { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines a dependency between two group kinds.</summary>
+    public class GroupKindDependency : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The requiring group kind requires that the other group kind be restored first.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requiring")]
+        public virtual GroupKind Requiring { get; set; }
+
+        /// <summary>
+        /// Required. The satisfying group kind must be restored first in order to satisfy the dependency.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfying")]
+        public virtual GroupKind Satisfying { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5484,6 +5543,51 @@ namespace Google.Apis.BackupforGKE.v1.Data
     }
 
     /// <summary>
+    /// Defines a selector to identify a single or a group of resources. Conditions in the selector are optional, but at
+    /// least one field should be set to a non-empty value. If a condition is not specified, no restrictions will be
+    /// applied on that dimension. If more than one condition is specified, a resource will be selected if and only if
+    /// all conditions are met.
+    /// </summary>
+    public class ResourceSelector : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Selects resources using their Kubernetes GroupKinds. If specified, only resources of provided
+        /// GroupKind will be selected.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupKind")]
+        public virtual GroupKind GroupKind { get; set; }
+
+        /// <summary>
+        /// Optional. Selects resources using Kubernetes
+        /// [labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/). If specified, a
+        /// resource will be selected if and only if the resource has all of the provided labels and all the label
+        /// values match.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Optional. Selects resources using their resource names. If specified, only resources with the provided name
+        /// will be selected.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. Selects resources using their namespaces. This only applies to namespace scoped resources and
+        /// cannot be used for selecting cluster scoped resources. If specified, only resources in the provided
+        /// namespace will be selected. If not specified, the filter will apply to both cluster scoped and namespace
+        /// scoped resources (e.g. name or label). The [Namespace](https://pkg.go.dev/k8s.io/api/core/v1#Namespace)
+        /// resource itself will be restored if and only if any resources within the namespace are restored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namespace")]
+        public virtual string Namespace__ { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Represents both a request to Restore some portion of a Backup into a target GKE cluster and a record of the
     /// restore operation itself.
     /// </summary>
@@ -5594,6 +5698,16 @@ namespace Google.Apis.BackupforGKE.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
+        /// <summary>
+        /// Optional. Immutable. Filters resources for `Restore`. If not specified, the scope of the restore will remain
+        /// the same as defined in the `RestorePlan`. If this is specified, and no resources are matched by the
+        /// `inclusion_filters` or everyting is excluded by the `exclusion_filters`, nothing will be restored. This
+        /// filter can only be specified if the value of namespaced_resource_restore_mode is set to
+        /// `MERGE_SKIP_ON_CONFLICT`, `MERGE_REPLACE_VOLUME_ON_CONFLICT` or `MERGE_REPLACE_ON_CONFLICT`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual Filter Filter { get; set; }
+
         /// <summary>A set of custom labels supplied by user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -5675,6 +5789,13 @@ namespace Google.Apis.BackupforGKE.v1.Data
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>
+        /// Optional. Immutable. Overrides the volume data restore policies selected in the Restore Config for
+        /// override-scoped resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volumeDataRestorePolicyOverrides")]
+        public virtual System.Collections.Generic.IList<VolumeDataRestorePolicyOverride> VolumeDataRestorePolicyOverrides { get; set; }
+
         /// <summary>Output only. Number of volumes restored during the restore execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumesRestoredCount")]
         public virtual System.Nullable<int> VolumesRestoredCount { get; set; }
@@ -5726,6 +5847,10 @@ namespace Google.Apis.BackupforGKE.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("noNamespaces")]
         public virtual System.Nullable<bool> NoNamespaces { get; set; }
 
+        /// <summary>Optional. RestoreOrder contains custom ordering to use on a Restore.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restoreOrder")]
+        public virtual RestoreOrder RestoreOrder { get; set; }
+
         /// <summary>
         /// A list of selected ProtectedApplications to restore. The listed ProtectedApplications and all the resources
         /// to which they refer will be restored.
@@ -5762,6 +5887,30 @@ namespace Google.Apis.BackupforGKE.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumeDataRestorePolicy")]
         public virtual string VolumeDataRestorePolicy { get; set; }
+
+        /// <summary>
+        /// Optional. A table that binds volumes by their scope to a restore policy. Bindings must have a unique scope.
+        /// Any volumes not scoped in the bindings are subject to the policy defined in volume_data_restore_policy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volumeDataRestorePolicyBindings")]
+        public virtual System.Collections.Generic.IList<VolumeDataRestorePolicyBinding> VolumeDataRestorePolicyBindings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Allows customers to specify dependencies between resources that Backup for GKE can use to compute a resasonable
+    /// restore order.
+    /// </summary>
+    public class RestoreOrder : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Contains a list of group kind dependency pairs provided by the customer, that is used by Backup
+        /// for GKE to generate a group kind restore order.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupKindDependencies")]
+        public virtual System.Collections.Generic.IList<GroupKindDependency> GroupKindDependencies { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6426,6 +6575,36 @@ namespace Google.Apis.BackupforGKE.v1.Data
         /// <summary>Output only. A storage system-specific opaque handle to the underlying volume backup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumeBackupHandle")]
         public virtual string VolumeBackupHandle { get; set; }
+    }
+
+    /// <summary>Binds resources in the scope to the given VolumeDataRestorePolicy.</summary>
+    public class VolumeDataRestorePolicyBinding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The VolumeDataRestorePolicy to apply when restoring volumes in scope.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
+        public virtual string Policy { get; set; }
+
+        /// <summary>The volume type, as determined by the PVC's bound PV, to apply the policy to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volumeType")]
+        public virtual string VolumeType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines an override to apply a VolumeDataRestorePolicy for scoped resources.</summary>
+    public class VolumeDataRestorePolicyOverride : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The VolumeDataRestorePolicy to apply when restoring volumes in scope.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
+        public virtual string Policy { get; set; }
+
+        /// <summary>A list of PVCs to apply the policy override to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selectedPvcs")]
+        public virtual NamespacedNames SelectedPvcs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>Represents the operation of restoring a volume from a VolumeBackup.</summary>

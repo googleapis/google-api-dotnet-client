@@ -87,6 +87,9 @@ namespace Google.Apis.Drive.v2
             /// </summary>
             public static string DriveFile = "https://www.googleapis.com/auth/drive.file";
 
+            /// <summary>See and download your Google Drive files that were created or edited by Google Meet.</summary>
+            public static string DriveMeetReadonly = "https://www.googleapis.com/auth/drive.meet.readonly";
+
             /// <summary>View and manage metadata of files in your Google Drive</summary>
             public static string DriveMetadata = "https://www.googleapis.com/auth/drive.metadata";
 
@@ -119,6 +122,9 @@ namespace Google.Apis.Drive.v2
             /// See, edit, create, and delete only the specific Google Drive files you use with this app
             /// </summary>
             public const string DriveFile = "https://www.googleapis.com/auth/drive.file";
+
+            /// <summary>See and download your Google Drive files that were created or edited by Google Meet.</summary>
+            public const string DriveMeetReadonly = "https://www.googleapis.com/auth/drive.meet.readonly";
 
             /// <summary>View and manage metadata of files in your Google Drive</summary>
             public const string DriveMetadata = "https://www.googleapis.com/auth/drive.metadata";

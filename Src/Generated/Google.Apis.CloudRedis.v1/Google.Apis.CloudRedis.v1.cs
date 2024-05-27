@@ -2406,6 +2406,9 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual string FeedType { get; set; }
 
         /// <summary>More feed data would be added in subsequent CLs</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("observabilityMetricData")]
+        public virtual ObservabilityMetricData ObservabilityMetricData { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("recommendationSignalData")]
         public virtual DatabaseResourceRecommendationSignalData RecommendationSignalData { get; set; }
 
@@ -2651,6 +2654,10 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
+        /// <summary>Machine configuration for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineConfiguration")]
+        public virtual MachineConfiguration MachineConfiguration { get; set; }
+
         /// <summary>
         /// Identifier for this resource's immediate parent/primary resource if the current resource is a replica or
         /// derived form of another Database resource. Else it would be NULL. REQUIRED if the immediate parent exists
@@ -2719,12 +2726,6 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// <summary>User-provided labels associated with the resource</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userLabelSet")]
         public virtual UserLabels UserLabelSet { get; set; }
-
-        /// <summary>
-        /// User-provided labels, represented as a dictionary where each label is a single key value pair.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("userLabels")]
-        public virtual System.Collections.Generic.IDictionary<string, string> UserLabels { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3464,6 +3465,25 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>MachineConfiguration describes the configuration of a machine specific to Database Resource.</summary>
+    public class MachineConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The number of CPUs. TODO(b/342344482, b/342346271) add proto validations again after bug fix.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpuCount")]
+        public virtual System.Nullable<int> CpuCount { get; set; }
+
+        /// <summary>
+        /// Memory size in bytes. TODO(b/342344482, b/342346271) add proto validations again after bug fix.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memorySizeInBytes")]
+        public virtual System.Nullable<long> MemorySizeInBytes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Maintenance policy for an instance.</summary>
     public class MaintenancePolicy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3705,6 +3725,70 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// <summary>Output only. Location of the node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class ObservabilityMetricData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Type of aggregation performed on the metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregationType")]
+        public virtual string AggregationType { get; set; }
+
+        /// <summary>Required. Type of metric like CPU, Memory, etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricType")]
+        public virtual string MetricType { get; set; }
+
+        private string _observationTimeRaw;
+
+        private object _observationTime;
+
+        /// <summary>Required. The time the metric value was observed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("observationTime")]
+        public virtual string ObservationTimeRaw
+        {
+            get => _observationTimeRaw;
+            set
+            {
+                _observationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _observationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ObservationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ObservationTimeDateTimeOffset instead.")]
+        public virtual object ObservationTime
+        {
+            get => _observationTime;
+            set
+            {
+                _observationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _observationTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ObservationTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ObservationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ObservationTimeRaw);
+            set => ObservationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Required. Database resource name associated with the signal. Resource name to follow CAIS resource_name
+        /// format as noted here go/condor-common-datamodel
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>Required. Value of the metric type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual TypedValue Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4365,6 +4449,27 @@ namespace Google.Apis.CloudRedis.v1.Data
         /// <summary>Sha1 Fingerprint of the certificate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sha1Fingerprint")]
         public virtual string Sha1Fingerprint { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// TypedValue represents the value of a metric type. It can either be a double, an int64, a string or a bool.
+    /// </summary>
+    public class TypedValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("boolValue")]
+        public virtual System.Nullable<bool> BoolValue { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("doubleValue")]
+        public virtual System.Nullable<double> DoubleValue { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("int64Value")]
+        public virtual System.Nullable<long> Int64Value { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
+        public virtual string StringValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

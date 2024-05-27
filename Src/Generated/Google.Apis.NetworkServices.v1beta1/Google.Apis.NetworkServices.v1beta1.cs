@@ -6122,7 +6122,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
 
         /// <summary>
         /// Optional. A set of events during request or response processing for which this extension is called. This
-        /// field is required for the `LbTrafficExtension` resource. It's not relevant for the `LbRouteExtension`
+        /// field is required for the `LbTrafficExtension` resource. It must not be set for the `LbRouteExtension`
         /// resource.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportedEvents")]
@@ -7564,6 +7564,16 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual string LoadBalancingScheme { get; set; }
 
         /// <summary>
+        /// Optional. The metadata provided here will be included as part of the `metadata_context` (of type
+        /// `google.protobuf.Struct`) in the `ProcessingRequest` message sent to the extension server. The metadata will
+        /// be available under the namespace `com.google.lb_route_extension.`. The following variables are supported in
+        /// the metadata Struct: `{forwarding_rule_id}` - substituted with the forwarding rule's fully qualified
+        /// resource name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
+        /// <summary>
         /// Required. Identifier. Name of the `LbRouteExtension` resource in the following format:
         /// `projects/{project}/locations/{location}/lbRouteExtensions/{lb_route_extension}`.
         /// </summary>
@@ -7691,6 +7701,15 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loadBalancingScheme")]
         public virtual string LoadBalancingScheme { get; set; }
+
+        /// <summary>
+        /// Optional. The metadata provided here will be included in the
+        /// `ProcessingRequest.metadata_context.filter_metadata` map field. The metadata will be available under the key
+        /// `com.google.lb_traffic_extension.`. The following variables are supported in the metadata:
+        /// `{forwarding_rule_id}` - substituted with the forwarding rule's fully qualified resource name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
 
         /// <summary>
         /// Required. Identifier. Name of the `LbTrafficExtension` resource in the following format:
