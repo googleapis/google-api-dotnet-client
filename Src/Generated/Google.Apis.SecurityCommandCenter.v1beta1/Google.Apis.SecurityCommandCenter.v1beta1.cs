@@ -4863,8 +4863,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
     }
 
     /// <summary>
-    /// A resource value config (RVC) is a mapping configuration of user's resources to resource values. Used in Attack
-    /// path simulations.
+    /// A resource value configuration (RVC) is a mapping configuration of user's resources to resource values. Used in
+    /// Attack path simulations.
     /// </summary>
     public class GoogleCloudSecuritycenterV1ResourceValueConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4876,7 +4876,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
 
         private object _createTime;
 
-        /// <summary>Output only. Timestamp this resource value config was created.</summary>
+        /// <summary>Output only. Timestamp this resource value configuration was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -4909,26 +4909,26 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Description of the resource value config.</summary>
+        /// <summary>Description of the resource value configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Name for the resource value config</summary>
+        /// <summary>Name for the resource value configuration</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// List of resource labels to search for, evaluated with AND. E.g. "resource_labels_selector": {"key": "value",
-        /// "env": "prod"} will match resources with labels "key": "value" AND "env": "prod"
+        /// List of resource labels to search for, evaluated with AND. For example, "resource_labels_selector": {"key":
+        /// "value", "env": "prod"} will match resources with labels "key": "value" AND "env": "prod"
         /// https://cloud.google.com/resource-manager/docs/creating-managing-labels
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceLabelsSelector")]
         public virtual System.Collections.Generic.IDictionary<string, string> ResourceLabelsSelector { get; set; }
 
         /// <summary>
-        /// Apply resource_value only to resources that match resource_type. resource_type will be checked with "AND" of
-        /// other resources. E.g. "storage.googleapis.com/Bucket" with resource_value "HIGH" will apply "HIGH" value
-        /// only to "storage.googleapis.com/Bucket" resources.
+        /// Apply resource_value only to resources that match resource_type. resource_type will be checked with AND of
+        /// other resources. For example, "storage.googleapis.com/Bucket" with resource_value "HIGH" will apply "HIGH"
+        /// value only to "storage.googleapis.com/Bucket" resources.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
         public virtual string ResourceType { get; set; }
@@ -4938,8 +4938,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         public virtual string ResourceValue { get; set; }
 
         /// <summary>
-        /// Project or folder to scope this config to. For example, "project/456" would apply this config only to
-        /// resources in "project/456" scope will be checked with "AND" of other resources.
+        /// Project or folder to scope this configuration to. For example, "project/456" would apply this configuration
+        /// only to resources in "project/456" scope will be checked with AND of other resources.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scope")]
         public virtual string Scope { get; set; }
@@ -4953,7 +4953,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         public virtual GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping SensitiveDataProtectionMapping { get; set; }
 
         /// <summary>
-        /// Required. Tag values combined with AND to check against. Values in the form "tagValues/123" E.g. [
+        /// Required. Tag values combined with AND to check against. Values in the form "tagValues/123" Example: [
         /// "tagValues/123", "tagValues/456", "tagValues/789" ]
         /// https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing
         /// </summary>
@@ -4964,7 +4964,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
 
         private object _updateTime;
 
-        /// <summary>Output only. Timestamp this resource value config was last updated.</summary>
+        /// <summary>Output only. Timestamp this resource value configuration was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -8283,8 +8283,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
     }
 
     /// <summary>
-    /// A resource value config (RVC) is a mapping configuration of user's resources to resource values. Used in Attack
-    /// path simulations.
+    /// A resource value configuration (RVC) is a mapping configuration of user's resources to resource values. Used in
+    /// Attack path simulations.
     /// </summary>
     public class GoogleCloudSecuritycenterV2ResourceValueConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8296,7 +8296,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
 
         private object _createTime;
 
-        /// <summary>Output only. Timestamp this resource value config was created.</summary>
+        /// <summary>Output only. Timestamp this resource value configuration was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -8329,26 +8329,26 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Description of the resource value config.</summary>
+        /// <summary>Description of the resource value configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Name for the resource value config</summary>
+        /// <summary>Name for the resource value configuration</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// List of resource labels to search for, evaluated with AND. E.g. "resource_labels_selector": {"key": "value",
-        /// "env": "prod"} will match resources with labels "key": "value" AND "env": "prod"
+        /// List of resource labels to search for, evaluated with AND. For example, "resource_labels_selector": {"key":
+        /// "value", "env": "prod"} will match resources with labels "key": "value" AND "env": "prod"
         /// https://cloud.google.com/resource-manager/docs/creating-managing-labels
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceLabelsSelector")]
         public virtual System.Collections.Generic.IDictionary<string, string> ResourceLabelsSelector { get; set; }
 
         /// <summary>
-        /// Apply resource_value only to resources that match resource_type. resource_type will be checked with "AND" of
-        /// other resources. E.g. "storage.googleapis.com/Bucket" with resource_value "HIGH" will apply "HIGH" value
-        /// only to "storage.googleapis.com/Bucket" resources.
+        /// Apply resource_value only to resources that match resource_type. resource_type will be checked with AND of
+        /// other resources. For example, "storage.googleapis.com/Bucket" with resource_value "HIGH" will apply "HIGH"
+        /// value only to "storage.googleapis.com/Bucket" resources.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
         public virtual string ResourceType { get; set; }
@@ -8360,8 +8360,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         public virtual string ResourceValue { get; set; }
 
         /// <summary>
-        /// Project or folder to scope this config to. For example, "project/456" would apply this config only to
-        /// resources in "project/456" scope will be checked with "AND" of other resources.
+        /// Project or folder to scope this configuration to. For example, "project/456" would apply this configuration
+        /// only to resources in "project/456" scope will be checked with AND of other resources.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scope")]
         public virtual string Scope { get; set; }
@@ -8375,7 +8375,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         public virtual GoogleCloudSecuritycenterV2SensitiveDataProtectionMapping SensitiveDataProtectionMapping { get; set; }
 
         /// <summary>
-        /// Required. Tag values combined with AND to check against. Values in the form "tagValues/123" E.g. [
+        /// Required. Tag values combined with AND to check against. Values in the form "tagValues/123" Example: [
         /// "tagValues/123", "tagValues/456", "tagValues/789" ]
         /// https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing
         /// </summary>
@@ -8386,7 +8386,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
 
         private object _updateTime;
 
-        /// <summary>Output only. Timestamp this resource value config was last updated.</summary>
+        /// <summary>Output only. Timestamp this resource value configuration was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {

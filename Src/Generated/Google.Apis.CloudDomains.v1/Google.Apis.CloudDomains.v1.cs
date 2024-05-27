@@ -2657,7 +2657,10 @@ namespace Google.Apis.CloudDomains.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("renewalMethod")]
         public virtual string RenewalMethod { get; set; }
 
-        /// <summary>Controls whether the domain can be transferred to another registrar.</summary>
+        /// <summary>
+        /// This is the desired transfer lock state for this `Registration`. A transfer lock controls whether the domain
+        /// can be transferred to another registrar.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transferLockState")]
         public virtual string TransferLockState { get; set; }
 

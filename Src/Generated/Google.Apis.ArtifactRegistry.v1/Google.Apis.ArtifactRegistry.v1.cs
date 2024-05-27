@@ -865,6 +865,57 @@ namespace Google.Apis.ArtifactRegistry.v1
                         this.service = service;
                     }
 
+                    /// <summary>
+                    /// Deletes a file and all of its content. It is only allowed on generic repositories. The returned
+                    /// operation will complete once the file has been deleted.
+                    /// </summary>
+                    /// <param name="name">Required. The name of the file to delete.</param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Deletes a file and all of its content. It is only allowed on generic repositories. The returned
+                    /// operation will complete once the file has been deleted.
+                    /// </summary>
+                    public class DeleteRequest : ArtifactRegistryBaseServiceRequest<Google.Apis.ArtifactRegistry.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the file to delete.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+/files/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Download a file.</summary>
                     /// <param name="name">Required. The name of the file to download.</param>
                     public virtual DownloadRequest Download(string name)
@@ -6779,8 +6830,8 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Optional. If this is true, aunspecified repo type will be treated as error. Is used for new repo types that
-        /// don't have any specific fields. Right now is used by AOSS team when creating repos for customers.
+        /// Optional. If this is true, an unspecified repo type will be treated as error rather than defaulting to
+        /// standard.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disallowUnspecifiedMode")]
         public virtual System.Nullable<bool> DisallowUnspecifiedMode { get; set; }

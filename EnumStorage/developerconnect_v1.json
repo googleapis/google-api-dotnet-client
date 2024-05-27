@@ -1,0 +1,16 @@
+{
+  "Google.Apis.DeveloperConnect.v1.DeveloperConnectBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.DeveloperConnect.v1.DeveloperConnectBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.DeveloperConnect.v1.ProjectsResource+LocationsResource+ConnectionsResource+GitRepositoryLinksResource+FetchGitRefsRequest.RefTypeEnum": [
+    "REF_TYPE_UNSPECIFIED",
+    "TAG",
+    "BRANCH"
+  ]
+}

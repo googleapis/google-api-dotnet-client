@@ -4832,6 +4832,27 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>An available database version. It can be a major or a minor version.</summary>
+    public class AvailableDatabaseVersion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The database version's display name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The version's major version name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("majorVersion")]
+        public virtual string MajorVersion { get; set; }
+
+        /// <summary>
+        /// The database version name. For MySQL 8.0, this string provides the database major and minor version.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Database instance backup configuration.</summary>
     public class BackupConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5283,8 +5304,16 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         }
 
         /// <summary>
-        /// Optional. (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no
-        /// zone is specified, clone to the same zone as the source instance.
+        /// Optional. Copy clone and point-in-time recovery clone of a regional instance in the specified zones. If not
+        /// specified, clone to the same secondary zone as the source instance. This value cannot be the same as the
+        /// preferred_zone field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preferredSecondaryZone")]
+        public virtual string PreferredSecondaryZone { get; set; }
+
+        /// <summary>
+        /// Optional. Copy clone and point-in-time recovery clone of an instance to the specified zone. If no zone is
+        /// specified, clone to the same primary zone as the source instance.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preferredZone")]
         public virtual string PreferredZone { get; set; }
@@ -5675,6 +5704,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>If the instance state is SUSPENDED, the reason for the suspension.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suspensionReason")]
         public virtual System.Collections.Generic.IList<string> SuspensionReason { get; set; }
+
+        /// <summary>Output only. All database versions that are available for upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgradableDatabaseVersions")]
+        public virtual System.Collections.Generic.IList<AvailableDatabaseVersion> UpgradableDatabaseVersions { get; set; }
 
         /// <summary>Output only. The dns name of the primary instance in a replication group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("writeEndpoint")]
@@ -7638,7 +7671,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("activeDirectoryConfig")]
         public virtual SqlActiveDirectoryConfig ActiveDirectoryConfig { get; set; }
 
-        /// <summary>Specifies advance machine configuration for the instance relevant only for SQL Server.</summary>
+        /// <summary>Specifies advanced machine configuration for the instances relevant only for SQL Server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advancedMachineFeatures")]
         public virtual AdvancedMachineFeatures AdvancedMachineFeatures { get; set; }
 

@@ -14043,7 +14043,7 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>
         /// Data changes (non-schema changes) in Cloud SQL tables can't trigger reprofiling. If you set this field,
-        /// profiles are refreshed at this frequency regardless of whether the underlying tables have changes. Defaults
+        /// profiles are refreshed at this frequency regardless of whether the underlying tables have changed. Defaults
         /// to never.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("refreshFrequency")]
@@ -17669,10 +17669,10 @@ namespace Google.Apis.DLP.v2.Data
     }
 
     /// <summary>
-    /// Discovery target for credentials and secrets in Cloud resource metadata. This target does not include any
-    /// filtering or frequency controls. Cloud DLP will scan Cloud resource metadata for secrets daily. No inspect
+    /// Discovery target for credentials and secrets in cloud resource metadata. This target does not include any
+    /// filtering or frequency controls. Cloud DLP will scan cloud resource metadata for secrets daily. No inspect
     /// template should be included in the discovery config for a security benchmarks scan. Instead, the built-in list
-    /// of Secrets and Credentials infoTypes will be used (see
+    /// of secrets and credentials infoTypes will be used (see
     /// https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference#credentials_and_secrets).
     /// Credentials and secrets discovered will be reported as vulnerabilities to Security Command Center.
     /// </summary>
