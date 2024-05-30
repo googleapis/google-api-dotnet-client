@@ -831,6 +831,14 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     public class GenerateContentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. The name of the cached content used as context to serve the prediction. Note: only used in
+        /// explicit caching, where users can have control over caching (e.g. what content to cache) and enjoy
+        /// guaranteed cost savings. Format: `projects/{project}/locations/{location}/cachedContents/{cachedContent}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cachedContent")]
+        public virtual string CachedContent { get; set; }
+
+        /// <summary>
         /// Required. The content of the current conversation with the model. For single-turn queries, this is a single
         /// instance. For multi-turn queries, this is a repeated field that contains conversation history + latest
         /// request.

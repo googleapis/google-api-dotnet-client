@@ -28,7 +28,8 @@
     "default",
     "focusTime",
     "outOfOffice",
-    "workingLocation"
+    "workingLocation",
+    "fromGmail"
   ],
   "Google.Apis.Calendar.v3.EventsResource+ListRequest.OrderByEnum": [
     "startTime",
@@ -58,7 +59,8 @@
     "default",
     "focusTime",
     "outOfOffice",
-    "workingLocation"
+    "workingLocation",
+    "fromGmail"
   ],
   "Google.Apis.Calendar.v3.EventsResource+WatchRequest.OrderByEnum": [
     "startTime",

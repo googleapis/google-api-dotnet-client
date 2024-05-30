@@ -36955,11 +36955,11 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// <summary>Details for filtered input text.</summary>
     public class CloudAiLargeModelsVisionFilteredText : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Confidence level</summary>
+        /// <summary>Filtered category</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("category")]
         public virtual string Category { get; set; }
 
-        /// <summary>Filtered category</summary>
+        /// <summary>Confidence score</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual string Confidence { get; set; }
 
@@ -37092,11 +37092,33 @@ namespace Google.Apis.Aiplatform.v1.Data
 
     public class CloudAiLargeModelsVisionRaiInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        [Newtonsoft.Json.JsonPropertyAttribute("detectedLabels")]
+        public virtual System.Collections.Generic.IList<CloudAiLargeModelsVisionRaiInfoDetectedLabels> DetectedLabels { get; set; }
+
         /// <summary>List of rai categories' information to return</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("raiCategories")]
         public virtual System.Collections.Generic.IList<string> RaiCategories { get; set; }
 
         /// <summary>List of rai scores mapping to the rai categories. Rounded to 1 decimal place.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scores")]
+        public virtual System.Collections.Generic.IList<System.Nullable<float>> Scores { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Filters which return labels with confidence scores.</summary>
+    public class CloudAiLargeModelsVisionRaiInfoDetectedLabels : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Descriptions of the detected labels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("descriptions")]
+        public virtual System.Collections.Generic.IList<string> Descriptions { get; set; }
+
+        /// <summary>The RAI category for the deteceted labels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("raiCategory")]
+        public virtual string RaiCategory { get; set; }
+
+        /// <summary>Confidence scores mapping to the labels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scores")]
         public virtual System.Collections.Generic.IList<System.Nullable<float>> Scores { get; set; }
 
@@ -41375,11 +41397,38 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual GoogleCloudAiplatformV1DedicatedResources DedicatedResources { get; set; }
 
         /// <summary>
+        /// If the DeploymentResourcePool is deployed with custom-trained Models or AutoML Tabular Models, the
+        /// container(s) of the DeploymentResourcePool will send `stderr` and `stdout` streams to Cloud Logging by
+        /// default. Please note that the logs incur cost, which are subject to [Cloud Logging
+        /// pricing](https://cloud.google.com/logging/pricing). User can disable container logging by setting this flag
+        /// to true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableContainerLogging")]
+        public virtual System.Nullable<bool> DisableContainerLogging { get; set; }
+
+        /// <summary>
+        /// Customer-managed encryption key spec for a DeploymentResourcePool. If set, this DeploymentResourcePool will
+        /// be secured by this key. Endpoints and the DeploymentResourcePool they deploy in need to have the same
+        /// EncryptionSpec.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionSpec")]
+        public virtual GoogleCloudAiplatformV1EncryptionSpec EncryptionSpec { get; set; }
+
+        /// <summary>
         /// Immutable. The resource name of the DeploymentResourcePool. Format:
         /// `projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The service account that the DeploymentResourcePool's container(s) run as. Specify the email address of the
+        /// service account. If this service account is not specified, the container(s) run as a service account that
+        /// doesn't have access to the resource project. Users deploying the Models to this DeploymentResourcePool must
+        /// have the `iam.serviceAccounts.actAs` permission on this service account.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -43995,6 +44044,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
         public virtual string StringValue { get; set; }
 
+        /// <summary>A struct type feature value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structValue")]
+        public virtual GoogleCloudAiplatformV1StructValue StructValue { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -45273,12 +45326,6 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("responseMimeType")]
         public virtual string ResponseMimeType { get; set; }
 
-        /// <summary>
-        /// Optional. Control Three levels of creativity in the model output. Default: RESPONSE_STYLE_BALANCED
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("responseStyle")]
-        public virtual string ResponseStyle { get; set; }
-
         /// <summary>Optional. Stop sequences.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stopSequences")]
         public virtual System.Collections.Generic.IList<string> StopSequences { get; set; }
@@ -45397,6 +45444,13 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("baseModelUri")]
         public virtual string BaseModelUri { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Tool to retrieve public web data for grounding, powered by Google.</summary>
+    public class GoogleCloudAiplatformV1GoogleSearchRetrieval : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -47672,6 +47726,10 @@ namespace Google.Apis.Aiplatform.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>Optional. Dataplex integration settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataplexConfig")]
+        public virtual GoogleCloudAiplatformV1MetadataStoreDataplexConfig DataplexConfig { get; set; }
+
         /// <summary>Description of the MetadataStore.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
@@ -47727,6 +47785,17 @@ namespace Google.Apis.Aiplatform.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents Dataplex integration settings.</summary>
+    public class GoogleCloudAiplatformV1MetadataStoreDataplexConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Whether or not Data Lineage synchronization is enabled for Vertex Pipelines.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabledPipelinesLineage")]
+        public virtual System.Nullable<bool> EnabledPipelinesLineage { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -50603,35 +50672,6 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Notebook Reservation Affinity for consuming Zonal reservation.</summary>
-    public class GoogleCloudAiplatformV1NotebookReservationAffinity : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. Specifies the type of reservation from which this instance can consume resources: RESERVATION_ANY
-        /// (default), RESERVATION_SPECIFIC, or RESERVATION_NONE. See Consuming reserved instances for examples.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("consumeReservationType")]
-        public virtual string ConsumeReservationType { get; set; }
-
-        /// <summary>
-        /// Optional. Corresponds to the label key of a reservation resource. To target a RESERVATION_SPECIFIC by name,
-        /// use compute.googleapis.com/reservation-name as the key and specify the name of your reservation as its
-        /// value.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; }
-
-        /// <summary>
-        /// Optional. Corresponds to the label values of a reservation resource. This must be the full path name of
-        /// Reservation.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<string> Values { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// A runtime is a virtual machine allocated to a particular user for a particular Notebook file on temporary basis
     /// with lifetime limited to 24 hours.
@@ -50734,6 +50774,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("healthState")]
         public virtual string HealthState { get; set; }
 
+        /// <summary>Output only. The idle shutdown configuration of the notebook runtime.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idleShutdownConfig")]
+        public virtual GoogleCloudAiplatformV1NotebookIdleShutdownConfig IdleShutdownConfig { get; set; }
+
         /// <summary>Output only. Whether NotebookRuntime is upgradable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isUpgradable")]
         public virtual System.Nullable<bool> IsUpgradable { get; set; }
@@ -50775,10 +50819,6 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Output only. The proxy endpoint used to access the NotebookRuntime.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proxyUri")]
         public virtual string ProxyUri { get; set; }
-
-        /// <summary>Output only. Reservation Affinity of the notebook runtime.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("reservationAffinity")]
-        public virtual GoogleCloudAiplatformV1NotebookReservationAffinity ReservationAffinity { get; set; }
 
         /// <summary>Output only. The runtime (instance) state of the NotebookRuntime.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeState")]
@@ -50905,6 +50945,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
+        /// <summary>Customer-managed encryption key spec for the notebook runtime.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionSpec")]
+        public virtual GoogleCloudAiplatformV1EncryptionSpec EncryptionSpec { get; set; }
+
         /// <summary>
         /// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
         /// </summary>
@@ -50957,10 +51001,6 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Optional. Immutable. The type of the notebook runtime template.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notebookRuntimeType")]
         public virtual string NotebookRuntimeType { get; set; }
-
-        /// <summary>Optional. Reservation Affinity of the notebook runtime template.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("reservationAffinity")]
-        public virtual GoogleCloudAiplatformV1NotebookReservationAffinity ReservationAffinity { get; set; }
 
         /// <summary>
         /// The service account that the runtime workload runs as. You can use any service account within the same
@@ -52198,7 +52238,7 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// </summary>
     public class GoogleCloudAiplatformV1Probe : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Exec specifies the action to take.</summary>
+        /// <summary>ExecAction probes the health of a container by executing a command.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exec")]
         public virtual GoogleCloudAiplatformV1ProbeExecAction Exec { get; set; }
 
@@ -52795,12 +52835,54 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for the Ray metrics.</summary>
+    public class GoogleCloudAiplatformV1RayMetricSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Flag to disable the Ray metrics collection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual System.Nullable<bool> Disabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Configuration information for the Ray cluster. For experimental launch, Ray cluster creation and Persistent
     /// cluster creation are 1:1 mapping: We will provision all the nodes within the Persistent cluster as Ray nodes.
     /// </summary>
     public class GoogleCloudAiplatformV1RaySpec : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. This will be used to indicate which resource pool will serve as the Ray head node(the first node
+        /// within that pool). Will use the machine from the first workerpool as the head node by default if this field
+        /// isn't set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headNodeResourcePoolId")]
+        public virtual string HeadNodeResourcePoolId { get; set; }
+
+        /// <summary>
+        /// Optional. Default image for user to choose a preferred ML framework (for example, TensorFlow or Pytorch) by
+        /// choosing from [Vertex prebuilt
+        /// images](https://cloud.google.com/vertex-ai/docs/training/pre-built-containers). Either this or the
+        /// resource_pool_images is required. Use this field if you need all the resource pools to have the same Ray
+        /// image. Otherwise, use the {@code resource_pool_images} field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
+        public virtual string ImageUri { get; set; }
+
+        /// <summary>Optional. Ray metrics configurations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rayMetricSpec")]
+        public virtual GoogleCloudAiplatformV1RayMetricSpec RayMetricSpec { get; set; }
+
+        /// <summary>
+        /// Optional. Required if image_uri isn't set. A map of resource_pool_id to prebuild Ray image if user need to
+        /// use different images for different head/worker pools. This map needs to cover all the resource pool ids.
+        /// Example: { "ray_head_node_pool": "head image" "ray_worker_node_pool1": "worker image"
+        /// "ray_worker_node_pool2": "another worker image" }
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourcePoolImages")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ResourcePoolImages { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -53131,6 +53213,13 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// <summary>Persistent Cluster runtime information as output</summary>
     public class GoogleCloudAiplatformV1ResourceRuntime : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. URIs for user to connect to the Cluster. Example: { "RAY_HEAD_NODE_INTERNAL_IP":
+        /// "head-node-IP:10001" "RAY_DASHBOARD_URI": "ray-dashboard-address:8888" }
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessUris")]
+        public virtual System.Collections.Generic.IDictionary<string, string> AccessUris { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -55971,6 +56060,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("groundingConfig")]
         public virtual GoogleCloudAiplatformV1SchemaPredictParamsGroundingConfig GroundingConfig { get; set; }
 
+        /// <summary>Whether the prompt dataset has prompt variable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hasPromptVariable")]
+        public virtual System.Nullable<bool> HasPromptVariable { get; set; }
+
         /// <summary>Value of the maximum number of tokens generated set when the dataset was saved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxOutputTokens")]
         public virtual System.Nullable<long> MaxOutputTokens { get; set; }
@@ -58664,6 +58757,32 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>One field of a Struct (or object) type feature value.</summary>
+    public class GoogleCloudAiplatformV1StructFieldValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the field in the struct feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The value for this field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual GoogleCloudAiplatformV1FeatureValue Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Struct (or object) type feature value.</summary>
+    public class GoogleCloudAiplatformV1StructValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of field values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1StructFieldValue> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A message representing a Study.</summary>
     public class GoogleCloudAiplatformV1Study : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -60397,6 +60516,12 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("functionDeclarations")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1FunctionDeclaration> FunctionDeclarations { get; set; }
+
+        /// <summary>
+        /// Optional. GoogleSearchRetrieval tool type. Specialized retrieval tool that is powered by Google search.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleSearchRetrieval")]
+        public virtual GoogleCloudAiplatformV1GoogleSearchRetrieval GoogleSearchRetrieval { get; set; }
 
         /// <summary>
         /// Optional. Retrieval tool type. System will always execute the provided retrieval tool(s) to get external

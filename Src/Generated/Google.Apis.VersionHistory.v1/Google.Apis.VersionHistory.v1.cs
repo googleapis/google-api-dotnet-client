@@ -958,6 +958,10 @@ namespace Google.Apis.VersionHistory.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Whether or not the release was available for version pinning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pinnable")]
+        public virtual System.Nullable<bool> Pinnable { get; set; }
+
         /// <summary>
         /// Timestamp interval of when the release was live. If end_time is unspecified, the release is currently live.
         /// </summary>

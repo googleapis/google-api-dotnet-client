@@ -1854,6 +1854,13 @@ namespace Google.Apis.CCAIPlatform.v1alpha1.Data
     public class ServiceAttachment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// The list of project ids that are allowed to send traffic to the service attachment. This field should be
+        /// filled only for the ingress service attachments.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedProjectIds")]
+        public virtual System.Collections.Generic.IList<string> AllowedProjectIds { get; set; }
+
+        /// <summary>
         /// The service attachment name that will be used for sending private traffic to the CCAIP tenant project.
         /// Example: "projects/${TENANT_PROJECT_ID}/regions/${REGION}/serviceAttachments/ingress-default".
         /// </summary>

@@ -35,6 +35,7 @@ namespace Google.Apis.Firebaseappcheck.v1
         public FirebaseappcheckService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Jwks = new JwksResource(this);
+            OauthClients = new OauthClientsResource(this);
             Projects = new ProjectsResource(this);
             BaseUri = GetEffectiveUri(BaseUriOverride, "https://firebaseappcheck.googleapis.com/");
             BatchUri = GetEffectiveUri(null, "https://firebaseappcheck.googleapis.com/batch");
@@ -86,6 +87,9 @@ namespace Google.Apis.Firebaseappcheck.v1
 
         /// <summary>Gets the Jwks resource.</summary>
         public virtual JwksResource Jwks { get; }
+
+        /// <summary>Gets the OauthClients resource.</summary>
+        public virtual OauthClientsResource OauthClients { get; }
 
         /// <summary>Gets the Projects resource.</summary>
         public virtual ProjectsResource Projects { get; }
@@ -339,6 +343,329 @@ namespace Google.Apis.Firebaseappcheck.v1
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^jwks$",
+                });
+            }
+        }
+    }
+
+    /// <summary>The "oauthClients" collection of methods.</summary>
+    public class OauthClientsResource
+    {
+        private const string Resource = "oauthClients";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public OauthClientsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>
+        /// Accepts an App Attest assertion and an artifact previously obtained from ExchangeAppAttestAttestation and
+        /// verifies those with Apple. If valid, returns an AppCheckToken.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="app">
+        /// Required. The relative resource name of the iOS app, in the format:
+        /// ```
+        /// projects/{project_number}/apps/{app_id}
+        /// ```
+        /// If necessary, the `project_number` element can be replaced with
+        /// the project ID of the Firebase project. Learn more about using project identifiers in Google's [AIP
+        /// 2510](https://google.aip.dev/cloud/2510) standard.
+        /// </param>
+        public virtual ExchangeAppAttestAssertionRequest ExchangeAppAttestAssertion(Google.Apis.Firebaseappcheck.v1.Data.GoogleFirebaseAppcheckV1ExchangeAppAttestAssertionRequest body, string app)
+        {
+            return new ExchangeAppAttestAssertionRequest(this.service, body, app);
+        }
+
+        /// <summary>
+        /// Accepts an App Attest assertion and an artifact previously obtained from ExchangeAppAttestAttestation and
+        /// verifies those with Apple. If valid, returns an AppCheckToken.
+        /// </summary>
+        public class ExchangeAppAttestAssertionRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1.Data.GoogleFirebaseAppcheckV1AppCheckToken>
+        {
+            /// <summary>Constructs a new ExchangeAppAttestAssertion request.</summary>
+            public ExchangeAppAttestAssertionRequest(Google.Apis.Services.IClientService service, Google.Apis.Firebaseappcheck.v1.Data.GoogleFirebaseAppcheckV1ExchangeAppAttestAssertionRequest body, string app) : base(service)
+            {
+                App = app;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The relative resource name of the iOS app, in the format:
+            /// ```
+            /// projects/{project_number}/apps/{app_id}
+            /// ```
+            /// If necessary, the `project_number` element can be replaced
+            /// with the project ID of the Firebase project. Learn more about using project identifiers in Google's [AIP
+            /// 2510](https://google.aip.dev/cloud/2510) standard.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("app", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string App { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Firebaseappcheck.v1.Data.GoogleFirebaseAppcheckV1ExchangeAppAttestAssertionRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "exchangeAppAttestAssertion";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+app}:exchangeAppAttestAssertion";
+
+            /// <summary>Initializes ExchangeAppAttestAssertion parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("app", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "app",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^oauthClients/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Accepts an App Attest CBOR attestation and verifies it with Apple using your preconfigured team and bundle
+        /// IDs. If valid, returns an attestation artifact that can later be exchanged for an AppCheckToken using
+        /// ExchangeAppAttestAssertion. For convenience and performance, this method's response object will also contain
+        /// an AppCheckToken (if the verification is successful).
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="app">
+        /// Required. The relative resource name of the iOS app, in the format:
+        /// ```
+        /// projects/{project_number}/apps/{app_id}
+        /// ```
+        /// If necessary, the `project_number` element can be replaced with
+        /// the project ID of the Firebase project. Learn more about using project identifiers in Google's [AIP
+        /// 2510](https://google.aip.dev/cloud/2510) standard.
+        /// </param>
+        public virtual ExchangeAppAttestAttestationRequest ExchangeAppAttestAttestation(Google.Apis.Firebaseappcheck.v1.Data.GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationRequest body, string app)
+        {
+            return new ExchangeAppAttestAttestationRequest(this.service, body, app);
+        }
+
+        /// <summary>
+        /// Accepts an App Attest CBOR attestation and verifies it with Apple using your preconfigured team and bundle
+        /// IDs. If valid, returns an attestation artifact that can later be exchanged for an AppCheckToken using
+        /// ExchangeAppAttestAssertion. For convenience and performance, this method's response object will also contain
+        /// an AppCheckToken (if the verification is successful).
+        /// </summary>
+        public class ExchangeAppAttestAttestationRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1.Data.GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationResponse>
+        {
+            /// <summary>Constructs a new ExchangeAppAttestAttestation request.</summary>
+            public ExchangeAppAttestAttestationRequest(Google.Apis.Services.IClientService service, Google.Apis.Firebaseappcheck.v1.Data.GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationRequest body, string app) : base(service)
+            {
+                App = app;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The relative resource name of the iOS app, in the format:
+            /// ```
+            /// projects/{project_number}/apps/{app_id}
+            /// ```
+            /// If necessary, the `project_number` element can be replaced
+            /// with the project ID of the Firebase project. Learn more about using project identifiers in Google's [AIP
+            /// 2510](https://google.aip.dev/cloud/2510) standard.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("app", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string App { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Firebaseappcheck.v1.Data.GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "exchangeAppAttestAttestation";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+app}:exchangeAppAttestAttestation";
+
+            /// <summary>Initializes ExchangeAppAttestAttestation parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("app", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "app",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^oauthClients/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Validates a debug token secret that you have previously created using CreateDebugToken. If valid, returns an
+        /// AppCheckToken. Note that a restrictive quota is enforced on this method to prevent accidental exposure of
+        /// the app to abuse.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="app">
+        /// Required. The relative resource name of the app, in the format:
+        /// ```
+        /// projects/{project_number}/apps/{app_id}
+        /// ```
+        /// If necessary, the `project_number` element can be replaced with the project ID of the Firebase project.
+        /// Learn more about using project identifiers in Google's [AIP 2510](https://google.aip.dev/cloud/2510)
+        /// standard.
+        /// </param>
+        public virtual ExchangeDebugTokenRequest ExchangeDebugToken(Google.Apis.Firebaseappcheck.v1.Data.GoogleFirebaseAppcheckV1ExchangeDebugTokenRequest body, string app)
+        {
+            return new ExchangeDebugTokenRequest(this.service, body, app);
+        }
+
+        /// <summary>
+        /// Validates a debug token secret that you have previously created using CreateDebugToken. If valid, returns an
+        /// AppCheckToken. Note that a restrictive quota is enforced on this method to prevent accidental exposure of
+        /// the app to abuse.
+        /// </summary>
+        public class ExchangeDebugTokenRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1.Data.GoogleFirebaseAppcheckV1AppCheckToken>
+        {
+            /// <summary>Constructs a new ExchangeDebugToken request.</summary>
+            public ExchangeDebugTokenRequest(Google.Apis.Services.IClientService service, Google.Apis.Firebaseappcheck.v1.Data.GoogleFirebaseAppcheckV1ExchangeDebugTokenRequest body, string app) : base(service)
+            {
+                App = app;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The relative resource name of the app, in the format:
+            /// ```
+            /// projects/{project_number}/apps/{app_id}
+            /// ```
+            /// If necessary, the `project_number` element can be replaced
+            /// with the project ID of the Firebase project. Learn more about using project identifiers in Google's [AIP
+            /// 2510](https://google.aip.dev/cloud/2510) standard.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("app", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string App { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Firebaseappcheck.v1.Data.GoogleFirebaseAppcheckV1ExchangeDebugTokenRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "exchangeDebugToken";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+app}:exchangeDebugToken";
+
+            /// <summary>Initializes ExchangeDebugToken parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("app", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "app",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^oauthClients/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Generates a challenge that protects the integrity of an immediately following call to
+        /// ExchangeAppAttestAttestation or ExchangeAppAttestAssertion. A challenge should not be reused for multiple
+        /// calls.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="app">
+        /// Required. The relative resource name of the iOS app, in the format:
+        /// ```
+        /// projects/{project_number}/apps/{app_id}
+        /// ```
+        /// If necessary, the `project_number` element can be replaced with
+        /// the project ID of the Firebase project. Learn more about using project identifiers in Google's [AIP
+        /// 2510](https://google.aip.dev/cloud/2510) standard.
+        /// </param>
+        public virtual GenerateAppAttestChallengeRequest GenerateAppAttestChallenge(Google.Apis.Firebaseappcheck.v1.Data.GoogleFirebaseAppcheckV1GenerateAppAttestChallengeRequest body, string app)
+        {
+            return new GenerateAppAttestChallengeRequest(this.service, body, app);
+        }
+
+        /// <summary>
+        /// Generates a challenge that protects the integrity of an immediately following call to
+        /// ExchangeAppAttestAttestation or ExchangeAppAttestAssertion. A challenge should not be reused for multiple
+        /// calls.
+        /// </summary>
+        public class GenerateAppAttestChallengeRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1.Data.GoogleFirebaseAppcheckV1GenerateAppAttestChallengeResponse>
+        {
+            /// <summary>Constructs a new GenerateAppAttestChallenge request.</summary>
+            public GenerateAppAttestChallengeRequest(Google.Apis.Services.IClientService service, Google.Apis.Firebaseappcheck.v1.Data.GoogleFirebaseAppcheckV1GenerateAppAttestChallengeRequest body, string app) : base(service)
+            {
+                App = app;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The relative resource name of the iOS app, in the format:
+            /// ```
+            /// projects/{project_number}/apps/{app_id}
+            /// ```
+            /// If necessary, the `project_number` element can be replaced
+            /// with the project ID of the Firebase project. Learn more about using project identifiers in Google's [AIP
+            /// 2510](https://google.aip.dev/cloud/2510) standard.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("app", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string App { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Firebaseappcheck.v1.Data.GoogleFirebaseAppcheckV1GenerateAppAttestChallengeRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "generateAppAttestChallenge";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+app}:generateAppAttestChallenge";
+
+            /// <summary>Initializes GenerateAppAttestChallenge parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("app", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "app",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^oauthClients/[^/]+$",
                 });
             }
         }
@@ -1905,7 +2232,7 @@ namespace Google.Apis.Firebaseappcheck.v1
 
                 /// <summary>
                 /// Updates the RecaptchaV3Config for the specified app. While this configuration is incomplete or
-                /// invalid, the app will be unable to exchange reCAPTCHA tokens for App Check tokens. For security
+                /// invalid, the app will be unable to exchange reCAPTCHA V3 tokens for App Check tokens. For security
                 /// reasons, the `site_secret` field is never populated in the response.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
@@ -1922,7 +2249,7 @@ namespace Google.Apis.Firebaseappcheck.v1
 
                 /// <summary>
                 /// Updates the RecaptchaV3Config for the specified app. While this configuration is incomplete or
-                /// invalid, the app will be unable to exchange reCAPTCHA tokens for App Check tokens. For security
+                /// invalid, the app will be unable to exchange reCAPTCHA V3 tokens for App Check tokens. For security
                 /// reasons, the `site_secret` field is never populated in the response.
                 /// </summary>
                 public class PatchRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1.Data.GoogleFirebaseAppcheckV1RecaptchaV3Config>

@@ -4292,7 +4292,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 /// <summary>Updates the specified ResourcePolicy configuration.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. The relative name of the resource policy object, in the format:
+                /// Required. Identifier. The relative name of the resource policy object, in the format:
                 /// ```
                 /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_policy_id}
                 /// ```
@@ -4318,7 +4318,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                     }
 
                     /// <summary>
-                    /// Required. The relative name of the resource policy object, in the format:
+                    /// Required. Identifier. The relative name of the resource policy object, in the format:
                     /// ```
                     /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_policy_id}
                     /// ```
@@ -4453,7 +4453,8 @@ namespace Google.Apis.Firebaseappcheck.v1beta
             /// supported service ID. Currently, the following service IDs are supported: *
             /// `firebasestorage.googleapis.com` (Cloud Storage for Firebase) * `firebasedatabase.googleapis.com`
             /// (Firebase Realtime Database) * `firestore.googleapis.com` (Cloud Firestore) *
-            /// `identitytoolkit.googleapis.com` (Firebase Authentication with Identity Platform)
+            /// `identitytoolkit.googleapis.com` (Firebase Authentication with Identity Platform) *
+            /// `oauth2.googleapis.com` (Google Identity for iOS)
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -4479,7 +4480,8 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 /// supported service ID. Currently, the following service IDs are supported: *
                 /// `firebasestorage.googleapis.com` (Cloud Storage for Firebase) * `firebasedatabase.googleapis.com`
                 /// (Firebase Realtime Database) * `firestore.googleapis.com` (Cloud Firestore) *
-                /// `identitytoolkit.googleapis.com` (Firebase Authentication with Identity Platform)
+                /// `identitytoolkit.googleapis.com` (Firebase Authentication with Identity Platform) *
+                /// `oauth2.googleapis.com` (Google Identity for iOS)
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -4549,8 +4551,8 @@ namespace Google.Apis.Firebaseappcheck.v1beta
 
                 /// <summary>
                 /// The maximum number of Services to return in the response. Only explicitly configured services are
-                /// returned. The server may return fewer than this at its own discretion. If no value is specified or
-                /// set to zero (or too large a value is specified), the server will impose its own limit.
+                /// returned. The server may return fewer than this at its own discretion. If no value is specified (or
+                /// too large a value is specified), the server will impose its own limit.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -5006,8 +5008,8 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
 
         /// <summary>
         /// Optional. A comma-separated list of names of fields in the Services to update. Example: `display_name`. If
-        /// this field is present, the `update_mask` field in the UpdateServiceRequest messages must all match this
-        /// field, or the entire batch fails and no updates will be committed.
+        /// the `update_mask` field is set in both this request and any of the UpdateServiceRequest messages, they must
+        /// match or the entire batch fails and no updates will be committed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; }
@@ -5726,7 +5728,7 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
         public virtual string ETag { get; set; }
 
         /// <summary>
-        /// Required. The relative name of the resource policy object, in the format:
+        /// Required. Identifier. The relative name of the resource policy object, in the format:
         /// ```
         /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_policy_id}
         /// ```
@@ -5930,9 +5932,9 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
         /// must be a supported service ID. Currently, the following service IDs are supported: *
         /// `firebasestorage.googleapis.com` (Cloud Storage for Firebase) * `firebasedatabase.googleapis.com` (Firebase
         /// Realtime Database) * `firestore.googleapis.com` (Cloud Firestore) * `identitytoolkit.googleapis.com`
-        /// (Firebase Authentication with Identity Platform) For Firebase Authentication to work with App Check, you
-        /// must first upgrade to [Firebase Authentication with Identity
-        /// Platform](https://firebase.google.com/docs/auth#identity-platform).
+        /// (Firebase Authentication with Identity Platform) * `oauth2.googleapis.com` (Google Identity for iOS) For
+        /// Firebase Authentication to work with App Check, you must first upgrade to [Firebase Authentication with
+        /// Identity Platform](https://firebase.google.com/docs/auth#identity-platform).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual GoogleFirebaseAppcheckV1betaService Service { get; set; }
