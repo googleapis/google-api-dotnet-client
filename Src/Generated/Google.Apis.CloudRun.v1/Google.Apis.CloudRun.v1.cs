@@ -444,7 +444,7 @@ namespace Google.Apis.CloudRun.v1
                 }
             }
 
-            /// <summary>List configurations.</summary>
+            /// <summary>List configurations. Results are sorted by creation time, descending.</summary>
             /// <param name="parent">
             /// The namespace from which the configurations should be listed. For Cloud Run, replace {namespace_id} with
             /// the project ID or number.
@@ -454,7 +454,7 @@ namespace Google.Apis.CloudRun.v1
                 return new ListRequest(this.service, parent);
             }
 
-            /// <summary>List configurations.</summary>
+            /// <summary>List configurations. Results are sorted by creation time, descending.</summary>
             public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.ListConfigurationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -1201,7 +1201,7 @@ namespace Google.Apis.CloudRun.v1
                 }
             }
 
-            /// <summary>List executions.</summary>
+            /// <summary>List executions. Results are sorted by creation time, descending.</summary>
             /// <param name="parent">
             /// Required. The namespace from which the executions should be listed. Replace {namespace} with the project
             /// ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
@@ -1211,7 +1211,7 @@ namespace Google.Apis.CloudRun.v1
                 return new ListRequest(this.service, parent);
             }
 
-            /// <summary>List executions.</summary>
+            /// <summary>List executions. Results are sorted by creation time, descending.</summary>
             public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.ListExecutionsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -1558,7 +1558,7 @@ namespace Google.Apis.CloudRun.v1
                 }
             }
 
-            /// <summary>List jobs.</summary>
+            /// <summary>List jobs. Results are sorted by creation time, descending.</summary>
             /// <param name="parent">
             /// Required. The namespace from which the jobs should be listed. Replace {namespace} with the project ID or
             /// number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID
@@ -1568,7 +1568,7 @@ namespace Google.Apis.CloudRun.v1
                 return new ListRequest(this.service, parent);
             }
 
-            /// <summary>List jobs.</summary>
+            /// <summary>List jobs. Results are sorted by creation time, descending.</summary>
             public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.ListJobsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -1996,7 +1996,7 @@ namespace Google.Apis.CloudRun.v1
                 }
             }
 
-            /// <summary>List revisions.</summary>
+            /// <summary>List revisions. Results are sorted by creation time, descending.</summary>
             /// <param name="parent">
             /// The namespace from which the revisions should be listed. For Cloud Run (fully managed), replace
             /// {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example:
@@ -2007,7 +2007,7 @@ namespace Google.Apis.CloudRun.v1
                 return new ListRequest(this.service, parent);
             }
 
-            /// <summary>List revisions.</summary>
+            /// <summary>List revisions. Results are sorted by creation time, descending.</summary>
             public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.ListRevisionsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -2213,7 +2213,7 @@ namespace Google.Apis.CloudRun.v1
                 }
             }
 
-            /// <summary>List routes.</summary>
+            /// <summary>List routes. Results are sorted by creation time, descending.</summary>
             /// <param name="parent">
             /// The namespace from which the routes should be listed. For Cloud Run (fully managed), replace {namespace}
             /// with the project ID or number. It takes the form namespaces/{namespace}. For example:
@@ -2224,7 +2224,7 @@ namespace Google.Apis.CloudRun.v1
                 return new ListRequest(this.service, parent);
             }
 
-            /// <summary>List routes.</summary>
+            /// <summary>List routes. Results are sorted by creation time, descending.</summary>
             public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.ListRoutesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -2630,7 +2630,9 @@ namespace Google.Apis.CloudRun.v1
                 }
             }
 
-            /// <summary>Lists services for the given project and region.</summary>
+            /// <summary>
+            /// Lists services for the given project and region. Results are sorted by creation time, descending.
+            /// </summary>
             /// <param name="parent">
             /// Required. The parent from where the resources should be listed. In Cloud Run, it may be one of the
             /// following: * `{project_id_or_number}` * `namespaces/{project_id_or_number}` *
@@ -2642,7 +2644,9 @@ namespace Google.Apis.CloudRun.v1
                 return new ListRequest(this.service, parent);
             }
 
-            /// <summary>Lists services for the given project and region.</summary>
+            /// <summary>
+            /// Lists services for the given project and region. Results are sorted by creation time, descending.
+            /// </summary>
             public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.ListServicesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -3357,7 +3361,7 @@ namespace Google.Apis.CloudRun.v1
                     }
                 }
 
-                /// <summary>List configurations.</summary>
+                /// <summary>List configurations. Results are sorted by creation time, descending.</summary>
                 /// <param name="parent">
                 /// The namespace from which the configurations should be listed. For Cloud Run, replace {namespace_id}
                 /// with the project ID or number.
@@ -3367,7 +3371,7 @@ namespace Google.Apis.CloudRun.v1
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>List configurations.</summary>
+                /// <summary>List configurations. Results are sorted by creation time, descending.</summary>
                 public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.ListConfigurationsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -4593,7 +4597,7 @@ namespace Google.Apis.CloudRun.v1
                     }
                 }
 
-                /// <summary>List revisions.</summary>
+                /// <summary>List revisions. Results are sorted by creation time, descending.</summary>
                 /// <param name="parent">
                 /// The namespace from which the revisions should be listed. For Cloud Run (fully managed), replace
                 /// {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example:
@@ -4604,7 +4608,7 @@ namespace Google.Apis.CloudRun.v1
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>List revisions.</summary>
+                /// <summary>List revisions. Results are sorted by creation time, descending.</summary>
                 public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.ListRevisionsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -4812,7 +4816,7 @@ namespace Google.Apis.CloudRun.v1
                     }
                 }
 
-                /// <summary>List routes.</summary>
+                /// <summary>List routes. Results are sorted by creation time, descending.</summary>
                 /// <param name="parent">
                 /// The namespace from which the routes should be listed. For Cloud Run (fully managed), replace
                 /// {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example:
@@ -4823,7 +4827,7 @@ namespace Google.Apis.CloudRun.v1
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>List routes.</summary>
+                /// <summary>List routes. Results are sorted by creation time, descending.</summary>
                 public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.ListRoutesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -5311,7 +5315,9 @@ namespace Google.Apis.CloudRun.v1
                     }
                 }
 
-                /// <summary>Lists services for the given project and region.</summary>
+                /// <summary>
+                /// Lists services for the given project and region. Results are sorted by creation time, descending.
+                /// </summary>
                 /// <param name="parent">
                 /// Required. The parent from where the resources should be listed. In Cloud Run, it may be one of the
                 /// following: * `{project_id_or_number}` * `namespaces/{project_id_or_number}` *
@@ -5323,7 +5329,9 @@ namespace Google.Apis.CloudRun.v1
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>Lists services for the given project and region.</summary>
+                /// <summary>
+                /// Lists services for the given project and region. Results are sorted by creation time, descending.
+                /// </summary>
                 public class ListRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v1.Data.ListServicesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -7296,7 +7304,7 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
 
-        /// <summary>The location of the source files to build.</summary>
+        /// <summary>Optional. The location of the source files to build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual GoogleDevtoolsCloudbuildV1Source Source { get; set; }
 
@@ -7431,7 +7439,7 @@ namespace Google.Apis.CloudRun.v1.Data
         /// Requested disk size for the VM that runs the build. Note that this is *NOT* "disk free"; some of the space
         /// will be used by the operating system and build utilities. Also note that this is the minimum disk size that
         /// will be allocated for the build -- the build may run with a larger disk than requested. At present, the
-        /// maximum disk size is 2000GB; builds that request more than the maximum are rejected with an error.
+        /// maximum disk size is 4000GB; builds that request more than the maximum are rejected with an error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
         public virtual System.Nullable<long> DiskSizeGb { get; set; }
@@ -7673,7 +7681,7 @@ namespace Google.Apis.CloudRun.v1.Data
     /// <summary>Location of the source in a 2nd-gen Google Cloud Build repository resource.</summary>
     public class GoogleDevtoolsCloudbuildV1ConnectedRepository : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Directory, relative to the source root, in which to run the build.</summary>
+        /// <summary>Optional. Directory, relative to the source root, in which to run the build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dir")]
         public virtual string Dir { get; set; }
 
@@ -7685,7 +7693,8 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string Repository { get; set; }
 
         /// <summary>
-        /// The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref.
+        /// Required. The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git
+        /// ref.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revision")]
         public virtual string Revision { get; set; }
@@ -7784,24 +7793,24 @@ namespace Google.Apis.CloudRun.v1.Data
     public class GoogleDevtoolsCloudbuildV1GitSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Directory, relative to the source root, in which to run the build. This must be a relative path. If a step's
-        /// `dir` is specified and is an absolute path, this value is ignored for that step's execution.
+        /// Optional. Directory, relative to the source root, in which to run the build. This must be a relative path.
+        /// If a step's `dir` is specified and is an absolute path, this value is ignored for that step's execution.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dir")]
         public virtual string Dir { get; set; }
 
         /// <summary>
-        /// The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref. Cloud
-        /// Build uses `git fetch` to fetch the revision from the Git repository; therefore make sure that the string
-        /// you provide for `revision` is parsable by the command. For information on string values accepted by `git
-        /// fetch`, see https://git-scm.com/docs/gitrevisions#_specifying_revisions. For information on `git fetch`, see
-        /// https://git-scm.com/docs/git-fetch.
+        /// Optional. The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git
+        /// ref. Cloud Build uses `git fetch` to fetch the revision from the Git repository; therefore make sure that
+        /// the string you provide for `revision` is parsable by the command. For information on string values accepted
+        /// by `git fetch`, see https://git-scm.com/docs/gitrevisions#_specifying_revisions. For information on `git
+        /// fetch`, see https://git-scm.com/docs/git-fetch.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revision")]
         public virtual string Revision { get; set; }
 
         /// <summary>
-        /// Location of the Git repo to build. This will be used as a `git remote`, see
+        /// Required. Location of the Git repo to build. This will be used as a `git remote`, see
         /// https://git-scm.com/docs/git-remote.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
@@ -7980,28 +7989,30 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string CommitSha { get; set; }
 
         /// <summary>
-        /// Directory, relative to the source root, in which to run the build. This must be a relative path. If a step's
-        /// `dir` is specified and is an absolute path, this value is ignored for that step's execution.
+        /// Optional. Directory, relative to the source root, in which to run the build. This must be a relative path.
+        /// If a step's `dir` is specified and is an absolute path, this value is ignored for that step's execution.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dir")]
         public virtual string Dir { get; set; }
 
-        /// <summary>Only trigger a build if the revision regex does NOT match the revision regex.</summary>
+        /// <summary>Optional. Only trigger a build if the revision regex does NOT match the revision regex.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invertRegex")]
         public virtual System.Nullable<bool> InvertRegex { get; set; }
 
         /// <summary>
-        /// ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is
-        /// assumed.
+        /// Optional. ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the
+        /// build is assumed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
 
-        /// <summary>Name of the Cloud Source Repository.</summary>
+        /// <summary>Required. Name of the Cloud Source Repository.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("repoName")]
         public virtual string RepoName { get; set; }
 
-        /// <summary>Substitutions to use in a triggered build. Should only be used with RunBuildTrigger</summary>
+        /// <summary>
+        /// Optional. Substitutions to use in a triggered build. Should only be used with RunBuildTrigger
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("substitutions")]
         public virtual System.Collections.Generic.IDictionary<string, string> Substitutions { get; set; }
 
@@ -8219,14 +8230,15 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string Bucket { get; set; }
 
         /// <summary>
-        /// Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
+        /// Optional. Cloud Storage generation for the object. If the generation is omitted, the latest generation will
+        /// be used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generation")]
         public virtual System.Nullable<long> Generation { get; set; }
 
         /// <summary>
-        /// Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file
-        /// (`.tar.gz`) containing source to build.
+        /// Required. Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped
+        /// archive file (`.tar.gz`) containing source to build.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("object")]
         public virtual string Object__ { get; set; }
@@ -8246,7 +8258,7 @@ namespace Google.Apis.CloudRun.v1.Data
     public class GoogleDevtoolsCloudbuildV1StorageSourceManifest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Cloud Storage bucket containing the source manifest (see [Bucket Name
+        /// Required. Cloud Storage bucket containing the source manifest (see [Bucket Name
         /// Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
@@ -8258,7 +8270,9 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("generation")]
         public virtual System.Nullable<long> Generation { get; set; }
 
-        /// <summary>Cloud Storage object containing the source manifest. This object must be a JSON file.</summary>
+        /// <summary>
+        /// Required. Cloud Storage object containing the source manifest. This object must be a JSON file.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("object")]
         public virtual string Object__ { get; set; }
 

@@ -2120,7 +2120,7 @@ namespace Google.Apis.CloudBuild.v2.Data
         public virtual UserCredential AuthorizerCredential { get; set; }
 
         /// <summary>
-        /// Optional. The URI of the Bitbucket Data Center instance or cluster this connection is for.
+        /// Required. The URI of the Bitbucket Data Center instance or cluster this connection is for.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hostUri")]
         public virtual string HostUri { get; set; }

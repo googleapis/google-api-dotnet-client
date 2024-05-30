@@ -4719,6 +4719,13 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration to use Change Tables CDC read method.</summary>
+    public class SqlServerChangeTables : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>SQLServer Column.</summary>
     public class SqlServerColumn : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4829,6 +4836,10 @@ namespace Google.Apis.Datastream.v1.Data
     /// <summary>SQLServer data source configuration</summary>
     public class SqlServerSourceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>CDC reader reads from change tables.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("changeTables")]
+        public virtual SqlServerChangeTables ChangeTables { get; set; }
+
         /// <summary>SQLServer objects to exclude from the stream.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludeObjects")]
         public virtual SqlServerRdbms ExcludeObjects { get; set; }
@@ -4844,6 +4855,10 @@ namespace Google.Apis.Datastream.v1.Data
         /// <summary>Max concurrent CDC tasks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxConcurrentCdcTasks")]
         public virtual System.Nullable<int> MaxConcurrentCdcTasks { get; set; }
+
+        /// <summary>CDC reader reads from transaction logs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transactionLogs")]
+        public virtual SqlServerTransactionLogs TransactionLogs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4863,6 +4878,13 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("table")]
         public virtual string Table { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration to use Transaction Logs CDC read method.</summary>
+    public class SqlServerTransactionLogs : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

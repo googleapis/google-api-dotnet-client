@@ -2724,6 +2724,10 @@ namespace Google.Apis.Calendar.v3
                 [Google.Apis.Util.StringValueAttribute("focusTime")]
                 FocusTime = 1,
 
+                /// <summary>Events from Gmail.</summary>
+                [Google.Apis.Util.StringValueAttribute("fromGmail")]
+                FromGmail = 4,
+
                 /// <summary>Out of office events.</summary>
                 [Google.Apis.Util.StringValueAttribute("outOfOffice")]
                 OutOfOffice = 2,
@@ -3107,7 +3111,7 @@ namespace Google.Apis.Calendar.v3
 
         /// <summary>
         /// Moves an event to another calendar, i.e. changes an event's organizer. Note that only default events can be
-        /// moved; outOfOffice, focusTime and workingLocation events cannot be moved.
+        /// moved; outOfOffice, focusTime, workingLocation and fromGmail events cannot be moved.
         /// </summary>
         /// <param name="calendarId">Calendar identifier of the source calendar where the event currently is on.</param>
         /// <param name="eventId">Event identifier.</param>
@@ -3121,7 +3125,7 @@ namespace Google.Apis.Calendar.v3
 
         /// <summary>
         /// Moves an event to another calendar, i.e. changes an event's organizer. Note that only default events can be
-        /// moved; outOfOffice, focusTime and workingLocation events cannot be moved.
+        /// moved; outOfOffice, focusTime, workingLocation and fromGmail events cannot be moved.
         /// </summary>
         public class MoveRequest : CalendarBaseServiceRequest<Google.Apis.Calendar.v3.Data.Event>
         {
@@ -3785,6 +3789,10 @@ namespace Google.Apis.Calendar.v3
                 /// <summary>Focus time events.</summary>
                 [Google.Apis.Util.StringValueAttribute("focusTime")]
                 FocusTime = 1,
+
+                /// <summary>Events from Gmail.</summary>
+                [Google.Apis.Util.StringValueAttribute("fromGmail")]
+                FromGmail = 4,
 
                 /// <summary>Out of office events.</summary>
                 [Google.Apis.Util.StringValueAttribute("outOfOffice")]
@@ -5224,7 +5232,8 @@ namespace Google.Apis.Calendar.v3.Data
         /// <summary>
         /// Specific type of the event. This cannot be modified after the event is created. Possible values are:   -
         /// "default" - A regular event or not further specified.  - "outOfOffice" - An out-of-office event.  -
-        /// "focusTime" - A focus-time event.  - "workingLocation" - A working location event.
+        /// "focusTime" - A focus-time event.  - "workingLocation" - A working location event.  - "fromGmail" - An event
+        /// from Gmail. This type of event cannot be created.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
         public virtual string EventType { get; set; }

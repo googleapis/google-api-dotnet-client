@@ -2565,7 +2565,7 @@ namespace Google.Apis.CloudFunctions.v1.Data
     public class OnDeployUpdatePolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. contains the runtime version which was used during latest function deployment.
+        /// Output only. Contains the runtime version which was used during latest function deployment.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeVersion")]
         public virtual string RuntimeVersion { get; set; }

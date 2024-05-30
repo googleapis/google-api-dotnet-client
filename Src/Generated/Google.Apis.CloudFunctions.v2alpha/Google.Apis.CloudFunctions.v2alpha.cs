@@ -3428,6 +3428,12 @@ namespace Google.Apis.CloudFunctions.v2alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("availableMemory")]
         public virtual string AvailableMemory { get; set; }
 
+        /// <summary>
+        /// Optional. The binary authorization policy to be checked when deploying the Cloud Run service.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("binaryAuthorizationPolicy")]
+        public virtual string BinaryAuthorizationPolicy { get; set; }
+
         /// <summary>Environment variables that shall be available during function execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environmentVariables")]
         public virtual System.Collections.Generic.IDictionary<string, string> EnvironmentVariables { get; set; }
@@ -3646,6 +3652,13 @@ namespace Google.Apis.CloudFunctions.v2alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("object")]
         public virtual string Object__ { get; set; }
+
+        /// <summary>
+        /// When the specified storage bucket is a 1st gen function uploard url bucket, this field should be set as the
+        /// generated upload url for 1st gen deployment.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceUploadUrl")]
+        public virtual string SourceUploadUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

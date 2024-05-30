@@ -2266,8 +2266,8 @@ namespace Google.Apis.CloudIAP.v1.Data
         public virtual string Region { get; set; }
 
         /// <summary>
-        /// Resource type. Types are defined in IAM's .service files. Valid values for type might be 'gce', 'gcs',
-        /// 'project', 'account' etc.
+        /// Resource type. Types are defined in IAM's .service files. Valid values for type might be 'storage_buckets',
+        /// 'compute_instances', 'resourcemanager_customers', 'billing_accounts', etc.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }

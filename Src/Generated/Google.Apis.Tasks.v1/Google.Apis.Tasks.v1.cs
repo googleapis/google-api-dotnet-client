@@ -1323,11 +1323,11 @@ namespace Google.Apis.Tasks.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
-        /// <summary>Type of the resource. This is always "tasks#task".</summary>
+        /// <summary>Output only. Type of the resource. This is always "tasks#task".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>Collection of links. This collection is read-only.</summary>
+        /// <summary>Output only. Collection of links. This collection is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("links")]
         public virtual System.Collections.Generic.IList<LinksData> Links { get; set; }
 
@@ -1336,22 +1336,22 @@ namespace Google.Apis.Tasks.v1.Data
         public virtual string Notes { get; set; }
 
         /// <summary>
-        /// Parent task identifier. This field is omitted if it is a top-level task. This field is read-only. Use the
-        /// "move" method to move the task under a different parent or to the top level.
+        /// Output only. Parent task identifier. This field is omitted if it is a top-level task. This field is
+        /// read-only. Use the "move" method to move the task under a different parent or to the top level.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
 
         /// <summary>
-        /// String indicating the position of the task among its sibling tasks under the same parent task or at the top
-        /// level. If this string is greater than another task's corresponding position string according to
-        /// lexicographical ordering, the task is positioned after the other task under the same parent task (or at the
-        /// top level). This field is read-only. Use the "move" method to move the task to another position.
+        /// Output only. String indicating the position of the task among its sibling tasks under the same parent task
+        /// or at the top level. If this string is greater than another task's corresponding position string according
+        /// to lexicographical ordering, the task is positioned after the other task under the same parent task (or at
+        /// the top level). Use the "move" method to move the task to another position.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("position")]
         public virtual string Position { get; set; }
 
-        /// <summary>URL pointing to this task. Used to retrieve, update, or delete this task.</summary>
+        /// <summary>Output only. URL pointing to this task. Used to retrieve, update, or delete this task.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; }
 
@@ -1363,15 +1363,15 @@ namespace Google.Apis.Tasks.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
 
-        /// <summary>Last modification time of the task (as a RFC 3339 timestamp).</summary>
+        /// <summary>Output only. Last modification time of the task (as a RFC 3339 timestamp).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updated")]
         public virtual string Updated { get; set; }
 
-        /// <summary>An absolute link to the task in the Google Tasks Web UI. This field is read-only.</summary>
+        /// <summary>Output only. An absolute link to the task in the Google Tasks Web UI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webViewLink")]
         public virtual string WebViewLink { get; set; }
 
-        /// <summary>Collection of links. This collection is read-only.</summary>
+        /// <summary>Output only. Collection of links. This collection is read-only.</summary>
         public class LinksData
         {
             /// <summary>The description. In HTML speak: Everything between &lt;a&gt; and &lt;/a&gt;.</summary>
@@ -1398,11 +1398,13 @@ namespace Google.Apis.Tasks.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
-        /// <summary>Type of the resource. This is always "tasks#taskList".</summary>
+        /// <summary>Output only. Type of the resource. This is always "tasks#taskList".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>URL pointing to this task list. Used to retrieve, update, or delete this task list.</summary>
+        /// <summary>
+        /// Output only. URL pointing to this task list. Used to retrieve, update, or delete this task list.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; }
 
@@ -1410,7 +1412,7 @@ namespace Google.Apis.Tasks.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
 
-        /// <summary>Last modification time of the task list (as a RFC 3339 timestamp).</summary>
+        /// <summary>Output only. Last modification time of the task list (as a RFC 3339 timestamp).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updated")]
         public virtual string Updated { get; set; }
     }

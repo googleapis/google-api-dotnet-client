@@ -4338,6 +4338,79 @@ namespace Google.Apis.Spanner.v1
                 }
 
                 /// <summary>
+                /// ChangeQuorum is strictly restricted to databases that use dual region instance configurations.
+                /// Initiates a background operation to change quorum a database from dual-region mode to single-region
+                /// mode and vice versa. The returned long-running operation will have a name of the format
+                /// `projects//instances//databases//operations/` and can be used to track execution of the
+                /// ChangeQuorum. The metadata field type is ChangeQuorumMetadata. Authorization requires
+                /// `spanner.databases.changequorum` permission on the resource database.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Name of the database in which to apply the ChangeQuorum. Values are of the form
+                /// `projects//instances//databases/`.
+                /// </param>
+                public virtual ChangequorumRequest Changequorum(Google.Apis.Spanner.v1.Data.ChangeQuorumRequest body, string name)
+                {
+                    return new ChangequorumRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// ChangeQuorum is strictly restricted to databases that use dual region instance configurations.
+                /// Initiates a background operation to change quorum a database from dual-region mode to single-region
+                /// mode and vice versa. The returned long-running operation will have a name of the format
+                /// `projects//instances//databases//operations/` and can be used to track execution of the
+                /// ChangeQuorum. The metadata field type is ChangeQuorumMetadata. Authorization requires
+                /// `spanner.databases.changequorum` permission on the resource database.
+                /// </summary>
+                public class ChangequorumRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Changequorum request.</summary>
+                    public ChangequorumRequest(Google.Apis.Services.IClientService service, Google.Apis.Spanner.v1.Data.ChangeQuorumRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the database in which to apply the ChangeQuorum. Values are of the form
+                    /// `projects//instances//databases/`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Spanner.v1.Data.ChangeQuorumRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "changequorum";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:changequorum";
+
+                    /// <summary>Initializes Changequorum parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/instances/[^/]+/databases/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
                 /// Creates a new Cloud Spanner database and starts to prepare it for serving. The returned long-running
                 /// operation will have a name of the format `/operations/` and can be used to track preparation of the
                 /// database. The metadata field type is CreateDatabaseMetadata. The response field type is Database, if
@@ -5976,7 +6049,8 @@ namespace Google.Apis.Spanner.v1
                 /// <summary>Lists all instance partitions for the given instance.</summary>
                 /// <param name="parent">
                 /// Required. The instance whose instance partitions should be listed. Values are of the form
-                /// `projects//instances/`.
+                /// `projects//instances/`. Use `{instance} = '-'` to list instance partitions for all Instances in a
+                /// project, e.g., `projects/myproject/instances/-`.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -5995,7 +6069,8 @@ namespace Google.Apis.Spanner.v1
 
                     /// <summary>
                     /// Required. The instance whose instance partitions should be listed. Values are of the form
-                    /// `projects//instances/`.
+                    /// `projects//instances/`. Use `{instance} = '-'` to list instance partitions for all Instances in
+                    /// a project, e.g., `projects/myproject/instances/-`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -7965,6 +8040,115 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata type for the long-running operation returned by ChangeQuorum.</summary>
+    public class ChangeQuorumMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>If set, the time at which this operation failed or was completed successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The request for ChangeQuorum.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual ChangeQuorumRequest Request { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>Time the request was received.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request for ChangeQuorum.</summary>
+    public class ChangeQuorumRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The etag is the hash of the QuorumInfo. The ChangeQuorum operation will only be performed if the
+        /// etag matches that of the QuorumInfo in the current database resource. Otherwise the API will return an
+        /// `ABORTED` error. The etag is used for optimistic concurrency control as a way to help prevent simultaneous
+        /// change quorum requests that could create a race condition.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Required. Name of the database in which to apply the ChangeQuorum. Values are of the form
+        /// `projects//instances//databases/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. The type of this Quorum.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quorumType")]
+        public virtual QuorumType QuorumType { get; set; }
+    }
+
     /// <summary>Metadata associated with a parent-child relationship appearing in a PlanNode.</summary>
     public class ChildLink : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8953,6 +9137,13 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
+        /// Output only. Applicable only for databases that use dual region instance configurations. Contains
+        /// information about the quorum.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quorumInfo")]
+        public virtual QuorumInfo QuorumInfo { get; set; }
+
+        /// <summary>
         /// Output only. If true, the database is being updated. If false, there are no ongoing update operations for
         /// the database.
         /// </summary>
@@ -9117,6 +9308,13 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("includeReplicas")]
         public virtual IncludeReplicas IncludeReplicas { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message type for a dual-region quorum. Currently this type has no options.</summary>
+    public class DualRegionQuorum : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9741,9 +9939,11 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>
         /// The number of nodes allocated to this instance. At most one of either node_count or processing_units should
         /// be present in the message. Users can set the node_count field to specify the target number of nodes
-        /// allocated to the instance. This may be zero in API responses for instances that are not yet in state
-        /// `READY`. See [the documentation](https://cloud.google.com/spanner/docs/compute-capacity) for more
-        /// information about nodes and processing units.
+        /// allocated to the instance. If autoscaling is enabled, node_count is treated as an OUTPUT_ONLY field and
+        /// reflects the current number of nodes allocated to the instance. This may be zero in API responses for
+        /// instances that are not yet in state `READY`. See [the
+        /// documentation](https://cloud.google.com/spanner/docs/compute-capacity) for more information about nodes and
+        /// processing units.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeCount")]
         public virtual System.Nullable<int> NodeCount { get; set; }
@@ -9751,9 +9951,11 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>
         /// The number of processing units allocated to this instance. At most one of processing_units or node_count
         /// should be present in the message. Users can set the processing_units field to specify the target number of
-        /// processing units allocated to the instance. This may be zero in API responses for instances that are not yet
-        /// in state `READY`. See [the documentation](https://cloud.google.com/spanner/docs/compute-capacity) for more
-        /// information about nodes and processing units.
+        /// processing units allocated to the instance. If autoscaling is enabled, processing_units is treated as an
+        /// OUTPUT_ONLY field and reflects the current number of processing units allocated to the instance. This may be
+        /// zero in API responses for instances that are not yet in state `READY`. See [the
+        /// documentation](https://cloud.google.com/spanner/docs/compute-capacity) for more information about nodes and
+        /// processing units.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processingUnits")]
         public virtual System.Nullable<int> ProcessingUnits { get; set; }
@@ -9882,6 +10084,10 @@ namespace Google.Apis.Spanner.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("optionalReplicas")]
         public virtual System.Collections.Generic.IList<ReplicaInfo> OptionalReplicas { get; set; }
+
+        /// <summary>Output only. The `QuorumType` of the instance configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quorumType")]
+        public virtual string QuorumType { get; set; }
 
         /// <summary>
         /// Output only. If true, the instance config is being created or updated. If false, there are no ongoing
@@ -10476,8 +10682,8 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string NextPageToken { get; set; }
 
         /// <summary>
-        /// The list of unreachable instance partitions. It includes the names of instance partitions whose metadata
-        /// could not be retrieved within instance_partition_deadline.
+        /// The list of unreachable instances or instance partitions. It includes the names of instances or instance
+        /// partitions whose metadata could not be retrieved within instance_partition_deadline.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
@@ -11339,6 +11545,81 @@ namespace Google.Apis.Spanner.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryAdvice")]
         public virtual QueryAdvisorResult QueryAdvice { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about the dual region quorum.</summary>
+    public class QuorumInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The etag is used for optimistic concurrency control as a way to help prevent simultaneous
+        /// ChangeQuorum requests that could create a race condition.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>Output only. Whether this ChangeQuorum is a Google or User initiated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("initiator")]
+        public virtual string Initiator { get; set; }
+
+        /// <summary>
+        /// Output only. The type of this quorum. See QuorumType for more information about quorum type specifications.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quorumType")]
+        public virtual QuorumType QuorumType { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>Output only. The timestamp when the request was triggered.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+    }
+
+    /// <summary>
+    /// Information about the database quorum type. this applies only for dual region instance configs.
+    /// </summary>
+    public class QuorumType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Dual region quorum type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dualRegion")]
+        public virtual DualRegionQuorum DualRegion { get; set; }
+
+        /// <summary>Single region quorum type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("singleRegion")]
+        public virtual SingleRegionQuorum SingleRegion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12238,6 +12519,22 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message type for a single-region quorum.</summary>
+    public class SingleRegionQuorum : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The location of the serving region, e.g. "us-central1". The location must be one of the regions
+        /// within the dual region instance configuration of your database. The list of valid locations is available via
+        /// [GetInstanceConfig[InstanceAdmin.GetInstanceConfig] API. This should only be used if you plan to change
+        /// quorum in single-region quorum type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servingLocation")]
+        public virtual string ServingLocation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A single DML statement.</summary>
     public class Statement : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12406,7 +12703,7 @@ namespace Google.Apis.Spanner.v1.Data
     /// configured to read at timestamps in the past, or configured to perform a strong read (where Spanner will select
     /// a timestamp such that the read is guaranteed to see the effects of all transactions that have committed before
     /// the start of the read). Snapshot read-only transactions do not need to be committed. Queries on change streams
-    /// must be performed with the snapshot read-only transaction mode, specifying a strong read. Please see
+    /// must be performed with the snapshot read-only transaction mode, specifying a strong read. See
     /// TransactionOptions.ReadOnly.strong for more details. 3. Partitioned DML. This type of transaction is used to
     /// execute a single Partitioned DML statement. Partitioned DML partitions the key space and runs the DML statement
     /// over each partition in parallel using separate, internal transactions that commit independently. Partitioned DML

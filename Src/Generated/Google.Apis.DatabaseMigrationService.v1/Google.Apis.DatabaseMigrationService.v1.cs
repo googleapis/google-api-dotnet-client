@@ -8625,6 +8625,10 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("databaseBackups")]
         public virtual System.Collections.Generic.IList<SqlServerDatabaseBackup> DatabaseBackups { get; set; }
 
+        /// <summary>Optional. Enable differential backups.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useDiffBackup")]
+        public virtual System.Nullable<bool> UseDiffBackup { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
