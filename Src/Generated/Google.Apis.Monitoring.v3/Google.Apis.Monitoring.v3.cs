@@ -7514,13 +7514,13 @@ namespace Google.Apis.Monitoring.v3
             this.service = service;
         }
 
-        /// <summary>Returns the list of IP addresses that checkers run from</summary>
+        /// <summary>Returns the list of IP addresses that checkers run from.</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(this.service);
         }
 
-        /// <summary>Returns the list of IP addresses that checkers run from</summary>
+        /// <summary>Returns the list of IP addresses that checkers run from.</summary>
         public class ListRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.ListUptimeCheckIpsResponse>
         {
             /// <summary>Constructs a new List request.</summary>

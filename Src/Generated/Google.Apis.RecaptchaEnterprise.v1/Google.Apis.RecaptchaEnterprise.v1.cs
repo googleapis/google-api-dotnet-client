@@ -2545,7 +2545,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     /// <summary>Assessment for Phone Fraud</summary>
     public class GoogleCloudRecaptchaenterpriseV1PhoneFraudAssessment : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. Assessment of this phone event for risk of sms toll fraud.</summary>
+        /// <summary>Output only. Assessment of this phone event for risk of SMS toll fraud.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("smsTollFraudVerdict")]
         public virtual GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdict SmsTollFraudVerdict { get; set; }
 
@@ -2784,7 +2784,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Information about sms toll fraud</summary>
+    /// <summary>Information about SMS toll fraud.</summary>
     public class GoogleCloudRecaptchaenterpriseV1SmsTollFraudVerdict : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Reasons contributing to the SMS toll fraud verdict.</summary>
@@ -2792,7 +2792,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual System.Collections.Generic.IList<string> Reasons { get; set; }
 
         /// <summary>
-        /// Output only. Probability of an sms event being fraudulent. Values are from 0.0 (lowest) to 1.0 (highest).
+        /// Output only. Probability of an SMS event being fraudulent. Values are from 0.0 (lowest) to 1.0 (highest).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("risk")]
         public virtual System.Nullable<float> Risk { get; set; }

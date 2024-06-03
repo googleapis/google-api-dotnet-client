@@ -2059,11 +2059,11 @@ namespace Google.Apis.Networkconnectivity.v1
 
                         /// <summary>
                         /// Optional. An optional request ID to identify requests. Specify a unique request ID so that
-                        /// if you must retry your request, the server will know to ignore the request if it has already
-                        /// been completed. The server will guarantee that for at least 60 minutes since the first
-                        /// request. For example, consider a situation where you make an initial request and the request
-                        /// times out. If you make the request again with the same request ID, the server can check if
-                        /// original operation with the same request ID was received, and if so, will ignore the second
+                        /// if you must retry your request, the server knows to ignore the request if it has already
+                        /// been completed. The server guarantees that for at least 60 minutes since the first request.
+                        /// For example, consider a situation where you make an initial request and the request times
+                        /// out. If you make the request again with the same request ID, the server can check if
+                        /// original operation with the same request ID was received, and if so, ignores the second
                         /// request. This prevents clients from accidentally creating duplicate commitments. The request
                         /// ID must be a valid UUID with the exception that zero UUID is not supported
                         /// (00000000-0000-0000-0000-000000000000).
@@ -2140,11 +2140,11 @@ namespace Google.Apis.Networkconnectivity.v1
 
                         /// <summary>
                         /// Optional. An optional request ID to identify requests. Specify a unique request ID so that
-                        /// if you must retry your request, the server will know to ignore the request if it has already
-                        /// been completed. The server will guarantee that for at least 60 minutes after the first
-                        /// request. For example, consider a situation where you make an initial request and the request
-                        /// times out. If you make the request again with the same request ID, the server can check if
-                        /// original operation with the same request ID was received, and if so, will ignore the second
+                        /// if you must retry your request, the server knows to ignore the request if it has already
+                        /// been completed. The server guarantees that for at least 60 minutes after the first request.
+                        /// For example, consider a situation where you make an initial request and the request times
+                        /// out. If you make the request again with the same request ID, the server can check if
+                        /// original operation with the same request ID was received, and if so, ignores the second
                         /// request. This prevents clients from accidentally creating duplicate commitments. The request
                         /// ID must be a valid UUID with the exception that zero UUID is not supported
                         /// (00000000-0000-0000-0000-000000000000).
@@ -6712,6 +6712,13 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("project")]
         public virtual string Project { get; set; }
 
+        /// <summary>
+        /// Output only. A map to store mapping between customer vip and target service attachment. Only service
+        /// attachment with producer specified ip addresses are stored here.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAttachmentIpAddressMap")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ServiceAttachmentIpAddressMap { get; set; }
+
         /// <summary>Output only. Overall state of PSC Connections management for this consumer psc config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
@@ -6872,7 +6879,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
 
         /// <summary>
         /// Required. Internet protocol versions this policy-based route applies to. For this version, only IPV4 is
-        /// supported.
+        /// supported. IPV6 is supported in preview.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protocolVersion")]
         public virtual string ProtocolVersion { get; set; }
@@ -7916,6 +7923,75 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A route next hop that leads to an interconnect attachment resource.</summary>
+    public class NextHopInterconnectAttachment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Indicates whether site-to-site data transfer is allowed for this interconnect attachment resource. Data
+        /// transfer is available only in [supported
+        /// locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("siteToSiteDataTransfer")]
+        public virtual System.Nullable<bool> SiteToSiteDataTransfer { get; set; }
+
+        /// <summary>The URI of the interconnect attachment resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The VPC network where this interconnect attachment is located.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vpcNetwork")]
+        public virtual string VpcNetwork { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A route next hop that leads to a Router appliance instance.</summary>
+    public class NextHopRouterApplianceInstance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Indicates whether site-to-site data transfer is allowed for this Router appliance instance resource. Data
+        /// transfer is available only in [supported
+        /// locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("siteToSiteDataTransfer")]
+        public virtual System.Nullable<bool> SiteToSiteDataTransfer { get; set; }
+
+        /// <summary>The URI of the Router appliance instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The VPC network where this VM is located.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vpcNetwork")]
+        public virtual string VpcNetwork { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A route next hop that leads to a VPN tunnel resource.</summary>
+    public class NextHopVPNTunnel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Indicates whether site-to-site data transfer is allowed for this VPN tunnel resource. Data transfer is
+        /// available only in [supported
+        /// locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("siteToSiteDataTransfer")]
+        public virtual System.Nullable<bool> SiteToSiteDataTransfer { get; set; }
+
+        /// <summary>The URI of the VPN tunnel resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The VPC network where this VPN tunnel is located.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vpcNetwork")]
+        public virtual string VpcNetwork { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class NextHopVpcNetwork : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The URI of the VPC network resource</summary>
@@ -8111,7 +8187,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
     /// <summary>
     /// Policy-based routes route L4 network traffic based on not just destination IP address, but also source IP
     /// address, protocol, and more. If a policy-based route conflicts with other types of routes, the policy-based
-    /// route always take precedence.
+    /// route always takes precedence.
     /// </summary>
     public class PolicyBasedRoute : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8252,7 +8328,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Optional. VM instances to which this policy-based route applies to.</summary>
+        /// <summary>Optional. VM instances that this policy-based route applies to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("virtualMachine")]
         public virtual VirtualMachine VirtualMachine { get; set; }
 
@@ -8611,9 +8687,28 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Immutable. The next-hop VLAN attachment for packets on this route.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextHopInterconnectAttachment")]
+        public virtual NextHopInterconnectAttachment NextHopInterconnectAttachment { get; set; }
+
+        /// <summary>Immutable. The next-hop Router appliance instance for packets on this route.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextHopRouterApplianceInstance")]
+        public virtual NextHopRouterApplianceInstance NextHopRouterApplianceInstance { get; set; }
+
         /// <summary>Immutable. The destination VPC network for packets on this route.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextHopVpcNetwork")]
         public virtual NextHopVpcNetwork NextHopVpcNetwork { get; set; }
+
+        /// <summary>Immutable. The next-hop VPN tunnel for packets on this route.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextHopVpnTunnel")]
+        public virtual NextHopVPNTunnel NextHopVpnTunnel { get; set; }
+
+        /// <summary>
+        /// Output only. The priority of this route. Priority is used to break ties in cases where a destination matches
+        /// more than one route. In these cases the route with the lowest-numbered priority value wins.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priority")]
+        public virtual System.Nullable<long> Priority { get; set; }
 
         /// <summary>
         /// Immutable. The spoke that this route leads to. Example: projects/12345/locations/global/spokes/SPOKE
@@ -9655,12 +9750,12 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>VM instances to which this policy-based route applies to.</summary>
+    /// <summary>VM instances that this policy-based route applies to.</summary>
     public class VirtualMachine : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. A list of VM instance tags the this policy-based route applies to. VM instances that have ANY of
-        /// tags specified here will install this PBR.
+        /// Optional. A list of VM instance tags that this policy-based route applies to. VM instances that have ANY of
+        /// tags specified here installs this PBR.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IList<string> Tags { get; set; }
