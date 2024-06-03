@@ -2276,6 +2276,13 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
 
+        /// <summary>
+        /// Optional. This config will be used to determine how the customer wants us to distribute cluster resources
+        /// within the region.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zoneDistributionConfig")]
+        public virtual ZoneDistributionConfig ZoneDistributionConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4463,15 +4470,19 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
     /// </summary>
     public class TypedValue : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>For boolean value</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boolValue")]
         public virtual System.Nullable<bool> BoolValue { get; set; }
 
+        /// <summary>For double value</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("doubleValue")]
         public virtual System.Nullable<double> DoubleValue { get; set; }
 
+        /// <summary>For integer value</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("int64Value")]
         public virtual System.Nullable<long> Int64Value { get; set; }
 
+        /// <summary>For string value</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
         public virtual string StringValue { get; set; }
 
@@ -4535,6 +4546,24 @@ namespace Google.Apis.CloudRedis.v1beta1.Data
         /// <summary>Required. Start time of the window in UTC time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual TimeOfDay StartTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Zone distribution config for allocation of cluster resources.</summary>
+    public class ZoneDistributionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The mode of zone distribution. Defaults to MULTI_ZONE, when not specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
+
+        /// <summary>
+        /// Optional. When SINGLE ZONE distribution is selected, zone field would be used to allocate all resources in
+        /// that zone. This is not applicable to MULTI_ZONE, and would be ignored for MULTI_ZONE clusters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zone")]
+        public virtual string Zone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -1903,7 +1903,79 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
             public DataStreamsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                EventEditRules = new EventEditRulesResource(service);
                 MeasurementProtocolSecrets = new MeasurementProtocolSecretsResource(service);
+            }
+
+            /// <summary>Gets the EventEditRules resource.</summary>
+            public virtual EventEditRulesResource EventEditRules { get; }
+
+            /// <summary>The "eventEditRules" collection of methods.</summary>
+            public class EventEditRulesResource
+            {
+                private const string Resource = "eventEditRules";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public EventEditRulesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Changes the processing order of event edit rules on the specified stream.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. Example format: properties/123/dataStreams/456</param>
+                public virtual ReorderRequest Reorder(Google.Apis.GoogleAnalyticsAdmin.v1beta.Data.GoogleAnalyticsAdminV1betaReorderEventEditRulesRequest body, string parent)
+                {
+                    return new ReorderRequest(this.service, body, parent);
+                }
+
+                /// <summary>Changes the processing order of event edit rules on the specified stream.</summary>
+                public class ReorderRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1beta.Data.GoogleProtobufEmpty>
+                {
+                    /// <summary>Constructs a new Reorder request.</summary>
+                    public ReorderRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1beta.Data.GoogleAnalyticsAdminV1betaReorderEventEditRulesRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Example format: properties/123/dataStreams/456</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.GoogleAnalyticsAdmin.v1beta.Data.GoogleAnalyticsAdminV1betaReorderEventEditRulesRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "reorder";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta/{+parent}/eventEditRules:reorder";
+
+                    /// <summary>Initializes Reorder parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^properties/[^/]+/dataStreams/[^/]+$",
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the MeasurementProtocolSecrets resource.</summary>
@@ -5850,6 +5922,20 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta.Data
         /// <summary>The param to be passed in the ToS link.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountTicketId")]
         public virtual string AccountTicketId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for ReorderEventEditRules RPC.</summary>
+    public class GoogleAnalyticsAdminV1betaReorderEventEditRulesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. EventEditRule resource names for the specified data stream, in the needed processing order. All
+        /// EventEditRules for the stream must be present in the list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventEditRules")]
+        public virtual System.Collections.Generic.IList<string> EventEditRules { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

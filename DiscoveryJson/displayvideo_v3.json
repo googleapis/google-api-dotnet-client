@@ -9222,7 +9222,7 @@
    }
   }
  },
- "revision": "20240529",
+ "revision": "20240530",
  "rootUrl": "https://displayvideo.googleapis.com/",
  "schemas": {
   "ActiveViewVideoViewabilityMetricConfig": {
@@ -20489,7 +20489,7 @@
      "type": "array"
     },
     "publisherReviewStatuses": {
-     "description": "Publisher review statuses for the creative.",
+     "description": "Publisher review statuses for the creative. **Warning:** This field will be deprecated on June 26th, 2024. After this date, this field will be empty. Read our [feature deprecation announcement](/display-video/api/deprecations#features.creative_publisher_review_statuses) for more information.",
      "items": {
       "$ref": "PublisherReviewStatus"
      },

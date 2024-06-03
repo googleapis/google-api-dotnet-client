@@ -570,6 +570,7 @@ namespace Google.Apis.Connectors.v2
                     {
                         this.service = service;
                         Entities = new EntitiesResource(service);
+                        Entitieswithacls = new EntitieswithaclsResource(service);
                     }
 
                     /// <summary>Gets the Entities resource.</summary>
@@ -1117,6 +1118,159 @@ namespace Google.Apis.Connectors.v2
                         }
                     }
 
+                    /// <summary>Gets the Entitieswithacls resource.</summary>
+                    public virtual EntitieswithaclsResource Entitieswithacls { get; }
+
+                    /// <summary>The "entitieswithacls" collection of methods.</summary>
+                    public class EntitieswithaclsResource
+                    {
+                        private const string Resource = "entitieswithacls";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public EntitieswithaclsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>
+                        /// Lists entity rows with ACLs of a particular entity type contained in the request. Note: 1.
+                        /// Currently, only max of one 'sort_by' column is supported. 2. If no 'sort_by' column is
+                        /// provided, the primary key of the table is used. If zero or more than one primary key is
+                        /// available, we default to the unpaginated list entities logic which only returns the first
+                        /// page. 3. The values of the 'sort_by' columns must uniquely identify an entity row, otherwise
+                        /// undefined behaviors may be observed during pagination. 4. Since transactions are not
+                        /// supported, any updates, inserts or deletes during pagination can lead to stale data being
+                        /// returned or other unexpected behaviors.
+                        /// </summary>
+                        /// <param name="parent">
+                        /// Required. Resource name of the Entity Type. Format:
+                        /// projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type}
+                        /// </param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(this.service, parent);
+                        }
+
+                        /// <summary>
+                        /// Lists entity rows with ACLs of a particular entity type contained in the request. Note: 1.
+                        /// Currently, only max of one 'sort_by' column is supported. 2. If no 'sort_by' column is
+                        /// provided, the primary key of the table is used. If zero or more than one primary key is
+                        /// available, we default to the unpaginated list entities logic which only returns the first
+                        /// page. 3. The values of the 'sort_by' columns must uniquely identify an entity row, otherwise
+                        /// undefined behaviors may be observed during pagination. 4. Since transactions are not
+                        /// supported, any updates, inserts or deletes during pagination can lead to stale data being
+                        /// returned or other unexpected behaviors.
+                        /// </summary>
+                        public class ListRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v2.Data.ListEntitiesWithACLsResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. Resource name of the Entity Type. Format:
+                            /// projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type}
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// Conditions to be used when listing entities. From a proto standpoint, There are no
+                            /// restrictions on what can be passed using this field. The connector documentation should
+                            /// have information about what format of filters/conditions are supported.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("conditions", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Conditions { get; set; }
+
+                            /// <summary>Format: gs://object_path</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("gsutilUri", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string GsutilUri { get; set; }
+
+                            /// <summary>
+                            /// Number of entity rows to return. Defaults page size = 25. Max page size = 200.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>Page token value if available from a previous request.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>List of 'sort_by' columns to use when returning the results.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("sortBy", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual Google.Apis.Util.Repeatable<string> SortBy { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v2/{+parent}/entitieswithacls";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+/entityTypes/[^/]+$",
+                                });
+                                RequestParameters.Add("conditions", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "conditions",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("gsutilUri", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "gsutilUri",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("sortBy", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "sortBy",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+                    }
+
                     /// <summary>Gets metadata of given entity type</summary>
                     /// <param name="name">
                     /// Required. Resource name of the Entity Type. Format:
@@ -1589,6 +1743,20 @@ namespace Google.Apis.Connectors.v2.Data
     }
 
     /// <summary>
+    /// AclInfo has a list of readers for a resource. This is defined as per the below docs
+    /// https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1alpha/projects.locations.collections.dataStores.branches.documents#aclinfo
+    /// </summary>
+    public class AclInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of readers for a resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readers")]
+        public virtual System.Collections.Generic.IList<Readers> Readers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Action message contains metadata information about a single action present in the external system.
     /// </summary>
     public class Action : Google.Apis.Requests.IDirectResponseSchema
@@ -1781,6 +1949,24 @@ namespace Google.Apis.Connectors.v2.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<string> Operations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>EntityWithACL refers to a single row of an entity type with ACL information.</summary>
+    public class EntityWithACL : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>ACL information of the entity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acl_info")]
+        public virtual AclInfo AclInfo { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Entity data in JSON format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jsonData")]
+        public virtual string JsonData { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2261,6 +2447,21 @@ namespace Google.Apis.Connectors.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for EntityService.ListEntitiesWithACLs</summary>
+    public class ListEntitiesWithACLsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List containing entity rows.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entitiesWithAcl")]
+        public virtual System.Collections.Generic.IList<EntityWithACL> EntitiesWithAcl { get; set; }
+
+        /// <summary>Next page token if more records are available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for EntityService.ListEntityTypes</summary>
     public class ListEntityTypesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2638,6 +2839,21 @@ namespace Google.Apis.Connectors.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Principal is a user or group that has access to a resource.</summary>
+    public class Principal : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The group that has access to a resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("group_id")]
+        public virtual string GroupId { get; set; }
+
+        /// <summary>The user that has access to a resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("user_id")]
+        public virtual string UserId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Describes provisioned dataplane resources.</summary>
     public class ProvisionedResource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2695,6 +2911,17 @@ namespace Google.Apis.Connectors.v2.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual object Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Readers is a list of principals that have read access to a resource.</summary>
+    public class Readers : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of principals that have read access to a resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("principals")]
+        public virtual System.Collections.Generic.IList<Principal> Principals { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

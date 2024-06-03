@@ -6057,6 +6057,10 @@ namespace Google.Apis.Connectors.v1.Data
     /// <summary>Connectors indicates a specific connector type, e.x. Salesforce, SAP etc.</summary>
     public class Connector : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Category of the connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -6132,6 +6136,10 @@ namespace Google.Apis.Connectors.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Output only. Tags of the connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IList<string> Tags { get; set; }
 
         private string _updateTimeRaw;
 

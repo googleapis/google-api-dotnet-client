@@ -1820,6 +1820,10 @@ namespace Google.Apis.WorkflowExecutions.v1.Data
     /// <summary>StepEntryMetadata contains metadata information about this step.</summary>
     public class StepEntryMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Expected iteration represents the expected number of iterations in the step's progress.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expectedIteration")]
+        public virtual System.Nullable<long> ExpectedIteration { get; set; }
+
         /// <summary>
         /// Progress number represents the current state of the current progress. eg: A step entry represents the 4th
         /// iteration in a progress of PROGRESS_TYPE_FOR.

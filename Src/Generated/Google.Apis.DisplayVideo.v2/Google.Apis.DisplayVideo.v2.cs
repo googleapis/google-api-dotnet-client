@@ -29915,7 +29915,12 @@ namespace Google.Apis.DisplayVideo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("exchangeReviewStatuses")]
         public virtual System.Collections.Generic.IList<ExchangeReviewStatus> ExchangeReviewStatuses { get; set; }
 
-        /// <summary>Publisher review statuses for the creative.</summary>
+        /// <summary>
+        /// Publisher review statuses for the creative. **Warning:** This field will be deprecated on June 26th, 2024.
+        /// After this date, this field will be empty. Read our [feature deprecation
+        /// announcement](/display-video/api/deprecations#features.creative_publisher_review_statuses) for more
+        /// information.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publisherReviewStatuses")]
         public virtual System.Collections.Generic.IList<PublisherReviewStatus> PublisherReviewStatuses { get; set; }
 

@@ -286,6 +286,7 @@ namespace Google.Apis.Dialogflow.v2
             ConversationModels = new ConversationModelsResource(service);
             ConversationProfiles = new ConversationProfilesResource(service);
             Conversations = new ConversationsResource(service);
+            Generators = new GeneratorsResource(service);
             KnowledgeBases = new KnowledgeBasesResource(service);
             Locations = new LocationsResource(service);
             Operations = new OperationsResource(service);
@@ -8581,6 +8582,175 @@ namespace Google.Apis.Dialogflow.v2
             }
         }
 
+        /// <summary>Gets the Generators resource.</summary>
+        public virtual GeneratorsResource Generators { get; }
+
+        /// <summary>The "generators" collection of methods.</summary>
+        public class GeneratorsResource
+        {
+            private const string Resource = "generators";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public GeneratorsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Creates a generator.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The project/location to create generator for. Format: `projects//locations/`
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Generator body, string parent)
+            {
+                return new CreateRequest(this.service, body, parent);
+            }
+
+            /// <summary>Creates a generator.</summary>
+            public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Generator>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Generator body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The project/location to create generator for. Format: `projects//locations/`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. The ID to use for the generator, which will become the final component of the generator's
+                /// resource name. The generator ID must be compliant with the regression fomula `a-zA-Z*` with the
+                /// characters length in range of [3,64]. If the field is not provided, an Id will be auto-generated. If
+                /// the field is provided, the caller is resposible for 1. the uniqueness of the ID, otherwise the
+                /// request will be rejected. 2. the consistency for whether to use custom ID or not under a project to
+                /// better ensure uniqueness.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("generatorId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string GeneratorId { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Generator Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2/{+parent}/generators";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("generatorId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "generatorId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Lists generators.</summary>
+            /// <param name="parent">
+            /// Required. The project/location to list generators for. Format: `projects//locations/`
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(this.service, parent);
+            }
+
+            /// <summary>Lists generators.</summary>
+            public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ListGeneratorsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The project/location to list generators for. Format: `projects//locations/`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. Maximum number of conversation models to return in a single page. Default to 10.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional. The next_page_token value returned from a previous list request.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2/{+parent}/generators";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
         /// <summary>Gets the KnowledgeBases resource.</summary>
         public virtual KnowledgeBasesResource KnowledgeBases { get; }
 
@@ -9562,8 +9732,10 @@ namespace Google.Apis.Dialogflow.v2
                 ConversationModels = new ConversationModelsResource(service);
                 ConversationProfiles = new ConversationProfilesResource(service);
                 Conversations = new ConversationsResource(service);
+                Generators = new GeneratorsResource(service);
                 KnowledgeBases = new KnowledgeBasesResource(service);
                 Operations = new OperationsResource(service);
+                StatelessSuggestion = new StatelessSuggestionResource(service);
                 Suggestions = new SuggestionsResource(service);
             }
 
@@ -17299,6 +17471,344 @@ namespace Google.Apis.Dialogflow.v2
                 }
             }
 
+            /// <summary>Gets the Generators resource.</summary>
+            public virtual GeneratorsResource Generators { get; }
+
+            /// <summary>The "generators" collection of methods.</summary>
+            public class GeneratorsResource
+            {
+                private const string Resource = "generators";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public GeneratorsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a generator.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The project/location to create generator for. Format: `projects//locations/`
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Generator body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a generator.</summary>
+                public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Generator>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Generator body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project/location to create generator for. Format: `projects//locations/`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The ID to use for the generator, which will become the final component of the
+                    /// generator's resource name. The generator ID must be compliant with the regression fomula
+                    /// `a-zA-Z*` with the characters length in range of [3,64]. If the field is not provided, an Id
+                    /// will be auto-generated. If the field is provided, the caller is resposible for 1. the uniqueness
+                    /// of the ID, otherwise the request will be rejected. 2. the consistency for whether to use custom
+                    /// ID or not under a project to better ensure uniqueness.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("generatorId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string GeneratorId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Generator Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/generators";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("generatorId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "generatorId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a generator.</summary>
+                /// <param name="name">
+                /// Required. The generator resource name to delete. Format: `projects//locations//generators/`
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a generator.</summary>
+                public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleProtobufEmpty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The generator resource name to delete. Format: `projects//locations//generators/`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/generators/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Retrieves a generator.</summary>
+                /// <param name="name">
+                /// Required. The generator resource name to retrieve. Format: `projects//locations/`/generators/`
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Retrieves a generator.</summary>
+                public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Generator>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The generator resource name to retrieve. Format: `projects//locations/`/generators/`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/generators/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists generators.</summary>
+                /// <param name="parent">
+                /// Required. The project/location to list generators for. Format: `projects//locations/`
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists generators.</summary>
+                public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ListGeneratorsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project/location to list generators for. Format: `projects//locations/`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Maximum number of conversation models to return in a single page. Default to 10.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. The next_page_token value returned from a previous list request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/generators";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates a generator.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Output only. Identifier. The resource name of the generator. Format:
+                /// `projects//locations//generators/`
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Generator body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates a generator.</summary>
+                public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Generator>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Generator body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Output only. Identifier. The resource name of the generator. Format:
+                    /// `projects//locations//generators/`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Optional. The list of fields to update.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Generator Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/generators/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the KnowledgeBases resource.</summary>
             public virtual KnowledgeBasesResource KnowledgeBases { get; }
 
@@ -18478,6 +18988,87 @@ namespace Google.Apis.Dialogflow.v2
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the StatelessSuggestion resource.</summary>
+            public virtual StatelessSuggestionResource StatelessSuggestion { get; }
+
+            /// <summary>The "statelessSuggestion" collection of methods.</summary>
+            public class StatelessSuggestionResource
+            {
+                private const string Resource = "statelessSuggestion";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public StatelessSuggestionResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Generates and returns a suggestion for a conversation that does not have a resource created for it.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource to charge for the Suggestion's generation. Format:
+                /// `projects//locations/`.
+                /// </param>
+                public virtual GenerateRequest Generate(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2GenerateStatelessSuggestionRequest body, string parent)
+                {
+                    return new GenerateRequest(this.service, body, parent);
+                }
+
+                /// <summary>
+                /// Generates and returns a suggestion for a conversation that does not have a resource created for it.
+                /// </summary>
+                public class GenerateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2GenerateStatelessSuggestionResponse>
+                {
+                    /// <summary>Constructs a new Generate request.</summary>
+                    public GenerateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2GenerateStatelessSuggestionRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource to charge for the Suggestion's generation. Format:
+                    /// `projects//locations/`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2GenerateStatelessSuggestionRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "generate";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/statelessSuggestion:generate";
+
+                    /// <summary>Initializes Generate parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
                         });
                     }
                 }
@@ -26071,6 +26662,17 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Context of the conversation, including transcripts.</summary>
+    public class GoogleCloudDialogflowV2ConversationContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. List of message transcripts in the conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageEntries")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2MessageEntry> MessageEntries { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Represents a conversation dataset that a user imports raw data into. The data inside ConversationDataset can not
     /// be changed after ImportConversationData finishes (and calling ImportConversationData on a dataset that already
@@ -27450,6 +28052,35 @@ namespace Google.Apis.Dialogflow.v2.Data
     }
 
     /// <summary>
+    /// Providing examples in the generator (i.e. building a few-shot generator) helps convey the desired format of the
+    /// LLM response. NEXT_ID: 10
+    /// </summary>
+    public class GoogleCloudDialogflowV2FewShotExample : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Conversation transcripts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationContext")]
+        public virtual GoogleCloudDialogflowV2ConversationContext ConversationContext { get; set; }
+
+        /// <summary>
+        /// Optional. Key is the placeholder field name in input, value is the value of the placeholder. E.g.
+        /// instruction contains "@price", and ingested data has &amp;lt;"price", "10"&amp;gt;
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extraInfo")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ExtraInfo { get; set; }
+
+        /// <summary>Required. Example output of the model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("output")]
+        public virtual GoogleCloudDialogflowV2GeneratorSuggestion Output { get; set; }
+
+        /// <summary>Summarization sections.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summarizationSectionList")]
+        public virtual GoogleCloudDialogflowV2SummarizationSectionList SummarizationSectionList { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// By default, your agent responds to a matched intent with a static response. As an alternative, you can provide a
     /// more dynamic response by using fulfillment. When you enable fulfillment for an intent, Dialogflow responds to
     /// that intent by calling a service that you define. For example, if an end-user wants to schedule a haircut on
@@ -27564,6 +28195,46 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The request message for Conversations.GenerateStatelessSuggestion.</summary>
+    public class GoogleCloudDialogflowV2GenerateStatelessSuggestionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Context of the conversation, including transcripts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationContext")]
+        public virtual GoogleCloudDialogflowV2ConversationContext ConversationContext { get; set; }
+
+        /// <summary>
+        /// Uncreated generator. It should be a complete generator that includes all information about the generator.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generator")]
+        public virtual GoogleCloudDialogflowV2Generator Generator { get; set; }
+
+        /// <summary>
+        /// The resource name of the existing created generator. Format: `projects//locations//generators/`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatorName")]
+        public virtual string GeneratorName { get; set; }
+
+        /// <summary>
+        /// Optional. A list of trigger events. Generator will be triggered only if it's trigger event is included here.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("triggerEvents")]
+        public virtual System.Collections.Generic.IList<string> TriggerEvents { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for Conversations.GenerateStatelessSuggestion.</summary>
+    public class GoogleCloudDialogflowV2GenerateStatelessSuggestionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Generated suggestion for a conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatorSuggestion")]
+        public virtual GoogleCloudDialogflowV2GeneratorSuggestion GeneratorSuggestion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request message for Conversations.GenerateStatelessSummary.</summary>
     public class GoogleCloudDialogflowV2GenerateStatelessSummaryRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -27666,6 +28337,122 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>LLM generator.</summary>
+    public class GoogleCloudDialogflowV2Generator : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Creation time of this generator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. Human readable description of the generator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Optional. Inference parameters for this generator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inferenceParameter")]
+        public virtual GoogleCloudDialogflowV2InferenceParameter InferenceParameter { get; set; }
+
+        /// <summary>
+        /// Output only. Identifier. The resource name of the generator. Format: `projects//locations//generators/`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Input of prebuilt Summarization feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summarizationContext")]
+        public virtual GoogleCloudDialogflowV2SummarizationContext SummarizationContext { get; set; }
+
+        /// <summary>
+        /// Optional. The trigger event of the generator. It defines when the generator is triggered in a conversation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("triggerEvent")]
+        public virtual string TriggerEvent { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Update time of this generator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Suggestion generated using a Generator.</summary>
+    public class GoogleCloudDialogflowV2GeneratorSuggestion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Suggested summary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summarySuggestion")]
+        public virtual GoogleCloudDialogflowV2SummarySuggestion SummarySuggestion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Defines the Human Agent Assist to connect to a conversation.</summary>
     public class GoogleCloudDialogflowV2HumanAgentAssistantConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -27762,6 +28549,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>Configuration of different suggestion features. One feature can have only one config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("featureConfigs")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig> FeatureConfigs { get; set; }
+
+        /// <summary>Optional. List of various generator resource names used in the conversation profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generators")]
+        public virtual System.Collections.Generic.IList<string> Generators { get; set; }
 
         /// <summary>
         /// If `group_suggestion_responses` is false, and there are multiple `feature_configs` in `event based
@@ -28028,7 +28819,7 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// </summary>
     public class GoogleCloudDialogflowV2HumanAgentHandoffConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Uses LivePerson (https://www.liveperson.com).</summary>
+        /// <summary>Uses [LivePerson](https://www.liveperson.com).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("livePersonConfig")]
         public virtual GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig LivePersonConfig { get; set; }
 
@@ -28040,7 +28831,7 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Configuration specific to LivePerson (https://www.liveperson.com).</summary>
+    /// <summary>Configuration specific to [LivePerson](https://www.liveperson.com).</summary>
     public class GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -28242,6 +29033,47 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>Includes details about skipped documents or any other warnings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
         public virtual System.Collections.Generic.IList<GoogleRpcStatus> Warnings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The parameters of inference.</summary>
+    public class GoogleCloudDialogflowV2InferenceParameter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Maximum number of the output tokens for the generator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxOutputTokens")]
+        public virtual System.Nullable<int> MaxOutputTokens { get; set; }
+
+        /// <summary>
+        /// Optional. Controls the randomness of LLM predictions. Low temperature = less random. High temperature = more
+        /// random. If unset (or 0), uses a default value of 0.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("temperature")]
+        public virtual System.Nullable<double> Temperature { get; set; }
+
+        /// <summary>
+        /// Optional. Top-k changes how the model selects tokens for output. A top-k of 1 means the selected token is
+        /// the most probable among all tokens in the model's vocabulary (also called greedy decoding), while a top-k of
+        /// 3 means that the next token is selected from among the 3 most probable tokens (using temperature). For each
+        /// token selection step, the top K tokens with the highest probabilities are sampled. Then tokens are further
+        /// filtered based on topP with the final token selected using temperature sampling. Specify a lower value for
+        /// less random responses and a higher value for more random responses. Acceptable value is [1, 40], default to
+        /// 40.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topK")]
+        public virtual System.Nullable<int> TopK { get; set; }
+
+        /// <summary>
+        /// Optional. Top-p changes how the model selects tokens for output. Tokens are selected from most K (see topK
+        /// parameter) probable to least until the sum of their probabilities equals the top-p value. For example, if
+        /// tokens A, B, and C have a probability of 0.3, 0.2, and 0.1 and the top-p value is 0.5, then the model will
+        /// select either A or B as the next token (using temperature) and doesn't consider C. The default top-p value
+        /// is 0.95. Specify a lower value for less random responses and a higher value for more random responses.
+        /// Acceptable value is [0.0, 1.0], default to 0.95.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topP")]
+        public virtual System.Nullable<double> TopP { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -29483,6 +30315,23 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response of ListGenerators.</summary>
+    public class GoogleCloudDialogflowV2ListGeneratorsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of generators retrieved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generators")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2Generator> Generators { get; set; }
+
+        /// <summary>
+        /// Token to retrieve the next page of results, or empty if there are no more results in the list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response message for Intents.ListIntents.</summary>
     public class GoogleCloudDialogflowV2ListIntentsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -29741,6 +30590,66 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parts")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2AnnotatedMessagePart> Parts { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a message entry of a conversation.</summary>
+    public class GoogleCloudDialogflowV2MessageEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Optional. Create time of the message entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Optional. The language of the text. See [Language
+        /// Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported
+        /// language codes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>Optional. Participant role of the message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("role")]
+        public virtual string Role { get; set; }
+
+        /// <summary>Optional. Transcript content of the message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -30889,6 +31798,94 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>SuggestSmartRepliesResponse if request is for SMART_REPLY.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestSmartRepliesResponse")]
         public virtual GoogleCloudDialogflowV2SuggestSmartRepliesResponse SuggestSmartRepliesResponse { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Summarization context that customer can configure.</summary>
+    public class GoogleCloudDialogflowV2SummarizationContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. List of few shot examples.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fewShotExamples")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2FewShotExample> FewShotExamples { get; set; }
+
+        /// <summary>
+        /// Optional. The target language of the generated summary. The language code for conversation will be used if
+        /// this field is empty. Supported 2.0 and later versions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputLanguageCode")]
+        public virtual string OutputLanguageCode { get; set; }
+
+        /// <summary>
+        /// Optional. List of sections. Note it contains both predefined section sand customer defined sections.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summarizationSections")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2SummarizationSection> SummarizationSections { get; set; }
+
+        /// <summary>
+        /// Optional. Version of the feature. If not set, default to latest version. Current candidates are ["1.0"].
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the section of summarization.</summary>
+    public class GoogleCloudDialogflowV2SummarizationSection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Definition of the section, for example, "what the customer needs help with or has question about."
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("definition")]
+        public virtual string Definition { get; set; }
+
+        /// <summary>Optional. Name of the section, for example, "situation".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>Optional. Type of the summarization section.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>List of summarization sections.</summary>
+    public class GoogleCloudDialogflowV2SummarizationSectionList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Summarization sections.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summarizationSections")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2SummarizationSection> SummarizationSections { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Suggested summary of the conversation.</summary>
+    public class GoogleCloudDialogflowV2SummarySuggestion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. All the parts of generated summary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summarySections")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2SummarySuggestionSummarySection> SummarySections { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A component of the generated summary.</summary>
+    public class GoogleCloudDialogflowV2SummarySuggestionSummarySection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Name of the section.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("section")]
+        public virtual string Section { get; set; }
+
+        /// <summary>Required. Summary text for the section.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summary")]
+        public virtual string Summary { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
