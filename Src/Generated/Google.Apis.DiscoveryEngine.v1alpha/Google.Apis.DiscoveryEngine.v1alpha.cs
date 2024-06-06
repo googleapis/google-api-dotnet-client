@@ -1616,6 +1616,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// <param name="parent">
                         /// Required. Full resource name of parent data store. Format:
                         /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/dataStores/{data_store_id}`
+                        /// or
+                        /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/engines/{engine_id}`.
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaControl body, string parent)
                         {
@@ -1640,6 +1642,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             /// <summary>
                             /// Required. Full resource name of parent data store. Format:
                             /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/dataStores/{data_store_id}`
+                            /// or
+                            /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/engines/{engine_id}`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -1800,6 +1804,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// <param name="parent">
                         /// Required. The data store resource name. Format:
                         /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/dataStores/{data_store_id}`
+                        /// or
+                        /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/engines/{engine_id}`.
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
@@ -1819,6 +1825,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             /// <summary>
                             /// Required. The data store resource name. Format:
                             /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/dataStores/{data_store_id}`
+                            /// or
+                            /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/engines/{engine_id}`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -6591,6 +6599,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// <param name="parent">
                         /// Required. Full resource name of parent data store. Format:
                         /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/dataStores/{data_store_id}`
+                        /// or
+                        /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/engines/{engine_id}`.
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaControl body, string parent)
                         {
@@ -6615,6 +6625,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             /// <summary>
                             /// Required. Full resource name of parent data store. Format:
                             /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/dataStores/{data_store_id}`
+                            /// or
+                            /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/engines/{engine_id}`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -6775,6 +6787,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// <param name="parent">
                         /// Required. The data store resource name. Format:
                         /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/dataStores/{data_store_id}`
+                        /// or
+                        /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/engines/{engine_id}`.
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
@@ -6794,6 +6808,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             /// <summary>
                             /// Required. The data store resource name. Format:
                             /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/dataStores/{data_store_id}`
+                            /// or
+                            /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/engines/{engine_id}`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -10259,6 +10275,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// <param name="parent">
                     /// Required. Full resource name of parent data store. Format:
                     /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/dataStores/{data_store_id}`
+                    /// or
+                    /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/engines/{engine_id}`.
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaControl body, string parent)
                     {
@@ -10283,6 +10301,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// <summary>
                         /// Required. Full resource name of parent data store. Format:
                         /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/dataStores/{data_store_id}`
+                        /// or
+                        /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/engines/{engine_id}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -10443,6 +10463,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// <param name="parent">
                     /// Required. The data store resource name. Format:
                     /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/dataStores/{data_store_id}`
+                    /// or
+                    /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/engines/{engine_id}`.
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -10462,6 +10484,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// <summary>
                         /// Required. The data store resource name. Format:
                         /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/dataStores/{data_store_id}`
+                        /// or
+                        /// `projects/{project_number}/locations/{location_id}/collections/{collection_id}/engines/{engine_id}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -16891,6 +16915,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// </summary>
     public class GoogleCloudDiscoveryengineV1DocumentProcessingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Whether chunking mode is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunkingConfig")]
+        public virtual GoogleCloudDiscoveryengineV1DocumentProcessingConfigChunkingConfig ChunkingConfig { get; set; }
+
         /// <summary>
         /// Configurations for default Document parser. If not specified, we will configure it as default
         /// DigitalParsingConfig, and the default parsing config will be applied to all file types for Document parsing.
@@ -16919,12 +16947,47 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for chunking config.</summary>
+    public class GoogleCloudDiscoveryengineV1DocumentProcessingConfigChunkingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Configuration for the layout based chunking.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("layoutBasedChunkingConfig")]
+        public virtual GoogleCloudDiscoveryengineV1DocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig LayoutBasedChunkingConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for the layout based chunking.</summary>
+    public class GoogleCloudDiscoveryengineV1DocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The token size limit for each chunk. Supported values: 100-500 (inclusive). Default value: 500.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunkSize")]
+        public virtual System.Nullable<int> ChunkSize { get; set; }
+
+        /// <summary>
+        /// Whether to include appending different levels of headings to chunks from the middle of the document to
+        /// prevent context loss. Default value: False.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeAncestorHeadings")]
+        public virtual System.Nullable<bool> IncludeAncestorHeadings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Related configurations applied to a specific type of document parser.</summary>
     public class GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Configurations applied to digital parser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("digitalParsingConfig")]
         public virtual GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigDigitalParsingConfig DigitalParsingConfig { get; set; }
+
+        /// <summary>Configurations applied to layout parser.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("layoutParsingConfig")]
+        public virtual GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigLayoutParsingConfig LayoutParsingConfig { get; set; }
 
         /// <summary>Configurations applied to OCR parser. Currently it only applies to PDFs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ocrParsingConfig")]
@@ -16936,6 +16999,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
 
     /// <summary>The digital parsing configurations for documents.</summary>
     public class GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigDigitalParsingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The layout parsing configurations for documents.</summary>
+    public class GoogleCloudDiscoveryengineV1DocumentProcessingConfigParsingConfigLayoutParsingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -18446,6 +18516,51 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>AlloyDB source import data from.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAlloyDbSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The AlloyDB cluster to copy the data from with a length limit of 256 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
+        public virtual string ClusterId { get; set; }
+
+        /// <summary>
+        /// Required. The AlloyDB database to copy the data from with a length limit of 256 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseId")]
+        public virtual string DatabaseId { get; set; }
+
+        /// <summary>
+        /// Intermediate Cloud Storage directory used for the import with a length limit of 2,000 characters. Can be
+        /// specified if one wants to have the AlloyDB export to a specific Cloud Storage directory. Ensure that the
+        /// AlloyDB service account has the necessary Cloud Storage Admin permissions to access the specified Cloud
+        /// Storage directory.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsStagingDir")]
+        public virtual string GcsStagingDir { get; set; }
+
+        /// <summary>
+        /// Required. The AlloyDB location to copy the data from with a length limit of 256 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
+        public virtual string LocationId { get; set; }
+
+        /// <summary>
+        /// The project ID that the AlloyDB source is in with a length limit of 128 characters. If not specified,
+        /// inherits the project ID from the parent request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; }
+
+        /// <summary>Required. The AlloyDB table to copy the data from with a length limit of 256 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
+        public virtual string TableId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Defines an answer.</summary>
     public class GoogleCloudDiscoveryengineV1alphaAnswer : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -18641,6 +18756,20 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("session")]
         public virtual string Session { get; set; }
+
+        /// <summary>
+        /// The user labels applied to a resource must meet the following requirements: * Each resource can have
+        /// multiple labels, up to a maximum of 64. * Each label must be a key-value pair. * Keys have a minimum length
+        /// of 1 character and a maximum length of 63 characters and cannot be empty. Values can be empty and have a
+        /// maximum length of 63 characters. * Keys and values can contain only lowercase letters, numeric characters,
+        /// underscores, and dashes. All characters must use UTF-8 encoding, and international characters are allowed. *
+        /// The key portion of a label must be unique. However, you can use the same key with multiple resources. * Keys
+        /// must start with a lowercase letter or international character. See [Google Cloud
+        /// Document](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements) for more
+        /// details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userLabels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> UserLabels { get; set; }
 
         /// <summary>
         /// A unique identifier for tracking visitors. For example, this could be implemented with an HTTP cookie, which
@@ -22853,6 +22982,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Request message for Import methods.</summary>
     public class GoogleCloudDiscoveryengineV1alphaImportDocumentsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>AlloyDB input source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alloyDbSource")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAlloyDbSource AlloyDbSource { get; set; }
+
         /// <summary>
         /// Whether to automatically generate IDs for the documents if absent. If set to `true`, Document.ids are
         /// automatically generated based on the hash of the payload, where IDs may not be consistent during multiple
@@ -25114,7 +25247,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecExtractiveContentSpec ExtractiveContentSpec { get; set; }
 
         /// <summary>
-        /// Specifies the search result mode. If unspecified, the search result mode defaults to `DOCUMENTS`.
+        /// Specifies the search result mode. If unspecified, the search result mode is based on
+        /// DataStore.DocumentProcessingConfig.chunking_config: * If DataStore.DocumentProcessingConfig.chunking_config
+        /// is specified, it defaults to `CHUNKS`. * Otherwise, it defaults to `DOCUMENTS`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchResultMode")]
         public virtual string SearchResultMode { get; set; }
@@ -28536,6 +28671,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// </summary>
     public class GoogleCloudDiscoveryengineV1betaDocumentProcessingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Whether chunking mode is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunkingConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigChunkingConfig ChunkingConfig { get; set; }
+
         /// <summary>
         /// Configurations for default Document parser. If not specified, we will configure it as default
         /// DigitalParsingConfig, and the default parsing config will be applied to all file types for Document parsing.
@@ -28564,12 +28703,47 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for chunking config.</summary>
+    public class GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigChunkingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Configuration for the layout based chunking.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("layoutBasedChunkingConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig LayoutBasedChunkingConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for the layout based chunking.</summary>
+    public class GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The token size limit for each chunk. Supported values: 100-500 (inclusive). Default value: 500.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunkSize")]
+        public virtual System.Nullable<int> ChunkSize { get; set; }
+
+        /// <summary>
+        /// Whether to include appending different levels of headings to chunks from the middle of the document to
+        /// prevent context loss. Default value: False.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeAncestorHeadings")]
+        public virtual System.Nullable<bool> IncludeAncestorHeadings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Related configurations applied to a specific type of document parser.</summary>
     public class GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Configurations applied to digital parser.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("digitalParsingConfig")]
         public virtual GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfig DigitalParsingConfig { get; set; }
+
+        /// <summary>Configurations applied to layout parser.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("layoutParsingConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigLayoutParsingConfig LayoutParsingConfig { get; set; }
 
         /// <summary>Configurations applied to OCR parser. Currently it only applies to PDFs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ocrParsingConfig")]
@@ -28581,6 +28755,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
 
     /// <summary>The digital parsing configurations for documents.</summary>
     public class GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigDigitalParsingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The layout parsing configurations for documents.</summary>
+    public class GoogleCloudDiscoveryengineV1betaDocumentProcessingConfigParsingConfigLayoutParsingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

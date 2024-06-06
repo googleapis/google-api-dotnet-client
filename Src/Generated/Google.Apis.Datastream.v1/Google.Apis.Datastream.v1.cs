@@ -3248,6 +3248,10 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("postgresqlRdbms")]
         public virtual PostgresqlRdbms PostgresqlRdbms { get; set; }
 
+        /// <summary>SQLServer RDBMS to enrich with child data objects and metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlServerRdbms")]
+        public virtual SqlServerRdbms SqlServerRdbms { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3266,6 +3270,10 @@ namespace Google.Apis.Datastream.v1.Data
         /// <summary>Enriched PostgreSQL RDBMS object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postgresqlRdbms")]
         public virtual PostgresqlRdbms PostgresqlRdbms { get; set; }
+
+        /// <summary>Enriched SQLServer RDBMS object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlServerRdbms")]
+        public virtual SqlServerRdbms SqlServerRdbms { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

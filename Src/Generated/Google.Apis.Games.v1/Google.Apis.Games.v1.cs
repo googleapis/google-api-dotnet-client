@@ -1888,9 +1888,80 @@ namespace Google.Apis.Games.v1
         }
 
         /// <summary>
-        /// Retrieve the last Recall token from all developer games that is associated with the PGS Player principal
-        /// encoded in the provided recall session id. The API is only available for users that have active PGS Player
-        /// profile.
+        /// Retrieve the Recall tokens from all requested games that is associated with the PGS Player encoded in the
+        /// provided recall session id. The API is only available for users that have an active PGS Player profile.
+        /// </summary>
+        /// <param name="sessionId">
+        /// Required. Opaque server-generated string that encodes all the necessary information to identify the PGS
+        /// player / Google user and application.
+        /// </param>
+        public virtual GamesPlayerTokensRequest GamesPlayerTokens(string sessionId)
+        {
+            return new GamesPlayerTokensRequest(this.service, sessionId);
+        }
+
+        /// <summary>
+        /// Retrieve the Recall tokens from all requested games that is associated with the PGS Player encoded in the
+        /// provided recall session id. The API is only available for users that have an active PGS Player profile.
+        /// </summary>
+        public class GamesPlayerTokensRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.RetrieveGamesPlayerTokensResponse>
+        {
+            /// <summary>Constructs a new GamesPlayerTokens request.</summary>
+            public GamesPlayerTokensRequest(Google.Apis.Services.IClientService service, string sessionId) : base(service)
+            {
+                SessionId = sessionId;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. Opaque server-generated string that encodes all the necessary information to identify the PGS
+            /// player / Google user and application.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("sessionId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string SessionId { get; private set; }
+
+            /// <summary>
+            /// Required. The application IDs from the Google Play developer console for the games to return scoped ids
+            /// for.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("applicationIds", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> ApplicationIds { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "gamesPlayerTokens";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "games/v1/recall/gamesPlayerTokens/{sessionId}";
+
+            /// <summary>Initializes GamesPlayerTokens parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("sessionId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sessionId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("applicationIds", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "applicationIds",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Retrieve the last Recall token from all developer games that is associated with the PGS Player encoded in
+        /// the provided recall session id. The API is only available for users that have active PGS Player profile.
         /// </summary>
         /// <param name="sessionId">
         /// Required. Opaque server-generated string that encodes all the necessary information to identify the PGS
@@ -1902,9 +1973,8 @@ namespace Google.Apis.Games.v1
         }
 
         /// <summary>
-        /// Retrieve the last Recall token from all developer games that is associated with the PGS Player principal
-        /// encoded in the provided recall session id. The API is only available for users that have active PGS Player
-        /// profile.
+        /// Retrieve the last Recall token from all developer games that is associated with the PGS Player encoded in
+        /// the provided recall session id. The API is only available for users that have active PGS Player profile.
         /// </summary>
         public class LastTokenFromAllDeveloperGamesRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.RetrieveDeveloperGamesLastPlayerTokenResponse>
         {
@@ -2033,8 +2103,8 @@ namespace Google.Apis.Games.v1
         }
 
         /// <summary>
-        /// Retrieve all Recall tokens associated with the PGS Player principal encoded in the provided recall session
-        /// id. The API is only available for users that have active PGS Player profile.
+        /// Retrieve all Recall tokens associated with the PGS Player encoded in the provided recall session id. The API
+        /// is only available for users that have active PGS Player profile.
         /// </summary>
         /// <param name="sessionId">
         /// Required. Opaque server-generated string that encodes all the necessary information to identify the PGS
@@ -2046,8 +2116,8 @@ namespace Google.Apis.Games.v1
         }
 
         /// <summary>
-        /// Retrieve all Recall tokens associated with the PGS Player principal encoded in the provided recall session
-        /// id. The API is only available for users that have active PGS Player profile.
+        /// Retrieve all Recall tokens associated with the PGS Player encoded in the provided recall session id. The API
+        /// is only available for users that have active PGS Player profile.
         /// </summary>
         public class RetrieveTokensRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.RetrievePlayerTokensResponse>
         {
@@ -3780,6 +3850,21 @@ namespace Google.Apis.Games.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Recall tokens for a game.</summary>
+    public class GamePlayerToken : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The application that this player identifier is for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationId")]
+        public virtual string ApplicationId { get; set; }
+
+        /// <summary>Recall token data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("token")]
+        public virtual System.Collections.Generic.IList<RecallToken> Token { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The payload to request to increment an achievement.</summary>
     public class GamesAchievementIncrement : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4851,6 +4936,20 @@ namespace Google.Apis.Games.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("token")]
         public virtual RecallToken Token { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of recall token data returned from the RetrieveGamesPlayerTokens RPC</summary>
+    public class RetrieveGamesPlayerTokensResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The requested applications along with the recall tokens for the player. If the player does not have recall
+        /// tokens for an application, that application is not included in the response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationRecallTokens")]
+        public virtual System.Collections.Generic.IList<GamePlayerToken> ApplicationRecallTokens { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

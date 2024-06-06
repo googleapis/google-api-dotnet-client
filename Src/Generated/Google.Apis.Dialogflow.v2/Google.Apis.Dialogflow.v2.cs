@@ -7749,6 +7749,65 @@ namespace Google.Apis.Dialogflow.v2
                         }
                     }
 
+                    /// <summary>Gets knowledge assist suggestions based on historical messages.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The name of the participant to fetch suggestions for. Format:
+                    /// `projects//locations//conversations//participants/`.
+                    /// </param>
+                    public virtual SuggestKnowledgeAssistRequest SuggestKnowledgeAssist(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SuggestKnowledgeAssistRequest body, string parent)
+                    {
+                        return new SuggestKnowledgeAssistRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>Gets knowledge assist suggestions based on historical messages.</summary>
+                    public class SuggestKnowledgeAssistRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse>
+                    {
+                        /// <summary>Constructs a new SuggestKnowledgeAssist request.</summary>
+                        public SuggestKnowledgeAssistRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SuggestKnowledgeAssistRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the participant to fetch suggestions for. Format:
+                        /// `projects//locations//conversations//participants/`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SuggestKnowledgeAssistRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "suggestKnowledgeAssist";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+parent}/suggestions:suggestKnowledgeAssist";
+
+                        /// <summary>Initializes SuggestKnowledgeAssist parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/conversations/[^/]+/participants/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Gets smart replies for a participant based on specific historical messages.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
@@ -16626,6 +16685,65 @@ namespace Google.Apis.Dialogflow.v2
                             }
                         }
 
+                        /// <summary>Gets knowledge assist suggestions based on historical messages.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">
+                        /// Required. The name of the participant to fetch suggestions for. Format:
+                        /// `projects//locations//conversations//participants/`.
+                        /// </param>
+                        public virtual SuggestKnowledgeAssistRequest SuggestKnowledgeAssist(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SuggestKnowledgeAssistRequest body, string parent)
+                        {
+                            return new SuggestKnowledgeAssistRequest(this.service, body, parent);
+                        }
+
+                        /// <summary>Gets knowledge assist suggestions based on historical messages.</summary>
+                        public class SuggestKnowledgeAssistRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse>
+                        {
+                            /// <summary>Constructs a new SuggestKnowledgeAssist request.</summary>
+                            public SuggestKnowledgeAssistRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SuggestKnowledgeAssistRequest body, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The name of the participant to fetch suggestions for. Format:
+                            /// `projects//locations//conversations//participants/`.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SuggestKnowledgeAssistRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "suggestKnowledgeAssist";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v2/{+parent}/suggestions:suggestKnowledgeAssist";
+
+                            /// <summary>Initializes SuggestKnowledgeAssist parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/conversations/[^/]+/participants/[^/]+$",
+                                });
+                            }
+                        }
+
                         /// <summary>
                         /// Gets smart replies for a participant based on specific historical messages.
                         /// </summary>
@@ -20118,11 +20236,11 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>Define behaviors on logging.</summary>
     public class GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If true, DF Interaction logging is currently enabled.</summary>
+        /// <summary>Enables DF Interaction logging.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableInteractionLogging")]
         public virtual System.Nullable<bool> EnableInteractionLogging { get; set; }
 
-        /// <summary>If true, StackDriver logging is currently enabled.</summary>
+        /// <summary>Enables StackDriver logging.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableStackdriverLogging")]
         public virtual System.Nullable<bool> EnableStackdriverLogging { get; set; }
 
@@ -22891,11 +23009,11 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>Define behaviors on logging.</summary>
     public class GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If true, DF Interaction logging is currently enabled.</summary>
+        /// <summary>Enables DF Interaction logging.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableInteractionLogging")]
         public virtual System.Nullable<bool> EnableInteractionLogging { get; set; }
 
-        /// <summary>If true, StackDriver logging is currently enabled.</summary>
+        /// <summary>Enables StackDriver logging.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableStackdriverLogging")]
         public virtual System.Nullable<bool> EnableStackdriverLogging { get; set; }
 
@@ -24472,6 +24590,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual GoogleCloudDialogflowCxV3beta1TextInput Text { get; set; }
 
+        /// <summary>The results of a tool executed by the client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolCallResult")]
+        public virtual GoogleCloudDialogflowCxV3beta1ToolCallResult ToolCallResult { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -24563,6 +24685,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>Returns a text response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual GoogleCloudDialogflowCxV3beta1ResponseMessageText Text { get; set; }
+
+        /// <summary>Returns the definition of a tool call that should be executed by the client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toolCall")]
+        public virtual GoogleCloudDialogflowCxV3beta1ToolCall ToolCall { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -25077,6 +25203,63 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>Required. The UTF-8 encoded natural language text to be processed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a call of a specific tool's action with the specified inputs.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ToolCall : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The name of the tool's action associated with this call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; }
+
+        /// <summary>Optional. The action's input parameters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputParameters")]
+        public virtual System.Collections.Generic.IDictionary<string, object> InputParameters { get; set; }
+
+        /// <summary>
+        /// Required. The tool associated with this call. Format: `projects//locations//agents//tools/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tool")]
+        public virtual string Tool { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The result of calling a tool's action that has been executed by the client.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ToolCallResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The name of the tool's action associated with this call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; }
+
+        /// <summary>The tool call's error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual GoogleCloudDialogflowCxV3beta1ToolCallResultError Error { get; set; }
+
+        /// <summary>The tool call's output parameters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputParameters")]
+        public virtual System.Collections.Generic.IDictionary<string, object> OutputParameters { get; set; }
+
+        /// <summary>
+        /// Required. The tool associated with this call. Format: `projects//locations//agents//tools/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tool")]
+        public virtual string Tool { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An error produced by the tool call.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ToolCallResultError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The error message of the function.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -25697,6 +25880,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("documentEfficiency")]
         public virtual string DocumentEfficiency { get; set; }
 
+        /// <summary>Optional. Feedback for knowledge assist.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeAssistFeedback")]
+        public virtual GoogleCloudDialogflowV2AgentAssistantFeedbackKnowledgeAssistFeedback KnowledgeAssistFeedback { get; set; }
+
         /// <summary>Optional. Feedback for knowledge search.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("knowledgeSearchFeedback")]
         public virtual GoogleCloudDialogflowV2AgentAssistantFeedbackKnowledgeSearchFeedback KnowledgeSearchFeedback { get; set; }
@@ -25704,6 +25891,27 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>Optional. Feedback for conversation summarization.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("summarizationFeedback")]
         public virtual GoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback SummarizationFeedback { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Feedback for knowledge assist.</summary>
+    public class GoogleCloudDialogflowV2AgentAssistantFeedbackKnowledgeAssistFeedback : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether the suggested answer was copied by the human agent. If the value is set to be true,
+        /// AnswerFeedback.clicked will be updated to be true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerCopied")]
+        public virtual System.Nullable<bool> AnswerCopied { get; set; }
+
+        /// <summary>
+        /// The URIs clicked by the human agent. The value is appended for each UpdateAnswerRecordRequest. If the value
+        /// is not empty, AnswerFeedback.clicked will be updated to be true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clickedUris")]
+        public virtual System.Collections.Generic.IList<string> ClickedUris { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -28546,6 +28754,16 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>Detail human agent assistant config.</summary>
     public class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. When disable_high_latency_features_sync_delivery is true and using the AnalyzeContent API, we will
+        /// not deliver the responses from high latency features in the API response. The
+        /// human_agent_assistant_config.notification_config must be configured and enable_event_based_suggestion must
+        /// be set to true to receive the responses from high latency features in Pub/Sub. High latency feature(s):
+        /// KNOWLEDGE_ASSIST.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableHighLatencyFeaturesSyncDelivery")]
+        public virtual System.Nullable<bool> DisableHighLatencyFeaturesSyncDelivery { get; set; }
+
         /// <summary>Configuration of different suggestion features. One feature can have only one config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("featureConfigs")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig> FeatureConfigs { get; set; }
@@ -28600,6 +28818,17 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableEventBasedSuggestion")]
         public virtual System.Nullable<bool> EnableEventBasedSuggestion { get; set; }
+
+        /// <summary>Optional. Enable query suggestion only. Supported features: KNOWLEDGE_ASSIST</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableQuerySuggestionOnly")]
+        public virtual System.Nullable<bool> EnableQuerySuggestionOnly { get; set; }
+
+        /// <summary>
+        /// Optional. Enable query suggestion even if we can't find its answer. By default, queries are suggested only
+        /// if we find its answer. Supported features: KNOWLEDGE_ASSIST
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableQuerySuggestionWhenNoAnswer")]
+        public virtual System.Nullable<bool> EnableQuerySuggestionWhenNoAnswer { get; set; }
 
         /// <summary>Configs of query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryConfig")]
@@ -30070,6 +30299,102 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userDefined")]
         public virtual System.Nullable<bool> UserDefined { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a Knowledge Assist answer.</summary>
+    public class GoogleCloudDialogflowV2KnowledgeAssistAnswer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the answer record. Format: `projects//locations//answer Records/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerRecord")]
+        public virtual string AnswerRecord { get; set; }
+
+        /// <summary>
+        /// The query suggested based on the context. Suggestion is made only if it is different from the previous
+        /// suggestion.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestedQuery")]
+        public virtual GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery SuggestedQuery { get; set; }
+
+        /// <summary>
+        /// The answer generated for the suggested query. Whether or not an answer is generated depends on how confident
+        /// we are about the generated query.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestedQueryAnswer")]
+        public virtual GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswer SuggestedQueryAnswer { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an answer from Knowledge. Currently supports FAQ and Generative answers.</summary>
+    public class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The piece of text from the `source` that answers this suggested query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerText")]
+        public virtual string AnswerText { get; set; }
+
+        /// <summary>Populated if the prediction came from FAQ.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("faqSource")]
+        public virtual GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerFaqSource FaqSource { get; set; }
+
+        /// <summary>Populated if the prediction was Generative.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generativeSource")]
+        public virtual GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource GenerativeSource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details about source of FAQ answer.</summary>
+    public class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerFaqSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The corresponding FAQ question.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("question")]
+        public virtual string Question { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details about source of Generative answer.</summary>
+    public class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>All snippets used for this Generative Prediction, with their source URI and data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snippets")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet> Snippets { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Snippet Source for a Generative Prediction.</summary>
+    public class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Text taken from that URI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>Title of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>URI the data is sourced from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a suggested query.</summary>
+    public class GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Suggested query text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryText")]
+        public virtual string QueryText { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -31691,6 +32016,61 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The request message for Participants.SuggestKnowledgeAssist.</summary>
+    public class GoogleCloudDialogflowV2SuggestKnowledgeAssistRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Max number of messages prior to and including latest_message to use as context when compiling the
+        /// suggestion. The context size is by default 100 and at most 100.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contextSize")]
+        public virtual System.Nullable<int> ContextSize { get; set; }
+
+        /// <summary>
+        /// Optional. The name of the latest conversation message to compile suggestions for. If empty, it will be the
+        /// latest message of the conversation. Format: `projects//locations//conversations//messages/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestMessage")]
+        public virtual string LatestMessage { get; set; }
+
+        /// <summary>
+        /// Optional. The previously suggested query for the given conversation. This helps identify whether the next
+        /// suggestion we generate is resonably different from the previous one. This is useful to avoid similar
+        /// suggestions within the conversation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("previousSuggestedQuery")]
+        public virtual string PreviousSuggestedQuery { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for Participants.SuggestKnowledgeAssist.</summary>
+    public class GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Number of messages prior to and including latest_message to compile the suggestion. It may be smaller than
+        /// the SuggestKnowledgeAssistRequest.context_size field in the request if there are fewer messages in the
+        /// conversation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contextSize")]
+        public virtual System.Nullable<int> ContextSize { get; set; }
+
+        /// <summary>Output only. Knowledge Assist suggestion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeAssistAnswer")]
+        public virtual GoogleCloudDialogflowV2KnowledgeAssistAnswer KnowledgeAssistAnswer { get; set; }
+
+        /// <summary>
+        /// The name of the latest conversation message used to compile suggestion for. Format:
+        /// `projects//locations//conversations//messages/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestMessage")]
+        public virtual string LatestMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request message for Participants.SuggestSmartReplies.</summary>
     public class GoogleCloudDialogflowV2SuggestSmartRepliesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -31794,6 +32174,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>SuggestFaqAnswersResponse if request is for FAQ_ANSWER.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestFaqAnswersResponse")]
         public virtual GoogleCloudDialogflowV2SuggestFaqAnswersResponse SuggestFaqAnswersResponse { get; set; }
+
+        /// <summary>SuggestKnowledgeAssistResponse if request is for KNOWLEDGE_ASSIST.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestKnowledgeAssistResponse")]
+        public virtual GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse SuggestKnowledgeAssistResponse { get; set; }
 
         /// <summary>SuggestSmartRepliesResponse if request is for SMART_REPLY.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestSmartRepliesResponse")]
@@ -34007,6 +34391,102 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a Knowledge Assist answer.</summary>
+    public class GoogleCloudDialogflowV2beta1KnowledgeAssistAnswer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the answer record. Format: `projects//locations//answer Records/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerRecord")]
+        public virtual string AnswerRecord { get; set; }
+
+        /// <summary>
+        /// The query suggested based on the context. Suggestion is made only if it is different from the previous
+        /// suggestion.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestedQuery")]
+        public virtual GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerSuggestedQuery SuggestedQuery { get; set; }
+
+        /// <summary>
+        /// The answer generated for the suggested query. Whether or not an answer is generated depends on how confident
+        /// we are about the generated query.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestedQueryAnswer")]
+        public virtual GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswer SuggestedQueryAnswer { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an answer from Knowledge. Currently supports FAQ and Generative answers.</summary>
+    public class GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The piece of text from the `source` that answers this suggested query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerText")]
+        public virtual string AnswerText { get; set; }
+
+        /// <summary>Populated if the prediction came from FAQ.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("faqSource")]
+        public virtual GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerFaqSource FaqSource { get; set; }
+
+        /// <summary>Populated if the prediction was Generative.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generativeSource")]
+        public virtual GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource GenerativeSource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details about source of FAQ answer.</summary>
+    public class GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerFaqSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The corresponding FAQ question.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("question")]
+        public virtual string Question { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details about source of Generative answer.</summary>
+    public class GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>All snippets used for this Generative Prediction, with their source URI and data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snippets")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet> Snippets { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Snippet Source for a Generative Prediction.</summary>
+    public class GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Text taken from that URI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>Title of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>URI the data is sourced from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a suggested query.</summary>
+    public class GoogleCloudDialogflowV2beta1KnowledgeAssistAnswerSuggestedQuery : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Suggested query text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryText")]
+        public virtual string QueryText { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata in google::longrunning::Operation for Knowledge operations.</summary>
     public class GoogleCloudDialogflowV2beta1KnowledgeOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -34564,6 +35044,32 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The response message for Participants.SuggestKnowledgeAssist.</summary>
+    public class GoogleCloudDialogflowV2beta1SuggestKnowledgeAssistResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Number of messages prior to and including latest_message to compile the suggestion. It may be smaller than
+        /// the SuggestKnowledgeAssistRequest.context_size field in the request if there are fewer messages in the
+        /// conversation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contextSize")]
+        public virtual System.Nullable<int> ContextSize { get; set; }
+
+        /// <summary>Output only. Knowledge Assist suggestion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeAssistAnswer")]
+        public virtual GoogleCloudDialogflowV2beta1KnowledgeAssistAnswer KnowledgeAssistAnswer { get; set; }
+
+        /// <summary>
+        /// The name of the latest conversation message used to compile suggestion for. Format:
+        /// `projects//locations//conversations//messages/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestMessage")]
+        public virtual string LatestMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response message for Participants.SuggestSmartReplies.</summary>
     public class GoogleCloudDialogflowV2beta1SuggestSmartRepliesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -34618,6 +35124,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>SuggestFaqAnswersResponse if request is for FAQ_ANSWER.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestFaqAnswersResponse")]
         public virtual GoogleCloudDialogflowV2beta1SuggestFaqAnswersResponse SuggestFaqAnswersResponse { get; set; }
+
+        /// <summary>SuggestKnowledgeAssistResponse if request is for KNOWLEDGE_ASSIST.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestKnowledgeAssistResponse")]
+        public virtual GoogleCloudDialogflowV2beta1SuggestKnowledgeAssistResponse SuggestKnowledgeAssistResponse { get; set; }
 
         /// <summary>SuggestSmartRepliesResponse if request is for SMART_REPLY.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestSmartRepliesResponse")]

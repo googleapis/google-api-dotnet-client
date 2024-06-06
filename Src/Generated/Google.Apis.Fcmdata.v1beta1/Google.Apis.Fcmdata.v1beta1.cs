@@ -561,6 +561,14 @@ namespace Google.Apis.Fcmdata.v1beta1.Data
     /// </summary>
     public class GoogleFirebaseFcmDataV1beta1MessageOutcomePercents : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The percentage of accepted messages that were
+        /// [collapsed](https://firebase.google.com/docs/cloud-messaging/concept-options#collapsible_and_non-collapsible_messages)
+        /// by another message.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("collapsed")]
+        public virtual System.Nullable<float> Collapsed { get; set; }
+
         /// <summary>The percentage of all accepted messages that were successfully delivered to the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("delivered")]
         public virtual System.Nullable<float> Delivered { get; set; }
@@ -592,6 +600,14 @@ namespace Google.Apis.Fcmdata.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("droppedTooManyPendingMessages")]
         public virtual System.Nullable<float> DroppedTooManyPendingMessages { get; set; }
+
+        /// <summary>
+        /// The percentage of accepted messages that expired because [Time To Live
+        /// (TTL)](https://firebase.google.com/docs/cloud-messaging/concept-options#ttl) elapsed before the target
+        /// device reconnected.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("droppedTtlExpired")]
+        public virtual System.Nullable<float> DroppedTtlExpired { get; set; }
 
         /// <summary>
         /// The percentage of messages accepted on this day that were not dropped and not delivered, due to the device

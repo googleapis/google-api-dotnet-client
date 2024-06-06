@@ -3107,129 +3107,6 @@ namespace Google.Apis.Contactcenterinsights.v1
 }
 namespace Google.Apis.Contactcenterinsights.v1.Data
 {
-    /// <summary>Agent Coaching instructions that customer can configure.</summary>
-    public class GoogleCloudContactcenterinsightsV1AgentCoachingInstruction : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Optional. The action that human agent should take. For example, "apologize for the slow shipping". If the
-        /// users only want to use agent coaching for intent detection, agent_action can be empty
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("agentAction")]
-        public virtual string AgentAction { get; set; }
-
-        /// <summary>
-        /// Optional. The condition of the instruction. For example, "the customer wants to cancel an order". If the
-        /// users want the instruction to be triggered unconditionally, the condition can be empty.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual string Condition { get; set; }
-
-        /// <summary>Optional. The detailed description of this instruction.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        /// <summary>Optional. Display name for the instruction.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; }
-
-        /// <summary>Optional. Additional information attached to this instruction.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
-
-        /// <summary>
-        /// Optional. The action that system should take. For example, "call GetOrderTime with order_number={order
-        /// number provided by the customer}". If the users don't have plugins or don't want to trigger plugins, the
-        /// system_action can be empty
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("systemAction")]
-        public virtual string SystemAction { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Suggestion for coaching agents.</summary>
-    public class GoogleCloudContactcenterinsightsV1AgentCoachingSuggestion : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. Suggested actions for the agent to take.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("agentActionSuggestions")]
-        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionAgentActionSuggestion> AgentActionSuggestions { get; set; }
-
-        /// <summary>Optional. Instructions applicable based on the current context.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("applicableInstructions")]
-        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1AgentCoachingInstruction> ApplicableInstructions { get; set; }
-
-        /// <summary>Optional. Sample response for the Agent.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sampleResponses")]
-        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionSampleResponse> SampleResponses { get; set; }
-
-        /// <summary>Self evaluation of the suggestion.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("suggestionEval")]
-        public virtual GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionAgentCoachingSuggestionEval SuggestionEval { get; set; }
-
-        /// <summary>Reasoning for the suggestion.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("suggestionReasoning")]
-        public virtual GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionAgentCoachingSuggestionReasoning SuggestionReasoning { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Actions suggested for the agent. This is based on applicable instructions.</summary>
-    public class GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionAgentActionSuggestion : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. The suggested action for the agent.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("agentAction")]
-        public virtual string AgentAction { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Self evaluations of the suggestion.</summary>
-    public class GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionAgentCoachingSuggestionEval : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. Eval for Agent action suggestion.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("actionActionSuggestionEval")]
-        public virtual string ActionActionSuggestionEval { get; set; }
-
-        /// <summary>Optional. Eval for sample response.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sampleResponseEval")]
-        public virtual string SampleResponseEval { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Reasoning for the suggestion.</summary>
-    public class GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionAgentCoachingSuggestionReasoning : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. The actions that the agent has taken already.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("agentActionTaken")]
-        public virtual string AgentActionTaken { get; set; }
-
-        /// <summary>Optional. Summary of the issue.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("issueSummary")]
-        public virtual string IssueSummary { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Sample response that the agent can use. This could be based on applicable instructions and ingested data from
-    /// other systems.
-    /// </summary>
-    public class GoogleCloudContactcenterinsightsV1AgentCoachingSuggestionSampleResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. Sample response for Agent in text.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("responseText")]
-        public virtual string ResponseText { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>The analysis resource.</summary>
     public class GoogleCloudContactcenterinsightsV1Analysis : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5432,21 +5309,6 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Suggestion generated using free form generator.</summary>
-    public class GoogleCloudContactcenterinsightsV1FreeFormSuggestion : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. Labels for the generator.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IList<string> Labels { get; set; }
-
-        /// <summary>Required. Free form suggestion.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual string Response { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>A Cloud Storage source of conversation data.</summary>
     public class GoogleCloudContactcenterinsightsV1GcsSource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5459,174 +5321,6 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transcriptUri")]
         public virtual string TranscriptUri { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Suggestion generated using a Generator.</summary>
-    public class GoogleCloudContactcenterinsightsV1GeneratorSuggestion : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. Suggestion to coach the agent.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("agentCoachingSuggestion")]
-        public virtual GoogleCloudContactcenterinsightsV1AgentCoachingSuggestion AgentCoachingSuggestion { get; set; }
-
-        /// <summary>Optional. Free form suggestion.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("freeFormSuggestion")]
-        public virtual GoogleCloudContactcenterinsightsV1FreeFormSuggestion FreeFormSuggestion { get; set; }
-
-        /// <summary>Optional. Suggested summary.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("summarySuggestion")]
-        public virtual GoogleCloudContactcenterinsightsV1SummarySuggestion SummarySuggestion { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents response from generators.</summary>
-    public class GoogleCloudContactcenterinsightsV1GetGeneratorSuggestionResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The suggestion generated from the Generator.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("generatorSuggestion")]
-        public virtual GoogleCloudContactcenterinsightsV1GeneratorSuggestion GeneratorSuggestion { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Response for Knowledge Assist. Contains suggested query and optionally includes an answer for the query.
-    /// </summary>
-    public class GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The query suggested based on the context. Suggestion is made only if it is different from the previous
-        /// suggestion.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("suggestedQuery")]
-        public virtual GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseSuggestedQuery SuggestedQuery { get; set; }
-
-        /// <summary>
-        /// The answer generated for the suggested query. Whether or not an answer is generated depends on how confident
-        /// we are about the generated query.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("suggestedQueryAnswer")]
-        public virtual GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswer SuggestedQueryAnswer { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents an answer from Knowledge. Cuurently supports FAQ and Generative answers.</summary>
-    public class GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswer : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The piece of text from the `source` that answers this suggested query.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("answerText")]
-        public virtual string AnswerText { get; set; }
-
-        /// <summary>Populated if the prediction came from FAQ.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("faqSource")]
-        public virtual GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerFaqSource FaqSource { get; set; }
-
-        /// <summary>Populated if the prediction was Generative.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("generativeSource")]
-        public virtual GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerGenerativeSource GenerativeSource { get; set; }
-
-        /// <summary>Populated if the prediction was from intent matching.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("intentMatchingSource")]
-        public virtual GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerIntentMatchingSource IntentMatchingSource { get; set; }
-
-        /// <summary>
-        /// The system's confidence score that this answer is a good match for this conversational query. The range is
-        /// from 0.0 (completely uncertain) to 1.0 (completely certain).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("matchConfidence")]
-        public virtual System.Nullable<float> MatchConfidence { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Details about source of FAQ answer.</summary>
-    public class GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerFaqSource : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Indicates which Knowledge Document this answer was extracted from. Format:
-        /// `projects//knowledgeBases//documents/`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("document")]
-        public virtual string Document { get; set; }
-
-        /// <summary>The corresponding FAQ question.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("question")]
-        public virtual string Question { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Details about source of Generative answer.</summary>
-    public class GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerGenerativeSource : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>All snippets used for this Generative Prediction, with their source URI and data.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("snippets")]
-        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerGenerativeSourceSnippet> Snippets { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Snippet Source for a Generative Prediction.</summary>
-    public class GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerGenerativeSourceSnippet : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Indicates which Knowledge Document this snippet was extracted from. Format:
-        /// `projects//knowledgeBases//documents/`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("document")]
-        public virtual string Document { get; set; }
-
-        /// <summary>text taken from that URI.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; }
-
-        /// <summary>Title of the document.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; }
-
-        /// <summary>URI the data is sourced from.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Details about source of Intent Matching answer.</summary>
-    public class GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseKnowledgeAnswerIntentMatchingSource : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Title of the document.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; }
-
-        /// <summary>URI the data is sourced from.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents a suggested query.</summary>
-    public class GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponseSuggestedQuery : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Suggested query text.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("queryText")]
-        public virtual string QueryText { get; set; }
-
-        /// <summary>Suggested query score.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("score")]
-        public virtual System.Nullable<float> Score { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6806,18 +6500,6 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("faqAnswer")]
         public virtual GoogleCloudContactcenterinsightsV1FaqAnswerData FaqAnswer { get; set; }
 
-        /// <summary>The generator suggestion result.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("generatorSuggestionResult")]
-        public virtual GoogleCloudContactcenterinsightsV1GetGeneratorSuggestionResponse GeneratorSuggestionResult { get; set; }
-
-        /// <summary>The Knowledge Assist result.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeAssistResult")]
-        public virtual GoogleCloudContactcenterinsightsV1GetKnowledgeAssistResponse KnowledgeAssistResult { get; set; }
-
-        /// <summary>The Knowledge Search result.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeSearchResult")]
-        public virtual GoogleCloudContactcenterinsightsV1SearchKnowledgeAnswer KnowledgeSearchResult { get; set; }
-
         /// <summary>Agent Assist Smart Compose suggestion data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("smartComposeSuggestion")]
         public virtual GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData SmartComposeSuggestion { get; set; }
@@ -6830,57 +6512,26 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("startBoundary")]
         public virtual GoogleCloudContactcenterinsightsV1AnnotationBoundary StartBoundary { get; set; }
 
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents a SearchKnowledge answer.</summary>
-    public class GoogleCloudContactcenterinsightsV1SearchKnowledgeAnswer : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The piece of text from the knowledge base documents that answers the search query</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("answer")]
-        public virtual string Answer { get; set; }
-
-        /// <summary>The name of the answer record. Format: `projects//locations//answer Records/`</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("answerRecord")]
-        public virtual string AnswerRecord { get; set; }
-
-        /// <summary>All sources used to generate the answer.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("answerSources")]
-        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1SearchKnowledgeAnswerAnswerSource> AnswerSources { get; set; }
-
-        /// <summary>The type of the answer.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("answerType")]
-        public virtual string AnswerType { get; set; }
-
-        /// <summary>The confidence score in [0.0, 1.0] range.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("confidenceScore")]
-        public virtual System.Nullable<float> ConfidenceScore { get; set; }
+        /// <summary>Explicit input used for generating the answer</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userInput")]
+        public virtual GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput UserInput { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The sources of the answers.</summary>
-    public class GoogleCloudContactcenterinsightsV1SearchKnowledgeAnswerAnswerSource : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>Explicit input used for generating the answer</summary>
+    public class GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The resource name of associated generator. Format: `projects//locations//generators/`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatorName")]
+        public virtual string GeneratorName { get; set; }
+
         /// <summary>
-        /// The document from which the snippet was extracted. Format: `projects//knowledgeBases//documents/`
+        /// Query text. Article Search uses this to store the input query used to generate the search results.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("document")]
-        public virtual string Document { get; set; }
-
-        /// <summary>The relevant snippet of the article.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
-        public virtual string Snippet { get; set; }
-
-        /// <summary>The title of the article.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; }
-
-        /// <summary>The URI of the article.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual string Query { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7148,32 +6799,6 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("speechRecognizer")]
         public virtual string SpeechRecognizer { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Suggested summary of the conversation.</summary>
-    public class GoogleCloudContactcenterinsightsV1SummarySuggestion : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. All the parts of generated summary.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("summarySections")]
-        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1SummarySuggestionSummarySection> SummarySections { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A component of the generated summary.</summary>
-    public class GoogleCloudContactcenterinsightsV1SummarySuggestionSummarySection : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. Name of the section.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("section")]
-        public virtual string Section { get; set; }
-
-        /// <summary>Required. Summary text for the section.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("summary")]
-        public virtual string Summary { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7498,129 +7123,6 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>String with specific view properties, must be non-empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Agent Coaching instructions that customer can configure.</summary>
-    public class GoogleCloudContactcenterinsightsV1alpha1AgentCoachingInstruction : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Optional. The action that human agent should take. For example, "apologize for the slow shipping". If the
-        /// users only want to use agent coaching for intent detection, agent_action can be empty
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("agentAction")]
-        public virtual string AgentAction { get; set; }
-
-        /// <summary>
-        /// Optional. The condition of the instruction. For example, "the customer wants to cancel an order". If the
-        /// users want the instruction to be triggered unconditionally, the condition can be empty.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual string Condition { get; set; }
-
-        /// <summary>Optional. The detailed description of this instruction.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        /// <summary>Optional. Display name for the instruction.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; }
-
-        /// <summary>Optional. Additional information attached to this instruction.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
-
-        /// <summary>
-        /// Optional. The action that system should take. For example, "call GetOrderTime with order_number={order
-        /// number provided by the customer}". If the users don't have plugins or don't want to trigger plugins, the
-        /// system_action can be empty
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("systemAction")]
-        public virtual string SystemAction { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Suggestion for coaching agents.</summary>
-    public class GoogleCloudContactcenterinsightsV1alpha1AgentCoachingSuggestion : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. Suggested actions for the agent to take.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("agentActionSuggestions")]
-        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1alpha1AgentCoachingSuggestionAgentActionSuggestion> AgentActionSuggestions { get; set; }
-
-        /// <summary>Optional. Instructions applicable based on the current context.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("applicableInstructions")]
-        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1alpha1AgentCoachingInstruction> ApplicableInstructions { get; set; }
-
-        /// <summary>Optional. Sample response for the Agent.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sampleResponses")]
-        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1alpha1AgentCoachingSuggestionSampleResponse> SampleResponses { get; set; }
-
-        /// <summary>Self evaluation of the suggestion.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("suggestionEval")]
-        public virtual GoogleCloudContactcenterinsightsV1alpha1AgentCoachingSuggestionAgentCoachingSuggestionEval SuggestionEval { get; set; }
-
-        /// <summary>Reasoning for the suggestion.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("suggestionReasoning")]
-        public virtual GoogleCloudContactcenterinsightsV1alpha1AgentCoachingSuggestionAgentCoachingSuggestionReasoning SuggestionReasoning { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Actions suggested for the agent. This is based on applicable instructions.</summary>
-    public class GoogleCloudContactcenterinsightsV1alpha1AgentCoachingSuggestionAgentActionSuggestion : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. The suggested action for the agent.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("agentAction")]
-        public virtual string AgentAction { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Self evaluations of the suggestion.</summary>
-    public class GoogleCloudContactcenterinsightsV1alpha1AgentCoachingSuggestionAgentCoachingSuggestionEval : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. Eval for Agent action suggestion.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("actionActionSuggestionEval")]
-        public virtual string ActionActionSuggestionEval { get; set; }
-
-        /// <summary>Optional. Eval for sample response.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sampleResponseEval")]
-        public virtual string SampleResponseEval { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Reasoning for the suggestion.</summary>
-    public class GoogleCloudContactcenterinsightsV1alpha1AgentCoachingSuggestionAgentCoachingSuggestionReasoning : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. The actions that the agent has taken already.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("agentActionTaken")]
-        public virtual string AgentActionTaken { get; set; }
-
-        /// <summary>Optional. Summary of the issue.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("issueSummary")]
-        public virtual string IssueSummary { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Sample response that the agent can use. This could be based on applicable instructions and ingested data from
-    /// other systems.
-    /// </summary>
-    public class GoogleCloudContactcenterinsightsV1alpha1AgentCoachingSuggestionSampleResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. Sample response for Agent in text.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("responseText")]
-        public virtual string ResponseText { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9679,21 +9181,6 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Suggestion generated using free form generator.</summary>
-    public class GoogleCloudContactcenterinsightsV1alpha1FreeFormSuggestion : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. Labels for the generator.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IList<string> Labels { get; set; }
-
-        /// <summary>Required. Free form suggestion.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual string Response { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>A Cloud Storage source of conversation data.</summary>
     public class GoogleCloudContactcenterinsightsV1alpha1GcsSource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9706,174 +9193,6 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transcriptUri")]
         public virtual string TranscriptUri { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Suggestion generated using a Generator.</summary>
-    public class GoogleCloudContactcenterinsightsV1alpha1GeneratorSuggestion : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. Suggestion to coach the agent.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("agentCoachingSuggestion")]
-        public virtual GoogleCloudContactcenterinsightsV1alpha1AgentCoachingSuggestion AgentCoachingSuggestion { get; set; }
-
-        /// <summary>Optional. Free form suggestion.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("freeFormSuggestion")]
-        public virtual GoogleCloudContactcenterinsightsV1alpha1FreeFormSuggestion FreeFormSuggestion { get; set; }
-
-        /// <summary>Optional. Suggested summary.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("summarySuggestion")]
-        public virtual GoogleCloudContactcenterinsightsV1alpha1SummarySuggestion SummarySuggestion { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents response from generators.</summary>
-    public class GoogleCloudContactcenterinsightsV1alpha1GetGeneratorSuggestionResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The suggestion generated from the Generator.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("generatorSuggestion")]
-        public virtual GoogleCloudContactcenterinsightsV1alpha1GeneratorSuggestion GeneratorSuggestion { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Response for Knowledge Assist. Contains suggested query and optionally includes an answer for the query.
-    /// </summary>
-    public class GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The query suggested based on the context. Suggestion is made only if it is different from the previous
-        /// suggestion.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("suggestedQuery")]
-        public virtual GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponseSuggestedQuery SuggestedQuery { get; set; }
-
-        /// <summary>
-        /// The answer generated for the suggested query. Whether or not an answer is generated depends on how confident
-        /// we are about the generated query.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("suggestedQueryAnswer")]
-        public virtual GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponseKnowledgeAnswer SuggestedQueryAnswer { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents an answer from Knowledge. Cuurently supports FAQ and Generative answers.</summary>
-    public class GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponseKnowledgeAnswer : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The piece of text from the `source` that answers this suggested query.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("answerText")]
-        public virtual string AnswerText { get; set; }
-
-        /// <summary>Populated if the prediction came from FAQ.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("faqSource")]
-        public virtual GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponseKnowledgeAnswerFaqSource FaqSource { get; set; }
-
-        /// <summary>Populated if the prediction was Generative.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("generativeSource")]
-        public virtual GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponseKnowledgeAnswerGenerativeSource GenerativeSource { get; set; }
-
-        /// <summary>Populated if the prediction was from intent matching.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("intentMatchingSource")]
-        public virtual GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponseKnowledgeAnswerIntentMatchingSource IntentMatchingSource { get; set; }
-
-        /// <summary>
-        /// The system's confidence score that this answer is a good match for this conversational query. The range is
-        /// from 0.0 (completely uncertain) to 1.0 (completely certain).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("matchConfidence")]
-        public virtual System.Nullable<float> MatchConfidence { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Details about source of FAQ answer.</summary>
-    public class GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponseKnowledgeAnswerFaqSource : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Indicates which Knowledge Document this answer was extracted from. Format:
-        /// `projects//knowledgeBases//documents/`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("document")]
-        public virtual string Document { get; set; }
-
-        /// <summary>The corresponding FAQ question.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("question")]
-        public virtual string Question { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Details about source of Generative answer.</summary>
-    public class GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponseKnowledgeAnswerGenerativeSource : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>All snippets used for this Generative Prediction, with their source URI and data.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("snippets")]
-        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponseKnowledgeAnswerGenerativeSourceSnippet> Snippets { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Snippet Source for a Generative Prediction.</summary>
-    public class GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponseKnowledgeAnswerGenerativeSourceSnippet : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Indicates which Knowledge Document this snippet was extracted from. Format:
-        /// `projects//knowledgeBases//documents/`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("document")]
-        public virtual string Document { get; set; }
-
-        /// <summary>text taken from that URI.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; }
-
-        /// <summary>Title of the document.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; }
-
-        /// <summary>URI the data is sourced from.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Details about source of Intent Matching answer.</summary>
-    public class GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponseKnowledgeAnswerIntentMatchingSource : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Title of the document.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; }
-
-        /// <summary>URI the data is sourced from.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents a suggested query.</summary>
-    public class GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponseSuggestedQuery : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Suggested query text.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("queryText")]
-        public virtual string QueryText { get; set; }
-
-        /// <summary>Suggested query score.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("score")]
-        public virtual System.Nullable<float> Score { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10643,18 +9962,6 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("faqAnswer")]
         public virtual GoogleCloudContactcenterinsightsV1alpha1FaqAnswerData FaqAnswer { get; set; }
 
-        /// <summary>The generator suggestion result.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("generatorSuggestionResult")]
-        public virtual GoogleCloudContactcenterinsightsV1alpha1GetGeneratorSuggestionResponse GeneratorSuggestionResult { get; set; }
-
-        /// <summary>The Knowledge Assist result.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeAssistResult")]
-        public virtual GoogleCloudContactcenterinsightsV1alpha1GetKnowledgeAssistResponse KnowledgeAssistResult { get; set; }
-
-        /// <summary>The Knowledge Search result.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeSearchResult")]
-        public virtual GoogleCloudContactcenterinsightsV1alpha1SearchKnowledgeAnswer KnowledgeSearchResult { get; set; }
-
         /// <summary>Agent Assist Smart Compose suggestion data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("smartComposeSuggestion")]
         public virtual GoogleCloudContactcenterinsightsV1alpha1SmartComposeSuggestionData SmartComposeSuggestion { get; set; }
@@ -10667,57 +9974,26 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("startBoundary")]
         public virtual GoogleCloudContactcenterinsightsV1alpha1AnnotationBoundary StartBoundary { get; set; }
 
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents a SearchKnowledge answer.</summary>
-    public class GoogleCloudContactcenterinsightsV1alpha1SearchKnowledgeAnswer : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The piece of text from the knowledge base documents that answers the search query</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("answer")]
-        public virtual string Answer { get; set; }
-
-        /// <summary>The name of the answer record. Format: `projects//locations//answer Records/`</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("answerRecord")]
-        public virtual string AnswerRecord { get; set; }
-
-        /// <summary>All sources used to generate the answer.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("answerSources")]
-        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1alpha1SearchKnowledgeAnswerAnswerSource> AnswerSources { get; set; }
-
-        /// <summary>The type of the answer.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("answerType")]
-        public virtual string AnswerType { get; set; }
-
-        /// <summary>The confidence score in [0.0, 1.0] range.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("confidenceScore")]
-        public virtual System.Nullable<float> ConfidenceScore { get; set; }
+        /// <summary>Explicit input used for generating the answer</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userInput")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1RuntimeAnnotationUserInput UserInput { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The sources of the answers.</summary>
-    public class GoogleCloudContactcenterinsightsV1alpha1SearchKnowledgeAnswerAnswerSource : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>Explicit input used for generating the answer</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1RuntimeAnnotationUserInput : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The resource name of associated generator. Format: `projects//locations//generators/`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatorName")]
+        public virtual string GeneratorName { get; set; }
+
         /// <summary>
-        /// The document from which the snippet was extracted. Format: `projects//knowledgeBases//documents/`
+        /// Query text. Article Search uses this to store the input query used to generate the search results.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("document")]
-        public virtual string Document { get; set; }
-
-        /// <summary>The relevant snippet of the article.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
-        public virtual string Snippet { get; set; }
-
-        /// <summary>The title of the article.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; }
-
-        /// <summary>The URI of the article.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual string Query { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10821,32 +10097,6 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("speechRecognizer")]
         public virtual string SpeechRecognizer { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Suggested summary of the conversation.</summary>
-    public class GoogleCloudContactcenterinsightsV1alpha1SummarySuggestion : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. All the parts of generated summary.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("summarySections")]
-        public virtual System.Collections.Generic.IList<GoogleCloudContactcenterinsightsV1alpha1SummarySuggestionSummarySection> SummarySections { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A component of the generated summary.</summary>
-    public class GoogleCloudContactcenterinsightsV1alpha1SummarySuggestionSummarySection : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. Name of the section.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("section")]
-        public virtual string Section { get; set; }
-
-        /// <summary>Required. Summary text for the section.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("summary")]
-        public virtual string Summary { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -4019,20 +4019,23 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Describes values that are relevant in a CA certificate.</summary>
+    /// <summary>
+    /// Describes the X.509 basic constraints extension, per [RFC 5280 section
+    /// 4.2.1.9](https://tools.ietf.org/html/rfc5280#section-4.2.1.9)
+    /// </summary>
     public class CaOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Refers to the "CA" X.509 extension, which is a boolean value. When this value is missing, the
-        /// extension will be omitted from the CA certificate.
+        /// Optional. Refers to the "CA" boolean field in the X.509 extension. When this value is missing, the basic
+        /// constraints extension will be omitted from the certificate.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isCa")]
         public virtual System.Nullable<bool> IsCa { get; set; }
 
         /// <summary>
-        /// Optional. Refers to the path length restriction X.509 extension. For a CA certificate, this value describes
-        /// the depth of subordinate CA certificates that are allowed. If this value is less than 0, the request will
-        /// fail. If this value is missing, the max path length will be omitted from the CA certificate.
+        /// Optional. Refers to the path length constraint field in the X.509 extension. For a CA certificate, this
+        /// value describes the depth of subordinate CA certificates that are allowed. If this value is less than 0, the
+        /// request will fail. If this value is missing, the max path length will be omitted from the certificate.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxIssuerPathLength")]
         public virtual System.Nullable<int> MaxIssuerPathLength { get; set; }
@@ -6344,7 +6347,10 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("aiaOcspServers")]
         public virtual System.Collections.Generic.IList<string> AiaOcspServers { get; set; }
 
-        /// <summary>Optional. Describes options in this X509Parameters that are relevant in a CA certificate.</summary>
+        /// <summary>
+        /// Optional. Describes options in this X509Parameters that are relevant in a CA certificate. If not specified,
+        /// a default basic constraints extension with `is_ca=false` will be added for leaf certificates.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("caOptions")]
         public virtual CaOptions CaOptions { get; set; }
 

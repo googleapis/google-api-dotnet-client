@@ -2511,6 +2511,55 @@ namespace Google.Apis.CloudSearch.v1
         }
 
         /// <summary>
+        /// Returns Debug information for Cloud Search Query API provides the search method. **Note:** This API requires
+        /// a standard end user account to execute. A service account can't perform Query API requests directly; to use
+        /// a service account to perform queries, set up [Google Workspace domain-wide delegation of
+        /// authority](https://developers.google.com/cloud-search/docs/guides/delegation/).
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual DebugSearchRequest DebugSearch(Google.Apis.CloudSearch.v1.Data.SearchRequest body)
+        {
+            return new DebugSearchRequest(this.service, body);
+        }
+
+        /// <summary>
+        /// Returns Debug information for Cloud Search Query API provides the search method. **Note:** This API requires
+        /// a standard end user account to execute. A service account can't perform Query API requests directly; to use
+        /// a service account to perform queries, set up [Google Workspace domain-wide delegation of
+        /// authority](https://developers.google.com/cloud-search/docs/guides/delegation/).
+        /// </summary>
+        public class DebugSearchRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.DebugResponse>
+        {
+            /// <summary>Constructs a new DebugSearch request.</summary>
+            public DebugSearchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSearch.v1.Data.SearchRequest body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudSearch.v1.Data.SearchRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "debugSearch";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/query:debugSearch";
+
+            /// <summary>Initializes DebugSearch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
+        }
+
+        /// <summary>
         /// Provides functionality to remove logged activity for a user. Currently to be used only for Chat 1p clients
         /// **Note:** This API requires a standard end user account to execute. A service account can't perform Remove
         /// Activity requests directly; to use a service account to perform queries, set up [Google Workspace
@@ -5493,6 +5542,25 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableDebugging")]
         public virtual System.Nullable<bool> EnableDebugging { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Debug Search Response.</summary>
+    public class DebugResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Serialized string of GenericSearchRequest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gsrRequest")]
+        public virtual string GsrRequest { get; set; }
+
+        /// <summary>Serialized string of GenericSearchResponse.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gsrResponse")]
+        public virtual string GsrResponse { get; set; }
+
+        /// <summary>Search response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchResponse")]
+        public virtual SearchResponse SearchResponse { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

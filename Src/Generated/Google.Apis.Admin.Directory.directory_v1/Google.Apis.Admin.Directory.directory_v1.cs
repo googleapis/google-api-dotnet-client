@@ -1014,7 +1014,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             [Google.Apis.Util.RequestParameterAttribute("includeChildOrgunits", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeChildOrgunits { get; set; }
 
-            /// <summary>Maximum number of results to return, value should not exceed 300.</summary>
+            /// <summary>Maximum number of results to return. Value should not exceed 300.</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 

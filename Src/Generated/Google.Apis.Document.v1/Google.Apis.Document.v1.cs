@@ -3607,12 +3607,20 @@ namespace Google.Apis.Document.v1.Data
     /// </summary>
     public class GoogleCloudDocumentaiV1Document : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Document chunked based on chunking config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunkedDocument")]
+        public virtual GoogleCloudDocumentaiV1DocumentChunkedDocument ChunkedDocument { get; set; }
+
         /// <summary>
         /// Optional. Inline document content, represented as a stream of bytes. Note: As with all `bytes` fields,
         /// protobuffers use a pure binary representation, whereas JSON representations use base64.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
+
+        /// <summary>Parsed layout of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentLayout")]
+        public virtual GoogleCloudDocumentaiV1DocumentDocumentLayout DocumentLayout { get; set; }
 
         /// <summary>
         /// A list of entities detected on Document.text. For document shards, entities in this list may cross shard
@@ -3672,6 +3680,251 @@ namespace Google.Apis.Document.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the chunks that the document is divided into.</summary>
+    public class GoogleCloudDocumentaiV1DocumentChunkedDocument : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of chunks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunks")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk> Chunks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a chunk.</summary>
+    public class GoogleCloudDocumentaiV1DocumentChunkedDocumentChunk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>ID of the chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunkId")]
+        public virtual string ChunkId { get; set; }
+
+        /// <summary>Text content of the chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>Page footers associated with the chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageFooters")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter> PageFooters { get; set; }
+
+        /// <summary>Page headers associated with the chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageHeaders")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader> PageHeaders { get; set; }
+
+        /// <summary>Page span of the chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageSpan")]
+        public virtual GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan PageSpan { get; set; }
+
+        /// <summary>Unused.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceBlockIds")]
+        public virtual System.Collections.Generic.IList<string> SourceBlockIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the page footer associated with the chunk.</summary>
+    public class GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageFooter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Page span of the footer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageSpan")]
+        public virtual GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan PageSpan { get; set; }
+
+        /// <summary>Footer in text format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the page header associated with the chunk.</summary>
+    public class GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Page span of the header.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageSpan")]
+        public virtual GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan PageSpan { get; set; }
+
+        /// <summary>Header in text format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents where the chunk starts and ends in the document.</summary>
+    public class GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Page where chunk ends in the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageEnd")]
+        public virtual System.Nullable<int> PageEnd { get; set; }
+
+        /// <summary>Page where chunk starts in the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageStart")]
+        public virtual System.Nullable<int> PageStart { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents the parsed layout of a document as a collection of blocks that the document is divided into.
+    /// </summary>
+    public class GoogleCloudDocumentaiV1DocumentDocumentLayout : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of blocks in the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blocks")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock> Blocks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a block. A block could be one of the various types (text, table, list) supported.</summary>
+    public class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>ID of the block.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blockId")]
+        public virtual string BlockId { get; set; }
+
+        /// <summary>Block consisting of list content/structure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("listBlock")]
+        public virtual GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock ListBlock { get; set; }
+
+        /// <summary>Page span of the block.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageSpan")]
+        public virtual GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan PageSpan { get; set; }
+
+        /// <summary>Block consisting of table content/structure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableBlock")]
+        public virtual GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock TableBlock { get; set; }
+
+        /// <summary>Block consisting of text content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textBlock")]
+        public virtual GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock TextBlock { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a list type block.</summary>
+    public class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List entries that constitute a list block.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("listEntries")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntry> ListEntries { get; set; }
+
+        /// <summary>Type of the list_entries (if exist). Available options are `ordered` and `unordered`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an entry in the list.</summary>
+    public class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A list entry is a list of blocks. Repeated blocks support further hierarchies and nested blocks.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blocks")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock> Blocks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents where the block starts and ends in the document.</summary>
+    public class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Page where block ends in the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageEnd")]
+        public virtual System.Nullable<int> PageEnd { get; set; }
+
+        /// <summary>Page where block starts in the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageStart")]
+        public virtual System.Nullable<int> PageStart { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a table type block.</summary>
+    public class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Body rows containing main table content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bodyRows")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow> BodyRows { get; set; }
+
+        /// <summary>Table caption/title.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("caption")]
+        public virtual string Caption { get; set; }
+
+        /// <summary>Header rows at the top of the table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headerRows")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow> HeaderRows { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a cell in a table row.</summary>
+    public class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCell : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A table cell is a list of blocks. Repeated blocks support further hierarchies and nested blocks.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blocks")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock> Blocks { get; set; }
+
+        /// <summary>How many columns this cell spans.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("colSpan")]
+        public virtual System.Nullable<int> ColSpan { get; set; }
+
+        /// <summary>How many rows this cell spans.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rowSpan")]
+        public virtual System.Nullable<int> RowSpan { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a row in a table.</summary>
+    public class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A table row is a list of table cells.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cells")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCell> Cells { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a text type block.</summary>
+    public class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A text block could further have child blocks. Repeated blocks support further hierarchies and nested blocks.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blocks")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlock> Blocks { get; set; }
+
+        /// <summary>Text content stored in the block.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>
+        /// Type of the text in the block. Available options are: `paragraph`, `subtitle`, `heading-1`, `heading-2`,
+        /// `heading-3`, `heading-4`, `heading-5`, `header`, `footer`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5458,6 +5711,12 @@ namespace Google.Apis.Document.v1.Data
         public virtual GoogleCloudDocumentaiV1ProcessOptionsIndividualPageSelector IndividualPageSelector { get; set; }
 
         /// <summary>
+        /// Optional. Only applicable to `LAYOUT_PARSER_PROCESSOR`. Returns error if set on other processor types.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("layoutConfig")]
+        public virtual GoogleCloudDocumentaiV1ProcessOptionsLayoutConfig LayoutConfig { get; set; }
+
+        /// <summary>
         /// Only applicable to `OCR_PROCESSOR` and `FORM_PARSER_PROCESSOR`. Returns error if set on other processor
         /// types.
         /// </summary>
@@ -5481,6 +5740,32 @@ namespace Google.Apis.Document.v1.Data
         /// <summary>Optional. Indices of the pages (starting from 1).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pages")]
         public virtual System.Collections.Generic.IList<System.Nullable<int>> Pages { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Serving config for layout parser processor.</summary>
+    public class GoogleCloudDocumentaiV1ProcessOptionsLayoutConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Config for chunking in layout parser processor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunkingConfig")]
+        public virtual GoogleCloudDocumentaiV1ProcessOptionsLayoutConfigChunkingConfig ChunkingConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Serving config for chunking.</summary>
+    public class GoogleCloudDocumentaiV1ProcessOptionsLayoutConfigChunkingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The chunk sizes to use when splitting documents, in order of level.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunkSize")]
+        public virtual System.Nullable<int> ChunkSize { get; set; }
+
+        /// <summary>Optional. Whether or not to include ancestor headings when splitting.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeAncestorHeadings")]
+        public virtual System.Nullable<bool> IncludeAncestorHeadings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5616,6 +5901,14 @@ namespace Google.Apis.Document.v1.Data
         /// <summary>Output only. The processor version aliases.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processorVersionAliases")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1ProcessorVersionAlias> ProcessorVersionAliases { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
         /// <summary>Output only. The state of the processor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -5771,6 +6064,14 @@ namespace Google.Apis.Document.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
         /// <summary>Output only. The state of the processor version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -6212,12 +6513,20 @@ namespace Google.Apis.Document.v1.Data
     /// </summary>
     public class GoogleCloudDocumentaiV1beta1Document : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Document chunked based on chunking config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunkedDocument")]
+        public virtual GoogleCloudDocumentaiV1beta1DocumentChunkedDocument ChunkedDocument { get; set; }
+
         /// <summary>
         /// Optional. Inline document content, represented as a stream of bytes. Note: As with all `bytes` fields,
         /// protobuffers use a pure binary representation, whereas JSON representations use base64.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
+
+        /// <summary>Parsed layout of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentLayout")]
+        public virtual GoogleCloudDocumentaiV1beta1DocumentDocumentLayout DocumentLayout { get; set; }
 
         /// <summary>
         /// A list of entities detected on Document.text. For document shards, entities in this list may cross shard
@@ -6277,6 +6586,251 @@ namespace Google.Apis.Document.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the chunks that the document is divided into.</summary>
+    public class GoogleCloudDocumentaiV1beta1DocumentChunkedDocument : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of chunks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunks")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentChunkedDocumentChunk> Chunks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a chunk.</summary>
+    public class GoogleCloudDocumentaiV1beta1DocumentChunkedDocumentChunk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>ID of the chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunkId")]
+        public virtual string ChunkId { get; set; }
+
+        /// <summary>Text content of the chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>Page footers associated with the chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageFooters")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentChunkedDocumentChunkChunkPageFooter> PageFooters { get; set; }
+
+        /// <summary>Page headers associated with the chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageHeaders")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentChunkedDocumentChunkChunkPageHeader> PageHeaders { get; set; }
+
+        /// <summary>Page span of the chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageSpan")]
+        public virtual GoogleCloudDocumentaiV1beta1DocumentChunkedDocumentChunkChunkPageSpan PageSpan { get; set; }
+
+        /// <summary>Unused.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceBlockIds")]
+        public virtual System.Collections.Generic.IList<string> SourceBlockIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the page footer associated with the chunk.</summary>
+    public class GoogleCloudDocumentaiV1beta1DocumentChunkedDocumentChunkChunkPageFooter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Page span of the footer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageSpan")]
+        public virtual GoogleCloudDocumentaiV1beta1DocumentChunkedDocumentChunkChunkPageSpan PageSpan { get; set; }
+
+        /// <summary>Footer in text format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the page header associated with the chunk.</summary>
+    public class GoogleCloudDocumentaiV1beta1DocumentChunkedDocumentChunkChunkPageHeader : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Page span of the header.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageSpan")]
+        public virtual GoogleCloudDocumentaiV1beta1DocumentChunkedDocumentChunkChunkPageSpan PageSpan { get; set; }
+
+        /// <summary>Header in text format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents where the chunk starts and ends in the document.</summary>
+    public class GoogleCloudDocumentaiV1beta1DocumentChunkedDocumentChunkChunkPageSpan : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Page where chunk ends in the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageEnd")]
+        public virtual System.Nullable<int> PageEnd { get; set; }
+
+        /// <summary>Page where chunk starts in the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageStart")]
+        public virtual System.Nullable<int> PageStart { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents the parsed layout of a document as a collection of blocks that the document is divided into.
+    /// </summary>
+    public class GoogleCloudDocumentaiV1beta1DocumentDocumentLayout : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of blocks in the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blocks")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentDocumentLayoutDocumentLayoutBlock> Blocks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a block. A block could be one of the various types (text, table, list) supported.</summary>
+    public class GoogleCloudDocumentaiV1beta1DocumentDocumentLayoutDocumentLayoutBlock : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>ID of the block.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blockId")]
+        public virtual string BlockId { get; set; }
+
+        /// <summary>Block consisting of list content/structure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("listBlock")]
+        public virtual GoogleCloudDocumentaiV1beta1DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock ListBlock { get; set; }
+
+        /// <summary>Page span of the block.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageSpan")]
+        public virtual GoogleCloudDocumentaiV1beta1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan PageSpan { get; set; }
+
+        /// <summary>Block consisting of table content/structure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableBlock")]
+        public virtual GoogleCloudDocumentaiV1beta1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock TableBlock { get; set; }
+
+        /// <summary>Block consisting of text content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textBlock")]
+        public virtual GoogleCloudDocumentaiV1beta1DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock TextBlock { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a list type block.</summary>
+    public class GoogleCloudDocumentaiV1beta1DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List entries that constitute a list block.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("listEntries")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntry> ListEntries { get; set; }
+
+        /// <summary>Type of the list_entries (if exist). Available options are `ordered` and `unordered`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an entry in the list.</summary>
+    public class GoogleCloudDocumentaiV1beta1DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A list entry is a list of blocks. Repeated blocks support further hierarchies and nested blocks.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blocks")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentDocumentLayoutDocumentLayoutBlock> Blocks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents where the block starts and ends in the document.</summary>
+    public class GoogleCloudDocumentaiV1beta1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Page where block ends in the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageEnd")]
+        public virtual System.Nullable<int> PageEnd { get; set; }
+
+        /// <summary>Page where block starts in the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageStart")]
+        public virtual System.Nullable<int> PageStart { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a table type block.</summary>
+    public class GoogleCloudDocumentaiV1beta1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Body rows containing main table content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bodyRows")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow> BodyRows { get; set; }
+
+        /// <summary>Table caption/title.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("caption")]
+        public virtual string Caption { get; set; }
+
+        /// <summary>Header rows at the top of the table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headerRows")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow> HeaderRows { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a cell in a table row.</summary>
+    public class GoogleCloudDocumentaiV1beta1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCell : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A table cell is a list of blocks. Repeated blocks support further hierarchies and nested blocks.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blocks")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentDocumentLayoutDocumentLayoutBlock> Blocks { get; set; }
+
+        /// <summary>How many columns this cell spans.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("colSpan")]
+        public virtual System.Nullable<int> ColSpan { get; set; }
+
+        /// <summary>How many rows this cell spans.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rowSpan")]
+        public virtual System.Nullable<int> RowSpan { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a row in a table.</summary>
+    public class GoogleCloudDocumentaiV1beta1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A table row is a list of table cells.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cells")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCell> Cells { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a text type block.</summary>
+    public class GoogleCloudDocumentaiV1beta1DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A text block could further have child blocks. Repeated blocks support further hierarchies and nested blocks.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blocks")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentDocumentLayoutDocumentLayoutBlock> Blocks { get; set; }
+
+        /// <summary>Text content stored in the block.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>
+        /// Type of the text in the block. Available options are: `paragraph`, `subtitle`, `heading-1`, `heading-2`,
+        /// `heading-3`, `heading-4`, `heading-5`, `header`, `footer`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7612,12 +8166,20 @@ namespace Google.Apis.Document.v1.Data
     /// </summary>
     public class GoogleCloudDocumentaiV1beta2Document : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Document chunked based on chunking config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunkedDocument")]
+        public virtual GoogleCloudDocumentaiV1beta2DocumentChunkedDocument ChunkedDocument { get; set; }
+
         /// <summary>
         /// Optional. Inline document content, represented as a stream of bytes. Note: As with all `bytes` fields,
         /// protobuffers use a pure binary representation, whereas JSON representations use base64.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
+
+        /// <summary>Parsed layout of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentLayout")]
+        public virtual GoogleCloudDocumentaiV1beta2DocumentDocumentLayout DocumentLayout { get; set; }
 
         /// <summary>
         /// A list of entities detected on Document.text. For document shards, entities in this list may cross shard
@@ -7681,6 +8243,251 @@ namespace Google.Apis.Document.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the chunks that the document is divided into.</summary>
+    public class GoogleCloudDocumentaiV1beta2DocumentChunkedDocument : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of chunks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunks")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentChunkedDocumentChunk> Chunks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a chunk.</summary>
+    public class GoogleCloudDocumentaiV1beta2DocumentChunkedDocumentChunk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>ID of the chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunkId")]
+        public virtual string ChunkId { get; set; }
+
+        /// <summary>Text content of the chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>Page footers associated with the chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageFooters")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentChunkedDocumentChunkChunkPageFooter> PageFooters { get; set; }
+
+        /// <summary>Page headers associated with the chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageHeaders")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentChunkedDocumentChunkChunkPageHeader> PageHeaders { get; set; }
+
+        /// <summary>Page span of the chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageSpan")]
+        public virtual GoogleCloudDocumentaiV1beta2DocumentChunkedDocumentChunkChunkPageSpan PageSpan { get; set; }
+
+        /// <summary>Unused.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceBlockIds")]
+        public virtual System.Collections.Generic.IList<string> SourceBlockIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the page footer associated with the chunk.</summary>
+    public class GoogleCloudDocumentaiV1beta2DocumentChunkedDocumentChunkChunkPageFooter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Page span of the footer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageSpan")]
+        public virtual GoogleCloudDocumentaiV1beta2DocumentChunkedDocumentChunkChunkPageSpan PageSpan { get; set; }
+
+        /// <summary>Footer in text format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the page header associated with the chunk.</summary>
+    public class GoogleCloudDocumentaiV1beta2DocumentChunkedDocumentChunkChunkPageHeader : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Page span of the header.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageSpan")]
+        public virtual GoogleCloudDocumentaiV1beta2DocumentChunkedDocumentChunkChunkPageSpan PageSpan { get; set; }
+
+        /// <summary>Header in text format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents where the chunk starts and ends in the document.</summary>
+    public class GoogleCloudDocumentaiV1beta2DocumentChunkedDocumentChunkChunkPageSpan : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Page where chunk ends in the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageEnd")]
+        public virtual System.Nullable<int> PageEnd { get; set; }
+
+        /// <summary>Page where chunk starts in the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageStart")]
+        public virtual System.Nullable<int> PageStart { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents the parsed layout of a document as a collection of blocks that the document is divided into.
+    /// </summary>
+    public class GoogleCloudDocumentaiV1beta2DocumentDocumentLayout : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of blocks in the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blocks")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentDocumentLayoutDocumentLayoutBlock> Blocks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a block. A block could be one of the various types (text, table, list) supported.</summary>
+    public class GoogleCloudDocumentaiV1beta2DocumentDocumentLayoutDocumentLayoutBlock : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>ID of the block.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blockId")]
+        public virtual string BlockId { get; set; }
+
+        /// <summary>Block consisting of list content/structure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("listBlock")]
+        public virtual GoogleCloudDocumentaiV1beta2DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock ListBlock { get; set; }
+
+        /// <summary>Page span of the block.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageSpan")]
+        public virtual GoogleCloudDocumentaiV1beta2DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan PageSpan { get; set; }
+
+        /// <summary>Block consisting of table content/structure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableBlock")]
+        public virtual GoogleCloudDocumentaiV1beta2DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock TableBlock { get; set; }
+
+        /// <summary>Block consisting of text content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textBlock")]
+        public virtual GoogleCloudDocumentaiV1beta2DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock TextBlock { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a list type block.</summary>
+    public class GoogleCloudDocumentaiV1beta2DocumentDocumentLayoutDocumentLayoutBlockLayoutListBlock : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List entries that constitute a list block.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("listEntries")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntry> ListEntries { get; set; }
+
+        /// <summary>Type of the list_entries (if exist). Available options are `ordered` and `unordered`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an entry in the list.</summary>
+    public class GoogleCloudDocumentaiV1beta2DocumentDocumentLayoutDocumentLayoutBlockLayoutListEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A list entry is a list of blocks. Repeated blocks support further hierarchies and nested blocks.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blocks")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentDocumentLayoutDocumentLayoutBlock> Blocks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents where the block starts and ends in the document.</summary>
+    public class GoogleCloudDocumentaiV1beta2DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Page where block ends in the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageEnd")]
+        public virtual System.Nullable<int> PageEnd { get; set; }
+
+        /// <summary>Page where block starts in the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageStart")]
+        public virtual System.Nullable<int> PageStart { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a table type block.</summary>
+    public class GoogleCloudDocumentaiV1beta2DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Body rows containing main table content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bodyRows")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow> BodyRows { get; set; }
+
+        /// <summary>Table caption/title.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("caption")]
+        public virtual string Caption { get; set; }
+
+        /// <summary>Header rows at the top of the table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headerRows")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow> HeaderRows { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a cell in a table row.</summary>
+    public class GoogleCloudDocumentaiV1beta2DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCell : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A table cell is a list of blocks. Repeated blocks support further hierarchies and nested blocks.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blocks")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentDocumentLayoutDocumentLayoutBlock> Blocks { get; set; }
+
+        /// <summary>How many columns this cell spans.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("colSpan")]
+        public virtual System.Nullable<int> ColSpan { get; set; }
+
+        /// <summary>How many rows this cell spans.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rowSpan")]
+        public virtual System.Nullable<int> RowSpan { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a row in a table.</summary>
+    public class GoogleCloudDocumentaiV1beta2DocumentDocumentLayoutDocumentLayoutBlockLayoutTableRow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A table row is a list of table cells.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cells")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentDocumentLayoutDocumentLayoutBlockLayoutTableCell> Cells { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a text type block.</summary>
+    public class GoogleCloudDocumentaiV1beta2DocumentDocumentLayoutDocumentLayoutBlockLayoutTextBlock : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A text block could further have child blocks. Repeated blocks support further hierarchies and nested blocks.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blocks")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentDocumentLayoutDocumentLayoutBlock> Blocks { get; set; }
+
+        /// <summary>Text content stored in the block.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>
+        /// Type of the text in the block. Available options are: `paragraph`, `subtitle`, `heading-1`, `heading-2`,
+        /// `heading-3`, `heading-4`, `heading-5`, `header`, `footer`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9280,6 +10087,14 @@ namespace Google.Apis.Document.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
         /// <summary>
         /// Optional. A lightweight indexing source with low latency and high reliability, but lacking advanced features

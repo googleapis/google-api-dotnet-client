@@ -7541,6 +7541,10 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("excludeExportRanges")]
         public virtual System.Collections.Generic.IList<string> ExcludeExportRanges { get; set; }
 
+        /// <summary>Optional. IP ranges allowed to be included from peering.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeExportRanges")]
+        public virtual System.Collections.Generic.IList<string> IncludeExportRanges { get; set; }
+
         /// <summary>Required. The URI of the VPC network resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
