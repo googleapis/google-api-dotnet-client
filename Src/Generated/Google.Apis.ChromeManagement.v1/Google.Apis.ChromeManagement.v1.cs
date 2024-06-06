@@ -2986,6 +2986,77 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>App report.</summary>
+    public class GoogleChromeManagementV1AppReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _reportTimeRaw;
+
+        private object _reportTime;
+
+        /// <summary>Timestamp when the report was collected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportTime")]
+        public virtual string ReportTimeRaw
+        {
+            get => _reportTimeRaw;
+            set
+            {
+                _reportTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _reportTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ReportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ReportTimeDateTimeOffset instead.")]
+        public virtual object ReportTime
+        {
+            get => _reportTime;
+            set
+            {
+                _reportTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _reportTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ReportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ReportTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ReportTimeRaw);
+            set => ReportTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>App usage data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usageData")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1AppUsageData> UsageData { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>App usage data.</summary>
+    public class GoogleChromeManagementV1AppUsageData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>App id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appId")]
+        public virtual string AppId { get; set; }
+
+        /// <summary>Application instance id. This will be unique per window/instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appInstanceId")]
+        public virtual string AppInstanceId { get; set; }
+
+        /// <summary>Type of app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appType")]
+        public virtual string AppType { get; set; }
+
+        /// <summary>App foreground running time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runningDuration")]
+        public virtual object RunningDuration { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Status data for storage. * This field is telemetry information and this will change over time as the device is
     /// utilized. * Data for this field is controlled via policy:
@@ -5617,6 +5688,12 @@ namespace Google.Apis.ChromeManagement.v1.Data
     public class GoogleChromeManagementV1TelemetryDevice : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Output only. App reports collected periodically sorted in a decreasing order of report_time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appReport")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1AppReport> AppReport { get; set; }
+
+        /// <summary>
         /// Output only. Audio reports collected periodically sorted in a decreasing order of report_time.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioStatusReport")]
@@ -6063,6 +6140,12 @@ namespace Google.Apis.ChromeManagement.v1.Data
     /// </summary>
     public class GoogleChromeManagementV1TelemetryUserDevice : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. App reports collected periodically sorted in a decreasing order of report_time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appReport")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1AppReport> AppReport { get; set; }
+
         /// <summary>
         /// Output only. Audio reports collected periodically sorted in a decreasing order of report_time.
         /// </summary>

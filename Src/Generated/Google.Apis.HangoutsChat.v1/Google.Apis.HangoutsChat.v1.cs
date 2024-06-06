@@ -62,6 +62,32 @@ namespace Google.Apis.HangoutsChat.v1
         /// <summary>Available OAuth 2.0 scopes for use with the Google Chat API.</summary>
         public class Scope
         {
+            /// <summary>
+            /// Delete conversations and spaces owned by your organization and remove access to associated files in
+            /// Google Chat
+            /// </summary>
+            public static string ChatAdminDelete = "https://www.googleapis.com/auth/chat.admin.delete";
+
+            /// <summary>
+            /// View, add, update and remove members and managers in conversations owned by your organization
+            /// </summary>
+            public static string ChatAdminMemberships = "https://www.googleapis.com/auth/chat.admin.memberships";
+
+            /// <summary>View members and managers in conversations owned by your organization</summary>
+            public static string ChatAdminMembershipsReadonly = "https://www.googleapis.com/auth/chat.admin.memberships.readonly";
+
+            /// <summary>
+            /// View or edit display name, description, and other metadata for all Google Chat conversations owned by
+            /// your organization
+            /// </summary>
+            public static string ChatAdminSpaces = "https://www.googleapis.com/auth/chat.admin.spaces";
+
+            /// <summary>
+            /// View display name, description, and other metadata for all Google Chat conversations owned by your
+            /// organization
+            /// </summary>
+            public static string ChatAdminSpacesReadonly = "https://www.googleapis.com/auth/chat.admin.spaces.readonly";
+
             /// <summary>Private Service: https://www.googleapis.com/auth/chat.bot</summary>
             public static string ChatBot = "https://www.googleapis.com/auth/chat.bot";
 
@@ -124,6 +150,32 @@ namespace Google.Apis.HangoutsChat.v1
         /// <summary>Available OAuth 2.0 scope constants for use with the Google Chat API.</summary>
         public static class ScopeConstants
         {
+            /// <summary>
+            /// Delete conversations and spaces owned by your organization and remove access to associated files in
+            /// Google Chat
+            /// </summary>
+            public const string ChatAdminDelete = "https://www.googleapis.com/auth/chat.admin.delete";
+
+            /// <summary>
+            /// View, add, update and remove members and managers in conversations owned by your organization
+            /// </summary>
+            public const string ChatAdminMemberships = "https://www.googleapis.com/auth/chat.admin.memberships";
+
+            /// <summary>View members and managers in conversations owned by your organization</summary>
+            public const string ChatAdminMembershipsReadonly = "https://www.googleapis.com/auth/chat.admin.memberships.readonly";
+
+            /// <summary>
+            /// View or edit display name, description, and other metadata for all Google Chat conversations owned by
+            /// your organization
+            /// </summary>
+            public const string ChatAdminSpaces = "https://www.googleapis.com/auth/chat.admin.spaces";
+
+            /// <summary>
+            /// View display name, description, and other metadata for all Google Chat conversations owned by your
+            /// organization
+            /// </summary>
+            public const string ChatAdminSpacesReadonly = "https://www.googleapis.com/auth/chat.admin.spaces.readonly";
+
             /// <summary>Private Service: https://www.googleapis.com/auth/chat.bot</summary>
             public const string ChatBot = "https://www.googleapis.com/auth/chat.bot";
 
@@ -2915,8 +2967,9 @@ namespace Google.Apis.HangoutsChat.v1
         /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) and [user
         /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user). Lists spaces
         /// visible to the caller or authenticated user. Group chats and DMs aren't listed until the first message is
-        /// sent. To list all named spaces by Google Workspace organization, use the `spaces.search()` method using
-        /// Workspace administrator privileges instead.
+        /// sent. To list all named spaces by Google Workspace organization, use the
+        /// [`spaces.search()`](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces/search) method
+        /// using Workspace administrator privileges instead.
         /// </summary>
         public virtual ListRequest List()
         {
@@ -2930,8 +2983,9 @@ namespace Google.Apis.HangoutsChat.v1
         /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app) and [user
         /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user). Lists spaces
         /// visible to the caller or authenticated user. Group chats and DMs aren't listed until the first message is
-        /// sent. To list all named spaces by Google Workspace organization, use the `spaces.search()` method using
-        /// Workspace administrator privileges instead.
+        /// sent. To list all named spaces by Google Workspace organization, use the
+        /// [`spaces.search()`](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces/search) method
+        /// using Workspace administrator privileges instead.
         /// </summary>
         public class ListRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.ListSpacesResponse>
         {

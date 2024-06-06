@@ -5077,15 +5077,15 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
     /// <summary>The details of an AWS instance disk.</summary>
     public class AwsDiskDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ordinal number of the disk.</summary>
+        /// <summary>Output only. The ordinal number of the disk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskNumber")]
         public virtual System.Nullable<int> DiskNumber { get; set; }
 
-        /// <summary>Size in GB.</summary>
+        /// <summary>Output only. Size in GB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeGb")]
         public virtual System.Nullable<long> SizeGb { get; set; }
 
-        /// <summary>AWS volume ID.</summary>
+        /// <summary>Output only. AWS volume ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumeId")]
         public virtual string VolumeId { get; set; }
 
@@ -5156,15 +5156,15 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
     /// <summary>Represent the source AWS VM details.</summary>
     public class AwsSourceVmDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The total size of the disks being migrated in bytes.</summary>
+        /// <summary>Output only. The total size of the disks being migrated in bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("committedStorageBytes")]
         public virtual System.Nullable<long> CommittedStorageBytes { get; set; }
 
-        /// <summary>The disks attached to the source VM.</summary>
+        /// <summary>Output only. The disks attached to the source VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disks")]
         public virtual System.Collections.Generic.IList<AwsDiskDetails> Disks { get; set; }
 
-        /// <summary>The firmware type of the source VM.</summary>
+        /// <summary>Output only. The firmware type of the source VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firmware")]
         public virtual string Firmware { get; set; }
 
@@ -5269,15 +5269,15 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
     /// <summary>The details of an Azure VM disk.</summary>
     public class AzureDiskDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Azure disk ID.</summary>
+        /// <summary>Output only. Azure disk ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskId")]
         public virtual string DiskId { get; set; }
 
-        /// <summary>The ordinal number of the disk.</summary>
+        /// <summary>Output only. The ordinal number of the disk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskNumber")]
         public virtual System.Nullable<int> DiskNumber { get; set; }
 
-        /// <summary>Size in GB.</summary>
+        /// <summary>Output only. Size in GB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeGb")]
         public virtual System.Nullable<long> SizeGb { get; set; }
 
@@ -5330,15 +5330,15 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
     /// <summary>Represent the source Azure VM details.</summary>
     public class AzureSourceVmDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The total size of the disks being migrated in bytes.</summary>
+        /// <summary>Output only. The total size of the disks being migrated in bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("committedStorageBytes")]
         public virtual System.Nullable<long> CommittedStorageBytes { get; set; }
 
-        /// <summary>The disks attached to the source VM.</summary>
+        /// <summary>Output only. The disks attached to the source VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disks")]
         public virtual System.Collections.Generic.IList<AzureDiskDetails> Disks { get; set; }
 
-        /// <summary>The firmware type of the source VM.</summary>
+        /// <summary>Output only. The firmware type of the source VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firmware")]
         public virtual string Firmware { get; set; }
 
@@ -7946,7 +7946,7 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
     /// </summary>
     public class MigrationWarning : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Suggested action for solving the warning.</summary>
+        /// <summary>Output only. Suggested action for solving the warning.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actionItem")]
         public virtual LocalizedMessage ActionItem { get; set; }
 
@@ -7954,11 +7954,11 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual string Code { get; set; }
 
-        /// <summary>URL(s) pointing to additional information on handling the current warning.</summary>
+        /// <summary>Output only. URL(s) pointing to additional information on handling the current warning.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("helpLinks")]
         public virtual System.Collections.Generic.IList<Link> HelpLinks { get; set; }
 
-        /// <summary>The localized warning message.</summary>
+        /// <summary>Output only. The localized warning message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warningMessage")]
         public virtual LocalizedMessage WarningMessage { get; set; }
 
@@ -8006,13 +8006,13 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
     /// <summary>NetworkInterface represents a NIC of a VM.</summary>
     public class NetworkInterface : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The external IP to define in the NIC.</summary>
+        /// <summary>Optional. The external IP to define in the NIC.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalIp")]
         public virtual string ExternalIp { get; set; }
 
         /// <summary>
-        /// The internal IP to define in the NIC. The formats accepted are: `ephemeral` \ ipv4 address \ a named address
-        /// resource full path.
+        /// Optional. The internal IP to define in the NIC. The formats accepted are: `ephemeral` \ ipv4 address \ a
+        /// named address resource full path.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("internalIp")]
         public virtual string InternalIp { get; set; }
@@ -8367,7 +8367,7 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
             set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Provides details on the state of the cycle in case of an error.</summary>
+        /// <summary>Output only. Provides details on the state of the cycle in case of an error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; }
 
@@ -8696,11 +8696,11 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
     /// <summary>Tag is an AWS tag representation.</summary>
     public class Tag : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Key of tag.</summary>
+        /// <summary>Required. Key of tag.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
 
-        /// <summary>Value of tag.</summary>
+        /// <summary>Required. Value of tag.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
 
@@ -8928,7 +8928,7 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
     /// <summary>UpgradeStatus contains information about upgradeAppliance operation.</summary>
     public class UpgradeStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Provides details on the state of the upgrade operation in case of an error.</summary>
+        /// <summary>Output only. Provides details on the state of the upgrade operation in case of an error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; }
 
@@ -9316,15 +9316,15 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
     /// <summary>The details of a Vmware VM disk.</summary>
     public class VmwareDiskDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ordinal number of the disk.</summary>
+        /// <summary>Output only. The ordinal number of the disk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskNumber")]
         public virtual System.Nullable<int> DiskNumber { get; set; }
 
-        /// <summary>The disk label.</summary>
+        /// <summary>Output only. The disk label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("label")]
         public virtual string Label { get; set; }
 
-        /// <summary>Size in GB.</summary>
+        /// <summary>Output only. Size in GB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeGb")]
         public virtual System.Nullable<long> SizeGb { get; set; }
 
@@ -9364,15 +9364,15 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
     /// <summary>Represent the source Vmware VM details.</summary>
     public class VmwareSourceVmDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The total size of the disks being migrated in bytes.</summary>
+        /// <summary>Output only. The total size of the disks being migrated in bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("committedStorageBytes")]
         public virtual System.Nullable<long> CommittedStorageBytes { get; set; }
 
-        /// <summary>The disks attached to the source VM.</summary>
+        /// <summary>Output only. The disks attached to the source VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disks")]
         public virtual System.Collections.Generic.IList<VmwareDiskDetails> Disks { get; set; }
 
-        /// <summary>The firmware type of the source VM.</summary>
+        /// <summary>Output only. The firmware type of the source VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firmware")]
         public virtual string Firmware { get; set; }
 

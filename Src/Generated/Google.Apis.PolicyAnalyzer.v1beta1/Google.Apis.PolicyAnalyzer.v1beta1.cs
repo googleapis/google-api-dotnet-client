@@ -34,6 +34,8 @@ namespace Google.Apis.PolicyAnalyzer.v1beta1
         /// <param name="initializer">The service initializer.</param>
         public PolicyAnalyzerService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
+            Folders = new FoldersResource(this);
+            Organizations = new OrganizationsResource(this);
             Projects = new ProjectsResource(this);
             BaseUri = GetEffectiveUri(BaseUriOverride, "https://policyanalyzer.googleapis.com/");
             BatchUri = GetEffectiveUri(null, "https://policyanalyzer.googleapis.com/batch");
@@ -76,6 +78,12 @@ namespace Google.Apis.PolicyAnalyzer.v1beta1
             /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
+
+        /// <summary>Gets the Folders resource.</summary>
+        public virtual FoldersResource Folders { get; }
+
+        /// <summary>Gets the Organizations resource.</summary>
+        public virtual OrganizationsResource Organizations { get; }
 
         /// <summary>Gets the Projects resource.</summary>
         public virtual ProjectsResource Projects { get; }
@@ -262,6 +270,352 @@ namespace Google.Apis.PolicyAnalyzer.v1beta1
         }
     }
 
+    /// <summary>The "folders" collection of methods.</summary>
+    public class FoldersResource
+    {
+        private const string Resource = "folders";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public FoldersResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            Locations = new LocationsResource(service);
+        }
+
+        /// <summary>Gets the Locations resource.</summary>
+        public virtual LocationsResource Locations { get; }
+
+        /// <summary>The "locations" collection of methods.</summary>
+        public class LocationsResource
+        {
+            private const string Resource = "locations";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public LocationsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                ActivityTypes = new ActivityTypesResource(service);
+            }
+
+            /// <summary>Gets the ActivityTypes resource.</summary>
+            public virtual ActivityTypesResource ActivityTypes { get; }
+
+            /// <summary>The "activityTypes" collection of methods.</summary>
+            public class ActivityTypesResource
+            {
+                private const string Resource = "activityTypes";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ActivityTypesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Activities = new ActivitiesResource(service);
+                }
+
+                /// <summary>Gets the Activities resource.</summary>
+                public virtual ActivitiesResource Activities { get; }
+
+                /// <summary>The "activities" collection of methods.</summary>
+                public class ActivitiesResource
+                {
+                    private const string Resource = "activities";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ActivitiesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Queries policy activities on GCP resources.</summary>
+                    /// <param name="parent">
+                    /// Required. The container resource on which to execute the request. Acceptable formats:
+                    /// `projects/[PROJECT_ID|PROJECT_NUMBER]/locations/[LOCATION]/activityTypes/[ACTIVITY_TYPE]`
+                    /// LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/
+                    /// </param>
+                    public virtual QueryRequest Query(string parent)
+                    {
+                        return new QueryRequest(this.service, parent);
+                    }
+
+                    /// <summary>Queries policy activities on GCP resources.</summary>
+                    public class QueryRequest : PolicyAnalyzerBaseServiceRequest<Google.Apis.PolicyAnalyzer.v1beta1.Data.GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse>
+                    {
+                        /// <summary>Constructs a new Query request.</summary>
+                        public QueryRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The container resource on which to execute the request. Acceptable formats:
+                        /// `projects/[PROJECT_ID|PROJECT_NUMBER]/locations/[LOCATION]/activityTypes/[ACTIVITY_TYPE]`
+                        /// LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Optional filter expression to restrict the activities returned. Supported filters
+                        /// are: - service_account_last_authn.full_resource_name {=} -
+                        /// service_account_key_last_authn.full_resource_name {=}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>
+                        /// Optional. The maximum number of results to return from this request. Max limit is 1000.
+                        /// Non-positive values are ignored. The presence of `nextPageToken` in the response indicates
+                        /// that more results might be available.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. If present, then retrieve the next batch of results from the preceding call to
+                        /// this method. `pageToken` must be the value of `nextPageToken` from the previous response.
+                        /// The values of other method parameters should be identical to those in the previous call.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "query";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+parent}/activities:query";
+
+                        /// <summary>Initializes Query parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^folders/[^/]+/locations/[^/]+/activityTypes/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /// <summary>The "organizations" collection of methods.</summary>
+    public class OrganizationsResource
+    {
+        private const string Resource = "organizations";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public OrganizationsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            Locations = new LocationsResource(service);
+        }
+
+        /// <summary>Gets the Locations resource.</summary>
+        public virtual LocationsResource Locations { get; }
+
+        /// <summary>The "locations" collection of methods.</summary>
+        public class LocationsResource
+        {
+            private const string Resource = "locations";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public LocationsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                ActivityTypes = new ActivityTypesResource(service);
+            }
+
+            /// <summary>Gets the ActivityTypes resource.</summary>
+            public virtual ActivityTypesResource ActivityTypes { get; }
+
+            /// <summary>The "activityTypes" collection of methods.</summary>
+            public class ActivityTypesResource
+            {
+                private const string Resource = "activityTypes";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ActivityTypesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Activities = new ActivitiesResource(service);
+                }
+
+                /// <summary>Gets the Activities resource.</summary>
+                public virtual ActivitiesResource Activities { get; }
+
+                /// <summary>The "activities" collection of methods.</summary>
+                public class ActivitiesResource
+                {
+                    private const string Resource = "activities";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ActivitiesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Queries policy activities on GCP resources.</summary>
+                    /// <param name="parent">
+                    /// Required. The container resource on which to execute the request. Acceptable formats:
+                    /// `projects/[PROJECT_ID|PROJECT_NUMBER]/locations/[LOCATION]/activityTypes/[ACTIVITY_TYPE]`
+                    /// LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/
+                    /// </param>
+                    public virtual QueryRequest Query(string parent)
+                    {
+                        return new QueryRequest(this.service, parent);
+                    }
+
+                    /// <summary>Queries policy activities on GCP resources.</summary>
+                    public class QueryRequest : PolicyAnalyzerBaseServiceRequest<Google.Apis.PolicyAnalyzer.v1beta1.Data.GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse>
+                    {
+                        /// <summary>Constructs a new Query request.</summary>
+                        public QueryRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The container resource on which to execute the request. Acceptable formats:
+                        /// `projects/[PROJECT_ID|PROJECT_NUMBER]/locations/[LOCATION]/activityTypes/[ACTIVITY_TYPE]`
+                        /// LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Optional filter expression to restrict the activities returned. Supported filters
+                        /// are: - service_account_last_authn.full_resource_name {=} -
+                        /// service_account_key_last_authn.full_resource_name {=}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>
+                        /// Optional. The maximum number of results to return from this request. Max limit is 1000.
+                        /// Non-positive values are ignored. The presence of `nextPageToken` in the response indicates
+                        /// that more results might be available.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. If present, then retrieve the next batch of results from the preceding call to
+                        /// this method. `pageToken` must be the value of `nextPageToken` from the previous response.
+                        /// The values of other method parameters should be identical to those in the previous call.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "query";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+parent}/activities:query";
+
+                        /// <summary>Initializes Query parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^organizations/[^/]+/locations/[^/]+/activityTypes/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     /// <summary>The "projects" collection of methods.</summary>
     public class ProjectsResource
     {
@@ -437,6 +791,7 @@ namespace Google.Apis.PolicyAnalyzer.v1beta1
 }
 namespace Google.Apis.PolicyAnalyzer.v1beta1.Data
 {
+    /// <summary>Represents Activity on a GCP resource over specific observation period.</summary>
     public class GoogleCloudPolicyanalyzerV1beta1Activity : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A struct of custom fields to explain the activity.</summary>

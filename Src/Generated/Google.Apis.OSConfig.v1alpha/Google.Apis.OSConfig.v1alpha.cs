@@ -3200,7 +3200,9 @@ namespace Google.Apis.OSConfig.v1alpha.Data
         /// Config agent did not report the final status of the task that attempted to apply the policy. Instead, the
         /// agent unexpectedly started working on a different task. This mostly happens when the agent or VM
         /// unexpectedly restarts while applying OS policies. * `internal-service-errors`: Internal service errors were
-        /// encountered while attempting to apply the policy.
+        /// encountered while attempting to apply the policy. * `os-policy-execution-pending`: OS policy was assigned to
+        /// the given VM, but was not executed yet. Typically this is a transient condition that will go away after the
+        /// next policy execution cycle.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("complianceStateReason")]
         public virtual string ComplianceStateReason { get; set; }
@@ -3231,7 +3233,8 @@ namespace Google.Apis.OSConfig.v1alpha.Data
         /// state couldn't be determined. * `execution-skipped-by-agent`: Resource execution was skipped by the agent
         /// because errors were encountered while executing prior resources in the OS policy. *
         /// `os-policy-execution-attempt-failed`: The execution of the OS policy containing this resource failed and the
-        /// compliance state couldn't be determined.
+        /// compliance state couldn't be determined. * `os-policy-execution-pending`: OS policy that owns this resource
+        /// was assigned to the given VM, but was not executed yet.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("complianceStateReason")]
         public virtual string ComplianceStateReason { get; set; }

@@ -1095,10 +1095,10 @@ namespace Google.Apis.AndroidManagement.v1
             }
 
             /// <summary>
-            /// Gets an active, unexpired enrollment token. Only a partial view of EnrollmentToken is returned: all the
-            /// fields but name and expiration_timestamp are empty. This method is meant to help manage active
-            /// enrollment tokens lifecycle. For security reasons, it's recommended to delete active enrollment tokens
-            /// as soon as they're not intended to be used anymore.
+            /// Gets an active, unexpired enrollment token. A partial view of the enrollment token is returned. Only the
+            /// following fields are populated: name, expirationTimestamp, allowPersonalUsage, value, qrCode. This
+            /// method is meant to help manage active enrollment tokens lifecycle. For security reasons, it's
+            /// recommended to delete active enrollment tokens as soon as they're not intended to be used anymore.
             /// </summary>
             /// <param name="name">
             /// Required. The name of the enrollment token in the form
@@ -1110,10 +1110,10 @@ namespace Google.Apis.AndroidManagement.v1
             }
 
             /// <summary>
-            /// Gets an active, unexpired enrollment token. Only a partial view of EnrollmentToken is returned: all the
-            /// fields but name and expiration_timestamp are empty. This method is meant to help manage active
-            /// enrollment tokens lifecycle. For security reasons, it's recommended to delete active enrollment tokens
-            /// as soon as they're not intended to be used anymore.
+            /// Gets an active, unexpired enrollment token. A partial view of the enrollment token is returned. Only the
+            /// following fields are populated: name, expirationTimestamp, allowPersonalUsage, value, qrCode. This
+            /// method is meant to help manage active enrollment tokens lifecycle. For security reasons, it's
+            /// recommended to delete active enrollment tokens as soon as they're not intended to be used anymore.
             /// </summary>
             public class GetRequest : AndroidManagementBaseServiceRequest<Google.Apis.AndroidManagement.v1.Data.EnrollmentToken>
             {
@@ -1157,9 +1157,10 @@ namespace Google.Apis.AndroidManagement.v1
 
             /// <summary>
             /// Lists active, unexpired enrollment tokens for a given enterprise. The list items contain only a partial
-            /// view of EnrollmentToken: all the fields but name and expiration_timestamp are empty. This method is
-            /// meant to help manage active enrollment tokens lifecycle. For security reasons, it's recommended to
-            /// delete active enrollment tokens as soon as they're not intended to be used anymore.
+            /// view of EnrollmentToken object. Only the following fields are populated: name, expirationTimestamp,
+            /// allowPersonalUsage, value, qrCode. This method is meant to help manage active enrollment tokens
+            /// lifecycle. For security reasons, it's recommended to delete active enrollment tokens as soon as they're
+            /// not intended to be used anymore.
             /// </summary>
             /// <param name="parent">
             /// Required. The name of the enterprise in the form enterprises/{enterpriseId}.
@@ -1171,9 +1172,10 @@ namespace Google.Apis.AndroidManagement.v1
 
             /// <summary>
             /// Lists active, unexpired enrollment tokens for a given enterprise. The list items contain only a partial
-            /// view of EnrollmentToken: all the fields but name and expiration_timestamp are empty. This method is
-            /// meant to help manage active enrollment tokens lifecycle. For security reasons, it's recommended to
-            /// delete active enrollment tokens as soon as they're not intended to be used anymore.
+            /// view of EnrollmentToken object. Only the following fields are populated: name, expirationTimestamp,
+            /// allowPersonalUsage, value, qrCode. This method is meant to help manage active enrollment tokens
+            /// lifecycle. For security reasons, it's recommended to delete active enrollment tokens as soon as they're
+            /// not intended to be used anymore.
             /// </summary>
             public class ListRequest : AndroidManagementBaseServiceRequest<Google.Apis.AndroidManagement.v1.Data.ListEnrollmentTokensResponse>
             {
@@ -3219,6 +3221,13 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual System.Collections.Generic.IList<PermissionGrant> PermissionGrants { get; set; }
 
         /// <summary>
+        /// Optional. Specifies whether user control is permitted for the app. User control includes user actions like
+        /// force-stopping and clearing app data. Supported on Android 11 and above.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userControlSettings")]
+        public virtual string UserControlSettings { get; set; }
+
+        /// <summary>
         /// Specifies whether the app installed in the work profile is allowed to add widgets to the home screen.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workProfileWidgets")]
@@ -4598,6 +4607,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enterpriseDisplayName")]
         public virtual string EnterpriseDisplayName { get; set; }
 
+        /// <summary>Settings for Google-provided user authentication.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleAuthenticationSettings")]
+        public virtual GoogleAuthenticationSettings GoogleAuthenticationSettings { get; set; }
+
         /// <summary>
         /// An image displayed as a logo during device provisioning. Supported types are: image/bmp, image/gif,
         /// image/x-ico, image/jpeg, image/png, image/webp, image/vnd.wap.wbmp, image/x-adobe-dng.
@@ -4748,6 +4761,23 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
         public virtual Date StartDate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains settings for Google-provided user authentication.</summary>
+    public class GoogleAuthenticationSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Whether users need to be authenticated by Google during the enrollment process. IT admin can
+        /// specify if Google authentication is enabled for the enterprise for knowledge worker devices. This value can
+        /// be set only via the Google Admin Console. Google authentication can be used with signin_url In the case
+        /// where Google authentication is required and a signin_url is specified, Google authentication will be
+        /// launched before signin_url.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleAuthenticationRequired")]
+        public virtual string GoogleAuthenticationRequired { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

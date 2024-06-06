@@ -1606,19 +1606,25 @@ namespace Google.Apis.CloudDataplex.v1
                         this.service = service;
                     }
 
-                    /// <summary>Generates recommended DataQualityRule from a data profiling DataScan.</summary>
+                    /// <summary>
+                    /// Generates recommended data quality rules based on the results of a data profiling scan.Use the
+                    /// recommendations to build rules for a data quality scan.
+                    /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Required. The name should be either * the name of a datascan with at least one successful
-                    /// completed data profiling job, or * the name of a successful completed data profiling datascan
-                    /// job.
+                    /// Required. The name must be one of the following: The name of a data scan with at least one
+                    /// successful, completed data profiling job The name of a successful, completed data profiling job
+                    /// (a data scan job where the job type is data profiling)
                     /// </param>
                     public virtual GenerateDataQualityRulesRequest GenerateDataQualityRules(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1GenerateDataQualityRulesRequest body, string name)
                     {
                         return new GenerateDataQualityRulesRequest(this.service, body, name);
                     }
 
-                    /// <summary>Generates recommended DataQualityRule from a data profiling DataScan.</summary>
+                    /// <summary>
+                    /// Generates recommended data quality rules based on the results of a data profiling scan.Use the
+                    /// recommendations to build rules for a data quality scan.
+                    /// </summary>
                     public class GenerateDataQualityRulesRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1GenerateDataQualityRulesResponse>
                     {
                         /// <summary>Constructs a new GenerateDataQualityRules request.</summary>
@@ -1630,9 +1636,9 @@ namespace Google.Apis.CloudDataplex.v1
                         }
 
                         /// <summary>
-                        /// Required. The name should be either * the name of a datascan with at least one successful
-                        /// completed data profiling job, or * the name of a successful completed data profiling
-                        /// datascan job.
+                        /// Required. The name must be one of the following: The name of a data scan with at least one
+                        /// successful, completed data profiling job The name of a successful, completed data profiling
+                        /// job (a data scan job where the job type is data profiling)
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -1997,18 +2003,25 @@ namespace Google.Apis.CloudDataplex.v1
                     }
                 }
 
-                /// <summary>Generates recommended DataQualityRule from a data profiling DataScan.</summary>
+                /// <summary>
+                /// Generates recommended data quality rules based on the results of a data profiling scan.Use the
+                /// recommendations to build rules for a data quality scan.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. The name should be either * the name of a datascan with at least one successful completed
-                /// data profiling job, or * the name of a successful completed data profiling datascan job.
+                /// Required. The name must be one of the following: The name of a data scan with at least one
+                /// successful, completed data profiling job The name of a successful, completed data profiling job (a
+                /// data scan job where the job type is data profiling)
                 /// </param>
                 public virtual GenerateDataQualityRulesRequest GenerateDataQualityRules(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1GenerateDataQualityRulesRequest body, string name)
                 {
                     return new GenerateDataQualityRulesRequest(this.service, body, name);
                 }
 
-                /// <summary>Generates recommended DataQualityRule from a data profiling DataScan.</summary>
+                /// <summary>
+                /// Generates recommended data quality rules based on the results of a data profiling scan.Use the
+                /// recommendations to build rules for a data quality scan.
+                /// </summary>
                 public class GenerateDataQualityRulesRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1GenerateDataQualityRulesResponse>
                 {
                     /// <summary>Constructs a new GenerateDataQualityRules request.</summary>
@@ -2020,9 +2033,9 @@ namespace Google.Apis.CloudDataplex.v1
                     }
 
                     /// <summary>
-                    /// Required. The name should be either * the name of a datascan with at least one successful
-                    /// completed data profiling job, or * the name of a successful completed data profiling datascan
-                    /// job.
+                    /// Required. The name must be one of the following: The name of a data scan with at least one
+                    /// successful, completed data profiling job The name of a successful, completed data profiling job
+                    /// (a data scan job where the job type is data profiling)
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -16462,6 +16475,14 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
+        /// Output only. Location of the resource in the source system. Entry will be searchable by this location. By
+        /// default, this should match the location of the EntryGroup containing this entry. A different value allows
+        /// capturing source location for data external to GCP.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>
         /// The platform containing the source system. The maximum size of the field is 64 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("platform")]
@@ -16938,17 +16959,19 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Generate recommended DataQualityRules request.</summary>
+    /// <summary>Request details for generating data quality rule recommendations.</summary>
     public class GoogleCloudDataplexV1GenerateDataQualityRulesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Generate recommended DataQualityRules response.</summary>
+    /// <summary>Response details for data quality rule recommendations.</summary>
     public class GoogleCloudDataplexV1GenerateDataQualityRulesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Generated recommended {@link DataQualityRule}s.</summary>
+        /// <summary>
+        /// The data quality rules that Dataplex generates based on the results of a data profiling scan.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rule")]
         public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1DataQualityRule> Rule { get; set; }
 

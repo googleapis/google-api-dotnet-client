@@ -2875,10 +2875,10 @@ namespace Google.Apis.CloudWorkstations.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Configuration options for a custom domain.</summary>
+    /// <summary>Configuration options for private workstation clusters.</summary>
     public class DomainConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Immutable. Domain used by Workstations for HTTP ingress.</summary>
+        /// <summary>Immutable. Whether Workstations endpoint is private.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
         public virtual string Domain { get; set; }
 
@@ -3005,7 +3005,7 @@ namespace Google.Apis.CloudWorkstations.v1.Data
         /// are CPU-bound and possibly greater than a 10% decrease for workloads that are input/output bound. *
         /// **Machine Type**: nested virtualization can only be enabled on workstation configurations that specify a
         /// machine_type in the N1 or N2 machine series. * **GPUs**: nested virtualization may not be enabled on
-        /// workstation configurations with accelerators. * **Operating System**: Because [Container-Optimized
+        /// workstation configurations with accelerators. * **Operating System**: because [Container-Optimized
         /// OS](https://cloud.google.com/compute/docs/images/os-details#container-optimized_os_cos) does not support
         /// nested virtualization, when nested virtualization is enabled, the underlying Compute Engine VM instances
         /// boot from an [Ubuntu LTS](https://cloud.google.com/compute/docs/images/os-details#ubuntu_lts) image.
@@ -3704,34 +3704,17 @@ namespace Google.Apis.CloudWorkstations.v1.Data
         public virtual System.Nullable<int> Version { get; set; }
     }
 
-    /// <summary>Configuration options for private workstation clusters.</summary>
     public class PrivateClusterConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Optional. Additional projects that are allowed to attach to the workstation cluster's service attachment. By
-        /// default, the workstation cluster's project and the VPC host project (if different) are allowed.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedProjects")]
         public virtual System.Collections.Generic.IList<string> AllowedProjects { get; set; }
 
-        /// <summary>
-        /// Output only. Hostname for the workstation cluster. This field will be populated only when private endpoint
-        /// is enabled. To access workstations in the workstation cluster, create a new DNS zone mapping this domain
-        /// name to an internal IP address and a forwarding rule mapping that address to the service attachment.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterHostname")]
         public virtual string ClusterHostname { get; set; }
 
-        /// <summary>Immutable. Whether Workstations endpoint is private.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enablePrivateEndpoint")]
         public virtual System.Nullable<bool> EnablePrivateEndpoint { get; set; }
 
-        /// <summary>
-        /// Output only. Service attachment URI for the workstation cluster. The service attachemnt is created when
-        /// private endpoint is enabled. To access workstations in the workstation cluster, configure access to the
-        /// managed service using [Private Service
-        /// Connect](https://cloud.google.com/vpc/docs/configure-private-service-connect-services).
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAttachmentUri")]
         public virtual string ServiceAttachmentUri { get; set; }
 
