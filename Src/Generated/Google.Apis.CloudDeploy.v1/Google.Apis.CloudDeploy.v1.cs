@@ -5377,10 +5377,6 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("advanceAutomationRuns")]
         public virtual System.Collections.Generic.IList<string> AdvanceAutomationRuns { get; set; }
 
-        /// <summary>Output only. The current AutomationRun repairing the rollout.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("currentRepairAutomationRun")]
-        public virtual string CurrentRepairAutomationRun { get; set; }
-
         /// <summary>Output only. The name of the AutomationRun initiated by a promote release rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promoteAutomationRun")]
         public virtual string PromoteAutomationRun { get; set; }
@@ -6723,6 +6719,14 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("internalIp")]
         public virtual System.Nullable<bool> InternalIp { get; set; }
+
+        /// <summary>
+        /// Optional. If set, used to configure a
+        /// [proxy](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#proxy) to the
+        /// Kubernetes server.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proxyUrl")]
+        public virtual string ProxyUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8218,24 +8222,9 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Configuration of the repair action.</summary>
-    public class RepairMode : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. Retries a failed job.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("retry")]
-        public virtual Retry Retry { get; set; }
-
-        /// <summary>Optional. Rolls back a `Rollout`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rollback")]
-        public virtual Rollback Rollback { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
-    /// RepairPhase tracks the repair attempts that have been made for each `RepairMode` specified in the `Automation`
-    /// resource.
+    /// RepairPhase tracks the repair attempts that have been made for each `RepairPhaseConfig` specified in the
+    /// `Automation` resource.
     /// </summary>
     public class RepairPhase : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8254,10 +8243,6 @@ namespace Google.Apis.CloudDeploy.v1.Data
     /// <summary>Contains the information for an automated `repair rollout` operation.</summary>
     public class RepairRolloutOperation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The index of the current repair action in the repair sequence.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("currentRepairModeIndex")]
-        public virtual System.Nullable<long> CurrentRepairModeIndex { get; set; }
-
         /// <summary>Output only. The job ID for the Job to repair.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
         public virtual string JobId { get; set; }
@@ -8304,47 +8289,6 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobs")]
         public virtual System.Collections.Generic.IList<string> Jobs { get; set; }
-
-        /// <summary>Required. Defines the types of automatic repair actions for failed jobs.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("repairModes")]
-        public virtual System.Collections.Generic.IList<RepairMode> RepairModes { get; set; }
-
-        /// <summary>
-        /// Optional. Phases within which jobs are subject to automatic repair actions on failure. Proceeds only after
-        /// phase name matched any one in the list, or for all phases if unspecified. This value must consist of
-        /// lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a
-        /// max length of 63 characters. In other words, it must match the following regex:
-        /// `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sourcePhases")]
-        public virtual System.Collections.Generic.IList<string> SourcePhases { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Retries the failed job.</summary>
-    public class Retry : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. Total number of retries. Retry is skipped if set to 0; The minimum value is 1, and the maximum
-        /// value is 10.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("attempts")]
-        public virtual System.Nullable<long> Attempts { get; set; }
-
-        /// <summary>
-        /// Optional. The pattern of how wait time will be increased. Default is linear. Backoff mode will be ignored if
-        /// `wait` is 0.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("backoffMode")]
-        public virtual string BackoffMode { get; set; }
-
-        /// <summary>
-        /// Optional. How long to wait for the first retry. Default is 0, and the maximum value is 14d.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("wait")]
-        public virtual object Wait { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8406,31 +8350,9 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("backoffMode")]
         public virtual string BackoffMode { get; set; }
 
-        /// <summary>Output only. The job ID for the Job to retry.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
-        public virtual string JobId { get; set; }
-
-        /// <summary>Output only. The phase ID of the phase that includes the job being retried.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("phaseId")]
-        public virtual string PhaseId { get; set; }
-
         /// <summary>Output only. The number of attempts that have been made.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalAttempts")]
         public virtual System.Nullable<long> TotalAttempts { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Rolls back a `Rollout`.</summary>
-    public class Rollback : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Optional. The starting phase ID for the `Rollout`. If unspecified, the `Rollout` will start in the stable
-        /// phase.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("destinationPhase")]
-        public virtual string DestinationPhase { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

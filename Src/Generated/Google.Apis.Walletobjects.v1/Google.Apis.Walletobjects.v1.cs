@@ -10485,8 +10485,9 @@ namespace Google.Apis.Walletobjects.v1.Data
         /// <summary>
         /// Deprecated, use one of explicit hash type fields instead. These two hash related fields will only be
         /// populated on Scotty based media uploads and will contain the content of the hash group in the
-        /// NotificationRequest: http://cs/#google3/uploader/service/proto/upload_listener.proto&amp;amp;q=class:Hash
-        /// Hex encoded hash value of the uploaded media.
+        /// NotificationRequest:
+        /// http://cs/#google3/blobstore2/api/scotty/service/proto/upload_listener.proto&amp;amp;q=class:Hash Hex
+        /// encoded hash value of the uploaded media.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hash")]
         public virtual string Hash { get; set; }

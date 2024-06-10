@@ -6130,12 +6130,6 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("userLabelSet")]
         public virtual StorageDatabasecenterPartnerapiV1mainUserLabels UserLabelSet { get; set; }
 
-        /// <summary>
-        /// User-provided labels, represented as a dictionary where each label is a single key value pair.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("userLabels")]
-        public virtual System.Collections.Generic.IDictionary<string, string> UserLabels { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6247,11 +6241,15 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
     /// <summary>MachineConfiguration describes the configuration of a machine specific to Database Resource.</summary>
     public class StorageDatabasecenterPartnerapiV1mainMachineConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The number of CPUs.</summary>
+        /// <summary>
+        /// The number of CPUs. TODO(b/342344482, b/342346271) add proto validations again after bug fix.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuCount")]
         public virtual System.Nullable<int> CpuCount { get; set; }
 
-        /// <summary>Memory size in bytes.</summary>
+        /// <summary>
+        /// Memory size in bytes. TODO(b/342344482, b/342346271) add proto validations again after bug fix.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memorySizeInBytes")]
         public virtual System.Nullable<long> MemorySizeInBytes { get; set; }
 
@@ -6261,48 +6259,52 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
 
     public class StorageDatabasecenterPartnerapiV1mainObservabilityMetricData : Google.Apis.Requests.IDirectResponseSchema
     {
-        private string _metricTimestampRaw;
-
-        private object _metricTimestamp;
-
-        /// <summary>Required. The timestamp of the metric value.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metricTimestamp")]
-        public virtual string MetricTimestampRaw
-        {
-            get => _metricTimestampRaw;
-            set
-            {
-                _metricTimestamp = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _metricTimestampRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="MetricTimestampRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use MetricTimestampDateTimeOffset instead.")]
-        public virtual object MetricTimestamp
-        {
-            get => _metricTimestamp;
-            set
-            {
-                _metricTimestampRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _metricTimestamp = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="MetricTimestampRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? MetricTimestampDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(MetricTimestampRaw);
-            set => MetricTimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
+        /// <summary>Required. Type of aggregation performed on the metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregationType")]
+        public virtual string AggregationType { get; set; }
 
         /// <summary>Required. Type of metric like CPU, Memory, etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metricType")]
         public virtual string MetricType { get; set; }
+
+        private string _observationTimeRaw;
+
+        private object _observationTime;
+
+        /// <summary>Required. The time the metric value was observed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("observationTime")]
+        public virtual string ObservationTimeRaw
+        {
+            get => _observationTimeRaw;
+            set
+            {
+                _observationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _observationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ObservationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ObservationTimeDateTimeOffset instead.")]
+        public virtual object ObservationTime
+        {
+            get => _observationTime;
+            set
+            {
+                _observationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _observationTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ObservationTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ObservationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ObservationTimeRaw);
+            set => ObservationTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>
         /// Required. Database resource name associated with the signal. Resource name to follow CAIS resource_name
@@ -6313,7 +6315,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
 
         /// <summary>Required. Value of the metric type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual System.Nullable<double> Value { get; set; }
+        public virtual StorageDatabasecenterProtoCommonTypedValue Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6383,6 +6385,31 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// TypedValue represents the value of a metric type. It can either be a double, an int64, a string or a bool.
+    /// </summary>
+    public class StorageDatabasecenterProtoCommonTypedValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>For boolean value</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boolValue")]
+        public virtual System.Nullable<bool> BoolValue { get; set; }
+
+        /// <summary>For double value</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("doubleValue")]
+        public virtual System.Nullable<double> DoubleValue { get; set; }
+
+        /// <summary>For integer value</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("int64Value")]
+        public virtual System.Nullable<long> Int64Value { get; set; }
+
+        /// <summary>For string value</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
+        public virtual string StringValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

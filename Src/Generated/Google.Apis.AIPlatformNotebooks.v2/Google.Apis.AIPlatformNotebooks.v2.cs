@@ -1956,6 +1956,21 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>An access configuration attached to an instance's network interface.</summary>
+    public class AccessConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// An external IP address associated with this instance. Specify an unused static external IP address available
+        /// to the project or leave this field undefined to use an IP from a shared ephemeral IP address pool. If you
+        /// specify a static external IP address, it must live in the same region as the zone of the instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalIp")]
+        public virtual string ExternalIp { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Associates `members`, or principals, with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2551,6 +2566,14 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("proxyUri")]
         public virtual string ProxyUri { get; set; }
 
+        /// <summary>Output only. Reserved for future use for Zone Isolation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Reserved for future use for Zone Separation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
         /// <summary>Output only. The state of this instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
@@ -2695,6 +2718,14 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
     /// <summary>The definition of a network interface resource attached to a VM.</summary>
     public class NetworkInterface : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. An array of configurations for this interface. Currently, only one access config, ONE_TO_ONE_NAT,
+        /// is supported. If no accessConfigs specified, the instance will have an external internet access through an
+        /// ephemeral external IP address.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessConfigs")]
+        public virtual System.Collections.Generic.IList<AccessConfig> AccessConfigs { get; set; }
+
         /// <summary>
         /// Optional. The name of the VPC that this VM instance is in. Format:
         /// `projects/{project_id}/global/networks/{network_id}`

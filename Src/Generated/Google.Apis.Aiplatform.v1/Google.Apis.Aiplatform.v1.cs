@@ -52617,10 +52617,6 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deployGke")]
         public virtual GoogleCloudAiplatformV1PublisherModelCallToActionDeployGke DeployGke { get; set; }
 
-        /// <summary>Optional. Fine tune the PublisherModel with the third-party model tuning UI.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fineTune")]
-        public virtual GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences FineTune { get; set; }
-
         /// <summary>Optional. Open evaluation pipeline of the PublisherModel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("openEvaluationPipeline")]
         public virtual GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences OpenEvaluationPipeline { get; set; }

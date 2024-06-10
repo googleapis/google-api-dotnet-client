@@ -5684,6 +5684,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("locationType")]
         public virtual string LocationType { get; set; }
 
+        /// <summary>Optional. MultipleSelectConfig represents the multiple options for a config variable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multipleSelectConfig")]
+        public virtual MultipleSelectConfig MultipleSelectConfig { get; set; }
+
         /// <summary>Flag represents that this `ConfigVariable` must be provided for a connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("required")]
         public virtual System.Nullable<bool> Required { get; set; }
@@ -8816,6 +8820,48 @@ namespace Google.Apis.Connectors.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>MultipleSelectConfig represents the multiple options for a config variable.</summary>
+    public class MultipleSelectConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Allow custom values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowCustomValues")]
+        public virtual System.Nullable<bool> AllowCustomValues { get; set; }
+
+        /// <summary>Required. Multiple select options.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multipleSelectOptions")]
+        public virtual System.Collections.Generic.IList<MultipleSelectOption> MultipleSelectOptions { get; set; }
+
+        /// <summary>Required. Value separator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueSeparator")]
+        public virtual string ValueSeparator { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>MultiplSelecteOption represents the single option for a config variable.</summary>
+    public class MultipleSelectOption : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Value of the option.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Required. Display name of the option.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Required. Key of the option.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>Optional. Indicates if the option is preselected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preselected")]
+        public virtual System.Nullable<bool> Preselected { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

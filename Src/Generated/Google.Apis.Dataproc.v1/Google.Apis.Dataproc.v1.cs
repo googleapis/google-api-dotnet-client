@@ -7508,6 +7508,17 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Autotuning configuration of the workload.</summary>
+    public class AutotuningConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Scenarios for which tunings are applied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scenarios")]
+        public virtual System.Collections.Generic.IList<string> Scenarios { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Node group identification and configuration information.</summary>
     public class AuxiliaryNodeGroup : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11172,6 +11183,17 @@ namespace Google.Apis.Dataproc.v1.Data
     /// <summary>Runtime configuration for a workload.</summary>
     public class RuntimeConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Autotuning configuration of the workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autotuningConfig")]
+        public virtual AutotuningConfig AutotuningConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Cohort identifier. Identifies families of the workloads having the same shape, e.g. daily ETL
+        /// jobs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cohort")]
+        public virtual string Cohort { get; set; }
+
         /// <summary>
         /// Optional. Optional custom container image for the job runtime environment. If not specified, a default
         /// container image will be used.

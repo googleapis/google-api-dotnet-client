@@ -13795,6 +13795,110 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     this.service = service;
                 }
 
+                /// <summary>
+                /// Writes a single user event from the browser. This uses a GET request to due to browser restriction
+                /// of POST-ing to a third-party domain. This method is used only by the Discovery Engine API JavaScript
+                /// pixel and Google Tag Manager. Users should not call this method directly.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. The parent DataStore resource name, such as
+                /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`.
+                /// </param>
+                public virtual CollectRequest Collect(string parent)
+                {
+                    return new CollectRequest(this.service, parent);
+                }
+
+                /// <summary>
+                /// Writes a single user event from the browser. This uses a GET request to due to browser restriction
+                /// of POST-ing to a third-party domain. This method is used only by the Discovery Engine API JavaScript
+                /// pixel and Google Tag Manager. Users should not call this method directly.
+                /// </summary>
+                public class CollectRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleApiHttpBody>
+                {
+                    /// <summary>Constructs a new Collect request.</summary>
+                    public CollectRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent DataStore resource name, such as
+                    /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// The event timestamp in milliseconds. This prevents browser caching of otherwise identical get
+                    /// requests. The name is abbreviated to reduce the payload bytes.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("ets", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<long> Ets { get; set; }
+
+                    /// <summary>
+                    /// The URL including cgi-parameters but excluding the hash fragment with a length limit of 5,000
+                    /// characters. This is often more useful than the referer URL, because many browsers only send the
+                    /// domain for third-party requests.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("uri", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Uri { get; set; }
+
+                    /// <summary>
+                    /// Required. URL encoded UserEvent proto with a length limit of 2,000,000 characters.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("userEvent", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string UserEvent { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "collect";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta/{+parent}/userEvents:collect";
+
+                    /// <summary>Initializes Collect parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("ets", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "ets",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("uri", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "uri",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("userEvent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "userEvent",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
                 /// <summary>Writes a single user event.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -21799,6 +21903,15 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("orderBy")]
         public virtual string OrderBy { get; set; }
 
+        /// <summary>
+        /// Specifies the search result mode. If unspecified, the search result mode is based on
+        /// DataStore.DocumentProcessingConfig.chunking_config: * If DataStore.DocumentProcessingConfig.chunking_config
+        /// is specified, it defaults to `CHUNKS`. * Otherwise, it defaults to `DOCUMENTS`. See [parse and chunk
+        /// documents](https://cloud.google.com/generative-ai-app-builder/docs/parse-chunk-documents)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchResultMode")]
+        public virtual string SearchResultMode { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -22606,6 +22719,117 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("citationThreshold")]
         public virtual System.Nullable<double> CitationThreshold { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Chunk captures all raw metadata information of items to be recommended or searched in the chunk mode.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaChunk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Metadata of the current chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunkMetadata")]
+        public virtual GoogleCloudDiscoveryengineV1betaChunkChunkMetadata ChunkMetadata { get; set; }
+
+        /// <summary>Content is a string from a document (parsed content).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>
+        /// Output only. This field is OUTPUT_ONLY. It contains derived data that are not in the original input
+        /// document.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("derivedStructData")]
+        public virtual System.Collections.Generic.IDictionary<string, object> DerivedStructData { get; set; }
+
+        /// <summary>Metadata of the document from the current chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentMetadata")]
+        public virtual GoogleCloudDiscoveryengineV1betaChunkDocumentMetadata DocumentMetadata { get; set; }
+
+        /// <summary>Unique chunk ID of the current chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// The full resource name of the chunk. Format:
+        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document_id}/chunks/{chunk_id}`.
+        /// This field must be a UTF-8 encoded string with a length limit of 1024 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Page span of the chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageSpan")]
+        public virtual GoogleCloudDiscoveryengineV1betaChunkPageSpan PageSpan { get; set; }
+
+        /// <summary>
+        /// Output only. Represents the relevance score based on similarity. Higher score indicates higher chunk
+        /// relevance. The score is in range [-1.0, 1.0]. Only populated on SearchService.SearchResponse.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relevanceScore")]
+        public virtual System.Nullable<double> RelevanceScore { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata of the current chunk. This field is only populated on SearchService.Search API.</summary>
+    public class GoogleCloudDiscoveryengineV1betaChunkChunkMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The next chunks of the current chunk. The number is controlled by
+        /// SearchRequest.ContentSearchSpec.ChunkSpec.num_next_chunks. This field is only populated on
+        /// SearchService.Search API.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextChunks")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaChunk> NextChunks { get; set; }
+
+        /// <summary>
+        /// The previous chunks of the current chunk. The number is controlled by
+        /// SearchRequest.ContentSearchSpec.ChunkSpec.num_previous_chunks. This field is only populated on
+        /// SearchService.Search API.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("previousChunks")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaChunk> PreviousChunks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Document metadata contains the information of the document of the current chunk.</summary>
+    public class GoogleCloudDiscoveryengineV1betaChunkDocumentMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Data representation. The structured JSON data for the document. It should conform to the registered Schema
+        /// or an `INVALID_ARGUMENT` error is thrown.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structData")]
+        public virtual System.Collections.Generic.IDictionary<string, object> StructData { get; set; }
+
+        /// <summary>Title of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>Uri of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Page span of the chunk.</summary>
+    public class GoogleCloudDiscoveryengineV1betaChunkPageSpan : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The end page of the chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageEnd")]
+        public virtual System.Nullable<int> PageEnd { get; set; }
+
+        /// <summary>The start page of the chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageStart")]
+        public virtual System.Nullable<int> PageStart { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -27005,10 +27229,25 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     public class GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Specifies the chunk spec to be returned from the search response. Only available if the
+        /// SearchRequest.ContentSearchSpec.search_result_mode is set to CHUNKS
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunkSpec")]
+        public virtual GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecChunkSpec ChunkSpec { get; set; }
+
+        /// <summary>
         /// If there is no extractive_content_spec provided, there will be no extractive answer in the search response.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extractiveContentSpec")]
         public virtual GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecExtractiveContentSpec ExtractiveContentSpec { get; set; }
+
+        /// <summary>
+        /// Specifies the search result mode. If unspecified, the search result mode is based on
+        /// DataStore.DocumentProcessingConfig.chunking_config: * If DataStore.DocumentProcessingConfig.chunking_config
+        /// is specified, it defaults to `CHUNKS`. * Otherwise, it defaults to `DOCUMENTS`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchResultMode")]
+        public virtual string SearchResultMode { get; set; }
 
         /// <summary>If `snippetSpec` is not specified, snippets are not included in the search response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snippetSpec")]
@@ -27017,6 +27256,30 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>If `summarySpec` is not specified, summaries are not included in the search response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("summarySpec")]
         public virtual GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpec SummarySpec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specifies the chunk spec to be returned from the search response. Only available if the
+    /// SearchRequest.ContentSearchSpec.search_result_mode is set to CHUNKS
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecChunkSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The number of next chunks to be returned of the current chunk. The maximum allowed value is 3. If not
+        /// specified, no next chunks will be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numNextChunks")]
+        public virtual System.Nullable<int> NumNextChunks { get; set; }
+
+        /// <summary>
+        /// The number of previous chunks to be returned of the current chunk. The maximum allowed value is 3. If not
+        /// specified, no previous chunks will be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numPreviousChunks")]
+        public virtual System.Nullable<int> NumPreviousChunks { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -27594,6 +27857,13 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>Represents the search results.</summary>
     public class GoogleCloudDiscoveryengineV1betaSearchResponseSearchResult : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The chunk data in the search response if the SearchRequest.ContentSearchSpec.search_result_mode is set to
+        /// CHUNKS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunk")]
+        public virtual GoogleCloudDiscoveryengineV1betaChunk Chunk { get; set; }
+
         /// <summary>
         /// The document data snippet in the search response. Only fields that are marked as `retrievable` are
         /// populated.

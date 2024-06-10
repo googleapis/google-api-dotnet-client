@@ -3928,11 +3928,11 @@ namespace Google.Apis.Dns.v1
 namespace Google.Apis.Dns.v1.Data
 {
     /// <summary>
-    /// A Change represents a set of ResourceRecordSet additions and deletions applied atomically to a ManagedZone.
+    /// A Change represents a set of `ResourceRecordSet` additions and deletions applied atomically to a ManagedZone.
     /// ResourceRecordSets within a ManagedZone are modified by creating a new Change element in the Changes collection.
-    /// In turn the Changes collection also records the past modifications to the ResourceRecordSets in a ManagedZone.
-    /// The current state of the ManagedZone is the sum effect of applying all Change elements in the Changes collection
-    /// in sequence.
+    /// In turn the Changes collection also records the past modifications to the `ResourceRecordSets` in a
+    /// `ManagedZone`. The current state of the `ManagedZone` is the sum effect of applying all `Change` elements in the
+    /// `Changes` collection in sequence.
     /// </summary>
     public class Change : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3979,20 +3979,17 @@ namespace Google.Apis.Dns.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("changes")]
         public virtual System.Collections.Generic.IList<Change> Changes { get; set; }
 
-        [Newtonsoft.Json.JsonPropertyAttribute("header")]
-        public virtual ResponseHeader Header { get; set; }
-
         /// <summary>Type of resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
         /// <summary>
-        /// The presence of this field indicates that there exist more results following your last page of results in
-        /// pagination order. To fetch them, make another list request using this value as your pagination token. This
-        /// lets you retrieve the complete contents of even very large collections one page at a time. However, if the
-        /// contents of the collection change between the first and last paginated list request, the set of all elements
-        /// returned are an inconsistent view of the collection. You cannot retrieve a "snapshot" of collections larger
-        /// than the maximum page size.
+        /// This field indicates that more results are available beyond the last page displayed. To fetch the results,
+        /// make another list request and use this value as your page token. This lets you retrieve the complete
+        /// contents of a very large collection one page at a time. However, if the contents of the collection change
+        /// between the first and last paginated list request, the set of all elements returned are an inconsistent view
+        /// of the collection. You can't retrieve a consistent snapshot of a collection larger than the maximum page
+        /// size.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -4126,20 +4123,17 @@ namespace Google.Apis.Dns.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dnsKeys")]
         public virtual System.Collections.Generic.IList<DnsKey> DnsKeys { get; set; }
 
-        [Newtonsoft.Json.JsonPropertyAttribute("header")]
-        public virtual ResponseHeader Header { get; set; }
-
         /// <summary>Type of resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
         /// <summary>
-        /// The presence of this field indicates that there exist more results following your last page of results in
-        /// pagination order. To fetch them, make another list request using this value as your pagination token. In
-        /// this way you can retrieve the complete contents of even very large collections one page at a time. However,
-        /// if the contents of the collection change between the first and last paginated list request, the set of all
-        /// elements returned are an inconsistent view of the collection. There is no way to retrieve a "snapshot" of
-        /// collections larger than the maximum page size.
+        /// This field indicates that more results are available beyond the last page displayed. To fetch the results,
+        /// make another list request and use this value as your page token. This lets you retrieve the complete
+        /// contents of a very large collection one page at a time. However, if the contents of the collection change
+        /// between the first and last paginated list request, the set of all elements returned are an inconsistent view
+        /// of the collection. You can't retrieve a consistent snapshot of a collection larger than the maximum page
+        /// size.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -4670,20 +4664,17 @@ namespace Google.Apis.Dns.v1.Data
 
     public class ManagedZoneOperationsListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        [Newtonsoft.Json.JsonPropertyAttribute("header")]
-        public virtual ResponseHeader Header { get; set; }
-
         /// <summary>Type of resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
         /// <summary>
-        /// The presence of this field indicates that there exist more results following your last page of results in
-        /// pagination order. To fetch them, make another list request using this value as your page token. This lets
-        /// you retrieve the complete contents of even very large collections one page at a time. However, if the
-        /// contents of the collection change between the first and last paginated list request, the set of all elements
-        /// returned are an inconsistent view of the collection. You cannot retrieve a consistent snapshot of a
-        /// collection larger than the maximum page size.
+        /// This field indicates that more results are available beyond the last page displayed. To fetch the results,
+        /// make another list request and use this value as your page token. This lets you retrieve the complete
+        /// contents of a very large collection one page at a time. However, if the contents of the collection change
+        /// between the first and last paginated list request, the set of all elements returned are an inconsistent view
+        /// of the collection. You can't retrieve a consistent snapshot of a collection larger than the maximum page
+        /// size.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -4724,7 +4715,7 @@ namespace Google.Apis.Dns.v1.Data
 
         /// <summary>
         /// The fully qualified URL of the VPC network to forward queries to. This should be formatted like
-        /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+        /// `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUrl")]
         public virtual string NetworkUrl { get; set; }
@@ -4774,7 +4765,7 @@ namespace Google.Apis.Dns.v1.Data
 
         /// <summary>
         /// The fully qualified URL of the VPC network to bind to. Format this URL like
-        /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+        /// `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUrl")]
         public virtual string NetworkUrl { get; set; }
@@ -4820,7 +4811,7 @@ namespace Google.Apis.Dns.v1.Data
 
         /// <summary>
         /// The fully qualified URL of the namespace associated with the zone. Format must be
-        /// https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace}
+        /// `https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespaceUrl")]
         public virtual string NamespaceUrl { get; set; }
@@ -4831,9 +4822,6 @@ namespace Google.Apis.Dns.v1.Data
 
     public class ManagedZonesListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        [Newtonsoft.Json.JsonPropertyAttribute("header")]
-        public virtual ResponseHeader Header { get; set; }
-
         /// <summary>Type of resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -4843,12 +4831,12 @@ namespace Google.Apis.Dns.v1.Data
         public virtual System.Collections.Generic.IList<ManagedZone> ManagedZones { get; set; }
 
         /// <summary>
-        /// The presence of this field indicates that there exist more results following your last page of results in
-        /// pagination order. To fetch them, make another list request using this value as your page token. This lets
-        /// you the complete contents of even very large collections one page at a time. However, if the contents of the
-        /// collection change between the first and last paginated list request, the set of all elements returned are an
-        /// inconsistent view of the collection. You cannot retrieve a consistent snapshot of a collection larger than
-        /// the maximum page size.
+        /// This field indicates that more results are available beyond the last page displayed. To fetch the results,
+        /// make another list request and use this value as your page token. This lets you retrieve the complete
+        /// contents of a very large collection one page at a time. However, if the contents of the collection change
+        /// between the first and last paginated list request, the set of all elements returned are an inconsistent view
+        /// of the collection. You can't retrieve a consistent snapshot of a collection larger than the maximum page
+        /// size.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -4942,20 +4930,17 @@ namespace Google.Apis.Dns.v1.Data
 
     public class PoliciesListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        [Newtonsoft.Json.JsonPropertyAttribute("header")]
-        public virtual ResponseHeader Header { get; set; }
-
         /// <summary>Type of resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
         /// <summary>
-        /// The presence of this field indicates that there exist more results following your last page of results in
-        /// pagination order. To fetch them, make another list request using this value as your page token. This lets
-        /// you the complete contents of even very large collections one page at a time. However, if the contents of the
-        /// collection change between the first and last paginated list request, the set of all elements returned are an
-        /// inconsistent view of the collection. You cannot retrieve a consistent snapshot of a collection larger than
-        /// the maximum page size.
+        /// This field indicates that more results are available beyond the last page displayed. To fetch the results,
+        /// make another list request and use this value as your page token. This lets you retrieve the complete
+        /// contents of a very large collection one page at a time. However, if the contents of the collection change
+        /// between the first and last paginated list request, the set of all elements returned are an inconsistent view
+        /// of the collection. You can't retrieve a consistent snapshot of a collection larger than the maximum page
+        /// size.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -4970,9 +4955,6 @@ namespace Google.Apis.Dns.v1.Data
 
     public class PoliciesPatchResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        [Newtonsoft.Json.JsonPropertyAttribute("header")]
-        public virtual ResponseHeader Header { get; set; }
-
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
         public virtual Policy Policy { get; set; }
 
@@ -4982,9 +4964,6 @@ namespace Google.Apis.Dns.v1.Data
 
     public class PoliciesUpdateResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        [Newtonsoft.Json.JsonPropertyAttribute("header")]
-        public virtual ResponseHeader Header { get; set; }
-
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
         public virtual Policy Policy { get; set; }
 
@@ -5107,7 +5086,7 @@ namespace Google.Apis.Dns.v1.Data
 
     /// <summary>
     /// A project resource. The project is a top level container for resources including Cloud DNS ManagedZones.
-    /// Projects can be created only in the APIs console. Next tag: 7.
+    /// Projects can be created only in the APIs console.
     /// </summary>
     public class Project : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5260,7 +5239,7 @@ namespace Google.Apis.Dns.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Configures a RRSetRoutingPolicy that routes based on the geo location of the querying user.</summary>
+    /// <summary>Configures a `RRSetRoutingPolicy` that routes based on the geo location of the querying user.</summary>
     public class RRSetRoutingPolicyGeoPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -5292,7 +5271,7 @@ namespace Google.Apis.Dns.v1.Data
     {
         /// <summary>
         /// For A and AAAA types only. Endpoints to return in the query result only if they are healthy. These can be
-        /// specified along with rrdata within this item.
+        /// specified along with `rrdata` within this item.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("healthCheckedTargets")]
         public virtual RRSetRoutingPolicyHealthCheckTargets HealthCheckedTargets { get; set; }
@@ -5311,8 +5290,8 @@ namespace Google.Apis.Dns.v1.Data
         public virtual System.Collections.Generic.IList<string> Rrdatas { get; set; }
 
         /// <summary>
-        /// DNSSEC generated signatures for all the rrdata within this item. If health checked targets are provided for
-        /// DNSSEC enabled zones, there's a restriction of 1 IP address per item.
+        /// DNSSEC generated signatures for all the `rrdata` within this item. If health checked targets are provided
+        /// for DNSSEC enabled zones, there's a restriction of 1 IP address per item.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signatureRrdatas")]
         public virtual System.Collections.Generic.IList<string> SignatureRrdatas { get; set; }
@@ -5323,8 +5302,7 @@ namespace Google.Apis.Dns.v1.Data
 
     /// <summary>
     /// HealthCheckTargets describes endpoints to health-check when responding to Routing Policy queries. Only the
-    /// healthy endpoints will be included in the response. Only one of internal_load_balancer and external_endpoints
-    /// should be set.
+    /// healthy endpoints will be included in the response.
     /// </summary>
     public class RRSetRoutingPolicyHealthCheckTargets : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5362,7 +5340,7 @@ namespace Google.Apis.Dns.v1.Data
 
         /// <summary>
         /// The fully qualified URL of the network that the load balancer is attached to. This should be formatted like
-        /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} .
+        /// `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUrl")]
         public virtual string NetworkUrl { get; set; }
@@ -5391,7 +5369,7 @@ namespace Google.Apis.Dns.v1.Data
     {
         /// <summary>
         /// Backup targets provide a regional failover policy for the otherwise global primary targets. If serving state
-        /// is set to BACKUP, this policy essentially becomes a geo routing policy.
+        /// is set to `BACKUP`, this policy essentially becomes a geo routing policy.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupGeoTargets")]
         public virtual RRSetRoutingPolicyGeoPolicy BackupGeoTargets { get; set; }
@@ -5401,13 +5379,13 @@ namespace Google.Apis.Dns.v1.Data
 
         /// <summary>
         /// Endpoints that are health checked before making the routing decision. Unhealthy endpoints are omitted from
-        /// the results. If all endpoints are unhealthy, we serve a response based on the backup_geo_targets.
+        /// the results. If all endpoints are unhealthy, we serve a response based on the `backup_geo_targets`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryTargets")]
         public virtual RRSetRoutingPolicyHealthCheckTargets PrimaryTargets { get; set; }
 
         /// <summary>
-        /// When serving state is PRIMARY, this field provides the option of sending a small percentage of the traffic
+        /// When serving state is `PRIMARY`, this field provides the option of sending a small percentage of the traffic
         /// to the backup targets.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trickleTraffic")]
@@ -5436,8 +5414,8 @@ namespace Google.Apis.Dns.v1.Data
         /// <summary>
         /// Endpoints that are health checked before making the routing decision. The unhealthy endpoints are omitted
         /// from the result. If all endpoints within a bucket are unhealthy, we choose a different bucket (sampled with
-        /// respect to its weight) for responding. If DNSSEC is enabled for this zone, only one of rrdata or
-        /// health_checked_targets can be set.
+        /// respect to its weight) for responding. If DNSSEC is enabled for this zone, only one of `rrdata` or
+        /// `health_checked_targets` can be set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("healthCheckedTargets")]
         public virtual RRSetRoutingPolicyHealthCheckTargets HealthCheckedTargets { get; set; }
@@ -5449,16 +5427,16 @@ namespace Google.Apis.Dns.v1.Data
         public virtual System.Collections.Generic.IList<string> Rrdatas { get; set; }
 
         /// <summary>
-        /// DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are
+        /// DNSSEC generated signatures for all the `rrdata` within this item. Note that if health checked targets are
         /// provided for DNSSEC enabled zones, there's a restriction of 1 IP address per item.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signatureRrdatas")]
         public virtual System.Collections.Generic.IList<string> SignatureRrdatas { get; set; }
 
         /// <summary>
-        /// The weight corresponding to this WrrPolicyItem object. When multiple WrrPolicyItem objects are configured,
-        /// the probability of returning an WrrPolicyItem object's data is proportional to its weight relative to the
-        /// sum of weights configured for all items. This weight must be non-negative.
+        /// The weight corresponding to this `WrrPolicyItem` object. When multiple `WrrPolicyItem` objects are
+        /// configured, the probability of returning an `WrrPolicyItem` object's data is proportional to its weight
+        /// relative to the sum of weights configured for all items. This weight must be non-negative.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("weight")]
         public virtual System.Nullable<double> Weight { get; set; }
@@ -5479,8 +5457,8 @@ namespace Google.Apis.Dns.v1.Data
 
         /// <summary>
         /// Configures dynamic query responses based on either the geo location of the querying user or a weighted round
-        /// robin based routing policy. A valid ResourceRecordSet contains only rrdata (for static resolution) or a
-        /// routing_policy (for dynamic resolution).
+        /// robin based routing policy. A valid `ResourceRecordSet` contains only `rrdata` (for static resolution) or a
+        /// `routing_policy` (for dynamic resolution).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("routingPolicy")]
         public virtual RRSetRoutingPolicy RoutingPolicy { get; set; }
@@ -5493,7 +5471,7 @@ namespace Google.Apis.Dns.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("signatureRrdatas")]
         public virtual System.Collections.Generic.IList<string> SignatureRrdatas { get; set; }
 
-        /// <summary>Number of seconds that this ResourceRecordSet can be cached by resolvers.</summary>
+        /// <summary>Number of seconds that this `ResourceRecordSet` can be cached by resolvers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
         public virtual System.Nullable<int> Ttl { get; set; }
 
@@ -5513,19 +5491,17 @@ namespace Google.Apis.Dns.v1.Data
 
     public class ResourceRecordSetsListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        [Newtonsoft.Json.JsonPropertyAttribute("header")]
-        public virtual ResponseHeader Header { get; set; }
-
         /// <summary>Type of resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
         /// <summary>
-        /// The presence of this field indicates that there exist more results following your last page of results in
-        /// pagination order. To fetch them, make another list request using this value as your pagination token. This
-        /// lets you retrieve the complete contents of even larger collections, one page at a time. However, if the
-        /// collection changes between paginated list requests, the set of elements returned is an inconsistent view of
-        /// the collection. You cannot retrieve a consistent snapshot of a collection larger than the maximum page size.
+        /// This field indicates that more results are available beyond the last page displayed. To fetch the results,
+        /// make another list request and use this value as your page token. This lets you retrieve the complete
+        /// contents of a very large collection one page at a time. However, if the contents of the collection change
+        /// between the first and last paginated list request, the set of all elements returned are an inconsistent view
+        /// of the collection. You can't retrieve a consistent snapshot of a collection larger than the maximum page
+        /// size.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -5538,32 +5514,15 @@ namespace Google.Apis.Dns.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Elements common to every response.</summary>
-    public class ResponseHeader : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// For mutating operation requests that completed successfully. This is the client_operation_id if the client
-        /// specified it, otherwise it is generated by the server (output only).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
-        public virtual string OperationId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     public class ResponsePoliciesListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        [Newtonsoft.Json.JsonPropertyAttribute("header")]
-        public virtual ResponseHeader Header { get; set; }
-
         /// <summary>
-        /// The presence of this field indicates that more results exist following your last page of results in
-        /// pagination order. To fetch them, make another list request by using this value as your page token. This lets
-        /// you view the complete contents of even very large collections one page at a time. However, if the contents
-        /// of the collection change between the first and last paginated list request, the set of all elements returned
-        /// are an inconsistent view of the collection. You cannot retrieve a consistent snapshot of a collection larger
-        /// than the maximum page size.
+        /// This field indicates that more results are available beyond the last page displayed. To fetch the results,
+        /// make another list request and use this value as your page token. This lets you retrieve the complete
+        /// contents of a very large collection one page at a time. However, if the contents of the collection change
+        /// between the first and last paginated list request, the set of all elements returned are an inconsistent view
+        /// of the collection. You can't retrieve a consistent snapshot of a collection larger than the maximum page
+        /// size.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -5578,9 +5537,6 @@ namespace Google.Apis.Dns.v1.Data
 
     public class ResponsePoliciesPatchResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        [Newtonsoft.Json.JsonPropertyAttribute("header")]
-        public virtual ResponseHeader Header { get; set; }
-
         [Newtonsoft.Json.JsonPropertyAttribute("responsePolicy")]
         public virtual ResponsePolicy ResponsePolicy { get; set; }
 
@@ -5590,9 +5546,6 @@ namespace Google.Apis.Dns.v1.Data
 
     public class ResponsePoliciesUpdateResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        [Newtonsoft.Json.JsonPropertyAttribute("header")]
-        public virtual ResponseHeader Header { get; set; }
-
         [Newtonsoft.Json.JsonPropertyAttribute("responsePolicy")]
         public virtual ResponsePolicy ResponsePolicy { get; set; }
 
@@ -5661,7 +5614,7 @@ namespace Google.Apis.Dns.v1.Data
 
         /// <summary>
         /// The fully qualified URL of the VPC network to bind to. This should be formatted like
-        /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
+        /// `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUrl")]
         public virtual string NetworkUrl { get; set; }
@@ -5720,16 +5673,13 @@ namespace Google.Apis.Dns.v1.Data
 
     public class ResponsePolicyRulesListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        [Newtonsoft.Json.JsonPropertyAttribute("header")]
-        public virtual ResponseHeader Header { get; set; }
-
         /// <summary>
-        /// The presence of this field indicates that there exist more results following your last page of results in
-        /// pagination order. To fetch them, make another list request using this value as your page token. This lets
-        /// you the complete contents of even very large collections one page at a time. However, if the contents of the
-        /// collection change between the first and last paginated list request, the set of all elements returned are an
-        /// inconsistent view of the collection. You cannot retrieve a consistent snapshot of a collection larger than
-        /// the maximum page size.
+        /// This field indicates that more results are available beyond the last page displayed. To fetch the results,
+        /// make another list request and use this value as your page token. This lets you retrieve the complete
+        /// contents of a very large collection one page at a time. However, if the contents of the collection change
+        /// between the first and last paginated list request, the set of all elements returned are an inconsistent view
+        /// of the collection. You can't retrieve a consistent snapshot of a collection larger than the maximum page
+        /// size.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -5744,9 +5694,6 @@ namespace Google.Apis.Dns.v1.Data
 
     public class ResponsePolicyRulesPatchResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        [Newtonsoft.Json.JsonPropertyAttribute("header")]
-        public virtual ResponseHeader Header { get; set; }
-
         [Newtonsoft.Json.JsonPropertyAttribute("responsePolicyRule")]
         public virtual ResponsePolicyRule ResponsePolicyRule { get; set; }
 
@@ -5756,9 +5703,6 @@ namespace Google.Apis.Dns.v1.Data
 
     public class ResponsePolicyRulesUpdateResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        [Newtonsoft.Json.JsonPropertyAttribute("header")]
-        public virtual ResponseHeader Header { get; set; }
-
         [Newtonsoft.Json.JsonPropertyAttribute("responsePolicyRule")]
         public virtual ResponsePolicyRule ResponsePolicyRule { get; set; }
 

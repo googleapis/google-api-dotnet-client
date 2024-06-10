@@ -1244,7 +1244,7 @@ namespace Google.Apis.BigQueryConnectionService.v1.Data
     /// <summary>Represents concrete parameter values for Connector Configuration.</summary>
     public class ConnectorConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Data asset.</summary>
+        /// <summary>Data asset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("asset")]
         public virtual ConnectorConfigurationAsset Asset { get; set; }
 
@@ -1274,7 +1274,7 @@ namespace Google.Apis.BigQueryConnectionService.v1.Data
     /// </summary>
     public class ConnectorConfigurationAsset : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Name of the database.</summary>
+        /// <summary>Name of the database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("database")]
         public virtual string Database { get; set; }
 
@@ -1292,6 +1292,14 @@ namespace Google.Apis.BigQueryConnectionService.v1.Data
     /// <summary>Client authentication.</summary>
     public class ConnectorConfigurationAuthentication : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. Google-managed service account associated with this connection, e.g.,
+        /// `service-{project_number}@gcp-sa-bigqueryconnection.iam.gserviceaccount.com`. BigQuery jobs using this
+        /// connection will act as `service_account` identity while connecting to the datasource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
+
         /// <summary>Username/password authentication.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usernamePassword")]
         public virtual ConnectorConfigurationUsernamePassword UsernamePassword { get; set; }
