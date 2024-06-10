@@ -299,6 +299,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                 GroundingConfigs = new GroundingConfigsResource(service);
                 Operations = new OperationsResource(service);
                 RankingConfigs = new RankingConfigsResource(service);
+                Requirements = new RequirementsResource(service);
                 SampleQuerySets = new SampleQuerySetsResource(service);
                 UserEvents = new UserEventsResource(service);
             }
@@ -14836,6 +14837,83 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                 }
             }
 
+            /// <summary>Gets the Requirements resource.</summary>
+            public virtual RequirementsResource Requirements { get; }
+
+            /// <summary>The "requirements" collection of methods.</summary>
+            public class RequirementsResource
+            {
+                private const string Resource = "requirements";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public RequirementsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Check a particular requirement.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="location">
+                /// Required. Full resource name of the location. Format
+                /// `projects/{project_number_or_id}/locations/{location}`
+                /// </param>
+                public virtual CheckRequirementRequest CheckRequirement(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCheckRequirementRequest body, string location)
+                {
+                    return new CheckRequirementRequest(this.service, body, location);
+                }
+
+                /// <summary>Check a particular requirement.</summary>
+                public class CheckRequirementRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCheckRequirementResponse>
+                {
+                    /// <summary>Constructs a new CheckRequirement request.</summary>
+                    public CheckRequirementRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCheckRequirementRequest body, string location) : base(service)
+                    {
+                        Location = location;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Full resource name of the location. Format
+                    /// `projects/{project_number_or_id}/locations/{location}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Location { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaCheckRequirementRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "checkRequirement";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+location}/requirements:checkRequirement";
+
+                    /// <summary>Initializes CheckRequirement parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "location",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the SampleQuerySets resource.</summary>
             public virtual SampleQuerySetsResource SampleQuerySets { get; }
 
@@ -14939,6 +15017,110 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                 public UserEventsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                }
+
+                /// <summary>
+                /// Writes a single user event from the browser. This uses a GET request to due to browser restriction
+                /// of POST-ing to a third-party domain. This method is used only by the Discovery Engine API JavaScript
+                /// pixel and Google Tag Manager. Users should not call this method directly.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. The parent DataStore resource name, such as
+                /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`.
+                /// </param>
+                public virtual CollectRequest Collect(string parent)
+                {
+                    return new CollectRequest(this.service, parent);
+                }
+
+                /// <summary>
+                /// Writes a single user event from the browser. This uses a GET request to due to browser restriction
+                /// of POST-ing to a third-party domain. This method is used only by the Discovery Engine API JavaScript
+                /// pixel and Google Tag Manager. Users should not call this method directly.
+                /// </summary>
+                public class CollectRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleApiHttpBody>
+                {
+                    /// <summary>Constructs a new Collect request.</summary>
+                    public CollectRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent DataStore resource name, such as
+                    /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// The event timestamp in milliseconds. This prevents browser caching of otherwise identical get
+                    /// requests. The name is abbreviated to reduce the payload bytes.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("ets", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<long> Ets { get; set; }
+
+                    /// <summary>
+                    /// The URL including cgi-parameters but excluding the hash fragment with a length limit of 5,000
+                    /// characters. This is often more useful than the referer URL, because many browsers only send the
+                    /// domain for third-party requests.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("uri", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Uri { get; set; }
+
+                    /// <summary>
+                    /// Required. URL encoded UserEvent proto with a length limit of 2,000,000 characters.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("userEvent", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string UserEvent { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "collect";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/userEvents:collect";
+
+                    /// <summary>Initializes Collect parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("ets", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "ets",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("uri", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "uri",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("userEvent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "userEvent",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
                 }
 
                 /// <summary>Writes a single user event.</summary>
@@ -15531,6 +15713,248 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
 namespace Google.Apis.DiscoveryEngine.v1alpha.Data
 {
     /// <summary>
+    /// `Distribution` contains summary statistics for a population of values. It optionally contains a histogram
+    /// representing the distribution of those values across a set of buckets. The summary statistics are the count,
+    /// mean, sum of the squared deviation from the mean, the minimum, and the maximum of the set of population of
+    /// values. The histogram is based on a sequence of buckets and gives a count of values that fall into each bucket.
+    /// The boundaries of the buckets are given either explicitly or by formulas for buckets of fixed or exponentially
+    /// increasing widths. Although it is not forbidden, it is generally a bad idea to include non-finite values
+    /// (infinities or NaNs) in the population of values, as this will render the `mean` and `sum_of_squared_deviation`
+    /// fields meaningless.
+    /// </summary>
+    public class GoogleApiDistribution : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The number of values in each bucket of the histogram, as described in `bucket_options`. If the distribution
+        /// does not have a histogram, then omit this field. If there is a histogram, then the sum of the values in
+        /// `bucket_counts` must equal the value in the `count` field of the distribution. If present, `bucket_counts`
+        /// should contain N values, where N is the number of buckets specified in `bucket_options`. If you supply fewer
+        /// than N values, the remaining values are assumed to be 0. The order of the values in `bucket_counts` follows
+        /// the bucket numbering schemes described for the three bucket types. The first value must be the count for the
+        /// underflow bucket (number 0). The next N-2 values are the counts for the finite buckets (number 1 through
+        /// N-2). The N'th value in `bucket_counts` is the count for the overflow bucket (number N-1).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucketCounts")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> BucketCounts { get; set; }
+
+        /// <summary>
+        /// Defines the histogram bucket boundaries. If the distribution does not contain a histogram, then omit this
+        /// field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucketOptions")]
+        public virtual GoogleApiDistributionBucketOptions BucketOptions { get; set; }
+
+        /// <summary>
+        /// The number of values in the population. Must be non-negative. This value must equal the sum of the values in
+        /// `bucket_counts` if a histogram is provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<long> Count { get; set; }
+
+        /// <summary>Must be in increasing order of `value` field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exemplars")]
+        public virtual System.Collections.Generic.IList<GoogleApiDistributionExemplar> Exemplars { get; set; }
+
+        /// <summary>
+        /// The arithmetic mean of the values in the population. If `count` is zero then this field must be zero.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mean")]
+        public virtual System.Nullable<double> Mean { get; set; }
+
+        /// <summary>
+        /// If specified, contains the range of the population values. The field must not be present if the `count` is
+        /// zero.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("range")]
+        public virtual GoogleApiDistributionRange Range { get; set; }
+
+        /// <summary>
+        /// The sum of squared deviations from the mean of the values in the population. For values x_i this is:
+        /// Sum[i=1..n]((x_i - mean)^2) Knuth, "The Art of Computer Programming", Vol. 2, page 232, 3rd edition
+        /// describes Welford's method for accumulating this sum in one pass. If `count` is zero then this field must be
+        /// zero.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sumOfSquaredDeviation")]
+        public virtual System.Nullable<double> SumOfSquaredDeviation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// `BucketOptions` describes the bucket boundaries used to create a histogram for the distribution. The buckets can
+    /// be in a linear sequence, an exponential sequence, or each bucket can be specified explicitly. `BucketOptions`
+    /// does not include the number of values in each bucket. A bucket has an inclusive lower bound and exclusive upper
+    /// bound for the values that are counted for that bucket. The upper bound of a bucket must be strictly greater than
+    /// the lower bound. The sequence of N buckets for a distribution consists of an underflow bucket (number 0), zero
+    /// or more finite buckets (number 1 through N - 2) and an overflow bucket (number N - 1). The buckets are
+    /// contiguous: the lower bound of bucket i (i &amp;gt; 0) is the same as the upper bound of bucket i - 1. The
+    /// buckets span the whole range of finite values: lower bound of the underflow bucket is -infinity and the upper
+    /// bound of the overflow bucket is +infinity. The finite buckets are so-called because both bounds are finite.
+    /// </summary>
+    public class GoogleApiDistributionBucketOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The explicit buckets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("explicitBuckets")]
+        public virtual GoogleApiDistributionBucketOptionsExplicit ExplicitBuckets { get; set; }
+
+        /// <summary>The exponential buckets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exponentialBuckets")]
+        public virtual GoogleApiDistributionBucketOptionsExponential ExponentialBuckets { get; set; }
+
+        /// <summary>The linear bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linearBuckets")]
+        public virtual GoogleApiDistributionBucketOptionsLinear LinearBuckets { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specifies a set of buckets with arbitrary widths. There are `size(bounds) + 1` (= N) buckets. Bucket `i` has the
+    /// following boundaries: Upper bound (0 &amp;lt;= i &amp;lt; N-1): bounds[i] Lower bound (1 &amp;lt;= i &amp;lt;
+    /// N); bounds[i - 1] The `bounds` field must contain at least one element. If `bounds` has only one element, then
+    /// there are no finite buckets, and that single element is the common boundary of the overflow and underflow
+    /// buckets.
+    /// </summary>
+    public class GoogleApiDistributionBucketOptionsExplicit : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The values must be monotonically increasing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bounds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<double>> Bounds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specifies an exponential sequence of buckets that have a width that is proportional to the value of the lower
+    /// bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket. There are
+    /// `num_finite_buckets + 2` (= N) buckets. Bucket `i` has the following boundaries: Upper bound (0 &amp;lt;= i
+    /// &amp;lt; N-1): scale * (growth_factor ^ i). Lower bound (1 &amp;lt;= i &amp;lt; N): scale * (growth_factor ^ (i
+    /// - 1)).
+    /// </summary>
+    public class GoogleApiDistributionBucketOptionsExponential : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Must be greater than 1.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("growthFactor")]
+        public virtual System.Nullable<double> GrowthFactor { get; set; }
+
+        /// <summary>Must be greater than 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numFiniteBuckets")]
+        public virtual System.Nullable<int> NumFiniteBuckets { get; set; }
+
+        /// <summary>Must be greater than 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scale")]
+        public virtual System.Nullable<double> Scale { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specifies a linear sequence of buckets that all have the same width (except overflow and underflow). Each bucket
+    /// represents a constant absolute uncertainty on the specific value in the bucket. There are `num_finite_buckets +
+    /// 2` (= N) buckets. Bucket `i` has the following boundaries: Upper bound (0 &amp;lt;= i &amp;lt; N-1): offset +
+    /// (width * i). Lower bound (1 &amp;lt;= i &amp;lt; N): offset + (width * (i - 1)).
+    /// </summary>
+    public class GoogleApiDistributionBucketOptionsLinear : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Must be greater than 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numFiniteBuckets")]
+        public virtual System.Nullable<int> NumFiniteBuckets { get; set; }
+
+        /// <summary>Lower bound of the first bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offset")]
+        public virtual System.Nullable<double> Offset { get; set; }
+
+        /// <summary>Must be greater than 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("width")]
+        public virtual System.Nullable<double> Width { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Exemplars are example points that may be used to annotate aggregated distribution values. They are metadata that
+    /// gives information about a particular value added to a Distribution bucket, such as a trace ID that was active
+    /// when a value was added. They may contain further information, such as a example values and timestamps, origin,
+    /// etc.
+    /// </summary>
+    public class GoogleApiDistributionExemplar : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Contextual information about the example value. Examples are: Trace:
+        /// type.googleapis.com/google.monitoring.v3.SpanContext Literal string:
+        /// type.googleapis.com/google.protobuf.StringValue Labels dropped during aggregation:
+        /// type.googleapis.com/google.monitoring.v3.DroppedLabels There may be only a single attachment of any given
+        /// message type in a single exemplar, and this is enforced by the system.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attachments")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Attachments { get; set; }
+
+        private string _timestampRaw;
+
+        private object _timestamp;
+
+        /// <summary>The observation (sampling) time of the above value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
+        public virtual string TimestampRaw
+        {
+            get => _timestampRaw;
+            set
+            {
+                _timestamp = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _timestampRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TimestampDateTimeOffset instead.")]
+        public virtual object Timestamp
+        {
+            get => _timestamp;
+            set
+            {
+                _timestampRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _timestamp = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="TimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TimestampDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimestampRaw);
+            set => TimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Value of the exemplar point. This value determines to which bucket the exemplar belongs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Nullable<double> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The range of the population values.</summary>
+    public class GoogleApiDistributionRange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The maximum of the population values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("max")]
+        public virtual System.Nullable<double> Max { get; set; }
+
+        /// <summary>The minimum of the population values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("min")]
+        public virtual System.Nullable<double> Min { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Message that represents an arbitrary HTTP body. It should only be used for payload formats that can't be
     /// represented as JSON, such as raw binary or an HTML page. This message can be used both in streaming and
     /// non-streaming API methods in the request as well as the response. It can be used as a top-level request field,
@@ -15558,6 +15982,37 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extensions")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Extensions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An object representing a resource that can be used for monitoring, logging, billing, or other purposes. Examples
+    /// include virtual machine instances, databases, and storage devices such as disks. The `type` field identifies a
+    /// MonitoredResourceDescriptor object that describes the resource's schema. Information in the `labels` field
+    /// identifies the actual resource and its attributes according to the schema. For example, a particular Compute
+    /// Engine VM instance could be represented by the following object, because the MonitoredResourceDescriptor for
+    /// `"gce_instance"` has labels `"project_id"`, `"instance_id"` and `"zone"`: { "type": "gce_instance", "labels": {
+    /// "project_id": "my-project", "instance_id": "12345678901234", "zone": "us-central1-a" }}
+    /// </summary>
+    public class GoogleApiMonitoredResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Values for all of the labels listed in the associated monitored resource descriptor. For example,
+        /// Compute Engine VM instances use the labels `"project_id"`, `"instance_id"`, and `"zone"`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Required. The monitored resource type. This field must match the `type` field of a
+        /// MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is `gce_instance`.
+        /// Some descriptors include the service name in the type; for example, the type of a Datastream stream is
+        /// `datastream.googleapis.com/Stream`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -19809,6 +20264,150 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("citationThreshold")]
         public virtual System.Nullable<double> CitationThreshold { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for CheckRequirement method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaCheckRequirementRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A Requirement.type specifying the requirement to check.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requirementType")]
+        public virtual string RequirementType { get; set; }
+
+        /// <summary>The resources to be checked for this requirement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resources")]
+        public virtual System.Collections.Generic.IList<GoogleApiMonitoredResource> Resources { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for CheckRequirement method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaCheckRequirementResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Metric results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricResults")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaCheckRequirementResponseMetricQueryResult> MetricResults { get; set; }
+
+        private string _oldestMetricTimestampRaw;
+
+        private object _oldestMetricTimestamp;
+
+        /// <summary>
+        /// Timestamp of the oldest calculated metric (i.e. the most stale metric). Indicates that the
+        /// `requirement_result` may not accurately reflect any Event and Product Catalog updates performed after this
+        /// time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oldestMetricTimestamp")]
+        public virtual string OldestMetricTimestampRaw
+        {
+            get => _oldestMetricTimestampRaw;
+            set
+            {
+                _oldestMetricTimestamp = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _oldestMetricTimestampRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="OldestMetricTimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use OldestMetricTimestampDateTimeOffset instead.")]
+        public virtual object OldestMetricTimestamp
+        {
+            get => _oldestMetricTimestamp;
+            set
+            {
+                _oldestMetricTimestampRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _oldestMetricTimestamp = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="OldestMetricTimestampRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? OldestMetricTimestampDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(OldestMetricTimestampRaw);
+            set => OldestMetricTimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Requirement definition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requirement")]
+        public virtual GoogleCloudDiscoveryengineV1alphaRequirement Requirement { get; set; }
+
+        /// <summary>The condition for evaluating the requirement result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requirementCondition")]
+        public virtual GoogleTypeExpr RequirementCondition { get; set; }
+
+        /// <summary>Requirement result, e.g. pass or fail.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requirementResult")]
+        public virtual string RequirementResult { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metric result. The metric are in the requirement_condition.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaCheckRequirementResponseMetricQueryResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Type identifier of the metric corresponding to this query result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricType")]
+        public virtual string MetricType { get; set; }
+
+        /// <summary>This metric query name is mapping to variables in the requirement_condition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _timestampRaw;
+
+        private object _timestamp;
+
+        /// <summary>Time corresponding to when this metric value was calculated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
+        public virtual string TimestampRaw
+        {
+            get => _timestampRaw;
+            set
+            {
+                _timestamp = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _timestampRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TimestampDateTimeOffset instead.")]
+        public virtual object Timestamp
+        {
+            get => _timestamp;
+            set
+            {
+                _timestampRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _timestamp = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="TimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TimestampDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(TimestampRaw);
+            set => TimestampRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// The unit in which this metric is reported. Follows [The Unified Code for Units of
+        /// Measure](https://unitsofmeasure.org/ucum.html) standard.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unit")]
+        public virtual string Unit { get; set; }
+
+        /// <summary>Value of the metric query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual GoogleMonitoringV3TypedValue Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24854,6 +25453,139 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Required. The version string of the terms of service to update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceTermVersion")]
         public virtual string ServiceTermVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A data requirement.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaRequirement : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The condition for evaluating the requirement result. Variables in the expression should be provided by
+        /// `metrics_bindings` or `threshold_bindings`. Where `metrics_bindings` are used for computed metrics and
+        /// `threshold_bindings` are used to define thresholds for corresponding `metric_bindings`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual GoogleTypeExpr Condition { get; set; }
+
+        /// <summary>The description of the requirement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>The name of the requirement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>A list of the metric bindings to be used in `condition`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricBindings")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaRequirementMetricBinding> MetricBindings { get; set; }
+
+        /// <summary>A list of threshold bindings to be used in `condition`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thresholdBindings")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaRequirementThresholdBinding> ThresholdBindings { get; set; }
+
+        /// <summary>
+        /// The requirement type, used as an identifier. Must be unique. The type should prefix with service name to
+        /// avoid possible collision. It's encoraged to use natural hierarchical grouping for similar requirements.
+        /// Examples: * `library.googleapis.com/books/min_available_books` *
+        /// `discoveryengine.googleapis.com/media_rec/recommended_for_you/conversion_rate`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>A list of the metric bindings to be used in `condition`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("violationSamplesBindings")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaRequirementViolationSamplesBinding> ViolationSamplesBindings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specifies a metrics query and bind its result to a variable which will be used in the `condition`.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaRequirementMetricBinding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The category of the metric's target resource. Example: "Events"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; }
+
+        /// <summary>Human readable description of the corresponding metric filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// The filter string used for metrics query. Example: "metric.type =
+        /// \"discoveryengine.googleapis.com/events/day_count\" AND " "metric.conditions.time_range = \"NINETY_DAYS\""
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricFilter")]
+        public virtual string MetricFilter { get; set; }
+
+        /// <summary>The resource being monitored for the metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
+        public virtual string ResourceType { get; set; }
+
+        /// <summary>The variable id to be referenced in `condition`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("variableId")]
+        public virtual string VariableId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specifies a multi-level threshold to apply to apply to a `metric_bindings` in the `condition` CEL expression.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaRequirementThresholdBinding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Threshold to trigger a blocking failure. If not met, the requirement will evaluate as a `FAILURE`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blockingThreshold")]
+        public virtual System.Nullable<double> BlockingThreshold { get; set; }
+
+        /// <summary>Human readable description of the corresponding threshold and sub-requirement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// The variable id to be referenced in `condition`. Must be unique across all `metric_bindings` and
+        /// `threshold_bindings`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("variableId")]
+        public virtual string VariableId { get; set; }
+
+        /// <summary>Threshold to trigger a warning. If not met, the requirement will evaluate as a `WARNING`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warningThreshold")]
+        public virtual System.Nullable<double> WarningThreshold { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specifies a samples query and bind its result to a variable which will be used in the `condition`.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaRequirementViolationSamplesBinding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Description of this sample binding. Used by the UI to render user friendly descriptions for each requirement
+        /// condition. Should be less than 128 characters long.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// The filter string used for samples query. Example: "sample.type = \"retail.googleapis.com/user_event\" AND "
+        /// "sample.labels.event_type = \"PURCHASE\" "
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleFilter")]
+        public virtual string SampleFilter { get; set; }
+
+        /// <summary>The variable id to be referenced in `condition`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("variableId")]
+        public virtual string VariableId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -30470,6 +31202,36 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A single strongly-typed value.</summary>
+    public class GoogleMonitoringV3TypedValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A Boolean value: `true` or `false`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boolValue")]
+        public virtual System.Nullable<bool> BoolValue { get; set; }
+
+        /// <summary>A distribution value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("distributionValue")]
+        public virtual GoogleApiDistribution DistributionValue { get; set; }
+
+        /// <summary>
+        /// A 64-bit double-precision floating-point number. Its magnitude is approximately ±10±300 and it has 16
+        /// significant digits of precision.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("doubleValue")]
+        public virtual System.Nullable<double> DoubleValue { get; set; }
+
+        /// <summary>A 64-bit integer. Its range is approximately ±9.2x1018.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("int64Value")]
+        public virtual System.Nullable<long> Int64Value { get; set; }
+
+        /// <summary>A variable-length string value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
+        public virtual string StringValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
@@ -30534,6 +31296,50 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("year")]
         public virtual System.Nullable<int> Year { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression
+    /// language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example
+    /// (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars"
+    /// expression: "document.summary.size() &amp;lt; 100" Example (Equality): title: "Requestor is owner" description:
+    /// "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email"
+    /// Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly
+    /// visible" expression: "document.type != 'private' &amp;amp;&amp;amp; document.type != 'internal'" Example (Data
+    /// Manipulation): title: "Notification string" description: "Create a notification string with a timestamp."
+    /// expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that
+    /// may be referenced within an expression are determined by the service that evaluates it. See the service
+    /// documentation for additional information.
+    /// </summary>
+    public class GoogleTypeExpr : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when
+        /// hovered over it in a UI.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Textual representation of an expression in Common Expression Language syntax.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expression")]
+        public virtual string Expression { get; set; }
+
+        /// <summary>
+        /// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a
+        /// position in the file.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>
+        /// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs
+        /// which allow to enter the expression.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

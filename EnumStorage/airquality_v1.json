@@ -1,0 +1,22 @@
+{
+  "Google.Apis.AirQuality.v1.AirQualityBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.AirQuality.v1.AirQualityBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.AirQuality.v1.MapTypesResource+HeatmapTilesResource+LookupHeatmapTileRequest.MapTypeEnum": [
+    "MAP_TYPE_UNSPECIFIED",
+    "UAQI_RED_GREEN",
+    "UAQI_INDIGO_PERSIAN",
+    "PM25_INDIGO_PERSIAN",
+    "GBR_DEFRA",
+    "DEU_UBA",
+    "CAN_EC",
+    "FRA_ATMO",
+    "US_AQI"
+  ]
+}

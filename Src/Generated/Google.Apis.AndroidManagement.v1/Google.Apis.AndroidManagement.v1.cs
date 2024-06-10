@@ -6822,6 +6822,12 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("apiLevel")]
         public virtual System.Nullable<int> ApiLevel { get; set; }
 
+        /// <summary>
+        /// The email address of the authenticated user (only present for Google Account provisioning method).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authenticatedUserEmail")]
+        public virtual string AuthenticatedUserEmail { get; set; }
+
         /// <summary>The brand of the device. For example, Google.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("brand")]
         public virtual string Brand { get; set; }

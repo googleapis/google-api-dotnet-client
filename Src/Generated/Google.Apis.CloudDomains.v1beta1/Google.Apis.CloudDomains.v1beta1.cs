@@ -1015,6 +1015,81 @@ namespace Google.Apis.CloudDomains.v1beta1
                     }
                 }
 
+                /// <summary>
+                /// Initiates the `Push Transfer` process to transfer the domain to another registrar. The process might
+                /// complete instantly or might require confirmation or additional work. Check the emails sent to the
+                /// email address of the registrant. The process is aborted after a timeout if it's not completed. This
+                /// method is only supported for domains that have the `REQUIRE_PUSH_TRANSFER` property in the list of
+                /// `domain_properties`. The domain must also be unlocked before it can be transferred to a different
+                /// registrar. For more information, see [Transfer a registered domain to another
+                /// registrar](https://cloud.google.com/domains/docs/transfer-domain-to-another-registrar).
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="registration">
+                /// Required. The name of the `Registration` for which the push transfer is initiated, in the format
+                /// `projects/*/locations/*/registrations/*`.
+                /// </param>
+                public virtual InitiatePushTransferRequest InitiatePushTransfer(Google.Apis.CloudDomains.v1beta1.Data.InitiatePushTransferRequest body, string registration)
+                {
+                    return new InitiatePushTransferRequest(this.service, body, registration);
+                }
+
+                /// <summary>
+                /// Initiates the `Push Transfer` process to transfer the domain to another registrar. The process might
+                /// complete instantly or might require confirmation or additional work. Check the emails sent to the
+                /// email address of the registrant. The process is aborted after a timeout if it's not completed. This
+                /// method is only supported for domains that have the `REQUIRE_PUSH_TRANSFER` property in the list of
+                /// `domain_properties`. The domain must also be unlocked before it can be transferred to a different
+                /// registrar. For more information, see [Transfer a registered domain to another
+                /// registrar](https://cloud.google.com/domains/docs/transfer-domain-to-another-registrar).
+                /// </summary>
+                public class InitiatePushTransferRequest : CloudDomainsBaseServiceRequest<Google.Apis.CloudDomains.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new InitiatePushTransfer request.</summary>
+                    public InitiatePushTransferRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDomains.v1beta1.Data.InitiatePushTransferRequest body, string registration) : base(service)
+                    {
+                        Registration = registration;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the `Registration` for which the push transfer is initiated, in the format
+                    /// `projects/*/locations/*/registrations/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("registration", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Registration { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudDomains.v1beta1.Data.InitiatePushTransferRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "initiatePushTransfer";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+registration}:initiatePushTransfer";
+
+                    /// <summary>Initializes InitiatePushTransfer parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("registration", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "registration",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/registrations/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Lists the `Registration` resources in a project.</summary>
                 /// <param name="parent">
                 /// Required. The project and location from which to list `Registration`s, specified in the format
@@ -1274,8 +1349,78 @@ namespace Google.Apis.CloudDomains.v1beta1
                 }
 
                 /// <summary>
+                /// Renews a recently expired domain. This method can only be called on domains that expired in the
+                /// previous 30 days. After the renewal, the new expiration time of the domain is one year after the old
+                /// expiration time and you are charged a `yearly_price` for the renewal.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="registration">
+                /// Required. The name of the `Registration` whish is being renewed, in the format
+                /// `projects/*/locations/*/registrations/*`.
+                /// </param>
+                public virtual RenewDomainRequest RenewDomain(Google.Apis.CloudDomains.v1beta1.Data.RenewDomainRequest body, string registration)
+                {
+                    return new RenewDomainRequest(this.service, body, registration);
+                }
+
+                /// <summary>
+                /// Renews a recently expired domain. This method can only be called on domains that expired in the
+                /// previous 30 days. After the renewal, the new expiration time of the domain is one year after the old
+                /// expiration time and you are charged a `yearly_price` for the renewal.
+                /// </summary>
+                public class RenewDomainRequest : CloudDomainsBaseServiceRequest<Google.Apis.CloudDomains.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new RenewDomain request.</summary>
+                    public RenewDomainRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDomains.v1beta1.Data.RenewDomainRequest body, string registration) : base(service)
+                    {
+                        Registration = registration;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the `Registration` whish is being renewed, in the format
+                    /// `projects/*/locations/*/registrations/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("registration", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Registration { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudDomains.v1beta1.Data.RenewDomainRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "renewDomain";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+registration}:renewDomain";
+
+                    /// <summary>Initializes RenewDomain parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("registration", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "registration",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/registrations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
                 /// Resets the authorization code of the `Registration` to a new random string. You can call this method
-                /// only after 60 days have elapsed since the initial domain registration.
+                /// only after 60 days have elapsed since the initial domain registration. Domains that have the
+                /// `REQUIRE_PUSH_TRANSFER` property in the list of `domain_properties` don't support authorization
+                /// codes and must use the `InitiatePushTransfer` method to initiate the process to transfer the domain
+                /// to a different registrar.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="registration">
@@ -1289,7 +1434,10 @@ namespace Google.Apis.CloudDomains.v1beta1
 
                 /// <summary>
                 /// Resets the authorization code of the `Registration` to a new random string. You can call this method
-                /// only after 60 days have elapsed since the initial domain registration.
+                /// only after 60 days have elapsed since the initial domain registration. Domains that have the
+                /// `REQUIRE_PUSH_TRANSFER` property in the list of `domain_properties` don't support authorization
+                /// codes and must use the `InitiatePushTransfer` method to initiate the process to transfer the domain
+                /// to a different registrar.
                 /// </summary>
                 public class ResetAuthorizationCodeRequest : CloudDomainsBaseServiceRequest<Google.Apis.CloudDomains.v1beta1.Data.AuthorizationCode>
                 {
@@ -1341,7 +1489,9 @@ namespace Google.Apis.CloudDomains.v1beta1
                 /// <summary>
                 /// Gets the authorization code of the `Registration` for the purpose of transferring the domain to
                 /// another registrar. You can call this method only after 60 days have elapsed since the initial domain
-                /// registration.
+                /// registration. Domains that have the `REQUIRE_PUSH_TRANSFER` property in the list of
+                /// `domain_properties` don't support authorization codes and must use the `InitiatePushTransfer` method
+                /// to initiate the process to transfer the domain to a different registrar.
                 /// </summary>
                 /// <param name="registration">
                 /// Required. The name of the `Registration` whose authorization code is being retrieved, in the format
@@ -1355,7 +1505,9 @@ namespace Google.Apis.CloudDomains.v1beta1
                 /// <summary>
                 /// Gets the authorization code of the `Registration` for the purpose of transferring the domain to
                 /// another registrar. You can call this method only after 60 days have elapsed since the initial domain
-                /// registration.
+                /// registration. Domains that have the `REQUIRE_PUSH_TRANSFER` property in the list of
+                /// `domain_properties` don't support authorization codes and must use the `InitiatePushTransfer` method
+                /// to initiate the process to transfer the domain to a different registrar.
                 /// </summary>
                 public class RetrieveAuthorizationCodeRequest : CloudDomainsBaseServiceRequest<Google.Apis.CloudDomains.v1beta1.Data.AuthorizationCode>
                 {
@@ -1383,6 +1535,69 @@ namespace Google.Apis.CloudDomains.v1beta1
                     public override string RestPath => "v1beta1/{+registration}:retrieveAuthorizationCode";
 
                     /// <summary>Initializes RetrieveAuthorizationCode parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("registration", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "registration",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/registrations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Lists the deprecated domain and email forwarding configurations you set up in the deprecated Google
+                /// Domains UI. The configuration is present only for domains with the
+                /// `google_domains_redirects_data_available` set to `true` in the `Registration`'s `dns_settings`. A
+                /// forwarding configuration might not work correctly if required DNS records are not present in the
+                /// domain's authoritative DNS Zone.
+                /// </summary>
+                /// <param name="registration">
+                /// Required. The name of the `Registration` whose Google Domains forwarding configuration details are
+                /// being retrieved, in the format `projects/*/locations/*/registrations/*`.
+                /// </param>
+                public virtual RetrieveGoogleDomainsForwardingConfigRequest RetrieveGoogleDomainsForwardingConfig(string registration)
+                {
+                    return new RetrieveGoogleDomainsForwardingConfigRequest(this.service, registration);
+                }
+
+                /// <summary>
+                /// Lists the deprecated domain and email forwarding configurations you set up in the deprecated Google
+                /// Domains UI. The configuration is present only for domains with the
+                /// `google_domains_redirects_data_available` set to `true` in the `Registration`'s `dns_settings`. A
+                /// forwarding configuration might not work correctly if required DNS records are not present in the
+                /// domain's authoritative DNS Zone.
+                /// </summary>
+                public class RetrieveGoogleDomainsForwardingConfigRequest : CloudDomainsBaseServiceRequest<Google.Apis.CloudDomains.v1beta1.Data.RetrieveGoogleDomainsForwardingConfigResponse>
+                {
+                    /// <summary>Constructs a new RetrieveGoogleDomainsForwardingConfig request.</summary>
+                    public RetrieveGoogleDomainsForwardingConfigRequest(Google.Apis.Services.IClientService service, string registration) : base(service)
+                    {
+                        Registration = registration;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the `Registration` whose Google Domains forwarding configuration details
+                    /// are being retrieved, in the format `projects/*/locations/*/registrations/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("registration", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Registration { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "retrieveGoogleDomainsForwardingConfig";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+registration}:retrieveGoogleDomainsForwardingConfig";
+
+                    /// <summary>Initializes RetrieveGoogleDomainsForwardingConfig parameter list.</summary>
                     protected override void InitParameters()
                     {
                         base.InitParameters();
@@ -2388,6 +2603,40 @@ namespace Google.Apis.CloudDomains.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Domain forwarding configuration.</summary>
+    public class DomainForwarding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If true, forwards the path after the domain name to the same path at the new address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pathForwarding")]
+        public virtual System.Nullable<bool> PathForwarding { get; set; }
+
+        /// <summary>The PEM-encoded certificate chain.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pemCertificate")]
+        public virtual string PemCertificate { get; set; }
+
+        /// <summary>The redirect type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redirectType")]
+        public virtual string RedirectType { get; set; }
+
+        /// <summary>If true, the forwarding works also over HTTPS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sslEnabled")]
+        public virtual System.Nullable<bool> SslEnabled { get; set; }
+
+        /// <summary>
+        /// The subdomain of the registered domain that is being forwarded. E.g. `www.example.com`, `example.com` (i.e.
+        /// the registered domain itself) or `*.example.com` (i.e. all subdomains).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subdomain")]
+        public virtual string Subdomain { get; set; }
+
+        /// <summary>The target of the domain forwarding, i.e. the path to redirect the `subdomain` to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetUri")]
+        public virtual string TargetUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Defines a Delegation Signer (DS) record, which is needed to enable DNSSEC for a domain. It contains a digest
     /// (hash) of a DNSKEY record that must be present in the domain's DNS zone.
@@ -2409,6 +2658,24 @@ namespace Google.Apis.CloudDomains.v1beta1.Data
         /// <summary>The key tag of the record. Must be set in range 0 -- 65535.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyTag")]
         public virtual System.Nullable<int> KeyTag { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Email forwarding configuration.</summary>
+    public class EmailForwarding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// An alias recipient email that forwards emails to the `target_email_address`. For example,
+        /// `admin@example.com` or `*@example.com` (wildcard alias forwards all the emails under the registered domain).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alias")]
+        public virtual string Alias { get; set; }
+
+        /// <summary>Target email that receives emails sent to the `alias`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetEmailAddress")]
+        public virtual string TargetEmailAddress { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2551,6 +2818,20 @@ namespace Google.Apis.CloudDomains.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request for the `InitiatePushTransfer` method.</summary>
+    public class InitiatePushTransferRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The Tag of the new registrar. Can be found at [List of
+        /// registrars](https://nominet.uk/registrar-list/).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tag")]
+        public virtual string Tag { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response message for Locations.ListLocations.</summary>
     public class ListLocationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2634,6 +2915,10 @@ namespace Google.Apis.CloudDomains.v1beta1.Data
     /// <summary>Defines renewal, billing, and transfer settings for a `Registration`.</summary>
     public class ManagementSettings : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The actual transfer lock state for this `Registration`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveTransferLockState")]
+        public virtual string EffectiveTransferLockState { get; set; }
+
         /// <summary>
         /// Optional. The desired renewal method for this `Registration`. The actual `renewal_method` is automatically
         /// updated to reflect this choice. If unset or equal to `RENEWAL_METHOD_UNSPECIFIED`, the actual
@@ -2659,7 +2944,11 @@ namespace Google.Apis.CloudDomains.v1beta1.Data
 
         /// <summary>
         /// This is the desired transfer lock state for this `Registration`. A transfer lock controls whether the domain
-        /// can be transferred to another registrar.
+        /// can be transferred to another registrar. The transfer lock state of the domain is returned in the
+        /// `effective_transfer_lock_state` property. The transfer lock state values might be different for the
+        /// following reasons: * `transfer_lock_state` was updated only a short time ago. * Domains with the
+        /// `TRANSFER_LOCK_UNSUPPORTED_BY_REGISTRY` state are in the list of `domain_properties`. These domains are
+        /// always in the `UNLOCKED` state.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transferLockState")]
         public virtual string TransferLockState { get; set; }
@@ -3165,6 +3454,10 @@ namespace Google.Apis.CloudDomains.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("domainName")]
         public virtual string DomainName { get; set; }
 
+        /// <summary>Output only. Special properties of the domain.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domainProperties")]
+        public virtual System.Collections.Generic.IList<string> DomainProperties { get; set; }
+
         private string _expireTimeRaw;
 
         private object _expireTime;
@@ -3262,9 +3555,53 @@ namespace Google.Apis.CloudDomains.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request for the `RenewDomain` method.</summary>
+    public class RenewDomainRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. When true, only validation is performed, without actually renewing the domain. For more
+        /// information, see [Request
+        /// validation](https://cloud.google.com/apis/design/design_patterns#request_validation)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+        /// <summary>
+        /// Required. Acknowledgement of the price to renew the domain for one year. To get the price, see [Cloud
+        /// Domains pricing](https://cloud.google.com/domains/pricing). If not provided, the expected price is returned
+        /// in the error message.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("yearlyPrice")]
+        public virtual Money YearlyPrice { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request for the `ResetAuthorizationCode` method.</summary>
     public class ResetAuthorizationCodeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for the `RetrieveGoogleDomainsForwardingConfig` method.</summary>
+    public class RetrieveGoogleDomainsForwardingConfigResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The list of domain forwarding configurations. A forwarding configuration might not work correctly if the
+        /// required DNS records are not present in the domain's authoritative DNS zone.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domainForwardings")]
+        public virtual System.Collections.Generic.IList<DomainForwarding> DomainForwardings { get; set; }
+
+        /// <summary>
+        /// The list of email forwarding configurations. A forwarding configuration might not work correctly if the
+        /// required DNS records are not present in the domain's authoritative DNS zone.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("emailForwardings")]
+        public virtual System.Collections.Generic.IList<EmailForwarding> EmailForwardings { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

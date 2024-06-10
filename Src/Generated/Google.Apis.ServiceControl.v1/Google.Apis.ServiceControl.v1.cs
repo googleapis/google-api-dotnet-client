@@ -1841,19 +1841,13 @@ namespace Google.Apis.ServiceControl.v1.Data
     public class OrgPolicyViolationInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Resource payload that is currently in scope and is subjected to orgpolicy conditions. This payload
-        /// may be the subset of the actual Resource that may come in the request. This payload should not contain any
-        /// core content.
+        /// Optional. Deprecated. Resource payload that is currently in scope and is subjected to orgpolicy conditions.
+        /// This payload may be the subset of the actual Resource that may come in the request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual System.Collections.Generic.IDictionary<string, object> Payload { get; set; }
 
-        /// <summary>
-        /// Optional. Tags referenced on the resource at the time of evaluation. These also include the federated tags,
-        /// if they are supplied in the CheckOrgPolicy or CheckCustomConstraints Requests. Optional field as of now.
-        /// These tags are the Cloud tags that are available on the resource during the policy evaluation and will be
-        /// available as part of the OrgPolicy check response for logging purposes.
-        /// </summary>
+        /// <summary>Optional. Deprecated. Tags referenced on the resource at the time of evaluation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceTags")]
         public virtual System.Collections.Generic.IDictionary<string, string> ResourceTags { get; set; }
 

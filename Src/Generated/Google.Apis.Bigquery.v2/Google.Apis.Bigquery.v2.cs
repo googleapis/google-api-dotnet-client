@@ -5300,9 +5300,9 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string DefaultCollation { get; set; }
 
         /// <summary>
-        /// The default encryption key for all tables in the dataset. Once this property is set, all newly-created
-        /// partitioned tables in the dataset will have encryption key set to this value, unless table creation request
-        /// (or query) overrides the key.
+        /// The default encryption key for all tables in the dataset. After this property is set, the encryption key of
+        /// all newly-created tables in the dataset is set to this value unless the table creation request or query
+        /// explicitly overrides the key.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultEncryptionConfiguration")]
         public virtual EncryptionConfiguration DefaultEncryptionConfiguration { get; set; }
@@ -5428,6 +5428,15 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxTimeTravelHours")]
         public virtual System.Nullable<long> MaxTimeTravelHours { get; set; }
+
+        /// <summary>
+        /// Optional. The [tags](/bigquery/docs/tags) attached to this dataset. Tag keys are globally unique. Tag key is
+        /// expected to be in the namespaced format, for example "123456789012/environment" where 123456789012 is the ID
+        /// of the parent organization or project resource for this tag key. Tag value is expected to be the short name,
+        /// for example "Production". See [Tag definitions](/iam/docs/tags-access-control#definitions) for more details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceTags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ResourceTags { get; set; }
 
         /// <summary>
         /// Optional. Output only. Restriction config for all tables and dataset. If set, restrict certain accesses on
@@ -6516,6 +6525,24 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A view can be represented in multiple ways. Each representation has its own dialect. This message stores the
+    /// metadata required for these representations.
+    /// </summary>
+    public class ForeignViewDefinition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Represents the dialect of the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialect")]
+        public virtual string Dialect { get; set; }
+
+        /// <summary>Required. The query that defines the view.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual string Query { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for `GetIamPolicy` method.</summary>
     public class GetIamPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7135,8 +7162,10 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual JobConfigurationExtract Extract { get; set; }
 
         /// <summary>
-        /// Optional. Job timeout in milliseconds. If this time limit is exceeded, BigQuery might attempt to stop the
-        /// job.
+        /// Optional. Job timeout in milliseconds. If this time limit is exceeded, BigQuery will attempt to stop a
+        /// longer job, but may not always succeed in canceling it before the job completes. For example, a job that
+        /// takes more than 60 seconds to complete has a better chance of being stopped than a job that takes 10 seconds
+        /// to complete.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobTimeoutMs")]
         public virtual System.Nullable<long> JobTimeoutMs { get; set; }
@@ -7268,6 +7297,14 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Clustering specification for the destination table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clustering")]
         public virtual Clustering Clustering { get; set; }
+
+        /// <summary>
+        /// Optional. Character map supported for column names in CSV/Parquet loads. Defaults to STRICT and can be
+        /// overridden by Project Config Service. Using this option with unsupporting load formats will result in an
+        /// error.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columnNameCharacterMap")]
+        public virtual string ColumnNameCharacterMap { get; set; }
 
         /// <summary>
         /// Optional. Connection properties which can modify the load job behavior. Currently, only the 'session_id'
@@ -9129,7 +9166,7 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enumAsString")]
         public virtual System.Nullable<bool> EnumAsString { get; set; }
 
-        /// <summary>Optional. Will indicate how to represent a parquet map if present.</summary>
+        /// <summary>Optional. Indicates how to represent a Parquet map if present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mapTargetType")]
         public virtual string MapTargetType { get; set; }
 
@@ -11000,6 +11037,13 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual System.Nullable<long> NumBytes { get; set; }
 
         /// <summary>
+        /// Output only. Number of physical bytes used by current live data storage. This data is not kept in real time,
+        /// and might be delayed by a few seconds to a few minutes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numCurrentPhysicalBytes")]
+        public virtual System.Nullable<long> NumCurrentPhysicalBytes { get; set; }
+
+        /// <summary>
         /// Output only. The number of logical bytes in the table that are considered "long-term storage".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numLongTermBytes")]
@@ -11646,7 +11690,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("replicationError")]
         public virtual ErrorProto ReplicationError { get; set; }
 
-        /// <summary>Required. Specifies the interval at which the source table is polled for updates.</summary>
+        /// <summary>
+        /// Optional. Specifies the interval at which the source table is polled for updates. It's Optional. If not
+        /// specified, default replication interval would be applied.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replicationIntervalMs")]
         public virtual System.Nullable<long> ReplicationIntervalMs { get; set; }
 
@@ -12317,7 +12364,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>
         /// Optional. The exact time when the dataset was deleted. If not specified, the most recently deleted version
-        /// is undeleted.
+        /// is undeleted. Undeleting a dataset using deletion time is not supported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deletionTime")]
         public virtual string DeletionTimeRaw
@@ -12399,6 +12446,10 @@ namespace Google.Apis.Bigquery.v2.Data
     /// <summary>Describes the definition of a logical view.</summary>
     public class ViewDefinition : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Foreign view representations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("foreignDefinitions")]
+        public virtual System.Collections.Generic.IList<ForeignViewDefinition> ForeignDefinitions { get; set; }
+
         /// <summary>Optional. Specifices the privacy policy for the view.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privacyPolicy")]
         public virtual PrivacyPolicy PrivacyPolicy { get; set; }

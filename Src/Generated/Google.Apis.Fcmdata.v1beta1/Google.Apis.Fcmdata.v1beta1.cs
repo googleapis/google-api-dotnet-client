@@ -623,8 +623,9 @@ namespace Google.Apis.Fcmdata.v1beta1.Data
     }
 
     /// <summary>
-    /// Additional information about proxy notification delivery. All percentages are calculated with
-    /// countNotificationsAccepted as the denominator.
+    /// Additional information about [proxy
+    /// notification](https://firebase.google.com/docs/cloud-messaging/android/message-priority#proxy) delivery. All
+    /// percentages are calculated with countNotificationsAccepted as the denominator.
     /// </summary>
     public class GoogleFirebaseFcmDataV1beta1ProxyNotificationInsightPercents : Google.Apis.Requests.IDirectResponseSchema
     {
