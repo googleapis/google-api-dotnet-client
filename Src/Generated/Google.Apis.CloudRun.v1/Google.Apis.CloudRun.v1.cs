@@ -706,7 +706,7 @@ namespace Google.Apis.CloudRun.v1
 
                 /// <summary>Cloud Run currently ignores this parameter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("apiVersion", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string ApiVersion { get; set; }
+                public virtual new string ApiVersion { get; set; }
 
                 /// <summary>
                 /// Indicates that the server should validate the request and populate default values without persisting
@@ -1090,7 +1090,7 @@ namespace Google.Apis.CloudRun.v1
 
                 /// <summary>Optional. Cloud Run currently ignores this parameter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("apiVersion", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string ApiVersion { get; set; }
+                public virtual new string ApiVersion { get; set; }
 
                 /// <summary>Optional. Cloud Run currently ignores this parameter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("kind", Google.Apis.Util.RequestParameterType.Query)]
@@ -1445,7 +1445,7 @@ namespace Google.Apis.CloudRun.v1
 
                 /// <summary>Optional. Cloud Run currently ignores this parameter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("apiVersion", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string ApiVersion { get; set; }
+                public virtual new string ApiVersion { get; set; }
 
                 /// <summary>Optional. Cloud Run currently ignores this parameter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("kind", Google.Apis.Util.RequestParameterType.Query)]
@@ -1869,7 +1869,7 @@ namespace Google.Apis.CloudRun.v1
 
                 /// <summary>Cloud Run currently ignores this parameter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("apiVersion", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string ApiVersion { get; set; }
+                public virtual new string ApiVersion { get; set; }
 
                 /// <summary>
                 /// Indicates that the server should validate the request and populate default values without persisting
@@ -2502,7 +2502,7 @@ namespace Google.Apis.CloudRun.v1
 
                 /// <summary>Not supported, and ignored by Cloud Run.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("apiVersion", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string ApiVersion { get; set; }
+                public virtual new string ApiVersion { get; set; }
 
                 /// <summary>
                 /// Indicates that the server should validate the request and populate default values without persisting
@@ -3624,7 +3624,7 @@ namespace Google.Apis.CloudRun.v1
 
                     /// <summary>Cloud Run currently ignores this parameter.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("apiVersion", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ApiVersion { get; set; }
+                    public virtual new string ApiVersion { get; set; }
 
                     /// <summary>
                     /// Indicates that the server should validate the request and populate default values without
@@ -4469,7 +4469,7 @@ namespace Google.Apis.CloudRun.v1
 
                     /// <summary>Cloud Run currently ignores this parameter.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("apiVersion", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ApiVersion { get; set; }
+                    public virtual new string ApiVersion { get; set; }
 
                     /// <summary>
                     /// Indicates that the server should validate the request and populate default values without
@@ -5107,7 +5107,7 @@ namespace Google.Apis.CloudRun.v1
 
                     /// <summary>Not supported, and ignored by Cloud Run.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("apiVersion", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ApiVersion { get; set; }
+                    public virtual new string ApiVersion { get; set; }
 
                     /// <summary>
                     /// Indicates that the server should validate the request and populate default values without
