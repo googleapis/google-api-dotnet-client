@@ -17,7 +17,9 @@ project.lock.json
 msbuild.log
 TestResult.xml
 
+# Output directories
 /NuPkgs/
+/tmp/
 
 # Ignore documentation XML files that are produced as part of C# builds.
 # TODO: Move these to bin or obj.

@@ -27,63 +27,26 @@ git config core.fileMode false
 git config user.name "$github_user"
 git config user.email "$github_email"
 
-# Download, generate, build and pack all generated libraries
-# Build support libraries in case the latest support library version isn't yet on nuget.
+# Fetch all discovery docs into tmp/DiscoveryJson, copying new/updated ones
+# into DiscoveryJson. The tmp/ApisToGenerate.txt file lists the Discovery
+# docs that are updated.
+./UpdateDiscovery.sh tmp/ApisToGenerate.txt
 
-./BuildSupport.sh
-
-./BuildGenerated.sh --onlydownload
-
-# Delete broken discovery docs here.
-# E.g. rm -f DiscoveryJson/streetviewpublish_v1.json
-
-# For more details go/dotnet-apiary-blocked-generation
-
-# b/299933892 because of hierarchical resources
-# "nodes/{node}/nodes/{node}"
-rm -f DiscoveryJson/sasportal_v1alpha1.json
-rm -f DiscoveryJson/prod_tt_sasportal_v1alpha1.json
-# Known exception for library generation
-rm -f DiscoveryJson/apigee_v1.json
-# Name clashes because of some request's service parameter.
-rm -f DiscoveryJson/metastore_v1alpha.json
-rm -f DiscoveryJson/metastore_v1beta.json
-rm -f DiscoveryJson/metastore_v1.json
-# Investigating with Auth team
-rm -f DiscoveryJson/identitytoolkit_v1.json
-rm -f DiscoveryJson/identitytoolkit_v2.json
-rm -f DiscoveryJson/identitytoolkit_v3.json
-# Name clashes because of some response ETag field.
-rm -f DiscoveryJson/contentwarehouse_v1.json
-# b/299569133 method.request.type instead of method.request.$ref
-# type is not a supported field in method.request.
-rm -f DiscoveryJson/integrations_v1alpha.json
-rm -f DiscoveryJson/integrations_v1.json
-# b/299567447 method.request.type instead of method.request.$ref
-# type is not a supported field in method.request.
-rm -f DiscoveryJson/datalineage_v1.json
-# b/299985033 Because on non-AIP compliant RPC.
-rm -f DiscoveryJson/policysimulator_v1alpha.json
-rm -f DiscoveryJson/policysimulator_v1beta.json
-
-if [ "$FORCE_ALL" == "true" ]; then
-  ./BuildGenerated.sh --skipdownload --forcegenerateall
-else
-  ./BuildGenerated.sh --skipdownload
+# If we actually want to generate everything, just list all the Discovery docs.
+if [ "$FORCE_ALL" == "true" ]
+then
+  # Note that this form of ls ends up with the file containing
+  # DiscoveryJson/xyz.json rather than just xyz.json.
+  ls DiscoveryJson/*.json > tmp/ApisToGenerate.txt
 fi
 
-# Push support and generated packages to nuget
-shopt -s nullglob
-for pkg in ./NuPkgs/Support/*.nupkg; do
-  if [[ $pkg != *.symbols.* ]]; then
-    dotnet generate-sbom $pkg
-    # During autorelease, pushing support packages is expected to fail often,
-    # as support packages are updated with a lot less frequency than generated
-    # packages, and when they are we usually release them manually anyway.
-    nuget push $pkg $nuget_token -Source nuget.org || true
-    sleep 10
-  fi
-done
+# Generate all APIs listed in tmp/ApisToGenerate.txt
+./GenerateApis.sh @tmp/ApisToGenerate.txt
+
+# Build and pack all APIs listed in tmp/ApisToGenerate.txt
+./BuildGenerated.sh @tmp/ApisToGenerate.txt
+
+# Release all the NuGet packages we've created.
 for pkg in ./NuPkgs/Generated/*.nupkg; do
   if [[ $pkg != *.symbols.* ]]; then
     dotnet generate-sbom $pkg
