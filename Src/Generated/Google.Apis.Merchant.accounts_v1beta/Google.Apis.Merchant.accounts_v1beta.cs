@@ -1,0 +1,5552 @@
+// Copyright 2024 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+// Generated code. DO NOT EDIT!
+
+namespace Google.Apis.Merchant.accounts_v1beta
+{
+    /// <summary>The Merchant Service.</summary>
+    public class MerchantService : Google.Apis.Services.BaseClientService
+    {
+        /// <summary>The API version.</summary>
+        public const string Version = "accounts_v1beta";
+
+        /// <summary>The discovery version used to generate this service.</summary>
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+
+        /// <summary>Constructs a new service.</summary>
+        public MerchantService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
+
+        /// <summary>Constructs a new service.</summary>
+        /// <param name="initializer">The service initializer.</param>
+        public MerchantService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
+        {
+            Accounts = new AccountsResource(this);
+            TermsOfService = new TermsOfServiceResource(this);
+            BaseUri = GetEffectiveUri(BaseUriOverride, "https://merchantapi.googleapis.com/");
+            BatchUri = GetEffectiveUri(null, "https://merchantapi.googleapis.com/batch");
+        }
+
+        /// <summary>Gets the service supported features.</summary>
+        public override System.Collections.Generic.IList<string> Features => new string[0];
+
+        /// <summary>Gets the service name.</summary>
+        public override string Name => "merchantapi";
+
+        /// <summary>Gets the service base URI.</summary>
+        public override string BaseUri { get; }
+
+        /// <summary>Gets the service base path.</summary>
+        public override string BasePath => "";
+
+        /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
+        public override string BatchUri { get; }
+
+        /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
+        public override string BatchPath => "batch";
+
+        /// <summary>Available OAuth 2.0 scopes for use with the Merchant API.</summary>
+        public class Scope
+        {
+            /// <summary>Manage your product listings and accounts for Google Shopping</summary>
+            public static string Content = "https://www.googleapis.com/auth/content";
+        }
+
+        /// <summary>Available OAuth 2.0 scope constants for use with the Merchant API.</summary>
+        public static class ScopeConstants
+        {
+            /// <summary>Manage your product listings and accounts for Google Shopping</summary>
+            public const string Content = "https://www.googleapis.com/auth/content";
+        }
+
+        /// <summary>Gets the Accounts resource.</summary>
+        public virtual AccountsResource Accounts { get; }
+
+        /// <summary>Gets the TermsOfService resource.</summary>
+        public virtual TermsOfServiceResource TermsOfService { get; }
+    }
+
+    /// <summary>A base abstract class for Merchant requests.</summary>
+    public abstract class MerchantBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
+    {
+        /// <summary>Constructs a new MerchantBaseServiceRequest instance.</summary>
+        protected MerchantBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
+        {
+        }
+
+        /// <summary>V1 error format.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
+
+        /// <summary>V1 error format.</summary>
+        public enum XgafvEnum
+        {
+            /// <summary>v1 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("1")]
+            Value1 = 0,
+
+            /// <summary>v2 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("2")]
+            Value2 = 1,
+        }
+
+        /// <summary>OAuth access token.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string AccessToken { get; set; }
+
+        /// <summary>Data format for response.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual System.Nullable<AltEnum> Alt { get; set; }
+
+        /// <summary>Data format for response.</summary>
+        public enum AltEnum
+        {
+            /// <summary>Responses with Content-Type of application/json</summary>
+            [Google.Apis.Util.StringValueAttribute("json")]
+            Json = 0,
+
+            /// <summary>Media download with context-dependent Content-Type</summary>
+            [Google.Apis.Util.StringValueAttribute("media")]
+            Media = 1,
+
+            /// <summary>Responses with Content-Type of application/x-protobuf</summary>
+            [Google.Apis.Util.StringValueAttribute("proto")]
+            Proto = 2,
+        }
+
+        /// <summary>JSONP</summary>
+        [Google.Apis.Util.RequestParameterAttribute("callback", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string Callback { get; set; }
+
+        /// <summary>Selector specifying which fields to include in a partial response.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string Fields { get; set; }
+
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
+        [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string Key { get; set; }
+
+        /// <summary>OAuth 2.0 token for the current user.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("oauth_token", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string OauthToken { get; set; }
+
+        /// <summary>Returns response with indentations and line breaks.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual System.Nullable<bool> PrettyPrint { get; set; }
+
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
+        [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string QuotaUser { get; set; }
+
+        /// <summary>Legacy upload protocol for media (e.g. "media", "multipart").</summary>
+        [Google.Apis.Util.RequestParameterAttribute("uploadType", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string UploadType { get; set; }
+
+        /// <summary>Upload protocol for media (e.g. "raw", "multipart").</summary>
+        [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string UploadProtocol { get; set; }
+
+        /// <summary>Initializes Merchant parameter list.</summary>
+        protected override void InitParameters()
+        {
+            base.InitParameters();
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+        }
+    }
+
+    /// <summary>The "accounts" collection of methods.</summary>
+    public class AccountsResource
+    {
+        private const string Resource = "accounts";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public AccountsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            Accounttax = new AccounttaxResource(service);
+            Homepage = new HomepageResource(service);
+            Issues = new IssuesResource(service);
+            OnlineReturnPolicies = new OnlineReturnPoliciesResource(service);
+            Programs = new ProgramsResource(service);
+            Regions = new RegionsResource(service);
+            ShippingSettings = new ShippingSettingsResource(service);
+            TermsOfServiceAgreementStates = new TermsOfServiceAgreementStatesResource(service);
+            Users = new UsersResource(service);
+        }
+
+        /// <summary>Gets the Accounttax resource.</summary>
+        public virtual AccounttaxResource Accounttax { get; }
+
+        /// <summary>The "accounttax" collection of methods.</summary>
+        public class AccounttaxResource
+        {
+            private const string Resource = "accounttax";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public AccounttaxResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Returns the tax rules that match the conditions of GetAccountTaxRequest</summary>
+            /// <param name="name">Required. The name from which tax settings will be retrieved</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(this.service, name);
+            }
+
+            /// <summary>Returns the tax rules that match the conditions of GetAccountTaxRequest</summary>
+            public class GetRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.AccountTax>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The name from which tax settings will be retrieved</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/accounttax/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Lists the tax settings of the sub-accounts only in your Merchant Center account. This method can only be
+            /// called on a multi-client account, otherwise it'll return an error.
+            /// </summary>
+            /// <param name="parent">
+            /// Required. The parent, which owns this collection of account tax. Format: accounts/{account}
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(this.service, parent);
+            }
+
+            /// <summary>
+            /// Lists the tax settings of the sub-accounts only in your Merchant Center account. This method can only be
+            /// called on a multi-client account, otherwise it'll return an error.
+            /// </summary>
+            public class ListRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.ListAccountTaxResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent, which owns this collection of account tax. Format: accounts/{account}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>The maximum number of tax settings to return in the response, used for paging.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The token returned by the previous request.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+parent}/accounttax";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Updates the tax settings of the account.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Identifier. The name of the tax setting. Format: "{account_tax.name=accounts/{account}}"
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.Merchant.accounts_v1beta.Data.AccountTax body, string name)
+            {
+                return new PatchRequest(this.service, body, name);
+            }
+
+            /// <summary>Updates the tax settings of the account.</summary>
+            public class PatchRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.AccountTax>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1beta.Data.AccountTax body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Identifier. The name of the tax setting. Format: "{account_tax.name=accounts/{account}}"
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>The list of fields to be updated</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Merchant.accounts_v1beta.Data.AccountTax Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/accounttax/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the Homepage resource.</summary>
+        public virtual HomepageResource Homepage { get; }
+
+        /// <summary>The "homepage" collection of methods.</summary>
+        public class HomepageResource
+        {
+            private const string Resource = "homepage";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public HomepageResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Claims a store's homepage. Executing this method requires admin access. If the homepage is already
+            /// claimed, this will recheck the verification (unless the merchant is exempted from claiming, which also
+            /// exempts from verification) and return a successful response. If ownership can no longer be verified, it
+            /// will return an error, but it won't clear the claim. In case of failure, a canonical error message will
+            /// be returned: * PERMISSION_DENIED: user doesn't have the necessary permissions on this MC account; *
+            /// FAILED_PRECONDITION: - The account is not a Merchant Center account; - MC account doesn't have a
+            /// homepage; - claiming failed (in this case the error message will contain more details).
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. The name of the homepage to claim. Format: `accounts/{account}/homepage`
+            /// </param>
+            public virtual ClaimRequest Claim(Google.Apis.Merchant.accounts_v1beta.Data.ClaimHomepageRequest body, string name)
+            {
+                return new ClaimRequest(this.service, body, name);
+            }
+
+            /// <summary>
+            /// Claims a store's homepage. Executing this method requires admin access. If the homepage is already
+            /// claimed, this will recheck the verification (unless the merchant is exempted from claiming, which also
+            /// exempts from verification) and return a successful response. If ownership can no longer be verified, it
+            /// will return an error, but it won't clear the claim. In case of failure, a canonical error message will
+            /// be returned: * PERMISSION_DENIED: user doesn't have the necessary permissions on this MC account; *
+            /// FAILED_PRECONDITION: - The account is not a Merchant Center account; - MC account doesn't have a
+            /// homepage; - claiming failed (in this case the error message will contain more details).
+            /// </summary>
+            public class ClaimRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.Homepage>
+            {
+                /// <summary>Constructs a new Claim request.</summary>
+                public ClaimRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1beta.Data.ClaimHomepageRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the homepage to claim. Format: `accounts/{account}/homepage`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Merchant.accounts_v1beta.Data.ClaimHomepageRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "claim";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+name}:claim";
+
+                /// <summary>Initializes Claim parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/homepage$",
+                    });
+                }
+            }
+
+            /// <summary>Unclaims a store's homepage. Executing this method requires admin access.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. The name of the homepage to unclaim. Format: `accounts/{account}/homepage`
+            /// </param>
+            public virtual UnclaimRequest Unclaim(Google.Apis.Merchant.accounts_v1beta.Data.UnclaimHomepageRequest body, string name)
+            {
+                return new UnclaimRequest(this.service, body, name);
+            }
+
+            /// <summary>Unclaims a store's homepage. Executing this method requires admin access.</summary>
+            public class UnclaimRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.Homepage>
+            {
+                /// <summary>Constructs a new Unclaim request.</summary>
+                public UnclaimRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1beta.Data.UnclaimHomepageRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the homepage to unclaim. Format: `accounts/{account}/homepage`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Merchant.accounts_v1beta.Data.UnclaimHomepageRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "unclaim";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+name}:unclaim";
+
+                /// <summary>Initializes Unclaim parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/homepage$",
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the Issues resource.</summary>
+        public virtual IssuesResource Issues { get; }
+
+        /// <summary>The "issues" collection of methods.</summary>
+        public class IssuesResource
+        {
+            private const string Resource = "issues";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public IssuesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Lists all account issues of a Merchant Center account.</summary>
+            /// <param name="parent">
+            /// Required. The parent, which owns this collection of issues. Format: `accounts/{account}`
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(this.service, parent);
+            }
+
+            /// <summary>Lists all account issues of a Merchant Center account.</summary>
+            public class ListRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.ListAccountIssuesResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent, which owns this collection of issues. Format: `accounts/{account}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. The issues in the response will have human-readable fields in the given language. The
+                /// format is [BCP-47](https://tools.ietf.org/html/bcp47), such as `en-US` or `sr-Latn`. If not value is
+                /// provided, `en-US` will be used.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string LanguageCode { get; set; }
+
+                /// <summary>
+                /// Optional. The maximum number of issues to return. The service may return fewer than this value. If
+                /// unspecified, at most 50 users will be returned. The maximum value is 100; values above 100 will be
+                /// coerced to 100
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A page token, received from a previous `ListAccountIssues` call. Provide this to retrieve
+                /// the subsequent page. When paginating, all other parameters provided to `ListAccountIssues` must
+                /// match the call that provided the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>IANA Time Zone Database time zone, e.g. "America/New_York".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("timeZone.id", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string TimeZoneId { get; set; }
+
+                /// <summary>Optional. IANA Time Zone Database version number, e.g. "2019a".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("timeZone.version", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string TimeZoneVersion { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+parent}/issues";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+$",
+                    });
+                    RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "languageCode",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("timeZone.id", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "timeZone.id",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("timeZone.version", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "timeZone.version",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the OnlineReturnPolicies resource.</summary>
+        public virtual OnlineReturnPoliciesResource OnlineReturnPolicies { get; }
+
+        /// <summary>The "onlineReturnPolicies" collection of methods.</summary>
+        public class OnlineReturnPoliciesResource
+        {
+            private const string Resource = "onlineReturnPolicies";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public OnlineReturnPoliciesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Gets an existing return policy.</summary>
+            /// <param name="name">
+            /// Required. The name of the return policy to retrieve. Format:
+            /// `accounts/{account}/onlineReturnPolicies/{return_policy}`
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(this.service, name);
+            }
+
+            /// <summary>Gets an existing return policy.</summary>
+            public class GetRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.OnlineReturnPolicy>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the return policy to retrieve. Format:
+                /// `accounts/{account}/onlineReturnPolicies/{return_policy}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/onlineReturnPolicies/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Lists all existing return policies.</summary>
+            /// <param name="parent">
+            /// Required. The merchant account for which to list return policies. Format: `accounts/{account}`
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(this.service, parent);
+            }
+
+            /// <summary>Lists all existing return policies.</summary>
+            public class ListRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.ListOnlineReturnPoliciesResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The merchant account for which to list return policies. Format: `accounts/{account}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. The maximum number of `OnlineReturnPolicy` resources to return. The service returns fewer
+                /// than this value if the number of return policies for the given merchant is less that than the
+                /// `pageSize`. The default value is 10. The maximum value is 100; If a value higher than the maximum is
+                /// specified, then the `pageSize` will default to the maximum
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A page token, received from a previous `ListOnlineReturnPolicies` call. Provide the page
+                /// token to retrieve the subsequent page. When paginating, all other parameters provided to
+                /// `ListOnlineReturnPolicies` must match the call that provided the page token. The token returned as
+                /// nextPageToken in the response to the previous request.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+parent}/onlineReturnPolicies";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the Programs resource.</summary>
+        public virtual ProgramsResource Programs { get; }
+
+        /// <summary>The "programs" collection of methods.</summary>
+        public class ProgramsResource
+        {
+            private const string Resource = "programs";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public ProgramsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Disable participation in the specified program for the account. Executing this method requires admin
+            /// access.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. The name of the program for which to disable participation for the given account. Format:
+            /// `accounts/{account}/programs/{program}`
+            /// </param>
+            public virtual DisableRequest Disable(Google.Apis.Merchant.accounts_v1beta.Data.DisableProgramRequest body, string name)
+            {
+                return new DisableRequest(this.service, body, name);
+            }
+
+            /// <summary>
+            /// Disable participation in the specified program for the account. Executing this method requires admin
+            /// access.
+            /// </summary>
+            public class DisableRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.Program>
+            {
+                /// <summary>Constructs a new Disable request.</summary>
+                public DisableRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1beta.Data.DisableProgramRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the program for which to disable participation for the given account. Format:
+                /// `accounts/{account}/programs/{program}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Merchant.accounts_v1beta.Data.DisableProgramRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "disable";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+name}:disable";
+
+                /// <summary>Initializes Disable parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/programs/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Enable participation in the specified program for the account. Executing this method requires admin
+            /// access.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. The name of the program for which to enable participation for the given account. Format:
+            /// `accounts/{account}/programs/{program}`
+            /// </param>
+            public virtual EnableRequest Enable(Google.Apis.Merchant.accounts_v1beta.Data.EnableProgramRequest body, string name)
+            {
+                return new EnableRequest(this.service, body, name);
+            }
+
+            /// <summary>
+            /// Enable participation in the specified program for the account. Executing this method requires admin
+            /// access.
+            /// </summary>
+            public class EnableRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.Program>
+            {
+                /// <summary>Constructs a new Enable request.</summary>
+                public EnableRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1beta.Data.EnableProgramRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the program for which to enable participation for the given account. Format:
+                /// `accounts/{account}/programs/{program}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Merchant.accounts_v1beta.Data.EnableProgramRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "enable";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+name}:enable";
+
+                /// <summary>Initializes Enable parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/programs/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Retrieves the specified program for the account.</summary>
+            /// <param name="name">
+            /// Required. The name of the program to retrieve. Format: `accounts/{account}/programs/{program}`
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(this.service, name);
+            }
+
+            /// <summary>Retrieves the specified program for the account.</summary>
+            public class GetRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.Program>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the program to retrieve. Format: `accounts/{account}/programs/{program}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/programs/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Retrieves all programs for the account.</summary>
+            /// <param name="parent">
+            /// Required. The name of the account for which to retrieve all programs. Format: `accounts/{account}`
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(this.service, parent);
+            }
+
+            /// <summary>Retrieves all programs for the account.</summary>
+            public class ListRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.ListProgramsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the account for which to retrieve all programs. Format: `accounts/{account}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. The maximum number of programs to return in a single response. If unspecified (or 0), a
+                /// default size of 1000 is used. The maximum value is 1000; values above 1000 will be coerced to 1000.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A continuation token, received from a previous `ListPrograms` call. Provide this to
+                /// retrieve the next page.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+parent}/programs";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the Regions resource.</summary>
+        public virtual RegionsResource Regions { get; }
+
+        /// <summary>The "regions" collection of methods.</summary>
+        public class RegionsResource
+        {
+            private const string Resource = "regions";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public RegionsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Creates a region definition in your Merchant Center account. Executing this method requires admin
+            /// access.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. The account to create a region for. Format: `accounts/{account}`</param>
+            public virtual CreateRequest Create(Google.Apis.Merchant.accounts_v1beta.Data.Region body, string parent)
+            {
+                return new CreateRequest(this.service, body, parent);
+            }
+
+            /// <summary>
+            /// Creates a region definition in your Merchant Center account. Executing this method requires admin
+            /// access.
+            /// </summary>
+            public class CreateRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.Region>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1beta.Data.Region body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The account to create a region for. Format: `accounts/{account}`</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Required. The identifier for the region, unique over all regions of the same account.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("regionId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string RegionId { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Merchant.accounts_v1beta.Data.Region Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+parent}/regions";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+$",
+                    });
+                    RequestParameters.Add("regionId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "regionId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Deletes a region definition from your Merchant Center account. Executing this method requires admin
+            /// access.
+            /// </summary>
+            /// <param name="name">
+            /// Required. The name of the region to delete. Format: `accounts/{account}/regions/{region}`
+            /// </param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(this.service, name);
+            }
+
+            /// <summary>
+            /// Deletes a region definition from your Merchant Center account. Executing this method requires admin
+            /// access.
+            /// </summary>
+            public class DeleteRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.Empty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the region to delete. Format: `accounts/{account}/regions/{region}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/regions/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Retrieves a region defined in your Merchant Center account.</summary>
+            /// <param name="name">
+            /// Required. The name of the region to retrieve. Format: `accounts/{account}/regions/{region}`
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(this.service, name);
+            }
+
+            /// <summary>Retrieves a region defined in your Merchant Center account.</summary>
+            public class GetRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.Region>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the region to retrieve. Format: `accounts/{account}/regions/{region}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/regions/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Lists the regions in your Merchant Center account.</summary>
+            /// <param name="parent">Required. The account to list regions for. Format: `accounts/{account}`</param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(this.service, parent);
+            }
+
+            /// <summary>Lists the regions in your Merchant Center account.</summary>
+            public class ListRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.ListRegionsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The account to list regions for. Format: `accounts/{account}`</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. The maximum number of regions to return. The service may return fewer than this value. If
+                /// unspecified, at most 50 regions will be returned. The maximum value is 1000; values above 1000 will
+                /// be coerced to 1000.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A page token, received from a previous `ListRegions` call. Provide this to retrieve the
+                /// subsequent page. When paginating, all other parameters provided to `ListRegions` must match the call
+                /// that provided the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+parent}/regions";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Updates a region definition in your Merchant Center account. Executing this method requires admin
+            /// access.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Identifier. The resource name of the region. Format: `accounts/{account}/regions/{region}`
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.Merchant.accounts_v1beta.Data.Region body, string name)
+            {
+                return new PatchRequest(this.service, body, name);
+            }
+
+            /// <summary>
+            /// Updates a region definition in your Merchant Center account. Executing this method requires admin
+            /// access.
+            /// </summary>
+            public class PatchRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.Region>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1beta.Data.Region body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Identifier. The resource name of the region. Format: `accounts/{account}/regions/{region}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Optional. The comma-separated field mask indicating the fields to update. Example:
+                /// `"displayName,postalCodeArea.regionCode"`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Merchant.accounts_v1beta.Data.Region Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/regions/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the ShippingSettings resource.</summary>
+        public virtual ShippingSettingsResource ShippingSettings { get; }
+
+        /// <summary>The "shippingSettings" collection of methods.</summary>
+        public class ShippingSettingsResource
+        {
+            private const string Resource = "shippingSettings";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public ShippingSettingsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Replace the shipping setting of a merchant with the request shipping setting. Executing this method
+            /// requires admin access.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The account where this product will be inserted. Format: accounts/{account}
+            /// </param>
+            public virtual InsertRequest Insert(Google.Apis.Merchant.accounts_v1beta.Data.ShippingSettings body, string parent)
+            {
+                return new InsertRequest(this.service, body, parent);
+            }
+
+            /// <summary>
+            /// Replace the shipping setting of a merchant with the request shipping setting. Executing this method
+            /// requires admin access.
+            /// </summary>
+            public class InsertRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.ShippingSettings>
+            {
+                /// <summary>Constructs a new Insert request.</summary>
+                public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1beta.Data.ShippingSettings body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The account where this product will be inserted. Format: accounts/{account}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Merchant.accounts_v1beta.Data.ShippingSettings Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "insert";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+parent}/shippingSettings:insert";
+
+                /// <summary>Initializes Insert parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+$",
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the TermsOfServiceAgreementStates resource.</summary>
+        public virtual TermsOfServiceAgreementStatesResource TermsOfServiceAgreementStates { get; }
+
+        /// <summary>The "termsOfServiceAgreementStates" collection of methods.</summary>
+        public class TermsOfServiceAgreementStatesResource
+        {
+            private const string Resource = "termsOfServiceAgreementStates";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public TermsOfServiceAgreementStatesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Returns the state of a terms of service agreement.</summary>
+            /// <param name="name">
+            /// Required. The resource name of the terms of service version. Format:
+            /// `accounts/{account}/termsOfServiceAgreementState/{identifier}`
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(this.service, name);
+            }
+
+            /// <summary>Returns the state of a terms of service agreement.</summary>
+            public class GetRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.TermsOfServiceAgreementState>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The resource name of the terms of service version. Format:
+                /// `accounts/{account}/termsOfServiceAgreementState/{identifier}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/termsOfServiceAgreementStates/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Retrieves the state of the agreement for the application terms of service.</summary>
+            /// <param name="parent">
+            /// Required. The account for which to get a TermsOfServiceAgreementState Format: `accounts/{account}`
+            /// </param>
+            public virtual RetrieveForApplicationRequest RetrieveForApplication(string parent)
+            {
+                return new RetrieveForApplicationRequest(this.service, parent);
+            }
+
+            /// <summary>Retrieves the state of the agreement for the application terms of service.</summary>
+            public class RetrieveForApplicationRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.TermsOfServiceAgreementState>
+            {
+                /// <summary>Constructs a new RetrieveForApplication request.</summary>
+                public RetrieveForApplicationRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The account for which to get a TermsOfServiceAgreementState Format: `accounts/{account}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "retrieveForApplication";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+parent}/termsOfServiceAgreementStates:retrieveForApplication";
+
+                /// <summary>Initializes RetrieveForApplication parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+$",
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the Users resource.</summary>
+        public virtual UsersResource Users { get; }
+
+        /// <summary>The "users" collection of methods.</summary>
+        public class UsersResource
+        {
+            private const string Resource = "users";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public UsersResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Creates a Merchant Center account user. Executing this method requires admin access.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The resource name of the account for which a user will be created. Format:
+            /// `accounts/{account}`
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.Merchant.accounts_v1beta.Data.User body, string parent)
+            {
+                return new CreateRequest(this.service, body, parent);
+            }
+
+            /// <summary>Creates a Merchant Center account user. Executing this method requires admin access.</summary>
+            public class CreateRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.User>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1beta.Data.User body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The resource name of the account for which a user will be created. Format:
+                /// `accounts/{account}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Required. The email address of the user (for example, `john.doe@gmail.com`).</summary>
+                [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string UserId { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Merchant.accounts_v1beta.Data.User Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+parent}/users";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+$",
+                    });
+                    RequestParameters.Add("userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Deletes a Merchant Center account user. Executing this method requires admin access.</summary>
+            /// <param name="name">
+            /// Required. The name of the user to delete. Format: `accounts/{account}/users/{email}` It is also possible
+            /// to delete the user corresponding to the caller by using `me` rather than an email address as in
+            /// `accounts/{account}/users/me`.
+            /// </param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(this.service, name);
+            }
+
+            /// <summary>Deletes a Merchant Center account user. Executing this method requires admin access.</summary>
+            public class DeleteRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.Empty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the user to delete. Format: `accounts/{account}/users/{email}` It is also
+                /// possible to delete the user corresponding to the caller by using `me` rather than an email address
+                /// as in `accounts/{account}/users/me`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/users/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Retrieves a Merchant Center account user.</summary>
+            /// <param name="name">
+            /// Required. The name of the user to retrieve. Format: `accounts/{account}/users/{email}` It is also
+            /// possible to retrieve the user corresponding to the caller by using `me` rather than an email address as
+            /// in `accounts/{account}/users/me`.
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(this.service, name);
+            }
+
+            /// <summary>Retrieves a Merchant Center account user.</summary>
+            public class GetRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.User>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the user to retrieve. Format: `accounts/{account}/users/{email}` It is also
+                /// possible to retrieve the user corresponding to the caller by using `me` rather than an email address
+                /// as in `accounts/{account}/users/me`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/users/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Returns the email preferences for a Merchant Center account user. Use the
+            /// name=accounts/*/users/me/emailPreferences alias to get preferences for the authenticated user.
+            /// </summary>
+            /// <param name="name">
+            /// Required. The name of the `EmailPreferences` resource. Format:
+            /// `accounts/{account}/users/{email}/emailPreferences`
+            /// </param>
+            public virtual GetEmailPreferencesRequest GetEmailPreferences(string name)
+            {
+                return new GetEmailPreferencesRequest(this.service, name);
+            }
+
+            /// <summary>
+            /// Returns the email preferences for a Merchant Center account user. Use the
+            /// name=accounts/*/users/me/emailPreferences alias to get preferences for the authenticated user.
+            /// </summary>
+            public class GetEmailPreferencesRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.EmailPreferences>
+            {
+                /// <summary>Constructs a new GetEmailPreferences request.</summary>
+                public GetEmailPreferencesRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the `EmailPreferences` resource. Format:
+                /// `accounts/{account}/users/{email}/emailPreferences`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getEmailPreferences";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+name}";
+
+                /// <summary>Initializes GetEmailPreferences parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/users/[^/]+/emailPreferences$",
+                    });
+                }
+            }
+
+            /// <summary>Lists all users of a Merchant Center account.</summary>
+            /// <param name="parent">
+            /// Required. The parent, which owns this collection of users. Format: `accounts/{account}`
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(this.service, parent);
+            }
+
+            /// <summary>Lists all users of a Merchant Center account.</summary>
+            public class ListRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.ListUsersResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent, which owns this collection of users. Format: `accounts/{account}`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. The maximum number of users to return. The service may return fewer than this value. If
+                /// unspecified, at most 50 users will be returned. The maximum value is 100; values above 100 will be
+                /// coerced to 100
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A page token, received from a previous `ListUsers` call. Provide this to retrieve the
+                /// subsequent page. When paginating, all other parameters provided to `ListUsers` must match the call
+                /// that provided the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+parent}/users";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Updates a Merchant Center account user. Executing this method requires admin access.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Identifier. The resource name of the user. Format: `accounts/{account}/user/{email}` Use `me` to refer
+            /// to your own email address, for example `accounts/{account}/users/me`.
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.Merchant.accounts_v1beta.Data.User body, string name)
+            {
+                return new PatchRequest(this.service, body, name);
+            }
+
+            /// <summary>Updates a Merchant Center account user. Executing this method requires admin access.</summary>
+            public class PatchRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.User>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1beta.Data.User body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Identifier. The resource name of the user. Format: `accounts/{account}/user/{email}` Use `me` to
+                /// refer to your own email address, for example `accounts/{account}/users/me`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Required. List of fields being updated.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Merchant.accounts_v1beta.Data.User Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/users/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Updates the email preferences for a Merchant Center account user. MCA users should specify the MCA
+            /// account rather than a sub-account of the MCA. Preferences which are not explicitly selected in the
+            /// update mask will not be updated. It is invalid for updates to specify an UNCONFIRMED opt-in status
+            /// value. Use the name=accounts/*/users/me/emailPreferences alias to update preferences for the
+            /// authenticated user.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Identifier. The name of the EmailPreferences. The endpoint is only supported for the authenticated user.
+            /// </param>
+            public virtual UpdateEmailPreferencesRequest UpdateEmailPreferences(Google.Apis.Merchant.accounts_v1beta.Data.EmailPreferences body, string name)
+            {
+                return new UpdateEmailPreferencesRequest(this.service, body, name);
+            }
+
+            /// <summary>
+            /// Updates the email preferences for a Merchant Center account user. MCA users should specify the MCA
+            /// account rather than a sub-account of the MCA. Preferences which are not explicitly selected in the
+            /// update mask will not be updated. It is invalid for updates to specify an UNCONFIRMED opt-in status
+            /// value. Use the name=accounts/*/users/me/emailPreferences alias to update preferences for the
+            /// authenticated user.
+            /// </summary>
+            public class UpdateEmailPreferencesRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.EmailPreferences>
+            {
+                /// <summary>Constructs a new UpdateEmailPreferences request.</summary>
+                public UpdateEmailPreferencesRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1beta.Data.EmailPreferences body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Identifier. The name of the EmailPreferences. The endpoint is only supported for the authenticated
+                /// user.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Required. List of fields being updated.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Merchant.accounts_v1beta.Data.EmailPreferences Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "updateEmailPreferences";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+name}";
+
+                /// <summary>Initializes UpdateEmailPreferences parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/users/[^/]+/emailPreferences$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>
+        /// Creates a standalone Merchant Center account with additional configuration. Adds the user that makes the
+        /// request as an admin for the new account.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual CreateAndConfigureRequest CreateAndConfigure(Google.Apis.Merchant.accounts_v1beta.Data.CreateAndConfigureAccountRequest body)
+        {
+            return new CreateAndConfigureRequest(this.service, body);
+        }
+
+        /// <summary>
+        /// Creates a standalone Merchant Center account with additional configuration. Adds the user that makes the
+        /// request as an admin for the new account.
+        /// </summary>
+        public class CreateAndConfigureRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.Account>
+        {
+            /// <summary>Constructs a new CreateAndConfigure request.</summary>
+            public CreateAndConfigureRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1beta.Data.CreateAndConfigureAccountRequest body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Merchant.accounts_v1beta.Data.CreateAndConfigureAccountRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "createAndConfigure";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "accounts/v1beta/accounts:createAndConfigure";
+
+            /// <summary>Initializes CreateAndConfigure parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
+        }
+
+        /// <summary>
+        /// Deletes the specified account regardless of its type: standalone, MCA or sub-account. Deleting an MCA leads
+        /// to the deletion of all of its sub-accounts. Executing this method requires admin access.
+        /// </summary>
+        /// <param name="name">Required. The name of the account to delete. Format: `accounts/{account}`</param>
+        public virtual DeleteRequest Delete(string name)
+        {
+            return new DeleteRequest(this.service, name);
+        }
+
+        /// <summary>
+        /// Deletes the specified account regardless of its type: standalone, MCA or sub-account. Deleting an MCA leads
+        /// to the deletion of all of its sub-accounts. Executing this method requires admin access.
+        /// </summary>
+        public class DeleteRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.Empty>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>Required. The name of the account to delete. Format: `accounts/{account}`</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "delete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "DELETE";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "accounts/v1beta/{+name}";
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^accounts/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Retrieves an account from your Merchant Center account. After inserting, updating, or deleting an account,
+        /// it may take several minutes before changes take effect.
+        /// </summary>
+        /// <param name="name">Required. The name of the account to retrieve. Format: `accounts/{account}`</param>
+        public virtual GetRequest Get(string name)
+        {
+            return new GetRequest(this.service, name);
+        }
+
+        /// <summary>
+        /// Retrieves an account from your Merchant Center account. After inserting, updating, or deleting an account,
+        /// it may take several minutes before changes take effect.
+        /// </summary>
+        public class GetRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.Account>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>Required. The name of the account to retrieve. Format: `accounts/{account}`</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "accounts/v1beta/{+name}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^accounts/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>Retrieves the business identity of an account.</summary>
+        /// <param name="name">
+        /// Required. The resource name of the business identity. Format: `accounts/{account}/businessIdentity`
+        /// </param>
+        public virtual GetBusinessIdentityRequest GetBusinessIdentity(string name)
+        {
+            return new GetBusinessIdentityRequest(this.service, name);
+        }
+
+        /// <summary>Retrieves the business identity of an account.</summary>
+        public class GetBusinessIdentityRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.BusinessIdentity>
+        {
+            /// <summary>Constructs a new GetBusinessIdentity request.</summary>
+            public GetBusinessIdentityRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The resource name of the business identity. Format: `accounts/{account}/businessIdentity`
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getBusinessIdentity";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "accounts/v1beta/{+name}";
+
+            /// <summary>Initializes GetBusinessIdentity parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^accounts/[^/]+/businessIdentity$",
+                });
+            }
+        }
+
+        /// <summary>Retrieves the business info of an account.</summary>
+        /// <param name="name">
+        /// Required. The resource name of the business info. Format: `accounts/{account}/businessInfo`
+        /// </param>
+        public virtual GetBusinessInfoRequest GetBusinessInfo(string name)
+        {
+            return new GetBusinessInfoRequest(this.service, name);
+        }
+
+        /// <summary>Retrieves the business info of an account.</summary>
+        public class GetBusinessInfoRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.BusinessInfo>
+        {
+            /// <summary>Constructs a new GetBusinessInfo request.</summary>
+            public GetBusinessInfoRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The resource name of the business info. Format: `accounts/{account}/businessInfo`
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getBusinessInfo";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "accounts/v1beta/{+name}";
+
+            /// <summary>Initializes GetBusinessInfo parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^accounts/[^/]+/businessInfo$",
+                });
+            }
+        }
+
+        /// <summary>Retrieves a store's homepage.</summary>
+        /// <param name="name">
+        /// Required. The name of the homepage to retrieve. Format: `accounts/{account}/homepage`
+        /// </param>
+        public virtual GetHomepageRequest GetHomepage(string name)
+        {
+            return new GetHomepageRequest(this.service, name);
+        }
+
+        /// <summary>Retrieves a store's homepage.</summary>
+        public class GetHomepageRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.Homepage>
+        {
+            /// <summary>Constructs a new GetHomepage request.</summary>
+            public GetHomepageRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>Required. The name of the homepage to retrieve. Format: `accounts/{account}/homepage`</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getHomepage";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "accounts/v1beta/{+name}";
+
+            /// <summary>Initializes GetHomepage parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^accounts/[^/]+/homepage$",
+                });
+            }
+        }
+
+        /// <summary>Retrieve shipping setting information.</summary>
+        /// <param name="name">
+        /// Required. The name of the shipping setting to retrieve. Format: `accounts/{account}/shippingsetting`
+        /// </param>
+        public virtual GetShippingSettingsRequest GetShippingSettings(string name)
+        {
+            return new GetShippingSettingsRequest(this.service, name);
+        }
+
+        /// <summary>Retrieve shipping setting information.</summary>
+        public class GetShippingSettingsRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.ShippingSettings>
+        {
+            /// <summary>Constructs a new GetShippingSettings request.</summary>
+            public GetShippingSettingsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The name of the shipping setting to retrieve. Format: `accounts/{account}/shippingsetting`
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getShippingSettings";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "accounts/v1beta/{+name}";
+
+            /// <summary>Initializes GetShippingSettings parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^accounts/[^/]+/shippingSettings$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Lists accounts accessible to the calling user and matching the constraints of the request such as page size
+        /// or filters. This is not just listing the sub-accounts of an MCA, but all accounts the calling user has
+        /// access to including other MCAs, linked accounts, standalone accounts and so on.
+        /// </summary>
+        public virtual ListRequest List()
+        {
+            return new ListRequest(this.service);
+        }
+
+        /// <summary>
+        /// Lists accounts accessible to the calling user and matching the constraints of the request such as page size
+        /// or filters. This is not just listing the sub-accounts of an MCA, but all accounts the calling user has
+        /// access to including other MCAs, linked accounts, standalone accounts and so on.
+        /// </summary>
+        public class ListRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.ListAccountsResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Optional. Returns only accounts that match the [filter](/merchant/api/guides/accounts/filter). For more
+            /// details, see the [filter syntax reference](/merchant/api/guides/accounts/filter-syntax).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>
+            /// Optional. The maximum number of accounts to return. The service may return fewer than this value. If
+            /// unspecified, at most 250 accounts are returned. The maximum value is 500; values above 500 are coerced
+            /// to 500.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>
+            /// Optional. A page token, received from a previous `ListAccounts` call. Provide this to retrieve the
+            /// subsequent page. When paginating, all other parameters provided to `ListAccounts` must match the call
+            /// that provided the page token.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "accounts/v1beta/accounts";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// List all sub-accounts for a given multi client account. This is a convenience wrapper for the more powerful
+        /// `ListAccounts` method. This method will produce the same results as calling `ListsAccounts` with the
+        /// following filter: `relationship(providerId={parent} AND service(type="ACCOUNT_AGGREGATION"))`
+        /// </summary>
+        /// <param name="provider">Required. The parent account. Format: `accounts/{account}`</param>
+        public virtual ListSubaccountsRequest ListSubaccounts(string provider)
+        {
+            return new ListSubaccountsRequest(this.service, provider);
+        }
+
+        /// <summary>
+        /// List all sub-accounts for a given multi client account. This is a convenience wrapper for the more powerful
+        /// `ListAccounts` method. This method will produce the same results as calling `ListsAccounts` with the
+        /// following filter: `relationship(providerId={parent} AND service(type="ACCOUNT_AGGREGATION"))`
+        /// </summary>
+        public class ListSubaccountsRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.ListSubAccountsResponse>
+        {
+            /// <summary>Constructs a new ListSubaccounts request.</summary>
+            public ListSubaccountsRequest(Google.Apis.Services.IClientService service, string provider) : base(service)
+            {
+                Provider = provider;
+                InitParameters();
+            }
+
+            /// <summary>Required. The parent account. Format: `accounts/{account}`</summary>
+            [Google.Apis.Util.RequestParameterAttribute("provider", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Provider { get; private set; }
+
+            /// <summary>
+            /// Optional. The maximum number of accounts to return. The service may return fewer than this value. If
+            /// unspecified, at most 250 accounts are returned. The maximum value is 500; values above 500 are coerced
+            /// to 500.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>
+            /// Optional. A page token, received from a previous `ListAccounts` call. Provide this to retrieve the
+            /// subsequent page. When paginating, all other parameters provided to `ListAccounts` must match the call
+            /// that provided the page token.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "listSubaccounts";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "accounts/v1beta/{+provider}:listSubaccounts";
+
+            /// <summary>Initializes ListSubaccounts parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("provider", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "provider",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^accounts/[^/]+$",
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Updates an account regardless of its type: standalone, MCA or sub-account. Executing this method requires
+        /// admin access.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">Identifier. The resource name of the account. Format: `accounts/{account}`</param>
+        public virtual PatchRequest Patch(Google.Apis.Merchant.accounts_v1beta.Data.Account body, string name)
+        {
+            return new PatchRequest(this.service, body, name);
+        }
+
+        /// <summary>
+        /// Updates an account regardless of its type: standalone, MCA or sub-account. Executing this method requires
+        /// admin access.
+        /// </summary>
+        public class PatchRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.Account>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1beta.Data.Account body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Identifier. The resource name of the account. Format: `accounts/{account}`</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Required. List of fields being updated.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Merchant.accounts_v1beta.Data.Account Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "patch";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "accounts/v1beta/{+name}";
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^accounts/[^/]+$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Updates the business identity of an account. Executing this method requires admin access.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">
+        /// Identifier. The resource name of the business identity. Format: `accounts/{account}/businessIdentity`
+        /// </param>
+        public virtual UpdateBusinessIdentityRequest UpdateBusinessIdentity(Google.Apis.Merchant.accounts_v1beta.Data.BusinessIdentity body, string name)
+        {
+            return new UpdateBusinessIdentityRequest(this.service, body, name);
+        }
+
+        /// <summary>Updates the business identity of an account. Executing this method requires admin access.</summary>
+        public class UpdateBusinessIdentityRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.BusinessIdentity>
+        {
+            /// <summary>Constructs a new UpdateBusinessIdentity request.</summary>
+            public UpdateBusinessIdentityRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1beta.Data.BusinessIdentity body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Identifier. The resource name of the business identity. Format: `accounts/{account}/businessIdentity`
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Required. List of fields being updated.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Merchant.accounts_v1beta.Data.BusinessIdentity Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "updateBusinessIdentity";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "accounts/v1beta/{+name}";
+
+            /// <summary>Initializes UpdateBusinessIdentity parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^accounts/[^/]+/businessIdentity$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Updates the business info of an account. Executing this method requires admin access.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">
+        /// Identifier. The resource name of the business info. Format: `accounts/{account}/businessInfo`
+        /// </param>
+        public virtual UpdateBusinessInfoRequest UpdateBusinessInfo(Google.Apis.Merchant.accounts_v1beta.Data.BusinessInfo body, string name)
+        {
+            return new UpdateBusinessInfoRequest(this.service, body, name);
+        }
+
+        /// <summary>Updates the business info of an account. Executing this method requires admin access.</summary>
+        public class UpdateBusinessInfoRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.BusinessInfo>
+        {
+            /// <summary>Constructs a new UpdateBusinessInfo request.</summary>
+            public UpdateBusinessInfoRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1beta.Data.BusinessInfo body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Identifier. The resource name of the business info. Format: `accounts/{account}/businessInfo`
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Required. List of fields being updated.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Merchant.accounts_v1beta.Data.BusinessInfo Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "updateBusinessInfo";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "accounts/v1beta/{+name}";
+
+            /// <summary>Initializes UpdateBusinessInfo parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^accounts/[^/]+/businessInfo$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Updates a store's homepage. Executing this method requires admin access.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">
+        /// Identifier. The resource name of the store's homepage. Format: `accounts/{account}/homepage`
+        /// </param>
+        public virtual UpdateHomepageRequest UpdateHomepage(Google.Apis.Merchant.accounts_v1beta.Data.Homepage body, string name)
+        {
+            return new UpdateHomepageRequest(this.service, body, name);
+        }
+
+        /// <summary>Updates a store's homepage. Executing this method requires admin access.</summary>
+        public class UpdateHomepageRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.Homepage>
+        {
+            /// <summary>Constructs a new UpdateHomepage request.</summary>
+            public UpdateHomepageRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1beta.Data.Homepage body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Identifier. The resource name of the store's homepage. Format: `accounts/{account}/homepage`
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Required. List of fields being updated.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Merchant.accounts_v1beta.Data.Homepage Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "updateHomepage";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "accounts/v1beta/{+name}";
+
+            /// <summary>Initializes UpdateHomepage parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^accounts/[^/]+/homepage$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
+    /// <summary>The "termsOfService" collection of methods.</summary>
+    public class TermsOfServiceResource
+    {
+        private const string Resource = "termsOfService";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public TermsOfServiceResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Accepts a `TermsOfService`. Executing this method requires admin access.</summary>
+        /// <param name="name">
+        /// Required. The resource name of the terms of service version. Format: `termsOfService/{version}`
+        /// </param>
+        public virtual AcceptRequest Accept(string name)
+        {
+            return new AcceptRequest(this.service, name);
+        }
+
+        /// <summary>Accepts a `TermsOfService`. Executing this method requires admin access.</summary>
+        public class AcceptRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.Empty>
+        {
+            /// <summary>Constructs a new Accept request.</summary>
+            public AcceptRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The resource name of the terms of service version. Format: `termsOfService/{version}`
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Required. The account for which to accept the ToS.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("account", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Account { get; set; }
+
+            /// <summary>
+            /// Required. Region code as defined by [CLDR](https://cldr.unicode.org/). This is either a country when the
+            /// ToS applies specifically to that country or 001 when it applies globally.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("regionCode", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RegionCode { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "accept";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "accounts/v1beta/{+name}:accept";
+
+            /// <summary>Initializes Accept parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^termsOfService/[^/]+$",
+                });
+                RequestParameters.Add("account", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "account",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("regionCode", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "regionCode",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Retrieves the `TermsOfService` associated with the provided version.</summary>
+        /// <param name="name">
+        /// Required. The resource name of the terms of service version. Format: `termsOfService/{version}`
+        /// </param>
+        public virtual GetRequest Get(string name)
+        {
+            return new GetRequest(this.service, name);
+        }
+
+        /// <summary>Retrieves the `TermsOfService` associated with the provided version.</summary>
+        public class GetRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.TermsOfService>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The resource name of the terms of service version. Format: `termsOfService/{version}`
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "accounts/v1beta/{+name}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^termsOfService/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Retrieves the latest version of the `TermsOfService` for a given `kind` and `region_code`.
+        /// </summary>
+        public virtual RetrieveLatestRequest RetrieveLatest()
+        {
+            return new RetrieveLatestRequest(this.service);
+        }
+
+        /// <summary>
+        /// Retrieves the latest version of the `TermsOfService` for a given `kind` and `region_code`.
+        /// </summary>
+        public class RetrieveLatestRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.TermsOfService>
+        {
+            /// <summary>Constructs a new RetrieveLatest request.</summary>
+            public RetrieveLatestRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>The Kind this terms of service version applies to.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("kind", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<KindEnum> Kind { get; set; }
+
+            /// <summary>The Kind this terms of service version applies to.</summary>
+            public enum KindEnum
+            {
+                /// <summary>Default value. This value is unused.</summary>
+                [Google.Apis.Util.StringValueAttribute("TERMS_OF_SERVICE_KIND_UNSPECIFIED")]
+                TERMSOFSERVICEKINDUNSPECIFIED = 0,
+
+                /// <summary>Merchant Center application.</summary>
+                [Google.Apis.Util.StringValueAttribute("MERCHANT_CENTER")]
+                MERCHANTCENTER = 1,
+            }
+
+            /// <summary>
+            /// Region code as defined by [CLDR](https://cldr.unicode.org/). This is either a country when the ToS
+            /// applies specifically to that country or 001 when it applies globally.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("regionCode", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RegionCode { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "retrieveLatest";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "accounts/v1beta/termsOfService:retrieveLatest";
+
+            /// <summary>Initializes RetrieveLatest parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("kind", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "kind",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("regionCode", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "regionCode",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+}
+namespace Google.Apis.Merchant.accounts_v1beta.Data
+{
+    /// <summary>Reference to a Terms of Service resource.</summary>
+    public class AcceptTermsOfService : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The resource name of the terms of service version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. Region code as defined by [CLDR](https://cldr.unicode.org/). This is either a country when the ToS
+        /// applies specifically to that country or `001` when it applies globally.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes the accepted terms of service.</summary>
+    public class Accepted : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The account where the acceptance was recorded. This can be the account itself or, in the case of
+        /// subaccounts, the MCA account.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acceptedBy")]
+        public virtual string AcceptedBy { get; set; }
+
+        /// <summary>The accepted [termsOfService](google.shopping.merchant.accounts.v1main.TermsOfService).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("termsOfService")]
+        public virtual string TermsOfService { get; set; }
+
+        /// <summary>
+        /// When set, it states that the accepted
+        /// [TermsOfService](google.shopping.merchant.accounts.v1main.TermsOfService) is only valid until the end of
+        /// this date (in UTC). A new one must be accepted before then. The information of the required
+        /// [TermsOfService](google.shopping.merchant.accounts.v1main.TermsOfService) is found in the
+        /// [Required](Required) message.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validUntil")]
+        public virtual Date ValidUntil { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An account.</summary>
+    public class Account : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The ID of the account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
+        public virtual System.Nullable<long> AccountId { get; set; }
+
+        /// <summary>
+        /// Required. A human-readable name of the account. See [store
+        /// name](https://support.google.com/merchants/answer/160556) and [business
+        /// name](https://support.google.com/merchants/answer/12159159) for more information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountName")]
+        public virtual string AccountName { get; set; }
+
+        /// <summary>Whether this account contains adult content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adultContent")]
+        public virtual System.Nullable<bool> AdultContent { get; set; }
+
+        /// <summary>
+        /// Required. The account's [BCP-47 language code](https://tools.ietf.org/html/bcp47), such as `en-US` or
+        /// `sr-Latn`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>Identifier. The resource name of the account. Format: `accounts/{account}`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Whether this is a test account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testAccount")]
+        public virtual System.Nullable<bool> TestAccount { get; set; }
+
+        /// <summary>
+        /// Required. The time zone of the account. On writes, `time_zone` sets both the `reporting_time_zone` and the
+        /// `display_time_zone`. For reads, `time_zone` always returns the `display_time_zone`. If `display_time_zone`
+        /// doesn't exist for your account, `time_zone` is empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
+        public virtual TimeZone TimeZone { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An [`AccountIssue`](https://support.google.com/merchants/answer/12153802?sjid=17798438912526418908-EU#account).
+    /// </summary>
+    public class AccountIssue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Further localized details about the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detail")]
+        public virtual string Detail { get; set; }
+
+        /// <summary>
+        /// Link to Merchant Center Help Center providing further information about the issue and how to fix it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentationUri")]
+        public virtual string DocumentationUri { get; set; }
+
+        /// <summary>The impact this issue has on various destinations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("impactedDestinations")]
+        public virtual System.Collections.Generic.IList<ImpactedDestination> ImpactedDestinations { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the account issue. Format: `accounts/{account}/issues/{id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The overall severity of the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; }
+
+        /// <summary>The localized title of the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The tax settings of a merchant account. All methods require the admin role.</summary>
+    public class AccountTax : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The ID of the account to which these account tax settings belong.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("account")]
+        public virtual System.Nullable<long> Account { get; set; }
+
+        /// <summary>Identifier. The name of the tax setting. Format: "{account_tax.name=accounts/{account}}"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Tax rules. "Define the tax rules in each region. No tax will be presented if a region has no rule."
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taxRules")]
+        public virtual System.Collections.Generic.IList<TaxRule> TaxRules { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Additional instructions to add account services during creation of the account.</summary>
+    public class AddAccountService : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The provider is an aggregator for the account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountAggregation")]
+        public virtual Empty AccountAggregation { get; set; }
+
+        /// <summary>Optional. The provider of the service. Format: `accounts/{account}`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provider")]
+        public virtual string Provider { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Shipping address of the warehouse.</summary>
+    public class Address : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Top-level administrative subdivision of the country. For example, a state like California ("CA")
+        /// or a province like Quebec ("QC").
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("administrativeArea")]
+        public virtual string AdministrativeArea { get; set; }
+
+        /// <summary>
+        /// Required. City, town or commune. May also include dependent localities or sublocalities (For example
+        /// neighborhoods or suburbs).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("city")]
+        public virtual string City { get; set; }
+
+        /// <summary>Required. Postal code or ZIP (For example "94043").</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postalCode")]
+        public virtual string PostalCode { get; set; }
+
+        /// <summary>
+        /// Required. [CLDR country code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml) (For example
+        /// "US").
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
+
+        /// <summary>Street-level part of the address. For example: `111w 31st Street`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("streetAddress")]
+        public virtual string StreetAddress { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Business days of the warehouse.</summary>
+    public class BusinessDayConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Regular business days. May not be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("businessDays")]
+        public virtual System.Collections.Generic.IList<string> BusinessDays { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Collection of information related to the [identity of a
+    /// business](https://support.google.com/merchants/answer/12564247).
+    /// </summary>
+    public class BusinessIdentity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Specifies whether the business identifies itself as being black-owned. This optional field will
+        /// only be available for merchants with a business country set to `US`. It is also not applicable for
+        /// marketplaces or marketplace sellers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blackOwned")]
+        public virtual IdentityAttribute BlackOwned { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies whether the business identifies itself as being latino-owned. This optional field will
+        /// only be available for merchants with a business country set to `US`. It is also not applicable for
+        /// marketplaces or marketplace sellers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latinoOwned")]
+        public virtual IdentityAttribute LatinoOwned { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the business identity. Format: `accounts/{account}/businessIdentity`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. Whether the identity attributes may be used for promotions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promotionsConsent")]
+        public virtual string PromotionsConsent { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies whether the business identifies itself as a small business. This optional field will
+        /// only be available for merchants with a business country set to `US`. It is also not applicable for
+        /// marketplaces.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("smallBusiness")]
+        public virtual IdentityAttribute SmallBusiness { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies whether the business identifies itself as being veteran-owned. This optional field will
+        /// only be available for merchants with a business country set to `US`. It is also not applicable for
+        /// marketplaces or marketplace sellers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("veteranOwned")]
+        public virtual IdentityAttribute VeteranOwned { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies whether the business identifies itself as being women-owned. This optional field will
+        /// only be available for merchants with a business country set to `US`. It is also not applicable for
+        /// marketplaces or marketplace sellers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("womenOwned")]
+        public virtual IdentityAttribute WomenOwned { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Collection of information related to a business.</summary>
+    public class BusinessInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The address of the business.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("address")]
+        public virtual PostalAddress Address { get; set; }
+
+        /// <summary>Optional. The customer service of the business.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerService")]
+        public virtual CustomerService CustomerService { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the business info. Format: `accounts/{account}/businessInfo`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The phone number of the business.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phone")]
+        public virtual PhoneNumber Phone { get; set; }
+
+        /// <summary>Output only. The phone verification state of the business.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneVerificationState")]
+        public virtual string PhoneVerificationState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of carrier rates that can be referred to by `main_table` or `single_value`.</summary>
+    public class CarrierRate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Carrier service, such as `"UPS"` or `"Fedex"`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("carrier")]
+        public virtual string Carrier { get; set; }
+
+        /// <summary>Required. Carrier service, such as `"ground"` or `"2 days"`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("carrierService")]
+        public virtual string CarrierService { get; set; }
+
+        /// <summary>
+        /// Optional. Additive shipping rate modifier. Can be negative. For example `{ "amount_micros": 1,
+        /// "currency_code" : "USD" }` adds $1 to the rate, `{ "amount_micros": -3, "currency_code" : "USD" }` removes
+        /// $3 from the rate.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flatAdjustment")]
+        public virtual Price FlatAdjustment { get; set; }
+
+        /// <summary>Required. Name of the carrier rate. Must be unique per rate group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. Shipping origin for this carrier rate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originPostalCode")]
+        public virtual string OriginPostalCode { get; set; }
+
+        /// <summary>
+        /// Optional. Multiplicative shipping rate modifier as a number in decimal notation. Can be negative. For
+        /// example `"5.4"` increases the rate by 5.4%, `"-3"` decreases the rate by 3%.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percentageAdjustment")]
+        public virtual string PercentageAdjustment { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for the `ClaimHomepage` method.</summary>
+    public class ClaimHomepageRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for the `CreateAndConfigureAccount` method.</summary>
+    public class CreateAndConfigureAccountRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The Terms of Service (ToS) to be accepted immediately upon account creation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acceptTermsOfService")]
+        public virtual AcceptTermsOfService AcceptTermsOfService { get; set; }
+
+        /// <summary>Required. The account to be created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("account")]
+        public virtual Account Account { get; set; }
+
+        /// <summary>
+        /// Optional. If specified, an account service between the account to be created and the provider account is
+        /// initialized as part of the creation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual System.Collections.Generic.IList<AddAccountService> Service { get; set; }
+
+        /// <summary>Optional. Users to be added to the account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("users")]
+        public virtual System.Collections.Generic.IList<CreateUserRequest> Users { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for the `CreateUser` method.</summary>
+    public class CreateUserRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The resource name of the account for which a user will be created. Format: `accounts/{account}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>Required. The user to create.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("user")]
+        public virtual User User { get; set; }
+
+        /// <summary>Required. The email address of the user (for example, `john.doe@gmail.com`).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userId")]
+        public virtual string UserId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Customer service information.</summary>
+    public class CustomerService : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The email address where customer service may be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; }
+
+        /// <summary>Optional. The phone number where customer service may be called.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phone")]
+        public virtual PhoneNumber Phone { get; set; }
+
+        /// <summary>Optional. The URI where customer service may be found.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configs related to local delivery ends for the day.</summary>
+    public class CutoffConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Time that local delivery ends for the day.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localCutoffTime")]
+        public virtual LocalCutoffTime LocalCutoffTime { get; set; }
+
+        /// <summary>
+        /// Merchants can opt-out of showing n+1 day local delivery when they have a shipping service configured to n
+        /// day local delivery. For example, if the shipping service defines same-day delivery, and it's past the
+        /// cut-off, setting this field to `true` results in the calculated shipping service rate returning
+        /// `NO_DELIVERY_POST_CUTOFF`. In the same example, setting this field to `false` results in the calculated
+        /// shipping time being one day. This is only for local delivery.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noDeliveryPostCutoff")]
+        public virtual System.Nullable<bool> NoDeliveryPostCutoff { get; set; }
+
+        /// <summary>
+        /// Only valid with local delivery fulfillment. Represents cutoff time as the number of hours before store
+        /// closing. Mutually exclusive with `local_cutoff_time`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storeCloseOffsetHours")]
+        public virtual System.Nullable<long> StoreCloseOffsetHours { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Business days cutoff time definition.</summary>
+    public class CutoffTime : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Hour of the cutoff time until which an order has to be placed to be processed in the same day.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hour")]
+        public virtual System.Nullable<int> Hour { get; set; }
+
+        /// <summary>
+        /// Required. Minute of the cutoff time until which an order has to be placed to be processed in the same day.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minute")]
+        public virtual System.Nullable<int> Minute { get; set; }
+
+        /// <summary>
+        /// Required. [Timezone
+        /// identifier](https://developers.google.com/adwords/api/docs/appendix/codes-formats#timezone-ids) For example
+        /// "Europe/Zurich".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
+        public virtual string TimeZone { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
+    /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
+    /// of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year
+    /// (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a
+    /// zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay *
+    /// google.type.DateTime * google.protobuf.Timestamp
+    /// </summary>
+    public class Date : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a
+        /// year and month where the day isn't significant.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("day")]
+        public virtual System.Nullable<int> Day { get; set; }
+
+        /// <summary>Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("month")]
+        public virtual System.Nullable<int> Month { get; set; }
+
+        /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("year")]
+        public virtual System.Nullable<int> Year { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Time spent in various aspects from order to the delivery of the product.</summary>
+    public class DeliveryTime : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Business days cutoff time definition. If not configured the cutoff time will be defaulted to 8AM PST.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cutoffTime")]
+        public virtual CutoffTime CutoffTime { get; set; }
+
+        /// <summary>
+        /// The business days during which orders can be handled. If not provided, Monday to Friday business days will
+        /// be assumed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("handlingBusinessDayConfig")]
+        public virtual BusinessDayConfig HandlingBusinessDayConfig { get; set; }
+
+        /// <summary>
+        /// Maximum number of business days spent before an order is shipped. 0 means same day shipped, 1 means next day
+        /// shipped. Must be greater than or equal to `min_handling_days`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxHandlingDays")]
+        public virtual System.Nullable<int> MaxHandlingDays { get; set; }
+
+        /// <summary>
+        /// Maximum number of business days that is spent in transit. 0 means same day delivery, 1 means next day
+        /// delivery. Must be greater than or equal to `min_transit_days`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxTransitDays")]
+        public virtual System.Nullable<int> MaxTransitDays { get; set; }
+
+        /// <summary>
+        /// Minimum number of business days spent before an order is shipped. 0 means same day shipped, 1 means next day
+        /// shipped.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minHandlingDays")]
+        public virtual System.Nullable<int> MinHandlingDays { get; set; }
+
+        /// <summary>
+        /// Minimum number of business days that is spent in transit. 0 means same day delivery, 1 means next day
+        /// delivery. Either `min_transit_days`, `max_transit_days` or `transit_time_table` must be set, but not both.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minTransitDays")]
+        public virtual System.Nullable<int> MinTransitDays { get; set; }
+
+        /// <summary>
+        /// The business days during which orders can be in-transit. If not provided, Monday to Friday business days
+        /// will be assumed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transitBusinessDayConfig")]
+        public virtual BusinessDayConfig TransitBusinessDayConfig { get; set; }
+
+        /// <summary>
+        /// Transit time table, number of business days spent in transit based on row and column dimensions. Either
+        /// `min_transit_days`, `max_transit_days` or `transit_time_table` can be set, but not both.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transitTimeTable")]
+        public virtual TransitTable TransitTimeTable { get; set; }
+
+        /// <summary>
+        /// Optional. Indicates that the delivery time should be calculated per warehouse (shipping origin location)
+        /// based on the settings of the selected carrier. When set, no other transit time related field in delivery
+        /// time should be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warehouseBasedDeliveryTimes")]
+        public virtual System.Collections.Generic.IList<WarehouseBasedDeliveryTime> WarehouseBasedDeliveryTimes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for the DisableProgram method.</summary>
+    public class DisableProgramRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Maximum delivery radius. This is only required for the local delivery shipment type.</summary>
+    public class Distance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Unit can differ based on country, it is parameterized to include miles and kilometers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unit")]
+        public virtual string Unit { get; set; }
+
+        /// <summary>Integer value of distance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Nullable<long> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The categories of notifications the user opted into / opted out of. The email preferences do not include
+    /// mandatory announcements as users can't opt out of them.
+    /// </summary>
+    public class EmailPreferences : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Identifier. The name of the EmailPreferences. The endpoint is only supported for the authenticated user.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. Updates on new features, tips and best practices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newsAndTips")]
+        public virtual string NewsAndTips { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
+    /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
+    /// </summary>
+    public class Empty : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for the EnableProgram method.</summary>
+    public class EnableProgramRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of geotargets that defines the region area.</summary>
+    public class GeoTargetArea : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A non-empty list of [location
+        /// IDs](https://developers.google.com/adwords/api/docs/appendix/geotargeting). They must all be of the same
+        /// location type (for example, state).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geotargetCriteriaIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> GeotargetCriteriaIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A non-empty list of row or column headers for a table. Exactly one of `prices`, `weights`, `num_items`,
+    /// `postal_code_group_names`, or `location` must be set.
+    /// </summary>
+    public class Headers : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A list of location ID sets. Must be non-empty. Can only be set if all other fields are not set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locations")]
+        public virtual System.Collections.Generic.IList<LocationIdSet> Locations { get; set; }
+
+        /// <summary>
+        /// Required. A list of inclusive number of items upper bounds. The last value can be `"infinity"`. For example
+        /// `["10", "50", "infinity"]` represents the headers "&amp;lt;= 10 items", "&amp;lt;= 50 items", and "&amp;gt;
+        /// 50 items". Must be non-empty. Can only be set if all other fields are not set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numberOfItems")]
+        public virtual System.Collections.Generic.IList<string> NumberOfItems { get; set; }
+
+        /// <summary>
+        /// Required. A list of postal group names. The last value can be `"all other locations"`. Example: `["zone 1",
+        /// "zone 2", "all other locations"]`. The referred postal code groups must match the delivery country of the
+        /// service. Must be non-empty. Can only be set if all other fields are not set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postalCodeGroupNames")]
+        public virtual System.Collections.Generic.IList<string> PostalCodeGroupNames { get; set; }
+
+        /// <summary>
+        /// Required. A list of inclusive order price upper bounds. The last price's value can be infinity by setting
+        /// price amount_micros = -1. For example `[{"amount_micros": 10000000, "currency_code": "USD"},
+        /// {"amount_micros": 500000000, "currency_code": "USD"}, {"amount_micros": -1, "currency_code": "USD"}]`
+        /// represents the headers "&amp;lt;= $10", "&amp;lt;= $500", and "&amp;gt; $500". All prices within a service
+        /// must have the same currency. Must be non-empty. Must be positive except -1. Can only be set if all other
+        /// fields are not set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prices")]
+        public virtual System.Collections.Generic.IList<Price> Prices { get; set; }
+
+        /// <summary>
+        /// Required. A list of inclusive order weight upper bounds. The last weight's value can be infinity by setting
+        /// price amount_micros = -1. For example `[{"amount_micros": 10000000, "unit": "kg"}, {"amount_micros":
+        /// 50000000, "unit": "kg"}, {"amount_micros": -1, "unit": "kg"}]` represents the headers "&amp;lt;= 10kg",
+        /// "&amp;lt;= 50kg", and "&amp;gt; 50kg". All weights within a service must have the same unit. Must be
+        /// non-empty. Must be positive except -1. Can only be set if all other fields are not set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("weights")]
+        public virtual System.Collections.Generic.IList<Weight> Weights { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A store's homepage.</summary>
+    public class Homepage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Whether the homepage is claimed. See https://support.google.com/merchants/answer/176793.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("claimed")]
+        public virtual System.Nullable<bool> Claimed { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the store's homepage. Format: `accounts/{account}/homepage`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. The URI (typically a URL) of the store's homepage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>All information related to an identity attribute.</summary>
+    public class IdentityAttribute : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The declaration of identity for this attribute.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identityDeclaration")]
+        public virtual string IdentityDeclaration { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The impact of the issue on a region.</summary>
+    public class Impact : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The [CLDR region code](https://cldr.unicode.org/) where this issue applies.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
+
+        /// <summary>The severity of the issue on the destination and region.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The impact of the issue on a destination.</summary>
+    public class ImpactedDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The (negative) impact for various regions on the given destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("impacts")]
+        public virtual System.Collections.Generic.IList<Impact> Impacts { get; set; }
+
+        /// <summary>The impacted reporting context.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportingContext")]
+        public virtual string ReportingContext { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive). The start
+    /// must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time).
+    /// When both start and end are unspecified, the interval matches any time.
+    /// </summary>
+    public class Interval : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>
+        /// Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be
+        /// before the end.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>
+        /// Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be
+        /// the same or after the start.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for the `ListAccountIssues` method.</summary>
+    public class ListAccountIssuesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The issues from the specified account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountIssues")]
+        public virtual System.Collections.Generic.IList<AccountIssue> AccountIssues { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response to account tax list request This method can only be called on a multi-client account, otherwise it'll
+    /// return an error.
+    /// </summary>
+    public class ListAccountTaxResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Page of accounttax settings</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountTaxes")]
+        public virtual System.Collections.Generic.IList<AccountTax> AccountTaxes { get; set; }
+
+        /// <summary>The token for the retrieval of the next page of account tax settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for the `ListAccounts` method.</summary>
+    public class ListAccountsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The accounts matching the `ListAccountsRequest`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accounts")]
+        public virtual System.Collections.Generic.IList<Account> Accounts { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for the `ListOnlineReturnPolicies` method.</summary>
+    public class ListOnlineReturnPoliciesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The retrieved return policies.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onlineReturnPolicies")]
+        public virtual System.Collections.Generic.IList<OnlineReturnPolicy> OnlineReturnPolicies { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for the ListPrograms method.</summary>
+    public class ListProgramsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The programs for the given account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("programs")]
+        public virtual System.Collections.Generic.IList<Program> Programs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for the `ListRegions` method.</summary>
+    public class ListRegionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The regions from the specified merchant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regions")]
+        public virtual System.Collections.Generic.IList<Region> Regions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for the `ListSubAccounts` method.</summary>
+    public class ListSubAccountsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The accounts for which the given parent account is an aggregator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accounts")]
+        public virtual System.Collections.Generic.IList<Account> Accounts { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for the `ListUsers` method.</summary>
+    public class ListUsersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The users from the specified account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("users")]
+        public virtual System.Collections.Generic.IList<User> Users { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Time that local delivery ends for the day.</summary>
+    public class LocalCutoffTime : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Hour local delivery orders must be placed by to process the same day.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hour")]
+        public virtual System.Nullable<long> Hour { get; set; }
+
+        /// <summary>Minute local delivery orders must be placed by to process the same day.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minute")]
+        public virtual System.Nullable<long> Minute { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A list of location ID sets. Must be non-empty. Can only be set if all other fields are not set.
+    /// </summary>
+    public class LocationIdSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A non-empty list of [location
+        /// IDs](https://developers.google.com/adwords/api/docs/appendix/geotargeting). They must all be of the same
+        /// location type (For example, state).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationIds")]
+        public virtual System.Collections.Generic.IList<string> LocationIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// [Loyalty program](https://support.google.com/merchants/answer/12922446) provided by a merchant.
+    /// </summary>
+    public class LoyaltyProgram : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Loyalty program tier of this shipping service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loyaltyProgramTiers")]
+        public virtual System.Collections.Generic.IList<LoyaltyProgramTiers> LoyaltyProgramTiers { get; set; }
+
+        /// <summary>
+        /// This is the loyalty program label set in your loyalty program settings in Merchant Center. This
+        /// sub-attribute allows Google to map your loyalty program to eligible offers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("programLabel")]
+        public virtual string ProgramLabel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Subset of a merchants loyalty program.</summary>
+    public class LoyaltyProgramTiers : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The tier label [tier_label] sub-attribute differentiates offer level benefits between each tier. This value
+        /// is also set in your program settings in Merchant Center, and is required for data source changes even if
+        /// your loyalty program only has 1 tier.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tierLabel")]
+        public virtual string TierLabel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Table of per store minimum order values for the pickup fulfillment type.</summary>
+    public class MinimumOrderValueTable : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A list of store code sets sharing the same minimum order value (MOV). At least two sets are
+        /// required and the last one must be empty, which signifies 'MOV for all other stores'. Each store code can
+        /// only appear once across all the sets. All prices within a service must have the same currency.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storeCodeSetWithMovs")]
+        public virtual System.Collections.Generic.IList<StoreCodeSetWithMov> StoreCodeSetWithMovs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// [Online return policy](https://support.google.com/merchants/answer/10220642) object. This is currently used to
+    /// represent return policies for ads and free listings programs.
+    /// </summary>
+    public class OnlineReturnPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// This field specifies if merchant only accepts defective products for returns, and this field is required.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acceptDefectiveOnly")]
+        public virtual System.Nullable<bool> AcceptDefectiveOnly { get; set; }
+
+        /// <summary>
+        /// This field specifies if merchant allows customers to exchange products, this field is required.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acceptExchange")]
+        public virtual System.Nullable<bool> AcceptExchange { get; set; }
+
+        /// <summary>
+        /// The countries of sale where the return policy applies. The values must be a valid 2 letter ISO 3166 code.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countries")]
+        public virtual System.Collections.Generic.IList<string> Countries { get; set; }
+
+        /// <summary>
+        /// The item conditions accepted for returns must not be empty unless the type of return policy is 'noReturns'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("itemConditions")]
+        public virtual System.Collections.Generic.IList<string> ItemConditions { get; set; }
+
+        /// <summary>
+        /// This field represents the unique user-defined label of the return policy. It is important to note that the
+        /// same label cannot be used in different return policies for the same country. Unless a product specifies a
+        /// specific label attribute, policies will be automatically labeled as 'default'. To assign a custom return
+        /// policy to certain product groups, follow the instructions provided in the [Return policy label]
+        /// (https://support.google.com/merchants/answer/9445425). The label can contain up to 50 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; }
+
+        /// <summary>
+        /// Identifier. The name of the `OnlineReturnPolicy` resource. Format:
+        /// `accounts/{account}/onlineReturnPolicies/{return_policy}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The return policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
+        public virtual Policy Policy { get; set; }
+
+        /// <summary>
+        /// The field specifies the number of days it takes for merchants to process refunds, field is optional.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processRefundDays")]
+        public virtual System.Nullable<int> ProcessRefundDays { get; set; }
+
+        /// <summary>
+        /// The restocking fee that applies to all return reason categories. This would be treated as a free restocking
+        /// fee if the value is not set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restockingFee")]
+        public virtual RestockingFee RestockingFee { get; set; }
+
+        /// <summary>
+        /// The return methods of how customers can return an item. This value is required to not be empty unless the
+        /// type of return policy is noReturns.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnMethods")]
+        public virtual System.Collections.Generic.IList<string> ReturnMethods { get; set; }
+
+        /// <summary>Output only. Return policy ID generated by Google.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnPolicyId")]
+        public virtual string ReturnPolicyId { get; set; }
+
+        /// <summary>
+        /// The return policy uri. This can used by Google to do a sanity check for the policy. It must be a valid URL.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnPolicyUri")]
+        public virtual string ReturnPolicyUri { get; set; }
+
+        /// <summary>
+        /// The return shipping fee. Should be set only when customer need to download and print the return label.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnShippingFee")]
+        public virtual ReturnShippingFee ReturnShippingFee { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An object representing a phone number, suitable as an API wire format. This representation: - should not be used
+    /// for locale-specific formatting of a phone number, such as "+1 (650) 253-0000 ext. 123" - is not designed for
+    /// efficient storage - may not be suitable for dialing - specialized libraries (see references) should be used to
+    /// parse the number for that purpose To do something meaningful with this number, such as format it for various
+    /// use-cases, convert it to an `i18n.phonenumbers.PhoneNumber` object first. For instance, in Java this would be:
+    /// com.google.type.PhoneNumber wireProto = com.google.type.PhoneNumber.newBuilder().build();
+    /// com.google.i18n.phonenumbers.Phonenumber.PhoneNumber phoneNumber =
+    /// PhoneNumberUtil.getInstance().parse(wireProto.getE164Number(), "ZZ"); if (!wireProto.getExtension().isEmpty()) {
+    /// phoneNumber.setExtension(wireProto.getExtension()); } Reference(s): - https://github.com/google/libphonenumber
+    /// </summary>
+    public class PhoneNumber : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The phone number, represented as a leading plus sign ('+'), followed by a phone number that uses a relaxed
+        /// ITU E.164 format consisting of the country calling code (1 to 3 digits) and the subscriber number, with no
+        /// additional spaces or formatting, e.g.: - correct: "+15552220123" - incorrect: "+1 (555) 222-01234 x123". The
+        /// ITU E.164 format limits the latter to 12 digits, but in practice not all countries respect that, so we relax
+        /// that restriction here. National-only numbers are not allowed. References: -
+        /// https://www.itu.int/rec/T-REC-E.164-201011-I - https://en.wikipedia.org/wiki/E.164. -
+        /// https://en.wikipedia.org/wiki/List_of_country_calling_codes
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("e164Number")]
+        public virtual string E164Number { get; set; }
+
+        /// <summary>
+        /// The phone number's extension. The extension is not standardized in ITU recommendations, except for being
+        /// defined as a series of numbers with a maximum length of 40 digits. Other than digits, some other dialing
+        /// characters such as ',' (indicating a wait) or '#' may be stored here. Note that no regions currently use
+        /// extensions with short codes, so this field is normally only set in conjunction with an E.164 number. It is
+        /// held separately from the E.164 number to allow for short code extensions in the future.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extension")]
+        public virtual string Extension { get; set; }
+
+        /// <summary>A short code. Reference(s): - https://en.wikipedia.org/wiki/Short_code</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shortCode")]
+        public virtual ShortCode ShortCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The available policies.</summary>
+    public class Policy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The number of days items can be returned after delivery, where one day is defined as 24 hours after the
+        /// delivery timestamp. Required for `NUMBER_OF_DAYS_AFTER_DELIVERY` returns.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("days")]
+        public virtual System.Nullable<long> Days { get; set; }
+
+        /// <summary>Policy type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a postal address, e.g. for postal delivery or payments addresses. Given a postal address, a postal
+    /// service can deliver items to a premise, P.O. Box or similar. It is not intended to model geographical locations
+    /// (roads, towns, mountains). In typical usage an address would be created via user input or from importing
+    /// existing data, depending on the type of process. Advice on address input / editing: - Use an
+    /// internationalization-ready address widget such as https://github.com/google/libaddressinput) - Users should not
+    /// be presented with UI elements for input or editing of fields outside countries where that field is used. For
+    /// more guidance on how to use this schema, please see: https://support.google.com/business/answer/6397478
+    /// </summary>
+    public class PostalAddress : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Unstructured address lines describing the lower levels of an address. Because values in address_lines do not
+        /// have type information and may sometimes contain multiple values in a single field (e.g. "Austin, TX"), it is
+        /// important that the line order is clear. The order of address lines should be "envelope order" for the
+        /// country/region of the address. In places where this can vary (e.g. Japan), address_language is used to make
+        /// it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way, the
+        /// most specific line of an address can be selected based on the language. The minimum permitted structural
+        /// representation of an address consists of a region_code with all remaining information placed in the
+        /// address_lines. It would be possible to format such an address very approximately without geocoding, but no
+        /// semantic reasoning could be made about any of the address components until it was at least partially
+        /// resolved. Creating an address only containing a region_code and address_lines, and then geocoding is the
+        /// recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the
+        /// address should be localities or administrative areas).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addressLines")]
+        public virtual System.Collections.Generic.IList<string> AddressLines { get; set; }
+
+        /// <summary>
+        /// Optional. Highest administrative subdivision which is used for postal addresses of a country or region. For
+        /// example, this can be a state, a province, an oblast, or a prefecture. Specifically, for Spain this is the
+        /// province and not the autonomous community (e.g. "Barcelona" and not "Catalonia"). Many countries don't use
+        /// an administrative area in postal addresses. E.g. in Switzerland this should be left unpopulated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("administrativeArea")]
+        public virtual string AdministrativeArea { get; set; }
+
+        /// <summary>
+        /// Optional. BCP-47 language code of the contents of this address (if known). This is often the UI language of
+        /// the input form or is expected to match one of the languages used in the address' country/region, or their
+        /// transliterated equivalents. This can affect formatting in certain countries, but is not critical to the
+        /// correctness of the data and will never affect any validation or other non-formatting related operations. If
+        /// this value is not known, it should be omitted (rather than specifying a possibly incorrect default).
+        /// Examples: "zh-Hant", "ja", "ja-Latn", "en".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>
+        /// Optional. Generally refers to the city/town portion of the address. Examples: US city, IT comune, UK post
+        /// town. In regions of the world where localities are not well defined or do not fit into this structure well,
+        /// leave locality empty and use address_lines.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locality")]
+        public virtual string Locality { get; set; }
+
+        /// <summary>Optional. The name of the organization at the address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organization")]
+        public virtual string Organization { get; set; }
+
+        /// <summary>
+        /// Optional. Postal code of the address. Not all countries use or require postal codes to be present, but where
+        /// they are used, they may trigger additional validation with other parts of the address (e.g. state/zip
+        /// validation in the U.S.A.).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postalCode")]
+        public virtual string PostalCode { get; set; }
+
+        /// <summary>
+        /// Optional. The recipient at the address. This field may, under certain circumstances, contain multiline
+        /// information. For example, it might contain "care of" information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recipients")]
+        public virtual System.Collections.Generic.IList<string> Recipients { get; set; }
+
+        /// <summary>
+        /// Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the
+        /// user to ensure the value is correct. See https://cldr.unicode.org/ and
+        /// https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH"
+        /// for Switzerland.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
+
+        /// <summary>
+        /// The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new
+        /// revisions **must** be backward compatible with old revisions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revision")]
+        public virtual System.Nullable<int> Revision { get; set; }
+
+        /// <summary>
+        /// Optional. Additional, country-specific, sorting code. This is not used in most regions. Where it is used,
+        /// the value is either a string like "CEDEX", optionally followed by a number (e.g. "CEDEX 7"), or just a
+        /// number alone, representing the "sector code" (Jamaica), "delivery area indicator" (Malawi) or "post office
+        /// indicator" (e.g. Côte d'Ivoire).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sortingCode")]
+        public virtual string SortingCode { get; set; }
+
+        /// <summary>
+        /// Optional. Sublocality of the address. For example, this can be neighborhoods, boroughs, districts.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sublocality")]
+        public virtual string Sublocality { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A list of postal codes that defines the region area. Note: All regions defined using postal codes are accessible
+    /// through the account's `ShippingSettings.postalCodeGroups` resource.
+    /// </summary>
+    public class PostalCodeArea : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. A range of postal codes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postalCodes")]
+        public virtual System.Collections.Generic.IList<PostalCodeRange> PostalCodes { get; set; }
+
+        /// <summary>
+        /// Required. [CLDR territory code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml) or the
+        /// country the postal code group applies to.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A range of postal codes that defines the region area.</summary>
+    public class PostalCodeRange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A postal code or a pattern of the form prefix* denoting the inclusive lower bound of the range
+        /// defining the area. Examples values: `94108`, `9410*`, `9*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("begin")]
+        public virtual string Begin { get; set; }
+
+        /// <summary>
+        /// Optional. A postal code or a pattern of the form `prefix*` denoting the inclusive upper bound of the range
+        /// defining the area. It must have the same length as postalCodeRangeBegin: if postalCodeRangeBegin is a postal
+        /// code then postalCodeRangeEnd must be a postal code too; if postalCodeRangeBegin is a pattern then
+        /// postalCodeRangeEnd must be a pattern with the same prefix length. Optional: if not set, then the area is
+        /// defined as being all the postal codes matching postalCodeRangeBegin.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("end")]
+        public virtual string End { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The price represented as a number and currency.</summary>
+    public class Price : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The price represented as a number in micros (1 million micros is an equivalent to one's currency standard
+        /// unit, for example, 1 USD = 1000000 micros).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("amountMicros")]
+        public virtual System.Nullable<long> AmountMicros { get; set; }
+
+        /// <summary>
+        /// The currency of the price using three-letter acronyms according to [ISO
+        /// 4217](http://en.wikipedia.org/wiki/ISO_4217).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
+        public virtual string CurrencyCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The change that happened to the product including old value, new value, country code as the region code and
+    /// reporting context.
+    /// </summary>
+    public class ProductChange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The new value of the changed resource or attribute.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newValue")]
+        public virtual string NewValue { get; set; }
+
+        /// <summary>The old value of the changed resource or attribute.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oldValue")]
+        public virtual string OldValue { get; set; }
+
+        /// <summary>Countries that have the change (if applicable)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
+
+        /// <summary>Reporting contexts that have the change (if applicable)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportingContext")]
+        public virtual string ReportingContext { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The message that the merchant will receive to notify about product status change event</summary>
+    public class ProductStatusChangeMessage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The target account that owns the entity that changed. Format : `accounts/{merchant_id}`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("account")]
+        public virtual string Account { get; set; }
+
+        /// <summary>The attribute in the resource that changed, in this case it will be always `Status`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attribute")]
+        public virtual string Attribute { get; set; }
+
+        /// <summary>A message to describe the change that happened to the product</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("changes")]
+        public virtual System.Collections.Generic.IList<ProductChange> Changes { get; set; }
+
+        /// <summary>
+        /// The account that manages the merchant's account. can be the same as merchant id if it is standalone account.
+        /// Format : `accounts/{service_provider_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managingAccount")]
+        public virtual string ManagingAccount { get; set; }
+
+        /// <summary>The product name. Format: `{product.name=accounts/{account}/products/{product}}`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual string Resource { get; set; }
+
+        /// <summary>The product id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
+        public virtual string ResourceId { get; set; }
+
+        /// <summary>The resource that changed, in this case it will always be `Product`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
+        public virtual string ResourceType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Defines participation in a given program for the specified account. Programs provide a mechanism for adding
+    /// functionality to merchant accounts. A typical example of this is the [Free product
+    /// listings](https://support.google.com/merchants/topic/9240261?ref_topic=7257954,7259405,&amp;amp;sjid=796648681813264022-EU)
+    /// program, which enables products from a merchant's store to be shown across Google for free.
+    /// </summary>
+    public class Program : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The regions in which the account is actively participating in the program. Active regions are
+        /// defined as those where all program requirements affecting the regions have been met. Region codes are
+        /// defined by [CLDR](https://cldr.unicode.org/). This is either a country where the program applies
+        /// specifically to that country or `001` when the program applies globally.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeRegionCodes")]
+        public virtual System.Collections.Generic.IList<string> ActiveRegionCodes { get; set; }
+
+        /// <summary>Output only. The URL of a Merchant Center help page describing the program.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentationUri")]
+        public virtual string DocumentationUri { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the program. Format: `accounts/{account}/programs/{program}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The participation state of the account in the program.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>
+        /// Output only. The requirements that the account has not yet satisfied that are affecting participation in the
+        /// program.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unmetRequirements")]
+        public virtual System.Collections.Generic.IList<Requirement> UnmetRequirements { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Shipping rate group definitions. Only the last one is allowed to have an empty `applicable_shipping_labels`,
+    /// which means "everything else". The other `applicable_shipping_labels` must not overlap.
+    /// </summary>
+    public class RateGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A list of [shipping labels](https://support.google.com/merchants/answer/6324504) defining the
+        /// products to which this rate group applies to. This is a disjunction: only one of the labels has to match for
+        /// the rate group to apply. May only be empty for the last rate group of a service.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicableShippingLabels")]
+        public virtual System.Collections.Generic.IList<string> ApplicableShippingLabels { get; set; }
+
+        /// <summary>
+        /// Optional. A list of carrier rates that can be referred to by `main_table` or `single_value`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("carrierRates")]
+        public virtual System.Collections.Generic.IList<CarrierRate> CarrierRates { get; set; }
+
+        /// <summary>
+        /// A table defining the rate group, when `single_value` is not expressive enough. Can only be set if
+        /// `single_value` is not set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mainTable")]
+        public virtual Table MainTable { get; set; }
+
+        /// <summary>Optional. Name of the rate group. If set has to be unique within shipping service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The value of the rate group (For example flat rate $10). Can only be set if `main_table` and `subtables` are
+        /// not set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("singleValue")]
+        public virtual Value SingleValue { get; set; }
+
+        /// <summary>
+        /// Optional. A list of subtables referred to by `main_table`. Can only be set if `main_table` is set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subtables")]
+        public virtual System.Collections.Generic.IList<Table> Subtables { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a geographic region that you can use as a target with both the `RegionalInventory` and
+    /// `ShippingSettings` services. You can define regions as collections of either postal codes or, in some countries,
+    /// using predefined geotargets. For more information, see [Set up regions
+    /// ](https://support.google.com/merchants/answer/7410946#zippy=%2Ccreate-a-new-region) for more information.
+    /// </summary>
+    public class Region : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The display name of the region.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Optional. A list of geotargets that defines the region area.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geotargetArea")]
+        public virtual GeoTargetArea GeotargetArea { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the region. Format: `accounts/{account}/regions/{region}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. A list of postal codes that defines the region area.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postalCodeArea")]
+        public virtual PostalCodeArea PostalCodeArea { get; set; }
+
+        /// <summary>
+        /// Output only. Indicates if the region is eligible for use in the Regional Inventory configuration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionalInventoryEligible")]
+        public virtual System.Nullable<bool> RegionalInventoryEligible { get; set; }
+
+        /// <summary>
+        /// Output only. Indicates if the region is eligible for use in the Shipping Services configuration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shippingEligible")]
+        public virtual System.Nullable<bool> ShippingEligible { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes the terms of service which are required to be accepted.</summary>
+    public class Required : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The [termsOfService](google.shopping.merchant.accounts.v1main.TermsOfService) that need to be accepted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("termsOfService")]
+        public virtual string TermsOfService { get; set; }
+
+        /// <summary>
+        /// Full URL to the terms of service file. This field is the same as
+        /// [TermsOfService.file_uri](TermsOfService.file_uri), it is added here for convenience only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tosFileUri")]
+        public virtual string TosFileUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines a requirement specified for participation in the program.</summary>
+    public class Requirement : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The regions that are currently affected by this requirement not being met. Region codes are
+        /// defined by [CLDR](https://cldr.unicode.org/). This is either a country where the program applies
+        /// specifically to that country or `001` when the program applies globally.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("affectedRegionCodes")]
+        public virtual System.Collections.Generic.IList<string> AffectedRegionCodes { get; set; }
+
+        /// <summary>Output only. The URL of a help page describing the requirement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentationUri")]
+        public virtual string DocumentationUri { get; set; }
+
+        /// <summary>Output only. Name of the requirement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The restocking fee. This can be a flat fee or a micro percent.</summary>
+    public class RestockingFee : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Fixed restocking fee.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fixedFee")]
+        public virtual Price FixedFee { get; set; }
+
+        /// <summary>
+        /// Percent of total price in micros. 15,000,000 means 15% of the total price would be charged.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("microPercent")]
+        public virtual System.Nullable<int> MicroPercent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The return shipping fee. This can either be a fixed fee or a boolean to indicate that the customer pays the
+    /// actual shipping cost.
+    /// </summary>
+    public class ReturnShippingFee : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Fixed return shipping fee amount. This value is only applicable when type is `FIXED`. We will treat the
+        /// return shipping fee as free if type is `FIXED` and this value is not set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fixedFee")]
+        public virtual Price FixedFee { get; set; }
+
+        /// <summary>Type of return shipping fee.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Include a list of cells.</summary>
+    public class Row : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The list of cells that constitute the row. Must have the same length as `columnHeaders` for
+        /// two-dimensional tables, a length of 1 for one-dimensional tables.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cells")]
+        public virtual System.Collections.Generic.IList<Value> Cells { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Shipping service.</summary>
+    public class Service : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. A boolean exposing the active status of the shipping service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("active")]
+        public virtual System.Nullable<bool> Active { get; set; }
+
+        /// <summary>
+        /// The CLDR code of the currency to which this service applies. Must match that of the prices in rate groups.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
+        public virtual string CurrencyCode { get; set; }
+
+        /// <summary>Required. The CLDR territory code of the countries to which the service applies.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deliveryCountries")]
+        public virtual System.Collections.Generic.IList<string> DeliveryCountries { get; set; }
+
+        /// <summary>Required. Time spent in various aspects from order to the delivery of the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deliveryTime")]
+        public virtual DeliveryTime DeliveryTime { get; set; }
+
+        /// <summary>Optional. Loyalty programs that this shipping service is limited to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loyaltyPrograms")]
+        public virtual System.Collections.Generic.IList<LoyaltyProgram> LoyaltyPrograms { get; set; }
+
+        /// <summary>
+        /// Minimum order value for this service. If set, indicates that customers will have to spend at least this
+        /// amount. All prices within a service must have the same currency. Cannot be set together with
+        /// minimum_order_value_table.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimumOrderValue")]
+        public virtual Price MinimumOrderValue { get; set; }
+
+        /// <summary>
+        /// Table of per store minimum order values for the pickup fulfillment type. Cannot be set together with
+        /// minimum_order_value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimumOrderValueTable")]
+        public virtual MinimumOrderValueTable MinimumOrderValueTable { get; set; }
+
+        /// <summary>
+        /// Optional. Shipping rate group definitions. Only the last one is allowed to have an empty
+        /// `applicable_shipping_labels`, which means "everything else". The other `applicable_shipping_labels` must not
+        /// overlap.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rateGroups")]
+        public virtual System.Collections.Generic.IList<RateGroup> RateGroups { get; set; }
+
+        /// <summary>Required. Free-form name of the service. Must be unique within target account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceName")]
+        public virtual string ServiceName { get; set; }
+
+        /// <summary>Type of locations this service ships orders to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shipmentType")]
+        public virtual string ShipmentType { get; set; }
+
+        /// <summary>
+        /// A list of stores your products are delivered from. This is only valid for the local delivery shipment type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storeConfig")]
+        public virtual StoreConfig StoreConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The merchant account's [shipping setting]((https://support.google.com/merchants/answer/6069284).
+    /// </summary>
+    public class ShippingSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. This field is used for avoid async issue. Make sure shipping setting data didn't change between
+        /// get call and insert call. The user should do following steps： 1. Set etag field as empty string for initial
+        /// shipping setting creation. 2. After initial creation, call get method to obtain an etag and current shipping
+        /// setting data before call insert. 3. Modify to wanted shipping setting information. 4. Call insert method
+        /// with the wanted shipping setting information with the etag obtained from step 2. 5. If shipping setting data
+        /// changed between step 2 and step 4. Insert request will fail because the etag changes every time the shipping
+        /// setting data changes. User should repeate step 2-4 with the new etag.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the shipping setting. Format: `accounts/{account}/shippingSetting`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. The target account's list of services.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("services")]
+        public virtual System.Collections.Generic.IList<Service> Services { get; set; }
+
+        /// <summary>Optional. A list of warehouses which can be referred to in `services`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warehouses")]
+        public virtual System.Collections.Generic.IList<Warehouse> Warehouses { get; set; }
+    }
+
+    /// <summary>
+    /// An object representing a short code, which is a phone number that is typically much shorter than regular phone
+    /// numbers and can be used to address messages in MMS and SMS systems, as well as for abbreviated dialing (e.g.
+    /// "Text 611 to see how many minutes you have remaining on your plan."). Short codes are restricted to a region and
+    /// are not internationally dialable, which means the same short code can exist in different regions, with different
+    /// usage and pricing, even if those regions share the same country calling code (e.g. US and CA).
+    /// </summary>
+    public class ShortCode : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The short code digits, without a leading plus ('+') or country calling code, e.g. "611".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("number")]
+        public virtual string Number { get; set; }
+
+        /// <summary>
+        /// Required. The BCP-47 region code of the location where calls to this short code can be made, such as "US"
+        /// and "BB". Reference(s): - http://www.unicode.org/reports/tr35/#unicode_region_subtag
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A list of store code sets sharing the same minimum order value. At least two sets are required and the last one
+    /// must be empty, which signifies 'MOV for all other stores'. Each store code can only appear once across all the
+    /// sets. All prices within a service must have the same currency.
+    /// </summary>
+    public class StoreCodeSetWithMov : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. A list of unique store codes or empty for the catch all.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storeCodes")]
+        public virtual System.Collections.Generic.IList<string> StoreCodes { get; set; }
+
+        /// <summary>The minimum order value for the given stores.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual Price Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A list of stores your products are delivered from. This is only valid for the local delivery shipment type.
+    /// </summary>
+    public class StoreConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Configs related to local delivery ends for the day.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cutoffConfig")]
+        public virtual CutoffConfig CutoffConfig { get; set; }
+
+        /// <summary>Maximum delivery radius. This is only required for the local delivery shipment type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceRadius")]
+        public virtual Distance ServiceRadius { get; set; }
+
+        /// <summary>
+        /// Optional. A list of store codes that provide local delivery. If empty, then `all_stores` must be true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storeCodes")]
+        public virtual System.Collections.Generic.IList<string> StoreCodes { get; set; }
+
+        /// <summary>
+        /// Indicates whether all stores, or selected stores, listed by this merchant provide local delivery.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storeServiceType")]
+        public virtual string StoreServiceType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A table defining the rate group, when `single_value` is not expressive enough.</summary>
+    public class Table : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Headers of the table's columns. Optional: if not set then the table has only one dimension.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columnHeaders")]
+        public virtual Headers ColumnHeaders { get; set; }
+
+        /// <summary>Name of the table. Required for subtables, ignored for the main table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. Headers of the table's rows.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rowHeaders")]
+        public virtual Headers RowHeaders { get; set; }
+
+        /// <summary>
+        /// Required. The list of rows that constitute the table. Must have the same length as `row_headers`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rows")]
+        public virtual System.Collections.Generic.IList<Row> Rows { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A range of postal codes that defines the area.</summary>
+    public class TaxPostalCodeRange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The end of the postal code range. Will be the same as start if not specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("end")]
+        public virtual string End { get; set; }
+
+        /// <summary>Required. The start of the postal code range, which is also the smallest in the range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("start")]
+        public virtual string Start { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Primary type convension percent micro : 100% = 1 000 000 and 1% = 10 000 cannot be negative. Information about
+    /// tax nexus and related parameters applicable to orders delivered to the area covered by a single tax admin. Nexus
+    /// is created when a merchant is doing business in an area administered by tax admin (only US states are supported
+    /// for nexus configuration). If merchant has nexus in a US state, merchant needs to pay tax to all tax authorities
+    /// associated with the shipping destination. Next Id : 8
+    /// </summary>
+    public class TaxRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Time period when this rule is effective. If the duration is missing from effective_time listed,
+        /// then it is open ended to the future. The start of this time period is inclusive, and the end is exclusive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveTimePeriod")]
+        public virtual Interval EffectiveTimePeriod { get; set; }
+
+        /// <summary>The admin_id or criteria_id of the region in which this rule is applicable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
+        public virtual System.Nullable<long> LocationId { get; set; }
+
+        /// <summary>The range of postal codes in which this rule is applicable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postCodeRange")]
+        public virtual TaxPostalCodeRange PostCodeRange { get; set; }
+
+        /// <summary>Region code in which this rule is applicable</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
+
+        /// <summary>
+        /// A fixed rate specified in micros, where 100% = 1_000_000. Suitable for origin-based states.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfSpecifiedRateMicros")]
+        public virtual System.Nullable<long> SelfSpecifiedRateMicros { get; set; }
+
+        /// <summary>
+        /// If set, shipping charge is taxed (at the same rate as product) when delivering to this admin's area. Can
+        /// only be set on US states without category.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shippingTaxed")]
+        public virtual System.Nullable<bool> ShippingTaxed { get; set; }
+
+        /// <summary>
+        /// Rate that depends on delivery location: if merchant has a nexus in corresponding US state, rates from
+        /// authorities with jurisdiction over delivery area are added up.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useGoogleRate")]
+        public virtual System.Nullable<bool> UseGoogleRate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A `TermsOfService`.</summary>
+    public class TermsOfService : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether this terms of service version is external. External terms of service versions can only be agreed
+        /// through external processes and not directly by the merchant through UI or API.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("external")]
+        public virtual System.Nullable<bool> External { get; set; }
+
+        /// <summary>URI for terms of service file that needs to be displayed to signing users.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileUri")]
+        public virtual string FileUri { get; set; }
+
+        /// <summary>The Kind this terms of service version applies to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the terms of service version. Format: `termsOfService/{version}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Region code as defined by [CLDR](https://cldr.unicode.org/). This is either a country where the ToS applies
+        /// specifically to that country or `001` when the same `TermsOfService` can be signed in any country. However
+        /// note that when signing a ToS that applies globally we still expect that a specific country is provided (this
+        /// should be merchant business country or program country of participation).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// This resource represents the agreement state for a given account and terms of service kind. The state is as
+    /// follows: * If the merchant has accepted a terms of service: [accepted](TermsOfServiceAggrementState.accepted)
+    /// will be populated, otherwise it will be empty * If the merchant must sign a terms of service:
+    /// [required](TermsOfServiceAggrementState.required) will be populated, otherwise it will be empty. Note that both
+    /// [required](TermsOfServiceAggrementState.required) and [accepted](TermsOfServiceAggrementState.accepted) can be
+    /// present. In this case the `accepted` terms of services will have an expiration date set in the
+    /// [valid_until](Accepted.valid_until) field. The `required` terms of services need to be accepted before
+    /// `valid_until` in order for the account to continue having a valid agreement. When accepting new terms of
+    /// services we expect 3Ps to display the text associated with the given terms of service agreement (the url to the
+    /// file containing the text is added in the Required message below as [tos_file_uri](Accepted.tos_file_uri). The
+    /// actual acceptance of the terms of service is done by calling accept on the [TermsOfService](TermsOfService)
+    /// resource.
+    /// </summary>
+    public class TermsOfServiceAgreementState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The accepted terms of service of this kind and for the associated region_code</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accepted")]
+        public virtual Accepted Accepted { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the terms of service version. Format:
+        /// `accounts/{account}/termsOfServiceAgreementState/{identifier}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Region code as defined by https://cldr.unicode.org/. This is the country the current state applies to.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
+
+        /// <summary>The required terms of service</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("required")]
+        public virtual Required Required { get; set; }
+
+        /// <summary>Terms of Service kind associated with the particular version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("termsOfServiceKind")]
+        public virtual string TermsOfServiceKind { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones).</summary>
+    public class TimeZone : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>IANA Time Zone Database time zone, e.g. "America/New_York".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Optional. IANA Time Zone Database version number, e.g. "2019a".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Transit time table, number of business days spent in transit based on row and column dimensions. Either
+    /// `min_transit_days`, `max_transit_days` or `transit_time_table` can be set, but not both.
+    /// </summary>
+    public class TransitTable : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A list of region names Region.name . The last value can be `"all other locations"`. Example:
+        /// `["zone 1", "zone 2", "all other locations"]`. The referred postal code groups must match the delivery
+        /// country of the service.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postalCodeGroupNames")]
+        public virtual System.Collections.Generic.IList<string> PostalCodeGroupNames { get; set; }
+
+        /// <summary>
+        /// Required. If there's only one dimension set of `postal_code_group_names` or `transit_time_labels`, there are
+        /// multiple rows each with one value for that dimension. If there are two dimensions, each row corresponds to a
+        /// `postal_code_group_names`, and columns (values) to a `transit_time_labels`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rows")]
+        public virtual System.Collections.Generic.IList<TransitTimeRow> Rows { get; set; }
+
+        /// <summary>
+        /// Required. A list of transit time labels. The last value can be `"all other labels"`. Example: `["food",
+        /// "electronics", "all other labels"]`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transitTimeLabels")]
+        public virtual System.Collections.Generic.IList<string> TransitTimeLabels { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// If there's only one dimension set of `postal_code_group_names` or `transit_time_labels`, there are multiple rows
+    /// each with one value for that dimension. If there are two dimensions, each row corresponds to a
+    /// `postal_code_group_names`, and columns (values) to a `transit_time_labels`.
+    /// </summary>
+    public class TransitTimeRow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Transit time range (min-max) in business days.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<TransitTimeValue> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Transit time range (min-max) in business days.</summary>
+    public class TransitTimeValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Must be greater than or equal to `min_transit_days`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxTransitDays")]
+        public virtual System.Nullable<int> MaxTransitDays { get; set; }
+
+        /// <summary>
+        /// Minimum transit time range in business days. 0 means same day delivery, 1 means next day delivery.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minTransitDays")]
+        public virtual System.Nullable<int> MinTransitDays { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for the `UnclaimHomepage` method.</summary>
+    public class UnclaimHomepageRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A [user](https://support.google.com/merchants/answer/12160472).</summary>
+    public class User : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The [access
+        /// rights](https://support.google.com/merchants/answer/12160472?sjid=6789834943175119429-EU#accesstypes) the
+        /// user has.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessRights")]
+        public virtual System.Collections.Generic.IList<string> AccessRights { get; set; }
+
+        /// <summary>
+        /// Identifier. The resource name of the user. Format: `accounts/{account}/user/{email}` Use `me` to refer to
+        /// your own email address, for example `accounts/{account}/users/me`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The state of the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The single value of a rate group or the value of a rate group table's cell. Exactly one of `no_shipping`,
+    /// `flat_rate`, `price_percentage`, `carrier_rateName`, `subtable_name` must be set.
+    /// </summary>
+    public class Value : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The name of a carrier rate referring to a carrier rate defined in the same rate group. Can only be set if
+        /// all other fields are not set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("carrierRate")]
+        public virtual string CarrierRate { get; set; }
+
+        /// <summary>A flat rate. Can only be set if all other fields are not set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flatRate")]
+        public virtual Price FlatRate { get; set; }
+
+        /// <summary>
+        /// If true, then the product can't be shipped. Must be true when set, can only be set if all other fields are
+        /// not set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noShipping")]
+        public virtual System.Nullable<bool> NoShipping { get; set; }
+
+        /// <summary>
+        /// A percentage of the price represented as a number in decimal notation (For example, `"5.4"`). Can only be
+        /// set if all other fields are not set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pricePercentage")]
+        public virtual string PricePercentage { get; set; }
+
+        /// <summary>
+        /// The name of a subtable. Can only be set in table cells (For example, not for single values), and only if all
+        /// other fields are not set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subtable")]
+        public virtual string Subtable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A fulfillment warehouse, which stores and handles inventory. Next tag: 7</summary>
+    public class Warehouse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Business days of the warehouse. If not set, will be Monday to Friday by default.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("businessDayConfig")]
+        public virtual BusinessDayConfig BusinessDayConfig { get; set; }
+
+        /// <summary>
+        /// Required. The latest time of day that an order can be accepted and begin processing. Later orders will be
+        /// processed in the next day. The time is based on the warehouse postal code.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cutoffTime")]
+        public virtual WarehouseCutoffTime CutoffTime { get; set; }
+
+        /// <summary>
+        /// Required. The number of days it takes for this warehouse to pack up and ship an item. This is on the
+        /// warehouse level, but can be overridden on the offer level based on the attributes of an item.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("handlingDays")]
+        public virtual System.Nullable<long> HandlingDays { get; set; }
+
+        /// <summary>Required. The name of the warehouse. Must be unique within account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. Shipping address of the warehouse.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shippingAddress")]
+        public virtual Address ShippingAddress { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Indicates that the delivery time should be calculated per warehouse (shipping origin location) based on the
+    /// settings of the selected carrier. When set, no other transit time related field in `delivery_time` should be
+    /// set.
+    /// </summary>
+    public class WarehouseBasedDeliveryTime : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Carrier, such as `"UPS"` or `"Fedex"`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("carrier")]
+        public virtual string Carrier { get; set; }
+
+        /// <summary>
+        /// Required. Carrier service, such as `"ground"` or `"2 days"`. The name of the service must be in the
+        /// eddSupportedServices list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("carrierService")]
+        public virtual string CarrierService { get; set; }
+
+        /// <summary>Required. Warehouse name. This should match warehouse</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warehouse")]
+        public virtual string Warehouse { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The latest time of day that an order can be accepted and begin processing. Later orders will be processed in the
+    /// next day. The time is based on the warehouse postal code.
+    /// </summary>
+    public class WarehouseCutoffTime : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Hour of the cutoff time until which an order has to be placed to be processed in the same day by
+        /// the warehouse. Hour is based on the timezone of warehouse.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hour")]
+        public virtual System.Nullable<int> Hour { get; set; }
+
+        /// <summary>
+        /// Required. Minute of the cutoff time until which an order has to be placed to be processed in the same day by
+        /// the warehouse. Minute is based on the timezone of warehouse.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minute")]
+        public virtual System.Nullable<int> Minute { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The weight represented as the value in string and the unit.</summary>
+    public class Weight : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The weight represented as a number in micros (1 million micros is an equivalent to one's currency
+        /// standard unit, for example, 1 kg = 1000000 micros). This field can also be set as infinity by setting to -1.
+        /// This field only support -1 and positive value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("amountMicros")]
+        public virtual System.Nullable<long> AmountMicros { get; set; }
+
+        /// <summary>Required. The weight unit. Acceptable values are: kg and lb</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unit")]
+        public virtual string Unit { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+}
