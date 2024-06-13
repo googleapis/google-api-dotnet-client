@@ -1194,20 +1194,17 @@ namespace Google.Apis.CCAIPlatform.v1alpha1.Data
     /// </summary>
     public class Component : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// The list of project ids that are allowed to send traffic to the service attachment. This field should be
-        /// filled only for the ingress components.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("allowedProjectIds")]
-        public virtual System.Collections.Generic.IList<string> AllowedProjectIds { get; set; }
-
         /// <summary>Name of the component.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Associated service attachments.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("serviceAttachments")]
-        public virtual System.Collections.Generic.IList<ServiceAttachment> ServiceAttachments { get; set; }
+        /// <summary>
+        /// Associated service attachments. The service attachment names that will be used for sending private traffic
+        /// to the CCAIP tenant project. Example service attachment name:
+        /// "projects/${TENANT_PROJECT_ID}/regions/${REGION}/serviceAttachments/ingress-default".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAttachmentNames")]
+        public virtual System.Collections.Generic.IList<string> ServiceAttachmentNames { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1803,6 +1800,24 @@ namespace Google.Apis.CCAIPlatform.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ingressSettings")]
         public virtual System.Collections.Generic.IList<Component> IngressSettings { get; set; }
 
+        /// <summary>Private service connect settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscSetting")]
+        public virtual PscSetting PscSetting { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Private service connect settings.</summary>
+    public class PscSetting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The list of project ids that are allowed to send traffic to the service attachment. This field should be
+        /// filled only for the ingress components.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedConsumerProjectIds")]
+        public virtual System.Collections.Generic.IList<string> AllowedConsumerProjectIds { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1852,20 +1867,6 @@ namespace Google.Apis.CCAIPlatform.v1alpha1.Data
         /// <summary>Email address of the first admin users.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userEmail")]
         public virtual string UserEmail { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Container for the VPC-SC networking configurations.</summary>
-    public class ServiceAttachment : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The service attachment name that will be used for sending private traffic to the CCAIP tenant project.
-        /// Example: "projects/${TENANT_PROJECT_ID}/regions/${REGION}/serviceAttachments/ingress-default".
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

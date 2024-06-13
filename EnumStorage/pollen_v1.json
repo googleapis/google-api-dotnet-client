@@ -1,0 +1,17 @@
+{
+  "Google.Apis.Pollen.v1.MapTypesResource+HeatmapTilesResource+LookupHeatmapTileRequest.MapTypeEnum": [
+    "MAP_TYPE_UNSPECIFIED",
+    "TREE_UPI",
+    "GRASS_UPI",
+    "WEED_UPI"
+  ],
+  "Google.Apis.Pollen.v1.PollenBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Pollen.v1.PollenBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

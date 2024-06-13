@@ -336,16 +336,16 @@ namespace Google.Apis.FirebaseML.v2beta
                     /// Required. The name of the Endpoint requested to perform token counting. Format:
                     /// `projects/{project}/locations/{location}/endpoints/{endpoint}`
                     /// </param>
-                    public virtual CountTokensRequest CountTokens(Google.Apis.FirebaseML.v2beta.Data.CountTokensRequest body, string endpoint)
+                    public virtual CountTokensRequest CountTokens(Google.Apis.FirebaseML.v2beta.Data.GoogleCloudAiplatformV1beta1CountTokensRequest body, string endpoint)
                     {
                         return new CountTokensRequest(this.service, body, endpoint);
                     }
 
                     /// <summary>Perform a token counting.</summary>
-                    public class CountTokensRequest : FirebaseMLBaseServiceRequest<Google.Apis.FirebaseML.v2beta.Data.CountTokensResponse>
+                    public class CountTokensRequest : FirebaseMLBaseServiceRequest<Google.Apis.FirebaseML.v2beta.Data.GoogleCloudAiplatformV1beta1CountTokensResponse>
                     {
                         /// <summary>Constructs a new CountTokens request.</summary>
-                        public CountTokensRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseML.v2beta.Data.CountTokensRequest body, string endpoint) : base(service)
+                        public CountTokensRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseML.v2beta.Data.GoogleCloudAiplatformV1beta1CountTokensRequest body, string endpoint) : base(service)
                         {
                             Endpoint = endpoint;
                             Body = body;
@@ -360,7 +360,7 @@ namespace Google.Apis.FirebaseML.v2beta
                         public virtual string Endpoint { get; private set; }
 
                         /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.FirebaseML.v2beta.Data.CountTokensRequest Body { get; set; }
+                        Google.Apis.FirebaseML.v2beta.Data.GoogleCloudAiplatformV1beta1CountTokensRequest Body { get; set; }
 
                         /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
@@ -395,16 +395,16 @@ namespace Google.Apis.FirebaseML.v2beta
                     /// Required. The name of the publisher model requested to serve the prediction. Format:
                     /// `projects/{project}/locations/{location}/publishers/*/models/*`
                     /// </param>
-                    public virtual GenerateContentRequest GenerateContent(Google.Apis.FirebaseML.v2beta.Data.GenerateContentRequest body, string model)
+                    public virtual GenerateContentRequest GenerateContent(Google.Apis.FirebaseML.v2beta.Data.GoogleCloudAiplatformV1beta1GenerateContentRequest body, string model)
                     {
                         return new GenerateContentRequest(this.service, body, model);
                     }
 
                     /// <summary>Generate content with multimodal inputs.</summary>
-                    public class GenerateContentRequest : FirebaseMLBaseServiceRequest<Google.Apis.FirebaseML.v2beta.Data.GenerateContentResponse>
+                    public class GenerateContentRequest : FirebaseMLBaseServiceRequest<Google.Apis.FirebaseML.v2beta.Data.GoogleCloudAiplatformV1beta1GenerateContentResponse>
                     {
                         /// <summary>Constructs a new GenerateContent request.</summary>
-                        public GenerateContentRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseML.v2beta.Data.GenerateContentRequest body, string model) : base(service)
+                        public GenerateContentRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseML.v2beta.Data.GoogleCloudAiplatformV1beta1GenerateContentRequest body, string model) : base(service)
                         {
                             Model = model;
                             Body = body;
@@ -419,7 +419,7 @@ namespace Google.Apis.FirebaseML.v2beta
                         public virtual string Model { get; private set; }
 
                         /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.FirebaseML.v2beta.Data.GenerateContentRequest Body { get; set; }
+                        Google.Apis.FirebaseML.v2beta.Data.GoogleCloudAiplatformV1beta1GenerateContentRequest Body { get; set; }
 
                         /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
@@ -454,16 +454,16 @@ namespace Google.Apis.FirebaseML.v2beta
                     /// Required. The name of the publisher model requested to serve the prediction. Format:
                     /// `projects/{project}/locations/{location}/publishers/*/models/*`
                     /// </param>
-                    public virtual StreamGenerateContentRequest StreamGenerateContent(Google.Apis.FirebaseML.v2beta.Data.GenerateContentRequest body, string model)
+                    public virtual StreamGenerateContentRequest StreamGenerateContent(Google.Apis.FirebaseML.v2beta.Data.GoogleCloudAiplatformV1beta1GenerateContentRequest body, string model)
                     {
                         return new StreamGenerateContentRequest(this.service, body, model);
                     }
 
                     /// <summary>Generate content with multimodal inputs with streaming support.</summary>
-                    public class StreamGenerateContentRequest : FirebaseMLBaseServiceRequest<Google.Apis.FirebaseML.v2beta.Data.GenerateContentResponse>
+                    public class StreamGenerateContentRequest : FirebaseMLBaseServiceRequest<Google.Apis.FirebaseML.v2beta.Data.GoogleCloudAiplatformV1beta1GenerateContentResponse>
                     {
                         /// <summary>Constructs a new StreamGenerateContent request.</summary>
-                        public StreamGenerateContentRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseML.v2beta.Data.GenerateContentRequest body, string model) : base(service)
+                        public StreamGenerateContentRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseML.v2beta.Data.GoogleCloudAiplatformV1beta1GenerateContentRequest body, string model) : base(service)
                         {
                             Model = model;
                             Body = body;
@@ -478,7 +478,7 @@ namespace Google.Apis.FirebaseML.v2beta
                         public virtual string Model { get; private set; }
 
                         /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.FirebaseML.v2beta.Data.GenerateContentRequest Body { get; set; }
+                        Google.Apis.FirebaseML.v2beta.Data.GoogleCloudAiplatformV1beta1GenerateContentRequest Body { get; set; }
 
                         /// <summary>Returns the body of the request.</summary>
                         protected override object GetBody() => Body;
@@ -513,8 +513,37 @@ namespace Google.Apis.FirebaseML.v2beta
 }
 namespace Google.Apis.FirebaseML.v2beta.Data
 {
+    /// <summary>
+    /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
+    /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
+    /// of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year
+    /// (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a
+    /// zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay *
+    /// google.type.DateTime * google.protobuf.Timestamp
+    /// </summary>
+    public class Date : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a
+        /// year and month where the day isn't significant.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("day")]
+        public virtual System.Nullable<int> Day { get; set; }
+
+        /// <summary>Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("month")]
+        public virtual System.Nullable<int> Month { get; set; }
+
+        /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("year")]
+        public virtual System.Nullable<int> Year { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Content blob. It's preferred to send as text directly rather than raw bytes.</summary>
-    public class Blob : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudAiplatformV1beta1Blob : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Raw bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
@@ -529,15 +558,15 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     }
 
     /// <summary>A response candidate generated from the model.</summary>
-    public class Candidate : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudAiplatformV1beta1Candidate : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Source attribution of the generated content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("citationMetadata")]
-        public virtual CitationMetadata CitationMetadata { get; set; }
+        public virtual GoogleCloudAiplatformV1beta1CitationMetadata CitationMetadata { get; set; }
 
         /// <summary>Output only. Content parts of the candidate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
-        public virtual Content Content { get; set; }
+        public virtual GoogleCloudAiplatformV1beta1Content Content { get; set; }
 
         /// <summary>
         /// Output only. Describes the reason the mode stopped generating tokens in more detail. This is only filled
@@ -555,7 +584,7 @@ namespace Google.Apis.FirebaseML.v2beta.Data
 
         /// <summary>Output only. Metadata specifies sources used to ground generated content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groundingMetadata")]
-        public virtual GroundingMetadata GroundingMetadata { get; set; }
+        public virtual GoogleCloudAiplatformV1beta1GroundingMetadata GroundingMetadata { get; set; }
 
         /// <summary>Output only. Index of the candidate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("index")]
@@ -566,14 +595,14 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// category.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("safetyRatings")]
-        public virtual System.Collections.Generic.IList<SafetyRating> SafetyRatings { get; set; }
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1SafetyRating> SafetyRatings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
     /// <summary>Source attributions for content.</summary>
-    public class Citation : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudAiplatformV1beta1Citation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. End index into the content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endIndex")]
@@ -604,11 +633,11 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     }
 
     /// <summary>A collection of source attributions for a piece of content.</summary>
-    public class CitationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudAiplatformV1beta1CitationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. List of citations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("citations")]
-        public virtual System.Collections.Generic.IList<Citation> Citations { get; set; }
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1Citation> Citations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -619,13 +648,13 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// designating the producer of the `Content` and a `parts` field containing multi-part data that contains the
     /// content of the message turn.
     /// </summary>
-    public class Content : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudAiplatformV1beta1Content : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Required. Ordered `Parts` that constitute a single message. Parts may have different IANA MIME types.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parts")]
-        public virtual System.Collections.Generic.IList<Part> Parts { get; set; }
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1Part> Parts { get; set; }
 
         /// <summary>
         /// Optional. The producer of the content. Must be either 'user' or 'model'. Useful to set for multi-turn
@@ -639,11 +668,11 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     }
 
     /// <summary>Request message for PredictionService.CountTokens.</summary>
-    public class CountTokensRequest : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudAiplatformV1beta1CountTokensRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Input content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contents")]
-        public virtual System.Collections.Generic.IList<Content> Contents { get; set; }
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1Content> Contents { get; set; }
 
         /// <summary>
         /// Required. The instances that are the input to token counting call. Schema is identical to the prediction
@@ -664,7 +693,7 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     }
 
     /// <summary>Response message for PredictionService.CountTokens.</summary>
-    public class CountTokensResponse : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudAiplatformV1beta1CountTokensResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The total number of billable characters counted across all instances from the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalBillableCharacters")]
@@ -678,37 +707,8 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
-    /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
-    /// of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year
-    /// (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a
-    /// zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay *
-    /// google.type.DateTime * google.protobuf.Timestamp
-    /// </summary>
-    public class Date : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a
-        /// year and month where the day isn't significant.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("day")]
-        public virtual System.Nullable<int> Day { get; set; }
-
-        /// <summary>Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("month")]
-        public virtual System.Nullable<int> Month { get; set; }
-
-        /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("year")]
-        public virtual System.Nullable<int> Year { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>URI based data.</summary>
-    public class FileData : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudAiplatformV1beta1FileData : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. URI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileUri")]
@@ -726,7 +726,7 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// A predicted [FunctionCall] returned from the model that contains a string representing the
     /// [FunctionDeclaration.name] and a structured JSON object containing the parameters and their values.
     /// </summary>
-    public class FunctionCall : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudAiplatformV1beta1FunctionCall : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Optional. Required. The function parameters and values in JSON object format. See
@@ -744,7 +744,7 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     }
 
     /// <summary>Function calling config.</summary>
-    public class FunctionCallingConfig : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudAiplatformV1beta1FunctionCallingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Optional. Function names to call. Only set when the Mode is ANY. Function names should match
@@ -768,7 +768,7 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// parameters. This FunctionDeclaration is a representation of a block of code that can be used as a `Tool` by the
     /// model and executed by the client.
     /// </summary>
-    public class FunctionDeclaration : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudAiplatformV1beta1FunctionDeclaration : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Optional. Description and purpose of the function. Model uses it to decide how and whether to call the
@@ -793,14 +793,14 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// properties: param1: type: STRING param2: type: INTEGER required: - param1
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
-        public virtual Schema Parameters { get; set; }
+        public virtual GoogleCloudAiplatformV1beta1Schema Parameters { get; set; }
 
         /// <summary>
         /// Optional. Describes the output from this function in JSON Schema format. Reflects the Open API 3.03 Response
         /// Object. The Schema defines the type used for the response value of the function.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual Schema Response { get; set; }
+        public virtual GoogleCloudAiplatformV1beta1Schema Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -811,7 +811,7 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// structured JSON object containing any output from the function is used as context to the model. This should
     /// contain the result of a [FunctionCall] made based on model prediction.
     /// </summary>
-    public class FunctionResponse : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudAiplatformV1beta1FunctionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Required. The name of the function to call. Matches [FunctionDeclaration.name] and [FunctionCall.name].
@@ -828,7 +828,7 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     }
 
     /// <summary>Request message for [PredictionService.GenerateContent].</summary>
-    public class GenerateContentRequest : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudAiplatformV1beta1GenerateContentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Optional. The name of the cached content used as context to serve the prediction. Note: only used in
@@ -844,28 +844,28 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contents")]
-        public virtual System.Collections.Generic.IList<Content> Contents { get; set; }
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1Content> Contents { get; set; }
 
         /// <summary>Optional. Generation config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generationConfig")]
-        public virtual GenerationConfig GenerationConfig { get; set; }
+        public virtual GoogleCloudAiplatformV1beta1GenerationConfig GenerationConfig { get; set; }
 
         /// <summary>
         /// Optional. Per request settings for blocking unsafe content. Enforced on GenerateContentResponse.candidates.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("safetySettings")]
-        public virtual System.Collections.Generic.IList<SafetySetting> SafetySettings { get; set; }
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1SafetySetting> SafetySettings { get; set; }
 
         /// <summary>
         /// Optional. The user provided system instructions for the model. Note: only text should be used in parts and
         /// content in each part will be in a separate paragraph.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("systemInstruction")]
-        public virtual Content SystemInstruction { get; set; }
+        public virtual GoogleCloudAiplatformV1beta1Content SystemInstruction { get; set; }
 
         /// <summary>Optional. Tool config. This config is shared for all tools provided in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("toolConfig")]
-        public virtual ToolConfig ToolConfig { get; set; }
+        public virtual GoogleCloudAiplatformV1beta1ToolConfig ToolConfig { get; set; }
 
         /// <summary>
         /// Optional. A list of `Tools` the model may use to generate the next response. A `Tool` is a piece of code
@@ -873,36 +873,73 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// of knowledge and scope of the model.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tools")]
-        public virtual System.Collections.Generic.IList<Tool> Tools { get; set; }
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1Tool> Tools { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
     /// <summary>Response message for [PredictionService.GenerateContent].</summary>
-    public class GenerateContentResponse : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudAiplatformV1beta1GenerateContentResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Generated candidates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("candidates")]
-        public virtual System.Collections.Generic.IList<Candidate> Candidates { get; set; }
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1Candidate> Candidates { get; set; }
 
         /// <summary>
         /// Output only. Content filter results for a prompt sent in the request. Note: Sent only in the first stream
         /// chunk. Only happens when no candidates were generated due to content violations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promptFeedback")]
-        public virtual PromptFeedback PromptFeedback { get; set; }
+        public virtual GoogleCloudAiplatformV1beta1GenerateContentResponsePromptFeedback PromptFeedback { get; set; }
 
         /// <summary>Usage metadata about the response(s).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usageMetadata")]
-        public virtual UsageMetadata UsageMetadata { get; set; }
+        public virtual GoogleCloudAiplatformV1beta1GenerateContentResponseUsageMetadata UsageMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Content filter results for a prompt sent in the request.</summary>
+    public class GoogleCloudAiplatformV1beta1GenerateContentResponsePromptFeedback : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Blocked reason.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blockReason")]
+        public virtual string BlockReason { get; set; }
+
+        /// <summary>Output only. A readable block reason message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blockReasonMessage")]
+        public virtual string BlockReasonMessage { get; set; }
+
+        /// <summary>Output only. Safety ratings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("safetyRatings")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1SafetyRating> SafetyRatings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Usage metadata about response(s).</summary>
+    public class GoogleCloudAiplatformV1beta1GenerateContentResponseUsageMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of tokens in the response(s).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("candidatesTokenCount")]
+        public virtual System.Nullable<int> CandidatesTokenCount { get; set; }
+
+        /// <summary>Number of tokens in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promptTokenCount")]
+        public virtual System.Nullable<int> PromptTokenCount { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("totalTokenCount")]
+        public virtual System.Nullable<int> TotalTokenCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
     /// <summary>Generation config.</summary>
-    public class GenerationConfig : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudAiplatformV1beta1GenerationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Number of candidates to generate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("candidateCount")]
@@ -935,7 +972,7 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// set. Compatible mimetypes: `application/json`: Schema for JSON response.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseSchema")]
-        public virtual Schema ResponseSchema { get; set; }
+        public virtual GoogleCloudAiplatformV1beta1Schema ResponseSchema { get; set; }
 
         /// <summary>Optional. Stop sequences.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stopSequences")]
@@ -958,14 +995,14 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     }
 
     /// <summary>Tool to retrieve public web data for grounding, powered by Google.</summary>
-    public class GoogleSearchRetrieval : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudAiplatformV1beta1GoogleSearchRetrieval : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
     /// <summary>Metadata returned to client when grounding is enabled.</summary>
-    public class GroundingMetadata : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudAiplatformV1beta1GroundingMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Queries executed by the retrieval tools.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retrievalQueries")]
@@ -973,28 +1010,11 @@ namespace Google.Apis.FirebaseML.v2beta.Data
 
         /// <summary>Optional. Google search entry for the following-up web searches.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchEntryPoint")]
-        public virtual SearchEntryPoint SearchEntryPoint { get; set; }
+        public virtual GoogleCloudAiplatformV1beta1SearchEntryPoint SearchEntryPoint { get; set; }
 
         /// <summary>Optional. Web search queries for the following-up web search.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webSearchQueries")]
         public virtual System.Collections.Generic.IList<string> WebSearchQueries { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>This is returned in the longrunning operations for create/update.</summary>
-    public class ModelOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("basicOperationStatus")]
-        public virtual string BasicOperationStatus { get; set; }
-
-        /// <summary>
-        /// The name of the model we are creating/updating The name must have the form
-        /// `projects/{project_id}/models/{model_id}`
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1006,18 +1026,18 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// fixed IANA MIME type identifying the type and subtype of the media if `inline_data` or `file_data` field is
     /// filled with raw bytes.
     /// </summary>
-    public class Part : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudAiplatformV1beta1Part : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. URI based data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileData")]
-        public virtual FileData FileData { get; set; }
+        public virtual GoogleCloudAiplatformV1beta1FileData FileData { get; set; }
 
         /// <summary>
         /// Optional. A predicted [FunctionCall] returned from the model that contains a string representing the
         /// [FunctionDeclaration.name] with the parameters and their values.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("functionCall")]
-        public virtual FunctionCall FunctionCall { get; set; }
+        public virtual GoogleCloudAiplatformV1beta1FunctionCall FunctionCall { get; set; }
 
         /// <summary>
         /// Optional. The result output of a [FunctionCall] that contains a string representing the
@@ -1025,11 +1045,11 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// used as context to the model.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("functionResponse")]
-        public virtual FunctionResponse FunctionResponse { get; set; }
+        public virtual GoogleCloudAiplatformV1beta1FunctionResponse FunctionResponse { get; set; }
 
         /// <summary>Optional. Inlined bytes data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inlineData")]
-        public virtual Blob InlineData { get; set; }
+        public virtual GoogleCloudAiplatformV1beta1Blob InlineData { get; set; }
 
         /// <summary>Optional. Text part (can be code).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
@@ -1040,53 +1060,14 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// inline_data or file_data.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoMetadata")]
-        public virtual VideoMetadata VideoMetadata { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Content filter results for a prompt sent in the request.</summary>
-    public class PromptFeedback : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. Blocked reason.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("blockReason")]
-        public virtual string BlockReason { get; set; }
-
-        /// <summary>Output only. A readable block reason message.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("blockReasonMessage")]
-        public virtual string BlockReasonMessage { get; set; }
-
-        /// <summary>Output only. Safety ratings.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("safetyRatings")]
-        public virtual System.Collections.Generic.IList<SafetyRating> SafetyRatings { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The definition of the Rag resource.</summary>
-    public class RagResource : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Optional. RagCorpora resource name. Format:
-        /// `projects/{project}/locations/{location}/ragCorpora/{rag_corpus}`
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ragCorpus")]
-        public virtual string RagCorpus { get; set; }
-
-        /// <summary>
-        /// Optional. rag_file_id. The files should be in the same rag_corpus set in rag_corpus field.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ragFileIds")]
-        public virtual System.Collections.Generic.IList<string> RagFileIds { get; set; }
+        public virtual GoogleCloudAiplatformV1beta1VideoMetadata VideoMetadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
     /// <summary>Defines a retrieval tool that model can call to access external knowledge.</summary>
-    public class Retrieval : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudAiplatformV1beta1Retrieval : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Optional. Disable using the result from this tool in detecting grounding attribution. This does not affect
@@ -1097,20 +1078,20 @@ namespace Google.Apis.FirebaseML.v2beta.Data
 
         /// <summary>Set to use data source powered by Vertex AI Search.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vertexAiSearch")]
-        public virtual VertexAISearch VertexAiSearch { get; set; }
+        public virtual GoogleCloudAiplatformV1beta1VertexAISearch VertexAiSearch { get; set; }
 
         /// <summary>
         /// Set to use data source powered by Vertex RAG store. User data is uploaded via the VertexRagDataService.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vertexRagStore")]
-        public virtual VertexRagStore VertexRagStore { get; set; }
+        public virtual GoogleCloudAiplatformV1beta1VertexRagStore VertexRagStore { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
     /// <summary>Safety rating corresponding to the generated content.</summary>
-    public class SafetyRating : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudAiplatformV1beta1SafetyRating : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Indicates whether the content was filtered out because of this rating.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blocked")]
@@ -1141,7 +1122,7 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     }
 
     /// <summary>Safety settings.</summary>
-    public class SafetySetting : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudAiplatformV1beta1SafetySetting : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Harm category.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("category")]
@@ -1166,7 +1147,7 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// Schema is used to define the format of input/output data. Represents a select subset of an [OpenAPI 3.0 schema
     /// object](https://spec.openapis.org/oas/v3.0.3#schema). More fields may be added in the future as needed.
     /// </summary>
-    public class Schema : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudAiplatformV1beta1Schema : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Default value of the data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("default")]
@@ -1196,7 +1177,7 @@ namespace Google.Apis.FirebaseML.v2beta.Data
 
         /// <summary>Optional. SCHEMA FIELDS FOR TYPE ARRAY Schema of the elements of Type.ARRAY.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual Schema Items { get; set; }
+        public virtual GoogleCloudAiplatformV1beta1Schema Items { get; set; }
 
         /// <summary>Optional. Maximum number of the elements for Type.ARRAY.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxItems")]
@@ -1242,7 +1223,7 @@ namespace Google.Apis.FirebaseML.v2beta.Data
 
         /// <summary>Optional. SCHEMA FIELDS FOR TYPE OBJECT Properties of Type.OBJECT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
-        public virtual System.Collections.Generic.IDictionary<string, Schema> Properties { get; set; }
+        public virtual System.Collections.Generic.IDictionary<string, GoogleCloudAiplatformV1beta1Schema> Properties { get; set; }
 
         /// <summary>Optional. Required properties of Type.OBJECT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("required")]
@@ -1261,7 +1242,7 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     }
 
     /// <summary>Google search entry point.</summary>
-    public class SearchEntryPoint : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudAiplatformV1beta1SearchEntryPoint : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Web content snippet that can be embedded in a web page or an app webview.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("renderedContent")]
@@ -1281,7 +1262,7 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// model. A Tool object should contain exactly one type of Tool (e.g FunctionDeclaration, Retrieval or
     /// GoogleSearchRetrieval).
     /// </summary>
-    public class Tool : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudAiplatformV1beta1Tool : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Optional. Function tool type. One or more function declarations to be passed to the model along with the
@@ -1291,49 +1272,31 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// declarations can be provided.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("functionDeclarations")]
-        public virtual System.Collections.Generic.IList<FunctionDeclaration> FunctionDeclarations { get; set; }
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1FunctionDeclaration> FunctionDeclarations { get; set; }
 
         /// <summary>
         /// Optional. GoogleSearchRetrieval tool type. Specialized retrieval tool that is powered by Google search.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleSearchRetrieval")]
-        public virtual GoogleSearchRetrieval GoogleSearchRetrieval { get; set; }
+        public virtual GoogleCloudAiplatformV1beta1GoogleSearchRetrieval GoogleSearchRetrieval { get; set; }
 
         /// <summary>
         /// Optional. Retrieval tool type. System will always execute the provided retrieval tool(s) to get external
         /// knowledge to answer the prompt. Retrieval results are presented to the model for generation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retrieval")]
-        public virtual Retrieval Retrieval { get; set; }
+        public virtual GoogleCloudAiplatformV1beta1Retrieval Retrieval { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
     /// <summary>Tool config. This config is shared for all tools provided in the request.</summary>
-    public class ToolConfig : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudAiplatformV1beta1ToolConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Function calling config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("functionCallingConfig")]
-        public virtual FunctionCallingConfig FunctionCallingConfig { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Usage metadata about response(s).</summary>
-    public class UsageMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Number of tokens in the response(s).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("candidatesTokenCount")]
-        public virtual System.Nullable<int> CandidatesTokenCount { get; set; }
-
-        /// <summary>Number of tokens in the request.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("promptTokenCount")]
-        public virtual System.Nullable<int> PromptTokenCount { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("totalTokenCount")]
-        public virtual System.Nullable<int> TotalTokenCount { get; set; }
+        public virtual GoogleCloudAiplatformV1beta1FunctionCallingConfig FunctionCallingConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1343,7 +1306,7 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// Retrieve from Vertex AI Search datastore for grounding. See
     /// https://cloud.google.com/vertex-ai-search-and-conversation
     /// </summary>
-    public class VertexAISearch : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudAiplatformV1beta1VertexAISearch : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Required. Fully-qualified Vertex AI Search's datastore resource ID. Format:
@@ -1357,7 +1320,7 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     }
 
     /// <summary>Retrieve from Vertex RAG Store for grounding.</summary>
-    public class VertexRagStore : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudAiplatformV1beta1VertexRagStore : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Deprecated. Please use rag_resources instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ragCorpora")]
@@ -1369,7 +1332,7 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// support.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ragResources")]
-        public virtual System.Collections.Generic.IList<RagResource> RagResources { get; set; }
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1VertexRagStoreRagResource> RagResources { get; set; }
 
         /// <summary>Optional. Number of top k results to return from the selected corpora.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("similarityTopK")]
@@ -1383,8 +1346,28 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The definition of the Rag resource.</summary>
+    public class GoogleCloudAiplatformV1beta1VertexRagStoreRagResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. RagCorpora resource name. Format:
+        /// `projects/{project}/locations/{location}/ragCorpora/{rag_corpus}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ragCorpus")]
+        public virtual string RagCorpus { get; set; }
+
+        /// <summary>
+        /// Optional. rag_file_id. The files should be in the same rag_corpus set in rag_corpus field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ragFileIds")]
+        public virtual System.Collections.Generic.IList<string> RagFileIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata describes the input video content.</summary>
-    public class VideoMetadata : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleCloudAiplatformV1beta1VideoMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. The end offset of the video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endOffset")]
@@ -1393,6 +1376,23 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// <summary>Optional. The start offset of the video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startOffset")]
         public virtual object StartOffset { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>This is returned in the longrunning operations for create/update.</summary>
+    public class ModelOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("basicOperationStatus")]
+        public virtual string BasicOperationStatus { get; set; }
+
+        /// <summary>
+        /// The name of the model we are creating/updating The name must have the form
+        /// `projects/{project_id}/models/{model_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

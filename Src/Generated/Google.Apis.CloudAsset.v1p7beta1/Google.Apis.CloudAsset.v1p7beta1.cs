@@ -1350,9 +1350,10 @@ namespace Google.Apis.CloudAsset.v1p7beta1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Resource name for the `AccessLevel`. Format: `accessPolicies/{access_policy}/accessLevels/{access_level}`.
-        /// The `access_level` component must begin with a letter, followed by alphanumeric characters or `_`. Its
-        /// maximum length is 50 characters. After you create an `AccessLevel`, you cannot change its `name`.
+        /// Identifier. Resource name for the `AccessLevel`. Format:
+        /// `accessPolicies/{access_policy}/accessLevels/{access_level}`. The `access_level` component must begin with a
+        /// letter, followed by alphanumeric characters or `_`. Its maximum length is 50 characters. After you create an
+        /// `AccessLevel`, you cannot change its `name`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -1375,14 +1376,14 @@ namespace Google.Apis.CloudAsset.v1p7beta1.Data
     {
         /// <summary>
         /// Output only. An opaque identifier for the current version of the `AccessPolicy`. This will always be a
-        /// strongly validated etag, meaning that two Access Polices will be identical if and only if their etags are
+        /// strongly validated etag, meaning that two Access Policies will be identical if and only if their etags are
         /// identical. Clients should not expect this to be in any specific format.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
         /// <summary>
-        /// Output only. Resource name of the `AccessPolicy`. Format: `accessPolicies/{access_policy}`
+        /// Output only. Identifier. Resource name of the `AccessPolicy`. Format: `accessPolicies/{access_policy}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -1872,7 +1873,7 @@ namespace Google.Apis.CloudAsset.v1p7beta1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Resource name for the `ServicePerimeter`. Format:
+        /// Identifier. Resource name for the `ServicePerimeter`. Format:
         /// `accessPolicies/{access_policy}/servicePerimeters/{service_perimeter}`. The `service_perimeter` component
         /// must begin with a letter, followed by alphanumeric characters or `_`. After you create a `ServicePerimeter`,
         /// you cannot change its `name`.

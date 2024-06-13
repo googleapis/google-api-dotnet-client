@@ -2093,7 +2093,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
             /// <summary>
             /// Pauses serving of the given finalized deal. This call only pauses the serving status, and does not
             /// affect other fields of the finalized deal. Calling this method for an already paused deal has no effect.
-            /// This method only applies to programmatic guaranteed deals.
+            /// This method only applies to programmatic guaranteed deals and preferred deals.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Required. Format: `buyers/{accountId}/finalizedDeals/{dealId}`</param>
@@ -2105,7 +2105,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
             /// <summary>
             /// Pauses serving of the given finalized deal. This call only pauses the serving status, and does not
             /// affect other fields of the finalized deal. Calling this method for an already paused deal has no effect.
-            /// This method only applies to programmatic guaranteed deals.
+            /// This method only applies to programmatic guaranteed deals and preferred deals.
             /// </summary>
             public class PauseRequest : AuthorizedBuyersMarketplaceBaseServiceRequest<Google.Apis.AuthorizedBuyersMarketplace.v1.Data.FinalizedDeal>
             {
@@ -2154,7 +2154,8 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
             /// <summary>
             /// Resumes serving of the given finalized deal. Calling this method for an running deal has no effect. If a
             /// deal is initially paused by the seller, calling this method will not resume serving of the deal until
-            /// the seller also resumes the deal. This method only applies to programmatic guaranteed deals.
+            /// the seller also resumes the deal. This method only applies to programmatic guaranteed deals and
+            /// preferred deals.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Required. Format: `buyers/{accountId}/finalizedDeals/{dealId}`</param>
@@ -2166,7 +2167,8 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
             /// <summary>
             /// Resumes serving of the given finalized deal. Calling this method for an running deal has no effect. If a
             /// deal is initially paused by the seller, calling this method will not resume serving of the deal until
-            /// the seller also resumes the deal. This method only applies to programmatic guaranteed deals.
+            /// the seller also resumes the deal. This method only applies to programmatic guaranteed deals and
+            /// preferred deals.
             /// </summary>
             public class ResumeRequest : AuthorizedBuyersMarketplaceBaseServiceRequest<Google.Apis.AuthorizedBuyersMarketplace.v1.Data.FinalizedDeal>
             {

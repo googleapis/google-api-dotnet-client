@@ -370,25 +370,23 @@ namespace Google.Apis.CivicInfo.v2
         }
 
         /// <summary>Looks up information relevant to a voter based on the voter's registered address.</summary>
-        /// <param name="address">The registered address of the voter to look up.</param>
-        public virtual VoterInfoQueryRequest VoterInfoQuery(string address)
+        public virtual VoterInfoQueryRequest VoterInfoQuery()
         {
-            return new VoterInfoQueryRequest(this.service, address);
+            return new VoterInfoQueryRequest(this.service);
         }
 
         /// <summary>Looks up information relevant to a voter based on the voter's registered address.</summary>
         public class VoterInfoQueryRequest : CivicInfoBaseServiceRequest<Google.Apis.CivicInfo.v2.Data.VoterInfoResponse>
         {
             /// <summary>Constructs a new VoterInfoQuery request.</summary>
-            public VoterInfoQueryRequest(Google.Apis.Services.IClientService service, string address) : base(service)
+            public VoterInfoQueryRequest(Google.Apis.Services.IClientService service) : base(service)
             {
-                Address = address;
                 InitParameters();
             }
 
             /// <summary>The registered address of the voter to look up.</summary>
             [Google.Apis.Util.RequestParameterAttribute("address", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Address { get; private set; }
+            public virtual string Address { get; set; }
 
             /// <summary>
             /// The unique ID of the election to look up. A list of election IDs can be obtained at
@@ -433,7 +431,7 @@ namespace Google.Apis.CivicInfo.v2
                 RequestParameters.Add("address", new Google.Apis.Discovery.Parameter
                 {
                     Name = "address",
-                    IsRequired = true,
+                    IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,

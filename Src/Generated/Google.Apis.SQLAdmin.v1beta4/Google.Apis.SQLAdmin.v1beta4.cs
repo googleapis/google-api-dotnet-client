@@ -7754,6 +7754,13 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string Edition { get; set; }
 
         /// <summary>
+        /// Optional. By default, Cloud SQL instances have schema extraction disabled for Dataplex. When this parameter
+        /// is set to true, schema extraction for Dataplex on Cloud SQL instances is activated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableDataplexIntegration")]
+        public virtual System.Nullable<bool> EnableDataplexIntegration { get; set; }
+
+        /// <summary>
         /// Optional. When this parameter is set to true, Cloud SQL instances can connect to Vertex AI to pass requests
         /// for real-time predictions and insights to the AI. The default value is false. This applies only to Cloud SQL
         /// for PostgreSQL instances.

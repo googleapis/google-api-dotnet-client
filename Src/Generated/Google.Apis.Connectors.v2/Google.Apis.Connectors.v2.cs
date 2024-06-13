@@ -1164,7 +1164,7 @@ namespace Google.Apis.Connectors.v2
                         /// supported, any updates, inserts or deletes during pagination can lead to stale data being
                         /// returned or other unexpected behaviors.
                         /// </summary>
-                        public class ListRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v2.Data.ListEntitiesWithACLsResponse>
+                        public class ListRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v2.Data.Operation>
                         {
                             /// <summary>Constructs a new List request.</summary>
                             public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
@@ -1191,20 +1191,6 @@ namespace Google.Apis.Connectors.v2
                             /// <summary>Format: gs://object_path</summary>
                             [Google.Apis.Util.RequestParameterAttribute("gsutilUri", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string GsutilUri { get; set; }
-
-                            /// <summary>
-                            /// Number of entity rows to return. Defaults page size = 25. Max page size = 200.
-                            /// </summary>
-                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual System.Nullable<int> PageSize { get; set; }
-
-                            /// <summary>Page token value if available from a previous request.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual string PageToken { get; set; }
-
-                            /// <summary>List of 'sort_by' columns to use when returning the results.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("sortBy", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual Google.Apis.Util.Repeatable<string> SortBy { get; set; }
 
                             /// <summary>Gets the method name.</summary>
                             public override string MethodName => "list";
@@ -1238,30 +1224,6 @@ namespace Google.Apis.Connectors.v2
                                 RequestParameters.Add("gsutilUri", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "gsutilUri",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                                RequestParameters.Add("sortBy", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "sortBy",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -1743,20 +1705,6 @@ namespace Google.Apis.Connectors.v2.Data
     }
 
     /// <summary>
-    /// AclInfo has a list of readers for a resource. This is defined as per the below docs
-    /// https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1alpha/projects.locations.collections.dataStores.branches.documents#aclinfo
-    /// </summary>
-    public class AclInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A list of readers for a resource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("readers")]
-        public virtual System.Collections.Generic.IList<Readers> Readers { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
     /// Action message contains metadata information about a single action present in the external system.
     /// </summary>
     public class Action : Google.Apis.Requests.IDirectResponseSchema
@@ -1949,24 +1897,6 @@ namespace Google.Apis.Connectors.v2.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<string> Operations { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>EntityWithACL refers to a single row of an entity type with ACL information.</summary>
-    public class EntityWithACL : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>ACL information of the entity.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("acl_info")]
-        public virtual AclInfo AclInfo { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; }
-
-        /// <summary>Entity data in JSON format.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("jsonData")]
-        public virtual string JsonData { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2447,21 +2377,6 @@ namespace Google.Apis.Connectors.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response message for EntityService.ListEntitiesWithACLs</summary>
-    public class ListEntitiesWithACLsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>List containing entity rows.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("entitiesWithAcl")]
-        public virtual System.Collections.Generic.IList<EntityWithACL> EntitiesWithAcl { get; set; }
-
-        /// <summary>Next page token if more records are available.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Response message for EntityService.ListEntityTypes</summary>
     public class ListEntityTypesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2819,6 +2734,49 @@ namespace Google.Apis.Connectors.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
+    public class Operation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed,
+        /// and either `error` or `response` is available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("done")]
+        public virtual System.Nullable<bool> Done { get; set; }
+
+        /// <summary>The error result of the operation in case of failure or cancellation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; }
+
+        /// <summary>
+        /// Service-specific metadata associated with the operation. It typically contains progress information and
+        /// common metadata such as create time. Some services might not provide such metadata. Any method that returns
+        /// a long-running operation should document the metadata type, if any.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
+        /// <summary>
+        /// The server-assigned name, which is only unique within the same service that originally returns it. If you
+        /// use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The normal, successful response of the operation. If the original method returns no data on success, such as
+        /// `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>PerSliSloEligibility is a mapping from an SLI name to eligibility.</summary>
     public class PerSliSloEligibility : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2834,21 +2792,6 @@ namespace Google.Apis.Connectors.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eligibilities")]
         public virtual System.Collections.Generic.IDictionary<string, SloEligibility> Eligibilities { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Principal is a user or group that has access to a resource.</summary>
-    public class Principal : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The group that has access to a resource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("group_id")]
-        public virtual string GroupId { get; set; }
-
-        /// <summary>The user that has access to a resource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("user_id")]
-        public virtual string UserId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2911,17 +2854,6 @@ namespace Google.Apis.Connectors.v2.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual object Value { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Readers is a list of principals that have read access to a resource.</summary>
-    public class Readers : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A list of principals that have read access to a resource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("principals")]
-        public virtual System.Collections.Generic.IList<Principal> Principals { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3044,6 +2976,35 @@ namespace Google.Apis.Connectors.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tier")]
         public virtual string Tier { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The `Status` type defines a logical error model that is suitable for different programming environments,
+    /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
+    /// three pieces of data: error code, error message, and error details. You can find out more about this error model
+    /// and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+    /// </summary>
+    public class Status : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual System.Nullable<int> Code { get; set; }
+
+        /// <summary>
+        /// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
+
+        /// <summary>
+        /// A developer-facing error message, which should be in English. Any user-facing error message should be
+        /// localized and sent in the google.rpc.Status.details field, or localized by the client.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

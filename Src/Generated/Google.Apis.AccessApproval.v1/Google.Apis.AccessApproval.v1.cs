@@ -2203,6 +2203,10 @@ namespace Google.Apis.AccessApproval.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("preferredRequestExpirationDays")]
         public virtual System.Nullable<int> PreferredRequestExpirationDays { get; set; }
 
+        /// <summary>Optional. A setting to indicate the maximum width of an Access Approval request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestScopeMaxWidthPreference")]
+        public virtual string RequestScopeMaxWidthPreference { get; set; }
+
         /// <summary>Optional. A setting to require approval request justifications to be customer visible.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requireCustomerVisibleJustification")]
         public virtual System.Nullable<bool> RequireCustomerVisibleJustification { get; set; }

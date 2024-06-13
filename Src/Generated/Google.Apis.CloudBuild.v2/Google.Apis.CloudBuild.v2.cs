@@ -4362,6 +4362,12 @@ namespace Google.Apis.CloudBuild.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Optional. OnError defines the exiting behavior on error can be set to [ continue | stopAndFail ]
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onError")]
+        public virtual string OnError { get; set; }
+
         /// <summary>Optional. Optional parameters passed to the StepAction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("params")]
         public virtual System.Collections.Generic.IList<Param> Params__ { get; set; }
