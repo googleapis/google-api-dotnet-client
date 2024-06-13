@@ -45,6 +45,7 @@ dotnet new sln --name Generated
 echo $PROJECTS | xargs dotnet sln Generated.sln add
 
 echo "Building/packing"
+export CI=true
 dotnet pack Generated.sln -c Release -o $NUPKG_DIR
 
 echo "Build complete"
