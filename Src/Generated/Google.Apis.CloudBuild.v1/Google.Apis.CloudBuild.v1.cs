@@ -1104,7 +1104,7 @@ namespace Google.Apis.CloudBuild.v1
             /// <summary>Create an association between a GCP project and a GitHub Enterprise server.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Name of the parent project. For example: projects/{$project_number} or projects/{$project_id}
+            /// Required. Name of the parent project. For example: projects/{$project_number} or projects/{$project_id}
             /// </param>
             public virtual CreateRequest Create(Google.Apis.CloudBuild.v1.Data.GitHubEnterpriseConfig body, string parent)
             {
@@ -1123,7 +1123,8 @@ namespace Google.Apis.CloudBuild.v1
                 }
 
                 /// <summary>
-                /// Name of the parent project. For example: projects/{$project_number} or projects/{$project_id}
+                /// Required. Name of the parent project. For example: projects/{$project_number} or
+                /// projects/{$project_id}
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -1401,7 +1402,7 @@ namespace Google.Apis.CloudBuild.v1
             /// <summary>Update an association between a GCP project and a GitHub Enterprise server.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Optional. The full resource name for the GitHubEnterpriseConfig For example:
+            /// The full resource name for the GitHubEnterpriseConfig For example:
             /// "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.CloudBuild.v1.Data.GitHubEnterpriseConfig body, string name)
@@ -1421,7 +1422,7 @@ namespace Google.Apis.CloudBuild.v1
                 }
 
                 /// <summary>
-                /// Optional. The full resource name for the GitHubEnterpriseConfig For example:
+                /// The full resource name for the GitHubEnterpriseConfig For example:
                 /// "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -3137,7 +3138,8 @@ namespace Google.Apis.CloudBuild.v1
                 /// <summary>Create an association between a GCP project and a GitHub Enterprise server.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Name of the parent project. For example: projects/{$project_number} or projects/{$project_id}
+                /// Required. Name of the parent project. For example: projects/{$project_number} or
+                /// projects/{$project_id}
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudBuild.v1.Data.GitHubEnterpriseConfig body, string parent)
                 {
@@ -3156,7 +3158,8 @@ namespace Google.Apis.CloudBuild.v1
                     }
 
                     /// <summary>
-                    /// Name of the parent project. For example: projects/{$project_number} or projects/{$project_id}
+                    /// Required. Name of the parent project. For example: projects/{$project_number} or
+                    /// projects/{$project_id}
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -3434,7 +3437,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// <summary>Update an association between a GCP project and a GitHub Enterprise server.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Optional. The full resource name for the GitHubEnterpriseConfig For example:
+                /// The full resource name for the GitHubEnterpriseConfig For example:
                 /// "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CloudBuild.v1.Data.GitHubEnterpriseConfig body, string name)
@@ -3454,7 +3457,7 @@ namespace Google.Apis.CloudBuild.v1
                     }
 
                     /// <summary>
-                    /// Optional. The full resource name for the GitHubEnterpriseConfig For example:
+                    /// The full resource name for the GitHubEnterpriseConfig For example:
                     /// "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -4599,7 +4602,7 @@ namespace Google.Apis.CloudBuild.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>A mask specifying which fields in `worker_pool` to update.</summary>
+                    /// <summary>Optional. A mask specifying which fields in `worker_pool` to update.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
 
@@ -7803,7 +7806,7 @@ namespace Google.Apis.CloudBuild.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Name to display for this config.</summary>
+        /// <summary>Optional. Name to display for this config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
@@ -7812,7 +7815,7 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string HostUrl { get; set; }
 
         /// <summary>
-        /// Optional. The full resource name for the GitHubEnterpriseConfig For example:
+        /// The full resource name for the GitHubEnterpriseConfig For example:
         /// "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -7829,7 +7832,7 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("peeredNetwork")]
         public virtual string PeeredNetwork { get; set; }
 
-        /// <summary>Names of secrets in Secret Manager.</summary>
+        /// <summary>Optional. Names of secrets in Secret Manager.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secrets")]
         public virtual GitHubEnterpriseSecrets Secrets { get; set; }
 
@@ -7894,8 +7897,8 @@ namespace Google.Apis.CloudBuild.v1.Data
     public class GitHubEventsConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The resource name of the github enterprise config that should be applied to this installation. For
-        /// example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
+        /// The resource name of the github enterprise config that should be applied to this installation. For example:
+        /// "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enterpriseConfigResourceName")]
         public virtual string EnterpriseConfigResourceName { get; set; }
@@ -8826,7 +8829,7 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string Subscription { get; set; }
 
         /// <summary>
-        /// The name of the topic from which this subscription is receiving messages. Format is
+        /// Optional. The name of the topic from which this subscription is receiving messages. Format is
         /// `projects/{project}/topics/{topic}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topic")]
@@ -9920,7 +9923,7 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual System.Nullable<long> DiskSizeGb { get; set; }
 
         /// <summary>
-        /// Machine type of a worker, such as `e2-medium`. See [Worker pool config
+        /// Optional. Machine type of a worker, such as `e2-medium`. See [Worker pool config
         /// file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). If left blank,
         /// Cloud Build will use a sensible default.
         /// </summary>

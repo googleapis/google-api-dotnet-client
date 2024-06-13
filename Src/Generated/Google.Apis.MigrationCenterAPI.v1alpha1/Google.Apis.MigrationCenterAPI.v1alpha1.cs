@@ -6494,6 +6494,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("machinePreferences")]
         public virtual MachinePreferences MachinePreferences { get; set; }
 
+        /// <summary>Optional. Pricing options for OS images.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osPricingPreferences")]
+        public virtual OperatingSystemPricingPreferences OsPricingPreferences { get; set; }
+
         /// <summary>
         /// Persistent disk type to use. If unspecified (default), all types are considered, based on available usage
         /// data.
@@ -8671,8 +8675,8 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
     }
 
     /// <summary>
-    /// The type of machines to consider when calculating virtual machine migration insights and recommendations. Not
-    /// all machine types are available in all zones and regions.
+    /// The type of machines to consider when calculating virtual machine migration insights and recommendations for
+    /// GCE. Not all machine types are available in all zones and regions.
     /// </summary>
     public class MachinePreferences : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9073,6 +9077,46 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>Open file details entries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
         public virtual System.Collections.Generic.IList<OpenFileDetails> Entries { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Pricing options for OS images.</summary>
+    public class OperatingSystemPricingPreferences : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Pricing options for RHEL images.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rhel")]
+        public virtual OperatingSystemPricingPreferencesOperatingSystemPricing Rhel { get; set; }
+
+        /// <summary>Optional. Pricing options for SLES images.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sles")]
+        public virtual OperatingSystemPricingPreferencesOperatingSystemPricing Sles { get; set; }
+
+        /// <summary>Optional. Pricing options for SLES for SAP images.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("slesForSap")]
+        public virtual OperatingSystemPricingPreferencesOperatingSystemPricing SlesForSap { get; set; }
+
+        /// <summary>
+        /// Optional. Pricing options for Windows images. No commitment plans are available, set it to unspecified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("windows")]
+        public virtual OperatingSystemPricingPreferencesOperatingSystemPricing Windows { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Pricing options of an OS image.</summary>
+    public class OperatingSystemPricingPreferencesOperatingSystemPricing : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The plan of commitments for committed use discounts (CUD).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commitmentPlan")]
+        public virtual string CommitmentPlan { get; set; }
+
+        /// <summary>Optional. License type of the OS image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenseType")]
+        public virtual string LicenseType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10551,6 +10595,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeTypes")]
         public virtual System.Collections.Generic.IList<SoleTenantNodeType> NodeTypes { get; set; }
+
+        /// <summary>Optional. Pricing options for OS images.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osPricingPreferences")]
+        public virtual OperatingSystemPricingPreferences OsPricingPreferences { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

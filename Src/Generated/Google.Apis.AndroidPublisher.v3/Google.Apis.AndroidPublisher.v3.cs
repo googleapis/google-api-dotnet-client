@@ -17285,7 +17285,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
 
         /// <summary>
         /// The reason why the purchase was voided, possible values are: 0. Other 1. Remorse 2. Not_received 3.
-        /// Defective 4. Accidental_purchase 5. Fraud 6. Friendly_fraud 7. Chargeback
+        /// Defective 4. Accidental_purchase 5. Fraud 6. Friendly_fraud 7. Chargeback 8. Unacknowledged_purchase
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("voidedReason")]
         public virtual System.Nullable<int> VoidedReason { get; set; }

@@ -381,6 +381,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1
                 {
                     this.service = service;
                     ProducerOverrides = new ProducerOverridesResource(service);
+                    ProducerQuotaPolicies = new ProducerQuotaPoliciesResource(service);
                 }
 
                 /// <summary>Gets the ProducerOverrides resource.</summary>
@@ -953,6 +954,430 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1
                     }
                 }
 
+                /// <summary>Gets the ProducerQuotaPolicies resource.</summary>
+                public virtual ProducerQuotaPoliciesResource ProducerQuotaPolicies { get; }
+
+                /// <summary>The "producerQuotaPolicies" collection of methods.</summary>
+                public class ProducerQuotaPoliciesResource
+                {
+                    private const string Resource = "producerQuotaPolicies";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ProducerQuotaPoliciesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Creates a producer quota policy. A producer quota policy is applied by the owner or
+                    /// administrator of a service at an org or folder node to set the default quota limit for all
+                    /// consumers under the node where the policy is created. To create multiple policies at once, use
+                    /// ImportProducerQuotaPolicies instead. If a policy with the specified dimensions already exists,
+                    /// this call will fail. To overwrite an existing policy if one is already present ("upsert"
+                    /// semantics), use ImportProducerQuotaPolicies instead.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The resource name of the parent quota limit. An example name would be:
+                    /// `services/compute.googleapis.com/organizations/123/consumerQuotaMetrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion`
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.ServiceConsumerManagement.v1beta1.Data.V1Beta1ProducerQuotaPolicy body, string parent)
+                    {
+                        return new CreateRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>
+                    /// Creates a producer quota policy. A producer quota policy is applied by the owner or
+                    /// administrator of a service at an org or folder node to set the default quota limit for all
+                    /// consumers under the node where the policy is created. To create multiple policies at once, use
+                    /// ImportProducerQuotaPolicies instead. If a policy with the specified dimensions already exists,
+                    /// this call will fail. To overwrite an existing policy if one is already present ("upsert"
+                    /// semantics), use ImportProducerQuotaPolicies instead.
+                    /// </summary>
+                    public class CreateRequest : ServiceConsumerManagementBaseServiceRequest<Google.Apis.ServiceConsumerManagement.v1beta1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceConsumerManagement.v1beta1.Data.V1Beta1ProducerQuotaPolicy body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the parent quota limit. An example name would be:
+                        /// `services/compute.googleapis.com/organizations/123/consumerQuotaMetrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Whether to force the creation of the quota policy. If the policy creation would decrease the
+                        /// default limit of any consumer tier by more than 10 percent, the call is rejected, as a
+                        /// safety measure to avoid accidentally decreasing quota too quickly. Setting the force
+                        /// parameter to true ignores this restriction.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> Force { get; set; }
+
+                        /// <summary>
+                        /// If force option is set to true, force_justification is suggested to be set to log the reason
+                        /// in audit logs.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("forceJustification", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string ForceJustification { get; set; }
+
+                        /// <summary>If set to true, validate the request, but do not actually update.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.ServiceConsumerManagement.v1beta1.Data.V1Beta1ProducerQuotaPolicy Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+parent}/producerQuotaPolicies";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^services/[^/]+/[^/]+/[^/]+/consumerQuotaMetrics/[^/]+/limits/[^/]+$",
+                            });
+                            RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "force",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("forceJustification", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "forceJustification",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "validateOnly",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Deletes a producer quota policy.</summary>
+                    /// <param name="name">
+                    /// Required. The resource name of the policy to delete. An example name would be:
+                    /// `services/compute.googleapis.com/organizations/123/consumerQuotaMetrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion/producerQuotaPolicies/4a3f2c1d`
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(this.service, name);
+                    }
+
+                    /// <summary>Deletes a producer quota policy.</summary>
+                    public class DeleteRequest : ServiceConsumerManagementBaseServiceRequest<Google.Apis.ServiceConsumerManagement.v1beta1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the policy to delete. An example name would be:
+                        /// `services/compute.googleapis.com/organizations/123/consumerQuotaMetrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion/producerQuotaPolicies/4a3f2c1d`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Whether to force the deletion of the quota policy. If the policy deletion would decrease the
+                        /// default limit of any consumer tier by more than 10 percent, the call is rejected, as a
+                        /// safety measure to avoid accidentally decreasing quota too quickly. Setting the force
+                        /// parameter to true ignores this restriction.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> Force { get; set; }
+
+                        /// <summary>
+                        /// If force option is set to true, force_justification is suggested to be set to log the reason
+                        /// in audit logs.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("forceJustification", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string ForceJustification { get; set; }
+
+                        /// <summary>If set to true, validate the request, but do not actually update.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^services/[^/]+/[^/]+/[^/]+/consumerQuotaMetrics/[^/]+/limits/[^/]+/producerQuotaPolicies/[^/]+$",
+                            });
+                            RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "force",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("forceJustification", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "forceJustification",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "validateOnly",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists all producer policies created at current consumer node for a limit.</summary>
+                    /// <param name="parent">
+                    /// Required. The resource name of the parent quota limit. An example name would be:
+                    /// `services/compute.googleapis.com/organizations/123/consumerQuotaMetrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion`
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists all producer policies created at current consumer node for a limit.</summary>
+                    public class ListRequest : ServiceConsumerManagementBaseServiceRequest<Google.Apis.ServiceConsumerManagement.v1beta1.Data.V1Beta1ListProducerQuotaPoliciesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the parent quota limit. An example name would be:
+                        /// `services/compute.googleapis.com/organizations/123/consumerQuotaMetrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Requested size of the next page of data.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Token identifying which result to start with; returned by a previous list call.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+parent}/producerQuotaPolicies";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^services/[^/]+/[^/]+/[^/]+/consumerQuotaMetrics/[^/]+/limits/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Updates a producer quota policy.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// The resource name of the producer policy. An example name would be:
+                    /// `services/compute.googleapis.com/organizations/123/consumerQuotaMetrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion/producerQuotaPolicies/4a3f2c1d`
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.ServiceConsumerManagement.v1beta1.Data.V1Beta1ProducerQuotaPolicy body, string name)
+                    {
+                        return new PatchRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Updates a producer quota policy.</summary>
+                    public class PatchRequest : ServiceConsumerManagementBaseServiceRequest<Google.Apis.ServiceConsumerManagement.v1beta1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceConsumerManagement.v1beta1.Data.V1Beta1ProducerQuotaPolicy body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// The resource name of the producer policy. An example name would be:
+                        /// `services/compute.googleapis.com/organizations/123/consumerQuotaMetrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion/producerQuotaPolicies/4a3f2c1d`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Whether to force the update of the quota policy. If the policy update would decrease the
+                        /// default limit of any consumer tier by more than 10 percent, the call is rejected, as a
+                        /// safety measure to avoid accidentally decreasing quota too quickly. Setting the force
+                        /// parameter to true ignores this restriction.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> Force { get; set; }
+
+                        /// <summary>
+                        /// If force option is set to true, force_justification is suggested to be set to log the reason
+                        /// in audit logs.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("forceJustification", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string ForceJustification { get; set; }
+
+                        /// <summary>
+                        /// Update only the specified fields. If unset, all modifiable fields will be updated.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>If set to true, validate the request, but do not actually update.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.ServiceConsumerManagement.v1beta1.Data.V1Beta1ProducerQuotaPolicy Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^services/[^/]+/[^/]+/[^/]+/consumerQuotaMetrics/[^/]+/limits/[^/]+/producerQuotaPolicies/[^/]+$",
+                            });
+                            RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "force",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("forceJustification", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "forceJustification",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "validateOnly",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
                 /// <summary>Retrieves a summary of quota information for a specific quota limit.</summary>
                 /// <param name="name">
                 /// The resource name of the quota limit, returned by a ListConsumerQuotaMetrics or
@@ -1185,6 +1610,71 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1
                 public override string RestPath => "v1beta1/{+parent}/consumerQuotaMetrics:importProducerOverrides";
 
                 /// <summary>Initializes ImportProducerOverrides parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^services/[^/]+/[^/]+/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Create or update multiple producer quota policies atomically, all on the same ancestor, but on many
+            /// different metrics or limits. The name field in the quota policy message should not be set.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// The resource name of the consumer. An example name would be:
+            /// `services/compute.googleapis.com/organizations/123`
+            /// </param>
+            public virtual ImportProducerQuotaPoliciesRequest ImportProducerQuotaPolicies(Google.Apis.ServiceConsumerManagement.v1beta1.Data.V1Beta1ImportProducerQuotaPoliciesRequest body, string parent)
+            {
+                return new ImportProducerQuotaPoliciesRequest(this.service, body, parent);
+            }
+
+            /// <summary>
+            /// Create or update multiple producer quota policies atomically, all on the same ancestor, but on many
+            /// different metrics or limits. The name field in the quota policy message should not be set.
+            /// </summary>
+            public class ImportProducerQuotaPoliciesRequest : ServiceConsumerManagementBaseServiceRequest<Google.Apis.ServiceConsumerManagement.v1beta1.Data.Operation>
+            {
+                /// <summary>Constructs a new ImportProducerQuotaPolicies request.</summary>
+                public ImportProducerQuotaPoliciesRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceConsumerManagement.v1beta1.Data.V1Beta1ImportProducerQuotaPoliciesRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// The resource name of the consumer. An example name would be:
+                /// `services/compute.googleapis.com/organizations/123`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.ServiceConsumerManagement.v1beta1.Data.V1Beta1ImportProducerQuotaPoliciesRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "importProducerQuotaPolicies";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta1/{+parent}/consumerQuotaMetrics:importProducerQuotaPolicies";
+
+                /// <summary>Initializes ImportProducerQuotaPolicies parameter list.</summary>
                 protected override void InitParameters()
                 {
                     base.InitParameters();
@@ -3968,6 +4458,35 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for ImportProducerQuotaPolicies</summary>
+    public class V1Beta1ImportProducerQuotaPoliciesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether to force the import of the quota policies. If the policy import would decrease the default limit of
+        /// any consumer tier by more than 10 percent, the call is rejected, as a safety measure to avoid accidentally
+        /// decreasing quota too quickly. Setting the force parameter to true ignores this restriction.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("force")]
+        public virtual System.Nullable<bool> Force { get; set; }
+
+        /// <summary>
+        /// If force option is set to true, force_justification is suggested to be set to log the reason in audit logs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("forceJustification")]
+        public virtual string ForceJustification { get; set; }
+
+        /// <summary>The import data is specified in the request message itself</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inlineSource")]
+        public virtual V1Beta1PolicyInlineSource InlineSource { get; set; }
+
+        /// <summary>If set to true, validate the request, but do not actually update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for ImportProducerQuotaPolicies</summary>
     public class V1Beta1ImportProducerQuotaPoliciesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4009,6 +4528,21 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for ListProducerQuotaPolicies.</summary>
+    public class V1Beta1ListProducerQuotaPoliciesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Token identifying which result to start with; returned by a previous list call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Producer policies on this limit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("producerQuotaPolicies")]
+        public virtual System.Collections.Generic.IList<V1Beta1ProducerQuotaPolicy> ProducerQuotaPolicies { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Import data embedded in the request message</summary>
     public class V1Beta1OverrideInlineSource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4019,6 +4553,20 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("overrides")]
         public virtual System.Collections.Generic.IList<V1Beta1QuotaOverride> Overrides { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Import data embedded in the request message</summary>
+    public class V1Beta1PolicyInlineSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The policies to create. Each policy must have a value for 'metric' and 'unit', to specify which metric and
+        /// which limit the policy should be applied to.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policies")]
+        public virtual System.Collections.Generic.IList<V1Beta1ProducerQuotaPolicy> Policies { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

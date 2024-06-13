@@ -1694,6 +1694,13 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
+        /// <summary>
+        /// ID of Cloud Run Service this revision belongs to. Was never set, is not exported to v1 proto and public
+        /// protos. Do not export to v1beta1 public proto.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceName")]
+        public virtual string ServiceName { get; set; }
+
         /// <summary>URI of Cloud Run service this revision belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceUri")]
         public virtual string ServiceUri { get; set; }

@@ -5268,9 +5268,10 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Resource name for the `AccessLevel`. Format: `accessPolicies/{access_policy}/accessLevels/{access_level}`.
-        /// The `access_level` component must begin with a letter, followed by alphanumeric characters or `_`. Its
-        /// maximum length is 50 characters. After you create an `AccessLevel`, you cannot change its `name`.
+        /// Identifier. Resource name for the `AccessLevel`. Format:
+        /// `accessPolicies/{access_policy}/accessLevels/{access_level}`. The `access_level` component must begin with a
+        /// letter, followed by alphanumeric characters or `_`. Its maximum length is 50 characters. After you create an
+        /// `AccessLevel`, you cannot change its `name`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -5293,14 +5294,14 @@ namespace Google.Apis.CloudAsset.v1.Data
     {
         /// <summary>
         /// Output only. An opaque identifier for the current version of the `AccessPolicy`. This will always be a
-        /// strongly validated etag, meaning that two Access Polices will be identical if and only if their etags are
+        /// strongly validated etag, meaning that two Access Policies will be identical if and only if their etags are
         /// identical. Clients should not expect this to be in any specific format.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
         /// <summary>
-        /// Output only. Resource name of the `AccessPolicy`. Format: `accessPolicies/{access_policy}`
+        /// Output only. Identifier. Resource name of the `AccessPolicy`. Format: `accessPolicies/{access_policy}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -5790,7 +5791,7 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Resource name for the `ServicePerimeter`. Format:
+        /// Identifier. Resource name for the `ServicePerimeter`. Format:
         /// `accessPolicies/{access_policy}/servicePerimeters/{service_perimeter}`. The `service_perimeter` component
         /// must begin with a letter, followed by alphanumeric characters or `_`. After you create a `ServicePerimeter`,
         /// you cannot change its `name`.
@@ -7199,7 +7200,7 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A result of Resource Search, containing information of a cloud resource. Next ID: 34</summary>
+    /// <summary>A result of Resource Search, containing information of a cloud resource. Next ID: 36</summary>
     public class ResourceSearchResult : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -7341,7 +7342,7 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual System.Collections.Generic.IList<string> KmsKeys { get; set; }
 
         /// <summary>
-        /// Labels associated with this resource. See [Labelling and grouping Google Cloud
+        /// User labels associated with this resource. See [Labelling and grouping Google Cloud
         /// resources](https://cloud.google.com/blog/products/gcp/labelling-and-grouping-your-google-cloud-platform-resources)
         /// for more information. This field is available only when the resource's Protobuf contains it. To search
         /// against the `labels`: * Use a field query: - query on any label's key or value. Example: `labels:prod` -

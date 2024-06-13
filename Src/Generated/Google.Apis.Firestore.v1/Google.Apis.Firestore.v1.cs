@@ -814,19 +814,17 @@ namespace Google.Apis.Firestore.v1
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Required. A field name of the form
+                    /// Required. A field name of the form:
                     /// `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_path}`
-                    /// A field path may be a simple field name, e.g. `address` or a path to fields within map_value ,
+                    /// A field path can be a simple field name, e.g. `address` or a path to fields within `map_value` ,
                     /// e.g. `address.city`, or a special field path. The only valid special field is `*`, which
-                    /// represents any field. Field paths may be quoted using ` (backtick). The only character that
-                    /// needs to be escaped within a quoted field path is the backtick character itself, escaped using a
-                    /// backslash. Special characters in field paths that must be quoted include: `*`, `.`,
-                    /// ```
-                    /// (backtick), `[`, `]`, as well as any ascii symbolic characters. Examples: (Note: Comments here
-                    /// are written in markdown syntax, so there is an additional layer of backticks to represent a code
-                    /// block) `\`address.city\`` represents a field named `address.city`, not the map key `city` in the
-                    /// field `address`. `\`*\`` represents a field named `*`, not any field. A special `Field` contains
-                    /// the default indexing settings for all fields. This field's resource name is:
+                    /// represents any field. Field paths can be quoted using `` ` `` (backtick). The only character
+                    /// that must be escaped within a quoted field path is the backtick character itself, escaped using
+                    /// a backslash. Special characters in field paths that must be quoted include: `*`, `.`, `` ` ``
+                    /// (backtick), `[`, `]`, as well as any ascii symbolic characters. Examples: `` `address.city` ``
+                    /// represents a field named `address.city`, not the map key `city` in the field `address`. `` `*`
+                    /// `` represents a field named `*`, not any field. A special `Field` contains the default indexing
+                    /// settings for all fields. This field's resource name is:
                     /// `projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields/*` Indexes
                     /// defined on this `Field` will be applied to all fields which do not have their own `Field` index
                     /// configuration.
@@ -857,20 +855,18 @@ namespace Google.Apis.Firestore.v1
                         }
 
                         /// <summary>
-                        /// Required. A field name of the form
+                        /// Required. A field name of the form:
                         /// `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_path}`
-                        /// A field path may be a simple field name, e.g. `address` or a path to fields within map_value
-                        /// , e.g. `address.city`, or a special field path. The only valid special field is `*`, which
-                        /// represents any field. Field paths may be quoted using ` (backtick). The only character that
-                        /// needs to be escaped within a quoted field path is the backtick character itself, escaped
-                        /// using a backslash. Special characters in field paths that must be quoted include: `*`, `.`,
-                        /// ```
-                        /// (backtick), `[`, `]`, as well as any ascii symbolic characters. Examples: (Note:
-                        /// Comments here are written in markdown syntax, so there is an additional layer of backticks
-                        /// to represent a code block) `\`address.city\`` represents a field named `address.city`, not
-                        /// the map key `city` in the field `address`. `\`*\`` represents a field named `*`, not any
-                        /// field. A special `Field` contains the default indexing settings for all fields. This field's
-                        /// resource name is:
+                        /// A field path can be a simple field name, e.g. `address` or a path to fields within
+                        /// `map_value` , e.g. `address.city`, or a special field path. The only valid special field is
+                        /// `*`, which represents any field. Field paths can be quoted using `` ` `` (backtick). The
+                        /// only character that must be escaped within a quoted field path is the backtick character
+                        /// itself, escaped using a backslash. Special characters in field paths that must be quoted
+                        /// include: `*`, `.`, `` ` `` (backtick), `[`, `]`, as well as any ascii symbolic characters.
+                        /// Examples: `` `address.city` `` represents a field named `address.city`, not the map key
+                        /// `city` in the field `address`. `` `*` `` represents a field named `*`, not any field. A
+                        /// special `Field` contains the default indexing settings for all fields. This field's resource
+                        /// name is:
                         /// `projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields/*`
                         /// Indexes defined on this `Field` will be applied to all fields which do not have their own
                         /// `Field` index configuration.
@@ -5804,19 +5800,16 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual GoogleFirestoreAdminV1IndexConfig IndexConfig { get; set; }
 
         /// <summary>
-        /// Required. A field name of the form
+        /// Required. A field name of the form:
         /// `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_path}` A field
-        /// path may be a simple field name, e.g. `address` or a path to fields within map_value , e.g. `address.city`,
-        /// or a special field path. The only valid special field is `*`, which represents any field. Field paths may be
-        /// quoted using ` (backtick). The only character that needs to be escaped within a quoted field path is the
-        /// backtick character itself, escaped using a backslash. Special characters in field paths that must be quoted
-        /// include: `*`, `.`,
-        /// ```
-        /// (backtick), `[`, `]`, as well as any ascii symbolic characters. Examples: (Note:
-        /// Comments here are written in markdown syntax, so there is an additional layer of backticks to represent a
-        /// code block) `\`address.city\`` represents a field named `address.city`, not the map key `city` in the field
-        /// `address`. `\`*\`` represents a field named `*`, not any field. A special `Field` contains the default
-        /// indexing settings for all fields. This field's resource name is:
+        /// path can be a simple field name, e.g. `address` or a path to fields within `map_value` , e.g.
+        /// `address.city`, or a special field path. The only valid special field is `*`, which represents any field.
+        /// Field paths can be quoted using `` ` `` (backtick). The only character that must be escaped within a quoted
+        /// field path is the backtick character itself, escaped using a backslash. Special characters in field paths
+        /// that must be quoted include: `*`, `.`, `` ` `` (backtick), `[`, `]`, as well as any ascii symbolic
+        /// characters. Examples: `` `address.city` `` represents a field named `address.city`, not the map key `city`
+        /// in the field `address`. `` `*` `` represents a field named `*`, not any field. A special `Field` contains
+        /// the default indexing settings for all fields. This field's resource name is:
         /// `projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields/*` Indexes defined on
         /// this `Field` will be applied to all fields which do not have their own `Field` index configuration.
         /// </summary>
@@ -6541,6 +6534,27 @@ namespace Google.Apis.Firestore.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseSnapshot")]
         public virtual GoogleFirestoreAdminV1DatabaseSnapshot DatabaseSnapshot { get; set; }
+
+        /// <summary>
+        /// Use Customer Managed Encryption Keys (CMEK) for encryption. Only keys in the same location as this database
+        /// are allowed to be used for encryption. For Firestore's nam5 multi-region, this corresponds to Cloud KMS
+        /// multi-region us. For Firestore's eur3 multi-region, this corresponds to Cloud KMS multi-region europe. See
+        /// https://cloud.google.com/kms/docs/locations. The expected format is
+        /// `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
+
+        /// <summary>
+        /// The restored database will use the same encryption configuration as the backup. This is the default option
+        /// when no `encryption_config` is specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useBackupEncryption")]
+        public virtual Empty UseBackupEncryption { get; set; }
+
+        /// <summary>Use Google default encryption.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useGoogleDefaultEncryption")]
+        public virtual Empty UseGoogleDefaultEncryption { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

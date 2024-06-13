@@ -3734,7 +3734,12 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 this.service = service;
             }
 
-            /// <summary>Adds an IdpCredential. Up to 2 credentials are allowed.</summary>
+            /// <summary>
+            /// Adds an IdpCredential. Up to 2 credentials are allowed. When the target customer has enabled
+            /// [Multi-party approval for sensitive actions](https://support.google.com/a/answer/13790448), the
+            /// `Operation` in the response will have `"done": false`, it will not have a response, and the metadata
+            /// will have `"state": "awaiting-multi-party-approval"`.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. The InboundSamlSsoProfile that owns the IdpCredential. Format:
@@ -3745,7 +3750,12 @@ namespace Google.Apis.CloudIdentity.v1beta1
                 return new AddRequest(this.service, body, parent);
             }
 
-            /// <summary>Adds an IdpCredential. Up to 2 credentials are allowed.</summary>
+            /// <summary>
+            /// Adds an IdpCredential. Up to 2 credentials are allowed. When the target customer has enabled
+            /// [Multi-party approval for sensitive actions](https://support.google.com/a/answer/13790448), the
+            /// `Operation` in the response will have `"done": false`, it will not have a response, and the metadata
+            /// will have `"state": "awaiting-multi-party-approval"`.
+            /// </summary>
             public class AddRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.Operation>
             {
                 /// <summary>Constructs a new Add request.</summary>
@@ -3979,14 +3989,24 @@ namespace Google.Apis.CloudIdentity.v1beta1
             }
         }
 
-        /// <summary>Creates an InboundSamlSsoProfile for a customer.</summary>
+        /// <summary>
+        /// Creates an InboundSamlSsoProfile for a customer. When the target customer has enabled [Multi-party approval
+        /// for sensitive actions](https://support.google.com/a/answer/13790448), the `Operation` in the response will
+        /// have `"done": false`, it will not have a response, and the metadata will have `"state":
+        /// "awaiting-multi-party-approval"`.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.CloudIdentity.v1beta1.Data.InboundSamlSsoProfile body)
         {
             return new CreateRequest(this.service, body);
         }
 
-        /// <summary>Creates an InboundSamlSsoProfile for a customer.</summary>
+        /// <summary>
+        /// Creates an InboundSamlSsoProfile for a customer. When the target customer has enabled [Multi-party approval
+        /// for sensitive actions](https://support.google.com/a/answer/13790448), the `Operation` in the response will
+        /// have `"done": false`, it will not have a response, and the metadata will have `"state":
+        /// "awaiting-multi-party-approval"`.
+        /// </summary>
         public class CreateRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.Operation>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -4201,7 +4221,11 @@ namespace Google.Apis.CloudIdentity.v1beta1
             }
         }
 
-        /// <summary>Updates an InboundSamlSsoProfile.</summary>
+        /// <summary>
+        /// Updates an InboundSamlSsoProfile. When the target customer has enabled [Multi-party approval for sensitive
+        /// actions](https://support.google.com/a/answer/13790448), the `Operation` in the response will have `"done":
+        /// false`, it will not have a response, and the metadata will have `"state": "awaiting-multi-party-approval"`.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
         /// Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the SAML SSO profile.
@@ -4211,7 +4235,11 @@ namespace Google.Apis.CloudIdentity.v1beta1
             return new PatchRequest(this.service, body, name);
         }
 
-        /// <summary>Updates an InboundSamlSsoProfile.</summary>
+        /// <summary>
+        /// Updates an InboundSamlSsoProfile. When the target customer has enabled [Multi-party approval for sensitive
+        /// actions](https://support.google.com/a/answer/13790448), the `Operation` in the response will have `"done":
+        /// false`, it will not have a response, and the metadata will have `"state": "awaiting-multi-party-approval"`.
+        /// </summary>
         public class PatchRequest : CloudIdentityBaseServiceRequest<Google.Apis.CloudIdentity.v1beta1.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -4851,6 +4879,14 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
     /// <summary>LRO response metadata for InboundSamlSsoProfilesService.AddIdpCredential.</summary>
     public class AddIdpCredentialOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// State of this Operation Will be "awaiting-multi-party-approval" when the operation is deferred due to the
+        /// target customer having enabled [Multi-party approval for sensitive
+        /// actions](https://support.google.com/a/answer/13790448).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5503,6 +5539,14 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
     /// <summary>LRO response metadata for InboundSamlSsoProfilesService.CreateInboundSamlSsoProfile.</summary>
     public class CreateInboundSamlSsoProfileOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// State of this Operation Will be "awaiting-multi-party-approval" when the operation is deferred due to the
+        /// target customer having enabled [Multi-party approval for sensitive
+        /// actions](https://support.google.com/a/answer/13790448).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -8532,6 +8576,14 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
     /// <summary>LRO response metadata for InboundSamlSsoProfilesService.UpdateInboundSamlSsoProfile.</summary>
     public class UpdateInboundSamlSsoProfileOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// State of this Operation Will be "awaiting-multi-party-approval" when the operation is deferred due to the
+        /// target customer having enabled [Multi-party approval for sensitive
+        /// actions](https://support.google.com/a/answer/13790448).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

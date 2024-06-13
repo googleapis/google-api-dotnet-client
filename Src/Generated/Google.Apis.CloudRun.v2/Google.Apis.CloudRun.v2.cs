@@ -3861,7 +3861,9 @@ namespace Google.Apis.CloudRun.v2.Data
     /// <summary>Represents a volume backed by a Cloud Storage bucket using Cloud Storage FUSE.</summary>
     public class GoogleCloudRunV2GCSVolumeSource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Cloud Storage Bucket name.</summary>
+        /// <summary>
+        /// Cloud Storage Bucket name. TODO (b/344678062) Fix the error validation once dynamic mounting is public.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
         public virtual string Bucket { get; set; }
 

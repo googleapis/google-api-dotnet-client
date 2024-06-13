@@ -1934,14 +1934,14 @@ namespace Google.Apis.CloudRetail.v2alpha
                         }
                     }
 
-                    /// <summary>Lists all Branchs under the specified parent Catalog.</summary>
+                    /// <summary>Lists all instances of Branch under the specified parent Catalog.</summary>
                     /// <param name="parent">Required. The parent catalog resource name.</param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(this.service, parent);
                     }
 
-                    /// <summary>Lists all Branchs under the specified parent Catalog.</summary>
+                    /// <summary>Lists all instances of Branch under the specified parent Catalog.</summary>
                     public class ListRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaListBranchesResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -4656,8 +4656,8 @@ namespace Google.Apis.CloudRetail.v2alpha
                     public virtual string DeviceType { get; set; }
 
                     /// <summary>
-                    /// If true, attribute suggestions are enabled and provided in response. This field is only
-                    /// available for "cloud-retail" dataset.
+                    /// If true, attribute suggestions are enabled and provided in the response. This field is only
+                    /// available for the "cloud-retail" dataset.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("enableAttributeSuggestions", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> EnableAttributeSuggestions { get; set; }
@@ -6177,8 +6177,8 @@ namespace Google.Apis.CloudRetail.v2alpha
 
             /// <summary>
             /// Indicates which fields in the provided LoggingConfig to update. The following are the only supported
-            /// fields: * LoggingConfig.default_log_generation_rule * LoggingConfig.per_service_log_generation_rules If
-            /// not set, all supported fields are updated.
+            /// fields: * LoggingConfig.default_log_generation_rule * LoggingConfig.service_log_generation_rules If not
+            /// set, all supported fields are updated.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
@@ -7729,7 +7729,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A data branch that stores Products.</summary>
+    /// <summary>A data branch that stores all instances of Products.</summary>
     public class GoogleCloudRetailV2alphaBranch : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Human readable name of the branch to display in the UI.</summary>
@@ -13441,87 +13441,6 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Common metadata related to the progress of the operations.</summary>
-    public class GoogleCloudRetailV2betaCreateMerchantCenterAccountLinkMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        private string _createTimeRaw;
-
-        private object _createTime;
-
-        /// <summary>Operation create time.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
-        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Metadata associated with a create operation.</summary>
     public class GoogleCloudRetailV2betaCreateModelMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13880,101 +13799,6 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// <summary>Aggregated statistics of user event import status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("importSummary")]
         public virtual GoogleCloudRetailV2betaUserEventImportSummary ImportSummary { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Represents a link between a Merchant Center account and a branch. After a link is established, products from the
-    /// linked Merchant Center account are streamed to the linked branch.
-    /// </summary>
-    public class GoogleCloudRetailV2betaMerchantCenterAccountLink : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. The branch ID (e.g. 0/1/2) within the catalog that products from merchant_center_account_id are
-        /// streamed to. When updating this field, an empty value will use the currently configured default branch.
-        /// However, changing the default branch later on won't change the linked branch here. A single branch ID can
-        /// only have one linked Merchant Center account ID.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("branchId")]
-        public virtual string BranchId { get; set; }
-
-        /// <summary>
-        /// Criteria for the Merchant Center feeds to be ingested via the link. All offers will be ingested if the list
-        /// is empty. Otherwise the offers will be ingested from selected feeds.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("feedFilters")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2betaMerchantCenterAccountLinkMerchantCenterFeedFilter> FeedFilters { get; set; }
-
-        /// <summary>
-        /// The FeedLabel used to perform filtering. Note: this replaces
-        /// [region_id](https://developers.google.com/shopping-content/reference/rest/v2.1/products#Product.FIELDS.feed_label).
-        /// Example value: `US`. Example value: `FeedLabel1`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("feedLabel")]
-        public virtual string FeedLabel { get; set; }
-
-        /// <summary>
-        /// Output only. Immutable. MerchantCenterAccountLink identifier, which is the final component of name. This
-        /// field is auto generated and follows the convention: `BranchId_MerchantCenterAccountId`.
-        /// `projects/*/locations/global/catalogs/default_catalog/merchantCenterAccountLinks/id_1`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; }
-
-        /// <summary>
-        /// Language of the title/description and other string attributes. Use language tags defined by [BCP
-        /// 47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). ISO 639-1. This specifies the language of offers in
-        /// Merchant Center that will be accepted. If empty, no language filtering will be performed. Example value:
-        /// `en`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
-        public virtual string LanguageCode { get; set; }
-
-        /// <summary>
-        /// Required. The linked [Merchant center account
-        /// id](https://developers.google.com/shopping-content/guides/accountstatuses). The account must be a standalone
-        /// account or a sub-account of a MCA.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("merchantCenterAccountId")]
-        public virtual System.Nullable<long> MerchantCenterAccountId { get; set; }
-
-        /// <summary>
-        /// Output only. Immutable. Full resource name of the Merchant Center Account Link, such as
-        /// `projects/*/locations/global/catalogs/default_catalog/merchantCenterAccountLinks/merchant_center_account_link`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>Output only. Google Cloud project ID.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; }
-
-        /// <summary>
-        /// Optional. An optional arbitrary string that could be used as a tag for tracking link source.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("source")]
-        public virtual string Source { get; set; }
-
-        /// <summary>Output only. Represents the state of the link.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Merchant Center Feed filter criterion.</summary>
-    public class GoogleCloudRetailV2betaMerchantCenterAccountLinkMerchantCenterFeedFilter : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Merchant Center primary feed ID.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("primaryFeedId")]
-        public virtual System.Nullable<long> PrimaryFeedId { get; set; }
-
-        /// <summary>Merchant Center primary feed name. The name is used for the display purposes only.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("primaryFeedName")]
-        public virtual string PrimaryFeedName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
