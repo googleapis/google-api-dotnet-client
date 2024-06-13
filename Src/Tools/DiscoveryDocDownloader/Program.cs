@@ -48,21 +48,24 @@ namespace DiscoveryDocDownloader
             client.DefaultRequestHeaders.Add("X-User-Ip", "0.0.0.0");
             var apis = await LoadApiListAsync(client);
             Console.WriteLine($"Discovery returned {apis.Count} APIs");
-            foreach (var api in apis)
-            {
-                try
-                {
-                    string text = await FetchAndReformat(client, api);
-                    string filename = $"{api.Name}_{api.Version}.json";
-                    File.WriteAllText(Path.Combine(destination, filename), text);
-                    Console.WriteLine($"Written {filename}");
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine($"Failed to download API '{api.Name}' version '{api.Version}': {e.Message}");
-                }
-            }
+            var tasks = apis.Select(api => DownloadAsync(client, api, destination)).ToList();
+            await Task.WhenAll(tasks);
             return 0;
+        }
+
+        private static async Task DownloadAsync(HttpClient client, ApiMetadata api, string destination)
+        {
+            try
+            {
+                string text = await FetchAndReformat(client, api);
+                string filename = $"{api.Name}_{api.Version}.json";
+                File.WriteAllText(Path.Combine(destination, filename), text);
+                Console.WriteLine($"Written {filename}");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Failed to download API '{api.Name}' version '{api.Version}': {e.Message}");
+            }
         }
 
         private static async Task<List<ApiMetadata>> LoadApiListAsync(HttpClient client)
