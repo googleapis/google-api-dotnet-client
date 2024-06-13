@@ -21723,6 +21723,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("industryVertical")]
         public virtual string IndustryVertical { get; set; }
 
+        /// <summary>Language info for DataStore.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageInfo")]
+        public virtual GoogleCloudDiscoveryengineV1alphaLanguageInfo LanguageInfo { get; set; }
+
         /// <summary>
         /// Immutable. The full resource name of the data store. Format:
         /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. This field
@@ -24027,6 +24031,38 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Language info for DataStore.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaLanguageInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Language part of normalized_language_code. E.g.: `en-US` -&amp;gt; `en`, `zh-Hans-HK` -&amp;gt;
+        /// `zh`, `en` -&amp;gt; `en`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("language")]
+        public virtual string Language { get; set; }
+
+        /// <summary>The language code for the DataStore.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>
+        /// Output only. This is the normalized form of language_code. E.g.: language_code of `en-GB`, `en_GB`, `en-UK`
+        /// or `en-gb` will have normalized_language_code of `en-GB`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("normalizedLanguageCode")]
+        public virtual string NormalizedLanguageCode { get; set; }
+
+        /// <summary>
+        /// Output only. Region part of normalized_language_code, if present. E.g.: `en-US` -&amp;gt; `US`, `zh-Hans-HK`
+        /// -&amp;gt; `HK`, `en` -&amp;gt; ``.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for ChunkService.ListChunks method.</summary>
     public class GoogleCloudDiscoveryengineV1alphaListChunksResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -25739,6 +25775,15 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestImageQuery ImageQuery { get; set; }
 
         /// <summary>
+        /// The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see [Standard
+        /// fields](https://cloud.google.com/apis/design/standard_fields). This field helps to better interpret the
+        /// query. If a value isn't specified, the query language code is automatically detected, which may not be
+        /// accurate.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>
         /// A 0-indexed integer that specifies the current offset (that is, starting result location, amongst the
         /// Documents deemed by the API as relevant) in search results. This field is only considered if page_token is
         /// unset. If this field is negative, an `INVALID_ARGUMENT` is returned.
@@ -25806,6 +25851,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rankingExpression")]
         public virtual string RankingExpression { get; set; }
+
+        /// <summary>
+        /// The Unicode country/region code (CLDR) of a location, such as "US" and "419". For more information, see
+        /// [Standard fields](https://cloud.google.com/apis/design/standard_fields). If set, then results will be
+        /// boosted based on the region_code provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
 
         /// <summary>Whether to turn on safe search. This is only supported for website search.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("safeSearch")]
@@ -28942,6 +28995,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("industryVertical")]
         public virtual string IndustryVertical { get; set; }
 
+        /// <summary>Language info for DataStore.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageInfo")]
+        public virtual GoogleCloudDiscoveryengineV1betaLanguageInfo LanguageInfo { get; set; }
+
         /// <summary>
         /// Immutable. The full resource name of the data store. Format:
         /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. This field
@@ -30209,6 +30266,38 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unjoinedEventsCount")]
         public virtual System.Nullable<long> UnjoinedEventsCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Language info for DataStore.</summary>
+    public class GoogleCloudDiscoveryengineV1betaLanguageInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Language part of normalized_language_code. E.g.: `en-US` -&amp;gt; `en`, `zh-Hans-HK` -&amp;gt;
+        /// `zh`, `en` -&amp;gt; `en`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("language")]
+        public virtual string Language { get; set; }
+
+        /// <summary>The language code for the DataStore.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>
+        /// Output only. This is the normalized form of language_code. E.g.: language_code of `en-GB`, `en_GB`, `en-UK`
+        /// or `en-gb` will have normalized_language_code of `en-GB`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("normalizedLanguageCode")]
+        public virtual string NormalizedLanguageCode { get; set; }
+
+        /// <summary>
+        /// Output only. Region part of normalized_language_code, if present. E.g.: `en-US` -&amp;gt; `US`, `zh-Hans-HK`
+        /// -&amp;gt; `HK`, `en` -&amp;gt; ``.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
