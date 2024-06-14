@@ -54,7 +54,7 @@ foreach (string relativeDownloadedFile in downloadDirectoryFiles)
     {
         Console.WriteLine(service + ": New.");
         File.Copy(downloadedFile, targetFile);
-        newOrUpdated.Add(targetFile);
+        MaybeAddNewOrUpdated(targetFile);
         continue;
     }
 
@@ -83,7 +83,7 @@ foreach (string relativeDownloadedFile in downloadDirectoryFiles)
     
     Console.WriteLine(service + ": Updated.");
     File.Copy(downloadedFile, targetFile, true);
-    newOrUpdated.Add(targetFile);
+    MaybeAddNewOrUpdated(targetFile);
 }
 
 // Finally, delete any obsolete Discovery docs.
@@ -101,6 +101,19 @@ if (newOrUpdatedFile is not null)
 }
 
 return 0;
+
+void MaybeAddNewOrUpdated(string targetFile)
+{
+    // We patch some discovery docs, but we keep the original discovery doc with the .original extension.
+    // We want the original file to be copied to the target folder, but we don't want to include it on the
+    // list of new or updated discoveries as that will mean we will generate the library twice, both from the original
+    // unpatched discovery and the patched discovery. We'll keep the library for whatever file we found last.
+    // Note the patched discovery is indeed included.
+    if (Path.GetExtension(targetFile) != "original")
+    {
+        newOrUpdated.Add(targetFile);
+    }
+}
 
 // Simple utility method to compare two JObjects for equality;
 // we already sort Discovery docs, so just converting both to a string should be fine.
