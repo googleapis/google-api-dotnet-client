@@ -1550,6 +1550,90 @@ namespace Google.Apis.CloudDomains.v1
                 }
 
                 /// <summary>
+                /// Lists the DNS records from the Google Domains DNS zone for domains that use the deprecated
+                /// `google_domains_dns` in the `Registration`'s `dns_settings`.
+                /// </summary>
+                /// <param name="registration">
+                /// Required. The name of the `Registration` whose Google Domains DNS records details you are
+                /// retrieving, in the format `projects/*/locations/*/registrations/*`.
+                /// </param>
+                public virtual RetrieveGoogleDomainsDnsRecordsRequest RetrieveGoogleDomainsDnsRecords(string registration)
+                {
+                    return new RetrieveGoogleDomainsDnsRecordsRequest(this.service, registration);
+                }
+
+                /// <summary>
+                /// Lists the DNS records from the Google Domains DNS zone for domains that use the deprecated
+                /// `google_domains_dns` in the `Registration`'s `dns_settings`.
+                /// </summary>
+                public class RetrieveGoogleDomainsDnsRecordsRequest : CloudDomainsBaseServiceRequest<Google.Apis.CloudDomains.v1.Data.RetrieveGoogleDomainsDnsRecordsResponse>
+                {
+                    /// <summary>Constructs a new RetrieveGoogleDomainsDnsRecords request.</summary>
+                    public RetrieveGoogleDomainsDnsRecordsRequest(Google.Apis.Services.IClientService service, string registration) : base(service)
+                    {
+                        Registration = registration;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the `Registration` whose Google Domains DNS records details you are
+                    /// retrieving, in the format `projects/*/locations/*/registrations/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("registration", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Registration { get; private set; }
+
+                    /// <summary>Optional. Maximum number of results to return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. When set to the `next_page_token` from a prior response, provides the next page of
+                    /// results.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "retrieveGoogleDomainsDnsRecords";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+registration}:retrieveGoogleDomainsDnsRecords";
+
+                    /// <summary>Initializes RetrieveGoogleDomainsDnsRecords parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("registration", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "registration",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/registrations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
                 /// Lists the deprecated domain and email forwarding configurations you set up in the deprecated Google
                 /// Domains UI. The configuration is present only for domains with the
                 /// `google_domains_redirects_data_available` set to `true` in the `Registration`'s `dns_settings`. A
@@ -2580,6 +2664,17 @@ namespace Google.Apis.CloudDomains.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("googleDomainsDns")]
         public virtual GoogleDomainsDns GoogleDomainsDns { get; set; }
 
+        /// <summary>
+        /// Output only. Indicates if this `Registration` has configured one of the following deprecated Google Domains
+        /// DNS features: * Domain forwarding (HTTP `301` and `302` response status codes), * Email forwarding. See
+        /// https://cloud.google.com/domains/docs/deprecations/feature-deprecations for more details. If any of these
+        /// features is enabled call the `RetrieveGoogleDomainsForwardingConfig` method to get details about the
+        /// feature's configuration. A forwarding configuration might not work correctly if required DNS records are not
+        /// present in the domain's authoritative DNS Zone.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleDomainsRedirectsDataAvailable")]
+        public virtual System.Nullable<bool> GoogleDomainsRedirectsDataAvailable { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2736,6 +2831,61 @@ namespace Google.Apis.CloudDomains.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configures a `RRSetRoutingPolicy` that routes based on the geo location of the querying user.</summary>
+    public class GeoPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Without fencing, if health check fails for all configured items in the current geo bucket, we failover to
+        /// the next nearest geo bucket. With fencing, if health checking is enabled, as long as some targets in the
+        /// current geo bucket are healthy, we return only the healthy targets. However, if all targets are unhealthy,
+        /// we don't failover to the next nearest bucket; instead, we return all the items in the current bucket even
+        /// when all targets are unhealthy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableFencing")]
+        public virtual System.Nullable<bool> EnableFencing { get; set; }
+
+        /// <summary>
+        /// The primary geo routing configuration. If there are multiple items with the same location, an error is
+        /// returned instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("item")]
+        public virtual System.Collections.Generic.IList<GeoPolicyItem> Item { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ResourceRecordSet data for one geo location.</summary>
+    public class GeoPolicyItem : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// For A and AAAA types only. Endpoints to return in the query result only if they are healthy. These can be
+        /// specified along with `rrdata` within this item.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("healthCheckedTargets")]
+        public virtual HealthCheckTargets HealthCheckedTargets { get; set; }
+
+        /// <summary>
+        /// The geo-location granularity is a GCP region. This location string should correspond to a GCP region. e.g.
+        /// "us-east1", "southamerica-east1", "asia-east1", etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("rrdata")]
+        public virtual System.Collections.Generic.IList<string> Rrdata { get; set; }
+
+        /// <summary>
+        /// DNSSEC generated signatures for all the `rrdata` within this item. If health checked targets are provided
+        /// for DNSSEC enabled zones, there's a restriction of 1 IP address per item.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signatureRrdata")]
+        public virtual System.Collections.Generic.IList<string> SignatureRrdata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Defines a host on your domain that is a DNS name server for your domain and/or other domains. Glue records are a
     /// way of making the IP address of a name server known, even when it serves DNS queries for its parent domain. For
@@ -2794,6 +2944,20 @@ namespace Google.Apis.CloudDomains.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nameServers")]
         public virtual System.Collections.Generic.IList<string> NameServers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// HealthCheckTargets describes endpoints to health-check when responding to Routing Policy queries. Only the
+    /// healthy endpoints will be included in the response.
+    /// </summary>
+    public class HealthCheckTargets : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Configuration for internal load balancers to be health checked.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("internalLoadBalancer")]
+        public virtual System.Collections.Generic.IList<LoadBalancerTarget> InternalLoadBalancer { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2875,6 +3039,50 @@ namespace Google.Apis.CloudDomains.v1.Data
         /// <summary>A list of `Registration`s.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("registrations")]
         public virtual System.Collections.Generic.IList<Registration> Registrations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The configuration for an individual load balancer to health check.</summary>
+    public class LoadBalancerTarget : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The frontend IP address of the load balancer to health check.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
+        public virtual string IpAddress { get; set; }
+
+        /// <summary>The protocol of the load balancer to health check.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipProtocol")]
+        public virtual string IpProtocol { get; set; }
+
+        /// <summary>
+        /// The type of load balancer specified by this target. This value must match the configuration of the load
+        /// balancer located at the LoadBalancerTarget's IP address, port, and region. Use the following: -
+        /// *regionalL4ilb*: for a regional internal passthrough Network Load Balancer. - *regionalL7ilb*: for a
+        /// regional internal Application Load Balancer. - *globalL7ilb*: for a global internal Application Load
+        /// Balancer.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loadBalancerType")]
+        public virtual string LoadBalancerType { get; set; }
+
+        /// <summary>
+        /// The fully qualified URL of the network that the load balancer is attached to. This should be formatted like
+        /// `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkUrl")]
+        public virtual string NetworkUrl { get; set; }
+
+        /// <summary>The configured port of the load balancer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("port")]
+        public virtual string Port { get; set; }
+
+        /// <summary>The project ID in which the load balancer is located.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("project")]
+        public virtual string Project { get; set; }
+
+        /// <summary>The region in which the load balancer is located.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3310,6 +3518,62 @@ namespace Google.Apis.CloudDomains.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Configures a RRSetRoutingPolicy such that all queries are responded with the primary_targets if they are
+    /// healthy. And if all of them are unhealthy, then we fallback to a geo localized policy.
+    /// </summary>
+    public class PrimaryBackupPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Backup targets provide a regional failover policy for the otherwise global primary targets. If serving state
+        /// is set to `BACKUP`, this policy essentially becomes a geo routing policy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupGeoTargets")]
+        public virtual GeoPolicy BackupGeoTargets { get; set; }
+
+        /// <summary>
+        /// Endpoints that are health checked before making the routing decision. Unhealthy endpoints are omitted from
+        /// the results. If all endpoints are unhealthy, we serve a response based on the `backup_geo_targets`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryTargets")]
+        public virtual HealthCheckTargets PrimaryTargets { get; set; }
+
+        /// <summary>
+        /// When serving state is `PRIMARY`, this field provides the option of sending a small percentage of the traffic
+        /// to the backup targets.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trickleTraffic")]
+        public virtual System.Nullable<double> TrickleTraffic { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A RRSetRoutingPolicy represents ResourceRecordSet data that is returned dynamically with the response varying
+    /// based on configured properties such as geolocation or by weighted random selection.
+    /// </summary>
+    public class RRSetRoutingPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("geo")]
+        public virtual GeoPolicy Geo { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("geoPolicy")]
+        public virtual GeoPolicy GeoPolicy { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryBackup")]
+        public virtual PrimaryBackupPolicy PrimaryBackup { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("wrr")]
+        public virtual WrrPolicy Wrr { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("wrrPolicy")]
+        public virtual WrrPolicy WrrPolicy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request for the `RegisterDomain` method.</summary>
     public class RegisterDomainRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3585,6 +3849,59 @@ namespace Google.Apis.CloudDomains.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A unit of data that is returned by the DNS servers.</summary>
+    public class ResourceRecordSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>For example, www.example.com.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Configures dynamic query responses based on either the geo location of the querying user or a weighted round
+        /// robin based routing policy. A valid `ResourceRecordSet` contains only `rrdata` (for static resolution) or a
+        /// `routing_policy` (for dynamic resolution).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routingPolicy")]
+        public virtual RRSetRoutingPolicy RoutingPolicy { get; set; }
+
+        /// <summary>As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rrdata")]
+        public virtual System.Collections.Generic.IList<string> Rrdata { get; set; }
+
+        /// <summary>As defined in RFC 4034 (section 3.2).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signatureRrdata")]
+        public virtual System.Collections.Generic.IList<string> SignatureRrdata { get; set; }
+
+        /// <summary>Number of seconds that this `ResourceRecordSet` can be cached by resolvers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
+        public virtual System.Nullable<int> Ttl { get; set; }
+
+        /// <summary>The identifier of a supported record type. See the list of Supported DNS record types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for the `RetrieveGoogleDomainsDnsRecords` method.</summary>
+    public class RetrieveGoogleDomainsDnsRecordsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// When present, there are more results to retrieve. Set `page_token` to this value on a subsequent call to get
+        /// the next page of results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The resource record set resources (DNS Zone records).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rrset")]
+        public virtual System.Collections.Generic.IList<ResourceRecordSet> Rrset { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response for the `RetrieveGoogleDomainsForwardingConfig` method.</summary>
     public class RetrieveGoogleDomainsForwardingConfigResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3823,6 +4140,50 @@ namespace Google.Apis.CloudDomains.v1.Data
         /// <summary>Price to transfer or renew the domain for one year.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("yearlyPrice")]
         public virtual Money YearlyPrice { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configures a RRSetRoutingPolicy that routes in a weighted round robin fashion.</summary>
+    public class WrrPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("item")]
+        public virtual System.Collections.Generic.IList<WrrPolicyItem> Item { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A routing block which contains the routing information for one WRR item.</summary>
+    public class WrrPolicyItem : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Endpoints that are health checked before making the routing decision. The unhealthy endpoints are omitted
+        /// from the result. If all endpoints within a bucket are unhealthy, we choose a different bucket (sampled with
+        /// respect to its weight) for responding. If DNSSEC is enabled for this zone, only one of `rrdata` or
+        /// `health_checked_targets` can be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("healthCheckedTargets")]
+        public virtual HealthCheckTargets HealthCheckedTargets { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("rrdata")]
+        public virtual System.Collections.Generic.IList<string> Rrdata { get; set; }
+
+        /// <summary>
+        /// DNSSEC generated signatures for all the `rrdata` within this item. Note that if health checked targets are
+        /// provided for DNSSEC enabled zones, there's a restriction of 1 IP address per item.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signatureRrdata")]
+        public virtual System.Collections.Generic.IList<string> SignatureRrdata { get; set; }
+
+        /// <summary>
+        /// The weight corresponding to this `WrrPolicyItem` object. When multiple `WrrPolicyItem` objects are
+        /// configured, the probability of returning an `WrrPolicyItem` object's data is proportional to its weight
+        /// relative to the sum of weights configured for all items. This weight must be non-negative.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("weight")]
+        public virtual System.Nullable<double> Weight { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

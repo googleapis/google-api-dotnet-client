@@ -1141,7 +1141,7 @@ namespace Google.Apis.Dfareporting.v4
             }
         }
 
-        /// <summary>Updates an existing user role. This method supports patch semantics.</summary>
+        /// <summary>Updates an existing account user profile. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param name="id">Required. AccountUserProfile ID.</param>
@@ -1150,7 +1150,7 @@ namespace Google.Apis.Dfareporting.v4
             return new PatchRequest(this.service, body, profileId, id);
         }
 
-        /// <summary>Updates an existing user role. This method supports patch semantics.</summary>
+        /// <summary>Updates an existing account user profile. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.AccountUserProfile>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -2170,7 +2170,7 @@ namespace Google.Apis.Dfareporting.v4
             }
         }
 
-        /// <summary>Updates an existing event tag. This method supports patch semantics.</summary>
+        /// <summary>Updates an existing ad. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param name="id">Required. RemarketingList ID.</param>
@@ -2179,7 +2179,7 @@ namespace Google.Apis.Dfareporting.v4
             return new PatchRequest(this.service, body, profileId, id);
         }
 
-        /// <summary>Updates an existing event tag. This method supports patch semantics.</summary>
+        /// <summary>Updates an existing ad. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.Ad>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -3184,7 +3184,7 @@ namespace Google.Apis.Dfareporting.v4
             }
         }
 
-        /// <summary>Updates an existing advertiser. This method supports patch semantics.</summary>
+        /// <summary>Updates an existing landing page. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param name="id">Required. Landing Page ID.</param>
@@ -3193,7 +3193,7 @@ namespace Google.Apis.Dfareporting.v4
             return new PatchRequest(this.service, body, profileId, id);
         }
 
-        /// <summary>Updates an existing advertiser. This method supports patch semantics.</summary>
+        /// <summary>Updates an existing landing page. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.LandingPage>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -4980,7 +4980,7 @@ namespace Google.Apis.Dfareporting.v4
             }
         }
 
-        /// <summary>Updates an existing creative. This method supports patch semantics.</summary>
+        /// <summary>Updates an existing campaign. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param name="id">Required. Campaign ID.</param>
@@ -4989,7 +4989,7 @@ namespace Google.Apis.Dfareporting.v4
             return new PatchRequest(this.service, body, profileId, id);
         }
 
-        /// <summary>Updates an existing creative. This method supports patch semantics.</summary>
+        /// <summary>Updates an existing campaign. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.Campaign>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -10902,7 +10902,7 @@ namespace Google.Apis.Dfareporting.v4
             }
         }
 
-        /// <summary>Updates an existing event tag. This method supports patch semantics.</summary>
+        /// <summary>Updates an existing floodlight activity. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param name="id">Required. EventTag ID.</param>
@@ -10911,7 +10911,7 @@ namespace Google.Apis.Dfareporting.v4
             return new PatchRequest(this.service, body, profileId, id);
         }
 
-        /// <summary>Updates an existing event tag. This method supports patch semantics.</summary>
+        /// <summary>Updates an existing floodlight activity. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.FloodlightActivity>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -11362,7 +11362,7 @@ namespace Google.Apis.Dfareporting.v4
             }
         }
 
-        /// <summary>Updates an existing event tag. This method supports patch semantics.</summary>
+        /// <summary>Updates an existing floodlight activity group. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param name="id">Required. EventTag ID.</param>
@@ -11371,7 +11371,7 @@ namespace Google.Apis.Dfareporting.v4
             return new PatchRequest(this.service, body, profileId, id);
         }
 
-        /// <summary>Updates an existing event tag. This method supports patch semantics.</summary>
+        /// <summary>Updates an existing floodlight activity group. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.FloodlightActivityGroup>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -11616,7 +11616,7 @@ namespace Google.Apis.Dfareporting.v4
             }
         }
 
-        /// <summary>Updates an existing event tag. This method supports patch semantics.</summary>
+        /// <summary>Updates an existing floodlight configuration. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param name="id">Required. EventTag ID.</param>
@@ -11625,7 +11625,7 @@ namespace Google.Apis.Dfareporting.v4
             return new PatchRequest(this.service, body, profileId, id);
         }
 
-        /// <summary>Updates an existing event tag. This method supports patch semantics.</summary>
+        /// <summary>Updates an existing floodlight configuration. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.FloodlightConfiguration>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -15661,7 +15661,7 @@ namespace Google.Apis.Dfareporting.v4
             }
         }
 
-        /// <summary>Updates an existing RemarketingListShare. This method supports patch semantics.</summary>
+        /// <summary>Updates an existing remarketing list share. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param name="id">Required. RemarketingList ID.</param>
@@ -15670,7 +15670,7 @@ namespace Google.Apis.Dfareporting.v4
             return new PatchRequest(this.service, body, profileId, id);
         }
 
-        /// <summary>Updates an existing RemarketingListShare. This method supports patch semantics.</summary>
+        /// <summary>Updates an existing remarketing list share. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.RemarketingListShare>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -16081,7 +16081,7 @@ namespace Google.Apis.Dfareporting.v4
             }
         }
 
-        /// <summary>Updates an existing RemarketingList. This method supports patch semantics.</summary>
+        /// <summary>Updates an existing remarketing list. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param name="id">Required. RemarketingList ID.</param>
@@ -16090,7 +16090,7 @@ namespace Google.Apis.Dfareporting.v4
             return new PatchRequest(this.service, body, profileId, id);
         }
 
-        /// <summary>Updates an existing RemarketingList. This method supports patch semantics.</summary>
+        /// <summary>Updates an existing remarketing list. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.RemarketingList>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -20115,7 +20115,7 @@ namespace Google.Apis.Dfareporting.v4.Data
         public virtual string Comments { get; set; }
 
         /// <summary>
-        /// Email of the user profile. The email addresss must be linked to a Google Account. This field is required on
+        /// Email of the user profile. The email address must be linked to a Google Account. This field is required on
         /// insertion and is read-only after insertion.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
@@ -21454,48 +21454,6 @@ namespace Google.Apis.Dfareporting.v4.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents a DfaReporting channel grouping.</summary>
-    public class ChannelGrouping : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>ChannelGrouping fallback name.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fallbackName")]
-        public virtual string FallbackName { get; set; }
-
-        /// <summary>The kind of resource this is, in this case dfareporting#channelGrouping.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; }
-
-        /// <summary>ChannelGrouping name.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>The rules contained within this channel grouping.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rules")]
-        public virtual System.Collections.Generic.IList<ChannelGroupingRule> Rules { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents a DfaReporting channel grouping rule.</summary>
-    public class ChannelGroupingRule : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The disjunctive match statements contained within this rule.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("disjunctiveMatchStatements")]
-        public virtual System.Collections.Generic.IList<DisjunctiveMatchStatement> DisjunctiveMatchStatements { get; set; }
-
-        /// <summary>The kind of resource this is, in this case dfareporting#channelGroupingRule.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; }
-
-        /// <summary>Rule name.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>City List Response</summary>
     public class CitiesListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -21694,16 +21652,6 @@ namespace Google.Apis.Dfareporting.v4.Data
         /// <summary>The kind of resource this is, in this case dfareporting#compatibleFields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
-
-        /// <summary>
-        /// Contains items that are compatible to be selected for a report of type "PATH_ATTRIBUTION".
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pathAttributionReportCompatibleFields")]
-        public virtual PathReportCompatibleFields PathAttributionReportCompatibleFields { get; set; }
-
-        /// <summary>Contains items that are compatible to be selected for a report of type "PATH".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pathReportCompatibleFields")]
-        public virtual PathReportCompatibleFields PathReportCompatibleFields { get; set; }
 
         /// <summary>
         /// Contains items that are compatible to be selected for a report of type "PATH_TO_CONVERSION".
@@ -24114,24 +24062,6 @@ namespace Google.Apis.Dfareporting.v4.Data
     }
 
     /// <summary>
-    /// Represents a Disjunctive Match Statement resource, which is a conjunction (and) of disjunctive (or) boolean
-    /// statements.
-    /// </summary>
-    public class DisjunctiveMatchStatement : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The event filters contained within this disjunctive match statement.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("eventFilters")]
-        public virtual System.Collections.Generic.IList<EventFilter> EventFilters { get; set; }
-
-        /// <summary>The kind of resource this is, in this case dfareporting#disjunctiveMatchStatement.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
     /// Contains properties of a dynamic targeting key. Dynamic targeting keys are unique, user-friendly labels, created
     /// at the advertiser level in DCM, that can be assigned to ads, creatives, and placements and used for targeting
     /// with Studio dynamic creatives. Use these labels instead of numeric Campaign Manager IDs (such as placement IDs)
@@ -24208,25 +24138,6 @@ namespace Google.Apis.Dfareporting.v4.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents a DfaReporting event filter.</summary>
-    public class EventFilter : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The dimension filter contained within this EventFilter.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dimensionFilter")]
-        public virtual PathReportDimensionValue DimensionFilter { get; set; }
-
-        /// <summary>The kind of resource this is, in this case dfareporting#eventFilter.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; }
-
-        /// <summary>Filter on a custom variable.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uvarFilter")]
-        public virtual UvarFilter UvarFilter { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24486,15 +24397,13 @@ namespace Google.Apis.Dfareporting.v4.Data
     /// <summary>Floodlight Activity GenerateTag Response</summary>
     public class FloodlightActivitiesGenerateTagResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Generated tag for this Floodlight activity. For global site tags, this is the event snippet.
-        /// </summary>
+        /// <summary>Generated tag for this Floodlight activity. For Google tags, this is the event snippet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("floodlightActivityTag")]
         public virtual string FloodlightActivityTag { get; set; }
 
         /// <summary>
-        /// The global snippet section of a global site tag. The global site tag sets new cookies on your domain, which
-        /// will store a unique identifier for a user or the ad click that brought the user to your site. Learn more.
+        /// The global snippet section of a Google tag. The Google tag sets new cookies on your domain, which will store
+        /// a unique identifier for a user or the ad click that brought the user to your site. Learn more.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("globalSiteTagGlobalSnippet")]
         public virtual string GlobalSiteTagGlobalSnippet { get; set; }
@@ -26185,93 +26094,6 @@ namespace Google.Apis.Dfareporting.v4.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents a DfaReporting path filter.</summary>
-    public class PathFilter : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Event filters in path report.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("eventFilters")]
-        public virtual System.Collections.Generic.IList<EventFilter> EventFilters { get; set; }
-
-        /// <summary>The kind of resource this is, in this case dfareporting#pathFilter.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; }
-
-        /// <summary>
-        /// Determines how the 'value' field is matched when filtering. If not specified, defaults to EXACT. If set to
-        /// WILDCARD_EXPRESSION, '*' is allowed as a placeholder for variable length character sequences, and it can be
-        /// escaped with a backslash. Note, only paid search dimensions ('dfa:paidSearch*') allow a matchType other than
-        /// EXACT.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pathMatchPosition")]
-        public virtual string PathMatchPosition { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents fields that are compatible to be selected for a report of type "PATH".</summary>
-    public class PathReportCompatibleFields : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Dimensions which are compatible to be selected in the "channelGroupings" section of the report.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("channelGroupings")]
-        public virtual System.Collections.Generic.IList<Dimension> ChannelGroupings { get; set; }
-
-        /// <summary>Dimensions which are compatible to be selected in the "dimensions" section of the report.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
-        public virtual System.Collections.Generic.IList<Dimension> Dimensions { get; set; }
-
-        /// <summary>The kind of resource this is, in this case dfareporting#pathReportCompatibleFields.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; }
-
-        /// <summary>Metrics which are compatible to be selected in the "metricNames" section of the report.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
-        public virtual System.Collections.Generic.IList<Metric> Metrics { get; set; }
-
-        /// <summary>
-        /// Dimensions which are compatible to be selected in the "pathFilters" section of the report.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pathFilters")]
-        public virtual System.Collections.Generic.IList<Dimension> PathFilters { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents a PathReportDimensionValue resource.</summary>
-    public class PathReportDimensionValue : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The name of the dimension.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dimensionName")]
-        public virtual string DimensionName { get; set; }
-
-        /// <summary>The possible ID's associated with the value if available.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ids")]
-        public virtual System.Collections.Generic.IList<string> Ids { get; set; }
-
-        /// <summary>The kind of resource this is, in this case dfareporting#pathReportDimensionValue.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; }
-
-        /// <summary>
-        /// Determines how the 'value' field is matched when filtering. If not specified, defaults to EXACT. If set to
-        /// WILDCARD_EXPRESSION, '*' is allowed as a placeholder for variable length character sequences, and it can be
-        /// escaped with a backslash. Note, only paid search dimensions ('dfa:paidSearch*') allow a matchType other than
-        /// EXACT.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("matchType")]
-        public virtual string MatchType { get; set; }
-
-        /// <summary>The possible values of the dimension.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<string> Values { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// Represents fields that are compatible to be selected for a report of type "PATH_TO_CONVERSION".
     /// </summary>
@@ -27528,14 +27350,6 @@ namespace Google.Apis.Dfareporting.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ownerProfileId")]
         public virtual System.Nullable<long> OwnerProfileId { get; set; }
 
-        /// <summary>The report criteria for a report of type "PATH_ATTRIBUTION".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pathAttributionCriteria")]
-        public virtual PathAttributionCriteriaData PathAttributionCriteria { get; set; }
-
-        /// <summary>The report criteria for a report of type "PATH".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pathCriteria")]
-        public virtual PathCriteriaData PathCriteria { get; set; }
-
         /// <summary>The report criteria for a report of type "PATH_TO_CONVERSION".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pathToConversionCriteria")]
         public virtual PathToConversionCriteriaData PathToConversionCriteria { get; set; }
@@ -27701,76 +27515,6 @@ namespace Google.Apis.Dfareporting.v4.Data
                 [Newtonsoft.Json.JsonPropertyAttribute("includeUnattributedIPConversions")]
                 public virtual System.Nullable<bool> IncludeUnattributedIPConversions { get; set; }
             }
-        }
-
-        /// <summary>The report criteria for a report of type "PATH_ATTRIBUTION".</summary>
-        public class PathAttributionCriteriaData
-        {
-            /// <summary>The list of 'dfa:activity' values to filter on.</summary>
-            [Newtonsoft.Json.JsonPropertyAttribute("activityFilters")]
-            public virtual System.Collections.Generic.IList<DimensionValue> ActivityFilters { get; set; }
-
-            /// <summary>Channel Grouping.</summary>
-            [Newtonsoft.Json.JsonPropertyAttribute("customChannelGrouping")]
-            public virtual ChannelGrouping CustomChannelGrouping { get; set; }
-
-            /// <summary>The date range this report should be run for.</summary>
-            [Newtonsoft.Json.JsonPropertyAttribute("dateRange")]
-            public virtual DateRange DateRange { get; set; }
-
-            /// <summary>The list of dimensions the report should include.</summary>
-            [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
-            public virtual System.Collections.Generic.IList<SortedDimension> Dimensions { get; set; }
-
-            /// <summary>
-            /// The floodlight ID for which to show data in this report. All advertisers associated with that ID will
-            /// automatically be added. The dimension of the value needs to be 'dfa:floodlightConfigId'.
-            /// </summary>
-            [Newtonsoft.Json.JsonPropertyAttribute("floodlightConfigId")]
-            public virtual DimensionValue FloodlightConfigId { get; set; }
-
-            /// <summary>The list of names of metrics the report should include.</summary>
-            [Newtonsoft.Json.JsonPropertyAttribute("metricNames")]
-            public virtual System.Collections.Generic.IList<string> MetricNames { get; set; }
-
-            /// <summary>Path Filters.</summary>
-            [Newtonsoft.Json.JsonPropertyAttribute("pathFilters")]
-            public virtual System.Collections.Generic.IList<PathFilter> PathFilters { get; set; }
-        }
-
-        /// <summary>The report criteria for a report of type "PATH".</summary>
-        public class PathCriteriaData
-        {
-            /// <summary>The list of 'dfa:activity' values to filter on.</summary>
-            [Newtonsoft.Json.JsonPropertyAttribute("activityFilters")]
-            public virtual System.Collections.Generic.IList<DimensionValue> ActivityFilters { get; set; }
-
-            /// <summary>Channel Grouping.</summary>
-            [Newtonsoft.Json.JsonPropertyAttribute("customChannelGrouping")]
-            public virtual ChannelGrouping CustomChannelGrouping { get; set; }
-
-            /// <summary>The date range this report should be run for.</summary>
-            [Newtonsoft.Json.JsonPropertyAttribute("dateRange")]
-            public virtual DateRange DateRange { get; set; }
-
-            /// <summary>The list of dimensions the report should include.</summary>
-            [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
-            public virtual System.Collections.Generic.IList<SortedDimension> Dimensions { get; set; }
-
-            /// <summary>
-            /// The floodlight ID for which to show data in this report. All advertisers associated with that ID will
-            /// automatically be added. The dimension of the value needs to be 'dfa:floodlightConfigId'.
-            /// </summary>
-            [Newtonsoft.Json.JsonPropertyAttribute("floodlightConfigId")]
-            public virtual DimensionValue FloodlightConfigId { get; set; }
-
-            /// <summary>The list of names of metrics the report should include.</summary>
-            [Newtonsoft.Json.JsonPropertyAttribute("metricNames")]
-            public virtual System.Collections.Generic.IList<string> MetricNames { get; set; }
-
-            /// <summary>Path Filters.</summary>
-            [Newtonsoft.Json.JsonPropertyAttribute("pathFilters")]
-            public virtual System.Collections.Generic.IList<PathFilter> PathFilters { get; set; }
         }
 
         /// <summary>The report criteria for a report of type "PATH_TO_CONVERSION".</summary>
@@ -29239,33 +28983,6 @@ namespace Google.Apis.Dfareporting.v4.Data
         /// <summary>User role collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userRoles")]
         public virtual System.Collections.Generic.IList<UserRole> UserRoles { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Defines the filtering on a single uvar.</summary>
-    public class UvarFilter : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Return rows which don't match this filter.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("complement")]
-        public virtual System.Nullable<bool> Complement { get; set; }
-
-        /// <summary>Custom variable index the filter is applied to.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("index")]
-        public virtual System.Nullable<long> Index { get; set; }
-
-        /// <summary>The kind of resource this is, in this case dfareporting#uvarFilter.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; }
-
-        /// <summary>Indicates how the filter should be matched to the values.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("match")]
-        public virtual string Match { get; set; }
-
-        /// <summary>Values to filter on.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<string> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

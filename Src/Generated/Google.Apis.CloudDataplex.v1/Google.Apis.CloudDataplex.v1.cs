@@ -15516,6 +15516,45 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>Status of the data scan execution.</summary>
     public class GoogleCloudDataplexV1DataScanExecutionStatus : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _latestJobCreateTimeRaw;
+
+        private object _latestJobCreateTime;
+
+        /// <summary>Optional. The time when the DataScanJob execution was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestJobCreateTime")]
+        public virtual string LatestJobCreateTimeRaw
+        {
+            get => _latestJobCreateTimeRaw;
+            set
+            {
+                _latestJobCreateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _latestJobCreateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LatestJobCreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LatestJobCreateTimeDateTimeOffset instead.")]
+        public virtual object LatestJobCreateTime
+        {
+            get => _latestJobCreateTime;
+            set
+            {
+                _latestJobCreateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _latestJobCreateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LatestJobCreateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LatestJobCreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LatestJobCreateTimeRaw);
+            set => LatestJobCreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         private string _latestJobEndTimeRaw;
 
         private object _latestJobEndTime;

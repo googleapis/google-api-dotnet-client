@@ -2802,6 +2802,10 @@ namespace Google.Apis.Vault.v1.Data
     /// <summary>Service-specific options for holds.</summary>
     public class CorpusQuery : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Service-specific options for Calendar holds. If set, **CorpusType** must be **CALENDAR**.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("calendarQuery")]
+        public virtual HeldCalendarQuery CalendarQuery { get; set; }
+
         /// <summary>Service-specific options for Drive holds. If set, **CorpusType** must be **DRIVE**.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driveQuery")]
         public virtual HeldDriveQuery DriveQuery { get; set; }
@@ -3327,6 +3331,13 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastName")]
         public virtual string LastName { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Options for Calendar holds.</summary>
+    public class HeldCalendarQuery : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

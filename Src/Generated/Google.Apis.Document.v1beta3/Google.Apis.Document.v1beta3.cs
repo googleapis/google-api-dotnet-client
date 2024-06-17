@@ -2105,7 +2105,9 @@ namespace Google.Apis.Document.v1beta3
 
                 /// <summary>
                 /// Creates a processor from the ProcessorType provided. The processor will be at `ENABLED` state by
-                /// default after its creation.
+                /// default after its creation. Note that this method requires the `documentai.processors.create`
+                /// permission on the project, which is highly privileged. A user or service account with this
+                /// permission can create new processors that can interact with any gcs bucket in your project.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -2119,7 +2121,9 @@ namespace Google.Apis.Document.v1beta3
 
                 /// <summary>
                 /// Creates a processor from the ProcessorType provided. The processor will be at `ENABLED` state by
-                /// default after its creation.
+                /// default after its creation. Note that this method requires the `documentai.processors.create`
+                /// permission on the project, which is highly privileged. A user or service account with this
+                /// permission can create new processors that can interact with any gcs bucket in your project.
                 /// </summary>
                 public class CreateRequest : DocumentBaseServiceRequest<Google.Apis.Document.v1beta3.Data.GoogleCloudDocumentaiV1beta3Processor>
                 {
@@ -2575,7 +2579,12 @@ namespace Google.Apis.Document.v1beta3
                     }
                 }
 
-                /// <summary>Updates metadata associated with a dataset.</summary>
+                /// <summary>
+                /// Updates metadata associated with a dataset. Note that this method requires the
+                /// `documentai.googleapis.com/datasets.update` permission on the project, which is highly privileged. A
+                /// user or service account with this permission can create new processors that can interact with any
+                /// gcs bucket in your project.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Dataset resource name. Format:
@@ -2586,7 +2595,12 @@ namespace Google.Apis.Document.v1beta3
                     return new UpdateDatasetRequest(this.service, body, name);
                 }
 
-                /// <summary>Updates metadata associated with a dataset.</summary>
+                /// <summary>
+                /// Updates metadata associated with a dataset. Note that this method requires the
+                /// `documentai.googleapis.com/datasets.update` permission on the project, which is highly privileged. A
+                /// user or service account with this permission can create new processors that can interact with any
+                /// gcs bucket in your project.
+                /// </summary>
                 public class UpdateDatasetRequest : DocumentBaseServiceRequest<Google.Apis.Document.v1beta3.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new UpdateDataset request.</summary>
