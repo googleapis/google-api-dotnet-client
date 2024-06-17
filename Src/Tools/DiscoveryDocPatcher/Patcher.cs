@@ -46,6 +46,8 @@ namespace DiscoveryDocPatcher
                 catch (FileNotFoundException) { }
                 File.Move(_path, destFilename);
                 string json = _json.ToString();
+                // https://github.com/googleapis/google-api-dotnet-client/issues/2769
+                json = json.Replace("\"revision\": \"20240611\"", "\"revision\": \"20240612\"");
                 File.WriteAllText(_path, json);
             }
         }
