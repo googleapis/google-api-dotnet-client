@@ -1243,7 +1243,10 @@ namespace Google.Apis.Spanner.v1
                 }
             }
 
-            /// <summary>Lists the supported instance configurations for a given project.</summary>
+            /// <summary>
+            /// Lists the supported instance configurations for a given project. Returns both Google managed configs and
+            /// user managed configs.
+            /// </summary>
             /// <param name="parent">
             /// Required. The name of the project for which a list of supported instance configurations is requested.
             /// Values are of the form `projects/`.
@@ -1253,7 +1256,10 @@ namespace Google.Apis.Spanner.v1
                 return new ListRequest(this.service, parent);
             }
 
-            /// <summary>Lists the supported instance configurations for a given project.</summary>
+            /// <summary>
+            /// Lists the supported instance configurations for a given project. Returns both Google managed configs and
+            /// user managed configs.
+            /// </summary>
             public class ListRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.ListInstanceConfigsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -1342,7 +1348,7 @@ namespace Google.Apis.Spanner.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// A unique identifier for the instance configuration. Values are of the form
-            /// `projects//instanceConfigs/a-z*`.
+            /// `projects//instanceConfigs/a-z*`. User instance config must start with `custom-`.
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Spanner.v1.Data.UpdateInstanceConfigRequest body, string name)
             {
@@ -1376,7 +1382,7 @@ namespace Google.Apis.Spanner.v1
 
                 /// <summary>
                 /// A unique identifier for the instance configuration. Values are of the form
-                /// `projects//instanceConfigs/a-z*`.
+                /// `projects//instanceConfigs/a-z*`. User instance config must start with `custom-`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -10074,6 +10080,7 @@ namespace Google.Apis.Spanner.v1.Data
 
         /// <summary>
         /// A unique identifier for the instance configuration. Values are of the form `projects//instanceConfigs/a-z*`.
+        /// User instance config must start with `custom-`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -10097,7 +10104,9 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual System.Nullable<bool> Reconciling { get; set; }
 
         /// <summary>
-        /// The geographic placement of nodes in this instance configuration and their replication properties.
+        /// The geographic placement of nodes in this instance configuration and their replication properties. To create
+        /// user managed configurations, input `replicas` must include all replicas in `replicas` of the `base_config`
+        /// and include one or more replicas in the `optional_replicas` of the `base_config`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replicas")]
         public virtual System.Collections.Generic.IList<ReplicaInfo> Replicas { get; set; }
@@ -11797,6 +11806,19 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("limit")]
         public virtual System.Nullable<long> Limit { get; set; }
 
+        /// <summary>Optional. Lock Hint for the request, it can only be used with read-write transactions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lockHint")]
+        public virtual string LockHint { get; set; }
+
+        /// <summary>
+        /// Optional. Order for the returned rows. By default, Spanner will return result rows in primary key order
+        /// except for PartitionRead requests. For applications that do not require rows to be returned in primary key
+        /// (`ORDER_BY_PRIMARY_KEY`) order, setting `ORDER_BY_NO_ORDER` option allows Spanner to optimize row retrieval,
+        /// resulting in lower latencies in certain cases (e.g. bulk point lookups).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orderBy")]
+        public virtual string OrderBy { get; set; }
+
         /// <summary>
         /// If present, results will be restricted to the specified partition previously created using PartitionRead().
         /// There must be an exact match for the values of fields common to this message and the PartitionReadRequest
@@ -12469,10 +12491,10 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Optional. If true, specifies a multiplexed session. A multiplexed session may be used for multiple,
-        /// concurrent read-only operations but can not be used for read-write transactions, partitioned reads, or
-        /// partitioned queries. Multiplexed sessions can be created via CreateSession but not via BatchCreateSessions.
-        /// Multiplexed sessions may not be deleted nor listed.
+        /// Optional. If true, specifies a multiplexed session. Use a multiplexed session for multiple, concurrent
+        /// read-only operations. Don't use them for read-write transactions, partitioned reads, or partitioned queries.
+        /// Use CreateSession to create multiplexed sessions. Don't use BatchCreateSessions to create a multiplexed
+        /// session. You can't delete or list multiplexed sessions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("multiplexed")]
         public virtual System.Nullable<bool> Multiplexed { get; set; }

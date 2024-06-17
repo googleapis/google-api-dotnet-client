@@ -1455,6 +1455,65 @@ namespace Google.Apis.CloudFilestore.v1
                     }
                 }
 
+                /// <summary>Promote an standby instance (replica).</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The resource name of the instance, in the format
+                /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.
+                /// </param>
+                public virtual PromoteReplicaRequest PromoteReplica(Google.Apis.CloudFilestore.v1.Data.PromoteReplicaRequest body, string name)
+                {
+                    return new PromoteReplicaRequest(this.service, body, name);
+                }
+
+                /// <summary>Promote an standby instance (replica).</summary>
+                public class PromoteReplicaRequest : CloudFilestoreBaseServiceRequest<Google.Apis.CloudFilestore.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new PromoteReplica request.</summary>
+                    public PromoteReplicaRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudFilestore.v1.Data.PromoteReplicaRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the instance, in the format
+                    /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudFilestore.v1.Data.PromoteReplicaRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "promoteReplica";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:promoteReplica";
+
+                    /// <summary>Initializes PromoteReplica parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>
                 /// Restores an existing instance's file share from a backup. The capacity of the instance needs to be
                 /// equal to or larger than the capacity of the backup (and also equal to or larger than the minimum
@@ -2116,6 +2175,13 @@ namespace Google.Apis.CloudFilestore.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageBytes")]
         public virtual System.Nullable<long> StorageBytes { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. Immutable. Tag keys/values directly bound to this resource. For example:
+        /// "123/environment": "production", "123/costCenter": "marketing"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2850,6 +2916,13 @@ namespace Google.Apis.CloudFilestore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("suspensionReasons")]
         public virtual System.Collections.Generic.IList<string> SuspensionReasons { get; set; }
 
+        /// <summary>
+        /// Optional. Input only. Immutable. Tag keys/values directly bound to this resource. For example:
+        /// "123/environment": "production", "123/costCenter": "marketing"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
+
         /// <summary>The service tier of the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tier")]
         public virtual string Tier { get; set; }
@@ -3362,6 +3435,13 @@ namespace Google.Apis.CloudFilestore.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>PromoteReplicaRequest promotes a Filestore standby instance (replica).</summary>
+    public class PromoteReplicaRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Replica configuration for the instance.</summary>
     public class ReplicaConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3559,6 +3639,13 @@ namespace Google.Apis.CloudFilestore.v1.Data
         /// <summary>Output only. The snapshot state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. Immutable. Tag keys/values directly bound to this resource. For example:
+        /// "123/environment": "production", "123/costCenter": "marketing"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

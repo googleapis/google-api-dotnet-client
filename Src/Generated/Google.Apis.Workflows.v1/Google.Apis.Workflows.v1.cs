@@ -1449,13 +1449,13 @@ namespace Google.Apis.Workflows.v1.Data
     public class Workflow : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. A list of all KMS crypto keys used to encrypt or decrpt the data associated with the workflow.
+        /// Output only. A list of all KMS crypto keys used to encrypt or decrypt the data associated with the workflow.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allKmsKeys")]
         public virtual System.Collections.Generic.IList<string> AllKmsKeys { get; set; }
 
         /// <summary>
-        /// Output only. A list of all KMS crypto keys versions used to encrypt or decrpt the data associated with the
+        /// Output only. A list of all KMS crypto key versions used to encrypt or decrypt the data associated with the
         /// workflow.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allKmsKeysVersions")]

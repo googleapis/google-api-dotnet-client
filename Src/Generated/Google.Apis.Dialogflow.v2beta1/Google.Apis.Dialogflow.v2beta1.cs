@@ -30154,7 +30154,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// not deliver the responses from high latency features in the API response. The
         /// human_agent_assistant_config.notification_config must be configured and enable_event_based_suggestion must
         /// be set to true to receive the responses from high latency features in Pub/Sub. High latency feature(s):
-        /// KNOWLEDGE_ASSIST.
+        /// KNOWLEDGE_ASSIST
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableHighLatencyFeaturesSyncDelivery")]
         public virtual System.Nullable<bool> DisableHighLatencyFeaturesSyncDelivery { get; set; }

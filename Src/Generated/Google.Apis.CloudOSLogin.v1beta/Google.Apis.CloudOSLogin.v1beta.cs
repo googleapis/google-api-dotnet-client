@@ -338,11 +338,7 @@ namespace Google.Apis.CloudOSLogin.v1beta
 
                 /// <summary>Signs an SSH public key for a user to authenticate to an instance.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">
-                /// The parent project and zone for the signing request. This is needed to properly ensure
-                /// per-organization ISS processing and potentially to provide for the possibility of zone-specific
-                /// certificates used in the signing process.
-                /// </param>
+                /// <param name="parent">The parent project and region for the signing request.</param>
                 public virtual SignSshPublicKeyRequest SignSshPublicKey(Google.Apis.CloudOSLogin.v1beta.Data.SignSshPublicKeyRequest body, string parent)
                 {
                     return new SignSshPublicKeyRequest(this.service, body, parent);
@@ -359,11 +355,7 @@ namespace Google.Apis.CloudOSLogin.v1beta
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// The parent project and zone for the signing request. This is needed to properly ensure
-                    /// per-organization ISS processing and potentially to provide for the possibility of zone-specific
-                    /// certificates used in the signing process.
-                    /// </summary>
+                    /// <summary>The parent project and region for the signing request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -417,11 +409,7 @@ namespace Google.Apis.CloudOSLogin.v1beta
 
                 /// <summary>Signs an SSH public key for a user to authenticate to an instance.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">
-                /// The parent project and zone for the signing request. This is needed to properly ensure
-                /// per-organization ISS processing and potentially to provide for the possibility of zone-specific
-                /// certificates used in the signing process.
-                /// </param>
+                /// <param name="parent">The parent project and region for the signing request.</param>
                 public virtual SignSshPublicKeyRequest SignSshPublicKey(Google.Apis.CloudOSLogin.v1beta.Data.SignSshPublicKeyRequest body, string parent)
                 {
                     return new SignSshPublicKeyRequest(this.service, body, parent);
@@ -438,11 +426,7 @@ namespace Google.Apis.CloudOSLogin.v1beta
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// The parent project and zone for the signing request. This is needed to properly ensure
-                    /// per-organization ISS processing and potentially to provide for the possibility of zone-specific
-                    /// certificates used in the signing process.
-                    /// </summary>
+                    /// <summary>The parent project and region for the signing request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
