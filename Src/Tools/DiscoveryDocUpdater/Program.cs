@@ -109,7 +109,7 @@ void MaybeAddNewOrUpdated(string targetFile)
     // list of new or updated discoveries as that will mean we will generate the library twice, both from the original
     // unpatched discovery and the patched discovery. We'll keep the library for whatever file we found last.
     // Note the patched discovery is indeed included.
-    if (Path.GetExtension(targetFile) != "original")
+    if (Path.GetExtension(targetFile) != ".original")
     {
         newOrUpdated.Add(targetFile);
     }
