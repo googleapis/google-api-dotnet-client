@@ -6065,10 +6065,6 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("category")]
         public virtual string Category { get; set; }
 
-        /// <summary>Output only. The type of the connector.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("connectorType")]
-        public virtual string ConnectorType { get; set; }
-
         private string _createTimeRaw;
 
         private object _createTime;
