@@ -21,11 +21,6 @@ The Google APIs Core Library contains the Google APIs HTTP layer, JSON support, 
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 
     <PackageReference Include="ConfigureAwaitChecker.Analyzer" Version="5.0.0.1" PrivateAssets="All" />
-    <PackageReference Include="SourceLink.Create.CommandLine" Version="2.8.3" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="All" />
-
-    <!-- Does not affect the output packages, and makes testing sourcelink simple -->
-    <DotNetCliToolReference Include="dotnet-sourcelink" Version="2.8.3" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='net462'">

@@ -17,8 +17,6 @@
     <ProjectReference Include="..\Google.Apis.Core\Google.Apis.Core.csproj" />
     <Compile Include="..\..\Generated\Google.Apis.Translate.v2\Google.Apis.Translate.v2.cs" Link="Apis\Services\Google.Apis.Translate.v2.cs" />
     <Compile Include="..\..\Generated\/Google.Apis.ManufacturerCenter.v1\Google.Apis.ManufacturerCenter.v1.cs" Link="Apis\Services\Google.Apis.ManufacturerCenter.v1.cs" />
-
-    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='net462'">

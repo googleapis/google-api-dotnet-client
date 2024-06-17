@@ -22,8 +22,6 @@ The library supports service requests, media upload and download, etc.
     <ProjectReference Include="..\Google.Apis.Core\Google.Apis.Core.csproj" />
 
     <PackageReference Include="ConfigureAwaitChecker.Analyzer" Version="5.0.0.1" PrivateAssets="All" />
-    <PackageReference Include="SourceLink.Create.CommandLine" Version="2.8.3" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='net462'">
