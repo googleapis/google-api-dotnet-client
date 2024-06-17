@@ -19,7 +19,6 @@
     <ProjectReference Include="..\Google.Apis.Core\Google.Apis.Core.csproj" />
     <ProjectReference Include="..\Google.Apis.Tests\Google.Apis.Tests.csproj" />
 
-    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="All" />
     <PackageReference Include="BouncyCastle.Cryptography" Version="2.4.0" />
   </ItemGroup>
 
