@@ -570,6 +570,7 @@ namespace Google.Apis.Connectors.v2
                     {
                         this.service = service;
                         Entities = new EntitiesResource(service);
+                        Entitieswithacls = new EntitieswithaclsResource(service);
                     }
 
                     /// <summary>Gets the Entities resource.</summary>
@@ -1108,6 +1109,121 @@ namespace Google.Apis.Connectors.v2
                                 RequestParameters.Add("conditions", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "conditions",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+                    }
+
+                    /// <summary>Gets the Entitieswithacls resource.</summary>
+                    public virtual EntitieswithaclsResource Entitieswithacls { get; }
+
+                    /// <summary>The "entitieswithacls" collection of methods.</summary>
+                    public class EntitieswithaclsResource
+                    {
+                        private const string Resource = "entitieswithacls";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public EntitieswithaclsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>
+                        /// Lists entity rows with ACLs of a particular entity type contained in the request. Note: 1.
+                        /// Currently, only max of one 'sort_by' column is supported. 2. If no 'sort_by' column is
+                        /// provided, the primary key of the table is used. If zero or more than one primary key is
+                        /// available, we default to the unpaginated list entities logic which only returns the first
+                        /// page. 3. The values of the 'sort_by' columns must uniquely identify an entity row, otherwise
+                        /// undefined behaviors may be observed during pagination. 4. Since transactions are not
+                        /// supported, any updates, inserts or deletes during pagination can lead to stale data being
+                        /// returned or other unexpected behaviors.
+                        /// </summary>
+                        /// <param name="parent">
+                        /// Required. Resource name of the Entity Type. Format:
+                        /// projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type}
+                        /// </param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(this.service, parent);
+                        }
+
+                        /// <summary>
+                        /// Lists entity rows with ACLs of a particular entity type contained in the request. Note: 1.
+                        /// Currently, only max of one 'sort_by' column is supported. 2. If no 'sort_by' column is
+                        /// provided, the primary key of the table is used. If zero or more than one primary key is
+                        /// available, we default to the unpaginated list entities logic which only returns the first
+                        /// page. 3. The values of the 'sort_by' columns must uniquely identify an entity row, otherwise
+                        /// undefined behaviors may be observed during pagination. 4. Since transactions are not
+                        /// supported, any updates, inserts or deletes during pagination can lead to stale data being
+                        /// returned or other unexpected behaviors.
+                        /// </summary>
+                        public class ListRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v2.Data.Operation>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. Resource name of the Entity Type. Format:
+                            /// projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type}
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// Conditions to be used when listing entities. From a proto standpoint, There are no
+                            /// restrictions on what can be passed using this field. The connector documentation should
+                            /// have information about what format of filters/conditions are supported.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("conditions", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Conditions { get; set; }
+
+                            /// <summary>Format: gs://object_path</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("gsutilUri", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string GsutilUri { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v2/{+parent}/entitieswithacls";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+/entityTypes/[^/]+$",
+                                });
+                                RequestParameters.Add("conditions", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "conditions",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("gsutilUri", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "gsutilUri",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -2618,6 +2734,49 @@ namespace Google.Apis.Connectors.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
+    public class Operation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed,
+        /// and either `error` or `response` is available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("done")]
+        public virtual System.Nullable<bool> Done { get; set; }
+
+        /// <summary>The error result of the operation in case of failure or cancellation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; }
+
+        /// <summary>
+        /// Service-specific metadata associated with the operation. It typically contains progress information and
+        /// common metadata such as create time. Some services might not provide such metadata. Any method that returns
+        /// a long-running operation should document the metadata type, if any.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
+        /// <summary>
+        /// The server-assigned name, which is only unique within the same service that originally returns it. If you
+        /// use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The normal, successful response of the operation. If the original method returns no data on success, such as
+        /// `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>PerSliSloEligibility is a mapping from an SLI name to eligibility.</summary>
     public class PerSliSloEligibility : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2817,6 +2976,35 @@ namespace Google.Apis.Connectors.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tier")]
         public virtual string Tier { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The `Status` type defines a logical error model that is suitable for different programming environments,
+    /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
+    /// three pieces of data: error code, error message, and error details. You can find out more about this error model
+    /// and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+    /// </summary>
+    public class Status : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual System.Nullable<int> Code { get; set; }
+
+        /// <summary>
+        /// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
+
+        /// <summary>
+        /// A developer-facing error message, which should be in English. Any user-facing error message should be
+        /// localized and sent in the google.rpc.Status.details field, or localized by the client.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
