@@ -4037,7 +4037,7 @@ namespace Google.Apis.CloudRun.v2.Data
 
         private object _deleteTime;
 
-        /// <summary>Output only. The deletion time.</summary>
+        /// <summary>Output only. The deletion time. It is only populated as a response to a Delete request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
         public virtual string DeleteTimeRaw
         {
@@ -5142,7 +5142,7 @@ namespace Google.Apis.CloudRun.v2.Data
 
         private object _deleteTime;
 
-        /// <summary>Output only. The deletion time.</summary>
+        /// <summary>Output only. The deletion time. It is only populated as a response to a Delete request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
         public virtual string DeleteTimeRaw
         {

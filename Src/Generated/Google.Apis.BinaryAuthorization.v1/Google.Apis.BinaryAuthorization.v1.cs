@@ -1126,6 +1126,13 @@ namespace Google.Apis.BinaryAuthorization.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>
+                    /// Optional. Used to prevent deleting the policy when another request has updated it since it was
+                    /// retrieved.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Etag { get; set; }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "delete";
 
@@ -1146,6 +1153,14 @@ namespace Google.Apis.BinaryAuthorization.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/platforms/[^/]+/policies/[^/]+$",
+                        });
+                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "etag",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -2647,6 +2662,12 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
+        /// <summary>
+        /// Optional. Used to prevent updating the policy when another request has updated it since it was retrieved.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
         /// <summary>Optional. GKE platform-specific policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gkePolicy")]
         public virtual GkePolicy GkePolicy { get; set; }
@@ -2694,9 +2715,6 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
     }
 
     /// <summary>Result of evaluating the whole GKE policy for one Pod.</summary>

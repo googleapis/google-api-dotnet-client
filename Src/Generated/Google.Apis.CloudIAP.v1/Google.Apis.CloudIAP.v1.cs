@@ -2097,6 +2097,26 @@ namespace Google.Apis.CloudIAP.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Used for calculating the next state of tags on the resource being passed for the CheckCustomConstraints RPC
+    /// call. The detail evaluation of each field is described in go/op-create-update-time-tags and
+    /// go/tags-in-orgpolicy-requests.
+    /// </summary>
+    public class NextStateOfTags : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("tagsFullState")]
+        public virtual TagsFullState TagsFullState { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("tagsFullStateForChildResource")]
+        public virtual TagsFullStateForChildResource TagsFullStateForChildResource { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("tagsPartialState")]
+        public virtual TagsPartialState TagsPartialState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The OAuth 2.0 Settings</summary>
     public class OAuth2 : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2346,6 +2366,16 @@ namespace Google.Apis.CloudIAP.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
+        /// Used for calculating the next state of tags on the resource being passed for Custom Org Policy enforcement.
+        /// NOTE: Only one of the tags representations (i.e. numeric or namespaced) should be populated. The input tags
+        /// will be converted to the same representation before the calculation. This behavior intentionally may differ
+        /// from other tags related fields in CheckPolicy request, which may require both formats to be passed in.
+        /// IMPORTANT: If tags are unchanged, this field should not be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextStateOfTags")]
+        public virtual NextStateOfTags NextStateOfTags { get; set; }
+
+        /// <summary>
         /// The name of the service this resource belongs to. It is configured using the official_service_name of the
         /// Service as defined in service configurations under //configs/cloud/resourcetypes. For example, the
         /// official_service_name of cloud resource manager service is set as 'cloudresourcemanager.googleapis.com'
@@ -2385,6 +2415,57 @@ namespace Google.Apis.CloudIAP.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
         public virtual Policy Policy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class TagsFullState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If TagsFullState is initialized, the values in this field fully represent all the tags in the next state
+        /// (the current tag values are not used). If tags.size() == 0, the next state of tags would be no tags for
+        /// evaluation purposes. Only one type of tags reference (numeric or namespace) is required to be passed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class TagsFullStateForChildResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If TagsFullStateForChildResource is initialized, the values in this field represent all the tags in the next
+        /// state for the child resource. Only one type of tags reference (numeric or namespace) is required to be
+        /// passed. IMPORTANT: This field should only be used when the target resource IAM policy name is UNKNOWN and
+        /// the resource's parent IAM policy name is being passed in the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class TagsPartialState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Keys of the tags that should be removed for evaluation purposes. IMPORTANT: Currently only numeric
+        /// references are supported. Once support for namespace references is added, both the tag references (numeric
+        /// and namespace) will be removed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tagKeysToRemove")]
+        public virtual System.Collections.Generic.IList<string> TagKeysToRemove { get; set; }
+
+        /// <summary>
+        /// Tags that’ll be updated or added to the current state of tags for evaluation purposes. If a key exists in
+        /// both "tags_to_upsert" and "tag_keys_to_remove", the one in "tag_keys_to_remove" is ignored. Only one type of
+        /// tags reference (numeric or namespace) is required to be passed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tagsToUpsert")]
+        public virtual System.Collections.Generic.IDictionary<string, string> TagsToUpsert { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

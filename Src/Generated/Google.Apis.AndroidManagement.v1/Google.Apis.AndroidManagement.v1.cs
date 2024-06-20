@@ -4393,6 +4393,21 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Controls for the display settings.</summary>
+    public class DisplaySettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Controls the screen brightness settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("screenBrightnessSettings")]
+        public virtual ScreenBrightnessSettings ScreenBrightnessSettings { get; set; }
+
+        /// <summary>Optional. Controls the screen timeout settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("screenTimeoutSettings")]
+        public virtual ScreenTimeoutSettings ScreenTimeoutSettings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A DNS lookup event was initiated through the standard network stack.</summary>
     public class DnsEvent : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6342,6 +6357,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deviceRadioState")]
         public virtual DeviceRadioState DeviceRadioState { get; set; }
 
+        /// <summary>Optional. Controls for the display settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displaySettings")]
+        public virtual DisplaySettings DisplaySettings { get; set; }
+
         /// <summary>Whether encryption is enabled</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionPolicy")]
         public virtual string EncryptionPolicy { get; set; }
@@ -6911,6 +6930,49 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>User ID in which the change was requested in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetUserId")]
         public virtual System.Nullable<int> TargetUserId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Controls for the screen brightness settings.</summary>
+    public class ScreenBrightnessSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The screen brightness between 1 and 255 where 1 is the lowest and 255 is the highest brightness. A
+        /// value of 0 (default) means no screen brightness set. Any other value is rejected. screenBrightnessMode must
+        /// be either BRIGHTNESS_AUTOMATIC or BRIGHTNESS_FIXED to set this. Supported on Android 9 and above on fully
+        /// managed devices. A NonComplianceDetail with API_LEVEL is reported if the Android version is less than 9.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("screenBrightness")]
+        public virtual System.Nullable<int> ScreenBrightness { get; set; }
+
+        /// <summary>Optional. Controls the screen brightness mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("screenBrightnessMode")]
+        public virtual string ScreenBrightnessMode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Controls the screen timeout settings.</summary>
+    public class ScreenTimeoutSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Controls the screen timeout duration. The screen timeout duration must be greater than 0,
+        /// otherwise it is rejected. Additionally, it should not be greater than maximumTimeToLock, otherwise the
+        /// screen timeout is set to maximumTimeToLock and a NonComplianceDetail with INVALID_VALUE reason and
+        /// SCREEN_TIMEOUT_GREATER_THAN_MAXIMUM_TIME_TO_LOCK specific reason is reported. If the screen timeout is less
+        /// than a certain lower bound, it is set to the lower bound. The lower bound may vary across devices. If this
+        /// is set, screenTimeoutMode must be SCREEN_TIMEOUT_ENFORCED. Supported on Android 9 and above on fully managed
+        /// devices. A NonComplianceDetail with API_LEVEL is reported if the Android version is less than 9.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("screenTimeout")]
+        public virtual object ScreenTimeout { get; set; }
+
+        /// <summary>Optional. Controls whether the user is allowed to configure the screen timeout.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("screenTimeoutMode")]
+        public virtual string ScreenTimeoutMode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

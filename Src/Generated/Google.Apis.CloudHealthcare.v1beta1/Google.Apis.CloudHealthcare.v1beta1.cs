@@ -15533,6 +15533,13 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     public class Dataset : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Customer-managed encryption key spec for a Dataset. If set, this Dataset and all of its sub-resources will
+        /// be secured by this key. If empty, the Dataset is secured by the default Google encryption key.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionSpec")]
+        public virtual EncryptionSpec EncryptionSpec { get; set; }
+
+        /// <summary>
         /// Identifier. Resource name of the dataset, of the form
         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
         /// </summary>
@@ -15955,6 +15962,21 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a customer-managed encryption key spec that can be applied to a resource.</summary>
+    public class EncryptionSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The resource name of customer-managed encryption key that is used to secure a resource and its
+        /// sub-resources. Only the key in the same location as this dataset is allowed to be used for encryption.
+        /// Format is: `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{key}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

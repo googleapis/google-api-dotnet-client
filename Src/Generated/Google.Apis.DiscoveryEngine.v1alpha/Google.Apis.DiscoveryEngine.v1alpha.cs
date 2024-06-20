@@ -516,6 +516,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     {
                         this.service = service;
                         Branches = new BranchesResource(service);
+                        CompletionSuggestions = new CompletionSuggestionsResource(service);
                         Controls = new ControlsResource(service);
                         Conversations = new ConversationsResource(service);
                         CustomModels = new CustomModelsResource(service);
@@ -997,9 +998,11 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                     [Google.Apis.Util.StringValueAttribute("CHUNKED_DOCUMENT")]
                                     CHUNKEDDOCUMENT = 2,
 
-                                    /// <summary>Returns the converted PNG Image bytes if available.</summary>
-                                    [Google.Apis.Util.StringValueAttribute("PNG_CONVERTED_DOCUMENT")]
-                                    PNGCONVERTEDDOCUMENT = 3,
+                                    /// <summary>
+                                    /// Returns the converted Image bytes (as JPEG or PNG) if available.
+                                    /// </summary>
+                                    [Google.Apis.Util.StringValueAttribute("IMAGE_CONVERTED_DOCUMENT")]
+                                    IMAGECONVERTEDDOCUMENT = 4,
                                 }
 
                                 /// <summary>Gets the method name.</summary>
@@ -1587,6 +1590,142 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                         Pattern = null,
                                     });
                                 }
+                            }
+                        }
+                    }
+
+                    /// <summary>Gets the CompletionSuggestions resource.</summary>
+                    public virtual CompletionSuggestionsResource CompletionSuggestions { get; }
+
+                    /// <summary>The "completionSuggestions" collection of methods.</summary>
+                    public class CompletionSuggestionsResource
+                    {
+                        private const string Resource = "completionSuggestions";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public CompletionSuggestionsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>Imports CompletionSuggestions for a DataStore.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">
+                        /// Required. The parent data store resource name for which to import customer autocomplete
+                        /// suggestions. Follows pattern `projects/*/locations/*/collections/*/dataStores/*`
+                        /// </param>
+                        public virtual ImportRequest Import(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsRequest body, string parent)
+                        {
+                            return new ImportRequest(this.service, body, parent);
+                        }
+
+                        /// <summary>Imports CompletionSuggestions for a DataStore.</summary>
+                        public class ImportRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleLongrunningOperation>
+                        {
+                            /// <summary>Constructs a new Import request.</summary>
+                            public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsRequest body, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The parent data store resource name for which to import customer autocomplete
+                            /// suggestions. Follows pattern `projects/*/locations/*/collections/*/dataStores/*`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "import";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+parent}/completionSuggestions:import";
+
+                            /// <summary>Initializes Import parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Permanently deletes all CompletionSuggestions for a DataStore.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">
+                        /// Required. The parent data store resource name for which to purge completion suggestions.
+                        /// Follows pattern projects/*/locations/*/collections/*/dataStores/*.
+                        /// </param>
+                        public virtual PurgeRequest Purge(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaPurgeCompletionSuggestionsRequest body, string parent)
+                        {
+                            return new PurgeRequest(this.service, body, parent);
+                        }
+
+                        /// <summary>Permanently deletes all CompletionSuggestions for a DataStore.</summary>
+                        public class PurgeRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleLongrunningOperation>
+                        {
+                            /// <summary>Constructs a new Purge request.</summary>
+                            public PurgeRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaPurgeCompletionSuggestionsRequest body, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The parent data store resource name for which to purge completion suggestions.
+                            /// Follows pattern projects/*/locations/*/collections/*/dataStores/*.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaPurgeCompletionSuggestionsRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "purge";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+parent}/completionSuggestions:purge";
+
+                            /// <summary>Initializes Purge parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+$",
+                                });
                             }
                         }
                     }
@@ -9182,6 +9321,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                 {
                     this.service = service;
                     Branches = new BranchesResource(service);
+                    CompletionSuggestions = new CompletionSuggestionsResource(service);
                     Controls = new ControlsResource(service);
                     Conversations = new ConversationsResource(service);
                     Models = new ModelsResource(service);
@@ -9659,9 +9799,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                 [Google.Apis.Util.StringValueAttribute("CHUNKED_DOCUMENT")]
                                 CHUNKEDDOCUMENT = 2,
 
-                                /// <summary>Returns the converted PNG Image bytes if available.</summary>
-                                [Google.Apis.Util.StringValueAttribute("PNG_CONVERTED_DOCUMENT")]
-                                PNGCONVERTEDDOCUMENT = 3,
+                                /// <summary>Returns the converted Image bytes (as JPEG or PNG) if available.</summary>
+                                [Google.Apis.Util.StringValueAttribute("IMAGE_CONVERTED_DOCUMENT")]
+                                IMAGECONVERTEDDOCUMENT = 4,
                             }
 
                             /// <summary>Gets the method name.</summary>
@@ -10246,6 +10386,142 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                     Pattern = null,
                                 });
                             }
+                        }
+                    }
+                }
+
+                /// <summary>Gets the CompletionSuggestions resource.</summary>
+                public virtual CompletionSuggestionsResource CompletionSuggestions { get; }
+
+                /// <summary>The "completionSuggestions" collection of methods.</summary>
+                public class CompletionSuggestionsResource
+                {
+                    private const string Resource = "completionSuggestions";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public CompletionSuggestionsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Imports CompletionSuggestions for a DataStore.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The parent data store resource name for which to import customer autocomplete
+                    /// suggestions. Follows pattern `projects/*/locations/*/collections/*/dataStores/*`
+                    /// </param>
+                    public virtual ImportRequest Import(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsRequest body, string parent)
+                    {
+                        return new ImportRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>Imports CompletionSuggestions for a DataStore.</summary>
+                    public class ImportRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Import request.</summary>
+                        public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent data store resource name for which to import customer autocomplete
+                        /// suggestions. Follows pattern `projects/*/locations/*/collections/*/dataStores/*`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "import";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+parent}/completionSuggestions:import";
+
+                        /// <summary>Initializes Import parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Permanently deletes all CompletionSuggestions for a DataStore.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The parent data store resource name for which to purge completion suggestions. Follows
+                    /// pattern projects/*/locations/*/collections/*/dataStores/*.
+                    /// </param>
+                    public virtual PurgeRequest Purge(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaPurgeCompletionSuggestionsRequest body, string parent)
+                    {
+                        return new PurgeRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>Permanently deletes all CompletionSuggestions for a DataStore.</summary>
+                    public class PurgeRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Purge request.</summary>
+                        public PurgeRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaPurgeCompletionSuggestionsRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent data store resource name for which to purge completion suggestions.
+                        /// Follows pattern projects/*/locations/*/collections/*/dataStores/*.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaPurgeCompletionSuggestionsRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "purge";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+parent}/completionSuggestions:purge";
+
+                        /// <summary>Initializes Purge parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+$",
+                            });
                         }
                     }
                 }
@@ -17830,6 +18106,116 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     }
 
     /// <summary>
+    /// Metadata related to the progress of the ImportCompletionSuggestions operation. This will be returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1ImportCompletionSuggestionsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Count of CompletionSuggestions that failed to be imported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureCount")]
+        public virtual System.Nullable<long> FailureCount { get; set; }
+
+        /// <summary>Count of CompletionSuggestions successfully imported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successCount")]
+        public virtual System.Nullable<long> SuccessCount { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response of the CompletionService.ImportCompletionSuggestions method. If the long running operation is done,
+    /// this message is returned by the google.longrunning.Operations.response field if the operation is successful.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1ImportCompletionSuggestionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The desired location of errors incurred during the Import.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorConfig")]
+        public virtual GoogleCloudDiscoveryengineV1ImportErrorConfig ErrorConfig { get; set; }
+
+        /// <summary>A sample of errors encountered while processing the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorSamples")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorSamples { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Metadata related to the progress of the ImportDocuments operation. This is returned by the
     /// google.longrunning.Operation.metadata field.
     /// </summary>
@@ -18381,6 +18767,105 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Metadata associated with a project provision operation.</summary>
     public class GoogleCloudDiscoveryengineV1ProvisionProjectMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the PurgeCompletionSuggestions operation. This is returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1PurgeCompletionSuggestionsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for CompletionService.PurgeCompletionSuggestions method.</summary>
+    public class GoogleCloudDiscoveryengineV1PurgeCompletionSuggestionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A sample of errors encountered while processing the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorSamples")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorSamples { get; set; }
+
+        /// <summary>Whether the completion suggestions were successfully purged.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purgeSucceeded")]
+        public virtual System.Nullable<bool> PurgeSucceeded { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -20272,11 +20757,26 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Request for CheckRequirement method.</summary>
     public class GoogleCloudDiscoveryengineV1alphaCheckRequirementRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A Requirement.type specifying the requirement to check.</summary>
+        /// <summary>
+        /// The type specifying the requirement to check. The supported types are: *
+        /// `discoveryengine.googleapis.com/media_recs/general/all/warning` *
+        /// `discoveryengine.googleapis.com/media_recs/oyml/cvr/warning` *
+        /// `discoveryengine.googleapis.com/media_recs/rfy/cvr/warning` *
+        /// `discoveryengine.googleapis.com/media_recs/mlt/cvr/warning` *
+        /// `discoveryengine.googleapis.com/media_recs/mp/cvr/warning` *
+        /// `discoveryengine.googleapis.com/media_recs/oyml/wdps/warning` *
+        /// `discoveryengine.googleapis.com/media_recs/rfy/wdps/warning` *
+        /// `discoveryengine.googleapis.com/media_recs/mlt/wdps/warning`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requirementType")]
         public virtual string RequirementType { get; set; }
 
-        /// <summary>The resources to be checked for this requirement.</summary>
+        /// <summary>
+        /// The type needed for the monitored resources: * `discoveryengine.googleapis.com/Branch`. * The labels needed
+        /// for this resource: * `project_number` * `location_id` * `collection_id` * `datastore_id` * `branch_id` *
+        /// `discoveryengine.googleapis.com/DataStore` * The labels needed for this resource: * `project_number` *
+        /// `location_id` * `collection_id` * `datastore_id`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<GoogleApiMonitoredResource> Resources { get; set; }
 
@@ -20284,7 +20784,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response for CheckRequirement method.</summary>
+    /// <summary>Response for the CheckRequirement method.</summary>
     public class GoogleCloudDiscoveryengineV1alphaCheckRequirementResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Metric results.</summary>
@@ -20626,6 +21126,46 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>End user selected CompleteQueryResponse.QuerySuggestion.suggestion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selectedSuggestion")]
         public virtual string SelectedSuggestion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Autocomplete suggestions that are imported from Customer.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaCompletionSuggestion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Alternative matching phrases for this suggestion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alternativePhrases")]
+        public virtual System.Collections.Generic.IList<string> AlternativePhrases { get; set; }
+
+        /// <summary>
+        /// Frequency of this suggestion. Will be used to rank suggestions when score is not available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frequency")]
+        public virtual System.Nullable<long> Frequency { get; set; }
+
+        /// <summary>Global score of this suggestion. Control how this suggestion would be scored / ranked.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("globalScore")]
+        public virtual System.Nullable<double> GlobalScore { get; set; }
+
+        /// <summary>
+        /// If two suggestions have the same groupId, they will not be returned together. Instead the one ranked higher
+        /// will be returned. This can be used to deduplicate semantically identical suggestions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupId")]
+        public virtual string GroupId { get; set; }
+
+        /// <summary>The score of this suggestion within its group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupScore")]
+        public virtual System.Nullable<double> GroupScore { get; set; }
+
+        /// <summary>BCP-47 language code of this suggestion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>Required. The suggestion text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestion")]
+        public virtual string Suggestion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22348,7 +22888,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
 
         /// <summary>
         /// The URI of the content. Only Cloud Storage URIs (e.g. `gs://bucket-name/path/to/file`) are supported. The
-        /// maximum file size is 2.5 MB for text-based formats, 100 MB for other formats.
+        /// maximum file size is 2.5 MB for text-based formats, 200 MB for other formats.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
@@ -23487,6 +24027,150 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     }
 
     /// <summary>
+    /// Metadata related to the progress of the ImportCompletionSuggestions operation. This will be returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Count of CompletionSuggestions that failed to be imported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureCount")]
+        public virtual System.Nullable<long> FailureCount { get; set; }
+
+        /// <summary>Count of CompletionSuggestions successfully imported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successCount")]
+        public virtual System.Nullable<long> SuccessCount { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for CompletionService.ImportCompletionSuggestions method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>BigQuery input source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigquerySource")]
+        public virtual GoogleCloudDiscoveryengineV1alphaBigQuerySource BigquerySource { get; set; }
+
+        /// <summary>The desired location of errors incurred during the Import.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaImportErrorConfig ErrorConfig { get; set; }
+
+        /// <summary>Cloud Storage location for the input content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
+        public virtual GoogleCloudDiscoveryengineV1alphaGcsSource GcsSource { get; set; }
+
+        /// <summary>The Inline source for suggestion entries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inlineSource")]
+        public virtual GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsRequestInlineSource InlineSource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The inline source for CompletionSuggestions.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsRequestInlineSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. A list of all denylist entries to import. Max of 1000 items.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaCompletionSuggestion> Suggestions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response of the CompletionService.ImportCompletionSuggestions method. If the long running operation is done,
+    /// this message is returned by the google.longrunning.Operations.response field if the operation is successful.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaImportCompletionSuggestionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The desired location of errors incurred during the Import.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaImportErrorConfig ErrorConfig { get; set; }
+
+        /// <summary>A sample of errors encountered while processing the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorSamples")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorSamples { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Metadata related to the progress of the ImportDocuments operation. This is returned by the
     /// google.longrunning.Operation.metadata field.
     /// </summary>
@@ -24614,6 +25298,112 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     }
 
     /// <summary>
+    /// Metadata related to the progress of the PurgeCompletionSuggestions operation. This is returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaPurgeCompletionSuggestionsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for CompletionService.PurgeCompletionSuggestions method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaPurgeCompletionSuggestionsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for CompletionService.PurgeCompletionSuggestions method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaPurgeCompletionSuggestionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A sample of errors encountered while processing the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorSamples")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorSamples { get; set; }
+
+        /// <summary>Whether the completion suggestions were successfully purged.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purgeSucceeded")]
+        public virtual System.Nullable<bool> PurgeSucceeded { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Metadata related to the progress of the PurgeDocuments operation. This will be returned by the
     /// google.longrunning.Operation.metadata field.
     /// </summary>
@@ -25523,7 +26313,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
 
         /// <summary>
         /// The requirement type, used as an identifier. Must be unique. The type should prefix with service name to
-        /// avoid possible collision. It's encoraged to use natural hierarchical grouping for similar requirements.
+        /// avoid possible collision. It's encouraged to use natural hierarchical grouping for similar requirements.
         /// Examples: * `library.googleapis.com/books/min_available_books` *
         /// `discoveryengine.googleapis.com/media_rec/recommended_for_you/conversion_rate`
         /// </summary>
@@ -25860,9 +26650,21 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
         public virtual string RegionCode { get; set; }
 
+        /// <summary>
+        /// The relevance threshold of the search results. Default to Google defined threshold, leveraging a balance of
+        /// precision and recall to deliver both highly accurate results and comprehensive coverage of relevant
+        /// information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relevanceThreshold")]
+        public virtual string RelevanceThreshold { get; set; }
+
         /// <summary>Whether to turn on safe search. This is only supported for website search.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("safeSearch")]
         public virtual System.Nullable<bool> SafeSearch { get; set; }
+
+        /// <summary>Search as you type configuration. Only supported for the IndustryVertical.MEDIA vertical.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchAsYouTypeSpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestSearchAsYouTypeSpec SearchAsYouTypeSpec { get; set; }
 
         /// <summary>
         /// The spell correction specification that specifies the mode under which spell correction takes effect.
@@ -26343,8 +27145,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
 
         /// <summary>
         /// Maximum facet values that are returned for this facet. If unspecified, defaults to 20. The maximum allowed
-        /// value is 300. Values above 300 are coerced to 300. If this field is negative, an `INVALID_ARGUMENT` is
-        /// returned.
+        /// value is 300. Values above 300 are coerced to 300. For aggregation in healthcare search, when the
+        /// [FacetKey.key] is "healthcare_aggregation_key", the limit will be overridden to 10,000 internally,
+        /// regardless of the value set here. If this field is negative, an `INVALID_ARGUMENT` is returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("limit")]
         public virtual System.Nullable<int> Limit { get; set; }
@@ -26442,6 +27245,17 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pinUnexpandedResults")]
         public virtual System.Nullable<bool> PinUnexpandedResults { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specification for search as you type in search requests.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaSearchRequestSearchAsYouTypeSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The condition under which search as you type should occur. Default to Condition.DISABLED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual string Condition { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -29914,6 +30728,116 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchTier")]
         public virtual string SearchTier { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the ImportCompletionSuggestions operation. This will be returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaImportCompletionSuggestionsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Count of CompletionSuggestions that failed to be imported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureCount")]
+        public virtual System.Nullable<long> FailureCount { get; set; }
+
+        /// <summary>Count of CompletionSuggestions successfully imported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successCount")]
+        public virtual System.Nullable<long> SuccessCount { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response of the CompletionService.ImportCompletionSuggestions method. If the long running operation is done,
+    /// this message is returned by the google.longrunning.Operations.response field if the operation is successful.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaImportCompletionSuggestionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The desired location of errors incurred during the Import.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaImportErrorConfig ErrorConfig { get; set; }
+
+        /// <summary>A sample of errors encountered while processing the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorSamples")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorSamples { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

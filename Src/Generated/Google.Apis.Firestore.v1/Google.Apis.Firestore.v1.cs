@@ -3085,6 +3085,76 @@ namespace Google.Apis.Firestore.v1
                 }
             }
 
+            /// <summary>
+            /// Bulk deletes a subset of documents from Google Cloud Firestore. Documents created or updated after the
+            /// underlying system starts to process the request will not be deleted. The bulk delete occurs in the
+            /// background and its progress can be monitored and managed via the Operation resource that is created. For
+            /// more details on bulk delete behavior, refer to:
+            /// https://cloud.google.com/firestore/docs/manage-data/bulk-delete
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. Database to operate. Should be of the form: `projects/{project_id}/databases/{database_id}`.
+            /// </param>
+            public virtual BulkDeleteDocumentsRequest BulkDeleteDocuments(Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1BulkDeleteDocumentsRequest body, string name)
+            {
+                return new BulkDeleteDocumentsRequest(this.service, body, name);
+            }
+
+            /// <summary>
+            /// Bulk deletes a subset of documents from Google Cloud Firestore. Documents created or updated after the
+            /// underlying system starts to process the request will not be deleted. The bulk delete occurs in the
+            /// background and its progress can be monitored and managed via the Operation resource that is created. For
+            /// more details on bulk delete behavior, refer to:
+            /// https://cloud.google.com/firestore/docs/manage-data/bulk-delete
+            /// </summary>
+            public class BulkDeleteDocumentsRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.GoogleLongrunningOperation>
+            {
+                /// <summary>Constructs a new BulkDeleteDocuments request.</summary>
+                public BulkDeleteDocumentsRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1BulkDeleteDocumentsRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Database to operate. Should be of the form:
+                /// `projects/{project_id}/databases/{database_id}`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1BulkDeleteDocumentsRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "bulkDeleteDocuments";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}:bulkDeleteDocuments";
+
+                /// <summary>Initializes BulkDeleteDocuments parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/databases/[^/]+$",
+                    });
+                }
+            }
+
             /// <summary>Create a database.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. A parent name of the form `projects/{project_id}`</param>
@@ -5202,6 +5272,175 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for google.longrunning.Operation results from FirestoreAdmin.BulkDeleteDocuments.</summary>
+    public class GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ids of the collection groups that are being deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("collectionIds")]
+        public virtual System.Collections.Generic.IList<string> CollectionIds { get; set; }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>The time this operation completed. Will be unset if operation still in progress.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Which namespace ids are being deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namespaceIds")]
+        public virtual System.Collections.Generic.IList<string> NamespaceIds { get; set; }
+
+        /// <summary>The state of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationState")]
+        public virtual string OperationState { get; set; }
+
+        /// <summary>The progress, in bytes, of this operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progressBytes")]
+        public virtual GoogleFirestoreAdminV1Progress ProgressBytes { get; set; }
+
+        /// <summary>The progress, in documents, of this operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progressDocuments")]
+        public virtual GoogleFirestoreAdminV1Progress ProgressDocuments { get; set; }
+
+        private string _snapshotTimeRaw;
+
+        private object _snapshotTime;
+
+        /// <summary>
+        /// The timestamp that corresponds to the version of the database that is being read to get the list of
+        /// documents to delete. This time can also be used as the timestamp of PITR in case of disaster recovery
+        /// (subject to PITR window limit).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshotTime")]
+        public virtual string SnapshotTimeRaw
+        {
+            get => _snapshotTimeRaw;
+            set
+            {
+                _snapshotTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _snapshotTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="SnapshotTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SnapshotTimeDateTimeOffset instead.")]
+        public virtual object SnapshotTime
+        {
+            get => _snapshotTime;
+            set
+            {
+                _snapshotTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _snapshotTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="SnapshotTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? SnapshotTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SnapshotTimeRaw);
+            set => SnapshotTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>The time this operation started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The request for FirestoreAdmin.BulkDeleteDocuments. When both collection_ids and namespace_ids are set, only
+    /// documents satisfying both conditions will be deleted. Requests with namespace_ids and collection_ids both empty
+    /// will be rejected. Please use FirestoreAdmin.DeleteDatabase instead.
+    /// </summary>
+    public class GoogleFirestoreAdminV1BulkDeleteDocumentsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. IDs of the collection groups to delete. Unspecified means all collection groups. Each collection
+        /// group in this list must be unique.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("collectionIds")]
+        public virtual System.Collections.Generic.IList<string> CollectionIds { get; set; }
+
+        /// <summary>
+        /// Optional. Namespaces to delete. An empty list means all namespaces. This is the recommended usage for
+        /// databases that don't use namespaces. An empty string element represents the default namespace. This should
+        /// be used if the database has data in non-default namespaces, but doesn't want to delete from them. Each
+        /// namespace in this list must be unique.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namespaceIds")]
+        public virtual System.Collections.Generic.IList<string> NamespaceIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The CMEK (Customer Managed Encryption Key) configuration for a Firestore database. If not present, the database
     /// is secured by the default Google encryption key.
@@ -5491,57 +5730,6 @@ namespace Google.Apis.Firestore.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionRetentionPeriod")]
         public virtual object VersionRetentionPeriod { get; set; }
-    }
-
-    /// <summary>A consistent snapshot of a database at a specific point in time.</summary>
-    public class GoogleFirestoreAdminV1DatabaseSnapshot : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. A name of the form `projects/{project_id}/databases/{database_id}`</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("database")]
-        public virtual string Database { get; set; }
-
-        private string _snapshotTimeRaw;
-
-        private object _snapshotTime;
-
-        /// <summary>
-        /// Required. The timestamp at which the database snapshot is taken. The requested timestamp must be a whole
-        /// minute within the PITR window.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("snapshotTime")]
-        public virtual string SnapshotTimeRaw
-        {
-            get => _snapshotTimeRaw;
-            set
-            {
-                _snapshotTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _snapshotTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="SnapshotTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SnapshotTimeDateTimeOffset instead.")]
-        public virtual object SnapshotTime
-        {
-            get => _snapshotTime;
-            set
-            {
-                _snapshotTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _snapshotTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="SnapshotTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? SnapshotTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SnapshotTimeRaw);
-            set => SnapshotTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
     }
 
     /// <summary>Metadata related to the delete database operation.</summary>
@@ -6527,13 +6715,6 @@ namespace Google.Apis.Firestore.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseId")]
         public virtual string DatabaseId { get; set; }
-
-        /// <summary>
-        /// Database snapshot to restore from. The source database must exist and have enabled PITR. The restored
-        /// database will be created in the same location as the source database.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("databaseSnapshot")]
-        public virtual GoogleFirestoreAdminV1DatabaseSnapshot DatabaseSnapshot { get; set; }
 
         /// <summary>
         /// Use Customer Managed Encryption Keys (CMEK) for encryption. Only keys in the same location as this database

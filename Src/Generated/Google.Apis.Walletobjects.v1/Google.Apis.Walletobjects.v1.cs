@@ -11341,39 +11341,59 @@ namespace Google.Apis.Walletobjects.v1.Data
 
     public class Resources : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>A list of event ticket classes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventTicketClasses")]
         public virtual System.Collections.Generic.IList<EventTicketClass> EventTicketClasses { get; set; }
 
+        /// <summary>A list of event ticket objects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventTicketObjects")]
         public virtual System.Collections.Generic.IList<EventTicketObject> EventTicketObjects { get; set; }
 
+        /// <summary>A list of flight classes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flightClasses")]
         public virtual System.Collections.Generic.IList<FlightClass> FlightClasses { get; set; }
 
+        /// <summary>A list of flight objects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flightObjects")]
         public virtual System.Collections.Generic.IList<FlightObject> FlightObjects { get; set; }
 
+        /// <summary>A list of generic classes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericClasses")]
+        public virtual System.Collections.Generic.IList<GenericClass> GenericClasses { get; set; }
+
+        /// <summary>A list of generic objects.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericObjects")]
+        public virtual System.Collections.Generic.IList<GenericObject> GenericObjects { get; set; }
+
+        /// <summary>A list of gift card classes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("giftCardClasses")]
         public virtual System.Collections.Generic.IList<GiftCardClass> GiftCardClasses { get; set; }
 
+        /// <summary>A list of gift card objects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("giftCardObjects")]
         public virtual System.Collections.Generic.IList<GiftCardObject> GiftCardObjects { get; set; }
 
+        /// <summary>A list of loyalty classes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loyaltyClasses")]
         public virtual System.Collections.Generic.IList<LoyaltyClass> LoyaltyClasses { get; set; }
 
+        /// <summary>A list of loyalty objects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loyaltyObjects")]
         public virtual System.Collections.Generic.IList<LoyaltyObject> LoyaltyObjects { get; set; }
 
+        /// <summary>A list of offer classes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offerClasses")]
         public virtual System.Collections.Generic.IList<OfferClass> OfferClasses { get; set; }
 
+        /// <summary>A list of offer objects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offerObjects")]
         public virtual System.Collections.Generic.IList<OfferObject> OfferObjects { get; set; }
 
+        /// <summary>A list of transit classes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transitClasses")]
         public virtual System.Collections.Generic.IList<TransitClass> TransitClasses { get; set; }
 
+        /// <summary>A list of transit objects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transitObjects")]
         public virtual System.Collections.Generic.IList<TransitObject> TransitObjects { get; set; }
 

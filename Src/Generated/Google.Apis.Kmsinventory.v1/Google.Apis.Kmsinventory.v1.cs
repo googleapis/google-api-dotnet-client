@@ -883,6 +883,17 @@ namespace Google.Apis.Kmsinventory.v1.Data
         public virtual System.Nullable<bool> ImportOnly { get; set; }
 
         /// <summary>
+        /// Optional. The policy used for Key Access Justifications Policy Enforcement. If this field is present and
+        /// this key is enrolled in Key Access Justifications Policy Enforcement, the policy will be evaluated in
+        /// encrypt, decrypt, and sign operations, and the operation will fail if rejected by the policy. The policy is
+        /// defined by specifying zero or more allowed justification codes.
+        /// https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes By default,
+        /// this field is absent, and all justification codes are allowed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyAccessJustificationsPolicy")]
+        public virtual GoogleCloudKmsV1KeyAccessJustificationsPolicy KeyAccessJustificationsPolicy { get; set; }
+
+        /// <summary>
         /// Labels with user-defined metadata. For more information, see [Labeling
         /// Keys](https://cloud.google.com/kms/docs/labeling-keys).
         /// </summary>
@@ -1290,6 +1301,23 @@ namespace Google.Apis.Kmsinventory.v1.Data
         /// <summary>The URI for an external resource that this CryptoKeyVersion represents.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalKeyUri")]
         public virtual string ExternalKeyUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A KeyAccessJustificationsPolicy specifies zero or more allowed AccessReason values for encrypt, decrypt, and
+    /// sign operations on a CryptoKey.
+    /// </summary>
+    public class GoogleCloudKmsV1KeyAccessJustificationsPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The list of allowed reasons for access to a CryptoKey. Zero allowed access reasons means all encrypt,
+        /// decrypt, and sign operations for the CryptoKey associated with this policy will fail.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedAccessReasons")]
+        public virtual System.Collections.Generic.IList<string> AllowedAccessReasons { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
