@@ -34,6 +34,7 @@ namespace Google.Apis.Games.v1
         /// <param name="initializer">The service initializer.</param>
         public GamesService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
+            Accesstokens = new AccesstokensResource(this);
             AchievementDefinitions = new AchievementDefinitionsResource(this);
             Achievements = new AchievementsResource(this);
             Applications = new ApplicationsResource(this);
@@ -93,6 +94,9 @@ namespace Google.Apis.Games.v1
             /// <summary>Create, edit, and delete your Google Play Games activity</summary>
             public const string Games = "https://www.googleapis.com/auth/games";
         }
+
+        /// <summary>Gets the Accesstokens resource.</summary>
+        public virtual AccesstokensResource Accesstokens { get; }
 
         /// <summary>Gets the AchievementDefinitions resource.</summary>
         public virtual AchievementDefinitionsResource AchievementDefinitions { get; }
@@ -309,6 +313,165 @@ namespace Google.Apis.Games.v1
                 DefaultValue = null,
                 Pattern = null,
             });
+        }
+    }
+
+    /// <summary>The "accesstokens" collection of methods.</summary>
+    public class AccesstokensResource
+    {
+        private const string Resource = "accesstokens";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public AccesstokensResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>
+        /// Generates a Play Grouping API token for the PGS user identified by the attached credential.
+        /// </summary>
+        public virtual GeneratePlayGroupingApiTokenRequest GeneratePlayGroupingApiToken()
+        {
+            return new GeneratePlayGroupingApiTokenRequest(this.service);
+        }
+
+        /// <summary>
+        /// Generates a Play Grouping API token for the PGS user identified by the attached credential.
+        /// </summary>
+        public class GeneratePlayGroupingApiTokenRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.GeneratePlayGroupingApiTokenResponse>
+        {
+            /// <summary>Constructs a new GeneratePlayGroupingApiToken request.</summary>
+            public GeneratePlayGroupingApiTokenRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>Required. App package name to generate the token for (e.g. com.example.mygame).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PackageName { get; set; }
+
+            /// <summary>
+            /// Required. Persona to associate with the token. Persona is a developer-provided stable identifier of the
+            /// user. Must be deterministically generated (e.g. as a one-way hash) from the user account ID and user
+            /// profile ID (if the app has the concept), according to the developer's own user identity system.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("persona", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Persona { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "generatePlayGroupingApiToken";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "games/v1/accesstokens/generatePlayGroupingApiToken";
+
+            /// <summary>Initializes GeneratePlayGroupingApiToken parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "packageName",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("persona", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "persona",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Generates a Play Grouping API token for the PGS user identified by the Recall session ID provided in the
+        /// request.
+        /// </summary>
+        public virtual GenerateRecallPlayGroupingApiTokenRequest GenerateRecallPlayGroupingApiToken()
+        {
+            return new GenerateRecallPlayGroupingApiTokenRequest(this.service);
+        }
+
+        /// <summary>
+        /// Generates a Play Grouping API token for the PGS user identified by the Recall session ID provided in the
+        /// request.
+        /// </summary>
+        public class GenerateRecallPlayGroupingApiTokenRequest : GamesBaseServiceRequest<Google.Apis.Games.v1.Data.GenerateRecallPlayGroupingApiTokenResponse>
+        {
+            /// <summary>Constructs a new GenerateRecallPlayGroupingApiToken request.</summary>
+            public GenerateRecallPlayGroupingApiTokenRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>Required. App package name to generate the token for (e.g. com.example.mygame).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PackageName { get; set; }
+
+            /// <summary>
+            /// Required. Persona to associate with the token. Persona is a developer-provided stable identifier of the
+            /// user. Must be deterministically generated (e.g. as a one-way hash) from the user account ID and user
+            /// profile ID (if the app has the concept), according to the developer's own user identity system.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("persona", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Persona { get; set; }
+
+            /// <summary>
+            /// Required. Opaque server-generated string that encodes all the necessary information to identify the PGS
+            /// player / Google user and application. See https://developer.android.com/games/pgs/recall/recall-setup on
+            /// how to integrate with Recall and get session ID.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("recallSessionId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RecallSessionId { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "generateRecallPlayGroupingApiToken";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "games/v1/accesstokens/generateRecallPlayGroupingApiToken";
+
+            /// <summary>Initializes GenerateRecallPlayGroupingApiToken parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "packageName",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("persona", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "persona",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("recallSessionId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "recallSessionId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
         }
     }
 
@@ -3905,6 +4068,28 @@ namespace Google.Apis.Games.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response for the GeneratePlayGroupingApiToken RPC.</summary>
+    public class GeneratePlayGroupingApiTokenResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Token for accessing the Play Grouping API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("token")]
+        public virtual PlayGroupingApiToken Token { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for the GenerateRecallPlayGroupingApiToken RPC.</summary>
+    public class GenerateRecallPlayGroupingApiTokenResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Token for accessing the Play Grouping API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("token")]
+        public virtual PlayGroupingApiToken Token { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for GetMultipleApplicationPlayerIds rpc.</summary>
     public class GetMultipleApplicationPlayerIdsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4359,6 +4544,17 @@ namespace Google.Apis.Games.v1.Data
         /// <summary>The list of player levels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("playerLevels")]
         public virtual System.Collections.Generic.IList<PlayerLevel> PlayerLevels { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Token data returned from GeneratePlayGroupingApiToken RPC.</summary>
+    public class PlayGroupingApiToken : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Value of the token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tokenValue")]
+        public virtual string TokenValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

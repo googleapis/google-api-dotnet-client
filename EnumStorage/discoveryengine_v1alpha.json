@@ -16,7 +16,8 @@
     "PROCESSED_DOCUMENT_TYPE_UNSPECIFIED",
     "PARSED_DOCUMENT",
     "CHUNKED_DOCUMENT",
-    "PNG_CONVERTED_DOCUMENT"
+    "PNG_CONVERTED_DOCUMENT",
+    "IMAGE_CONVERTED_DOCUMENT"
   ],
   "Google.Apis.DiscoveryEngine.v1alpha.ProjectsResource+LocationsResource+DataStoresResource+BranchesResource+DocumentsResource+GetProcessedDocumentRequest.ProcessedDocumentFormatEnum": [
     "PROCESSED_DOCUMENT_FORMAT_UNSPECIFIED",
@@ -26,6 +27,7 @@
     "PROCESSED_DOCUMENT_TYPE_UNSPECIFIED",
     "PARSED_DOCUMENT",
     "CHUNKED_DOCUMENT",
-    "PNG_CONVERTED_DOCUMENT"
+    "PNG_CONVERTED_DOCUMENT",
+    "IMAGE_CONVERTED_DOCUMENT"
   ]
 }

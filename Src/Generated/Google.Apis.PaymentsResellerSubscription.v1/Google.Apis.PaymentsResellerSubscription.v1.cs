@@ -292,7 +292,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
 
             /// <summary>
             /// To retrieve the products that can be resold by the partner. It should be autenticated with a service
-            /// account.
+            /// account. - This API doesn't apply to YouTube products currently.
             /// </summary>
             /// <param name="parent">
             /// Required. The parent, the partner that can resell. Format: partners/{partner}
@@ -304,7 +304,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
 
             /// <summary>
             /// To retrieve the products that can be resold by the partner. It should be autenticated with a service
-            /// account.
+            /// account. - This API doesn't apply to YouTube products currently.
             /// </summary>
             public class ListRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse>
             {
@@ -475,8 +475,8 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             }
 
             /// <summary>
-            /// To retrieve the promotions, such as free trial, that can be used by the partner. It should be
-            /// autenticated with a service account.
+            /// Retrieves the promotions, such as free trial, that can be used by the partner. - This API doesn't apply
+            /// to YouTube promotions currently. It should be autenticated with a service account.
             /// </summary>
             /// <param name="parent">
             /// Required. The parent, the partner that can resell. Format: partners/{partner}
@@ -487,8 +487,8 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             }
 
             /// <summary>
-            /// To retrieve the promotions, such as free trial, that can be used by the partner. It should be
-            /// autenticated with a service account.
+            /// Retrieves the promotions, such as free trial, that can be used by the partner. - This API doesn't apply
+            /// to YouTube promotions currently. It should be autenticated with a service account.
             /// </summary>
             public class ListRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1ListPromotionsResponse>
             {
@@ -1023,9 +1023,9 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             }
 
             /// <summary>
-            /// Used by partners to revoke the pending cancellation of a subscription, which is currently in
-            /// `STATE_CANCEL_AT_END_OF_CYCLE` state. If the subscription is already cancelled, the request will fail.
-            /// It should be called directly by the partner using service accounts.
+            /// Revokes the pending cancellation of a subscription, which is currently in `STATE_CANCEL_AT_END_OF_CYCLE`
+            /// state. If the subscription is already cancelled, the request will fail. - **This API doesn't apply to
+            /// YouTube subscriptions.** It should be called directly by the partner using service accounts.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -1038,9 +1038,9 @@ namespace Google.Apis.PaymentsResellerSubscription.v1
             }
 
             /// <summary>
-            /// Used by partners to revoke the pending cancellation of a subscription, which is currently in
-            /// `STATE_CANCEL_AT_END_OF_CYCLE` state. If the subscription is already cancelled, the request will fail.
-            /// It should be called directly by the partner using service accounts.
+            /// Revokes the pending cancellation of a subscription, which is currently in `STATE_CANCEL_AT_END_OF_CYCLE`
+            /// state. If the subscription is already cancelled, the request will fail. - **This API doesn't apply to
+            /// YouTube subscriptions.** It should be called directly by the partner using service accounts.
             /// </summary>
             public class UndoCancelRequest : PaymentsResellerSubscriptionBaseServiceRequest<Google.Apis.PaymentsResellerSubscription.v1.Data.GoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionResponse>
             {
@@ -1117,7 +1117,8 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         /// <summary>
         /// Optional. If true, Google will cancel the subscription immediately, and may or may not (based on the
         /// contract) issue a prorated refund for the remainder of the billing cycle. Otherwise, Google defers the
-        /// cancelation at renewal_time, and will not issue a refund.
+        /// cancelation at renewal_time, and will not issue a refund. - YouTube subscriptions must use this option
+        /// currently. However, the user will still have access to the subscription until the end of the billing cycle.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancelImmediately")]
         public virtual System.Nullable<bool> CancelImmediately { get; set; }
@@ -1157,8 +1158,8 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     }
 
     /// <summary>
-    /// Partner request for entitling the previously provisioned subscription to an end user. The end user identity is
-    /// inferred from the request OAuth context.
+    /// LINT.IfChange Partner request for entitling the previously provisioned subscription to an end user. The end user
+    /// identity is inferred from the request OAuth context.
     /// </summary>
     public class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequest : Google.Apis.Requests.IDirectResponseSchema
     {

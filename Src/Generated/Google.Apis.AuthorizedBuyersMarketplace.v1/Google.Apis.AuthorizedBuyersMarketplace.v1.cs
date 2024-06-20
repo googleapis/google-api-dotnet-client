@@ -2673,7 +2673,10 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
                 }
             }
 
-            /// <summary>Creates a note for this proposal and sends to the seller.</summary>
+            /// <summary>
+            /// Creates a note for this proposal and sends to the seller. This method is not supported for proposals
+            /// with DealType set to 'PRIVATE_AUCTION'.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="proposal">Name of the proposal. Format: `buyers/{accountId}/proposals/{proposalId}`</param>
             public virtual AddNoteRequest AddNote(Google.Apis.AuthorizedBuyersMarketplace.v1.Data.AddNoteRequest body, string proposal)
@@ -2681,7 +2684,10 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
                 return new AddNoteRequest(this.service, body, proposal);
             }
 
-            /// <summary>Creates a note for this proposal and sends to the seller.</summary>
+            /// <summary>
+            /// Creates a note for this proposal and sends to the seller. This method is not supported for proposals
+            /// with DealType set to 'PRIVATE_AUCTION'.
+            /// </summary>
             public class AddNoteRequest : AuthorizedBuyersMarketplaceBaseServiceRequest<Google.Apis.AuthorizedBuyersMarketplace.v1.Data.Proposal>
             {
                 /// <summary>Constructs a new AddNote request.</summary>

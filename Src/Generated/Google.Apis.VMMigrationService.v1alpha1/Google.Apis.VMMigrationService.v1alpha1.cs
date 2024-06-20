@@ -5140,6 +5140,12 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> MigrationResourcesUserTags { get; set; }
 
         /// <summary>
+        /// Output only. Information about the network coniguration of the source. Only gatherred upon request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkInsights")]
+        public virtual NetworkInsights NetworkInsights { get; set; }
+
+        /// <summary>
         /// Output only. The source's public IP. All communication initiated by this source will originate from this IP.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicIp")]
@@ -7998,6 +8004,23 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(WarningTimeRaw);
             set => WarningTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about the network coniguration of the source.</summary>
+    public class NetworkInsights : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The gathered network configuration of the source. Presented in json format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceNetworkConfig")]
+        public virtual string SourceNetworkConfig { get; set; }
+
+        /// <summary>
+        /// Output only. The gathered network configuration of the source. Presented in terraform format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceNetworkTerraform")]
+        public virtual string SourceNetworkTerraform { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
