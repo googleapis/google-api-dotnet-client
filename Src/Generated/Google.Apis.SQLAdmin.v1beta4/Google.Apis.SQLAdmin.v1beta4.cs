@@ -5304,14 +5304,6 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         }
 
         /// <summary>
-        /// Optional. Copy clone and point-in-time recovery clone of a regional instance in the specified zones. If not
-        /// specified, clone to the same secondary zone as the source instance. This value cannot be the same as the
-        /// preferred_zone field.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("preferredSecondaryZone")]
-        public virtual string PreferredSecondaryZone { get; set; }
-
-        /// <summary>
         /// Optional. Copy clone and point-in-time recovery clone of an instance to the specified zone. If no zone is
         /// specified, clone to the same primary zone as the source instance.
         /// </summary>
@@ -6874,11 +6866,14 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
     /// </summary>
     public class MaintenanceWindow : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>day of week (1-7), starting on Monday.</summary>
+        /// <summary>
+        /// Day of week - `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, or `SUNDAY`. Specify in
+        /// the UTC time zone. Returned in output as an integer, 1 to 7, where `1` equals Monday.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("day")]
         public virtual System.Nullable<int> Day { get; set; }
 
-        /// <summary>hour of day - 0 to 23.</summary>
+        /// <summary>Hour of day - 0 to 23. Specify in the UTC time zone.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hour")]
         public virtual System.Nullable<int> Hour { get; set; }
 
@@ -6887,8 +6882,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string Kind { get; set; }
 
         /// <summary>
-        /// Maintenance timing setting: `canary` (Earlier) or `stable` (Later). [Learn
-        /// more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
+        /// Maintenance timing settings: `canary`, `stable`, or `week5`. For more information, see [About maintenance on
+        /// Cloud SQL instances](https://cloud.google.com/sql/docs/mysql/maintenance).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTrack")]
         public virtual string UpdateTrack { get; set; }

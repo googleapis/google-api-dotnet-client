@@ -8443,6 +8443,21 @@ namespace Google.Apis.Dataproc.v1.Data
     /// <summary>Specifies the config of disk options for a group of VM instances.</summary>
     public class DiskConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per
+        /// second that the disk can handle. Note: This field is only supported if boot_disk_type is hyperdisk-balanced.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootDiskProvisionedIops")]
+        public virtual System.Nullable<long> BootDiskProvisionedIops { get; set; }
+
+        /// <summary>
+        /// Optional. Indicates how much throughput to provision for the disk. This sets the number of throughput mb per
+        /// second that the disk can handle. Values must be greater than or equal to 1. Note: This field is only
+        /// supported if boot_disk_type is hyperdisk-balanced.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootDiskProvisionedThroughput")]
+        public virtual System.Nullable<long> BootDiskProvisionedThroughput { get; set; }
+
         /// <summary>Optional. Size in GB of the boot disk (default is 500GB).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bootDiskSizeGb")]
         public virtual System.Nullable<int> BootDiskSizeGb { get; set; }
@@ -8824,8 +8839,8 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string SubnetworkUri { get; set; }
 
         /// <summary>
-        /// The Compute Engine tags to add to all instances (see Tagging instances
-        /// (https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+        /// The Compute Engine network tags to add to all instances (see Tagging instances
+        /// (https://cloud.google.com/vpc/docs/add-remove-network-tags)).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IList<string> Tags { get; set; }

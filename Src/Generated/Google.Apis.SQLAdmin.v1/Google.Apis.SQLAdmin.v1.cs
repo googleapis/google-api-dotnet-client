@@ -6862,11 +6862,14 @@ namespace Google.Apis.SQLAdmin.v1.Data
     /// </summary>
     public class MaintenanceWindow : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>day of week (1-7), starting on Monday.</summary>
+        /// <summary>
+        /// Day of week - `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, or `SUNDAY`. Specify in
+        /// the UTC time zone. Returned in output as an integer, 1 to 7, where `1` equals Monday.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("day")]
         public virtual System.Nullable<int> Day { get; set; }
 
-        /// <summary>hour of day - 0 to 23.</summary>
+        /// <summary>Hour of day - 0 to 23. Specify in the UTC time zone.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hour")]
         public virtual System.Nullable<int> Hour { get; set; }
 
@@ -6875,8 +6878,8 @@ namespace Google.Apis.SQLAdmin.v1.Data
         public virtual string Kind { get; set; }
 
         /// <summary>
-        /// Maintenance timing setting: `canary` (Earlier) or `stable` (Later). [Learn
-        /// more](https://cloud.google.com/sql/docs/mysql/instance-settings#maintenance-timing-2ndgen).
+        /// Maintenance timing settings: `canary`, `stable`, or `week5`. For more information, see [About maintenance on
+        /// Cloud SQL instances](https://cloud.google.com/sql/docs/mysql/maintenance).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTrack")]
         public virtual string UpdateTrack { get; set; }

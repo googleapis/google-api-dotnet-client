@@ -5142,7 +5142,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// <summary>
         /// Optional. The policy used for Key Access Justifications Policy Enforcement. If this field is present and
         /// this key is enrolled in Key Access Justifications Policy Enforcement, the policy will be evaluated in
-        /// Encrypt, Decrypt, and Sign operations, and the operation will fail if rejected by the policy. The policy is
+        /// encrypt, decrypt, and sign operations, and the operation will fail if rejected by the policy. The policy is
         /// defined by specifying zero or more allowed justification codes.
         /// https://cloud.google.com/assured-workloads/key-access-justifications/docs/justification-codes By default,
         /// this field is absent, and all justification codes are allowed.
@@ -6226,14 +6226,14 @@ namespace Google.Apis.CloudKMS.v1.Data
     }
 
     /// <summary>
-    /// A KeyAccessJustificationsPolicy specifies zero or more allowed AccessReason values for Encrypt, Decrypt, and
-    /// Sign requests on a CryptoKey.
+    /// A KeyAccessJustificationsPolicy specifies zero or more allowed AccessReason values for encrypt, decrypt, and
+    /// sign operations on a CryptoKey.
     /// </summary>
     public class KeyAccessJustificationsPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The list of allowed reasons for access to a CryptoKey. Zero allowed access reasons means all Encrypt,
-        /// Decrypt, and Sign requests for the CryptoKey associated with this policy will fail.
+        /// The list of allowed reasons for access to a CryptoKey. Zero allowed access reasons means all encrypt,
+        /// decrypt, and sign operations for the CryptoKey associated with this policy will fail.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedAccessReasons")]
         public virtual System.Collections.Generic.IList<string> AllowedAccessReasons { get; set; }

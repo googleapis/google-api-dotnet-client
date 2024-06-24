@@ -1635,10 +1635,6 @@ namespace Google.Apis.DataFusion.v1
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>If true, the returned list will include locations which are not yet revealed.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("includeUnrevealedLocations", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> IncludeUnrevealedLocations { get; set; }
-
                 /// <summary>
                 /// The maximum number of results to return. If not set, the service selects a default.
                 /// </summary>
@@ -1681,14 +1677,6 @@ namespace Google.Apis.DataFusion.v1
                         DefaultValue = null,
                         Pattern = null,
                     });
-                    RequestParameters.Add("includeUnrevealedLocations", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "includeUnrevealedLocations",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
                     RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
@@ -1715,11 +1703,11 @@ namespace Google.Apis.DataFusion.v1.Data
     /// <summary>Identifies Data Fusion accelerators for an instance.</summary>
     public class Accelerator : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The type of an accelator for a CDF instance.</summary>
+        /// <summary>Optional. The type of an accelator for a Cloud Data Fusion instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acceleratorType")]
         public virtual string AcceleratorType { get; set; }
 
-        /// <summary>The state of the accelerator.</summary>
+        /// <summary>Output only. The state of the accelerator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -1841,7 +1829,9 @@ namespace Google.Apis.DataFusion.v1.Data
 
         /// <summary>
         /// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`,
-        /// or `roles/owner`.
+        /// or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM
+        /// documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined
+        /// roles, see [here](https://cloud.google.com/iam/docs/understanding-roles).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
@@ -1868,44 +1858,6 @@ namespace Google.Apis.DataFusion.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyReference")]
         public virtual string KeyReference { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Next tag: 7</summary>
-    public class DataResidencyAugmentedView : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Cloud resource to Google owned production object mapping in the form of GURIs. The GURIs should be available
-        /// in DG KB storage/cns tables. This is the preferred way of providing cloud resource mappings. For further
-        /// details please read go/cloud-resource-monitoring_sig
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("crGopoGuris")]
-        public virtual System.Collections.Generic.IList<string> CrGopoGuris { get; set; }
-
-        /// <summary>
-        /// Cloud resource to Google owned production object mapping in the form of prefixes. These should be available
-        /// in DG KB storage/cns tables. The entity type, which is the part of the string before the first colon in the
-        /// GURI, must be completely specified in prefix. For details about GURI please read go/guri. For further
-        /// details about the field please read go/cloud-resource-monitoring_sig.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("crGopoPrefixes")]
-        public virtual System.Collections.Generic.IList<string> CrGopoPrefixes { get; set; }
-
-        /// <summary>
-        /// Service-specific data. Only required for pre-determined services. Generally used to bind a Cloud Resource to
-        /// some a TI container that uniquely specifies a customer. See milestone 2 of DRZ KR8 SIG for more information.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("serviceData")]
-        public virtual ServiceData ServiceData { get; set; }
-
-        /// <summary>
-        /// The list of project_id's of the tenant projects in the 'google.com' org which serve the Cloud Resource. See
-        /// go/drz-mst-sig for more details.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("tpIds")]
-        public virtual System.Collections.Generic.IList<string> TpIds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2130,6 +2082,10 @@ namespace Google.Apis.DataFusion.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
+        /// <summary>Optional. Configure the maintenance policy for this instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenancePolicy")]
+        public virtual MaintenancePolicy MaintenancePolicy { get; set; }
+
         /// <summary>
         /// Output only. The name of this instance is in the form of
         /// projects/{project}/locations/{location}/instances/{instance}.
@@ -2147,7 +2103,7 @@ namespace Google.Apis.DataFusion.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("options")]
         public virtual System.Collections.Generic.IDictionary<string, string> Options { get; set; }
 
-        /// <summary>Output only. P4 service account for the customer project.</summary>
+        /// <summary>Output only. Service agent for the customer project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("p4ServiceAccount")]
         public virtual string P4ServiceAccount { get; set; }
 
@@ -2365,6 +2321,32 @@ namespace Google.Apis.DataFusion.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Maintenance policy of the instance.</summary>
+    public class MaintenancePolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The maintenance exclusion window of the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceExclusionWindow")]
+        public virtual TimeWindow MaintenanceExclusionWindow { get; set; }
+
+        /// <summary>Optional. The maintenance window of the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceWindow")]
+        public virtual MaintenanceWindow MaintenanceWindow { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Maintenance window of the instance.</summary>
+    public class MaintenanceWindow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The recurring time window of the maintenance window.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recurringTimeWindow")]
+        public virtual RecurringTimeWindow RecurringTimeWindow { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Network configuration for a Data Fusion instance. These configurations are used for peering with the customer
     /// network. Configurations are optional when a public Data Fusion instance is to be created. However, providing
@@ -2391,10 +2373,9 @@ namespace Google.Apis.DataFusion.v1.Data
 
         /// <summary>
         /// Optional. Name of the network in the customer project with which the Tenant Project will be peered for
-        /// executing pipelines. This is required only when using connection type VPC peering. In case of shared VPC
-        /// where the network resides in another host project the network should specified in the form of
-        /// projects/{host-project-id}/global/networks/{network}. This is only required for connectivity type
-        /// VPC_PEERING.
+        /// executing pipelines. In case of shared VPC where the network resides in another host project the network
+        /// should specified in the form of projects/{host-project-id}/global/networks/{network}. This is only required
+        /// for connectivity type VPC_PEERING.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
@@ -2567,37 +2548,6 @@ namespace Google.Apis.DataFusion.v1.Data
     }
 
     /// <summary>
-    /// Persistent Disk service-specific Data. Contains information that may not be appropriate for the generic DRZ
-    /// Augmented View. This currently includes LSV Colossus Roots and GCS Buckets.
-    /// </summary>
-    public class PersistentDiskData : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Path to Colossus root for an LSV. NOTE: Unlike `cr_ti_guris` and `cr_ti_prefixes`, the field `cfs_roots`
-        /// below does not need to be a GUri or GUri prefix. It can simply be any valid CFS or CFS2 Path. The DRZ KR8
-        /// SIG has more details overall, but generally the `cfs_roots` provided here should be scoped to an individual
-        /// Persistent Disk. An example for a PD Disk with a disk ID 3277719120423414466, follows: * `cr_ti_guris` could
-        /// be ‘/cfs2/pj/pd-cloud-prod’ as this is a valid GUri present in the DG KB and contains enough information to
-        /// perform location monitoring and scope ownership of the Production Object. * `cfs_roots` would be:
-        /// ‘/cfs2/pj/pd-cloud-staging/lsv000001234@/ lsv/projects~773365403387~zones~2700~disks~3277719120423414466
-        /// ~bank-blue-careful-3526-lsv00054DB1B7254BA3/’ as this allows us to enumerate the files on CFS2 that belong
-        /// to an individual Disk.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cfsRoots")]
-        public virtual System.Collections.Generic.IList<string> CfsRoots { get; set; }
-
-        /// <summary>
-        /// The GCS Buckets that back this snapshot or image. This is required as `cr_ti_prefixes` and `cr_ti_guris`
-        /// only accept TI resources. This should be the globally unique bucket name.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gcsBucketNames")]
-        public virtual System.Collections.Generic.IList<string> GcsBucketNames { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
     /// An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A
     /// `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single
     /// `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A
@@ -2709,25 +2659,38 @@ namespace Google.Apis.DataFusion.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request message for restarting a Data Fusion instance.</summary>
-    public class RestartInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>Represents an arbitrary window of time that recurs.</summary>
+    public class RecurringTimeWindow : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Required. An RRULE with format [RFC-5545](https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how this
+        /// window reccurs. They go on for the span of time between the start and end time. The only supported FREQ
+        /// value is "WEEKLY". To have something repeat every weekday, use: "FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR". This
+        /// specifies how frequently the window starts. To have a 9 am - 5 pm UTC-4 window every weekday, use something
+        /// like:
+        /// ```
+        /// start time = 2019-01-01T09:00:00-0400 end time = 2019-01-01T17:00:00-0400 recurrence =
+        /// FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR
+        /// ```
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recurrence")]
+        public virtual string Recurrence { get; set; }
+
+        /// <summary>
+        /// Required. The window representing the start and end time of recurrences. This field ignores the date
+        /// components of the provided timestamps. Only the time of day and duration between start and end time are
+        /// relevant.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("window")]
+        public virtual TimeWindow Window { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// This message defines service-specific data that certain service teams must provide as part of the Data Residency
-    /// Augmented View for a resource. Next ID: 2
-    /// </summary>
-    public class ServiceData : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>Request message for restarting a Data Fusion instance.</summary>
+    public class RestartInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Auxiliary data for the persistent disk pipeline provided to provide the LSV Colossus Roots and GCS Buckets.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pd")]
-        public virtual PersistentDiskData Pd { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2804,6 +2767,93 @@ namespace Google.Apis.DataFusion.v1.Data
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an arbitrary window of time.</summary>
+    public class TimeWindow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>
+        /// Required. The end time of the time window provided in [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt)
+        /// format. The end time should take place after the start time. Example: "2024-01-02T12:04:06-06:00"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>
+        /// Required. The start time of the time window provided in [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt)
+        /// format. Example: "2024-01-01T12:04:06-04:00"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -8502,10 +8502,18 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>
         /// The body of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode
         /// characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller.
-        /// This text can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables).
+        /// This text can be templatized by using variables
+        /// (https://cloud.google.com/monitoring/alerts/doc-variables#doc-vars).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
+
+        /// <summary>
+        /// Optional. Links to content such as playbooks, repositories, and other resources. This field can contain up
+        /// to 3 entries.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("links")]
+        public virtual System.Collections.Generic.IList<Link> Links { get; set; }
 
         /// <summary>
         /// The format of the content field. Presently, only the value "text/markdown" is supported. See Markdown
@@ -8521,8 +8529,8 @@ namespace Google.Apis.Monitoring.v3.Data
         /// by this thread (https://stackoverflow.com/questions/1592291/what-is-the-email-subject-length-limit). It is
         /// both the limit imposed by some third-party ticketing products and it is common to define textual fields in
         /// databases as VARCHAR(255).The contents of the subject line can be templatized by using variables
-        /// (https://cloud.google.com/monitoring/alerts/doc-variables). If this field is missing or empty, a default
-        /// subject line will be generated.
+        /// (https://cloud.google.com/monitoring/alerts/doc-variables#doc-vars). If this field is missing or empty, a
+        /// default subject line will be generated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subject")]
         public virtual string Subject { get; set; }
@@ -9315,6 +9323,28 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>Must be greater than 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("width")]
         public virtual System.Nullable<double> Width { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Links to content such as playbooks, repositories, and other resources.</summary>
+    public class Link : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A short display name for the link. The display name must not be empty or exceed 63 characters. Example:
+        /// "playbook".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// The url of a webpage. A url can be templatized by using variables in the path or the query parameters. The
+        /// total length of a URL should not exceed 2083 characters before and after variable expansion. Example:
+        /// "https://my_domain.com/playbook?name=${resource.name}"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10613,9 +10643,9 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>
         /// Optional. Labels to add to or overwrite in the PromQL query result. Label names must be valid
         /// (https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels). Label values can be templatized
-        /// by using variables (https://cloud.google.com/monitoring/alerts/doc-variables). The only available variable
-        /// names are the names of the labels in the PromQL result, including "__name__" and "value". "labels" may be
-        /// empty.
+        /// by using variables (https://cloud.google.com/monitoring/alerts/doc-variables#doc-vars). The only available
+        /// variable names are the names of the labels in the PromQL result, including "__name__" and "value". "labels"
+        /// may be empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -10929,7 +10959,7 @@ namespace Google.Apis.Monitoring.v3.Data
 
         /// <summary>
         /// The fraction of service that must be good in order for this objective to be met. 0 &amp;lt; goal &amp;lt;=
-        /// 0.999.
+        /// 0.9999.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("goal")]
         public virtual System.Nullable<double> Goal { get; set; }

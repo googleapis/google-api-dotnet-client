@@ -352,7 +352,7 @@ namespace Google.Apis.WorkloadManager.v1
                             this.service = service;
                         }
 
-                        /// <summary>List the running result of a single Execution.</summary>
+                        /// <summary>Lists the result of a single evaluation.</summary>
                         /// <param name="parent">
                         /// Required. The execution results. Format: {parent}/evaluations/*/executions/*/results
                         /// </param>
@@ -361,7 +361,7 @@ namespace Google.Apis.WorkloadManager.v1
                             return new ListRequest(this.service, parent);
                         }
 
-                        /// <summary>List the running result of a single Execution.</summary>
+                        /// <summary>Lists the result of a single evaluation.</summary>
                         public class ListRequest : WorkloadManagerBaseServiceRequest<Google.Apis.WorkloadManager.v1.Data.ListExecutionResultsResponse>
                         {
                             /// <summary>Constructs a new List request.</summary>
@@ -1083,7 +1083,7 @@ namespace Google.Apis.WorkloadManager.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Filtering results</summary>
+                    /// <summary>Filter to be applied when listing the evaluation results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
@@ -2156,27 +2156,27 @@ namespace Google.Apis.WorkloadManager.v1.Data
     /// <summary>Message describing the result of an execution</summary>
     public class ExecutionResult : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>the document url of the rule</summary>
+        /// <summary>The URL for the documentation of the rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentationUrl")]
         public virtual string DocumentationUrl { get; set; }
 
-        /// <summary>the violate resource</summary>
+        /// <summary>The resource that violates the rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual Resource Resource { get; set; }
 
-        /// <summary>the rule which violate in execution</summary>
+        /// <summary>The rule that is violated in an evaluation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rule")]
         public virtual string Rule { get; set; }
 
-        /// <summary>severity of violation</summary>
+        /// <summary>The severity of violation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
         public virtual string Severity { get; set; }
 
-        /// <summary>the details of violation in result</summary>
+        /// <summary>The details of violation in an evaluation result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("violationDetails")]
         public virtual ViolationDetails ViolationDetails { get; set; }
 
-        /// <summary>the violation message of an execution</summary>
+        /// <summary>The violation message of an execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("violationMessage")]
         public virtual string ViolationMessage { get; set; }
 
@@ -2506,6 +2506,9 @@ namespace Google.Apis.WorkloadManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gcpProjectProxy")]
         public virtual TenantProjectProxy GcpProjectProxy { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("placerLocation")]
+        public virtual PlacerLocation PlacerLocation { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("spannerLocation")]
         public virtual SpannerLocation SpannerLocation { get; set; }
 
@@ -2661,6 +2664,17 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message describing that the location of the customer resource is tied to placer allocations</summary>
+    public class PlacerLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Directory with a config related to it in placer (e.g. "/placer/prod/home/my-root/my-dir")</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("placerConfig")]
+        public virtual string PlacerConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// To be used for specifying the intended distribution of regional compute.googleapis.com/InstanceGroupManager
     /// instances
@@ -2684,15 +2698,15 @@ namespace Google.Apis.WorkloadManager.v1.Data
     /// <summary>Message represent resource in execution result</summary>
     public class Resource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>the name of the resource</summary>
+        /// <summary>The name of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>the service account accosiate with resource</summary>
+        /// <summary>The service account associated with the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
 
-        /// <summary>the type of reresource</summary>
+        /// <summary>The type of resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -2912,6 +2926,10 @@ namespace Google.Apis.WorkloadManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hostProject")]
         public virtual string HostProject { get; set; }
 
+        /// <summary>Optional. A list of replication sites used in Disaster Recovery (DR) configurations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replicationSites")]
+        public virtual System.Collections.Generic.IList<SapDiscoveryComponent> ReplicationSites { get; set; }
+
         /// <summary>Optional. The resources in a component.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<SapDiscoveryResource> Resources { get; set; }
@@ -2933,10 +2951,7 @@ namespace Google.Apis.WorkloadManager.v1.Data
     /// <summary>A set of properties describing an SAP Application layer.</summary>
     public class SapDiscoveryComponentApplicationProperties : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Optional. Indicates whether this is a Java or ABAP Netweaver instance. true means it is ABAP, false means it
-        /// is Java.
-        /// </summary>
+        /// <summary>Optional. Deprecated: ApplicationType now tells you whether this is ABAP or Java.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("abap")]
         public virtual System.Nullable<bool> Abap { get; set; }
 
@@ -3346,18 +3361,18 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing the violdation in execution result</summary>
+    /// <summary>Message describing the violation in an evaluation result.</summary>
     public class ViolationDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>the name of asset</summary>
+        /// <summary>The name of the asset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("asset")]
         public virtual string Asset { get; set; }
 
-        /// <summary>observed</summary>
+        /// <summary>Details of the violation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("observed")]
         public virtual System.Collections.Generic.IDictionary<string, string> Observed { get; set; }
 
-        /// <summary>the service account associate with resource</summary>
+        /// <summary>The service account associated with the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
 

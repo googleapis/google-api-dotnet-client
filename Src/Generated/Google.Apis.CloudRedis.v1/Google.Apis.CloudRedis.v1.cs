@@ -686,8 +686,8 @@ namespace Google.Apis.CloudRedis.v1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. Unique name of the resource in this scope including project and location using the form:
-                /// `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`
+                /// Required. Identifier. Unique name of the resource in this scope including project and location using
+                /// the form: `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CloudRedis.v1.Data.Cluster body, string name)
                 {
@@ -710,8 +710,8 @@ namespace Google.Apis.CloudRedis.v1
                     }
 
                     /// <summary>
-                    /// Required. Unique name of the resource in this scope including project and location using the
-                    /// form: `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`
+                    /// Required. Identifier. Unique name of the resource in this scope including project and location
+                    /// using the form: `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2203,8 +2203,8 @@ namespace Google.Apis.CloudRedis.v1.Data
         public virtual System.Collections.Generic.IList<DiscoveryEndpoint> DiscoveryEndpoints { get; set; }
 
         /// <summary>
-        /// Required. Unique name of the resource in this scope including project and location using the form:
-        /// `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`
+        /// Required. Identifier. Unique name of the resource in this scope including project and location using the
+        /// form: `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

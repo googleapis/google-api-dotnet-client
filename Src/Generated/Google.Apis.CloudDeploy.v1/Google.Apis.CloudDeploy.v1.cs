@@ -5808,7 +5808,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
     {
         /// <summary>
         /// Required. The percentage based deployments that will occur as a part of a `Rollout`. List is expected in
-        /// ascending order and each integer n is 0 &amp;lt;= n &amp;lt; 100.
+        /// ascending order and each integer n is 0 &amp;lt;= n &amp;lt; 100. If the GatewayServiceMesh is configured
+        /// for Kubernetes, then the range for n is 0 &amp;lt;= n &amp;lt;= 100.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("percentages")]
         public virtual System.Collections.Generic.IList<System.Nullable<int>> Percentages { get; set; }
