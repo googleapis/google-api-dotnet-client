@@ -1304,12 +1304,7 @@ namespace Google.Apis.CCAIPlatform.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("privateAccess")]
         public virtual PrivateAccess PrivateAccess { get; set; }
 
-        /// <summary>
-        /// Output only. A list of UJET components that should be privately accessed. This field is set by reading
-        /// settings from the data plane. For more information about the format of the component please refer to
-        /// go/ccaip-vpc-sc-org-policy. This field is must be fully populated only for Create/Update resource
-        /// operations. The main use case for this field is OrgPolicy checks via CPE.
-        /// </summary>
+        /// <summary>Output only. TODO(b/283407860) Deprecate this field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateComponents")]
         public virtual System.Collections.Generic.IList<string> PrivateComponents { get; set; }
 

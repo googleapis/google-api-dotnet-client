@@ -15956,6 +15956,73 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents an Azure management group.</summary>
+    public class AzureManagementGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The display name of the Azure management group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// The UUID of the Azure management group, for example, "20000000-0001-0000-0000-000000000000".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Azure metadata associated with the resource, only applicable if the finding's cloud provider is Microsoft Azure.
+    /// </summary>
+    public class AzureMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A list of Azure management groups associated with the resource, ordered from lowest level (closest to the
+        /// subscription) to highest level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managementGroups")]
+        public virtual System.Collections.Generic.IList<AzureManagementGroup> ManagementGroups { get; set; }
+
+        /// <summary>The Azure resource group associated with the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceGroup")]
+        public virtual AzureResourceGroup ResourceGroup { get; set; }
+
+        /// <summary>The Azure subscription associated with the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscription")]
+        public virtual AzureSubscription Subscription { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an Azure resource group.</summary>
+    public class AzureResourceGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the Azure resource group. This is not a UUID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an Azure subscription.</summary>
+    public class AzureSubscription : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The display name of the Azure subscription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The UUID of the Azure subscription, for example, "291bba3f-e0a5-47bc-a099-3bdcb2a50a05".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Information related to Google Cloud Backup and DR Service findings.</summary>
     public class BackupDisasterRecovery : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -17319,6 +17386,13 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("findingClass")]
         public virtual string FindingClass { get; set; }
 
+        /// <summary>
+        /// Contains details about groups of which this finding is a member. A group is a collection of findings that
+        /// are related in some way. This field cannot be updated. Its value is ignored in all update requests.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupMemberships")]
+        public virtual System.Collections.Generic.IList<GroupMembership> GroupMemberships { get; set; }
+
         /// <summary>Represents IAM bindings associated with the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iamBindings")]
         public virtual System.Collections.Generic.IList<IamBinding> IamBindings { get; set; }
@@ -17490,6 +17564,14 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// <summary>The state of the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>
+        /// Contains details about a group of security issues that, when the issues occur together, represent a greater
+        /// risk than when the issues occur independently. A group of such issues is referred to as a toxic combination.
+        /// This field cannot be updated. Its value is ignored in all update requests.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toxicCombination")]
+        public virtual ToxicCombination ToxicCombination { get; set; }
 
         /// <summary>
         /// Represents vulnerability-specific fields like CVE and CVSS scores. CVE stands for Common Vulnerabilities and
@@ -18240,6 +18322,10 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// <summary>The AWS metadata associated with the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("awsMetadata")]
         public virtual AwsMetadata AwsMetadata { get; set; }
+
+        /// <summary>The Azure metadata associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("azureMetadata")]
+        public virtual AzureMetadata AzureMetadata { get; set; }
 
         /// <summary>Indicates which cloud provider the resource resides in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudProvider")]
@@ -19232,6 +19318,73 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// <summary>The friendly name of the OU.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an Azure management group.</summary>
+    public class GoogleCloudSecuritycenterV2AzureManagementGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The display name of the Azure management group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// The UUID of the Azure management group, for example, "20000000-0001-0000-0000-000000000000".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Azure metadata associated with the resource, only applicable if the finding's cloud provider is Microsoft Azure.
+    /// </summary>
+    public class GoogleCloudSecuritycenterV2AzureMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A list of Azure management groups associated with the resource, ordered from lowest level (closest to the
+        /// subscription) to highest level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managementGroups")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV2AzureManagementGroup> ManagementGroups { get; set; }
+
+        /// <summary>The Azure resource group associated with the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceGroup")]
+        public virtual GoogleCloudSecuritycenterV2AzureResourceGroup ResourceGroup { get; set; }
+
+        /// <summary>The Azure subscription associated with the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscription")]
+        public virtual GoogleCloudSecuritycenterV2AzureSubscription Subscription { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an Azure resource group.</summary>
+    public class GoogleCloudSecuritycenterV2AzureResourceGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the Azure resource group. This is not a UUID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an Azure subscription.</summary>
+    public class GoogleCloudSecuritycenterV2AzureSubscription : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The display name of the Azure subscription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The UUID of the Azure subscription, for example, "291bba3f-e0a5-47bc-a099-3bdcb2a50a05".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20521,6 +20674,13 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("findingClass")]
         public virtual string FindingClass { get; set; }
 
+        /// <summary>
+        /// Contains details about groups of which this finding is a member. A group is a collection of findings that
+        /// are related in some way. This field cannot be updated. Its value is ignored in all update requests.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupMemberships")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV2GroupMembership> GroupMemberships { get; set; }
+
         /// <summary>Represents IAM bindings associated with the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iamBindings")]
         public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV2IamBinding> IamBindings { get; set; }
@@ -20702,6 +20862,14 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string State { get; set; }
 
         /// <summary>
+        /// Contains details about a group of security issues that, when the issues occur together, represent a greater
+        /// risk than when the issues occur independently. A group of such issues is referred to as a toxic combination.
+        /// This field cannot be updated. Its value is ignored in all update requests.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("toxicCombination")]
+        public virtual GoogleCloudSecuritycenterV2ToxicCombination ToxicCombination { get; set; }
+
+        /// <summary>
         /// Represents vulnerability-specific fields like CVE and CVSS scores. CVE stands for Common Vulnerabilities and
         /// Exposures (https://cve.mitre.org/about/)
         /// </summary>
@@ -20736,6 +20904,24 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// <summary>A CLDR.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
         public virtual string RegionCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Contains details about groups of which this finding is a member. A group is a collection of findings that are
+    /// related in some way.
+    /// </summary>
+    public class GoogleCloudSecuritycenterV2GroupMembership : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>ID of the group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupId")]
+        public virtual string GroupId { get; set; }
+
+        /// <summary>Type of group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupType")]
+        public virtual string GroupType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21485,6 +21671,10 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("awsMetadata")]
         public virtual GoogleCloudSecuritycenterV2AwsMetadata AwsMetadata { get; set; }
 
+        /// <summary>The Azure metadata associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("azureMetadata")]
+        public virtual GoogleCloudSecuritycenterV2AzureMetadata AzureMetadata { get; set; }
+
         /// <summary>Indicates which cloud provider the finding is from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudProvider")]
         public virtual string CloudProvider { get; set; }
@@ -22033,6 +22223,32 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Contains details about a group of security issues that, when the issues occur together, represent a greater risk
+    /// than when the issues occur independently. A group of such issues is referred to as a toxic combination.
+    /// </summary>
+    public class GoogleCloudSecuritycenterV2ToxicCombination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The [Attack exposure
+        /// score](https://cloud.google.com/security-command-center/docs/attack-exposure-learn#attack_exposure_scores)
+        /// of this toxic combination. The score is a measure of how much this toxic combination exposes one or more
+        /// high-value resources to potential attack.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attackExposureScore")]
+        public virtual System.Nullable<double> AttackExposureScore { get; set; }
+
+        /// <summary>
+        /// List of resource names of findings associated with this toxic combination. For example,
+        /// organizations/123/sources/456/findings/789.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relatedFindings")]
+        public virtual System.Collections.Generic.IList<string> RelatedFindings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Refers to common vulnerability fields e.g. cve, cvss, cwe etc.</summary>
     public class GoogleCloudSecuritycenterV2Vulnerability : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -22413,6 +22629,24 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// <summary>The total number of results matching the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
         public virtual System.Nullable<int> TotalSize { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Contains details about groups of which this finding is a member. A group is a collection of findings that are
+    /// related in some way.
+    /// </summary>
+    public class GroupMembership : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>ID of the group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupId")]
+        public virtual string GroupId { get; set; }
+
+        /// <summary>Type of group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupType")]
+        public virtual string GroupType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23643,6 +23877,10 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("awsMetadata")]
         public virtual AwsMetadata AwsMetadata { get; set; }
 
+        /// <summary>The Azure metadata associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("azureMetadata")]
+        public virtual AzureMetadata AzureMetadata { get; set; }
+
         /// <summary>Indicates which cloud provider the finding is from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudProvider")]
         public virtual string CloudProvider { get; set; }
@@ -24456,6 +24694,32 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// <summary>The link to the ticket in the ticket system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Contains details about a group of security issues that, when the issues occur together, represent a greater risk
+    /// than when the issues occur independently. A group of such issues is referred to as a toxic combination.
+    /// </summary>
+    public class ToxicCombination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The [Attack exposure
+        /// score](https://cloud.google.com/security-command-center/docs/attack-exposure-learn#attack_exposure_scores)
+        /// of this toxic combination. The score is a measure of how much this toxic combination exposes one or more
+        /// high-value resources to potential attack.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attackExposureScore")]
+        public virtual System.Nullable<double> AttackExposureScore { get; set; }
+
+        /// <summary>
+        /// List of resource names of findings associated with this toxic combination. For example,
+        /// organizations/123/sources/456/findings/789.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relatedFindings")]
+        public virtual System.Collections.Generic.IList<string> RelatedFindings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

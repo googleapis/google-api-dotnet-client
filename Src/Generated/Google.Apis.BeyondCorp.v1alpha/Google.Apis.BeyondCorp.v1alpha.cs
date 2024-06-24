@@ -13466,6 +13466,10 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
+        /// <summary>Output only. Type of subscriber.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscriberType")]
+        public virtual string SubscriberType { get; set; }
+
         /// <summary>Required. Type of subscription.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }

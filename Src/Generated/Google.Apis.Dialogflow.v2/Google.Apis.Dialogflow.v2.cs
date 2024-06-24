@@ -8216,8 +8216,8 @@ namespace Google.Apis.Dialogflow.v2
                 /// <summary>Get answers for the given query based on knowledge documents.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="conversation">
-                /// The conversation (between human agent and end user) where the search request is triggered. Format:
-                /// `projects//locations//conversations/`.
+                /// Optional. The conversation (between human agent and end user) where the search request is triggered.
+                /// Format: `projects//locations//conversations/`.
                 /// </param>
                 public virtual SearchKnowledgeRequest SearchKnowledge(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SearchKnowledgeRequest body, string conversation)
                 {
@@ -8236,8 +8236,8 @@ namespace Google.Apis.Dialogflow.v2
                     }
 
                     /// <summary>
-                    /// The conversation (between human agent and end user) where the search request is triggered.
-                    /// Format: `projects//locations//conversations/`.
+                    /// Optional. The conversation (between human agent and end user) where the search request is
+                    /// triggered. Format: `projects//locations//conversations/`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("conversation", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Conversation { get; private set; }
@@ -8570,14 +8570,10 @@ namespace Google.Apis.Dialogflow.v2
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// A filter expression that filters conversations listed in the response. In general, the expression
-                /// must specify the field name, a comparison operator, and the value to use for filtering: - The value
-                /// must be a string, a number, or a boolean. - The comparison operator must be either `=`,`!=`,
-                /// `&amp;gt;`, or `&amp;lt;`. - To filter on multiple expressions, separate the expressions with `AND`
-                /// or `OR` (omitting both implies `AND`). - For clarity, expressions can be enclosed in parentheses.
-                /// Only `lifecycle_state` can be filtered on in this way. For example, the following expression only
-                /// returns `COMPLETED` conversations: `lifecycle_state = "COMPLETED"` For more information about
-                /// filtering, see [API Filtering](https://aip.dev/160).
+                /// Optional. A filter expression that filters conversations listed in the response. Only
+                /// `lifecycle_state` can be filtered on in this way. For example, the following expression only returns
+                /// `COMPLETED` conversations: `lifecycle_state = "COMPLETED"` For more information about filtering, see
+                /// [API Filtering](https://aip.dev/160).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -17159,8 +17155,8 @@ namespace Google.Apis.Dialogflow.v2
                     /// <summary>Get answers for the given query based on knowledge documents.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="conversation">
-                    /// The conversation (between human agent and end user) where the search request is triggered.
-                    /// Format: `projects//locations//conversations/`.
+                    /// Optional. The conversation (between human agent and end user) where the search request is
+                    /// triggered. Format: `projects//locations//conversations/`.
                     /// </param>
                     public virtual SearchKnowledgeRequest SearchKnowledge(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SearchKnowledgeRequest body, string conversation)
                     {
@@ -17179,8 +17175,8 @@ namespace Google.Apis.Dialogflow.v2
                         }
 
                         /// <summary>
-                        /// The conversation (between human agent and end user) where the search request is triggered.
-                        /// Format: `projects//locations//conversations/`.
+                        /// Optional. The conversation (between human agent and end user) where the search request is
+                        /// triggered. Format: `projects//locations//conversations/`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("conversation", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Conversation { get; private set; }
@@ -17517,14 +17513,10 @@ namespace Google.Apis.Dialogflow.v2
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// A filter expression that filters conversations listed in the response. In general, the
-                    /// expression must specify the field name, a comparison operator, and the value to use for
-                    /// filtering: - The value must be a string, a number, or a boolean. - The comparison operator must
-                    /// be either `=`,`!=`, `&amp;gt;`, or `&amp;lt;`. - To filter on multiple expressions, separate the
-                    /// expressions with `AND` or `OR` (omitting both implies `AND`). - For clarity, expressions can be
-                    /// enclosed in parentheses. Only `lifecycle_state` can be filtered on in this way. For example, the
-                    /// following expression only returns `COMPLETED` conversations: `lifecycle_state = "COMPLETED"` For
-                    /// more information about filtering, see [API Filtering](https://aip.dev/160).
+                    /// Optional. A filter expression that filters conversations listed in the response. Only
+                    /// `lifecycle_state` can be filtered on in this way. For example, the following expression only
+                    /// returns `COMPLETED` conversations: `lifecycle_state = "COMPLETED"` For more information about
+                    /// filtering, see [API Filtering](https://aip.dev/160).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -19275,7 +19267,8 @@ namespace Google.Apis.Dialogflow.v2
                 /// <summary>Get answers for the given query based on knowledge documents.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// The parent resource contains the conversation profile Format: 'projects/' or `projects//locations/`.
+                /// Required. The parent resource contains the conversation profile Format: 'projects/' or
+                /// `projects//locations/`.
                 /// </param>
                 public virtual SearchKnowledgeRequest SearchKnowledge(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SearchKnowledgeRequest body, string parent)
                 {
@@ -19294,7 +19287,7 @@ namespace Google.Apis.Dialogflow.v2
                     }
 
                     /// <summary>
-                    /// The parent resource contains the conversation profile Format: 'projects/' or
+                    /// Required. The parent resource contains the conversation profile Format: 'projects/' or
                     /// `projects//locations/`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -19932,7 +19925,8 @@ namespace Google.Apis.Dialogflow.v2
             /// <summary>Get answers for the given query based on knowledge documents.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// The parent resource contains the conversation profile Format: 'projects/' or `projects//locations/`.
+            /// Required. The parent resource contains the conversation profile Format: 'projects/' or
+            /// `projects//locations/`.
             /// </param>
             public virtual SearchKnowledgeRequest SearchKnowledge(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SearchKnowledgeRequest body, string parent)
             {
@@ -19951,7 +19945,8 @@ namespace Google.Apis.Dialogflow.v2
                 }
 
                 /// <summary>
-                /// The parent resource contains the conversation profile Format: 'projects/' or `projects//locations/`.
+                /// Required. The parent resource contains the conversation profile Format: 'projects/' or
+                /// `projects//locations/`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -26768,9 +26763,9 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ConversationProfile { get; set; }
 
         /// <summary>
-        /// The stage of a conversation. It indicates whether the virtual agent or a human agent is handling the
-        /// conversation. If the conversation is created with the conversation profile that has Dialogflow config set,
-        /// defaults to ConversationStage.VIRTUAL_AGENT_STAGE; Otherwise, defaults to
+        /// Optional. The stage of a conversation. It indicates whether the virtual agent or a human agent is handling
+        /// the conversation. If the conversation is created with the conversation profile that has Dialogflow config
+        /// set, defaults to ConversationStage.VIRTUAL_AGENT_STAGE; Otherwise, defaults to
         /// ConversationStage.HUMAN_ASSIST_STAGE. If the conversation is created with the conversation profile that has
         /// Dialogflow config set but explicitly sets conversation_stage to ConversationStage.HUMAN_ASSIST_STAGE, it
         /// skips ConversationStage.VIRTUAL_AGENT_STAGE stage and directly goes to ConversationStage.HUMAN_ASSIST_STAGE.
@@ -26820,7 +26815,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string LifecycleState { get; set; }
 
         /// <summary>
-        /// Output only. The unique identifier of this conversation. Format: `projects//locations//conversations/`.
+        /// Output only. Identifier. The unique identifier of this conversation. Format:
+        /// `projects//locations//conversations/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -28454,16 +28450,16 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual GoogleCloudDialogflowV2ConversationProfile ConversationProfile { get; set; }
 
         /// <summary>
-        /// The name of the latest conversation message used as context for generating a Summary. If empty, the latest
-        /// message of the conversation will be used. The format is specific to the user and the names of the messages
-        /// provided.
+        /// Optional. The name of the latest conversation message used as context for generating a Summary. If empty,
+        /// the latest message of the conversation will be used. The format is specific to the user and the names of the
+        /// messages provided.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latestMessage")]
         public virtual string LatestMessage { get; set; }
 
         /// <summary>
-        /// Max number of messages prior to and including [latest_message] to use as context when compiling the
-        /// suggestion. By default 500 and at most 1000.
+        /// Optional. Max number of messages prior to and including [latest_message] to use as context when compiling
+        /// the suggestion. By default 500 and at most 1000.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxContextSize")]
         public virtual System.Nullable<int> MaxContextSize { get; set; }
@@ -31466,7 +31462,7 @@ namespace Google.Apis.Dialogflow.v2.Data
     public class GoogleCloudDialogflowV2SearchKnowledgeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The conversation (between human agent and end user) where the search request is triggered. Format:
+        /// Optional. The conversation (between human agent and end user) where the search request is triggered. Format:
         /// `projects//locations//conversations/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversation")]
@@ -31480,14 +31476,15 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ConversationProfile { get; set; }
 
         /// <summary>
-        /// The name of the latest conversation message when the request is triggered. Format:
+        /// Optional. The name of the latest conversation message when the request is triggered. Format:
         /// `projects//locations//conversations//messages/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latestMessage")]
         public virtual string LatestMessage { get; set; }
 
         /// <summary>
-        /// The parent resource contains the conversation profile Format: 'projects/' or `projects//locations/`.
+        /// Required. The parent resource contains the conversation profile Format: 'projects/' or
+        /// `projects//locations/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
@@ -31497,9 +31494,9 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual GoogleCloudDialogflowV2TextInput Query { get; set; }
 
         /// <summary>
-        /// The ID of the search session. The session_id can be combined with Dialogflow V3 Agent ID retrieved from
-        /// conversation profile or on its own to identify a search session. The search history of the same session will
-        /// impact the search result. It's up to the API caller to choose an appropriate `Session ID`. It can be a
+        /// Optional. The ID of the search session. The session_id can be combined with Dialogflow V3 Agent ID retrieved
+        /// from conversation profile or on its own to identify a search session. The search history of the same session
+        /// will impact the search result. It's up to the API caller to choose an appropriate `Session ID`. It can be a
         /// random number or some type of session identifiers (preferably hashed). The length must not exceed 36
         /// characters.
         /// </summary>
@@ -31888,20 +31885,21 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>The request message for Conversations.SuggestConversationSummary.</summary>
     public class GoogleCloudDialogflowV2SuggestConversationSummaryRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Parameters for a human assist query. Only used for POC/demo purpose.</summary>
+        /// <summary>Optional. Parameters for a human assist query. Only used for POC/demo purpose.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assistQueryParams")]
         public virtual GoogleCloudDialogflowV2AssistQueryParameters AssistQueryParams { get; set; }
 
         /// <summary>
-        /// Max number of messages prior to and including [latest_message] to use as context when compiling the
-        /// suggestion. By default 500 and at most 1000.
+        /// Optional. Max number of messages prior to and including [latest_message] to use as context when compiling
+        /// the suggestion. By default 500 and at most 1000.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contextSize")]
         public virtual System.Nullable<int> ContextSize { get; set; }
 
         /// <summary>
-        /// The name of the latest conversation message used as context for compiling suggestion. If empty, the latest
-        /// message of the conversation will be used. Format: `projects//locations//conversations//messages/`.
+        /// Optional. The name of the latest conversation message used as context for compiling suggestion. If empty,
+        /// the latest message of the conversation will be used. Format:
+        /// `projects//locations//conversations//messages/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latestMessage")]
         public virtual string LatestMessage { get; set; }

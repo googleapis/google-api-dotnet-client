@@ -2101,10 +2101,6 @@ namespace Google.Apis.Monitoring.v1.Data
     /// <summary>A filter to reduce the amount of data charted in relevant widgets.</summary>
     public class DashboardFilter : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether to apply this filter to new widgets by default</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("applyToNewWidgets")]
-        public virtual System.Nullable<bool> ApplyToNewWidgets { get; set; }
-
         /// <summary>The specified filter type</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filterType")]
         public virtual string FilterType { get; set; }
@@ -3344,9 +3340,22 @@ namespace Google.Apis.Monitoring.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("blankView")]
         public virtual Empty BlankView { get; set; }
 
+        /// <summary>
+        /// Optional. A dimension is a structured label, class, or category for a set of measurements in your data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
+        public virtual System.Collections.Generic.IList<Dimension> Dimensions { get; set; }
+
         /// <summary>Will cause the scorecard to show a gauge chart.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gaugeView")]
         public virtual GaugeView GaugeView { get; set; }
+
+        /// <summary>
+        /// Optional. A measure is a measured value of a property in your data. For example, rainfall in inches, number
+        /// of units sold, revenue gained, etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("measures")]
+        public virtual System.Collections.Generic.IList<Measure> Measures { get; set; }
 
         /// <summary>Will cause the scorecard to show a spark chart.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sparkChartView")]

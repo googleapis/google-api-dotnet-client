@@ -2998,6 +2998,73 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha
                         });
                     }
                 }
+
+                /// <summary>
+                /// Switches the role of PRIMARY and SECONDARY cluster without any data loss. This promotes the
+                /// SECONDARY cluster to PRIMARY and sets up original PRIMARY cluster to replicate from this newly
+                /// promoted cluster.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name of the resource. For the required format, see the comment on the Cluster.name
+                /// field
+                /// </param>
+                public virtual SwitchoverRequest Switchover(Google.Apis.CloudAlloyDBAdmin.v1alpha.Data.SwitchoverClusterRequest body, string name)
+                {
+                    return new SwitchoverRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Switches the role of PRIMARY and SECONDARY cluster without any data loss. This promotes the
+                /// SECONDARY cluster to PRIMARY and sets up original PRIMARY cluster to replicate from this newly
+                /// promoted cluster.
+                /// </summary>
+                public class SwitchoverRequest : CloudAlloyDBAdminBaseServiceRequest<Google.Apis.CloudAlloyDBAdmin.v1alpha.Data.Operation>
+                {
+                    /// <summary>Constructs a new Switchover request.</summary>
+                    public SwitchoverRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudAlloyDBAdmin.v1alpha.Data.SwitchoverClusterRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the resource. For the required format, see the comment on the Cluster.name
+                    /// field
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudAlloyDBAdmin.v1alpha.Data.SwitchoverClusterRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "switchover";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}:switchover";
+
+                    /// <summary>Initializes Switchover parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the Operations resource.</summary>
@@ -6625,6 +6692,32 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("valueType")]
         public virtual string ValueType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for switching over to a cluster</summary>
+    public class SwitchoverClusterRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry
+        /// your request, the server will know to ignore the request if it has already been completed. The server will
+        /// guarantee that for at least 60 minutes after the first request. For example, consider a situation where you
+        /// make an initial request and the request times out. If you make the request again with the same request ID,
+        /// the server can check if original operation with the same request ID was received, and if so, will ignore the
+        /// second request. This prevents clients from accidentally creating duplicate commitments. The request ID must
+        /// be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
+
+        /// <summary>
+        /// Optional. If set, performs request validation (e.g. permission checks and any other type of validation), but
+        /// do not actually execute the delete.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
