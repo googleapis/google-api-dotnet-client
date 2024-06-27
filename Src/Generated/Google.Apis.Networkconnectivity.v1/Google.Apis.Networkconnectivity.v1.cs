@@ -6690,6 +6690,15 @@ namespace Google.Apis.Networkconnectivity.v1.Data
     public class ConsumerPscConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Required. The project ID or project number of the consumer project. This project is the one that the
+        /// consumer uses to interact with the producer instance. From the perspective of a consumer who's created a
+        /// producer instance, this is the project of the producer instance. Format: 'projects/' Eg.
+        /// 'projects/consumer-project' or 'projects/1234'
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumerInstanceProject")]
+        public virtual string ConsumerInstanceProject { get; set; }
+
+        /// <summary>
         /// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another
         /// region.
         /// </summary>
@@ -7488,6 +7497,13 @@ namespace Google.Apis.Networkconnectivity.v1.Data
     public class LinkedInterconnectAttachments : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. IP ranges allowed to be included during import from hub.(does not control transit connectivity)
+        /// The only allowed value for now is "ALL_IPV4_RANGES".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeImportRanges")]
+        public virtual System.Collections.Generic.IList<string> IncludeImportRanges { get; set; }
+
+        /// <summary>
         /// A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is
         /// available only in [supported
         /// locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
@@ -7514,6 +7530,13 @@ namespace Google.Apis.Networkconnectivity.v1.Data
     /// </summary>
     public class LinkedRouterApplianceInstances : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. IP ranges allowed to be included during import from hub.(does not control transit connectivity)
+        /// The only allowed value for now is "ALL_IPV4_RANGES".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeImportRanges")]
+        public virtual System.Collections.Generic.IList<string> IncludeImportRanges { get; set; }
+
         /// <summary>The list of router appliance instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instances")]
         public virtual System.Collections.Generic.IList<RouterApplianceInstance> Instances { get; set; }
@@ -7560,6 +7583,13 @@ namespace Google.Apis.Networkconnectivity.v1.Data
     /// </summary>
     public class LinkedVpnTunnels : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. IP ranges allowed to be included during import from hub.(does not control transit connectivity)
+        /// The only allowed value for now is "ALL_IPV4_RANGES".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeImportRanges")]
+        public virtual System.Collections.Generic.IList<string> IncludeImportRanges { get; set; }
+
         /// <summary>
         /// A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is
         /// available only in [supported
@@ -8364,9 +8394,30 @@ namespace Google.Apis.Networkconnectivity.v1.Data
     /// <summary>Configuration used for Private Service Connect connections. Used when Infrastructure is PSC.</summary>
     public class PscConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. List of Projects, Folders, or Organizations from where the Producer instance can be within. For
+        /// example, a network administrator can provide both 'organizations/foo' and 'projects/bar' as
+        /// allowed_google_producers_resource_hierarchy_levels. This allowlists this network to connect with any
+        /// Producer instance within the 'foo' organization or the 'bar' project. By default,
+        /// allowed_google_producers_resource_hierarchy_level is empty. The format for each
+        /// allowed_google_producers_resource_hierarchy_level is / where is one of 'projects', 'folders', or
+        /// 'organizations' and is either the ID or the number of the resource type. Format for each
+        /// allowed_google_producers_resource_hierarchy_level value: 'projects/' or 'folders/' or 'organizations/' Eg.
+        /// [projects/my-project-id, projects/567, folders/891, organizations/123]
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedGoogleProducersResourceHierarchyLevel")]
+        public virtual System.Collections.Generic.IList<string> AllowedGoogleProducersResourceHierarchyLevel { get; set; }
+
         /// <summary>Optional. Max number of PSC connections for this policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("limit")]
         public virtual System.Nullable<long> Limit { get; set; }
+
+        /// <summary>
+        /// Required. ProducerInstanceLocation is used to specify which authorization mechanism to use to determine
+        /// which projects the Producer instance can be within.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("producerInstanceLocation")]
+        public virtual string ProducerInstanceLocation { get; set; }
 
         /// <summary>
         /// The resource paths of subnetworks to use for IP address management. Example:

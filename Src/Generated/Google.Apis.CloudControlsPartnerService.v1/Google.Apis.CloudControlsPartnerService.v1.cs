@@ -349,7 +349,10 @@ namespace Google.Apis.CloudControlsPartnerService.v1
                             this.service = service;
                         }
 
-                        /// <summary>Lists access requests associated with a workload</summary>
+                        /// <summary>
+                        /// Deprecated: Only returns access approval requests directly associated with an assured
+                        /// workload folder.
+                        /// </summary>
                         /// <param name="parent">
                         /// Required. Parent resource Format:
                         /// `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}`
@@ -359,7 +362,10 @@ namespace Google.Apis.CloudControlsPartnerService.v1
                             return new ListRequest(this.service, parent);
                         }
 
-                        /// <summary>Lists access requests associated with a workload</summary>
+                        /// <summary>
+                        /// Deprecated: Only returns access approval requests directly associated with an assured
+                        /// workload folder.
+                        /// </summary>
                         public class ListRequest : CloudControlsPartnerServiceBaseServiceRequest<Google.Apis.CloudControlsPartnerService.v1.Data.ListAccessApprovalRequestsResponse>
                         {
                             /// <summary>Constructs a new List request.</summary>

@@ -13369,6 +13369,16 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("testPurchase")]
         public virtual ExternalTransactionTestPurchase TestPurchase { get; set; }
 
+        /// <summary>
+        /// Optional. The transaction program code, used to help determine service fee for apps partcipating in special
+        /// partner programs. This field can not be used for external offers transactions. Developers participating in
+        /// the Play Media Experience Program (https://play.google.com/console/about/programs/mediaprogram/) must
+        /// provide the program code when reporting alternative billing external transactions. If you are an eligible
+        /// developer, please contact your BDM for more information on how to set this field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transactionProgramCode")]
+        public virtual System.Nullable<int> TransactionProgramCode { get; set; }
+
         /// <summary>Output only. The current state of the transaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transactionState")]
         public virtual string TransactionState { get; set; }

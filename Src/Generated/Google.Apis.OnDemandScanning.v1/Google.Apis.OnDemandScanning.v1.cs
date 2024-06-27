@@ -1811,6 +1811,10 @@ namespace Google.Apis.OnDemandScanning.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sbomStatus")]
         public virtual SBOMStatus SbomStatus { get; set; }
 
+        /// <summary>The status of an vulnerability attestation generation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vulnerabilityAttestation")]
+        public virtual VulnerabilityAttestation VulnerabilityAttestation { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3801,6 +3805,60 @@ namespace Google.Apis.OnDemandScanning.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vulnerabilityId")]
         public virtual string VulnerabilityId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The status of an vulnerability attestation generation.</summary>
+    public class VulnerabilityAttestation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If failure, the error reason for why the attestation generation failed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual string Error { get; set; }
+
+        private string _lastAttemptTimeRaw;
+
+        private object _lastAttemptTime;
+
+        /// <summary>The last time we attempted to generate an attestation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastAttemptTime")]
+        public virtual string LastAttemptTimeRaw
+        {
+            get => _lastAttemptTimeRaw;
+            set
+            {
+                _lastAttemptTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastAttemptTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastAttemptTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastAttemptTimeDateTimeOffset instead.")]
+        public virtual object LastAttemptTime
+        {
+            get => _lastAttemptTime;
+            set
+            {
+                _lastAttemptTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastAttemptTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastAttemptTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastAttemptTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastAttemptTimeRaw);
+            set => LastAttemptTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The success/failure state of the latest attestation attempt.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

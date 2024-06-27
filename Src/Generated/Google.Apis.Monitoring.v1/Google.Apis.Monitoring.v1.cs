@@ -2611,8 +2611,8 @@ namespace Google.Apis.Monitoring.v1.Data
         public virtual string Filter { get; set; }
 
         /// <summary>
-        /// The names of logging resources to collect logs for. Currently only projects are supported. If empty, the
-        /// widget will default to the host project.
+        /// The names of logging resources to collect logs for. Currently projects and storage views are supported. If
+        /// empty, the widget will default to the host project.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceNames")]
         public virtual System.Collections.Generic.IList<string> ResourceNames { get; set; }

@@ -651,7 +651,7 @@ namespace Google.Apis.AccessContextManager.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Resource name for the `AccessLevel`. Format:
+            /// Identifier. Resource name for the `AccessLevel`. Format:
             /// `accessPolicies/{access_policy}/accessLevels/{access_level}`. The `access_level` component must begin
             /// with a letter, followed by alphanumeric characters or `_`. Its maximum length is 50 characters. After
             /// you create an `AccessLevel`, you cannot change its `name`.
@@ -677,7 +677,7 @@ namespace Google.Apis.AccessContextManager.v1
                 }
 
                 /// <summary>
-                /// Resource name for the `AccessLevel`. Format:
+                /// Identifier. Resource name for the `AccessLevel`. Format:
                 /// `accessPolicies/{access_policy}/accessLevels/{access_level}`. The `access_level` component must
                 /// begin with a letter, followed by alphanumeric characters or `_`. Its maximum length is 50
                 /// characters. After you create an `AccessLevel`, you cannot change its `name`.
@@ -1150,7 +1150,7 @@ namespace Google.Apis.AccessContextManager.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Resource name for the `AuthorizedOrgsDesc`. Format:
+            /// Identifier. Resource name for the `AuthorizedOrgsDesc`. Format:
             /// `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`. The `authorized_orgs_desc`
             /// component must begin with a letter, followed by alphanumeric characters or `_`. After you create an
             /// `AuthorizedOrgsDesc`, you cannot change its `name`.
@@ -1178,7 +1178,7 @@ namespace Google.Apis.AccessContextManager.v1
                 }
 
                 /// <summary>
-                /// Resource name for the `AuthorizedOrgsDesc`. Format:
+                /// Identifier. Resource name for the `AuthorizedOrgsDesc`. Format:
                 /// `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`. The
                 /// `authorized_orgs_desc` component must begin with a letter, followed by alphanumeric characters or
                 /// `_`. After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
@@ -1583,7 +1583,7 @@ namespace Google.Apis.AccessContextManager.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Resource name for the `ServicePerimeter`. Format:
+            /// Identifier. Resource name for the `ServicePerimeter`. Format:
             /// `accessPolicies/{access_policy}/servicePerimeters/{service_perimeter}`. The `service_perimeter`
             /// component must begin with a letter, followed by alphanumeric characters or `_`. After you create a
             /// `ServicePerimeter`, you cannot change its `name`.
@@ -1609,7 +1609,7 @@ namespace Google.Apis.AccessContextManager.v1
                 }
 
                 /// <summary>
-                /// Resource name for the `ServicePerimeter`. Format:
+                /// Identifier. Resource name for the `ServicePerimeter`. Format:
                 /// `accessPolicies/{access_policy}/servicePerimeters/{service_perimeter}`. The `service_perimeter`
                 /// component must begin with a letter, followed by alphanumeric characters or `_`. After you create a
                 /// `ServicePerimeter`, you cannot change its `name`.
@@ -2087,7 +2087,7 @@ namespace Google.Apis.AccessContextManager.v1
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
-        /// Output only. Resource name of the `AccessPolicy`. Format: `accessPolicies/{access_policy}`
+        /// Output only. Identifier. Resource name of the `AccessPolicy`. Format: `accessPolicies/{access_policy}`
         /// </param>
         public virtual PatchRequest Patch(Google.Apis.AccessContextManager.v1.Data.AccessPolicy body, string name)
         {
@@ -2109,7 +2109,7 @@ namespace Google.Apis.AccessContextManager.v1
             }
 
             /// <summary>
-            /// Output only. Resource name of the `AccessPolicy`. Format: `accessPolicies/{access_policy}`
+            /// Output only. Identifier. Resource name of the `AccessPolicy`. Format: `accessPolicies/{access_policy}`
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -3066,9 +3066,10 @@ namespace Google.Apis.AccessContextManager.v1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Resource name for the `AccessLevel`. Format: `accessPolicies/{access_policy}/accessLevels/{access_level}`.
-        /// The `access_level` component must begin with a letter, followed by alphanumeric characters or `_`. Its
-        /// maximum length is 50 characters. After you create an `AccessLevel`, you cannot change its `name`.
+        /// Identifier. Resource name for the `AccessLevel`. Format:
+        /// `accessPolicies/{access_policy}/accessLevels/{access_level}`. The `access_level` component must begin with a
+        /// letter, followed by alphanumeric characters or `_`. Its maximum length is 50 characters. After you create an
+        /// `AccessLevel`, you cannot change its `name`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -3091,14 +3092,14 @@ namespace Google.Apis.AccessContextManager.v1.Data
     {
         /// <summary>
         /// Output only. An opaque identifier for the current version of the `AccessPolicy`. This will always be a
-        /// strongly validated etag, meaning that two Access Polices will be identical if and only if their etags are
+        /// strongly validated etag, meaning that two Access Policies will be identical if and only if their etags are
         /// identical. Clients should not expect this to be in any specific format.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
         /// <summary>
-        /// Output only. Resource name of the `AccessPolicy`. Format: `accessPolicies/{access_policy}`
+        /// Output only. Identifier. Resource name of the `AccessPolicy`. Format: `accessPolicies/{access_policy}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -3248,7 +3249,7 @@ namespace Google.Apis.AccessContextManager.v1.Data
         public virtual string AuthorizationType { get; set; }
 
         /// <summary>
-        /// Resource name for the `AuthorizedOrgsDesc`. Format:
+        /// Identifier. Resource name for the `AuthorizedOrgsDesc`. Format:
         /// `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`. The `authorized_orgs_desc`
         /// component must begin with a letter, followed by alphanumeric characters or `_`. After you create an
         /// `AuthorizedOrgsDesc`, you cannot change its `name`.
@@ -4260,7 +4261,7 @@ namespace Google.Apis.AccessContextManager.v1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Resource name for the `ServicePerimeter`. Format:
+        /// Identifier. Resource name for the `ServicePerimeter`. Format:
         /// `accessPolicies/{access_policy}/servicePerimeters/{service_perimeter}`. The `service_perimeter` component
         /// must begin with a letter, followed by alphanumeric characters or `_`. After you create a `ServicePerimeter`,
         /// you cannot change its `name`.
@@ -4440,6 +4441,10 @@ namespace Google.Apis.AccessContextManager.v1.Data
         /// <summary>The service name or address of the supported service, such as `service.googleapis.com`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The support stage of the service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceSupportStage")]
+        public virtual string ServiceSupportStage { get; set; }
 
         /// <summary>The support stage of the service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportStage")]

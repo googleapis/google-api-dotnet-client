@@ -6450,6 +6450,13 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("memoryMb")]
         public virtual System.Nullable<int> MemoryMb { get; set; }
 
+        /// <summary>
+        /// Output only. Whether simultaneous multithreading is enabled (see
+        /// https://cloud.google.com/sql/docs/sqlserver/create-instance#smt-create-instance).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("smtEnabled")]
+        public virtual System.Nullable<bool> SmtEnabled { get; set; }
+
         /// <summary>Output only. Predicted storage shape.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storage")]
         public virtual ComputeStorageDescriptor Storage { get; set; }
@@ -6483,9 +6490,8 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
     public class ComputeEnginePreferences : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// If os_pricing_preferences is specified, it overrides this field. License type to consider when calculating
-        /// costs for virtual machine insights and recommendations. If unspecified, costs are calculated based on the
-        /// default licensing plan.
+        /// License type to consider when calculating costs for operating systems. If unspecified, costs are calculated
+        /// based on the default licensing plan. If os_pricing_preferences is specified, it overrides this field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("licenseType")]
         public virtual string LicenseType { get; set; }
@@ -6493,6 +6499,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>Preferences concerning the machine types to consider on Compute Engine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machinePreferences")]
         public virtual MachinePreferences MachinePreferences { get; set; }
+
+        /// <summary>Optional. Preferences for multithreading support.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multithreading")]
+        public virtual string Multithreading { get; set; }
 
         /// <summary>Optional. Pricing options for OS images.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("osPricingPreferences")]
@@ -6531,6 +6541,13 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>Output only. Compute Engine machine series.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("series")]
         public virtual string Series { get; set; }
+
+        /// <summary>
+        /// Output only. Whether simultaneous multithreading is enabled (see
+        /// https://cloud.google.com/compute/docs/instances/set-threads-per-core).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("smtEnabled")]
+        public virtual System.Nullable<bool> SmtEnabled { get; set; }
 
         /// <summary>Output only. Compute Engine storage. Never empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storage")]
@@ -10080,8 +10097,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual Money MonthlyCostDatabaseBackup { get; set; }
 
         /// <summary>
-        /// Output only. Database licensing monthly cost for this preference set. For virtual machines denotes the cost
-        /// of licenses for hosted databases.
+        /// Output only. Database licensing monthly cost for this preference set. Only present for databases.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monthlyCostDatabaseLicensing")]
         public virtual Money MonthlyCostDatabaseLicensing { get; set; }
@@ -11024,7 +11040,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
     /// <summary>Details of a VirtualMachine.</summary>
     public class VirtualMachineDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Number of CPU cores in the VirtualMachine. Must be non-negative.</summary>
+        /// <summary>Number of logical CPU cores in the VirtualMachine. Must be non-negative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("coreCount")]
         public virtual System.Nullable<int> CoreCount { get; set; }
 
