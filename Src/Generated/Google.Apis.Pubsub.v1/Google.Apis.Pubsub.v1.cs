@@ -3623,6 +3623,30 @@ namespace Google.Apis.Pubsub.v1.Data
     }
 
     /// <summary>
+    /// Information about an associated Analytics Hub subscription
+    /// (https://cloud.google.com/bigquery/docs/analytics-hub-manage-subscriptions).
+    /// </summary>
+    public class AnalyticsHubSubscriptionInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The name of the associated Analytics Hub listing resource. Pattern:
+        /// "projects/{project}/locations/{location}/dataExchanges/{data_exchange}/listings/{listing}"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("listing")]
+        public virtual string Listing { get; set; }
+
+        /// <summary>
+        /// Optional. The name of the associated Analytics Hub subscription resource. Pattern:
+        /// "projects/{project}/locations/{location}/subscriptions/{subscription}"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscription")]
+        public virtual string Subscription { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Configuration for writing message data in Avro format. Message payloads and metadata will be written to files as
     /// an Avro binary.
     /// </summary>
@@ -4894,6 +4918,13 @@ namespace Google.Apis.Pubsub.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ackDeadlineSeconds")]
         public virtual System.Nullable<int> AckDeadlineSeconds { get; set; }
+
+        /// <summary>
+        /// Output only. Information about the associated Analytics Hub subscription. Only set if the subscritpion is
+        /// created by Analytics Hub.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analyticsHubSubscriptionInfo")]
+        public virtual AnalyticsHubSubscriptionInfo AnalyticsHubSubscriptionInfo { get; set; }
 
         /// <summary>
         /// Optional. If delivery to BigQuery is used with this subscription, this field is used to configure it.

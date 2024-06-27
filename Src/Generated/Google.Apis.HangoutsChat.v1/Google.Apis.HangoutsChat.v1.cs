@@ -3113,14 +3113,22 @@ namespace Google.Apis.HangoutsChat.v1
             /// `display_name` together with `space_type` in the update mask and ensure that the specified space has a
             /// non-empty display name and the `SPACE` space type. Including the `space_type` mask and the `SPACE` type
             /// in the specified space when updating the display name is optional if the existing space already has the
-            /// `SPACE` type. Trying to update the space type in other ways results in an invalid argument error). -
-            /// `space_details` - `space_history_state` (Supports [turning history on or off for the
-            /// space](https://support.google.com/chat/answer/7664687) if [the organization allows users to change their
-            /// history setting](https://support.google.com/a/answer/7664184). Warning: mutually exclusive with all
-            /// other field paths.) - Developer Preview: `access_settings.audience` (Supports changing the [access
+            /// `SPACE` type. Trying to update the space type in other ways results in an invalid argument error).
+            /// `space_type` is not supported with admin access. - `space_details` - `space_history_state` (Supports
+            /// [turning history on or off for the space](https://support.google.com/chat/answer/7664687) if [the
+            /// organization allows users to change their history setting](https://support.google.com/a/answer/7664184).
+            /// Warning: mutually exclusive with all other field paths.) `space_history_state` is not supported with
+            /// admin access. - Developer Preview: `access_settings.audience` (Supports changing the [access
             /// setting](https://support.google.com/chat/answer/11971020) of a space. If no audience is specified in the
             /// access setting, the space's access setting is updated to restricted. Warning: mutually exclusive with
-            /// all other field paths.)
+            /// all other field paths.) `access_settings.audience` is not supported with admin access. - Developer
+            /// Preview: Supports changing the [permission settings](https://support.google.com/chat/answer/13340792) of
+            /// a space, supported field paths include: `permission_settings.manage_members_and_groups`,
+            /// `permission_settings.modify_space_details`, `permission_settings.toggle_history`,
+            /// `permission_settings.use_at_mention_all`, `permission_settings.manage_apps`,
+            /// `permission_settings.manage_webhooks`, `permission_settings.reply_messages` (Warning: mutually exclusive
+            /// with all other non-permission settings field paths). `permission_settings` is not supported with admin
+            /// access.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
@@ -4094,8 +4102,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual FormAction Action { get; set; }
 
         /// <summary>
-        /// Represents information about the user's client, such as locale, host app, and platform. For Chat apps,
-        /// `CommonEventObject` includes information submitted by users interacting with
+        /// Represents informatmessage_visibilityion about the user's client, such as locale, host app, and platform.
+        /// For Chat apps, `CommonEventObject` includes information submitted by users interacting with
         /// [dialogs](https://developers.google.com/workspace/chat/dialogs), like data entered on a card.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("common")]

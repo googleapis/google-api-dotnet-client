@@ -10441,6 +10441,10 @@ namespace Google.Apis.Storage.v1.Data
     /// <summary>The response message for storage.buckets.operations.list.</summary>
     public class GoogleLongrunningListOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The kind of item this is. For lists of operations, this is always storage#operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
         /// <summary>
         /// The continuation token, used to page through large result sets. Provide this value in a subsequent request
         /// to return the next page of results.
@@ -10470,6 +10474,10 @@ namespace Google.Apis.Storage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual GoogleRpcStatus Error { get; set; }
 
+        /// <summary>The kind of item this is. For operations, this is always storage#operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
         /// <summary>
         /// Service-specific metadata associated with the operation. It typically contains progress information and
         /// common metadata such as create time. Some services might not provide such metadata. Any method that returns
@@ -10494,6 +10502,10 @@ namespace Google.Apis.Storage.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
+
+        /// <summary>The link to this long running operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

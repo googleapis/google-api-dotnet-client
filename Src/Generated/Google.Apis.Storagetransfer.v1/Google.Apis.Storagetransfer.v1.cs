@@ -2083,8 +2083,8 @@ namespace Google.Apis.Storagetransfer.v1.Data
 
         /// <summary>
         /// Specifies how each object's `timeCreated` metadata is preserved for transfers. If unspecified, the default
-        /// behavior is the same as TIME_CREATED_SKIP. This behavior is supported for transfers to GCS buckets from GCS,
-        /// S3, Azure, S3 Compatible, and Azure sources.
+        /// behavior is the same as TIME_CREATED_SKIP. This behavior is supported for transfers to Cloud Storage buckets
+        /// from Cloud Storage, Amazon S3, S3-compatible storage, and Azure sources.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeCreated")]
         public virtual string TimeCreated { get; set; }

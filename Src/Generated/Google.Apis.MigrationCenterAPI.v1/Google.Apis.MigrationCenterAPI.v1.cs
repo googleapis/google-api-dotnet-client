@@ -7362,7 +7362,7 @@ namespace Google.Apis.MigrationCenterAPI.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("architecture")]
         public virtual MachineArchitectureDetails Architecture { get; set; }
 
-        /// <summary>Number of CPU cores in the machine. Must be non-negative.</summary>
+        /// <summary>Number of logical CPU cores in the machine. Must be non-negative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("coreCount")]
         public virtual System.Nullable<int> CoreCount { get; set; }
 

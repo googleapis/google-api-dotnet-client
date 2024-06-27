@@ -3069,6 +3069,14 @@ namespace Google.Apis.CloudWorkstations.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IList<string> Tags { get; set; }
 
+        /// <summary>
+        /// Optional. Resource manager tags to be bound to this instance. Tag keys and values have the same definition
+        /// as https://cloud.google.com/resource-manager/docs/tags/tags-overview Keys must be in the format
+        /// `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmTags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> VmTags { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3216,6 +3224,14 @@ namespace Google.Apis.CloudWorkstations.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
             set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>
+        /// Optional. Port for which the access token should be generated. If specified, the generated access token
+        /// grants access only to the specified port of the workstation. If specified, values must be within the range
+        /// [1 - 65535]. If not specified, the generated access token grants access to all ports of the workstation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("port")]
+        public virtual System.Nullable<int> Port { get; set; }
 
         /// <summary>
         /// Desired lifetime duration of the access token. This value must be at most 24 hours. If a value is not

@@ -5902,7 +5902,9 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataSampling")]
         public virtual DataSamplingConfig DataSampling { get; set; }
 
-        /// <summary>When true, enables the logging of the literal hot key to the user's Cloud Logging.</summary>
+        /// <summary>
+        /// Optional. When true, enables the logging of the literal hot key to the user's Cloud Logging.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableHotKeyLogging")]
         public virtual System.Nullable<bool> EnableHotKeyLogging { get; set; }
 
@@ -6136,13 +6138,13 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ClusterManagerApiService { get; set; }
 
         /// <summary>
-        /// The dataset for the current project where various workflow related tables are stored. The supported resource
-        /// type is: Google BigQuery: bigquery.googleapis.com/{dataset}
+        /// Optional. The dataset for the current project where various workflow related tables are stored. The
+        /// supported resource type is: Google BigQuery: bigquery.googleapis.com/{dataset}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataset")]
         public virtual string Dataset { get; set; }
 
-        /// <summary>Any debugging options to be supplied to the job.</summary>
+        /// <summary>Optional. Any debugging options to be supplied to the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("debugOptions")]
         public virtual DebugOptions DebugOptions { get; set; }
 
@@ -6153,7 +6155,7 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("experiments")]
         public virtual System.Collections.Generic.IList<string> Experiments { get; set; }
 
-        /// <summary>Which Flexible Resource Scheduling mode to run in.</summary>
+        /// <summary>Optional. Which Flexible Resource Scheduling mode to run in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flexResourceSchedulingGoal")]
         public virtual string FlexResourceSchedulingGoal { get; set; }
 
@@ -6169,12 +6171,12 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sdkPipelineOptions")]
         public virtual System.Collections.Generic.IDictionary<string, object> SdkPipelineOptions { get; set; }
 
-        /// <summary>Identity to run virtual machines as. Defaults to the default account.</summary>
+        /// <summary>Optional. Identity to run virtual machines as. Defaults to the default account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
         public virtual string ServiceAccountEmail { get; set; }
 
         /// <summary>
-        /// If set, contains the Cloud KMS key identifier used to encrypt data at rest, AKA a Customer Managed
+        /// Optional. If set, contains the Cloud KMS key identifier used to encrypt data at rest, AKA a Customer Managed
         /// Encryption Key (CMEK). Format: projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceKmsKeyName")]
@@ -6234,17 +6236,18 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual System.Collections.Generic.IList<WorkerPool> WorkerPools { get; set; }
 
         /// <summary>
-        /// The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which
-        /// worker processing should occur, e.g. "us-west1". Mutually exclusive with worker_zone. If neither
+        /// Optional. The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in
+        /// which worker processing should occur, e.g. "us-west1". Mutually exclusive with worker_zone. If neither
         /// worker_region nor worker_zone is specified, default to the control plane's region.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerRegion")]
         public virtual string WorkerRegion { get; set; }
 
         /// <summary>
-        /// The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker
-        /// processing should occur, e.g. "us-west1-a". Mutually exclusive with worker_region. If neither worker_region
-        /// nor worker_zone is specified, a zone in the control plane's region is chosen based on available capacity.
+        /// Optional. The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in
+        /// which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with worker_region. If neither
+        /// worker_region nor worker_zone is specified, a zone in the control plane's region is chosen based on
+        /// available capacity.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerZone")]
         public virtual string WorkerZone { get; set; }
@@ -6986,8 +6989,8 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains
-        /// this job.
+        /// Optional. The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+        /// contains this job.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
@@ -7059,6 +7062,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
         public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
+        /// <summary>Output only. Resources used by the Dataflow Service to run the job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceResources")]
+        public virtual ServiceResources ServiceResources { get; set; }
+
         /// <summary>This field may be mutated by the Cloud Dataflow service; callers cannot mutate it.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stageStates")]
         public virtual System.Collections.Generic.IList<ExecutionStageState> StageStates { get; set; }
@@ -7125,8 +7132,8 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual System.Collections.Generic.IList<string> TempFiles { get; set; }
 
         /// <summary>
-        /// The map of transform name prefixes of the job to be replaced to the corresponding name prefixes of the new
-        /// job.
+        /// Optional. The map of transform name prefixes of the job to be replaced to the corresponding name prefixes of
+        /// the new job.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transformNameMapping")]
         public virtual System.Collections.Generic.IDictionary<string, string> TransformNameMapping { get; set; }
@@ -9074,6 +9081,19 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>The id of the TupleTag the user code will tag the output value by.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tag")]
         public virtual string Tag { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Resources used by the Dataflow Service to run the job.</summary>
+    public class ServiceResources : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. List of Cloud Zones being used by the Dataflow Service for this job. Example: us-central1-c
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zones")]
+        public virtual System.Collections.Generic.IList<string> Zones { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

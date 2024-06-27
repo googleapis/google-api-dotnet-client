@@ -3253,6 +3253,23 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Http options for the running workstations.</summary>
+    public class HttpOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. By default, the workstations service makes sure that all requests to the workstation are
+        /// authenticated. CORS preflight requests do not include cookies or custom headers, and so are considered
+        /// unauthenticated and blocked by the workstations service. Enabling this option allows these unauthenticated
+        /// CORS preflight requests through to the workstation, where it becomes the responsibility of the destination
+        /// server in the workstation to validate the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedUnauthenticatedCorsPreflightRequests")]
+        public virtual System.Nullable<bool> AllowedUnauthenticatedCorsPreflightRequests { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response message for Operations.ListOperations.</summary>
     public class ListOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3906,6 +3923,13 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
         public virtual System.Nullable<bool> Reconciling { get; set; }
 
+        /// <summary>
+        /// Optional. The source workstation from which this workstations persistent directories were cloned on
+        /// creation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceWorkstation")]
+        public virtual string SourceWorkstation { get; set; }
+
         private string _startTimeRaw;
 
         private object _startTime;
@@ -4348,6 +4372,12 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         /// <summary>Optional. Runtime host for the workstation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
         public virtual Host Host { get; set; }
+
+        /// <summary>
+        /// Optional. Http options that customize the behavior of the workstation service's http proxy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpOptions")]
+        public virtual HttpOptions HttpOptions { get; set; }
 
         /// <summary>
         /// Optional. Number of seconds to wait before automatically stopping a workstation after it last received user

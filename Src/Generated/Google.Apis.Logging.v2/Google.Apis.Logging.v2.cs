@@ -2494,6 +2494,14 @@ namespace Google.Apis.Logging.v2
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
+                    /// Optional. Specifies the type ("Logging" or "OpsAnalytics") of the recent queries to list. The
+                    /// only valid value for this field is one of the two allowable type function calls, which are the
+                    /// following: type("Logging") type("OpsAnalytics")
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
                     /// Optional. The maximum number of results to return from this request. Non-positive values are
                     /// ignored. The presence of nextPageToken in the response indicates that more results might be
                     /// available.
@@ -2529,6 +2537,14 @@ namespace Google.Apis.Logging.v2
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^billingAccounts/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                         {
@@ -2711,6 +2727,65 @@ namespace Google.Apis.Logging.v2
                     }
                 }
 
+                /// <summary>Returns all data associated with the requested query.</summary>
+                /// <param name="name">
+                /// Required. The resource name of the saved query.
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+                /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For example:
+                /// "projects/my-project/locations/global/savedQueries/my-saved-query"
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Returns all data associated with the requested query.</summary>
+                public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.SavedQuery>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the saved query.
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+                    /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+                    /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For example:
+                    /// "projects/my-project/locations/global/savedQueries/my-saved-query"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^billingAccounts/[^/]+/locations/[^/]+/savedQueries/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Lists the SavedQueries that were created by the user making the request.</summary>
                 /// <param name="parent">
                 /// Required. The resource to which the listed queries belong.
@@ -2798,6 +2873,92 @@ namespace Google.Apis.Logging.v2
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates an existing SavedQuery.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Output only. Resource name of the saved query.In the format:
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For a list of supported
+                /// locations, see Supported Regions
+                /// (https://cloud.google.com/logging/docs/region-support#bucket-regions)After the saved query is
+                /// created, the location cannot be changed.If the user doesn't provide a QUERY_ID, the system will
+                /// generate an alphanumeric ID.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.SavedQuery body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates an existing SavedQuery.</summary>
+                public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.SavedQuery>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.SavedQuery body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Output only. Resource name of the saved query.In the format:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For a list of supported
+                    /// locations, see Supported Regions
+                    /// (https://cloud.google.com/logging/docs/region-support#bucket-regions)After the saved query is
+                    /// created, the location cannot be changed.If the user doesn't provide a QUERY_ID, the system will
+                    /// generate an alphanumeric ID.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Required. A non-empty list of fields to change in the existing saved query. Fields are relative
+                    /// to the saved_query and new values for the fields are taken from the corresponding fields in the
+                    /// SavedQuery included in this request. Fields not mentioned in update_mask are not changed and are
+                    /// ignored in the request.To update all mutable fields, specify an update_mask of *.For example, to
+                    /// change the description and query filter text of a saved query, specify an update_mask of
+                    /// "description, query.filter".
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Logging.v2.Data.SavedQuery Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^billingAccounts/[^/]+/locations/[^/]+/savedQueries/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3193,10 +3354,10 @@ namespace Google.Apis.Logging.v2
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// Optional. A service account provided by the caller that will be used to write the log entries. The
-                /// format must be serviceAccount:some@email. This field can only be specified if you are routing logs
-                /// to a destination outside this sink's project. If not specified, a Logging service account will
-                /// automatically be generated.
+                /// Optional. The service account provided by the caller that will be used to write the log entries. The
+                /// format must be serviceAccount:some@email. This field can only be specified when you are routing logs
+                /// to a log bucket that is in a different project than the sink. When not specified, a Logging service
+                /// account will automatically be generated.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("customWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string CustomWriterIdentity { get; set; }
@@ -3518,10 +3679,10 @@ namespace Google.Apis.Logging.v2
                 public virtual string SinkName { get; private set; }
 
                 /// <summary>
-                /// Optional. A service account provided by the caller that will be used to write the log entries. The
-                /// format must be serviceAccount:some@email. This field can only be specified if you are routing logs
-                /// to a destination outside this sink's project. If not specified, a Logging service account will
-                /// automatically be generated.
+                /// Optional. The service account provided by the caller that will be used to write the log entries. The
+                /// format must be serviceAccount:some@email. This field can only be specified when you are routing logs
+                /// to a log bucket that is in a different project than the sink. When not specified, a Logging service
+                /// account will automatically be generated.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("customWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string CustomWriterIdentity { get; set; }
@@ -3648,10 +3809,10 @@ namespace Google.Apis.Logging.v2
                 public virtual string SinkName { get; private set; }
 
                 /// <summary>
-                /// Optional. A service account provided by the caller that will be used to write the log entries. The
-                /// format must be serviceAccount:some@email. This field can only be specified if you are routing logs
-                /// to a destination outside this sink's project. If not specified, a Logging service account will
-                /// automatically be generated.
+                /// Optional. The service account provided by the caller that will be used to write the log entries. The
+                /// format must be serviceAccount:some@email. This field can only be specified when you are routing logs
+                /// to a log bucket that is in a different project than the sink. When not specified, a Logging service
+                /// account will automatically be generated.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("customWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string CustomWriterIdentity { get; set; }
@@ -6790,6 +6951,14 @@ namespace Google.Apis.Logging.v2
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
+                    /// Optional. Specifies the type ("Logging" or "OpsAnalytics") of the recent queries to list. The
+                    /// only valid value for this field is one of the two allowable type function calls, which are the
+                    /// following: type("Logging") type("OpsAnalytics")
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
                     /// Optional. The maximum number of results to return from this request. Non-positive values are
                     /// ignored. The presence of nextPageToken in the response indicates that more results might be
                     /// available.
@@ -6825,6 +6994,14 @@ namespace Google.Apis.Logging.v2
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^folders/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                         {
@@ -7007,6 +7184,65 @@ namespace Google.Apis.Logging.v2
                     }
                 }
 
+                /// <summary>Returns all data associated with the requested query.</summary>
+                /// <param name="name">
+                /// Required. The resource name of the saved query.
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+                /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For example:
+                /// "projects/my-project/locations/global/savedQueries/my-saved-query"
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Returns all data associated with the requested query.</summary>
+                public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.SavedQuery>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the saved query.
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+                    /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+                    /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For example:
+                    /// "projects/my-project/locations/global/savedQueries/my-saved-query"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/locations/[^/]+/savedQueries/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Lists the SavedQueries that were created by the user making the request.</summary>
                 /// <param name="parent">
                 /// Required. The resource to which the listed queries belong.
@@ -7094,6 +7330,92 @@ namespace Google.Apis.Logging.v2
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates an existing SavedQuery.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Output only. Resource name of the saved query.In the format:
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For a list of supported
+                /// locations, see Supported Regions
+                /// (https://cloud.google.com/logging/docs/region-support#bucket-regions)After the saved query is
+                /// created, the location cannot be changed.If the user doesn't provide a QUERY_ID, the system will
+                /// generate an alphanumeric ID.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.SavedQuery body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates an existing SavedQuery.</summary>
+                public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.SavedQuery>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.SavedQuery body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Output only. Resource name of the saved query.In the format:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For a list of supported
+                    /// locations, see Supported Regions
+                    /// (https://cloud.google.com/logging/docs/region-support#bucket-regions)After the saved query is
+                    /// created, the location cannot be changed.If the user doesn't provide a QUERY_ID, the system will
+                    /// generate an alphanumeric ID.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Required. A non-empty list of fields to change in the existing saved query. Fields are relative
+                    /// to the saved_query and new values for the fields are taken from the corresponding fields in the
+                    /// SavedQuery included in this request. Fields not mentioned in update_mask are not changed and are
+                    /// ignored in the request.To update all mutable fields, specify an update_mask of *.For example, to
+                    /// change the description and query filter text of a saved query, specify an update_mask of
+                    /// "description, query.filter".
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Logging.v2.Data.SavedQuery Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/locations/[^/]+/savedQueries/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -7489,10 +7811,10 @@ namespace Google.Apis.Logging.v2
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// Optional. A service account provided by the caller that will be used to write the log entries. The
-                /// format must be serviceAccount:some@email. This field can only be specified if you are routing logs
-                /// to a destination outside this sink's project. If not specified, a Logging service account will
-                /// automatically be generated.
+                /// Optional. The service account provided by the caller that will be used to write the log entries. The
+                /// format must be serviceAccount:some@email. This field can only be specified when you are routing logs
+                /// to a log bucket that is in a different project than the sink. When not specified, a Logging service
+                /// account will automatically be generated.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("customWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string CustomWriterIdentity { get; set; }
@@ -7814,10 +8136,10 @@ namespace Google.Apis.Logging.v2
                 public virtual string SinkName { get; private set; }
 
                 /// <summary>
-                /// Optional. A service account provided by the caller that will be used to write the log entries. The
-                /// format must be serviceAccount:some@email. This field can only be specified if you are routing logs
-                /// to a destination outside this sink's project. If not specified, a Logging service account will
-                /// automatically be generated.
+                /// Optional. The service account provided by the caller that will be used to write the log entries. The
+                /// format must be serviceAccount:some@email. This field can only be specified when you are routing logs
+                /// to a log bucket that is in a different project than the sink. When not specified, a Logging service
+                /// account will automatically be generated.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("customWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string CustomWriterIdentity { get; set; }
@@ -7944,10 +8266,10 @@ namespace Google.Apis.Logging.v2
                 public virtual string SinkName { get; private set; }
 
                 /// <summary>
-                /// Optional. A service account provided by the caller that will be used to write the log entries. The
-                /// format must be serviceAccount:some@email. This field can only be specified if you are routing logs
-                /// to a destination outside this sink's project. If not specified, a Logging service account will
-                /// automatically be generated.
+                /// Optional. The service account provided by the caller that will be used to write the log entries. The
+                /// format must be serviceAccount:some@email. This field can only be specified when you are routing logs
+                /// to a log bucket that is in a different project than the sink. When not specified, a Logging service
+                /// account will automatically be generated.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("customWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string CustomWriterIdentity { get; set; }
@@ -12795,6 +13117,14 @@ namespace Google.Apis.Logging.v2
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
+                    /// Optional. Specifies the type ("Logging" or "OpsAnalytics") of the recent queries to list. The
+                    /// only valid value for this field is one of the two allowable type function calls, which are the
+                    /// following: type("Logging") type("OpsAnalytics")
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
                     /// Optional. The maximum number of results to return from this request. Non-positive values are
                     /// ignored. The presence of nextPageToken in the response indicates that more results might be
                     /// available.
@@ -12830,6 +13160,14 @@ namespace Google.Apis.Logging.v2
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^organizations/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                         {
@@ -13012,6 +13350,65 @@ namespace Google.Apis.Logging.v2
                     }
                 }
 
+                /// <summary>Returns all data associated with the requested query.</summary>
+                /// <param name="name">
+                /// Required. The resource name of the saved query.
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+                /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For example:
+                /// "projects/my-project/locations/global/savedQueries/my-saved-query"
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Returns all data associated with the requested query.</summary>
+                public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.SavedQuery>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the saved query.
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+                    /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+                    /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For example:
+                    /// "projects/my-project/locations/global/savedQueries/my-saved-query"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/savedQueries/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Lists the SavedQueries that were created by the user making the request.</summary>
                 /// <param name="parent">
                 /// Required. The resource to which the listed queries belong.
@@ -13099,6 +13496,92 @@ namespace Google.Apis.Logging.v2
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates an existing SavedQuery.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Output only. Resource name of the saved query.In the format:
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For a list of supported
+                /// locations, see Supported Regions
+                /// (https://cloud.google.com/logging/docs/region-support#bucket-regions)After the saved query is
+                /// created, the location cannot be changed.If the user doesn't provide a QUERY_ID, the system will
+                /// generate an alphanumeric ID.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.SavedQuery body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates an existing SavedQuery.</summary>
+                public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.SavedQuery>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.SavedQuery body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Output only. Resource name of the saved query.In the format:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For a list of supported
+                    /// locations, see Supported Regions
+                    /// (https://cloud.google.com/logging/docs/region-support#bucket-regions)After the saved query is
+                    /// created, the location cannot be changed.If the user doesn't provide a QUERY_ID, the system will
+                    /// generate an alphanumeric ID.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Required. A non-empty list of fields to change in the existing saved query. Fields are relative
+                    /// to the saved_query and new values for the fields are taken from the corresponding fields in the
+                    /// SavedQuery included in this request. Fields not mentioned in update_mask are not changed and are
+                    /// ignored in the request.To update all mutable fields, specify an update_mask of *.For example, to
+                    /// change the description and query filter text of a saved query, specify an update_mask of
+                    /// "description, query.filter".
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Logging.v2.Data.SavedQuery Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/savedQueries/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -13494,10 +13977,10 @@ namespace Google.Apis.Logging.v2
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// Optional. A service account provided by the caller that will be used to write the log entries. The
-                /// format must be serviceAccount:some@email. This field can only be specified if you are routing logs
-                /// to a destination outside this sink's project. If not specified, a Logging service account will
-                /// automatically be generated.
+                /// Optional. The service account provided by the caller that will be used to write the log entries. The
+                /// format must be serviceAccount:some@email. This field can only be specified when you are routing logs
+                /// to a log bucket that is in a different project than the sink. When not specified, a Logging service
+                /// account will automatically be generated.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("customWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string CustomWriterIdentity { get; set; }
@@ -13819,10 +14302,10 @@ namespace Google.Apis.Logging.v2
                 public virtual string SinkName { get; private set; }
 
                 /// <summary>
-                /// Optional. A service account provided by the caller that will be used to write the log entries. The
-                /// format must be serviceAccount:some@email. This field can only be specified if you are routing logs
-                /// to a destination outside this sink's project. If not specified, a Logging service account will
-                /// automatically be generated.
+                /// Optional. The service account provided by the caller that will be used to write the log entries. The
+                /// format must be serviceAccount:some@email. This field can only be specified when you are routing logs
+                /// to a log bucket that is in a different project than the sink. When not specified, a Logging service
+                /// account will automatically be generated.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("customWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string CustomWriterIdentity { get; set; }
@@ -13949,10 +14432,10 @@ namespace Google.Apis.Logging.v2
                 public virtual string SinkName { get; private set; }
 
                 /// <summary>
-                /// Optional. A service account provided by the caller that will be used to write the log entries. The
-                /// format must be serviceAccount:some@email. This field can only be specified if you are routing logs
-                /// to a destination outside this sink's project. If not specified, a Logging service account will
-                /// automatically be generated.
+                /// Optional. The service account provided by the caller that will be used to write the log entries. The
+                /// format must be serviceAccount:some@email. This field can only be specified when you are routing logs
+                /// to a log bucket that is in a different project than the sink. When not specified, a Logging service
+                /// account will automatically be generated.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("customWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string CustomWriterIdentity { get; set; }
@@ -16723,6 +17206,14 @@ namespace Google.Apis.Logging.v2
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
+                    /// Optional. Specifies the type ("Logging" or "OpsAnalytics") of the recent queries to list. The
+                    /// only valid value for this field is one of the two allowable type function calls, which are the
+                    /// following: type("Logging") type("OpsAnalytics")
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
                     /// Optional. The maximum number of results to return from this request. Non-positive values are
                     /// ignored. The presence of nextPageToken in the response indicates that more results might be
                     /// available.
@@ -16758,6 +17249,14 @@ namespace Google.Apis.Logging.v2
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                         {
@@ -16940,6 +17439,65 @@ namespace Google.Apis.Logging.v2
                     }
                 }
 
+                /// <summary>Returns all data associated with the requested query.</summary>
+                /// <param name="name">
+                /// Required. The resource name of the saved query.
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+                /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+                /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For example:
+                /// "projects/my-project/locations/global/savedQueries/my-saved-query"
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Returns all data associated with the requested query.</summary>
+                public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.SavedQuery>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the saved query.
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+                    /// "organizations/[ORGANIZATION_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+                    /// "billingAccounts/[BILLING_ACCOUNT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]"
+                    /// "folders/[FOLDER_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For example:
+                    /// "projects/my-project/locations/global/savedQueries/my-saved-query"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/savedQueries/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Lists the SavedQueries that were created by the user making the request.</summary>
                 /// <param name="parent">
                 /// Required. The resource to which the listed queries belong.
@@ -17027,6 +17585,92 @@ namespace Google.Apis.Logging.v2
                         RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates an existing SavedQuery.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Output only. Resource name of the saved query.In the format:
+                /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For a list of supported
+                /// locations, see Supported Regions
+                /// (https://cloud.google.com/logging/docs/region-support#bucket-regions)After the saved query is
+                /// created, the location cannot be changed.If the user doesn't provide a QUERY_ID, the system will
+                /// generate an alphanumeric ID.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.SavedQuery body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates an existing SavedQuery.</summary>
+                public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.SavedQuery>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.SavedQuery body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Output only. Resource name of the saved query.In the format:
+                    /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/savedQueries/[QUERY_ID]" For a list of supported
+                    /// locations, see Supported Regions
+                    /// (https://cloud.google.com/logging/docs/region-support#bucket-regions)After the saved query is
+                    /// created, the location cannot be changed.If the user doesn't provide a QUERY_ID, the system will
+                    /// generate an alphanumeric ID.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Required. A non-empty list of fields to change in the existing saved query. Fields are relative
+                    /// to the saved_query and new values for the fields are taken from the corresponding fields in the
+                    /// SavedQuery included in this request. Fields not mentioned in update_mask are not changed and are
+                    /// ignored in the request.To update all mutable fields, specify an update_mask of *.For example, to
+                    /// change the description and query filter text of a saved query, specify an update_mask of
+                    /// "description, query.filter".
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Logging.v2.Data.SavedQuery Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/savedQueries/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -17739,10 +18383,10 @@ namespace Google.Apis.Logging.v2
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// Optional. A service account provided by the caller that will be used to write the log entries. The
-                /// format must be serviceAccount:some@email. This field can only be specified if you are routing logs
-                /// to a destination outside this sink's project. If not specified, a Logging service account will
-                /// automatically be generated.
+                /// Optional. The service account provided by the caller that will be used to write the log entries. The
+                /// format must be serviceAccount:some@email. This field can only be specified when you are routing logs
+                /// to a log bucket that is in a different project than the sink. When not specified, a Logging service
+                /// account will automatically be generated.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("customWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string CustomWriterIdentity { get; set; }
@@ -18064,10 +18708,10 @@ namespace Google.Apis.Logging.v2
                 public virtual string SinkName { get; private set; }
 
                 /// <summary>
-                /// Optional. A service account provided by the caller that will be used to write the log entries. The
-                /// format must be serviceAccount:some@email. This field can only be specified if you are routing logs
-                /// to a destination outside this sink's project. If not specified, a Logging service account will
-                /// automatically be generated.
+                /// Optional. The service account provided by the caller that will be used to write the log entries. The
+                /// format must be serviceAccount:some@email. This field can only be specified when you are routing logs
+                /// to a log bucket that is in a different project than the sink. When not specified, a Logging service
+                /// account will automatically be generated.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("customWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string CustomWriterIdentity { get; set; }
@@ -18194,10 +18838,10 @@ namespace Google.Apis.Logging.v2
                 public virtual string SinkName { get; private set; }
 
                 /// <summary>
-                /// Optional. A service account provided by the caller that will be used to write the log entries. The
-                /// format must be serviceAccount:some@email. This field can only be specified if you are routing logs
-                /// to a destination outside this sink's project. If not specified, a Logging service account will
-                /// automatically be generated.
+                /// Optional. The service account provided by the caller that will be used to write the log entries. The
+                /// format must be serviceAccount:some@email. This field can only be specified when you are routing logs
+                /// to a log bucket that is in a different project than the sink. When not specified, a Logging service
+                /// account will automatically be generated.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("customWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string CustomWriterIdentity { get; set; }
@@ -18467,10 +19111,10 @@ namespace Google.Apis.Logging.v2
             public virtual string Parent { get; private set; }
 
             /// <summary>
-            /// Optional. A service account provided by the caller that will be used to write the log entries. The
-            /// format must be serviceAccount:some@email. This field can only be specified if you are routing logs to a
-            /// destination outside this sink's project. If not specified, a Logging service account will automatically
-            /// be generated.
+            /// Optional. The service account provided by the caller that will be used to write the log entries. The
+            /// format must be serviceAccount:some@email. This field can only be specified when you are routing logs to
+            /// a log bucket that is in a different project than the sink. When not specified, a Logging service account
+            /// will automatically be generated.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CustomWriterIdentity { get; set; }
@@ -18788,10 +19432,10 @@ namespace Google.Apis.Logging.v2
             public virtual string SinkName { get; private set; }
 
             /// <summary>
-            /// Optional. A service account provided by the caller that will be used to write the log entries. The
-            /// format must be serviceAccount:some@email. This field can only be specified if you are routing logs to a
-            /// destination outside this sink's project. If not specified, a Logging service account will automatically
-            /// be generated.
+            /// Optional. The service account provided by the caller that will be used to write the log entries. The
+            /// format must be serviceAccount:some@email. This field can only be specified when you are routing logs to
+            /// a log bucket that is in a different project than the sink. When not specified, a Logging service account
+            /// will automatically be generated.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CustomWriterIdentity { get; set; }
@@ -19980,12 +20624,12 @@ namespace Google.Apis.Logging.v2.Data
 
         /// <summary>
         /// The request processing latency on the server, from the time the request was received until the response was
-        /// sent.
+        /// sent. For WebSocket connections, this field refers to the entire time duration of the connection.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latency")]
         public virtual object Latency { get; set; }
 
-        /// <summary>Protocol used for the request. Examples: "HTTP/1.1", "HTTP/2", "websocket"</summary>
+        /// <summary>Protocol used for the request. Examples: "HTTP/1.1", "HTTP/2"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
         public virtual string Protocol { get; set; }
 

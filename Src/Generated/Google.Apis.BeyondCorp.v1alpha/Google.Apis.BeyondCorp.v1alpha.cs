@@ -3350,7 +3350,7 @@ namespace Google.Apis.BeyondCorp.v1alpha
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. Unique resource name of the Subscription. The name is ignored when creating a
+                /// Identifier. Unique resource name of the Subscription. The name is ignored when creating a
                 /// subscription.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpSaasplatformSubscriptionsV1alphaSubscription body, string name)
@@ -3373,7 +3373,7 @@ namespace Google.Apis.BeyondCorp.v1alpha
                     }
 
                     /// <summary>
-                    /// Required. Unique resource name of the Subscription. The name is ignored when creating a
+                    /// Identifier. Unique resource name of the Subscription. The name is ignored when creating a
                     /// subscription.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -12737,6 +12737,10 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Optional. Protocol config data for the Proxy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proxyProtocolConfig")]
+        public virtual GoogleCloudBeyondcorpPartnerservicesV1alphaProxyProtocolConfig ProxyProtocolConfig { get; set; }
+
         /// <summary>Required. The URI of the proxy server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proxyUri")]
         public virtual string ProxyUri { get; set; }
@@ -12785,6 +12789,19 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The protocol data that specifies how to communicate with Partner's Proxy.</summary>
+    public class GoogleCloudBeyondcorpPartnerservicesV1alphaProxyProtocolConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Untyped property bag to be sent back to the proxy using client specific mechanism.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13412,7 +13429,7 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
         }
 
         /// <summary>
-        /// Required. Unique resource name of the Subscription. The name is ignored when creating a subscription.
+        /// Identifier. Unique resource name of the Subscription. The name is ignored when creating a subscription.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
