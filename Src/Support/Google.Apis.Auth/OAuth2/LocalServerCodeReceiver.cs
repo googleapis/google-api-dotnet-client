@@ -73,16 +73,6 @@ namespace Google.Apis.Auth.OAuth2
   <head><title>OAuth 2.0 Authentication Token Received</title></head>
   <body>
     Received verification code. You may now close this window.
-    <script type='text/javascript'>
-      // This doesn't work on every browser.
-      window.setTimeout(function() {
-          this.focus();
-          window.opener = this;
-          window.open('', '_self', ''); 
-          window.close(); 
-        }, 1000);
-      //if (window.opener) { window.opener.checkToken(); }
-    </script>
   </body>
 </html>";
 
