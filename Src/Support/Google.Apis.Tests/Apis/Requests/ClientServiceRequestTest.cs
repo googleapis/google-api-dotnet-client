@@ -1530,7 +1530,15 @@ namespace Google.Apis.Tests.Apis.Requests
             var handler = new TestHttpHandler(req =>
             {
                 lastRequest = req;
-                return new HttpResponseMessage();
+                return new HttpResponseMessage
+                {
+                    // In .NET Framework 4.6.2 Content is null and since the request here succeedds,
+                    // we attempt to parse the response and get NullReferenceException.
+                    // Note this is a test problem and not a production code problem because Content
+                    // won't be null on a successful response.
+                    // In .NET 6, Content will be EmptyContent.
+                    Content = new StringContent("")
+                };
             });
             var initializer = new BaseClientService.Initializer
             {
@@ -1552,7 +1560,15 @@ namespace Google.Apis.Tests.Apis.Requests
             var handler = new TestHttpHandler(req =>
             {
                 lastRequest = req;
-                return new HttpResponseMessage();
+                return new HttpResponseMessage
+                {
+                    // In .NET Framework 4.6.2 Content is null and since the request here succeedds,
+                    // we attempt to parse the response and get NullReferenceException.
+                    // Note this is a test problem and not a production code problem because Content
+                    // won't be null on a successful response.
+                    // In .NET 6, Content will be EmptyContent.
+                    Content = new StringContent("")
+                };
             });
             var initializer = new BaseClientService.Initializer
             {
