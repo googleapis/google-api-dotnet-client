@@ -1375,6 +1375,7 @@ namespace Google.Apis.DLP.v2
                 DeidentifyTemplates = new DeidentifyTemplatesResource(service);
                 DiscoveryConfigs = new DiscoveryConfigsResource(service);
                 DlpJobs = new DlpJobsResource(service);
+                FileStoreDataProfiles = new FileStoreDataProfilesResource(service);
                 InspectTemplates = new InspectTemplatesResource(service);
                 JobTriggers = new JobTriggersResource(service);
                 ProjectDataProfiles = new ProjectDataProfilesResource(service);
@@ -2857,6 +2858,251 @@ namespace Google.Apis.DLP.v2
                         RequestParameters.Add("type", new Google.Apis.Discovery.Parameter
                         {
                             Name = "type",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the FileStoreDataProfiles resource.</summary>
+            public virtual FileStoreDataProfilesResource FileStoreDataProfiles { get; }
+
+            /// <summary>The "fileStoreDataProfiles" collection of methods.</summary>
+            public class FileStoreDataProfilesResource
+            {
+                private const string Resource = "fileStoreDataProfiles";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public FileStoreDataProfilesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Delete a FileStoreDataProfile. Will not prevent the profile from being regenerated if the resource
+                /// is still included in a discovery configuration.
+                /// </summary>
+                /// <param name="name">Required. Resource name of the file store data profile.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>
+                /// Delete a FileStoreDataProfile. Will not prevent the profile from being regenerated if the resource
+                /// is still included in a discovery configuration.
+                /// </summary>
+                public class DeleteRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GoogleProtobufEmpty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Resource name of the file store data profile.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/fileStoreDataProfiles/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets a file store data profile.</summary>
+                /// <param name="name">
+                /// Required. Resource name, for example
+                /// `organizations/12345/locations/us/fileStoreDataProfiles/53234423`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets a file store data profile.</summary>
+                public class GetRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2FileStoreDataProfile>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name, for example
+                    /// `organizations/12345/locations/us/fileStoreDataProfiles/53234423`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/fileStoreDataProfiles/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists file store data profiles for an organization.</summary>
+                /// <param name="parent">
+                /// Required. Resource name of the organization or project, for example
+                /// `organizations/433245324/locations/europe` or `projects/project-id/locations/asia`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists file store data profiles for an organization.</summary>
+                public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListFileStoreDataProfilesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name of the organization or project, for example
+                    /// `organizations/433245324/locations/europe` or `projects/project-id/locations/asia`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Allows filtering. Supported syntax: * Filter expressions are made up of one or more
+                    /// restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of
+                    /// restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator}
+                    /// {value}`. * Supported fields/values: - `project_id` - The Google Cloud project ID. -
+                    /// `file_store_path` - The path like "gs://bucket". - `sensitivity_level` - HIGH|MODERATE|LOW -
+                    /// `data_risk_level` - HIGH|MODERATE|LOW - `resource_visibility`: PUBLIC|RESTRICTED - `status_code`
+                    /// - an RPC status code as defined in
+                    /// https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto * The operator must
+                    /// be `=` or `!=`. Examples: * `project_id = 12345 AND status_code = 1` * `project_id = 12345 AND
+                    /// sensitivity_level = HIGH` * `project_id = 12345 AND resource_visibility = PUBLIC` . *
+                    /// 'file_store_path = "gs://mybucket"` The length of this field should be no more than 500
+                    /// characters.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This
+                    /// list is case insensitive. The default sorting order is ascending. Redundant space characters are
+                    /// insignificant. Only one order field at a time is allowed. Examples: * `project_id asc` * `name`
+                    /// * `sensitivity_level desc` Supported fields are: - `project_id`: The Google Cloud project ID. -
+                    /// `sensitivity_level`: How sensitive the data in a table is, at most. - `data_risk_level`: How
+                    /// much risk is associated with this data. - `profile_last_generated`: When the profile was last
+                    /// updated in epoch seconds. - `last_modified`: The last time the resource was modified. -
+                    /// `resource_visibility`: Visibility restriction for this resource. - `name`: The name of the
+                    /// profile. - `create_time`: The time the file store was first created.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. Size of the page. This value can be limited by the server. If zero, server returns a
+                    /// page of max size 100.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. Page token to continue retrieval.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/fileStoreDataProfiles";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -7167,6 +7413,7 @@ namespace Google.Apis.DLP.v2
                 DeidentifyTemplates = new DeidentifyTemplatesResource(service);
                 DiscoveryConfigs = new DiscoveryConfigsResource(service);
                 DlpJobs = new DlpJobsResource(service);
+                FileStoreDataProfiles = new FileStoreDataProfilesResource(service);
                 Image = new ImageResource(service);
                 InspectTemplates = new InspectTemplatesResource(service);
                 JobTriggers = new JobTriggersResource(service);
@@ -9377,6 +9624,251 @@ namespace Google.Apis.DLP.v2
                         RequestParameters.Add("type", new Google.Apis.Discovery.Parameter
                         {
                             Name = "type",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the FileStoreDataProfiles resource.</summary>
+            public virtual FileStoreDataProfilesResource FileStoreDataProfiles { get; }
+
+            /// <summary>The "fileStoreDataProfiles" collection of methods.</summary>
+            public class FileStoreDataProfilesResource
+            {
+                private const string Resource = "fileStoreDataProfiles";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public FileStoreDataProfilesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Delete a FileStoreDataProfile. Will not prevent the profile from being regenerated if the resource
+                /// is still included in a discovery configuration.
+                /// </summary>
+                /// <param name="name">Required. Resource name of the file store data profile.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>
+                /// Delete a FileStoreDataProfile. Will not prevent the profile from being regenerated if the resource
+                /// is still included in a discovery configuration.
+                /// </summary>
+                public class DeleteRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GoogleProtobufEmpty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Resource name of the file store data profile.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/fileStoreDataProfiles/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets a file store data profile.</summary>
+                /// <param name="name">
+                /// Required. Resource name, for example
+                /// `organizations/12345/locations/us/fileStoreDataProfiles/53234423`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets a file store data profile.</summary>
+                public class GetRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2FileStoreDataProfile>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name, for example
+                    /// `organizations/12345/locations/us/fileStoreDataProfiles/53234423`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/fileStoreDataProfiles/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists file store data profiles for an organization.</summary>
+                /// <param name="parent">
+                /// Required. Resource name of the organization or project, for example
+                /// `organizations/433245324/locations/europe` or `projects/project-id/locations/asia`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists file store data profiles for an organization.</summary>
+                public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListFileStoreDataProfilesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name of the organization or project, for example
+                    /// `organizations/433245324/locations/europe` or `projects/project-id/locations/asia`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Allows filtering. Supported syntax: * Filter expressions are made up of one or more
+                    /// restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of
+                    /// restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator}
+                    /// {value}`. * Supported fields/values: - `project_id` - The Google Cloud project ID. -
+                    /// `file_store_path` - The path like "gs://bucket". - `sensitivity_level` - HIGH|MODERATE|LOW -
+                    /// `data_risk_level` - HIGH|MODERATE|LOW - `resource_visibility`: PUBLIC|RESTRICTED - `status_code`
+                    /// - an RPC status code as defined in
+                    /// https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto * The operator must
+                    /// be `=` or `!=`. Examples: * `project_id = 12345 AND status_code = 1` * `project_id = 12345 AND
+                    /// sensitivity_level = HIGH` * `project_id = 12345 AND resource_visibility = PUBLIC` . *
+                    /// 'file_store_path = "gs://mybucket"` The length of this field should be no more than 500
+                    /// characters.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This
+                    /// list is case insensitive. The default sorting order is ascending. Redundant space characters are
+                    /// insignificant. Only one order field at a time is allowed. Examples: * `project_id asc` * `name`
+                    /// * `sensitivity_level desc` Supported fields are: - `project_id`: The Google Cloud project ID. -
+                    /// `sensitivity_level`: How sensitive the data in a table is, at most. - `data_risk_level`: How
+                    /// much risk is associated with this data. - `profile_last_generated`: When the profile was last
+                    /// updated in epoch seconds. - `last_modified`: The last time the resource was modified. -
+                    /// `resource_visibility`: Visibility restriction for this resource. - `name`: The name of the
+                    /// profile. - `create_time`: The time the file store was first created.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. Size of the page. This value can be limited by the server. If zero, server returns a
+                    /// page of max size 100.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. Page token to continue retrieval.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/fileStoreDataProfiles";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -13329,6 +13821,10 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("columnProfile")]
         public virtual GooglePrivacyDlpV2ColumnDataProfile ColumnProfile { get; set; }
 
+        /// <summary>File store data profile column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileStoreProfile")]
+        public virtual GooglePrivacyDlpV2FileStoreDataProfile FileStoreProfile { get; set; }
+
         /// <summary>Table data profile column</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableProfile")]
         public virtual GooglePrivacyDlpV2TableDataProfile TableProfile { get; set; }
@@ -13479,6 +13975,13 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>The event that caused the Pub/Sub message to be sent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("event")]
         public virtual string Event__ { get; set; }
+
+        /// <summary>
+        /// If `DetailLevel` is `FILE_STORE_PROFILE` this will be fully populated. Otherwise, if `DetailLevel` is
+        /// `RESOURCE_NAME`, then only `name` and `file_store_path` will be populated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileStoreProfile")]
+        public virtual GooglePrivacyDlpV2FileStoreDataProfile FileStoreProfile { get; set; }
 
         /// <summary>
         /// If `DetailLevel` is `TABLE_PROFILE` this will be fully populated. Otherwise, if `DetailLevel` is
@@ -14779,6 +15282,10 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual GoogleRpcStatus Details { get; set; }
 
+        /// <summary>Additional information about the error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extraInfo")]
+        public virtual string ExtraInfo { get; set; }
+
         /// <summary>
         /// The times the error occurred. List includes the oldest timestamp and the last 9 timestamps.
         /// </summary>
@@ -14944,6 +15451,74 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The file cluster summary.</summary>
+    public class GooglePrivacyDlpV2FileClusterSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The data risk level of this cluster. RISK_LOW if nothing has been scanned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataRiskLevel")]
+        public virtual GooglePrivacyDlpV2DataRiskLevel DataRiskLevel { get; set; }
+
+        /// <summary>
+        /// A list of Errors detected while scanning this cluster. The list is truncated to 10 per cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Error> Errors { get; set; }
+
+        /// <summary>The file cluster type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileClusterType")]
+        public virtual GooglePrivacyDlpV2FileClusterType FileClusterType { get; set; }
+
+        /// <summary>A sample of file types scanned in this cluster. Empty if no files were scanned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileExtensionsScanned")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2FileExtensionInfo> FileExtensionsScanned { get; set; }
+
+        /// <summary>A sample of file types seen in this cluster. Empty if no files were seen.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileExtensionsSeen")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2FileExtensionInfo> FileExtensionsSeen { get; set; }
+
+        /// <summary>InfoTypes detected in this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileStoreInfoTypeSummaries")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2FileStoreInfoTypeSummary> FileStoreInfoTypeSummaries { get; set; }
+
+        /// <summary>
+        /// True if no files exist in this cluster. If the bucket had more files than could be listed, this will be
+        /// false even if no files for this cluster were seen and file_extensions_seen is empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noFilesExist")]
+        public virtual System.Nullable<bool> NoFilesExist { get; set; }
+
+        /// <summary>
+        /// The sensitivity score of this cluster. The score will be SENSITIVITY_LOW if nothing has been scanned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sensitivityScore")]
+        public virtual GooglePrivacyDlpV2SensitivityScore SensitivityScore { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message used to identify file cluster type being profiled.</summary>
+    public class GooglePrivacyDlpV2FileClusterType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Cluster type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
+        public virtual string Cluster { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information regarding the discovered file extension.</summary>
+    public class GooglePrivacyDlpV2FileExtensionInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The file extension if set. (aka .pdf, .jpg, .txt)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileExtension")]
+        public virtual string FileExtension { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Set of files to scan.</summary>
     public class GooglePrivacyDlpV2FileSet : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14962,6 +15537,240 @@ namespace Google.Apis.DLP.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The profile for a file store. * Google Cloud Storage: maps 1:1 with a bucket.</summary>
+    public class GooglePrivacyDlpV2FileStoreDataProfile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The snapshot of the configurations used to generate the profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configSnapshot")]
+        public virtual GooglePrivacyDlpV2DataProfileConfigSnapshot ConfigSnapshot { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>The time the file store was first created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The data risk level of this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataRiskLevel")]
+        public virtual GooglePrivacyDlpV2DataRiskLevel DataRiskLevel { get; set; }
+
+        /// <summary>The resource type that was profiled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSourceType")]
+        public virtual GooglePrivacyDlpV2DataSourceType DataSourceType { get; set; }
+
+        /// <summary>
+        /// For resources that have multiple storage locations, these are those regions. For Google Cloud Storage this
+        /// is the list of regions chosen for dual-region storage. `file_store_location` will normally be the
+        /// corresponding multi-region for the list of individual locations. The first region is always picked as the
+        /// processing and storage location for the data profile.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataStorageLocations")]
+        public virtual System.Collections.Generic.IList<string> DataStorageLocations { get; set; }
+
+        /// <summary>FileClusterSummary per each cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileClusterSummaries")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2FileClusterSummary> FileClusterSummaries { get; set; }
+
+        /// <summary>InfoTypes detected in this file store.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileStoreInfoTypeSummaries")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2FileStoreInfoTypeSummary> FileStoreInfoTypeSummaries { get; set; }
+
+        /// <summary>The file store does not have any files.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileStoreIsEmpty")]
+        public virtual System.Nullable<bool> FileStoreIsEmpty { get; set; }
+
+        /// <summary>
+        /// The location of the file store. * Google Cloud Storage:
+        /// https://cloud.google.com/storage/docs/locations#available-locations
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileStoreLocation")]
+        public virtual string FileStoreLocation { get; set; }
+
+        /// <summary>The file store path. * Google Cloud Storage: `gs://{bucket}`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileStorePath")]
+        public virtual string FileStorePath { get; set; }
+
+        /// <summary>
+        /// The resource name of the resource profiled.
+        /// https://cloud.google.com/apis/design/resource_names#full_resource_name
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullResource")]
+        public virtual string FullResource { get; set; }
+
+        private string _lastModifiedTimeRaw;
+
+        private object _lastModifiedTime;
+
+        /// <summary>The time the file store was last modified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedTime")]
+        public virtual string LastModifiedTimeRaw
+        {
+            get => _lastModifiedTimeRaw;
+            set
+            {
+                _lastModifiedTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastModifiedTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastModifiedTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastModifiedTimeDateTimeOffset instead.")]
+        public virtual object LastModifiedTime
+        {
+            get => _lastModifiedTime;
+            set
+            {
+                _lastModifiedTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastModifiedTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastModifiedTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastModifiedTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastModifiedTimeRaw);
+            set => LastModifiedTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// The location type of the bucket (region, dual-region, multi-region, etc). If dual-region, expect
+        /// data_storage_locations to be populated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationType")]
+        public virtual string LocationType { get; set; }
+
+        /// <summary>The name of the profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _profileLastGeneratedRaw;
+
+        private object _profileLastGenerated;
+
+        /// <summary>The last time the profile was generated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("profileLastGenerated")]
+        public virtual string ProfileLastGeneratedRaw
+        {
+            get => _profileLastGeneratedRaw;
+            set
+            {
+                _profileLastGenerated = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _profileLastGeneratedRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ProfileLastGeneratedRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ProfileLastGeneratedDateTimeOffset instead.")]
+        public virtual object ProfileLastGenerated
+        {
+            get => _profileLastGenerated;
+            set
+            {
+                _profileLastGeneratedRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _profileLastGenerated = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ProfileLastGeneratedRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ProfileLastGeneratedDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ProfileLastGeneratedRaw);
+            set => ProfileLastGeneratedRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Success or error status from the most recent profile generation attempt. May be empty if the profile is
+        /// still being generated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("profileStatus")]
+        public virtual GooglePrivacyDlpV2ProfileStatus ProfileStatus { get; set; }
+
+        /// <summary>The resource name to the project data profile for this file store.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectDataProfile")]
+        public virtual string ProjectDataProfile { get; set; }
+
+        /// <summary>The Google Cloud project ID that owns the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; }
+
+        /// <summary>
+        /// Attributes of the resource being profiled. Currently used attributes: - customer_managed_encryption: boolean
+        /// true: the resource is encrypted with a customer-managed key. false: the resource is encrypted with a
+        /// provider-managed key.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceAttributes")]
+        public virtual System.Collections.Generic.IDictionary<string, GooglePrivacyDlpV2Value> ResourceAttributes { get; set; }
+
+        /// <summary>The labels applied to the resource at the time the profile was generated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceLabels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ResourceLabels { get; set; }
+
+        /// <summary>How broadly a resource has been shared.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceVisibility")]
+        public virtual string ResourceVisibility { get; set; }
+
+        /// <summary>The sensitivity score of this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sensitivityScore")]
+        public virtual GooglePrivacyDlpV2SensitivityScore SensitivityScore { get; set; }
+
+        /// <summary>State of a profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information regarding the discovered InfoType.</summary>
+    public class GooglePrivacyDlpV2FileStoreInfoTypeSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The InfoType seen.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("infoType")]
+        public virtual GooglePrivacyDlpV2InfoType InfoType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16619,6 +17428,21 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>List of file store data profiles generated for a given organization or project.</summary>
+    public class GooglePrivacyDlpV2ListFileStoreDataProfilesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of data profiles.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileStoreDataProfiles")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2FileStoreDataProfile> FileStoreDataProfiles { get; set; }
+
+        /// <summary>The next page token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response to the ListInfoTypes request.</summary>
     public class GooglePrivacyDlpV2ListInfoTypesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -17083,6 +17907,10 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataRiskLevel")]
         public virtual GooglePrivacyDlpV2DataRiskLevel DataRiskLevel { get; set; }
 
+        /// <summary>The number of file store data profiles generated for this project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileStoreDataProfileCount")]
+        public virtual System.Nullable<long> FileStoreDataProfileCount { get; set; }
+
         /// <summary>The resource name of the profile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -17137,6 +17965,10 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>The sensitivity score of this project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sensitivityScore")]
         public virtual GooglePrivacyDlpV2SensitivityScore SensitivityScore { get; set; }
+
+        /// <summary>The number of table data profiles generated for this project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableDataProfileCount")]
+        public virtual System.Nullable<long> TableDataProfileCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -5122,8 +5122,11 @@ namespace Google.Apis.Bigquery.v2.Data
     /// with a given session. * **query_label**: associates the query with a given job label. If set, all subsequent
     /// queries in a script or session will have this label. For the format in which a you can specify a query label,
     /// see labels in the JobConfiguration resource type:
-    /// https://cloud.google.com/bigquery/docs/reference/rest/v2/Job#jobconfiguration Additional properties are allowed,
-    /// but ignored. Specifying multiple connection properties with the same key returns an error.
+    /// https://cloud.google.com/bigquery/docs/reference/rest/v2/Job#jobconfiguration * **service_account**: indicates
+    /// the service account to use to run a continuous query. If set, the query job uses the service account to access
+    /// Google Cloud resources. Service account access is bounded by the IAM permissions that you have granted to the
+    /// service account. Additional properties are allowed, but ignored. Specifying multiple connection properties with
+    /// the same key returns an error.
     /// </summary>
     public class ConnectionProperty : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9188,7 +9191,7 @@ namespace Google.Apis.Bigquery.v2.Data
     /// <summary>The partitioning column information.</summary>
     public class PartitionedColumn : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The name of the partition column.</summary>
+        /// <summary>Required. The name of the partition column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
         public virtual string Field { get; set; }
 
@@ -9197,13 +9200,18 @@ namespace Google.Apis.Bigquery.v2.Data
     }
 
     /// <summary>
-    /// The partitioning information, which includes managed table and external table partition information.
+    /// The partitioning information, which includes managed table, external table and metastore partitioned table
+    /// partition information.
     /// </summary>
     public class PartitioningDefinition : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. Details about each partitioning column. BigQuery native tables only support 1 partitioning
-        /// column. Other table types may support 0, 1 or more partitioning columns.
+        /// Optional. Details about each partitioning column. This field is output only for all partitioning types other
+        /// than metastore partitioned tables. BigQuery native tables only support 1 partitioning column. Other table
+        /// types may support 0, 1 or more partitioning columns. For metastore partitioned tables, the order must match
+        /// the definition order in the Hive Metastore, where it must match the physical layout of the table. For
+        /// example, CREATE TABLE a_table(id BIGINT, name STRING) PARTITIONED BY (city STRING, state STRING). In this
+        /// case the values must be ['city', 'state'] in that order.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partitionedColumn")]
         public virtual System.Collections.Generic.IList<PartitionedColumn> PartitionedColumn { get; set; }
@@ -9840,8 +9848,8 @@ namespace Google.Apis.Bigquery.v2.Data
     public class RangePartitioning : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. [Experimental] The table is partitioned by this field. The field must be a top-level
-        /// NULLABLE/REQUIRED field. The only supported type is INTEGER/INT64.
+        /// Required. The name of the column to partition the table on. It must be a top-level, INT64 column whose mode
+        /// is NULLABLE or REQUIRED.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
         public virtual string Field { get; set; }
@@ -11098,8 +11106,9 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual System.Nullable<long> NumTotalPhysicalBytes { get; set; }
 
         /// <summary>
-        /// Output only. The partition information for all table formats, including managed partitioned tables, hive
-        /// partitioned tables, and iceberg partitioned tables.
+        /// Optional. The partition information for all table formats, including managed partitioned tables, hive
+        /// partitioned tables, iceberg partitioned, and metastore partitioned tables. This field is only populated for
+        /// metastore partitioned tables. For other table formats, this is an output only field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partitionDefinition")]
         public virtual PartitioningDefinition PartitionDefinition { get; set; }

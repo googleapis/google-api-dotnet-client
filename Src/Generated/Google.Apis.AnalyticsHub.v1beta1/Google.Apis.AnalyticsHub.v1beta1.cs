@@ -1931,6 +1931,17 @@ namespace Google.Apis.AnalyticsHub.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("linkedDataset")]
         public virtual string LinkedDataset { get; set; }
 
+        /// <summary>
+        /// Output only. Name of the Pub/Sub subscription, e.g.
+        /// projects/subscriberproject/subscriptions/subscriptions/sub_id
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkedPubsubSubscription")]
+        public virtual string LinkedPubsubSubscription { get; set; }
+
+        /// <summary>Output only. Listing for which linked resource is created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("listing")]
+        public virtual string Listing { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2056,6 +2067,7 @@ namespace Google.Apis.AnalyticsHub.v1beta1.Data
 
         /// <summary>
         /// Optional. If set, restricted export configuration will be propagated and enforced on the linked dataset.
+        /// This is a required field for data clean room exchanges.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restrictedExportConfig")]
         public virtual RestrictedExportConfig RestrictedExportConfig { get; set; }
@@ -2447,6 +2459,12 @@ namespace Google.Apis.AnalyticsHub.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string, LinkedResource> LinkedDatasetMap { get; set; }
 
         /// <summary>
+        /// Output only. Linked resources created in the subscription. Only contains values if state = STATE_ACTIVE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkedResources")]
+        public virtual System.Collections.Generic.IList<LinkedResource> LinkedResources { get; set; }
+
+        /// <summary>
         /// Output only. Resource name of the source Listing. e.g.
         /// projects/123/locations/US/dataExchanges/456/listings/789
         /// </summary>
@@ -2467,6 +2485,10 @@ namespace Google.Apis.AnalyticsHub.v1beta1.Data
         /// <summary>Output only. Organization of the project this subscription belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("organizationId")]
         public virtual string OrganizationId { get; set; }
+
+        /// <summary>Output only. Listing shared asset type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
+        public virtual string ResourceType { get; set; }
 
         /// <summary>Output only. Current state of the subscription.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]

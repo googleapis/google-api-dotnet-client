@@ -1533,6 +1533,36 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Instructions for AI driven test</summary>
+    public class GoogleFirebaseAppdistroV1alphaAiInstructions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Describes the app to give the AI some context</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appDescription")]
+        public virtual string AppDescription { get; set; }
+
+        /// <summary>Required. Steps to be accomplished by the AI</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("steps")]
+        public virtual System.Collections.Generic.IList<GoogleFirebaseAppdistroV1alphaAiInstructionsStep> Steps { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A step to be accomplished by the AI</summary>
+    public class GoogleFirebaseAppdistroV1alphaAiInstructionsStep : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An assertion to be checked by the AI</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assertion")]
+        public virtual string Assertion { get; set; }
+
+        /// <summary>A goal to be accomplished by the AI</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("goal")]
+        public virtual string Goal { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class GoogleFirebaseAppdistroV1alphaApp : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>App bundle test certificate generated for the app.</summary>
@@ -1982,6 +2012,10 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
     /// <summary>The results of running an automated test on a release.</summary>
     public class GoogleFirebaseAppdistroV1alphaReleaseTest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Input only. Instructions for AI driven test. Input only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aiInstructions")]
+        public virtual GoogleFirebaseAppdistroV1alphaAiInstructions AiInstructions { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -2041,6 +2075,10 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
     /// <summary>Configuration for Robo crawler</summary>
     public class GoogleFirebaseAppdistroV1alphaRoboCrawler : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Instructions for AI driven test</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aiInstructions")]
+        public virtual GoogleFirebaseAppdistroV1alphaAiInstructions AiInstructions { get; set; }
+
         /// <summary>Optional. Login credential for automated tests</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loginCredential")]
         public virtual GoogleFirebaseAppdistroV1alphaLoginCredential LoginCredential { get; set; }

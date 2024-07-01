@@ -1770,6 +1770,23 @@ namespace Google.Apis.WorkloadManager.v1
 }
 namespace Google.Apis.WorkloadManager.v1.Data
 {
+    /// <summary>* An AgentCommand specifies a one-time executable program for the agent to run.</summary>
+    public class AgentCommand : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>command is the name of the agent one-time executable that will be invoked.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("command")]
+        public virtual string Command { get; set; }
+
+        /// <summary>
+        /// parameters is a map of key/value pairs that can be used to specify additional one-time executable settings.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Parameters { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Provides the mapping of a cloud asset to a direct physical location or to a proxy that defines the location on
     /// its behalf.
@@ -1853,6 +1870,21 @@ namespace Google.Apis.WorkloadManager.v1.Data
     {
         [Newtonsoft.Json.JsonPropertyAttribute("childAsset")]
         public virtual System.Collections.Generic.IList<CloudAsset> ChildAsset { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>* Command specifies the type of command to execute.</summary>
+    public class Command : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>AgentCommand specifies a one-time executable program for the agent to run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentCommand")]
+        public virtual AgentCommand AgentCommand { get; set; }
+
+        /// <summary>ShellCommand is invoked via the agent's command line executor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shellCommand")]
+        public virtual ShellCommand ShellCommand { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2156,6 +2188,10 @@ namespace Google.Apis.WorkloadManager.v1.Data
     /// <summary>Message describing the result of an execution</summary>
     public class ExecutionResult : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The commands to remediate the violation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commands")]
+        public virtual System.Collections.Generic.IList<Command> Commands { get; set; }
+
         /// <summary>The URL for the documentation of the rule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentationUrl")]
         public virtual string DocumentationUrl { get; set; }
@@ -2187,8 +2223,12 @@ namespace Google.Apis.WorkloadManager.v1.Data
     /// <summary>Message for external data sources</summary>
     public class ExternalDataSources : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Required. The asset type of the external data source must be one of go/cai-asset-types</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetType")]
+        public virtual string AssetType { get; set; }
+
         /// <summary>
-        /// Required. Name of external data source. The name will be used inside the rego/sql to refer the external data
+        /// Optional. Name of external data source. The name will be used inside the rego/sql to refer the external data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -3254,6 +3294,25 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// <summary>resource type</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>* A ShellCommand is invoked via the agent's command line executor</summary>
+    public class ShellCommand : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>args is a string of arguments to be passed to the command.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("args")]
+        public virtual string Args { get; set; }
+
+        /// <summary>command is the name of the command to be executed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("command")]
+        public virtual string Command { get; set; }
+
+        /// <summary>Optional. If not specified, the default timeout is 60 seconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeoutSeconds")]
+        public virtual System.Nullable<int> TimeoutSeconds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

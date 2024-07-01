@@ -6329,17 +6329,17 @@ namespace Google.Apis.Container.v1beta1.Data
     /// </summary>
     public class AdditionalPodNetworkConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The maximum number of pods per node which use this pod network</summary>
+        /// <summary>The maximum number of pods per node which use this pod network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxPodsPerNode")]
         public virtual MaxPodsConstraint MaxPodsPerNode { get; set; }
 
         /// <summary>
-        /// The name of the secondary range on the subnet which provides IP address for this pod range
+        /// The name of the secondary range on the subnet which provides IP address for this pod range.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secondaryPodRange")]
         public virtual string SecondaryPodRange { get; set; }
 
-        /// <summary>Name of the subnetwork where the additional pod network belongs</summary>
+        /// <summary>Name of the subnetwork where the additional pod network belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
         public virtual string Subnetwork { get; set; }
 

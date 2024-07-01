@@ -6042,6 +6042,10 @@ namespace Google.Apis.SQLAdmin.v1.Data
             [Newtonsoft.Json.JsonPropertyAttribute("parallel")]
             public virtual System.Nullable<bool> Parallel { get; set; }
 
+            /// <summary>Options for exporting from a Cloud SQL for PostgreSQL instance.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("postgresExportOptions")]
+            public virtual PostgresExportOptionsData PostgresExportOptions { get; set; }
+
             /// <summary>Export only schemas.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("schemaOnly")]
             public virtual System.Nullable<bool> SchemaOnly { get; set; }
@@ -6068,6 +6072,23 @@ namespace Google.Apis.SQLAdmin.v1.Data
                 /// </summary>
                 [Newtonsoft.Json.JsonPropertyAttribute("masterData")]
                 public virtual System.Nullable<int> MasterData { get; set; }
+            }
+
+            /// <summary>Options for exporting from a Cloud SQL for PostgreSQL instance.</summary>
+            public class PostgresExportOptionsData
+            {
+                /// <summary>
+                /// Optional. Use this option to include DROP SQL statements. These statements are used to delete
+                /// database objects before running the import operation.
+                /// </summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("clean")]
+                public virtual System.Nullable<bool> Clean { get; set; }
+
+                /// <summary>
+                /// Optional. Option to include an IF EXISTS SQL statement with each DROP statement produced by clean.
+                /// </summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("ifExists")]
+                public virtual System.Nullable<bool> IfExists { get; set; }
             }
         }
     }
@@ -6462,9 +6483,31 @@ namespace Google.Apis.SQLAdmin.v1.Data
             [Newtonsoft.Json.JsonPropertyAttribute("parallel")]
             public virtual System.Nullable<bool> Parallel { get; set; }
 
+            /// <summary>Optional. Options for importing from a Cloud SQL for PostgreSQL instance.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("postgresImportOptions")]
+            public virtual PostgresImportOptionsData PostgresImportOptions { get; set; }
+
             /// <summary>Optional. The number of threads to use for parallel import.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("threads")]
             public virtual System.Nullable<int> Threads { get; set; }
+
+            /// <summary>Optional. Options for importing from a Cloud SQL for PostgreSQL instance.</summary>
+            public class PostgresImportOptionsData
+            {
+                /// <summary>
+                /// Optional. The --clean flag for the pg_restore utility. This flag applies only if you enabled Cloud
+                /// SQL to import files in parallel.
+                /// </summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("clean")]
+                public virtual System.Nullable<bool> Clean { get; set; }
+
+                /// <summary>
+                /// Optional. The --if-exists flag for the pg_restore utility. This flag applies only if you enabled
+                /// Cloud SQL to import files in parallel.
+                /// </summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("ifExists")]
+                public virtual System.Nullable<bool> IfExists { get; set; }
+            }
         }
     }
 

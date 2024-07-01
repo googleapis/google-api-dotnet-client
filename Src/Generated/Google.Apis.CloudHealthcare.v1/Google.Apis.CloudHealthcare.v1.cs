@@ -9476,7 +9476,6 @@ namespace Google.Apis.CloudHealthcare.v1
                         /// <param name="name">
                         /// Output only. Resource name of the Message, of the form
                         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`.
-                        /// Assigned by the server.
                         /// </param>
                         public virtual PatchRequest Patch(Google.Apis.CloudHealthcare.v1.Data.Message body, string name)
                         {
@@ -9502,7 +9501,6 @@ namespace Google.Apis.CloudHealthcare.v1
                             /// <summary>
                             /// Output only. Resource name of the Message, of the form
                             /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`.
-                            /// Assigned by the server.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -14291,7 +14289,6 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// <summary>
         /// Output only. Resource name of the Message, of the form
         /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`.
-        /// Assigned by the server.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
