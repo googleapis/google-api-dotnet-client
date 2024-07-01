@@ -11636,7 +11636,10 @@ namespace Google.Apis.Walletobjects.v1.Data
         public virtual string Header { get; set; }
 
         /// <summary>
-        /// The ID associated with a text module. This field is here to enable ease of management of text modules.
+        /// The ID associated with a text module. This field is here to enable ease of management of text modules and
+        /// referencing them in template overrides. The ID should only include alphanumeric characters, '_', or '-'. It
+        /// can not include dots, as dots are used to separate fields within FieldReference.fieldPaths in template
+        /// overrides.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }

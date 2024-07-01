@@ -837,13 +837,20 @@ namespace Google.Apis.HangoutsChat.v1
             /// space invitation before joining. Otherwise, creating a membership adds the member directly to the
             /// specified space. Requires [user
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user). To
-            /// specify the member to add, set the `membership.member.name` for the human or app member. - To add the
-            /// calling app to a space or a direct message between two human users, use `users/app`. Unable to add other
-            /// apps to the space. - To add a human user, use `users/{user}`, where `{user}` can be the email address
-            /// for the user. For users in the same Workspace organization `{user}` can also be the `id` for the person
-            /// from the People API, or the `id` for the user in the Directory API. For example, if the People API
-            /// Person profile ID for `user@example.com` is `123456789`, you can add the user to the space by setting
-            /// the `membership.member.name` to `users/user@example.com` or `users/123456789`.
+            /// specify the member to add, set the `membership.member.name` for the human or app member, or set the
+            /// `membership.group_member.name` for the group member. - To add the calling app to a space or a direct
+            /// message between two human users, use `users/app`. Unable to add other apps to the space. - To add a
+            /// human user, use `users/{user}`, where `{user}` can be the email address for the user. For users in the
+            /// same Workspace organization `{user}` can also be the `id` for the person from the People API, or the
+            /// `id` for the user in the Directory API. For example, if the People API Person profile ID for
+            /// `user@example.com` is `123456789`, you can add the user to the space by setting the
+            /// `membership.member.name` to `users/user@example.com` or `users/123456789`. - To add or invite a Google
+            /// group in a named space, use `groups/{group}`, where `{group}` is the `id` for the group from the Cloud
+            /// Identity Groups API. For example, you can use [Cloud Identity Groups lookup
+            /// API](https://cloud.google.com/identity/docs/reference/rest/v1/groups/lookup) to retrieve the ID
+            /// `123456789` for group email `group@example.com`, then you can add or invite the group to a named space
+            /// by setting the `membership.group_member.name` to `groups/123456789`. Group email is not supported, and
+            /// Google groups can only be added as members in named spaces.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -862,13 +869,20 @@ namespace Google.Apis.HangoutsChat.v1
             /// space invitation before joining. Otherwise, creating a membership adds the member directly to the
             /// specified space. Requires [user
             /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user). To
-            /// specify the member to add, set the `membership.member.name` for the human or app member. - To add the
-            /// calling app to a space or a direct message between two human users, use `users/app`. Unable to add other
-            /// apps to the space. - To add a human user, use `users/{user}`, where `{user}` can be the email address
-            /// for the user. For users in the same Workspace organization `{user}` can also be the `id` for the person
-            /// from the People API, or the `id` for the user in the Directory API. For example, if the People API
-            /// Person profile ID for `user@example.com` is `123456789`, you can add the user to the space by setting
-            /// the `membership.member.name` to `users/user@example.com` or `users/123456789`.
+            /// specify the member to add, set the `membership.member.name` for the human or app member, or set the
+            /// `membership.group_member.name` for the group member. - To add the calling app to a space or a direct
+            /// message between two human users, use `users/app`. Unable to add other apps to the space. - To add a
+            /// human user, use `users/{user}`, where `{user}` can be the email address for the user. For users in the
+            /// same Workspace organization `{user}` can also be the `id` for the person from the People API, or the
+            /// `id` for the user in the Directory API. For example, if the People API Person profile ID for
+            /// `user@example.com` is `123456789`, you can add the user to the space by setting the
+            /// `membership.member.name` to `users/user@example.com` or `users/123456789`. - To add or invite a Google
+            /// group in a named space, use `groups/{group}`, where `{group}` is the `id` for the group from the Cloud
+            /// Identity Groups API. For example, you can use [Cloud Identity Groups lookup
+            /// API](https://cloud.google.com/identity/docs/reference/rest/v1/groups/lookup) to retrieve the ID
+            /// `123456789` for group email `group@example.com`, then you can add or invite the group to a named space
+            /// by setting the `membership.group_member.name` to `groups/123456789`. Group email is not supported, and
+            /// Google groups can only be added as members in named spaces.
             /// </summary>
             public class CreateRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Membership>
             {
@@ -3118,12 +3132,13 @@ namespace Google.Apis.HangoutsChat.v1
             /// [turning history on or off for the space](https://support.google.com/chat/answer/7664687) if [the
             /// organization allows users to change their history setting](https://support.google.com/a/answer/7664184).
             /// Warning: mutually exclusive with all other field paths.) `space_history_state` is not supported with
-            /// admin access. - Developer Preview: `access_settings.audience` (Supports changing the [access
-            /// setting](https://support.google.com/chat/answer/11971020) of a space. If no audience is specified in the
-            /// access setting, the space's access setting is updated to restricted. Warning: mutually exclusive with
-            /// all other field paths.) `access_settings.audience` is not supported with admin access. - Developer
-            /// Preview: Supports changing the [permission settings](https://support.google.com/chat/answer/13340792) of
-            /// a space, supported field paths include: `permission_settings.manage_members_and_groups`,
+            /// admin access. - `access_settings.audience` (Supports changing the [access
+            /// setting](https://support.google.com/chat/answer/11971020) of who can discover the space, join the space,
+            /// and preview the messages in space. If no audience is specified in the access setting, the space's access
+            /// setting is updated to private. Warning: mutually exclusive with all other field paths.)
+            /// `access_settings.audience` is not supported with admin access. - Developer Preview: Supports changing
+            /// the [permission settings](https://support.google.com/chat/answer/13340792) of a space, supported field
+            /// paths include: `permission_settings.manage_members_and_groups`,
             /// `permission_settings.modify_space_details`, `permission_settings.toggle_history`,
             /// `permission_settings.use_at_mention_all`, `permission_settings.manage_apps`,
             /// `permission_settings.manage_webhooks`, `permission_settings.reply_messages` (Warning: mutually exclusive
@@ -3179,19 +3194,25 @@ namespace Google.Apis.HangoutsChat.v1
         /// where `{user}` can be the email address for the user. For users in the same Workspace organization `{user}`
         /// can also be the `id` for the person from the People API, or the `id` for the user in the Directory API. For
         /// example, if the People API Person profile ID for `user@example.com` is `123456789`, you can add the user to
-        /// the space by setting the `membership.member.name` to `users/user@example.com` or `users/123456789`. For a
-        /// named space or group chat, if the caller blocks, or is blocked by some members, or doesn't have permission
-        /// to add some members, then those members aren't added to the created space. To create a direct message (DM)
-        /// between the calling user and another human user, specify exactly one membership to represent the human user.
-        /// If one user blocks the other, the request fails and the DM isn't created. To create a DM between the calling
-        /// user and the calling app, set `Space.singleUserBotDm` to `true` and don't specify any memberships. You can
-        /// only use this method to set up a DM with the calling app. To add the calling app as a member of a space or
-        /// an existing DM between two human users, see [Invite or add a user or app to a
-        /// space](https://developers.google.com/workspace/chat/create-members). If a DM already exists between two
-        /// users, even when one user blocks the other at the time a request is made, then the existing DM is returned.
-        /// Spaces with threaded replies aren't supported. If you receive the error message `ALREADY_EXISTS` when
-        /// setting up a space, try a different `displayName`. An existing space within the Google Workspace
-        /// organization might already use this display name. Requires [user
+        /// the space by setting the `membership.member.name` to `users/user@example.com` or `users/123456789`. To
+        /// specify the Google groups to add, add memberships with the appropriate `membership.group_member.name`. To
+        /// add or invite a Google group, use `groups/{group}`, where `{group}` is the `id` for the group from the Cloud
+        /// Identity Groups API. For example, you can use [Cloud Identity Groups lookup
+        /// API](https://cloud.google.com/identity/docs/reference/rest/v1/groups/lookup) to retrieve the ID `123456789`
+        /// for group email `group@example.com`, then you can add the group to the space by setting the
+        /// `membership.group_member.name` to `groups/123456789`. Group email is not supported, and Google groups can
+        /// only be added as members in named spaces. For a named space or group chat, if the caller blocks, or is
+        /// blocked by some members, or doesn't have permission to add some members, then those members aren't added to
+        /// the created space. To create a direct message (DM) between the calling user and another human user, specify
+        /// exactly one membership to represent the human user. If one user blocks the other, the request fails and the
+        /// DM isn't created. To create a DM between the calling user and the calling app, set `Space.singleUserBotDm`
+        /// to `true` and don't specify any memberships. You can only use this method to set up a DM with the calling
+        /// app. To add the calling app as a member of a space or an existing DM between two human users, see [Invite or
+        /// add a user or app to a space](https://developers.google.com/workspace/chat/create-members). If a DM already
+        /// exists between two users, even when one user blocks the other at the time a request is made, then the
+        /// existing DM is returned. Spaces with threaded replies aren't supported. If you receive the error message
+        /// `ALREADY_EXISTS` when setting up a space, try a different `displayName`. An existing space within the Google
+        /// Workspace organization might already use this display name. Requires [user
         /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
         /// </summary>
         /// <param name="body">The body of the request.</param>
@@ -3208,19 +3229,25 @@ namespace Google.Apis.HangoutsChat.v1
         /// where `{user}` can be the email address for the user. For users in the same Workspace organization `{user}`
         /// can also be the `id` for the person from the People API, or the `id` for the user in the Directory API. For
         /// example, if the People API Person profile ID for `user@example.com` is `123456789`, you can add the user to
-        /// the space by setting the `membership.member.name` to `users/user@example.com` or `users/123456789`. For a
-        /// named space or group chat, if the caller blocks, or is blocked by some members, or doesn't have permission
-        /// to add some members, then those members aren't added to the created space. To create a direct message (DM)
-        /// between the calling user and another human user, specify exactly one membership to represent the human user.
-        /// If one user blocks the other, the request fails and the DM isn't created. To create a DM between the calling
-        /// user and the calling app, set `Space.singleUserBotDm` to `true` and don't specify any memberships. You can
-        /// only use this method to set up a DM with the calling app. To add the calling app as a member of a space or
-        /// an existing DM between two human users, see [Invite or add a user or app to a
-        /// space](https://developers.google.com/workspace/chat/create-members). If a DM already exists between two
-        /// users, even when one user blocks the other at the time a request is made, then the existing DM is returned.
-        /// Spaces with threaded replies aren't supported. If you receive the error message `ALREADY_EXISTS` when
-        /// setting up a space, try a different `displayName`. An existing space within the Google Workspace
-        /// organization might already use this display name. Requires [user
+        /// the space by setting the `membership.member.name` to `users/user@example.com` or `users/123456789`. To
+        /// specify the Google groups to add, add memberships with the appropriate `membership.group_member.name`. To
+        /// add or invite a Google group, use `groups/{group}`, where `{group}` is the `id` for the group from the Cloud
+        /// Identity Groups API. For example, you can use [Cloud Identity Groups lookup
+        /// API](https://cloud.google.com/identity/docs/reference/rest/v1/groups/lookup) to retrieve the ID `123456789`
+        /// for group email `group@example.com`, then you can add the group to the space by setting the
+        /// `membership.group_member.name` to `groups/123456789`. Group email is not supported, and Google groups can
+        /// only be added as members in named spaces. For a named space or group chat, if the caller blocks, or is
+        /// blocked by some members, or doesn't have permission to add some members, then those members aren't added to
+        /// the created space. To create a direct message (DM) between the calling user and another human user, specify
+        /// exactly one membership to represent the human user. If one user blocks the other, the request fails and the
+        /// DM isn't created. To create a DM between the calling user and the calling app, set `Space.singleUserBotDm`
+        /// to `true` and don't specify any memberships. You can only use this method to set up a DM with the calling
+        /// app. To add the calling app as a member of a space or an existing DM between two human users, see [Invite or
+        /// add a user or app to a space](https://developers.google.com/workspace/chat/create-members). If a DM already
+        /// exists between two users, even when one user blocks the other at the time a request is made, then the
+        /// existing DM is returned. Spaces with threaded replies aren't supported. If you receive the error message
+        /// `ALREADY_EXISTS` when setting up a space, try a different `displayName`. An existing space within the Google
+        /// Workspace organization might already use this display name. Requires [user
         /// authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user).
         /// </summary>
         public class SetupRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Space>
@@ -3533,6 +3560,29 @@ namespace Google.Apis.HangoutsChat.v1
 }
 namespace Google.Apis.HangoutsChat.v1.Data
 {
+    /// <summary>
+    /// Represents the [access setting](https://support.google.com/chat/answer/11971020) of the space.
+    /// </summary>
+    public class AccessSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Indicates the access state of the space.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessState")]
+        public virtual string AccessState { get; set; }
+
+        /// <summary>
+        /// Optional. The resource name of the [target audience](https://support.google.com/a/answer/9934697) who can
+        /// discover the space, join the space, and preview the messages in the space. For details, see [Make a space
+        /// discoverable to a target audience](https://developers.google.com/workspace/chat/space-target-audience).
+        /// Format: `audiences/{audience}` To use the default target audience for the Google Workspace organization, set
+        /// to `audiences/default`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audience")]
+        public virtual string Audience { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// One or more interactive widgets that appear at the bottom of a message. For details, see [Add interactive
     /// widgets at the bottom of a
@@ -4697,8 +4747,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// A column. [Google Workspace Add-ons and Chat apps](https://developers.google.com/workspace/extend): Columns for
-    /// Google Workspace Add-ons are in Developer Preview.
+    /// A column. [Google Workspace Add-ons and Chat apps](https://developers.google.com/workspace/extend)
     /// </summary>
     public class GoogleAppsCardV1Column : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5736,8 +5785,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
     /// <summary>
     /// The supported widgets that you can include in a column. [Google Workspace Add-ons and Chat
-    /// apps](https://developers.google.com/workspace/extend): Columns for Google Workspace Add-ons are in Developer
-    /// Preview.
+    /// apps](https://developers.google.com/workspace/extend)
     /// </summary>
     public class GoogleAppsCardV1Widgets : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6156,10 +6204,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
             set => DeleteTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>
-        /// The Google Group the membership corresponds to. Only supports read operations. Other operations, like
-        /// creating or updating a membership, aren't currently supported.
-        /// </summary>
+        /// <summary>The Google Group the membership corresponds to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupMember")]
         public virtual Group GroupMember { get; set; }
 
@@ -6857,15 +6902,17 @@ namespace Google.Apis.HangoutsChat.v1.Data
     public class SetUpSpaceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The Google Chat users to invite to join the space. Omit the calling user, as they are added
-        /// automatically. The set currently allows up to 20 memberships (in addition to the caller). For human
+        /// Optional. The Google Chat users or groups to invite to join the space. Omit the calling user, as they are
+        /// added automatically. The set currently allows up to 20 memberships (in addition to the caller). For human
         /// membership, the `Membership.member` field must contain a `user` with `name` populated (format:
         /// `users/{user}`) and `type` set to `User.Type.HUMAN`. You can only add human users when setting up a space
         /// (adding Chat apps is only supported for direct message setup with the calling app). You can also add members
         /// using the user's email as an alias for {user}. For example, the `user.name` can be
         /// `users/example@gmail.com`. To invite Gmail users or users from external Google Workspace domains, user's
-        /// email must be used for `{user}`. Optional when setting `Space.spaceType` to `SPACE`. Required when setting
-        /// `Space.spaceType` to `GROUP_CHAT`, along with at least two memberships. Required when setting
+        /// email must be used for `{user}`. For Google group membership, the `Membership.group_member` field must
+        /// contain a `group` with `name` populated (format `groups/{group}`). You can only add Google groups when
+        /// setting `Space.spaceType` to `SPACE`. Optional when setting `Space.spaceType` to `SPACE`. Required when
+        /// setting `Space.spaceType` to `GROUP_CHAT`, along with at least two memberships. Required when setting
         /// `Space.spaceType` to `DIRECT_MESSAGE` with a human user, along with exactly one membership. Must be empty
         /// when creating a 1:1 conversation between a human and the calling Chat app (when setting `Space.spaceType` to
         /// `DIRECT_MESSAGE` and `Space.singleUserBotDm` to `true`).
@@ -6945,6 +6992,13 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// </summary>
     public class Space : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Specifies the [access setting](https://support.google.com/chat/answer/11971020) of the space. Only
+        /// populated when the `space_type` is `SPACE`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessSettings")]
+        public virtual AccessSettings AccessSettings { get; set; }
+
         /// <summary>
         /// Output only. For direct message (DM) spaces with a Chat app, whether the space was created by a Google
         /// Workspace administrator. Administrators can install and set up a direct message with a Chat app on behalf of
@@ -7052,6 +7106,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spaceType")]
         public virtual string SpaceType { get; set; }
+
+        /// <summary>Output only. The URI for a user to access the space.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spaceUri")]
+        public virtual string SpaceUri { get; set; }
 
         /// <summary>
         /// Output only. Deprecated: Use `spaceThreadingState` instead. Whether messages are threaded in this space.

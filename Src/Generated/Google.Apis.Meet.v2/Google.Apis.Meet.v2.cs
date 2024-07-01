@@ -1123,7 +1123,9 @@ namespace Google.Apis.Meet.v2
             /// Optional. User specified filtering condition in [EBNF
             /// format](https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form). The following are the
             /// filterable fields: * `space.meeting_code` * `space.name` * `start_time` * `end_time` For example,
-            /// `space.meeting_code = "abc-mnop-xyz"`.
+            /// consider the following filters: * `space.name = "spaces/NAME"` * `space.meeting_code = "abc-mnop-xyz"` *
+            /// `start_time&amp;gt;="2024-01-01T00:00:00.000Z" AND start_time&amp;lt;="2024-01-02T00:00:00.000Z"` *
+            /// `end_time IS NULL`
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
