@@ -1,0 +1,31 @@
+{
+  "Google.Apis.Solar.v1.BuildingInsightsResource+FindClosestRequest.RequiredQualityEnum": [
+    "IMAGERY_QUALITY_UNSPECIFIED",
+    "HIGH",
+    "MEDIUM",
+    "LOW"
+  ],
+  "Google.Apis.Solar.v1.DataLayersResource+GetRequest.RequiredQualityEnum": [
+    "IMAGERY_QUALITY_UNSPECIFIED",
+    "HIGH",
+    "MEDIUM",
+    "LOW"
+  ],
+  "Google.Apis.Solar.v1.DataLayersResource+GetRequest.ViewEnum": [
+    "DATA_LAYER_VIEW_UNSPECIFIED",
+    "DSM_LAYER",
+    "IMAGERY_LAYERS",
+    "IMAGERY_AND_ANNUAL_FLUX_LAYERS",
+    "IMAGERY_AND_ALL_FLUX_LAYERS",
+    "FULL_LAYERS"
+  ],
+  "Google.Apis.Solar.v1.SolarBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Solar.v1.SolarBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

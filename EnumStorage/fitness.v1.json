@@ -1,0 +1,11 @@
+{
+  "Google.Apis.Fitness.v1.FitnessBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Fitness.v1.FitnessBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

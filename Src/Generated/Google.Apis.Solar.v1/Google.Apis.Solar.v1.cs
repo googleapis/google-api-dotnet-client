@@ -330,15 +330,20 @@ namespace Google.Apis.Solar.v1
                 [Google.Apis.Util.StringValueAttribute("IMAGERY_QUALITY_UNSPECIFIED")]
                 IMAGERYQUALITYUNSPECIFIED = 0,
 
-                /// <summary>The underlying imagery and DSM data were processed at 0.1 m/pixel.</summary>
+                /// <summary>
+                /// Solar data is derived from aerial imagery captured at low-altitude and processed at 0.1 m/pixel.
+                /// </summary>
                 [Google.Apis.Util.StringValueAttribute("HIGH")]
                 HIGH = 1,
 
-                /// <summary>The underlying imagery and DSM data were processed at 0.25 m/pixel.</summary>
+                /// <summary>
+                /// Solar data is derived from enhanced aerial imagery captured at high-altitude and processed at 0.25
+                /// m/pixel.
+                /// </summary>
                 [Google.Apis.Util.StringValueAttribute("MEDIUM")]
                 MEDIUM = 2,
 
-                /// <summary>The underlying imagery and DSM data were processed at 0.5 m/pixel.</summary>
+                /// <summary>Solar data is derived from enhanced satellite imagery processed at 0.25 m/pixel.</summary>
                 [Google.Apis.Util.StringValueAttribute("LOW")]
                 LOW = 3,
             }
@@ -472,15 +477,20 @@ namespace Google.Apis.Solar.v1
                 [Google.Apis.Util.StringValueAttribute("IMAGERY_QUALITY_UNSPECIFIED")]
                 IMAGERYQUALITYUNSPECIFIED = 0,
 
-                /// <summary>The underlying imagery and DSM data were processed at 0.1 m/pixel.</summary>
+                /// <summary>
+                /// Solar data is derived from aerial imagery captured at low-altitude and processed at 0.1 m/pixel.
+                /// </summary>
                 [Google.Apis.Util.StringValueAttribute("HIGH")]
                 HIGH = 1,
 
-                /// <summary>The underlying imagery and DSM data were processed at 0.25 m/pixel.</summary>
+                /// <summary>
+                /// Solar data is derived from enhanced aerial imagery captured at high-altitude and processed at 0.25
+                /// m/pixel.
+                /// </summary>
                 [Google.Apis.Util.StringValueAttribute("MEDIUM")]
                 MEDIUM = 2,
 
-                /// <summary>The underlying imagery and DSM data were processed at 0.5 m/pixel.</summary>
+                /// <summary>Solar data is derived from enhanced satellite imagery processed at 0.25 m/pixel.</summary>
                 [Google.Apis.Util.StringValueAttribute("LOW")]
                 LOW = 3,
             }

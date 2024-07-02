@@ -1104,7 +1104,7 @@ namespace Google.Apis.CloudBuild.v1
             /// <summary>Create an association between a GCP project and a GitHub Enterprise server.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. Name of the parent project. For example: projects/{$project_number} or projects/{$project_id}
+            /// Name of the parent project. For example: projects/{$project_number} or projects/{$project_id}
             /// </param>
             public virtual CreateRequest Create(Google.Apis.CloudBuild.v1.Data.GitHubEnterpriseConfig body, string parent)
             {
@@ -1123,8 +1123,7 @@ namespace Google.Apis.CloudBuild.v1
                 }
 
                 /// <summary>
-                /// Required. Name of the parent project. For example: projects/{$project_number} or
-                /// projects/{$project_id}
+                /// Name of the parent project. For example: projects/{$project_number} or projects/{$project_id}
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -3138,8 +3137,7 @@ namespace Google.Apis.CloudBuild.v1
                 /// <summary>Create an association between a GCP project and a GitHub Enterprise server.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. Name of the parent project. For example: projects/{$project_number} or
-                /// projects/{$project_id}
+                /// Name of the parent project. For example: projects/{$project_number} or projects/{$project_id}
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudBuild.v1.Data.GitHubEnterpriseConfig body, string parent)
                 {
@@ -3158,8 +3156,7 @@ namespace Google.Apis.CloudBuild.v1
                     }
 
                     /// <summary>
-                    /// Required. Name of the parent project. For example: projects/{$project_number} or
-                    /// projects/{$project_id}
+                    /// Name of the parent project. For example: projects/{$project_number} or projects/{$project_id}
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -7676,27 +7673,6 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents a storage location in Cloud Storage</summary>
-    public class GCSLocation : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Cloud Storage bucket. See https://cloud.google.com/storage/docs/naming#requirements</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
-        public virtual string Bucket { get; set; }
-
-        /// <summary>
-        /// Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("generation")]
-        public virtual System.Nullable<long> Generation { get; set; }
-
-        /// <summary>Cloud Storage object. See https://cloud.google.com/storage/docs/naming#objectnames</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("object")]
-        public virtual string Object__ { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>GitConfig is a configuration for git operations.</summary>
     public class GitConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8279,15 +8255,11 @@ namespace Google.Apis.CloudBuild.v1.Data
     public class HttpConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// SecretVersion resource of the HTTP proxy URL. The proxy URL should be in format
-        /// protocol://@]proxyhost[:port].
+        /// SecretVersion resource of the HTTP proxy URL. The Service Account should have accessor permissions on this
+        /// secret. The proxy URL should be in format protocol://@]proxyhost[:port].
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proxySecretVersionName")]
         public virtual string ProxySecretVersionName { get; set; }
-
-        /// <summary>Optional. Cloud Storage object storing the certificate to use with the HTTP proxy.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("proxySslCaInfo")]
-        public virtual GCSLocation ProxySslCaInfo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

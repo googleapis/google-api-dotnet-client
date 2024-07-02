@@ -21462,18 +21462,16 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     {
         /// <summary>
         /// Flow name to start the test case with. Format: `projects//locations//agents//flows/`. Only one of `flow` and
-        /// `page` should be set to indicate the starting point of the test case. If both are set, `page` takes
-        /// precedence over `flow`. If neither is set, the test case will start with start page on the default start
-        /// flow.
+        /// `page` should be set to indicate the starting point of the test case. If neither is set, the test case will
+        /// start with start page on the default start flow.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flow")]
         public virtual string Flow { get; set; }
 
         /// <summary>
         /// The page to start the test case with. Format: `projects//locations//agents//flows//pages/`. Only one of
-        /// `flow` and `page` should be set to indicate the starting point of the test case. If both are set, `page`
-        /// takes precedence over `flow`. If neither is set, the test case will start with start page on the default
-        /// start flow.
+        /// `flow` and `page` should be set to indicate the starting point of the test case. If neither is set, the test
+        /// case will start with start page on the default start flow.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("page")]
         public virtual string Page { get; set; }
@@ -24239,18 +24237,16 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     {
         /// <summary>
         /// Flow name to start the test case with. Format: `projects//locations//agents//flows/`. Only one of `flow` and
-        /// `page` should be set to indicate the starting point of the test case. If both are set, `page` takes
-        /// precedence over `flow`. If neither is set, the test case will start with start page on the default start
-        /// flow.
+        /// `page` should be set to indicate the starting point of the test case. If neither is set, the test case will
+        /// start with start page on the default start flow.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flow")]
         public virtual string Flow { get; set; }
 
         /// <summary>
         /// The page to start the test case with. Format: `projects//locations//agents//flows//pages/`. Only one of
-        /// `flow` and `page` should be set to indicate the starting point of the test case. If both are set, `page`
-        /// takes precedence over `flow`. If neither is set, the test case will start with start page on the default
-        /// start flow.
+        /// `flow` and `page` should be set to indicate the starting point of the test case. If neither is set, the test
+        /// case will start with start page on the default start flow.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("page")]
         public virtual string Page { get; set; }
@@ -33559,6 +33555,35 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     public class GoogleCloudDialogflowV2beta1SpeechToTextConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Defines the list of other language codes in addition to the one provided by the conversation profile that
+        /// may be detected as the language code for the utterances over the conversation. See [Language
+        /// Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported
+        /// language codes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alternativeLanguageCodes")]
+        public virtual System.Collections.Generic.IList<string> AlternativeLanguageCodes { get; set; }
+
+        /// <summary>Audio encoding of the audio content to process.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioEncoding")]
+        public virtual string AudioEncoding { get; set; }
+
+        /// <summary>
+        /// If `true`, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about the
+        /// recognized speech words, e.g. start and end time offsets. If false or unspecified, Speech doesn't return any
+        /// word-level information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableWordInfo")]
+        public virtual System.Nullable<bool> EnableWordInfo { get; set; }
+
+        /// <summary>
+        /// The language of the supplied audio. Dialogflow does not do translations. See [Language
+        /// Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported
+        /// language codes. Note that queries in the same session do not necessarily need to specify the same language.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>
         /// Which Speech model to select. Select the model best suited to your domain to get best results. If a model is
         /// not explicitly specified, then Dialogflow auto-selects a model based on other parameters in the
         /// SpeechToTextConfig and Agent settings. If enhanced speech model is enabled for the agent and an enhanced
@@ -33572,6 +33597,13 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
         public virtual string Model { get; set; }
+
+        /// <summary>
+        /// Sample rate (in Hertz) of the audio content sent in the query. Refer to [Cloud Speech API
+        /// documentation](https://cloud.google.com/speech-to-text/docs/basics) for more details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleRateHertz")]
+        public virtual System.Nullable<int> SampleRateHertz { get; set; }
 
         /// <summary>
         /// The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be
