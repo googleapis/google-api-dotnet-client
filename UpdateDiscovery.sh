@@ -8,17 +8,24 @@
 
 set -e
 rm -rf tmp
+mkdir tmp
 
-# Directory in which to initially download Discovery docs.
-TMP_DISCOVERY_DOC_DIR=tmp/DiscoveryJson
+# Directory in which to clone discovery-artifact-manager
+TMP_DISCOVERY_ARTIFACT_MANAGER_DIR=tmp/discovery-artifact-manager
+
+# Directory containing discovery docs
+TMP_DISCOVERY_DOC_DIR=$TMP_DISCOVERY_ARTIFACT_MANAGER_DIR/discoveries
 
 # Directory containing the final Discovery docs
 DISCOVERY_DOC_DIR=DiscoveryJson
 
-# Download all discovery docs
-dotnet run --project Src/Tools/DiscoveryDocDownloader -- $TMP_DISCOVERY_DOC_DIR
+# Clone the discovery-artifact-manager repo
+git clone https://github.com/googleapis/discovery-artifact-manager \
+  --depth 1 $TMP_DISCOVERY_ARTIFACT_MANAGER_DIR
+
 # Patch discovery docs
 dotnet run --project Src/Tools/DiscoveryDocPatcher -- $TMP_DISCOVERY_DOC_DIR
+
 # Update the destination directory, recording changes in tmp/NewOrUpdated.txt
 dotnet run --project Src/Tools/DiscoveryDocUpdater -- \
   $TMP_DISCOVERY_DOC_DIR \
