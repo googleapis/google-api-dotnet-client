@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Updates the canonical set of Discovery docs based on a freshly-downloaded set, observing which
+// Updates the canonical set of Discovery docs based on a freshly-cloned set, observing which
 // services we exclude, and optionally reporting any new/updated Discovery docs in a file for later
 // build stages.
 
@@ -21,26 +21,34 @@ using Newtonsoft.Json.Linq;
 
 if (args.Length < 3 || args.Length > 4)
 {
-    Console.WriteLine("Arguments: <download-directory> <target-directory> <excluded-services> [<new/updated file list>]");
+    Console.WriteLine("Arguments: <clone-directory> <target-directory> <excluded-services> [<new/updated file list>]");
     return 1;
 }
 
-var downloadDirectory = args[0];
+var cloneDirectory = args[0];
 var targetDirectory = args[1];
 var excludedServicesFile = args[2];
 var newOrUpdatedFile = args.Length == 3 ? null : args[3];
 
 var excludedServices = JsonConvert.DeserializeObject<List<string>>(File.ReadAllText(excludedServicesFile));
-var downloadDirectoryFiles = Directory.GetFiles(downloadDirectory).Select(Path.GetFileName).OrderBy(x => x, StringComparer.Ordinal);
-var targetDirectoryFiles = Directory.GetFiles(targetDirectory).Select(Path.GetFileName).OrderBy(x => x, StringComparer.Ordinal);
+var cloneDirectoryFiles = Directory.GetFiles(cloneDirectory, "*.json").Select(Path.GetFileName).OrderBy(x => x, StringComparer.Ordinal);
+var targetDirectoryFiles = Directory.GetFiles(targetDirectory, "*.json").Select(Path.GetFileName).OrderBy(x => x, StringComparer.Ordinal);
 var newOrUpdated = new List<string>();
 
-// First go through all the Discovery docs we've just downloaded.
-foreach (string relativeDownloadedFile in downloadDirectoryFiles)
+// First go through all the Discovery docs we've just cloned.
+// We only look at .json files, but we copy .json.original files along with the .json files
+// where necessary.
+foreach (string relativeClonedFile in cloneDirectoryFiles)
 {
-    string service = Path.GetFileNameWithoutExtension(relativeDownloadedFile);
-    string downloadedFile = Path.Combine(downloadDirectory, relativeDownloadedFile);
-    string targetFile = Path.Combine(targetDirectory, relativeDownloadedFile);
+    // We don't process the index file.
+    if (relativeClonedFile == "index.json")
+    {
+        continue;
+    }
+    string service = Path.GetFileNameWithoutExtension(relativeClonedFile);
+
+    string clonedFile = Path.Combine(cloneDirectory, relativeClonedFile);
+    string targetFile = Path.Combine(targetDirectory, relativeClonedFile);
 
     // Skip excluded services.
     if (excludedServices.Contains(service))
@@ -50,11 +58,10 @@ foreach (string relativeDownloadedFile in downloadDirectoryFiles)
     }
 
     // Anything that doesn't already exist in the target directory is new. Copy it.
-    if (!targetDirectoryFiles.Contains(relativeDownloadedFile))
+    if (!targetDirectoryFiles.Contains(relativeClonedFile))
     {
         Console.WriteLine(service + ": New.");
-        File.Copy(downloadedFile, targetFile);
-        MaybeAddNewOrUpdated(targetFile);
+        CopyFile(overwrite: false);
         continue;
     }
 
@@ -63,7 +70,7 @@ foreach (string relativeDownloadedFile in downloadDirectoryFiles)
     // - New etag and/or revision, but otherwise the same content (skip)
     // - Changed (copy)
 
-    JObject newDiscovery = JObject.Parse(File.ReadAllText(downloadedFile));
+    JObject newDiscovery = JObject.Parse(File.ReadAllText(clonedFile));
     JObject oldDiscovery = JObject.Parse(File.ReadAllText(targetFile));
     if (JsonEqual(oldDiscovery, newDiscovery))
     {
@@ -82,13 +89,22 @@ foreach (string relativeDownloadedFile in downloadDirectoryFiles)
     }
     
     Console.WriteLine(service + ": Updated.");
-    File.Copy(downloadedFile, targetFile, true);
-    MaybeAddNewOrUpdated(targetFile);
+    CopyFile(overwrite: true);
+
+    void CopyFile(bool overwrite)
+    {
+        File.Copy(clonedFile, targetFile, overwrite);
+        if (File.Exists($"{clonedFile}.original"))
+        {
+            File.Copy($"{clonedFile}.original", $"{targetFile}.original", overwrite);
+        }
+        newOrUpdated.Add(targetFile);
+    }
 }
 
 // Finally, delete any obsolete Discovery docs.
 // Note that we don't currently automatically delete the associated generated library.
-foreach (string obsoleteFile in targetDirectoryFiles.Except(downloadDirectoryFiles))
+foreach (string obsoleteFile in targetDirectoryFiles.Except(cloneDirectoryFiles))
 {
     Console.WriteLine(Path.GetFileNameWithoutExtension(obsoleteFile) + " is obsolete; deleting");
     File.Delete(Path.Combine(targetDirectory, obsoleteFile));
@@ -101,19 +117,6 @@ if (newOrUpdatedFile is not null)
 }
 
 return 0;
-
-void MaybeAddNewOrUpdated(string targetFile)
-{
-    // We patch some discovery docs, but we keep the original discovery doc with the .original extension.
-    // We want the original file to be copied to the target folder, but we don't want to include it on the
-    // list of new or updated discoveries as that will mean we will generate the library twice, both from the original
-    // unpatched discovery and the patched discovery. We'll keep the library for whatever file we found last.
-    // Note the patched discovery is indeed included.
-    if (Path.GetExtension(targetFile) != ".original")
-    {
-        newOrUpdated.Add(targetFile);
-    }
-}
 
 // Simple utility method to compare two JObjects for equality;
 // we already sort Discovery docs, so just converting both to a string should be fine.
