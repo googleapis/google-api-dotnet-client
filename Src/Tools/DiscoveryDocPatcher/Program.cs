@@ -41,7 +41,7 @@ namespace DiscoveryDocPatcher
 
         static void PatchDirectory(string rootPath)
         {
-            var patcher = IfFileExists(() => Patcher.Load(Path.Combine(rootPath, "admin_directory_v1.json")));
+            var patcher = IfFileExists(() => Patcher.Load(Path.Combine(rootPath, "admin.directory_v1.json")));
             if (patcher is null)
             {
                 return;

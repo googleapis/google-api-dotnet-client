@@ -6,36 +6,36 @@
 [  
   // b/299933892 because of hierarchical resources
   // "nodes/{node}/nodes/{node}"
-  "sasportal_v1alpha1",
-  "prod_tt_sasportal_v1alpha1",
+  "sasportal.v1alpha1",
+  "prod_tt_sasportal.v1alpha1",
   
   // Known exception for library generation
-  "apigee_v1",
+  "apigee.v1",
   
   // Name clashes because of some request's service parameter.
   // Investigate with auth team.
-  "metastore_v1alpha",
-  "metastore_v1beta",
-  "metastore_v1",
+  "metastore.v1alpha",
+  "metastore.v1beta",
+  "metastore.v1",
 
   // Name clashes because of some response ETag field.
-  "contentwarehouse_v1",
+  "contentwarehouse.v1",
   
   // b/299569133 method.request.type instead of method.request.$ref
   // type is not a supported field in method.request.
-  "integrations_v1alpha",
-  "integrations_v1",
+  "integrations.v1alpha",
+  "integrations.v1",
 
   // b/299567447 method.request.type instead of method.request.$ref
   // type is not a supported field in method.request.
-  "datalineage_v1",
+  "datalineage.v1",
   
   // b/299985033 Because on non-AIP compliant RPC.
-  "policysimulator_v1alpha",
-  "policysimulator_v1beta",
+  "policysimulator.v1alpha",
+  "policysimulator.v1beta",
   
   // TODO: Explain these ones
-  "identitytoolkit_v1",
-  "identitytoolkit_v2",
-  "identitytoolkit_v3",
+  "identitytoolkit.v1",
+  "identitytoolkit.v2",
+  "identitytoolkit.v3",
 ]
