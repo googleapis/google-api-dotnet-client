@@ -1,0 +1,51 @@
+{
+  "Google.Apis.Dialogflow.v2beta1.DialogflowBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Dialogflow.v2beta1.DialogflowBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.Dialogflow.v2beta1.ProjectsResource+AgentResource+EnvironmentsResource+IntentsResource+ListRequest.IntentViewEnum": [
+    "INTENT_VIEW_UNSPECIFIED",
+    "INTENT_VIEW_FULL"
+  ],
+  "Google.Apis.Dialogflow.v2beta1.ProjectsResource+AgentResource+IntentsResource+CreateRequest.IntentViewEnum": [
+    "INTENT_VIEW_UNSPECIFIED",
+    "INTENT_VIEW_FULL"
+  ],
+  "Google.Apis.Dialogflow.v2beta1.ProjectsResource+AgentResource+IntentsResource+GetRequest.IntentViewEnum": [
+    "INTENT_VIEW_UNSPECIFIED",
+    "INTENT_VIEW_FULL"
+  ],
+  "Google.Apis.Dialogflow.v2beta1.ProjectsResource+AgentResource+IntentsResource+ListRequest.IntentViewEnum": [
+    "INTENT_VIEW_UNSPECIFIED",
+    "INTENT_VIEW_FULL"
+  ],
+  "Google.Apis.Dialogflow.v2beta1.ProjectsResource+AgentResource+IntentsResource+PatchRequest.IntentViewEnum": [
+    "INTENT_VIEW_UNSPECIFIED",
+    "INTENT_VIEW_FULL"
+  ],
+  "Google.Apis.Dialogflow.v2beta1.ProjectsResource+LocationsResource+AgentResource+EnvironmentsResource+IntentsResource+ListRequest.IntentViewEnum": [
+    "INTENT_VIEW_UNSPECIFIED",
+    "INTENT_VIEW_FULL"
+  ],
+  "Google.Apis.Dialogflow.v2beta1.ProjectsResource+LocationsResource+AgentResource+IntentsResource+CreateRequest.IntentViewEnum": [
+    "INTENT_VIEW_UNSPECIFIED",
+    "INTENT_VIEW_FULL"
+  ],
+  "Google.Apis.Dialogflow.v2beta1.ProjectsResource+LocationsResource+AgentResource+IntentsResource+GetRequest.IntentViewEnum": [
+    "INTENT_VIEW_UNSPECIFIED",
+    "INTENT_VIEW_FULL"
+  ],
+  "Google.Apis.Dialogflow.v2beta1.ProjectsResource+LocationsResource+AgentResource+IntentsResource+ListRequest.IntentViewEnum": [
+    "INTENT_VIEW_UNSPECIFIED",
+    "INTENT_VIEW_FULL"
+  ],
+  "Google.Apis.Dialogflow.v2beta1.ProjectsResource+LocationsResource+AgentResource+IntentsResource+PatchRequest.IntentViewEnum": [
+    "INTENT_VIEW_UNSPECIFIED",
+    "INTENT_VIEW_FULL"
+  ]
+}

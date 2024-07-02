@@ -1058,6 +1058,69 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     }
                 }
 
+                /// <summary>
+                /// This endpoint enables Assured Workloads service to offer compliance updates for the folder based
+                /// assured workload. It sets up an Assured Workloads Service Agent, having permissions to read
+                /// compliance controls (for example: Org Policies) applied on the workload. The caller must have
+                /// `resourcemanager.folders.getIamPolicy` and `resourcemanager.folders.setIamPolicy` permissions on the
+                /// assured workload folder.
+                /// </summary>
+                /// <param name="name">
+                /// Required. The `name` field is used to identify the workload. Format:
+                /// organizations/{org_id}/locations/{location_id}/workloads/{workload_id}
+                /// </param>
+                public virtual EnableComplianceUpdatesRequest EnableComplianceUpdates(string name)
+                {
+                    return new EnableComplianceUpdatesRequest(this.service, name);
+                }
+
+                /// <summary>
+                /// This endpoint enables Assured Workloads service to offer compliance updates for the folder based
+                /// assured workload. It sets up an Assured Workloads Service Agent, having permissions to read
+                /// compliance controls (for example: Org Policies) applied on the workload. The caller must have
+                /// `resourcemanager.folders.getIamPolicy` and `resourcemanager.folders.setIamPolicy` permissions on the
+                /// assured workload folder.
+                /// </summary>
+                public class EnableComplianceUpdatesRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1EnableComplianceUpdatesResponse>
+                {
+                    /// <summary>Constructs a new EnableComplianceUpdates request.</summary>
+                    public EnableComplianceUpdatesRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The `name` field is used to identify the workload. Format:
+                    /// organizations/{org_id}/locations/{location_id}/workloads/{workload_id}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "enableComplianceUpdates";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PUT";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}:enableComplianceUpdates";
+
+                    /// <summary>Initializes EnableComplianceUpdates parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/workloads/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Enable resource violation monitoring for a workload.</summary>
                 /// <param name="name">
                 /// Required. The `name` field is used to identify the workload. Format:
@@ -1542,6 +1605,13 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceSettings")]
         public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings> ResourceSettings { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for EnableComplianceUpdates endpoint.</summary>
+    public class GoogleCloudAssuredworkloadsV1beta1EnableComplianceUpdatesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2063,6 +2133,13 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         /// <summary>Output only. Count of active Violations in the Workload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("complianceStatus")]
         public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceStatus ComplianceStatus { get; set; }
+
+        /// <summary>
+        /// Output only. Indicates whether the compliance updates feature is enabled for a workload. The compliance
+        /// updates feature can be enabled via the EnableComplianceUpdates endpoint.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("complianceUpdatesEnabled")]
+        public virtual System.Nullable<bool> ComplianceUpdatesEnabled { get; set; }
 
         /// <summary>
         /// Output only. Urls for services which are compliant for this Assured Workload, but which are currently

@@ -1,0 +1,40 @@
+{
+  "Google.Apis.CloudHealthcare.v1beta1.CloudHealthcareBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.CloudHealthcare.v1beta1.CloudHealthcareBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.CloudHealthcare.v1beta1.ProjectsResource+LocationsResource+DatasetsResource+AnnotationStoresResource+AnnotationsResource+ListRequest.ViewEnum": [
+    "ANNOTATION_VIEW_UNSPECIFIED",
+    "ANNOTATION_VIEW_BASIC",
+    "ANNOTATION_VIEW_FULL"
+  ],
+  "Google.Apis.CloudHealthcare.v1beta1.ProjectsResource+LocationsResource+DatasetsResource+Hl7V2StoresResource+MessagesResource+BatchGetRequest.ViewEnum": [
+    "MESSAGE_VIEW_UNSPECIFIED",
+    "RAW_ONLY",
+    "PARSED_ONLY",
+    "FULL",
+    "SCHEMATIZED_ONLY",
+    "BASIC"
+  ],
+  "Google.Apis.CloudHealthcare.v1beta1.ProjectsResource+LocationsResource+DatasetsResource+Hl7V2StoresResource+MessagesResource+GetRequest.ViewEnum": [
+    "MESSAGE_VIEW_UNSPECIFIED",
+    "RAW_ONLY",
+    "PARSED_ONLY",
+    "FULL",
+    "SCHEMATIZED_ONLY",
+    "BASIC"
+  ],
+  "Google.Apis.CloudHealthcare.v1beta1.ProjectsResource+LocationsResource+DatasetsResource+Hl7V2StoresResource+MessagesResource+ListRequest.ViewEnum": [
+    "MESSAGE_VIEW_UNSPECIFIED",
+    "RAW_ONLY",
+    "PARSED_ONLY",
+    "FULL",
+    "SCHEMATIZED_ONLY",
+    "BASIC"
+  ]
+}

@@ -15824,18 +15824,16 @@ namespace Google.Apis.Dialogflow.v3.Data
     {
         /// <summary>
         /// Flow name to start the test case with. Format: `projects//locations//agents//flows/`. Only one of `flow` and
-        /// `page` should be set to indicate the starting point of the test case. If both are set, `page` takes
-        /// precedence over `flow`. If neither is set, the test case will start with start page on the default start
-        /// flow.
+        /// `page` should be set to indicate the starting point of the test case. If neither is set, the test case will
+        /// start with start page on the default start flow.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flow")]
         public virtual string Flow { get; set; }
 
         /// <summary>
         /// The page to start the test case with. Format: `projects//locations//agents//flows//pages/`. Only one of
-        /// `flow` and `page` should be set to indicate the starting point of the test case. If both are set, `page`
-        /// takes precedence over `flow`. If neither is set, the test case will start with start page on the default
-        /// start flow.
+        /// `flow` and `page` should be set to indicate the starting point of the test case. If neither is set, the test
+        /// case will start with start page on the default start flow.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("page")]
         public virtual string Page { get; set; }
@@ -18997,18 +18995,16 @@ namespace Google.Apis.Dialogflow.v3.Data
     {
         /// <summary>
         /// Flow name to start the test case with. Format: `projects//locations//agents//flows/`. Only one of `flow` and
-        /// `page` should be set to indicate the starting point of the test case. If both are set, `page` takes
-        /// precedence over `flow`. If neither is set, the test case will start with start page on the default start
-        /// flow.
+        /// `page` should be set to indicate the starting point of the test case. If neither is set, the test case will
+        /// start with start page on the default start flow.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flow")]
         public virtual string Flow { get; set; }
 
         /// <summary>
         /// The page to start the test case with. Format: `projects//locations//agents//flows//pages/`. Only one of
-        /// `flow` and `page` should be set to indicate the starting point of the test case. If both are set, `page`
-        /// takes precedence over `flow`. If neither is set, the test case will start with start page on the default
-        /// start flow.
+        /// `flow` and `page` should be set to indicate the starting point of the test case. If neither is set, the test
+        /// case will start with start page on the default start flow.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("page")]
         public virtual string Page { get; set; }

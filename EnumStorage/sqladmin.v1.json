@@ -1,0 +1,11 @@
+{
+  "Google.Apis.SQLAdmin.v1.SQLAdminBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.SQLAdmin.v1.SQLAdminBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

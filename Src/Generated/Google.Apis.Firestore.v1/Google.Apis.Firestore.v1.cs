@@ -6701,8 +6701,7 @@ namespace Google.Apis.Firestore.v1.Data
     public class GoogleFirestoreAdminV1RestoreDatabaseRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Backup to restore from. Must be from the same project as the parent. The restored database will be created
-        /// in the same location as the source backup. Format is:
+        /// Backup to restore from. Must be from the same project as the parent. Format is:
         /// `projects/{project_id}/locations/{location}/backups/{backup}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backup")]
@@ -6718,10 +6717,10 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual string DatabaseId { get; set; }
 
         /// <summary>
-        /// Use Customer Managed Encryption Keys (CMEK) for encryption. Only keys in the same location as the restored
-        /// database are allowed to be used for encryption. For Firestore's nam5 multi-region, this corresponds to Cloud
-        /// KMS multi-region us. For Firestore's eur3 multi-region, this corresponds to Cloud KMS multi-region europe.
-        /// See https://cloud.google.com/kms/docs/locations. The expected format is
+        /// Use Customer Managed Encryption Keys (CMEK) for encryption. Only keys in the same location as this database
+        /// are allowed to be used for encryption. For Firestore's nam5 multi-region, this corresponds to Cloud KMS
+        /// multi-region us. For Firestore's eur3 multi-region, this corresponds to Cloud KMS multi-region europe. See
+        /// https://cloud.google.com/kms/docs/locations. The expected format is
         /// `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]

@@ -280,14 +280,20 @@ namespace Google.Apis.Tasks.v1
             this.service = service;
         }
 
-        /// <summary>Deletes the authenticated user's specified task list.</summary>
+        /// <summary>
+        /// Deletes the authenticated user's specified task list. If the list contains assigned tasks, both the assigned
+        /// tasks and the original tasks in the assignment surface (Docs, Chat Spaces) are deleted.
+        /// </summary>
         /// <param name="tasklist">Task list identifier.</param>
         public virtual DeleteRequest Delete(string tasklist)
         {
             return new DeleteRequest(this.service, tasklist);
         }
 
-        /// <summary>Deletes the authenticated user's specified task list.</summary>
+        /// <summary>
+        /// Deletes the authenticated user's specified task list. If the list contains assigned tasks, both the assigned
+        /// tasks and the original tasks in the assignment surface (Docs, Chat Spaces) are deleted.
+        /// </summary>
         public class DeleteRequest : TasksBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -652,7 +658,11 @@ namespace Google.Apis.Tasks.v1
             }
         }
 
-        /// <summary>Deletes the specified task from the task list.</summary>
+        /// <summary>
+        /// Deletes the specified task from the task list. If the task is assigned, both the assigned task and the
+        /// original task (in Docs, Chat Spaces) are deleted. To delete the assigned task only, navigate to the
+        /// assignment surface and unassign the task from there.
+        /// </summary>
         /// <param name="tasklist">Task list identifier.</param>
         /// <param name="task">Task identifier.</param>
         public virtual DeleteRequest Delete(string tasklist, string task)
@@ -660,7 +670,11 @@ namespace Google.Apis.Tasks.v1
             return new DeleteRequest(this.service, tasklist, task);
         }
 
-        /// <summary>Deletes the specified task from the task list.</summary>
+        /// <summary>
+        /// Deletes the specified task from the task list. If the task is assigned, both the assigned task and the
+        /// original task (in Docs, Chat Spaces) are deleted. To delete the assigned task only, navigate to the
+        /// assignment surface and unassign the task from there.
+        /// </summary>
         public class DeleteRequest : TasksBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -771,8 +785,9 @@ namespace Google.Apis.Tasks.v1
         }
 
         /// <summary>
-        /// Creates a new task on the specified task list. A user can have up to 20,000 non-hidden tasks per list and up
-        /// to 100,000 tasks in total at a time.
+        /// Creates a new task on the specified task list. Tasks assigned from Docs or Chat Spaces cannot be inserted
+        /// from Tasks Public API; they can only be created by assigning them from Docs or Chat Spaces. A user can have
+        /// up to 20,000 non-hidden tasks per list and up to 100,000 tasks in total at a time.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="tasklist">Task list identifier.</param>
@@ -782,8 +797,9 @@ namespace Google.Apis.Tasks.v1
         }
 
         /// <summary>
-        /// Creates a new task on the specified task list. A user can have up to 20,000 non-hidden tasks per list and up
-        /// to 100,000 tasks in total at a time.
+        /// Creates a new task on the specified task list. Tasks assigned from Docs or Chat Spaces cannot be inserted
+        /// from Tasks Public API; they can only be created by assigning them from Docs or Chat Spaces. A user can have
+        /// up to 20,000 non-hidden tasks per list and up to 100,000 tasks in total at a time.
         /// </summary>
         public class InsertRequest : TasksBaseServiceRequest<Google.Apis.Tasks.v1.Data.Task>
         {
@@ -800,7 +816,9 @@ namespace Google.Apis.Tasks.v1
             public virtual string Tasklist { get; private set; }
 
             /// <summary>
-            /// Parent task identifier. If the task is created at the top level, this parameter is omitted. Optional.
+            /// Parent task identifier. If the task is created at the top level, this parameter is omitted. An assigned
+            /// task cannot be a parent task, nor can it have a parent. Setting the parent to an assigned task results
+            /// in failure of the request. Optional.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Parent { get; set; }
@@ -859,8 +877,8 @@ namespace Google.Apis.Tasks.v1
         }
 
         /// <summary>
-        /// Returns all tasks in the specified task list. A user can have up to 20,000 non-hidden tasks per list and up
-        /// to 100,000 tasks in total at a time.
+        /// Returns all tasks in the specified task list. Does not return assigned tasks be default (from Docs, Chat
+        /// Spaces). A user can have up to 20,000 non-hidden tasks per list and up to 100,000 tasks in total at a time.
         /// </summary>
         /// <param name="tasklist">Task list identifier.</param>
         public virtual ListRequest List(string tasklist)
@@ -869,8 +887,8 @@ namespace Google.Apis.Tasks.v1
         }
 
         /// <summary>
-        /// Returns all tasks in the specified task list. A user can have up to 20,000 non-hidden tasks per list and up
-        /// to 100,000 tasks in total at a time.
+        /// Returns all tasks in the specified task list. Does not return assigned tasks be default (from Docs, Chat
+        /// Spaces). A user can have up to 20,000 non-hidden tasks per list and up to 100,000 tasks in total at a time.
         /// </summary>
         public class ListRequest : TasksBaseServiceRequest<Google.Apis.Tasks.v1.Data.Tasks>
         {
@@ -924,9 +942,16 @@ namespace Google.Apis.Tasks.v1
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// Flag indicating whether completed tasks are returned in the result. Optional. The default is True. Note
-            /// that showHidden must also be True to show tasks completed in first party clients, such as the web UI and
-            /// Google's mobile apps.
+            /// Optional. Flag indicating whether tasks assigned to the current user are returned in the result.
+            /// Optional. The default is False.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("showAssigned", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> ShowAssigned { get; set; }
+
+            /// <summary>
+            /// Flag indicating whether completed tasks are returned in the result. Note that showHidden must also be
+            /// True to show tasks completed in first party clients, such as the web UI and Google's mobile apps.
+            /// Optional. The default is True.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("showCompleted", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> ShowCompleted { get; set; }
@@ -1019,6 +1044,14 @@ namespace Google.Apis.Tasks.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
+                RequestParameters.Add("showAssigned", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "showAssigned",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
                 RequestParameters.Add("showCompleted", new Google.Apis.Discovery.Parameter
                 {
                     Name = "showCompleted",
@@ -1055,9 +1088,10 @@ namespace Google.Apis.Tasks.v1
         }
 
         /// <summary>
-        /// Moves the specified task to another position in the task list. This can include putting it as a child task
-        /// under a new parent and/or move it to a different position among its sibling tasks. A user can have up to
-        /// 2,000 subtasks per task.
+        /// Moves the specified task to another position in the destination task list. If the destination list is not
+        /// specified, the task is moved within its current list. This can include putting it as a child task under a
+        /// new parent and/or move it to a different position among its sibling tasks. A user can have up to 2,000
+        /// subtasks per task.
         /// </summary>
         /// <param name="tasklist">Task list identifier.</param>
         /// <param name="task">Task identifier.</param>
@@ -1067,9 +1101,10 @@ namespace Google.Apis.Tasks.v1
         }
 
         /// <summary>
-        /// Moves the specified task to another position in the task list. This can include putting it as a child task
-        /// under a new parent and/or move it to a different position among its sibling tasks. A user can have up to
-        /// 2,000 subtasks per task.
+        /// Moves the specified task to another position in the destination task list. If the destination list is not
+        /// specified, the task is moved within its current list. This can include putting it as a child task under a
+        /// new parent and/or move it to a different position among its sibling tasks. A user can have up to 2,000
+        /// subtasks per task.
         /// </summary>
         public class MoveRequest : TasksBaseServiceRequest<Google.Apis.Tasks.v1.Data.Task>
         {
@@ -1090,7 +1125,17 @@ namespace Google.Apis.Tasks.v1
             public virtual string Task { get; private set; }
 
             /// <summary>
-            /// New parent task identifier. If the task is moved to the top level, this parameter is omitted. Optional.
+            /// Optional. Destination task list identifier. If set, the task is moved from tasklist to the
+            /// destinationTasklist list. Otherwise the task is moved within its current list. Recurrent tasks cannot
+            /// currently be moved between lists. Optional.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("destinationTasklist", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string DestinationTasklist { get; set; }
+
+            /// <summary>
+            /// New parent task identifier. If the task is moved to the top level, this parameter is omitted. Assigned
+            /// tasks can not be set as parent task (have subtasks) or be moved under a parent task (become subtasks).
+            /// Optional.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Parent { get; set; }
@@ -1128,6 +1173,14 @@ namespace Google.Apis.Tasks.v1
                     Name = "task",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("destinationTasklist", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "destinationTasklist",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -1287,8 +1340,81 @@ namespace Google.Apis.Tasks.v1
 }
 namespace Google.Apis.Tasks.v1.Data
 {
+    /// <summary>Information about the source of the task assignment (Document, Chat Space).</summary>
+    public class AssignmentInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Information about the Drive file where this task originates from. Currently, the Drive file can
+        /// only be a document. This field is read-only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("driveResourceInfo")]
+        public virtual DriveResourceInfo DriveResourceInfo { get; set; }
+
+        /// <summary>
+        /// Output only. An absolute link to the original task in the surface of assignment (Docs, Chat spaces, etc.).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkToTask")]
+        public virtual string LinkToTask { get; set; }
+
+        /// <summary>
+        /// Output only. Information about the Chat Space where this task originates from. This field is read-only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spaceInfo")]
+        public virtual SpaceInfo SpaceInfo { get; set; }
+
+        /// <summary>
+        /// Output only. The type of surface this assigned task originates from. Currently limited to DOCUMENT or SPACE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("surfaceType")]
+        public virtual string SurfaceType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Information about the Drive resource where a task was assigned from (the document, sheet, etc.).
+    /// </summary>
+    public class DriveResourceInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Identifier of the file in the Drive API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("driveFileId")]
+        public virtual string DriveFileId { get; set; }
+
+        /// <summary>
+        /// Output only. Resource key required to access files shared via a shared link. Not required for all files. See
+        /// also developers.google.com/drive/api/guides/resource-keys.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceKey")]
+        public virtual string ResourceKey { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about the Chat Space where a task was assigned from.</summary>
+    public class SpaceInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The Chat space where this task originates from. The format is "spaces/{space}".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("space")]
+        public virtual string Space { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class Task : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. Context information for assigned tasks. A task can be assigned to a user, currently possible
+        /// from surfaces like Docs and Chat Spaces. This field is populated for tasks assigned to the current user and
+        /// identifies where the task was assigned from. This field is read-only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assignmentInfo")]
+        public virtual AssignmentInfo AssignmentInfo { get; set; }
+
         /// <summary>
         /// Completion date of the task (as a RFC 3339 timestamp). This field is omitted if the task has not been
         /// completed.
@@ -1296,7 +1422,12 @@ namespace Google.Apis.Tasks.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("completed")]
         public virtual string Completed { get; set; }
 
-        /// <summary>Flag indicating whether the task has been deleted. The default is False.</summary>
+        /// <summary>
+        /// Flag indicating whether the task has been deleted. For assigned tasks this field is read-only. They can only
+        /// be deleted by calling tasks.delete, in which case both the assigned task and the original task (in Docs or
+        /// Chat Spaces) are deleted. To delete the assigned task only, navigate to the assignment surface and unassign
+        /// the task from there. The default is False.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleted")]
         public virtual System.Nullable<bool> Deleted { get; set; }
 
@@ -1331,13 +1462,17 @@ namespace Google.Apis.Tasks.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("links")]
         public virtual System.Collections.Generic.IList<LinksData> Links { get; set; }
 
-        /// <summary>Notes describing the task. Optional. Maximum length allowed: 8192 characters.</summary>
+        /// <summary>
+        /// Notes describing the task. Tasks assigned from Google Docs cannot have notes. Optional. Maximum length
+        /// allowed: 8192 characters.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notes")]
         public virtual string Notes { get; set; }
 
         /// <summary>
-        /// Output only. Parent task identifier. This field is omitted if it is a top-level task. This field is
-        /// read-only. Use the "move" method to move the task under a different parent or to the top level.
+        /// Output only. Parent task identifier. This field is omitted if it is a top-level task. Use the "move" method
+        /// to move the task under a different parent or to the top level. A parent task can never be an assigned task
+        /// (from Chat Spaces, Docs). This field is read-only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
