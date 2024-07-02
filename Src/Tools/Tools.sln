@@ -5,8 +5,6 @@ VisualStudioVersion = 17.9.34607.119
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscoveryDocPatcher", "DiscoveryDocPatcher\DiscoveryDocPatcher.csproj", "{9AC5C16F-29DC-4279-9471-BC04249937F6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscoveryDocDownloader", "DiscoveryDocDownloader\DiscoveryDocDownloader.csproj", "{0D378F37-1F0D-4C51-804D-825C93AEE763}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudPackageMapGenerator", "CloudPackageMapGenerator\CloudPackageMapGenerator.csproj", "{3F62B2BF-BF29-4780-A5C2-D42979D89CE7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildGeneratedArgumentTranslator", "BuildGeneratedArgumentTranslator\BuildGeneratedArgumentTranslator.csproj", "{50E0FDFE-9544-4DB5-82E5-2A61DA550E55}"
@@ -35,18 +33,6 @@ Global
 		{9AC5C16F-29DC-4279-9471-BC04249937F6}.Release|x64.Build.0 = Release|Any CPU
 		{9AC5C16F-29DC-4279-9471-BC04249937F6}.Release|x86.ActiveCfg = Release|Any CPU
 		{9AC5C16F-29DC-4279-9471-BC04249937F6}.Release|x86.Build.0 = Release|Any CPU
-		{0D378F37-1F0D-4C51-804D-825C93AEE763}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0D378F37-1F0D-4C51-804D-825C93AEE763}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0D378F37-1F0D-4C51-804D-825C93AEE763}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{0D378F37-1F0D-4C51-804D-825C93AEE763}.Debug|x64.Build.0 = Debug|Any CPU
-		{0D378F37-1F0D-4C51-804D-825C93AEE763}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{0D378F37-1F0D-4C51-804D-825C93AEE763}.Debug|x86.Build.0 = Debug|Any CPU
-		{0D378F37-1F0D-4C51-804D-825C93AEE763}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0D378F37-1F0D-4C51-804D-825C93AEE763}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0D378F37-1F0D-4C51-804D-825C93AEE763}.Release|x64.ActiveCfg = Release|Any CPU
-		{0D378F37-1F0D-4C51-804D-825C93AEE763}.Release|x64.Build.0 = Release|Any CPU
-		{0D378F37-1F0D-4C51-804D-825C93AEE763}.Release|x86.ActiveCfg = Release|Any CPU
-		{0D378F37-1F0D-4C51-804D-825C93AEE763}.Release|x86.Build.0 = Release|Any CPU
 		{3F62B2BF-BF29-4780-A5C2-D42979D89CE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3F62B2BF-BF29-4780-A5C2-D42979D89CE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F62B2BF-BF29-4780-A5C2-D42979D89CE7}.Debug|x64.ActiveCfg = Debug|Any CPU
