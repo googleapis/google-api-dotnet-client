@@ -40,6 +40,12 @@ then
   ls DiscoveryJson/*.json > tmp/ApisToGenerate.txt
 fi
 
+if [[ ! -s tmp/ApisToGenerate.txt ]]
+then
+  echo "No APIs to generate; exiting build"
+  exit 0
+fi
+
 # Generate all APIs listed in tmp/ApisToGenerate.txt
 ./GenerateApis.sh @tmp/ApisToGenerate.txt
 
