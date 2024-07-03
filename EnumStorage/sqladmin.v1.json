@@ -1,4 +1,14 @@
 {
+  "Google.Apis.SQLAdmin.v1.ProjectsResource+InstancesResource+StartExternalSyncRequest.SyncModeEnum": [
+    "EXTERNAL_SYNC_MODE_UNSPECIFIED",
+    "ONLINE",
+    "OFFLINE"
+  ],
+  "Google.Apis.SQLAdmin.v1.ProjectsResource+InstancesResource+VerifyExternalSyncSettingsRequest.SyncModeEnum": [
+    "EXTERNAL_SYNC_MODE_UNSPECIFIED",
+    "ONLINE",
+    "OFFLINE"
+  ],
   "Google.Apis.SQLAdmin.v1.SQLAdminBaseServiceRequest<<TResponse>>.AltEnum": [
     "json",
     "media",
@@ -7,5 +17,10 @@
   "Google.Apis.SQLAdmin.v1.SQLAdminBaseServiceRequest<<TResponse>>.XgafvEnum": [
     "1",
     "2"
+  ],
+  "Google.Apis.SQLAdmin.v1.UsersResource+ListRequest.BodyTypeEnum": [
+    "BUILT_IN",
+    "CLOUD_IAM_USER",
+    "CLOUD_IAM_SERVICE_ACCOUNT"
   ]
 }

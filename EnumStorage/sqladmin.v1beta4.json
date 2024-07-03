@@ -1,4 +1,14 @@
 {
+  "Google.Apis.SQLAdmin.v1beta4.ProjectsResource+InstancesResource+StartExternalSyncRequest.SyncModeEnum": [
+    "EXTERNAL_SYNC_MODE_UNSPECIFIED",
+    "ONLINE",
+    "OFFLINE"
+  ],
+  "Google.Apis.SQLAdmin.v1beta4.ProjectsResource+InstancesResource+VerifyExternalSyncSettingsRequest.SyncModeEnum": [
+    "EXTERNAL_SYNC_MODE_UNSPECIFIED",
+    "ONLINE",
+    "OFFLINE"
+  ],
   "Google.Apis.SQLAdmin.v1beta4.SQLAdminBaseServiceRequest<<TResponse>>.AltEnum": [
     "json",
     "media",

@@ -9,7 +9,8 @@
     "lastSync",
     "notes",
     "serialNumber",
-    "status"
+    "status",
+    "supportEndDate"
   ],
   "Google.Apis.Admin.Directory.directory_v1.ChromeosdevicesResource+ListRequest.ProjectionEnum": [
     "BASIC",
