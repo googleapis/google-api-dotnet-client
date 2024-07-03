@@ -33,7 +33,7 @@ if (args.Length == 0)
     Console.WriteLine("Arguments, one of two forms:");
     Console.WriteLine("  <generation-dir> <file-or-dir> [...]");
     Console.WriteLine("  <generation-dir> @file");
-    Console.WriteLine("where @file specifies a file one file/directory per line.");
+    Console.WriteLine("where @file specifies a file with one file/directory per line.");
     Console.WriteLine("Each file or directory should be either a project file/directory, or a Discovery file.");
     return 1;
 }
