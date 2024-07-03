@@ -22,6 +22,22 @@ then
   exit 1
 fi
 
+if [[ $1 == @* ]]
+then
+  file=${1:1}
+  if [[ ! -f $file ]]
+  then
+    echo "Error: $file does not exist"
+    exit 1
+  fi
+
+  if [[ ! -s $file ]]
+  then
+    echo "$file is empty; assuming nothing needs generating."
+    exit 0
+  fi
+fi
+
 source ./CSharpGeneratorFunctions.sh
 install_csharp_generator
 
