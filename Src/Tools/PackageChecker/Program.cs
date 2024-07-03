@@ -61,6 +61,13 @@ Package Fetch(string projectFile)
     string id = Path.GetFileNameWithoutExtension(projectFile);
     var version = doc.Root.Element("PropertyGroup").Element("Version").Value;
 
+    // A version of x.y.z.0 is packaged as just x.y.z
+    var bits = version.Split('.');
+    if (bits.Length == 4 && bits[3] == "0")
+    {
+        version = string.Join(".", bits.Take(3));
+    }
+
     var url = new Uri($"https://globalcdn.nuget.org/packages/{id.ToLowerInvariant()}.{version}.nupkg");
     var request = new HttpRequestMessage
     {
