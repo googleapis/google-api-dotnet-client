@@ -36,6 +36,22 @@ then
   exit 1
 fi
 
+if [[ $1 == @* ]]
+then
+  file=${1:1}
+  if [[ ! -f $file ]]
+  then
+    echo "Error: $file does not exist"
+    exit 1
+  fi
+
+  if [[ ! -s $file ]]
+  then
+    echo "$file is empty; assuming nothing needs building."
+    exit 0
+  fi
+fi
+
 echo "Creating solution"
 
 # First argument is the generation directory, used for when Discovery docs have been specified.
