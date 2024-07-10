@@ -6535,6 +6535,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual string Query { get; set; }
 
+        /// <summary>Query source for the answer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("querySource")]
+        public virtual string QuerySource { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -10003,6 +10007,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual string Query { get; set; }
+
+        /// <summary>Query source for the answer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("querySource")]
+        public virtual string QuerySource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -5275,10 +5275,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
     /// <summary>Observability Instance specific configuration.</summary>
     public class ObservabilityInstanceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Observability feature status for an instance. This is a read-only flag and modifiable only by producer API.
-        /// This flag is turned "off" by default.
-        /// </summary>
+        /// <summary>Observability feature status for an instance. This flag is turned "off" by default.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
 
@@ -5292,7 +5289,7 @@ namespace Google.Apis.CloudAlloyDBAdmin.v1alpha.Data
 
         /// <summary>
         /// Number of query execution plans captured by Insights per minute for all queries combined. The default value
-        /// is 5. Any integer between 0 to 20 is considered valid.
+        /// is 200. Any integer between 0 to 200 is considered valid.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryPlansPerMinute")]
         public virtual System.Nullable<int> QueryPlansPerMinute { get; set; }

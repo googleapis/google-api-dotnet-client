@@ -5513,7 +5513,7 @@ namespace Google.Apis.Connectors.v1.Data
 
         /// <summary>Optional. Omit query params from the redirect URI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("omitQueryParams")]
-        public virtual string OmitQueryParams { get; set; }
+        public virtual System.Nullable<bool> OmitQueryParams { get; set; }
 
         /// <summary>
         /// The scopes for which the user will authorize Google Cloud Connectors on the connector data source.

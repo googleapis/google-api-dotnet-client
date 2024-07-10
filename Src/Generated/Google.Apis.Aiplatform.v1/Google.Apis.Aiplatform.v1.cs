@@ -6175,6 +6175,77 @@ namespace Google.Apis.Aiplatform.v1
                     }
                 }
 
+                /// <summary>Update a DeploymentResourcePool.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Immutable. The resource name of the DeploymentResourcePool. Format:
+                /// `projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}`
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1DeploymentResourcePool body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Update a DeploymentResourcePool.</summary>
+                public class PatchRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1DeploymentResourcePool body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Immutable. The resource name of the DeploymentResourcePool. Format:
+                    /// `projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Required. The list of fields to update.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1DeploymentResourcePool Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/deploymentResourcePools/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
                 /// <summary>List DeployedModels that have been deployed on this DeploymentResourcePool.</summary>
                 /// <param name="deploymentResourcePool">
                 /// Required. The name of the target DeploymentResourcePool to query. Format:
@@ -40054,6 +40125,10 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// </summary>
     public class GoogleCloudAiplatformV1BleuSpec : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Whether to use_effective_order to compute bleu score.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useEffectiveOrder")]
+        public virtual System.Nullable<bool> UseEffectiveOrder { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -40405,12 +40480,23 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// <summary>Request message for ComputeTokens RPC call.</summary>
     public class GoogleCloudAiplatformV1ComputeTokensRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Required. Input content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contents")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1Content> Contents { get; set; }
+
         /// <summary>
         /// Required. The instances that are the input to token computing API call. Schema is identical to the
         /// prediction schema of the text model, even for the non-text models, like chat models, or Codey models.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instances")]
         public virtual System.Collections.Generic.IList<object> Instances { get; set; }
+
+        /// <summary>
+        /// Required. The name of the publisher model requested to serve the prediction. Format:
+        /// projects/{project}/locations/{location}/publishers/*/models/*
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("model")]
+        public virtual string Model { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -45445,10 +45531,26 @@ namespace Google.Apis.Aiplatform.v1.Data
     public class GoogleCloudAiplatformV1FeatureOnlineStoreDedicatedServingEndpoint : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. Private service connect config. The private service connection is available only for Optimized
+        /// storage type, not for embedding management now. If
+        /// PrivateServiceConnectConfig.enable_private_service_connect set to true, customers will use private service
+        /// connection to send request. Otherwise, the connection will set to public endpoint.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateServiceConnectConfig")]
+        public virtual GoogleCloudAiplatformV1PrivateServiceConnectConfig PrivateServiceConnectConfig { get; set; }
+
+        /// <summary>
         /// Output only. This field will be populated with the domain name to use for this FeatureOnlineStore
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicEndpointDomainName")]
         public virtual string PublicEndpointDomainName { get; set; }
+
+        /// <summary>
+        /// Output only. The name of the service attachment resource. Populated if private service connect is enabled
+        /// and after FeatureViewSync is created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAttachment")]
+        public virtual string ServiceAttachment { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -47273,9 +47375,102 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Grounding attribution.</summary>
+    public class GoogleCloudAiplatformV1GroundingAttribution : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Output only. Confidence score of the attribution. Ranges from 0 to 1. 1 is the most confident.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidenceScore")]
+        public virtual System.Nullable<float> ConfidenceScore { get; set; }
+
+        /// <summary>Output only. Segment of the content this attribution belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("segment")]
+        public virtual GoogleCloudAiplatformV1Segment Segment { get; set; }
+
+        /// <summary>Optional. Attribution from the web.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("web")]
+        public virtual GoogleCloudAiplatformV1GroundingAttributionWeb Web { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Attribution from the web.</summary>
+    public class GoogleCloudAiplatformV1GroundingAttributionWeb : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Title of the attribution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>Output only. URI reference of the attribution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Grounding chunk.</summary>
+    public class GoogleCloudAiplatformV1GroundingChunk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Grounding chunk from context retrieved by the retrieval tools.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retrievedContext")]
+        public virtual GoogleCloudAiplatformV1GroundingChunkRetrievedContext RetrievedContext { get; set; }
+
+        /// <summary>Grounding chunk from the web.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("web")]
+        public virtual GoogleCloudAiplatformV1GroundingChunkWeb Web { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Chunk from context retrieved by the retrieval tools.</summary>
+    public class GoogleCloudAiplatformV1GroundingChunkRetrievedContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Title of the attribution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>URI reference of the attribution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Chunk from the web.</summary>
+    public class GoogleCloudAiplatformV1GroundingChunkWeb : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Title of the chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>URI reference of the chunk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata returned to client when grounding is enabled.</summary>
     public class GoogleCloudAiplatformV1GroundingMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. List of grounding attributions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groundingAttributions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1GroundingAttribution> GroundingAttributions { get; set; }
+
+        /// <summary>List of supporting references retrieved from specified grounding source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groundingChunks")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1GroundingChunk> GroundingChunks { get; set; }
+
+        /// <summary>Optional. List of grounding support.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groundingSupports")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1GroundingSupport> GroundingSupports { get; set; }
+
         /// <summary>Optional. Google search entry for the following-up web searches.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchEntryPoint")]
         public virtual GoogleCloudAiplatformV1SearchEntryPoint SearchEntryPoint { get; set; }
@@ -47283,6 +47478,32 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Optional. Web search queries for the following-up web search.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webSearchQueries")]
         public virtual System.Collections.Generic.IList<string> WebSearchQueries { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Grounding support.</summary>
+    public class GoogleCloudAiplatformV1GroundingSupport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Confidence score of the support references. Ranges from 0 to 1. 1 is the most confident. This list must have
+        /// the same size as the grounding_chunk_indices.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidenceScores")]
+        public virtual System.Collections.Generic.IList<System.Nullable<float>> ConfidenceScores { get; set; }
+
+        /// <summary>
+        /// A list of indices (into 'grounding_chunk') specifying the citations associated with the claim. For instance
+        /// [1,3,4] means that grounding_chunk[1], grounding_chunk[3], grounding_chunk[4] are the retrieved content
+        /// attributed to the claim.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groundingChunkIndices")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> GroundingChunkIndices { get; set; }
+
+        /// <summary>Segment of the content this support belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("segment")]
+        public virtual GoogleCloudAiplatformV1Segment Segment { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -50166,6 +50387,21 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("predictSchemata")]
         public virtual GoogleCloudAiplatformV1PredictSchemata PredictSchemata { get; set; }
+
+        /// <summary>
+        /// Output only. A read only boolean field reflecting Zone Isolation status of the model. It's false by default.
+        /// Since Model is a type ZICY 4.2 resource, the field is an aggregated value of ZI status of its underlying
+        /// dependencies.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>
+        /// Output only. A read only boolean field reflecting ZS status of the model. It's false by default. Since Model
+        /// is a type ZICY 4.2 resource, the field is an aggregated value of ZS status of its underlying dependencies.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
         /// <summary>
         /// Output only. When this Model is deployed, its prediction resources are described by the
@@ -54418,6 +54654,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dedicatedResources")]
         public virtual GoogleCloudAiplatformV1DedicatedResources DedicatedResources { get; set; }
 
+        /// <summary>Optional. Metadata information about this deployment config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployMetadata")]
+        public virtual GoogleCloudAiplatformV1PublisherModelCallToActionDeployDeployMetadata DeployMetadata { get; set; }
+
         /// <summary>Optional. The name of the deploy task (e.g., "text to image generation").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deployTaskName")]
         public virtual string DeployTaskName { get; set; }
@@ -54444,6 +54684,20 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Required. The title of the regional resource reference.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata information about the deployment for managing deployment config.</summary>
+    public class GoogleCloudAiplatformV1PublisherModelCallToActionDeployDeployMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Labels for the deployment. For managing deployment config like verifying, source of deployment
+        /// config, etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -60891,6 +61145,35 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Segment of the content.</summary>
+    public class GoogleCloudAiplatformV1Segment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. End index in the given Part, measured in bytes. Offset from the start of the Part, exclusive,
+        /// starting at zero.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endIndex")]
+        public virtual System.Nullable<int> EndIndex { get; set; }
+
+        /// <summary>Output only. The index of a Part object within its parent Content object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partIndex")]
+        public virtual System.Nullable<int> PartIndex { get; set; }
+
+        /// <summary>
+        /// Output only. Start index in the given Part, measured in bytes. Offset from the start of the Part, inclusive,
+        /// starting at zero.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
+        public virtual System.Nullable<int> StartIndex { get; set; }
+
+        /// <summary>Output only. The text corresponding to the segment from the response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for the use of custom service account to run the workloads.</summary>
     public class GoogleCloudAiplatformV1ServiceAccountSpec : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -62186,6 +62469,10 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// <summary>Dataset distribution for Supervised Tuning.</summary>
     public class GoogleCloudAiplatformV1SupervisedTuningDatasetDistribution : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Sum of a given population of values that are billable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billableSum")]
+        public virtual System.Nullable<long> BillableSum { get; set; }
+
         /// <summary>Output only. Defines the histogram bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buckets")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1SupervisedTuningDatasetDistributionDatasetBucket> Buckets { get; set; }
@@ -63099,6 +63386,10 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// <summary>Tokens info with a list of tokens and the corresponding list of token ids.</summary>
     public class GoogleCloudAiplatformV1TokensInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Optional fields for the role from the corresponding Content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("role")]
+        public virtual string Role { get; set; }
+
         /// <summary>A list of token ids from the input.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tokenIds")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> TokenIds { get; set; }

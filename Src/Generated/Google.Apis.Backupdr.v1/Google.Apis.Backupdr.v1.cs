@@ -292,8 +292,1670 @@ namespace Google.Apis.Backupdr.v1
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                BackupVaults = new BackupVaultsResource(service);
                 ManagementServers = new ManagementServersResource(service);
                 Operations = new OperationsResource(service);
+            }
+
+            /// <summary>Gets the BackupVaults resource.</summary>
+            public virtual BackupVaultsResource BackupVaults { get; }
+
+            /// <summary>The "backupVaults" collection of methods.</summary>
+            public class BackupVaultsResource
+            {
+                private const string Resource = "backupVaults";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public BackupVaultsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    DataSources = new DataSourcesResource(service);
+                }
+
+                /// <summary>Gets the DataSources resource.</summary>
+                public virtual DataSourcesResource DataSources { get; }
+
+                /// <summary>The "dataSources" collection of methods.</summary>
+                public class DataSourcesResource
+                {
+                    private const string Resource = "dataSources";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public DataSourcesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                        Backups = new BackupsResource(service);
+                    }
+
+                    /// <summary>Gets the Backups resource.</summary>
+                    public virtual BackupsResource Backups { get; }
+
+                    /// <summary>The "backups" collection of methods.</summary>
+                    public class BackupsResource
+                    {
+                        private const string Resource = "backups";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public BackupsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>Deletes a Backup.</summary>
+                        /// <param name="name">Required. Name of the resource.</param>
+                        public virtual DeleteRequest Delete(string name)
+                        {
+                            return new DeleteRequest(this.service, name);
+                        }
+
+                        /// <summary>Deletes a Backup.</summary>
+                        public class DeleteRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.Operation>
+                        {
+                            /// <summary>Constructs a new Delete request.</summary>
+                            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>Required. Name of the resource.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>
+                            /// Optional. An optional request ID to identify requests. Specify a unique request ID so
+                            /// that if you must retry your request, the server will know to ignore the request if it
+                            /// has already been completed. The server will guarantee that for at least 60 minutes after
+                            /// the first request. For example, consider a situation where you make an initial request
+                            /// and the request times out. If you make the request again with the same request ID, the
+                            /// server can check if original operation with the same request ID was received, and if so,
+                            /// will ignore the second request. This prevents clients from accidentally creating
+                            /// duplicate commitments. The request ID must be a valid UUID with the exception that zero
+                            /// UUID is not supported (00000000-0000-0000-0000-000000000000).
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string RequestId { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "delete";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "DELETE";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Delete parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/backupVaults/[^/]+/dataSources/[^/]+/backups/[^/]+$",
+                                });
+                                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "requestId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>Gets details of a Backup.</summary>
+                        /// <param name="name">
+                        /// Required. Name of the data source resource name, in the format
+                        /// 'projects/{project_id}/locations/{location}/backupVaults/{backupVault}/dataSources/{datasource}/backups/{backup}'
+                        /// </param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(this.service, name);
+                        }
+
+                        /// <summary>Gets details of a Backup.</summary>
+                        public class GetRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.Backup>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. Name of the data source resource name, in the format
+                            /// 'projects/{project_id}/locations/{location}/backupVaults/{backupVault}/dataSources/{datasource}/backups/{backup}'
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/backupVaults/[^/]+/dataSources/[^/]+/backups/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Lists Backups in a given project and location.</summary>
+                        /// <param name="parent">
+                        /// Required. The project and location for which to retrieve backup information, in the format
+                        /// 'projects/{project_id}/locations/{location}'. In Cloud Backup and DR, locations map to
+                        /// Google Cloud regions, for example **us-central1**. To retrieve data sources for all
+                        /// locations, use "-" for the '{location}' value.
+                        /// </param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(this.service, parent);
+                        }
+
+                        /// <summary>Lists Backups in a given project and location.</summary>
+                        public class ListRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.ListBackupsResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The project and location for which to retrieve backup information, in the
+                            /// format 'projects/{project_id}/locations/{location}'. In Cloud Backup and DR, locations
+                            /// map to Google Cloud regions, for example **us-central1**. To retrieve data sources for
+                            /// all locations, use "-" for the '{location}' value.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Optional. Filtering results.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Filter { get; set; }
+
+                            /// <summary>Optional. Hint for how to order the results.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string OrderBy { get; set; }
+
+                            /// <summary>
+                            /// Optional. Requested page size. Server may return fewer items than requested. If
+                            /// unspecified, server will pick an appropriate default.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>
+                            /// Optional. A token identifying a page of results the server should return.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}/backups";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/backupVaults/[^/]+/dataSources/[^/]+$",
+                                });
+                                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "orderBy",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>Updates the settings of a Backup.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">Output only. Name of the resource.</param>
+                        public virtual PatchRequest Patch(Google.Apis.Backupdr.v1.Data.Backup body, string name)
+                        {
+                            return new PatchRequest(this.service, body, name);
+                        }
+
+                        /// <summary>Updates the settings of a Backup.</summary>
+                        public class PatchRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.Operation>
+                        {
+                            /// <summary>Constructs a new Patch request.</summary>
+                            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Backupdr.v1.Data.Backup body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>Output only. Name of the resource.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>
+                            /// Optional. An optional request ID to identify requests. Specify a unique request ID so
+                            /// that if you must retry your request, the server will know to ignore the request if it
+                            /// has already been completed. The server will guarantee that for at least 60 minutes since
+                            /// the first request. For example, consider a situation where you make an initial request
+                            /// and the request times out. If you make the request again with the same request ID, the
+                            /// server can check if original operation with the same request ID was received, and if so,
+                            /// will ignore the second request. This prevents clients from accidentally creating
+                            /// duplicate commitments. The request ID must be a valid UUID with the exception that zero
+                            /// UUID is not supported (00000000-0000-0000-0000-000000000000).
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string RequestId { get; set; }
+
+                            /// <summary>
+                            /// Required. Field mask is used to specify the fields to be overwritten in the Backup
+                            /// resource by the update. The fields specified in the update_mask are relative to the
+                            /// resource, not the full request. A field will be overwritten if it is in the mask. If the
+                            /// user does not provide a mask then the request will fail.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual object UpdateMask { get; set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Backupdr.v1.Data.Backup Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "patch";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "PATCH";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Patch parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/backupVaults/[^/]+/dataSources/[^/]+/backups/[^/]+$",
+                                });
+                                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "requestId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "updateMask",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+                    }
+
+                    /// <summary>Internal only. Abandons a backup.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="dataSource">
+                    /// Required. The resource name of the instance, in the format
+                    /// 'projects/*/locations/*/backupVaults/*/dataSources/'.
+                    /// </param>
+                    public virtual AbandonBackupRequest AbandonBackup(Google.Apis.Backupdr.v1.Data.AbandonBackupRequest body, string dataSource)
+                    {
+                        return new AbandonBackupRequest(this.service, body, dataSource);
+                    }
+
+                    /// <summary>Internal only. Abandons a backup.</summary>
+                    public class AbandonBackupRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new AbandonBackup request.</summary>
+                        public AbandonBackupRequest(Google.Apis.Services.IClientService service, Google.Apis.Backupdr.v1.Data.AbandonBackupRequest body, string dataSource) : base(service)
+                        {
+                            DataSource = dataSource;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the instance, in the format
+                        /// 'projects/*/locations/*/backupVaults/*/dataSources/'.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("dataSource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string DataSource { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Backupdr.v1.Data.AbandonBackupRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "abandonBackup";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+dataSource}:abandonBackup";
+
+                        /// <summary>Initializes AbandonBackup parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("dataSource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "dataSource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/backupVaults/[^/]+/dataSources/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Internal only. Fetch access token for a given data source.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The resource name for the location for which static IPs should be returned. Must be in
+                    /// the format 'projects/*/locations/*/backupVaults/*/dataSources'.
+                    /// </param>
+                    public virtual FetchAccessTokenRequest FetchAccessToken(Google.Apis.Backupdr.v1.Data.FetchAccessTokenRequest body, string name)
+                    {
+                        return new FetchAccessTokenRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Internal only. Fetch access token for a given data source.</summary>
+                    public class FetchAccessTokenRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.FetchAccessTokenResponse>
+                    {
+                        /// <summary>Constructs a new FetchAccessToken request.</summary>
+                        public FetchAccessTokenRequest(Google.Apis.Services.IClientService service, Google.Apis.Backupdr.v1.Data.FetchAccessTokenRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name for the location for which static IPs should be returned. Must
+                        /// be in the format 'projects/*/locations/*/backupVaults/*/dataSources'.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Backupdr.v1.Data.FetchAccessTokenRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "fetchAccessToken";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:fetchAccessToken";
+
+                        /// <summary>Initializes FetchAccessToken parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/backupVaults/[^/]+/dataSources/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Internal only. Finalize a backup that was started by a call to InitiateBackup.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="dataSource">
+                    /// Required. The resource name of the instance, in the format
+                    /// 'projects/*/locations/*/backupVaults/*/dataSources/'.
+                    /// </param>
+                    public virtual FinalizeBackupRequest FinalizeBackup(Google.Apis.Backupdr.v1.Data.FinalizeBackupRequest body, string dataSource)
+                    {
+                        return new FinalizeBackupRequest(this.service, body, dataSource);
+                    }
+
+                    /// <summary>
+                    /// Internal only. Finalize a backup that was started by a call to InitiateBackup.
+                    /// </summary>
+                    public class FinalizeBackupRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new FinalizeBackup request.</summary>
+                        public FinalizeBackupRequest(Google.Apis.Services.IClientService service, Google.Apis.Backupdr.v1.Data.FinalizeBackupRequest body, string dataSource) : base(service)
+                        {
+                            DataSource = dataSource;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the instance, in the format
+                        /// 'projects/*/locations/*/backupVaults/*/dataSources/'.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("dataSource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string DataSource { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Backupdr.v1.Data.FinalizeBackupRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "finalizeBackup";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+dataSource}:finalizeBackup";
+
+                        /// <summary>Initializes FinalizeBackup parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("dataSource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "dataSource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/backupVaults/[^/]+/dataSources/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets details of a DataSource.</summary>
+                    /// <param name="name">
+                    /// Required. Name of the data source resource name, in the format
+                    /// 'projects/{project_id}/locations/{location}/backupVaults/{resource_name}/dataSource/{resource_name}'
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Gets details of a DataSource.</summary>
+                    public class GetRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.DataSource>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Name of the data source resource name, in the format
+                        /// 'projects/{project_id}/locations/{location}/backupVaults/{resource_name}/dataSource/{resource_name}'
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/backupVaults/[^/]+/dataSources/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Internal only. Initiates a backup.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="dataSource">
+                    /// Required. The resource name of the instance, in the format
+                    /// 'projects/*/locations/*/backupVaults/*/dataSources/'.
+                    /// </param>
+                    public virtual InitiateBackupRequest InitiateBackup(Google.Apis.Backupdr.v1.Data.InitiateBackupRequest body, string dataSource)
+                    {
+                        return new InitiateBackupRequest(this.service, body, dataSource);
+                    }
+
+                    /// <summary>Internal only. Initiates a backup.</summary>
+                    public class InitiateBackupRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.InitiateBackupResponse>
+                    {
+                        /// <summary>Constructs a new InitiateBackup request.</summary>
+                        public InitiateBackupRequest(Google.Apis.Services.IClientService service, Google.Apis.Backupdr.v1.Data.InitiateBackupRequest body, string dataSource) : base(service)
+                        {
+                            DataSource = dataSource;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the instance, in the format
+                        /// 'projects/*/locations/*/backupVaults/*/dataSources/'.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("dataSource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string DataSource { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Backupdr.v1.Data.InitiateBackupRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "initiateBackup";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+dataSource}:initiateBackup";
+
+                        /// <summary>Initializes InitiateBackup parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("dataSource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "dataSource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/backupVaults/[^/]+/dataSources/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists DataSources in a given project and location.</summary>
+                    /// <param name="parent">
+                    /// Required. The project and location for which to retrieve data sources information, in the format
+                    /// 'projects/{project_id}/locations/{location}'. In Cloud Backup and DR, locations map to Google
+                    /// Cloud regions, for example **us-central1**. To retrieve data sources for all locations, use "-"
+                    /// for the '{location}' value.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists DataSources in a given project and location.</summary>
+                    public class ListRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.ListDataSourcesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The project and location for which to retrieve data sources information, in the
+                        /// format 'projects/{project_id}/locations/{location}'. In Cloud Backup and DR, locations map
+                        /// to Google Cloud regions, for example **us-central1**. To retrieve data sources for all
+                        /// locations, use "-" for the '{location}' value.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Optional. Filtering results.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>Optional. Hint for how to order the results.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
+
+                        /// <summary>
+                        /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
+                        /// server will pick an appropriate default.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/dataSources";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/backupVaults/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Updates the settings of a DataSource.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Output only. The resource name.</param>
+                    public virtual PatchRequest Patch(Google.Apis.Backupdr.v1.Data.DataSource body, string name)
+                    {
+                        return new PatchRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Updates the settings of a DataSource.</summary>
+                    public class PatchRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Backupdr.v1.Data.DataSource body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Output only. The resource name.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Optional. Enable upsert.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+                        /// <summary>
+                        /// Optional. An optional request ID to identify requests. Specify a unique request ID so that
+                        /// if you must retry your request, the server will know to ignore the request if it has already
+                        /// been completed. The server will guarantee that for at least 60 minutes since the first
+                        /// request. For example, consider a situation where you make an initial request and the request
+                        /// times out. If you make the request again with the same request ID, the server can check if
+                        /// original operation with the same request ID was received, and if so, will ignore the second
+                        /// request. This prevents clients from accidentally creating duplicate commitments. The request
+                        /// ID must be a valid UUID with the exception that zero UUID is not supported
+                        /// (00000000-0000-0000-0000-000000000000).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string RequestId { get; set; }
+
+                        /// <summary>
+                        /// Required. Field mask is used to specify the fields to be overwritten in the DataSource
+                        /// resource by the update. The fields specified in the update_mask are relative to the
+                        /// resource, not the full request. A field will be overwritten if it is in the mask. If the
+                        /// user does not provide a mask then the request will fail.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Backupdr.v1.Data.DataSource Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/backupVaults/[^/]+/dataSources/[^/]+$",
+                            });
+                            RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "allowMissing",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "requestId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Deletes a DataSource. This is a custom method instead of a standard delete method because
+                    /// external clients will not delete DataSources except for BackupDR backup appliances.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Required. Name of the resource.</param>
+                    public virtual RemoveRequest Remove(Google.Apis.Backupdr.v1.Data.RemoveDataSourceRequest body, string name)
+                    {
+                        return new RemoveRequest(this.service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Deletes a DataSource. This is a custom method instead of a standard delete method because
+                    /// external clients will not delete DataSources except for BackupDR backup appliances.
+                    /// </summary>
+                    public class RemoveRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Remove request.</summary>
+                        public RemoveRequest(Google.Apis.Services.IClientService service, Google.Apis.Backupdr.v1.Data.RemoveDataSourceRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. Name of the resource.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Backupdr.v1.Data.RemoveDataSourceRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "remove";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:remove";
+
+                        /// <summary>Initializes Remove parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/backupVaults/[^/]+/dataSources/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Sets the internal status of a DataSource.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="dataSource">
+                    /// Required. The resource name of the instance, in the format
+                    /// 'projects/*/locations/*/backupVaults/*/dataSources/'.
+                    /// </param>
+                    public virtual SetInternalStatusRequest SetInternalStatus(Google.Apis.Backupdr.v1.Data.SetInternalStatusRequest body, string dataSource)
+                    {
+                        return new SetInternalStatusRequest(this.service, body, dataSource);
+                    }
+
+                    /// <summary>Sets the internal status of a DataSource.</summary>
+                    public class SetInternalStatusRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new SetInternalStatus request.</summary>
+                        public SetInternalStatusRequest(Google.Apis.Services.IClientService service, Google.Apis.Backupdr.v1.Data.SetInternalStatusRequest body, string dataSource) : base(service)
+                        {
+                            DataSource = dataSource;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the instance, in the format
+                        /// 'projects/*/locations/*/backupVaults/*/dataSources/'.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("dataSource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string DataSource { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Backupdr.v1.Data.SetInternalStatusRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "setInternalStatus";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+dataSource}:setInternalStatus";
+
+                        /// <summary>Initializes SetInternalStatus parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("dataSource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "dataSource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/backupVaults/[^/]+/dataSources/[^/]+$",
+                            });
+                        }
+                    }
+                }
+
+                /// <summary></summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. Value for parent.</param>
+                public virtual CreateRequest Create(Google.Apis.Backupdr.v1.Data.BackupVault body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary></summary>
+                public class CreateRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Backupdr.v1.Data.BackupVault body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Value for parent.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. ID of the requesting object If auto-generating ID server-side, remove this field and
+                    /// backup_vault_id from the method_signature of Create RPC
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("backupVaultId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string BackupVaultId { get; set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Optional. Only validate the request, but do not perform mutations. The default is 'false'.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Backupdr.v1.Data.BackupVault Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/backupVaults";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("backupVaultId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "backupVaultId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a BackupVault.</summary>
+                /// <param name="name">Required. Name of the resource.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a BackupVault.</summary>
+                public class DeleteRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Name of the resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. If true and the BackupVault is not found, the request will succeed but no action will
+                    /// be taken.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+                    /// <summary>
+                    /// The current etag of the backup vault. If an etag is provided and does not match the current etag
+                    /// of the connection, deletion will be blocked.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Etag { get; set; }
+
+                    /// <summary>
+                    /// Optional. If set to true, any data source from this backup vault will also be deleted.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> Force { get; set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes after the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Optional. Only validate the request, but do not perform mutations. The default is 'false'.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/backupVaults/[^/]+$",
+                        });
+                        RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "allowMissing",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "etag",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "force",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// FetchUsableBackupVaults lists usable BackupVaults in a given project and location. Usable
+                /// BackupVault are the ones that user has backupdr.backupVaults.get permission.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. The project and location for which to retrieve backupvault stores information, in the
+                /// format 'projects/{project_id}/locations/{location}'. In Cloud Backup and DR, locations map to Google
+                /// Cloud regions, for example **us-central1**. To retrieve backupvault stores for all locations, use
+                /// "-" for the '{location}' value.
+                /// </param>
+                public virtual FetchUsableRequest FetchUsable(string parent)
+                {
+                    return new FetchUsableRequest(this.service, parent);
+                }
+
+                /// <summary>
+                /// FetchUsableBackupVaults lists usable BackupVaults in a given project and location. Usable
+                /// BackupVault are the ones that user has backupdr.backupVaults.get permission.
+                /// </summary>
+                public class FetchUsableRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.FetchUsableBackupVaultsResponse>
+                {
+                    /// <summary>Constructs a new FetchUsable request.</summary>
+                    public FetchUsableRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project and location for which to retrieve backupvault stores information, in the
+                    /// format 'projects/{project_id}/locations/{location}'. In Cloud Backup and DR, locations map to
+                    /// Google Cloud regions, for example **us-central1**. To retrieve backupvault stores for all
+                    /// locations, use "-" for the '{location}' value.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. Filtering results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. Hint for how to order the results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
+                    /// server will pick an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "fetchUsable";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/backupVaults:fetchUsable";
+
+                    /// <summary>Initializes FetchUsable parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a BackupVault.</summary>
+                /// <param name="name">
+                /// Required. Name of the backupvault store resource name, in the format
+                /// 'projects/{project_id}/locations/{location}/backupVaults/{resource_name}'
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of a BackupVault.</summary>
+                public class GetRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.BackupVault>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the backupvault store resource name, in the format
+                    /// 'projects/{project_id}/locations/{location}/backupVaults/{resource_name}'
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/backupVaults/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists BackupVaults in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The project and location for which to retrieve backupvault stores information, in the
+                /// format 'projects/{project_id}/locations/{location}'. In Cloud Backup and DR, locations map to Google
+                /// Cloud regions, for example **us-central1**. To retrieve backupvault stores for all locations, use
+                /// "-" for the '{location}' value.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists BackupVaults in a given project and location.</summary>
+                public class ListRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.ListBackupVaultsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project and location for which to retrieve backupvault stores information, in the
+                    /// format 'projects/{project_id}/locations/{location}'. In Cloud Backup and DR, locations map to
+                    /// Google Cloud regions, for example **us-central1**. To retrieve backupvault stores for all
+                    /// locations, use "-" for the '{location}' value.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. Filtering results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. Hint for how to order the results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
+                    /// server will pick an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. A token identifying a page of results the server should return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/backupVaults";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates the settings of a BackupVault.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Output only. The resource name.</param>
+                public virtual PatchRequest Patch(Google.Apis.Backupdr.v1.Data.BackupVault body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates the settings of a BackupVault.</summary>
+                public class PatchRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Backupdr.v1.Data.BackupVault body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Output only. The resource name.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server will know to ignore the request if it has already been
+                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
+                    /// example, consider a situation where you make an initial request and the request times out. If
+                    /// you make the request again with the same request ID, the server can check if original operation
+                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
+                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
+                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Required. Field mask is used to specify the fields to be overwritten in the BackupVault resource
+                    /// by the update. The fields specified in the update_mask are relative to the resource, not the
+                    /// full request. A field will be overwritten if it is in the mask. If the user does not provide a
+                    /// mask then the request will fail.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>
+                    /// Optional. Only validate the request, but do not perform mutations. The default is 'false'.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Backupdr.v1.Data.BackupVault Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/backupVaults/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Returns the caller's permissions on a BackupVault resource. A caller is not required to have Google
+                /// IAM permission to make this request.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
+                /// </param>
+                public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Backupdr.v1.Data.TestIamPermissionsRequest body, string resource)
+                {
+                    return new TestIamPermissionsRequest(this.service, body, resource);
+                }
+
+                /// <summary>
+                /// Returns the caller's permissions on a BackupVault resource. A caller is not required to have Google
+                /// IAM permission to make this request.
+                /// </summary>
+                public class TestIamPermissionsRequest : BackupdrBaseServiceRequest<Google.Apis.Backupdr.v1.Data.TestIamPermissionsResponse>
+                {
+                    /// <summary>Constructs a new TestIamPermissions request.</summary>
+                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Backupdr.v1.Data.TestIamPermissionsRequest body, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Backupdr.v1.Data.TestIamPermissionsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "testIamPermissions";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:testIamPermissions";
+
+                    /// <summary>Initializes TestIamPermissions parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/backupVaults/[^/]+$",
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the ManagementServers resource.</summary>
@@ -317,8 +1979,8 @@ namespace Google.Apis.Backupdr.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The management server project and location in the format
-                /// `projects/{project_id}/locations/{location}`. In Cloud Backup and DR locations map to GCP regions,
-                /// for example **us-central1**.
+                /// 'projects/{project_id}/locations/{location}'. In Cloud Backup and DR locations map to Google Cloud
+                /// regions, for example **us-central1**.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Backupdr.v1.Data.ManagementServer body, string parent)
                 {
@@ -338,8 +2000,8 @@ namespace Google.Apis.Backupdr.v1
 
                     /// <summary>
                     /// Required. The management server project and location in the format
-                    /// `projects/{project_id}/locations/{location}`. In Cloud Backup and DR locations map to GCP
-                    /// regions, for example **us-central1**.
+                    /// 'projects/{project_id}/locations/{location}'. In Cloud Backup and DR locations map to Google
+                    /// Cloud regions, for example **us-central1**.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -479,7 +2141,7 @@ namespace Google.Apis.Backupdr.v1
                 /// <summary>Gets details of a single ManagementServer.</summary>
                 /// <param name="name">
                 /// Required. Name of the management server resource name, in the format
-                /// `projects/{project_id}/locations/{location}/managementServers/{resource_name}`
+                /// 'projects/{project_id}/locations/{location}/managementServers/{resource_name}'
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -498,7 +2160,7 @@ namespace Google.Apis.Backupdr.v1
 
                     /// <summary>
                     /// Required. Name of the management server resource name, in the format
-                    /// `projects/{project_id}/locations/{location}/managementServers/{resource_name}`
+                    /// 'projects/{project_id}/locations/{location}/managementServers/{resource_name}'
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -610,9 +2272,9 @@ namespace Google.Apis.Backupdr.v1
                 /// <summary>Lists ManagementServers in a given project and location.</summary>
                 /// <param name="parent">
                 /// Required. The project and location for which to retrieve management servers information, in the
-                /// format `projects/{project_id}/locations/{location}`. In Cloud BackupDR, locations map to GCP
-                /// regions, for example **us-central1**. To retrieve management servers for all locations, use "-" for
-                /// the `{location}` value.
+                /// format 'projects/{project_id}/locations/{location}'. In Cloud BackupDR, locations map to Google
+                /// Cloud regions, for example **us-central1**. To retrieve management servers for all locations, use
+                /// "-" for the '{location}' value.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -631,9 +2293,9 @@ namespace Google.Apis.Backupdr.v1
 
                     /// <summary>
                     /// Required. The project and location for which to retrieve management servers information, in the
-                    /// format `projects/{project_id}/locations/{location}`. In Cloud BackupDR, locations map to GCP
-                    /// regions, for example **us-central1**. To retrieve management servers for all locations, use "-"
-                    /// for the `{location}` value.
+                    /// format 'projects/{project_id}/locations/{location}'. In Cloud BackupDR, locations map to Google
+                    /// Cloud regions, for example **us-central1**. To retrieve management servers for all locations,
+                    /// use "-" for the '{location}' value.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1266,6 +2928,186 @@ namespace Google.Apis.Backupdr.v1
 }
 namespace Google.Apis.Backupdr.v1.Data
 {
+    /// <summary>request message for AbandonBackup.</summary>
+    public class AbandonBackupRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry
+        /// your request, the server will know to ignore the request if it has already been completed. The server will
+        /// guarantee that for at least 60 minutes since the first request. For example, consider a situation where you
+        /// make an initial request and the request times out. If you make the request again with the same request ID,
+        /// the server can check if original operation with the same request ID was received, and if so, will ignore the
+        /// second request. This prevents clients from accidentally creating duplicate commitments. The request ID must
+        /// be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A specification of the type and number of accelerator cards attached to the instance.</summary>
+    public class AcceleratorConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The number of the guest accelerator cards exposed to this instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acceleratorCount")]
+        public virtual System.Nullable<int> AcceleratorCount { get; set; }
+
+        /// <summary>
+        /// Optional. Full or partial URL of the accelerator type resource to attach to this instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acceleratorType")]
+        public virtual string AcceleratorType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An access configuration attached to an instance's network interface. Only one access config per instance is
+    /// supported.
+    /// </summary>
+    public class AccessConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The external IPv6 address of this access configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalIpv6")]
+        public virtual string ExternalIpv6 { get; set; }
+
+        /// <summary>Optional. The prefix length of the external IPv6 range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalIpv6PrefixLength")]
+        public virtual System.Nullable<int> ExternalIpv6PrefixLength { get; set; }
+
+        /// <summary>Optional. The name of this access configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. The external IP address of this access configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("natIP")]
+        public virtual string NatIP { get; set; }
+
+        /// <summary>Optional. This signifies the networking tier used for configuring this access</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkTier")]
+        public virtual string NetworkTier { get; set; }
+
+        /// <summary>Optional. The DNS domain name for the public PTR record.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicPtrDomainName")]
+        public virtual string PublicPtrDomainName { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies whether a public DNS 'PTR' record should be created to map the external IP address of
+        /// the instance to a DNS domain name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("setPublicPtr")]
+        public virtual System.Nullable<bool> SetPublicPtr { get; set; }
+
+        /// <summary>
+        /// Optional. In accessConfigs (IPv4), the default and only option is ONE_TO_ONE_NAT. In ipv6AccessConfigs, the
+        /// default and only option is DIRECT_IPV6.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An alias IP range attached to an instance's network interface.</summary>
+    public class AliasIpRange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The IP alias ranges to allocate for this interface.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipCidrRange")]
+        public virtual string IpCidrRange { get; set; }
+
+        /// <summary>
+        /// Optional. The name of a subnetwork secondary IP range from which to allocate an IP alias range. If not
+        /// specified, the primary range of the subnetwork is used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnetworkRangeName")]
+        public virtual string SubnetworkRangeName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An instance-attached disk resource.</summary>
+    public class AttachedDisk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the
+        /// disk is detached from the instance).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoDelete")]
+        public virtual System.Nullable<bool> AutoDelete { get; set; }
+
+        /// <summary>
+        /// Optional. Indicates that this is a boot disk. The virtual machine will use the first partition of the disk
+        /// for its root filesystem.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boot")]
+        public virtual System.Nullable<bool> Boot { get; set; }
+
+        /// <summary>
+        /// Optional. This is used as an identifier for the disks. This is the unique name has to provided to modify
+        /// disk parameters like disk_name and replica_zones (in case of RePDs)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceName")]
+        public virtual string DeviceName { get; set; }
+
+        /// <summary>Optional. Encrypts or decrypts a disk using a customer-supplied encryption key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskEncryptionKey")]
+        public virtual CustomerEncryptionKey DiskEncryptionKey { get; set; }
+
+        /// <summary>Optional. Specifies the disk interface to use for attaching this disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskInterface")]
+        public virtual string DiskInterface { get; set; }
+
+        /// <summary>Optional. The size of the disk in GB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
+        public virtual System.Nullable<long> DiskSizeGb { get; set; }
+
+        /// <summary>Optional. Specifies the type of the disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
+        public virtual string DiskType { get; set; }
+
+        /// <summary>
+        /// Optional. A list of features to enable on the guest operating system. Applicable only for bootable images.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guestOsFeature")]
+        public virtual System.Collections.Generic.IList<GuestOsFeature> GuestOsFeature { get; set; }
+
+        /// <summary>Optional. A zero-based index to this disk, where 0 is reserved for the boot disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("index")]
+        public virtual System.Nullable<long> Index { get; set; }
+
+        /// <summary>Optional. Specifies the parameters to initialize this disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("initializeParams")]
+        public virtual InitializeParams InitializeParams { get; set; }
+
+        /// <summary>Optional. Type of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>Optional. Any valid publicly visible licenses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("license")]
+        public virtual System.Collections.Generic.IList<string> License { get; set; }
+
+        /// <summary>Optional. The mode in which to attach this disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
+
+        /// <summary>Optional. Output only. The state of the disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("savedState")]
+        public virtual string SavedState { get; set; }
+
+        /// <summary>Optional. Specifies a valid partial or full URL to an existing Persistent Disk resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Specifies the audit configuration for a service. The configuration determines which permission types are logged,
     /// and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If
@@ -1316,6 +3158,757 @@ namespace Google.Apis.Backupdr.v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message describing a Backup object.</summary>
+    public class Backup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("backupApplianceBackupProperties")]
+        public virtual BackupApplianceBackupProperties BackupApplianceBackupProperties { get; set; }
+
+        /// <summary>Optional. The list of BackupLocks taken by the accessor Backup Appliance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupApplianceLocks")]
+        public virtual System.Collections.Generic.IList<BackupLock> BackupApplianceLocks { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("backupType")]
+        public virtual string BackupType { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("computeInstanceBackupProperties")]
+        public virtual ComputeInstanceBackupProperties ComputeInstanceBackupProperties { get; set; }
+
+        private string _consistencyTimeRaw;
+
+        private object _consistencyTime;
+
+        /// <summary>Output only. The point in time when this backup was captured from the source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consistencyTime")]
+        public virtual string ConsistencyTimeRaw
+        {
+            get => _consistencyTimeRaw;
+            set
+            {
+                _consistencyTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _consistencyTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ConsistencyTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ConsistencyTimeDateTimeOffset instead.")]
+        public virtual object ConsistencyTime
+        {
+            get => _consistencyTime;
+            set
+            {
+                _consistencyTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _consistencyTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ConsistencyTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ConsistencyTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ConsistencyTimeRaw);
+            set => ConsistencyTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time when the instance was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The description of the Backup instance (2048 characters or less).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        private string _enforcedRetentionEndTimeRaw;
+
+        private object _enforcedRetentionEndTime;
+
+        /// <summary>Optional. The backup can not be deleted before this time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enforcedRetentionEndTime")]
+        public virtual string EnforcedRetentionEndTimeRaw
+        {
+            get => _enforcedRetentionEndTimeRaw;
+            set
+            {
+                _enforcedRetentionEndTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _enforcedRetentionEndTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EnforcedRetentionEndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EnforcedRetentionEndTimeDateTimeOffset instead.")]
+        public virtual object EnforcedRetentionEndTime
+        {
+            get => _enforcedRetentionEndTime;
+            set
+            {
+                _enforcedRetentionEndTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _enforcedRetentionEndTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="EnforcedRetentionEndTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EnforcedRetentionEndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EnforcedRetentionEndTimeRaw);
+            set => EnforcedRetentionEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. Server specified ETag to prevent updates from overwriting each other.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        private string _expireTimeRaw;
+
+        private object _expireTime;
+
+        /// <summary>Optional. When this backup is automatically expired.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual string ExpireTimeRaw
+        {
+            get => _expireTimeRaw;
+            set
+            {
+                _expireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireTimeDateTimeOffset instead.")]
+        public virtual object ExpireTime
+        {
+            get => _expireTime;
+            set
+            {
+                _expireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expireTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. Configuration for a Google Cloud resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcpBackupPlanInfo")]
+        public virtual GCPBackupPlanInfo GcpBackupPlanInfo { get; set; }
+
+        /// <summary>
+        /// Optional. Resource labels to represent user provided metadata. No labels currently defined.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Output only. Name of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. source resource size in bytes at the time of the backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceSizeBytes")]
+        public virtual System.Nullable<long> ResourceSizeBytes { get; set; }
+
+        /// <summary>
+        /// Output only. The list of BackupLocks taken by the service to prevent the deletion of the backup.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceLocks")]
+        public virtual System.Collections.Generic.IList<BackupLock> ServiceLocks { get; set; }
+
+        /// <summary>Output only. The Backup resource instance state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The time when the instance was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+    }
+
+    /// <summary>
+    /// BackupApplianceBackupConfig captures the backup configuration for applications that are protected by Backup
+    /// Appliances.
+    /// </summary>
+    public class BackupApplianceBackupConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationName")]
+        public virtual string ApplicationName { get; set; }
+
+        /// <summary>The ID of the backup appliance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupApplianceId")]
+        public virtual System.Nullable<long> BackupApplianceId { get; set; }
+
+        /// <summary>The name of the backup appliance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupApplianceName")]
+        public virtual string BackupApplianceName { get; set; }
+
+        /// <summary>The name of the host where the application is running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostName")]
+        public virtual string HostName { get; set; }
+
+        /// <summary>The ID of the SLA of this application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("slaId")]
+        public virtual System.Nullable<long> SlaId { get; set; }
+
+        /// <summary>The name of the SLP associated with the application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("slpName")]
+        public virtual string SlpName { get; set; }
+
+        /// <summary>The name of the SLT associated with the application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sltName")]
+        public virtual string SltName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>BackupApplianceBackupProperties represents BackupDR backup appliance's properties.</summary>
+    public class BackupApplianceBackupProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _finalizeTimeRaw;
+
+        private object _finalizeTime;
+
+        /// <summary>
+        /// Output only. The time when this backup object was finalized (if none, backup is not finalized).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finalizeTime")]
+        public virtual string FinalizeTimeRaw
+        {
+            get => _finalizeTimeRaw;
+            set
+            {
+                _finalizeTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _finalizeTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="FinalizeTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use FinalizeTimeDateTimeOffset instead.")]
+        public virtual object FinalizeTime
+        {
+            get => _finalizeTime;
+            set
+            {
+                _finalizeTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _finalizeTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="FinalizeTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? FinalizeTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(FinalizeTimeRaw);
+            set => FinalizeTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The numeric generation ID of the backup (monotonically increasing).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generationId")]
+        public virtual System.Nullable<int> GenerationId { get; set; }
+
+        private string _recoveryRangeEndTimeRaw;
+
+        private object _recoveryRangeEndTime;
+
+        /// <summary>Optional. The latest timestamp of data available in this Backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recoveryRangeEndTime")]
+        public virtual string RecoveryRangeEndTimeRaw
+        {
+            get => _recoveryRangeEndTimeRaw;
+            set
+            {
+                _recoveryRangeEndTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _recoveryRangeEndTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="RecoveryRangeEndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use RecoveryRangeEndTimeDateTimeOffset instead.")]
+        public virtual object RecoveryRangeEndTime
+        {
+            get => _recoveryRangeEndTime;
+            set
+            {
+                _recoveryRangeEndTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _recoveryRangeEndTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="RecoveryRangeEndTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? RecoveryRangeEndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RecoveryRangeEndTimeRaw);
+            set => RecoveryRangeEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _recoveryRangeStartTimeRaw;
+
+        private object _recoveryRangeStartTime;
+
+        /// <summary>Optional. The earliest timestamp of data available in this Backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recoveryRangeStartTime")]
+        public virtual string RecoveryRangeStartTimeRaw
+        {
+            get => _recoveryRangeStartTimeRaw;
+            set
+            {
+                _recoveryRangeStartTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _recoveryRangeStartTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="RecoveryRangeStartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use RecoveryRangeStartTimeDateTimeOffset instead.")]
+        public virtual object RecoveryRangeStartTime
+        {
+            get => _recoveryRangeStartTime;
+            set
+            {
+                _recoveryRangeStartTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _recoveryRangeStartTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="RecoveryRangeStartTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? RecoveryRangeStartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RecoveryRangeStartTimeRaw);
+            set => RecoveryRangeStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>BackupApplianceLockInfo contains metadata about the backupappliance that created the lock.</summary>
+    public class BackupApplianceLockInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The ID of the backup/recovery appliance that created this lock.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupApplianceId")]
+        public virtual System.Nullable<long> BackupApplianceId { get; set; }
+
+        /// <summary>Required. The name of the backup/recovery appliance that created this lock.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupApplianceName")]
+        public virtual string BackupApplianceName { get; set; }
+
+        /// <summary>The image name that depends on this Backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupImage")]
+        public virtual string BackupImage { get; set; }
+
+        /// <summary>The job name on the backup/recovery appliance that created this lock.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobName")]
+        public virtual string JobName { get; set; }
+
+        /// <summary>
+        /// Required. The reason for the lock: e.g. MOUNT/RESTORE/BACKUP/etc. The value of this string is only
+        /// meaningful to the client and it is not interpreted by the BackupVault service.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lockReason")]
+        public virtual string LockReason { get; set; }
+
+        /// <summary>The SLA on the backup/recovery appliance that owns the lock.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("slaId")]
+        public virtual System.Nullable<long> SlaId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// BackupConfigInfo has information about how the resource is configured for Backup and about the most recent
+    /// backup to this vault.
+    /// </summary>
+    public class BackupConfigInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Configuration for an application backed up by a Backup Appliance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupApplianceBackupConfig")]
+        public virtual BackupApplianceBackupConfig BackupApplianceBackupConfig { get; set; }
+
+        /// <summary>Configuration for a Google Cloud resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcpBackupConfig")]
+        public virtual GcpBackupConfig GcpBackupConfig { get; set; }
+
+        /// <summary>Output only. If the last backup failed, this field has the error message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastBackupError")]
+        public virtual Status LastBackupError { get; set; }
+
+        /// <summary>Output only. The status of the last backup to this BackupVault</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastBackupState")]
+        public virtual string LastBackupState { get; set; }
+
+        private string _lastSuccessfulBackupConsistencyTimeRaw;
+
+        private object _lastSuccessfulBackupConsistencyTime;
+
+        /// <summary>Output only. If the last backup were successful, this field has the consistency date.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastSuccessfulBackupConsistencyTime")]
+        public virtual string LastSuccessfulBackupConsistencyTimeRaw
+        {
+            get => _lastSuccessfulBackupConsistencyTimeRaw;
+            set
+            {
+                _lastSuccessfulBackupConsistencyTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastSuccessfulBackupConsistencyTimeRaw = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="object"/> representation of <see cref="LastSuccessfulBackupConsistencyTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastSuccessfulBackupConsistencyTimeDateTimeOffset instead.")]
+        public virtual object LastSuccessfulBackupConsistencyTime
+        {
+            get => _lastSuccessfulBackupConsistencyTime;
+            set
+            {
+                _lastSuccessfulBackupConsistencyTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastSuccessfulBackupConsistencyTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of
+        /// <see cref="LastSuccessfulBackupConsistencyTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastSuccessfulBackupConsistencyTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastSuccessfulBackupConsistencyTimeRaw);
+            set => LastSuccessfulBackupConsistencyTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// BackupLock represents a single lock on a Backup resource. An unexpired lock on a Backup prevents the Backup from
+    /// being deleted.
+    /// </summary>
+    public class BackupLock : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If the client is a backup and recovery appliance, this contains metadata about why the lock exists.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupApplianceLockInfo")]
+        public virtual BackupApplianceLockInfo BackupApplianceLockInfo { get; set; }
+
+        private string _lockUntilTimeRaw;
+
+        private object _lockUntilTime;
+
+        /// <summary>
+        /// Required. The time after which this lock is not considered valid and will no longer protect the Backup from
+        /// deletion.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lockUntilTime")]
+        public virtual string LockUntilTimeRaw
+        {
+            get => _lockUntilTimeRaw;
+            set
+            {
+                _lockUntilTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lockUntilTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LockUntilTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LockUntilTimeDateTimeOffset instead.")]
+        public virtual object LockUntilTime
+        {
+            get => _lockUntilTime;
+            set
+            {
+                _lockUntilTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lockUntilTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="LockUntilTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LockUntilTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LockUntilTimeRaw);
+            set => LockUntilTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. Contains metadata about the lock exist for Google Cloud native backups.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceLockInfo")]
+        public virtual ServiceLockInfo ServiceLockInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message describing a BackupVault object.</summary>
+    public class BackupVault : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. User annotations. See https://google.aip.dev/128#annotations Stores small amounts of arbitrary
+        /// data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
+
+        /// <summary>Output only. The number of backups in this backup vault.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupCount")]
+        public virtual System.Nullable<long> BackupCount { get; set; }
+
+        /// <summary>
+        /// Required. The default and minimum enforced retention for each backup within the backup vault. The enforced
+        /// retention for each backup can be extended.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupMinimumEnforcedRetentionDuration")]
+        public virtual object BackupMinimumEnforcedRetentionDuration { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time when the instance was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. Set to true when there are no backups nested under this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deletable")]
+        public virtual System.Nullable<bool> Deletable { get; set; }
+
+        /// <summary>Optional. The description of the BackupVault instance (2048 characters or less).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        private string _effectiveTimeRaw;
+
+        private object _effectiveTime;
+
+        /// <summary>Optional. Time after which the BackupVault resource is locked.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveTime")]
+        public virtual string EffectiveTimeRaw
+        {
+            get => _effectiveTimeRaw;
+            set
+            {
+                _effectiveTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _effectiveTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EffectiveTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EffectiveTimeDateTimeOffset instead.")]
+        public virtual object EffectiveTime
+        {
+            get => _effectiveTime;
+            set
+            {
+                _effectiveTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _effectiveTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EffectiveTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EffectiveTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EffectiveTimeRaw);
+            set => EffectiveTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Required. The default retention period for each backup in the backup vault (Deprecated).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enforcedRetentionDuration")]
+        public virtual object EnforcedRetentionDuration { get; set; }
+
+        /// <summary>
+        /// Optional. Server specified ETag for the backup vault resource to prevent simultaneous updates from
+        /// overwiting each other.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Optional. Resource labels to represent user provided metadata. No labels currently defined:
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Output only. The resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. Service account used by the BackupVault Service for this BackupVault. The user should grant
+        /// this account permissions in their workload project to enable the service to run backups and restores there.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
+
+        /// <summary>Output only. The BackupVault resource instance state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. Total size of the storage used by all backup resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalStoredBytes")]
+        public virtual System.Nullable<long> TotalStoredBytes { get; set; }
+
+        /// <summary>Output only. Output only Immutable after resource creation until resource deletion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The time when the instance was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
     }
 
     /// <summary>Associates `members`, or principals, with a `role`.</summary>
@@ -1398,6 +3991,355 @@ namespace Google.Apis.Backupdr.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>ComputeInstanceBackupProperties represents Compute Engine instance backup properties.</summary>
+    public class ComputeInstanceBackupProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Enables instances created based on these properties to send packets with source IP addresses other than
+        /// their own and receive packets with destination IP addresses other than their own. If these instances will be
+        /// used as an IP gateway or it will be set as the next-hop in a Route resource, specify `true`. If unsure,
+        /// leave this set to `false`. See the https://cloud.google.com/vpc/docs/using-routes#canipforward documentation
+        /// for more information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canIpForward")]
+        public virtual System.Nullable<bool> CanIpForward { get; set; }
+
+        /// <summary>An optional text description for the instances that are created from these properties.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// An array of disks that are associated with the instances that are created from these properties.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disk")]
+        public virtual System.Collections.Generic.IList<AttachedDisk> Disk { get; set; }
+
+        /// <summary>
+        /// A list of guest accelerator cards' type and count to use for instances created from these properties.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guestAccelerator")]
+        public virtual System.Collections.Generic.IList<AcceleratorConfig> GuestAccelerator { get; set; }
+
+        /// <summary>
+        /// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is
+        /// "NONE" if it is not specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyRevocationActionType")]
+        public virtual string KeyRevocationActionType { get; set; }
+
+        /// <summary>The machine type to use for instances that are created from these properties.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
+        public virtual string MachineType { get; set; }
+
+        /// <summary>
+        /// The metadata key/value pairs to assign to instances that are created from these properties. These pairs can
+        /// consist of custom metadata or predefined keys. See https://cloud.google.com/compute/docs/metadata/overview
+        /// for more information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual Metadata Metadata { get; set; }
+
+        /// <summary>
+        /// Minimum cpu/platform to be used by instances. The instance may be scheduled on the specified or newer
+        /// cpu/platform. Applicable values are the friendly names of CPU platforms, such as `minCpuPlatform: Intel
+        /// Haswell` or `minCpuPlatform: Intel Sandy Bridge`. For more information, read
+        /// https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minCpuPlatform")]
+        public virtual string MinCpuPlatform { get; set; }
+
+        /// <summary>An array of network access configurations for this interface.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkInterface")]
+        public virtual System.Collections.Generic.IList<NetworkInterface> NetworkInterface { get; set; }
+
+        /// <summary>
+        /// Specifies the scheduling options for the instances that are created from these properties.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheduling")]
+        public virtual Scheduling Scheduling { get; set; }
+
+        /// <summary>
+        /// A list of service accounts with specified scopes. Access tokens for these service accounts are available to
+        /// the instances that are created from these properties. Use metadata queries to obtain the access tokens for
+        /// these instances.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual System.Collections.Generic.IList<ServiceAccount> ServiceAccount { get; set; }
+
+        /// <summary>
+        /// Name of the source instance at the time of backup. The name is 1-63 characters long, and complies with
+        /// RFC1035.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceInstanceName")]
+        public virtual string SourceInstanceName { get; set; }
+
+        /// <summary>
+        /// A list of tags to apply to the instances that are created from these properties. The tags identify valid
+        /// sources or targets for network firewalls. The setTags method can modify this list of tags. Each tag within
+        /// the list must comply with RFC1035 (https://www.ietf.org/rfc/rfc1035.txt).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual Tags Tags { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// ComputeInstanceDataSourceProperties represents the properties of a ComputeEngine resource that are stored in the
+    /// DataSource.
+    /// </summary>
+    public class ComputeInstanceDataSourceProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The description of the Compute Engine instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>The machine type of the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
+        public virtual string MachineType { get; set; }
+
+        /// <summary>Name of the compute instance backed up by the datasource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The total number of disks attached to the Instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalDiskCount")]
+        public virtual System.Nullable<long> TotalDiskCount { get; set; }
+
+        /// <summary>The sum of all the disk sizes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalDiskSizeGb")]
+        public virtual System.Nullable<long> TotalDiskSizeGb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A customer-supplied encryption key.</summary>
+    public class CustomerEncryptionKey : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The name of the encryption key that is stored in Google Cloud KMS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
+
+        /// <summary>
+        /// Optional. The service account being used for the encryption request for the given KMS key. If absent, the
+        /// Compute Engine default service account is used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyServiceAccount")]
+        public virtual string KmsKeyServiceAccount { get; set; }
+
+        /// <summary>Optional. Specifies a 256-bit customer-supplied encryption key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rawKey")]
+        public virtual string RawKey { get; set; }
+
+        /// <summary>
+        /// Optional. RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rsaEncryptedKey")]
+        public virtual string RsaEncryptedKey { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Message describing a DataSource object. Datasource object used to represent Datasource details for both admin
+    /// and basic view.
+    /// </summary>
+    public class DataSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Details of how the resource is configured for backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupConfigInfo")]
+        public virtual BackupConfigInfo BackupConfigInfo { get; set; }
+
+        /// <summary>Number of backups in the data source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupCount")]
+        public virtual System.Nullable<long> BackupCount { get; set; }
+
+        /// <summary>The backup configuration state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configState")]
+        public virtual string ConfigState { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time when the instance was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The backed up resource is a backup appliance application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSourceBackupApplianceApplication")]
+        public virtual DataSourceBackupApplianceApplication DataSourceBackupApplianceApplication { get; set; }
+
+        /// <summary>
+        /// The backed up resource is a Google Cloud resource. The word 'DataSource' was included in the names to
+        /// indicate that this is the representation of the Google Cloud resource used within the DataSource object.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSourceGcpResource")]
+        public virtual DataSourceGcpResource DataSourceGcpResource { get; set; }
+
+        /// <summary>
+        /// Server specified ETag for the ManagementServer resource to prevent simultaneous updates from overwiting each
+        /// other.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Optional. Resource labels to represent user provided metadata. No labels currently defined:
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Output only. The resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The DataSource resource instance state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The number of bytes (metadata and data) stored in this datasource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalStoredBytes")]
+        public virtual System.Nullable<long> TotalStoredBytes { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The time when the instance was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+    }
+
+    /// <summary>
+    /// BackupApplianceApplication describes a Source Resource when it is an application backed up by a BackupAppliance.
+    /// </summary>
+    public class DataSourceBackupApplianceApplication : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Appliance Id of the Backup Appliance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applianceId")]
+        public virtual System.Nullable<long> ApplianceId { get; set; }
+
+        /// <summary>The appid field of the application within the Backup Appliance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationId")]
+        public virtual System.Nullable<long> ApplicationId { get; set; }
+
+        /// <summary>The name of the Application as known to the Backup Appliance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationName")]
+        public virtual string ApplicationName { get; set; }
+
+        /// <summary>Appliance name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupAppliance")]
+        public virtual string BackupAppliance { get; set; }
+
+        /// <summary>Hostid of the application host.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostId")]
+        public virtual System.Nullable<long> HostId { get; set; }
+
+        /// <summary>Hostname of the host where the application is running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostname")]
+        public virtual string Hostname { get; set; }
+
+        /// <summary>The type of the application. e.g. VMBackup</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// DataSourceGcpResource is used for protected resources that are Google Cloud Resources. This name is easeier to
+    /// understand than GcpResourceDataSource or GcpDataSourceResource
+    /// </summary>
+    public class DataSourceGcpResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// ComputeInstanceDataSourceProperties has a subset of Compute Instance properties that are useful at the
+        /// Datasource level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("computeInstanceDatasourceProperties")]
+        public virtual ComputeInstanceDataSourceProperties ComputeInstanceDatasourceProperties { get; set; }
+
+        /// <summary>Output only. Full resource pathname URL of the source Google Cloud resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcpResourcename")]
+        public virtual string GcpResourcename { get; set; }
+
+        /// <summary>Location of the resource: //"global"/"unspecified".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>
+        /// The type of the Google Cloud resource. Use the Unified Resource Type, eg. compute.googleapis.com/Instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
@@ -1405,6 +4347,25 @@ namespace Google.Apis.Backupdr.v1.Data
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A key/value pair to be used for storing metadata.</summary>
+    public class Entry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Key for the metadata entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>
+        /// Optional. Value for the metadata entry. These are free-form strings, and only have meaning as interpreted by
+        /// the image running in the instance. The only restriction placed on values is that their size must be less
+        /// than or equal to 262144 bytes (256 KiB).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1453,6 +4414,451 @@ namespace Google.Apis.Backupdr.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for FetchAccessToken.</summary>
+    public class FetchAccessTokenRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The generation of the backup to update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generationId")]
+        public virtual System.Nullable<int> GenerationId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for FetchAccessToken.</summary>
+    public class FetchAccessTokenResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _expireTimeRaw;
+
+        private object _expireTime;
+
+        /// <summary>The token is valid until this time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual string ExpireTimeRaw
+        {
+            get => _expireTimeRaw;
+            set
+            {
+                _expireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireTimeDateTimeOffset instead.")]
+        public virtual object ExpireTime
+        {
+            get => _expireTime;
+            set
+            {
+                _expireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expireTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The location in bucket that can be used for reading.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readLocation")]
+        public virtual string ReadLocation { get; set; }
+
+        /// <summary>The downscoped token that was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("token")]
+        public virtual string Token { get; set; }
+
+        /// <summary>The location in bucket that can be used for writing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("writeLocation")]
+        public virtual string WriteLocation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for fetching usable BackupVaults.</summary>
+    public class FetchUsableBackupVaultsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The list of BackupVault instances in the project for the specified location. If the '{location}' value in
+        /// the request is "-", the response contains a list of instances from all locations. In case any location is
+        /// unreachable, the response will only return backup vaults in reachable locations and the 'unreachable' field
+        /// will be populated with a list of unreachable locations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupVaults")]
+        public virtual System.Collections.Generic.IList<BackupVault> BackupVaults { get; set; }
+
+        /// <summary>A token identifying a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for finalizing a Backup.</summary>
+    public class FinalizeBackupRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Resource ID of the Backup resource to be finalized. This must be the same backup_id that was used
+        /// in the InitiateBackupRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupId")]
+        public virtual string BackupId { get; set; }
+
+        private string _consistencyTimeRaw;
+
+        private object _consistencyTime;
+
+        /// <summary>
+        /// The point in time when this backup was captured from the source. This will be assigned to the
+        /// consistency_time field of the newly created Backup.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consistencyTime")]
+        public virtual string ConsistencyTimeRaw
+        {
+            get => _consistencyTimeRaw;
+            set
+            {
+                _consistencyTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _consistencyTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ConsistencyTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ConsistencyTimeDateTimeOffset instead.")]
+        public virtual object ConsistencyTime
+        {
+            get => _consistencyTime;
+            set
+            {
+                _consistencyTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _consistencyTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ConsistencyTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ConsistencyTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(ConsistencyTimeRaw);
+            set => ConsistencyTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>This will be assigned to the description field of the newly created Backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        private string _recoveryRangeEndTimeRaw;
+
+        private object _recoveryRangeEndTime;
+
+        /// <summary>
+        /// The latest timestamp of data available in this Backup. This will be set on the newly created Backup.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recoveryRangeEndTime")]
+        public virtual string RecoveryRangeEndTimeRaw
+        {
+            get => _recoveryRangeEndTimeRaw;
+            set
+            {
+                _recoveryRangeEndTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _recoveryRangeEndTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="RecoveryRangeEndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use RecoveryRangeEndTimeDateTimeOffset instead.")]
+        public virtual object RecoveryRangeEndTime
+        {
+            get => _recoveryRangeEndTime;
+            set
+            {
+                _recoveryRangeEndTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _recoveryRangeEndTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="RecoveryRangeEndTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? RecoveryRangeEndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RecoveryRangeEndTimeRaw);
+            set => RecoveryRangeEndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _recoveryRangeStartTimeRaw;
+
+        private object _recoveryRangeStartTime;
+
+        /// <summary>
+        /// The earliest timestamp of data available in this Backup. This will set on the newly created Backup.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recoveryRangeStartTime")]
+        public virtual string RecoveryRangeStartTimeRaw
+        {
+            get => _recoveryRangeStartTimeRaw;
+            set
+            {
+                _recoveryRangeStartTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _recoveryRangeStartTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="RecoveryRangeStartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use RecoveryRangeStartTimeDateTimeOffset instead.")]
+        public virtual object RecoveryRangeStartTime
+        {
+            get => _recoveryRangeStartTime;
+            set
+            {
+                _recoveryRangeStartTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _recoveryRangeStartTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="RecoveryRangeStartTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? RecoveryRangeStartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RecoveryRangeStartTimeRaw);
+            set => RecoveryRangeStartTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry
+        /// your request, the server will know to ignore the request if it has already been completed. The server will
+        /// guarantee that for at least 60 minutes after the first request. For example, consider a situation where you
+        /// make an initial request and the request times out. If you make the request again with the same request ID,
+        /// the server can check if original operation with the same request ID was received, and if so, will ignore the
+        /// second request. This prevents clients from accidentally creating duplicate commitments. The request ID must
+        /// be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
+
+        /// <summary>
+        /// The ExpireTime on the backup will be set to FinalizeTime plus this duration. If the resulting ExpireTime is
+        /// less than EnforcedRetentionEndTime, then ExpireTime is set to EnforcedRetentionEndTime.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retentionDuration")]
+        public virtual object RetentionDuration { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// GCPBackupPlanInfo captures the plan configuration details of Google Cloud resources at the time of backup.
+    /// </summary>
+    public class GCPBackupPlanInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Resource name of backup plan by which workload is protected at the time of the backup. Format:
+        /// projects/{project}/locations/{location}/backupPlans/{backupPlanId}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupPlan")]
+        public virtual string BackupPlan { get; set; }
+
+        /// <summary>
+        /// The rule id of the backup plan which triggered this backup in case of scheduled backup or used for
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupPlanRuleId")]
+        public virtual string BackupPlanRuleId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// GcpBackupConfig captures the Backup configuration details for Google Cloud resources. All Google Cloud resources
+    /// regardless of type are protected with backup plan associations.
+    /// </summary>
+    public class GcpBackupConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the backup plan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupPlan")]
+        public virtual string BackupPlan { get; set; }
+
+        /// <summary>The name of the backup plan association.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupPlanAssociation")]
+        public virtual string BackupPlanAssociation { get; set; }
+
+        /// <summary>The description of the backup plan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupPlanDescription")]
+        public virtual string BackupPlanDescription { get; set; }
+
+        /// <summary>The names of the backup plan rules which point to this backupvault</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupPlanRules")]
+        public virtual System.Collections.Generic.IList<string> BackupPlanRules { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Feature type of the Guest OS.</summary>
+    public class GuestOsFeature : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of a supported feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies the parameters to initialize this disk.</summary>
+    public class InitializeParams : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Specifies the disk name. If not specified, the default is to use the name of the instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskName")]
+        public virtual string DiskName { get; set; }
+
+        /// <summary>
+        /// Optional. URL of the zone where the disk should be created. Required for each regional disk associated with
+        /// the instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replicaZones")]
+        public virtual System.Collections.Generic.IList<string> ReplicaZones { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>request message for InitiateBackup.</summary>
+    public class InitiateBackupRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Resource ID of the Backup resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupId")]
+        public virtual string BackupId { get; set; }
+
+        /// <summary>
+        /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry
+        /// your request, the server will know to ignore the request if it has already been completed. The server will
+        /// guarantee that for at least 60 minutes since the first request. For example, consider a situation where you
+        /// make an initial request and the request times out. If you make the request again with the same request ID,
+        /// the server can check if original operation with the same request ID was received, and if so, will ignore the
+        /// second request. This prevents clients from accidentally creating duplicate commitments. The request ID must
+        /// be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for InitiateBackup.</summary>
+    public class InitiateBackupResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the backup that was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backup")]
+        public virtual string Backup { get; set; }
+
+        /// <summary>The generation id of the base backup. It is needed for the incremental backups.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseBackupGenerationId")]
+        public virtual System.Nullable<int> BaseBackupGenerationId { get; set; }
+
+        /// <summary>The generation id of the new backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newBackupGenerationId")]
+        public virtual System.Nullable<int> NewBackupGenerationId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for listing BackupVaults.</summary>
+    public class ListBackupVaultsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The list of BackupVault instances in the project for the specified location. If the '{location}' value in
+        /// the request is "-", the response contains a list of instances from all locations. In case any location is
+        /// unreachable, the response will only return backup vaults in reachable locations and the 'unreachable' field
+        /// will be populated with a list of unreachable locations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupVaults")]
+        public virtual System.Collections.Generic.IList<BackupVault> BackupVaults { get; set; }
+
+        /// <summary>A token identifying a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for listing Backups.</summary>
+    public class ListBackupsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The list of Backup instances in the project for the specified location. If the '{location}' value in the
+        /// request is "-", the response contains a list of instances from all locations. In case any location is
+        /// unreachable, the response will only return data sources in reachable locations and the 'unreachable' field
+        /// will be populated with a list of unreachable locations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backups")]
+        public virtual System.Collections.Generic.IList<Backup> Backups { get; set; }
+
+        /// <summary>A token identifying a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for listing DataSources.</summary>
+    public class ListDataSourcesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The list of DataSource instances in the project for the specified location. If the '{location}' value in the
+        /// request is "-", the response contains a list of instances from all locations. In case any location is
+        /// unreachable, the response will only return data sources in reachable locations and the 'unreachable' field
+        /// will be populated with a list of unreachable locations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSources")]
+        public virtual System.Collections.Generic.IList<DataSource> DataSources { get; set; }
+
+        /// <summary>A token identifying a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response message for Locations.ListLocations.</summary>
     public class ListLocationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1472,7 +4878,7 @@ namespace Google.Apis.Backupdr.v1.Data
     public class ListManagementServersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The list of ManagementServer instances in the project for the specified location. If the `{location}` value
+        /// The list of ManagementServer instances in the project for the specified location. If the '{location}' value
         /// in the request is "-", the response contains a list of instances from all locations. In case any location is
         /// unreachable, the response will only return management servers in reachable locations and the 'unreachable'
         /// field will be populated with a list of unreachable locations.
@@ -1623,7 +5029,7 @@ namespace Google.Apis.Backupdr.v1.Data
 
         /// <summary>
         /// Output only. The OAuth 2.0 client id is required to make API calls to the BackupDR instance API of this
-        /// ManagementServer. This is the value that should be provided in the ‘aud’ field of the OIDC ID Token (see
+        /// ManagementServer. This is the value that should be provided in the 'aud' field of the OIDC ID Token (see
         /// openid specification https://openid.net/specs/openid-connect-core-1_0.html#IDToken).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oauth2ClientId")]
@@ -1709,6 +5115,19 @@ namespace Google.Apis.Backupdr.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A metadata key/value entry.</summary>
+    public class Metadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Array of key/value pairs. The total size of all keys and values must be less than 512 KB.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<Entry> Items { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Network configuration for ManagementServer instance.</summary>
     public class NetworkConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1725,6 +5144,119 @@ namespace Google.Apis.Backupdr.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("peeringMode")]
         public virtual string PeeringMode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A network interface resource attached to an instance. s</summary>
+    public class NetworkInterface : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. An array of configurations for this interface. Currently, only one access config,ONE_TO_ONE_NAT is
+        /// supported. If there are no accessConfigs specified, then this instance will have no external internet
+        /// access.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessConfigs")]
+        public virtual System.Collections.Generic.IList<AccessConfig> AccessConfigs { get; set; }
+
+        /// <summary>
+        /// Optional. An array of alias IP ranges for this network interface. You can only specify this field for
+        /// network interfaces in VPC networks.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aliasIpRanges")]
+        public virtual System.Collections.Generic.IList<AliasIpRange> AliasIpRanges { get; set; }
+
+        /// <summary>Optional. The prefix length of the primary internal IPv6 range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("internalIpv6PrefixLength")]
+        public virtual System.Nullable<int> InternalIpv6PrefixLength { get; set; }
+
+        /// <summary>
+        /// Optional. An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config,
+        /// DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no
+        /// external IPv6 Internet access.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipv6AccessConfigs")]
+        public virtual System.Collections.Generic.IList<AccessConfig> Ipv6AccessConfigs { get; set; }
+
+        /// <summary>
+        /// Optional. [Output Only] One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the
+        /// Internet. This field is always inherited from its subnetwork.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipv6AccessType")]
+        public virtual string Ipv6AccessType { get; set; }
+
+        /// <summary>
+        /// Optional. An IPv6 internal network address for this network interface. To use a static internal IP address,
+        /// it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will
+        /// automatically assign an internal IPv6 address from the instance's subnetwork.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipv6Address")]
+        public virtual string Ipv6Address { get; set; }
+
+        /// <summary>
+        /// Output only. [Output Only] The name of the network interface, which is generated by the server.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. URL of the VPC network resource for this instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
+
+        /// <summary>
+        /// Optional. The URL of the network attachment that this interface should connect to in the following format:
+        /// projects/{project_number}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkAttachment")]
+        public virtual string NetworkAttachment { get; set; }
+
+        /// <summary>
+        /// Optional. An IPv4 internal IP address to assign to the instance for this network interface. If not specified
+        /// by the user, an unused internal IP is assigned by the system.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkIP")]
+        public virtual string NetworkIP { get; set; }
+
+        /// <summary>Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nicType")]
+        public virtual string NicType { get; set; }
+
+        /// <summary>
+        /// Optional. The networking queue count that's specified by users for the network interface. Both Rx and Tx
+        /// queues will be set to this number. It'll be empty if not specified by the users.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queueCount")]
+        public virtual System.Nullable<int> QueueCount { get; set; }
+
+        /// <summary>The stack type for this network interface.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stackType")]
+        public virtual string StackType { get; set; }
+
+        /// <summary>Optional. The URL of the Subnetwork resource for this instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
+        public virtual string Subnetwork { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Node Affinity: the configuration of desired nodes onto which this Instance could be scheduled.
+    /// </summary>
+    public class NodeAffinity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Corresponds to the label key of Node resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>Optional. Defines the operation of node selection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operator")]
+        public virtual string Operator__ { get; set; }
+
+        /// <summary>Optional. Corresponds to the label values of Node resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1863,7 +5395,7 @@ namespace Google.Apis.Backupdr.v1.Data
         /// <summary>
         /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
         /// successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to
-        /// `Code.CANCELLED`.
+        /// 'Code.CANCELLED'.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedCancellation")]
         public virtual System.Nullable<bool> RequestedCancellation { get; set; }
@@ -1961,6 +5493,123 @@ namespace Google.Apis.Backupdr.v1.Data
         public virtual System.Nullable<int> Version { get; set; }
     }
 
+    /// <summary>Message for deleting a DataSource.</summary>
+    public class RemoveDataSourceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry
+        /// your request, the server will know to ignore the request if it has already been completed. The server will
+        /// guarantee that for at least 60 minutes after the first request. For example, consider a situation where you
+        /// make an initial request and the request times out. If you make the request again with the same request ID,
+        /// the server can check if original operation with the same request ID was received, and if so, will ignore the
+        /// second request. This prevents clients from accidentally creating duplicate commitments. The request ID must
+        /// be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Sets the scheduling options for an Instance.</summary>
+    public class Scheduling : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Specifies whether the instance should be automatically restarted if it is terminated by Compute
+        /// Engine (not terminated by a user).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("automaticRestart")]
+        public virtual System.Nullable<bool> AutomaticRestart { get; set; }
+
+        /// <summary>Optional. Specifies the termination action for the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceTerminationAction")]
+        public virtual string InstanceTerminationAction { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the maximum amount of time a Local Ssd Vm should wait while recovery of the Local Ssd
+        /// state is attempted. Its value should be in between 0 and 168 hours with hour granularity and the default
+        /// value being 1 hour.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localSsdRecoveryTimeout")]
+        public virtual SchedulingDuration LocalSsdRecoveryTimeout { get; set; }
+
+        /// <summary>
+        /// Optional. The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minNodeCpus")]
+        public virtual System.Nullable<int> MinNodeCpus { get; set; }
+
+        /// <summary>
+        /// Optional. A set of node affinity and anti-affinity configurations. Overrides reservationAffinity.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeAffinities")]
+        public virtual System.Collections.Generic.IList<NodeAffinity> NodeAffinities { get; set; }
+
+        /// <summary>Optional. Defines the maintenance behavior for this instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onHostMaintenance")]
+        public virtual string OnHostMaintenance { get; set; }
+
+        /// <summary>Optional. Defines whether the instance is preemptible.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preemptible")]
+        public virtual System.Nullable<bool> Preemptible { get; set; }
+
+        /// <summary>Optional. Specifies the provisioning model of the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provisioningModel")]
+        public virtual string ProvisioningModel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A SchedulingDuration represents a fixed-length span of time represented as a count of seconds and fractions of
+    /// seconds at nanosecond resolution. It is independent of any calendar and concepts like "day" or "month". Range is
+    /// approximately 10,000 years.
+    /// </summary>
+    public class SchedulingDuration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Span of time that's a fraction of a second at nanosecond resolution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
+        public virtual System.Nullable<int> Nanos { get; set; }
+
+        /// <summary>Optional. Span of time at a resolution of a second.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
+        public virtual System.Nullable<long> Seconds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A service account.</summary>
+    public class ServiceAccount : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Email address of the service account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; }
+
+        /// <summary>Optional. The list of scopes to be made available for this service account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
+        public virtual System.Collections.Generic.IList<string> Scopes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ServiceLockInfo represents the details of a lock taken by the service on a Backup resource.</summary>
+    public class ServiceLockInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The name of the operation that created this lock. The lock will automatically be released when
+        /// the operation completes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operation")]
+        public virtual string Operation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for `SetIamPolicy` method.</summary>
     public class SetIamPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1978,6 +5627,35 @@ namespace Google.Apis.Backupdr.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for SetStatusInternal method.</summary>
+    public class SetInternalStatusRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The new BackupConfigState to set for the DataSource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupConfigState")]
+        public virtual string BackupConfigState { get; set; }
+
+        /// <summary>
+        /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry
+        /// your request, the server will know to ignore the request if it has already been completed. The server will
+        /// guarantee that for at least 60 minutes after the first request. The request ID must be a valid UUID with the
+        /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
+
+        /// <summary>
+        /// Required. The value required for this method to work. This field must be the 32-byte SHA256 hash of the
+        /// DataSourceID. The DataSourceID used here is only the final piece of the fully qualified resource path for
+        /// this DataSource (i.e. the part after '.../dataSources/'). This field exists to make this method difficult to
+        /// call since it is intended for use only by Backup Appliances.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2007,6 +5685,19 @@ namespace Google.Apis.Backupdr.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A set of instance tags.</summary>
+    public class Tags : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. An array of tags. Each tag must be 1-63 characters long, and comply with RFC1035.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<string> Items { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

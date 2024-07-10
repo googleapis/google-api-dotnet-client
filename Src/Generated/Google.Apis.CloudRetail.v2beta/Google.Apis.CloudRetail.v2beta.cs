@@ -8223,13 +8223,6 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mergedFacetKey")]
         public virtual string MergedFacetKey { get; set; }
 
-        /// <summary>
-        /// Each instance is a list of facet values that map into the same (possibly different) merged facet value. For
-        /// the current attribute config, each facet value should map to at most one merged facet value.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mergedFacetValues")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2betaCatalogAttributeFacetConfigMergedFacetValue> MergedFacetValues { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -8366,7 +8359,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Recent search of this user.</summary>
+    /// <summary>Deprecated: Recent search of this user.</summary>
     public class GoogleCloudRetailV2betaCompleteQueryResponseRecentSearchResult : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The recent search query.</summary>

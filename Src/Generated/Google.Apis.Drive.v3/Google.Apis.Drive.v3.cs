@@ -7171,7 +7171,7 @@ namespace Google.Apis.Drive.v3.Data
 
         /// <summary>
         /// Shortcut file details. Only populated for shortcut files, which have the mimeType field set to
-        /// `application/vnd.google-apps.shortcut`.
+        /// `application/vnd.google-apps.shortcut`. Can only be set on `files.create` requests.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shortcutDetails")]
         public virtual ShortcutDetailsData ShortcutDetails { get; set; }
@@ -7726,11 +7726,13 @@ namespace Google.Apis.Drive.v3.Data
 
         /// <summary>
         /// Shortcut file details. Only populated for shortcut files, which have the mimeType field set to
-        /// `application/vnd.google-apps.shortcut`.
+        /// `application/vnd.google-apps.shortcut`. Can only be set on `files.create` requests.
         /// </summary>
         public class ShortcutDetailsData
         {
-            /// <summary>The ID of the file that this shortcut points to.</summary>
+            /// <summary>
+            /// The ID of the file that this shortcut points to. Can only be set on `files.create` requests.
+            /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("targetId")]
             public virtual string TargetId { get; set; }
 

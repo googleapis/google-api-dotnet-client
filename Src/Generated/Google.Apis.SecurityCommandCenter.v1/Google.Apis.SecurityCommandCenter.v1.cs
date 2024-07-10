@@ -314,7 +314,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. The name of the parent to group the assets by. Its format is
-            /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+            /// `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[project_id]`.
             /// </param>
             public virtual GroupRequest Group(Google.Apis.SecurityCommandCenter.v1.Data.GroupAssetsRequest body, string parent)
             {
@@ -334,7 +334,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. The name of the parent to group the assets by. Its format is
-                /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+                /// `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[project_id]`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -373,7 +373,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <param name="parent">
             /// Required. The name of the parent resource that contains the assets. The value that you can specify on
             /// parent depends on the method in which you specify parent. You can specify one of the following values:
-            /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+            /// `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[project_id]`.
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -393,7 +393,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <summary>
                 /// Required. The name of the parent resource that contains the assets. The value that you can specify
                 /// on parent depends on the method in which you specify parent. You can specify one of the following
-                /// values: "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+                /// values: `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[project_id]`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -733,7 +733,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. The name of the parent resource of the new BigQuery export. Its format is
-            /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+            /// `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[project_id]`.
             /// </param>
             public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1BigQueryExport body, string parent)
             {
@@ -753,7 +753,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. The name of the parent resource of the new BigQuery export. Its format is
-                /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+                /// `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[project_id]`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -807,8 +807,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Deletes an existing BigQuery export.</summary>
             /// <param name="name">
             /// Required. The name of the BigQuery export to delete. Its format is
-            /// organizations/{organization}/bigQueryExports/{export_id}, folders/{folder}/bigQueryExports/{export_id},
-            /// or projects/{project}/bigQueryExports/{export_id}
+            /// `organizations/{organization}/bigQueryExports/{export_id}`,
+            /// `folders/{folder}/bigQueryExports/{export_id}`, or `projects/{project}/bigQueryExports/{export_id}`
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -827,8 +827,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. The name of the BigQuery export to delete. Its format is
-                /// organizations/{organization}/bigQueryExports/{export_id},
-                /// folders/{folder}/bigQueryExports/{export_id}, or projects/{project}/bigQueryExports/{export_id}
+                /// `organizations/{organization}/bigQueryExports/{export_id}`,
+                /// `folders/{folder}/bigQueryExports/{export_id}`, or `projects/{project}/bigQueryExports/{export_id}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -860,8 +860,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Gets a BigQuery export.</summary>
             /// <param name="name">
             /// Required. Name of the BigQuery export to retrieve. Its format is
-            /// organizations/{organization}/bigQueryExports/{export_id}, folders/{folder}/bigQueryExports/{export_id},
-            /// or projects/{project}/bigQueryExports/{export_id}
+            /// `organizations/{organization}/bigQueryExports/{export_id}`,
+            /// `folders/{folder}/bigQueryExports/{export_id}`, or `projects/{project}/bigQueryExports/{export_id}`
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -880,8 +880,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Name of the BigQuery export to retrieve. Its format is
-                /// organizations/{organization}/bigQueryExports/{export_id},
-                /// folders/{folder}/bigQueryExports/{export_id}, or projects/{project}/bigQueryExports/{export_id}
+                /// `organizations/{organization}/bigQueryExports/{export_id}`,
+                /// `folders/{folder}/bigQueryExports/{export_id}`, or `projects/{project}/bigQueryExports/{export_id}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -918,7 +918,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </summary>
             /// <param name="parent">
             /// Required. The parent, which owns the collection of BigQuery exports. Its format is
-            /// "organizations/[organization_id]", "folders/[folder_id]", "projects/[project_id]".
+            /// `organizations/[organization_id]`, `folders/[folder_id]`, `projects/[project_id]`.
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -942,7 +942,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. The parent, which owns the collection of BigQuery exports. Its format is
-                /// "organizations/[organization_id]", "folders/[folder_id]", "projects/[project_id]".
+                /// `organizations/[organization_id]`, `folders/[folder_id]`, `projects/[project_id]`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -1502,9 +1502,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Immutable. The resource name of the Event Threat Detection custom module. Its format is: *
-                /// "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}". *
-                /// "folders/{folder}/eventThreatDetectionSettings/customModules/{module}". *
-                /// "projects/{project}/eventThreatDetectionSettings/customModules/{module}".
+                /// `organizations/{organization}/eventThreatDetectionSettings/customModules/{module}`. *
+                /// `folders/{folder}/eventThreatDetectionSettings/customModules/{module}`. *
+                /// `projects/{project}/eventThreatDetectionSettings/customModules/{module}`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.EventThreatDetectionCustomModule body, string name)
                 {
@@ -1529,9 +1529,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Immutable. The resource name of the Event Threat Detection custom module. Its format is: *
-                    /// "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}". *
-                    /// "folders/{folder}/eventThreatDetectionSettings/customModules/{module}". *
-                    /// "projects/{project}/eventThreatDetectionSettings/customModules/{module}".
+                    /// `organizations/{organization}/eventThreatDetectionSettings/customModules/{module}`. *
+                    /// `folders/{folder}/eventThreatDetectionSettings/customModules/{module}`. *
+                    /// `projects/{project}/eventThreatDetectionSettings/customModules/{module}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1836,7 +1836,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. The parent, at which bulk action needs to be applied. Its format is
-            /// "organizations/[organization_id]", "folders/[folder_id]", "projects/[project_id]".
+            /// `organizations/[organization_id]`, `folders/[folder_id]`, `projects/[project_id]`.
             /// </param>
             public virtual BulkMuteRequest BulkMute(Google.Apis.SecurityCommandCenter.v1.Data.BulkMuteFindingsRequest body, string parent)
             {
@@ -1859,7 +1859,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. The parent, at which bulk action needs to be applied. Its format is
-                /// "organizations/[organization_id]", "folders/[folder_id]", "projects/[project_id]".
+                /// `organizations/[organization_id]`, `folders/[folder_id]`, `projects/[project_id]`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -1934,7 +1934,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. Resource name of the new mute configs's parent. Its format is
-                /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+                /// `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[project_id]`.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1MuteConfig body, string parent)
                 {
@@ -1954,7 +1954,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Resource name of the new mute configs's parent. Its format is
-                    /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+                    /// `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[project_id]`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -2008,11 +2008,11 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <summary>Deletes an existing mute config.</summary>
                 /// <param name="name">
                 /// Required. Name of the mute config to delete. Its format is
-                /// organizations/{organization}/muteConfigs/{config_id}, folders/{folder}/muteConfigs/{config_id},
-                /// projects/{project}/muteConfigs/{config_id},
-                /// organizations/{organization}/locations/global/muteConfigs/{config_id},
-                /// folders/{folder}/locations/global/muteConfigs/{config_id}, or
-                /// projects/{project}/locations/global/muteConfigs/{config_id}.
+                /// `organizations/{organization}/muteConfigs/{config_id}`, `folders/{folder}/muteConfigs/{config_id}`,
+                /// `projects/{project}/muteConfigs/{config_id}`,
+                /// `organizations/{organization}/locations/global/muteConfigs/{config_id}`,
+                /// `folders/{folder}/locations/global/muteConfigs/{config_id}`, or
+                /// `projects/{project}/locations/global/muteConfigs/{config_id}`.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -2031,11 +2031,11 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Name of the mute config to delete. Its format is
-                    /// organizations/{organization}/muteConfigs/{config_id}, folders/{folder}/muteConfigs/{config_id},
-                    /// projects/{project}/muteConfigs/{config_id},
-                    /// organizations/{organization}/locations/global/muteConfigs/{config_id},
-                    /// folders/{folder}/locations/global/muteConfigs/{config_id}, or
-                    /// projects/{project}/locations/global/muteConfigs/{config_id}.
+                    /// `organizations/{organization}/muteConfigs/{config_id}`,
+                    /// `folders/{folder}/muteConfigs/{config_id}`, `projects/{project}/muteConfigs/{config_id}`,
+                    /// `organizations/{organization}/locations/global/muteConfigs/{config_id}`,
+                    /// `folders/{folder}/locations/global/muteConfigs/{config_id}`, or
+                    /// `projects/{project}/locations/global/muteConfigs/{config_id}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2067,11 +2067,11 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <summary>Gets a mute config.</summary>
                 /// <param name="name">
                 /// Required. Name of the mute config to retrieve. Its format is
-                /// organizations/{organization}/muteConfigs/{config_id}, folders/{folder}/muteConfigs/{config_id},
-                /// projects/{project}/muteConfigs/{config_id},
-                /// organizations/{organization}/locations/global/muteConfigs/{config_id},
-                /// folders/{folder}/locations/global/muteConfigs/{config_id}, or
-                /// projects/{project}/locations/global/muteConfigs/{config_id}.
+                /// `organizations/{organization}/muteConfigs/{config_id}`, `folders/{folder}/muteConfigs/{config_id}`,
+                /// `projects/{project}/muteConfigs/{config_id}`,
+                /// `organizations/{organization}/locations/global/muteConfigs/{config_id}`,
+                /// `folders/{folder}/locations/global/muteConfigs/{config_id}`, or
+                /// `projects/{project}/locations/global/muteConfigs/{config_id}`.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -2090,11 +2090,11 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Name of the mute config to retrieve. Its format is
-                    /// organizations/{organization}/muteConfigs/{config_id}, folders/{folder}/muteConfigs/{config_id},
-                    /// projects/{project}/muteConfigs/{config_id},
-                    /// organizations/{organization}/locations/global/muteConfigs/{config_id},
-                    /// folders/{folder}/locations/global/muteConfigs/{config_id}, or
-                    /// projects/{project}/locations/global/muteConfigs/{config_id}.
+                    /// `organizations/{organization}/muteConfigs/{config_id}`,
+                    /// `folders/{folder}/muteConfigs/{config_id}`, `projects/{project}/muteConfigs/{config_id}`,
+                    /// `organizations/{organization}/locations/global/muteConfigs/{config_id}`,
+                    /// `folders/{folder}/locations/global/muteConfigs/{config_id}`, or
+                    /// `projects/{project}/locations/global/muteConfigs/{config_id}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2126,7 +2126,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <summary>Lists mute configs.</summary>
                 /// <param name="parent">
                 /// Required. The parent, which owns the collection of mute configs. Its format is
-                /// "organizations/[organization_id]", "folders/[folder_id]", "projects/[project_id]".
+                /// `organizations/[organization_id]`, `folders/[folder_id]`, `projects/[project_id]`.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -2145,7 +2145,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. The parent, which owns the collection of mute configs. Its format is
-                    /// "organizations/[organization_id]", "folders/[folder_id]", "projects/[project_id]".
+                    /// `organizations/[organization_id]`, `folders/[folder_id]`, `projects/[project_id]`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -2210,11 +2210,11 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// This field will be ignored if provided on config creation. Format
-                /// "organizations/{organization}/muteConfigs/{mute_config}"
-                /// "folders/{folder}/muteConfigs/{mute_config}" "projects/{project}/muteConfigs/{mute_config}"
-                /// "organizations/{organization}/locations/global/muteConfigs/{mute_config}"
-                /// "folders/{folder}/locations/global/muteConfigs/{mute_config}"
-                /// "projects/{project}/locations/global/muteConfigs/{mute_config}"
+                /// `organizations/{organization}/muteConfigs/{mute_config}`
+                /// `folders/{folder}/muteConfigs/{mute_config}` `projects/{project}/muteConfigs/{mute_config}`
+                /// `organizations/{organization}/locations/global/muteConfigs/{mute_config}`
+                /// `folders/{folder}/locations/global/muteConfigs/{mute_config}`
+                /// `projects/{project}/locations/global/muteConfigs/{mute_config}`
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1MuteConfig body, string name)
                 {
@@ -2234,11 +2234,11 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// This field will be ignored if provided on config creation. Format
-                    /// "organizations/{organization}/muteConfigs/{mute_config}"
-                    /// "folders/{folder}/muteConfigs/{mute_config}" "projects/{project}/muteConfigs/{mute_config}"
-                    /// "organizations/{organization}/locations/global/muteConfigs/{mute_config}"
-                    /// "folders/{folder}/locations/global/muteConfigs/{mute_config}"
-                    /// "projects/{project}/locations/global/muteConfigs/{mute_config}"
+                    /// `organizations/{organization}/muteConfigs/{mute_config}`
+                    /// `folders/{folder}/muteConfigs/{mute_config}` `projects/{project}/muteConfigs/{mute_config}`
+                    /// `organizations/{organization}/locations/global/muteConfigs/{mute_config}`
+                    /// `folders/{folder}/locations/global/muteConfigs/{mute_config}`
+                    /// `projects/{project}/locations/global/muteConfigs/{mute_config}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2310,7 +2310,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. Resource name of the new mute configs's parent. Its format is
-            /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+            /// `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[project_id]`.
             /// </param>
             public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1MuteConfig body, string parent)
             {
@@ -2330,7 +2330,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Resource name of the new mute configs's parent. Its format is
-                /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+                /// `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[project_id]`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -2384,11 +2384,11 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Deletes an existing mute config.</summary>
             /// <param name="name">
             /// Required. Name of the mute config to delete. Its format is
-            /// organizations/{organization}/muteConfigs/{config_id}, folders/{folder}/muteConfigs/{config_id},
-            /// projects/{project}/muteConfigs/{config_id},
-            /// organizations/{organization}/locations/global/muteConfigs/{config_id},
-            /// folders/{folder}/locations/global/muteConfigs/{config_id}, or
-            /// projects/{project}/locations/global/muteConfigs/{config_id}.
+            /// `organizations/{organization}/muteConfigs/{config_id}`, `folders/{folder}/muteConfigs/{config_id}`,
+            /// `projects/{project}/muteConfigs/{config_id}`,
+            /// `organizations/{organization}/locations/global/muteConfigs/{config_id}`,
+            /// `folders/{folder}/locations/global/muteConfigs/{config_id}`, or
+            /// `projects/{project}/locations/global/muteConfigs/{config_id}`.
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -2407,11 +2407,11 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Name of the mute config to delete. Its format is
-                /// organizations/{organization}/muteConfigs/{config_id}, folders/{folder}/muteConfigs/{config_id},
-                /// projects/{project}/muteConfigs/{config_id},
-                /// organizations/{organization}/locations/global/muteConfigs/{config_id},
-                /// folders/{folder}/locations/global/muteConfigs/{config_id}, or
-                /// projects/{project}/locations/global/muteConfigs/{config_id}.
+                /// `organizations/{organization}/muteConfigs/{config_id}`, `folders/{folder}/muteConfigs/{config_id}`,
+                /// `projects/{project}/muteConfigs/{config_id}`,
+                /// `organizations/{organization}/locations/global/muteConfigs/{config_id}`,
+                /// `folders/{folder}/locations/global/muteConfigs/{config_id}`, or
+                /// `projects/{project}/locations/global/muteConfigs/{config_id}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -2443,11 +2443,11 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Gets a mute config.</summary>
             /// <param name="name">
             /// Required. Name of the mute config to retrieve. Its format is
-            /// organizations/{organization}/muteConfigs/{config_id}, folders/{folder}/muteConfigs/{config_id},
-            /// projects/{project}/muteConfigs/{config_id},
-            /// organizations/{organization}/locations/global/muteConfigs/{config_id},
-            /// folders/{folder}/locations/global/muteConfigs/{config_id}, or
-            /// projects/{project}/locations/global/muteConfigs/{config_id}.
+            /// `organizations/{organization}/muteConfigs/{config_id}`, `folders/{folder}/muteConfigs/{config_id}`,
+            /// `projects/{project}/muteConfigs/{config_id}`,
+            /// `organizations/{organization}/locations/global/muteConfigs/{config_id}`,
+            /// `folders/{folder}/locations/global/muteConfigs/{config_id}`, or
+            /// `projects/{project}/locations/global/muteConfigs/{config_id}`.
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -2466,11 +2466,11 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Name of the mute config to retrieve. Its format is
-                /// organizations/{organization}/muteConfigs/{config_id}, folders/{folder}/muteConfigs/{config_id},
-                /// projects/{project}/muteConfigs/{config_id},
-                /// organizations/{organization}/locations/global/muteConfigs/{config_id},
-                /// folders/{folder}/locations/global/muteConfigs/{config_id}, or
-                /// projects/{project}/locations/global/muteConfigs/{config_id}.
+                /// `organizations/{organization}/muteConfigs/{config_id}`, `folders/{folder}/muteConfigs/{config_id}`,
+                /// `projects/{project}/muteConfigs/{config_id}`,
+                /// `organizations/{organization}/locations/global/muteConfigs/{config_id}`,
+                /// `folders/{folder}/locations/global/muteConfigs/{config_id}`, or
+                /// `projects/{project}/locations/global/muteConfigs/{config_id}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -2502,7 +2502,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Lists mute configs.</summary>
             /// <param name="parent">
             /// Required. The parent, which owns the collection of mute configs. Its format is
-            /// "organizations/[organization_id]", "folders/[folder_id]", "projects/[project_id]".
+            /// `organizations/[organization_id]`, `folders/[folder_id]`, `projects/[project_id]`.
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -2521,7 +2521,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. The parent, which owns the collection of mute configs. Its format is
-                /// "organizations/[organization_id]", "folders/[folder_id]", "projects/[project_id]".
+                /// `organizations/[organization_id]`, `folders/[folder_id]`, `projects/[project_id]`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -2586,11 +2586,11 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// This field will be ignored if provided on config creation. Format
-            /// "organizations/{organization}/muteConfigs/{mute_config}" "folders/{folder}/muteConfigs/{mute_config}"
-            /// "projects/{project}/muteConfigs/{mute_config}"
-            /// "organizations/{organization}/locations/global/muteConfigs/{mute_config}"
-            /// "folders/{folder}/locations/global/muteConfigs/{mute_config}"
-            /// "projects/{project}/locations/global/muteConfigs/{mute_config}"
+            /// `organizations/{organization}/muteConfigs/{mute_config}` `folders/{folder}/muteConfigs/{mute_config}`
+            /// `projects/{project}/muteConfigs/{mute_config}`
+            /// `organizations/{organization}/locations/global/muteConfigs/{mute_config}`
+            /// `folders/{folder}/locations/global/muteConfigs/{mute_config}`
+            /// `projects/{project}/locations/global/muteConfigs/{mute_config}`
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1MuteConfig body, string name)
             {
@@ -2610,11 +2610,11 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// This field will be ignored if provided on config creation. Format
-                /// "organizations/{organization}/muteConfigs/{mute_config}"
-                /// "folders/{folder}/muteConfigs/{mute_config}" "projects/{project}/muteConfigs/{mute_config}"
-                /// "organizations/{organization}/locations/global/muteConfigs/{mute_config}"
-                /// "folders/{folder}/locations/global/muteConfigs/{mute_config}"
-                /// "projects/{project}/locations/global/muteConfigs/{mute_config}"
+                /// `organizations/{organization}/muteConfigs/{mute_config}`
+                /// `folders/{folder}/muteConfigs/{mute_config}` `projects/{project}/muteConfigs/{mute_config}`
+                /// `organizations/{organization}/locations/global/muteConfigs/{mute_config}`
+                /// `folders/{folder}/locations/global/muteConfigs/{mute_config}`
+                /// `projects/{project}/locations/global/muteConfigs/{mute_config}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -2683,7 +2683,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. Resource name of the new notification config's parent. Its format is
-            /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+            /// `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[project_id]`.
             /// </param>
             public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.NotificationConfig body, string parent)
             {
@@ -2703,7 +2703,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Resource name of the new notification config's parent. Its format is
-                /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+                /// `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[project_id]`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -2756,9 +2756,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Deletes a notification config.</summary>
             /// <param name="name">
             /// Required. Name of the notification config to delete. Its format is
-            /// "organizations/[organization_id]/notificationConfigs/[config_id]",
-            /// "folders/[folder_id]/notificationConfigs/[config_id]", or
-            /// "projects/[project_id]/notificationConfigs/[config_id]".
+            /// `organizations/[organization_id]/notificationConfigs/[config_id]`,
+            /// `folders/[folder_id]/notificationConfigs/[config_id]`, or
+            /// `projects/[project_id]/notificationConfigs/[config_id]`.
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -2777,9 +2777,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Name of the notification config to delete. Its format is
-                /// "organizations/[organization_id]/notificationConfigs/[config_id]",
-                /// "folders/[folder_id]/notificationConfigs/[config_id]", or
-                /// "projects/[project_id]/notificationConfigs/[config_id]".
+                /// `organizations/[organization_id]/notificationConfigs/[config_id]`,
+                /// `folders/[folder_id]/notificationConfigs/[config_id]`, or
+                /// `projects/[project_id]/notificationConfigs/[config_id]`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -2811,9 +2811,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Gets a notification config.</summary>
             /// <param name="name">
             /// Required. Name of the notification config to get. Its format is
-            /// "organizations/[organization_id]/notificationConfigs/[config_id]",
-            /// "folders/[folder_id]/notificationConfigs/[config_id]", or
-            /// "projects/[project_id]/notificationConfigs/[config_id]".
+            /// `organizations/[organization_id]/notificationConfigs/[config_id]`,
+            /// `folders/[folder_id]/notificationConfigs/[config_id]`, or
+            /// `projects/[project_id]/notificationConfigs/[config_id]`.
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -2832,9 +2832,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Name of the notification config to get. Its format is
-                /// "organizations/[organization_id]/notificationConfigs/[config_id]",
-                /// "folders/[folder_id]/notificationConfigs/[config_id]", or
-                /// "projects/[project_id]/notificationConfigs/[config_id]".
+                /// `organizations/[organization_id]/notificationConfigs/[config_id]`,
+                /// `folders/[folder_id]/notificationConfigs/[config_id]`, or
+                /// `projects/[project_id]/notificationConfigs/[config_id]`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -3076,9 +3076,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. Resource name of the new custom module's parent. Its format is
-                /// "organizations/{organization}/securityHealthAnalyticsSettings",
-                /// "folders/{folder}/securityHealthAnalyticsSettings", or
-                /// "projects/{project}/securityHealthAnalyticsSettings"
+                /// `organizations/{organization}/securityHealthAnalyticsSettings`,
+                /// `folders/{folder}/securityHealthAnalyticsSettings`, or
+                /// `projects/{project}/securityHealthAnalyticsSettings`
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule body, string parent)
                 {
@@ -3102,9 +3102,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Resource name of the new custom module's parent. Its format is
-                    /// "organizations/{organization}/securityHealthAnalyticsSettings",
-                    /// "folders/{folder}/securityHealthAnalyticsSettings", or
-                    /// "projects/{project}/securityHealthAnalyticsSettings"
+                    /// `organizations/{organization}/securityHealthAnalyticsSettings`,
+                    /// `folders/{folder}/securityHealthAnalyticsSettings`, or
+                    /// `projects/{project}/securityHealthAnalyticsSettings`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -3145,9 +3145,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </summary>
                 /// <param name="name">
                 /// Required. Name of the custom module to delete. Its format is
-                /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}",
-                /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}", or
-                /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}"
+                /// `organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}`,
+                /// `folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}`, or
+                /// `projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}`
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -3169,9 +3169,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Name of the custom module to delete. Its format is
-                    /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}",
-                    /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}", or
-                    /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}"
+                    /// `organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}`,
+                    /// `folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}`, or
+                    /// `projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -3203,9 +3203,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <summary>Retrieves a SecurityHealthAnalyticsCustomModule.</summary>
                 /// <param name="name">
                 /// Required. Name of the custom module to get. Its format is
-                /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}",
-                /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}", or
-                /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}"
+                /// `organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}`,
+                /// `folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}`, or
+                /// `projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}`
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -3224,9 +3224,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Name of the custom module to get. Its format is
-                    /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}",
-                    /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}", or
-                    /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}"
+                    /// `organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}`,
+                    /// `folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}`, or
+                    /// `projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -3262,9 +3262,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </summary>
                 /// <param name="parent">
                 /// Required. Name of parent to list custom modules. Its format is
-                /// "organizations/{organization}/securityHealthAnalyticsSettings",
-                /// "folders/{folder}/securityHealthAnalyticsSettings", or
-                /// "projects/{project}/securityHealthAnalyticsSettings"
+                /// `organizations/{organization}/securityHealthAnalyticsSettings`,
+                /// `folders/{folder}/securityHealthAnalyticsSettings`, or
+                /// `projects/{project}/securityHealthAnalyticsSettings`
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -3287,9 +3287,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Name of parent to list custom modules. Its format is
-                    /// "organizations/{organization}/securityHealthAnalyticsSettings",
-                    /// "folders/{folder}/securityHealthAnalyticsSettings", or
-                    /// "projects/{project}/securityHealthAnalyticsSettings"
+                    /// `organizations/{organization}/securityHealthAnalyticsSettings`,
+                    /// `folders/{folder}/securityHealthAnalyticsSettings`, or
+                    /// `projects/{project}/securityHealthAnalyticsSettings`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -3351,9 +3351,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </summary>
                 /// <param name="parent">
                 /// Required. Name of parent to list descendant custom modules. Its format is
-                /// "organizations/{organization}/securityHealthAnalyticsSettings",
-                /// "folders/{folder}/securityHealthAnalyticsSettings", or
-                /// "projects/{project}/securityHealthAnalyticsSettings"
+                /// `organizations/{organization}/securityHealthAnalyticsSettings`,
+                /// `folders/{folder}/securityHealthAnalyticsSettings`, or
+                /// `projects/{project}/securityHealthAnalyticsSettings`
                 /// </param>
                 public virtual ListDescendantRequest ListDescendant(string parent)
                 {
@@ -3375,9 +3375,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Name of parent to list descendant custom modules. Its format is
-                    /// "organizations/{organization}/securityHealthAnalyticsSettings",
-                    /// "folders/{folder}/securityHealthAnalyticsSettings", or
-                    /// "projects/{project}/securityHealthAnalyticsSettings"
+                    /// `organizations/{organization}/securityHealthAnalyticsSettings`,
+                    /// `folders/{folder}/securityHealthAnalyticsSettings`, or
+                    /// `projects/{project}/securityHealthAnalyticsSettings`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -3610,9 +3610,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <summary>Retrieves an EffectiveSecurityHealthAnalyticsCustomModule.</summary>
                 /// <param name="name">
                 /// Required. Name of the effective custom module to get. Its format is
-                /// "organizations/{organization}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}",
-                /// "folders/{folder}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}", or
-                /// "projects/{project}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}"
+                /// `organizations/{organization}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}`,
+                /// `folders/{folder}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}`, or
+                /// `projects/{project}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}`
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -3631,9 +3631,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Name of the effective custom module to get. Its format is
-                    /// "organizations/{organization}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}",
-                    /// "folders/{folder}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}", or
-                    /// "projects/{project}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}"
+                    /// `organizations/{organization}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}`,
+                    /// `folders/{folder}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}`, or
+                    /// `projects/{project}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -3669,9 +3669,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </summary>
                 /// <param name="parent">
                 /// Required. Name of parent to list effective custom modules. Its format is
-                /// "organizations/{organization}/securityHealthAnalyticsSettings",
-                /// "folders/{folder}/securityHealthAnalyticsSettings", or
-                /// "projects/{project}/securityHealthAnalyticsSettings"
+                /// `organizations/{organization}/securityHealthAnalyticsSettings`,
+                /// `folders/{folder}/securityHealthAnalyticsSettings`, or
+                /// `projects/{project}/securityHealthAnalyticsSettings`
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -3694,9 +3694,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Name of parent to list effective custom modules. Its format is
-                    /// "organizations/{organization}/securityHealthAnalyticsSettings",
-                    /// "folders/{folder}/securityHealthAnalyticsSettings", or
-                    /// "projects/{project}/securityHealthAnalyticsSettings"
+                    /// `organizations/{organization}/securityHealthAnalyticsSettings`,
+                    /// `folders/{folder}/securityHealthAnalyticsSettings`, or
+                    /// `projects/{project}/securityHealthAnalyticsSettings`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -3895,10 +3895,10 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. Name of the source to groupBy. Its format is
-                /// "organizations/[organization_id]/sources/[source_id]", folders/[folder_id]/sources/[source_id], or
-                /// projects/[project_id]/sources/[source_id]. To groupBy across all sources provide a source_id of `-`.
-                /// For example: organizations/{organization_id}/sources/-, folders/{folder_id}/sources/-, or
-                /// projects/{project_id}/sources/-
+                /// `organizations/[organization_id]/sources/[source_id]`, `folders/[folder_id]/sources/[source_id]`, or
+                /// `projects/[project_id]/sources/[source_id]`. To groupBy across all sources provide a source_id of
+                /// `-`. For example: `organizations/{organization_id}/sources/-, folders/{folder_id}/sources/-`, or
+                /// `projects/{project_id}/sources/-`
                 /// </param>
                 public virtual GroupRequest Group(Google.Apis.SecurityCommandCenter.v1.Data.GroupFindingsRequest body, string parent)
                 {
@@ -3923,10 +3923,11 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Name of the source to groupBy. Its format is
-                    /// "organizations/[organization_id]/sources/[source_id]", folders/[folder_id]/sources/[source_id],
-                    /// or projects/[project_id]/sources/[source_id]. To groupBy across all sources provide a source_id
-                    /// of `-`. For example: organizations/{organization_id}/sources/-, folders/{folder_id}/sources/-,
-                    /// or projects/{project_id}/sources/-
+                    /// `organizations/[organization_id]/sources/[source_id]`,
+                    /// `folders/[folder_id]/sources/[source_id]`, or `projects/[project_id]/sources/[source_id]`. To
+                    /// groupBy across all sources provide a source_id of `-`. For example:
+                    /// `organizations/{organization_id}/sources/-, folders/{folder_id}/sources/-`, or
+                    /// `projects/{project_id}/sources/-`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -3967,10 +3968,10 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </summary>
                 /// <param name="parent">
                 /// Required. Name of the source the findings belong to. Its format is
-                /// "organizations/[organization_id]/sources/[source_id], folders/[folder_id]/sources/[source_id], or
-                /// projects/[project_id]/sources/[source_id]". To list across all sources provide a source_id of `-`.
-                /// For example: organizations/{organization_id}/sources/-, folders/{folder_id}/sources/- or
-                /// projects/{projects_id}/sources/-
+                /// `organizations/[organization_id]/sources/[source_id]`, `folders/[folder_id]/sources/[source_id]`, or
+                /// `projects/[project_id]/sources/[source_id]`. To list across all sources provide a source_id of `-`.
+                /// For example: `organizations/{organization_id}/sources/-`, `folders/{folder_id}/sources/-` or
+                /// `projects/{projects_id}/sources/-`
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -3992,10 +3993,11 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Name of the source the findings belong to. Its format is
-                    /// "organizations/[organization_id]/sources/[source_id], folders/[folder_id]/sources/[source_id],
-                    /// or projects/[project_id]/sources/[source_id]". To list across all sources provide a source_id of
-                    /// `-`. For example: organizations/{organization_id}/sources/-, folders/{folder_id}/sources/- or
-                    /// projects/{projects_id}/sources/-
+                    /// `organizations/[organization_id]/sources/[source_id]`,
+                    /// `folders/[folder_id]/sources/[source_id]`, or `projects/[project_id]/sources/[source_id]`. To
+                    /// list across all sources provide a source_id of `-`. For example:
+                    /// `organizations/{organization_id}/sources/-`, `folders/{folder_id}/sources/-` or
+                    /// `projects/{projects_id}/sources/-`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -4283,9 +4285,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <param name="name">
                 /// Required. The [relative resource
                 /// name](https://cloud.google.com/apis/design/resource_names#relative_resource_name) of the finding.
-                /// Example: "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
-                /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
-                /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
+                /// Example: `organizations/{organization_id}/sources/{source_id}/findings/{finding_id}`,
+                /// `folders/{folder_id}/sources/{source_id}/findings/{finding_id}`,
+                /// `projects/{project_id}/sources/{source_id}/findings/{finding_id}`.
                 /// </param>
                 public virtual SetMuteRequest SetMute(Google.Apis.SecurityCommandCenter.v1.Data.SetMuteRequest body, string name)
                 {
@@ -4306,9 +4308,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     /// <summary>
                     /// Required. The [relative resource
                     /// name](https://cloud.google.com/apis/design/resource_names#relative_resource_name) of the
-                    /// finding. Example: "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
-                    /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
-                    /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
+                    /// finding. Example: `organizations/{organization_id}/sources/{source_id}/findings/{finding_id}`,
+                    /// `folders/{folder_id}/sources/{source_id}/findings/{finding_id}`,
+                    /// `projects/{project_id}/sources/{source_id}/findings/{finding_id}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -4348,9 +4350,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <param name="name">
                 /// Required. The [relative resource
                 /// name](https://cloud.google.com/apis/design/resource_names#relative_resource_name) of the finding.
-                /// Example: "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
-                /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
-                /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
+                /// Example: `organizations/{organization_id}/sources/{source_id}/findings/{finding_id}`,
+                /// `folders/{folder_id}/sources/{source_id}/findings/{finding_id}`,
+                /// `projects/{project_id}/sources/{source_id}/findings/{finding_id}`.
                 /// </param>
                 public virtual SetStateRequest SetState(Google.Apis.SecurityCommandCenter.v1.Data.SetFindingStateRequest body, string name)
                 {
@@ -4371,9 +4373,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     /// <summary>
                     /// Required. The [relative resource
                     /// name](https://cloud.google.com/apis/design/resource_names#relative_resource_name) of the
-                    /// finding. Example: "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
-                    /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
-                    /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
+                    /// finding. Example: `organizations/{organization_id}/sources/{source_id}/findings/{finding_id}`,
+                    /// `folders/{folder_id}/sources/{source_id}/findings/{finding_id}`,
+                    /// `projects/{project_id}/sources/{source_id}/findings/{finding_id}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -4530,7 +4532,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Lists all sources belonging to an organization.</summary>
             /// <param name="parent">
             /// Required. Resource name of the parent of sources to list. Its format should be
-            /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+            /// `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[project_id]`.
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -4549,7 +4551,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Resource name of the parent of sources to list. Its format should be
-                /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+                /// `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[project_id]`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -4657,7 +4659,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. The name of the parent to group the assets by. Its format is
-            /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+            /// `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[project_id]`.
             /// </param>
             public virtual GroupRequest Group(Google.Apis.SecurityCommandCenter.v1.Data.GroupAssetsRequest body, string parent)
             {
@@ -4677,7 +4679,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. The name of the parent to group the assets by. Its format is
-                /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+                /// `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[project_id]`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -4716,7 +4718,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <param name="parent">
             /// Required. The name of the parent resource that contains the assets. The value that you can specify on
             /// parent depends on the method in which you specify parent. You can specify one of the following values:
-            /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+            /// `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[project_id]`.
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -4736,7 +4738,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <summary>
                 /// Required. The name of the parent resource that contains the assets. The value that you can specify
                 /// on parent depends on the method in which you specify parent. You can specify one of the following
-                /// values: "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+                /// values: `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[project_id]`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -4944,7 +4946,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. Name of the organization to run asset discovery for. Its format is
-            /// "organizations/[organization_id]".
+            /// `organizations/[organization_id]`.
             /// </param>
             public virtual RunDiscoveryRequest RunDiscovery(Google.Apis.SecurityCommandCenter.v1.Data.RunAssetDiscoveryRequest body, string parent)
             {
@@ -4968,7 +4970,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Name of the organization to run asset discovery for. Its format is
-                /// "organizations/[organization_id]".
+                /// `organizations/[organization_id]`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -5143,7 +5145,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. The name of the parent resource of the new BigQuery export. Its format is
-            /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+            /// `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[project_id]`.
             /// </param>
             public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1BigQueryExport body, string parent)
             {
@@ -5163,7 +5165,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. The name of the parent resource of the new BigQuery export. Its format is
-                /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+                /// `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[project_id]`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -5217,8 +5219,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Deletes an existing BigQuery export.</summary>
             /// <param name="name">
             /// Required. The name of the BigQuery export to delete. Its format is
-            /// organizations/{organization}/bigQueryExports/{export_id}, folders/{folder}/bigQueryExports/{export_id},
-            /// or projects/{project}/bigQueryExports/{export_id}
+            /// `organizations/{organization}/bigQueryExports/{export_id}`,
+            /// `folders/{folder}/bigQueryExports/{export_id}`, or `projects/{project}/bigQueryExports/{export_id}`
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -5237,8 +5239,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. The name of the BigQuery export to delete. Its format is
-                /// organizations/{organization}/bigQueryExports/{export_id},
-                /// folders/{folder}/bigQueryExports/{export_id}, or projects/{project}/bigQueryExports/{export_id}
+                /// `organizations/{organization}/bigQueryExports/{export_id}`,
+                /// `folders/{folder}/bigQueryExports/{export_id}`, or `projects/{project}/bigQueryExports/{export_id}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -5270,8 +5272,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Gets a BigQuery export.</summary>
             /// <param name="name">
             /// Required. Name of the BigQuery export to retrieve. Its format is
-            /// organizations/{organization}/bigQueryExports/{export_id}, folders/{folder}/bigQueryExports/{export_id},
-            /// or projects/{project}/bigQueryExports/{export_id}
+            /// `organizations/{organization}/bigQueryExports/{export_id}`,
+            /// `folders/{folder}/bigQueryExports/{export_id}`, or `projects/{project}/bigQueryExports/{export_id}`
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -5290,8 +5292,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Name of the BigQuery export to retrieve. Its format is
-                /// organizations/{organization}/bigQueryExports/{export_id},
-                /// folders/{folder}/bigQueryExports/{export_id}, or projects/{project}/bigQueryExports/{export_id}
+                /// `organizations/{organization}/bigQueryExports/{export_id}`,
+                /// `folders/{folder}/bigQueryExports/{export_id}`, or `projects/{project}/bigQueryExports/{export_id}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -5328,7 +5330,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </summary>
             /// <param name="parent">
             /// Required. The parent, which owns the collection of BigQuery exports. Its format is
-            /// "organizations/[organization_id]", "folders/[folder_id]", "projects/[project_id]".
+            /// `organizations/[organization_id]`, `folders/[folder_id]`, `projects/[project_id]`.
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -5352,7 +5354,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. The parent, which owns the collection of BigQuery exports. Its format is
-                /// "organizations/[organization_id]", "folders/[folder_id]", "projects/[project_id]".
+                /// `organizations/[organization_id]`, `folders/[folder_id]`, `projects/[project_id]`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -5912,9 +5914,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Immutable. The resource name of the Event Threat Detection custom module. Its format is: *
-                /// "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}". *
-                /// "folders/{folder}/eventThreatDetectionSettings/customModules/{module}". *
-                /// "projects/{project}/eventThreatDetectionSettings/customModules/{module}".
+                /// `organizations/{organization}/eventThreatDetectionSettings/customModules/{module}`. *
+                /// `folders/{folder}/eventThreatDetectionSettings/customModules/{module}`. *
+                /// `projects/{project}/eventThreatDetectionSettings/customModules/{module}`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.EventThreatDetectionCustomModule body, string name)
                 {
@@ -5939,9 +5941,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Immutable. The resource name of the Event Threat Detection custom module. Its format is: *
-                    /// "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}". *
-                    /// "folders/{folder}/eventThreatDetectionSettings/customModules/{module}". *
-                    /// "projects/{project}/eventThreatDetectionSettings/customModules/{module}".
+                    /// `organizations/{organization}/eventThreatDetectionSettings/customModules/{module}`. *
+                    /// `folders/{folder}/eventThreatDetectionSettings/customModules/{module}`. *
+                    /// `projects/{project}/eventThreatDetectionSettings/customModules/{module}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -6246,7 +6248,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. The parent, at which bulk action needs to be applied. Its format is
-            /// "organizations/[organization_id]", "folders/[folder_id]", "projects/[project_id]".
+            /// `organizations/[organization_id]`, `folders/[folder_id]`, `projects/[project_id]`.
             /// </param>
             public virtual BulkMuteRequest BulkMute(Google.Apis.SecurityCommandCenter.v1.Data.BulkMuteFindingsRequest body, string parent)
             {
@@ -6269,7 +6271,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. The parent, at which bulk action needs to be applied. Its format is
-                /// "organizations/[organization_id]", "folders/[folder_id]", "projects/[project_id]".
+                /// `organizations/[organization_id]`, `folders/[folder_id]`, `projects/[project_id]`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -6344,7 +6346,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. Resource name of the new mute configs's parent. Its format is
-                /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+                /// `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[project_id]`.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1MuteConfig body, string parent)
                 {
@@ -6364,7 +6366,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Resource name of the new mute configs's parent. Its format is
-                    /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+                    /// `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[project_id]`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -6418,11 +6420,11 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <summary>Deletes an existing mute config.</summary>
                 /// <param name="name">
                 /// Required. Name of the mute config to delete. Its format is
-                /// organizations/{organization}/muteConfigs/{config_id}, folders/{folder}/muteConfigs/{config_id},
-                /// projects/{project}/muteConfigs/{config_id},
-                /// organizations/{organization}/locations/global/muteConfigs/{config_id},
-                /// folders/{folder}/locations/global/muteConfigs/{config_id}, or
-                /// projects/{project}/locations/global/muteConfigs/{config_id}.
+                /// `organizations/{organization}/muteConfigs/{config_id}`, `folders/{folder}/muteConfigs/{config_id}`,
+                /// `projects/{project}/muteConfigs/{config_id}`,
+                /// `organizations/{organization}/locations/global/muteConfigs/{config_id}`,
+                /// `folders/{folder}/locations/global/muteConfigs/{config_id}`, or
+                /// `projects/{project}/locations/global/muteConfigs/{config_id}`.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -6441,11 +6443,11 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Name of the mute config to delete. Its format is
-                    /// organizations/{organization}/muteConfigs/{config_id}, folders/{folder}/muteConfigs/{config_id},
-                    /// projects/{project}/muteConfigs/{config_id},
-                    /// organizations/{organization}/locations/global/muteConfigs/{config_id},
-                    /// folders/{folder}/locations/global/muteConfigs/{config_id}, or
-                    /// projects/{project}/locations/global/muteConfigs/{config_id}.
+                    /// `organizations/{organization}/muteConfigs/{config_id}`,
+                    /// `folders/{folder}/muteConfigs/{config_id}`, `projects/{project}/muteConfigs/{config_id}`,
+                    /// `organizations/{organization}/locations/global/muteConfigs/{config_id}`,
+                    /// `folders/{folder}/locations/global/muteConfigs/{config_id}`, or
+                    /// `projects/{project}/locations/global/muteConfigs/{config_id}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -6477,11 +6479,11 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <summary>Gets a mute config.</summary>
                 /// <param name="name">
                 /// Required. Name of the mute config to retrieve. Its format is
-                /// organizations/{organization}/muteConfigs/{config_id}, folders/{folder}/muteConfigs/{config_id},
-                /// projects/{project}/muteConfigs/{config_id},
-                /// organizations/{organization}/locations/global/muteConfigs/{config_id},
-                /// folders/{folder}/locations/global/muteConfigs/{config_id}, or
-                /// projects/{project}/locations/global/muteConfigs/{config_id}.
+                /// `organizations/{organization}/muteConfigs/{config_id}`, `folders/{folder}/muteConfigs/{config_id}`,
+                /// `projects/{project}/muteConfigs/{config_id}`,
+                /// `organizations/{organization}/locations/global/muteConfigs/{config_id}`,
+                /// `folders/{folder}/locations/global/muteConfigs/{config_id}`, or
+                /// `projects/{project}/locations/global/muteConfigs/{config_id}`.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -6500,11 +6502,11 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Name of the mute config to retrieve. Its format is
-                    /// organizations/{organization}/muteConfigs/{config_id}, folders/{folder}/muteConfigs/{config_id},
-                    /// projects/{project}/muteConfigs/{config_id},
-                    /// organizations/{organization}/locations/global/muteConfigs/{config_id},
-                    /// folders/{folder}/locations/global/muteConfigs/{config_id}, or
-                    /// projects/{project}/locations/global/muteConfigs/{config_id}.
+                    /// `organizations/{organization}/muteConfigs/{config_id}`,
+                    /// `folders/{folder}/muteConfigs/{config_id}`, `projects/{project}/muteConfigs/{config_id}`,
+                    /// `organizations/{organization}/locations/global/muteConfigs/{config_id}`,
+                    /// `folders/{folder}/locations/global/muteConfigs/{config_id}`, or
+                    /// `projects/{project}/locations/global/muteConfigs/{config_id}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -6536,7 +6538,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <summary>Lists mute configs.</summary>
                 /// <param name="parent">
                 /// Required. The parent, which owns the collection of mute configs. Its format is
-                /// "organizations/[organization_id]", "folders/[folder_id]", "projects/[project_id]".
+                /// `organizations/[organization_id]`, `folders/[folder_id]`, `projects/[project_id]`.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -6555,7 +6557,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. The parent, which owns the collection of mute configs. Its format is
-                    /// "organizations/[organization_id]", "folders/[folder_id]", "projects/[project_id]".
+                    /// `organizations/[organization_id]`, `folders/[folder_id]`, `projects/[project_id]`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -6620,11 +6622,11 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// This field will be ignored if provided on config creation. Format
-                /// "organizations/{organization}/muteConfigs/{mute_config}"
-                /// "folders/{folder}/muteConfigs/{mute_config}" "projects/{project}/muteConfigs/{mute_config}"
-                /// "organizations/{organization}/locations/global/muteConfigs/{mute_config}"
-                /// "folders/{folder}/locations/global/muteConfigs/{mute_config}"
-                /// "projects/{project}/locations/global/muteConfigs/{mute_config}"
+                /// `organizations/{organization}/muteConfigs/{mute_config}`
+                /// `folders/{folder}/muteConfigs/{mute_config}` `projects/{project}/muteConfigs/{mute_config}`
+                /// `organizations/{organization}/locations/global/muteConfigs/{mute_config}`
+                /// `folders/{folder}/locations/global/muteConfigs/{mute_config}`
+                /// `projects/{project}/locations/global/muteConfigs/{mute_config}`
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1MuteConfig body, string name)
                 {
@@ -6644,11 +6646,11 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// This field will be ignored if provided on config creation. Format
-                    /// "organizations/{organization}/muteConfigs/{mute_config}"
-                    /// "folders/{folder}/muteConfigs/{mute_config}" "projects/{project}/muteConfigs/{mute_config}"
-                    /// "organizations/{organization}/locations/global/muteConfigs/{mute_config}"
-                    /// "folders/{folder}/locations/global/muteConfigs/{mute_config}"
-                    /// "projects/{project}/locations/global/muteConfigs/{mute_config}"
+                    /// `organizations/{organization}/muteConfigs/{mute_config}`
+                    /// `folders/{folder}/muteConfigs/{mute_config}` `projects/{project}/muteConfigs/{mute_config}`
+                    /// `organizations/{organization}/locations/global/muteConfigs/{mute_config}`
+                    /// `folders/{folder}/locations/global/muteConfigs/{mute_config}`
+                    /// `projects/{project}/locations/global/muteConfigs/{mute_config}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -6720,7 +6722,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. Resource name of the new mute configs's parent. Its format is
-            /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+            /// `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[project_id]`.
             /// </param>
             public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1MuteConfig body, string parent)
             {
@@ -6740,7 +6742,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Resource name of the new mute configs's parent. Its format is
-                /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+                /// `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[project_id]`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -6794,11 +6796,11 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Deletes an existing mute config.</summary>
             /// <param name="name">
             /// Required. Name of the mute config to delete. Its format is
-            /// organizations/{organization}/muteConfigs/{config_id}, folders/{folder}/muteConfigs/{config_id},
-            /// projects/{project}/muteConfigs/{config_id},
-            /// organizations/{organization}/locations/global/muteConfigs/{config_id},
-            /// folders/{folder}/locations/global/muteConfigs/{config_id}, or
-            /// projects/{project}/locations/global/muteConfigs/{config_id}.
+            /// `organizations/{organization}/muteConfigs/{config_id}`, `folders/{folder}/muteConfigs/{config_id}`,
+            /// `projects/{project}/muteConfigs/{config_id}`,
+            /// `organizations/{organization}/locations/global/muteConfigs/{config_id}`,
+            /// `folders/{folder}/locations/global/muteConfigs/{config_id}`, or
+            /// `projects/{project}/locations/global/muteConfigs/{config_id}`.
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -6817,11 +6819,11 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Name of the mute config to delete. Its format is
-                /// organizations/{organization}/muteConfigs/{config_id}, folders/{folder}/muteConfigs/{config_id},
-                /// projects/{project}/muteConfigs/{config_id},
-                /// organizations/{organization}/locations/global/muteConfigs/{config_id},
-                /// folders/{folder}/locations/global/muteConfigs/{config_id}, or
-                /// projects/{project}/locations/global/muteConfigs/{config_id}.
+                /// `organizations/{organization}/muteConfigs/{config_id}`, `folders/{folder}/muteConfigs/{config_id}`,
+                /// `projects/{project}/muteConfigs/{config_id}`,
+                /// `organizations/{organization}/locations/global/muteConfigs/{config_id}`,
+                /// `folders/{folder}/locations/global/muteConfigs/{config_id}`, or
+                /// `projects/{project}/locations/global/muteConfigs/{config_id}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -6853,11 +6855,11 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Gets a mute config.</summary>
             /// <param name="name">
             /// Required. Name of the mute config to retrieve. Its format is
-            /// organizations/{organization}/muteConfigs/{config_id}, folders/{folder}/muteConfigs/{config_id},
-            /// projects/{project}/muteConfigs/{config_id},
-            /// organizations/{organization}/locations/global/muteConfigs/{config_id},
-            /// folders/{folder}/locations/global/muteConfigs/{config_id}, or
-            /// projects/{project}/locations/global/muteConfigs/{config_id}.
+            /// `organizations/{organization}/muteConfigs/{config_id}`, `folders/{folder}/muteConfigs/{config_id}`,
+            /// `projects/{project}/muteConfigs/{config_id}`,
+            /// `organizations/{organization}/locations/global/muteConfigs/{config_id}`,
+            /// `folders/{folder}/locations/global/muteConfigs/{config_id}`, or
+            /// `projects/{project}/locations/global/muteConfigs/{config_id}`.
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -6876,11 +6878,11 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Name of the mute config to retrieve. Its format is
-                /// organizations/{organization}/muteConfigs/{config_id}, folders/{folder}/muteConfigs/{config_id},
-                /// projects/{project}/muteConfigs/{config_id},
-                /// organizations/{organization}/locations/global/muteConfigs/{config_id},
-                /// folders/{folder}/locations/global/muteConfigs/{config_id}, or
-                /// projects/{project}/locations/global/muteConfigs/{config_id}.
+                /// `organizations/{organization}/muteConfigs/{config_id}`, `folders/{folder}/muteConfigs/{config_id}`,
+                /// `projects/{project}/muteConfigs/{config_id}`,
+                /// `organizations/{organization}/locations/global/muteConfigs/{config_id}`,
+                /// `folders/{folder}/locations/global/muteConfigs/{config_id}`, or
+                /// `projects/{project}/locations/global/muteConfigs/{config_id}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -6912,7 +6914,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Lists mute configs.</summary>
             /// <param name="parent">
             /// Required. The parent, which owns the collection of mute configs. Its format is
-            /// "organizations/[organization_id]", "folders/[folder_id]", "projects/[project_id]".
+            /// `organizations/[organization_id]`, `folders/[folder_id]`, `projects/[project_id]`.
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -6931,7 +6933,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. The parent, which owns the collection of mute configs. Its format is
-                /// "organizations/[organization_id]", "folders/[folder_id]", "projects/[project_id]".
+                /// `organizations/[organization_id]`, `folders/[folder_id]`, `projects/[project_id]`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -6996,11 +6998,11 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// This field will be ignored if provided on config creation. Format
-            /// "organizations/{organization}/muteConfigs/{mute_config}" "folders/{folder}/muteConfigs/{mute_config}"
-            /// "projects/{project}/muteConfigs/{mute_config}"
-            /// "organizations/{organization}/locations/global/muteConfigs/{mute_config}"
-            /// "folders/{folder}/locations/global/muteConfigs/{mute_config}"
-            /// "projects/{project}/locations/global/muteConfigs/{mute_config}"
+            /// `organizations/{organization}/muteConfigs/{mute_config}` `folders/{folder}/muteConfigs/{mute_config}`
+            /// `projects/{project}/muteConfigs/{mute_config}`
+            /// `organizations/{organization}/locations/global/muteConfigs/{mute_config}`
+            /// `folders/{folder}/locations/global/muteConfigs/{mute_config}`
+            /// `projects/{project}/locations/global/muteConfigs/{mute_config}`
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1MuteConfig body, string name)
             {
@@ -7020,11 +7022,11 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// This field will be ignored if provided on config creation. Format
-                /// "organizations/{organization}/muteConfigs/{mute_config}"
-                /// "folders/{folder}/muteConfigs/{mute_config}" "projects/{project}/muteConfigs/{mute_config}"
-                /// "organizations/{organization}/locations/global/muteConfigs/{mute_config}"
-                /// "folders/{folder}/locations/global/muteConfigs/{mute_config}"
-                /// "projects/{project}/locations/global/muteConfigs/{mute_config}"
+                /// `organizations/{organization}/muteConfigs/{mute_config}`
+                /// `folders/{folder}/muteConfigs/{mute_config}` `projects/{project}/muteConfigs/{mute_config}`
+                /// `organizations/{organization}/locations/global/muteConfigs/{mute_config}`
+                /// `folders/{folder}/locations/global/muteConfigs/{mute_config}`
+                /// `projects/{project}/locations/global/muteConfigs/{mute_config}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -7093,7 +7095,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. Resource name of the new notification config's parent. Its format is
-            /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+            /// `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[project_id]`.
             /// </param>
             public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.NotificationConfig body, string parent)
             {
@@ -7113,7 +7115,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Resource name of the new notification config's parent. Its format is
-                /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+                /// `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[project_id]`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -7166,9 +7168,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Deletes a notification config.</summary>
             /// <param name="name">
             /// Required. Name of the notification config to delete. Its format is
-            /// "organizations/[organization_id]/notificationConfigs/[config_id]",
-            /// "folders/[folder_id]/notificationConfigs/[config_id]", or
-            /// "projects/[project_id]/notificationConfigs/[config_id]".
+            /// `organizations/[organization_id]/notificationConfigs/[config_id]`,
+            /// `folders/[folder_id]/notificationConfigs/[config_id]`, or
+            /// `projects/[project_id]/notificationConfigs/[config_id]`.
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -7187,9 +7189,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Name of the notification config to delete. Its format is
-                /// "organizations/[organization_id]/notificationConfigs/[config_id]",
-                /// "folders/[folder_id]/notificationConfigs/[config_id]", or
-                /// "projects/[project_id]/notificationConfigs/[config_id]".
+                /// `organizations/[organization_id]/notificationConfigs/[config_id]`,
+                /// `folders/[folder_id]/notificationConfigs/[config_id]`, or
+                /// `projects/[project_id]/notificationConfigs/[config_id]`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -7221,9 +7223,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Gets a notification config.</summary>
             /// <param name="name">
             /// Required. Name of the notification config to get. Its format is
-            /// "organizations/[organization_id]/notificationConfigs/[config_id]",
-            /// "folders/[folder_id]/notificationConfigs/[config_id]", or
-            /// "projects/[project_id]/notificationConfigs/[config_id]".
+            /// `organizations/[organization_id]/notificationConfigs/[config_id]`,
+            /// `folders/[folder_id]/notificationConfigs/[config_id]`, or
+            /// `projects/[project_id]/notificationConfigs/[config_id]`.
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -7242,9 +7244,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Name of the notification config to get. Its format is
-                /// "organizations/[organization_id]/notificationConfigs/[config_id]",
-                /// "folders/[folder_id]/notificationConfigs/[config_id]", or
-                /// "projects/[project_id]/notificationConfigs/[config_id]".
+                /// `organizations/[organization_id]/notificationConfigs/[config_id]`,
+                /// `folders/[folder_id]/notificationConfigs/[config_id]`, or
+                /// `projects/[project_id]/notificationConfigs/[config_id]`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -7840,7 +7842,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Gets a ResourceValueConfig.</summary>
             /// <param name="name">
             /// Required. Name of the resource value config to retrieve. Its format is
-            /// organizations/{organization}/resourceValueConfigs/{config_id}.
+            /// `organizations/{organization}/resourceValueConfigs/{config_id}`.
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -7859,7 +7861,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Name of the resource value config to retrieve. Its format is
-                /// organizations/{organization}/resourceValueConfigs/{config_id}.
+                /// `organizations/{organization}/resourceValueConfigs/{config_id}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -7891,7 +7893,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Lists all ResourceValueConfigs.</summary>
             /// <param name="parent">
             /// Required. The parent, which owns the collection of resource value configs. Its format is
-            /// "organizations/[organization_id]"
+            /// `organizations/[organization_id]`
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -7910,7 +7912,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. The parent, which owns the collection of resource value configs. Its format is
-                /// "organizations/[organization_id]"
+                /// `organizations/[organization_id]`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -8082,9 +8084,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. Resource name of the new custom module's parent. Its format is
-                /// "organizations/{organization}/securityHealthAnalyticsSettings",
-                /// "folders/{folder}/securityHealthAnalyticsSettings", or
-                /// "projects/{project}/securityHealthAnalyticsSettings"
+                /// `organizations/{organization}/securityHealthAnalyticsSettings`,
+                /// `folders/{folder}/securityHealthAnalyticsSettings`, or
+                /// `projects/{project}/securityHealthAnalyticsSettings`
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule body, string parent)
                 {
@@ -8108,9 +8110,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Resource name of the new custom module's parent. Its format is
-                    /// "organizations/{organization}/securityHealthAnalyticsSettings",
-                    /// "folders/{folder}/securityHealthAnalyticsSettings", or
-                    /// "projects/{project}/securityHealthAnalyticsSettings"
+                    /// `organizations/{organization}/securityHealthAnalyticsSettings`,
+                    /// `folders/{folder}/securityHealthAnalyticsSettings`, or
+                    /// `projects/{project}/securityHealthAnalyticsSettings`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -8151,9 +8153,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </summary>
                 /// <param name="name">
                 /// Required. Name of the custom module to delete. Its format is
-                /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}",
-                /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}", or
-                /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}"
+                /// `organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}`,
+                /// `folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}`, or
+                /// `projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}`
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -8175,9 +8177,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Name of the custom module to delete. Its format is
-                    /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}",
-                    /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}", or
-                    /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}"
+                    /// `organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}`,
+                    /// `folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}`, or
+                    /// `projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -8209,9 +8211,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <summary>Retrieves a SecurityHealthAnalyticsCustomModule.</summary>
                 /// <param name="name">
                 /// Required. Name of the custom module to get. Its format is
-                /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}",
-                /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}", or
-                /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}"
+                /// `organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}`,
+                /// `folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}`, or
+                /// `projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}`
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -8230,9 +8232,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Name of the custom module to get. Its format is
-                    /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}",
-                    /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}", or
-                    /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}"
+                    /// `organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}`,
+                    /// `folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}`, or
+                    /// `projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -8268,9 +8270,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </summary>
                 /// <param name="parent">
                 /// Required. Name of parent to list custom modules. Its format is
-                /// "organizations/{organization}/securityHealthAnalyticsSettings",
-                /// "folders/{folder}/securityHealthAnalyticsSettings", or
-                /// "projects/{project}/securityHealthAnalyticsSettings"
+                /// `organizations/{organization}/securityHealthAnalyticsSettings`,
+                /// `folders/{folder}/securityHealthAnalyticsSettings`, or
+                /// `projects/{project}/securityHealthAnalyticsSettings`
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -8293,9 +8295,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Name of parent to list custom modules. Its format is
-                    /// "organizations/{organization}/securityHealthAnalyticsSettings",
-                    /// "folders/{folder}/securityHealthAnalyticsSettings", or
-                    /// "projects/{project}/securityHealthAnalyticsSettings"
+                    /// `organizations/{organization}/securityHealthAnalyticsSettings`,
+                    /// `folders/{folder}/securityHealthAnalyticsSettings`, or
+                    /// `projects/{project}/securityHealthAnalyticsSettings`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -8357,9 +8359,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </summary>
                 /// <param name="parent">
                 /// Required. Name of parent to list descendant custom modules. Its format is
-                /// "organizations/{organization}/securityHealthAnalyticsSettings",
-                /// "folders/{folder}/securityHealthAnalyticsSettings", or
-                /// "projects/{project}/securityHealthAnalyticsSettings"
+                /// `organizations/{organization}/securityHealthAnalyticsSettings`,
+                /// `folders/{folder}/securityHealthAnalyticsSettings`, or
+                /// `projects/{project}/securityHealthAnalyticsSettings`
                 /// </param>
                 public virtual ListDescendantRequest ListDescendant(string parent)
                 {
@@ -8381,9 +8383,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Name of parent to list descendant custom modules. Its format is
-                    /// "organizations/{organization}/securityHealthAnalyticsSettings",
-                    /// "folders/{folder}/securityHealthAnalyticsSettings", or
-                    /// "projects/{project}/securityHealthAnalyticsSettings"
+                    /// `organizations/{organization}/securityHealthAnalyticsSettings`,
+                    /// `folders/{folder}/securityHealthAnalyticsSettings`, or
+                    /// `projects/{project}/securityHealthAnalyticsSettings`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -8616,9 +8618,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <summary>Retrieves an EffectiveSecurityHealthAnalyticsCustomModule.</summary>
                 /// <param name="name">
                 /// Required. Name of the effective custom module to get. Its format is
-                /// "organizations/{organization}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}",
-                /// "folders/{folder}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}", or
-                /// "projects/{project}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}"
+                /// `organizations/{organization}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}`,
+                /// `folders/{folder}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}`, or
+                /// `projects/{project}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}`
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -8637,9 +8639,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Name of the effective custom module to get. Its format is
-                    /// "organizations/{organization}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}",
-                    /// "folders/{folder}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}", or
-                    /// "projects/{project}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}"
+                    /// `organizations/{organization}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}`,
+                    /// `folders/{folder}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}`, or
+                    /// `projects/{project}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -8675,9 +8677,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </summary>
                 /// <param name="parent">
                 /// Required. Name of parent to list effective custom modules. Its format is
-                /// "organizations/{organization}/securityHealthAnalyticsSettings",
-                /// "folders/{folder}/securityHealthAnalyticsSettings", or
-                /// "projects/{project}/securityHealthAnalyticsSettings"
+                /// `organizations/{organization}/securityHealthAnalyticsSettings`,
+                /// `folders/{folder}/securityHealthAnalyticsSettings`, or
+                /// `projects/{project}/securityHealthAnalyticsSettings`
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -8700,9 +8702,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Name of parent to list effective custom modules. Its format is
-                    /// "organizations/{organization}/securityHealthAnalyticsSettings",
-                    /// "folders/{folder}/securityHealthAnalyticsSettings", or
-                    /// "projects/{project}/securityHealthAnalyticsSettings"
+                    /// `organizations/{organization}/securityHealthAnalyticsSettings`,
+                    /// `folders/{folder}/securityHealthAnalyticsSettings`, or
+                    /// `projects/{project}/securityHealthAnalyticsSettings`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -8820,10 +8822,10 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     /// Lists the attack paths for a set of simulation results or valued resources and filter.
                     /// </summary>
                     /// <param name="parent">
-                    /// Required. Name of parent to list attack paths. Valid formats: "organizations/{organization}",
-                    /// "organizations/{organization}/simulations/{simulation}"
-                    /// "organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}"
-                    /// "organizations/{organization}/simulations/{simulation}/valuedResources/{valued_resource}"
+                    /// Required. Name of parent to list attack paths. Valid formats: `organizations/{organization}`,
+                    /// `organizations/{organization}/simulations/{simulation}`
+                    /// `organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}`
+                    /// `organizations/{organization}/simulations/{simulation}/valuedResources/{valued_resource}`
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -8844,9 +8846,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                         /// <summary>
                         /// Required. Name of parent to list attack paths. Valid formats:
-                        /// "organizations/{organization}", "organizations/{organization}/simulations/{simulation}"
-                        /// "organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}"
-                        /// "organizations/{organization}/simulations/{simulation}/valuedResources/{valued_resource}"
+                        /// `organizations/{organization}`, `organizations/{organization}/simulations/{simulation}`
+                        /// `organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}`
+                        /// `organizations/{organization}/simulations/{simulation}/valuedResources/{valued_resource}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -8942,8 +8944,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     /// <summary>Lists the valued resources for a set of simulation results and filter.</summary>
                     /// <param name="parent">
                     /// Required. Name of parent to list valued resources. Valid formats:
-                    /// "organizations/{organization}", "organizations/{organization}/simulations/{simulation}"
-                    /// "organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}"
+                    /// `organizations/{organization}`, `organizations/{organization}/simulations/{simulation}`
+                    /// `organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}`
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -8962,8 +8964,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                         /// <summary>
                         /// Required. Name of parent to list valued resources. Valid formats:
-                        /// "organizations/{organization}", "organizations/{organization}/simulations/{simulation}"
-                        /// "organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}"
+                        /// `organizations/{organization}`, `organizations/{organization}/simulations/{simulation}`
+                        /// `organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -8980,7 +8982,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                         /// `exposed_score` * `resource_value` * `resource_type` * `resource` * `display_name` Values
                         /// should be a comma separated list of fields. For example: `exposed_score,resource_value`. The
                         /// default sorting order is descending. To specify ascending or descending order for a field,
-                        /// append a " ASC" or a " DESC" suffix, respectively; for example: `exposed_score DESC`.
+                        /// append a ` ASC` or a ` DESC` suffix, respectively; for example: `exposed_score DESC`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string OrderBy { get; set; }
@@ -9079,10 +9081,10 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// Lists the attack paths for a set of simulation results or valued resources and filter.
                 /// </summary>
                 /// <param name="parent">
-                /// Required. Name of parent to list attack paths. Valid formats: "organizations/{organization}",
-                /// "organizations/{organization}/simulations/{simulation}"
-                /// "organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}"
-                /// "organizations/{organization}/simulations/{simulation}/valuedResources/{valued_resource}"
+                /// Required. Name of parent to list attack paths. Valid formats: `organizations/{organization}`,
+                /// `organizations/{organization}/simulations/{simulation}`
+                /// `organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}`
+                /// `organizations/{organization}/simulations/{simulation}/valuedResources/{valued_resource}`
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -9102,10 +9104,10 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     }
 
                     /// <summary>
-                    /// Required. Name of parent to list attack paths. Valid formats: "organizations/{organization}",
-                    /// "organizations/{organization}/simulations/{simulation}"
-                    /// "organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}"
-                    /// "organizations/{organization}/simulations/{simulation}/valuedResources/{valued_resource}"
+                    /// Required. Name of parent to list attack paths. Valid formats: `organizations/{organization}`,
+                    /// `organizations/{organization}/simulations/{simulation}`
+                    /// `organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}`
+                    /// `organizations/{organization}/simulations/{simulation}/valuedResources/{valued_resource}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -9219,10 +9221,10 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     /// Lists the attack paths for a set of simulation results or valued resources and filter.
                     /// </summary>
                     /// <param name="parent">
-                    /// Required. Name of parent to list attack paths. Valid formats: "organizations/{organization}",
-                    /// "organizations/{organization}/simulations/{simulation}"
-                    /// "organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}"
-                    /// "organizations/{organization}/simulations/{simulation}/valuedResources/{valued_resource}"
+                    /// Required. Name of parent to list attack paths. Valid formats: `organizations/{organization}`,
+                    /// `organizations/{organization}/simulations/{simulation}`
+                    /// `organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}`
+                    /// `organizations/{organization}/simulations/{simulation}/valuedResources/{valued_resource}`
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -9243,9 +9245,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                         /// <summary>
                         /// Required. Name of parent to list attack paths. Valid formats:
-                        /// "organizations/{organization}", "organizations/{organization}/simulations/{simulation}"
-                        /// "organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}"
-                        /// "organizations/{organization}/simulations/{simulation}/valuedResources/{valued_resource}"
+                        /// `organizations/{organization}`, `organizations/{organization}/simulations/{simulation}`
+                        /// `organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}`
+                        /// `organizations/{organization}/simulations/{simulation}/valuedResources/{valued_resource}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -9324,7 +9326,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <summary>Get the valued resource by name</summary>
                 /// <param name="name">
                 /// Required. The name of this valued resource Valid format:
-                /// "organizations/{organization}/simulations/{simulation}/valuedResources/{valued_resource}"
+                /// `organizations/{organization}/simulations/{simulation}/valuedResources/{valued_resource}`
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -9343,7 +9345,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. The name of this valued resource Valid format:
-                    /// "organizations/{organization}/simulations/{simulation}/valuedResources/{valued_resource}"
+                    /// `organizations/{organization}/simulations/{simulation}/valuedResources/{valued_resource}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -9374,9 +9376,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>Lists the valued resources for a set of simulation results and filter.</summary>
                 /// <param name="parent">
-                /// Required. Name of parent to list valued resources. Valid formats: "organizations/{organization}",
-                /// "organizations/{organization}/simulations/{simulation}"
-                /// "organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}"
+                /// Required. Name of parent to list valued resources. Valid formats: `organizations/{organization}`,
+                /// `organizations/{organization}/simulations/{simulation}`
+                /// `organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}`
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -9395,8 +9397,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Name of parent to list valued resources. Valid formats:
-                    /// "organizations/{organization}", "organizations/{organization}/simulations/{simulation}"
-                    /// "organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}"
+                    /// `organizations/{organization}`, `organizations/{organization}/simulations/{simulation}`
+                    /// `organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -9412,8 +9414,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     /// Optional. The fields by which to order the valued resources response. Supported fields: *
                     /// `exposed_score` * `resource_value` * `resource_type` * `resource` * `display_name` Values should
                     /// be a comma separated list of fields. For example: `exposed_score,resource_value`. The default
-                    /// sorting order is descending. To specify ascending or descending order for a field, append a "
-                    /// ASC" or a " DESC" suffix, respectively; for example: `exposed_score DESC`.
+                    /// sorting order is descending. To specify ascending or descending order for a field, append a `
+                    /// ASC` or a ` DESC` suffix, respectively; for example: `exposed_score DESC`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
@@ -9493,8 +9495,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Get the simulation by name or the latest simulation for the given organization.</summary>
             /// <param name="name">
             /// Required. The organization name or simulation name of this simulation Valid format:
-            /// "organizations/{organization}/simulations/latest"
-            /// "organizations/{organization}/simulations/{simulation}"
+            /// `organizations/{organization}/simulations/latest`
+            /// `organizations/{organization}/simulations/{simulation}`
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -9513,8 +9515,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. The organization name or simulation name of this simulation Valid format:
-                /// "organizations/{organization}/simulations/latest"
-                /// "organizations/{organization}/simulations/{simulation}"
+                /// `organizations/{organization}/simulations/latest`
+                /// `organizations/{organization}/simulations/{simulation}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -9682,7 +9684,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. Resource name of the new finding's parent. Its format should be
-                /// "organizations/[organization_id]/sources/[source_id]".
+                /// `organizations/[organization_id]/sources/[source_id]`.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.Finding body, string parent)
                 {
@@ -9704,7 +9706,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Resource name of the new finding's parent. Its format should be
-                    /// "organizations/[organization_id]/sources/[source_id]".
+                    /// `organizations/[organization_id]/sources/[source_id]`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -9763,10 +9765,10 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. Name of the source to groupBy. Its format is
-                /// "organizations/[organization_id]/sources/[source_id]", folders/[folder_id]/sources/[source_id], or
-                /// projects/[project_id]/sources/[source_id]. To groupBy across all sources provide a source_id of `-`.
-                /// For example: organizations/{organization_id}/sources/-, folders/{folder_id}/sources/-, or
-                /// projects/{project_id}/sources/-
+                /// `organizations/[organization_id]/sources/[source_id]`, `folders/[folder_id]/sources/[source_id]`, or
+                /// `projects/[project_id]/sources/[source_id]`. To groupBy across all sources provide a source_id of
+                /// `-`. For example: `organizations/{organization_id}/sources/-, folders/{folder_id}/sources/-`, or
+                /// `projects/{project_id}/sources/-`
                 /// </param>
                 public virtual GroupRequest Group(Google.Apis.SecurityCommandCenter.v1.Data.GroupFindingsRequest body, string parent)
                 {
@@ -9791,10 +9793,11 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Name of the source to groupBy. Its format is
-                    /// "organizations/[organization_id]/sources/[source_id]", folders/[folder_id]/sources/[source_id],
-                    /// or projects/[project_id]/sources/[source_id]. To groupBy across all sources provide a source_id
-                    /// of `-`. For example: organizations/{organization_id}/sources/-, folders/{folder_id}/sources/-,
-                    /// or projects/{project_id}/sources/-
+                    /// `organizations/[organization_id]/sources/[source_id]`,
+                    /// `folders/[folder_id]/sources/[source_id]`, or `projects/[project_id]/sources/[source_id]`. To
+                    /// groupBy across all sources provide a source_id of `-`. For example:
+                    /// `organizations/{organization_id}/sources/-, folders/{folder_id}/sources/-`, or
+                    /// `projects/{project_id}/sources/-`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -9835,10 +9838,10 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </summary>
                 /// <param name="parent">
                 /// Required. Name of the source the findings belong to. Its format is
-                /// "organizations/[organization_id]/sources/[source_id], folders/[folder_id]/sources/[source_id], or
-                /// projects/[project_id]/sources/[source_id]". To list across all sources provide a source_id of `-`.
-                /// For example: organizations/{organization_id}/sources/-, folders/{folder_id}/sources/- or
-                /// projects/{projects_id}/sources/-
+                /// `organizations/[organization_id]/sources/[source_id]`, `folders/[folder_id]/sources/[source_id]`, or
+                /// `projects/[project_id]/sources/[source_id]`. To list across all sources provide a source_id of `-`.
+                /// For example: `organizations/{organization_id}/sources/-`, `folders/{folder_id}/sources/-` or
+                /// `projects/{projects_id}/sources/-`
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -9860,10 +9863,11 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Name of the source the findings belong to. Its format is
-                    /// "organizations/[organization_id]/sources/[source_id], folders/[folder_id]/sources/[source_id],
-                    /// or projects/[project_id]/sources/[source_id]". To list across all sources provide a source_id of
-                    /// `-`. For example: organizations/{organization_id}/sources/-, folders/{folder_id}/sources/- or
-                    /// projects/{projects_id}/sources/-
+                    /// `organizations/[organization_id]/sources/[source_id]`,
+                    /// `folders/[folder_id]/sources/[source_id]`, or `projects/[project_id]/sources/[source_id]`. To
+                    /// list across all sources provide a source_id of `-`. For example:
+                    /// `organizations/{organization_id}/sources/-`, `folders/{folder_id}/sources/-` or
+                    /// `projects/{projects_id}/sources/-`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -10151,9 +10155,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <param name="name">
                 /// Required. The [relative resource
                 /// name](https://cloud.google.com/apis/design/resource_names#relative_resource_name) of the finding.
-                /// Example: "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
-                /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
-                /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
+                /// Example: `organizations/{organization_id}/sources/{source_id}/findings/{finding_id}`,
+                /// `folders/{folder_id}/sources/{source_id}/findings/{finding_id}`,
+                /// `projects/{project_id}/sources/{source_id}/findings/{finding_id}`.
                 /// </param>
                 public virtual SetMuteRequest SetMute(Google.Apis.SecurityCommandCenter.v1.Data.SetMuteRequest body, string name)
                 {
@@ -10174,9 +10178,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     /// <summary>
                     /// Required. The [relative resource
                     /// name](https://cloud.google.com/apis/design/resource_names#relative_resource_name) of the
-                    /// finding. Example: "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
-                    /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
-                    /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
+                    /// finding. Example: `organizations/{organization_id}/sources/{source_id}/findings/{finding_id}`,
+                    /// `folders/{folder_id}/sources/{source_id}/findings/{finding_id}`,
+                    /// `projects/{project_id}/sources/{source_id}/findings/{finding_id}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -10216,9 +10220,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <param name="name">
                 /// Required. The [relative resource
                 /// name](https://cloud.google.com/apis/design/resource_names#relative_resource_name) of the finding.
-                /// Example: "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
-                /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
-                /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
+                /// Example: `organizations/{organization_id}/sources/{source_id}/findings/{finding_id}`,
+                /// `folders/{folder_id}/sources/{source_id}/findings/{finding_id}`,
+                /// `projects/{project_id}/sources/{source_id}/findings/{finding_id}`.
                 /// </param>
                 public virtual SetStateRequest SetState(Google.Apis.SecurityCommandCenter.v1.Data.SetFindingStateRequest body, string name)
                 {
@@ -10239,9 +10243,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     /// <summary>
                     /// Required. The [relative resource
                     /// name](https://cloud.google.com/apis/design/resource_names#relative_resource_name) of the
-                    /// finding. Example: "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
-                    /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
-                    /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
+                    /// finding. Example: `organizations/{organization_id}/sources/{source_id}/findings/{finding_id}`,
+                    /// `folders/{folder_id}/sources/{source_id}/findings/{finding_id}`,
+                    /// `projects/{project_id}/sources/{source_id}/findings/{finding_id}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -10399,7 +10403,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. Resource name of the new source's parent. Its format should be
-            /// "organizations/[organization_id]".
+            /// `organizations/[organization_id]`.
             /// </param>
             public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.Source body, string parent)
             {
@@ -10419,7 +10423,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Resource name of the new source's parent. Its format should be
-                /// "organizations/[organization_id]".
+                /// `organizations/[organization_id]`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -10457,7 +10461,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Gets a source.</summary>
             /// <param name="name">
             /// Required. Relative resource name of the source. Its format is
-            /// "organizations/[organization_id]/source/[source_id]".
+            /// `organizations/[organization_id]/source/[source_id]`.
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -10476,7 +10480,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Relative resource name of the source. Its format is
-                /// "organizations/[organization_id]/source/[source_id]".
+                /// `organizations/[organization_id]/source/[source_id]`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -10568,7 +10572,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Lists all sources belonging to an organization.</summary>
             /// <param name="parent">
             /// Required. Resource name of the parent of sources to list. Its format should be
-            /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+            /// `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[project_id]`.
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -10587,7 +10591,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Resource name of the parent of sources to list. Its format should be
-                /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+                /// `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[project_id]`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -10845,7 +10849,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
         /// <summary>Gets the settings for an organization.</summary>
         /// <param name="name">
         /// Required. Name of the organization to get organization settings for. Its format is
-        /// "organizations/[organization_id]/organizationSettings".
+        /// `organizations/[organization_id]/organizationSettings`.
         /// </param>
         public virtual GetOrganizationSettingsRequest GetOrganizationSettings(string name)
         {
@@ -10864,7 +10868,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
             /// <summary>
             /// Required. Name of the organization to get organization settings for. Its format is
-            /// "organizations/[organization_id]/organizationSettings".
+            /// `organizations/[organization_id]/organizationSettings`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -11013,7 +11017,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. The name of the parent to group the assets by. Its format is
-            /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+            /// `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[project_id]`.
             /// </param>
             public virtual GroupRequest Group(Google.Apis.SecurityCommandCenter.v1.Data.GroupAssetsRequest body, string parent)
             {
@@ -11033,7 +11037,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. The name of the parent to group the assets by. Its format is
-                /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+                /// `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[project_id]`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -11072,7 +11076,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <param name="parent">
             /// Required. The name of the parent resource that contains the assets. The value that you can specify on
             /// parent depends on the method in which you specify parent. You can specify one of the following values:
-            /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+            /// `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[project_id]`.
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -11092,7 +11096,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <summary>
                 /// Required. The name of the parent resource that contains the assets. The value that you can specify
                 /// on parent depends on the method in which you specify parent. You can specify one of the following
-                /// values: "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+                /// values: `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[project_id]`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -11432,7 +11436,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. The name of the parent resource of the new BigQuery export. Its format is
-            /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+            /// `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[project_id]`.
             /// </param>
             public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1BigQueryExport body, string parent)
             {
@@ -11452,7 +11456,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. The name of the parent resource of the new BigQuery export. Its format is
-                /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+                /// `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[project_id]`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -11506,8 +11510,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Deletes an existing BigQuery export.</summary>
             /// <param name="name">
             /// Required. The name of the BigQuery export to delete. Its format is
-            /// organizations/{organization}/bigQueryExports/{export_id}, folders/{folder}/bigQueryExports/{export_id},
-            /// or projects/{project}/bigQueryExports/{export_id}
+            /// `organizations/{organization}/bigQueryExports/{export_id}`,
+            /// `folders/{folder}/bigQueryExports/{export_id}`, or `projects/{project}/bigQueryExports/{export_id}`
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -11526,8 +11530,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. The name of the BigQuery export to delete. Its format is
-                /// organizations/{organization}/bigQueryExports/{export_id},
-                /// folders/{folder}/bigQueryExports/{export_id}, or projects/{project}/bigQueryExports/{export_id}
+                /// `organizations/{organization}/bigQueryExports/{export_id}`,
+                /// `folders/{folder}/bigQueryExports/{export_id}`, or `projects/{project}/bigQueryExports/{export_id}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -11559,8 +11563,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Gets a BigQuery export.</summary>
             /// <param name="name">
             /// Required. Name of the BigQuery export to retrieve. Its format is
-            /// organizations/{organization}/bigQueryExports/{export_id}, folders/{folder}/bigQueryExports/{export_id},
-            /// or projects/{project}/bigQueryExports/{export_id}
+            /// `organizations/{organization}/bigQueryExports/{export_id}`,
+            /// `folders/{folder}/bigQueryExports/{export_id}`, or `projects/{project}/bigQueryExports/{export_id}`
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -11579,8 +11583,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Name of the BigQuery export to retrieve. Its format is
-                /// organizations/{organization}/bigQueryExports/{export_id},
-                /// folders/{folder}/bigQueryExports/{export_id}, or projects/{project}/bigQueryExports/{export_id}
+                /// `organizations/{organization}/bigQueryExports/{export_id}`,
+                /// `folders/{folder}/bigQueryExports/{export_id}`, or `projects/{project}/bigQueryExports/{export_id}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -11617,7 +11621,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// </summary>
             /// <param name="parent">
             /// Required. The parent, which owns the collection of BigQuery exports. Its format is
-            /// "organizations/[organization_id]", "folders/[folder_id]", "projects/[project_id]".
+            /// `organizations/[organization_id]`, `folders/[folder_id]`, `projects/[project_id]`.
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -11641,7 +11645,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. The parent, which owns the collection of BigQuery exports. Its format is
-                /// "organizations/[organization_id]", "folders/[folder_id]", "projects/[project_id]".
+                /// `organizations/[organization_id]`, `folders/[folder_id]`, `projects/[project_id]`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -12201,9 +12205,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Immutable. The resource name of the Event Threat Detection custom module. Its format is: *
-                /// "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}". *
-                /// "folders/{folder}/eventThreatDetectionSettings/customModules/{module}". *
-                /// "projects/{project}/eventThreatDetectionSettings/customModules/{module}".
+                /// `organizations/{organization}/eventThreatDetectionSettings/customModules/{module}`. *
+                /// `folders/{folder}/eventThreatDetectionSettings/customModules/{module}`. *
+                /// `projects/{project}/eventThreatDetectionSettings/customModules/{module}`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.EventThreatDetectionCustomModule body, string name)
                 {
@@ -12228,9 +12232,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Immutable. The resource name of the Event Threat Detection custom module. Its format is: *
-                    /// "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}". *
-                    /// "folders/{folder}/eventThreatDetectionSettings/customModules/{module}". *
-                    /// "projects/{project}/eventThreatDetectionSettings/customModules/{module}".
+                    /// `organizations/{organization}/eventThreatDetectionSettings/customModules/{module}`. *
+                    /// `folders/{folder}/eventThreatDetectionSettings/customModules/{module}`. *
+                    /// `projects/{project}/eventThreatDetectionSettings/customModules/{module}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -12535,7 +12539,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. The parent, at which bulk action needs to be applied. Its format is
-            /// "organizations/[organization_id]", "folders/[folder_id]", "projects/[project_id]".
+            /// `organizations/[organization_id]`, `folders/[folder_id]`, `projects/[project_id]`.
             /// </param>
             public virtual BulkMuteRequest BulkMute(Google.Apis.SecurityCommandCenter.v1.Data.BulkMuteFindingsRequest body, string parent)
             {
@@ -12558,7 +12562,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. The parent, at which bulk action needs to be applied. Its format is
-                /// "organizations/[organization_id]", "folders/[folder_id]", "projects/[project_id]".
+                /// `organizations/[organization_id]`, `folders/[folder_id]`, `projects/[project_id]`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -12633,7 +12637,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. Resource name of the new mute configs's parent. Its format is
-                /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+                /// `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[project_id]`.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1MuteConfig body, string parent)
                 {
@@ -12653,7 +12657,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Resource name of the new mute configs's parent. Its format is
-                    /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+                    /// `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[project_id]`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -12707,11 +12711,11 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <summary>Deletes an existing mute config.</summary>
                 /// <param name="name">
                 /// Required. Name of the mute config to delete. Its format is
-                /// organizations/{organization}/muteConfigs/{config_id}, folders/{folder}/muteConfigs/{config_id},
-                /// projects/{project}/muteConfigs/{config_id},
-                /// organizations/{organization}/locations/global/muteConfigs/{config_id},
-                /// folders/{folder}/locations/global/muteConfigs/{config_id}, or
-                /// projects/{project}/locations/global/muteConfigs/{config_id}.
+                /// `organizations/{organization}/muteConfigs/{config_id}`, `folders/{folder}/muteConfigs/{config_id}`,
+                /// `projects/{project}/muteConfigs/{config_id}`,
+                /// `organizations/{organization}/locations/global/muteConfigs/{config_id}`,
+                /// `folders/{folder}/locations/global/muteConfigs/{config_id}`, or
+                /// `projects/{project}/locations/global/muteConfigs/{config_id}`.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -12730,11 +12734,11 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Name of the mute config to delete. Its format is
-                    /// organizations/{organization}/muteConfigs/{config_id}, folders/{folder}/muteConfigs/{config_id},
-                    /// projects/{project}/muteConfigs/{config_id},
-                    /// organizations/{organization}/locations/global/muteConfigs/{config_id},
-                    /// folders/{folder}/locations/global/muteConfigs/{config_id}, or
-                    /// projects/{project}/locations/global/muteConfigs/{config_id}.
+                    /// `organizations/{organization}/muteConfigs/{config_id}`,
+                    /// `folders/{folder}/muteConfigs/{config_id}`, `projects/{project}/muteConfigs/{config_id}`,
+                    /// `organizations/{organization}/locations/global/muteConfigs/{config_id}`,
+                    /// `folders/{folder}/locations/global/muteConfigs/{config_id}`, or
+                    /// `projects/{project}/locations/global/muteConfigs/{config_id}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -12766,11 +12770,11 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <summary>Gets a mute config.</summary>
                 /// <param name="name">
                 /// Required. Name of the mute config to retrieve. Its format is
-                /// organizations/{organization}/muteConfigs/{config_id}, folders/{folder}/muteConfigs/{config_id},
-                /// projects/{project}/muteConfigs/{config_id},
-                /// organizations/{organization}/locations/global/muteConfigs/{config_id},
-                /// folders/{folder}/locations/global/muteConfigs/{config_id}, or
-                /// projects/{project}/locations/global/muteConfigs/{config_id}.
+                /// `organizations/{organization}/muteConfigs/{config_id}`, `folders/{folder}/muteConfigs/{config_id}`,
+                /// `projects/{project}/muteConfigs/{config_id}`,
+                /// `organizations/{organization}/locations/global/muteConfigs/{config_id}`,
+                /// `folders/{folder}/locations/global/muteConfigs/{config_id}`, or
+                /// `projects/{project}/locations/global/muteConfigs/{config_id}`.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -12789,11 +12793,11 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Name of the mute config to retrieve. Its format is
-                    /// organizations/{organization}/muteConfigs/{config_id}, folders/{folder}/muteConfigs/{config_id},
-                    /// projects/{project}/muteConfigs/{config_id},
-                    /// organizations/{organization}/locations/global/muteConfigs/{config_id},
-                    /// folders/{folder}/locations/global/muteConfigs/{config_id}, or
-                    /// projects/{project}/locations/global/muteConfigs/{config_id}.
+                    /// `organizations/{organization}/muteConfigs/{config_id}`,
+                    /// `folders/{folder}/muteConfigs/{config_id}`, `projects/{project}/muteConfigs/{config_id}`,
+                    /// `organizations/{organization}/locations/global/muteConfigs/{config_id}`,
+                    /// `folders/{folder}/locations/global/muteConfigs/{config_id}`, or
+                    /// `projects/{project}/locations/global/muteConfigs/{config_id}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -12825,7 +12829,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <summary>Lists mute configs.</summary>
                 /// <param name="parent">
                 /// Required. The parent, which owns the collection of mute configs. Its format is
-                /// "organizations/[organization_id]", "folders/[folder_id]", "projects/[project_id]".
+                /// `organizations/[organization_id]`, `folders/[folder_id]`, `projects/[project_id]`.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -12844,7 +12848,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. The parent, which owns the collection of mute configs. Its format is
-                    /// "organizations/[organization_id]", "folders/[folder_id]", "projects/[project_id]".
+                    /// `organizations/[organization_id]`, `folders/[folder_id]`, `projects/[project_id]`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -12909,11 +12913,11 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// This field will be ignored if provided on config creation. Format
-                /// "organizations/{organization}/muteConfigs/{mute_config}"
-                /// "folders/{folder}/muteConfigs/{mute_config}" "projects/{project}/muteConfigs/{mute_config}"
-                /// "organizations/{organization}/locations/global/muteConfigs/{mute_config}"
-                /// "folders/{folder}/locations/global/muteConfigs/{mute_config}"
-                /// "projects/{project}/locations/global/muteConfigs/{mute_config}"
+                /// `organizations/{organization}/muteConfigs/{mute_config}`
+                /// `folders/{folder}/muteConfigs/{mute_config}` `projects/{project}/muteConfigs/{mute_config}`
+                /// `organizations/{organization}/locations/global/muteConfigs/{mute_config}`
+                /// `folders/{folder}/locations/global/muteConfigs/{mute_config}`
+                /// `projects/{project}/locations/global/muteConfigs/{mute_config}`
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1MuteConfig body, string name)
                 {
@@ -12933,11 +12937,11 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// This field will be ignored if provided on config creation. Format
-                    /// "organizations/{organization}/muteConfigs/{mute_config}"
-                    /// "folders/{folder}/muteConfigs/{mute_config}" "projects/{project}/muteConfigs/{mute_config}"
-                    /// "organizations/{organization}/locations/global/muteConfigs/{mute_config}"
-                    /// "folders/{folder}/locations/global/muteConfigs/{mute_config}"
-                    /// "projects/{project}/locations/global/muteConfigs/{mute_config}"
+                    /// `organizations/{organization}/muteConfigs/{mute_config}`
+                    /// `folders/{folder}/muteConfigs/{mute_config}` `projects/{project}/muteConfigs/{mute_config}`
+                    /// `organizations/{organization}/locations/global/muteConfigs/{mute_config}`
+                    /// `folders/{folder}/locations/global/muteConfigs/{mute_config}`
+                    /// `projects/{project}/locations/global/muteConfigs/{mute_config}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -13009,7 +13013,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. Resource name of the new mute configs's parent. Its format is
-            /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+            /// `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[project_id]`.
             /// </param>
             public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1MuteConfig body, string parent)
             {
@@ -13029,7 +13033,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Resource name of the new mute configs's parent. Its format is
-                /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+                /// `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[project_id]`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -13083,11 +13087,11 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Deletes an existing mute config.</summary>
             /// <param name="name">
             /// Required. Name of the mute config to delete. Its format is
-            /// organizations/{organization}/muteConfigs/{config_id}, folders/{folder}/muteConfigs/{config_id},
-            /// projects/{project}/muteConfigs/{config_id},
-            /// organizations/{organization}/locations/global/muteConfigs/{config_id},
-            /// folders/{folder}/locations/global/muteConfigs/{config_id}, or
-            /// projects/{project}/locations/global/muteConfigs/{config_id}.
+            /// `organizations/{organization}/muteConfigs/{config_id}`, `folders/{folder}/muteConfigs/{config_id}`,
+            /// `projects/{project}/muteConfigs/{config_id}`,
+            /// `organizations/{organization}/locations/global/muteConfigs/{config_id}`,
+            /// `folders/{folder}/locations/global/muteConfigs/{config_id}`, or
+            /// `projects/{project}/locations/global/muteConfigs/{config_id}`.
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -13106,11 +13110,11 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Name of the mute config to delete. Its format is
-                /// organizations/{organization}/muteConfigs/{config_id}, folders/{folder}/muteConfigs/{config_id},
-                /// projects/{project}/muteConfigs/{config_id},
-                /// organizations/{organization}/locations/global/muteConfigs/{config_id},
-                /// folders/{folder}/locations/global/muteConfigs/{config_id}, or
-                /// projects/{project}/locations/global/muteConfigs/{config_id}.
+                /// `organizations/{organization}/muteConfigs/{config_id}`, `folders/{folder}/muteConfigs/{config_id}`,
+                /// `projects/{project}/muteConfigs/{config_id}`,
+                /// `organizations/{organization}/locations/global/muteConfigs/{config_id}`,
+                /// `folders/{folder}/locations/global/muteConfigs/{config_id}`, or
+                /// `projects/{project}/locations/global/muteConfigs/{config_id}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -13142,11 +13146,11 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Gets a mute config.</summary>
             /// <param name="name">
             /// Required. Name of the mute config to retrieve. Its format is
-            /// organizations/{organization}/muteConfigs/{config_id}, folders/{folder}/muteConfigs/{config_id},
-            /// projects/{project}/muteConfigs/{config_id},
-            /// organizations/{organization}/locations/global/muteConfigs/{config_id},
-            /// folders/{folder}/locations/global/muteConfigs/{config_id}, or
-            /// projects/{project}/locations/global/muteConfigs/{config_id}.
+            /// `organizations/{organization}/muteConfigs/{config_id}`, `folders/{folder}/muteConfigs/{config_id}`,
+            /// `projects/{project}/muteConfigs/{config_id}`,
+            /// `organizations/{organization}/locations/global/muteConfigs/{config_id}`,
+            /// `folders/{folder}/locations/global/muteConfigs/{config_id}`, or
+            /// `projects/{project}/locations/global/muteConfigs/{config_id}`.
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -13165,11 +13169,11 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Name of the mute config to retrieve. Its format is
-                /// organizations/{organization}/muteConfigs/{config_id}, folders/{folder}/muteConfigs/{config_id},
-                /// projects/{project}/muteConfigs/{config_id},
-                /// organizations/{organization}/locations/global/muteConfigs/{config_id},
-                /// folders/{folder}/locations/global/muteConfigs/{config_id}, or
-                /// projects/{project}/locations/global/muteConfigs/{config_id}.
+                /// `organizations/{organization}/muteConfigs/{config_id}`, `folders/{folder}/muteConfigs/{config_id}`,
+                /// `projects/{project}/muteConfigs/{config_id}`,
+                /// `organizations/{organization}/locations/global/muteConfigs/{config_id}`,
+                /// `folders/{folder}/locations/global/muteConfigs/{config_id}`, or
+                /// `projects/{project}/locations/global/muteConfigs/{config_id}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -13201,7 +13205,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Lists mute configs.</summary>
             /// <param name="parent">
             /// Required. The parent, which owns the collection of mute configs. Its format is
-            /// "organizations/[organization_id]", "folders/[folder_id]", "projects/[project_id]".
+            /// `organizations/[organization_id]`, `folders/[folder_id]`, `projects/[project_id]`.
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -13220,7 +13224,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. The parent, which owns the collection of mute configs. Its format is
-                /// "organizations/[organization_id]", "folders/[folder_id]", "projects/[project_id]".
+                /// `organizations/[organization_id]`, `folders/[folder_id]`, `projects/[project_id]`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -13285,11 +13289,11 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// This field will be ignored if provided on config creation. Format
-            /// "organizations/{organization}/muteConfigs/{mute_config}" "folders/{folder}/muteConfigs/{mute_config}"
-            /// "projects/{project}/muteConfigs/{mute_config}"
-            /// "organizations/{organization}/locations/global/muteConfigs/{mute_config}"
-            /// "folders/{folder}/locations/global/muteConfigs/{mute_config}"
-            /// "projects/{project}/locations/global/muteConfigs/{mute_config}"
+            /// `organizations/{organization}/muteConfigs/{mute_config}` `folders/{folder}/muteConfigs/{mute_config}`
+            /// `projects/{project}/muteConfigs/{mute_config}`
+            /// `organizations/{organization}/locations/global/muteConfigs/{mute_config}`
+            /// `folders/{folder}/locations/global/muteConfigs/{mute_config}`
+            /// `projects/{project}/locations/global/muteConfigs/{mute_config}`
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1MuteConfig body, string name)
             {
@@ -13309,11 +13313,11 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// This field will be ignored if provided on config creation. Format
-                /// "organizations/{organization}/muteConfigs/{mute_config}"
-                /// "folders/{folder}/muteConfigs/{mute_config}" "projects/{project}/muteConfigs/{mute_config}"
-                /// "organizations/{organization}/locations/global/muteConfigs/{mute_config}"
-                /// "folders/{folder}/locations/global/muteConfigs/{mute_config}"
-                /// "projects/{project}/locations/global/muteConfigs/{mute_config}"
+                /// `organizations/{organization}/muteConfigs/{mute_config}`
+                /// `folders/{folder}/muteConfigs/{mute_config}` `projects/{project}/muteConfigs/{mute_config}`
+                /// `organizations/{organization}/locations/global/muteConfigs/{mute_config}`
+                /// `folders/{folder}/locations/global/muteConfigs/{mute_config}`
+                /// `projects/{project}/locations/global/muteConfigs/{mute_config}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -13382,7 +13386,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. Resource name of the new notification config's parent. Its format is
-            /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+            /// `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[project_id]`.
             /// </param>
             public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.NotificationConfig body, string parent)
             {
@@ -13402,7 +13406,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Resource name of the new notification config's parent. Its format is
-                /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+                /// `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[project_id]`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -13455,9 +13459,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Deletes a notification config.</summary>
             /// <param name="name">
             /// Required. Name of the notification config to delete. Its format is
-            /// "organizations/[organization_id]/notificationConfigs/[config_id]",
-            /// "folders/[folder_id]/notificationConfigs/[config_id]", or
-            /// "projects/[project_id]/notificationConfigs/[config_id]".
+            /// `organizations/[organization_id]/notificationConfigs/[config_id]`,
+            /// `folders/[folder_id]/notificationConfigs/[config_id]`, or
+            /// `projects/[project_id]/notificationConfigs/[config_id]`.
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -13476,9 +13480,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Name of the notification config to delete. Its format is
-                /// "organizations/[organization_id]/notificationConfigs/[config_id]",
-                /// "folders/[folder_id]/notificationConfigs/[config_id]", or
-                /// "projects/[project_id]/notificationConfigs/[config_id]".
+                /// `organizations/[organization_id]/notificationConfigs/[config_id]`,
+                /// `folders/[folder_id]/notificationConfigs/[config_id]`, or
+                /// `projects/[project_id]/notificationConfigs/[config_id]`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -13510,9 +13514,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Gets a notification config.</summary>
             /// <param name="name">
             /// Required. Name of the notification config to get. Its format is
-            /// "organizations/[organization_id]/notificationConfigs/[config_id]",
-            /// "folders/[folder_id]/notificationConfigs/[config_id]", or
-            /// "projects/[project_id]/notificationConfigs/[config_id]".
+            /// `organizations/[organization_id]/notificationConfigs/[config_id]`,
+            /// `folders/[folder_id]/notificationConfigs/[config_id]`, or
+            /// `projects/[project_id]/notificationConfigs/[config_id]`.
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -13531,9 +13535,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Name of the notification config to get. Its format is
-                /// "organizations/[organization_id]/notificationConfigs/[config_id]",
-                /// "folders/[folder_id]/notificationConfigs/[config_id]", or
-                /// "projects/[project_id]/notificationConfigs/[config_id]".
+                /// `organizations/[organization_id]/notificationConfigs/[config_id]`,
+                /// `folders/[folder_id]/notificationConfigs/[config_id]`, or
+                /// `projects/[project_id]/notificationConfigs/[config_id]`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -13775,9 +13779,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. Resource name of the new custom module's parent. Its format is
-                /// "organizations/{organization}/securityHealthAnalyticsSettings",
-                /// "folders/{folder}/securityHealthAnalyticsSettings", or
-                /// "projects/{project}/securityHealthAnalyticsSettings"
+                /// `organizations/{organization}/securityHealthAnalyticsSettings`,
+                /// `folders/{folder}/securityHealthAnalyticsSettings`, or
+                /// `projects/{project}/securityHealthAnalyticsSettings`
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1SecurityHealthAnalyticsCustomModule body, string parent)
                 {
@@ -13801,9 +13805,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Resource name of the new custom module's parent. Its format is
-                    /// "organizations/{organization}/securityHealthAnalyticsSettings",
-                    /// "folders/{folder}/securityHealthAnalyticsSettings", or
-                    /// "projects/{project}/securityHealthAnalyticsSettings"
+                    /// `organizations/{organization}/securityHealthAnalyticsSettings`,
+                    /// `folders/{folder}/securityHealthAnalyticsSettings`, or
+                    /// `projects/{project}/securityHealthAnalyticsSettings`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -13844,9 +13848,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </summary>
                 /// <param name="name">
                 /// Required. Name of the custom module to delete. Its format is
-                /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}",
-                /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}", or
-                /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}"
+                /// `organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}`,
+                /// `folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}`, or
+                /// `projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}`
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -13868,9 +13872,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Name of the custom module to delete. Its format is
-                    /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}",
-                    /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}", or
-                    /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}"
+                    /// `organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}`,
+                    /// `folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}`, or
+                    /// `projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -13902,9 +13906,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <summary>Retrieves a SecurityHealthAnalyticsCustomModule.</summary>
                 /// <param name="name">
                 /// Required. Name of the custom module to get. Its format is
-                /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}",
-                /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}", or
-                /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}"
+                /// `organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}`,
+                /// `folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}`, or
+                /// `projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}`
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -13923,9 +13927,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Name of the custom module to get. Its format is
-                    /// "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}",
-                    /// "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}", or
-                    /// "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}"
+                    /// `organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}`,
+                    /// `folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}`, or
+                    /// `projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -13961,9 +13965,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </summary>
                 /// <param name="parent">
                 /// Required. Name of parent to list custom modules. Its format is
-                /// "organizations/{organization}/securityHealthAnalyticsSettings",
-                /// "folders/{folder}/securityHealthAnalyticsSettings", or
-                /// "projects/{project}/securityHealthAnalyticsSettings"
+                /// `organizations/{organization}/securityHealthAnalyticsSettings`,
+                /// `folders/{folder}/securityHealthAnalyticsSettings`, or
+                /// `projects/{project}/securityHealthAnalyticsSettings`
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -13986,9 +13990,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Name of parent to list custom modules. Its format is
-                    /// "organizations/{organization}/securityHealthAnalyticsSettings",
-                    /// "folders/{folder}/securityHealthAnalyticsSettings", or
-                    /// "projects/{project}/securityHealthAnalyticsSettings"
+                    /// `organizations/{organization}/securityHealthAnalyticsSettings`,
+                    /// `folders/{folder}/securityHealthAnalyticsSettings`, or
+                    /// `projects/{project}/securityHealthAnalyticsSettings`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -14050,9 +14054,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </summary>
                 /// <param name="parent">
                 /// Required. Name of parent to list descendant custom modules. Its format is
-                /// "organizations/{organization}/securityHealthAnalyticsSettings",
-                /// "folders/{folder}/securityHealthAnalyticsSettings", or
-                /// "projects/{project}/securityHealthAnalyticsSettings"
+                /// `organizations/{organization}/securityHealthAnalyticsSettings`,
+                /// `folders/{folder}/securityHealthAnalyticsSettings`, or
+                /// `projects/{project}/securityHealthAnalyticsSettings`
                 /// </param>
                 public virtual ListDescendantRequest ListDescendant(string parent)
                 {
@@ -14074,9 +14078,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Name of parent to list descendant custom modules. Its format is
-                    /// "organizations/{organization}/securityHealthAnalyticsSettings",
-                    /// "folders/{folder}/securityHealthAnalyticsSettings", or
-                    /// "projects/{project}/securityHealthAnalyticsSettings"
+                    /// `organizations/{organization}/securityHealthAnalyticsSettings`,
+                    /// `folders/{folder}/securityHealthAnalyticsSettings`, or
+                    /// `projects/{project}/securityHealthAnalyticsSettings`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -14309,9 +14313,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <summary>Retrieves an EffectiveSecurityHealthAnalyticsCustomModule.</summary>
                 /// <param name="name">
                 /// Required. Name of the effective custom module to get. Its format is
-                /// "organizations/{organization}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}",
-                /// "folders/{folder}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}", or
-                /// "projects/{project}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}"
+                /// `organizations/{organization}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}`,
+                /// `folders/{folder}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}`, or
+                /// `projects/{project}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}`
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -14330,9 +14334,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Name of the effective custom module to get. Its format is
-                    /// "organizations/{organization}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}",
-                    /// "folders/{folder}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}", or
-                    /// "projects/{project}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}"
+                    /// `organizations/{organization}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}`,
+                    /// `folders/{folder}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}`, or
+                    /// `projects/{project}/securityHealthAnalyticsSettings/effectiveCustomModules/{customModule}`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -14368,9 +14372,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </summary>
                 /// <param name="parent">
                 /// Required. Name of parent to list effective custom modules. Its format is
-                /// "organizations/{organization}/securityHealthAnalyticsSettings",
-                /// "folders/{folder}/securityHealthAnalyticsSettings", or
-                /// "projects/{project}/securityHealthAnalyticsSettings"
+                /// `organizations/{organization}/securityHealthAnalyticsSettings`,
+                /// `folders/{folder}/securityHealthAnalyticsSettings`, or
+                /// `projects/{project}/securityHealthAnalyticsSettings`
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -14393,9 +14397,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Name of parent to list effective custom modules. Its format is
-                    /// "organizations/{organization}/securityHealthAnalyticsSettings",
-                    /// "folders/{folder}/securityHealthAnalyticsSettings", or
-                    /// "projects/{project}/securityHealthAnalyticsSettings"
+                    /// `organizations/{organization}/securityHealthAnalyticsSettings`,
+                    /// `folders/{folder}/securityHealthAnalyticsSettings`, or
+                    /// `projects/{project}/securityHealthAnalyticsSettings`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -14594,10 +14598,10 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. Name of the source to groupBy. Its format is
-                /// "organizations/[organization_id]/sources/[source_id]", folders/[folder_id]/sources/[source_id], or
-                /// projects/[project_id]/sources/[source_id]. To groupBy across all sources provide a source_id of `-`.
-                /// For example: organizations/{organization_id}/sources/-, folders/{folder_id}/sources/-, or
-                /// projects/{project_id}/sources/-
+                /// `organizations/[organization_id]/sources/[source_id]`, `folders/[folder_id]/sources/[source_id]`, or
+                /// `projects/[project_id]/sources/[source_id]`. To groupBy across all sources provide a source_id of
+                /// `-`. For example: `organizations/{organization_id}/sources/-, folders/{folder_id}/sources/-`, or
+                /// `projects/{project_id}/sources/-`
                 /// </param>
                 public virtual GroupRequest Group(Google.Apis.SecurityCommandCenter.v1.Data.GroupFindingsRequest body, string parent)
                 {
@@ -14622,10 +14626,11 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Name of the source to groupBy. Its format is
-                    /// "organizations/[organization_id]/sources/[source_id]", folders/[folder_id]/sources/[source_id],
-                    /// or projects/[project_id]/sources/[source_id]. To groupBy across all sources provide a source_id
-                    /// of `-`. For example: organizations/{organization_id}/sources/-, folders/{folder_id}/sources/-,
-                    /// or projects/{project_id}/sources/-
+                    /// `organizations/[organization_id]/sources/[source_id]`,
+                    /// `folders/[folder_id]/sources/[source_id]`, or `projects/[project_id]/sources/[source_id]`. To
+                    /// groupBy across all sources provide a source_id of `-`. For example:
+                    /// `organizations/{organization_id}/sources/-, folders/{folder_id}/sources/-`, or
+                    /// `projects/{project_id}/sources/-`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -14666,10 +14671,10 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </summary>
                 /// <param name="parent">
                 /// Required. Name of the source the findings belong to. Its format is
-                /// "organizations/[organization_id]/sources/[source_id], folders/[folder_id]/sources/[source_id], or
-                /// projects/[project_id]/sources/[source_id]". To list across all sources provide a source_id of `-`.
-                /// For example: organizations/{organization_id}/sources/-, folders/{folder_id}/sources/- or
-                /// projects/{projects_id}/sources/-
+                /// `organizations/[organization_id]/sources/[source_id]`, `folders/[folder_id]/sources/[source_id]`, or
+                /// `projects/[project_id]/sources/[source_id]`. To list across all sources provide a source_id of `-`.
+                /// For example: `organizations/{organization_id}/sources/-`, `folders/{folder_id}/sources/-` or
+                /// `projects/{projects_id}/sources/-`
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -14691,10 +14696,11 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Name of the source the findings belong to. Its format is
-                    /// "organizations/[organization_id]/sources/[source_id], folders/[folder_id]/sources/[source_id],
-                    /// or projects/[project_id]/sources/[source_id]". To list across all sources provide a source_id of
-                    /// `-`. For example: organizations/{organization_id}/sources/-, folders/{folder_id}/sources/- or
-                    /// projects/{projects_id}/sources/-
+                    /// `organizations/[organization_id]/sources/[source_id]`,
+                    /// `folders/[folder_id]/sources/[source_id]`, or `projects/[project_id]/sources/[source_id]`. To
+                    /// list across all sources provide a source_id of `-`. For example:
+                    /// `organizations/{organization_id}/sources/-`, `folders/{folder_id}/sources/-` or
+                    /// `projects/{projects_id}/sources/-`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -14982,9 +14988,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <param name="name">
                 /// Required. The [relative resource
                 /// name](https://cloud.google.com/apis/design/resource_names#relative_resource_name) of the finding.
-                /// Example: "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
-                /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
-                /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
+                /// Example: `organizations/{organization_id}/sources/{source_id}/findings/{finding_id}`,
+                /// `folders/{folder_id}/sources/{source_id}/findings/{finding_id}`,
+                /// `projects/{project_id}/sources/{source_id}/findings/{finding_id}`.
                 /// </param>
                 public virtual SetMuteRequest SetMute(Google.Apis.SecurityCommandCenter.v1.Data.SetMuteRequest body, string name)
                 {
@@ -15005,9 +15011,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     /// <summary>
                     /// Required. The [relative resource
                     /// name](https://cloud.google.com/apis/design/resource_names#relative_resource_name) of the
-                    /// finding. Example: "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
-                    /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
-                    /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
+                    /// finding. Example: `organizations/{organization_id}/sources/{source_id}/findings/{finding_id}`,
+                    /// `folders/{folder_id}/sources/{source_id}/findings/{finding_id}`,
+                    /// `projects/{project_id}/sources/{source_id}/findings/{finding_id}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -15047,9 +15053,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <param name="name">
                 /// Required. The [relative resource
                 /// name](https://cloud.google.com/apis/design/resource_names#relative_resource_name) of the finding.
-                /// Example: "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
-                /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
-                /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
+                /// Example: `organizations/{organization_id}/sources/{source_id}/findings/{finding_id}`,
+                /// `folders/{folder_id}/sources/{source_id}/findings/{finding_id}`,
+                /// `projects/{project_id}/sources/{source_id}/findings/{finding_id}`.
                 /// </param>
                 public virtual SetStateRequest SetState(Google.Apis.SecurityCommandCenter.v1.Data.SetFindingStateRequest body, string name)
                 {
@@ -15070,9 +15076,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     /// <summary>
                     /// Required. The [relative resource
                     /// name](https://cloud.google.com/apis/design/resource_names#relative_resource_name) of the
-                    /// finding. Example: "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}",
-                    /// "folders/{folder_id}/sources/{source_id}/findings/{finding_id}",
-                    /// "projects/{project_id}/sources/{source_id}/findings/{finding_id}".
+                    /// finding. Example: `organizations/{organization_id}/sources/{source_id}/findings/{finding_id}`,
+                    /// `folders/{folder_id}/sources/{source_id}/findings/{finding_id}`,
+                    /// `projects/{project_id}/sources/{source_id}/findings/{finding_id}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -15229,7 +15235,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <summary>Lists all sources belonging to an organization.</summary>
             /// <param name="parent">
             /// Required. Resource name of the parent of sources to list. Its format should be
-            /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+            /// `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[project_id]`.
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -15248,7 +15254,7 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Resource name of the parent of sources to list. Its format should be
-                /// "organizations/[organization_id]", "folders/[folder_id]", or "projects/[project_id]".
+                /// `organizations/[organization_id]`, `folders/[folder_id]`, or `projects/[project_id]`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -15651,7 +15657,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
     {
         /// <summary>
         /// The resource name of the attack path simulation result that contains the details regarding this attack
-        /// exposure score. Example: organizations/123/simulations/456/attackExposureResults/789
+        /// exposure score. Example: `organizations/123/simulations/456/attackExposureResults/789`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attackExposureResult")]
         public virtual string AttackExposureResult { get; set; }
@@ -15778,13 +15784,13 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
 
         /// <summary>
         /// The name of the resource at this point in the attack path. The format of the name follows the Cloud Asset
-        /// Inventory [resource name format]("https://cloud.google.com/asset-inventory/docs/resource-name-format")
+        /// Inventory [resource name format](https://cloud.google.com/asset-inventory/docs/resource-name-format)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual string Resource { get; set; }
 
         /// <summary>
-        /// The [supported resource type](https://cloud.google.com/asset-inventory/docs/supported-asset-types")
+        /// The [supported resource type](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
         public virtual string ResourceType { get; set; }
@@ -15964,7 +15970,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// The UUID of the Azure management group, for example, "20000000-0001-0000-0000-000000000000".
+        /// The UUID of the Azure management group, for example, `20000000-0001-0000-0000-000000000000`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -16015,7 +16021,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>The UUID of the Azure subscription, for example, "291bba3f-e0a5-47bc-a099-3bdcb2a50a05".</summary>
+        /// <summary>The UUID of the Azure subscription, for example, `291bba3f-e0a5-47bc-a099-3bdcb2a50a05`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
@@ -16919,9 +16925,9 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
 
         /// <summary>
         /// Output only. The resource name of the effective ETD custom module. Its format is: *
-        /// "organizations/{organization}/eventThreatDetectionSettings/effectiveCustomModules/{module}". *
-        /// "folders/{folder}/eventThreatDetectionSettings/effectiveCustomModules/{module}". *
-        /// "projects/{project}/eventThreatDetectionSettings/effectiveCustomModules/{module}".
+        /// `organizations/{organization}/eventThreatDetectionSettings/effectiveCustomModules/{module}`. *
+        /// `folders/{folder}/eventThreatDetectionSettings/effectiveCustomModules/{module}`. *
+        /// `projects/{project}/eventThreatDetectionSettings/effectiveCustomModules/{module}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -17000,9 +17006,9 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
 
         /// <summary>
         /// Immutable. The resource name of the Event Threat Detection custom module. Its format is: *
-        /// "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}". *
-        /// "folders/{folder}/eventThreatDetectionSettings/customModules/{module}". *
-        /// "projects/{project}/eventThreatDetectionSettings/customModules/{module}".
+        /// `organizations/{organization}/eventThreatDetectionSettings/customModules/{module}`. *
+        /// `folders/{folder}/eventThreatDetectionSettings/customModules/{module}`. *
+        /// `projects/{project}/eventThreatDetectionSettings/customModules/{module}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -18226,11 +18232,11 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
 
         /// <summary>
         /// This field will be ignored if provided on config creation. Format
-        /// "organizations/{organization}/muteConfigs/{mute_config}" "folders/{folder}/muteConfigs/{mute_config}"
-        /// "projects/{project}/muteConfigs/{mute_config}"
-        /// "organizations/{organization}/locations/global/muteConfigs/{mute_config}"
-        /// "folders/{folder}/locations/global/muteConfigs/{mute_config}"
-        /// "projects/{project}/locations/global/muteConfigs/{mute_config}"
+        /// `organizations/{organization}/muteConfigs/{mute_config}` `folders/{folder}/muteConfigs/{mute_config}`
+        /// `projects/{project}/muteConfigs/{mute_config}`
+        /// `organizations/{organization}/locations/global/muteConfigs/{mute_config}`
+        /// `folders/{folder}/locations/global/muteConfigs/{mute_config}`
+        /// `projects/{project}/locations/global/muteConfigs/{mute_config}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -18379,11 +18385,11 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
 
         /// <summary>
         /// A string representation of the resource path. For Google Cloud, it has the format of
-        /// organizations/{organization_id}/folders/{folder_id}/folders/{folder_id}/projects/{project_id} where there
+        /// `organizations/{organization_id}/folders/{folder_id}/folders/{folder_id}/projects/{project_id}` where there
         /// can be any number of folders. For AWS, it has the format of
-        /// org/{organization_id}/ou/{organizational_unit_id}/ou/{organizational_unit_id}/account/{account_id} where
+        /// `org/{organization_id}/ou/{organizational_unit_id}/ou/{organizational_unit_id}/account/{account_id}` where
         /// there can be any number of organizational units. For Azure, it has the format of
-        /// mg/{management_group_id}/mg/{management_group_id}/subscription/{subscription_id}/rg/{resource_group_name}
+        /// `mg/{management_group_id}/mg/{management_group_id}/subscription/{subscription_id}/rg/{resource_group_name}`
         /// where there can be any number of management groups.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourcePathString")]
@@ -18470,15 +18476,15 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// List of resource labels to search for, evaluated with AND. For example, "resource_labels_selector": {"key":
-        /// "value", "env": "prod"} will match resources with labels "key": "value" AND "env": "prod"
+        /// List of resource labels to search for, evaluated with `AND`. For example, `"resource_labels_selector":
+        /// {"key": "value", "env": "prod"}` will match resources with labels "key": "value" `AND` "env": "prod"
         /// https://cloud.google.com/resource-manager/docs/creating-managing-labels
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceLabelsSelector")]
         public virtual System.Collections.Generic.IDictionary<string, string> ResourceLabelsSelector { get; set; }
 
         /// <summary>
-        /// Apply resource_value only to resources that match resource_type. resource_type will be checked with AND of
+        /// Apply resource_value only to resources that match resource_type. resource_type will be checked with `AND` of
         /// other resources. For example, "storage.googleapis.com/Bucket" with resource_value "HIGH" will apply "HIGH"
         /// value only to "storage.googleapis.com/Bucket" resources.
         /// </summary>
@@ -18491,7 +18497,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
 
         /// <summary>
         /// Project or folder to scope this configuration to. For example, "project/456" would apply this configuration
-        /// only to resources in "project/456" scope will be checked with AND of other resources.
+        /// only to resources in "project/456" scope will be checked with `AND` of other resources.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scope")]
         public virtual string Scope { get; set; }
@@ -18505,8 +18511,8 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping SensitiveDataProtectionMapping { get; set; }
 
         /// <summary>
-        /// Required. Tag values combined with AND to check against. Values in the form "tagValues/123" Example: [
-        /// "tagValues/123", "tagValues/456", "tagValues/789" ]
+        /// Required. Tag values combined with `AND` to check against. Values in the form "tagValues/123" Example: `[
+        /// "tagValues/123", "tagValues/456", "tagValues/789" ]`
         /// https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagValues")]
@@ -19169,7 +19175,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
     {
         /// <summary>
         /// The resource name of the attack path simulation result that contains the details regarding this attack
-        /// exposure score. Example: organizations/123/simulations/456/attackExposureResults/789
+        /// exposure score. Example: `organizations/123/simulations/456/attackExposureResults/789`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attackExposureResult")]
         public virtual string AttackExposureResult { get; set; }
@@ -19331,7 +19337,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// The UUID of the Azure management group, for example, "20000000-0001-0000-0000-000000000000".
+        /// The UUID of the Azure management group, for example, `20000000-0001-0000-0000-000000000000`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -19382,7 +19388,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>The UUID of the Azure subscription, for example, "291bba3f-e0a5-47bc-a099-3bdcb2a50a05".</summary>
+        /// <summary>The UUID of the Azure subscription, for example, `291bba3f-e0a5-47bc-a099-3bdcb2a50a05`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
@@ -21704,11 +21710,11 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
 
         /// <summary>
         /// A string representation of the resource path. For Google Cloud, it has the format of
-        /// organizations/{organization_id}/folders/{folder_id}/folders/{folder_id}/projects/{project_id} where there
+        /// `organizations/{organization_id}/folders/{folder_id}/folders/{folder_id}/projects/{project_id}` where there
         /// can be any number of folders. For AWS, it has the format of
-        /// org/{organization_id}/ou/{organizational_unit_id}/ou/{organizational_unit_id}/account/{account_id} where
+        /// `org/{organization_id}/ou/{organizational_unit_id}/ou/{organizational_unit_id}/account/{account_id}` where
         /// there can be any number of organizational units. For Azure, it has the format of
-        /// mg/{management_group_id}/mg/{management_group_id}/subscription/{subscription_id}/rg/{resource_group_name}
+        /// `mg/{management_group_id}/mg/{management_group_id}/subscription/{subscription_id}/rg/{resource_group_name}`
         /// where there can be any number of management groups.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourcePathString")]
@@ -21816,15 +21822,15 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// List of resource labels to search for, evaluated with AND. For example, "resource_labels_selector": {"key":
-        /// "value", "env": "prod"} will match resources with labels "key": "value" AND "env": "prod"
+        /// List of resource labels to search for, evaluated with `AND`. For example, "resource_labels_selector":
+        /// {"key": "value", "env": "prod"} will match resources with labels "key": "value" `AND` "env": "prod"
         /// https://cloud.google.com/resource-manager/docs/creating-managing-labels
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceLabelsSelector")]
         public virtual System.Collections.Generic.IDictionary<string, string> ResourceLabelsSelector { get; set; }
 
         /// <summary>
-        /// Apply resource_value only to resources that match resource_type. resource_type will be checked with AND of
+        /// Apply resource_value only to resources that match resource_type. resource_type will be checked with `AND` of
         /// other resources. For example, "storage.googleapis.com/Bucket" with resource_value "HIGH" will apply "HIGH"
         /// value only to "storage.googleapis.com/Bucket" resources.
         /// </summary>
@@ -21839,7 +21845,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
 
         /// <summary>
         /// Project or folder to scope this configuration to. For example, "project/456" would apply this configuration
-        /// only to resources in "project/456" scope will be checked with AND of other resources.
+        /// only to resources in "project/456" scope will be checked with `AND` of other resources.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scope")]
         public virtual string Scope { get; set; }
@@ -21853,8 +21859,8 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual GoogleCloudSecuritycenterV2SensitiveDataProtectionMapping SensitiveDataProtectionMapping { get; set; }
 
         /// <summary>
-        /// Required. Tag values combined with AND to check against. Values in the form "tagValues/123" Example: [
-        /// "tagValues/123", "tagValues/456", "tagValues/789" ]
+        /// Required. Tag values combined with `AND` to check against. Values in the form "tagValues/123" Example: `[
+        /// "tagValues/123", "tagValues/456", "tagValues/789" ]`
         /// https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagValues")]
@@ -22240,7 +22246,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
 
         /// <summary>
         /// List of resource names of findings associated with this toxic combination. For example,
-        /// organizations/123/sources/456/findings/789.
+        /// `organizations/123/sources/456/findings/789`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relatedFindings")]
         public virtual System.Collections.Generic.IList<string> RelatedFindings { get; set; }
@@ -23597,7 +23603,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
     public class PathNodeAssociatedFinding : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Canonical name of the associated findings. Example: organizations/123/sources/456/findings/789
+        /// Canonical name of the associated findings. Example: `organizations/123/sources/456/findings/789`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canonicalFinding")]
         public virtual string CanonicalFinding { get; set; }
@@ -24481,7 +24487,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Full resource name of the Simulation: organizations/123/simulations/456</summary>
+        /// <summary>Full resource name of the Simulation: `organizations/123/simulations/456`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -24716,7 +24722,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
 
         /// <summary>
         /// List of resource names of findings associated with this toxic combination. For example,
-        /// organizations/123/sources/456/findings/789.
+        /// `organizations/123/sources/456/findings/789`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relatedFindings")]
         public virtual System.Collections.Generic.IList<string> RelatedFindings { get; set; }

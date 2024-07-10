@@ -4021,8 +4021,8 @@ namespace Google.Apis.Games.v1.Data
         public virtual string ApplicationId { get; set; }
 
         /// <summary>Recall token data.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("token")]
-        public virtual System.Collections.Generic.IList<RecallToken> Token { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("recallToken")]
+        public virtual RecallToken RecallToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5130,8 +5130,8 @@ namespace Google.Apis.Games.v1.Data
         /// The recall token associated with the requested PGS Player principal. It can be unset if there is no recall
         /// token associated with the requested principal.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("token")]
-        public virtual RecallToken Token { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("gamePlayerToken")]
+        public virtual GamePlayerToken GamePlayerToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5144,8 +5144,8 @@ namespace Google.Apis.Games.v1.Data
         /// The requested applications along with the recall tokens for the player. If the player does not have recall
         /// tokens for an application, that application is not included in the response.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("applicationRecallTokens")]
-        public virtual System.Collections.Generic.IList<GamePlayerToken> ApplicationRecallTokens { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("gamePlayerTokens")]
+        public virtual System.Collections.Generic.IList<GamePlayerToken> GamePlayerTokens { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

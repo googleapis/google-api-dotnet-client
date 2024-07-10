@@ -14125,6 +14125,13 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disable")]
         public virtual System.Nullable<bool> Disable { get; set; }
 
+        /// <summary>
+        /// Max rephrase steps. The max number is 5 steps. If not set or set to &amp;lt; 1, it will be set to 1 by
+        /// default.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxRephraseSteps")]
+        public virtual System.Nullable<int> MaxRephraseSteps { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -14574,6 +14581,14 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>If citation_type is DOCUMENT_LEVEL_CITATION, populate document level snippets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snippetInfo")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1AnswerStepActionObservationSearchResultSnippetInfo> SnippetInfo { get; set; }
+
+        /// <summary>
+        /// Data representation. The structured JSON data for the document. It's populated from the struct data from the
+        /// Document (code pointer: http://shortn/_objzAfIiHq), or the Chunk in search result (code pointer:
+        /// http://shortn/_Ipo6KFFGBL).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structData")]
+        public virtual System.Collections.Generic.IDictionary<string, object> StructData { get; set; }
 
         /// <summary>Title.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
@@ -16908,8 +16923,9 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>
         /// Map from file type to override the default parsing configuration based on the file type. Supported keys: *
         /// `pdf`: Override parsing config for PDF files, either digital parsing, ocr parsing or layout parsing is
-        /// supported. * `html`: Override parsing config for HTML files, only digital parsing and or layout parsing are
-        /// supported. * `docx`: Override parsing config for DOCX files, only digital parsing and or layout parsing are
+        /// supported. * `html`: Override parsing config for HTML files, only digital parsing and layout parsing are
+        /// supported. * `docx`: Override parsing config for DOCX files, only digital parsing and layout parsing are
+        /// supported. * `pptx`: Override parsing config for PPTX files, only digital parsing and layout parsing are
         /// supported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parsingConfigOverrides")]
@@ -19456,6 +19472,31 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("safeSearch")]
         public virtual System.Nullable<bool> SafeSearch { get; set; }
 
+        /// <summary>Search as you type configuration. Only supported for the IndustryVertical.MEDIA vertical.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchAsYouTypeSpec")]
+        public virtual GoogleCloudDiscoveryengineV1SearchRequestSearchAsYouTypeSpec SearchAsYouTypeSpec { get; set; }
+
+        /// <summary>
+        /// The session resource name. Optional. Session allows users to do multi-turn /search API calls or coordination
+        /// between /search API calls and /answer API calls. Example #1 (multi-turn /search API calls): 1. Call /search
+        /// API with the auto-session mode (see below). 2. Call /search API with the session ID generated in the first
+        /// call. Here, the previous search query gets considered in query standing. I.e., if the first query is "How
+        /// did Alphabet do in 2022?" and the current query is "How about 2023?", the current query will be interpreted
+        /// as "How did Alphabet do in 2023?". Example #2 (coordination between /search API calls and /answer API
+        /// calls): 1. Call /search API with the auto-session mode (see below). 2. Call /answer API with the session ID
+        /// generated in the first call. Here, the answer generation happens in the context of the search results from
+        /// the first search call. Auto-session mode: when `projects/.../sessions/-` is used, a new session gets
+        /// automatically created. Otherwise, users can use the create-session API to create a session manually.
+        /// Multi-turn Search feature is currently at private GA stage. Please use v1alpha or v1beta version instead
+        /// before we launch this feature to public GA. Or ask for allowlisting through Google Support team.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("session")]
+        public virtual string Session { get; set; }
+
+        /// <summary>Session specification. Can be used only when `session` is set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionSpec")]
+        public virtual GoogleCloudDiscoveryengineV1SearchRequestSessionSpec SessionSpec { get; set; }
+
         /// <summary>
         /// The spell correction specification that specifies the mode under which spell correction takes effect.
         /// </summary>
@@ -19784,8 +19825,8 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     }
 
     /// <summary>
-    /// A struct to define data stores to filter on in a search call and configurations for those data stores. A maximum
-    /// of 1 DataStoreSpec per data_store is allowed. Otherwise, an `INVALID_ARGUMENT` error is returned.
+    /// A struct to define data stores to filter on in a search call and configurations for those data stores.
+    /// Otherwise, an `INVALID_ARGUMENT` error is returned.
     /// </summary>
     public class GoogleCloudDiscoveryengineV1SearchRequestDataStoreSpec : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -19949,6 +19990,49 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Specification for search as you type in search requests.</summary>
+    public class GoogleCloudDiscoveryengineV1SearchRequestSearchAsYouTypeSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The condition under which search as you type should occur. Default to Condition.DISABLED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual string Condition { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Session specification. Multi-turn Search feature is currently at private GA stage. Please use v1alpha or v1beta
+    /// version instead before we launch this feature to public GA. Or ask for allowlisting through Google Support team.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1SearchRequestSessionSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If set, the search result gets stored to the "turn" specified by this query ID. Example: Let's say the
+        /// session looks like this: session { name: ".../sessions/xxx" turns { query { text: "What is foo?" query_id:
+        /// ".../questions/yyy" } answer: "Foo is ..." } turns { query { text: "How about bar then?" query_id:
+        /// ".../questions/zzz" } } } The user can call /search API with a request like this: session:
+        /// ".../sessions/xxx" session_spec { query_id: ".../questions/zzz" } Then, the API stores the search result,
+        /// associated with the last turn. The stored search result can be used by a subsequent /answer API call (with
+        /// the session ID and the query ID specified). Also, it is possible to call /search and /answer in parallel
+        /// with the same session ID &amp;amp; query ID.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryId")]
+        public virtual string QueryId { get; set; }
+
+        /// <summary>
+        /// The number of top search results to persist. The persisted search results can be used for the subsequent
+        /// /answer api call. This field is simliar to the `summary_result_count` field in
+        /// SearchRequest.ContentSearchSpec.SummarySpec.summary_result_count. At most 10 results for documents mode, or
+        /// 50 for chunks mode.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchResultPersistenceCount")]
+        public virtual System.Nullable<int> SearchResultPersistenceCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The specification for query spell correction.</summary>
     public class GoogleCloudDiscoveryengineV1SearchRequestSpellCorrectionSpec : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -20004,6 +20088,12 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>A list of matched documents. The order represents the ranking.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1SearchResponseSearchResult> Results { get; set; }
+
+        /// <summary>
+        /// Session information. Only set if SearchRequest.session is provided. See its description for more details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionInfo")]
+        public virtual GoogleCloudDiscoveryengineV1SearchResponseSessionInfo SessionInfo { get; set; }
 
         /// <summary>
         /// A summary as part of the search results. This field is only returned if
@@ -20105,6 +20195,28 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>Document.id of the searched Document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about the session.</summary>
+    public class GoogleCloudDiscoveryengineV1SearchResponseSessionInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Name of the session. If the auto-session mode is used (when SearchRequest.session ends with "-"), this field
+        /// holds the newly generated session name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Query ID that corresponds to this search API call. One session can have multiple turns, each with a unique
+        /// query ID. By specifying the session name and this query ID in the Answer API call, the answer generation
+        /// happens in the context of the search results from this search call.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryId")]
+        public virtual string QueryId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21454,6 +21566,14 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("snippetInfo")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaAnswerStepActionObservationSearchResultSnippetInfo> SnippetInfo { get; set; }
 
+        /// <summary>
+        /// Data representation. The structured JSON data for the document. It's populated from the struct data from the
+        /// Document (code pointer: http://shortn/_objzAfIiHq), or the Chunk in search result (code pointer:
+        /// http://shortn/_Ipo6KFFGBL).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structData")]
+        public virtual System.Collections.Generic.IDictionary<string, object> StructData { get; set; }
+
         /// <summary>Title.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
@@ -22245,6 +22365,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
+        /// <summary>The metrics of the trained model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<double>> Metrics { get; set; }
+
         /// <summary>The state that the model is in (e.g.`TRAINING` or `TRAINING_FAILED`).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelState")]
         public virtual string ModelState { get; set; }
@@ -22870,8 +22994,9 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>
         /// Map from file type to override the default parsing configuration based on the file type. Supported keys: *
         /// `pdf`: Override parsing config for PDF files, either digital parsing, ocr parsing or layout parsing is
-        /// supported. * `html`: Override parsing config for HTML files, only digital parsing and or layout parsing are
-        /// supported. * `docx`: Override parsing config for DOCX files, only digital parsing and or layout parsing are
+        /// supported. * `html`: Override parsing config for HTML files, only digital parsing and layout parsing are
+        /// supported. * `docx`: Override parsing config for DOCX files, only digital parsing and layout parsing are
+        /// supported. * `pptx`: Override parsing config for PPTX files, only digital parsing and layout parsing are
         /// supported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parsingConfigOverrides")]
@@ -23527,6 +23652,108 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     }
 
     /// <summary>
+    /// Metadata related to the progress of the Export operation. This is returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaExportUserEventsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response of the ExportUserEventsRequest. If the long running operation was successful, then this message is
+    /// returned by the google.longrunning.Operations.response field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaExportUserEventsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output result indicating where the data were exported to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputResult")]
+        public virtual GoogleCloudDiscoveryengineV1alphaOutputResult OutputResult { get; set; }
+
+        /// <summary>The status of the export operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual GoogleRpcStatus Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Configurations for fields of a schema. For example, configuring a field is indexable, or searchable.
     /// </summary>
     public class GoogleCloudDiscoveryengineV1alphaFieldConfig : Google.Apis.Requests.IDirectResponseSchema
@@ -24165,6 +24392,32 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>List of custom tuning models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("models")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaCustomTuningModel> Models { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Output result that stores the information about where the exported data is stored.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaOutputResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The BigQuery location where the result is stored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigqueryResult")]
+        public virtual GoogleCloudDiscoveryengineV1alphaOutputResultBigQueryOutputResult BigqueryResult { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A BigQuery output result.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaOutputResultBigQueryOutputResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of a BigQuery Dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datasetId")]
+        public virtual string DatasetId { get; set; }
+
+        /// <summary>The ID of a BigQuery Table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
+        public virtual string TableId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26316,6 +26569,10 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
+        /// <summary>The metrics of the trained model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<double>> Metrics { get; set; }
+
         /// <summary>The state that the model is in (e.g.`TRAINING` or `TRAINING_FAILED`).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelState")]
         public virtual string ModelState { get; set; }
@@ -26927,8 +27184,9 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>
         /// Map from file type to override the default parsing configuration based on the file type. Supported keys: *
         /// `pdf`: Override parsing config for PDF files, either digital parsing, ocr parsing or layout parsing is
-        /// supported. * `html`: Override parsing config for HTML files, only digital parsing and or layout parsing are
-        /// supported. * `docx`: Override parsing config for DOCX files, only digital parsing and or layout parsing are
+        /// supported. * `html`: Override parsing config for HTML files, only digital parsing and layout parsing are
+        /// supported. * `docx`: Override parsing config for DOCX files, only digital parsing and layout parsing are
+        /// supported. * `pptx`: Override parsing config for PPTX files, only digital parsing and layout parsing are
         /// supported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parsingConfigOverrides")]

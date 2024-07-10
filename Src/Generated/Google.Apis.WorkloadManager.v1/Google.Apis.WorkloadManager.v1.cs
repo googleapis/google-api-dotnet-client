@@ -3320,6 +3320,14 @@ namespace Google.Apis.WorkloadManager.v1.Data
 
     public class SpannerLocation : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Set of backups used by the resource with name in the same format as what is available at
+        /// http://table/spanner_automon.backup_metadata
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupName")]
+        public virtual System.Collections.Generic.IList<string> BackupName { get; set; }
+
+        /// <summary>Set of databases used by the resource in format /span//</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dbName")]
         public virtual System.Collections.Generic.IList<string> DbName { get; set; }
 

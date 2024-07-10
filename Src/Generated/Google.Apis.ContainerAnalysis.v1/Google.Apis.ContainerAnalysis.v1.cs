@@ -4399,27 +4399,6 @@ namespace Google.Apis.ContainerAnalysis.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents a storage location in Cloud Storage</summary>
-    public class ContaineranalysisGoogleDevtoolsCloudbuildV1GCSLocation : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Cloud Storage bucket. See https://cloud.google.com/storage/docs/naming#requirements</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
-        public virtual string Bucket { get; set; }
-
-        /// <summary>
-        /// Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("generation")]
-        public virtual System.Nullable<long> Generation { get; set; }
-
-        /// <summary>Cloud Storage object. See https://cloud.google.com/storage/docs/naming#objectnames</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("object")]
-        public virtual string Object__ { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>GitConfig is a configuration for git operations.</summary>
     public class ContaineranalysisGoogleDevtoolsCloudbuildV1GitConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4435,15 +4414,12 @@ namespace Google.Apis.ContainerAnalysis.v1.Data
     public class ContaineranalysisGoogleDevtoolsCloudbuildV1GitConfigHttpConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// SecretVersion resource of the HTTP proxy URL. The proxy URL should be in format
-        /// protocol://@]proxyhost[:port].
+        /// SecretVersion resource of the HTTP proxy URL. The Service Account used in the build (either the default
+        /// Service Account or user-specified Service Account) should have `secretmanager.versions.access` permissions
+        /// on this secret. The proxy URL should be in format `protocol://@]proxyhost[:port]`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proxySecretVersionName")]
         public virtual string ProxySecretVersionName { get; set; }
-
-        /// <summary>Optional. Cloud Storage object storing the certificate to use with the HTTP proxy.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("proxySslCaInfo")]
-        public virtual ContaineranalysisGoogleDevtoolsCloudbuildV1GCSLocation ProxySslCaInfo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5415,10 +5391,6 @@ namespace Google.Apis.ContainerAnalysis.v1.Data
         /// <summary>The status of an SBOM generation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sbomStatus")]
         public virtual SBOMStatus SbomStatus { get; set; }
-
-        /// <summary>The status of an vulnerability attestation generation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("vulnerabilityAttestation")]
-        public virtual VulnerabilityAttestation VulnerabilityAttestation { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8136,60 +8108,6 @@ namespace Google.Apis.ContainerAnalysis.v1.Data
         /// <summary>The title of the note. E.g. `Vex-Debian-11.4`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The status of an vulnerability attestation generation.</summary>
-    public class VulnerabilityAttestation : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>If failure, the error reason for why the attestation generation failed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual string Error { get; set; }
-
-        private string _lastAttemptTimeRaw;
-
-        private object _lastAttemptTime;
-
-        /// <summary>The last time we attempted to generate an attestation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("lastAttemptTime")]
-        public virtual string LastAttemptTimeRaw
-        {
-            get => _lastAttemptTimeRaw;
-            set
-            {
-                _lastAttemptTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _lastAttemptTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="LastAttemptTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastAttemptTimeDateTimeOffset instead.")]
-        public virtual object LastAttemptTime
-        {
-            get => _lastAttemptTime;
-            set
-            {
-                _lastAttemptTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _lastAttemptTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastAttemptTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? LastAttemptTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(LastAttemptTimeRaw);
-            set => LastAttemptTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
-        }
-
-        /// <summary>The success/failure state of the latest attestation attempt.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
