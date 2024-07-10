@@ -618,10 +618,11 @@ namespace Google.Apis.Bigquery.v2
             public virtual System.Nullable<bool> All { get; set; }
 
             /// <summary>
-            /// An expression for filtering the results of the request by label. The syntax is
-            /// \"labels.&amp;lt;name&amp;gt;[:&amp;lt;value&amp;gt;]\". Multiple filters can be ANDed together by
-            /// connecting with a space. Example: \"labels.department:receiving labels.active\". See [Filtering datasets
-            /// using labels](/bigquery/docs/filtering-labels#filtering_datasets_using_labels) for details.
+            /// An expression for filtering the results of the request by label. The syntax is `labels.[:]`. Multiple
+            /// filters can be ANDed together by connecting with a space. Example: `labels.department:receiving
+            /// labels.active`. See [Filtering datasets using
+            /// labels](https://cloud.google.com/bigquery/docs/filtering-labels#filtering_datasets_using_labels) for
+            /// details.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -964,7 +965,7 @@ namespace Google.Apis.Bigquery.v2
 
             /// <summary>
             /// The geographic location of the job. You must specify the location to run the job for the following
-            /// scenarios: - If the location to run a job is not in the `us` or the `eu` multi-regional location - If
+            /// scenarios: * If the location to run a job is not in the `us` or the `eu` multi-regional location * If
             /// the job's location is in a single region (for example, `us-central1`) For more information, see
             /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
             /// </summary>
@@ -1132,7 +1133,7 @@ namespace Google.Apis.Bigquery.v2
 
             /// <summary>
             /// The geographic location of the job. You must specify the location to run the job for the following
-            /// scenarios: - If the location to run a job is not in the `us` or the `eu` multi-regional location - If
+            /// scenarios: * If the location to run a job is not in the `us` or the `eu` multi-regional location * If
             /// the job's location is in a single region (for example, `us-central1`) For more information, see
             /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
             /// </summary>
@@ -1212,7 +1213,7 @@ namespace Google.Apis.Bigquery.v2
 
             /// <summary>
             /// The geographic location of the job. You must specify the location to run the job for the following
-            /// scenarios: - If the location to run a job is not in the `us` or the `eu` multi-regional location - If
+            /// scenarios: * If the location to run a job is not in the `us` or the `eu` multi-regional location * If
             /// the job's location is in a single region (for example, `us-central1`) For more information, see
             /// https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
             /// </summary>
@@ -4544,9 +4545,8 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>
         /// Required. The connection specifying the credentials to be used to read and write to external storage, such
-        /// as Cloud Storage. The connection_id can have the form
-        /// "&amp;lt;project\_id&amp;gt;.&amp;lt;location\_id&amp;gt;.&amp;lt;connection\_id&amp;gt;" or
-        /// "projects/&amp;lt;project\_id&amp;gt;/locations/&amp;lt;location\_id&amp;gt;/connections/&amp;lt;connection\_id&amp;gt;".
+        /// as Cloud Storage. The connection_id can have the form `{project}.{location}.{connection_id}` or
+        /// `projects/{project}/locations/{location}/connections/{connection_id}".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectionId")]
         public virtual string ConnectionId { get; set; }
@@ -4557,7 +4557,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>
         /// Required. The fully qualified location prefix of the external folder where table data is stored. The '*'
-        /// wildcard character is not allowed. The URI should be in the format "gs://bucket/path_to_table/"
+        /// wildcard character is not allowed. The URI should be in the format `gs://bucket/path_to_table/`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageUri")]
         public virtual string StorageUri { get; set; }
@@ -4613,7 +4613,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>
         /// [Required] Qualifier of the column. Columns in the parent column family that has this exact qualifier are
-        /// exposed as . field. If the qualifier is valid UTF-8 string, it can be specified in the qualifier_string
+        /// exposed as `.` field. If the qualifier is valid UTF-8 string, it can be specified in the qualifier_string
         /// field. Otherwise, a base-64 encoded value must be set to qualifier_encoded. The column field name is the
         /// same as the column qualifier. However, if the qualifier is not a valid BigQuery field identifier i.e. does
         /// not match a-zA-Z*, a valid identifier must be provided as field_name.
@@ -4644,8 +4644,8 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>
         /// Optional. Lists of columns that should be exposed as individual fields as opposed to a list of (column name,
-        /// value) pairs. All columns whose qualifier matches a qualifier in this list can be accessed as .. Other
-        /// columns can be accessed as a list through .Column field.
+        /// value) pairs. All columns whose qualifier matches a qualifier in this list can be accessed as `.`. Other
+        /// columns can be accessed as a list through `.Column` field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columns")]
         public virtual System.Collections.Generic.IList<BigtableColumn> Columns { get; set; }
@@ -5270,6 +5270,7 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a BigQuery dataset.</summary>
     public class Dataset : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -5392,8 +5393,9 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>
         /// The labels associated with this dataset. You can use these to organize and group your datasets. You can set
-        /// this property when inserting or updating a dataset. See Creating and Updating Dataset Labels for more
-        /// information.
+        /// this property when inserting or updating a dataset. See [Creating and Updating Dataset
+        /// Labels](https://cloud.google.com/bigquery/docs/creating-managing-labels#creating_and_updating_dataset_labels)
+        /// for more information.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -5521,8 +5523,8 @@ namespace Google.Apis.Bigquery.v2.Data
 
             /// <summary>
             /// An IAM role ID that should be granted to the user, group, or domain specified in this access entry. The
-            /// following legacy mappings will be applied: OWNER &amp;lt;=&amp;gt; roles/bigquery.dataOwner WRITER
-            /// &amp;lt;=&amp;gt; roles/bigquery.dataEditor READER &amp;lt;=&amp;gt; roles/bigquery.dataViewer This
+            /// following legacy mappings will be applied: * OWNER &amp;lt;=&amp;gt; roles/bigquery.dataOwner * WRITER
+            /// &amp;lt;=&amp;gt; roles/bigquery.dataEditor * READER &amp;lt;=&amp;gt; roles/bigquery.dataViewer This
             /// field will accept any of the above formats, but will return only the legacy format. For example, if you
             /// set this field to "roles/bigquery.dataOwner", it will be returned back as "OWNER".
             /// </summary>
@@ -5678,6 +5680,7 @@ namespace Google.Apis.Bigquery.v2.Data
         }
     }
 
+    /// <summary>Identifier for a dataset.</summary>
     public class DatasetReference : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -5901,6 +5904,7 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for Cloud KMS encryption settings.</summary>
     public class EncryptionConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -6302,9 +6306,8 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>
         /// Optional. The connection specifying the credentials to be used to read external storage, such as Azure Blob,
-        /// Cloud Storage, or S3. The connection_id can have the form
-        /// "&amp;lt;project\_id&amp;gt;.&amp;lt;location\_id&amp;gt;.&amp;lt;connection\_id&amp;gt;" or
-        /// "projects/&amp;lt;project\_id&amp;gt;/locations/&amp;lt;location\_id&amp;gt;/connections/&amp;lt;connection\_id&amp;gt;".
+        /// Cloud Storage, or S3. The connection_id can have the form `{project_id}.{location_id};{connection_id}` or
+        /// `projects/{project_id}/locations/{location_id}/connections/{connection_id}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectionId")]
         public virtual string ConnectionId { get; set; }
@@ -11641,6 +11644,13 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Free form human-readable reason metadata caching was unused for the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("explanation")]
         public virtual string Explanation { get; set; }
+
+        /// <summary>
+        /// Duration since last refresh as of this job for managed tables (indicates metadata cache staleness as seen by
+        /// this job).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("staleness")]
+        public virtual object Staleness { get; set; }
 
         /// <summary>Metadata caching eligible table referenced in the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableReference")]

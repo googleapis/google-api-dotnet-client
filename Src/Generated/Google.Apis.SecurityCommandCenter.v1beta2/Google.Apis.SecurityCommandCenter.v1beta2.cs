@@ -5044,7 +5044,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     {
         /// <summary>
         /// The resource name of the attack path simulation result that contains the details regarding this attack
-        /// exposure score. Example: organizations/123/simulations/456/attackExposureResults/789
+        /// exposure score. Example: `organizations/123/simulations/456/attackExposureResults/789`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attackExposureResult")]
         public virtual string AttackExposureResult { get; set; }
@@ -5206,7 +5206,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// The UUID of the Azure management group, for example, "20000000-0001-0000-0000-000000000000".
+        /// The UUID of the Azure management group, for example, `20000000-0001-0000-0000-000000000000`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -5257,7 +5257,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>The UUID of the Azure subscription, for example, "291bba3f-e0a5-47bc-a099-3bdcb2a50a05".</summary>
+        /// <summary>The UUID of the Azure subscription, for example, `291bba3f-e0a5-47bc-a099-3bdcb2a50a05`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
@@ -7345,11 +7345,11 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
 
         /// <summary>
         /// This field will be ignored if provided on config creation. Format
-        /// "organizations/{organization}/muteConfigs/{mute_config}" "folders/{folder}/muteConfigs/{mute_config}"
-        /// "projects/{project}/muteConfigs/{mute_config}"
-        /// "organizations/{organization}/locations/global/muteConfigs/{mute_config}"
-        /// "folders/{folder}/locations/global/muteConfigs/{mute_config}"
-        /// "projects/{project}/locations/global/muteConfigs/{mute_config}"
+        /// `organizations/{organization}/muteConfigs/{mute_config}` `folders/{folder}/muteConfigs/{mute_config}`
+        /// `projects/{project}/muteConfigs/{mute_config}`
+        /// `organizations/{organization}/locations/global/muteConfigs/{mute_config}`
+        /// `folders/{folder}/locations/global/muteConfigs/{mute_config}`
+        /// `projects/{project}/locations/global/muteConfigs/{mute_config}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -7498,11 +7498,11 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
 
         /// <summary>
         /// A string representation of the resource path. For Google Cloud, it has the format of
-        /// organizations/{organization_id}/folders/{folder_id}/folders/{folder_id}/projects/{project_id} where there
+        /// `organizations/{organization_id}/folders/{folder_id}/folders/{folder_id}/projects/{project_id}` where there
         /// can be any number of folders. For AWS, it has the format of
-        /// org/{organization_id}/ou/{organizational_unit_id}/ou/{organizational_unit_id}/account/{account_id} where
+        /// `org/{organization_id}/ou/{organizational_unit_id}/ou/{organizational_unit_id}/account/{account_id}` where
         /// there can be any number of organizational units. For Azure, it has the format of
-        /// mg/{management_group_id}/mg/{management_group_id}/subscription/{subscription_id}/rg/{resource_group_name}
+        /// `mg/{management_group_id}/mg/{management_group_id}/subscription/{subscription_id}/rg/{resource_group_name}`
         /// where there can be any number of management groups.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourcePathString")]
@@ -7589,15 +7589,15 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// List of resource labels to search for, evaluated with AND. For example, "resource_labels_selector": {"key":
-        /// "value", "env": "prod"} will match resources with labels "key": "value" AND "env": "prod"
+        /// List of resource labels to search for, evaluated with `AND`. For example, `"resource_labels_selector":
+        /// {"key": "value", "env": "prod"}` will match resources with labels "key": "value" `AND` "env": "prod"
         /// https://cloud.google.com/resource-manager/docs/creating-managing-labels
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceLabelsSelector")]
         public virtual System.Collections.Generic.IDictionary<string, string> ResourceLabelsSelector { get; set; }
 
         /// <summary>
-        /// Apply resource_value only to resources that match resource_type. resource_type will be checked with AND of
+        /// Apply resource_value only to resources that match resource_type. resource_type will be checked with `AND` of
         /// other resources. For example, "storage.googleapis.com/Bucket" with resource_value "HIGH" will apply "HIGH"
         /// value only to "storage.googleapis.com/Bucket" resources.
         /// </summary>
@@ -7610,7 +7610,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
 
         /// <summary>
         /// Project or folder to scope this configuration to. For example, "project/456" would apply this configuration
-        /// only to resources in "project/456" scope will be checked with AND of other resources.
+        /// only to resources in "project/456" scope will be checked with `AND` of other resources.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scope")]
         public virtual string Scope { get; set; }
@@ -7624,8 +7624,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual GoogleCloudSecuritycenterV1SensitiveDataProtectionMapping SensitiveDataProtectionMapping { get; set; }
 
         /// <summary>
-        /// Required. Tag values combined with AND to check against. Values in the form "tagValues/123" Example: [
-        /// "tagValues/123", "tagValues/456", "tagValues/789" ]
+        /// Required. Tag values combined with `AND` to check against. Values in the form "tagValues/123" Example: `[
+        /// "tagValues/123", "tagValues/456", "tagValues/789" ]`
         /// https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagValues")]
@@ -8288,7 +8288,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     {
         /// <summary>
         /// The resource name of the attack path simulation result that contains the details regarding this attack
-        /// exposure score. Example: organizations/123/simulations/456/attackExposureResults/789
+        /// exposure score. Example: `organizations/123/simulations/456/attackExposureResults/789`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attackExposureResult")]
         public virtual string AttackExposureResult { get; set; }
@@ -8450,7 +8450,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// The UUID of the Azure management group, for example, "20000000-0001-0000-0000-000000000000".
+        /// The UUID of the Azure management group, for example, `20000000-0001-0000-0000-000000000000`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -8501,7 +8501,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>The UUID of the Azure subscription, for example, "291bba3f-e0a5-47bc-a099-3bdcb2a50a05".</summary>
+        /// <summary>The UUID of the Azure subscription, for example, `291bba3f-e0a5-47bc-a099-3bdcb2a50a05`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
@@ -10823,11 +10823,11 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
 
         /// <summary>
         /// A string representation of the resource path. For Google Cloud, it has the format of
-        /// organizations/{organization_id}/folders/{folder_id}/folders/{folder_id}/projects/{project_id} where there
+        /// `organizations/{organization_id}/folders/{folder_id}/folders/{folder_id}/projects/{project_id}` where there
         /// can be any number of folders. For AWS, it has the format of
-        /// org/{organization_id}/ou/{organizational_unit_id}/ou/{organizational_unit_id}/account/{account_id} where
+        /// `org/{organization_id}/ou/{organizational_unit_id}/ou/{organizational_unit_id}/account/{account_id}` where
         /// there can be any number of organizational units. For Azure, it has the format of
-        /// mg/{management_group_id}/mg/{management_group_id}/subscription/{subscription_id}/rg/{resource_group_name}
+        /// `mg/{management_group_id}/mg/{management_group_id}/subscription/{subscription_id}/rg/{resource_group_name}`
         /// where there can be any number of management groups.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourcePathString")]
@@ -10935,15 +10935,15 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// List of resource labels to search for, evaluated with AND. For example, "resource_labels_selector": {"key":
-        /// "value", "env": "prod"} will match resources with labels "key": "value" AND "env": "prod"
+        /// List of resource labels to search for, evaluated with `AND`. For example, "resource_labels_selector":
+        /// {"key": "value", "env": "prod"} will match resources with labels "key": "value" `AND` "env": "prod"
         /// https://cloud.google.com/resource-manager/docs/creating-managing-labels
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceLabelsSelector")]
         public virtual System.Collections.Generic.IDictionary<string, string> ResourceLabelsSelector { get; set; }
 
         /// <summary>
-        /// Apply resource_value only to resources that match resource_type. resource_type will be checked with AND of
+        /// Apply resource_value only to resources that match resource_type. resource_type will be checked with `AND` of
         /// other resources. For example, "storage.googleapis.com/Bucket" with resource_value "HIGH" will apply "HIGH"
         /// value only to "storage.googleapis.com/Bucket" resources.
         /// </summary>
@@ -10958,7 +10958,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
 
         /// <summary>
         /// Project or folder to scope this configuration to. For example, "project/456" would apply this configuration
-        /// only to resources in "project/456" scope will be checked with AND of other resources.
+        /// only to resources in "project/456" scope will be checked with `AND` of other resources.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scope")]
         public virtual string Scope { get; set; }
@@ -10972,8 +10972,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual GoogleCloudSecuritycenterV2SensitiveDataProtectionMapping SensitiveDataProtectionMapping { get; set; }
 
         /// <summary>
-        /// Required. Tag values combined with AND to check against. Values in the form "tagValues/123" Example: [
-        /// "tagValues/123", "tagValues/456", "tagValues/789" ]
+        /// Required. Tag values combined with `AND` to check against. Values in the form "tagValues/123" Example: `[
+        /// "tagValues/123", "tagValues/456", "tagValues/789" ]`
         /// https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagValues")]
@@ -11359,7 +11359,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
 
         /// <summary>
         /// List of resource names of findings associated with this toxic combination. For example,
-        /// organizations/123/sources/456/findings/789.
+        /// `organizations/123/sources/456/findings/789`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relatedFindings")]
         public virtual System.Collections.Generic.IList<string> RelatedFindings { get; set; }
@@ -12583,7 +12583,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
 
         /// <summary>
         /// List of resource names of findings associated with this toxic combination. For example,
-        /// organizations/123/sources/456/findings/789.
+        /// `organizations/123/sources/456/findings/789`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relatedFindings")]
         public virtual System.Collections.Generic.IList<string> RelatedFindings { get; set; }

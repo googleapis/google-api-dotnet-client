@@ -7611,13 +7611,13 @@ namespace Google.Apis.TagManager.v2
                 }
             }
 
-            /// <summary>Looks up a Container by destination ID.</summary>
+            /// <summary>Looks up a Container by destination ID or tag ID.</summary>
             public virtual LookupRequest Lookup()
             {
                 return new LookupRequest(this.service);
             }
 
-            /// <summary>Looks up a Container by destination ID.</summary>
+            /// <summary>Looks up a Container by destination ID or tag ID.</summary>
             public class LookupRequest : TagManagerBaseServiceRequest<Google.Apis.TagManager.v2.Data.Container>
             {
                 /// <summary>Constructs a new Lookup request.</summary>
@@ -7628,10 +7628,18 @@ namespace Google.Apis.TagManager.v2
 
                 /// <summary>
                 /// Destination ID linked to a GTM Container, e.g. AW-123456789. Example:
-                /// accounts/containers:lookup?destination_id={destination_id}.
+                /// accounts/containers:lookup?destination_id={destination_id}. Only one of destination_id or tag_id
+                /// should be set.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("destinationId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string DestinationId { get; set; }
+
+                /// <summary>
+                /// Tag ID for a GTM Container, e.g. GTM-123456789. Example: accounts/containers:lookup?tag_id={tag_id}.
+                /// Only one of destination_id or tag_id should be set.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("tagId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string TagId { get; set; }
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "lookup";
@@ -7649,6 +7657,14 @@ namespace Google.Apis.TagManager.v2
                     RequestParameters.Add("destinationId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "destinationId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("tagId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "tagId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

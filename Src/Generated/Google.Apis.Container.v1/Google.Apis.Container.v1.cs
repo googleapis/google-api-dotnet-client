@@ -6376,6 +6376,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkPolicyConfig")]
         public virtual NetworkPolicyConfig NetworkPolicyConfig { get; set; }
 
+        /// <summary>Optional. Configuration for Ray Operator addon.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rayOperatorConfig")]
+        public virtual RayOperatorConfig RayOperatorConfig { get; set; }
+
         /// <summary>Optional. Configuration for the StatefulHA add-on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statefulHaConfig")]
         public virtual StatefulHAConfig StatefulHaConfig { get; set; }
@@ -10109,6 +10113,47 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>Output only. [Output only] The utilization of the range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("utilization")]
         public virtual System.Nullable<double> Utilization { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>RayClusterLoggingConfig specifies configuration of Ray logging.</summary>
+    public class RayClusterLoggingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Enable log collection for Ray clusters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>RayClusterMonitoringConfig specifies monitoring configuration for Ray clusters.</summary>
+    public class RayClusterMonitoringConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Enable metrics collection for Ray clusters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration options for the Ray Operator add-on.</summary>
+    public class RayOperatorConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the Ray Operator addon is enabled for this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>Optional. Logging configuration for Ray clusters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rayClusterLoggingConfig")]
+        public virtual RayClusterLoggingConfig RayClusterLoggingConfig { get; set; }
+
+        /// <summary>Optional. Monitoring configuration for Ray clusters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rayClusterMonitoringConfig")]
+        public virtual RayClusterMonitoringConfig RayClusterMonitoringConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

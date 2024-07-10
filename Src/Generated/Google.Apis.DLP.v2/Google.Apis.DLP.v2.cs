@@ -798,7 +798,7 @@ namespace Google.Apis.DLP.v2
                 public virtual string LocationId { get; set; }
 
                 /// <summary>
-                /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is case
+                /// Comma-separated list of fields to order by, followed by `asc` or `desc` postfix. This list is case
                 /// insensitive. The default sorting order is ascending. Redundant space characters are insignificant.
                 /// Example: `name asc,update_time, create_time desc` Supported fields are: - `create_time`: corresponds
                 /// to the time the template was created. - `update_time`: corresponds to the time the template was last
@@ -1209,7 +1209,7 @@ namespace Google.Apis.DLP.v2
                 public virtual string LocationId { get; set; }
 
                 /// <summary>
-                /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is case
+                /// Comma-separated list of fields to order by, followed by `asc` or `desc` postfix. This list is case
                 /// insensitive. The default sorting order is ascending. Redundant space characters are insignificant.
                 /// Example: `name asc,update_time, create_time desc` Supported fields are: - `create_time`: corresponds
                 /// to the time the template was created. - `update_time`: corresponds to the time the template was last
@@ -1497,7 +1497,7 @@ namespace Google.Apis.DLP.v2
                     public virtual string Filter { get; set; }
 
                     /// <summary>
-                    /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
+                    /// Comma-separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
                     /// case insensitive. The default sorting order is ascending. Redundant space characters are
                     /// insignificant. Only one order field at a time is allowed. Examples: * `project_id asc` *
                     /// `table_id` * `sensitivity_level desc` Supported fields are: - `project_id`: The Google Cloud
@@ -2178,7 +2178,7 @@ namespace Google.Apis.DLP.v2
                     public virtual string LocationId { get; set; }
 
                     /// <summary>
-                    /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
+                    /// Comma-separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
                     /// case insensitive. The default sorting order is ascending. Redundant space characters are
                     /// insignificant. Example: `name asc,update_time, create_time desc` Supported fields are: -
                     /// `create_time`: corresponds to the time the template was created. - `update_time`: corresponds to
@@ -2542,7 +2542,7 @@ namespace Google.Apis.DLP.v2
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Comma separated list of config fields to order by, followed by `asc` or `desc` postfix. This
+                    /// Comma-separated list of config fields to order by, followed by `asc` or `desc` postfix. This
                     /// list is case insensitive. The default sorting order is ascending. Redundant space characters are
                     /// insignificant. Example: `name asc,update_time, create_time desc` Supported fields are: -
                     /// `last_run_time`: corresponds to the last time the DiscoveryConfig ran. - `name`: corresponds to
@@ -2757,7 +2757,7 @@ namespace Google.Apis.DLP.v2
                     public virtual string LocationId { get; set; }
 
                     /// <summary>
-                    /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
+                    /// Comma-separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
                     /// case insensitive. The default sorting order is ascending. Redundant space characters are
                     /// insignificant. Example: `name asc, end_time asc, create_time desc` Supported fields are: -
                     /// `create_time`: corresponds to the time the job was created. - `end_time`: corresponds to the
@@ -3023,15 +3023,15 @@ namespace Google.Apis.DLP.v2
                     /// - an RPC status code as defined in
                     /// https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto * The operator must
                     /// be `=` or `!=`. Examples: * `project_id = 12345 AND status_code = 1` * `project_id = 12345 AND
-                    /// sensitivity_level = HIGH` * `project_id = 12345 AND resource_visibility = PUBLIC` . *
-                    /// 'file_store_path = "gs://mybucket"` The length of this field should be no more than 500
+                    /// sensitivity_level = HIGH` * `project_id = 12345 AND resource_visibility = PUBLIC` *
+                    /// `file_store_path = "gs://mybucket"` The length of this field should be no more than 500
                     /// characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
                     /// <summary>
-                    /// Optional. Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This
+                    /// Optional. Comma-separated list of fields to order by, followed by `asc` or `desc` postfix. This
                     /// list is case insensitive. The default sorting order is ascending. Redundant space characters are
                     /// insignificant. Only one order field at a time is allowed. Examples: * `project_id asc` * `name`
                     /// * `sensitivity_level desc` Supported fields are: - `project_id`: The Google Cloud project ID. -
@@ -3382,7 +3382,7 @@ namespace Google.Apis.DLP.v2
                     public virtual string LocationId { get; set; }
 
                     /// <summary>
-                    /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
+                    /// Comma-separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
                     /// case insensitive. The default sorting order is ascending. Redundant space characters are
                     /// insignificant. Example: `name asc,update_time, create_time desc` Supported fields are: -
                     /// `create_time`: corresponds to the time the template was created. - `update_time`: corresponds to
@@ -3803,7 +3803,7 @@ namespace Google.Apis.DLP.v2
                     public virtual string LocationId { get; set; }
 
                     /// <summary>
-                    /// Comma separated list of triggeredJob fields to order by, followed by `asc` or `desc` postfix.
+                    /// Comma-separated list of triggeredJob fields to order by, followed by `asc` or `desc` postfix.
                     /// This list is case insensitive. The default sorting order is ascending. Redundant space
                     /// characters are insignificant. Example: `name asc,update_time, create_time desc` Supported fields
                     /// are: - `create_time`: corresponds to the time the JobTrigger was created. - `update_time`:
@@ -4086,7 +4086,7 @@ namespace Google.Apis.DLP.v2
                     public virtual string Filter { get; set; }
 
                     /// <summary>
-                    /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
+                    /// Comma-separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
                     /// case insensitive. The default sorting order is ascending. Redundant space characters are
                     /// insignificant. Only one order field at a time is allowed. Examples: * `project_id` *
                     /// `sensitivity_level desc` Supported fields are: - `project_id`: Google Cloud project ID -
@@ -4429,7 +4429,7 @@ namespace Google.Apis.DLP.v2
                     public virtual string LocationId { get; set; }
 
                     /// <summary>
-                    /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
+                    /// Comma-separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
                     /// case insensitive. The default sorting order is ascending. Redundant space characters are
                     /// insignificant. Example: `name asc, display_name, create_time desc` Supported fields are: -
                     /// `create_time`: corresponds to the time the most recent version of the resource was created. -
@@ -4740,7 +4740,7 @@ namespace Google.Apis.DLP.v2
                     public virtual string Filter { get; set; }
 
                     /// <summary>
-                    /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
+                    /// Comma-separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
                     /// case insensitive. The default sorting order is ascending. Redundant space characters are
                     /// insignificant. Only one order field at a time is allowed. Examples: * `project_id asc` *
                     /// `table_id` * `sensitivity_level desc` Supported fields are: - `project_id`: The Google Cloud
@@ -5083,7 +5083,7 @@ namespace Google.Apis.DLP.v2
                 public virtual string LocationId { get; set; }
 
                 /// <summary>
-                /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is case
+                /// Comma-separated list of fields to order by, followed by `asc` or `desc` postfix. This list is case
                 /// insensitive. The default sorting order is ascending. Redundant space characters are insignificant.
                 /// Example: `name asc, display_name, create_time desc` Supported fields are: - `create_time`:
                 /// corresponds to the time the most recent version of the resource was created. - `state`: corresponds
@@ -5776,7 +5776,7 @@ namespace Google.Apis.DLP.v2
                 public virtual string LocationId { get; set; }
 
                 /// <summary>
-                /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is case
+                /// Comma-separated list of fields to order by, followed by `asc` or `desc` postfix. This list is case
                 /// insensitive. The default sorting order is ascending. Redundant space characters are insignificant.
                 /// Example: `name asc,update_time, create_time desc` Supported fields are: - `create_time`: corresponds
                 /// to the time the template was created. - `update_time`: corresponds to the time the template was last
@@ -6258,7 +6258,7 @@ namespace Google.Apis.DLP.v2
                 public virtual string LocationId { get; set; }
 
                 /// <summary>
-                /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is case
+                /// Comma-separated list of fields to order by, followed by `asc` or `desc` postfix. This list is case
                 /// insensitive. The default sorting order is ascending. Redundant space characters are insignificant.
                 /// Example: `name asc, end_time asc, create_time desc` Supported fields are: - `create_time`:
                 /// corresponds to the time the job was created. - `end_time`: corresponds to the time the job ended. -
@@ -6731,7 +6731,7 @@ namespace Google.Apis.DLP.v2
                 public virtual string LocationId { get; set; }
 
                 /// <summary>
-                /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is case
+                /// Comma-separated list of fields to order by, followed by `asc` or `desc` postfix. This list is case
                 /// insensitive. The default sorting order is ascending. Redundant space characters are insignificant.
                 /// Example: `name asc,update_time, create_time desc` Supported fields are: - `create_time`: corresponds
                 /// to the time the template was created. - `update_time`: corresponds to the time the template was last
@@ -7212,7 +7212,7 @@ namespace Google.Apis.DLP.v2
                 public virtual string LocationId { get; set; }
 
                 /// <summary>
-                /// Comma separated list of triggeredJob fields to order by, followed by `asc` or `desc` postfix. This
+                /// Comma-separated list of triggeredJob fields to order by, followed by `asc` or `desc` postfix. This
                 /// list is case insensitive. The default sorting order is ascending. Redundant space characters are
                 /// insignificant. Example: `name asc,update_time, create_time desc` Supported fields are: -
                 /// `create_time`: corresponds to the time the JobTrigger was created. - `update_time`: corresponds to
@@ -7536,7 +7536,7 @@ namespace Google.Apis.DLP.v2
                     public virtual string Filter { get; set; }
 
                     /// <summary>
-                    /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
+                    /// Comma-separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
                     /// case insensitive. The default sorting order is ascending. Redundant space characters are
                     /// insignificant. Only one order field at a time is allowed. Examples: * `project_id asc` *
                     /// `table_id` * `sensitivity_level desc` Supported fields are: - `project_id`: The Google Cloud
@@ -8565,7 +8565,7 @@ namespace Google.Apis.DLP.v2
                     public virtual string LocationId { get; set; }
 
                     /// <summary>
-                    /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
+                    /// Comma-separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
                     /// case insensitive. The default sorting order is ascending. Redundant space characters are
                     /// insignificant. Example: `name asc,update_time, create_time desc` Supported fields are: -
                     /// `create_time`: corresponds to the time the template was created. - `update_time`: corresponds to
@@ -8929,7 +8929,7 @@ namespace Google.Apis.DLP.v2
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Comma separated list of config fields to order by, followed by `asc` or `desc` postfix. This
+                    /// Comma-separated list of config fields to order by, followed by `asc` or `desc` postfix. This
                     /// list is case insensitive. The default sorting order is ascending. Redundant space characters are
                     /// insignificant. Example: `name asc,update_time, create_time desc` Supported fields are: -
                     /// `last_run_time`: corresponds to the last time the DiscoveryConfig ran. - `name`: corresponds to
@@ -9523,7 +9523,7 @@ namespace Google.Apis.DLP.v2
                     public virtual string LocationId { get; set; }
 
                     /// <summary>
-                    /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
+                    /// Comma-separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
                     /// case insensitive. The default sorting order is ascending. Redundant space characters are
                     /// insignificant. Example: `name asc, end_time asc, create_time desc` Supported fields are: -
                     /// `create_time`: corresponds to the time the job was created. - `end_time`: corresponds to the
@@ -9789,15 +9789,15 @@ namespace Google.Apis.DLP.v2
                     /// - an RPC status code as defined in
                     /// https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto * The operator must
                     /// be `=` or `!=`. Examples: * `project_id = 12345 AND status_code = 1` * `project_id = 12345 AND
-                    /// sensitivity_level = HIGH` * `project_id = 12345 AND resource_visibility = PUBLIC` . *
-                    /// 'file_store_path = "gs://mybucket"` The length of this field should be no more than 500
+                    /// sensitivity_level = HIGH` * `project_id = 12345 AND resource_visibility = PUBLIC` *
+                    /// `file_store_path = "gs://mybucket"` The length of this field should be no more than 500
                     /// characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
                     /// <summary>
-                    /// Optional. Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This
+                    /// Optional. Comma-separated list of fields to order by, followed by `asc` or `desc` postfix. This
                     /// list is case insensitive. The default sorting order is ascending. Redundant space characters are
                     /// insignificant. Only one order field at a time is allowed. Examples: * `project_id asc` * `name`
                     /// * `sensitivity_level desc` Supported fields are: - `project_id`: The Google Cloud project ID. -
@@ -10249,7 +10249,7 @@ namespace Google.Apis.DLP.v2
                     public virtual string LocationId { get; set; }
 
                     /// <summary>
-                    /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
+                    /// Comma-separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
                     /// case insensitive. The default sorting order is ascending. Redundant space characters are
                     /// insignificant. Example: `name asc,update_time, create_time desc` Supported fields are: -
                     /// `create_time`: corresponds to the time the template was created. - `update_time`: corresponds to
@@ -10800,7 +10800,7 @@ namespace Google.Apis.DLP.v2
                     public virtual string LocationId { get; set; }
 
                     /// <summary>
-                    /// Comma separated list of triggeredJob fields to order by, followed by `asc` or `desc` postfix.
+                    /// Comma-separated list of triggeredJob fields to order by, followed by `asc` or `desc` postfix.
                     /// This list is case insensitive. The default sorting order is ascending. Redundant space
                     /// characters are insignificant. Example: `name asc,update_time, create_time desc` Supported fields
                     /// are: - `create_time`: corresponds to the time the JobTrigger was created. - `update_time`:
@@ -11083,7 +11083,7 @@ namespace Google.Apis.DLP.v2
                     public virtual string Filter { get; set; }
 
                     /// <summary>
-                    /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
+                    /// Comma-separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
                     /// case insensitive. The default sorting order is ascending. Redundant space characters are
                     /// insignificant. Only one order field at a time is allowed. Examples: * `project_id` *
                     /// `sensitivity_level desc` Supported fields are: - `project_id`: Google Cloud project ID -
@@ -11426,7 +11426,7 @@ namespace Google.Apis.DLP.v2
                     public virtual string LocationId { get; set; }
 
                     /// <summary>
-                    /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
+                    /// Comma-separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
                     /// case insensitive. The default sorting order is ascending. Redundant space characters are
                     /// insignificant. Example: `name asc, display_name, create_time desc` Supported fields are: -
                     /// `create_time`: corresponds to the time the most recent version of the resource was created. -
@@ -11737,7 +11737,7 @@ namespace Google.Apis.DLP.v2
                     public virtual string Filter { get; set; }
 
                     /// <summary>
-                    /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
+                    /// Comma-separated list of fields to order by, followed by `asc` or `desc` postfix. This list is
                     /// case insensitive. The default sorting order is ascending. Redundant space characters are
                     /// insignificant. Only one order field at a time is allowed. Examples: * `project_id asc` *
                     /// `table_id` * `sensitivity_level desc` Supported fields are: - `project_id`: The Google Cloud
@@ -12080,7 +12080,7 @@ namespace Google.Apis.DLP.v2
                 public virtual string LocationId { get; set; }
 
                 /// <summary>
-                /// Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is case
+                /// Comma-separated list of fields to order by, followed by `asc` or `desc` postfix. This list is case
                 /// insensitive. The default sorting order is ascending. Redundant space characters are insignificant.
                 /// Example: `name asc, display_name, create_time desc` Supported fields are: - `create_time`:
                 /// corresponds to the time the most recent version of the resource was created. - `state`: corresponds
@@ -12309,6 +12309,13 @@ namespace Google.Apis.DLP.v2.Data
 
     /// <summary>Match database resources not covered by any other filter.</summary>
     public class GooglePrivacyDlpV2AllOtherDatabaseResources : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Match discovery resources not covered by any other filter.</summary>
+    public class GooglePrivacyDlpV2AllOtherResources : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12883,6 +12890,37 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Target used to match against for discovery with Cloud Storage buckets.</summary>
+    public class GooglePrivacyDlpV2CloudStorageDiscoveryTarget : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. In addition to matching the filter, these conditions must be true before a profile is generated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
+        public virtual GooglePrivacyDlpV2DiscoveryFileStoreConditions Conditions { get; set; }
+
+        /// <summary>Optional. Disable profiling for buckets that match this filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual GooglePrivacyDlpV2Disabled Disabled { get; set; }
+
+        /// <summary>
+        /// Required. The buckets the generation_cadence applies to. The first target with a matching filter will be the
+        /// one to apply to a bucket.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual GooglePrivacyDlpV2DiscoveryCloudStorageFilter Filter { get; set; }
+
+        /// <summary>
+        /// Optional. How often and when to update profiles. New buckets that match both the filter and conditions are
+        /// scanned as quickly as possible depending on system capacity.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generationCadence")]
+        public virtual GooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence GenerationCadence { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message representing a set of files in Cloud Storage.</summary>
     public class GooglePrivacyDlpV2CloudStorageFileSet : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12961,6 +12999,28 @@ namespace Google.Apis.DLP.v2.Data
     }
 
     /// <summary>
+    /// A pattern to match against one or more file stores. At least one pattern must be specified. Regular expressions
+    /// use RE2 [syntax](https://github.com/google/re2/wiki/Syntax); a guide can be found under the google/re2
+    /// repository on GitHub.
+    /// </summary>
+    public class GooglePrivacyDlpV2CloudStorageRegex : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Regex to test the bucket name against. If empty, all buckets match. Example: "marketing2021" or
+        /// "(marketing)\d{4}" will both match the bucket gs://marketing2021
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucketNameRegex")]
+        public virtual string BucketNameRegex { get; set; }
+
+        /// <summary>Optional. For organizations, if unset, will match all projects.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectIdRegex")]
+        public virtual string ProjectIdRegex { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Message representing a set of files in a Cloud Storage bucket. Regular expressions are used to allow
     /// fine-grained control over which files in the bucket to include. Included files are those that match at least one
     /// item in `include_regex` and do not match any items in `exclude_regex`. Note that a file that matches items from
@@ -13001,6 +13061,21 @@ namespace Google.Apis.DLP.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeRegex")]
         public virtual System.Collections.Generic.IList<string> IncludeRegex { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Identifies a single Cloud Storage bucket.</summary>
+    public class GooglePrivacyDlpV2CloudStorageResourceReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The bucket to scan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucketName")]
+        public virtual string BucketName { get; set; }
+
+        /// <summary>Required. If within a project-level config, then this must match the config's project id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14207,7 +14282,7 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>
         /// Required. User settable Cloud Storage bucket and folders to store de-identified files. This field must be
-        /// set for cloud storage deidentification. The output Cloud Storage bucket must be different from the input
+        /// set for Cloud Storage deidentification. The output Cloud Storage bucket must be different from the input
         /// bucket. De-identified files will overwrite files in the output path. Form of: gs://bucket/folder/ or
         /// gs://bucket
         /// </summary>
@@ -14215,10 +14290,10 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string CloudStorageOutput { get; set; }
 
         /// <summary>
-        /// List of user-specified file type groups to transform. If specified, only the files with these filetypes will
-        /// be transformed. If empty, all supported files will be transformed. Supported types may be automatically
+        /// List of user-specified file type groups to transform. If specified, only the files with these file types
+        /// will be transformed. If empty, all supported files will be transformed. Supported types may be automatically
         /// added over time. If a file type is set in this field that isn't supported by the Deidentify action then the
-        /// job will fail and will not be successfully created/started. Currently the only filetypes supported are:
+        /// job will fail and will not be successfully created/started. Currently the only file types supported are:
         /// IMAGES, TEXT_FILES, CSV, TSV.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileTypesToTransform")]
@@ -14795,6 +14870,85 @@ namespace Google.Apis.DLP.v2.Data
     }
 
     /// <summary>
+    /// Requirements that must be true before a Cloud Storage bucket or object is scanned in discovery for the first
+    /// time. There is an AND relationship between the top-level attributes.
+    /// </summary>
+    public class GooglePrivacyDlpV2DiscoveryCloudStorageConditions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Only objects with the specified attributes will be scanned. Defaults to [ALL_SUPPORTED_BUCKETS] if
+        /// unset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includedBucketAttributes")]
+        public virtual System.Collections.Generic.IList<string> IncludedBucketAttributes { get; set; }
+
+        /// <summary>
+        /// Required. Only objects with the specified attributes will be scanned. If an object has one of the specified
+        /// attributes but is inside an excluded bucket, it will not be scanned. Defaults to [ALL_SUPPORTED_OBJECTS]. A
+        /// profile will be created even if no objects match the included_object_attributes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includedObjectAttributes")]
+        public virtual System.Collections.Generic.IList<string> IncludedObjectAttributes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Determines which buckets will have profiles generated within an organization or project. Includes the ability to
+    /// filter by regular expression patterns on project ID and bucket name.
+    /// </summary>
+    public class GooglePrivacyDlpV2DiscoveryCloudStorageFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The bucket to scan. Targets including this can only include one target (the target with this
+        /// bucket). This enables profiling the contents of a single bucket, while the other options allow for easy
+        /// profiling of many bucets within a project or an organization.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudStorageResourceReference")]
+        public virtual GooglePrivacyDlpV2CloudStorageResourceReference CloudStorageResourceReference { get; set; }
+
+        /// <summary>Optional. A specific set of buckets for this filter to apply to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("collection")]
+        public virtual GooglePrivacyDlpV2FileStoreCollection Collection { get; set; }
+
+        /// <summary>
+        /// Optional. Catch-all. This should always be the last target in the list because anything above it will apply
+        /// first. Should only appear once in a configuration. If none is specified, a default one will be added
+        /// automatically.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("others")]
+        public virtual GooglePrivacyDlpV2AllOtherResources Others { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// How often existing buckets should have their profiles refreshed. New buckets are scanned as quickly as possible
+    /// depending on system capacity.
+    /// </summary>
+    public class GooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Governs when to update data profiles when the inspection rules defined by the `InspectTemplate`
+        /// change. If not set, changing the template will not cause a data profile to update.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inspectTemplateModifiedCadence")]
+        public virtual GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence InspectTemplateModifiedCadence { get; set; }
+
+        /// <summary>
+        /// Optional. Data changes in Cloud Storage can't trigger reprofiling. If you set this field, profiles are
+        /// refreshed at this frequency regardless of whether the underlying buckets have changed. Defaults to never.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refreshFrequency")]
+        public virtual string RefreshFrequency { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Configuration for discovery to scan resources for profile generation. Only one discovery configuration may exist
     /// per organization, folder, or project. The generated data profiles are retained according to the [data retention
     /// policy] (https://cloud.google.com/sensitive-data-protection/docs/data-profiles#retention).
@@ -14964,11 +15118,75 @@ namespace Google.Apis.DLP.v2.Data
     }
 
     /// <summary>
+    /// Requirements that must be true before a file store is scanned in discovery for the first time. There is an AND
+    /// relationship between the top-level attributes.
+    /// </summary>
+    public class GooglePrivacyDlpV2DiscoveryFileStoreConditions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Cloud Storage conditions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudStorageConditions")]
+        public virtual GooglePrivacyDlpV2DiscoveryCloudStorageConditions CloudStorageConditions { get; set; }
+
+        private string _createdAfterRaw;
+
+        private object _createdAfter;
+
+        /// <summary>Optional. File store must have been created after this date. Used to avoid backfilling.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createdAfter")]
+        public virtual string CreatedAfterRaw
+        {
+            get => _createdAfterRaw;
+            set
+            {
+                _createdAfter = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createdAfterRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreatedAfterRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreatedAfterDateTimeOffset instead.")]
+        public virtual object CreatedAfter
+        {
+            get => _createdAfter;
+            set
+            {
+                _createdAfterRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createdAfter = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreatedAfterRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreatedAfterDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreatedAfterRaw);
+            set => CreatedAfterRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Optional. Minimum age a file store must have. If set, the value must be 1 hour or greater.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minAge")]
+        public virtual object MinAge { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// What must take place for a profile to be updated and how frequently it should occur. New tables are scanned as
     /// quickly as possible depending on system capacity.
     /// </summary>
     public class GooglePrivacyDlpV2DiscoveryGenerationCadence : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If
+        /// not set, changing the template will not cause a data profile to update.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inspectTemplateModifiedCadence")]
+        public virtual GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence InspectTemplateModifiedCadence { get; set; }
+
         /// <summary>Governs when to update data profiles when a schema is modified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schemaModifiedCadence")]
         public virtual GooglePrivacyDlpV2DiscoverySchemaModifiedCadence SchemaModifiedCadence { get; set; }
@@ -14976,6 +15194,21 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>Governs when to update data profiles when a table is modified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableModifiedCadence")]
         public virtual GooglePrivacyDlpV2DiscoveryTableModifiedCadence TableModifiedCadence { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The cadence at which to update data profiles when the inspection rules defined by the `InspectTemplate` change.
+    /// </summary>
+    public class GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// How frequently data profiles can be updated when the template is modified. Defaults to never.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frequency")]
+        public virtual string Frequency { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15046,6 +15279,12 @@ namespace Google.Apis.DLP.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudSqlTarget")]
         public virtual GooglePrivacyDlpV2CloudSqlDiscoveryTarget CloudSqlTarget { get; set; }
+
+        /// <summary>
+        /// Cloud Storage target for Discovery. The first target to match a table will be the one applied.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudStorageTarget")]
+        public virtual GooglePrivacyDlpV2CloudStorageDiscoveryTarget CloudStorageTarget { get; set; }
 
         /// <summary>
         /// Discovery target that looks for credentials and secrets stored in cloud resource metadata and reports them
@@ -15459,7 +15698,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual GooglePrivacyDlpV2DataRiskLevel DataRiskLevel { get; set; }
 
         /// <summary>
-        /// A list of Errors detected while scanning this cluster. The list is truncated to 10 per cluster.
+        /// A list of errors detected while scanning this cluster. The list is truncated to 10 per cluster.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2Error> Errors { get; set; }
@@ -15542,7 +15781,18 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The profile for a file store. * Google Cloud Storage: maps 1:1 with a bucket.</summary>
+    /// <summary>Match file stores (e.g. buckets) using regex filters.</summary>
+    public class GooglePrivacyDlpV2FileStoreCollection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. A collection of regular expressions to match a file store against.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeRegexes")]
+        public virtual GooglePrivacyDlpV2FileStoreRegexes IncludeRegexes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The profile for a file store. * Cloud Storage: maps 1:1 with a bucket.</summary>
     public class GooglePrivacyDlpV2FileStoreDataProfile : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The snapshot of the configurations used to generate the profile.</summary>
@@ -15595,10 +15845,10 @@ namespace Google.Apis.DLP.v2.Data
         public virtual GooglePrivacyDlpV2DataSourceType DataSourceType { get; set; }
 
         /// <summary>
-        /// For resources that have multiple storage locations, these are those regions. For Google Cloud Storage this
-        /// is the list of regions chosen for dual-region storage. `file_store_location` will normally be the
-        /// corresponding multi-region for the list of individual locations. The first region is always picked as the
-        /// processing and storage location for the data profile.
+        /// For resources that have multiple storage locations, these are those regions. For Cloud Storage this is the
+        /// list of regions chosen for dual-region storage. `file_store_location` will normally be the corresponding
+        /// multi-region for the list of individual locations. The first region is always picked as the processing and
+        /// storage location for the data profile.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataStorageLocations")]
         public virtual System.Collections.Generic.IList<string> DataStorageLocations { get; set; }
@@ -15616,13 +15866,13 @@ namespace Google.Apis.DLP.v2.Data
         public virtual System.Nullable<bool> FileStoreIsEmpty { get; set; }
 
         /// <summary>
-        /// The location of the file store. * Google Cloud Storage:
+        /// The location of the file store. * Cloud Storage:
         /// https://cloud.google.com/storage/docs/locations#available-locations
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileStoreLocation")]
         public virtual string FileStoreLocation { get; set; }
 
-        /// <summary>The file store path. * Google Cloud Storage: `gs://{bucket}`</summary>
+        /// <summary>The file store path. * Cloud Storage: `gs://{bucket}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileStorePath")]
         public virtual string FileStorePath { get; set; }
 
@@ -15729,7 +15979,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("profileStatus")]
         public virtual GooglePrivacyDlpV2ProfileStatus ProfileStatus { get; set; }
 
-        /// <summary>The resource name to the project data profile for this file store.</summary>
+        /// <summary>The resource name of the project data profile for this file store.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectDataProfile")]
         public virtual string ProjectDataProfile { get; set; }
 
@@ -15738,8 +15988,8 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ProjectId { get; set; }
 
         /// <summary>
-        /// Attributes of the resource being profiled. Currently used attributes: - customer_managed_encryption: boolean
-        /// true: the resource is encrypted with a customer-managed key. false: the resource is encrypted with a
+        /// Attributes of the resource being profiled. Currently used attributes: * customer_managed_encryption: boolean
+        /// - true: the resource is encrypted with a customer-managed key. - false: the resource is encrypted with a
         /// provider-managed key.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceAttributes")]
@@ -15771,6 +16021,31 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>The InfoType seen.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infoType")]
         public virtual GooglePrivacyDlpV2InfoType InfoType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A pattern to match against one or more file stores.</summary>
+    public class GooglePrivacyDlpV2FileStoreRegex : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Regex for Cloud Storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudStorageRegex")]
+        public virtual GooglePrivacyDlpV2CloudStorageRegex CloudStorageRegex { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A collection of regular expressions to determine what file store to match against.</summary>
+    public class GooglePrivacyDlpV2FileStoreRegexes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The group of regular expression patterns to match against one or more file stores. Maximum of 100
+        /// entries. The sum of all regular expression's length can't exceed 10 KiB.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("patterns")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2FileStoreRegex> Patterns { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -19302,7 +19577,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("profileStatus")]
         public virtual GooglePrivacyDlpV2ProfileStatus ProfileStatus { get; set; }
 
-        /// <summary>The resource name to the project data profile for this table.</summary>
+        /// <summary>The resource name of the project data profile for this table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectDataProfile")]
         public virtual string ProjectDataProfile { get; set; }
 

@@ -597,6 +597,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("safetyRatings")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1SafetyRating> SafetyRatings { get; set; }
 
+        /// <summary>Output only. Confidence score of the candidate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<double> Score { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -670,23 +674,38 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// <summary>Request message for PredictionService.CountTokens.</summary>
     public class GoogleCloudAiplatformV1beta1CountTokensRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Input content.</summary>
+        /// <summary>Optional. Input content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contents")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1Content> Contents { get; set; }
 
         /// <summary>
-        /// Required. The instances that are the input to token counting call. Schema is identical to the prediction
+        /// Optional. The instances that are the input to token counting call. Schema is identical to the prediction
         /// schema of the underlying model.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instances")]
         public virtual System.Collections.Generic.IList<object> Instances { get; set; }
 
         /// <summary>
-        /// Required. The name of the publisher model requested to serve the prediction. Format:
+        /// Optional. The name of the publisher model requested to serve the prediction. Format:
         /// `projects/{project}/locations/{location}/publishers/*/models/*`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
         public virtual string Model { get; set; }
+
+        /// <summary>
+        /// Optional. The user provided system instructions for the model. Note: only text should be used in parts and
+        /// content in each part will be in a separate paragraph.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemInstruction")]
+        public virtual GoogleCloudAiplatformV1beta1Content SystemInstruction { get; set; }
+
+        /// <summary>
+        /// Optional. A list of `Tools` the model may use to generate the next response. A `Tool` is a piece of code
+        /// that enables the system to interact with external systems to perform an action, or set of actions, outside
+        /// of knowledge and scope of the model.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tools")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1Tool> Tools { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1001,61 +1020,6 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Grounding attribution.</summary>
-    public class GoogleCloudAiplatformV1beta1GroundingAttribution : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Optional. Output only. Confidence score of the attribution. Ranges from 0 to 1. 1 is the most confident.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("confidenceScore")]
-        public virtual System.Nullable<float> ConfidenceScore { get; set; }
-
-        /// <summary>Optional. Attribution from context retrieved by the retrieval tools.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("retrievedContext")]
-        public virtual GoogleCloudAiplatformV1beta1GroundingAttributionRetrievedContext RetrievedContext { get; set; }
-
-        /// <summary>Output only. Segment of the content this attribution belongs to.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("segment")]
-        public virtual GoogleCloudAiplatformV1beta1Segment Segment { get; set; }
-
-        /// <summary>Optional. Attribution from the web.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("web")]
-        public virtual GoogleCloudAiplatformV1beta1GroundingAttributionWeb Web { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Attribution from context retrieved by the retrieval tools.</summary>
-    public class GoogleCloudAiplatformV1beta1GroundingAttributionRetrievedContext : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. Title of the attribution.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; }
-
-        /// <summary>Output only. URI reference of the attribution.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Attribution from the web.</summary>
-    public class GoogleCloudAiplatformV1beta1GroundingAttributionWeb : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. Title of the attribution.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; }
-
-        /// <summary>Output only. URI reference of the attribution.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Grounding chunk.</summary>
     public class GoogleCloudAiplatformV1beta1GroundingChunk : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1104,10 +1068,6 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// <summary>Metadata returned to client when grounding is enabled.</summary>
     public class GoogleCloudAiplatformV1beta1GroundingMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. List of grounding attributions.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("groundingAttributions")]
-        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1GroundingAttribution> GroundingAttributions { get; set; }
-
         /// <summary>List of supporting references retrieved from specified grounding source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groundingChunks")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1GroundingChunk> GroundingChunks { get; set; }

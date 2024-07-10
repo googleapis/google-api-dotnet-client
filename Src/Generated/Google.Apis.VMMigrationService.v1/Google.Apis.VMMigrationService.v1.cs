@@ -1647,6 +1647,7 @@ namespace Google.Apis.VMMigrationService.v1
                 {
                     this.service = service;
                     DatacenterConnectors = new DatacenterConnectorsResource(service);
+                    DiskMigrationJobs = new DiskMigrationJobsResource(service);
                     MigratingVms = new MigratingVmsResource(service);
                     UtilizationReports = new UtilizationReportsResource(service);
                 }
@@ -2029,6 +2030,130 @@ namespace Google.Apis.VMMigrationService.v1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/sources/[^/]+/datacenterConnectors/[^/]+$",
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the DiskMigrationJobs resource.</summary>
+                public virtual DiskMigrationJobsResource DiskMigrationJobs { get; }
+
+                /// <summary>The "diskMigrationJobs" collection of methods.</summary>
+                public class DiskMigrationJobsResource
+                {
+                    private const string Resource = "diskMigrationJobs";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public DiskMigrationJobsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Cancels the disk migration job.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Required. The name of the DiskMigrationJob.</param>
+                    public virtual CancelRequest Cancel(Google.Apis.VMMigrationService.v1.Data.CancelDiskMigrationJobRequest body, string name)
+                    {
+                        return new CancelRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Cancels the disk migration job.</summary>
+                    public class CancelRequest : VMMigrationServiceBaseServiceRequest<Google.Apis.VMMigrationService.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Cancel request.</summary>
+                        public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.VMMigrationService.v1.Data.CancelDiskMigrationJobRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the DiskMigrationJob.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.VMMigrationService.v1.Data.CancelDiskMigrationJobRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "cancel";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:cancel";
+
+                        /// <summary>Initializes Cancel parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/sources/[^/]+/diskMigrationJobs/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Runs the disk migration job.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">Required. The name of the DiskMigrationJob.</param>
+                    public virtual RunRequest Run(Google.Apis.VMMigrationService.v1.Data.RunDiskMigrationJobRequest body, string name)
+                    {
+                        return new RunRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Runs the disk migration job.</summary>
+                    public class RunRequest : VMMigrationServiceBaseServiceRequest<Google.Apis.VMMigrationService.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Run request.</summary>
+                        public RunRequest(Google.Apis.Services.IClientService service, Google.Apis.VMMigrationService.v1.Data.RunDiskMigrationJobRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the DiskMigrationJob.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.VMMigrationService.v1.Data.RunDiskMigrationJobRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "run";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:run";
+
+                        /// <summary>Initializes Run parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/sources/[^/]+/diskMigrationJobs/[^/]+$",
                             });
                         }
                     }
@@ -5472,6 +5597,13 @@ namespace Google.Apis.VMMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for 'CancelDiskMigrationJob' request.</summary>
+    public class CancelDiskMigrationJobRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for 'CancelImageImportJob' request.</summary>
     public class CancelImageImportJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6607,7 +6739,11 @@ namespace Google.Apis.VMMigrationService.v1.Data
     /// <summary>The target details of the image resource that will be created by the import job.</summary>
     public class DiskImageTargetDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Additional licenses to assign to the image.</summary>
+        /// <summary>
+        /// Optional. Additional licenses to assign to the image. Format:
+        /// https://www.googleapis.com/compute/v1/projects/PROJECT_ID/global/licenses/LICENSE_NAME Or
+        /// https://www.googleapis.com/compute/beta/projects/PROJECT_ID/global/licenses/LICENSE_NAME
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalLicenses")]
         public virtual System.Collections.Generic.IList<string> AdditionalLicenses { get; set; }
 
@@ -8242,7 +8378,7 @@ namespace Google.Apis.VMMigrationService.v1.Data
         public virtual System.Nullable<int> SourceDiskNumber { get; set; }
 
         /// <summary>
-        /// Optional. Details for attachment of the disk to a VM. Used when the disk is set to be attacked to a target
+        /// Optional. Details for attachment of the disk to a VM. Used when the disk is set to be attached to a target
         /// VM.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmAttachmentDetails")]
@@ -8462,6 +8598,13 @@ namespace Google.Apis.VMMigrationService.v1.Data
 
     /// <summary>Request message for 'ResumeMigration' request.</summary>
     public class ResumeMigrationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for 'RunDiskMigrationJobRequest' request.</summary>
+    public class RunDiskMigrationJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

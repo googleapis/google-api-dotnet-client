@@ -6329,17 +6329,17 @@ namespace Google.Apis.Container.v1beta1.Data
     /// </summary>
     public class AdditionalPodNetworkConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The maximum number of pods per node which use this pod network</summary>
+        /// <summary>The maximum number of pods per node which use this pod network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxPodsPerNode")]
         public virtual MaxPodsConstraint MaxPodsPerNode { get; set; }
 
         /// <summary>
-        /// The name of the secondary range on the subnet which provides IP address for this pod range
+        /// The name of the secondary range on the subnet which provides IP address for this pod range.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secondaryPodRange")]
         public virtual string SecondaryPodRange { get; set; }
 
-        /// <summary>Name of the subnetwork where the additional pod network belongs</summary>
+        /// <summary>Name of the subnetwork where the additional pod network belongs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
         public virtual string Subnetwork { get; set; }
 
@@ -6441,6 +6441,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkPolicyConfig")]
         public virtual NetworkPolicyConfig NetworkPolicyConfig { get; set; }
+
+        /// <summary>Optional. Configuration for Ray Operator addon.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rayOperatorConfig")]
+        public virtual RayOperatorConfig RayOperatorConfig { get; set; }
 
         /// <summary>Optional. Configuration for the StatefulHA add-on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statefulHaConfig")]
@@ -10622,6 +10626,47 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Output only. [Output only] The utilization of the range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("utilization")]
         public virtual System.Nullable<double> Utilization { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>RayClusterLoggingConfig specifies logging configuration for Ray clusters.</summary>
+    public class RayClusterLoggingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Enable log collection for Ray clusters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>RayClusterMonitoringConfig specifies monitoring configuration for Ray clusters.</summary>
+    public class RayClusterMonitoringConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Enable metrics collection for Ray clusters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration options for the Ray Operator add-on.</summary>
+    public class RayOperatorConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the Ray addon is enabled for this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>Optional. Logging configuration for Ray clusters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rayClusterLoggingConfig")]
+        public virtual RayClusterLoggingConfig RayClusterLoggingConfig { get; set; }
+
+        /// <summary>Optional. Monitoring configuration for Ray clusters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rayClusterMonitoringConfig")]
+        public virtual RayClusterMonitoringConfig RayClusterMonitoringConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

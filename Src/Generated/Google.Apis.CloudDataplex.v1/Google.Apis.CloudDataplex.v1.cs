@@ -320,18 +320,18 @@ namespace Google.Apis.CloudDataplex.v1
                     this.service = service;
                 }
 
-                /// <summary>Creates an AspectType</summary>
+                /// <summary>Creates an AspectType.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The resource name of the AspectType, of the form:
-                /// projects/{project_number}/locations/{location_id} where location_id refers to a GCP region.
+                /// projects/{project_number}/locations/{location_id} where location_id refers to a Google Cloud region.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1AspectType body, string parent)
                 {
                     return new CreateRequest(this.service, body, parent);
                 }
 
-                /// <summary>Creates an AspectType</summary>
+                /// <summary>Creates an AspectType.</summary>
                 public class CreateRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -344,7 +344,8 @@ namespace Google.Apis.CloudDataplex.v1
 
                     /// <summary>
                     /// Required. The resource name of the AspectType, of the form:
-                    /// projects/{project_number}/locations/{location_id} where location_id refers to a GCP region.
+                    /// projects/{project_number}/locations/{location_id} where location_id refers to a Google Cloud
+                    /// region.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -354,7 +355,8 @@ namespace Google.Apis.CloudDataplex.v1
                     public virtual string AspectTypeId { get; set; }
 
                     /// <summary>
-                    /// Optional. Only validate the request, but do not perform mutations. The default is false.
+                    /// Optional. The service validates the request without performing any mutations. The default is
+                    /// false.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -405,7 +407,7 @@ namespace Google.Apis.CloudDataplex.v1
                     }
                 }
 
-                /// <summary>Deletes a AspectType resource.</summary>
+                /// <summary>Deletes an AspectType.</summary>
                 /// <param name="name">
                 /// Required. The resource name of the AspectType:
                 /// projects/{project_number}/locations/{location_id}/aspectTypes/{aspect_type_id}.
@@ -415,7 +417,7 @@ namespace Google.Apis.CloudDataplex.v1
                     return new DeleteRequest(this.service, name);
                 }
 
-                /// <summary>Deletes a AspectType resource.</summary>
+                /// <summary>Deletes an AspectType.</summary>
                 public class DeleteRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -434,7 +436,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                     /// <summary>
                     /// Optional. If the client provided etag value does not match the current etag value, the
-                    /// DeleteAspectTypeRequest method returns an ABORTED error response
+                    /// DeleteAspectTypeRequest method returns an ABORTED error response.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Etag { get; set; }
@@ -471,7 +473,7 @@ namespace Google.Apis.CloudDataplex.v1
                     }
                 }
 
-                /// <summary>Retrieves a AspectType resource.</summary>
+                /// <summary>Gets an AspectType.</summary>
                 /// <param name="name">
                 /// Required. The resource name of the AspectType:
                 /// projects/{project_number}/locations/{location_id}/aspectTypes/{aspect_type_id}.
@@ -481,7 +483,7 @@ namespace Google.Apis.CloudDataplex.v1
                     return new GetRequest(this.service, name);
                 }
 
-                /// <summary>Retrieves a AspectType resource.</summary>
+                /// <summary>Gets an AspectType.</summary>
                 public class GetRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1AspectType>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -603,7 +605,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// <summary>Lists AspectType resources in a project and location.</summary>
                 /// <param name="parent">
                 /// Required. The resource name of the AspectType location, of the form:
-                /// projects/{project_number}/locations/{location_id} where location_id refers to a GCP region.
+                /// projects/{project_number}/locations/{location_id} where location_id refers to a Google Cloud region.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -622,37 +624,38 @@ namespace Google.Apis.CloudDataplex.v1
 
                     /// <summary>
                     /// Required. The resource name of the AspectType location, of the form:
-                    /// projects/{project_number}/locations/{location_id} where location_id refers to a GCP region.
+                    /// projects/{project_number}/locations/{location_id} where location_id refers to a Google Cloud
+                    /// region.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Optional. Filter request. Filters are case-sensitive. The following formats are
-                    /// supported:labels.key1 = "value1" labels:key1 name = "value" These restrictions can be coinjoined
-                    /// with AND, OR and NOT conjunctions.
+                    /// Optional. Filter request. Filters are case-sensitive. The service supports the following
+                    /// formats: labels.key1 = "value1" labels:key1 name = "value"These restrictions can be conjoined
+                    /// with AND, OR, and NOT conjunctions.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
                     /// <summary>
-                    /// Optional. Order by fields (name or create_time) for the result. If not specified, the ordering
-                    /// is undefined.
+                    /// Optional. Orders the result by name or create_time fields. If not specified, the ordering is
+                    /// undefined.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
                     /// <summary>
                     /// Optional. Maximum number of AspectTypes to return. The service may return fewer than this value.
-                    /// If unspecified, at most 10 AspectTypes will be returned. The maximum value is 1000; values above
-                    /// 1000 will be coerced to 1000.
+                    /// If unspecified, the service returns at most 10 AspectTypes. The maximum value is 1000; values
+                    /// above 1000 will be coerced to 1000.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
                     /// Optional. Page token received from a previous ListAspectTypes call. Provide this to retrieve the
-                    /// subsequent page. When paginating, all other parameters provided to ListAspectTypes must match
+                    /// subsequent page. When paginating, all other parameters you provide to ListAspectTypes must match
                     /// the call that provided the page token.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -714,7 +717,7 @@ namespace Google.Apis.CloudDataplex.v1
                     }
                 }
 
-                /// <summary>Updates a AspectType resource.</summary>
+                /// <summary>Updates an AspectType.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Output only. The relative resource name of the AspectType, of the form:
@@ -725,7 +728,7 @@ namespace Google.Apis.CloudDataplex.v1
                     return new PatchRequest(this.service, body, name);
                 }
 
-                /// <summary>Updates a AspectType resource.</summary>
+                /// <summary>Updates an AspectType.</summary>
                 public class PatchRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -3956,14 +3959,14 @@ namespace Google.Apis.CloudDataplex.v1
 
                         /// <summary>
                         /// Required. Entry identifier. It has to be unique within an Entry Group.Entries corresponding
-                        /// to Google Cloud resources use Entry ID format based on Full Resource Names
+                        /// to Google Cloud resources use an Entry ID format based on full resource names
                         /// (https://cloud.google.com/apis/design/resource_names#full_resource_name). The format is a
-                        /// Full Resource Name of the resource without the prefix double slashes in the API Service Name
-                        /// part of Full Resource Name. This allows retrieval of entries using their associated resource
-                        /// name.For example if the Full Resource Name of a resource is
+                        /// full resource name of the resource without the prefix double slashes in the API service name
+                        /// part of the full resource name. This allows retrieval of entries using their associated
+                        /// resource name.For example, if the full resource name of a resource is
                         /// //library.googleapis.com/shelves/shelf1/books/book2, then the suggested entry_id is
                         /// library.googleapis.com/shelves/shelf1/books/book2.It is also suggested to follow the same
-                        /// convention for entries corresponding to resources from other providers or systems than
+                        /// convention for entries corresponding to resources from providers or systems other than
                         /// Google Cloud.The maximum size of the field is 4000 characters.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("entryId", Google.Apis.Util.RequestParameterType.Query)]
@@ -4058,7 +4061,7 @@ namespace Google.Apis.CloudDataplex.v1
                         }
                     }
 
-                    /// <summary>Gets a single entry.</summary>
+                    /// <summary>Gets an Entry.</summary>
                     /// <param name="name">
                     /// Required. The resource name of the Entry:
                     /// projects/{project}/locations/{location}/entryGroups/{entry_group}/entries/{entry}.
@@ -4068,7 +4071,7 @@ namespace Google.Apis.CloudDataplex.v1
                         return new GetRequest(this.service, name);
                     }
 
-                    /// <summary>Gets a single entry.</summary>
+                    /// <summary>Gets an Entry.</summary>
                     public class GetRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1Entry>
                     {
                         /// <summary>Constructs a new Get request.</summary>
@@ -4086,27 +4089,27 @@ namespace Google.Apis.CloudDataplex.v1
                         public virtual string Name { get; private set; }
 
                         /// <summary>
-                        /// Optional. Limits the aspects returned to the provided aspect types. Only works if the CUSTOM
-                        /// view is selected.
+                        /// Optional. Limits the aspects returned to the provided aspect types. It only works for CUSTOM
+                        /// view.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("aspectTypes", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual Google.Apis.Util.Repeatable<string> AspectTypes { get; set; }
 
                         /// <summary>
                         /// Optional. Limits the aspects returned to those associated with the provided paths within the
-                        /// Entry. Only works if the CUSTOM view is selected.
+                        /// Entry. It only works for CUSTOM view.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("paths", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual Google.Apis.Util.Repeatable<string> Paths { get; set; }
 
                         /// <summary>
-                        /// Optional. View for controlling which parts of an entry are to be returned.
+                        /// Optional. View to control which parts of an entry the service should return.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<ViewEnum> View { get; set; }
 
                         /// <summary>
-                        /// Optional. View for controlling which parts of an entry are to be returned.
+                        /// Optional. View to control which parts of an entry the service should return.
                         /// </summary>
                         public enum ViewEnum
                         {
@@ -4126,13 +4129,13 @@ namespace Google.Apis.CloudDataplex.v1
 
                             /// <summary>
                             /// Returns aspects matching custom fields in GetEntryRequest. If the number of aspects
-                            /// would exceed 100, the first 100 will be returned.
+                            /// exceeds 100, the first 100 will be returned.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("CUSTOM")]
                             CUSTOM = 3,
 
                             /// <summary>
-                            /// Returns all aspects. If the number of aspects would exceed 100, the first 100 will be
+                            /// Returns all aspects. If the number of aspects exceeds 100, the first 100 will be
                             /// returned.
                             /// </summary>
                             [Google.Apis.Util.StringValueAttribute("ALL")]
@@ -4187,7 +4190,7 @@ namespace Google.Apis.CloudDataplex.v1
                         }
                     }
 
-                    /// <summary>Lists entries within an entry group.</summary>
+                    /// <summary>Lists Entries within an EntryGroup.</summary>
                     /// <param name="parent">
                     /// Required. The resource name of the parent Entry Group:
                     /// projects/{project}/locations/{location}/entryGroups/{entry_group}.
@@ -4197,7 +4200,7 @@ namespace Google.Apis.CloudDataplex.v1
                         return new ListRequest(this.service, parent);
                     }
 
-                    /// <summary>Lists entries within an entry group.</summary>
+                    /// <summary>Lists Entries within an EntryGroup.</summary>
                     public class ListRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1ListEntriesResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -4215,12 +4218,12 @@ namespace Google.Apis.CloudDataplex.v1
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// Optional. A filter on the entries to return. Filters are case-sensitive. The request can be
-                        /// filtered by the following fields: entry_type, entry_source.display_name. The comparison
-                        /// operators are =, !=, &amp;lt;, &amp;gt;, &amp;lt;=, &amp;gt;= (strings are compared
-                        /// according to lexical order) The logical operators AND, OR, NOT can be used in the filter.
-                        /// Wildcard "*" can be used, but for entry_type the full project id or number needs to be
-                        /// provided. Example filter expressions: "entry_source.display_name=AnExampleDisplayName"
+                        /// Optional. A filter on the entries to return. Filters are case-sensitive. You can filter the
+                        /// request by the following fields: entry_type entry_source.display_nameThe comparison
+                        /// operators are =, !=, &amp;lt;, &amp;gt;, &amp;lt;=, &amp;gt;=. The service compares strings
+                        /// according to lexical order.You can use the logical operators AND, OR, NOT in the filter.You
+                        /// can use Wildcard "*", but for entry_type you need to provide the full project id or
+                        /// number.Example filter expressions: "entry_source.display_name=AnExampleDisplayName"
                         /// "entry_type=projects/example-project/locations/global/entryTypes/example-entry_type"
                         /// "entry_type=projects/example-project/locations/us/entryTypes/a* OR
                         /// entry_type=projects/another-project/locations/*" "NOT
@@ -4229,10 +4232,18 @@ namespace Google.Apis.CloudDataplex.v1
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
+                        /// <summary>
+                        /// Optional. Number of items to return per page. If there are remaining results, the service
+                        /// returns a next_page_token. If unspecified, the service returns at most 10 Entries. The
+                        /// maximum value is 100; values above 100 will be coerced to 100.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
-                        /// <summary>Optional. The pagination token returned by a previous request.</summary>
+                        /// <summary>
+                        /// Optional. Page token received from a previous ListEntries call. Provide this to retrieve the
+                        /// subsequent page.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
@@ -4314,33 +4325,34 @@ namespace Google.Apis.CloudDataplex.v1
                         public virtual string Name { get; private set; }
 
                         /// <summary>
-                        /// Optional. If set to true and the entry does not exist, it will be created.
+                        /// Optional. If set to true and the entry doesn't exist, the service will create it.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<bool> AllowMissing { get; set; }
 
                         /// <summary>
-                        /// Optional. The map keys of the Aspects which should be modified. Supports the following
-                        /// syntaxes: * - matches aspect on given type and empty path * @path - matches aspect on given
-                        /// type and specified path * * - matches aspects on given type for all paths * *@path - matches
-                        /// aspects of all types on the given pathExisting aspects matching the syntax will not be
-                        /// removed unless delete_missing_aspects is set to true.If this field is left empty, it will be
-                        /// treated as specifying exactly those Aspects present in the request.
+                        /// Optional. The map keys of the Aspects which the service should modify. It supports the
+                        /// following syntaxes: - matches an aspect of the given type and empty path. @path - matches an
+                        /// aspect of the given type and specified path. * - matches aspects of the given type for all
+                        /// paths. *@path - matches aspects of all types on the given path.The service will not remove
+                        /// existing aspects matching the syntax unless delete_missing_aspects is set to true.If this
+                        /// field is left empty, the service treats it as specifying exactly those Aspects present in
+                        /// the request.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("aspectKeys", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual Google.Apis.Util.Repeatable<string> AspectKeys { get; set; }
 
                         /// <summary>
-                        /// Optional. If set to true and the aspect_keys specify aspect ranges, any existing aspects
-                        /// from that range not provided in the request will be deleted.
+                        /// Optional. If set to true and the aspect_keys specify aspect ranges, the service deletes any
+                        /// existing aspects from that range that weren't provided in the request.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("deleteMissingAspects", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<bool> DeleteMissingAspects { get; set; }
 
                         /// <summary>
                         /// Optional. Mask of fields to update. To update Aspects, the update_mask must contain the
-                        /// value "aspects".If the update_mask is empty, all modifiable fields present in the request
-                        /// will be updated.
+                        /// value "aspects".If the update_mask is empty, the service will update all modifiable fields
+                        /// present in the request.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
@@ -4408,7 +4420,7 @@ namespace Google.Apis.CloudDataplex.v1
                     }
                 }
 
-                /// <summary>Creates an EntryGroup</summary>
+                /// <summary>Creates an EntryGroup.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The resource name of the entryGroup, of the form:
@@ -4419,7 +4431,7 @@ namespace Google.Apis.CloudDataplex.v1
                     return new CreateRequest(this.service, body, parent);
                 }
 
-                /// <summary>Creates an EntryGroup</summary>
+                /// <summary>Creates an EntryGroup.</summary>
                 public class CreateRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -4442,7 +4454,8 @@ namespace Google.Apis.CloudDataplex.v1
                     public virtual string EntryGroupId { get; set; }
 
                     /// <summary>
-                    /// Optional. Only validate the request, but do not perform mutations. The default is false.
+                    /// Optional. The service validates the request without performing any mutations. The default is
+                    /// false.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -4493,7 +4506,7 @@ namespace Google.Apis.CloudDataplex.v1
                     }
                 }
 
-                /// <summary>Deletes a EntryGroup resource.</summary>
+                /// <summary>Deletes an EntryGroup.</summary>
                 /// <param name="name">
                 /// Required. The resource name of the EntryGroup:
                 /// projects/{project_number}/locations/{location_id}/entryGroups/{entry_group_id}.
@@ -4503,7 +4516,7 @@ namespace Google.Apis.CloudDataplex.v1
                     return new DeleteRequest(this.service, name);
                 }
 
-                /// <summary>Deletes a EntryGroup resource.</summary>
+                /// <summary>Deletes an EntryGroup.</summary>
                 public class DeleteRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -4522,7 +4535,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                     /// <summary>
                     /// Optional. If the client provided etag value does not match the current etag value, the
-                    /// DeleteEntryGroupRequest method returns an ABORTED error response
+                    /// DeleteEntryGroupRequest method returns an ABORTED error response.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Etag { get; set; }
@@ -4559,7 +4572,7 @@ namespace Google.Apis.CloudDataplex.v1
                     }
                 }
 
-                /// <summary>Retrieves a EntryGroup resource.</summary>
+                /// <summary>Gets an EntryGroup.</summary>
                 /// <param name="name">
                 /// Required. The resource name of the EntryGroup:
                 /// projects/{project_number}/locations/{location_id}/entryGroups/{entry_group_id}.
@@ -4569,7 +4582,7 @@ namespace Google.Apis.CloudDataplex.v1
                     return new GetRequest(this.service, name);
                 }
 
-                /// <summary>Retrieves a EntryGroup resource.</summary>
+                /// <summary>Gets an EntryGroup.</summary>
                 public class GetRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1EntryGroup>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -4691,7 +4704,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// <summary>Lists EntryGroup resources in a project and location.</summary>
                 /// <param name="parent">
                 /// Required. The resource name of the entryGroup location, of the form:
-                /// projects/{project_number}/locations/{location_id} where location_id refers to a GCP region.
+                /// projects/{project_number}/locations/{location_id} where location_id refers to a Google Cloud region.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -4710,7 +4723,8 @@ namespace Google.Apis.CloudDataplex.v1
 
                     /// <summary>
                     /// Required. The resource name of the entryGroup location, of the form:
-                    /// projects/{project_number}/locations/{location_id} where location_id refers to a GCP region.
+                    /// projects/{project_number}/locations/{location_id} where location_id refers to a Google Cloud
+                    /// region.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -4725,15 +4739,15 @@ namespace Google.Apis.CloudDataplex.v1
 
                     /// <summary>
                     /// Optional. Maximum number of EntryGroups to return. The service may return fewer than this value.
-                    /// If unspecified, at most 10 EntryGroups will be returned. The maximum value is 1000; values above
-                    /// 1000 will be coerced to 1000.
+                    /// If unspecified, the service returns at most 10 EntryGroups. The maximum value is 1000; values
+                    /// above 1000 will be coerced to 1000.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
                     /// Optional. Page token received from a previous ListEntryGroups call. Provide this to retrieve the
-                    /// subsequent page. When paginating, all other parameters provided to ListEntryGroups must match
+                    /// subsequent page. When paginating, all other parameters you provide to ListEntryGroups must match
                     /// the call that provided the page token.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -4795,7 +4809,7 @@ namespace Google.Apis.CloudDataplex.v1
                     }
                 }
 
-                /// <summary>Updates a EntryGroup resource.</summary>
+                /// <summary>Updates an EntryGroup.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Output only. The relative resource name of the EntryGroup, of the form:
@@ -4806,7 +4820,7 @@ namespace Google.Apis.CloudDataplex.v1
                     return new PatchRequest(this.service, body, name);
                 }
 
-                /// <summary>Updates a EntryGroup resource.</summary>
+                /// <summary>Updates an EntryGroup.</summary>
                 public class PatchRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -4829,7 +4843,8 @@ namespace Google.Apis.CloudDataplex.v1
                     public virtual object UpdateMask { get; set; }
 
                     /// <summary>
-                    /// Optional. Only validate the request, but do not perform mutations. The default is false.
+                    /// Optional. The service validates the request, without performing any mutations. The default is
+                    /// false.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -5032,18 +5047,18 @@ namespace Google.Apis.CloudDataplex.v1
                     this.service = service;
                 }
 
-                /// <summary>Creates an EntryType</summary>
+                /// <summary>Creates an EntryType.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The resource name of the EntryType, of the form:
-                /// projects/{project_number}/locations/{location_id} where location_id refers to a GCP region.
+                /// projects/{project_number}/locations/{location_id} where location_id refers to a Google Cloud region.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1EntryType body, string parent)
                 {
                     return new CreateRequest(this.service, body, parent);
                 }
 
-                /// <summary>Creates an EntryType</summary>
+                /// <summary>Creates an EntryType.</summary>
                 public class CreateRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -5056,7 +5071,8 @@ namespace Google.Apis.CloudDataplex.v1
 
                     /// <summary>
                     /// Required. The resource name of the EntryType, of the form:
-                    /// projects/{project_number}/locations/{location_id} where location_id refers to a GCP region.
+                    /// projects/{project_number}/locations/{location_id} where location_id refers to a Google Cloud
+                    /// region.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -5066,7 +5082,8 @@ namespace Google.Apis.CloudDataplex.v1
                     public virtual string EntryTypeId { get; set; }
 
                     /// <summary>
-                    /// Optional. Only validate the request, but do not perform mutations. The default is false.
+                    /// Optional. The service validates the request without performing any mutations. The default is
+                    /// false.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -5117,7 +5134,7 @@ namespace Google.Apis.CloudDataplex.v1
                     }
                 }
 
-                /// <summary>Deletes a EntryType resource.</summary>
+                /// <summary>Deletes an EntryType.</summary>
                 /// <param name="name">
                 /// Required. The resource name of the EntryType:
                 /// projects/{project_number}/locations/{location_id}/entryTypes/{entry_type_id}.
@@ -5127,7 +5144,7 @@ namespace Google.Apis.CloudDataplex.v1
                     return new DeleteRequest(this.service, name);
                 }
 
-                /// <summary>Deletes a EntryType resource.</summary>
+                /// <summary>Deletes an EntryType.</summary>
                 public class DeleteRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -5146,7 +5163,7 @@ namespace Google.Apis.CloudDataplex.v1
 
                     /// <summary>
                     /// Optional. If the client provided etag value does not match the current etag value, the
-                    /// DeleteEntryTypeRequest method returns an ABORTED error response
+                    /// DeleteEntryTypeRequest method returns an ABORTED error response.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Etag { get; set; }
@@ -5183,7 +5200,7 @@ namespace Google.Apis.CloudDataplex.v1
                     }
                 }
 
-                /// <summary>Retrieves a EntryType resource.</summary>
+                /// <summary>Gets an EntryType.</summary>
                 /// <param name="name">
                 /// Required. The resource name of the EntryType:
                 /// projects/{project_number}/locations/{location_id}/entryTypes/{entry_type_id}.
@@ -5193,7 +5210,7 @@ namespace Google.Apis.CloudDataplex.v1
                     return new GetRequest(this.service, name);
                 }
 
-                /// <summary>Retrieves a EntryType resource.</summary>
+                /// <summary>Gets an EntryType.</summary>
                 public class GetRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1EntryType>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -5315,7 +5332,7 @@ namespace Google.Apis.CloudDataplex.v1
                 /// <summary>Lists EntryType resources in a project and location.</summary>
                 /// <param name="parent">
                 /// Required. The resource name of the EntryType location, of the form:
-                /// projects/{project_number}/locations/{location_id} where location_id refers to a GCP region.
+                /// projects/{project_number}/locations/{location_id} where location_id refers to a Google Cloud region.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -5334,38 +5351,39 @@ namespace Google.Apis.CloudDataplex.v1
 
                     /// <summary>
                     /// Required. The resource name of the EntryType location, of the form:
-                    /// projects/{project_number}/locations/{location_id} where location_id refers to a GCP region.
+                    /// projects/{project_number}/locations/{location_id} where location_id refers to a Google Cloud
+                    /// region.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Optional. Filter request. Filters are case-sensitive. The following formats are
-                    /// supported:labels.key1 = "value1" labels:key1 name = "value" These restrictions can be coinjoined
-                    /// with AND, OR and NOT conjunctions.
+                    /// Optional. Filter request. Filters are case-sensitive. The service supports the following
+                    /// formats: labels.key1 = "value1" labels:key1 name = "value"These restrictions can be conjoined
+                    /// with AND, OR, and NOT conjunctions.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
                     /// <summary>
-                    /// Optional. Order by fields (name or create_time) for the result. If not specified, the ordering
-                    /// is undefined.
+                    /// Optional. Orders the result by name or create_time fields. If not specified, the ordering is
+                    /// undefined.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
                     /// <summary>
                     /// Optional. Maximum number of EntryTypes to return. The service may return fewer than this value.
-                    /// If unspecified, at most 10 EntryTypes will be returned. The maximum value is 1000; values above
-                    /// 1000 will be coerced to 1000.
+                    /// If unspecified, the service returns at most 10 EntryTypes. The maximum value is 1000; values
+                    /// above 1000 will be coerced to 1000.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
                     /// Optional. Page token received from a previous ListEntryTypes call. Provide this to retrieve the
-                    /// subsequent page. When paginating, all other parameters provided to ListEntryTypes must match the
-                    /// call that provided the page token.
+                    /// subsequent page. When paginating, all other parameters you provided to ListEntryTypes must match
+                    /// the call that provided the page token.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -5426,7 +5444,7 @@ namespace Google.Apis.CloudDataplex.v1
                     }
                 }
 
-                /// <summary>Updates a EntryType resource.</summary>
+                /// <summary>Updates an EntryType.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Output only. The relative resource name of the EntryType, of the form:
@@ -5437,7 +5455,7 @@ namespace Google.Apis.CloudDataplex.v1
                     return new PatchRequest(this.service, body, name);
                 }
 
-                /// <summary>Updates a EntryType resource.</summary>
+                /// <summary>Updates an EntryType.</summary>
                 public class PatchRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -5460,7 +5478,8 @@ namespace Google.Apis.CloudDataplex.v1
                     public virtual object UpdateMask { get; set; }
 
                     /// <summary>
-                    /// Optional. Only validate the request, but do not perform mutations. The default is false.
+                    /// Optional. The service validates the request without performing any mutations. The default is
+                    /// false.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -12121,7 +12140,7 @@ namespace Google.Apis.CloudDataplex.v1
                 }
             }
 
-            /// <summary>Looks up a single entry.</summary>
+            /// <summary>Looks up a single Entry by name using the permission on the source system.</summary>
             /// <param name="name">
             /// Required. The project to which the request should be attributed in the following form:
             /// projects/{project}/locations/{location}.
@@ -12131,7 +12150,7 @@ namespace Google.Apis.CloudDataplex.v1
                 return new LookupEntryRequest(this.service, name);
             }
 
-            /// <summary>Looks up a single entry.</summary>
+            /// <summary>Looks up a single Entry by name using the permission on the source system.</summary>
             public class LookupEntryRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1Entry>
             {
                 /// <summary>Constructs a new LookupEntry request.</summary>
@@ -12149,8 +12168,7 @@ namespace Google.Apis.CloudDataplex.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// Optional. Limits the aspects returned to the provided aspect types. Only works if the CUSTOM view is
-                /// selected.
+                /// Optional. Limits the aspects returned to the provided aspect types. It only works for CUSTOM view.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("aspectTypes", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> AspectTypes { get; set; }
@@ -12164,16 +12182,16 @@ namespace Google.Apis.CloudDataplex.v1
 
                 /// <summary>
                 /// Optional. Limits the aspects returned to those associated with the provided paths within the Entry.
-                /// Only works if the CUSTOM view is selected.
+                /// It only works for CUSTOM view.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("paths", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> Paths { get; set; }
 
-                /// <summary>Optional. View for controlling which parts of an entry are to be returned.</summary>
+                /// <summary>Optional. View to control which parts of an entry the service should return.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<ViewEnum> View { get; set; }
 
-                /// <summary>Optional. View for controlling which parts of an entry are to be returned.</summary>
+                /// <summary>Optional. View to control which parts of an entry the service should return.</summary>
                 public enum ViewEnum
                 {
                     /// <summary>Unspecified EntryView. Defaults to FULL.</summary>
@@ -12189,14 +12207,14 @@ namespace Google.Apis.CloudDataplex.v1
                     FULL = 2,
 
                     /// <summary>
-                    /// Returns aspects matching custom fields in GetEntryRequest. If the number of aspects would exceed
-                    /// 100, the first 100 will be returned.
+                    /// Returns aspects matching custom fields in GetEntryRequest. If the number of aspects exceeds 100,
+                    /// the first 100 will be returned.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("CUSTOM")]
                     CUSTOM = 3,
 
                     /// <summary>
-                    /// Returns all aspects. If the number of aspects would exceed 100, the first 100 will be returned.
+                    /// Returns all aspects. If the number of aspects exceeds 100, the first 100 will be returned.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("ALL")]
                     ALL = 4,
@@ -12258,7 +12276,7 @@ namespace Google.Apis.CloudDataplex.v1
                 }
             }
 
-            /// <summary>Searches for entries matching given query and scope.</summary>
+            /// <summary>Searches for Entries matching the given query and scope.</summary>
             /// <param name="name">
             /// Required. The project to which the request should be attributed in the following form:
             /// projects/{project}/locations/{location}.
@@ -12268,7 +12286,7 @@ namespace Google.Apis.CloudDataplex.v1
                 return new SearchEntriesRequest(this.service, name);
             }
 
-            /// <summary>Searches for entries matching given query and scope.</summary>
+            /// <summary>Searches for Entries matching the given query and scope.</summary>
             public class SearchEntriesRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1SearchEntriesResponse>
             {
                 /// <summary>Constructs a new SearchEntries request.</summary>
@@ -12285,14 +12303,21 @@ namespace Google.Apis.CloudDataplex.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>Optional. Ordering of the results. Supported options to be added later.</summary>
+                /// <summary>Optional. Specifies the ordering of results.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
 
-                /// <summary>Optional. Pagination.</summary>
+                /// <summary>
+                /// Optional. Number of results in the search page. If &amp;lt;=0, then defaults to 10. Max limit for
+                /// page_size is 1000. Throws an invalid argument for page_size &amp;gt; 1000.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
+                /// <summary>
+                /// Optional. Page token received from a previous SearchEntries call. Provide this to retrieve the
+                /// subsequent page.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
@@ -12301,9 +12326,9 @@ namespace Google.Apis.CloudDataplex.v1
                 public virtual string Query { get; set; }
 
                 /// <summary>
-                /// Optional. The scope under which the search should be operating. Should either be organizations/ or
-                /// projects/. If left unspecified, it will default to the organization where the project provided in
-                /// name is located.
+                /// Optional. The scope under which the search should be operating. It must either be organizations/ or
+                /// projects/. If it is unspecified, it defaults to the organization where the project provided in name
+                /// is located.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("scope", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Scope { get; set; }
@@ -12669,8 +12694,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         }
 
         /// <summary>
-        /// Required. The content of the aspect, according to its aspect type schema. This will replace content. The
-        /// maximum size of the field is 120KB (encoded as UTF-8).
+        /// Required. The content of the aspect, according to its aspect type schema. The maximum size of the field is
+        /// 120KB (encoded as UTF-8).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual System.Collections.Generic.IDictionary<string, object> Data { get; set; }
@@ -12720,7 +12745,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>AspectSource contains source system related information for the aspect.</summary>
+    /// <summary>AspectSource contains information related to the source system of the Aspect.</summary>
     public class GoogleCloudDataplexV1AspectSource : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
@@ -12802,12 +12827,12 @@ namespace Google.Apis.CloudDataplex.v1.Data
     }
 
     /// <summary>
-    /// Aspect Type is a template for creating Aspects, and represents the JSON-schema for a given Entry, e.g., BigQuery
-    /// Table Schema.
+    /// AspectType is a template for creating Aspects, and represents the JSON-schema for a given Entry, for example,
+    /// BigQuery Table Schema.
     /// </summary>
     public class GoogleCloudDataplexV1AspectType : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Immutable. Authorization defined for this type.</summary>
+        /// <summary>Immutable. Defines the Authorization for this type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorization")]
         public virtual GoogleCloudDataplexV1AspectTypeAuthorization Authorization { get; set; }
 
@@ -12857,8 +12882,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// This checksum is computed by the server based on the value of other fields, and may be sent on update and
-        /// delete requests to ensure the client has an up-to-date value before proceeding.
+        /// The service computes this checksum. The client may send it on update and delete requests to ensure it has an
+        /// up-to-date value before proceeding.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
@@ -12879,15 +12904,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Output only. Denotes the transfer status of the Aspect Type. It is unspecified for Aspect Types created from
-        /// Dataplex API.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("transferStatus")]
-        public virtual string TransferStatus { get; set; }
-
-        /// <summary>
-        /// Output only. System generated globally unique ID for the AspectType. This ID will be different if the
-        /// AspectType is deleted and re-created with the same name.
+        /// Output only. System generated globally unique ID for the AspectType. If you delete and recreate the
+        /// AspectType with the same name, then this ID will be different.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
@@ -12930,12 +12948,12 @@ namespace Google.Apis.CloudDataplex.v1.Data
         }
     }
 
-    /// <summary>Autorization for an Aspect Type.</summary>
+    /// <summary>Autorization for an AspectType.</summary>
     public class GoogleCloudDataplexV1AspectTypeAuthorization : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Immutable. The IAM permission grantable on the Entry Group to allow access to instantiate Aspects of
-        /// Dataplex owned Aspect Types, only settable for Dataplex owned Types.
+        /// Immutable. The IAM permission grantable on the EntryGroup to allow access to instantiate Aspects of Dataplex
+        /// owned AspectTypes, only settable for Dataplex owned Types.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alternateUsePermission")]
         public virtual string AlternateUsePermission { get; set; }
@@ -12944,7 +12962,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>MetadataTemplate definition for AspectType</summary>
+    /// <summary>MetadataTemplate definition for an AspectType.</summary>
     public class GoogleCloudDataplexV1AspectTypeMetadataTemplate : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Specifies annotations on this field.</summary>
@@ -12952,9 +12970,9 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations Annotations { get; set; }
 
         /// <summary>
-        /// Optional. array_items needs to be set if the type is array. array_items can refer to a primitive field or a
-        /// complex (record only) field. To specify a primitive field, just name and type needs to be set in the nested
-        /// MetadataTemplate. The recommended value for the name field is item, as this is not used in the actual
+        /// Optional. If the type is array, set array_items. array_items can refer to a primitive field or a complex
+        /// (record only) field. To specify a primitive field, you only need to set name and type in the nested
+        /// MetadataTemplate. The recommended value for the name field is item, as this isn't used in the actual
         /// payload.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("arrayItems")]
@@ -12964,7 +12982,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("constraints")]
         public virtual GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints Constraints { get; set; }
 
-        /// <summary>Optional. The list of values for an enum type. Needs to be defined if the type is enum.</summary>
+        /// <summary>Optional. The list of values for an enum type. You must define it if the type is enum.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enumValues")]
         public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue> EnumValues { get; set; }
 
@@ -12979,9 +12997,9 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual System.Nullable<int> Index { get; set; }
 
         /// <summary>
-        /// Optional. map_items needs to be set if the type is map. map_items can refer to a primitive field or a
-        /// complex (record only) field. To specify a primitive field, just name and type needs to be set in the nested
-        /// MetadataTemplate. The recommended value for the name field is item, as this is not used in the actual
+        /// Optional. If the type is map, set map_items. map_items can refer to a primitive field or a complex (record
+        /// only) field. To specify a primitive field, you only need to set name and type in the nested
+        /// MetadataTemplate. The recommended value for the name field is item, as this isn't used in the actual
         /// payload.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mapItems")]
@@ -12992,30 +13010,30 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Optional. Field definition, needs to be specified if the type is record. Defines the nested fields.
+        /// Optional. Field definition. You must specify it if the type is record. It defines the nested fields.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recordFields")]
         public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1AspectTypeMetadataTemplate> RecordFields { get; set; }
 
         /// <summary>
-        /// Required. The datatype of this field. The following values are supported: Primitive types (string, integer,
-        /// boolean, double, datetime); datetime must be of the format RFC3339 UTC "Zulu" (Examples:
-        /// "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"). Complex types (enum, array, map, record).
+        /// Required. The datatype of this field. The following values are supported:Primitive types: string integer
+        /// boolean double datetime. Must be of the format RFC3339 UTC "Zulu" (Examples: "2014-10-02T15:01:23Z" and
+        /// "2014-10-02T15:01:23.045123456Z").Complex types: enum array map record
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
         /// <summary>
-        /// Optional. Id can be used if this definition of the field needs to be reused later. Id needs to be unique
-        /// across the entire template. Id can only be specified if the field type is record.
+        /// Optional. You can use type id if this definition of the field needs to be reused later. The type id must be
+        /// unique across the entire template. You can only specify it if the field type is record.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("typeId")]
         public virtual string TypeId { get; set; }
 
         /// <summary>
-        /// Optional. A reference to another field definition (instead of an inline definition). The value must be equal
-        /// to the value of an id field defined elsewhere in the MetadataTemplate. Only fields with type as record can
-        /// refer to other fields.
+        /// Optional. A reference to another field definition (not an inline definition). The value must be equal to the
+        /// value of an id field defined elsewhere in the MetadataTemplate. Only fields with record type can refer to
+        /// other fields.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("typeRef")]
         public virtual string TypeRef { get; set; }
@@ -13024,39 +13042,37 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Definition of the annotations of a field</summary>
+    /// <summary>Definition of the annotations of a field.</summary>
     public class GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Marks a field as deprecated, a deprecation message can be included.</summary>
+        /// <summary>Optional. Marks a field as deprecated. You can include a deprecation message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deprecated")]
         public virtual string Deprecated { get; set; }
 
-        /// <summary>Optional. Specify a description for a field</summary>
+        /// <summary>Optional. Description for a field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Optional. Specify a displayname for a field.</summary>
+        /// <summary>Optional. Display name for a field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Optional. Specify a display order for a field. Display order can be used to reorder where a field is
-        /// rendered
+        /// Optional. Display order for a field. You can use this to reorder where a field is rendered.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayOrder")]
         public virtual System.Nullable<int> DisplayOrder { get; set; }
 
         /// <summary>
-        /// Optional. String Type annotations can be used to specify special meaning to string fields. The following
+        /// Optional. You can use String Type annotations to specify special meaning to string fields. The following
         /// values are supported: richText: The field must be interpreted as a rich text field. url: A fully qualified
-        /// url link. resource: A service qualified resource reference.
+        /// URL link. resource: A service qualified resource reference.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stringType")]
         public virtual string StringType { get; set; }
 
         /// <summary>
-        /// Optional. Suggested hints for string fields. These can be used to suggest values to users, through an UI for
-        /// example.
+        /// Optional. Suggested hints for string fields. You can use them to suggest values to users through console.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stringValues")]
         public virtual System.Collections.Generic.IList<string> StringValues { get; set; }
@@ -13065,10 +13081,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Definition of the constraints of a field</summary>
+    /// <summary>Definition of the constraints of a field.</summary>
     public class GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Marks this as an optional/required field.</summary>
+        /// <summary>Optional. Marks this field as optional or required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("required")]
         public virtual System.Nullable<bool> Required { get; set; }
 
@@ -13076,18 +13092,18 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Definition of Enumvalue (to be used by enum fields)</summary>
+    /// <summary>Definition of Enumvalue, to be used for enum fields.</summary>
     public class GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Optional deprecation message to be set if an enum value needs to be deprecated.</summary>
+        /// <summary>Optional. You can set this message if you need to deprecate an enum value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deprecated")]
         public virtual string Deprecated { get; set; }
 
-        /// <summary>Required. Index for the enum. Cannot be modified.</summary>
+        /// <summary>Required. Index for the enum value. It can't be modified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("index")]
         public virtual System.Nullable<int> Index { get; set; }
 
-        /// <summary>Required. Name of the enumvalue. This is the actual value that the aspect will contain.</summary>
+        /// <summary>Required. Name of the enumvalue. This is the actual value that the aspect can contain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -15640,6 +15656,43 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>A DataScanJob represents an instance of DataScan execution.</summary>
     public class GoogleCloudDataplexV1DataScanJob : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time when the DataScanJob was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
         /// <summary>Output only. The result of the data profile scan.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataProfileResult")]
         public virtual GoogleCloudDataplexV1DataProfileResult DataProfileResult { get; set; }
@@ -16228,8 +16281,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
     public class GoogleCloudDataplexV1Entry : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The Aspects attached to the Entry. The format for the key can be one of the following: 1.
-        /// {projectId}.{locationId}.{aspectTypeId} (if the aspect is attached directly to the entry) 2.
+        /// Optional. The Aspects attached to the Entry. The format for the key can be one of the following:
+        /// {projectId}.{locationId}.{aspectTypeId} (if the aspect is attached directly to the entry)
         /// {projectId}.{locationId}.{aspectTypeId}@{path} (if the aspect is attached to an entry's path)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aspects")]
@@ -16272,7 +16325,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Optional. Source system related information for an entry.</summary>
+        /// <summary>Optional. Information related to the source system for an entry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entrySource")]
         public virtual GoogleCloudDataplexV1EntrySource EntrySource { get; set; }
 
@@ -16388,8 +16441,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// This checksum is computed by the server based on the value of other fields, and may be sent on update and
-        /// delete requests to ensure the client has an up-to-date value before proceeding.
+        /// This checksum is computed by the service, and might be sent on update and delete requests to ensure the
+        /// client has an up-to-date value before proceeding.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
@@ -16406,15 +16459,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Output only. Denotes the transfer status of the Entry Group. It is unspecified for Entry Group created from
-        /// Dataplex API.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("transferStatus")]
-        public virtual string TransferStatus { get; set; }
-
-        /// <summary>
-        /// Output only. System generated globally unique ID for the EntryGroup. This ID will be different if the
-        /// EntryGroup is deleted and re-created with the same name.
+        /// Output only. System generated globally unique ID for the EntryGroup. If you delete and recreate the
+        /// EntryGroup with the same name, this ID will be different.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
@@ -16457,7 +16503,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         }
     }
 
-    /// <summary>EntrySource contains source system related information for the entry.</summary>
+    /// <summary>EntrySource contains information related to the source system of the Entry.</summary>
     public class GoogleCloudDataplexV1EntrySource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Immutable. The ancestors of the Entry in the source system.</summary>
@@ -16514,9 +16560,9 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Output only. Location of the resource in the source system. Entry will be searchable by this location. By
+        /// Output only. Location of the resource in the source system. You can search the Entry by this location. By
         /// default, this should match the location of the EntryGroup containing this entry. A different value allows
-        /// capturing source location for data external to GCP.
+        /// capturing the source location for data external to Google Cloud.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
@@ -16646,8 +16692,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on
-        /// update and delete requests to ensure the client has an up-to-date value before proceeding.
+        /// Optional. This checksum is computed by the service, and might be sent on update and delete requests to
+        /// ensure the client has an up-to-date value before proceeding.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
@@ -16678,7 +16724,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string System { get; set; }
 
         /// <summary>
-        /// Optional. Indicates the class this Entry Type belongs to, for example, TABLE, DATABASE, MODEL.
+        /// Optional. Indicates the classes this Entry Type belongs to, for example, TABLE, DATABASE, MODEL.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("typeAliases")]
         public virtual System.Collections.Generic.IList<string> TypeAliases { get; set; }
@@ -17520,10 +17566,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>List AspectTypes response</summary>
+    /// <summary>List AspectTypes response.</summary>
     public class GoogleCloudDataplexV1ListAspectTypesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>ListAspectTypes under the given parent location.</summary>
+        /// <summary>AspectTypes under the given parent location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aspectTypes")]
         public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1AspectType> AspectTypes { get; set; }
 
@@ -17533,7 +17579,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>Locations that could not be reached.</summary>
+        /// <summary>Locations that the service couldn't reach.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachableLocations")]
         public virtual System.Collections.Generic.IList<string> UnreachableLocations { get; set; }
 
@@ -17693,13 +17739,16 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>List Entries response.</summary>
     public class GoogleCloudDataplexV1ListEntriesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of entries.</summary>
+        /// <summary>The list of entries under the given parent location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
         public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1Entry> Entries { get; set; }
 
-        /// <summary>Pagination token.</summary>
+        /// <summary>
+        /// Token to retrieve the next page of results, or empty if there are no more results in the list.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -17707,10 +17756,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>List ListEntryGroups response.</summary>
+    /// <summary>List entry groups response.</summary>
     public class GoogleCloudDataplexV1ListEntryGroupsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>ListEntryGroups under the given parent location.</summary>
+        /// <summary>Entry groups under the given parent location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entryGroups")]
         public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1EntryGroup> EntryGroups { get; set; }
 
@@ -17720,7 +17769,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>Locations that could not be reached.</summary>
+        /// <summary>Locations that the service couldn't reach.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachableLocations")]
         public virtual System.Collections.Generic.IList<string> UnreachableLocations { get; set; }
 
@@ -17728,10 +17777,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>List EntryTypes response</summary>
+    /// <summary>List EntryTypes response.</summary>
     public class GoogleCloudDataplexV1ListEntryTypesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>ListEntryTypes under the given parent location.</summary>
+        /// <summary>EntryTypes under the given parent location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entryTypes")]
         public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1EntryType> EntryTypes { get; set; }
 
@@ -17741,7 +17790,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>Locations that could not be reached.</summary>
+        /// <summary>Locations that the service couldn't reach.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachableLocations")]
         public virtual System.Collections.Generic.IList<string> UnreachableLocations { get; set; }
 
@@ -18212,7 +18261,9 @@ namespace Google.Apis.CloudDataplex.v1.Data
 
     public class GoogleCloudDataplexV1SearchEntriesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Pagination token.</summary>
+        /// <summary>
+        /// Token to retrieve the next page of results, or empty if there are no more results in the list.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -18220,11 +18271,15 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
         public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1SearchEntriesResult> Results { get; set; }
 
-        /// <summary>The estimated total number of matching entries. Not guaranteed to be accurate.</summary>
+        /// <summary>
+        /// The estimated total number of matching entries. This number isn't guaranteed to be accurate.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
         public virtual System.Nullable<int> TotalSize { get; set; }
 
-        /// <summary>Unreachable locations. Search results don't include data from those locations.</summary>
+        /// <summary>
+        /// Locations that the service couldn't reach. Search results don't include data from these locations.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 

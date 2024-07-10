@@ -7799,25 +7799,6 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaBranchProductCountStatistic> ProductCountStats { get; set; }
 
         /// <summary>
-        /// Output only. The number of products in different groups that this branch has. The key is a group
-        /// representing a set of products, and the value is the number of products in that group. Note: keys in this
-        /// map may change over time. Possible keys: * "primary-in-stock", products have Product.Type.PRIMARY type and
-        /// Product.Availability.IN_STOCK availability. * "primary-out-of-stock", products have Product.Type.PRIMARY
-        /// type and Product.Availability.OUT_OF_STOCK availability. * "primary-preorder", products have
-        /// Product.Type.PRIMARY type and Product.Availability.PREORDER availability. * "primary-backorder", products
-        /// have Product.Type.PRIMARY type and Product.Availability.BACKORDER availability. * "variant-in-stock",
-        /// products have Product.Type.VARIANT type and Product.Availability.IN_STOCK availability. *
-        /// "variant-out-of-stock", products have Product.Type.VARIANT type and Product.Availability.OUT_OF_STOCK
-        /// availability. * "variant-preorder", products have Product.Type.VARIANT type and
-        /// Product.Availability.PREORDER availability. * "variant-backorder", products have Product.Type.VARIANT type
-        /// and Product.Availability.BACKORDER availability. * "price-discounted", products have
-        /// [Product.price_info.price] &amp;lt; [Product.price_info.original_price]. This field is not populated in
-        /// BranchView.BASIC view.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("productCounts")]
-        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<long>> ProductCounts { get; set; }
-
-        /// <summary>
         /// Output only. The quality metrics measured among products of this branch. See QualityMetric.requirement_key
         /// for supported metrics. Metrics could be missing if failed to retrieve. This field is not populated in
         /// BranchView.BASIC view.
@@ -8197,13 +8178,6 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mergedFacetKey")]
         public virtual string MergedFacetKey { get; set; }
 
-        /// <summary>
-        /// Each instance is a list of facet values that map into the same (possibly different) merged facet value. For
-        /// the current attribute config, each facet value should map to at most one merged facet value.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mergedFacetValues")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaCatalogAttributeFacetConfigMergedFacetValue> MergedFacetValues { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -8374,7 +8348,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Recent search of this user.</summary>
+    /// <summary>Deprecated: Recent search of this user.</summary>
     public class GoogleCloudRetailV2alphaCompleteQueryResponseRecentSearchResult : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The recent search query.</summary>

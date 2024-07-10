@@ -5088,7 +5088,7 @@ namespace Google.Apis.BackupforGKE.v1.Data
     {
         /// <summary>
         /// Optional. API group string of a Kubernetes resource, e.g. "apiextensions.k8s.io", "storage.k8s.io", etc.
-        /// Note: use empty string for core API group
+        /// Note: use empty string for core API group.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceGroup")]
         public virtual string ResourceGroup { get; set; }
@@ -5314,10 +5314,10 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A list of Kubernetes Namespaces</summary>
+    /// <summary>A list of Kubernetes Namespaces.</summary>
     public class Namespaces : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. A list of Kubernetes Namespaces</summary>
+        /// <summary>Optional. A list of Kubernetes Namespaces.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespaces")]
         public virtual System.Collections.Generic.IList<string> NamespacesValue { get; set; }
 
@@ -5700,7 +5700,7 @@ namespace Google.Apis.BackupforGKE.v1.Data
 
         /// <summary>
         /// Optional. Immutable. Filters resources for `Restore`. If not specified, the scope of the restore will remain
-        /// the same as defined in the `RestorePlan`. If this is specified, and no resources are matched by the
+        /// the same as defined in the `RestorePlan`. If this is specified and no resources are matched by the
         /// `inclusion_filters` or everyting is excluded by the `exclusion_filters`, nothing will be restored. This
         /// filter can only be specified if the value of namespaced_resource_restore_mode is set to
         /// `MERGE_SKIP_ON_CONFLICT`, `MERGE_REPLACE_VOLUME_ON_CONFLICT` or `MERGE_REPLACE_ON_CONFLICT`.

@@ -8453,6 +8453,87 @@ namespace Google.Apis.VMwareEngine.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Autoscaling policy describes the behavior of the autoscaling with respect to the resource utilization. The
+    /// scale-out operation is initiated if the utilization exceeds ANY of the respective thresholds. The scale-in
+    /// operation is initiated if the utilization is below ALL of the respective thresholds.
+    /// </summary>
+    public class AutoscalingPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Utilization thresholds pertaining to amount of consumed memory.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumedMemoryThresholds")]
+        public virtual Thresholds ConsumedMemoryThresholds { get; set; }
+
+        /// <summary>Optional. Utilization thresholds pertaining to CPU utilization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpuThresholds")]
+        public virtual Thresholds CpuThresholds { get; set; }
+
+        /// <summary>Optional. Utilization thresholds pertaining to amount of granted memory.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("grantedMemoryThresholds")]
+        public virtual Thresholds GrantedMemoryThresholds { get; set; }
+
+        /// <summary>
+        /// Required. The canonical identifier of the node type to add or remove. Corresponds to the `NodeType`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeTypeId")]
+        public virtual string NodeTypeId { get; set; }
+
+        /// <summary>
+        /// Required. Number of nodes to add to a cluster during a scale-out operation. Must be divisible by 2 for
+        /// stretched clusters. During a scale-in operation only one node (or 2 for stretched clusters) are removed in a
+        /// single iteration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scaleOutSize")]
+        public virtual System.Nullable<int> ScaleOutSize { get; set; }
+
+        /// <summary>Optional. Utilization thresholds pertaining to amount of consumed storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageThresholds")]
+        public virtual Thresholds StorageThresholds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Autoscaling settings define the rules used by VMware Engine to automatically scale-out and scale-in the clusters
+    /// in a private cloud.
+    /// </summary>
+    public class AutoscalingSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The map with autoscaling policies applied to the cluster. The key is the identifier of the policy.
+        /// It must meet the following requirements: * Only contains 1-63 alphanumeric characters and hyphens * Begins
+        /// with an alphabetical character * Ends with a non-hyphen character * Not formatted as a UUID * Complies with
+        /// [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5) Currently there map must contain
+        /// only one element that describes the autoscaling policy for compute nodes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoscalingPolicies")]
+        public virtual System.Collections.Generic.IDictionary<string, AutoscalingPolicy> AutoscalingPolicies { get; set; }
+
+        /// <summary>
+        /// Optional. The minimum duration between consecutive autoscale operations. It starts once addition or removal
+        /// of nodes is fully completed. Defaults to 30 minutes if not specified. Cool down period must be in whole
+        /// minutes (for example, 30, 31, 50, 180 minutes).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("coolDownPeriod")]
+        public virtual object CoolDownPeriod { get; set; }
+
+        /// <summary>
+        /// Optional. Maximum number of nodes of any type in a cluster. If not specified the default limits apply.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxClusterNodeCount")]
+        public virtual System.Nullable<int> MaxClusterNodeCount { get; set; }
+
+        /// <summary>
+        /// Optional. Minimum number of nodes of any type in a cluster. If not specified the default limits apply.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minClusterNodeCount")]
+        public virtual System.Nullable<int> MinClusterNodeCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Associates `members`, or principals, with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8529,6 +8610,10 @@ namespace Google.Apis.VMwareEngine.v1.Data
     /// <summary>A cluster in a private cloud.</summary>
     public class Cluster : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Configuration of the autoscaling applied to this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoscalingSettings")]
+        public virtual AutoscalingSettings AutoscalingSettings { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -11363,6 +11448,21 @@ namespace Google.Apis.VMwareEngine.v1.Data
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Thresholds define the utilization of resources triggering scale-out and scale-in operations.</summary>
+    public class Thresholds : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The utilization triggering the scale-in operation in percent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scaleIn")]
+        public virtual System.Nullable<int> ScaleIn { get; set; }
+
+        /// <summary>Required. The utilization triggering the scale-out operation in percent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scaleOut")]
+        public virtual System.Nullable<int> ScaleOut { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -8896,9 +8896,8 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
     public class MTLSPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be
-        /// empty. Defines the mechanism to obtain the Certificate Authority certificate to validate the client
-        /// certificate.
+        /// Required if the policy is to be used with Traffic Director. For Application Load Balancers it must be empty.
+        /// Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientValidationCa")]
         public virtual System.Collections.Generic.IList<ValidationCA> ClientValidationCa { get; set; }
@@ -8906,7 +8905,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         /// <summary>
         /// When the client presents an invalid certificate or no certificate to the load balancer, the
         /// `client_validation_mode` specifies how the client connection is handled. Required if the policy is to be
-        /// used with the external HTTPS load balancing. For Traffic Director it must be empty.
+        /// used with the Application Load Balancers. For Traffic Director it must be empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientValidationMode")]
         public virtual string ClientValidationMode { get; set; }
@@ -8914,7 +8913,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         /// <summary>
         /// Reference to the TrustConfig from certificatemanager.googleapis.com namespace. If specified, the chain
         /// validation will be performed against certificates configured in the given TrustConfig. Allowed only if the
-        /// policy is to be used with external HTTPS load balancers.
+        /// policy is to be used with Application Load Balancers.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientValidationTrustConfig")]
         public virtual string ClientValidationTrustConfig { get; set; }
@@ -9118,7 +9117,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
     }
 
     /// <summary>
-    /// SecurityProfile is a resource that defines the behavior for one of many ProfileTypes. Next ID: 10
+    /// SecurityProfile is a resource that defines the behavior for one of many ProfileTypes. Next ID: 11
     /// </summary>
     public class SecurityProfile : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9228,7 +9227,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
     }
 
     /// <summary>
-    /// SecurityProfileGroup is a resource that defines the behavior for various ProfileTypes. Next ID: 9
+    /// SecurityProfileGroup is a resource that defines the behavior for various ProfileTypes. Next ID: 10
     /// </summary>
     public class SecurityProfileGroup : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9339,16 +9338,16 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
     /// <summary>
     /// ServerTlsPolicy is a resource that specifies how a server should authenticate incoming requests. This resource
     /// itself does not affect configuration unless it is attached to a target HTTPS proxy or endpoint config selector
-    /// resource. ServerTlsPolicy in the form accepted by external HTTPS load balancers can be attached only to
-    /// TargetHttpsProxy with an `EXTERNAL` or `EXTERNAL_MANAGED` load balancing scheme. Traffic Director compatible
-    /// ServerTlsPolicies can be attached to EndpointPolicy and TargetHttpsProxy with Traffic Director
-    /// `INTERNAL_SELF_MANAGED` load balancing scheme.
+    /// resource. ServerTlsPolicy in the form accepted by Application Load Balancers can be attached only to
+    /// TargetHttpsProxy with an `EXTERNAL`, `EXTERNAL_MANAGED` or `INTERNAL_MANAGED` load balancing scheme. Traffic
+    /// Director compatible ServerTlsPolicies can be attached to EndpointPolicy and TargetHttpsProxy with Traffic
+    /// Director `INTERNAL_SELF_MANAGED` load balancing scheme.
     /// </summary>
     public class ServerTlsPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// This field applies only for Traffic Director policies. It is must be set to false for external HTTPS load
-        /// balancer policies. Determines if server allows plaintext connections. If set to true, server allows plain
+        /// This field applies only for Traffic Director policies. It is must be set to false for Application Load
+        /// Balancer policies. Determines if server allows plaintext connections. If set to true, server allows plain
         /// text connections. By default, it is set to false. This setting is not exclusive of other encryption modes.
         /// For example, if `allow_open` and `mtls_policy` are set, server allows both plain text and mTLS connections.
         /// See documentation of other encryption modes to confirm compatibility. Consider using it if you wish to
@@ -9403,7 +9402,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// This field is required if the policy is used with external HTTPS load balancers. This field can be empty for
+        /// This field is required if the policy is used with Application Load Balancers. This field can be empty for
         /// Traffic Director. Defines a mechanism to provision peer validation certificates for peer to peer
         /// authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The
         /// connection is treated as TLS and not mTLS. If `allow_open` and `mtls_policy` are set, server allows both
@@ -9420,7 +9419,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty.
+        /// Optional if policy is to be used with Traffic Director. For Application Load Balancers must be empty.
         /// Defines a mechanism to provision server identity (public and private keys). Cannot be combined with
         /// `allow_open` as a permissive mode that allows both plain text and TLS is not supported.
         /// </summary>

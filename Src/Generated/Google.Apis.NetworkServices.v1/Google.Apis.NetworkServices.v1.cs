@@ -6199,7 +6199,7 @@ namespace Google.Apis.NetworkServices.v1
                 /// <summary>Updates the parameters of a single TlsRoute.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. Name of the TlsRoute resource. It matches pattern
+                /// Identifier. Name of the TlsRoute resource. It matches pattern
                 /// `projects/*/locations/global/tlsRoutes/tls_route_name&amp;gt;`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkServices.v1.Data.TlsRoute body, string name)
@@ -6219,7 +6219,7 @@ namespace Google.Apis.NetworkServices.v1
                     }
 
                     /// <summary>
-                    /// Required. Name of the TlsRoute resource. It matches pattern
+                    /// Identifier. Name of the TlsRoute resource. It matches pattern
                     /// `projects/*/locations/global/tlsRoutes/tls_route_name&amp;gt;`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -9751,7 +9751,7 @@ namespace Google.Apis.NetworkServices.v1.Data
         public virtual System.Collections.Generic.IList<string> Meshes { get; set; }
 
         /// <summary>
-        /// Required. Name of the TlsRoute resource. It matches pattern
+        /// Identifier. Name of the TlsRoute resource. It matches pattern
         /// `projects/*/locations/global/tlsRoutes/tls_route_name&amp;gt;`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]

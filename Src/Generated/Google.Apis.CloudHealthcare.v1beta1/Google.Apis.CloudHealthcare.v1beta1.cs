@@ -4519,9 +4519,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                     /// GetStorageInfo returns the storage info of the specified resource.
                                     /// </summary>
                                     /// <param name="resource">
-                                    /// Required. The path of the resource for which the storage info is requested (for
-                                    /// exaxmple for a DICOM Instance:
-                                    /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreId}/dicomWeb/studies/{study_uid}/series/{series_uid}/instances/{instance_uid}`)
+                                    /// Required. The path of the instance to return storage info for, in the form:
+                                    /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}/series/{seriesUID}/instances/{instanceUID}`
                                     /// </param>
                                     public virtual GetStorageInfoRequest GetStorageInfo(string resource)
                                     {
@@ -4541,9 +4540,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                                         }
 
                                         /// <summary>
-                                        /// Required. The path of the resource for which the storage info is requested
-                                        /// (for exaxmple for a DICOM Instance:
-                                        /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreId}/dicomWeb/studies/{study_uid}/series/{series_uid}/instances/{instance_uid}`)
+                                        /// Required. The path of the instance to return storage info for, in the form:
+                                        /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}/series/{seriesUID}/instances/{instanceUID}`
                                         /// </summary>
                                         [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
                                         public virtual string Resource { get; private set; }
@@ -19681,8 +19679,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual BlobStorageInfo BlobStorageInfo { get; set; }
 
         /// <summary>
-        /// The resource whose storage info is returned. For example, to specify the resource path of a DICOM Instance:
-        /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicom_store_id}/dicomWeb/studi/{study_uid}/series/{series_uid}/instances/{instance_uid}`
+        /// The resource whose storage info is returned. For example:
+        /// `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}/series/{seriesUID}/instances/{instanceUID}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referencedResource")]
         public virtual string ReferencedResource { get; set; }

@@ -1164,6 +1164,13 @@ namespace Google.Apis.AndroidEnterprise.v1
             }
 
             /// <summary>
+            /// Optional. Email address used to prefill the admin field of the enterprise signup form. This value is a
+            /// hint only and can be altered by the user.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("adminEmail", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string AdminEmail { get; set; }
+
+            /// <summary>
             /// The callback URL to which the Admin will be redirected after successfully creating an enterprise. Before
             /// redirecting there the system will add a single query parameter to this URL named "enterpriseToken" which
             /// will contain an opaque token to be used for the CompleteSignup request. Beware that this means that the
@@ -1186,6 +1193,14 @@ namespace Google.Apis.AndroidEnterprise.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
+                RequestParameters.Add("adminEmail", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "adminEmail",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
                 RequestParameters.Add("callbackUrl", new Google.Apis.Discovery.Parameter
                 {
                     Name = "callbackUrl",
