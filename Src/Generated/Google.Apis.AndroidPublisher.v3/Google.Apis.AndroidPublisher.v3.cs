@@ -688,69 +688,6 @@ namespace Google.Apis.AndroidPublisher.v3
         }
 
         /// <summary>
-        /// List all app recovery action resources associated with a particular package name and app version.
-        /// </summary>
-        /// <param name="packageName">
-        /// Required. Package name of the app for which list of recovery actions is requested.
-        /// </param>
-        public virtual AppRecoveriesRequest AppRecoveries(string packageName)
-        {
-            return new AppRecoveriesRequest(this.service, packageName);
-        }
-
-        /// <summary>
-        /// List all app recovery action resources associated with a particular package name and app version.
-        /// </summary>
-        public class AppRecoveriesRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.ListAppRecoveriesResponse>
-        {
-            /// <summary>Constructs a new AppRecoveries request.</summary>
-            public AppRecoveriesRequest(Google.Apis.Services.IClientService service, string packageName) : base(service)
-            {
-                PackageName = packageName;
-                InitParameters();
-            }
-
-            /// <summary>Required. Package name of the app for which list of recovery actions is requested.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string PackageName { get; private set; }
-
-            /// <summary>Required. Version code targeted by the list of recovery actions.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("versionCode", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> VersionCode { get; set; }
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "appRecoveries";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "androidpublisher/v3/applications/{packageName}/appRecoveries";
-
-            /// <summary>Initializes AppRecoveries parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "packageName",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("versionCode", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "versionCode",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            }
-        }
-
-        /// <summary>
         /// Cancel an already executing app recovery action. Note that this action changes status of the recovery action
         /// to CANCELED.
         /// </summary>
@@ -953,6 +890,69 @@ namespace Google.Apis.AndroidPublisher.v3
                     Name = "appRecoveryId",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// List all app recovery action resources associated with a particular package name and app version.
+        /// </summary>
+        /// <param name="packageName">
+        /// Required. Package name of the app for which list of recovery actions is requested.
+        /// </param>
+        public virtual ListRequest List(string packageName)
+        {
+            return new ListRequest(this.service, packageName);
+        }
+
+        /// <summary>
+        /// List all app recovery action resources associated with a particular package name and app version.
+        /// </summary>
+        public class ListRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.ListAppRecoveriesResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string packageName) : base(service)
+            {
+                PackageName = packageName;
+                InitParameters();
+            }
+
+            /// <summary>Required. Package name of the app for which list of recovery actions is requested.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string PackageName { get; private set; }
+
+            /// <summary>Required. Version code targeted by the list of recovery actions.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("versionCode", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> VersionCode { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "androidpublisher/v3/applications/{packageName}/appRecoveries";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "packageName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("versionCode", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "versionCode",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -13370,11 +13370,11 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual ExternalTransactionTestPurchase TestPurchase { get; set; }
 
         /// <summary>
-        /// Optional. The transaction program code, used to help determine service fee for apps partcipating in special
-        /// partner programs. This field can not be used for external offers transactions. Developers participating in
-        /// the Play Media Experience Program (https://play.google.com/console/about/programs/mediaprogram/) must
-        /// provide the program code when reporting alternative billing external transactions. If you are an eligible
-        /// developer, please contact your BDM for more information on how to set this field.
+        /// Optional. The transaction program code, used to help determine service fee for eligible apps participating
+        /// in partner programs. Developers participating in the Play Media Experience Program
+        /// (https://play.google.com/console/about/programs/mediaprogram/) must provide the program code when reporting
+        /// alternative billing transactions. If you are an eligible developer, please contact your BDM for more
+        /// information on how to set this field. Note: this field can not be used for external offers transactions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transactionProgramCode")]
         public virtual System.Nullable<int> TransactionProgramCode { get; set; }

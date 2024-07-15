@@ -3281,6 +3281,10 @@ namespace Google.Apis.CloudBuild.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("arrayVal")]
         public virtual System.Collections.Generic.IList<string> ArrayVal { get; set; }
 
+        /// <summary>Optional. Value of the parameter if type is object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectVal")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ObjectVal { get; set; }
+
         /// <summary>Value of the parameter if type is string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stringVal")]
         public virtual string StringVal { get; set; }

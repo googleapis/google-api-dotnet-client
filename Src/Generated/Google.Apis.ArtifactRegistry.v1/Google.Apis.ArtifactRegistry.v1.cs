@@ -6610,6 +6610,13 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The metadata for promote artifact long running operation.</summary>
+    public class PromoteArtifactMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>PythonPackage represents a python artifact.</summary>
     public class PythonPackage : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7118,8 +7125,8 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
 
         /// <summary>
         /// The ID of the package of the generic artifact. If the package does not exist, a new package will be created.
-        /// The `package_id` must start with a letter, end with a letter or number, only contain letters, numbers,
-        /// hyphens and periods i.e. [a-z0-9-.], and cannot exceed 256 characters.
+        /// The `package_id` should start and end with a letter or number, only contain letters, numbers, hyphens,
+        /// underscores, and periods, and not exceed 256 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packageId")]
         public virtual string PackageId { get; set; }

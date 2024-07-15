@@ -975,7 +975,7 @@ namespace Google.Apis.BigtableAdmin.v2
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. The name of the destination cluster that will contain the backup copy. The cluster
-                    /// must already exists. Values are of the form:
+                    /// must already exist. Values are of the form:
                     /// `projects/{project}/instances/{instance}/clusters/{cluster}`.
                     /// </param>
                     public virtual CopyRequest Copy(Google.Apis.BigtableAdmin.v2.Data.CopyBackupRequest body, string parent)
@@ -999,7 +999,7 @@ namespace Google.Apis.BigtableAdmin.v2
 
                         /// <summary>
                         /// Required. The name of the destination cluster that will contain the backup copy. The cluster
-                        /// must already exists. Values are of the form:
+                        /// must already exist. Values are of the form:
                         /// `projects/{project}/instances/{instance}/clusters/{cluster}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -6162,12 +6162,24 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     /// </summary>
     public class GoogleBigtableAdminV2TypeAggregate : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>HyperLogLogPlusPlusUniqueCount aggregator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hllppUniqueCount")]
+        public virtual GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount HllppUniqueCount { get; set; }
+
         /// <summary>
         /// Type of the inputs that are accumulated by this `Aggregate`, which must specify a full encoding. Use
         /// `AddInput` mutations to accumulate new inputs.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputType")]
         public virtual Type InputType { get; set; }
+
+        /// <summary>Max aggregator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("max")]
+        public virtual GoogleBigtableAdminV2TypeAggregateMax Max { get; set; }
+
+        /// <summary>Min aggregator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("min")]
+        public virtual GoogleBigtableAdminV2TypeAggregateMin Min { get; set; }
 
         /// <summary>
         /// Output only. Type that holds the internal accumulator state for the `Aggregate`. This is a function of the
@@ -6184,8 +6196,54 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Computes an approximate unique count over the input values. When using raw data as input, be careful to use a
+    /// consistent encoding. Otherwise the same value encoded differently could count more than once, or two distinct
+    /// values could count as identical. Input: Any, or omit for Raw State: TBD Special state conversions: `Int64` (the
+    /// unique count estimate)
+    /// </summary>
+    public class GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Computes the max of the input values. Allowed input: `Int64` State: same as input</summary>
+    public class GoogleBigtableAdminV2TypeAggregateMax : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Computes the min of the input values. Allowed input: `Int64` State: same as input</summary>
+    public class GoogleBigtableAdminV2TypeAggregateMin : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Computes the sum of the input values. Allowed input: `Int64` State: same as input</summary>
     public class GoogleBigtableAdminV2TypeAggregateSum : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An ordered list of elements of a given type. Values of type `Array` are stored in `Value.array_value`.
+    /// </summary>
+    public class GoogleBigtableAdminV2TypeArray : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of the elements in the array. This must not be `Array`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("elementType")]
+        public virtual Type ElementType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>bool Values of type `Bool` are stored in `Value.bool_value`.</summary>
+    public class GoogleBigtableAdminV2TypeBool : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6215,6 +6273,27 @@ namespace Google.Apis.BigtableAdmin.v2.Data
 
     /// <summary>Leaves the value "as-is" * Order-preserving? Yes * Self-delimiting? No * Compatibility? N/A</summary>
     public class GoogleBigtableAdminV2TypeBytesEncodingRaw : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Date Values of type `Date` are stored in `Value.date_value`.</summary>
+    public class GoogleBigtableAdminV2TypeDate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Float32 Values of type `Float32` are stored in `Value.float_value`.</summary>
+    public class GoogleBigtableAdminV2TypeFloat32 : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Float64 Values of type `Float64` are stored in `Value.float_value`.</summary>
+    public class GoogleBigtableAdminV2TypeFloat64 : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6253,6 +6332,97 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bytesType")]
         public virtual GoogleBigtableAdminV2TypeBytes BytesType { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A mapping of keys to values of a given type. Values of type `Map` are stored in a `Value.array_value` where each
+    /// entry is another `Value.array_value` with two elements (the key and the value, in that order). Normally encoded
+    /// Map values won't have repeated keys, however, clients are expected to handle the case in which they do. If the
+    /// same key appears multiple times, the _last_ value takes precedence.
+    /// </summary>
+    public class GoogleBigtableAdminV2TypeMap : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of a map key. Only `Bytes`, `String`, and `Int64` are allowed as key types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyType")]
+        public virtual Type KeyType { get; set; }
+
+        /// <summary>The type of the values in a map.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueType")]
+        public virtual Type ValueType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>String Values of type `String` are stored in `Value.string_value`.</summary>
+    public class GoogleBigtableAdminV2TypeString : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The encoding to use when converting to/from lower level types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encoding")]
+        public virtual GoogleBigtableAdminV2TypeStringEncoding Encoding { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Rules used to convert to/from lower level types.</summary>
+    public class GoogleBigtableAdminV2TypeStringEncoding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Use `Utf8Bytes` encoding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("utf8Bytes")]
+        public virtual GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes Utf8Bytes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// UTF-8 encoding * Order-preserving? Yes (code point order) * Self-delimiting? No * Compatibility? - BigQuery
+    /// Federation `TEXT` encoding - HBase `Bytes.toBytes` - Java `String#getBytes(StandardCharsets.UTF_8)`
+    /// </summary>
+    public class GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A structured data value, consisting of fields which map to dynamically typed values. Values of type `Struct` are
+    /// stored in `Value.array_value` where entries are in the same order and number as `field_types`.
+    /// </summary>
+    public class GoogleBigtableAdminV2TypeStruct : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The names and types of the fields in this struct.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual System.Collections.Generic.IList<GoogleBigtableAdminV2TypeStructField> Fields { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A struct field and its type.</summary>
+    public class GoogleBigtableAdminV2TypeStructField : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The field name (optional). Fields without a `field_name` are considered anonymous and cannot be referenced
+        /// by name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldName")]
+        public virtual string FieldName { get; set; }
+
+        /// <summary>The type of values in this field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual Type Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Timestamp Values of type `Timestamp` are stored in `Value.timestamp_value`.</summary>
+    public class GoogleBigtableAdminV2TypeTimestamp : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7456,13 +7626,49 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("aggregateType")]
         public virtual GoogleBigtableAdminV2TypeAggregate AggregateType { get; set; }
 
+        /// <summary>Array</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("arrayType")]
+        public virtual GoogleBigtableAdminV2TypeArray ArrayType { get; set; }
+
+        /// <summary>Bool</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boolType")]
+        public virtual GoogleBigtableAdminV2TypeBool BoolType { get; set; }
+
         /// <summary>Bytes</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bytesType")]
         public virtual GoogleBigtableAdminV2TypeBytes BytesType { get; set; }
 
+        /// <summary>Date</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dateType")]
+        public virtual GoogleBigtableAdminV2TypeDate DateType { get; set; }
+
+        /// <summary>Float32</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("float32Type")]
+        public virtual GoogleBigtableAdminV2TypeFloat32 Float32Type { get; set; }
+
+        /// <summary>Float64</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("float64Type")]
+        public virtual GoogleBigtableAdminV2TypeFloat64 Float64Type { get; set; }
+
         /// <summary>Int64</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("int64Type")]
         public virtual GoogleBigtableAdminV2TypeInt64 Int64Type { get; set; }
+
+        /// <summary>Map</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mapType")]
+        public virtual GoogleBigtableAdminV2TypeMap MapType { get; set; }
+
+        /// <summary>String</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringType")]
+        public virtual GoogleBigtableAdminV2TypeString StringType { get; set; }
+
+        /// <summary>Struct</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structType")]
+        public virtual GoogleBigtableAdminV2TypeStruct StructType { get; set; }
+
+        /// <summary>Timestamp</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestampType")]
+        public virtual GoogleBigtableAdminV2TypeTimestamp TimestampType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -3955,9 +3955,7 @@ namespace Google.Apis.CloudRun.v2.Data
     /// <summary>Represents a volume backed by a Cloud Storage bucket using Cloud Storage FUSE.</summary>
     public class GoogleCloudRunV2GCSVolumeSource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Cloud Storage Bucket name. TODO (b/344678062) Fix the error validation once dynamic mounting is public.
-        /// </summary>
+        /// <summary>Cloud Storage Bucket name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
         public virtual string Bucket { get; set; }
 
@@ -7040,8 +7038,8 @@ namespace Google.Apis.CloudRun.v2.Data
     {
         /// <summary>
         /// SecretVersion resource of the HTTP proxy URL. The Service Account used in the build (either the default
-        /// Service Account or user-specified Service Account) should have secretmanager.versions.access permissions on
-        /// this secret. The proxy URL should be in format protocol://@]proxyhost[:port].
+        /// Service Account or user-specified Service Account) should have `secretmanager.versions.access` permissions
+        /// on this secret. The proxy URL should be in format `protocol://@]proxyhost[:port]`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proxySecretVersionName")]
         public virtual string ProxySecretVersionName { get; set; }

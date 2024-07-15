@@ -2826,6 +2826,19 @@ namespace Google.Apis.Logging.v2
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
+                    /// Optional. Specifies the type ("Logging" or "OpsAnalytics") and the visibility (PRIVATE or
+                    /// SHARED) of the saved queries to list. If provided, the filter must contain either the type
+                    /// function or a visibility token, or both. If both are chosen, they can be placed in any order,
+                    /// but they must be joined by the AND operator or the empty character.The two supported type
+                    /// function calls are: type("Logging") type("OpsAnalytics")The two supported visibility tokens are:
+                    /// visibility = PRIVATE visibility = SHAREDFor example:type("Logging") AND visibility = PRIVATE
+                    /// visibility=SHARED type("OpsAnalytics") type("OpsAnalytics)" visibility = PRIVATE visibility =
+                    /// SHARED
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
                     /// Optional. The maximum number of results to return from this request.Non-positive values are
                     /// ignored. The presence of nextPageToken in the response indicates that more results might be
                     /// available.
@@ -2861,6 +2874,14 @@ namespace Google.Apis.Logging.v2
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^billingAccounts/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                         {
@@ -7283,6 +7304,19 @@ namespace Google.Apis.Logging.v2
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
+                    /// Optional. Specifies the type ("Logging" or "OpsAnalytics") and the visibility (PRIVATE or
+                    /// SHARED) of the saved queries to list. If provided, the filter must contain either the type
+                    /// function or a visibility token, or both. If both are chosen, they can be placed in any order,
+                    /// but they must be joined by the AND operator or the empty character.The two supported type
+                    /// function calls are: type("Logging") type("OpsAnalytics")The two supported visibility tokens are:
+                    /// visibility = PRIVATE visibility = SHAREDFor example:type("Logging") AND visibility = PRIVATE
+                    /// visibility=SHARED type("OpsAnalytics") type("OpsAnalytics)" visibility = PRIVATE visibility =
+                    /// SHARED
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
                     /// Optional. The maximum number of results to return from this request.Non-positive values are
                     /// ignored. The presence of nextPageToken in the response indicates that more results might be
                     /// available.
@@ -7318,6 +7352,14 @@ namespace Google.Apis.Logging.v2
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^folders/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                         {
@@ -8495,8 +8537,8 @@ namespace Google.Apis.Logging.v2
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
-        /// Required. The resource name for the settings to update. "organizations/[ORGANIZATION_ID]/settings" For
-        /// example:"organizations/12345/settings"
+        /// Required. The resource name for the settings to update. "organizations/[ORGANIZATION_ID]/settings"
+        /// "folders/[FOLDER_ID]/settings" For example:"organizations/12345/settings"
         /// </param>
         public virtual UpdateSettingsRequest UpdateSettings(Google.Apis.Logging.v2.Data.Settings body, string name)
         {
@@ -8523,8 +8565,8 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Required. The resource name for the settings to update. "organizations/[ORGANIZATION_ID]/settings" For
-            /// example:"organizations/12345/settings"
+            /// Required. The resource name for the settings to update. "organizations/[ORGANIZATION_ID]/settings"
+            /// "folders/[FOLDER_ID]/settings" For example:"organizations/12345/settings"
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -13449,6 +13491,19 @@ namespace Google.Apis.Logging.v2
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
+                    /// Optional. Specifies the type ("Logging" or "OpsAnalytics") and the visibility (PRIVATE or
+                    /// SHARED) of the saved queries to list. If provided, the filter must contain either the type
+                    /// function or a visibility token, or both. If both are chosen, they can be placed in any order,
+                    /// but they must be joined by the AND operator or the empty character.The two supported type
+                    /// function calls are: type("Logging") type("OpsAnalytics")The two supported visibility tokens are:
+                    /// visibility = PRIVATE visibility = SHAREDFor example:type("Logging") AND visibility = PRIVATE
+                    /// visibility=SHARED type("OpsAnalytics") type("OpsAnalytics)" visibility = PRIVATE visibility =
+                    /// SHARED
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
                     /// Optional. The maximum number of results to return from this request.Non-positive values are
                     /// ignored. The presence of nextPageToken in the response indicates that more results might be
                     /// available.
@@ -13484,6 +13539,14 @@ namespace Google.Apis.Logging.v2
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^organizations/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                         {
@@ -14758,8 +14821,8 @@ namespace Google.Apis.Logging.v2
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
-        /// Required. The resource name for the settings to update. "organizations/[ORGANIZATION_ID]/settings" For
-        /// example:"organizations/12345/settings"
+        /// Required. The resource name for the settings to update. "organizations/[ORGANIZATION_ID]/settings"
+        /// "folders/[FOLDER_ID]/settings" For example:"organizations/12345/settings"
         /// </param>
         public virtual UpdateSettingsRequest UpdateSettings(Google.Apis.Logging.v2.Data.Settings body, string name)
         {
@@ -14786,8 +14849,8 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Required. The resource name for the settings to update. "organizations/[ORGANIZATION_ID]/settings" For
-            /// example:"organizations/12345/settings"
+            /// Required. The resource name for the settings to update. "organizations/[ORGANIZATION_ID]/settings"
+            /// "folders/[FOLDER_ID]/settings" For example:"organizations/12345/settings"
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -17538,6 +17601,19 @@ namespace Google.Apis.Logging.v2
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
+                    /// Optional. Specifies the type ("Logging" or "OpsAnalytics") and the visibility (PRIVATE or
+                    /// SHARED) of the saved queries to list. If provided, the filter must contain either the type
+                    /// function or a visibility token, or both. If both are chosen, they can be placed in any order,
+                    /// but they must be joined by the AND operator or the empty character.The two supported type
+                    /// function calls are: type("Logging") type("OpsAnalytics")The two supported visibility tokens are:
+                    /// visibility = PRIVATE visibility = SHAREDFor example:type("Logging") AND visibility = PRIVATE
+                    /// visibility=SHARED type("OpsAnalytics") type("OpsAnalytics)" visibility = PRIVATE visibility =
+                    /// SHARED
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
                     /// Optional. The maximum number of results to return from this request.Non-positive values are
                     /// ignored. The presence of nextPageToken in the response indicates that more results might be
                     /// available.
@@ -17573,6 +17649,14 @@ namespace Google.Apis.Logging.v2
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                         {
@@ -19771,8 +19855,8 @@ namespace Google.Apis.Logging.v2
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
-        /// Required. The resource name for the settings to update. "organizations/[ORGANIZATION_ID]/settings" For
-        /// example:"organizations/12345/settings"
+        /// Required. The resource name for the settings to update. "organizations/[ORGANIZATION_ID]/settings"
+        /// "folders/[FOLDER_ID]/settings" For example:"organizations/12345/settings"
         /// </param>
         public virtual UpdateSettingsRequest UpdateSettings(Google.Apis.Logging.v2.Data.Settings body, string name)
         {
@@ -19799,8 +19883,8 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Required. The resource name for the settings to update. "organizations/[ORGANIZATION_ID]/settings" For
-            /// example:"organizations/12345/settings"
+            /// Required. The resource name for the settings to update. "organizations/[ORGANIZATION_ID]/settings"
+            /// "folders/[FOLDER_ID]/settings" For example:"organizations/12345/settings"
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }

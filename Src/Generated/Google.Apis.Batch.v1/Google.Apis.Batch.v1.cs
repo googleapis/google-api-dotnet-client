@@ -3136,7 +3136,7 @@ namespace Google.Apis.Batch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Status event</summary>
+    /// <summary>Status event.</summary>
     public class StatusEvent : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Description of the event.</summary>
@@ -3180,11 +3180,13 @@ namespace Google.Apis.Batch.v1.Data
             set => EventTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Task Execution</summary>
+        /// <summary>
+        /// Task Execution. This field is only defined for task-level status events where the task fails.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taskExecution")]
         public virtual TaskExecution TaskExecution { get; set; }
 
-        /// <summary>Task State</summary>
+        /// <summary>Task State. This field is only defined for task-level status events.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taskState")]
         public virtual string TaskState { get; set; }
 
@@ -3386,10 +3388,10 @@ namespace Google.Apis.Batch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Status of a task</summary>
+    /// <summary>Status of a task.</summary>
     public class TaskStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Task state</summary>
+        /// <summary>Task state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 

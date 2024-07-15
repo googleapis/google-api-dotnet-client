@@ -1520,7 +1520,8 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
 
         /// <summary>
         /// Sources that this EgressPolicy authorizes access from. If this field is not empty, then `source_restriction`
-        /// must be set to `SOURCE_RESTRICTION_ENABLED`.
+        /// must be set to `SOURCE_RESTRICTION_ENABLED`. TODO (b/332744441): annotate this field with
+        /// custom_org_policy_accessibility when cl/640698580 will be rolled out.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sources")]
         public virtual System.Collections.Generic.IList<GoogleIdentityAccesscontextmanagerV1EgressSource> Sources { get; set; }
@@ -1567,7 +1568,8 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         /// Referencing a nonexistent AccessLevel will cause an error. If an AccessLevel name is not specified, only
         /// resources within the perimeter can be accessed through Google Cloud calls with request origins within the
         /// perimeter. Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If a single `*` is specified for
-        /// `access_level`, then all EgressSources will be allowed.
+        /// `access_level`, then all EgressSources will be allowed. TODO (b/332744441): annotate this field with
+        /// custom_org_policy_accessibility when cl/640698580 will be rolled out.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessLevel")]
         public virtual string AccessLevel { get; set; }
@@ -1919,7 +1921,10 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
     /// <summary>The originating network source in Google Cloud.</summary>
     public class GoogleIdentityAccesscontextmanagerV1VpcNetworkSource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Sub-segment ranges of a VPC network.</summary>
+        /// <summary>
+        /// Sub-segment ranges of a VPC network. TODO (b/332744441): annotate this field with
+        /// custom_org_policy_accessibility when cl/640698580 will be rolled out.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpcSubnetwork")]
         public virtual GoogleIdentityAccesscontextmanagerV1VpcSubNetwork VpcSubnetwork { get; set; }
 

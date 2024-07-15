@@ -4568,7 +4568,7 @@ namespace Google.Apis.Monitoring.v3
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// The full REST resource name for this channel. The format is:
+            /// Identifier. The full REST resource name for this channel. The format is:
             /// projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] The [CHANNEL_ID] is automatically
             /// assigned by the server on creation.
             /// </param>
@@ -4594,7 +4594,7 @@ namespace Google.Apis.Monitoring.v3
                 }
 
                 /// <summary>
-                /// The full REST resource name for this channel. The format is:
+                /// Identifier. The full REST resource name for this channel. The format is:
                 /// projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] The [CHANNEL_ID] is automatically
                 /// assigned by the server on creation.
                 /// </summary>
@@ -10275,7 +10275,7 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual System.Collections.Generic.IList<MutationRecord> MutationRecords { get; set; }
 
         /// <summary>
-        /// The full REST resource name for this channel. The format is:
+        /// Identifier. The full REST resource name for this channel. The format is:
         /// projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] The [CHANNEL_ID] is automatically assigned
         /// by the server on creation.
         /// </summary>

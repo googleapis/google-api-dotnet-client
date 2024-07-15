@@ -273,6 +273,9 @@ namespace Google.Apis.Merchant.accounts_v1beta
         {
             this.service = service;
             Accounttax = new AccounttaxResource(service);
+            BusinessIdentity = new BusinessIdentityResource(service);
+            BusinessInfo = new BusinessInfoResource(service);
+            Emailpreferences = new EmailpreferencesResource(service);
             Homepage = new HomepageResource(service);
             Issues = new IssuesResource(service);
             OnlineReturnPolicies = new OnlineReturnPoliciesResource(service);
@@ -494,6 +497,440 @@ namespace Google.Apis.Merchant.accounts_v1beta
             }
         }
 
+        /// <summary>Gets the BusinessIdentity resource.</summary>
+        public virtual BusinessIdentityResource BusinessIdentity { get; }
+
+        /// <summary>The "businessIdentity" collection of methods.</summary>
+        public class BusinessIdentityResource
+        {
+            private const string Resource = "businessIdentity";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public BusinessIdentityResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Retrieves the business identity of an account.</summary>
+            /// <param name="name">
+            /// Required. The resource name of the business identity. Format: `accounts/{account}/businessIdentity`
+            /// </param>
+            public virtual GetBusinessIdentityRequest GetBusinessIdentity(string name)
+            {
+                return new GetBusinessIdentityRequest(this.service, name);
+            }
+
+            /// <summary>Retrieves the business identity of an account.</summary>
+            public class GetBusinessIdentityRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.BusinessIdentity>
+            {
+                /// <summary>Constructs a new GetBusinessIdentity request.</summary>
+                public GetBusinessIdentityRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The resource name of the business identity. Format: `accounts/{account}/businessIdentity`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getBusinessIdentity";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+name}";
+
+                /// <summary>Initializes GetBusinessIdentity parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/businessIdentity$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Updates the business identity of an account. Executing this method requires admin access.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Identifier. The resource name of the business identity. Format: `accounts/{account}/businessIdentity`
+            /// </param>
+            public virtual UpdateBusinessIdentityRequest UpdateBusinessIdentity(Google.Apis.Merchant.accounts_v1beta.Data.BusinessIdentity body, string name)
+            {
+                return new UpdateBusinessIdentityRequest(this.service, body, name);
+            }
+
+            /// <summary>
+            /// Updates the business identity of an account. Executing this method requires admin access.
+            /// </summary>
+            public class UpdateBusinessIdentityRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.BusinessIdentity>
+            {
+                /// <summary>Constructs a new UpdateBusinessIdentity request.</summary>
+                public UpdateBusinessIdentityRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1beta.Data.BusinessIdentity body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Identifier. The resource name of the business identity. Format:
+                /// `accounts/{account}/businessIdentity`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Required. List of fields being updated.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Merchant.accounts_v1beta.Data.BusinessIdentity Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "updateBusinessIdentity";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+name}";
+
+                /// <summary>Initializes UpdateBusinessIdentity parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/businessIdentity$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the BusinessInfo resource.</summary>
+        public virtual BusinessInfoResource BusinessInfo { get; }
+
+        /// <summary>The "businessInfo" collection of methods.</summary>
+        public class BusinessInfoResource
+        {
+            private const string Resource = "businessInfo";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public BusinessInfoResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Retrieves the business info of an account.</summary>
+            /// <param name="name">
+            /// Required. The resource name of the business info. Format: `accounts/{account}/businessInfo`
+            /// </param>
+            public virtual GetBusinessInfoRequest GetBusinessInfo(string name)
+            {
+                return new GetBusinessInfoRequest(this.service, name);
+            }
+
+            /// <summary>Retrieves the business info of an account.</summary>
+            public class GetBusinessInfoRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.BusinessInfo>
+            {
+                /// <summary>Constructs a new GetBusinessInfo request.</summary>
+                public GetBusinessInfoRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The resource name of the business info. Format: `accounts/{account}/businessInfo`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getBusinessInfo";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+name}";
+
+                /// <summary>Initializes GetBusinessInfo parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/businessInfo$",
+                    });
+                }
+            }
+
+            /// <summary>Updates the business info of an account. Executing this method requires admin access.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Identifier. The resource name of the business info. Format: `accounts/{account}/businessInfo`
+            /// </param>
+            public virtual UpdateBusinessInfoRequest UpdateBusinessInfo(Google.Apis.Merchant.accounts_v1beta.Data.BusinessInfo body, string name)
+            {
+                return new UpdateBusinessInfoRequest(this.service, body, name);
+            }
+
+            /// <summary>Updates the business info of an account. Executing this method requires admin access.</summary>
+            public class UpdateBusinessInfoRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.BusinessInfo>
+            {
+                /// <summary>Constructs a new UpdateBusinessInfo request.</summary>
+                public UpdateBusinessInfoRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1beta.Data.BusinessInfo body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Identifier. The resource name of the business info. Format: `accounts/{account}/businessInfo`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Required. List of fields being updated.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Merchant.accounts_v1beta.Data.BusinessInfo Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "updateBusinessInfo";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+name}";
+
+                /// <summary>Initializes UpdateBusinessInfo parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/businessInfo$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the Emailpreferences resource.</summary>
+        public virtual EmailpreferencesResource Emailpreferences { get; }
+
+        /// <summary>The "emailpreferences" collection of methods.</summary>
+        public class EmailpreferencesResource
+        {
+            private const string Resource = "emailpreferences";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public EmailpreferencesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Returns the email preferences for a Merchant Center account user. Use the
+            /// name=accounts/*/users/me/emailPreferences alias to get preferences for the authenticated user.
+            /// </summary>
+            /// <param name="name">
+            /// Required. The name of the `EmailPreferences` resource. Format:
+            /// `accounts/{account}/users/{email}/emailPreferences`
+            /// </param>
+            public virtual GetEmailPreferencesRequest GetEmailPreferences(string name)
+            {
+                return new GetEmailPreferencesRequest(this.service, name);
+            }
+
+            /// <summary>
+            /// Returns the email preferences for a Merchant Center account user. Use the
+            /// name=accounts/*/users/me/emailPreferences alias to get preferences for the authenticated user.
+            /// </summary>
+            public class GetEmailPreferencesRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.EmailPreferences>
+            {
+                /// <summary>Constructs a new GetEmailPreferences request.</summary>
+                public GetEmailPreferencesRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the `EmailPreferences` resource. Format:
+                /// `accounts/{account}/users/{email}/emailPreferences`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getEmailPreferences";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+name}";
+
+                /// <summary>Initializes GetEmailPreferences parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/users/[^/]+/emailPreferences$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Updates the email preferences for a Merchant Center account user. MCA users should specify the MCA
+            /// account rather than a sub-account of the MCA. Preferences which are not explicitly selected in the
+            /// update mask will not be updated. It is invalid for updates to specify an UNCONFIRMED opt-in status
+            /// value. Use the name=accounts/*/users/me/emailPreferences alias to update preferences for the
+            /// authenticated user.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Identifier. The name of the EmailPreferences. The endpoint is only supported for the authenticated user.
+            /// </param>
+            public virtual UpdateEmailPreferencesRequest UpdateEmailPreferences(Google.Apis.Merchant.accounts_v1beta.Data.EmailPreferences body, string name)
+            {
+                return new UpdateEmailPreferencesRequest(this.service, body, name);
+            }
+
+            /// <summary>
+            /// Updates the email preferences for a Merchant Center account user. MCA users should specify the MCA
+            /// account rather than a sub-account of the MCA. Preferences which are not explicitly selected in the
+            /// update mask will not be updated. It is invalid for updates to specify an UNCONFIRMED opt-in status
+            /// value. Use the name=accounts/*/users/me/emailPreferences alias to update preferences for the
+            /// authenticated user.
+            /// </summary>
+            public class UpdateEmailPreferencesRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.EmailPreferences>
+            {
+                /// <summary>Constructs a new UpdateEmailPreferences request.</summary>
+                public UpdateEmailPreferencesRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1beta.Data.EmailPreferences body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Identifier. The name of the EmailPreferences. The endpoint is only supported for the authenticated
+                /// user.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Required. List of fields being updated.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Merchant.accounts_v1beta.Data.EmailPreferences Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "updateEmailPreferences";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+name}";
+
+                /// <summary>Initializes UpdateEmailPreferences parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/users/[^/]+/emailPreferences$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
         /// <summary>Gets the Homepage resource.</summary>
         public virtual HomepageResource Homepage { get; }
 
@@ -584,6 +1021,55 @@ namespace Google.Apis.Merchant.accounts_v1beta
                 }
             }
 
+            /// <summary>Retrieves a store's homepage.</summary>
+            /// <param name="name">
+            /// Required. The name of the homepage to retrieve. Format: `accounts/{account}/homepage`
+            /// </param>
+            public virtual GetHomepageRequest GetHomepage(string name)
+            {
+                return new GetHomepageRequest(this.service, name);
+            }
+
+            /// <summary>Retrieves a store's homepage.</summary>
+            public class GetHomepageRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.Homepage>
+            {
+                /// <summary>Constructs a new GetHomepage request.</summary>
+                public GetHomepageRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the homepage to retrieve. Format: `accounts/{account}/homepage`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getHomepage";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+name}";
+
+                /// <summary>Initializes GetHomepage parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/homepage$",
+                    });
+                }
+            }
+
             /// <summary>Unclaims a store's homepage. Executing this method requires admin access.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -637,6 +1123,75 @@ namespace Google.Apis.Merchant.accounts_v1beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^accounts/[^/]+/homepage$",
+                    });
+                }
+            }
+
+            /// <summary>Updates a store's homepage. Executing this method requires admin access.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Identifier. The resource name of the store's homepage. Format: `accounts/{account}/homepage`
+            /// </param>
+            public virtual UpdateHomepageRequest UpdateHomepage(Google.Apis.Merchant.accounts_v1beta.Data.Homepage body, string name)
+            {
+                return new UpdateHomepageRequest(this.service, body, name);
+            }
+
+            /// <summary>Updates a store's homepage. Executing this method requires admin access.</summary>
+            public class UpdateHomepageRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.Homepage>
+            {
+                /// <summary>Constructs a new UpdateHomepage request.</summary>
+                public UpdateHomepageRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1beta.Data.Homepage body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Identifier. The resource name of the store's homepage. Format: `accounts/{account}/homepage`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Required. List of fields being updated.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Merchant.accounts_v1beta.Data.Homepage Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "updateHomepage";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+name}";
+
+                /// <summary>Initializes UpdateHomepage parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/homepage$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -1576,6 +2131,55 @@ namespace Google.Apis.Merchant.accounts_v1beta
                 this.service = service;
             }
 
+            /// <summary>Retrieve shipping setting information.</summary>
+            /// <param name="name">
+            /// Required. The name of the shipping setting to retrieve. Format: `accounts/{account}/shippingsetting`
+            /// </param>
+            public virtual GetShippingSettingsRequest GetShippingSettings(string name)
+            {
+                return new GetShippingSettingsRequest(this.service, name);
+            }
+
+            /// <summary>Retrieve shipping setting information.</summary>
+            public class GetShippingSettingsRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.ShippingSettings>
+            {
+                /// <summary>Constructs a new GetShippingSettings request.</summary>
+                public GetShippingSettingsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the shipping setting to retrieve. Format: `accounts/{account}/shippingsetting`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getShippingSettings";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "accounts/v1beta/{+name}";
+
+                /// <summary>Initializes GetShippingSettings parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/shippingSettings$",
+                    });
+                }
+            }
+
             /// <summary>
             /// Replace the shipping setting of a merchant with the request shipping setting. Executing this method
             /// requires admin access.
@@ -1952,63 +2556,6 @@ namespace Google.Apis.Merchant.accounts_v1beta
                 }
             }
 
-            /// <summary>
-            /// Returns the email preferences for a Merchant Center account user. Use the
-            /// name=accounts/*/users/me/emailPreferences alias to get preferences for the authenticated user.
-            /// </summary>
-            /// <param name="name">
-            /// Required. The name of the `EmailPreferences` resource. Format:
-            /// `accounts/{account}/users/{email}/emailPreferences`
-            /// </param>
-            public virtual GetEmailPreferencesRequest GetEmailPreferences(string name)
-            {
-                return new GetEmailPreferencesRequest(this.service, name);
-            }
-
-            /// <summary>
-            /// Returns the email preferences for a Merchant Center account user. Use the
-            /// name=accounts/*/users/me/emailPreferences alias to get preferences for the authenticated user.
-            /// </summary>
-            public class GetEmailPreferencesRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.EmailPreferences>
-            {
-                /// <summary>Constructs a new GetEmailPreferences request.</summary>
-                public GetEmailPreferencesRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                {
-                    Name = name;
-                    InitParameters();
-                }
-
-                /// <summary>
-                /// Required. The name of the `EmailPreferences` resource. Format:
-                /// `accounts/{account}/users/{email}/emailPreferences`
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Name { get; private set; }
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "getEmailPreferences";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "GET";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "accounts/v1beta/{+name}";
-
-                /// <summary>Initializes GetEmailPreferences parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^accounts/[^/]+/users/[^/]+/emailPreferences$",
-                    });
-                }
-            }
-
             /// <summary>Lists all users of a Merchant Center account.</summary>
             /// <param name="parent">
             /// Required. The parent, which owns this collection of users. Format: `accounts/{account}`
@@ -2149,88 +2696,6 @@ namespace Google.Apis.Merchant.accounts_v1beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^accounts/[^/]+/users/[^/]+$",
-                    });
-                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "updateMask",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                }
-            }
-
-            /// <summary>
-            /// Updates the email preferences for a Merchant Center account user. MCA users should specify the MCA
-            /// account rather than a sub-account of the MCA. Preferences which are not explicitly selected in the
-            /// update mask will not be updated. It is invalid for updates to specify an UNCONFIRMED opt-in status
-            /// value. Use the name=accounts/*/users/me/emailPreferences alias to update preferences for the
-            /// authenticated user.
-            /// </summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="name">
-            /// Identifier. The name of the EmailPreferences. The endpoint is only supported for the authenticated user.
-            /// </param>
-            public virtual UpdateEmailPreferencesRequest UpdateEmailPreferences(Google.Apis.Merchant.accounts_v1beta.Data.EmailPreferences body, string name)
-            {
-                return new UpdateEmailPreferencesRequest(this.service, body, name);
-            }
-
-            /// <summary>
-            /// Updates the email preferences for a Merchant Center account user. MCA users should specify the MCA
-            /// account rather than a sub-account of the MCA. Preferences which are not explicitly selected in the
-            /// update mask will not be updated. It is invalid for updates to specify an UNCONFIRMED opt-in status
-            /// value. Use the name=accounts/*/users/me/emailPreferences alias to update preferences for the
-            /// authenticated user.
-            /// </summary>
-            public class UpdateEmailPreferencesRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.EmailPreferences>
-            {
-                /// <summary>Constructs a new UpdateEmailPreferences request.</summary>
-                public UpdateEmailPreferencesRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1beta.Data.EmailPreferences body, string name) : base(service)
-                {
-                    Name = name;
-                    Body = body;
-                    InitParameters();
-                }
-
-                /// <summary>
-                /// Identifier. The name of the EmailPreferences. The endpoint is only supported for the authenticated
-                /// user.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Name { get; private set; }
-
-                /// <summary>Required. List of fields being updated.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object UpdateMask { get; set; }
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.Merchant.accounts_v1beta.Data.EmailPreferences Body { get; set; }
-
-                /// <summary>Returns the body of the request.</summary>
-                protected override object GetBody() => Body;
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "updateEmailPreferences";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "PATCH";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "accounts/v1beta/{+name}";
-
-                /// <summary>Initializes UpdateEmailPreferences parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^accounts/[^/]+/users/[^/]+/emailPreferences$",
                     });
                     RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                     {
@@ -2387,200 +2852,6 @@ namespace Google.Apis.Merchant.accounts_v1beta
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^accounts/[^/]+$",
-                });
-            }
-        }
-
-        /// <summary>Retrieves the business identity of an account.</summary>
-        /// <param name="name">
-        /// Required. The resource name of the business identity. Format: `accounts/{account}/businessIdentity`
-        /// </param>
-        public virtual GetBusinessIdentityRequest GetBusinessIdentity(string name)
-        {
-            return new GetBusinessIdentityRequest(this.service, name);
-        }
-
-        /// <summary>Retrieves the business identity of an account.</summary>
-        public class GetBusinessIdentityRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.BusinessIdentity>
-        {
-            /// <summary>Constructs a new GetBusinessIdentity request.</summary>
-            public GetBusinessIdentityRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-            {
-                Name = name;
-                InitParameters();
-            }
-
-            /// <summary>
-            /// Required. The resource name of the business identity. Format: `accounts/{account}/businessIdentity`
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Name { get; private set; }
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "getBusinessIdentity";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "GET";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "accounts/v1beta/{+name}";
-
-            /// <summary>Initializes GetBusinessIdentity parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "name",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"^accounts/[^/]+/businessIdentity$",
-                });
-            }
-        }
-
-        /// <summary>Retrieves the business info of an account.</summary>
-        /// <param name="name">
-        /// Required. The resource name of the business info. Format: `accounts/{account}/businessInfo`
-        /// </param>
-        public virtual GetBusinessInfoRequest GetBusinessInfo(string name)
-        {
-            return new GetBusinessInfoRequest(this.service, name);
-        }
-
-        /// <summary>Retrieves the business info of an account.</summary>
-        public class GetBusinessInfoRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.BusinessInfo>
-        {
-            /// <summary>Constructs a new GetBusinessInfo request.</summary>
-            public GetBusinessInfoRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-            {
-                Name = name;
-                InitParameters();
-            }
-
-            /// <summary>
-            /// Required. The resource name of the business info. Format: `accounts/{account}/businessInfo`
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Name { get; private set; }
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "getBusinessInfo";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "GET";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "accounts/v1beta/{+name}";
-
-            /// <summary>Initializes GetBusinessInfo parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "name",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"^accounts/[^/]+/businessInfo$",
-                });
-            }
-        }
-
-        /// <summary>Retrieves a store's homepage.</summary>
-        /// <param name="name">
-        /// Required. The name of the homepage to retrieve. Format: `accounts/{account}/homepage`
-        /// </param>
-        public virtual GetHomepageRequest GetHomepage(string name)
-        {
-            return new GetHomepageRequest(this.service, name);
-        }
-
-        /// <summary>Retrieves a store's homepage.</summary>
-        public class GetHomepageRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.Homepage>
-        {
-            /// <summary>Constructs a new GetHomepage request.</summary>
-            public GetHomepageRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-            {
-                Name = name;
-                InitParameters();
-            }
-
-            /// <summary>Required. The name of the homepage to retrieve. Format: `accounts/{account}/homepage`</summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Name { get; private set; }
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "getHomepage";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "GET";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "accounts/v1beta/{+name}";
-
-            /// <summary>Initializes GetHomepage parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "name",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"^accounts/[^/]+/homepage$",
-                });
-            }
-        }
-
-        /// <summary>Retrieve shipping setting information.</summary>
-        /// <param name="name">
-        /// Required. The name of the shipping setting to retrieve. Format: `accounts/{account}/shippingsetting`
-        /// </param>
-        public virtual GetShippingSettingsRequest GetShippingSettings(string name)
-        {
-            return new GetShippingSettingsRequest(this.service, name);
-        }
-
-        /// <summary>Retrieve shipping setting information.</summary>
-        public class GetShippingSettingsRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.ShippingSettings>
-        {
-            /// <summary>Constructs a new GetShippingSettings request.</summary>
-            public GetShippingSettingsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-            {
-                Name = name;
-                InitParameters();
-            }
-
-            /// <summary>
-            /// Required. The name of the shipping setting to retrieve. Format: `accounts/{account}/shippingsetting`
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Name { get; private set; }
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "getShippingSettings";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "GET";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "accounts/v1beta/{+name}";
-
-            /// <summary>Initializes GetShippingSettings parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "name",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"^accounts/[^/]+/shippingSettings$",
                 });
             }
         }
@@ -2815,213 +3086,6 @@ namespace Google.Apis.Merchant.accounts_v1beta
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^accounts/[^/]+$",
-                });
-                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "updateMask",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            }
-        }
-
-        /// <summary>Updates the business identity of an account. Executing this method requires admin access.</summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="name">
-        /// Identifier. The resource name of the business identity. Format: `accounts/{account}/businessIdentity`
-        /// </param>
-        public virtual UpdateBusinessIdentityRequest UpdateBusinessIdentity(Google.Apis.Merchant.accounts_v1beta.Data.BusinessIdentity body, string name)
-        {
-            return new UpdateBusinessIdentityRequest(this.service, body, name);
-        }
-
-        /// <summary>Updates the business identity of an account. Executing this method requires admin access.</summary>
-        public class UpdateBusinessIdentityRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.BusinessIdentity>
-        {
-            /// <summary>Constructs a new UpdateBusinessIdentity request.</summary>
-            public UpdateBusinessIdentityRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1beta.Data.BusinessIdentity body, string name) : base(service)
-            {
-                Name = name;
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>
-            /// Identifier. The resource name of the business identity. Format: `accounts/{account}/businessIdentity`
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Name { get; private set; }
-
-            /// <summary>Required. List of fields being updated.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual object UpdateMask { get; set; }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Merchant.accounts_v1beta.Data.BusinessIdentity Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "updateBusinessIdentity";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "PATCH";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "accounts/v1beta/{+name}";
-
-            /// <summary>Initializes UpdateBusinessIdentity parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "name",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"^accounts/[^/]+/businessIdentity$",
-                });
-                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "updateMask",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            }
-        }
-
-        /// <summary>Updates the business info of an account. Executing this method requires admin access.</summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="name">
-        /// Identifier. The resource name of the business info. Format: `accounts/{account}/businessInfo`
-        /// </param>
-        public virtual UpdateBusinessInfoRequest UpdateBusinessInfo(Google.Apis.Merchant.accounts_v1beta.Data.BusinessInfo body, string name)
-        {
-            return new UpdateBusinessInfoRequest(this.service, body, name);
-        }
-
-        /// <summary>Updates the business info of an account. Executing this method requires admin access.</summary>
-        public class UpdateBusinessInfoRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.BusinessInfo>
-        {
-            /// <summary>Constructs a new UpdateBusinessInfo request.</summary>
-            public UpdateBusinessInfoRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1beta.Data.BusinessInfo body, string name) : base(service)
-            {
-                Name = name;
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>
-            /// Identifier. The resource name of the business info. Format: `accounts/{account}/businessInfo`
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Name { get; private set; }
-
-            /// <summary>Required. List of fields being updated.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual object UpdateMask { get; set; }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Merchant.accounts_v1beta.Data.BusinessInfo Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "updateBusinessInfo";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "PATCH";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "accounts/v1beta/{+name}";
-
-            /// <summary>Initializes UpdateBusinessInfo parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "name",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"^accounts/[^/]+/businessInfo$",
-                });
-                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "updateMask",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            }
-        }
-
-        /// <summary>Updates a store's homepage. Executing this method requires admin access.</summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="name">
-        /// Identifier. The resource name of the store's homepage. Format: `accounts/{account}/homepage`
-        /// </param>
-        public virtual UpdateHomepageRequest UpdateHomepage(Google.Apis.Merchant.accounts_v1beta.Data.Homepage body, string name)
-        {
-            return new UpdateHomepageRequest(this.service, body, name);
-        }
-
-        /// <summary>Updates a store's homepage. Executing this method requires admin access.</summary>
-        public class UpdateHomepageRequest : MerchantBaseServiceRequest<Google.Apis.Merchant.accounts_v1beta.Data.Homepage>
-        {
-            /// <summary>Constructs a new UpdateHomepage request.</summary>
-            public UpdateHomepageRequest(Google.Apis.Services.IClientService service, Google.Apis.Merchant.accounts_v1beta.Data.Homepage body, string name) : base(service)
-            {
-                Name = name;
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>
-            /// Identifier. The resource name of the store's homepage. Format: `accounts/{account}/homepage`
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Name { get; private set; }
-
-            /// <summary>Required. List of fields being updated.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual object UpdateMask { get; set; }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Merchant.accounts_v1beta.Data.Homepage Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "updateHomepage";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "PATCH";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "accounts/v1beta/{+name}";
-
-            /// <summary>Initializes UpdateHomepage parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "name",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"^accounts/[^/]+/homepage$",
                 });
                 RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                 {

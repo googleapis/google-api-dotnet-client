@@ -2496,6 +2496,12 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("downloadBytes")]
         public virtual System.Nullable<long> DownloadBytes { get; set; }
 
+        /// <summary>
+        /// Output only. The file system protocol of the source Filestore instance that this backup is created from.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileSystemProtocol")]
+        public virtual string FileSystemProtocol { get; set; }
+
         /// <summary>Immutable. KMS key name used for data encryption.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
         public virtual string KmsKeyName { get; set; }
