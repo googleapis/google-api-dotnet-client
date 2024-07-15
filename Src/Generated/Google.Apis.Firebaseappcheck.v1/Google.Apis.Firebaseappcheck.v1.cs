@@ -3411,6 +3411,500 @@ namespace Google.Apis.Firebaseappcheck.v1
             public ServicesResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                ResourcePolicies = new ResourcePoliciesResource(service);
+            }
+
+            /// <summary>Gets the ResourcePolicies resource.</summary>
+            public virtual ResourcePoliciesResource ResourcePolicies { get; }
+
+            /// <summary>The "resourcePolicies" collection of methods.</summary>
+            public class ResourcePoliciesResource
+            {
+                private const string Resource = "resourcePolicies";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ResourcePoliciesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Atomically updates the specified ResourcePolicy configurations.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent service name, in the format
+                /// ```
+                /// projects/{project_number}/services/{service_id}
+                /// ```
+                /// The parent collection in the `name` field of any resource being updated must match this field,
+                /// or the entire batch fails.
+                /// </param>
+                public virtual BatchUpdateRequest BatchUpdate(Google.Apis.Firebaseappcheck.v1.Data.GoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesRequest body, string parent)
+                {
+                    return new BatchUpdateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Atomically updates the specified ResourcePolicy configurations.</summary>
+                public class BatchUpdateRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1.Data.GoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesResponse>
+                {
+                    /// <summary>Constructs a new BatchUpdate request.</summary>
+                    public BatchUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Firebaseappcheck.v1.Data.GoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent service name, in the format
+                    /// ```
+                    /// projects/{project_number}/services/{service_id}
+                    /// ```
+                    /// The parent collection in the `name` field of
+                    /// any resource being updated must match this field, or the entire batch fails.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Firebaseappcheck.v1.Data.GoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "batchUpdate";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/resourcePolicies:batchUpdate";
+
+                    /// <summary>Initializes BatchUpdate parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/services/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Creates the specified ResourcePolicy configuration.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The relative resource name of the parent Service in which the specified ResourcePolicy
+                /// will be created, in the format:
+                /// ```
+                /// projects/{project_number}/services/{service_id}
+                /// ```
+                /// Note that
+                /// the `service_id` element must be a supported service ID. Currently, the following service IDs are
+                /// supported: * `oauth2.googleapis.com` (Google Identity for iOS)
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.Firebaseappcheck.v1.Data.GoogleFirebaseAppcheckV1ResourcePolicy body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates the specified ResourcePolicy configuration.</summary>
+                public class CreateRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1.Data.GoogleFirebaseAppcheckV1ResourcePolicy>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Firebaseappcheck.v1.Data.GoogleFirebaseAppcheckV1ResourcePolicy body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The relative resource name of the parent Service in which the specified ResourcePolicy
+                    /// will be created, in the format:
+                    /// ```
+                    /// projects/{project_number}/services/{service_id}
+                    /// ```
+                    /// Note
+                    /// that the `service_id` element must be a supported service ID. Currently, the following service
+                    /// IDs are supported: * `oauth2.googleapis.com` (Google Identity for iOS)
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Firebaseappcheck.v1.Data.GoogleFirebaseAppcheckV1ResourcePolicy Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/resourcePolicies";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/services/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Deletes the specified ResourcePolicy configuration.</summary>
+                /// <param name="name">
+                /// Required. The relative resource name of the ResourcePolicy to delete, in the format:
+                /// ```
+                /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_policy_id}
+                /// ```
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes the specified ResourcePolicy configuration.</summary>
+                public class DeleteRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1.Data.GoogleProtobufEmpty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The relative resource name of the ResourcePolicy to delete, in the format:
+                    /// ```
+                    /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_policy_id}
+                    /// ```
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// The checksum to be validated against the current ResourcePolicy, to ensure the client has an
+                    /// up-to-date value before proceeding. This checksum is computed by the server based on the values
+                    /// of fields in the ResourcePolicy object, and can be obtained from the ResourcePolicy object
+                    /// received from the last CreateResourcePolicy, GetResourcePolicy, ListResourcePolicies,
+                    /// UpdateResourcePolicy, or BatchUpdateResourcePolicies call. This etag is strongly validated as
+                    /// defined by RFC 7232.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Etag { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/services/[^/]+/resourcePolicies/[^/]+$",
+                        });
+                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "etag",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets the requested ResourcePolicy configuration.</summary>
+                /// <param name="name">
+                /// Required. The relative resource name of the ResourcePolicy to retrieve, in the format:
+                /// ```
+                /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_policy_id}
+                /// ```
+                /// Note that
+                /// the `service_id` element must be a supported service ID. Currently, the following service IDs are
+                /// supported: * `oauth2.googleapis.com` (Google Identity for iOS)
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets the requested ResourcePolicy configuration.</summary>
+                public class GetRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1.Data.GoogleFirebaseAppcheckV1ResourcePolicy>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The relative resource name of the ResourcePolicy to retrieve, in the format:
+                    /// ```
+                    /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_policy_id}
+                    /// ```
+                    /// Note
+                    /// that the `service_id` element must be a supported service ID. Currently, the following service
+                    /// IDs are supported: * `oauth2.googleapis.com` (Google Identity for iOS)
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/services/[^/]+/resourcePolicies/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists all ResourcePolicy configurations for the specified project and service.</summary>
+                /// <param name="parent">
+                /// Required. The relative resource name of the parent Service for which to list each associated
+                /// ResourcePolicy, in the format:
+                /// ```
+                /// projects/{project_number}/services/{service_id}
+                /// ```
+                /// Note that the
+                /// `service_id` element must be a supported service ID. Currently, the following service IDs are
+                /// supported: * `oauth2.googleapis.com` (Google Identity for iOS)
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists all ResourcePolicy configurations for the specified project and service.</summary>
+                public class ListRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1.Data.GoogleFirebaseAppcheckV1ListResourcePoliciesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The relative resource name of the parent Service for which to list each associated
+                    /// ResourcePolicy, in the format:
+                    /// ```
+                    /// projects/{project_number}/services/{service_id}
+                    /// ```
+                    /// Note that
+                    /// the `service_id` element must be a supported service ID. Currently, the following service IDs
+                    /// are supported: * `oauth2.googleapis.com` (Google Identity for iOS)
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Filters the results by the specified rule. For the exact syntax of this field, please
+                    /// consult the [AIP-160](https://google.aip.dev/160) standard. Currently, since the only fields in
+                    /// the ResourcePolicy resource are the scalar fields `enforcement_mode` and `target_resource`, this
+                    /// method does not support the traversal operator (`.`) or the has operator (`:`). Here are some
+                    /// examples of valid filters: * `enforcement_mode = ENFORCED` * `target_resource =
+                    /// "//oauth2.googleapis.com/projects/12345/oauthClients/"` * `enforcement_mode = ENFORCED AND
+                    /// target_resource = "//oauth2.googleapis.com/projects/12345/oauthClients/"`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// The maximum number of ResourcePolicy objects to return in the response. The server may return
+                    /// fewer than this at its own discretion. If no value is specified (or too large a value is
+                    /// specified), the server will impose its own limit.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Token returned from a previous call to ListResourcePolicies indicating where in the set of
+                    /// ResourcePolicy objects to resume listing. Provide this to retrieve the subsequent page. When
+                    /// paginating, all other parameters provided to ListResourcePolicies must match the call that
+                    /// provided the page token; if they do not match, the result is undefined.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/resourcePolicies";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/services/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates the specified ResourcePolicy configuration.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Identifier. The relative name of the resource policy object, in the format:
+                /// ```
+                /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_policy_id}
+                /// ```
+                /// Note that
+                /// the `service_id` element must be a supported service ID. Currently, the following service IDs are
+                /// supported: * `oauth2.googleapis.com` (Google Identity for iOS) `resource_policy_id` is a
+                /// system-generated UID.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Firebaseappcheck.v1.Data.GoogleFirebaseAppcheckV1ResourcePolicy body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates the specified ResourcePolicy configuration.</summary>
+                public class PatchRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1.Data.GoogleFirebaseAppcheckV1ResourcePolicy>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Firebaseappcheck.v1.Data.GoogleFirebaseAppcheckV1ResourcePolicy body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Identifier. The relative name of the resource policy object, in the format:
+                    /// ```
+                    /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_policy_id}
+                    /// ```
+                    /// Note
+                    /// that the `service_id` element must be a supported service ID. Currently, the following service
+                    /// IDs are supported: * `oauth2.googleapis.com` (Google Identity for iOS) `resource_policy_id` is a
+                    /// system-generated UID.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Required. A comma-separated list of names of fields in the ResourcePolicy to update. Example:
+                    /// `enforcement_mode`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Firebaseappcheck.v1.Data.GoogleFirebaseAppcheckV1ResourcePolicy Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/services/[^/]+/resourcePolicies/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>Atomically updates the specified Service configurations.</summary>
@@ -3845,6 +4339,39 @@ namespace Google.Apis.Firebaseappcheck.v1.Data
         /// <summary>SafetyNetConfigs retrieved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configs")]
         public virtual System.Collections.Generic.IList<GoogleFirebaseAppcheckV1SafetyNetConfig> Configs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for the BatchUpdateResourcePolicies method.</summary>
+    public class GoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The request messages specifying the ResourcePolicy objects to update. A maximum of 100 objects can
+        /// be updated in a batch.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
+        public virtual System.Collections.Generic.IList<GoogleFirebaseAppcheckV1UpdateResourcePolicyRequest> Requests { get; set; }
+
+        /// <summary>
+        /// Optional. A comma-separated list of names of fields in the ResourcePolicy objects to update. Example:
+        /// `enforcement_mode`. If this field is present, the `update_mask` field in the UpdateResourcePolicyRequest
+        /// messages must all match this field, or the entire batch fails and no updates will be committed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for the BatchUpdateResourcePolicies method.</summary>
+    public class GoogleFirebaseAppcheckV1BatchUpdateResourcePoliciesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>ResourcePolicy objects after the updates have been applied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourcePolicies")]
+        public virtual System.Collections.Generic.IList<GoogleFirebaseAppcheckV1ResourcePolicy> ResourcePolicies { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4302,6 +4829,26 @@ namespace Google.Apis.Firebaseappcheck.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for the ListResourcePolicies method.</summary>
+    public class GoogleFirebaseAppcheckV1ListResourcePoliciesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If the result list is too large to fit in a single response, then a token is returned. If the string is
+        /// empty or omitted, then this response is the last page of results. This token can be used in a subsequent
+        /// call to ListResourcePolicies to find the next group of ResourcePolicy objects. Page tokens are short-lived
+        /// and should not be persisted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ResourcePolicy objects retrieved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourcePolicies")]
+        public virtual System.Collections.Generic.IList<GoogleFirebaseAppcheckV1ResourcePolicy> ResourcePolicies { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for the ListServices method.</summary>
     public class GoogleFirebaseAppcheckV1ListServicesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4482,6 +5029,90 @@ namespace Google.Apis.Firebaseappcheck.v1.Data
     }
 
     /// <summary>
+    /// App Check enforcement policy for a specific resource of a Firebase service supported by App Check. Note that
+    /// this policy will override the service-level configuration.
+    /// </summary>
+    public class GoogleFirebaseAppcheckV1ResourcePolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The App Check enforcement mode for this resource. This will override the EnforcementMode setting
+        /// on the service.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enforcementMode")]
+        public virtual string EnforcementMode { get; set; }
+
+        /// <summary>
+        /// This checksum is computed by the server based on the value of other fields, and may be sent on update and
+        /// delete requests to ensure the client has an up-to-date value before proceeding. This etag is strongly
+        /// validated as defined by RFC 7232.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Required. Identifier. The relative name of the resource policy object, in the format:
+        /// ```
+        /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_policy_id}
+        /// ```
+        /// Note that the
+        /// `service_id` element must be a supported service ID. Currently, the following service IDs are supported: *
+        /// `oauth2.googleapis.com` (Google Identity for iOS) `resource_policy_id` is a system-generated UID.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. Service specific name of the resource object to which this policy applies, in the format: *
+        /// `//oauth2.googleapis.com/projects/{project_number}/oauthClients/{oauth_client_id}` (Google Identity for iOS)
+        /// Note that the resource must belong to the service specified in the `name` and be from the same project as
+        /// this policy, but the resource is allowed to be missing at the time of creation of this policy; in that case,
+        /// we make a best-effort attempt at respecting this policy, but it may not have any effect until the resource
+        /// is fully created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetResource")]
+        public virtual string TargetResource { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>
+        /// Output only. Timestamp when this resource policy configuration object was most recently updated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+    }
+
+    /// <summary>
     /// An app's SafetyNet configuration object. This configuration controls certain properties of the `AppCheckToken`
     /// returned by ExchangeSafetyNetToken, such as its ttl. Note that your registered SHA-256 certificate fingerprints
     /// are used to validate tokens issued by SafetyNet; please register them via the Firebase Console or
@@ -4529,6 +5160,36 @@ namespace Google.Apis.Firebaseappcheck.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Request message for the UpdateResourcePolicy method as well as an individual update message for the
+    /// BatchUpdateResourcePolicies method.
+    /// </summary>
+    public class GoogleFirebaseAppcheckV1UpdateResourcePolicyRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The ResourcePolicy to update. The ResourcePolicy's `name` field is used to identify the
+        /// ResourcePolicy to be updated, in the format:
+        /// ```
+        /// projects/{project_number}/services/{service_id}/resourcePolicies/{resource_policy_id}
+        /// ```
+        /// Note that the
+        /// `service_id` element must be a supported service ID. Currently, the following service IDs are supported: *
+        /// `oauth2.googleapis.com` (Google Identity for iOS)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourcePolicy")]
+        public virtual GoogleFirebaseAppcheckV1ResourcePolicy ResourcePolicy { get; set; }
+
+        /// <summary>
+        /// Required. A comma-separated list of names of fields in the ResourcePolicy to update. Example:
+        /// `enforcement_mode`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

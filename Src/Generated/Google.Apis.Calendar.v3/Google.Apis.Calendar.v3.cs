@@ -5363,7 +5363,10 @@ namespace Google.Apis.Calendar.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("recurringEventId")]
         public virtual string RecurringEventId { get; set; }
 
-        /// <summary>Information about the event's reminders for the authenticated user.</summary>
+        /// <summary>
+        /// Information about the event's reminders for the authenticated user. Note that changing reminders does not
+        /// also change the updated property of the enclosing event.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reminders")]
         public virtual RemindersData Reminders { get; set; }
 
@@ -5420,7 +5423,10 @@ namespace Google.Apis.Calendar.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("transparency")]
         public virtual string Transparency { get; set; }
 
-        /// <summary>Last modification time of the event (as a RFC3339 timestamp). Read-only.</summary>
+        /// <summary>
+        /// Last modification time of the main event data (as a RFC3339 timestamp). Updating event reminders will not
+        /// cause this to change. Read-only.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updated")]
         public virtual string UpdatedRaw { get; set; }
 
@@ -5565,7 +5571,10 @@ namespace Google.Apis.Calendar.v3.Data
             public virtual System.Nullable<bool> Self { get; set; }
         }
 
-        /// <summary>Information about the event's reminders for the authenticated user.</summary>
+        /// <summary>
+        /// Information about the event's reminders for the authenticated user. Note that changing reminders does not
+        /// also change the updated property of the enclosing event.
+        /// </summary>
         public class RemindersData
         {
             /// <summary>

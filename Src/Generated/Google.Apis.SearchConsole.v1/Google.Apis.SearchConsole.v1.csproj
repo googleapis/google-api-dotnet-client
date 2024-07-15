@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.SearchConsole.v1 Client Library</Title>
-    <Version>1.68.0.3184</Version>
+    <Version>1.68.0.3476</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2024 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
@@ -17,7 +17,7 @@
       Google APIs Client Library for working with Searchconsole v1.
 
       Product documentation is available at:
-      https://developers.google.com/webmaster-tools/search-console-api/
+      https://developers.google.com/webmaster-tools/about
 
       API reference documentation for this package is available at:
       https://googleapis.dev/dotnet/Google.Apis.SearchConsole.v1/latest/api/Google.Apis.SearchConsole.v1.html

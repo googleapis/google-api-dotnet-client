@@ -12317,6 +12317,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("targetPage")]
         public virtual string TargetPage { get; set; }
 
+        /// <summary>The target playbook to transition to. Format: `projects//locations//agents//playbooks/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetPlaybook")]
+        public virtual string TargetPlaybook { get; set; }
+
         /// <summary>
         /// The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with
         /// webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling
@@ -15831,6 +15835,13 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     /// <summary>Diagnostic info related to the answer generation model call.</summary>
     public class GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsAnswerGenerationModelCallSignals : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Name of the generative model. For example, "gemini-ultra", "gemini-pro", "gemini-1.5-flash" etc. Defaults to
+        /// "Other" if the model is unknown.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("model")]
+        public virtual string Model { get; set; }
+
         /// <summary>Output of the generative model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelOutput")]
         public virtual string ModelOutput { get; set; }
@@ -15891,6 +15902,13 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     /// <summary>Diagnostic info related to the rewriter model call.</summary>
     public class GoogleCloudDialogflowCxV3beta1DataStoreConnectionSignalsRewriterModelCallSignals : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Name of the generative model. For example, "gemini-ultra", "gemini-pro", "gemini-1.5-flash" etc. Defaults to
+        /// "Other" if the model is unknown.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("model")]
+        public virtual string Model { get; set; }
+
         /// <summary>Output of the generative model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelOutput")]
         public virtual string ModelOutput { get; set; }
@@ -16467,6 +16485,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>The target page to transition to. Format: `projects//locations//agents//flows//pages/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetPage")]
         public virtual string TargetPage { get; set; }
+
+        /// <summary>The target playbook to transition to. Format: `projects//locations//agents//playbooks/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetPlaybook")]
+        public virtual string TargetPlaybook { get; set; }
 
         /// <summary>
         /// The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with
@@ -23030,6 +23052,32 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     }
 
     /// <summary>
+    /// A customer-managed encryption key specification that can be applied to all created resources (e.g.
+    /// Conversation).
+    /// </summary>
+    public class GoogleCloudDialogflowV2EncryptionSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The name of customer-managed encryption key that is used to secure a resource and its
+        /// sub-resources. If empty, the resource is secured by the default Google encryption key. Only the key in the
+        /// same location as this resource is allowed to be used for encryption. Format:
+        /// `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{key}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
+        public virtual string KmsKey { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource name of the encryption key specification resource. Format:
+        /// projects/{project}/locations/{location}/encryptionSpec
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Each intent parameter has a type, called the entity type, which dictates exactly how data from an end-user
     /// expression is extracted. Dialogflow provides predefined system entities that can match many common types of
     /// data. For example, there are system entities for matching dates, times, colors, email addresses, and so on. You
@@ -23319,6 +23367,32 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Includes details about skipped documents or any other warnings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
         public virtual System.Collections.Generic.IList<GoogleRpcStatus> Warnings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for initializing a location-level encryption specification.</summary>
+    public class GoogleCloudDialogflowV2InitializeEncryptionSpecMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The original request for initialization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual GoogleCloudDialogflowV2InitializeEncryptionSpecRequest Request { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request to initialize a location-level encryption specification.</summary>
+    public class GoogleCloudDialogflowV2InitializeEncryptionSpecRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The encryption spec used for CMEK encryption. It is required that the kms key is in the same
+        /// region as the endpoint. The same key will be used for all provisioned resources, if encryption is available.
+        /// If the kms_key_name is left empty, no encryption will be enforced.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionSpec")]
+        public virtual GoogleCloudDialogflowV2EncryptionSpec EncryptionSpec { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -25284,6 +25358,32 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     }
 
     /// <summary>
+    /// A customer-managed encryption key specification that can be applied to all created resources (e.g.
+    /// Conversation).
+    /// </summary>
+    public class GoogleCloudDialogflowV2beta1EncryptionSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The name of customer-managed encryption key that is used to secure a resource and its
+        /// sub-resources. If empty, the resource is secured by the default Google encryption key. Only the key in the
+        /// same location as this resource is allowed to be used for encryption. Format:
+        /// `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{key}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
+        public virtual string KmsKey { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource name of the encryption key specification resource. Format:
+        /// projects/{project}/locations/{location}/encryptionSpec
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Each intent parameter has a type, called the entity type, which dictates exactly how data from an end-user
     /// expression is extracted. Dialogflow provides predefined system entities that can match many common types of
     /// data. For example, there are system entities for matching dates, times, colors, email addresses, and so on. You
@@ -25502,6 +25602,32 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Includes details about skipped documents or any other warnings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
         public virtual System.Collections.Generic.IList<GoogleRpcStatus> Warnings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for initializing a location-level encryption specification.</summary>
+    public class GoogleCloudDialogflowV2beta1InitializeEncryptionSpecMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The original request for initialization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual GoogleCloudDialogflowV2beta1InitializeEncryptionSpecRequest Request { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request to initialize a location-level encryption specification.</summary>
+    public class GoogleCloudDialogflowV2beta1InitializeEncryptionSpecRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The encryption spec used for CMEK encryption. It is required that the kms key is in the same
+        /// region as the endpoint. The same key will be used for all provisioned resources, if encryption is available.
+        /// If the kms_key_name is left empty, no encryption will be enforced.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionSpec")]
+        public virtual GoogleCloudDialogflowV2beta1EncryptionSpec EncryptionSpec { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26938,6 +27064,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("participantRole")]
         public virtual string ParticipantRole { get; set; }
 
+        /// <summary>Optional. Automated agent responses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responseMessages")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1ResponseMessage> ResponseMessages { get; set; }
+
         private string _sendTimeRaw;
 
         private object _sendTime;
@@ -27162,6 +27292,137 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webhookSource")]
         public virtual string WebhookSource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response messages from an automated agent.</summary>
+    public class GoogleCloudDialogflowV2beta1ResponseMessage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A signal that indicates the interaction with the Dialogflow agent has ended.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endInteraction")]
+        public virtual GoogleCloudDialogflowV2beta1ResponseMessageEndInteraction EndInteraction { get; set; }
+
+        /// <summary>Hands off conversation to a live agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("liveAgentHandoff")]
+        public virtual GoogleCloudDialogflowV2beta1ResponseMessageLiveAgentHandoff LiveAgentHandoff { get; set; }
+
+        /// <summary>
+        /// An audio response message composed of both the synthesized Dialogflow agent responses and the audios hosted
+        /// in places known to the client.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mixedAudio")]
+        public virtual GoogleCloudDialogflowV2beta1ResponseMessageMixedAudio MixedAudio { get; set; }
+
+        /// <summary>Returns a response containing a custom, platform-specific payload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("payload")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Payload { get; set; }
+
+        /// <summary>
+        /// A signal that the client should transfer the phone call connected to this agent to a third-party endpoint.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("telephonyTransferCall")]
+        public virtual GoogleCloudDialogflowV2beta1ResponseMessageTelephonyTransferCall TelephonyTransferCall { get; set; }
+
+        /// <summary>Returns a text response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual GoogleCloudDialogflowV2beta1ResponseMessageText Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Indicates that interaction with the Dialogflow agent has ended.</summary>
+    public class GoogleCloudDialogflowV2beta1ResponseMessageEndInteraction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Indicates that the conversation should be handed off to a human agent. Dialogflow only uses this to determine
+    /// which conversations were handed off to a human agent for measurement purposes. What else to do with this signal
+    /// is up to you and your handoff procedures. You may set this, for example: * In the entry fulfillment of a CX Page
+    /// if entering the page indicates something went extremely wrong in the conversation. * In a webhook response when
+    /// you determine that the customer issue can only be handled by a human.
+    /// </summary>
+    public class GoogleCloudDialogflowV2beta1ResponseMessageLiveAgentHandoff : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Custom metadata for your handoff procedure. Dialogflow doesn't impose any structure on this.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents an audio message that is composed of both segments synthesized from the Dialogflow agent prompts and
+    /// ones hosted externally at the specified URIs.
+    /// </summary>
+    public class GoogleCloudDialogflowV2beta1ResponseMessageMixedAudio : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Segments this audio response is composed of.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("segments")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1ResponseMessageMixedAudioSegment> Segments { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents one segment of audio.</summary>
+    public class GoogleCloudDialogflowV2beta1ResponseMessageMixedAudioSegment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether the playback of this segment can be interrupted by the end user's speech and the client should then
+        /// start the next Dialogflow request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowPlaybackInterruption")]
+        public virtual System.Nullable<bool> AllowPlaybackInterruption { get; set; }
+
+        /// <summary>
+        /// Raw audio synthesized from the Dialogflow agent's response using the output config specified in the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audio")]
+        public virtual string Audio { get; set; }
+
+        /// <summary>Client-specific URI that points to an audio clip accessible to the client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party
+    /// endpoint.
+    /// </summary>
+    public class GoogleCloudDialogflowV2beta1ResponseMessageTelephonyTransferCall : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Transfer the call to a phone number in [E.164 format](https://en.wikipedia.org/wiki/E.164).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
+        public virtual string PhoneNumber { get; set; }
+
+        /// <summary>Transfer the call to a SIP endpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sipUri")]
+        public virtual string SipUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The text response message.</summary>
+    public class GoogleCloudDialogflowV2beta1ResponseMessageText : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A collection of text responses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual System.Collections.Generic.IList<string> Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

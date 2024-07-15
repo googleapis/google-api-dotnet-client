@@ -3894,6 +3894,13 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual object MaxDuration { get; set; }
 
         /// <summary>
+        /// Optional. The maximum number of messages that can be written to a Cloud Storage file before a new file is
+        /// created. Min 1000 messages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxMessages")]
+        public virtual System.Nullable<long> MaxMessages { get; set; }
+
+        /// <summary>
         /// Optional. The service account to use to write to Cloud Storage. The subscription creator or updater that
         /// specifies this field must have `iam.serviceAccounts.actAs` permission on the service account. If not
         /// specified, the Pub/Sub [service agent](https://cloud.google.com/iam/docs/service-agents),

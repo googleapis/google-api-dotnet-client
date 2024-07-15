@@ -1407,13 +1407,14 @@ namespace Google.Apis.ChromeManagement.v1
                 /// Query string to filter results, AND-separated fields in EBNF syntax. Note: OR operations are not
                 /// supported in this filter. Supported filter fields: * app_name * app_type * install_type *
                 /// number_of_permissions * total_install_count * latest_profile_active_date * permission_name * app_id
+                /// * manifest_versions
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
                 /// <summary>
                 /// Field used to order results. Supported order by fields: * app_name * app_type * install_type *
-                /// number_of_permissions * total_install_count * app_id
+                /// number_of_permissions * total_install_count * app_id * manifest_versions
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }

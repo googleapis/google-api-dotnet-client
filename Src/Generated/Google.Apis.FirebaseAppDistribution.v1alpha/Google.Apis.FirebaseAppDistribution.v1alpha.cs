@@ -1542,14 +1542,14 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
 
         /// <summary>Required. Steps to be accomplished by the AI</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("steps")]
-        public virtual System.Collections.Generic.IList<GoogleFirebaseAppdistroV1alphaAiInstructionsStep> Steps { get; set; }
+        public virtual System.Collections.Generic.IList<GoogleFirebaseAppdistroV1alphaAiStep> Steps { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
     /// <summary>A step to be accomplished by the AI</summary>
-    public class GoogleFirebaseAppdistroV1alphaAiInstructionsStep : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleFirebaseAppdistroV1alphaAiStep : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>An assertion to be checked by the AI</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assertion")]
@@ -1558,6 +1558,21 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         /// <summary>A goal to be accomplished by the AI</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("goal")]
         public virtual string Goal { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Captures the results of an AiStep</summary>
+    public class GoogleFirebaseAppdistroV1alphaAiStepResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The current state of the step</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Required. The step performed by the AI</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("step")]
+        public virtual GoogleFirebaseAppdistroV1alphaAiStep Step { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1634,6 +1649,10 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
     /// <summary>The results of running an automated test on a particular device.</summary>
     public class GoogleFirebaseAppdistroV1alphaDeviceExecution : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Results of the AI steps if passed in</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aiStepResults")]
+        public virtual System.Collections.Generic.IList<GoogleFirebaseAppdistroV1alphaAiStepResult> AiStepResults { get; set; }
+
         /// <summary>Output only. An app crash, if any occurred during the test.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appCrash")]
         public virtual GoogleFirebaseAppdistroV1alphaAppCrash AppCrash { get; set; }

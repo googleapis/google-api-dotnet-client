@@ -9131,7 +9131,9 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("commitmentPlan")]
         public virtual string CommitmentPlan { get; set; }
 
-        /// <summary>Optional. License type of the OS image.</summary>
+        /// <summary>
+        /// Optional. License type for premium images (RHEL, RHEL for SAP, SLES, SLES for SAP, Windows Server).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("licenseType")]
         public virtual string LicenseType { get; set; }
 

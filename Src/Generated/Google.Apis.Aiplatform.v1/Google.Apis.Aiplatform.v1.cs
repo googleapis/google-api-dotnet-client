@@ -8652,7 +8652,8 @@ namespace Google.Apis.Aiplatform.v1
                         /// request. A field will be overwritten if it is in the mask. If the user does not provide a
                         /// mask then only the non-empty fields present in the request will be overwritten. Set the
                         /// update_mask to `*` to override all fields. Updatable fields: * `description` * `labels` *
-                        /// `disable_monitoring` (Not supported for FeatureRegistry Feature)
+                        /// `disable_monitoring` (Not supported for FeatureRegistryService Feature) * `point_of_contact`
+                        /// (Not supported for FeaturestoreService FeatureStore)
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
@@ -9321,7 +9322,8 @@ namespace Google.Apis.Aiplatform.v1
                     /// update. The fields specified in the update_mask are relative to the resource, not the full
                     /// request. A field will be overwritten if it is in the mask. If the user does not provide a mask
                     /// then only the non-empty fields present in the request will be overwritten. Set the update_mask
-                    /// to `*` to override all fields. Updatable fields: * `labels`
+                    /// to `*` to override all fields. Updatable fields: * `labels` * `description` * `big_query` *
+                    /// `big_query.entity_id_columns`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -10285,7 +10287,10 @@ namespace Google.Apis.Aiplatform.v1
                         /// the update. The fields specified in the update_mask are relative to the resource, not the
                         /// full request. A field will be overwritten if it is in the mask. If the user does not provide
                         /// a mask then only the non-empty fields present in the request will be overwritten. Set the
-                        /// update_mask to `*` to override all fields. Updatable fields: * `labels` * `serviceAgentType`
+                        /// update_mask to `*` to override all fields. Updatable fields: * `labels` *
+                        /// `service_agent_type` * `big_query_source` * `big_query_source.uri` *
+                        /// `big_query_source.entity_id_columns` * `feature_registry_source` *
+                        /// `feature_registry_source.feature_groups` * `sync_config` * `sync_config.cron`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
@@ -11084,8 +11089,8 @@ namespace Google.Apis.Aiplatform.v1
                     /// the update. The fields specified in the update_mask are relative to the resource, not the full
                     /// request. A field will be overwritten if it is in the mask. If the user does not provide a mask
                     /// then only the non-empty fields present in the request will be overwritten. Set the update_mask
-                    /// to `*` to override all fields. Updatable fields: * `big_query_source` * `bigtable` * `labels` *
-                    /// `sync_config`
+                    /// to `*` to override all fields. Updatable fields: * `labels` * `description` * `bigtable` *
+                    /// `bigtable.auto_scaling` * `bigtable.enable_multi_region_replica`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -11986,8 +11991,9 @@ namespace Google.Apis.Aiplatform.v1
                             /// the full request. A field will be overwritten if it is in the mask. If the user does not
                             /// provide a mask then only the non-empty fields present in the request will be
                             /// overwritten. Set the update_mask to `*` to override all fields. Updatable fields: *
-                            /// `description` * `labels` * `disable_monitoring` (Not supported for FeatureRegistry
-                            /// Feature)
+                            /// `description` * `labels` * `disable_monitoring` (Not supported for
+                            /// FeatureRegistryService Feature) * `point_of_contact` (Not supported for
+                            /// FeaturestoreService FeatureStore)
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual object UpdateMask { get; set; }
@@ -38214,7 +38220,7 @@ namespace Google.Apis.Aiplatform.v1
 }
 namespace Google.Apis.Aiplatform.v1.Data
 {
-    /// <summary>Generate video response.</summary>
+    /// <summary>Next ID: 8 Generate video response.</summary>
     public class CloudAiLargeModelsVisionGenerateVideoResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The generates samples.</summary>
@@ -50388,18 +50394,11 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("predictSchemata")]
         public virtual GoogleCloudAiplatformV1PredictSchemata PredictSchemata { get; set; }
 
-        /// <summary>
-        /// Output only. A read only boolean field reflecting Zone Isolation status of the model. It's false by default.
-        /// Since Model is a type ZICY 4.2 resource, the field is an aggregated value of ZI status of its underlying
-        /// dependencies.
-        /// </summary>
+        /// <summary>Output only. Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
         public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
 
-        /// <summary>
-        /// Output only. A read only boolean field reflecting ZS status of the model. It's false by default. Since Model
-        /// is a type ZICY 4.2 resource, the field is an aggregated value of ZS status of its underlying dependencies.
-        /// </summary>
+        /// <summary>Output only. Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
         public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
@@ -55671,7 +55670,7 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// </summary>
     public class GoogleCloudAiplatformV1ResourcePool : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Optional spec to configure GKE autoscaling</summary>
+        /// <summary>Optional. Optional spec to configure GKE or Ray-on-Vertex autoscaling</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoscalingSpec")]
         public virtual GoogleCloudAiplatformV1ResourcePoolAutoscalingSpec AutoscalingSpec { get; set; }
 
@@ -55717,7 +55716,11 @@ namespace Google.Apis.Aiplatform.v1.Data
 
         /// <summary>
         /// Optional. min replicas in the node pool, must be ≤ replica_count and &amp;lt; max_replica_count or will
-        /// throw error
+        /// throw error. For autoscaling enabled Ray-on-Vertex, we allow min_replica_count of a resource_pool to be 0 to
+        /// match the OSS Ray
+        /// behavior(https://docs.ray.io/en/latest/cluster/vms/user-guides/configuring-autoscaling.html#cluster-config-parameters).
+        /// As for Persistent Resource, the min_replica_count must be &amp;gt; 0, we added a corresponding validation
+        /// inside CreatePersistentResourceRequestValidator.java.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minReplicaCount")]
         public virtual System.Nullable<long> MinReplicaCount { get; set; }
@@ -62434,6 +62437,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("totalBillableCharacterCount")]
         public virtual System.Nullable<long> TotalBillableCharacterCount { get; set; }
 
+        /// <summary>Output only. Number of billable tokens in the tuning dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalBillableTokenCount")]
+        public virtual System.Nullable<long> TotalBillableTokenCount { get; set; }
+
         /// <summary>Output only. Number of tuning characters in the tuning dataset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalTuningCharacterCount")]
         public virtual System.Nullable<long> TotalTuningCharacterCount { get; set; }
@@ -62751,6 +62758,14 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Output only. The number of Runs stored in this Tensorboard.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runCount")]
         public virtual System.Nullable<int> RunCount { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
         private string _updateTimeRaw;
 

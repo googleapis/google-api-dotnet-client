@@ -5219,7 +5219,7 @@ namespace Google.Apis.Firestore.v1.Data
 
         /// <summary>
         /// At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep
-        /// backups for 7 days.
+        /// backups for 7 days. The maximum supported retention is 14 weeks.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retention")]
         public virtual object Retention { get; set; }

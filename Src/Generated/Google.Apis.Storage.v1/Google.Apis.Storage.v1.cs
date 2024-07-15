@@ -9274,6 +9274,14 @@ namespace Google.Apis.Storage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
+        /// <summary>
+        /// The bucket's IP filter configuration. Specifies the network sources that are allowed to access the
+        /// operations on the bucket, as well as its underlying objects. Only enforced when the mode is set to
+        /// 'Enabled'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipFilter")]
+        public virtual IpFilterData IpFilter { get; set; }
+
         /// <summary>The kind of item this is. For buckets, this is always storage#bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -9651,6 +9659,52 @@ namespace Google.Apis.Storage.v1.Data
                     get => Google.Apis.Util.Utilities.GetDateTimeFromString(LockedTimeRaw);
                     set => LockedTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
                 }
+            }
+        }
+
+        /// <summary>
+        /// The bucket's IP filter configuration. Specifies the network sources that are allowed to access the
+        /// operations on the bucket, as well as its underlying objects. Only enforced when the mode is set to
+        /// 'Enabled'.
+        /// </summary>
+        public class IpFilterData
+        {
+            /// <summary>The mode of the IP filter. Valid values are 'Enabled' and 'Disabled'.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+            public virtual string Mode { get; set; }
+
+            /// <summary>The public network source of the bucket's IP filter.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("publicNetworkSource")]
+            public virtual PublicNetworkSourceData PublicNetworkSource { get; set; }
+
+            /// <summary>
+            /// The list of [VPC network](https://cloud.google.com/vpc/docs/vpc) sources of the bucket's IP filter.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("vpcNetworkSources")]
+            public virtual System.Collections.Generic.IList<VpcNetworkSourcesData> VpcNetworkSources { get; set; }
+
+            /// <summary>The public network source of the bucket's IP filter.</summary>
+            public class PublicNetworkSourceData
+            {
+                /// <summary>The list of public IPv4, IPv6 cidr ranges that are allowed to access the bucket.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("allowedIpCidrRanges")]
+                public virtual System.Collections.Generic.IList<string> AllowedIpCidrRanges { get; set; }
+            }
+
+            /// <summary>
+            /// The list of [VPC network](https://cloud.google.com/vpc/docs/vpc) sources of the bucket's IP filter.
+            /// </summary>
+            public class VpcNetworkSourcesData
+            {
+                /// <summary>
+                /// The list of IPv4, IPv6 cidr ranges subnetworks that are allowed to access the bucket.
+                /// </summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("allowedIpCidrRanges")]
+                public virtual System.Collections.Generic.IList<string> AllowedIpCidrRanges { get; set; }
+
+                /// <summary>Name of the network. Format: projects/{PROJECT_ID}/global/networks/{NETWORK_NAME}</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("network")]
+                public virtual string Network { get; set; }
             }
         }
 

@@ -2476,7 +2476,7 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
         /// [`Exception.ToString()`](https://msdn.microsoft.com/en-us/library/system.exception.tostring.aspx). *
         /// **PHP**: Must be prefixed with `"PHP (Notice|Parse error|Fatal error|Warning): "` and contain the result of
         /// [`(string)$exception`](https://php.net/manual/en/exception.tostring.php). * **Go**: Must be the return value
-        /// of [`runtime.Stack()`](https://golang.org/pkg/runtime/debug/#Stack).
+        /// of [`debug.Stack()`](https://pkg.go.dev/runtime/debug#Stack).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
