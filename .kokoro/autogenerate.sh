@@ -70,7 +70,7 @@ git remote set-url origin git@github.com:googleapis/google-api-dotnet-client.git
 git push --set-upstream origin $branchname
 
 # Create a PR for the changes in branchname.
-prRequestBody='{"title":"Release PR: '"$branchname"'", "body": "Changes in this PR will be published to Nuget on the next release cycle.", "head": "'"$branchname"'", "base": "main"}'
+prRequestBody='{"title":"feat: API regeneration: '"$branchname"'", "body": "Changes in this PR will be published to Nuget on the next release cycle.", "head": "'"$branchname"'", "base": "main"}'
 curl -v -i -X POST https://api.github.com/repos/googleapis/google-api-dotnet-client/pulls -H 'Authorization: token '"$github_token" -H "Content-Type:application/json" -H "accept: */*" -d "$prRequestBody"
 
 # All done :)
