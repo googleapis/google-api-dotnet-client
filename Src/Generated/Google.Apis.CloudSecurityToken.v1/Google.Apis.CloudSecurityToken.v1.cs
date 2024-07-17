@@ -574,6 +574,15 @@ namespace Google.Apis.CloudSecurityToken.v1.Data
     public class GoogleIdentityStsV1ExchangeTokenResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// The access boundary session key. This key is used along with the access boundary intermediate token to
+        /// generate Credential Access Boundary tokens at client side. This field is absent when the
+        /// `requested_token_type` from the request is not
+        /// `urn:ietf:params:oauth:token-type:access_boundary_intermediate_token`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("access_boundary_session_key")]
+        public virtual string AccessBoundarySessionKey { get; set; }
+
+        /// <summary>
         /// An OAuth 2.0 security token, issued by Google, in response to the token exchange request. Tokens can vary in
         /// size, depending in part on the size of mapped claims, up to a maximum of 12288 bytes (12 KB). Google
         /// reserves the right to change the token size and the maximum length at any time.

@@ -1794,6 +1794,13 @@ namespace Google.Apis.WorkloadManager.v1.Data
     public class AssetLocation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Spanner path of the CCFE RMS database. It is only applicable for CCFE tenants that use CCFE RMS for storing
+        /// resource metadata.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ccfeRmsPath")]
+        public virtual string CcfeRmsPath { get; set; }
+
+        /// <summary>
         /// Defines the customer expectation around ZI/ZS for this asset and ZI/ZS state of the region at the time of
         /// asset creation.
         /// </summary>

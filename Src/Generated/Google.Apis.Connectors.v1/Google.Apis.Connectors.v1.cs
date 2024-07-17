@@ -8844,7 +8844,7 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("multipleSelectOptions")]
         public virtual System.Collections.Generic.IList<MultipleSelectOption> MultipleSelectOptions { get; set; }
 
-        /// <summary>Required. Value separator.</summary>
+        /// <summary>Required. Value separator. Only "," can be used for OAuth auth code flow scope field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueSeparator")]
         public virtual string ValueSeparator { get; set; }
 
@@ -9504,6 +9504,13 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataType")]
         public virtual string DataType { get; set; }
 
+        /// <summary>
+        /// The following field specifies the default value of the Parameter provided by the external system if a value
+        /// is not provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultValue")]
+        public virtual object DefaultValue { get; set; }
+
         /// <summary>A brief description of the field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
@@ -9515,6 +9522,10 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>JsonSchema representation of this action's result</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jsonSchema")]
         public virtual JsonSchema JsonSchema { get; set; }
+
+        /// <summary>Specifies whether a null value is allowed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nullable")]
+        public virtual System.Nullable<bool> Nullable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

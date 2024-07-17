@@ -5996,9 +5996,17 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("monitor")]
         public virtual string Monitor { get; set; }
 
+        /// <summary>Deployment state of otel-collector</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("otelCollector")]
+        public virtual string OtelCollector { get; set; }
+
         /// <summary>Deployment state of reconciler-manager pod</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reconcilerManager")]
         public virtual string ReconcilerManager { get; set; }
+
+        /// <summary>Deployment state of resource-group-controller-manager</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceGroupControllerManager")]
+        public virtual string ResourceGroupControllerManager { get; set; }
 
         /// <summary>Deployment state of root-reconciler</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rootReconciler")]
@@ -6063,7 +6071,7 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     /// <summary>Specific versioning information pertaining to ConfigSync's Pods</summary>
     public class ConfigManagementConfigSyncVersion : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Version of the deployed admission_webhook pod</summary>
+        /// <summary>Version of the deployed admission-webhook pod</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("admissionWebhook")]
         public virtual string AdmissionWebhook { get; set; }
 
@@ -6079,9 +6087,17 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("monitor")]
         public virtual string Monitor { get; set; }
 
+        /// <summary>Version of the deployed otel-collector pod</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("otelCollector")]
+        public virtual string OtelCollector { get; set; }
+
         /// <summary>Version of the deployed reconciler-manager pod</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reconcilerManager")]
         public virtual string ReconcilerManager { get; set; }
+
+        /// <summary>Version of the deployed resource-group-controller-manager pod</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceGroupControllerManager")]
+        public virtual string ResourceGroupControllerManager { get; set; }
 
         /// <summary>Version of the deployed reconciler container in root-reconciler pod</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rootReconciler")]
@@ -10259,6 +10275,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     /// <summary>**Service Mesh**: Spec for a single Membership for the servicemesh feature</summary>
     public class ServiceMeshMembershipSpec : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Specifies the API that will be used for configuring the mesh workloads.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configApi")]
+        public virtual string ConfigApi { get; set; }
+
         /// <summary>Deprecated: use `management` instead Enables automatic control plane management.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("controlPlane")]
         public virtual string ControlPlane { get; set; }
@@ -10267,7 +10287,7 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("defaultChannel")]
         public virtual string DefaultChannel { get; set; }
 
-        /// <summary>Enables automatic Service Mesh management.</summary>
+        /// <summary>Optional. Enables automatic Service Mesh management.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("management")]
         public virtual string Management { get; set; }
 
