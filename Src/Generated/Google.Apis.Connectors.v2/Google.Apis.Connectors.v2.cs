@@ -2740,6 +2740,13 @@ namespace Google.Apis.Connectors.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataType")]
         public virtual string DataType { get; set; }
 
+        /// <summary>
+        /// The following field specifies the default value of the Parameter provided by the external system if a value
+        /// is not provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultValue")]
+        public virtual object DefaultValue { get; set; }
+
         /// <summary>A brief description of the metadata field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
@@ -2751,6 +2758,10 @@ namespace Google.Apis.Connectors.v2.Data
         /// <summary>Name of the metadata field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Specifies whether a null value is allowed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nullable")]
+        public virtual System.Nullable<bool> Nullable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

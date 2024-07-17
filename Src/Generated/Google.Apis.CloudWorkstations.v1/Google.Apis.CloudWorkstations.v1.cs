@@ -2875,10 +2875,10 @@ namespace Google.Apis.CloudWorkstations.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Configuration options for private workstation clusters.</summary>
+    /// <summary>Configuration options for a custom domain.</summary>
     public class DomainConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Immutable. Whether Workstations endpoint is private.</summary>
+        /// <summary>Immutable. Domain used by Workstations for HTTP ingress.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
         public virtual string Domain { get; set; }
 
@@ -3720,17 +3720,52 @@ namespace Google.Apis.CloudWorkstations.v1.Data
         public virtual System.Nullable<int> Version { get; set; }
     }
 
+    /// <summary>
+    /// A PortRange defines a range of ports. Both first and last are inclusive. To specify a single port, both first
+    /// and last should be the same.
+    /// </summary>
+    public class PortRange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Starting port number for the current range of ports.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("first")]
+        public virtual System.Nullable<int> First { get; set; }
+
+        /// <summary>Required. Ending port number for the current range of ports.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("last")]
+        public virtual System.Nullable<int> Last { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration options for private workstation clusters.</summary>
     public class PrivateClusterConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Additional projects that are allowed to attach to the workstation cluster's service attachment. By
+        /// default, the workstation cluster's project and the VPC host project (if different) are allowed.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedProjects")]
         public virtual System.Collections.Generic.IList<string> AllowedProjects { get; set; }
 
+        /// <summary>
+        /// Output only. Hostname for the workstation cluster. This field will be populated only when private endpoint
+        /// is enabled. To access workstations in the workstation cluster, create a new DNS zone mapping this domain
+        /// name to an internal IP address and a forwarding rule mapping that address to the service attachment.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterHostname")]
         public virtual string ClusterHostname { get; set; }
 
+        /// <summary>Immutable. Whether Workstations endpoint is private.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enablePrivateEndpoint")]
         public virtual System.Nullable<bool> EnablePrivateEndpoint { get; set; }
 
+        /// <summary>
+        /// Output only. Service attachment URI for the workstation cluster. The service attachemnt is created when
+        /// private endpoint is enabled. To access workstations in the workstation cluster, configure access to the
+        /// managed service using [Private Service
+        /// Connect](https://cloud.google.com/vpc/docs/configure-private-service-connect-services).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAttachmentUri")]
         public virtual string ServiceAttachmentUri { get; set; }
 
@@ -4284,6 +4319,13 @@ namespace Google.Apis.CloudWorkstations.v1.Data
     /// </summary>
     public class WorkstationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. A Single or Range of ports externally accessible in the workstation. If not specified defaults to
+        /// ports 22, 80 and ports 1024-65535.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedPorts")]
+        public virtual System.Collections.Generic.IList<PortRange> AllowedPorts { get; set; }
+
         /// <summary>Optional. Client-specified annotations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }

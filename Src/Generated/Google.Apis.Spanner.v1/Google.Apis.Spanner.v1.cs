@@ -313,15 +313,15 @@ namespace Google.Apis.Spanner.v1
             }
 
             /// <summary>
-            /// Lists the user-managed instance config long-running operations in the given project. An instance config
-            /// operation has a name of the form `projects//instanceConfigs//operations/`. The long-running operation
-            /// metadata field type `metadata.type_url` describes the type of the metadata. Operations returned include
-            /// those that have completed/failed/canceled within the last 7 days, and pending operations. Operations
-            /// returned are ordered by `operation.metadata.value.start_time` in descending order starting from the most
-            /// recently started operation.
+            /// Lists the user-managed instance configuration long-running operations in the given project. An instance
+            /// configuration operation has a name of the form `projects//instanceConfigs//operations/`. The
+            /// long-running operation metadata field type `metadata.type_url` describes the type of the metadata.
+            /// Operations returned include those that have completed/failed/canceled within the last 7 days, and
+            /// pending operations. Operations returned are ordered by `operation.metadata.value.start_time` in
+            /// descending order starting from the most recently started operation.
             /// </summary>
             /// <param name="parent">
-            /// Required. The project of the instance config operations. Values are of the form `projects/`.
+            /// Required. The project of the instance configuration operations. Values are of the form `projects/`.
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -329,12 +329,12 @@ namespace Google.Apis.Spanner.v1
             }
 
             /// <summary>
-            /// Lists the user-managed instance config long-running operations in the given project. An instance config
-            /// operation has a name of the form `projects//instanceConfigs//operations/`. The long-running operation
-            /// metadata field type `metadata.type_url` describes the type of the metadata. Operations returned include
-            /// those that have completed/failed/canceled within the last 7 days, and pending operations. Operations
-            /// returned are ordered by `operation.metadata.value.start_time` in descending order starting from the most
-            /// recently started operation.
+            /// Lists the user-managed instance configuration long-running operations in the given project. An instance
+            /// configuration operation has a name of the form `projects//instanceConfigs//operations/`. The
+            /// long-running operation metadata field type `metadata.type_url` describes the type of the metadata.
+            /// Operations returned include those that have completed/failed/canceled within the last 7 days, and
+            /// pending operations. Operations returned are ordered by `operation.metadata.value.start_time` in
+            /// descending order starting from the most recently started operation.
             /// </summary>
             public class ListRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.ListInstanceConfigOperationsResponse>
             {
@@ -346,7 +346,7 @@ namespace Google.Apis.Spanner.v1
                 }
 
                 /// <summary>
-                /// Required. The project of the instance config operations. Values are of the form `projects/`.
+                /// Required. The project of the instance configuration operations. Values are of the form `projects/`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -370,8 +370,8 @@ namespace Google.Apis.Spanner.v1
                 /// `type.googleapis.com/google.spanner.admin.instance.v1.CreateInstanceConfigMetadata) AND` \
                 /// `(metadata.instance_config.name:custom-config) AND` \ `(metadata.progress.start_time &amp;lt;
                 /// \"2021-03-28T14:50:00Z\") AND` \ `(error:*)` - Return operations where: * The operation's metadata
-                /// type is CreateInstanceConfigMetadata. * The instance config name contains "custom-config". * The
-                /// operation started before 2021-03-28T14:50:00Z. * The operation resulted in an error.
+                /// type is CreateInstanceConfigMetadata. * The instance configuration name contains "custom-config". *
+                /// The operation started before 2021-03-28T14:50:00Z. * The operation resulted in an error.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -1016,19 +1016,20 @@ namespace Google.Apis.Spanner.v1
             }
 
             /// <summary>
-            /// Creates an instance config and begins preparing it to be used. The returned long-running operation can
-            /// be used to track the progress of preparing the new instance config. The instance config name is assigned
-            /// by the caller. If the named instance config already exists, `CreateInstanceConfig` returns
-            /// `ALREADY_EXISTS`. Immediately after the request returns: * The instance config is readable via the API,
-            /// with all requested attributes. The instance config's reconciling field is set to true. Its state is
-            /// `CREATING`. While the operation is pending: * Cancelling the operation renders the instance config
-            /// immediately unreadable via the API. * Except for deleting the creating resource, all other attempts to
-            /// modify the instance config are rejected. Upon completion of the returned operation: * Instances can be
-            /// created using the instance configuration. * The instance config's reconciling field becomes false. Its
-            /// state becomes `READY`. The returned long-running operation will have a name of the format `/operations/`
-            /// and can be used to track creation of the instance config. The metadata field type is
-            /// CreateInstanceConfigMetadata. The response field type is InstanceConfig, if successful. Authorization
-            /// requires `spanner.instanceConfigs.create` permission on the resource parent.
+            /// Creates an instance configuration and begins preparing it to be used. The returned long-running
+            /// operation can be used to track the progress of preparing the new instance config. The instance
+            /// configuration name is assigned by the caller. If the named instance configuration already exists,
+            /// `CreateInstanceConfig` returns `ALREADY_EXISTS`. Immediately after the request returns: * The instance
+            /// configuration is readable via the API, with all requested attributes. The instance config's reconciling
+            /// field is set to true. Its state is `CREATING`. While the operation is pending: * Cancelling the
+            /// operation renders the instance configuration immediately unreadable via the API. * Except for deleting
+            /// the creating resource, all other attempts to modify the instance configuration are rejected. Upon
+            /// completion of the returned operation: * Instances can be created using the instance configuration. * The
+            /// instance config's reconciling field becomes false. Its state becomes `READY`. The returned long-running
+            /// operation will have a name of the format `/operations/` and can be used to track creation of the
+            /// instance config. The metadata field type is CreateInstanceConfigMetadata. The response field type is
+            /// InstanceConfig, if successful. Authorization requires `spanner.instanceConfigs.create` permission on the
+            /// resource parent.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -1041,19 +1042,20 @@ namespace Google.Apis.Spanner.v1
             }
 
             /// <summary>
-            /// Creates an instance config and begins preparing it to be used. The returned long-running operation can
-            /// be used to track the progress of preparing the new instance config. The instance config name is assigned
-            /// by the caller. If the named instance config already exists, `CreateInstanceConfig` returns
-            /// `ALREADY_EXISTS`. Immediately after the request returns: * The instance config is readable via the API,
-            /// with all requested attributes. The instance config's reconciling field is set to true. Its state is
-            /// `CREATING`. While the operation is pending: * Cancelling the operation renders the instance config
-            /// immediately unreadable via the API. * Except for deleting the creating resource, all other attempts to
-            /// modify the instance config are rejected. Upon completion of the returned operation: * Instances can be
-            /// created using the instance configuration. * The instance config's reconciling field becomes false. Its
-            /// state becomes `READY`. The returned long-running operation will have a name of the format `/operations/`
-            /// and can be used to track creation of the instance config. The metadata field type is
-            /// CreateInstanceConfigMetadata. The response field type is InstanceConfig, if successful. Authorization
-            /// requires `spanner.instanceConfigs.create` permission on the resource parent.
+            /// Creates an instance configuration and begins preparing it to be used. The returned long-running
+            /// operation can be used to track the progress of preparing the new instance config. The instance
+            /// configuration name is assigned by the caller. If the named instance configuration already exists,
+            /// `CreateInstanceConfig` returns `ALREADY_EXISTS`. Immediately after the request returns: * The instance
+            /// configuration is readable via the API, with all requested attributes. The instance config's reconciling
+            /// field is set to true. Its state is `CREATING`. While the operation is pending: * Cancelling the
+            /// operation renders the instance configuration immediately unreadable via the API. * Except for deleting
+            /// the creating resource, all other attempts to modify the instance configuration are rejected. Upon
+            /// completion of the returned operation: * Instances can be created using the instance configuration. * The
+            /// instance config's reconciling field becomes false. Its state becomes `READY`. The returned long-running
+            /// operation will have a name of the format `/operations/` and can be used to track creation of the
+            /// instance config. The metadata field type is CreateInstanceConfigMetadata. The response field type is
+            /// InstanceConfig, if successful. Authorization requires `spanner.instanceConfigs.create` permission on the
+            /// resource parent.
             /// </summary>
             public class CreateRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.Operation>
             {
@@ -1104,7 +1106,7 @@ namespace Google.Apis.Spanner.v1
 
             /// <summary>
             /// Deletes the instance config. Deletion is only allowed when no instances are using the configuration. If
-            /// any instances are using the config, returns `FAILED_PRECONDITION`. Only user managed configurations can
+            /// any instances are using the config, returns `FAILED_PRECONDITION`. Only user-managed configurations can
             /// be deleted. Authorization requires `spanner.instanceConfigs.delete` permission on the resource name.
             /// </summary>
             /// <param name="name">
@@ -1118,7 +1120,7 @@ namespace Google.Apis.Spanner.v1
 
             /// <summary>
             /// Deletes the instance config. Deletion is only allowed when no instances are using the configuration. If
-            /// any instances are using the config, returns `FAILED_PRECONDITION`. Only user managed configurations can
+            /// any instances are using the config, returns `FAILED_PRECONDITION`. Only user-managed configurations can
             /// be deleted. Authorization requires `spanner.instanceConfigs.delete` permission on the resource name.
             /// </summary>
             public class DeleteRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.Empty>
@@ -1139,9 +1141,10 @@ namespace Google.Apis.Spanner.v1
 
                 /// <summary>
                 /// Used for optimistic concurrency control as a way to help prevent simultaneous deletes of an instance
-                /// config from overwriting each other. If not empty, the API only deletes the instance config when the
-                /// etag provided matches the current status of the requested instance config. Otherwise, deletes the
-                /// instance config without checking the current status of the requested instance config.
+                /// configuration from overwriting each other. If not empty, the API only deletes the instance
+                /// configuration when the etag provided matches the current status of the requested instance config.
+                /// Otherwise, deletes the instance configuration without checking the current status of the requested
+                /// instance config.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Etag { get; set; }
@@ -1244,8 +1247,8 @@ namespace Google.Apis.Spanner.v1
             }
 
             /// <summary>
-            /// Lists the supported instance configurations for a given project. Returns both Google managed configs and
-            /// user managed configs.
+            /// Lists the supported instance configurations for a given project. Returns both Google-managed
+            /// configurations and user-managed configurations.
             /// </summary>
             /// <param name="parent">
             /// Required. The name of the project for which a list of supported instance configurations is requested.
@@ -1257,8 +1260,8 @@ namespace Google.Apis.Spanner.v1
             }
 
             /// <summary>
-            /// Lists the supported instance configurations for a given project. Returns both Google managed configs and
-            /// user managed configs.
+            /// Lists the supported instance configurations for a given project. Returns both Google-managed
+            /// configurations and user-managed configurations.
             /// </summary>
             public class ListRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.ListInstanceConfigsResponse>
             {
@@ -1332,23 +1335,23 @@ namespace Google.Apis.Spanner.v1
 
             /// <summary>
             /// Updates an instance config. The returned long-running operation can be used to track the progress of
-            /// updating the instance. If the named instance config does not exist, returns `NOT_FOUND`. Only user
-            /// managed configurations can be updated. Immediately after the request returns: * The instance config's
-            /// reconciling field is set to true. While the operation is pending: * Cancelling the operation sets its
-            /// metadata's cancel_time. The operation is guaranteed to succeed at undoing all changes, after which point
-            /// it terminates with a `CANCELLED` status. * All other attempts to modify the instance config are
-            /// rejected. * Reading the instance config via the API continues to give the pre-request values. Upon
-            /// completion of the returned operation: * Creating instances using the instance configuration uses the new
-            /// values. * The instance config's new values are readable via the API. * The instance config's reconciling
-            /// field becomes false. The returned long-running operation will have a name of the format `/operations/`
-            /// and can be used to track the instance config modification. The metadata field type is
-            /// UpdateInstanceConfigMetadata. The response field type is InstanceConfig, if successful. Authorization
-            /// requires `spanner.instanceConfigs.update` permission on the resource name.
+            /// updating the instance. If the named instance configuration does not exist, returns `NOT_FOUND`. Only
+            /// user-managed configurations can be updated. Immediately after the request returns: * The instance
+            /// config's reconciling field is set to true. While the operation is pending: * Cancelling the operation
+            /// sets its metadata's cancel_time. The operation is guaranteed to succeed at undoing all changes, after
+            /// which point it terminates with a `CANCELLED` status. * All other attempts to modify the instance
+            /// configuration are rejected. * Reading the instance configuration via the API continues to give the
+            /// pre-request values. Upon completion of the returned operation: * Creating instances using the instance
+            /// configuration uses the new values. * The instance config's new values are readable via the API. * The
+            /// instance config's reconciling field becomes false. The returned long-running operation will have a name
+            /// of the format `/operations/` and can be used to track the instance configuration modification. The
+            /// metadata field type is UpdateInstanceConfigMetadata. The response field type is InstanceConfig, if
+            /// successful. Authorization requires `spanner.instanceConfigs.update` permission on the resource name.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// A unique identifier for the instance configuration. Values are of the form
-            /// `projects//instanceConfigs/a-z*`. User instance config must start with `custom-`.
+            /// `projects//instanceConfigs/a-z*`. User instance configuration must start with `custom-`.
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Spanner.v1.Data.UpdateInstanceConfigRequest body, string name)
             {
@@ -1357,18 +1360,18 @@ namespace Google.Apis.Spanner.v1
 
             /// <summary>
             /// Updates an instance config. The returned long-running operation can be used to track the progress of
-            /// updating the instance. If the named instance config does not exist, returns `NOT_FOUND`. Only user
-            /// managed configurations can be updated. Immediately after the request returns: * The instance config's
-            /// reconciling field is set to true. While the operation is pending: * Cancelling the operation sets its
-            /// metadata's cancel_time. The operation is guaranteed to succeed at undoing all changes, after which point
-            /// it terminates with a `CANCELLED` status. * All other attempts to modify the instance config are
-            /// rejected. * Reading the instance config via the API continues to give the pre-request values. Upon
-            /// completion of the returned operation: * Creating instances using the instance configuration uses the new
-            /// values. * The instance config's new values are readable via the API. * The instance config's reconciling
-            /// field becomes false. The returned long-running operation will have a name of the format `/operations/`
-            /// and can be used to track the instance config modification. The metadata field type is
-            /// UpdateInstanceConfigMetadata. The response field type is InstanceConfig, if successful. Authorization
-            /// requires `spanner.instanceConfigs.update` permission on the resource name.
+            /// updating the instance. If the named instance configuration does not exist, returns `NOT_FOUND`. Only
+            /// user-managed configurations can be updated. Immediately after the request returns: * The instance
+            /// config's reconciling field is set to true. While the operation is pending: * Cancelling the operation
+            /// sets its metadata's cancel_time. The operation is guaranteed to succeed at undoing all changes, after
+            /// which point it terminates with a `CANCELLED` status. * All other attempts to modify the instance
+            /// configuration are rejected. * Reading the instance configuration via the API continues to give the
+            /// pre-request values. Upon completion of the returned operation: * Creating instances using the instance
+            /// configuration uses the new values. * The instance config's new values are readable via the API. * The
+            /// instance config's reconciling field becomes false. The returned long-running operation will have a name
+            /// of the format `/operations/` and can be used to track the instance configuration modification. The
+            /// metadata field type is UpdateInstanceConfigMetadata. The response field type is InstanceConfig, if
+            /// successful. Authorization requires `spanner.instanceConfigs.update` permission on the resource name.
             /// </summary>
             public class PatchRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.Operation>
             {
@@ -1382,7 +1385,7 @@ namespace Google.Apis.Spanner.v1
 
                 /// <summary>
                 /// A unique identifier for the instance configuration. Values are of the form
-                /// `projects//instanceConfigs/a-z*`. User instance config must start with `custom-`.
+                /// `projects//instanceConfigs/a-z*`. User instance configuration must start with `custom-`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -2802,9 +2805,243 @@ namespace Google.Apis.Spanner.v1
                 public DatabasesResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    BackupSchedules = new BackupSchedulesResource(service);
                     DatabaseRoles = new DatabaseRolesResource(service);
                     Operations = new OperationsResource(service);
                     Sessions = new SessionsResource(service);
+                }
+
+                /// <summary>Gets the BackupSchedules resource.</summary>
+                public virtual BackupSchedulesResource BackupSchedules { get; }
+
+                /// <summary>The "backupSchedules" collection of methods.</summary>
+                public class BackupSchedulesResource
+                {
+                    private const string Resource = "backupSchedules";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public BackupSchedulesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Gets the access control policy for a database or backup resource. Returns an empty policy if a
+                    /// database or backup exists but does not have a policy set. Authorization requires
+                    /// `spanner.databases.getIamPolicy` permission on resource. For backups, authorization requires
+                    /// `spanner.backups.getIamPolicy` permission on resource.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="resource">
+                    /// REQUIRED: The Cloud Spanner resource for which the policy is being retrieved. The format is
+                    /// `projects//instances/` for instance resources and `projects//instances//databases/` for database
+                    /// resources.
+                    /// </param>
+                    public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.Spanner.v1.Data.GetIamPolicyRequest body, string resource)
+                    {
+                        return new GetIamPolicyRequest(this.service, body, resource);
+                    }
+
+                    /// <summary>
+                    /// Gets the access control policy for a database or backup resource. Returns an empty policy if a
+                    /// database or backup exists but does not have a policy set. Authorization requires
+                    /// `spanner.databases.getIamPolicy` permission on resource. For backups, authorization requires
+                    /// `spanner.backups.getIamPolicy` permission on resource.
+                    /// </summary>
+                    public class GetIamPolicyRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.Policy>
+                    {
+                        /// <summary>Constructs a new GetIamPolicy request.</summary>
+                        public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Spanner.v1.Data.GetIamPolicyRequest body, string resource) : base(service)
+                        {
+                            Resource = resource;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// REQUIRED: The Cloud Spanner resource for which the policy is being retrieved. The format is
+                        /// `projects//instances/` for instance resources and `projects//instances//databases/` for
+                        /// database resources.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Resource { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Spanner.v1.Data.GetIamPolicyRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "getIamPolicy";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+resource}:getIamPolicy";
+
+                        /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/instances/[^/]+/databases/[^/]+/backupSchedules/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Sets the access control policy on a database or backup resource. Replaces any existing policy.
+                    /// Authorization requires `spanner.databases.setIamPolicy` permission on resource. For backups,
+                    /// authorization requires `spanner.backups.setIamPolicy` permission on resource.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="resource">
+                    /// REQUIRED: The Cloud Spanner resource for which the policy is being set. The format is
+                    /// `projects//instances/` for instance resources and `projects//instances//databases/` for
+                    /// databases resources.
+                    /// </param>
+                    public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Spanner.v1.Data.SetIamPolicyRequest body, string resource)
+                    {
+                        return new SetIamPolicyRequest(this.service, body, resource);
+                    }
+
+                    /// <summary>
+                    /// Sets the access control policy on a database or backup resource. Replaces any existing policy.
+                    /// Authorization requires `spanner.databases.setIamPolicy` permission on resource. For backups,
+                    /// authorization requires `spanner.backups.setIamPolicy` permission on resource.
+                    /// </summary>
+                    public class SetIamPolicyRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.Policy>
+                    {
+                        /// <summary>Constructs a new SetIamPolicy request.</summary>
+                        public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Spanner.v1.Data.SetIamPolicyRequest body, string resource) : base(service)
+                        {
+                            Resource = resource;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// REQUIRED: The Cloud Spanner resource for which the policy is being set. The format is
+                        /// `projects//instances/` for instance resources and `projects//instances//databases/` for
+                        /// databases resources.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Resource { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Spanner.v1.Data.SetIamPolicyRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "setIamPolicy";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+resource}:setIamPolicy";
+
+                        /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/instances/[^/]+/databases/[^/]+/backupSchedules/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Returns permissions that the caller has on the specified database or backup resource. Attempting
+                    /// this RPC on a non-existent Cloud Spanner database will result in a NOT_FOUND error if the user
+                    /// has `spanner.databases.list` permission on the containing Cloud Spanner instance. Otherwise
+                    /// returns an empty set of permissions. Calling this method on a backup that does not exist will
+                    /// result in a NOT_FOUND error if the user has `spanner.backups.list` permission on the containing
+                    /// instance.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="resource">
+                    /// REQUIRED: The Cloud Spanner resource for which permissions are being tested. The format is
+                    /// `projects//instances/` for instance resources and `projects//instances//databases/` for database
+                    /// resources.
+                    /// </param>
+                    public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Spanner.v1.Data.TestIamPermissionsRequest body, string resource)
+                    {
+                        return new TestIamPermissionsRequest(this.service, body, resource);
+                    }
+
+                    /// <summary>
+                    /// Returns permissions that the caller has on the specified database or backup resource. Attempting
+                    /// this RPC on a non-existent Cloud Spanner database will result in a NOT_FOUND error if the user
+                    /// has `spanner.databases.list` permission on the containing Cloud Spanner instance. Otherwise
+                    /// returns an empty set of permissions. Calling this method on a backup that does not exist will
+                    /// result in a NOT_FOUND error if the user has `spanner.backups.list` permission on the containing
+                    /// instance.
+                    /// </summary>
+                    public class TestIamPermissionsRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.TestIamPermissionsResponse>
+                    {
+                        /// <summary>Constructs a new TestIamPermissions request.</summary>
+                        public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Spanner.v1.Data.TestIamPermissionsRequest body, string resource) : base(service)
+                        {
+                            Resource = resource;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// REQUIRED: The Cloud Spanner resource for which permissions are being tested. The format is
+                        /// `projects//instances/` for instance resources and `projects//instances//databases/` for
+                        /// database resources.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Resource { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Spanner.v1.Data.TestIamPermissionsRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "testIamPermissions";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+resource}:testIamPermissions";
+
+                        /// <summary>Initializes TestIamPermissions parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/instances/[^/]+/databases/[^/]+/backupSchedules/[^/]+$",
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Gets the DatabaseRoles resource.</summary>
@@ -4417,7 +4654,7 @@ namespace Google.Apis.Spanner.v1
                 }
 
                 /// <summary>
-                /// Creates a new Cloud Spanner database and starts to prepare it for serving. The returned long-running
+                /// Creates a new Spanner database and starts to prepare it for serving. The returned long-running
                 /// operation will have a name of the format `/operations/` and can be used to track preparation of the
                 /// database. The metadata field type is CreateDatabaseMetadata. The response field type is Database, if
                 /// successful.
@@ -4433,7 +4670,7 @@ namespace Google.Apis.Spanner.v1
                 }
 
                 /// <summary>
-                /// Creates a new Cloud Spanner database and starts to prepare it for serving. The returned long-running
+                /// Creates a new Spanner database and starts to prepare it for serving. The returned long-running
                 /// operation will have a name of the format `/operations/` and can be used to track preparation of the
                 /// database. The metadata field type is CreateDatabaseMetadata. The response field type is Database, if
                 /// successful.
@@ -6965,18 +7202,18 @@ namespace Google.Apis.Spanner.v1
             /// rejected. * The following database and backup admin operations are rejected: *
             /// DatabaseAdmin.CreateDatabase, * DatabaseAdmin.UpdateDatabaseDdl (Disabled if default_leader is specified
             /// in the request.) * DatabaseAdmin.RestoreDatabase * DatabaseAdmin.CreateBackup * DatabaseAdmin.CopyBackup
-            /// * Both the source and target instance configs are subject to hourly compute and storage charges. * The
-            /// instance may experience higher read-write latencies and a higher transaction abort rate. However, moving
-            /// an instance does not cause any downtime. The returned long-running operation will have a name of the
-            /// format `/operations/` and can be used to track the move instance operation. The metadata field type is
-            /// MoveInstanceMetadata. The response field type is Instance, if successful. Cancelling the operation sets
-            /// its metadata's cancel_time. Cancellation is not immediate since it involves moving any data previously
-            /// moved to target instance config back to the original instance config. The same operation can be used to
-            /// track the progress of the cancellation. Upon successful completion of the cancellation, the operation
-            /// terminates with CANCELLED status. Upon completion(if not cancelled) of the returned operation: *
-            /// Instance would be successfully moved to the target instance config. * You are billed for compute and
-            /// storage in target instance config. Authorization requires `spanner.instances.update` permission on the
-            /// resource instance. For more details, please see
+            /// * Both the source and target instance configurations are subject to hourly compute and storage charges.
+            /// * The instance may experience higher read-write latencies and a higher transaction abort rate. However,
+            /// moving an instance does not cause any downtime. The returned long-running operation will have a name of
+            /// the format `/operations/` and can be used to track the move instance operation. The metadata field type
+            /// is MoveInstanceMetadata. The response field type is Instance, if successful. Cancelling the operation
+            /// sets its metadata's cancel_time. Cancellation is not immediate since it involves moving any data
+            /// previously moved to target instance configuration back to the original instance config. The same
+            /// operation can be used to track the progress of the cancellation. Upon successful completion of the
+            /// cancellation, the operation terminates with `CANCELLED` status. Upon completion(if not cancelled) of the
+            /// returned operation: * Instance would be successfully moved to the target instance config. * You are
+            /// billed for compute and storage in target instance config. Authorization requires
+            /// `spanner.instances.update` permission on the resource instance. For more details, please see
             /// [documentation](https://cloud.google.com/spanner/docs/move-instance).
             /// </summary>
             /// <param name="body">The body of the request.</param>
@@ -6997,18 +7234,18 @@ namespace Google.Apis.Spanner.v1
             /// rejected. * The following database and backup admin operations are rejected: *
             /// DatabaseAdmin.CreateDatabase, * DatabaseAdmin.UpdateDatabaseDdl (Disabled if default_leader is specified
             /// in the request.) * DatabaseAdmin.RestoreDatabase * DatabaseAdmin.CreateBackup * DatabaseAdmin.CopyBackup
-            /// * Both the source and target instance configs are subject to hourly compute and storage charges. * The
-            /// instance may experience higher read-write latencies and a higher transaction abort rate. However, moving
-            /// an instance does not cause any downtime. The returned long-running operation will have a name of the
-            /// format `/operations/` and can be used to track the move instance operation. The metadata field type is
-            /// MoveInstanceMetadata. The response field type is Instance, if successful. Cancelling the operation sets
-            /// its metadata's cancel_time. Cancellation is not immediate since it involves moving any data previously
-            /// moved to target instance config back to the original instance config. The same operation can be used to
-            /// track the progress of the cancellation. Upon successful completion of the cancellation, the operation
-            /// terminates with CANCELLED status. Upon completion(if not cancelled) of the returned operation: *
-            /// Instance would be successfully moved to the target instance config. * You are billed for compute and
-            /// storage in target instance config. Authorization requires `spanner.instances.update` permission on the
-            /// resource instance. For more details, please see
+            /// * Both the source and target instance configurations are subject to hourly compute and storage charges.
+            /// * The instance may experience higher read-write latencies and a higher transaction abort rate. However,
+            /// moving an instance does not cause any downtime. The returned long-running operation will have a name of
+            /// the format `/operations/` and can be used to track the move instance operation. The metadata field type
+            /// is MoveInstanceMetadata. The response field type is Instance, if successful. Cancelling the operation
+            /// sets its metadata's cancel_time. Cancellation is not immediate since it involves moving any data
+            /// previously moved to target instance configuration back to the original instance config. The same
+            /// operation can be used to track the progress of the cancellation. Upon successful completion of the
+            /// cancellation, the operation terminates with `CANCELLED` status. Upon completion(if not cancelled) of the
+            /// returned operation: * Instance would be successfully moved to the target instance config. * You are
+            /// billed for compute and storage in target instance config. Authorization requires
+            /// `spanner.instances.update` permission on the resource instance. For more details, please see
             /// [documentation](https://cloud.google.com/spanner/docs/move-instance).
             /// </summary>
             public class MoveRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.Operation>
@@ -7434,7 +7671,7 @@ namespace Google.Apis.Spanner.v1
 }
 namespace Google.Apis.Spanner.v1.Data
 {
-    /// <summary>Autoscaling config for an instance.</summary>
+    /// <summary>Autoscaling configuration for an instance.</summary>
     public class AutoscalingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Autoscaling limits for an instance.</summary>
@@ -8605,15 +8842,14 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual System.Collections.Generic.IList<string> ExtraStatements { get; set; }
 
         /// <summary>
-        /// Optional. Proto descriptors used by CREATE/ALTER PROTO BUNDLE statements in 'extra_statements' above.
-        /// Contains a protobuf-serialized
-        /// [google.protobuf.FileDescriptorSet](https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/descriptor.proto).
-        /// To generate it, [install](https://grpc.io/docs/protoc-installation/) and run `protoc` with --include_imports
-        /// and --descriptor_set_out. For example, to generate for moon/shot/app.proto, run
+        /// Optional. Proto descriptors used by `CREATE/ALTER PROTO BUNDLE` statements in 'extra_statements'. Contains a
+        /// protobuf-serialized
+        /// [`google.protobuf.FileDescriptorSet`](https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/descriptor.proto)
+        /// descriptor set. To generate it, [install](https://grpc.io/docs/protoc-installation/) and run `protoc` with
+        /// --include_imports and --descriptor_set_out. For example, to generate for moon/shot/app.proto, run
         /// ```
-        /// $protoc
-        /// --proto_path=/app_path --proto_path=/lib_path \ --include_imports \ --descriptor_set_out=descriptors.data \
-        /// moon/shot/app.proto
+        /// $protoc --proto_path=/app_path --proto_path=/lib_path \ --include_imports \
+        /// --descriptor_set_out=descriptors.data \ moon/shot/app.proto
         /// ```
         /// For more details, see protobuffer [self
         /// description](https://developers.google.com/protocol-buffers/docs/techniques#self-description).
@@ -8665,7 +8901,7 @@ namespace Google.Apis.Spanner.v1.Data
             set => CancelTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>The target instance config end state.</summary>
+        /// <summary>The target instance configuration end state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceConfig")]
         public virtual InstanceConfig InstanceConfig { get; set; }
 
@@ -8682,16 +8918,16 @@ namespace Google.Apis.Spanner.v1.Data
     {
         /// <summary>
         /// Required. The InstanceConfig proto of the configuration to create. instance_config.name must be
-        /// `/instanceConfigs/`. instance_config.base_config must be a Google managed configuration name, e.g.
+        /// `/instanceConfigs/`. instance_config.base_config must be a Google-managed configuration name, e.g.
         /// /instanceConfigs/us-east1, /instanceConfigs/nam3.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceConfig")]
         public virtual InstanceConfig InstanceConfig { get; set; }
 
         /// <summary>
-        /// Required. The ID of the instance config to create. Valid identifiers are of the form
+        /// Required. The ID of the instance configuration to create. Valid identifiers are of the form
         /// `custom-[-a-z0-9]*[a-z0-9]` and must be between 2 and 64 characters in length. The `custom-` prefix is
-        /// required to avoid name conflicts with Google managed configurations.
+        /// required to avoid name conflicts with Google-managed configurations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceConfigId")]
         public virtual string InstanceConfigId { get; set; }
@@ -9943,23 +10179,22 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// The number of nodes allocated to this instance. At most one of either node_count or processing_units should
-        /// be present in the message. Users can set the node_count field to specify the target number of nodes
+        /// The number of nodes allocated to this instance. At most, one of either `node_count` or `processing_units`
+        /// should be present in the message. Users can set the node_count field to specify the target number of nodes
         /// allocated to the instance. If autoscaling is enabled, node_count is treated as an OUTPUT_ONLY field and
-        /// reflects the current number of nodes allocated to the instance. This may be zero in API responses for
-        /// instances that are not yet in state `READY`. See [the
-        /// documentation](https://cloud.google.com/spanner/docs/compute-capacity) for more information about nodes and
-        /// processing units.
+        /// reflects the current number of nodes allocated to the instance. This might be zero in API responses for
+        /// instances that are not yet in the `READY` state. For more information, see [Compute capacity, nodes, and
+        /// processing units](https://cloud.google.com/spanner/docs/compute-capacity).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeCount")]
         public virtual System.Nullable<int> NodeCount { get; set; }
 
         /// <summary>
-        /// The number of processing units allocated to this instance. At most one of processing_units or node_count
-        /// should be present in the message. Users can set the processing_units field to specify the target number of
-        /// processing units allocated to the instance. If autoscaling is enabled, processing_units is treated as an
-        /// OUTPUT_ONLY field and reflects the current number of processing units allocated to the instance. This may be
-        /// zero in API responses for instances that are not yet in state `READY`. See [the
+        /// The number of processing units allocated to this instance. At most, one of either `processing_units` or
+        /// `node_count` should be present in the message. Users can set the `processing_units` field to specify the
+        /// target number of processing units allocated to the instance. If autoscaling is enabled, `processing_units`
+        /// is treated as an `OUTPUT_ONLY` field and reflects the current number of processing units allocated to the
+        /// instance. This might be zero in API responses for instances that are not yet in the `READY` state. See [the
         /// documentation](https://cloud.google.com/spanner/docs/compute-capacity) for more information about nodes and
         /// processing units.
         /// </summary>
@@ -10022,13 +10257,15 @@ namespace Google.Apis.Spanner.v1.Data
     {
         /// <summary>
         /// Base configuration name, e.g. projects//instanceConfigs/nam3, based on which this configuration is created.
-        /// Only set for user managed configurations. `base_config` must refer to a configuration of type GOOGLE_MANAGED
-        /// in the same project as this configuration.
+        /// Only set for user-managed configurations. `base_config` must refer to a configuration of type
+        /// `GOOGLE_MANAGED` in the same project as this configuration.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("baseConfig")]
         public virtual string BaseConfig { get; set; }
 
-        /// <summary>Output only. Whether this instance config is a Google or User Managed Configuration.</summary>
+        /// <summary>
+        /// Output only. Whether this instance configuration is a Google- or user-managed configuration.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configType")]
         public virtual string ConfigType { get; set; }
 
@@ -10038,12 +10275,12 @@ namespace Google.Apis.Spanner.v1.Data
 
         /// <summary>
         /// etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a instance
-        /// config from overwriting each other. It is strongly suggested that systems make use of the etag in the
-        /// read-modify-write cycle to perform instance config updates in order to avoid race conditions: An etag is
-        /// returned in the response which contains instance configs, and systems are expected to put that etag in the
-        /// request to update instance config to ensure that their change will be applied to the same version of the
-        /// instance config. If no etag is provided in the call to update instance config, then the existing instance
-        /// config is overwritten blindly.
+        /// configuration from overwriting each other. It is strongly suggested that systems make use of the etag in the
+        /// read-modify-write cycle to perform instance configuration updates in order to avoid race conditions: An etag
+        /// is returned in the response which contains instance configurations, and systems are expected to put that
+        /// etag in the request to update instance configuration to ensure that their change is applied to the same
+        /// version of the instance configuration. If no etag is provided in the call to update the instance
+        /// configuration, then the existing instance configuration is overwritten blindly.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
@@ -10080,14 +10317,14 @@ namespace Google.Apis.Spanner.v1.Data
 
         /// <summary>
         /// A unique identifier for the instance configuration. Values are of the form `projects//instanceConfigs/a-z*`.
-        /// User instance config must start with `custom-`.
+        /// User instance configuration must start with `custom-`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Output only. The available optional replicas to choose from for user managed configurations. Populated for
-        /// Google managed configurations.
+        /// Output only. The available optional replicas to choose from for user-managed configurations. Populated for
+        /// Google-managed configurations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("optionalReplicas")]
         public virtual System.Collections.Generic.IList<ReplicaInfo> OptionalReplicas { get; set; }
@@ -10097,7 +10334,7 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string QuorumType { get; set; }
 
         /// <summary>
-        /// Output only. If true, the instance config is being created or updated. If false, there are no ongoing
+        /// Output only. If true, the instance configuration is being created or updated. If false, there are no ongoing
         /// operations for the instance config.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
@@ -10105,13 +10342,15 @@ namespace Google.Apis.Spanner.v1.Data
 
         /// <summary>
         /// The geographic placement of nodes in this instance configuration and their replication properties. To create
-        /// user managed configurations, input `replicas` must include all replicas in `replicas` of the `base_config`
+        /// user-managed configurations, input `replicas` must include all replicas in `replicas` of the `base_config`
         /// and include one or more replicas in the `optional_replicas` of the `base_config`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replicas")]
         public virtual System.Collections.Generic.IList<ReplicaInfo> Replicas { get; set; }
 
-        /// <summary>Output only. The current instance config state. Applicable only for USER_MANAGED configs.</summary>
+        /// <summary>
+        /// Output only. The current instance configuration state. Applicable only for `USER_MANAGED` configurations.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -10283,17 +10522,17 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// The number of nodes allocated to this instance partition. Users can set the node_count field to specify the
-        /// target number of nodes allocated to the instance partition. This may be zero in API responses for instance
-        /// partitions that are not yet in state `READY`.
+        /// The number of nodes allocated to this instance partition. Users can set the `node_count` field to specify
+        /// the target number of nodes allocated to the instance partition. This may be zero in API responses for
+        /// instance partitions that are not yet in state `READY`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeCount")]
         public virtual System.Nullable<int> NodeCount { get; set; }
 
         /// <summary>
-        /// The number of processing units allocated to this instance partition. Users can set the processing_units
-        /// field to specify the target number of processing units allocated to the instance partition. This may be zero
-        /// in API responses for instance partitions that are not yet in state `READY`.
+        /// The number of processing units allocated to this instance partition. Users can set the `processing_units`
+        /// field to specify the target number of processing units allocated to the instance partition. This might be
+        /// zero in API responses for instance partitions that are not yet in the `READY` state.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processingUnits")]
         public virtual System.Nullable<int> ProcessingUnits { get; set; }
@@ -10618,9 +10857,9 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string NextPageToken { get; set; }
 
         /// <summary>
-        /// The list of matching instance config long-running operations. Each operation's name will be prefixed by the
-        /// instance config's name. The operation's metadata field type `metadata.type_url` describes the type of the
-        /// metadata.
+        /// The list of matching instance configuration long-running operations. Each operation's name will be prefixed
+        /// by the instance config's name. The operation's metadata field type `metadata.type_url` describes the type of
+        /// the metadata.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
@@ -10896,7 +11135,7 @@ namespace Google.Apis.Spanner.v1.Data
     public class MoveInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The target instance config for the instance to move. Values are of the form
+        /// Required. The target instance configuration for the instance to move. Values are of the form
         /// `projects//instanceConfigs/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetConfig")]
@@ -11249,13 +11488,13 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual PartitionOptions PartitionOptions { get; set; }
 
         /// <summary>
-        /// Required. The query request to generate partitions for. The request will fail if the query is not root
+        /// Required. The query request to generate partitions for. The request fails if the query is not root
         /// partitionable. For a query to be root partitionable, it needs to satisfy a few conditions. For example, if
         /// the query execution plan contains a distributed union operator, then it must be the first operator in the
         /// plan. For more information about other conditions, see [Read data in
         /// parallel](https://cloud.google.com/spanner/docs/reads#read_data_in_parallel). The query request must not
-        /// contain DML commands, such as INSERT, UPDATE, or DELETE. Use ExecuteStreamingSql with a PartitionedDml
-        /// transaction for large, partition-friendly DML operations.
+        /// contain DML commands, such as `INSERT`, `UPDATE`, or `DELETE`. Use `ExecuteStreamingSql` with a
+        /// PartitionedDml transaction for large, partition-friendly DML operations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sql")]
         public virtual string Sql { get; set; }
@@ -11961,14 +12200,15 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string KmsKeyName { get; set; }
 
         /// <summary>
-        /// Optional. Specifies the KMS configuration for the one or more keys used to encrypt the database. Values are
-        /// of the form `projects//locations//keyRings//cryptoKeys/`. The keys referenced by kms_key_names must fully
-        /// cover all regions of the database instance configuration. Some examples: * For single region database
-        /// instance configs, specify a single regional location KMS key. * For multi-regional database instance configs
-        /// of type GOOGLE_MANAGED, either specify a multi-regional location KMS key or multiple regional location KMS
-        /// keys that cover all regions in the instance config. * For a database instance config of type USER_MANAGED,
-        /// please specify only regional location KMS keys to cover each region in the instance config. Multi-regional
-        /// location KMS keys are not supported for USER_MANAGED instance configs.
+        /// Optional. Specifies the KMS configuration for the one or more keys used to encrypt the database. Values have
+        /// the form `projects//locations//keyRings//cryptoKeys/`. The keys referenced by kms_key_names must fully cover
+        /// all regions of the database instance configuration. Some examples: * For single region database instance
+        /// configurations, specify a single regional location KMS key. * For multi-regional database instance
+        /// configurations of type `GOOGLE_MANAGED`, either specify a multi-regional location KMS key or multiple
+        /// regional location KMS keys that cover all regions in the instance configuration. * For a database instance
+        /// configuration of type `USER_MANAGED`, please specify only regional location KMS keys to cover each region in
+        /// the instance configuration. Multi-regional location KMS keys are not supported for USER_MANAGED instance
+        /// configurations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyNames")]
         public virtual System.Collections.Generic.IList<string> KmsKeyNames { get; set; }
@@ -13165,7 +13405,7 @@ namespace Google.Apis.Spanner.v1.Data
             set => CancelTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>The desired instance config after updating.</summary>
+        /// <summary>The desired instance configuration after updating.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceConfig")]
         public virtual InstanceConfig InstanceConfig { get; set; }
 
@@ -13181,9 +13421,9 @@ namespace Google.Apis.Spanner.v1.Data
     public class UpdateInstanceConfigRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The user instance config to update, which must always include the instance config name. Otherwise,
-        /// only fields mentioned in update_mask need be included. To prevent conflicts of concurrent updates, etag can
-        /// be used.
+        /// Required. The user instance configuration to update, which must always include the instance configuration
+        /// name. Otherwise, only fields mentioned in update_mask need be included. To prevent conflicts of concurrent
+        /// updates, etag can be used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceConfig")]
         public virtual InstanceConfig InstanceConfig { get; set; }

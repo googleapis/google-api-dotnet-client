@@ -14018,7 +14018,7 @@ namespace Google.Apis.DLP.v2.Data
     /// <summary>The data that will be profiled.</summary>
     public class GooglePrivacyDlpV2DataProfileLocation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ID of the Folder within an organization to scan.</summary>
+        /// <summary>The ID of the folder within an organization to scan.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("folderId")]
         public virtual System.Nullable<long> FolderId { get; set; }
 
@@ -15237,7 +15237,7 @@ namespace Google.Apis.DLP.v2.Data
     /// </summary>
     public class GooglePrivacyDlpV2DiscoveryStartingLocation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ID of the Folder within an organization to scan.</summary>
+        /// <summary>The ID of the folder within an organization to scan.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("folderId")]
         public virtual System.Nullable<long> FolderId { get; set; }
 

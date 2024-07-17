@@ -2667,7 +2667,7 @@ namespace Google.Apis.BeyondCorp.v1alpha
                     /// Optional. Filter expression to restrict the insights returned. Supported filter fields: * `type`
                     /// * `category` * `subCategory` Examples: * "category = application AND type = count" * "category =
                     /// application AND subCategory = iap" * "type = status" Allowed values: * type: [count, latency,
-                    /// status, list] * category: [application, device, request, security] * subCategory: [iap,
+                    /// status, list] * category: [application, device, request, security] * subCategory: [iap, caa,
                     /// webprotect] NOTE: Only equality based comparison is allowed. Only `AND` conjunction is allowed.
                     /// NOTE: The 'AND' in the filter field needs to be in capital letters only. NOTE: Just filtering on
                     /// `subCategory` is not allowed. It should be passed in with the parent `category` too. (These
@@ -8823,7 +8823,7 @@ namespace Google.Apis.BeyondCorp.v1alpha
                     /// Optional. Filter expression to restrict the insights returned. Supported filter fields: * `type`
                     /// * `category` * `subCategory` Examples: * "category = application AND type = count" * "category =
                     /// application AND subCategory = iap" * "type = status" Allowed values: * type: [count, latency,
-                    /// status, list] * category: [application, device, request, security] * subCategory: [iap,
+                    /// status, list] * category: [application, device, request, security] * subCategory: [iap, caa,
                     /// webprotect] NOTE: Only equality based comparison is allowed. Only `AND` conjunction is allowed.
                     /// NOTE: The 'AND' in the filter field needs to be in capital letters only. NOTE: Just filtering on
                     /// `subCategory` is not allowed. It should be passed in with the parent `category` too. (These

@@ -4645,7 +4645,7 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>
         /// Optional. Lists of columns that should be exposed as individual fields as opposed to a list of (column name,
         /// value) pairs. All columns whose qualifier matches a qualifier in this list can be accessed as `.`. Other
-        /// columns can be accessed as a list through `.Column` field.
+        /// columns can be accessed as a list through the `.Column` field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columns")]
         public virtual System.Collections.Generic.IList<BigtableColumn> Columns { get; set; }
@@ -5523,10 +5523,10 @@ namespace Google.Apis.Bigquery.v2.Data
 
             /// <summary>
             /// An IAM role ID that should be granted to the user, group, or domain specified in this access entry. The
-            /// following legacy mappings will be applied: * OWNER &amp;lt;=&amp;gt; roles/bigquery.dataOwner * WRITER
-            /// &amp;lt;=&amp;gt; roles/bigquery.dataEditor * READER &amp;lt;=&amp;gt; roles/bigquery.dataViewer This
-            /// field will accept any of the above formats, but will return only the legacy format. For example, if you
-            /// set this field to "roles/bigquery.dataOwner", it will be returned back as "OWNER".
+            /// following legacy mappings will be applied: * `OWNER`: `roles/bigquery.dataOwner` * `WRITER`:
+            /// `roles/bigquery.dataEditor` * `READER`: `roles/bigquery.dataViewer` This field will accept any of the
+            /// above formats, but will return only the legacy format. For example, if you set this field to
+            /// "roles/bigquery.dataOwner", it will be returned back as "OWNER".
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("role")]
             public virtual string Role { get; set; }
@@ -5541,10 +5541,10 @@ namespace Google.Apis.Bigquery.v2.Data
             public virtual RoutineReference Routine { get; set; }
 
             /// <summary>
-            /// [Pick one] A special group to grant access to. Possible values include: projectOwners: Owners of the
-            /// enclosing project. projectReaders: Readers of the enclosing project. projectWriters: Writers of the
-            /// enclosing project. allAuthenticatedUsers: All authenticated BigQuery users. Maps to similarly-named IAM
-            /// members.
+            /// [Pick one] A special group to grant access to. Possible values include: * projectOwners: Owners of the
+            /// enclosing project. * projectReaders: Readers of the enclosing project. * projectWriters: Writers of the
+            /// enclosing project. * allAuthenticatedUsers: All authenticated BigQuery users. Maps to similarly-named
+            /// IAM members.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("specialGroup")]
             public virtual string SpecialGroup { get; set; }

@@ -34,6 +34,7 @@ namespace Google.Apis.PlayIntegrity.v1
         /// <param name="initializer">The service initializer.</param>
         public PlayIntegrityService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
+            DeviceRecall = new DeviceRecallResource(this);
             V1 = new V1Resource(this);
             BaseUri = GetEffectiveUri(BaseUriOverride, "https://playintegrity.googleapis.com/");
             BatchUri = GetEffectiveUri(null, "https://playintegrity.googleapis.com/batch");
@@ -70,6 +71,9 @@ namespace Google.Apis.PlayIntegrity.v1
             /// <summary>Private Service: https://www.googleapis.com/auth/playintegrity</summary>
             public const string Playintegrity = "https://www.googleapis.com/auth/playintegrity";
         }
+
+        /// <summary>Gets the DeviceRecall resource.</summary>
+        public virtual DeviceRecallResource DeviceRecall { get; }
 
         /// <summary>Gets the V1 resource.</summary>
         public virtual V1Resource V1 { get; }
@@ -253,6 +257,80 @@ namespace Google.Apis.PlayIntegrity.v1
                 DefaultValue = null,
                 Pattern = null,
             });
+        }
+    }
+
+    /// <summary>The "deviceRecall" collection of methods.</summary>
+    public class DeviceRecallResource
+    {
+        private const string Resource = "deviceRecall";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public DeviceRecallResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>
+        /// Writes recall bits for the device where Play Integrity API token is obtained. The endpoint is available to
+        /// select Play partners in an early access program (EAP).
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="packageName">Required. Package name of the app the attached integrity token belongs to.</param>
+        public virtual WriteRequest Write(Google.Apis.PlayIntegrity.v1.Data.WriteDeviceRecallRequest body, string packageName)
+        {
+            return new WriteRequest(this.service, body, packageName);
+        }
+
+        /// <summary>
+        /// Writes recall bits for the device where Play Integrity API token is obtained. The endpoint is available to
+        /// select Play partners in an early access program (EAP).
+        /// </summary>
+        public class WriteRequest : PlayIntegrityBaseServiceRequest<Google.Apis.PlayIntegrity.v1.Data.WriteDeviceRecallResponse>
+        {
+            /// <summary>Constructs a new Write request.</summary>
+            public WriteRequest(Google.Apis.Services.IClientService service, Google.Apis.PlayIntegrity.v1.Data.WriteDeviceRecallRequest body, string packageName) : base(service)
+            {
+                PackageName = packageName;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. Package name of the app the attached integrity token belongs to.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string PackageName { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.PlayIntegrity.v1.Data.WriteDeviceRecallRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "write";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+packageName}/deviceRecall:write";
+
+            /// <summary>Initializes Write parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("packageName", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "packageName",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^[^/]+$",
+                });
+            }
         }
     }
 
@@ -552,6 +630,51 @@ namespace Google.Apis.PlayIntegrity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("testingDetails")]
         public virtual TestingDetails TestingDetails { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains the recall bits values.</summary>
+    public class Values : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. First recall bit value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bitFirst")]
+        public virtual System.Nullable<bool> BitFirst { get; set; }
+
+        /// <summary>Required. Second recall bit value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bitSecond")]
+        public virtual System.Nullable<bool> BitSecond { get; set; }
+
+        /// <summary>Required. Third recall bit value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bitThird")]
+        public virtual System.Nullable<bool> BitThird { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to write device recall bits.</summary>
+    public class WriteDeviceRecallRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Integrity token obtained from calling Play Integrity API. Note that the integrity token contains
+        /// the existing device recall bits. The write will only succeed if those bits in the integrity token are up to
+        /// date.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("integrityToken")]
+        public virtual string IntegrityToken { get; set; }
+
+        /// <summary>Required. The new values for the device recall bits to be written.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newValues")]
+        public virtual Values NewValues { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for the Write Device Recall action. Currently empty.</summary>
+    public class WriteDeviceRecallResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

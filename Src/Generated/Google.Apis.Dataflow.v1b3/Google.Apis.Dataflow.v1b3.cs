@@ -68,9 +68,6 @@ namespace Google.Apis.Dataflow.v1b3
 
             /// <summary>View and manage your Google Compute Engine resources</summary>
             public static string Compute = "https://www.googleapis.com/auth/compute";
-
-            /// <summary>View your Google Compute Engine resources</summary>
-            public static string ComputeReadonly = "https://www.googleapis.com/auth/compute.readonly";
         }
 
         /// <summary>Available OAuth 2.0 scope constants for use with the Dataflow API.</summary>
@@ -84,9 +81,6 @@ namespace Google.Apis.Dataflow.v1b3
 
             /// <summary>View and manage your Google Compute Engine resources</summary>
             public const string Compute = "https://www.googleapis.com/auth/compute";
-
-            /// <summary>View your Google Compute Engine resources</summary>
-            public const string ComputeReadonly = "https://www.googleapis.com/auth/compute.readonly";
         }
 
         /// <summary>Gets the Projects resource.</summary>
