@@ -1248,7 +1248,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// <summary>Update the ContainerThreatDetectionSettings resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
-        /// The resource name of the ContainerThreatDetectionSettings. Formats: *
+        /// Identifier. The resource name of the ContainerThreatDetectionSettings. Formats: *
         /// organizations/{organization}/containerThreatDetectionSettings *
         /// folders/{folder}/containerThreatDetectionSettings * projects/{project}/containerThreatDetectionSettings *
         /// projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings
@@ -1270,7 +1270,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             }
 
             /// <summary>
-            /// The resource name of the ContainerThreatDetectionSettings. Formats: *
+            /// Identifier. The resource name of the ContainerThreatDetectionSettings. Formats: *
             /// organizations/{organization}/containerThreatDetectionSettings *
             /// folders/{folder}/containerThreatDetectionSettings * projects/{project}/containerThreatDetectionSettings
             /// * projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings
@@ -1323,7 +1323,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// <summary>Update the EventThreatDetectionSettings resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
-        /// The resource name of the EventThreatDetectionSettings. Formats: *
+        /// Identifier. The resource name of the EventThreatDetectionSettings. Formats: *
         /// organizations/{organization}/eventThreatDetectionSettings * folders/{folder}/eventThreatDetectionSettings *
         /// projects/{project}/eventThreatDetectionSettings
         /// </param>
@@ -1344,7 +1344,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             }
 
             /// <summary>
-            /// The resource name of the EventThreatDetectionSettings. Formats: *
+            /// Identifier. The resource name of the EventThreatDetectionSettings. Formats: *
             /// organizations/{organization}/eventThreatDetectionSettings *
             /// folders/{folder}/eventThreatDetectionSettings * projects/{project}/eventThreatDetectionSettings
             /// </summary>
@@ -1471,7 +1471,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// <summary>Update the SecurityHealthAnalyticsSettings resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
-        /// The resource name of the SecurityHealthAnalyticsSettings. Formats: *
+        /// Identifier. The resource name of the SecurityHealthAnalyticsSettings. Formats: *
         /// organizations/{organization}/securityHealthAnalyticsSettings *
         /// folders/{folder}/securityHealthAnalyticsSettings * projects/{project}/securityHealthAnalyticsSettings
         /// </param>
@@ -1492,7 +1492,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             }
 
             /// <summary>
-            /// The resource name of the SecurityHealthAnalyticsSettings. Formats: *
+            /// Identifier. The resource name of the SecurityHealthAnalyticsSettings. Formats: *
             /// organizations/{organization}/securityHealthAnalyticsSettings *
             /// folders/{folder}/securityHealthAnalyticsSettings * projects/{project}/securityHealthAnalyticsSettings
             /// </summary>
@@ -1544,7 +1544,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// <summary>Update the VirtualMachineThreatDetectionSettings resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
-        /// The resource name of the VirtualMachineThreatDetectionSettings. Formats: *
+        /// Identifier. The resource name of the VirtualMachineThreatDetectionSettings. Formats: *
         /// organizations/{organization}/virtualMachineThreatDetectionSettings *
         /// folders/{folder}/virtualMachineThreatDetectionSettings *
         /// projects/{project}/virtualMachineThreatDetectionSettings
@@ -1566,7 +1566,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             }
 
             /// <summary>
-            /// The resource name of the VirtualMachineThreatDetectionSettings. Formats: *
+            /// Identifier. The resource name of the VirtualMachineThreatDetectionSettings. Formats: *
             /// organizations/{organization}/virtualMachineThreatDetectionSettings *
             /// folders/{folder}/virtualMachineThreatDetectionSettings *
             /// projects/{project}/virtualMachineThreatDetectionSettings
@@ -1619,7 +1619,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// <summary>Update the WebSecurityScannerSettings resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
-        /// The resource name of the WebSecurityScannerSettings. Formats: *
+        /// Identifier. The resource name of the WebSecurityScannerSettings. Formats: *
         /// organizations/{organization}/webSecurityScannerSettings * folders/{folder}/webSecurityScannerSettings *
         /// projects/{project}/webSecurityScannerSettings
         /// </param>
@@ -1640,7 +1640,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             }
 
             /// <summary>
-            /// The resource name of the WebSecurityScannerSettings. Formats: *
+            /// Identifier. The resource name of the WebSecurityScannerSettings. Formats: *
             /// organizations/{organization}/webSecurityScannerSettings * folders/{folder}/webSecurityScannerSettings *
             /// projects/{project}/webSecurityScannerSettings
             /// </summary>
@@ -2717,7 +2717,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// <summary>Update the ContainerThreatDetectionSettings resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
-        /// The resource name of the ContainerThreatDetectionSettings. Formats: *
+        /// Identifier. The resource name of the ContainerThreatDetectionSettings. Formats: *
         /// organizations/{organization}/containerThreatDetectionSettings *
         /// folders/{folder}/containerThreatDetectionSettings * projects/{project}/containerThreatDetectionSettings *
         /// projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings
@@ -2739,7 +2739,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             }
 
             /// <summary>
-            /// The resource name of the ContainerThreatDetectionSettings. Formats: *
+            /// Identifier. The resource name of the ContainerThreatDetectionSettings. Formats: *
             /// organizations/{organization}/containerThreatDetectionSettings *
             /// folders/{folder}/containerThreatDetectionSettings * projects/{project}/containerThreatDetectionSettings
             /// * projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings
@@ -2792,7 +2792,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// <summary>Update the EventThreatDetectionSettings resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
-        /// The resource name of the EventThreatDetectionSettings. Formats: *
+        /// Identifier. The resource name of the EventThreatDetectionSettings. Formats: *
         /// organizations/{organization}/eventThreatDetectionSettings * folders/{folder}/eventThreatDetectionSettings *
         /// projects/{project}/eventThreatDetectionSettings
         /// </param>
@@ -2813,7 +2813,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             }
 
             /// <summary>
-            /// The resource name of the EventThreatDetectionSettings. Formats: *
+            /// Identifier. The resource name of the EventThreatDetectionSettings. Formats: *
             /// organizations/{organization}/eventThreatDetectionSettings *
             /// folders/{folder}/eventThreatDetectionSettings * projects/{project}/eventThreatDetectionSettings
             /// </summary>
@@ -2940,7 +2940,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// <summary>Update the SecurityHealthAnalyticsSettings resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
-        /// The resource name of the SecurityHealthAnalyticsSettings. Formats: *
+        /// Identifier. The resource name of the SecurityHealthAnalyticsSettings. Formats: *
         /// organizations/{organization}/securityHealthAnalyticsSettings *
         /// folders/{folder}/securityHealthAnalyticsSettings * projects/{project}/securityHealthAnalyticsSettings
         /// </param>
@@ -2961,7 +2961,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             }
 
             /// <summary>
-            /// The resource name of the SecurityHealthAnalyticsSettings. Formats: *
+            /// Identifier. The resource name of the SecurityHealthAnalyticsSettings. Formats: *
             /// organizations/{organization}/securityHealthAnalyticsSettings *
             /// folders/{folder}/securityHealthAnalyticsSettings * projects/{project}/securityHealthAnalyticsSettings
             /// </summary>
@@ -3013,7 +3013,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// <summary>Update the VirtualMachineThreatDetectionSettings resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
-        /// The resource name of the VirtualMachineThreatDetectionSettings. Formats: *
+        /// Identifier. The resource name of the VirtualMachineThreatDetectionSettings. Formats: *
         /// organizations/{organization}/virtualMachineThreatDetectionSettings *
         /// folders/{folder}/virtualMachineThreatDetectionSettings *
         /// projects/{project}/virtualMachineThreatDetectionSettings
@@ -3035,7 +3035,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             }
 
             /// <summary>
-            /// The resource name of the VirtualMachineThreatDetectionSettings. Formats: *
+            /// Identifier. The resource name of the VirtualMachineThreatDetectionSettings. Formats: *
             /// organizations/{organization}/virtualMachineThreatDetectionSettings *
             /// folders/{folder}/virtualMachineThreatDetectionSettings *
             /// projects/{project}/virtualMachineThreatDetectionSettings
@@ -3088,7 +3088,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// <summary>Update the WebSecurityScannerSettings resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
-        /// The resource name of the WebSecurityScannerSettings. Formats: *
+        /// Identifier. The resource name of the WebSecurityScannerSettings. Formats: *
         /// organizations/{organization}/webSecurityScannerSettings * folders/{folder}/webSecurityScannerSettings *
         /// projects/{project}/webSecurityScannerSettings
         /// </param>
@@ -3109,7 +3109,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             }
 
             /// <summary>
-            /// The resource name of the WebSecurityScannerSettings. Formats: *
+            /// Identifier. The resource name of the WebSecurityScannerSettings. Formats: *
             /// organizations/{organization}/webSecurityScannerSettings * folders/{folder}/webSecurityScannerSettings *
             /// projects/{project}/webSecurityScannerSettings
             /// </summary>
@@ -3546,7 +3546,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                 /// <summary>Update the ContainerThreatDetectionSettings resource.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// The resource name of the ContainerThreatDetectionSettings. Formats: *
+                /// Identifier. The resource name of the ContainerThreatDetectionSettings. Formats: *
                 /// organizations/{organization}/containerThreatDetectionSettings *
                 /// folders/{folder}/containerThreatDetectionSettings *
                 /// projects/{project}/containerThreatDetectionSettings *
@@ -3569,7 +3569,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     }
 
                     /// <summary>
-                    /// The resource name of the ContainerThreatDetectionSettings. Formats: *
+                    /// Identifier. The resource name of the ContainerThreatDetectionSettings. Formats: *
                     /// organizations/{organization}/containerThreatDetectionSettings *
                     /// folders/{folder}/containerThreatDetectionSettings *
                     /// projects/{project}/containerThreatDetectionSettings *
@@ -4411,7 +4411,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// <summary>Update the ContainerThreatDetectionSettings resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
-        /// The resource name of the ContainerThreatDetectionSettings. Formats: *
+        /// Identifier. The resource name of the ContainerThreatDetectionSettings. Formats: *
         /// organizations/{organization}/containerThreatDetectionSettings *
         /// folders/{folder}/containerThreatDetectionSettings * projects/{project}/containerThreatDetectionSettings *
         /// projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings
@@ -4433,7 +4433,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             }
 
             /// <summary>
-            /// The resource name of the ContainerThreatDetectionSettings. Formats: *
+            /// Identifier. The resource name of the ContainerThreatDetectionSettings. Formats: *
             /// organizations/{organization}/containerThreatDetectionSettings *
             /// folders/{folder}/containerThreatDetectionSettings * projects/{project}/containerThreatDetectionSettings
             /// * projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings
@@ -4486,7 +4486,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// <summary>Update the EventThreatDetectionSettings resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
-        /// The resource name of the EventThreatDetectionSettings. Formats: *
+        /// Identifier. The resource name of the EventThreatDetectionSettings. Formats: *
         /// organizations/{organization}/eventThreatDetectionSettings * folders/{folder}/eventThreatDetectionSettings *
         /// projects/{project}/eventThreatDetectionSettings
         /// </param>
@@ -4507,7 +4507,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             }
 
             /// <summary>
-            /// The resource name of the EventThreatDetectionSettings. Formats: *
+            /// Identifier. The resource name of the EventThreatDetectionSettings. Formats: *
             /// organizations/{organization}/eventThreatDetectionSettings *
             /// folders/{folder}/eventThreatDetectionSettings * projects/{project}/eventThreatDetectionSettings
             /// </summary>
@@ -4634,7 +4634,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// <summary>Update the SecurityHealthAnalyticsSettings resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
-        /// The resource name of the SecurityHealthAnalyticsSettings. Formats: *
+        /// Identifier. The resource name of the SecurityHealthAnalyticsSettings. Formats: *
         /// organizations/{organization}/securityHealthAnalyticsSettings *
         /// folders/{folder}/securityHealthAnalyticsSettings * projects/{project}/securityHealthAnalyticsSettings
         /// </param>
@@ -4655,7 +4655,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             }
 
             /// <summary>
-            /// The resource name of the SecurityHealthAnalyticsSettings. Formats: *
+            /// Identifier. The resource name of the SecurityHealthAnalyticsSettings. Formats: *
             /// organizations/{organization}/securityHealthAnalyticsSettings *
             /// folders/{folder}/securityHealthAnalyticsSettings * projects/{project}/securityHealthAnalyticsSettings
             /// </summary>
@@ -4707,7 +4707,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// <summary>Update the VirtualMachineThreatDetectionSettings resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
-        /// The resource name of the VirtualMachineThreatDetectionSettings. Formats: *
+        /// Identifier. The resource name of the VirtualMachineThreatDetectionSettings. Formats: *
         /// organizations/{organization}/virtualMachineThreatDetectionSettings *
         /// folders/{folder}/virtualMachineThreatDetectionSettings *
         /// projects/{project}/virtualMachineThreatDetectionSettings
@@ -4729,7 +4729,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             }
 
             /// <summary>
-            /// The resource name of the VirtualMachineThreatDetectionSettings. Formats: *
+            /// Identifier. The resource name of the VirtualMachineThreatDetectionSettings. Formats: *
             /// organizations/{organization}/virtualMachineThreatDetectionSettings *
             /// folders/{folder}/virtualMachineThreatDetectionSettings *
             /// projects/{project}/virtualMachineThreatDetectionSettings
@@ -4782,7 +4782,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
         /// <summary>Update the WebSecurityScannerSettings resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
-        /// The resource name of the WebSecurityScannerSettings. Formats: *
+        /// Identifier. The resource name of the WebSecurityScannerSettings. Formats: *
         /// organizations/{organization}/webSecurityScannerSettings * folders/{folder}/webSecurityScannerSettings *
         /// projects/{project}/webSecurityScannerSettings
         /// </param>
@@ -4803,7 +4803,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             }
 
             /// <summary>
-            /// The resource name of the WebSecurityScannerSettings. Formats: *
+            /// Identifier. The resource name of the WebSecurityScannerSettings. Formats: *
             /// organizations/{organization}/webSecurityScannerSettings * folders/{folder}/webSecurityScannerSettings *
             /// projects/{project}/webSecurityScannerSettings
             /// </summary>
@@ -5770,13 +5770,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     {
         /// <summary>
         /// The configurations including the state of enablement for the service's different modules. The absence of a
-        /// module in the map implies its configuration is inherited from its parent's.
+        /// module in the map implies its configuration is inherited from its parent's configuration.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modules")]
         public virtual System.Collections.Generic.IDictionary<string, Config> Modules { get; set; }
 
         /// <summary>
-        /// The resource name of the ContainerThreatDetectionSettings. Formats: *
+        /// Identifier. The resource name of the ContainerThreatDetectionSettings. Formats: *
         /// organizations/{organization}/containerThreatDetectionSettings *
         /// folders/{folder}/containerThreatDetectionSettings * projects/{project}/containerThreatDetectionSettings *
         /// projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings
@@ -6140,13 +6140,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     {
         /// <summary>
         /// The configurations including the state of enablement for the service's different modules. The absence of a
-        /// module in the map implies its configuration is inherited from its parent's.
+        /// module in the map implies its configuration is inherited from its parent's configuration.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modules")]
         public virtual System.Collections.Generic.IDictionary<string, Config> Modules { get; set; }
 
         /// <summary>
-        /// The resource name of the EventThreatDetectionSettings. Formats: *
+        /// Identifier. The resource name of the EventThreatDetectionSettings. Formats: *
         /// organizations/{organization}/eventThreatDetectionSettings * folders/{folder}/eventThreatDetectionSettings *
         /// projects/{project}/eventThreatDetectionSettings
         /// </summary>
@@ -8673,7 +8673,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
 
         /// <summary>
         /// The dataset to write findings' updates to. Its format is
-        /// "projects/[project_id]/datasets/[bigquery_dataset_id]". BigQuery Dataset unique ID must contain only letters
+        /// "projects/[project_id]/datasets/[bigquery_dataset_id]". BigQuery dataset unique ID must contain only letters
         /// (a-z, A-Z), numbers (0-9), or underscores (_).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataset")]
@@ -8703,7 +8703,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual string MostRecentEditor { get; set; }
 
         /// <summary>
-        /// The relative resource name of this export. See:
+        /// Identifier. The relative resource name of this export. See:
         /// https://cloud.google.com/apis/design/resource_names#relative_resource_name. The following list shows some
         /// examples: + `organizations/{organization_id}/locations/{location_id}/bigQueryExports/{export_id}` +
         /// `folders/{folder_id}/locations/{location_id}/bigQueryExports/{export_id}` +
@@ -10374,8 +10374,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual string MostRecentEditor { get; set; }
 
         /// <summary>
-        /// This field will be ignored if provided on config creation. The following list shows some examples of the
-        /// format: + `organizations/{organization}/muteConfigs/{mute_config}` +
+        /// Identifier. This field will be ignored if provided on config creation. The following list shows some
+        /// examples of the format: + `organizations/{organization}/muteConfigs/{mute_config}` +
         /// `organizations/{organization}locations/{location}//muteConfigs/{mute_config}` +
         /// `folders/{folder}/muteConfigs/{mute_config}` +
         /// `folders/{folder}/locations/{location}/muteConfigs/{mute_config}` +
@@ -10930,7 +10930,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Name for the resource value configuration</summary>
+        /// <summary>Identifier. Name for the resource value configuration</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -10951,14 +10951,15 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual string ResourceType { get; set; }
 
         /// <summary>
-        /// Resource value level this expression represents Only required when there is no SDP mapping in the request
+        /// Resource value level this expression represents Only required when there is no Sensitive Data Protection
+        /// mapping in the request
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceValue")]
         public virtual string ResourceValue { get; set; }
 
         /// <summary>
         /// Project or folder to scope this configuration to. For example, "project/456" would apply this configuration
-        /// only to resources in "project/456" scope will be checked with `AND` of other resources.
+        /// only to resources in "project/456" scope and will be checked with `AND` of other resources.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scope")]
         public virtual string Scope { get; set; }
@@ -10972,7 +10973,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual GoogleCloudSecuritycenterV2SensitiveDataProtectionMapping SensitiveDataProtectionMapping { get; set; }
 
         /// <summary>
-        /// Required. Tag values combined with `AND` to check against. Values in the form "tagValues/123" Example: `[
+        /// Tag values combined with `AND` to check against. Values in the form "tagValues/123" Example: `[
         /// "tagValues/123", "tagValues/456", "tagValues/789" ]`
         /// https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing
         /// </summary>
@@ -12256,13 +12257,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     {
         /// <summary>
         /// The configurations including the state of enablement for the service's different modules. The absence of a
-        /// module in the map implies its configuration is inherited from its parent's.
+        /// module in the map implies its configuration is inherited from its parent's configuration.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modules")]
         public virtual System.Collections.Generic.IDictionary<string, Config> Modules { get; set; }
 
         /// <summary>
-        /// The resource name of the SecurityHealthAnalyticsSettings. Formats: *
+        /// Identifier. The resource name of the SecurityHealthAnalyticsSettings. Formats: *
         /// organizations/{organization}/securityHealthAnalyticsSettings *
         /// folders/{folder}/securityHealthAnalyticsSettings * projects/{project}/securityHealthAnalyticsSettings
         /// </summary>
@@ -12597,13 +12598,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     {
         /// <summary>
         /// The configurations including the state of enablement for the service's different modules. The absence of a
-        /// module in the map implies its configuration is inherited from its parent's.
+        /// module in the map implies its configuration is inherited from its parent's configuration.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modules")]
         public virtual System.Collections.Generic.IDictionary<string, Config> Modules { get; set; }
 
         /// <summary>
-        /// The resource name of the VirtualMachineThreatDetectionSettings. Formats: *
+        /// Identifier. The resource name of the VirtualMachineThreatDetectionSettings. Formats: *
         /// organizations/{organization}/virtualMachineThreatDetectionSettings *
         /// folders/{folder}/virtualMachineThreatDetectionSettings *
         /// projects/{project}/virtualMachineThreatDetectionSettings
@@ -12758,13 +12759,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     {
         /// <summary>
         /// The configurations including the state of enablement for the service's different modules. The absence of a
-        /// module in the map implies its configuration is inherited from its parent's.
+        /// module in the map implies its configuration is inherited from its parent's configuration.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modules")]
         public virtual System.Collections.Generic.IDictionary<string, Config> Modules { get; set; }
 
         /// <summary>
-        /// The resource name of the WebSecurityScannerSettings. Formats: *
+        /// Identifier. The resource name of the WebSecurityScannerSettings. Formats: *
         /// organizations/{organization}/webSecurityScannerSettings * folders/{folder}/webSecurityScannerSettings *
         /// projects/{project}/webSecurityScannerSettings
         /// </summary>

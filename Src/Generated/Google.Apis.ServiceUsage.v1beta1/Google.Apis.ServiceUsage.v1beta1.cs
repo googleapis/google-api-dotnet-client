@@ -3155,11 +3155,17 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allowedResponseExtensions")]
         public virtual System.Collections.Generic.IList<string> AllowedResponseExtensions { get; set; }
 
-        /// <summary>A list of full type names of provided contexts.</summary>
+        /// <summary>
+        /// A list of full type names of provided contexts. It is used to support propagating HTTP headers and ETags
+        /// from the response extension.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provided")]
         public virtual System.Collections.Generic.IList<string> Provided { get; set; }
 
-        /// <summary>A list of full type names of requested contexts.</summary>
+        /// <summary>
+        /// A list of full type names of requested contexts, only the requested context will be made available to the
+        /// backend.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requested")]
         public virtual System.Collections.Generic.IList<string> Requested { get; set; }
 
@@ -3304,23 +3310,21 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
     /// Google Calendar API gives access to most calendar features. pages: - name: Overview content: (== include
     /// google/foo/overview.md ==) - name: Tutorial content: (== include google/foo/tutorial.md ==) subpages: - name:
     /// Java content: (== include google/foo/tutorial_java.md ==) rules: - selector: google.calendar.Calendar.Get
-    /// description: &amp;gt; ... - selector: google.calendar.Calendar.Put description: &amp;gt; ... code_snippet_rules:
-    /// - selector: google.calendar.Calendar.Delete code_snippets: - includes: - github_include: region_tag:
-    /// calendar_delete code_language: JAVA account: GoogleCloudPlatform project: java-docs-samples file:
-    /// calendar/delete.java Documentation is provided in markdown syntax. In addition to standard markdown features,
-    /// definition lists, tables and fenced code blocks are supported. Section headers can be provided and are
-    /// interpreted relative to the section nesting of the context where a documentation fragment is embedded.
-    /// Documentation from the IDL is merged with documentation defined via the config at normalization time, where
-    /// documentation provided by config rules overrides IDL provided. A number of constructs specific to the API
-    /// platform are supported in documentation text. In order to reference a proto element, the following notation can
-    /// be used: [fully.qualified.proto.name][] To override the display text used for the link, this can be used:
-    /// [display text][fully.qualified.proto.name] Text can be excluded from doc using the following notation: (--
-    /// internal comment --) A few directives are available in documentation. Note that directives must appear on a
-    /// single line to be properly identified. The `include` directive includes a markdown file from an external source:
-    /// (== include path/to/file ==) The `resource_for` directive marks a message to be the resource of a collection in
-    /// REST view. If it is not specified, tools attempt to infer the resource from the operations in a collection: (==
-    /// resource_for v1.shelves.books ==) The directive `suppress_warning` does not directly affect documentation and is
-    /// documented together with service config validation.
+    /// description: &amp;gt; ... - selector: google.calendar.Calendar.Put description: &amp;gt; ... Documentation is
+    /// provided in markdown syntax. In addition to standard markdown features, definition lists, tables and fenced code
+    /// blocks are supported. Section headers can be provided and are interpreted relative to the section nesting of the
+    /// context where a documentation fragment is embedded. Documentation from the IDL is merged with documentation
+    /// defined via the config at normalization time, where documentation provided by config rules overrides IDL
+    /// provided. A number of constructs specific to the API platform are supported in documentation text. In order to
+    /// reference a proto element, the following notation can be used: [fully.qualified.proto.name][] To override the
+    /// display text used for the link, this can be used: [display text][fully.qualified.proto.name] Text can be
+    /// excluded from doc using the following notation: (-- internal comment --) A few directives are available in
+    /// documentation. Note that directives must appear on a single line to be properly identified. The `include`
+    /// directive includes a markdown file from an external source: (== include path/to/file ==) The `resource_for`
+    /// directive marks a message to be the resource of a collection in REST view. If it is not specified, tools attempt
+    /// to infer the resource from the operations in a collection: (== resource_for v1.shelves.books ==) The directive
+    /// `suppress_warning` does not directly affect documentation and is documented together with service config
+    /// validation.
     /// </summary>
     public class Documentation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4295,8 +4299,8 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
     /// transcoding in your service config YAML files. You do this by specifying a `HttpRule` that maps the gRPC method
     /// to a REST endpoint, achieving the same effect as the proto annotation. This can be particularly useful if you
     /// have a proto that is reused in multiple services. Note that any transcoding specified in the service config will
-    /// override any matching transcoding configuration in the proto. Example below selects a gRPC method and applies
-    /// HttpRule to it. http: rules: - selector: example.v1.Messaging.GetMessage get:
+    /// override any matching transcoding configuration in the proto. The following example selects a gRPC method and
+    /// applies an `HttpRule` to it: http: rules: - selector: example.v1.Messaging.GetMessage get:
     /// /v1/messages/{message_id}/{sub.subfield} Special notes When gRPC Transcoding is used to map a gRPC to JSON REST
     /// endpoints, the proto to JSON conversion must follow the [proto3
     /// specification](https://developers.google.com/protocol-buffers/docs/proto3#json). While the single segment

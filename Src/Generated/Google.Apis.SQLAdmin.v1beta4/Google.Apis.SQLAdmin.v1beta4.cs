@@ -1435,7 +1435,9 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <summary>
         /// Add a new trusted Certificate Authority (CA) version for the specified instance. Required to prepare for a
         /// certificate rotation. If a CA version was previously added but never used in a certificate rotation, this
-        /// operation replaces that version. There cannot be more than one CA version waiting to be rotated in.
+        /// operation replaces that version. There cannot be more than one CA version waiting to be rotated in. For
+        /// instances that have enabled Certificate Authority Service (CAS) based server CA, please use
+        /// AddServerCertificate to add a new server certificate.
         /// </summary>
         /// <param name="project">Project ID of the project that contains the instance.</param>
         /// <param name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
@@ -1447,7 +1449,9 @@ namespace Google.Apis.SQLAdmin.v1beta4
         /// <summary>
         /// Add a new trusted Certificate Authority (CA) version for the specified instance. Required to prepare for a
         /// certificate rotation. If a CA version was previously added but never used in a certificate rotation, this
-        /// operation replaces that version. There cannot be more than one CA version waiting to be rotated in.
+        /// operation replaces that version. There cannot be more than one CA version waiting to be rotated in. For
+        /// instances that have enabled Certificate Authority Service (CAS) based server CA, please use
+        /// AddServerCertificate to add a new server certificate.
         /// </summary>
         public class AddServerCaRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
@@ -2755,7 +2759,8 @@ namespace Google.Apis.SQLAdmin.v1beta4
 
         /// <summary>
         /// Rotates the server certificate to one signed by the Certificate Authority (CA) version previously added with
-        /// the addServerCA method.
+        /// the addServerCA method. For instances that have enabled Certificate Authority Service (CAS) based server CA,
+        /// please use RotateServerCertificate to rotate the server certificate.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID of the project that contains the instance.</param>
@@ -2767,7 +2772,8 @@ namespace Google.Apis.SQLAdmin.v1beta4
 
         /// <summary>
         /// Rotates the server certificate to one signed by the Certificate Authority (CA) version previously added with
-        /// the addServerCA method.
+        /// the addServerCA method. For instances that have enabled Certificate Authority Service (CAS) based server CA,
+        /// please use RotateServerCertificate to rotate the server certificate.
         /// </summary>
         public class RotateServerCaRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
@@ -5362,6 +5368,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serverCaCert")]
         public virtual SslCert ServerCaCert { get; set; }
 
+        /// <summary>Specify what type of CA is used for the server certificate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverCaMode")]
+        public virtual string ServerCaMode { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5696,6 +5706,13 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>If the instance state is SUSPENDED, the reason for the suspension.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suspensionReason")]
         public virtual System.Collections.Generic.IList<string> SuspensionReason { get; set; }
+
+        /// <summary>
+        /// Input only. Whether Cloud SQL is enabled to switch storing point-in-time recovery log files from a data disk
+        /// to Cloud Storage.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("switchTransactionLogsToCloudStorageEnabled")]
+        public virtual System.Nullable<bool> SwitchTransactionLogsToCloudStorageEnabled { get; set; }
 
         /// <summary>Output only. All database versions that are available for upgrade.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upgradableDatabaseVersions")]
@@ -6790,6 +6807,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requireSsl")]
         public virtual System.Nullable<bool> RequireSsl { get; set; }
+
+        /// <summary>Specify what type of CA is used for the server certificate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serverCaMode")]
+        public virtual string ServerCaMode { get; set; }
 
         /// <summary>
         /// Specify how SSL/TLS is enforced in database connections. If you must use the `require_ssl` flag for backward

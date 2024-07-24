@@ -14551,6 +14551,27 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Contains the error details of the unsupported admin Consent resources for when the ApplyAdminConsents method
+    /// fails to apply one or more Consent resources.
+    /// </summary>
+    public class ApplyAdminConsentsErrorDetail : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The list of Consent resources that are unsupported or cannot be applied and the error associated with each
+        /// of them.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consentErrors")]
+        public virtual System.Collections.Generic.IList<ConsentErrors> ConsentErrors { get; set; }
+
+        /// <summary>The currently in progress non-validate-only ApplyAdminConsents operation ID if exist.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("existingOperationId")]
+        public virtual System.Nullable<ulong> ExistingOperationId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request to apply the admin Consent resources for the specified FHIR store.</summary>
     public class ApplyAdminConsentsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -15354,8 +15375,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual AccessDeterminationLogConfig AccessDeterminationLogConfig { get; set; }
 
         /// <summary>
-        /// Optional. If set to true, when accessing FHIR resources, the consent headers will be verified against
-        /// consents given by patients. See the ConsentEnforcementVersion for the supported consent headers.
+        /// Optional. The default value is false. If set to true, when accessing FHIR resources, the consent headers
+        /// will be verified against consents given by patients. See the ConsentEnforcementVersion for the supported
+        /// consent headers.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessEnforced")]
         public virtual System.Nullable<bool> AccessEnforced { get; set; }
@@ -15384,6 +15406,26 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The Consent resource name and error.</summary>
+    public class ConsentErrors : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The error code and message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; }
+
+        /// <summary>
+        /// The versioned name of the admin Consent resource, in the format
+        /// `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{resource_id}/_history/{version_id}`.
+        /// For FHIR stores with `disable_resource_versioning=true`, the format is
+        /// `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{resource_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15660,10 +15702,10 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual TextConfig Text { get; set; }
 
         /// <summary>
-        /// Ensures in-flight data remains in the region of origin during de-identification. Using this option results
-        /// in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME`
-        /// infoTypes. If the deprecated DicomConfig or FhirConfig are used, then `LOCATION` must be excluded within
-        /// TextConfig, and must also be excluded within ImageConfig if image redaction is required.
+        /// Ensures in-flight data remains in the region of origin during de-identification. The default value is false.
+        /// Using this option results in a significant reduction of throughput, and is not compatible with `LOCATION` or
+        /// `ORGANIZATION_NAME` infoTypes. If the deprecated DicomConfig or FhirConfig are used, then `LOCATION` must be
+        /// excluded within TextConfig, and must also be excluded within ImageConfig if image redaction is required.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useRegionalDataProcessing")]
         public virtual System.Nullable<bool> UseRegionalDataProcessing { get; set; }
@@ -16790,21 +16832,21 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string PubsubTopic { get; set; }
 
         /// <summary>
-        /// Whether to send full FHIR resource to this Pub/Sub topic for Create and Update operation. Note that setting
-        /// this to true does not guarantee that all resources will be sent in the format of full FHIR resource. When a
-        /// resource change is too large or during heavy traffic, only the resource name will be sent. Clients should
-        /// always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch the full
-        /// resource as a separate operation.
+        /// Whether to send full FHIR resource to this Pub/Sub topic for Create and Update operation. The default value
+        /// is false. Note that setting this to true does not guarantee that all resources will be sent in the format of
+        /// full FHIR resource. When a resource change is too large or during heavy traffic, only the resource name will
+        /// be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine whether it
+        /// needs to fetch the full resource as a separate operation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sendFullResource")]
         public virtual System.Nullable<bool> SendFullResource { get; set; }
 
         /// <summary>
-        /// Whether to send full FHIR resource to this Pub/Sub topic for deleting FHIR resource. Note that setting this
-        /// to true does not guarantee that all previous resources will be sent in the format of full FHIR resource.
-        /// When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients
-        /// should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch
-        /// the full previous resource as a separate operation.
+        /// Whether to send full FHIR resource to this Pub/Sub topic for deleting FHIR resource. The default value is
+        /// false. Note that setting this to true does not guarantee that all previous resources will be sent in the
+        /// format of full FHIR resource. When a resource change is too large or during heavy traffic, only the resource
+        /// name will be sent. Clients should always check the "payloadType" label from a Pub/Sub message to determine
+        /// whether it needs to fetch the full previous resource as a separate operation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sendPreviousResourceOnDelete")]
         public virtual System.Nullable<bool> SendPreviousResourceOnDelete { get; set; }
@@ -16857,6 +16899,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// error for unrecognized search parameters. If false, uses the FHIR specification default `handling=lenient`
         /// which ignores unrecognized search parameters. The handling can always be changed from the default on an
         /// individual API call by setting the HTTP header `Prefer: handling=strict` or `Prefer: handling=lenient`.
+        /// Defaults to false.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultSearchHandlingStrict")]
         public virtual System.Nullable<bool> DefaultSearchHandlingStrict { get; set; }
@@ -16873,10 +16916,10 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
 
         /// <summary>
         /// Immutable. Whether to disable resource versioning for this FHIR store. This field can not be changed after
-        /// the creation of FHIR store. If set to false, which is the default behavior, all write operations cause
-        /// historical versions to be recorded automatically. The historical versions can be fetched through the history
-        /// APIs, but cannot be updated. If set to true, no historical versions are kept. The server sends errors for
-        /// attempts to read the historical versions.
+        /// the creation of FHIR store. If set to false, all write operations cause historical versions to be recorded
+        /// automatically. The historical versions can be fetched through the history APIs, but cannot be updated. If
+        /// set to true, no historical versions are kept. The server sends errors for attempts to read the historical
+        /// versions. Defaults to false.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableResourceVersioning")]
         public virtual System.Nullable<bool> DisableResourceVersioning { get; set; }
@@ -16884,7 +16927,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// <summary>
         /// Optional. Whether to allow ExecuteBundle to accept history bundles, and directly insert and overwrite
         /// historical resource versions into the FHIR store. If set to false, using history bundles fails with an
-        /// error.
+        /// error. Defaults to false.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableHistoryModifications")]
         public virtual System.Nullable<bool> EnableHistoryModifications { get; set; }
@@ -16897,7 +16940,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// resource return errors. It is strongly advised not to include or encode any sensitive data such as patient
         /// identifiers in client-specified resource IDs. Those IDs are part of the FHIR resource path recorded in Cloud
         /// audit logs and Pub/Sub notifications. Those IDs can also be contained in reference fields within other
-        /// resources.
+        /// resources. Defaults to false.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableUpdateCreate")]
         public virtual System.Nullable<bool> EnableUpdateCreate { get; set; }
@@ -20013,35 +20056,35 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     public class ValidationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Whether to disable FHIRPath validation for incoming resources. Set this to true to disable checking incoming
-        /// resources for conformance against FHIRPath requirement defined in the FHIR specification. This property only
-        /// affects resource types that do not have profiles configured for them, any rules in enabled implementation
-        /// guides will still be enforced.
+        /// Whether to disable FHIRPath validation for incoming resources. The default value is false. Set this to true
+        /// to disable checking incoming resources for conformance against FHIRPath requirement defined in the FHIR
+        /// specification. This property only affects resource types that do not have profiles configured for them, any
+        /// rules in enabled implementation guides will still be enforced.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableFhirpathValidation")]
         public virtual System.Nullable<bool> DisableFhirpathValidation { get; set; }
 
         /// <summary>
-        /// Whether to disable profile validation for this FHIR store. Set this to true to disable checking incoming
-        /// resources for conformance against StructureDefinitions in this FHIR store.
+        /// Whether to disable profile validation for this FHIR store. The default value is false. Set this to true to
+        /// disable checking incoming resources for conformance against StructureDefinitions in this FHIR store.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableProfileValidation")]
         public virtual System.Nullable<bool> DisableProfileValidation { get; set; }
 
         /// <summary>
-        /// Whether to disable reference type validation for incoming resources. Set this to true to disable checking
-        /// incoming resources for conformance against reference type requirement defined in the FHIR specification.
-        /// This property only affects resource types that do not have profiles configured for them, any rules in
-        /// enabled implementation guides will still be enforced.
+        /// Whether to disable reference type validation for incoming resources. The default value is false. Set this to
+        /// true to disable checking incoming resources for conformance against reference type requirement defined in
+        /// the FHIR specification. This property only affects resource types that do not have profiles configured for
+        /// them, any rules in enabled implementation guides will still be enforced.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableReferenceTypeValidation")]
         public virtual System.Nullable<bool> DisableReferenceTypeValidation { get; set; }
 
         /// <summary>
-        /// Whether to disable required fields validation for incoming resources. Set this to true to disable checking
-        /// incoming resources for conformance against required fields requirement defined in the FHIR specification.
-        /// This property only affects resource types that do not have profiles configured for them, any rules in
-        /// enabled implementation guides will still be enforced.
+        /// Whether to disable required fields validation for incoming resources. The default value is false. Set this
+        /// to true to disable checking incoming resources for conformance against required fields requirement defined
+        /// in the FHIR specification. This property only affects resource types that do not have profiles configured
+        /// for them, any rules in enabled implementation guides will still be enforced.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableRequiredFieldValidation")]
         public virtual System.Nullable<bool> DisableRequiredFieldValidation { get; set; }

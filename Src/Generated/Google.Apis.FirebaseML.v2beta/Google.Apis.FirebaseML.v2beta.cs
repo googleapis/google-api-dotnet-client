@@ -597,10 +597,6 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("safetyRatings")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1SafetyRating> SafetyRatings { get; set; }
 
-        /// <summary>Output only. Confidence score of the candidate.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("score")]
-        public virtual System.Nullable<double> Score { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -993,6 +989,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("responseSchema")]
         public virtual GoogleCloudAiplatformV1beta1Schema ResponseSchema { get; set; }
 
+        /// <summary>Optional. Seed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seed")]
+        public virtual System.Nullable<int> Seed { get; set; }
+
         /// <summary>Optional. Stop sequences.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stopSequences")]
         public virtual System.Collections.Generic.IList<string> StopSequences { get; set; }
@@ -1167,10 +1167,7 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// <summary>Defines a retrieval tool that model can call to access external knowledge.</summary>
     public class GoogleCloudAiplatformV1beta1Retrieval : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Optional. Disable using the result from this tool in detecting grounding attribution. This does not affect
-        /// how the result is given to the model for generation.
-        /// </summary>
+        /// <summary>Optional. Deprecated. This option is no longer supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableAttribution")]
         public virtual System.Nullable<bool> DisableAttribution { get; set; }
 

@@ -475,7 +475,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
         /// <summary>Get data sharing settings on an account. Data sharing settings are singletons.</summary>
         /// <param name="name">
         /// Required. The name of the settings to lookup. Format: accounts/{account}/dataSharingSettings Example:
-        /// "accounts/1000/dataSharingSettings"
+        /// `accounts/1000/dataSharingSettings`
         /// </param>
         public virtual GetDataSharingSettingsRequest GetDataSharingSettings(string name)
         {
@@ -494,7 +494,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
 
             /// <summary>
             /// Required. The name of the settings to lookup. Format: accounts/{account}/dataSharingSettings Example:
-            /// "accounts/1000/dataSharingSettings"
+            /// `accounts/1000/dataSharingSettings`
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -811,7 +811,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
         /// <param name="body">The body of the request.</param>
         /// <param name="account">
         /// Required. The account resource for which to return change history resources. Format: accounts/{account}
-        /// Example: "accounts/100"
+        /// Example: `accounts/100`
         /// </param>
         public virtual SearchChangeHistoryEventsRequest SearchChangeHistoryEvents(Google.Apis.GoogleAnalyticsAdmin.v1beta.Data.GoogleAnalyticsAdminV1betaSearchChangeHistoryEventsRequest body, string account)
         {
@@ -833,7 +833,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
 
             /// <summary>
             /// Required. The account resource for which to return change history resources. Format: accounts/{account}
-            /// Example: "accounts/100"
+            /// Example: `accounts/100`
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("account", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Account { get; private set; }
@@ -907,7 +907,9 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
                 this.service = service;
             }
 
-            /// <summary>Creates a conversion event with the specified attributes.</summary>
+            /// <summary>
+            /// Deprecated: Use `CreateKeyEvent` instead. Creates a conversion event with the specified attributes.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. The resource name of the parent property where this conversion event will be created. Format:
@@ -918,7 +920,9 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
                 return new CreateRequest(this.service, body, parent);
             }
 
-            /// <summary>Creates a conversion event with the specified attributes.</summary>
+            /// <summary>
+            /// Deprecated: Use `CreateKeyEvent` instead. Creates a conversion event with the specified attributes.
+            /// </summary>
             public class CreateRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1beta.Data.GoogleAnalyticsAdminV1betaConversionEvent>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -966,7 +970,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
                 }
             }
 
-            /// <summary>Deletes a conversion event in a property.</summary>
+            /// <summary>Deprecated: Use `DeleteKeyEvent` instead. Deletes a conversion event in a property.</summary>
             /// <param name="name">
             /// Required. The resource name of the conversion event to delete. Format:
             /// properties/{property}/conversionEvents/{conversion_event} Example: "properties/123/conversionEvents/456"
@@ -976,7 +980,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
                 return new DeleteRequest(this.service, name);
             }
 
-            /// <summary>Deletes a conversion event in a property.</summary>
+            /// <summary>Deprecated: Use `DeleteKeyEvent` instead. Deletes a conversion event in a property.</summary>
             public class DeleteRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1beta.Data.GoogleProtobufEmpty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -1018,7 +1022,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
                 }
             }
 
-            /// <summary>Retrieve a single conversion event.</summary>
+            /// <summary>Deprecated: Use `GetKeyEvent` instead. Retrieve a single conversion event.</summary>
             /// <param name="name">
             /// Required. The resource name of the conversion event to retrieve. Format:
             /// properties/{property}/conversionEvents/{conversion_event} Example: "properties/123/conversionEvents/456"
@@ -1028,7 +1032,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
                 return new GetRequest(this.service, name);
             }
 
-            /// <summary>Retrieve a single conversion event.</summary>
+            /// <summary>Deprecated: Use `GetKeyEvent` instead. Retrieve a single conversion event.</summary>
             public class GetRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1beta.Data.GoogleAnalyticsAdminV1betaConversionEvent>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -1071,8 +1075,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
             }
 
             /// <summary>
-            /// Returns a list of conversion events in the specified parent property. Returns an empty list if no
-            /// conversion events are found.
+            /// Deprecated: Use `ListKeyEvents` instead. Returns a list of conversion events in the specified parent
+            /// property. Returns an empty list if no conversion events are found.
             /// </summary>
             /// <param name="parent">
             /// Required. The resource name of the parent property. Example: 'properties/123'
@@ -1083,8 +1087,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
             }
 
             /// <summary>
-            /// Returns a list of conversion events in the specified parent property. Returns an empty list if no
-            /// conversion events are found.
+            /// Deprecated: Use `ListKeyEvents` instead. Returns a list of conversion events in the specified parent
+            /// property. Returns an empty list if no conversion events are found.
             /// </summary>
             public class ListRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1beta.Data.GoogleAnalyticsAdminV1betaListConversionEventsResponse>
             {
@@ -1154,7 +1158,9 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
                 }
             }
 
-            /// <summary>Updates a conversion event with the specified attributes.</summary>
+            /// <summary>
+            /// Deprecated: Use `UpdateKeyEvent` instead. Updates a conversion event with the specified attributes.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Output only. Resource name of this conversion event. Format:
@@ -1165,7 +1171,9 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
                 return new PatchRequest(this.service, body, name);
             }
 
-            /// <summary>Updates a conversion event with the specified attributes.</summary>
+            /// <summary>
+            /// Deprecated: Use `UpdateKeyEvent` instead. Updates a conversion event with the specified attributes.
+            /// </summary>
             public class PatchRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1beta.Data.GoogleAnalyticsAdminV1betaConversionEvent>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -1903,79 +1911,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
             public DataStreamsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-                EventEditRules = new EventEditRulesResource(service);
                 MeasurementProtocolSecrets = new MeasurementProtocolSecretsResource(service);
-            }
-
-            /// <summary>Gets the EventEditRules resource.</summary>
-            public virtual EventEditRulesResource EventEditRules { get; }
-
-            /// <summary>The "eventEditRules" collection of methods.</summary>
-            public class EventEditRulesResource
-            {
-                private const string Resource = "eventEditRules";
-
-                /// <summary>The service which this resource belongs to.</summary>
-                private readonly Google.Apis.Services.IClientService service;
-
-                /// <summary>Constructs a new resource.</summary>
-                public EventEditRulesResource(Google.Apis.Services.IClientService service)
-                {
-                    this.service = service;
-                }
-
-                /// <summary>Changes the processing order of event edit rules on the specified stream.</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. Example format: properties/123/dataStreams/456</param>
-                public virtual ReorderRequest Reorder(Google.Apis.GoogleAnalyticsAdmin.v1beta.Data.GoogleAnalyticsAdminV1betaReorderEventEditRulesRequest body, string parent)
-                {
-                    return new ReorderRequest(this.service, body, parent);
-                }
-
-                /// <summary>Changes the processing order of event edit rules on the specified stream.</summary>
-                public class ReorderRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1beta.Data.GoogleProtobufEmpty>
-                {
-                    /// <summary>Constructs a new Reorder request.</summary>
-                    public ReorderRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1beta.Data.GoogleAnalyticsAdminV1betaReorderEventEditRulesRequest body, string parent) : base(service)
-                    {
-                        Parent = parent;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>Required. Example format: properties/123/dataStreams/456</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.GoogleAnalyticsAdmin.v1beta.Data.GoogleAnalyticsAdminV1betaReorderEventEditRulesRequest Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "reorder";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1beta/{+parent}/eventEditRules:reorder";
-
-                    /// <summary>Initializes Reorder parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^properties/[^/]+/dataStreams/[^/]+$",
-                        });
-                    }
-                }
             }
 
             /// <summary>Gets the MeasurementProtocolSecrets resource.</summary>
@@ -2634,7 +2570,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
 
             /// <summary>Creates a FirebaseLink. Properties can have at most one FirebaseLink.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. Format: properties/{property_id} Example: properties/1234</param>
+            /// <param name="parent">Required. Format: properties/{property_id} Example: `properties/1234`</param>
             public virtual CreateRequest Create(Google.Apis.GoogleAnalyticsAdmin.v1beta.Data.GoogleAnalyticsAdminV1betaFirebaseLink body, string parent)
             {
                 return new CreateRequest(this.service, body, parent);
@@ -2651,7 +2587,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
                     InitParameters();
                 }
 
-                /// <summary>Required. Format: properties/{property_id} Example: properties/1234</summary>
+                /// <summary>Required. Format: properties/{property_id} Example: `properties/1234`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -2688,7 +2624,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
             /// <summary>Deletes a FirebaseLink on a property</summary>
             /// <param name="name">
             /// Required. Format: properties/{property_id}/firebaseLinks/{firebase_link_id} Example:
-            /// properties/1234/firebaseLinks/5678
+            /// `properties/1234/firebaseLinks/5678`
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -2707,7 +2643,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
 
                 /// <summary>
                 /// Required. Format: properties/{property_id}/firebaseLinks/{firebase_link_id} Example:
-                /// properties/1234/firebaseLinks/5678
+                /// `properties/1234/firebaseLinks/5678`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -2737,7 +2673,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
             }
 
             /// <summary>Lists FirebaseLinks on a property. Properties can have at most one FirebaseLink.</summary>
-            /// <param name="parent">Required. Format: properties/{property_id} Example: properties/1234</param>
+            /// <param name="parent">Required. Format: properties/{property_id} Example: `properties/1234`</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(this.service, parent);
@@ -2753,7 +2689,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
                     InitParameters();
                 }
 
-                /// <summary>Required. Format: properties/{property_id} Example: properties/1234</summary>
+                /// <summary>Required. Format: properties/{property_id} Example: `properties/1234`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -5927,20 +5863,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request message for ReorderEventEditRules RPC.</summary>
-    public class GoogleAnalyticsAdminV1betaReorderEventEditRulesRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. EventEditRule resource names for the specified data stream, in the needed processing order. All
-        /// EventEditRules for the stream must be present in the list.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("eventEditRules")]
-        public virtual System.Collections.Generic.IList<string> EventEditRules { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>The request for a Data Access Record Report.</summary>
     public class GoogleAnalyticsAdminV1betaRunAccessReportRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6190,7 +6112,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta.Data
 
         /// <summary>
         /// Optional. Resource name for a child property. If set, only return changes made to this property or its child
-        /// resources. Format: properties/{propertyId} Example: "properties/100"
+        /// resources. Format: properties/{propertyId} Example: `properties/100`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("property")]
         public virtual string Property { get; set; }

@@ -6500,7 +6500,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("machinePreferences")]
         public virtual MachinePreferences MachinePreferences { get; set; }
 
-        /// <summary>Optional. Preferences for multithreading support.</summary>
+        /// <summary>Optional. Preferences for multithreading support on Windows Server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("multithreading")]
         public virtual string Multithreading { get; set; }
 
@@ -10090,7 +10090,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("machinePreferences")]
         public virtual VirtualMachinePreferences MachinePreferences { get; set; }
 
-        /// <summary>Compute monthly cost for this preference set.</summary>
+        /// <summary>Output only. Compute monthly cost for this preference set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monthlyCostCompute")]
         public virtual Money MonthlyCostCompute { get; set; }
 
@@ -10104,25 +10104,28 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("monthlyCostDatabaseLicensing")]
         public virtual Money MonthlyCostDatabaseLicensing { get; set; }
 
-        /// <summary>Network Egress monthly cost for this preference set. Only present for virtual machines.</summary>
+        /// <summary>
+        /// Output only. Network Egress monthly cost for this preference set. Only present for virtual machines.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monthlyCostNetworkEgress")]
         public virtual Money MonthlyCostNetworkEgress { get; set; }
 
         /// <summary>
-        /// Operating system licensing monthly cost for this preference set. Only present for virtual machines.
+        /// Output only. Operating system licensing monthly cost for this preference set. Only present for virtual
+        /// machines.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monthlyCostOsLicense")]
         public virtual Money MonthlyCostOsLicense { get; set; }
 
-        /// <summary>Miscellaneous monthly cost for this preference set.</summary>
+        /// <summary>Output only. Miscellaneous monthly cost for this preference set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monthlyCostOther")]
         public virtual Money MonthlyCostOther { get; set; }
 
-        /// <summary>Storage monthly cost for this preference set.</summary>
+        /// <summary>Output only. Storage monthly cost for this preference set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monthlyCostStorage")]
         public virtual Money MonthlyCostStorage { get; set; }
 
-        /// <summary>Total monthly cost for this preference set.</summary>
+        /// <summary>Output only. Total monthly cost for this preference set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monthlyCostTotal")]
         public virtual Money MonthlyCostTotal { get; set; }
 

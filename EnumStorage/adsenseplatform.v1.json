@@ -1,0 +1,11 @@
+{
+  "Google.Apis.AdSensePlatform.v1.AdSensePlatformBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.AdSensePlatform.v1.AdSensePlatformBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

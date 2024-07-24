@@ -2993,9 +2993,9 @@ namespace Google.Apis.CloudWorkstations.v1.Data
 
         /// <summary>
         /// Optional. Whether to enable nested virtualization on Cloud Workstations VMs created using this workstation
-        /// configuration. Nested virtualization lets you run virtual machine (VM) instances inside your workstation.
-        /// Before enabling nested virtualization, consider the following important considerations. Cloud Workstations
-        /// instances are subject to the [same restrictions as Compute Engine
+        /// configuration. Defaults to false. Nested virtualization lets you run virtual machine (VM) instances inside
+        /// your workstation. Before enabling nested virtualization, consider the following important considerations.
+        /// Cloud Workstations instances are subject to the [same restrictions as Compute Engine
         /// instances](https://cloud.google.com/compute/docs/instances/nested-virtualization/overview#restrictions): *
         /// **Organization policy**: projects, folders, or organizations may be restricted from creating nested VMs if
         /// the **Disable VM nested virtualization** constraint is enforced in the organization policy. For more
@@ -3004,11 +3004,7 @@ namespace Google.Apis.CloudWorkstations.v1.Data
         /// * **Performance**: nested VMs might experience a 10% or greater decrease in performance for workloads that
         /// are CPU-bound and possibly greater than a 10% decrease for workloads that are input/output bound. *
         /// **Machine Type**: nested virtualization can only be enabled on workstation configurations that specify a
-        /// machine_type in the N1 or N2 machine series. * **GPUs**: nested virtualization may not be enabled on
-        /// workstation configurations with accelerators. * **Operating System**: because [Container-Optimized
-        /// OS](https://cloud.google.com/compute/docs/images/os-details#container-optimized_os_cos) does not support
-        /// nested virtualization, when nested virtualization is enabled, the underlying Compute Engine VM instances
-        /// boot from an [Ubuntu LTS](https://cloud.google.com/compute/docs/images/os-details#ubuntu_lts) image.
+        /// machine_type in the N1 or N2 machine series.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableNestedVirtualization")]
         public virtual System.Nullable<bool> EnableNestedVirtualization { get; set; }
@@ -4435,9 +4431,13 @@ namespace Google.Apis.CloudWorkstations.v1.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Optional. Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must
-        /// also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging
-        /// is distinct from [Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-logging).
+        /// Optional. Whether to enable Linux `auditd` logging on the workstation. When enabled, a service_account must
+        /// also be specified that has `roles/logging.logWriter` and `roles/monitoring.metricWriter` on the project.
+        /// Operating system audit logging is distinct from [Cloud Audit
+        /// Logs](https://cloud.google.com/workstations/docs/audit-logging) and [Container output
+        /// logging](http://cloud/workstations/docs/container-output-logging#overview). Operating system audit logs are
+        /// available in the [Cloud Logging](https://cloud.google.com/logging/docs) console by querying:
+        /// resource.type="gce_instance" log_name:"/logs/linux-auditd"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableAuditAgent")]
         public virtual System.Nullable<bool> EnableAuditAgent { get; set; }

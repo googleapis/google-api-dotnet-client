@@ -2828,6 +2828,179 @@ namespace Google.Apis.Spanner.v1
                         this.service = service;
                     }
 
+                    /// <summary>Creates a new backup schedule.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The name of the database that this backup schedule applies to.
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.Spanner.v1.Data.BackupSchedule body, string parent)
+                    {
+                        return new CreateRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>Creates a new backup schedule.</summary>
+                    public class CreateRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.BackupSchedule>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Spanner.v1.Data.BackupSchedule body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the database that this backup schedule applies to.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Required. The Id to use for the backup schedule. The `backup_schedule_id` appended to
+                        /// `parent` forms the full backup schedule name of the form
+                        /// `projects//instances//databases//backupSchedules/`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("backupScheduleId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string BackupScheduleId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Spanner.v1.Data.BackupSchedule Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/backupSchedules";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/instances/[^/]+/databases/[^/]+$",
+                            });
+                            RequestParameters.Add("backupScheduleId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "backupScheduleId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Deletes a backup schedule.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the schedule to delete. Values are of the form
+                    /// `projects//instances//databases//backupSchedules/`.
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(this.service, name);
+                    }
+
+                    /// <summary>Deletes a backup schedule.</summary>
+                    public class DeleteRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.Empty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the schedule to delete. Values are of the form
+                        /// `projects//instances//databases//backupSchedules/`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/instances/[^/]+/databases/[^/]+/backupSchedules/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets backup schedule for the input schedule name.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the schedule to retrieve. Values are of the form
+                    /// `projects//instances//databases//backupSchedules/`.
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>Gets backup schedule for the input schedule name.</summary>
+                    public class GetRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.BackupSchedule>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the schedule to retrieve. Values are of the form
+                        /// `projects//instances//databases//backupSchedules/`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/instances/[^/]+/databases/[^/]+/backupSchedules/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>
                     /// Gets the access control policy for a database or backup resource. Returns an empty policy if a
                     /// database or backup exists but does not have a policy set. Authorization requires
@@ -2895,6 +3068,169 @@ namespace Google.Apis.Spanner.v1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/instances/[^/]+/databases/[^/]+/backupSchedules/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists all the backup schedules for the database.</summary>
+                    /// <param name="parent">
+                    /// Required. Database is the parent resource whose backup schedules should be listed. Values are of
+                    /// the form projects//instances//databases/
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(this.service, parent);
+                    }
+
+                    /// <summary>Lists all the backup schedules for the database.</summary>
+                    public class ListRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.ListBackupSchedulesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Database is the parent resource whose backup schedules should be listed. Values
+                        /// are of the form projects//instances//databases/
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. Number of backup schedules to be returned in the response. If 0 or less, defaults
+                        /// to the server's maximum allowed page size.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. If non-empty, `page_token` should contain a next_page_token from a previous
+                        /// ListBackupSchedulesResponse to the same `parent`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/backupSchedules";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/instances/[^/]+/databases/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Updates a backup schedule.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Identifier. Output only for the CreateBackupSchedule operation. Required for the
+                    /// UpdateBackupSchedule operation. A globally unique identifier for the backup schedule which
+                    /// cannot be changed. Values are of the form
+                    /// `projects//instances//databases//backupSchedules/a-z*[a-z0-9]` The final segment of the name
+                    /// must be between 2 and 60 characters in length.
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.Spanner.v1.Data.BackupSchedule body, string name)
+                    {
+                        return new PatchRequest(this.service, body, name);
+                    }
+
+                    /// <summary>Updates a backup schedule.</summary>
+                    public class PatchRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.BackupSchedule>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Spanner.v1.Data.BackupSchedule body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Identifier. Output only for the CreateBackupSchedule operation. Required for the
+                        /// UpdateBackupSchedule operation. A globally unique identifier for the backup schedule which
+                        /// cannot be changed. Values are of the form
+                        /// `projects//instances//databases//backupSchedules/a-z*[a-z0-9]` The final segment of the name
+                        /// must be between 2 and 60 characters in length.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Required. A mask specifying which fields in the BackupSchedule resource should be updated.
+                        /// This mask is relative to the BackupSchedule resource, not to the request message. The field
+                        /// mask must always be specified; this prevents any future fields from being erased
+                        /// accidentally.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Spanner.v1.Data.BackupSchedule Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/instances/[^/]+/databases/[^/]+/backupSchedules/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                         }
                     }
@@ -7750,6 +8086,16 @@ namespace Google.Apis.Spanner.v1.Data
     /// <summary>A backup of a Cloud Spanner database.</summary>
     public class Backup : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. List of backup schedule URIs that are associated with creating this backup. This is only
+        /// applicable for scheduled backups, and is empty for on-demand backups. To optimize for storage, whenever
+        /// possible, multiple schedules are collapsed together to create one backup. In such cases, this field captures
+        /// the list of all backup schedule URIs that are associated with creating this backup. If collapsing is not
+        /// done, then this field captures the single backup schedule URI associated with creating this backup.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupSchedules")]
+        public virtual System.Collections.Generic.IList<string> BackupSchedules { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -8069,6 +8415,97 @@ namespace Google.Apis.Spanner.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(VersionTimeRaw);
             set => VersionTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// BackupSchedule expresses the automated backup creation specification for a Spanner database. Next ID: 10
+    /// </summary>
+    public class BackupSchedule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The encryption configuration that will be used to encrypt the backup. If this field is not
+        /// specified, the backup will use the same encryption configuration as the database.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfig")]
+        public virtual CreateBackupEncryptionConfig EncryptionConfig { get; set; }
+
+        /// <summary>The schedule creates only full backups.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullBackupSpec")]
+        public virtual FullBackupSpec FullBackupSpec { get; set; }
+
+        /// <summary>
+        /// Identifier. Output only for the CreateBackupSchedule operation. Required for the UpdateBackupSchedule
+        /// operation. A globally unique identifier for the backup schedule which cannot be changed. Values are of the
+        /// form `projects//instances//databases//backupSchedules/a-z*[a-z0-9]` The final segment of the name must be
+        /// between 2 and 60 characters in length.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. The retention duration of a backup that must be at least 6 hours and at most 366 days. The backup
+        /// is eligible to be automatically deleted once the retention period has elapsed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retentionDuration")]
+        public virtual object RetentionDuration { get; set; }
+
+        /// <summary>Optional. The schedule specification based on which the backup creations are triggered.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spec")]
+        public virtual BackupScheduleSpec Spec { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>
+        /// Output only. The timestamp at which the schedule was last updated. If the schedule has never been updated,
+        /// this field contains the timestamp when the schedule was first created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines specifications of the backup schedule.</summary>
+    public class BackupScheduleSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Cron style schedule specification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cronSpec")]
+        public virtual CrontabSpec CronSpec { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8736,6 +9173,38 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Encryption configuration for the backup to create.</summary>
+    public class CreateBackupEncryptionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The encryption type of the backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionType")]
+        public virtual string EncryptionType { get; set; }
+
+        /// <summary>
+        /// Optional. The Cloud KMS key that will be used to protect the backup. This field should be set only when
+        /// encryption_type is `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form
+        /// `projects//locations//keyRings//cryptoKeys/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
+
+        /// <summary>
+        /// Optional. Specifies the KMS configuration for the one or more keys used to protect the backup. Values are of
+        /// the form `projects//locations//keyRings//cryptoKeys/`. The keys referenced by kms_key_names must fully cover
+        /// all regions of the backup's instance configuration. Some examples: * For single region instance configs,
+        /// specify a single regional location KMS key. * For multi-regional instance configs of type GOOGLE_MANAGED,
+        /// either specify a multi-regional location KMS key or multiple regional location KMS keys that cover all
+        /// regions in the instance config. * For an instance config of type USER_MANAGED, please specify only regional
+        /// location KMS keys to cover each region in the instance config. Multi-regional location KMS keys are not
+        /// supported for USER_MANAGED instance configs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyNames")]
+        public virtual System.Collections.Generic.IList<string> KmsKeyNames { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata type for the operation returned by CreateBackup.</summary>
     public class CreateBackupMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9243,6 +9712,42 @@ namespace Google.Apis.Spanner.v1.Data
         /// <summary>Required. The session to create.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("session")]
         public virtual Session Session { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// CrontabSpec can be used to specify the version time and frequency at which the backup should be created.
+    /// </summary>
+    public class CrontabSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Schedule backups will contain an externally consistent copy of the database at the version time
+        /// specified in `schedule_spec.cron_spec`. However, Spanner may not initiate the creation of the scheduled
+        /// backups at that version time. Spanner will initiate the creation of scheduled backups within the time window
+        /// bounded by the version_time specified in `schedule_spec.cron_spec` and version_time + `creation_window`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationWindow")]
+        public virtual object CreationWindow { get; set; }
+
+        /// <summary>
+        /// Required. Textual representation of the crontab. User can customize the backup frequency and the backup
+        /// version time using the cron expression. The version time must be in UTC timzeone. The backup will contain an
+        /// externally consistent copy of the database at the version time. Allowed frequencies are 12 hour, 1 day, 1
+        /// week and 1 month. Examples of valid cron specifications: * `0 2/12 * * * ` : every 12 hours at (2, 14) hours
+        /// past midnight in UTC. * `0 2,14 * * * ` : every 12 hours at (2,14) hours past midnight in UTC. * `0 2 * * *
+        /// ` : once a day at 2 past midnight in UTC. * `0 2 * * 0 ` : once a week every Sunday at 2 past midnight in
+        /// UTC. * `0 2 8 * * ` : once a month on 8th day at 2 past midnight in UTC.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>
+        /// Output only. The time zone of the times in `CrontabSpec.text`. Currently only UTC is supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
+        public virtual string TimeZone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9958,6 +10463,16 @@ namespace Google.Apis.Spanner.v1.Data
             set => UpgradeTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The specification for full backups. A full backup stores the entire contents of the database at a given version
+    /// time.
+    /// </summary>
+    public class FullBackupSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -10766,6 +11281,23 @@ namespace Google.Apis.Spanner.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for ListBackupSchedules.</summary>
+    public class ListBackupSchedulesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of backup schedules for a database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupSchedules")]
+        public virtual System.Collections.Generic.IList<BackupSchedule> BackupSchedules { get; set; }
+
+        /// <summary>
+        /// `next_page_token` can be sent in a subsequent ListBackupSchedules call to fetch more of the schedules.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

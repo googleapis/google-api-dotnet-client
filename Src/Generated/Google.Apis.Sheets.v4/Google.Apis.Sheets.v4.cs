@@ -4626,6 +4626,10 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bigQuery")]
         public virtual BigQueryDataSourceSpec BigQuery { get; set; }
 
+        /// <summary>A LookerDatasourceSpec.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("looker")]
+        public virtual LookerDataSourceSpec Looker { get; set; }
+
         /// <summary>The parameters of the data source, used when querying the data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IList<DataSourceParameter> Parameters { get; set; }
@@ -6047,6 +6051,25 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The link identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The specification of a Looker data source.</summary>
+    public class LookerDataSourceSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of a LookerML model explore.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("explore")]
+        public virtual string Explore { get; set; }
+
+        /// <summary>A Looker instance URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceUri")]
+        public virtual string InstanceUri { get; set; }
+
+        /// <summary>Name of a LookerML model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("model")]
+        public virtual string Model { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

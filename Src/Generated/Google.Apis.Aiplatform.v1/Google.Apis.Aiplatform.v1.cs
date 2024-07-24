@@ -3849,7 +3849,7 @@ namespace Google.Apis.Aiplatform.v1
 
                     /// <summary>Updates a DatasetVersion.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="name">Output only. The resource name of the DatasetVersion.</param>
+                    /// <param name="name">Output only. Identifier. The resource name of the DatasetVersion.</param>
                     public virtual PatchRequest Patch(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1DatasetVersion body, string name)
                     {
                         return new PatchRequest(this.service, body, name);
@@ -3866,7 +3866,7 @@ namespace Google.Apis.Aiplatform.v1
                             InitParameters();
                         }
 
-                        /// <summary>Output only. The resource name of the DatasetVersion.</summary>
+                        /// <summary>Output only. Identifier. The resource name of the DatasetVersion.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -5252,7 +5252,7 @@ namespace Google.Apis.Aiplatform.v1
 
                 /// <summary>Updates a Dataset.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Output only. The resource name of the Dataset.</param>
+                /// <param name="name">Output only. Identifier. The resource name of the Dataset.</param>
                 public virtual PatchRequest Patch(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1Dataset body, string name)
                 {
                     return new PatchRequest(this.service, body, name);
@@ -5269,7 +5269,7 @@ namespace Google.Apis.Aiplatform.v1
                         InitParameters();
                     }
 
-                    /// <summary>Output only. The resource name of the Dataset.</summary>
+                    /// <summary>Output only. Identifier. The resource name of the Dataset.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -25563,6 +25563,337 @@ namespace Google.Apis.Aiplatform.v1
                         }
                     }
                 }
+
+                /// <summary>Creates a NotebookExecutionJob.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The resource name of the Location to create the NotebookExecutionJob. Format:
+                /// `projects/{project}/locations/{location}`
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1NotebookExecutionJob body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a NotebookExecutionJob.</summary>
+                public class CreateRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1NotebookExecutionJob body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the Location to create the NotebookExecutionJob. Format:
+                    /// `projects/{project}/locations/{location}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. User specified ID for the NotebookExecutionJob.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("notebookExecutionJobId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string NotebookExecutionJobId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1NotebookExecutionJob Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/notebookExecutionJobs";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("notebookExecutionJobId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "notebookExecutionJobId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a NotebookExecutionJob.</summary>
+                /// <param name="name">Required. The name of the NotebookExecutionJob resource to be deleted.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a NotebookExecutionJob.</summary>
+                public class DeleteRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the NotebookExecutionJob resource to be deleted.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/notebookExecutionJobs/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets a NotebookExecutionJob.</summary>
+                /// <param name="name">Required. The name of the NotebookExecutionJob resource.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets a NotebookExecutionJob.</summary>
+                public class GetRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1NotebookExecutionJob>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the NotebookExecutionJob resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Optional. The NotebookExecutionJob view. Defaults to BASIC.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                    /// <summary>Optional. The NotebookExecutionJob view. Defaults to BASIC.</summary>
+                    public enum ViewEnum
+                    {
+                        /// <summary>When unspecified, the API defaults to the BASIC view.</summary>
+                        [Google.Apis.Util.StringValueAttribute("NOTEBOOK_EXECUTION_JOB_VIEW_UNSPECIFIED")]
+                        NOTEBOOKEXECUTIONJOBVIEWUNSPECIFIED = 0,
+
+                        /// <summary>Includes all fields except for direct notebook inputs.</summary>
+                        [Google.Apis.Util.StringValueAttribute("NOTEBOOK_EXECUTION_JOB_VIEW_BASIC")]
+                        NOTEBOOKEXECUTIONJOBVIEWBASIC = 1,
+
+                        /// <summary>Includes all fields.</summary>
+                        [Google.Apis.Util.StringValueAttribute("NOTEBOOK_EXECUTION_JOB_VIEW_FULL")]
+                        NOTEBOOKEXECUTIONJOBVIEWFULL = 2,
+                    }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/notebookExecutionJobs/[^/]+$",
+                        });
+                        RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Lists NotebookExecutionJobs in a Location.</summary>
+                /// <param name="parent">
+                /// Required. The resource name of the Location from which to list the NotebookExecutionJobs. Format:
+                /// `projects/{project}/locations/{location}`
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists NotebookExecutionJobs in a Location.</summary>
+                public class ListRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1ListNotebookExecutionJobsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the Location from which to list the NotebookExecutionJobs.
+                    /// Format: `projects/{project}/locations/{location}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An expression for filtering the results of the request. For field names both
+                    /// snake_case and camelCase are supported. * `notebookExecutionJob` supports = and !=.
+                    /// `notebookExecutionJob` represents the NotebookExecutionJob ID. * `displayName` supports = and !=
+                    /// and regex. * `schedule` supports = and != and regex. Some examples: *
+                    /// `notebookExecutionJob="123"` * `notebookExecutionJob="my-execution-job"` *
+                    /// `displayName="myDisplayName"` and `displayName=~"myDisplayNameRegex"`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. A comma-separated list of fields to order by, sorted in ascending order. Use "desc"
+                    /// after a field name for descending. Supported fields: * `display_name` * `create_time` *
+                    /// `update_time` Example: `display_name, create_time desc`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>Optional. The standard list page size.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. The standard list page token. Typically obtained via
+                    /// ListNotebookExecutionJobs.next_page_token of the previous
+                    /// NotebookService.ListNotebookExecutionJobs call.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Optional. The NotebookExecutionJob view. Defaults to BASIC.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                    /// <summary>Optional. The NotebookExecutionJob view. Defaults to BASIC.</summary>
+                    public enum ViewEnum
+                    {
+                        /// <summary>When unspecified, the API defaults to the BASIC view.</summary>
+                        [Google.Apis.Util.StringValueAttribute("NOTEBOOK_EXECUTION_JOB_VIEW_UNSPECIFIED")]
+                        NOTEBOOKEXECUTIONJOBVIEWUNSPECIFIED = 0,
+
+                        /// <summary>Includes all fields except for direct notebook inputs.</summary>
+                        [Google.Apis.Util.StringValueAttribute("NOTEBOOK_EXECUTION_JOB_VIEW_BASIC")]
+                        NOTEBOOKEXECUTIONJOBVIEWBASIC = 1,
+
+                        /// <summary>Includes all fields.</summary>
+                        [Google.Apis.Util.StringValueAttribute("NOTEBOOK_EXECUTION_JOB_VIEW_FULL")]
+                        NOTEBOOKEXECUTIONJOBVIEWFULL = 2,
+                    }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/notebookExecutionJobs";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the NotebookRuntimeTemplates resource.</summary>
@@ -38145,9 +38476,13 @@ namespace Google.Apis.Aiplatform.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>Optional. Boolean indicates whether the requested model is a Hugging Face model.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("isHuggingFaceModel", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> IsHuggingFaceModel { get; set; }
+
                 /// <summary>
                 /// Optional. The IETF BCP-47 language code representing the language in which the publisher model's
-                /// text information should be written in (see go/bcp47).
+                /// text information should be written in.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string LanguageCode { get; set; }
@@ -38197,6 +38532,14 @@ namespace Google.Apis.Aiplatform.v1
                         DefaultValue = null,
                         Pattern = @"^publishers/[^/]+/models/[^/]+$",
                     });
+                    RequestParameters.Add("isHuggingFaceModel", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "isHuggingFaceModel",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                     RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
                     {
                         Name = "languageCode",
@@ -38220,7 +38563,7 @@ namespace Google.Apis.Aiplatform.v1
 }
 namespace Google.Apis.Aiplatform.v1.Data
 {
-    /// <summary>Next ID: 8 Generate video response.</summary>
+    /// <summary>Generate video response.</summary>
     public class CloudAiLargeModelsVisionGenerateVideoResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The generates samples.</summary>
@@ -38234,10 +38577,6 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Returns rai failure reasons if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("raiMediaFilteredReasons")]
         public virtual System.Collections.Generic.IList<string> RaiMediaFilteredReasons { get; set; }
-
-        /// <summary>Billable prediction metrics.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("reportingMetrics")]
-        public virtual IntelligenceCloudAutomlXpsReportingMetrics ReportingMetrics { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -40280,6 +40619,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("safetyRatings")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1SafetyRating> SafetyRatings { get; set; }
 
+        /// <summary>Output only. Confidence score of the candidate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<double> Score { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -40486,19 +40829,19 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// <summary>Request message for ComputeTokens RPC call.</summary>
     public class GoogleCloudAiplatformV1ComputeTokensRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Input content.</summary>
+        /// <summary>Optional. Input content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contents")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1Content> Contents { get; set; }
 
         /// <summary>
-        /// Required. The instances that are the input to token computing API call. Schema is identical to the
+        /// Optional. The instances that are the input to token computing API call. Schema is identical to the
         /// prediction schema of the text model, even for the non-text models, like chat models, or Codey models.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instances")]
         public virtual System.Collections.Generic.IList<object> Instances { get; set; }
 
         /// <summary>
-        /// Required. The name of the publisher model requested to serve the prediction. Format:
+        /// Optional. The name of the publisher model requested to serve the prediction. Format:
         /// projects/{project}/locations/{location}/publishers/*/models/*
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
@@ -40794,23 +41137,38 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// <summary>Request message for PredictionService.CountTokens.</summary>
     public class GoogleCloudAiplatformV1CountTokensRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Input content.</summary>
+        /// <summary>Optional. Input content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contents")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1Content> Contents { get; set; }
 
         /// <summary>
-        /// Required. The instances that are the input to token counting call. Schema is identical to the prediction
+        /// Optional. The instances that are the input to token counting call. Schema is identical to the prediction
         /// schema of the underlying model.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instances")]
         public virtual System.Collections.Generic.IList<object> Instances { get; set; }
 
         /// <summary>
-        /// Required. The name of the publisher model requested to serve the prediction. Format:
+        /// Optional. The name of the publisher model requested to serve the prediction. Format:
         /// `projects/{project}/locations/{location}/publishers/*/models/*`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
         public virtual string Model { get; set; }
+
+        /// <summary>
+        /// Optional. The user provided system instructions for the model. Note: only text should be used in parts and
+        /// content in each part will be in a separate paragraph.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemInstruction")]
+        public virtual GoogleCloudAiplatformV1Content SystemInstruction { get; set; }
+
+        /// <summary>
+        /// Optional. A list of `Tools` the model may use to generate the next response. A `Tool` is a piece of code
+        /// that enables the system to interact with external systems to perform an action, or set of actions, outside
+        /// of knowledge and scope of the model.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tools")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1Tool> Tools { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -41021,6 +41379,21 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Operation metadata for creating a MetadataStore.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
         public virtual GoogleCloudAiplatformV1GenericOperationMetadata GenericMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata information for NotebookService.CreateNotebookExecutionJob.</summary>
+    public class GoogleCloudAiplatformV1CreateNotebookExecutionJobOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The operation generic information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
+        public virtual GoogleCloudAiplatformV1GenericOperationMetadata GenericMetadata { get; set; }
+
+        /// <summary>A human-readable message that shows the intermediate progress details of NotebookRuntime.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progressMessage")]
+        public virtual string ProgressMessage { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -41953,7 +42326,7 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("modelReference")]
         public virtual string ModelReference { get; set; }
 
-        /// <summary>Output only. The resource name of the Dataset.</summary>
+        /// <summary>Output only. Identifier. The resource name of the Dataset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -42072,7 +42445,7 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("modelReference")]
         public virtual string ModelReference { get; set; }
 
-        /// <summary>Output only. The resource name of the DatasetVersion.</summary>
+        /// <summary>Output only. Identifier. The resource name of the DatasetVersion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -43038,6 +43411,22 @@ namespace Google.Apis.Aiplatform.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>
+        /// Output only. DNS of the dedicated endpoint. Will only be populated if dedicated_endpoint_enabled is true.
+        /// Format: `https://{endpoint_id}.{region}-{project_number}.prediction.vertexai.goog`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dedicatedEndpointDns")]
+        public virtual string DedicatedEndpointDns { get; set; }
+
+        /// <summary>
+        /// If true, the endpoint will be exposed through a dedicated DNS [Endpoint.dedicated_endpoint_dns]. Your
+        /// request to the dedicated DNS will be isolated from other users' traffic and will have better performance and
+        /// reliability. Note: Once you enabled dedicated endpoint, you won't be able to send request to the shared DNS
+        /// {region}-aiplatform.googleapis.com. The limitation will be removed soon.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dedicatedEndpointEnabled")]
+        public virtual System.Nullable<bool> DedicatedEndpointEnabled { get; set; }
 
         /// <summary>
         /// Output only. The models deployed in this Endpoint. To add or remove DeployedModels use
@@ -47381,42 +47770,6 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Grounding attribution.</summary>
-    public class GoogleCloudAiplatformV1GroundingAttribution : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Optional. Output only. Confidence score of the attribution. Ranges from 0 to 1. 1 is the most confident.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("confidenceScore")]
-        public virtual System.Nullable<float> ConfidenceScore { get; set; }
-
-        /// <summary>Output only. Segment of the content this attribution belongs to.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("segment")]
-        public virtual GoogleCloudAiplatformV1Segment Segment { get; set; }
-
-        /// <summary>Optional. Attribution from the web.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("web")]
-        public virtual GoogleCloudAiplatformV1GroundingAttributionWeb Web { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Attribution from the web.</summary>
-    public class GoogleCloudAiplatformV1GroundingAttributionWeb : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. Title of the attribution.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; }
-
-        /// <summary>Output only. URI reference of the attribution.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Grounding chunk.</summary>
     public class GoogleCloudAiplatformV1GroundingChunk : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -47465,10 +47818,6 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// <summary>Metadata returned to client when grounding is enabled.</summary>
     public class GoogleCloudAiplatformV1GroundingMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. List of grounding attributions.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("groundingAttributions")]
-        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1GroundingAttribution> GroundingAttributions { get; set; }
-
         /// <summary>List of supporting references retrieved from specified grounding source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groundingChunks")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1GroundingChunk> GroundingChunks { get; set; }
@@ -49248,6 +49597,23 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for [NotebookService.CreateNotebookExecutionJob]</summary>
+    public class GoogleCloudAiplatformV1ListNotebookExecutionJobsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token to retrieve next page of results. Pass to ListNotebookExecutionJobs.page_token to obtain that page.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>List of NotebookExecutionJobs in the requested page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notebookExecutionJobs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1NotebookExecutionJob> NotebookExecutionJobs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -52426,6 +52792,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("neighborCount")]
         public virtual System.Nullable<int> NeighborCount { get; set; }
 
+        /// <summary>Optional. The list of numeric filters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numericFilters")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1NearestNeighborQueryNumericFilter> NumericFilters { get; set; }
+
         /// <summary>Optional. Parameters that can be set to tune query on the fly.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual GoogleCloudAiplatformV1NearestNeighborQueryParameters Parameters { get; set; }
@@ -52452,6 +52822,41 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Optional. Individual value in the embedding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual System.Collections.Generic.IList<System.Nullable<float>> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Numeric filter is used to search a subset of the entities by using boolean rules on numeric columns. For
+    /// example: Database Point 0: {name: “a” value_int: 42} {name: “b” value_float: 1.0} Database Point 1: {name: “a”
+    /// value_int: 10} {name: “b” value_float: 2.0} Database Point 2: {name: “a” value_int: -1} {name: “b” value_float:
+    /// 3.0} Query: {name: “a” value_int: 12 operator: LESS} // Matches Point 1, 2 {name: “b” value_float: 2.0 operator:
+    /// EQUAL} // Matches Point 1
+    /// </summary>
+    public class GoogleCloudAiplatformV1NearestNeighborQueryNumericFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Column name in BigQuery that used as filters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. This MUST be specified for queries and must NOT be specified for database points.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("op")]
+        public virtual string Op { get; set; }
+
+        /// <summary>double value type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueDouble")]
+        public virtual System.Nullable<double> ValueDouble { get; set; }
+
+        /// <summary>float value type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueFloat")]
+        public virtual System.Nullable<float> ValueFloat { get; set; }
+
+        /// <summary>int value type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueInt")]
+        public virtual System.Nullable<long> ValueInt { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -52700,6 +53105,212 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eucDisabled")]
         public virtual System.Nullable<bool> EucDisabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>NotebookExecutionJob represents an instance of a notebook execution.</summary>
+    public class GoogleCloudAiplatformV1NotebookExecutionJob : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Timestamp when this NotebookExecutionJob was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The Dataform Repository pointing to a single file notebook repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataformRepositorySource")]
+        public virtual GoogleCloudAiplatformV1NotebookExecutionJobDataformRepositorySource DataformRepositorySource { get; set; }
+
+        /// <summary>The contents of an input notebook file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("directNotebookSource")]
+        public virtual GoogleCloudAiplatformV1NotebookExecutionJobDirectNotebookSource DirectNotebookSource { get; set; }
+
+        /// <summary>
+        /// The display name of the NotebookExecutionJob. The name can be up to 128 characters long and can consist of
+        /// any UTF-8 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Max running time of the execution job in seconds (default 86400s / 24 hrs).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionTimeout")]
+        public virtual object ExecutionTimeout { get; set; }
+
+        /// <summary>The user email to run the execution as. Only supported by Colab runtimes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionUser")]
+        public virtual string ExecutionUser { get; set; }
+
+        /// <summary>
+        /// The Cloud Storage url pointing to the ipynb file. Format: `gs://bucket/notebook_file.ipynb`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsNotebookSource")]
+        public virtual GoogleCloudAiplatformV1NotebookExecutionJobGcsNotebookSource GcsNotebookSource { get; set; }
+
+        /// <summary>The Cloud Storage location to upload the result to. Format: `gs://bucket-name`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsOutputUri")]
+        public virtual string GcsOutputUri { get; set; }
+
+        /// <summary>Output only. The state of the NotebookExecutionJob.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobState")]
+        public virtual string JobState { get; set; }
+
+        /// <summary>
+        /// The labels with user-defined metadata to organize NotebookExecutionJobs. Label keys and values can be no
+        /// longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters,
+        /// underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information
+        /// and examples of labels. System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are
+        /// immutable.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of this NotebookExecutionJob. Format:
+        /// `projects/{project_id}/locations/{location}/notebookExecutionJobs/{job_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The NotebookRuntimeTemplate to source compute configuration from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notebookRuntimeTemplateResourceName")]
+        public virtual string NotebookRuntimeTemplateResourceName { get; set; }
+
+        /// <summary>
+        /// Output only. The Schedule resource name if this job is triggered by one. Format:
+        /// `projects/{project_id}/locations/{location}/schedules/{schedule_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheduleResourceName")]
+        public virtual string ScheduleResourceName { get; set; }
+
+        /// <summary>The service account to run the execution as.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
+
+        /// <summary>
+        /// Output only. Populated when the NotebookExecutionJob is completed. When there is an error during notebook
+        /// execution, the error details are populated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual GoogleRpcStatus Status { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Timestamp when this NotebookExecutionJob was most recently updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The Dataform Repository containing the input notebook.</summary>
+    public class GoogleCloudAiplatformV1NotebookExecutionJobDataformRepositorySource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The commit SHA to read repository with. If unset, the file will be read at HEAD.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commitSha")]
+        public virtual string CommitSha { get; set; }
+
+        /// <summary>
+        /// The resource name of the Dataform Repository. Format:
+        /// `projects/{project_id}/locations/{location}/repositories/{repository_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataformRepositoryResourceName")]
+        public virtual string DataformRepositoryResourceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The content of the input notebook in ipynb format.</summary>
+    public class GoogleCloudAiplatformV1NotebookExecutionJobDirectNotebookSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The base64-encoded contents of the input notebook file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The Cloud Storage uri for the input notebook.</summary>
+    public class GoogleCloudAiplatformV1NotebookExecutionJobGcsNotebookSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The version of the Cloud Storage object to read. If unset, the current version of the object is read. See
+        /// https://cloud.google.com/storage/docs/metadata#generation-number.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generation")]
+        public virtual string Generation { get; set; }
+
+        /// <summary>
+        /// The Cloud Storage uri pointing to the ipynb file. Format: `gs://bucket/notebook_file.ipynb`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -53437,6 +54048,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
+
+        /// <summary>Optional. Configuration for PSC-I for PersistentResource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscInterfaceConfig")]
+        public virtual GoogleCloudAiplatformV1PscInterfaceConfig PscInterfaceConfig { get; set; }
 
         /// <summary>
         /// Optional. A list of names for the reserved IP ranges under the VPC network that can be used for this
@@ -54511,6 +55126,26 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for PSC-I.</summary>
+    public class GoogleCloudAiplatformV1PscInterfaceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The full name of the Compute Engine [network
+        /// attachment](https://cloud.google.com/vpc/docs/about-network-attachments) to attach to the resource. For
+        /// example, `projects/12345/regions/us-central1/networkAttachments/myNA`. is of the form
+        /// `projects/{project}/regions/{region}/networkAttachments/{networkAttachment}`. Where {project} is a project
+        /// number, as in `12345`, and {networkAttachment} is a network attachment name. To specify this field, you must
+        /// have already [created a network attachment]
+        /// (https://cloud.google.com/vpc/docs/create-manage-network-attachments#create-network-attachments). This field
+        /// is only used for resources using PSC-I.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkAttachment")]
+        public virtual string NetworkAttachment { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A Model Garden Publisher Model.</summary>
     public class GoogleCloudAiplatformV1PublisherModel : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -55350,6 +55985,17 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for the Ray OSS Logs.</summary>
+    public class GoogleCloudAiplatformV1RayLogsSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Flag to disable the export of Ray OSS logs to Cloud Logging.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual System.Nullable<bool> Disabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for the Ray metrics.</summary>
     public class GoogleCloudAiplatformV1RayMetricSpec : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -55384,6 +56030,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
         public virtual string ImageUri { get; set; }
+
+        /// <summary>Optional. OSS Ray logging configurations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rayLogsSpec")]
+        public virtual GoogleCloudAiplatformV1RayLogsSpec RayLogsSpec { get; set; }
 
         /// <summary>Optional. Ray metrics configurations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rayMetricSpec")]
@@ -55814,10 +56464,7 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// <summary>Defines a retrieval tool that model can call to access external knowledge.</summary>
     public class GoogleCloudAiplatformV1Retrieval : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Optional. Disable using the result from this tool in detecting grounding attribution. This does not affect
-        /// how the result is given to the model for generation.
-        /// </summary>
+        /// <summary>Optional. Deprecated. This option is no longer supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableAttribution")]
         public virtual System.Nullable<bool> DisableAttribution { get; set; }
 
@@ -56638,6 +57285,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restartJobOnWorkerRestart")]
         public virtual System.Nullable<bool> RestartJobOnWorkerRestart { get; set; }
+
+        /// <summary>Optional. This determines which type of scheduling strategy to use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("strategy")]
+        public virtual string Strategy { get; set; }
 
         /// <summary>The maximum job running time. The default is 7 days.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
@@ -65598,66 +66249,6 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("units")]
         public virtual System.Nullable<long> Units { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class IntelligenceCloudAutomlXpsMetricEntry : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// For billing metrics that are using legacy sku's, set the legacy billing metric id here. This will be sent to
-        /// Chemist as the "cloudbilling.googleapis.com/argentum_metric_id" label. Otherwise leave empty.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("argentumMetricId")]
-        public virtual string ArgentumMetricId { get; set; }
-
-        /// <summary>A double value.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("doubleValue")]
-        public virtual System.Nullable<double> DoubleValue { get; set; }
-
-        /// <summary>A signed 64-bit integer value.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("int64Value")]
-        public virtual System.Nullable<long> Int64Value { get; set; }
-
-        /// <summary>The metric name defined in the service configuration.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metricName")]
-        public virtual string MetricName { get; set; }
-
-        /// <summary>Billing system labels for this (metric, value) pair.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("systemLabels")]
-        public virtual System.Collections.Generic.IList<IntelligenceCloudAutomlXpsMetricEntryLabel> SystemLabels { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class IntelligenceCloudAutomlXpsMetricEntryLabel : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The name of the label.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("labelName")]
-        public virtual string LabelName { get; set; }
-
-        /// <summary>The value of the label.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("labelValue")]
-        public virtual string LabelValue { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class IntelligenceCloudAutomlXpsReportingMetrics : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The effective time training used. If set, this is used for quota management and billing. Deprecated. AutoML
-        /// BE doesn't use this. Don't set.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("effectiveTrainingDuration")]
-        public virtual object EffectiveTrainingDuration { get; set; }
-
-        /// <summary>One entry per metric name. The values must be aggregated per metric name.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metricEntries")]
-        public virtual System.Collections.Generic.IList<IntelligenceCloudAutomlXpsMetricEntry> MetricEntries { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

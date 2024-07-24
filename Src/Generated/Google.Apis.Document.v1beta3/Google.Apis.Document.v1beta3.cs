@@ -11015,6 +11015,10 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("documentSchema")]
         public virtual GoogleCloudDocumentaiV1beta3DocumentSchema DocumentSchema { get; set; }
 
+        /// <summary>Output only. Information about Generative AI model-based processor versions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genAiModelInfo")]
+        public virtual GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfo GenAiModelInfo { get; set; }
+
         /// <summary>Output only. Denotes that this `ProcessorVersion` is managed by Google.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleManaged")]
         public virtual System.Nullable<bool> GoogleManaged { get; set; }
@@ -11118,6 +11122,54 @@ namespace Google.Apis.Document.v1beta3.Data
         /// <summary>If set, the processor version that will be used as a replacement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replacementProcessorVersion")]
         public virtual string ReplacementProcessorVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about Generative AI model-based processor versions.</summary>
+    public class GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Information for a custom Generative AI model created by the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customGenAiModelInfo")]
+        public virtual GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfoCustomGenAiModelInfo CustomGenAiModelInfo { get; set; }
+
+        /// <summary>Information for a pretrained Google-managed foundation model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("foundationGenAiModelInfo")]
+        public virtual GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo FoundationGenAiModelInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Information for a custom Generative AI model created by the user. These are created with `Create New Version` in
+    /// either the `Call foundation model` or `Fine tuning` tabs.
+    /// </summary>
+    public class GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfoCustomGenAiModelInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The base processor version ID for the custom model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseProcessorVersionId")]
+        public virtual string BaseProcessorVersionId { get; set; }
+
+        /// <summary>The type of custom model created by the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customModelType")]
+        public virtual string CustomModelType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information for a pretrained Google-managed foundation model.</summary>
+    public class GoogleCloudDocumentaiV1beta3ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether finetuning is allowed for this base processor version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finetuningAllowed")]
+        public virtual System.Nullable<bool> FinetuningAllowed { get; set; }
+
+        /// <summary>The minimum number of labeled documents in the training dataset required for finetuning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minTrainLabeledDocuments")]
+        public virtual System.Nullable<int> MinTrainLabeledDocuments { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

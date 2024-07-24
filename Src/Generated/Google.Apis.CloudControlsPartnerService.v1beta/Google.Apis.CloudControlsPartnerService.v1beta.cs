@@ -1342,15 +1342,15 @@ namespace Google.Apis.CloudControlsPartnerService.v1beta.Data
     /// <summary>Contains metadata around a Cloud Controls Partner Customer</summary>
     public class Customer : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Container for customer onboarding steps</summary>
+        /// <summary>Output only. Container for customer onboarding steps</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerOnboardingState")]
         public virtual CustomerOnboardingState CustomerOnboardingState { get; set; }
 
-        /// <summary>The customer organization's display name. E.g. "google.com".</summary>
+        /// <summary>Output only. The customer organization's display name. E.g. "google.com".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>Indicates whether a customer is fully onboarded</summary>
+        /// <summary>Output only. Indicates whether a customer is fully onboarded</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isOnboarded")]
         public virtual System.Nullable<bool> IsOnboarded { get; set; }
 

@@ -1127,9 +1127,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The new custom module's parent. Its format is: *
-                /// "organizations/{organization}/eventThreatDetectionSettings". *
-                /// "folders/{folder}/eventThreatDetectionSettings". *
-                /// "projects/{project}/eventThreatDetectionSettings".
+                /// `organizations/{organization}/eventThreatDetectionSettings`. *
+                /// `folders/{folder}/eventThreatDetectionSettings`. *
+                /// `projects/{project}/eventThreatDetectionSettings`.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.EventThreatDetectionCustomModule body, string parent)
                 {
@@ -1153,9 +1153,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. The new custom module's parent. Its format is: *
-                    /// "organizations/{organization}/eventThreatDetectionSettings". *
-                    /// "folders/{folder}/eventThreatDetectionSettings". *
-                    /// "projects/{project}/eventThreatDetectionSettings".
+                    /// `organizations/{organization}/eventThreatDetectionSettings`. *
+                    /// `folders/{folder}/eventThreatDetectionSettings`. *
+                    /// `projects/{project}/eventThreatDetectionSettings`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1196,9 +1196,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </summary>
                 /// <param name="name">
                 /// Required. Name of the custom module to delete. Its format is: *
-                /// "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}". *
-                /// "folders/{folder}/eventThreatDetectionSettings/customModules/{module}". *
-                /// "projects/{project}/eventThreatDetectionSettings/customModules/{module}".
+                /// `organizations/{organization}/eventThreatDetectionSettings/customModules/{module}`. *
+                /// `folders/{folder}/eventThreatDetectionSettings/customModules/{module}`. *
+                /// `projects/{project}/eventThreatDetectionSettings/customModules/{module}`.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -1220,9 +1220,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Name of the custom module to delete. Its format is: *
-                    /// "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}". *
-                    /// "folders/{folder}/eventThreatDetectionSettings/customModules/{module}". *
-                    /// "projects/{project}/eventThreatDetectionSettings/customModules/{module}".
+                    /// `organizations/{organization}/eventThreatDetectionSettings/customModules/{module}`. *
+                    /// `folders/{folder}/eventThreatDetectionSettings/customModules/{module}`. *
+                    /// `projects/{project}/eventThreatDetectionSettings/customModules/{module}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1254,9 +1254,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <summary>Gets an Event Threat Detection custom module.</summary>
                 /// <param name="name">
                 /// Required. Name of the custom module to get. Its format is: *
-                /// "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}". *
-                /// "folders/{folder}/eventThreatDetectionSettings/customModules/{module}". *
-                /// "projects/{project}/eventThreatDetectionSettings/customModules/{module}".
+                /// `organizations/{organization}/eventThreatDetectionSettings/customModules/{module}`. *
+                /// `folders/{folder}/eventThreatDetectionSettings/customModules/{module}`. *
+                /// `projects/{project}/eventThreatDetectionSettings/customModules/{module}`.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -1275,9 +1275,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Name of the custom module to get. Its format is: *
-                    /// "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}". *
-                    /// "folders/{folder}/eventThreatDetectionSettings/customModules/{module}". *
-                    /// "projects/{project}/eventThreatDetectionSettings/customModules/{module}".
+                    /// `organizations/{organization}/eventThreatDetectionSettings/customModules/{module}`. *
+                    /// `folders/{folder}/eventThreatDetectionSettings/customModules/{module}`. *
+                    /// `projects/{project}/eventThreatDetectionSettings/customModules/{module}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1312,9 +1312,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </summary>
                 /// <param name="parent">
                 /// Required. Name of the parent to list custom modules under. Its format is: *
-                /// "organizations/{organization}/eventThreatDetectionSettings". *
-                /// "folders/{folder}/eventThreatDetectionSettings". *
-                /// "projects/{project}/eventThreatDetectionSettings".
+                /// `organizations/{organization}/eventThreatDetectionSettings`. *
+                /// `folders/{folder}/eventThreatDetectionSettings`. *
+                /// `projects/{project}/eventThreatDetectionSettings`.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -1336,9 +1336,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Name of the parent to list custom modules under. Its format is: *
-                    /// "organizations/{organization}/eventThreatDetectionSettings". *
-                    /// "folders/{folder}/eventThreatDetectionSettings". *
-                    /// "projects/{project}/eventThreatDetectionSettings".
+                    /// `organizations/{organization}/eventThreatDetectionSettings`. *
+                    /// `folders/{folder}/eventThreatDetectionSettings`. *
+                    /// `projects/{project}/eventThreatDetectionSettings`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1405,9 +1405,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </summary>
                 /// <param name="parent">
                 /// Required. Name of the parent to list custom modules under. Its format is: *
-                /// "organizations/{organization}/eventThreatDetectionSettings". *
-                /// "folders/{folder}/eventThreatDetectionSettings". *
-                /// "projects/{project}/eventThreatDetectionSettings".
+                /// `organizations/{organization}/eventThreatDetectionSettings`. *
+                /// `folders/{folder}/eventThreatDetectionSettings`. *
+                /// `projects/{project}/eventThreatDetectionSettings`.
                 /// </param>
                 public virtual ListDescendantRequest ListDescendant(string parent)
                 {
@@ -1429,9 +1429,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Name of the parent to list custom modules under. Its format is: *
-                    /// "organizations/{organization}/eventThreatDetectionSettings". *
-                    /// "folders/{folder}/eventThreatDetectionSettings". *
-                    /// "projects/{project}/eventThreatDetectionSettings".
+                    /// `organizations/{organization}/eventThreatDetectionSettings`. *
+                    /// `folders/{folder}/eventThreatDetectionSettings`. *
+                    /// `projects/{project}/eventThreatDetectionSettings`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1601,9 +1601,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <summary>Gets an effective Event Threat Detection custom module at the given level.</summary>
                 /// <param name="name">
                 /// Required. The resource name of the effective Event Threat Detection custom module. Its format is: *
-                /// "organizations/{organization}/eventThreatDetectionSettings/effectiveCustomModules/{module}". *
-                /// "folders/{folder}/eventThreatDetectionSettings/effectiveCustomModules/{module}". *
-                /// "projects/{project}/eventThreatDetectionSettings/effectiveCustomModules/{module}".
+                /// `organizations/{organization}/eventThreatDetectionSettings/effectiveCustomModules/{module}`. *
+                /// `folders/{folder}/eventThreatDetectionSettings/effectiveCustomModules/{module}`. *
+                /// `projects/{project}/eventThreatDetectionSettings/effectiveCustomModules/{module}`.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -1623,9 +1623,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     /// <summary>
                     /// Required. The resource name of the effective Event Threat Detection custom module. Its format
                     /// is: *
-                    /// "organizations/{organization}/eventThreatDetectionSettings/effectiveCustomModules/{module}". *
-                    /// "folders/{folder}/eventThreatDetectionSettings/effectiveCustomModules/{module}". *
-                    /// "projects/{project}/eventThreatDetectionSettings/effectiveCustomModules/{module}".
+                    /// `organizations/{organization}/eventThreatDetectionSettings/effectiveCustomModules/{module}`. *
+                    /// `folders/{folder}/eventThreatDetectionSettings/effectiveCustomModules/{module}`. *
+                    /// `projects/{project}/eventThreatDetectionSettings/effectiveCustomModules/{module}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1660,9 +1660,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </summary>
                 /// <param name="parent">
                 /// Required. Name of the parent to list custom modules for. Its format is: *
-                /// "organizations/{organization}/eventThreatDetectionSettings". *
-                /// "folders/{folder}/eventThreatDetectionSettings". *
-                /// "projects/{project}/eventThreatDetectionSettings".
+                /// `organizations/{organization}/eventThreatDetectionSettings`. *
+                /// `folders/{folder}/eventThreatDetectionSettings`. *
+                /// `projects/{project}/eventThreatDetectionSettings`.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -1684,9 +1684,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Name of the parent to list custom modules for. Its format is: *
-                    /// "organizations/{organization}/eventThreatDetectionSettings". *
-                    /// "folders/{folder}/eventThreatDetectionSettings". *
-                    /// "projects/{project}/eventThreatDetectionSettings".
+                    /// `organizations/{organization}/eventThreatDetectionSettings`. *
+                    /// `folders/{folder}/eventThreatDetectionSettings`. *
+                    /// `projects/{project}/eventThreatDetectionSettings`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -1753,8 +1753,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. Resource name of the parent to validate the Custom Module under. Its format is: *
-            /// "organizations/{organization}/eventThreatDetectionSettings". *
-            /// "folders/{folder}/eventThreatDetectionSettings". * "projects/{project}/eventThreatDetectionSettings".
+            /// `organizations/{organization}/eventThreatDetectionSettings`. *
+            /// `folders/{folder}/eventThreatDetectionSettings`. * `projects/{project}/eventThreatDetectionSettings`.
             /// </param>
             public virtual ValidateCustomModuleRequest ValidateCustomModule(Google.Apis.SecurityCommandCenter.v1.Data.ValidateEventThreatDetectionCustomModuleRequest body, string parent)
             {
@@ -1774,9 +1774,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Resource name of the parent to validate the Custom Module under. Its format is: *
-                /// "organizations/{organization}/eventThreatDetectionSettings". *
-                /// "folders/{folder}/eventThreatDetectionSettings". *
-                /// "projects/{project}/eventThreatDetectionSettings".
+                /// `organizations/{organization}/eventThreatDetectionSettings`. *
+                /// `folders/{folder}/eventThreatDetectionSettings`. *
+                /// `projects/{project}/eventThreatDetectionSettings`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -5539,9 +5539,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The new custom module's parent. Its format is: *
-                /// "organizations/{organization}/eventThreatDetectionSettings". *
-                /// "folders/{folder}/eventThreatDetectionSettings". *
-                /// "projects/{project}/eventThreatDetectionSettings".
+                /// `organizations/{organization}/eventThreatDetectionSettings`. *
+                /// `folders/{folder}/eventThreatDetectionSettings`. *
+                /// `projects/{project}/eventThreatDetectionSettings`.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.EventThreatDetectionCustomModule body, string parent)
                 {
@@ -5565,9 +5565,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. The new custom module's parent. Its format is: *
-                    /// "organizations/{organization}/eventThreatDetectionSettings". *
-                    /// "folders/{folder}/eventThreatDetectionSettings". *
-                    /// "projects/{project}/eventThreatDetectionSettings".
+                    /// `organizations/{organization}/eventThreatDetectionSettings`. *
+                    /// `folders/{folder}/eventThreatDetectionSettings`. *
+                    /// `projects/{project}/eventThreatDetectionSettings`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -5608,9 +5608,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </summary>
                 /// <param name="name">
                 /// Required. Name of the custom module to delete. Its format is: *
-                /// "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}". *
-                /// "folders/{folder}/eventThreatDetectionSettings/customModules/{module}". *
-                /// "projects/{project}/eventThreatDetectionSettings/customModules/{module}".
+                /// `organizations/{organization}/eventThreatDetectionSettings/customModules/{module}`. *
+                /// `folders/{folder}/eventThreatDetectionSettings/customModules/{module}`. *
+                /// `projects/{project}/eventThreatDetectionSettings/customModules/{module}`.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -5632,9 +5632,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Name of the custom module to delete. Its format is: *
-                    /// "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}". *
-                    /// "folders/{folder}/eventThreatDetectionSettings/customModules/{module}". *
-                    /// "projects/{project}/eventThreatDetectionSettings/customModules/{module}".
+                    /// `organizations/{organization}/eventThreatDetectionSettings/customModules/{module}`. *
+                    /// `folders/{folder}/eventThreatDetectionSettings/customModules/{module}`. *
+                    /// `projects/{project}/eventThreatDetectionSettings/customModules/{module}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -5666,9 +5666,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <summary>Gets an Event Threat Detection custom module.</summary>
                 /// <param name="name">
                 /// Required. Name of the custom module to get. Its format is: *
-                /// "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}". *
-                /// "folders/{folder}/eventThreatDetectionSettings/customModules/{module}". *
-                /// "projects/{project}/eventThreatDetectionSettings/customModules/{module}".
+                /// `organizations/{organization}/eventThreatDetectionSettings/customModules/{module}`. *
+                /// `folders/{folder}/eventThreatDetectionSettings/customModules/{module}`. *
+                /// `projects/{project}/eventThreatDetectionSettings/customModules/{module}`.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -5687,9 +5687,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Name of the custom module to get. Its format is: *
-                    /// "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}". *
-                    /// "folders/{folder}/eventThreatDetectionSettings/customModules/{module}". *
-                    /// "projects/{project}/eventThreatDetectionSettings/customModules/{module}".
+                    /// `organizations/{organization}/eventThreatDetectionSettings/customModules/{module}`. *
+                    /// `folders/{folder}/eventThreatDetectionSettings/customModules/{module}`. *
+                    /// `projects/{project}/eventThreatDetectionSettings/customModules/{module}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -5724,9 +5724,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </summary>
                 /// <param name="parent">
                 /// Required. Name of the parent to list custom modules under. Its format is: *
-                /// "organizations/{organization}/eventThreatDetectionSettings". *
-                /// "folders/{folder}/eventThreatDetectionSettings". *
-                /// "projects/{project}/eventThreatDetectionSettings".
+                /// `organizations/{organization}/eventThreatDetectionSettings`. *
+                /// `folders/{folder}/eventThreatDetectionSettings`. *
+                /// `projects/{project}/eventThreatDetectionSettings`.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -5748,9 +5748,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Name of the parent to list custom modules under. Its format is: *
-                    /// "organizations/{organization}/eventThreatDetectionSettings". *
-                    /// "folders/{folder}/eventThreatDetectionSettings". *
-                    /// "projects/{project}/eventThreatDetectionSettings".
+                    /// `organizations/{organization}/eventThreatDetectionSettings`. *
+                    /// `folders/{folder}/eventThreatDetectionSettings`. *
+                    /// `projects/{project}/eventThreatDetectionSettings`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -5817,9 +5817,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </summary>
                 /// <param name="parent">
                 /// Required. Name of the parent to list custom modules under. Its format is: *
-                /// "organizations/{organization}/eventThreatDetectionSettings". *
-                /// "folders/{folder}/eventThreatDetectionSettings". *
-                /// "projects/{project}/eventThreatDetectionSettings".
+                /// `organizations/{organization}/eventThreatDetectionSettings`. *
+                /// `folders/{folder}/eventThreatDetectionSettings`. *
+                /// `projects/{project}/eventThreatDetectionSettings`.
                 /// </param>
                 public virtual ListDescendantRequest ListDescendant(string parent)
                 {
@@ -5841,9 +5841,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Name of the parent to list custom modules under. Its format is: *
-                    /// "organizations/{organization}/eventThreatDetectionSettings". *
-                    /// "folders/{folder}/eventThreatDetectionSettings". *
-                    /// "projects/{project}/eventThreatDetectionSettings".
+                    /// `organizations/{organization}/eventThreatDetectionSettings`. *
+                    /// `folders/{folder}/eventThreatDetectionSettings`. *
+                    /// `projects/{project}/eventThreatDetectionSettings`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -6013,9 +6013,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <summary>Gets an effective Event Threat Detection custom module at the given level.</summary>
                 /// <param name="name">
                 /// Required. The resource name of the effective Event Threat Detection custom module. Its format is: *
-                /// "organizations/{organization}/eventThreatDetectionSettings/effectiveCustomModules/{module}". *
-                /// "folders/{folder}/eventThreatDetectionSettings/effectiveCustomModules/{module}". *
-                /// "projects/{project}/eventThreatDetectionSettings/effectiveCustomModules/{module}".
+                /// `organizations/{organization}/eventThreatDetectionSettings/effectiveCustomModules/{module}`. *
+                /// `folders/{folder}/eventThreatDetectionSettings/effectiveCustomModules/{module}`. *
+                /// `projects/{project}/eventThreatDetectionSettings/effectiveCustomModules/{module}`.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -6035,9 +6035,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     /// <summary>
                     /// Required. The resource name of the effective Event Threat Detection custom module. Its format
                     /// is: *
-                    /// "organizations/{organization}/eventThreatDetectionSettings/effectiveCustomModules/{module}". *
-                    /// "folders/{folder}/eventThreatDetectionSettings/effectiveCustomModules/{module}". *
-                    /// "projects/{project}/eventThreatDetectionSettings/effectiveCustomModules/{module}".
+                    /// `organizations/{organization}/eventThreatDetectionSettings/effectiveCustomModules/{module}`. *
+                    /// `folders/{folder}/eventThreatDetectionSettings/effectiveCustomModules/{module}`. *
+                    /// `projects/{project}/eventThreatDetectionSettings/effectiveCustomModules/{module}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -6072,9 +6072,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </summary>
                 /// <param name="parent">
                 /// Required. Name of the parent to list custom modules for. Its format is: *
-                /// "organizations/{organization}/eventThreatDetectionSettings". *
-                /// "folders/{folder}/eventThreatDetectionSettings". *
-                /// "projects/{project}/eventThreatDetectionSettings".
+                /// `organizations/{organization}/eventThreatDetectionSettings`. *
+                /// `folders/{folder}/eventThreatDetectionSettings`. *
+                /// `projects/{project}/eventThreatDetectionSettings`.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -6096,9 +6096,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Name of the parent to list custom modules for. Its format is: *
-                    /// "organizations/{organization}/eventThreatDetectionSettings". *
-                    /// "folders/{folder}/eventThreatDetectionSettings". *
-                    /// "projects/{project}/eventThreatDetectionSettings".
+                    /// `organizations/{organization}/eventThreatDetectionSettings`. *
+                    /// `folders/{folder}/eventThreatDetectionSettings`. *
+                    /// `projects/{project}/eventThreatDetectionSettings`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -6165,8 +6165,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. Resource name of the parent to validate the Custom Module under. Its format is: *
-            /// "organizations/{organization}/eventThreatDetectionSettings". *
-            /// "folders/{folder}/eventThreatDetectionSettings". * "projects/{project}/eventThreatDetectionSettings".
+            /// `organizations/{organization}/eventThreatDetectionSettings`. *
+            /// `folders/{folder}/eventThreatDetectionSettings`. * `projects/{project}/eventThreatDetectionSettings`.
             /// </param>
             public virtual ValidateCustomModuleRequest ValidateCustomModule(Google.Apis.SecurityCommandCenter.v1.Data.ValidateEventThreatDetectionCustomModuleRequest body, string parent)
             {
@@ -6186,9 +6186,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Resource name of the parent to validate the Custom Module under. Its format is: *
-                /// "organizations/{organization}/eventThreatDetectionSettings". *
-                /// "folders/{folder}/eventThreatDetectionSettings". *
-                /// "projects/{project}/eventThreatDetectionSettings".
+                /// `organizations/{organization}/eventThreatDetectionSettings`. *
+                /// `folders/{folder}/eventThreatDetectionSettings`. *
+                /// `projects/{project}/eventThreatDetectionSettings`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -11830,9 +11830,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The new custom module's parent. Its format is: *
-                /// "organizations/{organization}/eventThreatDetectionSettings". *
-                /// "folders/{folder}/eventThreatDetectionSettings". *
-                /// "projects/{project}/eventThreatDetectionSettings".
+                /// `organizations/{organization}/eventThreatDetectionSettings`. *
+                /// `folders/{folder}/eventThreatDetectionSettings`. *
+                /// `projects/{project}/eventThreatDetectionSettings`.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.EventThreatDetectionCustomModule body, string parent)
                 {
@@ -11856,9 +11856,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. The new custom module's parent. Its format is: *
-                    /// "organizations/{organization}/eventThreatDetectionSettings". *
-                    /// "folders/{folder}/eventThreatDetectionSettings". *
-                    /// "projects/{project}/eventThreatDetectionSettings".
+                    /// `organizations/{organization}/eventThreatDetectionSettings`. *
+                    /// `folders/{folder}/eventThreatDetectionSettings`. *
+                    /// `projects/{project}/eventThreatDetectionSettings`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -11899,9 +11899,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </summary>
                 /// <param name="name">
                 /// Required. Name of the custom module to delete. Its format is: *
-                /// "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}". *
-                /// "folders/{folder}/eventThreatDetectionSettings/customModules/{module}". *
-                /// "projects/{project}/eventThreatDetectionSettings/customModules/{module}".
+                /// `organizations/{organization}/eventThreatDetectionSettings/customModules/{module}`. *
+                /// `folders/{folder}/eventThreatDetectionSettings/customModules/{module}`. *
+                /// `projects/{project}/eventThreatDetectionSettings/customModules/{module}`.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -11923,9 +11923,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Name of the custom module to delete. Its format is: *
-                    /// "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}". *
-                    /// "folders/{folder}/eventThreatDetectionSettings/customModules/{module}". *
-                    /// "projects/{project}/eventThreatDetectionSettings/customModules/{module}".
+                    /// `organizations/{organization}/eventThreatDetectionSettings/customModules/{module}`. *
+                    /// `folders/{folder}/eventThreatDetectionSettings/customModules/{module}`. *
+                    /// `projects/{project}/eventThreatDetectionSettings/customModules/{module}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -11957,9 +11957,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <summary>Gets an Event Threat Detection custom module.</summary>
                 /// <param name="name">
                 /// Required. Name of the custom module to get. Its format is: *
-                /// "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}". *
-                /// "folders/{folder}/eventThreatDetectionSettings/customModules/{module}". *
-                /// "projects/{project}/eventThreatDetectionSettings/customModules/{module}".
+                /// `organizations/{organization}/eventThreatDetectionSettings/customModules/{module}`. *
+                /// `folders/{folder}/eventThreatDetectionSettings/customModules/{module}`. *
+                /// `projects/{project}/eventThreatDetectionSettings/customModules/{module}`.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -11978,9 +11978,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Name of the custom module to get. Its format is: *
-                    /// "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}". *
-                    /// "folders/{folder}/eventThreatDetectionSettings/customModules/{module}". *
-                    /// "projects/{project}/eventThreatDetectionSettings/customModules/{module}".
+                    /// `organizations/{organization}/eventThreatDetectionSettings/customModules/{module}`. *
+                    /// `folders/{folder}/eventThreatDetectionSettings/customModules/{module}`. *
+                    /// `projects/{project}/eventThreatDetectionSettings/customModules/{module}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -12015,9 +12015,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </summary>
                 /// <param name="parent">
                 /// Required. Name of the parent to list custom modules under. Its format is: *
-                /// "organizations/{organization}/eventThreatDetectionSettings". *
-                /// "folders/{folder}/eventThreatDetectionSettings". *
-                /// "projects/{project}/eventThreatDetectionSettings".
+                /// `organizations/{organization}/eventThreatDetectionSettings`. *
+                /// `folders/{folder}/eventThreatDetectionSettings`. *
+                /// `projects/{project}/eventThreatDetectionSettings`.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -12039,9 +12039,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Name of the parent to list custom modules under. Its format is: *
-                    /// "organizations/{organization}/eventThreatDetectionSettings". *
-                    /// "folders/{folder}/eventThreatDetectionSettings". *
-                    /// "projects/{project}/eventThreatDetectionSettings".
+                    /// `organizations/{organization}/eventThreatDetectionSettings`. *
+                    /// `folders/{folder}/eventThreatDetectionSettings`. *
+                    /// `projects/{project}/eventThreatDetectionSettings`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -12108,9 +12108,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </summary>
                 /// <param name="parent">
                 /// Required. Name of the parent to list custom modules under. Its format is: *
-                /// "organizations/{organization}/eventThreatDetectionSettings". *
-                /// "folders/{folder}/eventThreatDetectionSettings". *
-                /// "projects/{project}/eventThreatDetectionSettings".
+                /// `organizations/{organization}/eventThreatDetectionSettings`. *
+                /// `folders/{folder}/eventThreatDetectionSettings`. *
+                /// `projects/{project}/eventThreatDetectionSettings`.
                 /// </param>
                 public virtual ListDescendantRequest ListDescendant(string parent)
                 {
@@ -12132,9 +12132,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Name of the parent to list custom modules under. Its format is: *
-                    /// "organizations/{organization}/eventThreatDetectionSettings". *
-                    /// "folders/{folder}/eventThreatDetectionSettings". *
-                    /// "projects/{project}/eventThreatDetectionSettings".
+                    /// `organizations/{organization}/eventThreatDetectionSettings`. *
+                    /// `folders/{folder}/eventThreatDetectionSettings`. *
+                    /// `projects/{project}/eventThreatDetectionSettings`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -12304,9 +12304,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// <summary>Gets an effective Event Threat Detection custom module at the given level.</summary>
                 /// <param name="name">
                 /// Required. The resource name of the effective Event Threat Detection custom module. Its format is: *
-                /// "organizations/{organization}/eventThreatDetectionSettings/effectiveCustomModules/{module}". *
-                /// "folders/{folder}/eventThreatDetectionSettings/effectiveCustomModules/{module}". *
-                /// "projects/{project}/eventThreatDetectionSettings/effectiveCustomModules/{module}".
+                /// `organizations/{organization}/eventThreatDetectionSettings/effectiveCustomModules/{module}`. *
+                /// `folders/{folder}/eventThreatDetectionSettings/effectiveCustomModules/{module}`. *
+                /// `projects/{project}/eventThreatDetectionSettings/effectiveCustomModules/{module}`.
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -12326,9 +12326,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                     /// <summary>
                     /// Required. The resource name of the effective Event Threat Detection custom module. Its format
                     /// is: *
-                    /// "organizations/{organization}/eventThreatDetectionSettings/effectiveCustomModules/{module}". *
-                    /// "folders/{folder}/eventThreatDetectionSettings/effectiveCustomModules/{module}". *
-                    /// "projects/{project}/eventThreatDetectionSettings/effectiveCustomModules/{module}".
+                    /// `organizations/{organization}/eventThreatDetectionSettings/effectiveCustomModules/{module}`. *
+                    /// `folders/{folder}/eventThreatDetectionSettings/effectiveCustomModules/{module}`. *
+                    /// `projects/{project}/eventThreatDetectionSettings/effectiveCustomModules/{module}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -12363,9 +12363,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
                 /// </summary>
                 /// <param name="parent">
                 /// Required. Name of the parent to list custom modules for. Its format is: *
-                /// "organizations/{organization}/eventThreatDetectionSettings". *
-                /// "folders/{folder}/eventThreatDetectionSettings". *
-                /// "projects/{project}/eventThreatDetectionSettings".
+                /// `organizations/{organization}/eventThreatDetectionSettings`. *
+                /// `folders/{folder}/eventThreatDetectionSettings`. *
+                /// `projects/{project}/eventThreatDetectionSettings`.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -12387,9 +12387,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                     /// <summary>
                     /// Required. Name of the parent to list custom modules for. Its format is: *
-                    /// "organizations/{organization}/eventThreatDetectionSettings". *
-                    /// "folders/{folder}/eventThreatDetectionSettings". *
-                    /// "projects/{project}/eventThreatDetectionSettings".
+                    /// `organizations/{organization}/eventThreatDetectionSettings`. *
+                    /// `folders/{folder}/eventThreatDetectionSettings`. *
+                    /// `projects/{project}/eventThreatDetectionSettings`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -12456,8 +12456,8 @@ namespace Google.Apis.SecurityCommandCenter.v1
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. Resource name of the parent to validate the Custom Module under. Its format is: *
-            /// "organizations/{organization}/eventThreatDetectionSettings". *
-            /// "folders/{folder}/eventThreatDetectionSettings". * "projects/{project}/eventThreatDetectionSettings".
+            /// `organizations/{organization}/eventThreatDetectionSettings`. *
+            /// `folders/{folder}/eventThreatDetectionSettings`. * `projects/{project}/eventThreatDetectionSettings`.
             /// </param>
             public virtual ValidateCustomModuleRequest ValidateCustomModule(Google.Apis.SecurityCommandCenter.v1.Data.ValidateEventThreatDetectionCustomModuleRequest body, string parent)
             {
@@ -12477,9 +12477,9 @@ namespace Google.Apis.SecurityCommandCenter.v1
 
                 /// <summary>
                 /// Required. Resource name of the parent to validate the Custom Module under. Its format is: *
-                /// "organizations/{organization}/eventThreatDetectionSettings". *
-                /// "folders/{folder}/eventThreatDetectionSettings". *
-                /// "projects/{project}/eventThreatDetectionSettings".
+                /// `organizations/{organization}/eventThreatDetectionSettings`. *
+                /// `folders/{folder}/eventThreatDetectionSettings`. *
+                /// `projects/{project}/eventThreatDetectionSettings`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -19560,7 +19560,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
 
         /// <summary>
         /// The dataset to write findings' updates to. Its format is
-        /// "projects/[project_id]/datasets/[bigquery_dataset_id]". BigQuery Dataset unique ID must contain only letters
+        /// "projects/[project_id]/datasets/[bigquery_dataset_id]". BigQuery dataset unique ID must contain only letters
         /// (a-z, A-Z), numbers (0-9), or underscores (_).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataset")]
@@ -19590,7 +19590,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string MostRecentEditor { get; set; }
 
         /// <summary>
-        /// The relative resource name of this export. See:
+        /// Identifier. The relative resource name of this export. See:
         /// https://cloud.google.com/apis/design/resource_names#relative_resource_name. The following list shows some
         /// examples: + `organizations/{organization_id}/locations/{location_id}/bigQueryExports/{export_id}` +
         /// `folders/{folder_id}/locations/{location_id}/bigQueryExports/{export_id}` +
@@ -21261,8 +21261,8 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string MostRecentEditor { get; set; }
 
         /// <summary>
-        /// This field will be ignored if provided on config creation. The following list shows some examples of the
-        /// format: + `organizations/{organization}/muteConfigs/{mute_config}` +
+        /// Identifier. This field will be ignored if provided on config creation. The following list shows some
+        /// examples of the format: + `organizations/{organization}/muteConfigs/{mute_config}` +
         /// `organizations/{organization}locations/{location}//muteConfigs/{mute_config}` +
         /// `folders/{folder}/muteConfigs/{mute_config}` +
         /// `folders/{folder}/locations/{location}/muteConfigs/{mute_config}` +
@@ -21817,7 +21817,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>Name for the resource value configuration</summary>
+        /// <summary>Identifier. Name for the resource value configuration</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -21838,14 +21838,15 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ResourceType { get; set; }
 
         /// <summary>
-        /// Resource value level this expression represents Only required when there is no SDP mapping in the request
+        /// Resource value level this expression represents Only required when there is no Sensitive Data Protection
+        /// mapping in the request
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceValue")]
         public virtual string ResourceValue { get; set; }
 
         /// <summary>
         /// Project or folder to scope this configuration to. For example, "project/456" would apply this configuration
-        /// only to resources in "project/456" scope will be checked with `AND` of other resources.
+        /// only to resources in "project/456" scope and will be checked with `AND` of other resources.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scope")]
         public virtual string Scope { get; set; }
@@ -21859,7 +21860,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual GoogleCloudSecuritycenterV2SensitiveDataProtectionMapping SensitiveDataProtectionMapping { get; set; }
 
         /// <summary>
-        /// Required. Tag values combined with `AND` to check against. Values in the form "tagValues/123" Example: `[
+        /// Tag values combined with `AND` to check against. Values in the form "tagValues/123" Example: `[
         /// "tagValues/123", "tagValues/456", "tagValues/789" ]`
         /// https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing
         /// </summary>
@@ -23939,11 +23940,11 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
 
         /// <summary>
         /// A string representation of the resource path. For Google Cloud, it has the format of
-        /// org/{organization_id}/folder/{folder_id}/folder/{folder_id}/project/{project_id} where there can be any
+        /// `org/{organization_id}/folder/{folder_id}/folder/{folder_id}/project/{project_id}` where there can be any
         /// number of folders. For AWS, it has the format of
-        /// org/{organization_id}/ou/{organizational_unit_id}/ou/{organizational_unit_id}/account/{account_id} where
+        /// `org/{organization_id}/ou/{organizational_unit_id}/ou/{organizational_unit_id}/account/{account_id}` where
         /// there can be any number of organizational units. For Azure, it has the format of
-        /// mg/{management_group_id}/mg/{management_group_id}/subscription/{subscription_id}/rg/{resource_group_name}
+        /// `mg/{management_group_id}/mg/{management_group_id}/subscription/{subscription_id}/rg/{resource_group_name}`
         /// where there can be any number of management groups.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourcePathString")]

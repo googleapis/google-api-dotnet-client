@@ -2929,7 +2929,7 @@ namespace Google.Apis.CloudFunctions.v1.Data
         /// (branch): `https://source.developers.google.com/projects/*/repos/*/moveable-aliases/*/paths/*` In
         /// particular, to refer to HEAD use `master` moveable alias. To refer to a specific fixed alias (tag):
         /// `https://source.developers.google.com/projects/*/repos/*/fixed-aliases/*/paths/*` You may omit `paths/*` if
-        /// you want to use the main directory.
+        /// you want to use the main directory. The function response may add an empty `/paths/` to the URL.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; }

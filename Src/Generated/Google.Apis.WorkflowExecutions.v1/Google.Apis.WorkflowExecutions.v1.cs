@@ -1328,6 +1328,15 @@ namespace Google.Apis.WorkflowExecutions.v1.Data
         public virtual Error Error { get; set; }
 
         /// <summary>
+        /// Optional. Describes the level of the execution history feature to apply to this execution. If not specified,
+        /// the level of the execution history feature will be determined by its workflow's execution history level. If
+        /// the value is different from its workflow's value, it will override the workflow's execution history level
+        /// for this exeuction.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionHistoryLevel")]
+        public virtual string ExecutionHistoryLevel { get; set; }
+
+        /// <summary>
         /// Labels associated with this execution. Labels can contain at most 64 entries. Keys and values can be no
         /// longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and
         /// dashes. Label keys must start with a letter. International characters are allowed. By default, labels are

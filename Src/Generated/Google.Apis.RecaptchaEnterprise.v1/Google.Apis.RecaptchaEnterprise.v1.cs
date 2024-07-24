@@ -1904,7 +1904,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
 
         /// <summary>
         /// Optional. Flag for a reCAPTCHA express request for an assessment without a token. If enabled, `site_key`
-        /// must reference a SCORE key with WAF feature set to EXPRESS.
+        /// must reference an Express site key.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("express")]
         public virtual System.Nullable<bool> Express { get; set; }
@@ -1983,6 +1983,13 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("wafTokenAssessment")]
         public virtual System.Nullable<bool> WafTokenAssessment { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings specific to keys that can be used for reCAPTCHA Express.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1ExpressKeySettings : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2360,12 +2367,16 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
+        /// <summary>Settings for keys that can be used by reCAPTCHA Express.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expressSettings")]
+        public virtual GoogleCloudRecaptchaenterpriseV1ExpressKeySettings ExpressSettings { get; set; }
+
         /// <summary>Settings for keys that can be used by iOS apps.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iosSettings")]
         public virtual GoogleCloudRecaptchaenterpriseV1IOSKeySettings IosSettings { get; set; }
 
         /// <summary>
-        /// Optional. See [Creating and managing labels] (https://cloud.google.com/recaptcha-enterprise/docs/labels).
+        /// Optional. See [Creating and managing labels] (https://cloud.google.com/recaptcha/docs/labels).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -2530,10 +2541,10 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         /// <summary>
         /// Optional. If true, skips the billing check. A reCAPTCHA Enterprise key or migrated key behaves differently
         /// than a reCAPTCHA (non-Enterprise version) key when you reach a quota limit (see
-        /// https://cloud.google.com/recaptcha-enterprise/quotas#quota_limit). To avoid any disruption of your usage, we
-        /// check that a billing account is present. If your usage of reCAPTCHA is under the free quota, you can safely
-        /// skip the billing check and proceed with the migration. See
-        /// https://cloud.google.com/recaptcha-enterprise/docs/billing-information.
+        /// https://cloud.google.com/recaptcha/quotas#quota_limit). To avoid any disruption of your usage, we check that
+        /// a billing account is present. If your usage of reCAPTCHA is under the free quota, you can safely skip the
+        /// billing check and proceed with the migration. See
+        /// https://cloud.google.com/recaptcha/docs/billing-information.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skipBillingCheck")]
         public virtual System.Nullable<bool> SkipBillingCheck { get; set; }

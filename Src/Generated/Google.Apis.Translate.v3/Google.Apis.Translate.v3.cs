@@ -1791,7 +1791,7 @@ namespace Google.Apis.Translate.v3
                     /// <summary>Updates a glossary entry.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Required. The resource name of the entry. Format:
+                    /// Identifier. The resource name of the entry. Format:
                     /// "projects/*/locations/*/glossaries/*/glossaryEntries/*"
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.Translate.v3.Data.GlossaryEntry body, string name)
@@ -1811,7 +1811,7 @@ namespace Google.Apis.Translate.v3
                         }
 
                         /// <summary>
-                        /// Required. The resource name of the entry. Format:
+                        /// Identifier. The resource name of the entry. Format:
                         /// "projects/*/locations/*/glossaries/*/glossaryEntries/*"
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -4074,9 +4074,7 @@ namespace Google.Apis.Translate.v3.Data
     /// <summary>The request for sending an AdaptiveMt translation query.</summary>
     public class AdaptiveMtTranslateRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Required. The content of the input in string format. For now only one sentence per request is supported.
-        /// </summary>
+        /// <summary>Required. The content of the input in string format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual System.Collections.Generic.IList<string> Content { get; set; }
 
@@ -4087,6 +4085,17 @@ namespace Google.Apis.Translate.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataset")]
         public virtual string Dataset { get; set; }
 
+        /// <summary>
+        /// Optional. Glossary to be applied. The glossary must be within the same region (have the same location-id) as
+        /// the model, otherwise an INVALID_ARGUMENT (400) error is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("glossaryConfig")]
+        public virtual TranslateTextGlossaryConfig GlossaryConfig { get; set; }
+
+        /// <summary>Configuration for caller provided reference sentences.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referenceSentenceConfig")]
+        public virtual ReferenceSentenceConfig ReferenceSentenceConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4094,6 +4103,13 @@ namespace Google.Apis.Translate.v3.Data
     /// <summary>An AdaptiveMtTranslate response.</summary>
     public class AdaptiveMtTranslateResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Text translation response if a glossary is provided in the request. This could be the same as 'translation'
+        /// above if no terms apply.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("glossaryTranslations")]
+        public virtual System.Collections.Generic.IList<AdaptiveMtTranslation> GlossaryTranslations { get; set; }
+
         /// <summary>Output only. The translation's language code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
@@ -4854,7 +4870,7 @@ namespace Google.Apis.Translate.v3.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Required. The resource name of the entry. Format: "projects/*/locations/*/glossaries/*/glossaryEntries/*"
+        /// Identifier. The resource name of the entry. Format: "projects/*/locations/*/glossaries/*/glossaryEntries/*"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -5472,6 +5488,55 @@ namespace Google.Apis.Translate.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message of caller-provided reference configuration.</summary>
+    public class ReferenceSentenceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Reference sentences pair lists. Each list will be used as the references to translate the sentence under
+        /// "content" field at the corresponding index. Length of the list is required to be equal to the length of
+        /// "content" field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referenceSentencePairLists")]
+        public virtual System.Collections.Generic.IList<ReferenceSentencePairList> ReferenceSentencePairLists { get; set; }
+
+        /// <summary>Source language code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceLanguageCode")]
+        public virtual string SourceLanguageCode { get; set; }
+
+        /// <summary>Target language code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetLanguageCode")]
+        public virtual string TargetLanguageCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A pair of sentences used as reference in source and target languages.</summary>
+    public class ReferenceSentencePair : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Source sentence in the sentence pair.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceSentence")]
+        public virtual string SourceSentence { get; set; }
+
+        /// <summary>Target sentence in the sentence pair.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetSentence")]
+        public virtual string TargetSentence { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of reference sentence pairs.</summary>
+    public class ReferenceSentencePairList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Reference sentence pairs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referenceSentencePairs")]
+        public virtual System.Collections.Generic.IList<ReferenceSentencePair> ReferenceSentencePairs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A single romanization response.</summary>
     public class Romanization : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5772,7 +5837,9 @@ namespace Google.Apis.Translate.v3.Data
         /// <summary>
         /// Optional. The `model` type requested for this translation. The format depends on model type: - AutoML
         /// Translation models: `projects/{project-number-or-id}/locations/{location-id}/models/{model-id}` - General
-        /// (built-in) models: `projects/{project-number-or-id}/locations/{location-id}/models/general/nmt`, For global
+        /// (built-in) models: `projects/{project-number-or-id}/locations/{location-id}/models/general/nmt`, -
+        /// Translation LLM models:
+        /// `projects/{project-number-or-id}/locations/{location-id}/models/general/translation-llm`, For global
         /// (non-regionalized) requests, use `location-id` `global`. For example,
         /// `projects/{project-number-or-id}/locations/global/models/general/nmt`. If not provided, the default Google
         /// model (NMT) will be used

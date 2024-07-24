@@ -3740,6 +3740,10 @@ namespace Google.Apis.ArtifactRegistry.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>The percentage of pull traffic to redirect from GCR to AR when using partial redirection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pullPercent")]
+        public virtual System.Nullable<int> PullPercent { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

@@ -1567,8 +1567,9 @@ namespace Google.Apis.Classroom.v1
                 public virtual string AddOnToken { get; set; }
 
                 /// <summary>
-                /// Optional. The identifier of the attachment. This field is required for student users and optional
-                /// for teacher users. If not provided in the student case, an error is returned.
+                /// Optional. The identifier of the attachment. This field is required for all requests except when the
+                /// user is in the [Attachment Discovery
+                /// iframe](https://developers.google.com/classroom/add-ons/get-started/iframes/attachment-discovery-iframe).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("attachmentId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string AttachmentId { get; set; }
@@ -4047,8 +4048,9 @@ namespace Google.Apis.Classroom.v1
                 public virtual string AddOnToken { get; set; }
 
                 /// <summary>
-                /// Optional. The identifier of the attachment. This field is required for student users and optional
-                /// for teacher users. If not provided in the student case, an error is returned.
+                /// Optional. The identifier of the attachment. This field is required for all requests except when the
+                /// user is in the [Attachment Discovery
+                /// iframe](https://developers.google.com/classroom/add-ons/get-started/iframes/attachment-discovery-iframe).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("attachmentId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string AttachmentId { get; set; }
@@ -5360,8 +5362,9 @@ namespace Google.Apis.Classroom.v1
                 public virtual string AddOnToken { get; set; }
 
                 /// <summary>
-                /// Optional. The identifier of the attachment. This field is required for student users and optional
-                /// for teacher users. If not provided in the student case, an error is returned.
+                /// Optional. The identifier of the attachment. This field is required for all requests except when the
+                /// user is in the [Attachment Discovery
+                /// iframe](https://developers.google.com/classroom/add-ons/get-started/iframes/attachment-discovery-iframe).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("attachmentId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string AttachmentId { get; set; }
@@ -6642,8 +6645,9 @@ namespace Google.Apis.Classroom.v1
                 public virtual string AddOnToken { get; set; }
 
                 /// <summary>
-                /// Optional. The identifier of the attachment. This field is required for student users and optional
-                /// for teacher users. If not provided in the student case, an error is returned.
+                /// Optional. The identifier of the attachment. This field is required for all requests except when the
+                /// user is in the [Attachment Discovery
+                /// iframe](https://developers.google.com/classroom/add-ons/get-started/iframes/attachment-discovery-iframe).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("attachmentId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string AttachmentId { get; set; }
