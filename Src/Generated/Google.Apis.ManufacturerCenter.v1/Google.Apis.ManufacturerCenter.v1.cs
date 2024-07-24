@@ -1561,6 +1561,12 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
     public class Issue : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Output only. List of country codes (ISO 3166-1 alpha-2) where issue applies to the manufacturer product.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicableCountries")]
+        public virtual System.Collections.Generic.IList<string> ApplicableCountries { get; set; }
+
+        /// <summary>
         /// If present, the attribute that triggered the issue. For more information about attributes, see
         /// https://support.google.com/manufacturers/answer/6124116.
         /// </summary>

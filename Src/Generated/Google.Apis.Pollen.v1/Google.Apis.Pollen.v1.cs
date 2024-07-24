@@ -308,8 +308,8 @@ namespace Google.Apis.Pollen.v1
 
             /// <summary>
             /// Optional. Allows the client to choose the language for the response. If data cannot be provided for that
-            /// language the API uses the closest match. Allowed values rely on the IETF BCP-47 standard. Default value
-            /// is "en".
+            /// language, the API uses the closest match. Allowed values rely on the IETF BCP-47 standard. The default
+            /// value is "en".
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string LanguageCode { get; set; }
@@ -323,23 +323,24 @@ namespace Google.Apis.Pollen.v1
             public virtual System.Nullable<double> LocationLongitude { get; set; }
 
             /// <summary>
-            /// Optional. The maximum number of daily info records to return per page. The default and max value is 5 (5
-            /// days of data).
+            /// Optional. The maximum number of daily info records to return per page. The default and max value is 5,
+            /// indicating 5 days of data.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
             /// <summary>
             /// Optional. A page token received from a previous daily call. It is used to retrieve the subsequent page.
-            /// Note that when providing a value for the page token all other request parameters provided must match the
-            /// previous call that provided the page token.
+            /// Note that when providing a value for the page token, all other request parameters provided must match
+            /// the previous call that provided the page token.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
             /// <summary>
             /// Optional. Contains general information about plants, including details on their seasonality, special
-            /// shapes and colors, information about allergic cross-reactions, and plant photos.
+            /// shapes and colors, information about allergic cross-reactions, and plant photos. The default value is
+            /// "true".
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("plantsDescription", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> PlantsDescription { get; set; }
@@ -505,7 +506,7 @@ namespace Google.Apis.Pollen.v1
                     [Google.Apis.Util.StringValueAttribute("GRASS_UPI")]
                     GRASSUPI = 2,
 
-                    /// <summary>The heatmap type will represent a weed index graphically map.</summary>
+                    /// <summary>The heatmap type will represent a weed index graphical map.</summary>
                     [Google.Apis.Util.StringValueAttribute("WEED_UPI")]
                     WEEDUPI = 3,
                 }
@@ -680,14 +681,14 @@ namespace Google.Apis.Pollen.v1.Data
         public virtual Date Date { get; set; }
 
         /// <summary>
-        /// This list will include (up to) 15 pollen species affecting the location specified in the request.
+        /// This list will include up to 15 pollen species affecting the location specified in the request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("plantInfo")]
         public virtual System.Collections.Generic.IList<PlantInfo> PlantInfo { get; set; }
 
         /// <summary>
-        /// This list will include (up to) three pollen types (grass, weed, tree) affecting the location specified in
-        /// the request.
+        /// This list will include up to three pollen types (GRASS, WEED, TREE) affecting the location specified in the
+        /// request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pollenTypeInfo")]
         public virtual System.Collections.Generic.IList<PollenTypeInfo> PollenTypeInfo { get; set; }

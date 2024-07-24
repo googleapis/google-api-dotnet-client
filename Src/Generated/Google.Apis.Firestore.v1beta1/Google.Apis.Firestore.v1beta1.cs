@@ -3337,7 +3337,11 @@ namespace Google.Apis.Firestore.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Nearest Neighbors search config.</summary>
+    /// <summary>
+    /// Nearest Neighbors search config. The ordering provided by FindNearest supersedes the order_by stage. If multiple
+    /// documents have the same vector distance, the returned document order is not guaranteed to be stable between
+    /// queries.
+    /// </summary>
     public class FindNearest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The distance measure to use, required.</summary>

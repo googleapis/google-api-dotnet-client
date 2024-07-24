@@ -7936,6 +7936,14 @@ namespace Google.Apis.Walletobjects.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rotatingBarcode")]
         public virtual RotatingBarcode RotatingBarcode { get; set; }
 
+        /// <summary>
+        /// Restrictions on the object that needs to be verified before the user tries to save the pass. Note that this
+        /// restrictions will only be applied during save time. If the restrictions changed after a user saves the pass,
+        /// the new restrictions will not be applied to an already saved pass.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("saveRestrictions")]
+        public virtual SaveRestrictions SaveRestrictions { get; set; }
+
         /// <summary>Seating details for this ticket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seatInfo")]
         public virtual EventSeat SeatInfo { get; set; }
@@ -8289,8 +8297,7 @@ namespace Google.Apis.Walletobjects.v1.Data
         /// The boarding time as it would be printed on the boarding pass. This is an ISO 8601 extended format date/time
         /// without an offset. Time may be specified up to millisecond precision. eg: `2027-03-05T06:30:00` This should
         /// be the local date/time at the airport (not a UTC time). Google will reject the request if UTC offset is
-        /// provided. Time zones will be calculated by Google based on departure airport. If this is not set, Google
-        /// will set it based on data from other sources.
+        /// provided. Time zones will be calculated by Google based on departure airport.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localBoardingDateTime")]
         public virtual string LocalBoardingDateTime { get; set; }
@@ -8302,8 +8309,7 @@ namespace Google.Apis.Walletobjects.v1.Data
         /// Google will use it to inform the user that the flight has arrived at the gate. This is an ISO 8601 extended
         /// format date/time without an offset. Time may be specified up to millisecond precision. eg:
         /// `2027-03-05T06:30:00` This should be the local date/time at the airport (not a UTC time). Google will reject
-        /// the request if UTC offset is provided. Time zones will be calculated by Google based on arrival airport. If
-        /// this is not set, Google will set it based on data from other sources.
+        /// the request if UTC offset is provided. Time zones will be calculated by Google based on arrival airport.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localEstimatedOrActualArrivalDateTime")]
         public virtual string LocalEstimatedOrActualArrivalDateTime { get; set; }
@@ -8316,7 +8322,7 @@ namespace Google.Apis.Walletobjects.v1.Data
         /// is an ISO 8601 extended format date/time without an offset. Time may be specified up to millisecond
         /// precision. eg: `2027-03-05T06:30:00` This should be the local date/time at the airport (not a UTC time).
         /// Google will reject the request if UTC offset is provided. Time zones will be calculated by Google based on
-        /// departure airport. If this is not set, Google will set it based on data from other sources.
+        /// departure airport.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localEstimatedOrActualDepartureDateTime")]
         public virtual string LocalEstimatedOrActualDepartureDateTime { get; set; }
@@ -8337,8 +8343,7 @@ namespace Google.Apis.Walletobjects.v1.Data
         /// `localEstimatedOrActualArrivalDateTime`. This is an ISO 8601 extended format date/time without an offset.
         /// Time may be specified up to millisecond precision. eg: `2027-03-05T06:30:00` This should be the local
         /// date/time at the airport (not a UTC time). Google will reject the request if UTC offset is provided. Time
-        /// zones will be calculated by Google based on arrival airport. If this is not set, Google will set it based on
-        /// data from other sources.
+        /// zones will be calculated by Google based on arrival airport.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localScheduledArrivalDateTime")]
         public virtual string LocalScheduledArrivalDateTime { get; set; }
@@ -8634,6 +8639,14 @@ namespace Google.Apis.Walletobjects.v1.Data
         /// <summary>The rotating barcode type and value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rotatingBarcode")]
         public virtual RotatingBarcode RotatingBarcode { get; set; }
+
+        /// <summary>
+        /// Restrictions on the object that needs to be verified before the user tries to save the pass. Note that this
+        /// restrictions will only be applied during save time. If the restrictions changed after a user saves the pass,
+        /// the new restrictions will not be applied to an already saved pass.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("saveRestrictions")]
+        public virtual SaveRestrictions SaveRestrictions { get; set; }
 
         /// <summary>An image for the security program that applies to the passenger.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityProgramLogo")]
@@ -8950,6 +8963,14 @@ namespace Google.Apis.Walletobjects.v1.Data
         /// <summary>The rotating barcode settings/details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rotatingBarcode")]
         public virtual RotatingBarcode RotatingBarcode { get; set; }
+
+        /// <summary>
+        /// Restrictions on the object that needs to be verified before the user tries to save the pass. Note that this
+        /// restrictions will only be applied during save time. If the restrictions changed after a user saves the pass,
+        /// the new restrictions will not be applied to an already saved pass.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("saveRestrictions")]
+        public virtual SaveRestrictions SaveRestrictions { get; set; }
 
         /// <summary>
         /// The value that will be transmitted to a Smart Tap certified terminal over NFC for this object. The class
@@ -9422,6 +9443,14 @@ namespace Google.Apis.Walletobjects.v1.Data
         /// <summary>The rotating barcode type and value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rotatingBarcode")]
         public virtual RotatingBarcode RotatingBarcode { get; set; }
+
+        /// <summary>
+        /// Restrictions on the object that needs to be verified before the user tries to save the pass. Note that this
+        /// restrictions will only be applied during save time. If the restrictions changed after a user saves the pass,
+        /// the new restrictions will not be applied to an already saved pass.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("saveRestrictions")]
+        public virtual SaveRestrictions SaveRestrictions { get; set; }
 
         /// <summary>
         /// The value that will be transmitted to a Smart Tap certified terminal over NFC for this object. The class
@@ -10273,6 +10302,14 @@ namespace Google.Apis.Walletobjects.v1.Data
         /// <summary>The rotating barcode type and value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rotatingBarcode")]
         public virtual RotatingBarcode RotatingBarcode { get; set; }
+
+        /// <summary>
+        /// Restrictions on the object that needs to be verified before the user tries to save the pass. Note that this
+        /// restrictions will only be applied during save time. If the restrictions changed after a user saves the pass,
+        /// the new restrictions will not be applied to an already saved pass.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("saveRestrictions")]
+        public virtual SaveRestrictions SaveRestrictions { get; set; }
 
         /// <summary>
         /// The secondary loyalty reward points label, balance, and type. Shown in addition to the primary loyalty
@@ -11145,6 +11182,14 @@ namespace Google.Apis.Walletobjects.v1.Data
         public virtual RotatingBarcode RotatingBarcode { get; set; }
 
         /// <summary>
+        /// Restrictions on the object that needs to be verified before the user tries to save the pass. Note that this
+        /// restrictions will only be applied during save time. If the restrictions changed after a user saves the pass,
+        /// the new restrictions will not be applied to an already saved pass.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("saveRestrictions")]
+        public virtual SaveRestrictions SaveRestrictions { get; set; }
+
+        /// <summary>
         /// The value that will be transmitted to a Smart Tap certified terminal over NFC for this object. The class
         /// level fields `enableSmartTap` and `redemptionIssuers` must also be set up correctly in order for the pass to
         /// support Smart Tap. Only ASCII characters are supported.
@@ -11525,6 +11570,31 @@ namespace Google.Apis.Walletobjects.v1.Data
         /// <summary>Required. The values to encode in the barcode. At least one value is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<string> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Defines restrictions on the object that will be verified during save. Note: this is an advanced feature, please
+    /// contact Google for implementation support.
+    /// </summary>
+    public class SaveRestrictions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Restrict the save of the referencing object to the given email address only. This is the hex output of
+        /// SHA256 sum of the email address, all lowercase and without any notations like "." or "+", except "@". For
+        /// example, for example@example.com, this value will be
+        /// 31c5543c1734d25c7206f5fd591525d0295bec6fe84ff82f946a34fe970a1e66 and for Example@example.com, this value
+        /// will be bc34f262c93ad7122763684ccea6f07fb7f5d8a2d11e60ce15a6f43fe70ce632 If email address of the logged-in
+        /// user who tries to save this pass does not match with the defined value here, users won't be allowed to save
+        /// this pass. They will instead be prompted with an error to contact the issuer. This information should be
+        /// gathered from the user with an explicit consent via Sign in with Google integration
+        /// https://developers.google.com/identity/authentication. Please contact with support before using Save
+        /// Restrictions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restrictToEmailSha256")]
+        public virtual string RestrictToEmailSha256 { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12376,6 +12446,14 @@ namespace Google.Apis.Walletobjects.v1.Data
         /// <summary>The rotating barcode type and value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rotatingBarcode")]
         public virtual RotatingBarcode RotatingBarcode { get; set; }
+
+        /// <summary>
+        /// Restrictions on the object that needs to be verified before the user tries to save the pass. Note that this
+        /// restrictions will only be applied during save time. If the restrictions changed after a user saves the pass,
+        /// the new restrictions will not be applied to an already saved pass.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("saveRestrictions")]
+        public virtual SaveRestrictions SaveRestrictions { get; set; }
 
         /// <summary>
         /// The value that will be transmitted to a Smart Tap certified terminal over NFC for this object. The class

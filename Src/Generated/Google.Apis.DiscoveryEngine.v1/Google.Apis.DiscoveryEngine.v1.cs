@@ -296,6 +296,7 @@ namespace Google.Apis.DiscoveryEngine.v1
                 Collections = new CollectionsResource(service);
                 DataStores = new DataStoresResource(service);
                 GroundingConfigs = new GroundingConfigsResource(service);
+                IdentityMappingStores = new IdentityMappingStoresResource(service);
                 Operations = new OperationsResource(service);
                 RankingConfigs = new RankingConfigsResource(service);
                 UserEvents = new UserEventsResource(service);
@@ -12851,6 +12852,181 @@ namespace Google.Apis.DiscoveryEngine.v1
                 }
             }
 
+            /// <summary>Gets the IdentityMappingStores resource.</summary>
+            public virtual IdentityMappingStoresResource IdentityMappingStores { get; }
+
+            /// <summary>The "identity_mapping_stores" collection of methods.</summary>
+            public class IdentityMappingStoresResource
+            {
+                private const string Resource = "identityMappingStores";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public IdentityMappingStoresResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Operations = new OperationsResource(service);
+                }
+
+                /// <summary>Gets the Operations resource.</summary>
+                public virtual OperationsResource Operations { get; }
+
+                /// <summary>The "operations" collection of methods.</summary>
+                public class OperationsResource
+                {
+                    private const string Resource = "operations";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public OperationsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                    /// operation result at intervals as recommended by the API service.
+                    /// </summary>
+                    /// <param name="name">The name of the operation resource.</param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                    /// operation result at intervals as recommended by the API service.
+                    /// </summary>
+                    public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>The name of the operation resource.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/identity_mapping_stores/[^/]+/operations/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Lists operations that match the specified filter in the request. If the server doesn't support
+                    /// this method, it returns `UNIMPLEMENTED`.
+                    /// </summary>
+                    /// <param name="name">The name of the operation's parent resource.</param>
+                    public virtual ListRequest List(string name)
+                    {
+                        return new ListRequest(this.service, name);
+                    }
+
+                    /// <summary>
+                    /// Lists operations that match the specified filter in the request. If the server doesn't support
+                    /// this method, it returns `UNIMPLEMENTED`.
+                    /// </summary>
+                    public class ListRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1.Data.GoogleLongrunningListOperationsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>The name of the operation's parent resource.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>The standard list filter.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>The standard list page size.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>The standard list page token.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}/operations";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/identity_mapping_stores/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+            }
+
             /// <summary>Gets the Operations resource.</summary>
             public virtual OperationsResource Operations { get; }
 
@@ -14218,10 +14394,8 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string OrderBy { get; set; }
 
         /// <summary>
-        /// Specifies the search result mode. If unspecified, the search result mode is based on
-        /// DataStore.DocumentProcessingConfig.chunking_config: * If DataStore.DocumentProcessingConfig.chunking_config
-        /// is specified, it defaults to `CHUNKS`. * Otherwise, it defaults to `DOCUMENTS`. See [parse and chunk
-        /// documents](https://cloud.google.com/generative-ai-app-builder/docs/parse-chunk-documents)
+        /// Specifies the search result mode. If unspecified, the search result mode defaults to `DOCUMENTS`. See [parse
+        /// and chunk documents](https://cloud.google.com/generative-ai-app-builder/docs/parse-chunk-documents)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchResultMode")]
         public virtual string SearchResultMode { get; set; }
@@ -14356,8 +14530,9 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     public class GoogleCloudDiscoveryengineV1AnswerQueryResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Answer resource object. If AnswerQueryRequest.StepSpec.max_step_count is greater than 1, use Answer.name to
-        /// fetch answer information using ConversationalSearchService.GetAnswer API.
+        /// Answer resource object. If AnswerQueryRequest.QueryUnderstandingSpec.QueryRephraserSpec.max_rephrase_steps
+        /// is greater than 1, use Answer.name to fetch answer information using ConversationalSearchService.GetAnswer
+        /// API.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("answer")]
         public virtual GoogleCloudDiscoveryengineV1Answer Answer { get; set; }
@@ -14584,8 +14759,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
 
         /// <summary>
         /// Data representation. The structured JSON data for the document. It's populated from the struct data from the
-        /// Document (code pointer: http://shortn/_objzAfIiHq), or the Chunk in search result (code pointer:
-        /// http://shortn/_Ipo6KFFGBL).
+        /// Document , or the Chunk in search result .
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structData")]
         public virtual System.Collections.Generic.IDictionary<string, object> StructData { get; set; }
@@ -19602,9 +19776,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual GoogleCloudDiscoveryengineV1SearchRequestContentSearchSpecExtractiveContentSpec ExtractiveContentSpec { get; set; }
 
         /// <summary>
-        /// Specifies the search result mode. If unspecified, the search result mode is based on
-        /// DataStore.DocumentProcessingConfig.chunking_config: * If DataStore.DocumentProcessingConfig.chunking_config
-        /// is specified, it defaults to `CHUNKS`. * Otherwise, it defaults to `DOCUMENTS`.
+        /// Specifies the search result mode. If unspecified, the search result mode defaults to `DOCUMENTS`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchResultMode")]
         public virtual string SearchResultMode { get; set; }
@@ -21568,8 +21740,7 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
 
         /// <summary>
         /// Data representation. The structured JSON data for the document. It's populated from the struct data from the
-        /// Document (code pointer: http://shortn/_objzAfIiHq), or the Chunk in search result (code pointer:
-        /// http://shortn/_Ipo6KFFGBL).
+        /// Document , or the Chunk in search result .
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structData")]
         public virtual System.Collections.Generic.IDictionary<string, object> StructData { get; set; }
@@ -22156,6 +22327,13 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for EvaluationService.CreateEvaluation method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaCreateEvaluationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for Create Schema LRO.</summary>
     public class GoogleCloudDiscoveryengineV1alphaCreateSchemaMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -22316,6 +22494,17 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines custom fine tuning spec.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaCustomFineTuningSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether or not to enable and include custom fine tuned search adaptor model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableSearchAdaptor")]
+        public virtual System.Nullable<bool> EnableSearchAdaptor { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23652,6 +23841,159 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     }
 
     /// <summary>
+    /// An evaluation is a single execution (or run) of an evaluation process. It encapsulates the state of the
+    /// evaluation and the resulting data.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaEvaluation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Timestamp the Evaluation was created at.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Output only. Timestamp the Evaluation was completed at.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. The error that occurred during evaluation. Only populated when the evaluation's state is
+        /// FAILED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual GoogleRpcStatus Error { get; set; }
+
+        /// <summary>Output only. A sample of errors encountered while processing the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorSamples")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorSamples { get; set; }
+
+        /// <summary>Required. The specification of the evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluationSpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaEvaluationEvaluationSpec EvaluationSpec { get; set; }
+
+        /// <summary>
+        /// Immutable. The full resource name of the Evaluation, in the format of
+        /// `projects/{project}/locations/{location}/evaluations/{evaluation}`. This field must be a UTF-8 encoded
+        /// string with a length limit of 1024 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The metrics produced by the evaluation, averaged across all SampleQuerys in the SampleQuerySet.
+        /// Only populated when the evaluation's state is SUCCEEDED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qualityMetrics")]
+        public virtual GoogleCloudDiscoveryengineV1alphaQualityMetrics QualityMetrics { get; set; }
+
+        /// <summary>Output only. The state of the evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes the specification of the evaluation.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaEvaluationEvaluationSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The specification of the query set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("querySetSpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaEvaluationEvaluationSpecQuerySetSpec QuerySetSpec { get; set; }
+
+        /// <summary>
+        /// Required. The search request that is used to perform the evaluation. Only the following fields within
+        /// SearchRequest are supported; if any other fields are provided, an UNSUPPORTED error will be returned: *
+        /// SearchRequest.serving_config * SearchRequest.branch * SearchRequest.canonical_filter *
+        /// SearchRequest.query_expansion_spec * SearchRequest.spell_correction_spec * SearchRequest.content_search_spec
+        /// * SearchRequest.user_pseudo_id
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchRequest")]
+        public virtual GoogleCloudDiscoveryengineV1alphaSearchRequest SearchRequest { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes the specification of the query set.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaEvaluationEvaluationSpecQuerySetSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The full resource name of the SampleQuerySet used for the evaluation, in the format of
+        /// `projects/{project}/locations/{location}/sampleQuerySets/{sampleQuerySet}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleQuerySet")]
+        public virtual string SampleQuerySet { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Metadata related to the progress of the Export operation. This is returned by the
     /// google.longrunning.Operation.metadata field.
     /// </summary>
@@ -23861,6 +24203,20 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchableOption")]
         public virtual string SearchableOption { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for SiteSearchEngineService.GetUriPatternDocumentData method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaGetUriPatternDocumentDataResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Document data keyed by URI pattern. For example: document_data_map = { "www.url1.com/*": { "Categories":
+        /// ["category1", "category2"] }, "www.url2.com/*": { "Categories": ["category3"] } }
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentDataMap")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Collections.Generic.IDictionary<string, object>> DocumentDataMap { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24132,6 +24488,122 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     }
 
     /// <summary>
+    /// Metadata related to the progress of the ImportSampleQueries operation. This will be returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaImportSampleQueriesMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>ImportSampleQueries operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Count of SampleQuerys that failed to be imported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureCount")]
+        public virtual System.Nullable<long> FailureCount { get; set; }
+
+        /// <summary>Count of SampleQuerys successfully imported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successCount")]
+        public virtual System.Nullable<long> SuccessCount { get; set; }
+
+        /// <summary>Total count of SampleQuerys that were processed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalCount")]
+        public virtual System.Nullable<long> TotalCount { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>
+        /// ImportSampleQueries operation last update time. If the operation is done, this is also the finish time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response of the SampleQueryService.ImportSampleQueries method. If the long running operation is done, this
+    /// message is returned by the google.longrunning.Operations.response field if the operation is successful.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaImportSampleQueriesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The desired location of errors incurred during the Import.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorConfig")]
+        public virtual GoogleCloudDiscoveryengineV1alphaImportErrorConfig ErrorConfig { get; set; }
+
+        /// <summary>A sample of errors encountered while processing the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorSamples")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorSamples { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Metadata related to the progress of the ImportSuggestionDenyListEntries operation. This is returned by the
     /// google.longrunning.Operation.metadata field.
     /// </summary>
@@ -24349,6 +24821,29 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unjoinedEventsCount")]
         public virtual System.Nullable<long> UnjoinedEventsCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A floating point interval.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaInterval : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Exclusive upper bound.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exclusiveMaximum")]
+        public virtual System.Nullable<double> ExclusiveMaximum { get; set; }
+
+        /// <summary>Exclusive lower bound.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exclusiveMinimum")]
+        public virtual System.Nullable<double> ExclusiveMinimum { get; set; }
+
+        /// <summary>Inclusive upper bound.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maximum")]
+        public virtual System.Nullable<double> Maximum { get; set; }
+
+        /// <summary>Inclusive lower bound.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimum")]
+        public virtual System.Nullable<double> Minimum { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -25048,6 +25543,82 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Describes the metrics produced by the evaluation.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaQualityMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Normalized discounted cumulative gain (NDCG) per document, at various top-k cutoff levels. NDCG measures the
+        /// ranking quality, giving higher relevance to top results. Example (top-3): Suppose SampleQuery with three
+        /// retrieved documents (D1, D2, D3) and binary relevance judgements (1 for relevant, 0 for not relevant):
+        /// Retrieved: [D3 (0), D1 (1), D2 (1)] Ideal: [D1 (1), D2 (1), D3 (0)] Calculate NDCG@3 for each SampleQuery: *
+        /// DCG@3: 0/log2(1+1) + 1/log2(2+1) + 1/log2(3+1) = 1.13 * Ideal DCG@3: 1/log2(1+1) + 1/log2(2+1) + 0/log2(3+1)
+        /// = 1.63 * NDCG@3: 1.13/1.63 = 0.693
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("docNdcg")]
+        public virtual GoogleCloudDiscoveryengineV1alphaQualityMetricsTopkMetrics DocNdcg { get; set; }
+
+        /// <summary>
+        /// Precision per document, at various top-k cutoff levels. Precision is the fraction of retrieved documents
+        /// that are relevant. Example (top-5): * For a single SampleQuery, If 4 out of 5 retrieved documents in the
+        /// top-5 are relevant, precision@5 = 4/5 = 0.8
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("docPrecision")]
+        public virtual GoogleCloudDiscoveryengineV1alphaQualityMetricsTopkMetrics DocPrecision { get; set; }
+
+        /// <summary>
+        /// Recall per document, at various top-k cutoff levels. Recall is the fraction of relevant documents retrieved
+        /// out of all relevant documents. Example (top-5): * For a single SampleQuery, If 3 out of 5 relevant documents
+        /// are retrieved in the top-5, recall@5 = 3/5 = 0.6
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("docRecall")]
+        public virtual GoogleCloudDiscoveryengineV1alphaQualityMetricsTopkMetrics DocRecall { get; set; }
+
+        /// <summary>
+        /// Normalized discounted cumulative gain (NDCG) per page, at various top-k cutoff levels. NDCG measures the
+        /// ranking quality, giving higher relevance to top results. Example (top-3): Suppose SampleQuery with three
+        /// retrieved pages (P1, P2, P3) and binary relevance judgements (1 for relevant, 0 for not relevant):
+        /// Retrieved: [P3 (0), P1 (1), P2 (1)] Ideal: [P1 (1), P2 (1), P3 (0)] Calculate NDCG@3 for SampleQuery: *
+        /// DCG@3: 0/log2(1+1) + 1/log2(2+1) + 1/log2(3+1) = 1.13 * Ideal DCG@3: 1/log2(1+1) + 1/log2(2+1) + 0/log2(3+1)
+        /// = 1.63 * NDCG@3: 1.13/1.63 = 0.693
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageNdcg")]
+        public virtual GoogleCloudDiscoveryengineV1alphaQualityMetricsTopkMetrics PageNdcg { get; set; }
+
+        /// <summary>
+        /// Recall per page, at various top-k cutoff levels. Recall is the fraction of relevant pages retrieved out of
+        /// all relevant pages. Example (top-5): * For a single SampleQuery, if 3 out of 5 relevant pages are retrieved
+        /// in the top-5, recall@5 = 3/5 = 0.6
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageRecall")]
+        public virtual GoogleCloudDiscoveryengineV1alphaQualityMetricsTopkMetrics PageRecall { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Stores the metric values at specific top-k levels.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaQualityMetricsTopkMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The top-1 value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("top1")]
+        public virtual System.Nullable<double> Top1 { get; set; }
+
+        /// <summary>The top-10 value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("top10")]
+        public virtual System.Nullable<double> Top10 { get; set; }
+
+        /// <summary>The top-3 value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("top3")]
+        public virtual System.Nullable<double> Top3 { get; set; }
+
+        /// <summary>The top-5 value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("top5")]
+        public virtual System.Nullable<double> Top5 { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Defines a user inputed query.</summary>
     public class GoogleCloudDiscoveryengineV1alphaQuery : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -25248,6 +25819,885 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for SearchService.Search method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaSearchRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Boost specification to boost certain documents. For more information on boosting, see
+        /// [Boosting](https://cloud.google.com/generative-ai-app-builder/docs/boost-search-results)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boostSpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpec BoostSpec { get; set; }
+
+        /// <summary>
+        /// The branch resource name, such as
+        /// `projects/*/locations/global/collections/default_collection/dataStores/default_data_store/branches/0`. Use
+        /// `default_branch` as the branch ID or leave this field empty, to search documents under the default branch.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("branch")]
+        public virtual string Branch { get; set; }
+
+        /// <summary>
+        /// The default filter that is applied when a user performs a search without checking any filters on the search
+        /// page. The filter applied to every search request when quality improvement such as query expansion is needed.
+        /// In the case a query does not have a sufficient amount of results this filter will be used to determine
+        /// whether or not to enable the query expansion flow. The original filter will still be used for the query
+        /// expanded search. This field is strongly recommended to achieve high search quality. For more information
+        /// about filter syntax, see SearchRequest.filter.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canonicalFilter")]
+        public virtual string CanonicalFilter { get; set; }
+
+        /// <summary>A specification for configuring the behavior of content search.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentSearchSpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpec ContentSearchSpec { get; set; }
+
+        /// <summary>
+        /// Custom fine tuning configs. If set, it has higher priority than the configs set in
+        /// ServingConfig.custom_fine_tuning_spec.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customFineTuningSpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaCustomFineTuningSpec CustomFineTuningSpec { get; set; }
+
+        /// <summary>
+        /// Specs defining dataStores to filter on in a search call and configurations for those dataStores. This is
+        /// only considered for engines with multiple dataStores use case. For single dataStore within an engine, they
+        /// should use the specs at the top level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataStoreSpecs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaSearchRequestDataStoreSpec> DataStoreSpecs { get; set; }
+
+        /// <summary>
+        /// Uses the provided embedding to do additional semantic document retrieval. The retrieval is based on the dot
+        /// product of SearchRequest.EmbeddingSpec.EmbeddingVector.vector and the document embedding that is provided in
+        /// SearchRequest.EmbeddingSpec.EmbeddingVector.field_path. If
+        /// SearchRequest.EmbeddingSpec.EmbeddingVector.field_path is not provided, it will use
+        /// ServingConfig.EmbeddingConfig.field_path.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("embeddingSpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestEmbeddingSpec EmbeddingSpec { get; set; }
+
+        /// <summary>
+        /// Facet specifications for faceted search. If empty, no facets are returned. A maximum of 100 values are
+        /// allowed. Otherwise, an `INVALID_ARGUMENT` error is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("facetSpecs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaSearchRequestFacetSpec> FacetSpecs { get; set; }
+
+        /// <summary>
+        /// The filter syntax consists of an expression language for constructing a predicate from one or more fields of
+        /// the documents being filtered. Filter expression is case-sensitive. If this field is unrecognizable, an
+        /// `INVALID_ARGUMENT` is returned. Filtering in Vertex AI Search is done by mapping the LHS filter key to a key
+        /// property defined in the Vertex AI Search backend -- this mapping is defined by the customer in their schema.
+        /// For example a media customer might have a field 'name' in their schema. In this case the filter would look
+        /// like this: filter --&amp;gt; name:'ANY("king kong")' For more information about filtering including syntax
+        /// and filter operators, see
+        /// [Filter](https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>Raw image query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageQuery")]
+        public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestImageQuery ImageQuery { get; set; }
+
+        /// <summary>
+        /// The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see [Standard
+        /// fields](https://cloud.google.com/apis/design/standard_fields). This field helps to better interpret the
+        /// query. If a value isn't specified, the query language code is automatically detected, which may not be
+        /// accurate.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>
+        /// If `naturalLanguageQueryUnderstandingSpec` is not specified, no additional natural language query
+        /// understanding will be done.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("naturalLanguageQueryUnderstandingSpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestNaturalLanguageQueryUnderstandingSpec NaturalLanguageQueryUnderstandingSpec { get; set; }
+
+        /// <summary>
+        /// A 0-indexed integer that specifies the current offset (that is, starting result location, amongst the
+        /// Documents deemed by the API as relevant) in search results. This field is only considered if page_token is
+        /// unset. If this field is negative, an `INVALID_ARGUMENT` is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offset")]
+        public virtual System.Nullable<int> Offset { get; set; }
+
+        /// <summary>
+        /// The order in which documents are returned. Documents can be ordered by a field in an Document object. Leave
+        /// it unset if ordered by relevance. `order_by` expression is case-sensitive. For more information on ordering
+        /// for retail search, see [Ordering](https://cloud.google.com/retail/docs/filter-and-order#order) If this field
+        /// is unrecognizable, an `INVALID_ARGUMENT` is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orderBy")]
+        public virtual string OrderBy { get; set; }
+
+        /// <summary>
+        /// Maximum number of Documents to return. The maximum allowed value depends on the data type. Values above the
+        /// maximum value are coerced to the maximum value. * Websites with basic indexing: Default `10`, Maximum `25`.
+        /// * Websites with advanced indexing: Default `25`, Maximum `50`. * Other: Default `50`, Maximum `100`. If this
+        /// field is negative, an `INVALID_ARGUMENT` is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
+        public virtual System.Nullable<int> PageSize { get; set; }
+
+        /// <summary>
+        /// A page token received from a previous SearchService.Search call. Provide this to retrieve the subsequent
+        /// page. When paginating, all other parameters provided to SearchService.Search must match the call that
+        /// provided the page token. Otherwise, an `INVALID_ARGUMENT` error is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
+        public virtual string PageToken { get; set; }
+
+        /// <summary>
+        /// Additional search parameters. For public website search only, supported values are: * `user_country_code`:
+        /// string. Default empty. If set to non-empty, results are restricted or boosted based on the location
+        /// provided. For example, `user_country_code: "au"` For available codes see [Country
+        /// Codes](https://developers.google.com/custom-search/docs/json_api_reference#countryCodes) * `search_type`:
+        /// double. Default empty. Enables non-webpage searching depending on the value. The only valid non-default
+        /// value is 1, which enables image searching. For example, `search_type: 1`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("params")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Params__ { get; set; }
+
+        /// <summary>Raw search query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual string Query { get; set; }
+
+        /// <summary>
+        /// The query expansion specification that specifies the conditions under which query expansion occurs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryExpansionSpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestQueryExpansionSpec QueryExpansionSpec { get; set; }
+
+        /// <summary>
+        /// The ranking expression controls the customized ranking on retrieval documents. This overrides
+        /// ServingConfig.ranking_expression. The ranking expression is a single function or multiple functions that are
+        /// joined by "+". * ranking_expression = function, { " + ", function }; Supported functions: * double *
+        /// relevance_score * double * dotProduct(embedding_field_path) Function variables: * `relevance_score`:
+        /// pre-defined keywords, used for measure relevance between query and document. * `embedding_field_path`: the
+        /// document embedding field used with query embedding vector. * `dotProduct`: embedding function between
+        /// embedding_field_path and query embedding vector. Example ranking expression: If document has an embedding
+        /// field doc_embedding, the ranking expression could be `0.5 * relevance_score + 0.3 *
+        /// dotProduct(doc_embedding)`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rankingExpression")]
+        public virtual string RankingExpression { get; set; }
+
+        /// <summary>
+        /// The Unicode country/region code (CLDR) of a location, such as "US" and "419". For more information, see
+        /// [Standard fields](https://cloud.google.com/apis/design/standard_fields). If set, then results will be
+        /// boosted based on the region_code provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
+
+        /// <summary>
+        /// The relevance threshold of the search results. Default to Google defined threshold, leveraging a balance of
+        /// precision and recall to deliver both highly accurate results and comprehensive coverage of relevant
+        /// information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relevanceThreshold")]
+        public virtual string RelevanceThreshold { get; set; }
+
+        /// <summary>Whether to turn on safe search. This is only supported for website search.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("safeSearch")]
+        public virtual System.Nullable<bool> SafeSearch { get; set; }
+
+        /// <summary>Search as you type configuration. Only supported for the IndustryVertical.MEDIA vertical.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchAsYouTypeSpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestSearchAsYouTypeSpec SearchAsYouTypeSpec { get; set; }
+
+        /// <summary>
+        /// Required. The resource name of the Search serving config, such as
+        /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`,
+        /// or
+        /// `projects/*/locations/global/collections/default_collection/dataStores/default_data_store/servingConfigs/default_serving_config`.
+        /// This field is used to identify the serving configuration name, set of models used to make the search.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servingConfig")]
+        public virtual string ServingConfig { get; set; }
+
+        /// <summary>
+        /// The session resource name. Optional. Session allows users to do multi-turn /search API calls or coordination
+        /// between /search API calls and /answer API calls. Example #1 (multi-turn /search API calls): 1. Call /search
+        /// API with the auto-session mode (see below). 2. Call /search API with the session ID generated in the first
+        /// call. Here, the previous search query gets considered in query standing. I.e., if the first query is "How
+        /// did Alphabet do in 2022?" and the current query is "How about 2023?", the current query will be interpreted
+        /// as "How did Alphabet do in 2023?". Example #2 (coordination between /search API calls and /answer API
+        /// calls): 1. Call /search API with the auto-session mode (see below). 2. Call /answer API with the session ID
+        /// generated in the first call. Here, the answer generation happens in the context of the search results from
+        /// the first search call. Auto-session mode: when `projects/.../sessions/-` is used, a new session gets
+        /// automatically created. Otherwise, users can use the create-session API to create a session manually.
+        /// Multi-turn Search feature is currently at private GA stage. Please use v1alpha or v1beta version instead
+        /// before we launch this feature to public GA. Or ask for allowlisting through Google Support team.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("session")]
+        public virtual string Session { get; set; }
+
+        /// <summary>Session specification. Can be used only when `session` is set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionSpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestSessionSpec SessionSpec { get; set; }
+
+        /// <summary>
+        /// The spell correction specification that specifies the mode under which spell correction takes effect.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spellCorrectionSpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestSpellCorrectionSpec SpellCorrectionSpec { get; set; }
+
+        /// <summary>
+        /// Information about the end user. Highly recommended for analytics. UserInfo.user_agent is used to deduce
+        /// `device_type` for analytics.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userInfo")]
+        public virtual GoogleCloudDiscoveryengineV1alphaUserInfo UserInfo { get; set; }
+
+        /// <summary>
+        /// The user labels applied to a resource must meet the following requirements: * Each resource can have
+        /// multiple labels, up to a maximum of 64. * Each label must be a key-value pair. * Keys have a minimum length
+        /// of 1 character and a maximum length of 63 characters and cannot be empty. Values can be empty and have a
+        /// maximum length of 63 characters. * Keys and values can contain only lowercase letters, numeric characters,
+        /// underscores, and dashes. All characters must use UTF-8 encoding, and international characters are allowed. *
+        /// The key portion of a label must be unique. However, you can use the same key with multiple resources. * Keys
+        /// must start with a lowercase letter or international character. See [Google Cloud
+        /// Document](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements) for more
+        /// details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userLabels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> UserLabels { get; set; }
+
+        /// <summary>
+        /// A unique identifier for tracking visitors. For example, this could be implemented with an HTTP cookie, which
+        /// should be able to uniquely identify a visitor on a single device. This unique identifier should not change
+        /// if the visitor logs in or out of the website. This field should NOT have a fixed value such as
+        /// `unknown_visitor`. This should be the same identifier as UserEvent.user_pseudo_id and
+        /// CompleteQueryRequest.user_pseudo_id The field must be a UTF-8 encoded string with a length limit of 128
+        /// characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userPseudoId")]
+        public virtual string UserPseudoId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Boost specification to boost certain documents.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Condition boost specifications. If a document matches multiple conditions in the specifictions, boost scores
+        /// from these specifications are all applied and combined in a non-linear way. Maximum number of specifications
+        /// is 20.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditionBoostSpecs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpecConditionBoostSpec> ConditionBoostSpecs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Boost applies to documents which match a condition.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpecConditionBoostSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Strength of the condition boost, which should be in [-1, 1]. Negative boost means demotion. Default is 0.0.
+        /// Setting to 1.0 gives the document a big promotion. However, it does not necessarily mean that the boosted
+        /// document will be the top result at all times, nor that other documents will be excluded. Results could still
+        /// be shown even when none of them matches the condition. And results that are significantly more relevant to
+        /// the search query can still trump your heavily favored but irrelevant documents. Setting to -1.0 gives the
+        /// document a big demotion. However, results that are deeply relevant might still be shown. The document will
+        /// have an upstream battle to get a fairly high ranking, but it is not blocked out completely. Setting to 0.0
+        /// means no boost applied. The boosting condition is ignored. Only one of the (condition, boost) combination or
+        /// the boost_control_spec below are set. If both are set then the global boost is ignored and the more
+        /// fine-grained boost_control_spec is applied.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boost")]
+        public virtual System.Nullable<float> Boost { get; set; }
+
+        /// <summary>Complex specification for custom ranking based on customer defined attribute value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boostControlSpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpecConditionBoostSpecBoostControlSpec BoostControlSpec { get; set; }
+
+        /// <summary>
+        /// An expression which specifies a boost condition. The syntax and supported fields are the same as a filter
+        /// expression. See SearchRequest.filter for detail syntax and limitations. Examples: * To boost documents with
+        /// document ID "doc_1" or "doc_2", and color "Red" or "Blue": `(document_id: ANY("doc_1", "doc_2")) AND (color:
+        /// ANY("Red", "Blue"))`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual string Condition { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specification for custom ranking based on customer specified attribute value. It provides more controls for
+    /// customized ranking than the simple (condition, boost) combination above.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpecConditionBoostSpecBoostControlSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The attribute type to be used to determine the boost amount. The attribute value can be derived from the
+        /// field value of the specified field_name. In the case of numerical it is straightforward i.e. attribute_value
+        /// = numerical_field_value. In the case of freshness however, attribute_value = (time.now() -
+        /// datetime_field_value).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributeType")]
+        public virtual string AttributeType { get; set; }
+
+        /// <summary>
+        /// The control points used to define the curve. The monotonic function (defined through the interpolation_type
+        /// above) passes through the control points listed here.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("controlPoints")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpecConditionBoostSpecBoostControlSpecControlPoint> ControlPoints { get; set; }
+
+        /// <summary>The name of the field whose value will be used to determine the boost amount.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldName")]
+        public virtual string FieldName { get; set; }
+
+        /// <summary>The interpolation type to be applied to connect the control points listed below.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interpolationType")]
+        public virtual string InterpolationType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The control points used to define the curve. The curve defined through these control points can only be
+    /// monotonically increasing or decreasing(constant values are acceptable).
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaSearchRequestBoostSpecConditionBoostSpecBoostControlSpecControlPoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Can be one of: 1. The numerical field value. 2. The duration spec for freshness: The value must be formatted
+        /// as an XSD `dayTimeDuration` value (a restricted subset of an ISO 8601 duration value). The pattern for this
+        /// is: `nDnM]`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributeValue")]
+        public virtual string AttributeValue { get; set; }
+
+        /// <summary>
+        /// The value between -1 to 1 by which to boost the score if the attribute_value evaluates to the value
+        /// specified above.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boostAmount")]
+        public virtual System.Nullable<float> BoostAmount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A specification for configuring the behavior of content search.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Specifies the chunk spec to be returned from the search response. Only available if the
+        /// SearchRequest.ContentSearchSpec.search_result_mode is set to CHUNKS
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunkSpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecChunkSpec ChunkSpec { get; set; }
+
+        /// <summary>
+        /// If there is no extractive_content_spec provided, there will be no extractive answer in the search response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extractiveContentSpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecExtractiveContentSpec ExtractiveContentSpec { get; set; }
+
+        /// <summary>
+        /// Specifies the search result mode. If unspecified, the search result mode defaults to `DOCUMENTS`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchResultMode")]
+        public virtual string SearchResultMode { get; set; }
+
+        /// <summary>If `snippetSpec` is not specified, snippets are not included in the search response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snippetSpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSnippetSpec SnippetSpec { get; set; }
+
+        /// <summary>If `summarySpec` is not specified, summaries are not included in the search response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summarySpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSummarySpec SummarySpec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specifies the chunk spec to be returned from the search response. Only available if the
+    /// SearchRequest.ContentSearchSpec.search_result_mode is set to CHUNKS
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecChunkSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The number of next chunks to be returned of the current chunk. The maximum allowed value is 3. If not
+        /// specified, no next chunks will be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numNextChunks")]
+        public virtual System.Nullable<int> NumNextChunks { get; set; }
+
+        /// <summary>
+        /// The number of previous chunks to be returned of the current chunk. The maximum allowed value is 3. If not
+        /// specified, no previous chunks will be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numPreviousChunks")]
+        public virtual System.Nullable<int> NumPreviousChunks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A specification for configuring the extractive content in a search response.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecExtractiveContentSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The maximum number of extractive answers returned in each search result. An extractive answer is a verbatim
+        /// answer extracted from the original document, which provides a precise and contextually relevant answer to
+        /// the search query. If the number of matching answers is less than the `max_extractive_answer_count`, return
+        /// all of the answers. Otherwise, return the `max_extractive_answer_count`. At most five answers are returned
+        /// for each SearchResult.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxExtractiveAnswerCount")]
+        public virtual System.Nullable<int> MaxExtractiveAnswerCount { get; set; }
+
+        /// <summary>
+        /// The max number of extractive segments returned in each search result. Only applied if the DataStore is set
+        /// to DataStore.ContentConfig.CONTENT_REQUIRED or DataStore.solution_types is SOLUTION_TYPE_CHAT. An extractive
+        /// segment is a text segment extracted from the original document that is relevant to the search query, and, in
+        /// general, more verbose than an extractive answer. The segment could then be used as input for LLMs to
+        /// generate summaries and answers. If the number of matching segments is less than
+        /// `max_extractive_segment_count`, return all of the segments. Otherwise, return the
+        /// `max_extractive_segment_count`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxExtractiveSegmentCount")]
+        public virtual System.Nullable<int> MaxExtractiveSegmentCount { get; set; }
+
+        /// <summary>Return at most `num_next_segments` segments after each selected segments.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numNextSegments")]
+        public virtual System.Nullable<int> NumNextSegments { get; set; }
+
+        /// <summary>
+        /// Specifies whether to also include the adjacent from each selected segments. Return at most
+        /// `num_previous_segments` segments before each selected segments.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numPreviousSegments")]
+        public virtual System.Nullable<int> NumPreviousSegments { get; set; }
+
+        /// <summary>
+        /// Specifies whether to return the confidence score from the extractive segments in each search result. This
+        /// feature is available only for new or allowlisted data stores. To allowlist your data store, contact your
+        /// Customer Engineer. The default value is `false`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnExtractiveSegmentScore")]
+        public virtual System.Nullable<bool> ReturnExtractiveSegmentScore { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A specification for configuring snippets in a search response.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSnippetSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// [DEPRECATED] This field is deprecated. To control snippet return, use `return_snippet` field. For backwards
+        /// compatibility, we will return snippet if max_snippet_count &amp;gt; 0.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxSnippetCount")]
+        public virtual System.Nullable<int> MaxSnippetCount { get; set; }
+
+        /// <summary>[DEPRECATED] This field is deprecated and will have no affect on the snippet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referenceOnly")]
+        public virtual System.Nullable<bool> ReferenceOnly { get; set; }
+
+        /// <summary>
+        /// If `true`, then return snippet. If no snippet can be generated, we return "No snippet is available for this
+        /// page." A `snippet_status` with `SUCCESS` or `NO_SNIPPET_AVAILABLE` will also be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnSnippet")]
+        public virtual System.Nullable<bool> ReturnSnippet { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A specification for configuring a summary returned in a search response.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSummarySpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Specifies whether to filter out adversarial queries. The default value is `false`. Google employs
+        /// search-query classification to detect adversarial queries. No summary is returned if the search query is
+        /// classified as an adversarial query. For example, a user might ask a question regarding negative comments
+        /// about the company or submit a query designed to generate unsafe, policy-violating output. If this field is
+        /// set to `true`, we skip generating summaries for adversarial queries and return fallback messages instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreAdversarialQuery")]
+        public virtual System.Nullable<bool> IgnoreAdversarialQuery { get; set; }
+
+        /// <summary>
+        /// Specifies whether to filter out queries that are not summary-seeking. The default value is `false`. Google
+        /// employs search-query classification to detect summary-seeking queries. No summary is returned if the search
+        /// query is classified as a non-summary seeking query. For example, `why is the sky blue` and `Who is the best
+        /// soccer player in the world?` are summary-seeking queries, but `SFO airport` and `world cup 2026` are not.
+        /// They are most likely navigational queries. If this field is set to `true`, we skip generating summaries for
+        /// non-summary seeking queries and return fallback messages instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreNonSummarySeekingQuery")]
+        public virtual System.Nullable<bool> IgnoreNonSummarySeekingQuery { get; set; }
+
+        /// <summary>
+        /// Specifies whether to include citations in the summary. The default value is `false`. When this field is set
+        /// to `true`, summaries include in-line citation numbers. Example summary including citations: BigQuery is
+        /// Google Cloud's fully managed and completely serverless enterprise data warehouse [1]. BigQuery supports all
+        /// data types, works across clouds, and has built-in machine learning and business intelligence, all within a
+        /// unified platform [2, 3]. The citation numbers refer to the returned search results and are 1-indexed. For
+        /// example, [1] means that the sentence is attributed to the first search result. [2, 3] means that the
+        /// sentence is attributed to both the second and third search results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeCitations")]
+        public virtual System.Nullable<bool> IncludeCitations { get; set; }
+
+        /// <summary>
+        /// Language code for Summary. Use language tags defined by
+        /// [BCP47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). Note: This is an experimental feature.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>If specified, the spec will be used to modify the prompt provided to the LLM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelPromptSpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSummarySpecModelPromptSpec ModelPromptSpec { get; set; }
+
+        /// <summary>
+        /// If specified, the spec will be used to modify the model specification provided to the LLM.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelSpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSummarySpecModelSpec ModelSpec { get; set; }
+
+        /// <summary>
+        /// The number of top results to generate the summary from. If the number of results returned is less than
+        /// `summaryResultCount`, the summary is generated from all of the results. At most 10 results for documents
+        /// mode, or 50 for chunks mode, can be used to generate a summary. The chunks mode is used when
+        /// SearchRequest.ContentSearchSpec.search_result_mode is set to CHUNKS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summaryResultCount")]
+        public virtual System.Nullable<int> SummaryResultCount { get; set; }
+
+        /// <summary>
+        /// If true, answer will be generated from most relevant chunks from top search results. This feature will
+        /// improve summary quality. Note that with this feature enabled, not all top search results will be referenced
+        /// and included in the reference list, so the citation source index only points to the search results listed in
+        /// the reference list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useSemanticChunks")]
+        public virtual System.Nullable<bool> UseSemanticChunks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specification of the prompt to use with the model.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSummarySpecModelPromptSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Text at the beginning of the prompt that instructs the assistant. Examples are available in the user guide.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preamble")]
+        public virtual string Preamble { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specification of the model.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSummarySpecModelSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The model version used to generate the summary. Supported values are: * `stable`: string. Default value when
+        /// no value is specified. Uses a generally available, fine-tuned model. For more information, see [Answer
+        /// generation model versions and
+        /// lifecycle](https://cloud.google.com/generative-ai-app-builder/docs/answer-generation-models). * `preview`:
+        /// string. (Public preview) Uses a preview model. For more information, see [Answer generation model versions
+        /// and lifecycle](https://cloud.google.com/generative-ai-app-builder/docs/answer-generation-models).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A struct to define data stores to filter on in a search call and configurations for those data stores.
+    /// Otherwise, an `INVALID_ARGUMENT` error is returned.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaSearchRequestDataStoreSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Full resource name of DataStore, such as
+        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataStore")]
+        public virtual string DataStore { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The specification that uses customized query embedding vector to do semantic document retrieval.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaSearchRequestEmbeddingSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The embedding vector used for retrieval. Limit to 1.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("embeddingVectors")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaSearchRequestEmbeddingSpecEmbeddingVector> EmbeddingVectors { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Embedding vector.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaSearchRequestEmbeddingSpecEmbeddingVector : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Embedding field path in schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldPath")]
+        public virtual string FieldPath { get; set; }
+
+        /// <summary>Query embedding vector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vector")]
+        public virtual System.Collections.Generic.IList<System.Nullable<float>> Vector { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A facet specification to perform faceted search.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaSearchRequestFacetSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Enables dynamic position for this facet. If set to true, the position of this facet among all facets in the
+        /// response is determined automatically. If dynamic facets are enabled, it is ordered together. If set to
+        /// false, the position of this facet in the response is the same as in the request, and it is ranked before the
+        /// facets with dynamic position enable and all dynamic facets. For example, you may always want to have rating
+        /// facet returned in the response, but it's not necessarily to always display the rating facet at the top. In
+        /// that case, you can set enable_dynamic_position to true so that the position of rating facet in response is
+        /// determined automatically. Another example, assuming you have the following facets in the request: *
+        /// "rating", enable_dynamic_position = true * "price", enable_dynamic_position = false * "brands",
+        /// enable_dynamic_position = false And also you have a dynamic facets enabled, which generates a facet
+        /// `gender`. Then the final order of the facets in the response can be ("price", "brands", "rating", "gender")
+        /// or ("price", "brands", "gender", "rating") depends on how API orders "gender" and "rating" facets. However,
+        /// notice that "price" and "brands" are always ranked at first and second position because their
+        /// enable_dynamic_position is false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableDynamicPosition")]
+        public virtual System.Nullable<bool> EnableDynamicPosition { get; set; }
+
+        /// <summary>
+        /// List of keys to exclude when faceting. By default, FacetKey.key is not excluded from the filter unless it is
+        /// listed in this field. Listing a facet key in this field allows its values to appear as facet results, even
+        /// when they are filtered out of search results. Using this field does not affect what search results are
+        /// returned. For example, suppose there are 100 documents with the color facet "Red" and 200 documents with the
+        /// color facet "Blue". A query containing the filter "color:ANY("Red")" and having "color" as FacetKey.key
+        /// would by default return only "Red" documents in the search results, and also return "Red" with count 100 as
+        /// the only color facet. Although there are also blue documents available, "Blue" would not be shown as an
+        /// available facet value. If "color" is listed in "excludedFilterKeys", then the query returns the facet values
+        /// "Red" with count 100 and "Blue" with count 200, because the "color" key is now excluded from the filter.
+        /// Because this field doesn't affect search results, the search results are still correctly filtered to return
+        /// only "Red" documents. A maximum of 100 values are allowed. Otherwise, an `INVALID_ARGUMENT` error is
+        /// returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludedFilterKeys")]
+        public virtual System.Collections.Generic.IList<string> ExcludedFilterKeys { get; set; }
+
+        /// <summary>Required. The facet key specification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("facetKey")]
+        public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestFacetSpecFacetKey FacetKey { get; set; }
+
+        /// <summary>
+        /// Maximum facet values that are returned for this facet. If unspecified, defaults to 20. The maximum allowed
+        /// value is 300. Values above 300 are coerced to 300. For aggregation in healthcare search, when the
+        /// [FacetKey.key] is "healthcare_aggregation_key", the limit will be overridden to 10,000 internally,
+        /// regardless of the value set here. If this field is negative, an `INVALID_ARGUMENT` is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("limit")]
+        public virtual System.Nullable<int> Limit { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies how a facet is computed.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaSearchRequestFacetSpecFacetKey : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// True to make facet keys case insensitive when getting faceting values with prefixes or contains; false
+        /// otherwise.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("caseInsensitive")]
+        public virtual System.Nullable<bool> CaseInsensitive { get; set; }
+
+        /// <summary>
+        /// Only get facet values that contain the given strings. For example, suppose "category" has three values
+        /// "Action &amp;gt; 2022", "Action &amp;gt; 2021" and "Sci-Fi &amp;gt; 2022". If set "contains" to "2022", the
+        /// "category" facet only contains "Action &amp;gt; 2022" and "Sci-Fi &amp;gt; 2022". Only supported on textual
+        /// fields. Maximum is 10.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contains")]
+        public virtual System.Collections.Generic.IList<string> Contains { get; set; }
+
+        /// <summary>
+        /// Set only if values should be bucketed into intervals. Must be set for facets with numerical values. Must not
+        /// be set for facet with text values. Maximum number of intervals is 30.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intervals")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaInterval> Intervals { get; set; }
+
+        /// <summary>
+        /// Required. Supported textual and numerical facet keys in Document object, over which the facet values are
+        /// computed. Facet key is case-sensitive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>
+        /// The order in which documents are returned. Allowed values are: * "count desc", which means order by
+        /// SearchResponse.Facet.values.count descending. * "value desc", which means order by
+        /// SearchResponse.Facet.values.value descending. Only applies to textual facets. If not set, textual values are
+        /// sorted in [natural order](https://en.wikipedia.org/wiki/Natural_sort_order); numerical intervals are sorted
+        /// in the order given by FacetSpec.FacetKey.intervals.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orderBy")]
+        public virtual string OrderBy { get; set; }
+
+        /// <summary>
+        /// Only get facet values that start with the given string prefix. For example, suppose "category" has three
+        /// values "Action &amp;gt; 2022", "Action &amp;gt; 2021" and "Sci-Fi &amp;gt; 2022". If set "prefixes" to
+        /// "Action", the "category" facet only contains "Action &amp;gt; 2022" and "Action &amp;gt; 2021". Only
+        /// supported on textual fields. Maximum is 10.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prefixes")]
+        public virtual System.Collections.Generic.IList<string> Prefixes { get; set; }
+
+        /// <summary>
+        /// Only get facet for the given restricted values. Only supported on textual fields. For example, suppose
+        /// "category" has three values "Action &amp;gt; 2022", "Action &amp;gt; 2021" and "Sci-Fi &amp;gt; 2022". If
+        /// set "restricted_values" to "Action &amp;gt; 2022", the "category" facet only contains "Action &amp;gt;
+        /// 2022". Only supported on textual fields. Maximum is 10.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restrictedValues")]
+        public virtual System.Collections.Generic.IList<string> RestrictedValues { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies the image query input.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaSearchRequestImageQuery : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Base64 encoded image bytes. Supported image formats: JPEG, PNG, and BMP.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageBytes")]
+        public virtual string ImageBytes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specification to enable natural language understanding capabilities for search requests.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaSearchRequestNaturalLanguageQueryUnderstandingSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The condition under which filter extraction should occur. Default to Condition.DISABLED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterExtractionCondition")]
+        public virtual string FilterExtractionCondition { get; set; }
+
+        /// <summary>
+        /// Field names used for location-based filtering, where geolocation filters are detected in natural language
+        /// search queries. Only valid when the FilterExtractionCondition is set to `ENABLED`. If this field is set, it
+        /// overrides the field names set in ServingConfig.geo_search_query_detection_field_names.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geoSearchQueryDetectionFieldNames")]
+        public virtual System.Collections.Generic.IList<string> GeoSearchQueryDetectionFieldNames { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specification to determine under which conditions query expansion should occur.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaSearchRequestQueryExpansionSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The condition under which query expansion should occur. Default to Condition.DISABLED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual string Condition { get; set; }
+
+        /// <summary>
+        /// Whether to pin unexpanded results. If this field is set to true, unexpanded products are always at the top
+        /// of the search results, followed by the expanded results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pinUnexpandedResults")]
+        public virtual System.Nullable<bool> PinUnexpandedResults { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specification for search as you type in search requests.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaSearchRequestSearchAsYouTypeSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The condition under which search as you type should occur. Default to Condition.DISABLED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual string Condition { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Session specification. Multi-turn Search feature is currently at private GA stage. Please use v1alpha or v1beta
+    /// version instead before we launch this feature to public GA. Or ask for allowlisting through Google Support team.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaSearchRequestSessionSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If set, the search result gets stored to the "turn" specified by this query ID. Example: Let's say the
+        /// session looks like this: session { name: ".../sessions/xxx" turns { query { text: "What is foo?" query_id:
+        /// ".../questions/yyy" } answer: "Foo is ..." } turns { query { text: "How about bar then?" query_id:
+        /// ".../questions/zzz" } } } The user can call /search API with a request like this: session:
+        /// ".../sessions/xxx" session_spec { query_id: ".../questions/zzz" } Then, the API stores the search result,
+        /// associated with the last turn. The stored search result can be used by a subsequent /answer API call (with
+        /// the session ID and the query ID specified). Also, it is possible to call /search and /answer in parallel
+        /// with the same session ID &amp;amp; query ID.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryId")]
+        public virtual string QueryId { get; set; }
+
+        /// <summary>
+        /// The number of top search results to persist. The persisted search results can be used for the subsequent
+        /// /answer api call. This field is simliar to the `summary_result_count` field in
+        /// SearchRequest.ContentSearchSpec.SummarySpec.summary_result_count. At most 10 results for documents mode, or
+        /// 50 for chunks mode.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchResultPersistenceCount")]
+        public virtual System.Nullable<int> SearchResultPersistenceCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The specification for query spell correction.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaSearchRequestSpellCorrectionSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The mode under which spell correction replaces the original search query. Defaults to Mode.AUTO.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>External session proto definition.</summary>
     public class GoogleCloudDiscoveryengineV1alphaSession : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -25362,6 +26812,97 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual GoogleCloudDiscoveryengineV1alphaQuery Query { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the SiteSearchEngineService.SetUriPatternDocumentData operation. This will
+    /// be returned by the google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaSetUriPatternDocumentDataMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for SiteSearchEngineService.SetUriPatternDocumentData method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaSetUriPatternDocumentDataResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -25830,6 +27371,32 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information of an end user.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaUserInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// User agent as included in the HTTP header. The field must be a UTF-8 encoded string with a length limit of
+        /// 1,000 characters. Otherwise, an `INVALID_ARGUMENT` error is returned. This should not be set when using the
+        /// client side event reporting with GTM or JavaScript tag in UserEventService.CollectUserEvent or if
+        /// UserEvent.direct_user_request is set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userAgent")]
+        public virtual string UserAgent { get; set; }
+
+        /// <summary>
+        /// Highly recommended for logged-in users. Unique identifier for logged-in user, such as a user name. Don't set
+        /// for anonymous users. Always use a hashed value for this ID. Don't set the field to the same fixed ID for
+        /// different users. This mixes the event history of those users together, which results in degraded model
+        /// quality. The field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an
+        /// `INVALID_ARGUMENT` error is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userId")]
+        public virtual string UserId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26356,6 +27923,13 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for EvaluationService.CreateEvaluation method.</summary>
+    public class GoogleCloudDiscoveryengineV1betaCreateEvaluationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -27624,6 +29198,159 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     }
 
     /// <summary>
+    /// An evaluation is a single execution (or run) of an evaluation process. It encapsulates the state of the
+    /// evaluation and the resulting data.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaEvaluation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Timestamp the Evaluation was created at.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Output only. Timestamp the Evaluation was completed at.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Output only. The error that occurred during evaluation. Only populated when the evaluation's state is
+        /// FAILED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual GoogleRpcStatus Error { get; set; }
+
+        /// <summary>Output only. A sample of errors encountered while processing the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorSamples")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorSamples { get; set; }
+
+        /// <summary>Required. The specification of the evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluationSpec")]
+        public virtual GoogleCloudDiscoveryengineV1betaEvaluationEvaluationSpec EvaluationSpec { get; set; }
+
+        /// <summary>
+        /// Immutable. The full resource name of the Evaluation, in the format of
+        /// `projects/{project}/locations/{location}/evaluations/{evaluation}`. This field must be a UTF-8 encoded
+        /// string with a length limit of 1024 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The metrics produced by the evaluation, averaged across all SampleQuerys in the SampleQuerySet.
+        /// Only populated when the evaluation's state is SUCCEEDED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("qualityMetrics")]
+        public virtual GoogleCloudDiscoveryengineV1betaQualityMetrics QualityMetrics { get; set; }
+
+        /// <summary>Output only. The state of the evaluation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes the specification of the evaluation.</summary>
+    public class GoogleCloudDiscoveryengineV1betaEvaluationEvaluationSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The specification of the query set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("querySetSpec")]
+        public virtual GoogleCloudDiscoveryengineV1betaEvaluationEvaluationSpecQuerySetSpec QuerySetSpec { get; set; }
+
+        /// <summary>
+        /// Required. The search request that is used to perform the evaluation. Only the following fields within
+        /// SearchRequest are supported; if any other fields are provided, an UNSUPPORTED error will be returned: *
+        /// SearchRequest.serving_config * SearchRequest.branch * SearchRequest.canonical_filter *
+        /// SearchRequest.query_expansion_spec * SearchRequest.spell_correction_spec * SearchRequest.content_search_spec
+        /// * SearchRequest.user_pseudo_id
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchRequest")]
+        public virtual GoogleCloudDiscoveryengineV1betaSearchRequest SearchRequest { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes the specification of the query set.</summary>
+    public class GoogleCloudDiscoveryengineV1betaEvaluationEvaluationSpecQuerySetSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The full resource name of the SampleQuerySet used for the evaluation, in the format of
+        /// `projects/{project}/locations/{location}/sampleQuerySets/{sampleQuerySet}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleQuerySet")]
+        public virtual string SampleQuerySet { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Metadata related to the progress of the ImportCompletionSuggestions operation. This will be returned by the
     /// google.longrunning.Operation.metadata field.
     /// </summary>
@@ -27863,6 +29590,122 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
     }
 
     /// <summary>
+    /// Metadata related to the progress of the ImportSampleQueries operation. This will be returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaImportSampleQueriesMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>ImportSampleQueries operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Count of SampleQuerys that failed to be imported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureCount")]
+        public virtual System.Nullable<long> FailureCount { get; set; }
+
+        /// <summary>Count of SampleQuerys successfully imported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successCount")]
+        public virtual System.Nullable<long> SuccessCount { get; set; }
+
+        /// <summary>Total count of SampleQuerys that were processed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalCount")]
+        public virtual System.Nullable<long> TotalCount { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>
+        /// ImportSampleQueries operation last update time. If the operation is done, this is also the finish time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response of the SampleQueryService.ImportSampleQueries method. If the long running operation is done, this
+    /// message is returned by the google.longrunning.Operations.response field if the operation is successful.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaImportSampleQueriesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The desired location of errors incurred during the Import.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorConfig")]
+        public virtual GoogleCloudDiscoveryengineV1betaImportErrorConfig ErrorConfig { get; set; }
+
+        /// <summary>A sample of errors encountered while processing the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorSamples")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorSamples { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Metadata related to the progress of the ImportSuggestionDenyListEntries operation. This is returned by the
     /// google.longrunning.Operation.metadata field.
     /// </summary>
@@ -28080,6 +29923,29 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unjoinedEventsCount")]
         public virtual System.Nullable<long> UnjoinedEventsCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A floating point interval.</summary>
+    public class GoogleCloudDiscoveryengineV1betaInterval : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Exclusive upper bound.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exclusiveMaximum")]
+        public virtual System.Nullable<double> ExclusiveMaximum { get; set; }
+
+        /// <summary>Exclusive lower bound.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exclusiveMinimum")]
+        public virtual System.Nullable<double> ExclusiveMinimum { get; set; }
+
+        /// <summary>Inclusive upper bound.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maximum")]
+        public virtual System.Nullable<double> Maximum { get; set; }
+
+        /// <summary>Inclusive lower bound.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimum")]
+        public virtual System.Nullable<double> Minimum { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -28548,6 +30414,82 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Describes the metrics produced by the evaluation.</summary>
+    public class GoogleCloudDiscoveryengineV1betaQualityMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Normalized discounted cumulative gain (NDCG) per document, at various top-k cutoff levels. NDCG measures the
+        /// ranking quality, giving higher relevance to top results. Example (top-3): Suppose SampleQuery with three
+        /// retrieved documents (D1, D2, D3) and binary relevance judgements (1 for relevant, 0 for not relevant):
+        /// Retrieved: [D3 (0), D1 (1), D2 (1)] Ideal: [D1 (1), D2 (1), D3 (0)] Calculate NDCG@3 for each SampleQuery: *
+        /// DCG@3: 0/log2(1+1) + 1/log2(2+1) + 1/log2(3+1) = 1.13 * Ideal DCG@3: 1/log2(1+1) + 1/log2(2+1) + 0/log2(3+1)
+        /// = 1.63 * NDCG@3: 1.13/1.63 = 0.693
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("docNdcg")]
+        public virtual GoogleCloudDiscoveryengineV1betaQualityMetricsTopkMetrics DocNdcg { get; set; }
+
+        /// <summary>
+        /// Precision per document, at various top-k cutoff levels. Precision is the fraction of retrieved documents
+        /// that are relevant. Example (top-5): * For a single SampleQuery, If 4 out of 5 retrieved documents in the
+        /// top-5 are relevant, precision@5 = 4/5 = 0.8
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("docPrecision")]
+        public virtual GoogleCloudDiscoveryengineV1betaQualityMetricsTopkMetrics DocPrecision { get; set; }
+
+        /// <summary>
+        /// Recall per document, at various top-k cutoff levels. Recall is the fraction of relevant documents retrieved
+        /// out of all relevant documents. Example (top-5): * For a single SampleQuery, If 3 out of 5 relevant documents
+        /// are retrieved in the top-5, recall@5 = 3/5 = 0.6
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("docRecall")]
+        public virtual GoogleCloudDiscoveryengineV1betaQualityMetricsTopkMetrics DocRecall { get; set; }
+
+        /// <summary>
+        /// Normalized discounted cumulative gain (NDCG) per page, at various top-k cutoff levels. NDCG measures the
+        /// ranking quality, giving higher relevance to top results. Example (top-3): Suppose SampleQuery with three
+        /// retrieved pages (P1, P2, P3) and binary relevance judgements (1 for relevant, 0 for not relevant):
+        /// Retrieved: [P3 (0), P1 (1), P2 (1)] Ideal: [P1 (1), P2 (1), P3 (0)] Calculate NDCG@3 for SampleQuery: *
+        /// DCG@3: 0/log2(1+1) + 1/log2(2+1) + 1/log2(3+1) = 1.13 * Ideal DCG@3: 1/log2(1+1) + 1/log2(2+1) + 0/log2(3+1)
+        /// = 1.63 * NDCG@3: 1.13/1.63 = 0.693
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageNdcg")]
+        public virtual GoogleCloudDiscoveryengineV1betaQualityMetricsTopkMetrics PageNdcg { get; set; }
+
+        /// <summary>
+        /// Recall per page, at various top-k cutoff levels. Recall is the fraction of relevant pages retrieved out of
+        /// all relevant pages. Example (top-5): * For a single SampleQuery, if 3 out of 5 relevant pages are retrieved
+        /// in the top-5, recall@5 = 3/5 = 0.6
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageRecall")]
+        public virtual GoogleCloudDiscoveryengineV1betaQualityMetricsTopkMetrics PageRecall { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Stores the metric values at specific top-k levels.</summary>
+    public class GoogleCloudDiscoveryengineV1betaQualityMetricsTopkMetrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The top-1 value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("top1")]
+        public virtual System.Nullable<double> Top1 { get; set; }
+
+        /// <summary>The top-10 value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("top10")]
+        public virtual System.Nullable<double> Top10 { get; set; }
+
+        /// <summary>The top-3 value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("top3")]
+        public virtual System.Nullable<double> Top3 { get; set; }
+
+        /// <summary>The top-5 value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("top5")]
+        public virtual System.Nullable<double> Top5 { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Defines the structure and layout of a type of document data.</summary>
     public class GoogleCloudDiscoveryengineV1betaSchema : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -28566,6 +30508,870 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
         /// <summary>The structured representation of the schema.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structSchema")]
         public virtual System.Collections.Generic.IDictionary<string, object> StructSchema { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for SearchService.Search method.</summary>
+    public class GoogleCloudDiscoveryengineV1betaSearchRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Boost specification to boost certain documents. For more information on boosting, see
+        /// [Boosting](https://cloud.google.com/generative-ai-app-builder/docs/boost-search-results)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boostSpec")]
+        public virtual GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpec BoostSpec { get; set; }
+
+        /// <summary>
+        /// The branch resource name, such as
+        /// `projects/*/locations/global/collections/default_collection/dataStores/default_data_store/branches/0`. Use
+        /// `default_branch` as the branch ID or leave this field empty, to search documents under the default branch.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("branch")]
+        public virtual string Branch { get; set; }
+
+        /// <summary>
+        /// The default filter that is applied when a user performs a search without checking any filters on the search
+        /// page. The filter applied to every search request when quality improvement such as query expansion is needed.
+        /// In the case a query does not have a sufficient amount of results this filter will be used to determine
+        /// whether or not to enable the query expansion flow. The original filter will still be used for the query
+        /// expanded search. This field is strongly recommended to achieve high search quality. For more information
+        /// about filter syntax, see SearchRequest.filter.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canonicalFilter")]
+        public virtual string CanonicalFilter { get; set; }
+
+        /// <summary>A specification for configuring the behavior of content search.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentSearchSpec")]
+        public virtual GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpec ContentSearchSpec { get; set; }
+
+        /// <summary>
+        /// Specs defining dataStores to filter on in a search call and configurations for those dataStores. This is
+        /// only considered for engines with multiple dataStores use case. For single dataStore within an engine, they
+        /// should use the specs at the top level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataStoreSpecs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaSearchRequestDataStoreSpec> DataStoreSpecs { get; set; }
+
+        /// <summary>
+        /// Uses the provided embedding to do additional semantic document retrieval. The retrieval is based on the dot
+        /// product of SearchRequest.EmbeddingSpec.EmbeddingVector.vector and the document embedding that is provided in
+        /// SearchRequest.EmbeddingSpec.EmbeddingVector.field_path. If
+        /// SearchRequest.EmbeddingSpec.EmbeddingVector.field_path is not provided, it will use
+        /// ServingConfig.EmbeddingConfig.field_path.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("embeddingSpec")]
+        public virtual GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpec EmbeddingSpec { get; set; }
+
+        /// <summary>
+        /// Facet specifications for faceted search. If empty, no facets are returned. A maximum of 100 values are
+        /// allowed. Otherwise, an `INVALID_ARGUMENT` error is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("facetSpecs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaSearchRequestFacetSpec> FacetSpecs { get; set; }
+
+        /// <summary>
+        /// The filter syntax consists of an expression language for constructing a predicate from one or more fields of
+        /// the documents being filtered. Filter expression is case-sensitive. If this field is unrecognizable, an
+        /// `INVALID_ARGUMENT` is returned. Filtering in Vertex AI Search is done by mapping the LHS filter key to a key
+        /// property defined in the Vertex AI Search backend -- this mapping is defined by the customer in their schema.
+        /// For example a media customer might have a field 'name' in their schema. In this case the filter would look
+        /// like this: filter --&amp;gt; name:'ANY("king kong")' For more information about filtering including syntax
+        /// and filter operators, see
+        /// [Filter](https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>Raw image query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageQuery")]
+        public virtual GoogleCloudDiscoveryengineV1betaSearchRequestImageQuery ImageQuery { get; set; }
+
+        /// <summary>
+        /// The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see [Standard
+        /// fields](https://cloud.google.com/apis/design/standard_fields). This field helps to better interpret the
+        /// query. If a value isn't specified, the query language code is automatically detected, which may not be
+        /// accurate.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>
+        /// If `naturalLanguageQueryUnderstandingSpec` is not specified, no additional natural language query
+        /// understanding will be done.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("naturalLanguageQueryUnderstandingSpec")]
+        public virtual GoogleCloudDiscoveryengineV1betaSearchRequestNaturalLanguageQueryUnderstandingSpec NaturalLanguageQueryUnderstandingSpec { get; set; }
+
+        /// <summary>
+        /// A 0-indexed integer that specifies the current offset (that is, starting result location, amongst the
+        /// Documents deemed by the API as relevant) in search results. This field is only considered if page_token is
+        /// unset. If this field is negative, an `INVALID_ARGUMENT` is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offset")]
+        public virtual System.Nullable<int> Offset { get; set; }
+
+        /// <summary>
+        /// The order in which documents are returned. Documents can be ordered by a field in an Document object. Leave
+        /// it unset if ordered by relevance. `order_by` expression is case-sensitive. For more information on ordering
+        /// for retail search, see [Ordering](https://cloud.google.com/retail/docs/filter-and-order#order) If this field
+        /// is unrecognizable, an `INVALID_ARGUMENT` is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orderBy")]
+        public virtual string OrderBy { get; set; }
+
+        /// <summary>
+        /// Maximum number of Documents to return. The maximum allowed value depends on the data type. Values above the
+        /// maximum value are coerced to the maximum value. * Websites with basic indexing: Default `10`, Maximum `25`.
+        /// * Websites with advanced indexing: Default `25`, Maximum `50`. * Other: Default `50`, Maximum `100`. If this
+        /// field is negative, an `INVALID_ARGUMENT` is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
+        public virtual System.Nullable<int> PageSize { get; set; }
+
+        /// <summary>
+        /// A page token received from a previous SearchService.Search call. Provide this to retrieve the subsequent
+        /// page. When paginating, all other parameters provided to SearchService.Search must match the call that
+        /// provided the page token. Otherwise, an `INVALID_ARGUMENT` error is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
+        public virtual string PageToken { get; set; }
+
+        /// <summary>
+        /// Additional search parameters. For public website search only, supported values are: * `user_country_code`:
+        /// string. Default empty. If set to non-empty, results are restricted or boosted based on the location
+        /// provided. For example, `user_country_code: "au"` For available codes see [Country
+        /// Codes](https://developers.google.com/custom-search/docs/json_api_reference#countryCodes) * `search_type`:
+        /// double. Default empty. Enables non-webpage searching depending on the value. The only valid non-default
+        /// value is 1, which enables image searching. For example, `search_type: 1`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("params")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Params__ { get; set; }
+
+        /// <summary>Raw search query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual string Query { get; set; }
+
+        /// <summary>
+        /// The query expansion specification that specifies the conditions under which query expansion occurs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryExpansionSpec")]
+        public virtual GoogleCloudDiscoveryengineV1betaSearchRequestQueryExpansionSpec QueryExpansionSpec { get; set; }
+
+        /// <summary>
+        /// The ranking expression controls the customized ranking on retrieval documents. This overrides
+        /// ServingConfig.ranking_expression. The ranking expression is a single function or multiple functions that are
+        /// joined by "+". * ranking_expression = function, { " + ", function }; Supported functions: * double *
+        /// relevance_score * double * dotProduct(embedding_field_path) Function variables: * `relevance_score`:
+        /// pre-defined keywords, used for measure relevance between query and document. * `embedding_field_path`: the
+        /// document embedding field used with query embedding vector. * `dotProduct`: embedding function between
+        /// embedding_field_path and query embedding vector. Example ranking expression: If document has an embedding
+        /// field doc_embedding, the ranking expression could be `0.5 * relevance_score + 0.3 *
+        /// dotProduct(doc_embedding)`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rankingExpression")]
+        public virtual string RankingExpression { get; set; }
+
+        /// <summary>
+        /// The Unicode country/region code (CLDR) of a location, such as "US" and "419". For more information, see
+        /// [Standard fields](https://cloud.google.com/apis/design/standard_fields). If set, then results will be
+        /// boosted based on the region_code provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
+
+        /// <summary>Whether to turn on safe search. This is only supported for website search.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("safeSearch")]
+        public virtual System.Nullable<bool> SafeSearch { get; set; }
+
+        /// <summary>Search as you type configuration. Only supported for the IndustryVertical.MEDIA vertical.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchAsYouTypeSpec")]
+        public virtual GoogleCloudDiscoveryengineV1betaSearchRequestSearchAsYouTypeSpec SearchAsYouTypeSpec { get; set; }
+
+        /// <summary>
+        /// Required. The resource name of the Search serving config, such as
+        /// `projects/*/locations/global/collections/default_collection/engines/*/servingConfigs/default_serving_config`,
+        /// or
+        /// `projects/*/locations/global/collections/default_collection/dataStores/default_data_store/servingConfigs/default_serving_config`.
+        /// This field is used to identify the serving configuration name, set of models used to make the search.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servingConfig")]
+        public virtual string ServingConfig { get; set; }
+
+        /// <summary>
+        /// The session resource name. Optional. Session allows users to do multi-turn /search API calls or coordination
+        /// between /search API calls and /answer API calls. Example #1 (multi-turn /search API calls): 1. Call /search
+        /// API with the auto-session mode (see below). 2. Call /search API with the session ID generated in the first
+        /// call. Here, the previous search query gets considered in query standing. I.e., if the first query is "How
+        /// did Alphabet do in 2022?" and the current query is "How about 2023?", the current query will be interpreted
+        /// as "How did Alphabet do in 2023?". Example #2 (coordination between /search API calls and /answer API
+        /// calls): 1. Call /search API with the auto-session mode (see below). 2. Call /answer API with the session ID
+        /// generated in the first call. Here, the answer generation happens in the context of the search results from
+        /// the first search call. Auto-session mode: when `projects/.../sessions/-` is used, a new session gets
+        /// automatically created. Otherwise, users can use the create-session API to create a session manually.
+        /// Multi-turn Search feature is currently at private GA stage. Please use v1alpha or v1beta version instead
+        /// before we launch this feature to public GA. Or ask for allowlisting through Google Support team.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("session")]
+        public virtual string Session { get; set; }
+
+        /// <summary>Session specification. Can be used only when `session` is set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionSpec")]
+        public virtual GoogleCloudDiscoveryengineV1betaSearchRequestSessionSpec SessionSpec { get; set; }
+
+        /// <summary>
+        /// The spell correction specification that specifies the mode under which spell correction takes effect.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spellCorrectionSpec")]
+        public virtual GoogleCloudDiscoveryengineV1betaSearchRequestSpellCorrectionSpec SpellCorrectionSpec { get; set; }
+
+        /// <summary>
+        /// Information about the end user. Highly recommended for analytics. UserInfo.user_agent is used to deduce
+        /// `device_type` for analytics.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userInfo")]
+        public virtual GoogleCloudDiscoveryengineV1betaUserInfo UserInfo { get; set; }
+
+        /// <summary>
+        /// The user labels applied to a resource must meet the following requirements: * Each resource can have
+        /// multiple labels, up to a maximum of 64. * Each label must be a key-value pair. * Keys have a minimum length
+        /// of 1 character and a maximum length of 63 characters and cannot be empty. Values can be empty and have a
+        /// maximum length of 63 characters. * Keys and values can contain only lowercase letters, numeric characters,
+        /// underscores, and dashes. All characters must use UTF-8 encoding, and international characters are allowed. *
+        /// The key portion of a label must be unique. However, you can use the same key with multiple resources. * Keys
+        /// must start with a lowercase letter or international character. See [Google Cloud
+        /// Document](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements) for more
+        /// details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userLabels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> UserLabels { get; set; }
+
+        /// <summary>
+        /// A unique identifier for tracking visitors. For example, this could be implemented with an HTTP cookie, which
+        /// should be able to uniquely identify a visitor on a single device. This unique identifier should not change
+        /// if the visitor logs in or out of the website. This field should NOT have a fixed value such as
+        /// `unknown_visitor`. This should be the same identifier as UserEvent.user_pseudo_id and
+        /// CompleteQueryRequest.user_pseudo_id The field must be a UTF-8 encoded string with a length limit of 128
+        /// characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userPseudoId")]
+        public virtual string UserPseudoId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Boost specification to boost certain documents.</summary>
+    public class GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Condition boost specifications. If a document matches multiple conditions in the specifictions, boost scores
+        /// from these specifications are all applied and combined in a non-linear way. Maximum number of specifications
+        /// is 20.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditionBoostSpecs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpec> ConditionBoostSpecs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Boost applies to documents which match a condition.</summary>
+    public class GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Strength of the condition boost, which should be in [-1, 1]. Negative boost means demotion. Default is 0.0.
+        /// Setting to 1.0 gives the document a big promotion. However, it does not necessarily mean that the boosted
+        /// document will be the top result at all times, nor that other documents will be excluded. Results could still
+        /// be shown even when none of them matches the condition. And results that are significantly more relevant to
+        /// the search query can still trump your heavily favored but irrelevant documents. Setting to -1.0 gives the
+        /// document a big demotion. However, results that are deeply relevant might still be shown. The document will
+        /// have an upstream battle to get a fairly high ranking, but it is not blocked out completely. Setting to 0.0
+        /// means no boost applied. The boosting condition is ignored. Only one of the (condition, boost) combination or
+        /// the boost_control_spec below are set. If both are set then the global boost is ignored and the more
+        /// fine-grained boost_control_spec is applied.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boost")]
+        public virtual System.Nullable<float> Boost { get; set; }
+
+        /// <summary>Complex specification for custom ranking based on customer defined attribute value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boostControlSpec")]
+        public virtual GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpecBoostControlSpec BoostControlSpec { get; set; }
+
+        /// <summary>
+        /// An expression which specifies a boost condition. The syntax and supported fields are the same as a filter
+        /// expression. See SearchRequest.filter for detail syntax and limitations. Examples: * To boost documents with
+        /// document ID "doc_1" or "doc_2", and color "Red" or "Blue": `(document_id: ANY("doc_1", "doc_2")) AND (color:
+        /// ANY("Red", "Blue"))`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual string Condition { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specification for custom ranking based on customer specified attribute value. It provides more controls for
+    /// customized ranking than the simple (condition, boost) combination above.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpecBoostControlSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The attribute type to be used to determine the boost amount. The attribute value can be derived from the
+        /// field value of the specified field_name. In the case of numerical it is straightforward i.e. attribute_value
+        /// = numerical_field_value. In the case of freshness however, attribute_value = (time.now() -
+        /// datetime_field_value).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributeType")]
+        public virtual string AttributeType { get; set; }
+
+        /// <summary>
+        /// The control points used to define the curve. The monotonic function (defined through the interpolation_type
+        /// above) passes through the control points listed here.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("controlPoints")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpecBoostControlSpecControlPoint> ControlPoints { get; set; }
+
+        /// <summary>The name of the field whose value will be used to determine the boost amount.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldName")]
+        public virtual string FieldName { get; set; }
+
+        /// <summary>The interpolation type to be applied to connect the control points listed below.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interpolationType")]
+        public virtual string InterpolationType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The control points used to define the curve. The curve defined through these control points can only be
+    /// monotonically increasing or decreasing(constant values are acceptable).
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaSearchRequestBoostSpecConditionBoostSpecBoostControlSpecControlPoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Can be one of: 1. The numerical field value. 2. The duration spec for freshness: The value must be formatted
+        /// as an XSD `dayTimeDuration` value (a restricted subset of an ISO 8601 duration value). The pattern for this
+        /// is: `nDnM]`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributeValue")]
+        public virtual string AttributeValue { get; set; }
+
+        /// <summary>
+        /// The value between -1 to 1 by which to boost the score if the attribute_value evaluates to the value
+        /// specified above.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boostAmount")]
+        public virtual System.Nullable<float> BoostAmount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A specification for configuring the behavior of content search.</summary>
+    public class GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Specifies the chunk spec to be returned from the search response. Only available if the
+        /// SearchRequest.ContentSearchSpec.search_result_mode is set to CHUNKS
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunkSpec")]
+        public virtual GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecChunkSpec ChunkSpec { get; set; }
+
+        /// <summary>
+        /// If there is no extractive_content_spec provided, there will be no extractive answer in the search response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extractiveContentSpec")]
+        public virtual GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecExtractiveContentSpec ExtractiveContentSpec { get; set; }
+
+        /// <summary>
+        /// Specifies the search result mode. If unspecified, the search result mode defaults to `DOCUMENTS`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchResultMode")]
+        public virtual string SearchResultMode { get; set; }
+
+        /// <summary>If `snippetSpec` is not specified, snippets are not included in the search response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snippetSpec")]
+        public virtual GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSnippetSpec SnippetSpec { get; set; }
+
+        /// <summary>If `summarySpec` is not specified, summaries are not included in the search response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summarySpec")]
+        public virtual GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpec SummarySpec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specifies the chunk spec to be returned from the search response. Only available if the
+    /// SearchRequest.ContentSearchSpec.search_result_mode is set to CHUNKS
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecChunkSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The number of next chunks to be returned of the current chunk. The maximum allowed value is 3. If not
+        /// specified, no next chunks will be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numNextChunks")]
+        public virtual System.Nullable<int> NumNextChunks { get; set; }
+
+        /// <summary>
+        /// The number of previous chunks to be returned of the current chunk. The maximum allowed value is 3. If not
+        /// specified, no previous chunks will be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numPreviousChunks")]
+        public virtual System.Nullable<int> NumPreviousChunks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A specification for configuring the extractive content in a search response.</summary>
+    public class GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecExtractiveContentSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The maximum number of extractive answers returned in each search result. An extractive answer is a verbatim
+        /// answer extracted from the original document, which provides a precise and contextually relevant answer to
+        /// the search query. If the number of matching answers is less than the `max_extractive_answer_count`, return
+        /// all of the answers. Otherwise, return the `max_extractive_answer_count`. At most five answers are returned
+        /// for each SearchResult.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxExtractiveAnswerCount")]
+        public virtual System.Nullable<int> MaxExtractiveAnswerCount { get; set; }
+
+        /// <summary>
+        /// The max number of extractive segments returned in each search result. Only applied if the DataStore is set
+        /// to DataStore.ContentConfig.CONTENT_REQUIRED or DataStore.solution_types is SOLUTION_TYPE_CHAT. An extractive
+        /// segment is a text segment extracted from the original document that is relevant to the search query, and, in
+        /// general, more verbose than an extractive answer. The segment could then be used as input for LLMs to
+        /// generate summaries and answers. If the number of matching segments is less than
+        /// `max_extractive_segment_count`, return all of the segments. Otherwise, return the
+        /// `max_extractive_segment_count`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxExtractiveSegmentCount")]
+        public virtual System.Nullable<int> MaxExtractiveSegmentCount { get; set; }
+
+        /// <summary>Return at most `num_next_segments` segments after each selected segments.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numNextSegments")]
+        public virtual System.Nullable<int> NumNextSegments { get; set; }
+
+        /// <summary>
+        /// Specifies whether to also include the adjacent from each selected segments. Return at most
+        /// `num_previous_segments` segments before each selected segments.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numPreviousSegments")]
+        public virtual System.Nullable<int> NumPreviousSegments { get; set; }
+
+        /// <summary>
+        /// Specifies whether to return the confidence score from the extractive segments in each search result. This
+        /// feature is available only for new or allowlisted data stores. To allowlist your data store, contact your
+        /// Customer Engineer. The default value is `false`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnExtractiveSegmentScore")]
+        public virtual System.Nullable<bool> ReturnExtractiveSegmentScore { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A specification for configuring snippets in a search response.</summary>
+    public class GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSnippetSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// [DEPRECATED] This field is deprecated. To control snippet return, use `return_snippet` field. For backwards
+        /// compatibility, we will return snippet if max_snippet_count &amp;gt; 0.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxSnippetCount")]
+        public virtual System.Nullable<int> MaxSnippetCount { get; set; }
+
+        /// <summary>[DEPRECATED] This field is deprecated and will have no affect on the snippet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referenceOnly")]
+        public virtual System.Nullable<bool> ReferenceOnly { get; set; }
+
+        /// <summary>
+        /// If `true`, then return snippet. If no snippet can be generated, we return "No snippet is available for this
+        /// page." A `snippet_status` with `SUCCESS` or `NO_SNIPPET_AVAILABLE` will also be returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnSnippet")]
+        public virtual System.Nullable<bool> ReturnSnippet { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A specification for configuring a summary returned in a search response.</summary>
+    public class GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Specifies whether to filter out adversarial queries. The default value is `false`. Google employs
+        /// search-query classification to detect adversarial queries. No summary is returned if the search query is
+        /// classified as an adversarial query. For example, a user might ask a question regarding negative comments
+        /// about the company or submit a query designed to generate unsafe, policy-violating output. If this field is
+        /// set to `true`, we skip generating summaries for adversarial queries and return fallback messages instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreAdversarialQuery")]
+        public virtual System.Nullable<bool> IgnoreAdversarialQuery { get; set; }
+
+        /// <summary>
+        /// Specifies whether to filter out queries that are not summary-seeking. The default value is `false`. Google
+        /// employs search-query classification to detect summary-seeking queries. No summary is returned if the search
+        /// query is classified as a non-summary seeking query. For example, `why is the sky blue` and `Who is the best
+        /// soccer player in the world?` are summary-seeking queries, but `SFO airport` and `world cup 2026` are not.
+        /// They are most likely navigational queries. If this field is set to `true`, we skip generating summaries for
+        /// non-summary seeking queries and return fallback messages instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreNonSummarySeekingQuery")]
+        public virtual System.Nullable<bool> IgnoreNonSummarySeekingQuery { get; set; }
+
+        /// <summary>
+        /// Specifies whether to include citations in the summary. The default value is `false`. When this field is set
+        /// to `true`, summaries include in-line citation numbers. Example summary including citations: BigQuery is
+        /// Google Cloud's fully managed and completely serverless enterprise data warehouse [1]. BigQuery supports all
+        /// data types, works across clouds, and has built-in machine learning and business intelligence, all within a
+        /// unified platform [2, 3]. The citation numbers refer to the returned search results and are 1-indexed. For
+        /// example, [1] means that the sentence is attributed to the first search result. [2, 3] means that the
+        /// sentence is attributed to both the second and third search results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeCitations")]
+        public virtual System.Nullable<bool> IncludeCitations { get; set; }
+
+        /// <summary>
+        /// Language code for Summary. Use language tags defined by
+        /// [BCP47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). Note: This is an experimental feature.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>If specified, the spec will be used to modify the prompt provided to the LLM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelPromptSpec")]
+        public virtual GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelPromptSpec ModelPromptSpec { get; set; }
+
+        /// <summary>
+        /// If specified, the spec will be used to modify the model specification provided to the LLM.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelSpec")]
+        public virtual GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelSpec ModelSpec { get; set; }
+
+        /// <summary>
+        /// The number of top results to generate the summary from. If the number of results returned is less than
+        /// `summaryResultCount`, the summary is generated from all of the results. At most 10 results for documents
+        /// mode, or 50 for chunks mode, can be used to generate a summary. The chunks mode is used when
+        /// SearchRequest.ContentSearchSpec.search_result_mode is set to CHUNKS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summaryResultCount")]
+        public virtual System.Nullable<int> SummaryResultCount { get; set; }
+
+        /// <summary>
+        /// If true, answer will be generated from most relevant chunks from top search results. This feature will
+        /// improve summary quality. Note that with this feature enabled, not all top search results will be referenced
+        /// and included in the reference list, so the citation source index only points to the search results listed in
+        /// the reference list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useSemanticChunks")]
+        public virtual System.Nullable<bool> UseSemanticChunks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specification of the prompt to use with the model.</summary>
+    public class GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelPromptSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Text at the beginning of the prompt that instructs the assistant. Examples are available in the user guide.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preamble")]
+        public virtual string Preamble { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specification of the model.</summary>
+    public class GoogleCloudDiscoveryengineV1betaSearchRequestContentSearchSpecSummarySpecModelSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The model version used to generate the summary. Supported values are: * `stable`: string. Default value when
+        /// no value is specified. Uses a generally available, fine-tuned model. For more information, see [Answer
+        /// generation model versions and
+        /// lifecycle](https://cloud.google.com/generative-ai-app-builder/docs/answer-generation-models). * `preview`:
+        /// string. (Public preview) Uses a preview model. For more information, see [Answer generation model versions
+        /// and lifecycle](https://cloud.google.com/generative-ai-app-builder/docs/answer-generation-models).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A struct to define data stores to filter on in a search call and configurations for those data stores.
+    /// Otherwise, an `INVALID_ARGUMENT` error is returned.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaSearchRequestDataStoreSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Full resource name of DataStore, such as
+        /// `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataStore")]
+        public virtual string DataStore { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The specification that uses customized query embedding vector to do semantic document retrieval.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The embedding vector used for retrieval. Limit to 1.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("embeddingVectors")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpecEmbeddingVector> EmbeddingVectors { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Embedding vector.</summary>
+    public class GoogleCloudDiscoveryengineV1betaSearchRequestEmbeddingSpecEmbeddingVector : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Embedding field path in schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldPath")]
+        public virtual string FieldPath { get; set; }
+
+        /// <summary>Query embedding vector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vector")]
+        public virtual System.Collections.Generic.IList<System.Nullable<float>> Vector { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A facet specification to perform faceted search.</summary>
+    public class GoogleCloudDiscoveryengineV1betaSearchRequestFacetSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Enables dynamic position for this facet. If set to true, the position of this facet among all facets in the
+        /// response is determined automatically. If dynamic facets are enabled, it is ordered together. If set to
+        /// false, the position of this facet in the response is the same as in the request, and it is ranked before the
+        /// facets with dynamic position enable and all dynamic facets. For example, you may always want to have rating
+        /// facet returned in the response, but it's not necessarily to always display the rating facet at the top. In
+        /// that case, you can set enable_dynamic_position to true so that the position of rating facet in response is
+        /// determined automatically. Another example, assuming you have the following facets in the request: *
+        /// "rating", enable_dynamic_position = true * "price", enable_dynamic_position = false * "brands",
+        /// enable_dynamic_position = false And also you have a dynamic facets enabled, which generates a facet
+        /// `gender`. Then the final order of the facets in the response can be ("price", "brands", "rating", "gender")
+        /// or ("price", "brands", "gender", "rating") depends on how API orders "gender" and "rating" facets. However,
+        /// notice that "price" and "brands" are always ranked at first and second position because their
+        /// enable_dynamic_position is false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableDynamicPosition")]
+        public virtual System.Nullable<bool> EnableDynamicPosition { get; set; }
+
+        /// <summary>
+        /// List of keys to exclude when faceting. By default, FacetKey.key is not excluded from the filter unless it is
+        /// listed in this field. Listing a facet key in this field allows its values to appear as facet results, even
+        /// when they are filtered out of search results. Using this field does not affect what search results are
+        /// returned. For example, suppose there are 100 documents with the color facet "Red" and 200 documents with the
+        /// color facet "Blue". A query containing the filter "color:ANY("Red")" and having "color" as FacetKey.key
+        /// would by default return only "Red" documents in the search results, and also return "Red" with count 100 as
+        /// the only color facet. Although there are also blue documents available, "Blue" would not be shown as an
+        /// available facet value. If "color" is listed in "excludedFilterKeys", then the query returns the facet values
+        /// "Red" with count 100 and "Blue" with count 200, because the "color" key is now excluded from the filter.
+        /// Because this field doesn't affect search results, the search results are still correctly filtered to return
+        /// only "Red" documents. A maximum of 100 values are allowed. Otherwise, an `INVALID_ARGUMENT` error is
+        /// returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludedFilterKeys")]
+        public virtual System.Collections.Generic.IList<string> ExcludedFilterKeys { get; set; }
+
+        /// <summary>Required. The facet key specification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("facetKey")]
+        public virtual GoogleCloudDiscoveryengineV1betaSearchRequestFacetSpecFacetKey FacetKey { get; set; }
+
+        /// <summary>
+        /// Maximum facet values that are returned for this facet. If unspecified, defaults to 20. The maximum allowed
+        /// value is 300. Values above 300 are coerced to 300. For aggregation in healthcare search, when the
+        /// [FacetKey.key] is "healthcare_aggregation_key", the limit will be overridden to 10,000 internally,
+        /// regardless of the value set here. If this field is negative, an `INVALID_ARGUMENT` is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("limit")]
+        public virtual System.Nullable<int> Limit { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies how a facet is computed.</summary>
+    public class GoogleCloudDiscoveryengineV1betaSearchRequestFacetSpecFacetKey : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// True to make facet keys case insensitive when getting faceting values with prefixes or contains; false
+        /// otherwise.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("caseInsensitive")]
+        public virtual System.Nullable<bool> CaseInsensitive { get; set; }
+
+        /// <summary>
+        /// Only get facet values that contain the given strings. For example, suppose "category" has three values
+        /// "Action &amp;gt; 2022", "Action &amp;gt; 2021" and "Sci-Fi &amp;gt; 2022". If set "contains" to "2022", the
+        /// "category" facet only contains "Action &amp;gt; 2022" and "Sci-Fi &amp;gt; 2022". Only supported on textual
+        /// fields. Maximum is 10.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contains")]
+        public virtual System.Collections.Generic.IList<string> Contains { get; set; }
+
+        /// <summary>
+        /// Set only if values should be bucketed into intervals. Must be set for facets with numerical values. Must not
+        /// be set for facet with text values. Maximum number of intervals is 30.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intervals")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaInterval> Intervals { get; set; }
+
+        /// <summary>
+        /// Required. Supported textual and numerical facet keys in Document object, over which the facet values are
+        /// computed. Facet key is case-sensitive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>
+        /// The order in which documents are returned. Allowed values are: * "count desc", which means order by
+        /// SearchResponse.Facet.values.count descending. * "value desc", which means order by
+        /// SearchResponse.Facet.values.value descending. Only applies to textual facets. If not set, textual values are
+        /// sorted in [natural order](https://en.wikipedia.org/wiki/Natural_sort_order); numerical intervals are sorted
+        /// in the order given by FacetSpec.FacetKey.intervals.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orderBy")]
+        public virtual string OrderBy { get; set; }
+
+        /// <summary>
+        /// Only get facet values that start with the given string prefix. For example, suppose "category" has three
+        /// values "Action &amp;gt; 2022", "Action &amp;gt; 2021" and "Sci-Fi &amp;gt; 2022". If set "prefixes" to
+        /// "Action", the "category" facet only contains "Action &amp;gt; 2022" and "Action &amp;gt; 2021". Only
+        /// supported on textual fields. Maximum is 10.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prefixes")]
+        public virtual System.Collections.Generic.IList<string> Prefixes { get; set; }
+
+        /// <summary>
+        /// Only get facet for the given restricted values. Only supported on textual fields. For example, suppose
+        /// "category" has three values "Action &amp;gt; 2022", "Action &amp;gt; 2021" and "Sci-Fi &amp;gt; 2022". If
+        /// set "restricted_values" to "Action &amp;gt; 2022", the "category" facet only contains "Action &amp;gt;
+        /// 2022". Only supported on textual fields. Maximum is 10.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restrictedValues")]
+        public virtual System.Collections.Generic.IList<string> RestrictedValues { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies the image query input.</summary>
+    public class GoogleCloudDiscoveryengineV1betaSearchRequestImageQuery : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Base64 encoded image bytes. Supported image formats: JPEG, PNG, and BMP.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageBytes")]
+        public virtual string ImageBytes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specification to enable natural language understanding capabilities for search requests.</summary>
+    public class GoogleCloudDiscoveryengineV1betaSearchRequestNaturalLanguageQueryUnderstandingSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The condition under which filter extraction should occur. Default to Condition.DISABLED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterExtractionCondition")]
+        public virtual string FilterExtractionCondition { get; set; }
+
+        /// <summary>
+        /// Field names used for location-based filtering, where geolocation filters are detected in natural language
+        /// search queries. Only valid when the FilterExtractionCondition is set to `ENABLED`. If this field is set, it
+        /// overrides the field names set in ServingConfig.geo_search_query_detection_field_names.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geoSearchQueryDetectionFieldNames")]
+        public virtual System.Collections.Generic.IList<string> GeoSearchQueryDetectionFieldNames { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specification to determine under which conditions query expansion should occur.</summary>
+    public class GoogleCloudDiscoveryengineV1betaSearchRequestQueryExpansionSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The condition under which query expansion should occur. Default to Condition.DISABLED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual string Condition { get; set; }
+
+        /// <summary>
+        /// Whether to pin unexpanded results. If this field is set to true, unexpanded products are always at the top
+        /// of the search results, followed by the expanded results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pinUnexpandedResults")]
+        public virtual System.Nullable<bool> PinUnexpandedResults { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specification for search as you type in search requests.</summary>
+    public class GoogleCloudDiscoveryengineV1betaSearchRequestSearchAsYouTypeSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The condition under which search as you type should occur. Default to Condition.DISABLED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual string Condition { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Session specification. Multi-turn Search feature is currently at private GA stage. Please use v1alpha or v1beta
+    /// version instead before we launch this feature to public GA. Or ask for allowlisting through Google Support team.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaSearchRequestSessionSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If set, the search result gets stored to the "turn" specified by this query ID. Example: Let's say the
+        /// session looks like this: session { name: ".../sessions/xxx" turns { query { text: "What is foo?" query_id:
+        /// ".../questions/yyy" } answer: "Foo is ..." } turns { query { text: "How about bar then?" query_id:
+        /// ".../questions/zzz" } } } The user can call /search API with a request like this: session:
+        /// ".../sessions/xxx" session_spec { query_id: ".../questions/zzz" } Then, the API stores the search result,
+        /// associated with the last turn. The stored search result can be used by a subsequent /answer API call (with
+        /// the session ID and the query ID specified). Also, it is possible to call /search and /answer in parallel
+        /// with the same session ID &amp;amp; query ID.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryId")]
+        public virtual string QueryId { get; set; }
+
+        /// <summary>
+        /// The number of top search results to persist. The persisted search results can be used for the subsequent
+        /// /answer api call. This field is simliar to the `summary_result_count` field in
+        /// SearchRequest.ContentSearchSpec.SummarySpec.summary_result_count. At most 10 results for documents mode, or
+        /// 50 for chunks mode.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchResultPersistenceCount")]
+        public virtual System.Nullable<int> SearchResultPersistenceCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The specification for query spell correction.</summary>
+    public class GoogleCloudDiscoveryengineV1betaSearchRequestSpellCorrectionSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The mode under which spell correction replaces the original search query. Defaults to Mode.AUTO.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -29035,6 +31841,32 @@ namespace Google.Apis.DiscoveryEngine.v1.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information of an end user.</summary>
+    public class GoogleCloudDiscoveryengineV1betaUserInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// User agent as included in the HTTP header. The field must be a UTF-8 encoded string with a length limit of
+        /// 1,000 characters. Otherwise, an `INVALID_ARGUMENT` error is returned. This should not be set when using the
+        /// client side event reporting with GTM or JavaScript tag in UserEventService.CollectUserEvent or if
+        /// UserEvent.direct_user_request is set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userAgent")]
+        public virtual string UserAgent { get; set; }
+
+        /// <summary>
+        /// Highly recommended for logged-in users. Unique identifier for logged-in user, such as a user name. Don't set
+        /// for anonymous users. Always use a hashed value for this ID. Don't set the field to the same fixed ID for
+        /// different users. This mixes the event history of those users together, which results in degraded model
+        /// quality. The field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an
+        /// `INVALID_ARGUMENT` error is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userId")]
+        public virtual string UserId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

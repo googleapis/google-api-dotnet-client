@@ -2264,7 +2264,8 @@ namespace Google.Apis.Merchant.accounts_v1beta
             /// <summary>Returns the state of a terms of service agreement.</summary>
             /// <param name="name">
             /// Required. The resource name of the terms of service version. Format:
-            /// `accounts/{account}/termsOfServiceAgreementState/{identifier}`
+            /// `accounts/{account}/termsOfServiceAgreementState/{identifier}` The identifier format is:
+            /// `{TermsOfServiceKind}-{country}`
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -2283,7 +2284,8 @@ namespace Google.Apis.Merchant.accounts_v1beta
 
                 /// <summary>
                 /// Required. The resource name of the terms of service version. Format:
-                /// `accounts/{account}/termsOfServiceAgreementState/{identifier}`
+                /// `accounts/{account}/termsOfServiceAgreementState/{identifier}` The identifier format is:
+                /// `{TermsOfServiceKind}-{country}`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -5334,7 +5336,8 @@ namespace Google.Apis.Merchant.accounts_v1beta.Data
 
         /// <summary>
         /// Identifier. The resource name of the terms of service version. Format:
-        /// `accounts/{account}/termsOfServiceAgreementState/{identifier}`
+        /// `accounts/{account}/termsOfServiceAgreementState/{identifier}` The identifier format is:
+        /// `{TermsOfServiceKind}-{country}` For example, an identifier could be: `MERCHANT_CENTER-US`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

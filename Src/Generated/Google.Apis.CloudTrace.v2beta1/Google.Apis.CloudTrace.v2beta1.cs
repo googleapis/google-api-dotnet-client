@@ -682,7 +682,7 @@ namespace Google.Apis.CloudTrace.v2beta1.Data
     public class OutputConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The destination for writing trace data. Supported formats include:
+        /// Required. The destination for writing trace data. Supported formats include:
         /// "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
@@ -698,7 +698,7 @@ namespace Google.Apis.CloudTrace.v2beta1.Data
     public class TraceSink : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The canonical sink resource name, unique within the project. Must be of the form:
+        /// Identifier. The canonical sink resource name, unique within the project. Must be of the form:
         /// projects/[PROJECT_NUMBER]/traceSinks/[SINK_ID]. E.g.: `"projects/12345/traceSinks/my-project-trace-sink"`.
         /// Sink identifiers are limited to 256 characters and can include only the following characters: upper and
         /// lower-case alphanumeric characters, underscores, hyphens, and periods.

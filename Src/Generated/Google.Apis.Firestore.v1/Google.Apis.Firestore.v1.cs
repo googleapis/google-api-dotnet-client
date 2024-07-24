@@ -5012,7 +5012,11 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Nearest Neighbors search config.</summary>
+    /// <summary>
+    /// Nearest Neighbors search config. The ordering provided by FindNearest supersedes the order_by stage. If multiple
+    /// documents have the same vector distance, the returned document order is not guaranteed to be stable between
+    /// queries.
+    /// </summary>
     public class FindNearest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The distance measure to use, required.</summary>
@@ -5219,7 +5223,7 @@ namespace Google.Apis.Firestore.v1.Data
 
         /// <summary>
         /// At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep
-        /// backups for 7 days. The maximum supported retention is 14 weeks.
+        /// backups for 7 days. The maximum supported retention period is 14 weeks.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retention")]
         public virtual object Retention { get; set; }
@@ -5481,13 +5485,6 @@ namespace Google.Apis.Firestore.v1.Data
     /// <summary>Represents a recurring schedule that runs every day. The time zone is UTC.</summary>
     public class GoogleFirestoreAdminV1DailyRecurrence : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Time of the day. The first run scheduled will be either on the same day if schedule creation time precedes
-        /// time_of_day or the next day otherwise.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("time")]
-        public virtual TimeOfDay Time { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6824,13 +6821,6 @@ namespace Google.Apis.Firestore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("day")]
         public virtual string Day { get; set; }
 
-        /// <summary>
-        /// Time of the day. If day is today, the first run will happen today if schedule creation time precedes
-        /// time_of_day, and the next week otherwise.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("time")]
-        public virtual TimeOfDay Time { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -8026,38 +8016,6 @@ namespace Google.Apis.Firestore.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetIds")]
         public virtual System.Collections.Generic.IList<System.Nullable<int>> TargetIds { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API
-    /// may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
-    /// </summary>
-    public class TimeOfDay : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for
-        /// scenarios like business closing time.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("hours")]
-        public virtual System.Nullable<int> Hours { get; set; }
-
-        /// <summary>Minutes of hour of day. Must be from 0 to 59.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("minutes")]
-        public virtual System.Nullable<int> Minutes { get; set; }
-
-        /// <summary>Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
-        public virtual System.Nullable<int> Nanos { get; set; }
-
-        /// <summary>
-        /// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows
-        /// leap-seconds.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
-        public virtual System.Nullable<int> Seconds { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

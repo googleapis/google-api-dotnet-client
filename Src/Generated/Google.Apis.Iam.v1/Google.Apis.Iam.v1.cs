@@ -2378,9 +2378,11 @@ namespace Google.Apis.Iam.v1
             /// Deletes a custom Role. When you delete a custom role, the following changes occur immediately: * You
             /// cannot bind a principal to the custom role in an IAM Policy. * Existing bindings to the custom role are
             /// not changed, but they have no effect. * By default, the response from ListRoles does not include the
-            /// custom role. You have 7 days to undelete the custom role. After 7 days, the following changes occur: *
-            /// The custom role is permanently deleted and cannot be recovered. * If an IAM policy contains a binding to
-            /// the custom role, the binding is permanently removed.
+            /// custom role. A deleted custom role still counts toward the [custom role limit](/iam/quotas#limits) until
+            /// it is permanently deleted. You have 7 days to undelete the custom role. After 7 days, the following
+            /// changes occur: * The custom role is permanently deleted and cannot be recovered. * If an IAM policy
+            /// contains a binding to the custom role, the binding is permanently removed. * The custom role no longer
+            /// counts toward your custom role limit.
             /// </summary>
             /// <param name="name">
             /// The `name` parameter's value depends on the target resource for the request, namely
@@ -2408,9 +2410,11 @@ namespace Google.Apis.Iam.v1
             /// Deletes a custom Role. When you delete a custom role, the following changes occur immediately: * You
             /// cannot bind a principal to the custom role in an IAM Policy. * Existing bindings to the custom role are
             /// not changed, but they have no effect. * By default, the response from ListRoles does not include the
-            /// custom role. You have 7 days to undelete the custom role. After 7 days, the following changes occur: *
-            /// The custom role is permanently deleted and cannot be recovered. * If an IAM policy contains a binding to
-            /// the custom role, the binding is permanently removed.
+            /// custom role. A deleted custom role still counts toward the [custom role limit](/iam/quotas#limits) until
+            /// it is permanently deleted. You have 7 days to undelete the custom role. After 7 days, the following
+            /// changes occur: * The custom role is permanently deleted and cannot be recovered. * If an IAM policy
+            /// contains a binding to the custom role, the binding is permanently removed. * The custom role no longer
+            /// counts toward your custom role limit.
             /// </summary>
             public class DeleteRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Role>
             {
@@ -5502,9 +5506,11 @@ namespace Google.Apis.Iam.v1
             /// Deletes a custom Role. When you delete a custom role, the following changes occur immediately: * You
             /// cannot bind a principal to the custom role in an IAM Policy. * Existing bindings to the custom role are
             /// not changed, but they have no effect. * By default, the response from ListRoles does not include the
-            /// custom role. You have 7 days to undelete the custom role. After 7 days, the following changes occur: *
-            /// The custom role is permanently deleted and cannot be recovered. * If an IAM policy contains a binding to
-            /// the custom role, the binding is permanently removed.
+            /// custom role. A deleted custom role still counts toward the [custom role limit](/iam/quotas#limits) until
+            /// it is permanently deleted. You have 7 days to undelete the custom role. After 7 days, the following
+            /// changes occur: * The custom role is permanently deleted and cannot be recovered. * If an IAM policy
+            /// contains a binding to the custom role, the binding is permanently removed. * The custom role no longer
+            /// counts toward your custom role limit.
             /// </summary>
             /// <param name="name">
             /// The `name` parameter's value depends on the target resource for the request, namely
@@ -5532,9 +5538,11 @@ namespace Google.Apis.Iam.v1
             /// Deletes a custom Role. When you delete a custom role, the following changes occur immediately: * You
             /// cannot bind a principal to the custom role in an IAM Policy. * Existing bindings to the custom role are
             /// not changed, but they have no effect. * By default, the response from ListRoles does not include the
-            /// custom role. You have 7 days to undelete the custom role. After 7 days, the following changes occur: *
-            /// The custom role is permanently deleted and cannot be recovered. * If an IAM policy contains a binding to
-            /// the custom role, the binding is permanently removed.
+            /// custom role. A deleted custom role still counts toward the [custom role limit](/iam/quotas#limits) until
+            /// it is permanently deleted. You have 7 days to undelete the custom role. After 7 days, the following
+            /// changes occur: * The custom role is permanently deleted and cannot be recovered. * If an IAM policy
+            /// contains a binding to the custom role, the binding is permanently removed. * The custom role no longer
+            /// counts toward your custom role limit.
             /// </summary>
             public class DeleteRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Role>
             {
@@ -6578,65 +6586,6 @@ namespace Google.Apis.Iam.v1
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
-                        });
-                    }
-                }
-
-                /// <summary>Patches a ServiceAccountKey.</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="name">
-                /// The resource name of the service account key in the following format
-                /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}`.
-                /// </param>
-                public virtual PatchRequest Patch(Google.Apis.Iam.v1.Data.PatchServiceAccountKeyRequest body, string name)
-                {
-                    return new PatchRequest(this.service, body, name);
-                }
-
-                /// <summary>Patches a ServiceAccountKey.</summary>
-                public class PatchRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.ServiceAccountKey>
-                {
-                    /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Iam.v1.Data.PatchServiceAccountKeyRequest body, string name) : base(service)
-                    {
-                        Name = name;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// The resource name of the service account key in the following format
-                    /// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}`.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Iam.v1.Data.PatchServiceAccountKeyRequest Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "patch";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+name}:patch";
-
-                    /// <summary>Initializes Patch parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/serviceAccounts/[^/]+/keys/[^/]+$",
                         });
                     }
                 }
@@ -9377,24 +9326,6 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The service account key patch request.</summary>
-    public class PatchServiceAccountKeyRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. The service account key to update.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountKey")]
-        public virtual ServiceAccountKey ServiceAccountKey { get; set; }
-
-        /// <summary>
-        /// Required. The update mask to apply to the service account key. Only the following fields are eligible for
-        /// patching: - contact - description
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
-        public virtual object UpdateMask { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// The service account patch request. You can patch only the `display_name` and `description` fields. You must use
     /// the `update_mask` field to specify which of these fields you want to patch. Only the fields specified in the
@@ -9836,24 +9767,6 @@ namespace Google.Apis.Iam.v1.Data
     /// </summary>
     public class ServiceAccountKey : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Optional. A user provided email address as the point of contact for this service account key. Must be an
-        /// email address. Limit 64 characters.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("contact")]
-        public virtual string Contact { get; set; }
-
-        /// <summary>
-        /// Output only. The cloud identity that created this service account key. Populated automatically when the key
-        /// is created and not editable by the user.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("creator")]
-        public virtual string Creator { get; set; }
-
-        /// <summary>Optional. A user provided description of this service account key.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
         /// <summary>
         /// Output only. optional. If the key is disabled, it may have a DisableReason describing why it was disabled.
         /// </summary>

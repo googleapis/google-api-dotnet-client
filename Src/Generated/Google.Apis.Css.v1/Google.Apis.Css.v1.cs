@@ -1440,18 +1440,31 @@ namespace Google.Apis.Css.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The certification for the product.</summary>
+    /// <summary>
+    /// The certification for the product. Use the this attribute to describe certifications, such as energy efficiency
+    /// ratings, associated with a product.
+    /// </summary>
     public class Certification : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Name of the certification body.</summary>
+        /// <summary>
+        /// The authority or certification body responsible for issuing the certification. At this time, the most common
+        /// value is "EC" or “European_Commission” for energy labels in the EU.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authority")]
         public virtual string Authority { get; set; }
 
-        /// <summary>A unique code to identify the certification.</summary>
+        /// <summary>
+        /// The code of the certification. For example, for the EPREL certificate with the link
+        /// https://eprel.ec.europa.eu/screen/product/dishwashers2019/123456 the code is 123456. The code is required
+        /// for European Energy Labels.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual string Code { get; set; }
 
-        /// <summary>Name of the certification.</summary>
+        /// <summary>
+        /// The name of the certification. At this time, the most common value is "EPREL", which represents energy
+        /// efficiency certifications in the EU European Registry for Energy Labeling (EPREL) database.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 

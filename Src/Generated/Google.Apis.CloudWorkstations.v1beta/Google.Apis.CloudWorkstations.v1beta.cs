@@ -2684,9 +2684,9 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
 
         /// <summary>
         /// Optional. Whether to enable nested virtualization on boosted Cloud Workstations VMs running using this boost
-        /// configuration. Nested virtualization lets you run virtual machine (VM) instances inside your workstation.
-        /// Before enabling nested virtualization, consider the following important considerations. Cloud Workstations
-        /// instances are subject to the [same restrictions as Compute Engine
+        /// configuration. Defaults to false. Nested virtualization lets you run virtual machine (VM) instances inside
+        /// your workstation. Before enabling nested virtualization, consider the following important considerations.
+        /// Cloud Workstations instances are subject to the [same restrictions as Compute Engine
         /// instances](https://cloud.google.com/compute/docs/instances/nested-virtualization/overview#restrictions): *
         /// **Organization policy**: projects, folders, or organizations may be restricted from creating nested VMs if
         /// the **Disable VM nested virtualization** constraint is enforced in the organization policy. For more
@@ -2695,12 +2695,7 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         /// * **Performance**: nested VMs might experience a 10% or greater decrease in performance for workloads that
         /// are CPU-bound and possibly greater than a 10% decrease for workloads that are input/output bound. *
         /// **Machine Type**: nested virtualization can only be enabled on boost configurations that specify a
-        /// machine_type in the N1 or N2 machine series. * **GPUs**: nested virtualization may not be enabled on boost
-        /// configurations with accelerators. * **Operating System**: Because [Container-Optimized
-        /// OS](https://cloud.google.com/compute/docs/images/os-details#container-optimized_os_cos) does not support
-        /// nested virtualization, when nested virtualization is enabled, the underlying Compute Engine VM instances
-        /// boot from an [Ubuntu LTS](https://cloud.google.com/compute/docs/images/os-details#ubuntu_lts) image.
-        /// Defaults to false.
+        /// machine_type in the N1 or N2 machine series.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableNestedVirtualization")]
         public virtual System.Nullable<bool> EnableNestedVirtualization { get; set; }
@@ -2929,9 +2924,9 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
 
         /// <summary>
         /// Optional. Whether to enable nested virtualization on Cloud Workstations VMs created using this workstation
-        /// configuration. Nested virtualization lets you run virtual machine (VM) instances inside your workstation.
-        /// Before enabling nested virtualization, consider the following important considerations. Cloud Workstations
-        /// instances are subject to the [same restrictions as Compute Engine
+        /// configuration. Defaults to false. Nested virtualization lets you run virtual machine (VM) instances inside
+        /// your workstation. Before enabling nested virtualization, consider the following important considerations.
+        /// Cloud Workstations instances are subject to the [same restrictions as Compute Engine
         /// instances](https://cloud.google.com/compute/docs/instances/nested-virtualization/overview#restrictions): *
         /// **Organization policy**: projects, folders, or organizations may be restricted from creating nested VMs if
         /// the **Disable VM nested virtualization** constraint is enforced in the organization policy. For more
@@ -2940,11 +2935,7 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         /// * **Performance**: nested VMs might experience a 10% or greater decrease in performance for workloads that
         /// are CPU-bound and possibly greater than a 10% decrease for workloads that are input/output bound. *
         /// **Machine Type**: nested virtualization can only be enabled on workstation configurations that specify a
-        /// machine_type in the N1 or N2 machine series. * **GPUs**: nested virtualization may not be enabled on
-        /// workstation configurations with accelerators. * **Operating System**: because [Container-Optimized
-        /// OS](https://cloud.google.com/compute/docs/images/os-details#container-optimized_os_cos) does not support
-        /// nested virtualization, when nested virtualization is enabled, the underlying Compute Engine VM instances
-        /// boot from an [Ubuntu LTS](https://cloud.google.com/compute/docs/images/os-details#ubuntu_lts) image.
+        /// machine_type in the N1 or N2 machine series.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableNestedVirtualization")]
         public virtual System.Nullable<bool> EnableNestedVirtualization { get; set; }
@@ -3818,6 +3809,12 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
 
+        /// <summary>
+        /// Output only. List of available boost configuration ids that this workstation can be boosted up to
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boostConfigs")]
+        public virtual System.Collections.Generic.IList<WorkstationBoostConfig> BoostConfigs { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;
@@ -4039,6 +4036,19 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
             get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
+    }
+
+    /// <summary>
+    /// Boost config for this workstation. This object is populated from the parent workstation config.
+    /// </summary>
+    public class WorkstationBoostConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Boost config id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>
@@ -4370,9 +4380,13 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Optional. Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must
-        /// also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging
-        /// is distinct from [Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-logging).
+        /// Optional. Whether to enable Linux `auditd` logging on the workstation. When enabled, a service_account must
+        /// also be specified that has `roles/logging.logWriter` and `roles/monitoring.metricWriter` on the project.
+        /// Operating system audit logging is distinct from [Cloud Audit
+        /// Logs](https://cloud.google.com/workstations/docs/audit-logging) and [Container output
+        /// logging](http://cloud/workstations/docs/container-output-logging#overview). Operating system audit logs are
+        /// available in the [Cloud Logging](https://cloud.google.com/logging/docs) console by querying:
+        /// resource.type="gce_instance" log_name:"/logs/linux-auditd"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableAuditAgent")]
         public virtual System.Nullable<bool> EnableAuditAgent { get; set; }

@@ -28333,7 +28333,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     public class GoogleCloudDialogflowV2beta1AudioInput : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The natural language speech audio to be processed. A single request can contain up to 1 minute of
+        /// Required. The natural language speech audio to be processed. A single request can contain up to 2 minutes of
         /// speech audio data. The transcribed text cannot contain more than 256 bytes for virtual agent interactions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audio")]

@@ -9549,7 +9549,8 @@ namespace Google.Apis.CloudRun.v1.Data
     {
         /// <summary>
         /// ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of
-        /// the Revision. If not specified, defaults to 80.
+        /// the Revision. If not specified or 0, defaults to 80 when requested CPU &amp;gt;= 1 and defaults to 1 when
+        /// requested CPU &amp;lt; 1.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerConcurrency")]
         public virtual System.Nullable<int> ContainerConcurrency { get; set; }

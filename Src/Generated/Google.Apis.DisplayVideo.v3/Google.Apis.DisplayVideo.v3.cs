@@ -27189,8 +27189,8 @@ namespace Google.Apis.DisplayVideo.v3.Data
         public virtual System.Collections.Generic.IList<System.Nullable<long>> AdGroupIds { get; set; }
 
         /// <summary>
-        /// Optional. YouTube Ad Groups QA to download by ID. All IDs must belong to the same Advertiser or Partner
-        /// specified in CreateSdfDownloadTaskRequest.
+        /// Optional. YouTube Ad Groups, by ID, to download in QA format. All IDs must belong to the same Advertiser or
+        /// Partner specified in CreateSdfDownloadTaskRequest.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adGroupQaIds")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> AdGroupQaIds { get; set; }
@@ -27217,8 +27217,8 @@ namespace Google.Apis.DisplayVideo.v3.Data
         public virtual System.Collections.Generic.IList<System.Nullable<long>> LineItemIds { get; set; }
 
         /// <summary>
-        /// Optional. Line Items QA to download by ID. All IDs must belong to the same Advertiser or Partner specified
-        /// in CreateSdfDownloadTaskRequest.
+        /// Optional. Line Items, by ID, to download in QA format. All IDs must belong to the same Advertiser or Partner
+        /// specified in CreateSdfDownloadTaskRequest.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemQaIds")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> LineItemQaIds { get; set; }
@@ -30233,12 +30233,7 @@ namespace Google.Apis.DisplayVideo.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("exchangeReviewStatuses")]
         public virtual System.Collections.Generic.IList<ExchangeReviewStatus> ExchangeReviewStatuses { get; set; }
 
-        /// <summary>
-        /// Publisher review statuses for the creative. **Warning:** This field will be deprecated on June 26th, 2024.
-        /// After this date, this field will be empty. Read our [feature deprecation
-        /// announcement](/display-video/api/deprecations#features.creative_publisher_review_statuses) for more
-        /// information.
-        /// </summary>
+        /// <summary>Publisher review statuses for the creative.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publisherReviewStatuses")]
         public virtual System.Collections.Generic.IList<PublisherReviewStatus> PublisherReviewStatuses { get; set; }
 

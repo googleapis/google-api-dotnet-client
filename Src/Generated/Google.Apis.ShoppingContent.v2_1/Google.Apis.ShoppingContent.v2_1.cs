@@ -18424,6 +18424,14 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual System.Nullable<long> LoyaltyPoints { get; set; }
 
         /// <summary>
+        /// Optional. A date range during which the item is eligible for member price. If not specified, the member
+        /// price is always applicable. The date range is represented by a pair of ISO 8601 dates separated by a space,
+        /// comma, or slash.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memberPriceEffectiveDate")]
+        public virtual string MemberPriceEffectiveDate { get; set; }
+
+        /// <summary>
         /// Optional. The price for members of the given tier (instant discount price). Must be smaller or equal to the
         /// regular price.
         /// </summary>

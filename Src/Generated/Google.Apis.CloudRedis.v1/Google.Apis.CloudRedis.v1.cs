@@ -2412,7 +2412,6 @@ namespace Google.Apis.CloudRedis.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("feedType")]
         public virtual string FeedType { get; set; }
 
-        /// <summary>More feed data would be added in subsequent CLs</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("observabilityMetricData")]
         public virtual ObservabilityMetricData ObservabilityMetricData { get; set; }
 

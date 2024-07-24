@@ -403,7 +403,7 @@ namespace Google.Apis.APIManagement.v1alpha
 
                         /// <summary>
                         /// ListApiOperations gets all ApiOperations for a given project and location and ObservationJob
-                        /// and ApiObservation
+                        /// and ApiObservation.
                         /// </summary>
                         /// <param name="parent">
                         /// Required. The parent, which owns this collection of ApiOperations. Format:
@@ -416,7 +416,7 @@ namespace Google.Apis.APIManagement.v1alpha
 
                         /// <summary>
                         /// ListApiOperations gets all ApiOperations for a given project and location and ObservationJob
-                        /// and ApiObservation
+                        /// and ApiObservation.
                         /// </summary>
                         public class ListRequest : APIManagementBaseServiceRequest<Google.Apis.APIManagement.v1alpha.Data.ListApiOperationsResponse>
                         {
@@ -491,6 +491,65 @@ namespace Google.Apis.APIManagement.v1alpha
                         }
                     }
 
+                    /// <summary>BatchEditTagsApiObservations adds or removes Tags for ApiObservations.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The parent resource shared by all ApiObservations being edited. Format:
+                    /// projects/{project}/locations/{location}/observationJobs/{observation_job}
+                    /// </param>
+                    public virtual BatchEditTagsRequest BatchEditTags(Google.Apis.APIManagement.v1alpha.Data.BatchEditTagsApiObservationsRequest body, string parent)
+                    {
+                        return new BatchEditTagsRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>BatchEditTagsApiObservations adds or removes Tags for ApiObservations.</summary>
+                    public class BatchEditTagsRequest : APIManagementBaseServiceRequest<Google.Apis.APIManagement.v1alpha.Data.BatchEditTagsApiObservationsResponse>
+                    {
+                        /// <summary>Constructs a new BatchEditTags request.</summary>
+                        public BatchEditTagsRequest(Google.Apis.Services.IClientService service, Google.Apis.APIManagement.v1alpha.Data.BatchEditTagsApiObservationsRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent resource shared by all ApiObservations being edited. Format:
+                        /// projects/{project}/locations/{location}/observationJobs/{observation_job}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.APIManagement.v1alpha.Data.BatchEditTagsApiObservationsRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "batchEditTags";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+parent}/apiObservations:batchEditTags";
+
+                        /// <summary>Initializes BatchEditTags parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/observationJobs/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>GetApiObservation retrieves a single ApiObservation by name.</summary>
                     /// <param name="name">
                     /// Required. The name of the ApiObservation to retrieve. Format:
@@ -543,7 +602,8 @@ namespace Google.Apis.APIManagement.v1alpha
                     }
 
                     /// <summary>
-                    /// ListApiObservations gets all ApiObservations for a given project and location and ObservationJob
+                    /// ListApiObservations gets all ApiObservations for a given project and location and
+                    /// ObservationJob.
                     /// </summary>
                     /// <param name="parent">
                     /// Required. The parent, which owns this collection of ApiObservations. Format:
@@ -555,7 +615,8 @@ namespace Google.Apis.APIManagement.v1alpha
                     }
 
                     /// <summary>
-                    /// ListApiObservations gets all ApiObservations for a given project and location and ObservationJob
+                    /// ListApiObservations gets all ApiObservations for a given project and location and
+                    /// ObservationJob.
                     /// </summary>
                     public class ListRequest : APIManagementBaseServiceRequest<Google.Apis.APIManagement.v1alpha.Data.ListApiObservationsResponse>
                     {
@@ -957,7 +1018,7 @@ namespace Google.Apis.APIManagement.v1alpha
                     }
                 }
 
-                /// <summary>ListObservationJobs gets all ObservationJobs for a given project and location</summary>
+                /// <summary>ListObservationJobs gets all ObservationJobs for a given project and location.</summary>
                 /// <param name="parent">
                 /// Required. The parent, which owns this collection of ObservationJobs. Format:
                 /// projects/{project}/locations/{location}
@@ -967,7 +1028,7 @@ namespace Google.Apis.APIManagement.v1alpha
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>ListObservationJobs gets all ObservationJobs for a given project and location</summary>
+                /// <summary>ListObservationJobs gets all ObservationJobs for a given project and location.</summary>
                 public class ListRequest : APIManagementBaseServiceRequest<Google.Apis.APIManagement.v1alpha.Data.ListObservationJobsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -1264,7 +1325,7 @@ namespace Google.Apis.APIManagement.v1alpha
                 }
 
                 /// <summary>
-                /// ListObservationSources gets all ObservationSources for a given project and location
+                /// ListObservationSources gets all ObservationSources for a given project and location.
                 /// </summary>
                 /// <param name="parent">
                 /// Required. The parent, which owns this collection of ObservationSources. Format:
@@ -1276,7 +1337,7 @@ namespace Google.Apis.APIManagement.v1alpha
                 }
 
                 /// <summary>
-                /// ListObservationSources gets all ObservationSources for a given project and location
+                /// ListObservationSources gets all ObservationSources for a given project and location.
                 /// </summary>
                 public class ListRequest : APIManagementBaseServiceRequest<Google.Apis.APIManagement.v1alpha.Data.ListObservationSourcesResponse>
                 {
@@ -1760,6 +1821,89 @@ namespace Google.Apis.APIManagement.v1alpha
                     });
                 }
             }
+
+            /// <summary>ListApiObservationTags lists all extant tags on any observation in the given project.</summary>
+            /// <param name="parent">
+            /// Required. The parent, which owns this collection of tags. Format:
+            /// projects/{project}/locations/{location}
+            /// </param>
+            public virtual ListApiObservationTagsRequest ListApiObservationTags(string parent)
+            {
+                return new ListApiObservationTagsRequest(this.service, parent);
+            }
+
+            /// <summary>ListApiObservationTags lists all extant tags on any observation in the given project.</summary>
+            public class ListApiObservationTagsRequest : APIManagementBaseServiceRequest<Google.Apis.APIManagement.v1alpha.Data.ListApiObservationTagsResponse>
+            {
+                /// <summary>Constructs a new ListApiObservationTags request.</summary>
+                public ListApiObservationTagsRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent, which owns this collection of tags. Format:
+                /// projects/{project}/locations/{location}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. The maximum number of tags to return. The service may return fewer than this value. If
+                /// unspecified, at most 10 tags will be returned. The maximum value is 1000; values above 1000 will be
+                /// coerced to 1000.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A page token, received from a previous `ListApiObservationTags` call. Provide this to
+                /// retrieve the subsequent page. When paginating, all other parameters provided to
+                /// `ListApiObservationTags` must match the call that provided the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "listApiObservationTags";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+parent}:listApiObservationTags";
+
+                /// <summary>Initializes ListApiObservationTags parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
     }
 }
@@ -2009,6 +2153,31 @@ namespace Google.Apis.APIManagement.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message for requesting batch edit tags for ApiObservations</summary>
+    public class BatchEditTagsApiObservationsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The request message specifying the resources to update. A maximum of 1000 apiObservations can be
+        /// modified in a batch.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
+        public virtual System.Collections.Generic.IList<EditTagsApiObservationsRequest> Requests { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for response to edit Tags for ApiObservations</summary>
+    public class BatchEditTagsApiObservationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>ApiObservations that were changed</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiObservations")]
+        public virtual System.Collections.Generic.IList<ApiObservation> ApiObservations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2019,6 +2188,24 @@ namespace Google.Apis.APIManagement.v1alpha.Data
     /// <summary>Message for disabling an ObservationJob</summary>
     public class DisableObservationJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for requesting edit tags for ApiObservation</summary>
+    public class EditTagsApiObservationsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Identifier of ApiObservation need to be edit tags Format example:
+        /// "apigee.googleapis.com|us-west1|443"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiObservationId")]
+        public virtual string ApiObservationId { get; set; }
+
+        /// <summary>Required. Tag actions to be applied</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tagActions")]
+        public virtual System.Collections.Generic.IList<TagAction> TagActions { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2178,6 +2365,24 @@ namespace Google.Apis.APIManagement.v1alpha.Data
         /// <summary>Name of query param</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for response to listing tags</summary>
+    public class ListApiObservationTagsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The tags from the specified project</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiObservationTags")]
+        public virtual System.Collections.Generic.IList<string> ApiObservationTags { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2688,6 +2893,21 @@ namespace Google.Apis.APIManagement.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for edit tag action</summary>
+    public class TagAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Action to be applied</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; }
+
+        /// <summary>Required. Tag to be added or removed</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tag")]
+        public virtual string Tag { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

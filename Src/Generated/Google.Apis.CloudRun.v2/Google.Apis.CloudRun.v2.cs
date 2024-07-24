@@ -5006,7 +5006,10 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Optional. Sets the maximum number of requests that each serving instance can receive.</summary>
+        /// <summary>
+        /// Optional. Sets the maximum number of requests that each serving instance can receive. If not specified or 0,
+        /// defaults to 80 when requested CPU &amp;gt;= 1 and defaults to 1 when requested CPU &amp;lt; 1.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxInstanceRequestConcurrency")]
         public virtual System.Nullable<int> MaxInstanceRequestConcurrency { get; set; }
 

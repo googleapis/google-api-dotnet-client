@@ -5729,6 +5729,13 @@ namespace Google.Apis.Connectors.v1.Data
     public class Connection : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. Async operations enabled for the connection. If Async Operations is enabled, Connection allows the
+        /// customers to initiate async long running operations using the actions API.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("asyncOperationsEnabled")]
+        public virtual System.Nullable<bool> AsyncOperationsEnabled { get; set; }
+
+        /// <summary>
         /// Optional. Configuration for establishing the connection's authentication with an external system.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authConfig")]
@@ -6220,6 +6227,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("internalclientRatelimitThreshold")]
         public virtual System.Nullable<long> InternalclientRatelimitThreshold { get; set; }
 
+        /// <summary>Indicate whether connector is being migrated to cloud run deployment model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("migrateDeploymentModel")]
+        public virtual System.Nullable<bool> MigrateDeploymentModel { get; set; }
+
         /// <summary>Max QPS supported by the connector version before throttling of requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ratelimitThreshold")]
         public virtual System.Nullable<long> RatelimitThreshold { get; set; }
@@ -6415,6 +6426,10 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Optional. Indicates whether connector is deployed on GKE/CloudRun</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deploymentModel")]
         public virtual string DeploymentModel { get; set; }
+
+        /// <summary>Output only. Status of the deployment model migration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentModelMigrationState")]
+        public virtual string DeploymentModelMigrationState { get; set; }
 
         /// <summary>Output only. HPA autoscaling config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hpaConfig")]

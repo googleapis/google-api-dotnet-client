@@ -7163,6 +7163,10 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("encryption")]
         public virtual Encryption Encryption { get; set; }
 
+        /// <summary>Immutable. Target details for importing a machine image, will be used by ImageImportJob.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineImageTargetDefaults")]
+        public virtual MachineImageTargetDetails MachineImageTargetDefaults { get; set; }
+
         /// <summary>Output only. The resource path of the ImageImport.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -7275,6 +7279,10 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
         public virtual System.Collections.Generic.IList<Status> Errors { get; set; }
+
+        /// <summary>Output only. Target details used to import a machine image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineImageTargetDetails")]
+        public virtual MachineImageTargetDetails MachineImageTargetDetails { get; set; }
 
         /// <summary>Output only. The resource path of the ImageImportJob.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -7779,6 +7787,101 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Parameters overriding decisions based on the source machine image configurations.</summary>
+    public class MachineImageParametersOverrides : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The machine type to create the MachineImage with. If empty, the service will choose a relevant
+        /// machine type based on the information from the source image. For more information about machine types,
+        /// please refer to https://cloud.google.com/compute/docs/machine-resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
+        public virtual string MachineType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The target details of the machine image resource that will be created by the image import job.
+    /// </summary>
+    public class MachineImageTargetDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Additional licenses to assign to the instance created by the machine image. Format:
+        /// https://www.googleapis.com/compute/v1/projects/PROJECT_ID/global/licenses/LICENSE_NAME Or
+        /// https://www.googleapis.com/compute/beta/projects/PROJECT_ID/global/licenses/LICENSE_NAME
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalLicenses")]
+        public virtual System.Collections.Generic.IList<string> AdditionalLicenses { get; set; }
+
+        /// <summary>Optional. An optional description of the machine image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Immutable. The encryption to apply to the machine image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryption")]
+        public virtual Encryption Encryption { get; set; }
+
+        /// <summary>Optional. The labels to apply to the instance created by the machine image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Required. The name of the machine image to be created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineImageName")]
+        public virtual string MachineImageName { get; set; }
+
+        /// <summary>
+        /// Optional. Parameters overriding decisions based on the source machine image configurations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineImageParametersOverrides")]
+        public virtual MachineImageParametersOverrides MachineImageParametersOverrides { get; set; }
+
+        /// <summary>
+        /// Optional. The network interfaces to create with the instance created by the machine image. Internal and
+        /// external IP addresses are ignored for machine image import.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkInterfaces")]
+        public virtual System.Collections.Generic.IList<NetworkInterface> NetworkInterfaces { get; set; }
+
+        /// <summary>Optional. Use to set the parameters relevant for the OS adaptation process.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osAdaptationParameters")]
+        public virtual ImageImportOsAdaptationParameters OsAdaptationParameters { get; set; }
+
+        /// <summary>Optional. The service account to assign to the instance created by the machine image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual ServiceAccount ServiceAccount { get; set; }
+
+        /// <summary>Optional. Shielded instance configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shieldedInstanceConfig")]
+        public virtual ShieldedInstanceConfig ShieldedInstanceConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Set to true to set the machine image storageLocations to the single region of the import job. When
+        /// false, the closest multi-region is selected.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("singleRegionStorage")]
+        public virtual System.Nullable<bool> SingleRegionStorage { get; set; }
+
+        /// <summary>Optional. Use to skip OS adaptation process.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skipOsAdaptation")]
+        public virtual SkipOsAdaptation SkipOsAdaptation { get; set; }
+
+        /// <summary>Optional. The tags to apply to the instance created by the machine image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IList<string> Tags { get; set; }
+
+        /// <summary>
+        /// Required. Reference to the TargetProject resource that represents the target project in which the imported
+        /// machine image will be created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetProject")]
+        public virtual string TargetProject { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// MigratingVm describes the VM that will be migrated from a Source environment and its replication state.
     /// </summary>
@@ -8179,6 +8282,13 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         /// <summary>The network to connect the NIC to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
+
+        /// <summary>
+        /// Optional. The networking tier used for configuring network access configuration. If left empty, will default
+        /// to PREMIUM.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkTier")]
+        public virtual string NetworkTier { get; set; }
 
         /// <summary>Optional. The subnetwork to connect the NIC to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
@@ -8700,8 +8810,58 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Service account to assign to the instance created by the machine image.</summary>
+    public class ServiceAccount : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The email address of the service account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; }
+
+        /// <summary>Optional. The list of scopes to be made available for this service account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
+        public virtual System.Collections.Generic.IList<string> Scopes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Shielded instance configuration.</summary>
+    public class ShieldedInstanceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Defines whether the instance created by the machine image has integrity monitoring enabled. This
+        /// can be set to true only if the image boot option is EFI, and vTPM is enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableIntegrityMonitoring")]
+        public virtual System.Nullable<bool> EnableIntegrityMonitoring { get; set; }
+
+        /// <summary>
+        /// Optional. Defines whether the instance created by the machine image has vTPM enabled. This can be set to
+        /// true only if the image boot option is EFI.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableVtpm")]
+        public virtual System.Nullable<bool> EnableVtpm { get; set; }
+
+        /// <summary>
+        /// Optional. Defines whether the instance created by the machine image has Secure Boot enabled. This can be set
+        /// to true only if the image boot option is EFI.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secureBoot")]
+        public virtual string SecureBoot { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>ShuttingDownSourceVMStep contains specific step details.</summary>
     public class ShuttingDownSourceVMStep : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Mentions that the machine image import is not using OS adaptation process.</summary>
+    public class SkipOsAdaptation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

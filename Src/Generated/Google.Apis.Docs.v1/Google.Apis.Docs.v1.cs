@@ -438,6 +438,16 @@ namespace Google.Apis.Docs.v1
             public virtual string DocumentId { get; private set; }
 
             /// <summary>
+            /// Whether to populate the Document.tabs field instead of the text content fields like body and
+            /// documentStyle on Document. - When `True`: Document content populates in the Document.tabs field instead
+            /// of the text content fields in Document. - When `False`: The content of the document's first tab
+            /// populates the content fields in Document excluding Document.tabs. If a document has only one tab, then
+            /// that tab is used to populate the document content. Document.tabs will be empty.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("includeTabsContent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> IncludeTabsContent { get; set; }
+
+            /// <summary>
             /// The suggestions view mode to apply to the document. This allows viewing the document with all
             /// suggestions inline, accepted or rejected. If one is not specified, DEFAULT_FOR_CURRENT_ACCESS is used.
             /// </summary>
@@ -500,6 +510,14 @@ namespace Google.Apis.Docs.v1
                     Name = "documentId",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("includeTabsContent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includeTabsContent",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -622,6 +640,21 @@ namespace Google.Apis.Docs.v1.Data
         /// <summary>The contents of the body. The indexes for the body's content begin at zero.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual System.Collections.Generic.IList<StructuralElement> Content { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A reference to a bookmark in this document.</summary>
+    public class BookmarkLink : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of a bookmark in this document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The ID of the tab containing this bookmark.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tabId")]
+        public virtual string TabId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -982,6 +1015,15 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("footerId")]
         public virtual string FooterId { get; set; }
 
+        /// <summary>
+        /// The tab that contains the footer to delete. When omitted, the request is applied to the first tab. In a
+        /// document containing a single tab: - If provided, must match the singular tab's ID. - If omitted, the request
+        /// applies to the singular tab. In a document containing multiple tabs: - If provided, the request applies to
+        /// the specified tab. - If omitted, the request applies to the first tab in the document.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tabId")]
+        public virtual string TabId { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -998,6 +1040,15 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("headerId")]
         public virtual string HeaderId { get; set; }
 
+        /// <summary>
+        /// The tab containing the header to delete. When omitted, the request is applied to the first tab. In a
+        /// document containing a single tab: - If provided, must match the singular tab's ID. - If omitted, the request
+        /// applies to the singular tab. In a document containing multiple tabs: - If provided, the request applies to
+        /// the specified tab. - If omitted, the request applies to the first tab in the document.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tabId")]
+        public virtual string TabId { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1012,6 +1063,16 @@ namespace Google.Apis.Docs.v1.Data
         /// <summary>The ID of the named range to delete.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namedRangeId")]
         public virtual string NamedRangeId { get; set; }
+
+        /// <summary>
+        /// Optional. The criteria used to specify which tab(s) the range deletion should occur in. When omitted, the
+        /// range deletion is applied to all tabs. In a document containing a single tab: - If provided, must match the
+        /// singular tab's ID. - If omitted, the range deletion applies to the singular tab. In a document containing
+        /// multiple tabs: - If provided, the range deletion applies to the specified tabs. - If not provided, the range
+        /// deletion applies to all tabs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tabsCriteria")]
+        public virtual TabsCriteria TabsCriteria { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1037,6 +1098,15 @@ namespace Google.Apis.Docs.v1.Data
         /// <summary>The ID of the positioned object to delete.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
         public virtual string ObjectId { get; set; }
+
+        /// <summary>
+        /// The tab that the positioned object to delete is in. When omitted, the request is applied to the first tab.
+        /// In a document containing a single tab: - If provided, must match the singular tab's ID. - If omitted, the
+        /// request applies to the singular tab. In a document containing multiple tabs: - If provided, the request
+        /// applies to the specified tab. - If omitted, the request applies to the first tab in the document.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tabId")]
+        public virtual string TabId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1163,6 +1233,13 @@ namespace Google.Apis.Docs.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestionsViewMode")]
         public virtual string SuggestionsViewMode { get; set; }
+
+        /// <summary>
+        /// Tabs that are part of a document. Tabs can contain child tabs, a tab nested within another tab. Child tabs
+        /// are represented by the Tab.child_tabs field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tabs")]
+        public virtual System.Collections.Generic.IList<Tab> Tabs { get; set; }
 
         /// <summary>The title of the document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
@@ -1384,6 +1461,61 @@ namespace Google.Apis.Docs.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A tab with document contents.</summary>
+    public class DocumentTab : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The main body of the document tab.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("body")]
+        public virtual Body Body { get; set; }
+
+        /// <summary>The style of the document tab.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentStyle")]
+        public virtual DocumentStyle DocumentStyle { get; set; }
+
+        /// <summary>The footers in the document tab, keyed by footer ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("footers")]
+        public virtual System.Collections.Generic.IDictionary<string, Footer> Footers { get; set; }
+
+        /// <summary>The footnotes in the document tab, keyed by footnote ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("footnotes")]
+        public virtual System.Collections.Generic.IDictionary<string, Footnote> Footnotes { get; set; }
+
+        /// <summary>The headers in the document tab, keyed by header ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headers")]
+        public virtual System.Collections.Generic.IDictionary<string, Header> Headers { get; set; }
+
+        /// <summary>The inline objects in the document tab, keyed by object ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inlineObjects")]
+        public virtual System.Collections.Generic.IDictionary<string, InlineObject> InlineObjects { get; set; }
+
+        /// <summary>The lists in the document tab, keyed by list ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lists")]
+        public virtual System.Collections.Generic.IDictionary<string, List> Lists { get; set; }
+
+        /// <summary>The named ranges in the document tab, keyed by name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namedRanges")]
+        public virtual System.Collections.Generic.IDictionary<string, NamedRanges> NamedRanges { get; set; }
+
+        /// <summary>The named styles of the document tab.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namedStyles")]
+        public virtual NamedStyles NamedStyles { get; set; }
+
+        /// <summary>The positioned objects in the document tab, keyed by object ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("positionedObjects")]
+        public virtual System.Collections.Generic.IDictionary<string, PositionedObject> PositionedObjects { get; set; }
+
+        /// <summary>The suggested changes to the style of the document tab, keyed by suggestion ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestedDocumentStyleChanges")]
+        public virtual System.Collections.Generic.IDictionary<string, SuggestedDocumentStyle> SuggestedDocumentStyleChanges { get; set; }
+
+        /// <summary>The suggested changes to the named styles of the document tab, keyed by suggestion ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestedNamedStylesChanges")]
+        public virtual System.Collections.Generic.IDictionary<string, SuggestedNamedStyles> SuggestedNamedStylesChanges { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The properties of an embedded drawing and used to differentiate the object type. An embedded drawing is one
     /// that's created and edited within a document. Note that extensive details are not supported.
@@ -1587,6 +1719,15 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("segmentId")]
         public virtual string SegmentId { get; set; }
 
+        /// <summary>
+        /// The tab that the location is in. When omitted, the request is applied to the first tab. In a document
+        /// containing a single tab: - If provided, must match the singular tab's ID. - If omitted, the request applies
+        /// to the singular tab. In a document containing multiple tabs: - If provided, the request applies to the
+        /// specified tab. - If omitted, the request applies to the first tab in the document.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tabId")]
+        public virtual string TabId { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1690,6 +1831,21 @@ namespace Google.Apis.Docs.v1.Data
         /// <summary>The ID of the header.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headerId")]
         public virtual string HeaderId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A reference to a heading in this document.</summary>
+    public class HeadingLink : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of a heading in this document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>The ID of the tab containing this heading.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tabId")]
+        public virtual string TabId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2139,13 +2295,33 @@ namespace Google.Apis.Docs.v1.Data
     /// <summary>A reference to another portion of a document or an external URL resource.</summary>
     public class Link : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// A bookmark in this document. In documents containing a single tab, links to bookmarks within the singular
+        /// tab continue to return Link.bookmark_id when the includeTabsContent parameter is set to `false` or unset.
+        /// Otherwise, this field is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bookmark")]
+        public virtual BookmarkLink Bookmark { get; set; }
+
         /// <summary>The ID of a bookmark in this document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bookmarkId")]
         public virtual string BookmarkId { get; set; }
 
+        /// <summary>
+        /// A heading in this document. In documents containing a single tab, links to headings within the singular tab
+        /// continue to return Link.heading_id when the includeTabsContent parameter is set to `false` or unset.
+        /// Otherwise, this field is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("heading")]
+        public virtual HeadingLink Heading { get; set; }
+
         /// <summary>The ID of a heading in this document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headingId")]
         public virtual string HeadingId { get; set; }
+
+        /// <summary>The ID of a tab in this document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tabId")]
+        public virtual string TabId { get; set; }
 
         /// <summary>An external URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
@@ -2260,6 +2436,15 @@ namespace Google.Apis.Docs.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("segmentId")]
         public virtual string SegmentId { get; set; }
+
+        /// <summary>
+        /// The tab that the location is in. When omitted, the request is applied to the first tab. In a document
+        /// containing a single tab: - If provided, must match the singular tab's ID. - If omitted, the request applies
+        /// to the singular tab. In a document containing multiple tabs: - If provided, the request applies to the
+        /// specified tab. - If omitted, the request applies to the first tab in the document.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tabId")]
+        public virtual string TabId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3181,6 +3366,15 @@ namespace Google.Apis.Docs.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
         public virtual System.Nullable<int> StartIndex { get; set; }
 
+        /// <summary>
+        /// The tab that contains this range. When omitted, the request applies to the first tab. In a document
+        /// containing a single tab: - If provided, must match the singular tab's ID. - If omitted, the request applies
+        /// to the singular tab. In a document containing multiple tabs: - If provided, the request applies to the
+        /// specified tab. - If omitted, the request applies to the first tab in the document.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tabId")]
+        public virtual string TabId { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3195,6 +3389,15 @@ namespace Google.Apis.Docs.v1.Data
         /// <summary>The text that will replace the matched text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replaceText")]
         public virtual string ReplaceText { get; set; }
+
+        /// <summary>
+        /// Optional. The criteria used to specify in which tabs the replacement occurs. When omitted, the replacement
+        /// applies to all tabs. In a document containing a single tab: - If provided, must match the singular tab's ID.
+        /// - If omitted, the replacement applies to the singular tab. In a document containing multiple tabs: - If
+        /// provided, the replacement applies to the specified tabs. - If omitted, the replacement applies to all tabs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tabsCriteria")]
+        public virtual TabsCriteria TabsCriteria { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3227,6 +3430,15 @@ namespace Google.Apis.Docs.v1.Data
         /// <summary>The replacement method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageReplaceMethod")]
         public virtual string ImageReplaceMethod { get; set; }
+
+        /// <summary>
+        /// The tab that the image to be replaced is in. When omitted, the request is applied to the first tab. In a
+        /// document containing a single tab: - If provided, must match the singular tab's ID. - If omitted, the request
+        /// applies to the singular tab. In a document containing multiple tabs: - If provided, the request applies to
+        /// the specified tab. - If omitted, the request applies to the first tab in the document.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tabId")]
+        public virtual string TabId { get; set; }
 
         /// <summary>
         /// The URI of the new image. The image is fetched once at insertion time and a copy is stored for display
@@ -3263,6 +3475,15 @@ namespace Google.Apis.Docs.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namedRangeName")]
         public virtual string NamedRangeName { get; set; }
+
+        /// <summary>
+        /// Optional. The criteria used to specify in which tabs the replacement occurs. When omitted, the replacement
+        /// applies to all tabs. In a document containing a single tab: - If provided, must match the singular tab's ID.
+        /// - If omitted, the replacement applies to the singular tab. In a document containing multiple tabs: - If
+        /// provided, the replacement applies to the specified tabs. - If omitted, the replacement applies to all tabs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tabsCriteria")]
+        public virtual TabsCriteria TabsCriteria { get; set; }
 
         /// <summary>Replaces the content of the specified named range(s) with the given text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
@@ -4086,6 +4307,55 @@ namespace Google.Apis.Docs.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A tab in a document.</summary>
+    public class Tab : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The child tabs nested within this tab.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("childTabs")]
+        public virtual System.Collections.Generic.IList<Tab> ChildTabs { get; set; }
+
+        /// <summary>A tab with document contents, like text and images.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentTab")]
+        public virtual DocumentTab DocumentTab { get; set; }
+
+        /// <summary>The properties of the tab, like ID and title.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tabProperties")]
+        public virtual TabProperties TabProperties { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Properties of a tab.</summary>
+    public class TabProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The index of the tab within the parent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("index")]
+        public virtual System.Nullable<int> Index { get; set; }
+
+        /// <summary>Output only. The depth of the tab within the document. Root-level tabs start at 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nestingLevel")]
+        public virtual System.Nullable<int> NestingLevel { get; set; }
+
+        /// <summary>
+        /// Optional. The ID of the parent tab. Empty when the current tab is a root-level tab, which means it doesn't
+        /// have any parents.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentTabId")]
+        public virtual string ParentTabId { get; set; }
+
+        /// <summary>Output only. The ID of the tab. This field can't be changed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tabId")]
+        public virtual string TabId { get; set; }
+
+        /// <summary>The user-visible name of the tab.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A tab stop within a paragraph.</summary>
     public class TabStop : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4499,6 +4769,17 @@ namespace Google.Apis.Docs.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A criteria that specifies in which tabs a request executes.</summary>
+    public class TabsCriteria : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of tab IDs in which the request executes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tabIds")]
+        public virtual System.Collections.Generic.IList<string> TabIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A ParagraphElement that represents a run of text that all has the same styling.</summary>
     public class TextRun : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4708,6 +4989,15 @@ namespace Google.Apis.Docs.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual object Fields { get; set; }
+
+        /// <summary>
+        /// The tab that contains the style to update. When omitted, the request applies to the first tab. In a document
+        /// containing a single tab: - If provided, must match the singular tab's ID. - If omitted, the request applies
+        /// to the singular tab. In a document containing multiple tabs: - If provided, the request applies to the
+        /// specified tab. - If not provided, the request applies to the first tab in the document.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tabId")]
+        public virtual string TabId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -1809,6 +1809,13 @@ namespace Google.Apis.Backupdr.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
+                    /// Optional. If set to true, will not check plan duration against backup vault enforcement
+                    /// duration. Non-standard field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> Force { get; set; }
+
+                    /// <summary>
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
                     /// you must retry your request, the server will know to ignore the request if it has already been
                     /// completed. The server will guarantee that for at least 60 minutes since the first request. For
@@ -1862,6 +1869,14 @@ namespace Google.Apis.Backupdr.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/backupVaults/[^/]+$",
+                        });
+                        RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "force",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
                         {
@@ -3071,6 +3086,13 @@ namespace Google.Apis.Backupdr.v1.Data
         public virtual string DiskType { get; set; }
 
         /// <summary>
+        /// Optional. Output only. The URI of the disk type resource. For example:
+        /// projects/project/zones/zone/diskTypes/pd-standard or pd-ssd
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskTypeUri")]
+        public virtual string DiskTypeUri { get; set; }
+
+        /// <summary>
         /// Optional. A list of features to enable on the guest operating system. Applicable only for bootable images.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("guestOsFeature")]
@@ -4067,11 +4089,13 @@ namespace Google.Apis.Backupdr.v1.Data
         public virtual System.Collections.Generic.IList<ServiceAccount> ServiceAccount { get; set; }
 
         /// <summary>
-        /// Name of the source instance at the time of backup. The name is 1-63 characters long, and complies with
-        /// RFC1035.
+        /// The source instance used to create this backup. This can be a partial or full URL to the resource. For
+        /// example, the following are valid values:
+        /// -https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance
+        /// -projects/project/zones/zone/instances/instance
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sourceInstanceName")]
-        public virtual string SourceInstanceName { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceInstance")]
+        public virtual string SourceInstance { get; set; }
 
         /// <summary>
         /// A list of tags to apply to the instances that are created from these properties. The tags identify valid

@@ -4333,13 +4333,13 @@ namespace Google.Apis.Config.v1.Data
     public class TerraformBlueprint : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. URI of an object in Google Cloud Storage. Format: `gs://{bucket}/{object}` URI may also specify an
-        /// object version for zipped objects. Format: `gs://{bucket}/{object}#{version}`
+        /// URI of an object in Google Cloud Storage. Format: `gs://{bucket}/{object}` URI may also specify an object
+        /// version for zipped objects. Format: `gs://{bucket}/{object}#{version}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
         public virtual string GcsSource { get; set; }
 
-        /// <summary>Required. URI of a public Git repo.</summary>
+        /// <summary>URI of a public Git repo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gitSource")]
         public virtual GitSource GitSource { get; set; }
 

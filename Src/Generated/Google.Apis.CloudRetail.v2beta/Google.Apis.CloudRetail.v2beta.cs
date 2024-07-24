@@ -3835,6 +3835,71 @@ namespace Google.Apis.CloudRetail.v2beta
                     }
 
                     /// <summary>
+                    /// Exports user events. `Operation.response` is of type `ExportResponse`. `Operation.metadata` is
+                    /// of type `ExportMetadata`.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. Resource name of a Catalog. For example
+                    /// `projects/1234/locations/global/catalogs/default_catalog`
+                    /// </param>
+                    public virtual ExportRequest Export(Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaExportUserEventsRequest body, string parent)
+                    {
+                        return new ExportRequest(this.service, body, parent);
+                    }
+
+                    /// <summary>
+                    /// Exports user events. `Operation.response` is of type `ExportResponse`. `Operation.metadata` is
+                    /// of type `ExportMetadata`.
+                    /// </summary>
+                    public class ExportRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2beta.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Export request.</summary>
+                        public ExportRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaExportUserEventsRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Resource name of a Catalog. For example
+                        /// `projects/1234/locations/global/catalogs/default_catalog`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudRetail.v2beta.Data.GoogleCloudRetailV2betaExportUserEventsRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "export";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2beta/{+parent}/userEvents:export";
+
+                        /// <summary>Initializes Export parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
                     /// Bulk import of User events. Request processing might be synchronous. Events that already exist
                     /// are skipped. Use this method for backfilling historical user events. `Operation.response` is of
                     /// type `ImportResponse`. Note that it is possible for a subset of the items to be successfully
@@ -8937,6 +9002,37 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// <summary>Output result indicating where the data were exported to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputResult")]
         public virtual GoogleCloudRetailV2betaOutputResult OutputResult { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for the `ExportUserEvents` method.</summary>
+    public class GoogleCloudRetailV2betaExportUserEventsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A filtering expression to specify restrictions on returned events. The expression is a sequence of terms.
+        /// Each term applies a restriction to the returned user events. Use this expression to restrict results to a
+        /// specific time range or to filter events by eventType. For example, `eventTime &amp;gt;
+        /// "2012-04-23T18:25:43.511Z" eventsMissingCatalogItems eventTime&amp;lt;"2012-04-23T18:25:43.511Z"
+        /// eventType=search` We expect only three types of fields: * `eventTime`: This can be specified twice, once
+        /// with a less than operator and once with a greater than operator. The `eventTime` restriction should result
+        /// in one, contiguous, valid, `eventTime` range. * `eventType`: Boolean operators `OR` and `NOT` are supported
+        /// if the expression is enclosed in parentheses and the operators are separated from the tag values by a space.
+        /// * `eventsMissingCatalogItems`: This restricts results to events for which catalog items were not found in
+        /// the catalog. The default behavior is to return only those events for which catalog items were found. Some
+        /// examples of valid filters expressions: * Example 1: `eventTime &amp;gt; "2012-04-23T18:25:43.511Z" eventTime
+        /// &amp;lt; "2012-04-23T18:30:43.511Z"` * Example 2: `eventTime &amp;gt; "2012-04-23T18:25:43.511Z" eventType =
+        /// detail-page-view` * Example 3: `eventsMissingCatalogItems eventType = (NOT search) eventTime &amp;lt;
+        /// "2018-04-23T18:30:43.511Z"` * Example 4: `eventTime &amp;gt; "2012-04-23T18:25:43.511Z"` * Example 5:
+        /// `eventType = (detail-page-view OR search)` * Example 6: `eventsMissingCatalogItems`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>Required. The output location of the data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputConfig")]
+        public virtual GoogleCloudRetailV2betaOutputConfig OutputConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
