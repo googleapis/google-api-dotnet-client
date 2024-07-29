@@ -11790,6 +11790,13 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     /// <summary>Define behaviors on logging.</summary>
     public class GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Enables consent-based end-user input redaction, if true, a pre-defined session parameter
+        /// `$session.params.conversation-redaction` will be used to determine if the utterance should be redacted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableConsentBasedRedaction")]
+        public virtual System.Nullable<bool> EnableConsentBasedRedaction { get; set; }
+
         /// <summary>Enables DF Interaction logging.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableInteractionLogging")]
         public virtual System.Nullable<bool> EnableInteractionLogging { get; set; }
@@ -14592,6 +14599,13 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     /// <summary>Define behaviors on logging.</summary>
     public class GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Enables consent-based end-user input redaction, if true, a pre-defined session parameter
+        /// `$session.params.conversation-redaction` will be used to determine if the utterance should be redacted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableConsentBasedRedaction")]
+        public virtual System.Nullable<bool> EnableConsentBasedRedaction { get; set; }
+
         /// <summary>Enables DF Interaction logging.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableInteractionLogging")]
         public virtual System.Nullable<bool> EnableInteractionLogging { get; set; }
@@ -21542,6 +21556,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("authentication")]
         public virtual GoogleCloudDialogflowCxV3beta1ToolAuthentication Authentication { get; set; }
 
+        /// <summary>Optional. Service Directory configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceDirectoryConfig")]
+        public virtual GoogleCloudDialogflowCxV3beta1ToolServiceDirectoryConfig ServiceDirectoryConfig { get; set; }
+
         /// <summary>Required. The OpenAPI schema specified as a text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textSchema")]
         public virtual string TextSchema { get; set; }
@@ -21549,6 +21567,21 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Optional. TLS configuration for the HTTPS verification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tlsConfig")]
         public virtual GoogleCloudDialogflowCxV3beta1ToolTLSConfig TlsConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for tools using Service Directory.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ToolServiceDirectoryConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The name of [Service Directory](https://cloud.google.com/service-directory) service. Format:
+        /// `projects//locations//namespaces//services/`. `Location ID` of the service directory must be the same as the
+        /// location of the agent.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

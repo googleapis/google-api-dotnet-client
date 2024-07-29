@@ -515,6 +515,10 @@ namespace Google.Apis.PlayIntegrity.v1.Data
     /// <summary>Contains the device attestation information. Next tag: 4</summary>
     public class DeviceIntegrity : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Details about the device recall bits set by the developer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceRecall")]
+        public virtual DeviceRecall DeviceRecall { get; set; }
+
         /// <summary>Details about the integrity of the device the app is running on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceRecognitionVerdict")]
         public virtual System.Collections.Generic.IList<string> DeviceRecognitionVerdict { get; set; }
@@ -522,6 +526,21 @@ namespace Google.Apis.PlayIntegrity.v1.Data
         /// <summary>Details about the device activity of the device the app is running on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recentDeviceActivity")]
         public virtual RecentDeviceActivity RecentDeviceActivity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains the recall bits per device set by the developer. Next tag: 3</summary>
+    public class DeviceRecall : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Contains the recall bits values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual Values Values { get; set; }
+
+        /// <summary>Required. Contains the recall bits write dates.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("writeDates")]
+        public virtual WriteDates WriteDates { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -648,6 +667,34 @@ namespace Google.Apis.PlayIntegrity.v1.Data
         /// <summary>Required. Third recall bit value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bitThird")]
         public virtual System.Nullable<bool> BitThird { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains the recall bits write dates.</summary>
+    public class WriteDates : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Write time in YYYYMM format (in UTC, e.g. 202402) for the first bit. Note that this value won't be
+        /// set if the first bit is false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("yyyymmFirst")]
+        public virtual System.Nullable<int> YyyymmFirst { get; set; }
+
+        /// <summary>
+        /// Optional. Write time in YYYYMM format (in UTC, e.g. 202402) for the second bit. Note that this value won't
+        /// be set if the second bit is false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("yyyymmSecond")]
+        public virtual System.Nullable<int> YyyymmSecond { get; set; }
+
+        /// <summary>
+        /// Optional. Write time in YYYYMM format (in UTC, e.g. 202402) for the third bit. Note that this value won't be
+        /// set if the third bit is false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("yyyymmThird")]
+        public virtual System.Nullable<int> YyyymmThird { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

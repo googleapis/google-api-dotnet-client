@@ -9312,8 +9312,8 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// <summary>
         /// The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is
         /// a unique, symbolic representation of a ServiceClass. It is provided by the Service Producer. Google services
-        /// have a prefix of gcp. For example, gcp-cloud-sql. 3rd party services do not. For example,
-        /// test-service-a3dfcx.
+        /// have a prefix of gcp or google-cloud. For example, gcp-memorystore-redis or google-cloud-sql. 3rd party
+        /// services do not. For example, test-service-a3dfcx.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceClass")]
         public virtual string ServiceClass { get; set; }

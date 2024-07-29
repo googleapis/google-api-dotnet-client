@@ -293,6 +293,7 @@ namespace Google.Apis.Contactcenterinsights.v1
             {
                 this.service = service;
                 Conversations = new ConversationsResource(service);
+                EncryptionSpec = new EncryptionSpecResource(service);
                 Insightsdata = new InsightsdataResource(service);
                 IssueModels = new IssueModelsResource(service);
                 Operations = new OperationsResource(service);
@@ -1284,6 +1285,93 @@ namespace Google.Apis.Contactcenterinsights.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the EncryptionSpec resource.</summary>
+            public virtual EncryptionSpecResource EncryptionSpec { get; }
+
+            /// <summary>The "encryptionSpec" collection of methods.</summary>
+            public class EncryptionSpecResource
+            {
+                private const string Resource = "encryptionSpec";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public EncryptionSpecResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Initializes a location-level encryption key specification. An error will be thrown if the location
+                /// has resources already created before the initialization. Once the encryption specification is
+                /// initialized at a location, it is immutable and all newly created resources under the location will
+                /// be encrypted with the existing specification.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Immutable. The resource name of the encryption key specification resource. Format:
+                /// projects/{project}/locations/{location}/encryptionSpec
+                /// </param>
+                public virtual InitializeRequest Initialize(Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest body, string name)
+                {
+                    return new InitializeRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Initializes a location-level encryption key specification. An error will be thrown if the location
+                /// has resources already created before the initialization. Once the encryption specification is
+                /// initialized at a location, it is immutable and all newly created resources under the location will
+                /// be encrypted with the existing specification.
+                /// </summary>
+                public class InitializeRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Initialize request.</summary>
+                    public InitializeRequest(Google.Apis.Services.IClientService service, Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Immutable. The resource name of the encryption key specification resource. Format:
+                    /// projects/{project}/locations/{location}/encryptionSpec
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "initialize";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:initialize";
+
+                    /// <summary>Initializes Initialize parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/encryptionSpec$",
                         });
                     }
                 }
@@ -2985,6 +3073,51 @@ namespace Google.Apis.Contactcenterinsights.v1
                             Pattern = null,
                         });
                     }
+                }
+            }
+
+            /// <summary>Gets location-level encryption key specification.</summary>
+            /// <param name="name">Required. The name of the encryption spec resource to get.</param>
+            public virtual GetEncryptionSpecRequest GetEncryptionSpec(string name)
+            {
+                return new GetEncryptionSpecRequest(this.service, name);
+            }
+
+            /// <summary>Gets location-level encryption key specification.</summary>
+            public class GetEncryptionSpecRequest : ContactcenterinsightsBaseServiceRequest<Google.Apis.Contactcenterinsights.v1.Data.GoogleCloudContactcenterinsightsV1EncryptionSpec>
+            {
+                /// <summary>Constructs a new GetEncryptionSpec request.</summary>
+                public GetEncryptionSpecRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The name of the encryption spec resource to get.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getEncryptionSpec";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes GetEncryptionSpec parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+/encryptionSpec$",
+                    });
                 }
             }
 
@@ -4922,6 +5055,32 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     }
 
     /// <summary>
+    /// A customer-managed encryption key specification that can be applied to all created resources (e.g.
+    /// Conversation).
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1EncryptionSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The name of customer-managed encryption key that is used to secure a resource and its
+        /// sub-resources. If empty, the resource is secured by the default Google encryption key. Only the key in the
+        /// same location as this resource is allowed to be used for encryption. Format:
+        /// `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{key}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
+        public virtual string KmsKey { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource name of the encryption key specification resource. Format:
+        /// projects/{project}/locations/{location}/encryptionSpec
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// The data for an entity annotation. Represents a phrase in the conversation that is a known entity, such as a
     /// person, an organization, or location.
     /// </summary>
@@ -5703,6 +5862,119 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
 
     /// <summary>The response to an IngestConversations operation.</summary>
     public class GoogleCloudContactcenterinsightsV1IngestConversationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for initializing a location-level encryption specification.</summary>
+    public class GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Output only. The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Partial errors during initialising operation that might cause the operation output to be incomplete.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialErrors")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> PartialErrors { get; set; }
+
+        /// <summary>Output only. The original request for initialization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest Request { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request to initialize a location-level encryption specification.</summary>
+    public class GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The encryption spec used for CMEK encryption. It is required that the kms key is in the same
+        /// region as the endpoint. The same key will be used for all provisioned resources, if encryption is available.
+        /// If the kms_key_name is left empty, no encryption will be enforced.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionSpec")]
+        public virtual GoogleCloudContactcenterinsightsV1EncryptionSpec EncryptionSpec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response to initialize a location-level encryption specification.</summary>
+    public class GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8816,6 +9088,32 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
     }
 
     /// <summary>
+    /// A customer-managed encryption key specification that can be applied to all created resources (e.g.
+    /// Conversation).
+    /// </summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1EncryptionSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The name of customer-managed encryption key that is used to secure a resource and its
+        /// sub-resources. If empty, the resource is secured by the default Google encryption key. Only the key in the
+        /// same location as this resource is allowed to be used for encryption. Format:
+        /// `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{key}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
+        public virtual string KmsKey { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource name of the encryption key specification resource. Format:
+        /// projects/{project}/locations/{location}/encryptionSpec
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// The data for an entity annotation. Represents a phrase in the conversation that is a known entity, such as a
     /// person, an organization, or location.
     /// </summary>
@@ -9586,6 +9884,119 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
 
     /// <summary>The response to an IngestConversations operation.</summary>
     public class GoogleCloudContactcenterinsightsV1alpha1IngestConversationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for initializing a location-level encryption specification.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Output only. The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Partial errors during initialising operation that might cause the operation output to be incomplete.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialErrors")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> PartialErrors { get; set; }
+
+        /// <summary>Output only. The original request for initialization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("request")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecRequest Request { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request to initialize a location-level encryption specification.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The encryption spec used for CMEK encryption. It is required that the kms key is in the same
+        /// region as the endpoint. The same key will be used for all provisioned resources, if encryption is available.
+        /// If the kms_key_name is left empty, no encryption will be enforced.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionSpec")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1EncryptionSpec EncryptionSpec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response to initialize a location-level encryption specification.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

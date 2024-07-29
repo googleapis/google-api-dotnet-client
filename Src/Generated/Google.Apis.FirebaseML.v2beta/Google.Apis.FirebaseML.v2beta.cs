@@ -989,9 +989,9 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("responseSchema")]
         public virtual GoogleCloudAiplatformV1beta1Schema ResponseSchema { get; set; }
 
-        /// <summary>Optional. Seed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("seed")]
-        public virtual System.Nullable<int> Seed { get; set; }
+        /// <summary>Optional. Routing configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routingConfig")]
+        public virtual GoogleCloudAiplatformV1beta1GenerationConfigRoutingConfig RoutingConfig { get; set; }
 
         /// <summary>Optional. Stop sequences.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stopSequences")]
@@ -1008,6 +1008,46 @@ namespace Google.Apis.FirebaseML.v2beta.Data
         /// <summary>Optional. If specified, nucleus sampling will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topP")]
         public virtual System.Nullable<float> TopP { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Routing config.</summary>
+    public class GoogleCloudAiplatformV1beta1GenerationConfigRoutingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Automated routing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoMode")]
+        public virtual GoogleCloudAiplatformV1beta1GenerationConfigRoutingConfigAutoRoutingMode AutoMode { get; set; }
+
+        /// <summary>Manual routing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("manualMode")]
+        public virtual GoogleCloudAiplatformV1beta1GenerationConfigRoutingConfigManualRoutingMode ManualMode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// When automated routing is specified, the routing will be determined by the pretrained routing model and customer
+    /// provided model routing preference.
+    /// </summary>
+    public class GoogleCloudAiplatformV1beta1GenerationConfigRoutingConfigAutoRoutingMode : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The model routing preference.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelRoutingPreference")]
+        public virtual string ModelRoutingPreference { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>When manual routing is set, the specified model will be used directly.</summary>
+    public class GoogleCloudAiplatformV1beta1GenerationConfigRoutingConfigManualRoutingMode : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The model name to use. Only the public LLM models are accepted. e.g. gemini-1.5-pro-001.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelName")]
+        public virtual string ModelName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

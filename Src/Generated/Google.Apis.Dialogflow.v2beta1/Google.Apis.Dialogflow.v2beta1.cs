@@ -19502,6 +19502,13 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     /// <summary>Define behaviors on logging.</summary>
     public class GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Enables consent-based end-user input redaction, if true, a pre-defined session parameter
+        /// `$session.params.conversation-redaction` will be used to determine if the utterance should be redacted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableConsentBasedRedaction")]
+        public virtual System.Nullable<bool> EnableConsentBasedRedaction { get; set; }
+
         /// <summary>Enables DF Interaction logging.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableInteractionLogging")]
         public virtual System.Nullable<bool> EnableInteractionLogging { get; set; }
@@ -22277,6 +22284,13 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     /// <summary>Define behaviors on logging.</summary>
     public class GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Enables consent-based end-user input redaction, if true, a pre-defined session parameter
+        /// `$session.params.conversation-redaction` will be used to determine if the utterance should be redacted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableConsentBasedRedaction")]
+        public virtual System.Nullable<bool> EnableConsentBasedRedaction { get; set; }
+
         /// <summary>Enables DF Interaction logging.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableInteractionLogging")]
         public virtual System.Nullable<bool> EnableInteractionLogging { get; set; }

@@ -1758,6 +1758,100 @@ namespace Google.Apis.DLP.v2
                     }
                 }
 
+                /// <summary>
+                /// Lists Connections in a parent. Use SearchConnections to see all connections within an organization.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. Resource name of the organization or project, for example
+                /// `organizations/433245324/locations/europe` or `projects/project-id/locations/asia`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>
+                /// Lists Connections in a parent. Use SearchConnections to see all connections within an organization.
+                /// </summary>
+                public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListConnectionsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name of the organization or project, for example
+                    /// `organizations/433245324/locations/europe` or `projects/project-id/locations/asia`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. Supported field/value: `state` - MISSING|AVAILABLE|ERROR</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. Number of results per page, max 1000.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. Page token from a previous page to return the next set of results. If set, all other
+                    /// request fields must match the original request.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/connections";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
                 /// <summary>Update a Connection.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -1819,8 +1913,8 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>Searches for Connections in a parent.</summary>
                 /// <param name="parent">
-                /// Required. Parent name, typically an organization, without location. For example:
-                /// `organizations/12345678`.
+                /// Required. Resource name of the organization or project with a wildcard location, for example
+                /// `organizations/433245324/locations/-` or `projects/project-id/locations/-`.
                 /// </param>
                 public virtual SearchRequest Search(string parent)
                 {
@@ -1838,8 +1932,8 @@ namespace Google.Apis.DLP.v2
                     }
 
                     /// <summary>
-                    /// Required. Parent name, typically an organization, without location. For example:
-                    /// `organizations/12345678`.
+                    /// Required. Resource name of the organization or project with a wildcard location, for example
+                    /// `organizations/433245324/locations/-` or `projects/project-id/locations/-`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -7797,16 +7891,21 @@ namespace Google.Apis.DLP.v2
                     }
                 }
 
-                /// <summary>Lists Connections in a parent.</summary>
+                /// <summary>
+                /// Lists Connections in a parent. Use SearchConnections to see all connections within an organization.
+                /// </summary>
                 /// <param name="parent">
-                /// Required. Parent name, for example: `projects/project-id/locations/global`.
+                /// Required. Resource name of the organization or project, for example
+                /// `organizations/433245324/locations/europe` or `projects/project-id/locations/asia`.
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(this.service, parent);
                 }
 
-                /// <summary>Lists Connections in a parent.</summary>
+                /// <summary>
+                /// Lists Connections in a parent. Use SearchConnections to see all connections within an organization.
+                /// </summary>
                 public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListConnectionsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -7816,7 +7915,10 @@ namespace Google.Apis.DLP.v2
                         InitParameters();
                     }
 
-                    /// <summary>Required. Parent name, for example: `projects/project-id/locations/global`.</summary>
+                    /// <summary>
+                    /// Required. Resource name of the organization or project, for example
+                    /// `organizations/433245324/locations/europe` or `projects/project-id/locations/asia`.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -7944,8 +8046,8 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>Searches for Connections in a parent.</summary>
                 /// <param name="parent">
-                /// Required. Parent name, typically an organization, without location. For example:
-                /// `organizations/12345678`.
+                /// Required. Resource name of the organization or project with a wildcard location, for example
+                /// `organizations/433245324/locations/-` or `projects/project-id/locations/-`.
                 /// </param>
                 public virtual SearchRequest Search(string parent)
                 {
@@ -7963,8 +8065,8 @@ namespace Google.Apis.DLP.v2
                     }
 
                     /// <summary>
-                    /// Required. Parent name, typically an organization, without location. For example:
-                    /// `organizations/12345678`.
+                    /// Required. Resource name of the organization or project with a wildcard location, for example
+                    /// `organizations/433245324/locations/-` or `projects/project-id/locations/-`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -15186,6 +15288,12 @@ namespace Google.Apis.DLP.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inspectTemplateModifiedCadence")]
         public virtual GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence InspectTemplateModifiedCadence { get; set; }
+
+        /// <summary>
+        /// Frequency to update profiles regardless of whether the underlying resource has changed. Defaults to never.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refreshFrequency")]
+        public virtual string RefreshFrequency { get; set; }
 
         /// <summary>Governs when to update data profiles when a schema is modified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schemaModifiedCadence")]

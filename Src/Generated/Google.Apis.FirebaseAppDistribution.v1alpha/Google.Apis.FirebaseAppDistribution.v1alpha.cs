@@ -2031,7 +2031,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
     /// <summary>The results of running an automated test on a release.</summary>
     public class GoogleFirebaseAppdistroV1alphaReleaseTest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Input only. Instructions for AI driven test. Input only.</summary>
+        /// <summary>Optional. Instructions for AI driven test.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aiInstructions")]
         public virtual GoogleFirebaseAppdistroV1alphaAiInstructions AiInstructions { get; set; }
 
