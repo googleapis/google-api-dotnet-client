@@ -7790,8 +7790,8 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual System.Collections.Generic.IList<NotificationChannelStrategy> NotificationChannelStrategy { get; set; }
 
         /// <summary>
-        /// Required for alert policies with a LogMatch condition.This limit is not implemented for alert policies that
-        /// are not log-based.
+        /// Required for log-based alert policies, i.e. policies with a LogMatch condition.This limit is not implemented
+        /// for alert policies that do not have a LogMatch condition.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationRateLimit")]
         public virtual NotificationRateLimit NotificationRateLimit { get; set; }
@@ -11256,6 +11256,13 @@ namespace Google.Apis.Monitoring.v3.Data
     public class TimeSeries : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Input only. A detailed description of the time series that will be associated with the
+        /// google.api.MetricDescriptor for the metric. Once set, this field cannot be changed through CreateTimeSeries.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
         /// Output only. The associated monitored resource metadata. When reading a time series, this field will include
         /// metadata labels that are explicitly named in the reduction. When creating a time series, this field is
         /// ignored.
@@ -11297,7 +11304,8 @@ namespace Google.Apis.Monitoring.v3.Data
 
         /// <summary>
         /// The units in which the metric value is reported. It is only applicable if the value_type is INT64, DOUBLE,
-        /// or DISTRIBUTION. The unit defines the representation of the stored metric values.
+        /// or DISTRIBUTION. The unit defines the representation of the stored metric values. This field can only be
+        /// changed through CreateTimeSeries when it is empty or "1".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
         public virtual string Unit { get; set; }

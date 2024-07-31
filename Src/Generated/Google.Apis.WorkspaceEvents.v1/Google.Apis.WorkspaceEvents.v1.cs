@@ -64,28 +64,29 @@ namespace Google.Apis.WorkspaceEvents.v1
             /// <summary>Private Service: https://www.googleapis.com/auth/chat.bot</summary>
             public static string ChatBot = "https://www.googleapis.com/auth/chat.bot";
 
-            /// <summary>View, add, update, and remove members from conversations in Google Chat</summary>
+            /// <summary>See, add, update, and remove members from conversations and spaces in Google Chat</summary>
             public static string ChatMemberships = "https://www.googleapis.com/auth/chat.memberships";
 
             /// <summary>View members in Google Chat conversations.</summary>
             public static string ChatMembershipsReadonly = "https://www.googleapis.com/auth/chat.memberships.readonly";
 
             /// <summary>
-            /// View, compose, send, update, and delete messages, and add, view, and delete reactions to messages.
+            /// See, compose, send, update, and delete messages and their associated attachments, and add, see, and
+            /// delete reactions to messages.
             /// </summary>
             public static string ChatMessages = "https://www.googleapis.com/auth/chat.messages";
 
-            /// <summary>View, add, and delete reactions to messages in Google Chat</summary>
+            /// <summary>See, add, and delete reactions to messages in Google Chat</summary>
             public static string ChatMessagesReactions = "https://www.googleapis.com/auth/chat.messages.reactions";
 
             /// <summary>View reactions to messages in Google Chat</summary>
             public static string ChatMessagesReactionsReadonly = "https://www.googleapis.com/auth/chat.messages.reactions.readonly";
 
-            /// <summary>View messages and reactions in Google Chat</summary>
+            /// <summary>See messages and their associated reactions and attachments in Google Chat</summary>
             public static string ChatMessagesReadonly = "https://www.googleapis.com/auth/chat.messages.readonly";
 
             /// <summary>
-            /// Create conversations and spaces and see or edit metadata (including history settings and access
+            /// Create conversations and spaces and see or update metadata (including history settings and access
             /// settings) in Google Chat
             /// </summary>
             public static string ChatSpaces = "https://www.googleapis.com/auth/chat.spaces";
@@ -108,28 +109,29 @@ namespace Google.Apis.WorkspaceEvents.v1
             /// <summary>Private Service: https://www.googleapis.com/auth/chat.bot</summary>
             public const string ChatBot = "https://www.googleapis.com/auth/chat.bot";
 
-            /// <summary>View, add, update, and remove members from conversations in Google Chat</summary>
+            /// <summary>See, add, update, and remove members from conversations and spaces in Google Chat</summary>
             public const string ChatMemberships = "https://www.googleapis.com/auth/chat.memberships";
 
             /// <summary>View members in Google Chat conversations.</summary>
             public const string ChatMembershipsReadonly = "https://www.googleapis.com/auth/chat.memberships.readonly";
 
             /// <summary>
-            /// View, compose, send, update, and delete messages, and add, view, and delete reactions to messages.
+            /// See, compose, send, update, and delete messages and their associated attachments, and add, see, and
+            /// delete reactions to messages.
             /// </summary>
             public const string ChatMessages = "https://www.googleapis.com/auth/chat.messages";
 
-            /// <summary>View, add, and delete reactions to messages in Google Chat</summary>
+            /// <summary>See, add, and delete reactions to messages in Google Chat</summary>
             public const string ChatMessagesReactions = "https://www.googleapis.com/auth/chat.messages.reactions";
 
             /// <summary>View reactions to messages in Google Chat</summary>
             public const string ChatMessagesReactionsReadonly = "https://www.googleapis.com/auth/chat.messages.reactions.readonly";
 
-            /// <summary>View messages and reactions in Google Chat</summary>
+            /// <summary>See messages and their associated reactions and attachments in Google Chat</summary>
             public const string ChatMessagesReadonly = "https://www.googleapis.com/auth/chat.messages.readonly";
 
             /// <summary>
-            /// Create conversations and spaces and see or edit metadata (including history settings and access
+            /// Create conversations and spaces and see or update metadata (including history settings and access
             /// settings) in Google Chat
             /// </summary>
             public const string ChatSpaces = "https://www.googleapis.com/auth/chat.spaces";

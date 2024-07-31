@@ -6374,6 +6374,10 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("utf8Bytes")]
         public virtual GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes Utf8Bytes { get; set; }
 
+        /// <summary>Deprecated: if set, converts to an empty `utf8_bytes`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("utf8Raw")]
+        public virtual GoogleBigtableAdminV2TypeStringEncodingUtf8Raw Utf8Raw { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6383,6 +6387,13 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     /// Federation `TEXT` encoding - HBase `Bytes.toBytes` - Java `String#getBytes(StandardCharsets.UTF_8)`
     /// </summary>
     public class GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Deprecated: prefer the equivalent `Utf8Bytes`.</summary>
+    public class GoogleBigtableAdminV2TypeStringEncodingUtf8Raw : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7613,12 +7624,12 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     /// Does the encoded value sort consistently with the original typed value? Note that Bigtable will always sort data
     /// based on the raw encoded value, *not* the decoded type. - Example: BYTES values sort in the same order as their
     /// raw encodings. - Counterexample: Encoding INT64 as a fixed-width decimal string does *not* preserve sort order
-    /// when dealing with negative numbers. INT64(1) &amp;gt; INT64(-1), but STRING("-00001") &amp;gt; STRING("00001). *
-    /// Self-delimiting: If we concatenate two encoded values, can we always tell where the first one ends and the
-    /// second one begins? - Example: If we encode INT64s to fixed-width STRINGs, the first value will always contain
-    /// exactly N digits, possibly preceded by a sign. - Counterexample: If we concatenate two UTF-8 encoded STRINGs, we
-    /// have no way to tell where the first one ends. * Compatibility: Which other systems have matching encoding
-    /// schemes? For example, does this encoding have a GoogleSQL equivalent? HBase? Java?
+    /// when dealing with negative numbers. `INT64(1) &amp;gt; INT64(-1)`, but `STRING("-00001") &amp;gt;
+    /// STRING("00001)`. * Self-delimiting: If we concatenate two encoded values, can we always tell where the first one
+    /// ends and the second one begins? - Example: If we encode INT64s to fixed-width STRINGs, the first value will
+    /// always contain exactly N digits, possibly preceded by a sign. - Counterexample: If we concatenate two UTF-8
+    /// encoded STRINGs, we have no way to tell where the first one ends. * Compatibility: Which other systems have
+    /// matching encoding schemes? For example, does this encoding have a GoogleSQL equivalent? HBase? Java?
     /// </summary>
     public class Type : Google.Apis.Requests.IDirectResponseSchema
     {

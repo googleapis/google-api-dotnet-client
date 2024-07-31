@@ -34,6 +34,7 @@ namespace Google.Apis.CloudDataplex.v1
         /// <param name="initializer">The service initializer.</param>
         public CloudDataplexService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
+            Organizations = new OrganizationsResource(this);
             Projects = new ProjectsResource(this);
             BaseUri = GetEffectiveUri(BaseUriOverride, "https://dataplex.googleapis.com/");
             BatchUri = GetEffectiveUri(null, "https://dataplex.googleapis.com/batch");
@@ -76,6 +77,9 @@ namespace Google.Apis.CloudDataplex.v1
             /// </summary>
             public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
+
+        /// <summary>Gets the Organizations resource.</summary>
+        public virtual OrganizationsResource Organizations { get; }
 
         /// <summary>Gets the Projects resource.</summary>
         public virtual ProjectsResource Projects { get; }
@@ -262,6 +266,271 @@ namespace Google.Apis.CloudDataplex.v1
         }
     }
 
+    /// <summary>The "organizations" collection of methods.</summary>
+    public class OrganizationsResource
+    {
+        private const string Resource = "organizations";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public OrganizationsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            Locations = new LocationsResource(service);
+        }
+
+        /// <summary>Gets the Locations resource.</summary>
+        public virtual LocationsResource Locations { get; }
+
+        /// <summary>The "locations" collection of methods.</summary>
+        public class LocationsResource
+        {
+            private const string Resource = "locations";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public LocationsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                EncryptionConfigs = new EncryptionConfigsResource(service);
+            }
+
+            /// <summary>Gets the EncryptionConfigs resource.</summary>
+            public virtual EncryptionConfigsResource EncryptionConfigs { get; }
+
+            /// <summary>The "encryptionConfigs" collection of methods.</summary>
+            public class EncryptionConfigsResource
+            {
+                private const string Resource = "encryptionConfigs";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public EncryptionConfigsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
+                /// does not have a policy set.
+                /// </summary>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being requested. See Resource names
+                /// (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+                /// </param>
+                public virtual GetIamPolicyRequest GetIamPolicy(string resource)
+                {
+                    return new GetIamPolicyRequest(this.service, resource);
+                }
+
+                /// <summary>
+                /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
+                /// does not have a policy set.
+                /// </summary>
+                public class GetIamPolicyRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleIamV1Policy>
+                {
+                    /// <summary>Constructs a new GetIamPolicy request.</summary>
+                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being requested. See Resource names
+                    /// (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum policy version that will be used to format the policy.Valid values are 0,
+                    /// 1, and 3. Requests specifying an invalid value will be rejected.Requests for policies with any
+                    /// conditional role bindings must specify version 3. Policies with no conditional role bindings may
+                    /// specify any valid value or leave the field unset.The policy in the response might use the policy
+                    /// version that you specified, or it might use a lower policy version. For example, if you specify
+                    /// version 3, but the policy has no conditional role bindings, the response uses version 1.To learn
+                    /// which resources support conditions in their IAM policies, see the IAM documentation
+                    /// (https://cloud.google.com/iam/help/conditions/resource-policies).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "getIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:getIamPolicy";
+
+                    /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/encryptionConfigs/[^/]+$",
+                        });
+                        RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Sets the access control policy on the specified resource. Replaces any existing policy.Can return
+                /// NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being specified. See Resource names
+                /// (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+                /// </param>
+                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudDataplex.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
+                {
+                    return new SetIamPolicyRequest(this.service, body, resource);
+                }
+
+                /// <summary>
+                /// Sets the access control policy on the specified resource. Replaces any existing policy.Can return
+                /// NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.
+                /// </summary>
+                public class SetIamPolicyRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleIamV1Policy>
+                {
+                    /// <summary>Constructs a new SetIamPolicy request.</summary>
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDataplex.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being specified. See Resource names
+                    /// (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudDataplex.v1.Data.GoogleIamV1SetIamPolicyRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "setIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:setIamPolicy";
+
+                    /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/encryptionConfigs/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
+                /// this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is designed
+                /// to be used for building permission-aware UIs and command-line tools, not for authorization checking.
+                /// This operation may "fail open" without warning.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy detail is being requested. See Resource names
+                /// (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+                /// </param>
+                public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudDataplex.v1.Data.GoogleIamV1TestIamPermissionsRequest body, string resource)
+                {
+                    return new TestIamPermissionsRequest(this.service, body, resource);
+                }
+
+                /// <summary>
+                /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
+                /// this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is designed
+                /// to be used for building permission-aware UIs and command-line tools, not for authorization checking.
+                /// This operation may "fail open" without warning.
+                /// </summary>
+                public class TestIamPermissionsRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleIamV1TestIamPermissionsResponse>
+                {
+                    /// <summary>Constructs a new TestIamPermissions request.</summary>
+                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDataplex.v1.Data.GoogleIamV1TestIamPermissionsRequest body, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy detail is being requested. See Resource names
+                    /// (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudDataplex.v1.Data.GoogleIamV1TestIamPermissionsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "testIamPermissions";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:testIamPermissions";
+
+                    /// <summary>Initializes TestIamPermissions parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/encryptionConfigs/[^/]+$",
+                        });
+                    }
+                }
+            }
+        }
+    }
+
     /// <summary>The "projects" collection of methods.</summary>
     public class ProjectsResource
     {
@@ -298,8 +567,10 @@ namespace Google.Apis.CloudDataplex.v1
                 DataTaxonomies = new DataTaxonomiesResource(service);
                 EntryGroups = new EntryGroupsResource(service);
                 EntryTypes = new EntryTypesResource(service);
+                Glossaries = new GlossariesResource(service);
                 GovernanceRules = new GovernanceRulesResource(service);
                 Lakes = new LakesResource(service);
+                MetadataJobs = new MetadataJobsResource(service);
                 Operations = new OperationsResource(service);
             }
 
@@ -4298,8 +4569,8 @@ namespace Google.Apis.CloudDataplex.v1
                     /// <summary>Updates an Entry.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Identifier. The relative resource name of the Entry, of the form:
-                    /// projects/{project}/locations/{location}/entryGroups/{entry_group}/entries/{entry}.
+                    /// Identifier. The relative resource name of the entry, in the format
+                    /// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entries/{entry_id}.
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1Entry body, string name)
                     {
@@ -4318,8 +4589,8 @@ namespace Google.Apis.CloudDataplex.v1
                         }
 
                         /// <summary>
-                        /// Identifier. The relative resource name of the Entry, of the form:
-                        /// projects/{project}/locations/{location}/entryGroups/{entry_group}/entries/{entry}.
+                        /// Identifier. The relative resource name of the entry, in the format
+                        /// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entries/{entry_id}.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -4812,8 +5083,8 @@ namespace Google.Apis.CloudDataplex.v1
                 /// <summary>Updates an EntryGroup.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Output only. The relative resource name of the EntryGroup, of the form:
-                /// projects/{project_number}/locations/{location_id}/entryGroups/{entry_group_id}.
+                /// Output only. The relative resource name of the EntryGroup, in the format
+                /// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1EntryGroup body, string name)
                 {
@@ -4832,8 +5103,8 @@ namespace Google.Apis.CloudDataplex.v1
                     }
 
                     /// <summary>
-                    /// Output only. The relative resource name of the EntryGroup, of the form:
-                    /// projects/{project_number}/locations/{location_id}/entryGroups/{entry_group_id}.
+                    /// Output only. The relative resource name of the EntryGroup, in the format
+                    /// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -5660,6 +5931,236 @@ namespace Google.Apis.CloudDataplex.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/entryTypes/[^/]+$",
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the Glossaries resource.</summary>
+            public virtual GlossariesResource Glossaries { get; }
+
+            /// <summary>The "glossaries" collection of methods.</summary>
+            public class GlossariesResource
+            {
+                private const string Resource = "glossaries";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public GlossariesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
+                /// does not have a policy set.
+                /// </summary>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being requested. See Resource names
+                /// (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+                /// </param>
+                public virtual GetIamPolicyRequest GetIamPolicy(string resource)
+                {
+                    return new GetIamPolicyRequest(this.service, resource);
+                }
+
+                /// <summary>
+                /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
+                /// does not have a policy set.
+                /// </summary>
+                public class GetIamPolicyRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleIamV1Policy>
+                {
+                    /// <summary>Constructs a new GetIamPolicy request.</summary>
+                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being requested. See Resource names
+                    /// (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum policy version that will be used to format the policy.Valid values are 0,
+                    /// 1, and 3. Requests specifying an invalid value will be rejected.Requests for policies with any
+                    /// conditional role bindings must specify version 3. Policies with no conditional role bindings may
+                    /// specify any valid value or leave the field unset.The policy in the response might use the policy
+                    /// version that you specified, or it might use a lower policy version. For example, if you specify
+                    /// version 3, but the policy has no conditional role bindings, the response uses version 1.To learn
+                    /// which resources support conditions in their IAM policies, see the IAM documentation
+                    /// (https://cloud.google.com/iam/help/conditions/resource-policies).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "getIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:getIamPolicy";
+
+                    /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/glossaries/[^/]+$",
+                        });
+                        RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Sets the access control policy on the specified resource. Replaces any existing policy.Can return
+                /// NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being specified. See Resource names
+                /// (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+                /// </param>
+                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudDataplex.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
+                {
+                    return new SetIamPolicyRequest(this.service, body, resource);
+                }
+
+                /// <summary>
+                /// Sets the access control policy on the specified resource. Replaces any existing policy.Can return
+                /// NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.
+                /// </summary>
+                public class SetIamPolicyRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleIamV1Policy>
+                {
+                    /// <summary>Constructs a new SetIamPolicy request.</summary>
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDataplex.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being specified. See Resource names
+                    /// (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudDataplex.v1.Data.GoogleIamV1SetIamPolicyRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "setIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:setIamPolicy";
+
+                    /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/glossaries/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
+                /// this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is designed
+                /// to be used for building permission-aware UIs and command-line tools, not for authorization checking.
+                /// This operation may "fail open" without warning.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy detail is being requested. See Resource names
+                /// (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+                /// </param>
+                public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudDataplex.v1.Data.GoogleIamV1TestIamPermissionsRequest body, string resource)
+                {
+                    return new TestIamPermissionsRequest(this.service, body, resource);
+                }
+
+                /// <summary>
+                /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
+                /// this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is designed
+                /// to be used for building permission-aware UIs and command-line tools, not for authorization checking.
+                /// This operation may "fail open" without warning.
+                /// </summary>
+                public class TestIamPermissionsRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleIamV1TestIamPermissionsResponse>
+                {
+                    /// <summary>Constructs a new TestIamPermissions request.</summary>
+                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDataplex.v1.Data.GoogleIamV1TestIamPermissionsRequest body, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy detail is being requested. See Resource names
+                    /// (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudDataplex.v1.Data.GoogleIamV1TestIamPermissionsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "testIamPermissions";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:testIamPermissions";
+
+                    /// <summary>Initializes TestIamPermissions parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/glossaries/[^/]+$",
                         });
                     }
                 }
@@ -11730,6 +12231,335 @@ namespace Google.Apis.CloudDataplex.v1
                 }
             }
 
+            /// <summary>Gets the MetadataJobs resource.</summary>
+            public virtual MetadataJobsResource MetadataJobs { get; }
+
+            /// <summary>The "metadataJobs" collection of methods.</summary>
+            public class MetadataJobsResource
+            {
+                private const string Resource = "metadataJobs";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public MetadataJobsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Cancels a metadata job.If you cancel a metadata import job that is in progress, the changes in the
+                /// job might be partially applied. We recommend that you reset the state of the entry groups in your
+                /// project by running another metadata job that reverts the changes from the canceled job.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The resource name of the job, in the format
+                /// projects/{project_id_or_number}/locations/{location_id}/metadataJobs/{metadata_job_id}
+                /// </param>
+                public virtual CancelRequest Cancel(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1CancelMetadataJobRequest body, string name)
+                {
+                    return new CancelRequest(this.service, body, name);
+                }
+
+                /// <summary>
+                /// Cancels a metadata job.If you cancel a metadata import job that is in progress, the changes in the
+                /// job might be partially applied. We recommend that you reset the state of the entry groups in your
+                /// project by running another metadata job that reverts the changes from the canceled job.
+                /// </summary>
+                public class CancelRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Cancel request.</summary>
+                    public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1CancelMetadataJobRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the job, in the format
+                    /// projects/{project_id_or_number}/locations/{location_id}/metadataJobs/{metadata_job_id}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1CancelMetadataJobRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "cancel";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:cancel";
+
+                    /// <summary>Initializes Cancel parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/metadataJobs/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Creates a metadata job. For example, use a metadata job to import Dataplex Catalog entries and
+                /// aspects from a third-party system into Dataplex.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The resource name of the parent location, in the format
+                /// projects/{project_id_or_number}/locations/{location_id}
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1MetadataJob body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>
+                /// Creates a metadata job. For example, use a metadata job to import Dataplex Catalog entries and
+                /// aspects from a third-party system into Dataplex.
+                /// </summary>
+                public class CreateRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1MetadataJob body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the parent location, in the format
+                    /// projects/{project_id_or_number}/locations/{location_id}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The metadata job ID. If not provided, a unique ID is generated with the prefix
+                    /// metadata-job-.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("metadataJobId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string MetadataJobId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1MetadataJob Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/metadataJobs";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("metadataJobId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "metadataJobId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets a metadata job.</summary>
+                /// <param name="name">
+                /// Required. The resource name of the metadata job, in the format
+                /// projects/{project_id_or_number}/locations/{location_id}/metadataJobs/{metadata_job_id}.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets a metadata job.</summary>
+                public class GetRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1MetadataJob>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the metadata job, in the format
+                    /// projects/{project_id_or_number}/locations/{location_id}/metadataJobs/{metadata_job_id}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/metadataJobs/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists metadata jobs.</summary>
+                /// <param name="parent">
+                /// Required. The resource name of the parent location, in the format
+                /// projects/{project_id_or_number}/locations/{location_id}
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists metadata jobs.</summary>
+                public class ListRequest : CloudDataplexBaseServiceRequest<Google.Apis.CloudDataplex.v1.Data.GoogleCloudDataplexV1ListMetadataJobsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the parent location, in the format
+                    /// projects/{project_id_or_number}/locations/{location_id}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Filter request. Filters are case-sensitive. The service supports the following
+                    /// formats: labels.key1 = "value1" labels:key1 name = "value"You can combine filters with AND, OR,
+                    /// and NOT operators.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. The field to sort the results by, either name or create_time. If not specified, the
+                    /// ordering is undefined.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of metadata jobs to return. The service might return fewer jobs
+                    /// than this value. If unspecified, at most 10 jobs are returned. The maximum value is 1,000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. The page token received from a previous ListMetadataJobs call. Provide this token to
+                    /// retrieve the subsequent page of results. When paginating, all other parameters that are provided
+                    /// to the ListMetadataJobs request must match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/metadataJobs";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the Operations resource.</summary>
             public virtual OperationsResource Operations { get; }
 
@@ -12649,6 +13479,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>An aspect is a single piece of metadata describing an entry.</summary>
     public class GoogleCloudDataplexV1Aspect : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Information related to the source system of the aspect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aspectSource")]
         public virtual GoogleCloudDataplexV1AspectSource AspectSource { get; set; }
 
@@ -12745,14 +13576,14 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>AspectSource contains information related to the source system of the Aspect.</summary>
+    /// <summary>Information related to the source system of the aspect.</summary>
     public class GoogleCloudDataplexV1AspectSource : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
 
         private object _createTime;
 
-        /// <summary>The create time of the aspect in the source system.</summary>
+        /// <summary>The time the aspect was created in the source system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -12789,7 +13620,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
 
         private object _updateTime;
 
-        /// <summary>The update time of the aspect in the source system.</summary>
+        /// <summary>The time the aspect was last updated in the source system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -13655,6 +14486,13 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Cancel metadata job request.</summary>
+    public class GoogleCloudDataplexV1CancelMetadataJobRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Content represents a user-visible notebook or a sql script</summary>
     public class GoogleCloudDataplexV1Content : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14220,7 +15058,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
     {
         /// <summary>
         /// Ratio of rows with distinct values against total scanned rows. Not available for complex non-groupable field
-        /// type RECORD and fields with REPEATABLE mode.
+        /// type, including RECORD, ARRAY, GEOGRAPHY, and JSON, as well as fields with REPEATABLE mode.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("distinctRatio")]
         public virtual System.Nullable<double> DistinctRatio { get; set; }
@@ -14244,7 +15082,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// <summary>
         /// The list of top N non-null values, frequency and ratio with which they occur in the scanned data. N is 10 or
         /// equal to the number of distinct values in the field, whichever is smaller. Not available for complex
-        /// non-groupable field type RECORD and fields with REPEATABLE mode.
+        /// non-groupable field type, including RECORD, ARRAY, GEOGRAPHY, and JSON, as well as fields with REPEATABLE
+        /// mode.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topNValues")]
         public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue> TopNValues { get; set; }
@@ -14639,6 +15478,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statisticRangeExpectation")]
         public virtual GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation StatisticRangeExpectation { get; set; }
+
+        /// <summary>Optional. Whether the Rule is active or suspended. Default is false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suspended")]
+        public virtual System.Nullable<bool> Suspended { get; set; }
 
         /// <summary>Aggregate rule which evaluates whether the provided expression is true for a table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableConditionExpectation")]
@@ -16277,13 +17120,14 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>An entry is a representation of a data asset which can be described by various metadata.</summary>
+    /// <summary>An entry is a representation of a data resource that can be described by various metadata.</summary>
     public class GoogleCloudDataplexV1Entry : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The Aspects attached to the Entry. The format for the key can be one of the following:
-        /// {projectId}.{locationId}.{aspectTypeId} (if the aspect is attached directly to the entry)
-        /// {projectId}.{locationId}.{aspectTypeId}@{path} (if the aspect is attached to an entry's path)
+        /// Optional. The aspects that are attached to the entry. Depending on how the aspect is attached to the entry,
+        /// the format of the aspect key can be one of the following: If the aspect is attached directly to the entry:
+        /// {project_id_or_number}.{location_id}.{aspect_type_id} If the aspect is attached to an entry's path:
+        /// {project_id_or_number}.{location_id}.{aspect_type_id}@{path}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aspects")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDataplexV1Aspect> Aspects { get; set; }
@@ -16292,7 +17136,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
 
         private object _createTime;
 
-        /// <summary>Output only. The time when the Entry was created.</summary>
+        /// <summary>Output only. The time when the entry was created in Dataplex.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -16325,24 +17169,29 @@ namespace Google.Apis.CloudDataplex.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Optional. Information related to the source system for an entry.</summary>
+        /// <summary>
+        /// Optional. Information related to the source system of the data resource that is represented by the entry.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entrySource")]
         public virtual GoogleCloudDataplexV1EntrySource EntrySource { get; set; }
 
-        /// <summary>Required. Immutable. The resource name of the EntryType used to create this Entry.</summary>
+        /// <summary>
+        /// Required. Immutable. The relative resource name of the entry type that was used to create this entry, in the
+        /// format projects/{project_id_or_number}/locations/{location_id}/entryTypes/{entry_type_id}.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entryType")]
         public virtual string EntryType { get; set; }
 
         /// <summary>
-        /// Optional. A name for the entry that can reference it in an external system. The maximum size of the field is
-        /// 4000 characters.
+        /// Optional. A name for the entry that can be referenced by an external system. The maximum size of the field
+        /// is 4000 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullyQualifiedName")]
         public virtual string FullyQualifiedName { get; set; }
 
         /// <summary>
-        /// Identifier. The relative resource name of the Entry, of the form:
-        /// projects/{project}/locations/{location}/entryGroups/{entry_group}/entries/{entry}.
+        /// Identifier. The relative resource name of the entry, in the format
+        /// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entries/{entry_id}.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -16355,7 +17204,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
 
         private object _updateTime;
 
-        /// <summary>Output only. The time when the Entry was last updated.</summary>
+        /// <summary>Output only. The time when the entry was last updated in Dataplex.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -16452,8 +17301,8 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Output only. The relative resource name of the EntryGroup, of the form:
-        /// projects/{project_number}/locations/{location_id}/entryGroups/{entry_group_id}.
+        /// Output only. The relative resource name of the EntryGroup, in the format
+        /// projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -16503,10 +17352,14 @@ namespace Google.Apis.CloudDataplex.v1.Data
         }
     }
 
-    /// <summary>EntrySource contains information related to the source system of the Entry.</summary>
+    /// <summary>
+    /// Information related to the source system of the data resource that is represented by the entry.
+    /// </summary>
     public class GoogleCloudDataplexV1EntrySource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Immutable. The ancestors of the Entry in the source system.</summary>
+        /// <summary>
+        /// Immutable. The entries representing the ancestors of the data resource in the source system.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ancestors")]
         public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1EntrySourceAncestor> Ancestors { get; set; }
 
@@ -16514,7 +17367,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
 
         private object _createTime;
 
-        /// <summary>The create time of the resource in the source system.</summary>
+        /// <summary>The time when the resource was created in the source system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -16547,11 +17400,11 @@ namespace Google.Apis.CloudDataplex.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Description of the Entry. The maximum size of the field is 2000 characters.</summary>
+        /// <summary>A description of the data resource. Maximum length is 2,000 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>User friendly display name. The maximum size of the field is 500 characters.</summary>
+        /// <summary>A user-friendly display name. Maximum length is 500 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
@@ -16560,26 +17413,22 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Output only. Location of the resource in the source system. You can search the Entry by this location. By
-        /// default, this should match the location of the EntryGroup containing this entry. A different value allows
+        /// Output only. Location of the resource in the source system. You can search the entry by this location. By
+        /// default, this should match the location of the entry group containing this entry. A different value allows
         /// capturing the source location for data external to Google Cloud.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
-        /// <summary>
-        /// The platform containing the source system. The maximum size of the field is 64 characters.
-        /// </summary>
+        /// <summary>The platform containing the source system. Maximum length is 64 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("platform")]
         public virtual string Platform { get; set; }
 
-        /// <summary>
-        /// The name of the resource in the source system. The maximum size of the field is 4000 characters.
-        /// </summary>
+        /// <summary>The name of the resource in the source system. Maximum length is 4,000 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual string Resource { get; set; }
 
-        /// <summary>The name of the source system. The maximum size of the field is 64 characters.</summary>
+        /// <summary>The name of the source system. Maximum length is 64 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("system")]
         public virtual string System { get; set; }
 
@@ -16587,7 +17436,11 @@ namespace Google.Apis.CloudDataplex.v1.Data
 
         private object _updateTime;
 
-        /// <summary>The update time of the resource in the source system.</summary>
+        /// <summary>
+        /// The time when the resource was last updated in the source system. If the entry exists in the system and its
+        /// EntrySource has update_time populated, further updates to the EntrySource of the entry must provide
+        /// incremental updates to its update_time.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -16624,7 +17477,9 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Ancestor contains information about individual items in the hierarchy of an Entry.</summary>
+    /// <summary>
+    /// Information about individual items in the hierarchy that is associated with the data resource.
+    /// </summary>
     public class GoogleCloudDataplexV1EntrySourceAncestor : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. The name of the ancestor resource.</summary>
@@ -17096,6 +17951,48 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// <summary>Type of entity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityType")]
         public virtual string EntityType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An object that describes the values that you want to set for an entry and its attached aspects when you import
+    /// metadata. Used when you run a metadata import job. See CreateMetadataJob.You provide a collection of import
+    /// items in a metadata import file. For more information about how to create a metadata import file, see Metadata
+    /// import file (https://cloud.google.com/dataplex/docs/import-metadata#metadata-import-file).
+    /// </summary>
+    public class GoogleCloudDataplexV1ImportItem : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The aspects to modify. Supports the following syntaxes: {aspect_type_reference}: matches aspects that belong
+        /// to the specified aspect type and are attached directly to the entry. {aspect_type_reference}@{path}: matches
+        /// aspects that belong to the specified aspect type and path. {aspect_type_reference}@*: matches aspects that
+        /// belong to the specified aspect type for all paths.Replace {aspect_type_reference} with a reference to the
+        /// aspect type, in the format {project_id_or_number}.{location_id}.{aspect_type_id}.If you leave this field
+        /// empty, it is treated as specifying exactly those aspects that are present within the specified entry.In FULL
+        /// entry sync mode, Dataplex implicitly adds the keys for all of the required aspects of an entry.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aspectKeys")]
+        public virtual System.Collections.Generic.IList<string> AspectKeys { get; set; }
+
+        /// <summary>Information about an entry and its attached aspects.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entry")]
+        public virtual GoogleCloudDataplexV1Entry Entry { get; set; }
+
+        /// <summary>
+        /// The fields to update, in paths that are relative to the Entry resource. Separate each field with a comma.In
+        /// FULL entry sync mode, Dataplex includes the paths of all of the fields for an entry that can be modified,
+        /// including aspects. This means that Dataplex replaces the existing entry with the entry in the metadata
+        /// import file. All modifiable fields are updated, regardless of the fields that are listed in the update mask,
+        /// and regardless of whether a field is present in the entry object.The update_mask field is ignored when an
+        /// entry is created or re-created.Dataplex also determines which entries and aspects to modify by comparing the
+        /// values and timestamps that you provide in the metadata import file with the values and timestamps that exist
+        /// in your project. For more information, see Comparison logic
+        /// (https://cloud.google.com/dataplex/docs/import-metadata#data-modification-logic).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17853,6 +18750,27 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>List metadata jobs response.</summary>
+    public class GoogleCloudDataplexV1ListMetadataJobsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Metadata jobs under the specified parent location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadataJobs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1MetadataJob> MetadataJobs { get; set; }
+
+        /// <summary>
+        /// A token to retrieve the next page of results. If there are no more results in the list, the value is empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that the service couldn't reach.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachableLocations")]
+        public virtual System.Collections.Generic.IList<string> UnreachableLocations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>List metadata partitions response.</summary>
     public class GoogleCloudDataplexV1ListPartitionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -17920,6 +18838,365 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// <summary>Zones under the given parent lake.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zones")]
         public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1Zone> Zones { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A metadata job resource.</summary>
+    public class GoogleCloudDataplexV1MetadataJob : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time when the metadata job was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. Import job result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("importResult")]
+        public virtual GoogleCloudDataplexV1MetadataJobImportJobResult ImportResult { get; set; }
+
+        /// <summary>Import job specification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("importSpec")]
+        public virtual GoogleCloudDataplexV1MetadataJobImportJobSpec ImportSpec { get; set; }
+
+        /// <summary>Optional. User-defined labels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Output only. The name of the resource that the configuration is applied to, in the format
+        /// projects/{project_number}/locations/{location_id}/metadataJobs/{metadata_job_id}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual GoogleCloudDataplexV1MetadataJobStatus Status { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>
+        /// Output only. A system-generated, globally unique ID for the metadata job. If the metadata job is deleted and
+        /// then re-created with the same name, this ID is different.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The time when the metadata job was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Results from a metadata import job.</summary>
+    public class GoogleCloudDataplexV1MetadataJobImportJobResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The total number of entries that were created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createdEntries")]
+        public virtual System.Nullable<long> CreatedEntries { get; set; }
+
+        /// <summary>Output only. The total number of entries that were deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deletedEntries")]
+        public virtual System.Nullable<long> DeletedEntries { get; set; }
+
+        /// <summary>Output only. The total number of entries that were recreated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recreatedEntries")]
+        public virtual System.Nullable<long> RecreatedEntries { get; set; }
+
+        /// <summary>Output only. The total number of entries that were unchanged.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unchangedEntries")]
+        public virtual System.Nullable<long> UnchangedEntries { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The time when the status was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Output only. The total number of entries that were updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updatedEntries")]
+        public virtual System.Nullable<long> UpdatedEntries { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Job specification for a metadata import job</summary>
+    public class GoogleCloudDataplexV1MetadataJobImportJobSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The sync mode for aspects. Only INCREMENTAL mode is supported for aspects. An aspect is modified
+        /// only if the metadata import file includes a reference to the aspect in the update_mask field and the
+        /// aspect_keys field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aspectSyncMode")]
+        public virtual string AspectSyncMode { get; set; }
+
+        /// <summary>
+        /// Required. The sync mode for entries. Only FULL mode is supported for entries. All entries in the job's scope
+        /// are modified. If an entry exists in Dataplex but isn't included in the metadata import file, the entry is
+        /// deleted when you run the metadata job.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entrySyncMode")]
+        public virtual string EntrySyncMode { get; set; }
+
+        /// <summary>
+        /// Optional. The level of logs to write to Cloud Logging for this job.Debug-level logs provide highly-detailed
+        /// information for troubleshooting, but their increased verbosity could incur additional costs
+        /// (https://cloud.google.com/stackdriver/pricing) that might not be merited for all jobs.If unspecified,
+        /// defaults to INFO.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logLevel")]
+        public virtual string LogLevel { get; set; }
+
+        /// <summary>Required. A boundary on the scope of impact that the metadata import job can have.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual GoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope Scope { get; set; }
+
+        private string _sourceCreateTimeRaw;
+
+        private object _sourceCreateTime;
+
+        /// <summary>Optional. The time when the process that created the metadata import files began.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceCreateTime")]
+        public virtual string SourceCreateTimeRaw
+        {
+            get => _sourceCreateTimeRaw;
+            set
+            {
+                _sourceCreateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _sourceCreateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="SourceCreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SourceCreateTimeDateTimeOffset instead.")]
+        public virtual object SourceCreateTime
+        {
+            get => _sourceCreateTime;
+            set
+            {
+                _sourceCreateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _sourceCreateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="SourceCreateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? SourceCreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(SourceCreateTimeRaw);
+            set => SourceCreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Optional. The URI of a Cloud Storage bucket or folder (beginning with gs:// and ending with /) that contains
+        /// the metadata import files for this job.A metadata import file defines the values to set for each of the
+        /// entries and aspects in a metadata job. For more information about how to create a metadata import file and
+        /// the file requirements, see Metadata import file
+        /// (https://cloud.google.com/dataplex/docs/import-metadata#metadata-import-file).You can provide multiple
+        /// metadata import files in the same metadata job. The bucket or folder must contain at least one metadata
+        /// import file, in JSON Lines format (either .json or .jsonl file extension).In FULL entry sync mode, don't
+        /// save the metadata import file in a folder named SOURCE_STORAGE_URI/deletions/.Caution: If the metadata
+        /// import file contains no data, all entries and aspects that belong to the job's scope are deleted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceStorageUri")]
+        public virtual string SourceStorageUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A boundary on the scope of impact that the metadata import job can have.</summary>
+    public class GoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The aspect types that are in scope for the import job, specified as relative resource names in the
+        /// format projects/{project_number_or_id}/locations/{location_id}/aspectTypes/{aspect_type_id}. The job
+        /// modifies only the aspects that belong to these aspect types.If the metadata import file attempts to modify
+        /// an aspect whose type isn't included in this list, the import job is halted before modifying any entries or
+        /// aspects.The location of an aspect type must either match the location of the job, or the aspect type must be
+        /// global.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aspectTypes")]
+        public virtual System.Collections.Generic.IList<string> AspectTypes { get; set; }
+
+        /// <summary>
+        /// Required. The entry group that is in scope for the import job, specified as a relative resource name in the
+        /// format projects/{project_number_or_id}/locations/{location_id}/entryGroups/{entry_group_id}. Only entries
+        /// that belong to the specified entry group are affected by the job.Must contain exactly one element. The entry
+        /// group and the job must be in the same location.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entryGroups")]
+        public virtual System.Collections.Generic.IList<string> EntryGroups { get; set; }
+
+        /// <summary>
+        /// Required. The entry types that are in scope for the import job, specified as relative resource names in the
+        /// format projects/{project_number_or_id}/locations/{location_id}/entryTypes/{entry_type_id}. The job modifies
+        /// only the entries that belong to these entry types.If the metadata import file attempts to modify an entry
+        /// whose type isn't included in this list, the import job is halted before modifying any entries or aspects.The
+        /// location of an entry type must either match the location of the job, or the entry type must be global.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entryTypes")]
+        public virtual System.Collections.Generic.IList<string> EntryTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata job status.</summary>
+    public class GoogleCloudDataplexV1MetadataJobStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Progress tracking.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completionPercent")]
+        public virtual System.Nullable<int> CompletionPercent { get; set; }
+
+        /// <summary>Output only. Message relating to the progression of a metadata job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>Output only. State of the metadata job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The time when the status was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

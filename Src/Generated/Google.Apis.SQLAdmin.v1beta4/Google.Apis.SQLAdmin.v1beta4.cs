@@ -5085,6 +5085,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
+        /// <summary>Output only. The maximum chargeable bytes for the backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxChargeableBytes")]
+        public virtual System.Nullable<long> MaxChargeableBytes { get; set; }
+
         /// <summary>The URI of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; }
@@ -5660,6 +5664,13 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rootPassword")]
         public virtual string RootPassword { get; set; }
+
+        /// <summary>
+        /// Output only. This status indicates whether the instance satisfies PZI. The status is reserved for future
+        /// use.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
 
         /// <summary>
         /// This status indicates whether the instance satisfies PZS. The status is reserved for future use.

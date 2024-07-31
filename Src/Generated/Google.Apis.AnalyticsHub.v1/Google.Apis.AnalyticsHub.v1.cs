@@ -1689,8 +1689,8 @@ namespace Google.Apis.AnalyticsHub.v1
                 }
 
                 /// <summary>
-                /// Creates a Subscription to a Data Exchange. This is a long-running operation as it will create one or
-                /// more linked datasets.
+                /// Creates a Subscription to a Data Clean Room. This is a long-running operation as it will create one
+                /// or more linked datasets.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -1703,8 +1703,8 @@ namespace Google.Apis.AnalyticsHub.v1
                 }
 
                 /// <summary>
-                /// Creates a Subscription to a Data Exchange. This is a long-running operation as it will create one or
-                /// more linked datasets.
+                /// Creates a Subscription to a Data Clean Room. This is a long-running operation as it will create one
+                /// or more linked datasets.
                 /// </summary>
                 public class SubscribeRequest : AnalyticsHubBaseServiceRequest<Google.Apis.AnalyticsHub.v1.Data.Operation>
                 {

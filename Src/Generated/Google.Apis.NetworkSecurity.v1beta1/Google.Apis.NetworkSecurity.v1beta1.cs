@@ -2412,6 +2412,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                 this.service = service;
                 AddressGroups = new AddressGroupsResource(service);
                 AuthorizationPolicies = new AuthorizationPoliciesResource(service);
+                AuthzPolicies = new AuthzPoliciesResource(service);
                 ClientTlsPolicies = new ClientTlsPoliciesResource(service);
                 FirewallEndpointAssociations = new FirewallEndpointAssociationsResource(service);
                 GatewaySecurityPolicies = new GatewaySecurityPoliciesResource(service);
@@ -3870,6 +3871,438 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/authorizationPolicies/[^/]+$",
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the AuthzPolicies resource.</summary>
+            public virtual AuthzPoliciesResource AuthzPolicies { get; }
+
+            /// <summary>The "authzPolicies" collection of methods.</summary>
+            public class AuthzPoliciesResource
+            {
+                private const string Resource = "authzPolicies";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public AuthzPoliciesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new AuthzPolicy in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource of the `AuthzPolicy` resource. Must be in the format
+                /// `projects/{project}/locations/{location}`.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.NetworkSecurity.v1beta1.Data.AuthzPolicy body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new AuthzPolicy in a given project and location.</summary>
+                public class CreateRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkSecurity.v1beta1.Data.AuthzPolicy body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource of the `AuthzPolicy` resource. Must be in the format
+                    /// `projects/{project}/locations/{location}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Required. User-provided ID of the `AuthzPolicy` resource to be created.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("authzPolicyId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string AuthzPolicyId { get; set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server can ignore the request if it has already been completed.
+                    /// The server guarantees that for at least 60 minutes since the first request. For example,
+                    /// consider a situation where you make an initial request and the request times out. If you make
+                    /// the request again with the same request ID, the server can check if original operation with the
+                    /// same request ID was received, and if so, ignores the second request. This prevents clients from
+                    /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkSecurity.v1beta1.Data.AuthzPolicy Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/authzPolicies";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("authzPolicyId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "authzPolicyId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single AuthzPolicy.</summary>
+                /// <param name="name">
+                /// Required. The name of the `AuthzPolicy` resource to delete. Must be in the format
+                /// `projects/{project}/locations/{location}/authzPolicies/{authz_policy}`.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes a single AuthzPolicy.</summary>
+                public class DeleteRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the `AuthzPolicy` resource to delete. Must be in the format
+                    /// `projects/{project}/locations/{location}/authzPolicies/{authz_policy}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server can ignore the request if it has already been completed.
+                    /// The server guarantees that for at least 60 minutes after the first request. For example,
+                    /// consider a situation where you make an initial request and the request times out. If you make
+                    /// the request again with the same request ID, the server can check if original operation with the
+                    /// same request ID was received, and if so, ignores the second request. This prevents clients from
+                    /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/authzPolicies/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single AuthzPolicy.</summary>
+                /// <param name="name">
+                /// Required. A name of the `AuthzPolicy` resource to get. Must be in the format
+                /// `projects/{project}/locations/{location}/authzPolicies/{authz_policy}`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of a single AuthzPolicy.</summary>
+                public class GetRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.AuthzPolicy>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the `AuthzPolicy` resource to get. Must be in the format
+                    /// `projects/{project}/locations/{location}/authzPolicies/{authz_policy}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/authzPolicies/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists AuthzPolicies in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The project and location from which the `AuthzPolicy` resources are listed, specified in
+                /// the following format: `projects/{project}/locations/{location}`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists AuthzPolicies in a given project and location.</summary>
+                public class ListRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.ListAuthzPoliciesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project and location from which the `AuthzPolicy` resources are listed, specified
+                    /// in the following format: `projects/{project}/locations/{location}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. Filtering results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. Hint for how to order the results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. Requested page size. The server might return fewer items than requested. If
+                    /// unspecified, the server picks an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. A token identifying a page of results that the server returns.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/authzPolicies";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates the parameters of a single AuthzPolicy.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Identifier. Name of the `AuthzPolicy` resource in the following format:
+                /// `projects/{project}/locations/{location}/authzPolicies/{authz_policy}`.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1beta1.Data.AuthzPolicy body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates the parameters of a single AuthzPolicy.</summary>
+                public class PatchRequest : NetworkSecurityBaseServiceRequest<Google.Apis.NetworkSecurity.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkSecurity.v1beta1.Data.AuthzPolicy body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Identifier. Name of the `AuthzPolicy` resource in the following format:
+                    /// `projects/{project}/locations/{location}/authzPolicies/{authz_policy}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server can ignore the request if it has already been completed.
+                    /// The server guarantees that for at least 60 minutes since the first request. For example,
+                    /// consider a situation where you make an initial request and the request times out. If you make
+                    /// the request again with the same request ID, the server can check if original operation with the
+                    /// same request ID was received, and if so, ignores the second request. This prevents clients from
+                    /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Required. Used to specify the fields to be overwritten in the `AuthzPolicy` resource by the
+                    /// update. The fields specified in the update_mask are relative to the resource, not the full
+                    /// request. A field is overwritten if it is in the mask. If the user does not specify a mask, then
+                    /// all fields are overwritten.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkSecurity.v1beta1.Data.AuthzPolicy Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/authzPolicies/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -7507,6 +7940,455 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// `AuthzPolicy` is a resource that allows to forward traffic to a callout backend designed to scan the traffic for
+    /// security purposes.
+    /// </summary>
+    public class AuthzPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Can be one of ALLOW, DENY, CUSTOM. When the action is CUSTOM, customProvider must be specified.
+        /// When the action is ALLOW, only requests matching the policy will be allowed. When the action is DENY, only
+        /// requests matching the policy will be denied. When a request arrives, the policies are evaluated in the
+        /// following order: 1. If there is a CUSTOM policy that matches the request, the CUSTOM policy is evaluated
+        /// using the custom authorization providers and the request is denied if the provider rejects the request. 2.
+        /// If there are any DENY policies that match the request, the request is denied. 3. If there are no ALLOW
+        /// policies for the resource or if any of the ALLOW policies match the request, the request is allowed. 4. Else
+        /// the request is denied by default if none of the configured AuthzPolicies with ALLOW action match the
+        /// request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The timestamp when the resource was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Optional. Required if the action is CUSTOM. Allows delegating authorization decisions to Cloud IAP or to
+        /// Service Extensions. One of cloudIap or authzExtension must be specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customProvider")]
+        public virtual AuthzPolicyCustomProvider CustomProvider { get; set; }
+
+        /// <summary>Optional. A human-readable description of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. A list of authorization HTTP rules to match against the incoming request. A policy match occurs
+        /// when at least one HTTP rule matches the request or when no HTTP rules are specified in the policy. At least
+        /// one HTTP Rule is required for Allow or Deny Action.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpRules")]
+        public virtual System.Collections.Generic.IList<AuthzPolicyAuthzRule> HttpRules { get; set; }
+
+        /// <summary>
+        /// Optional. Set of labels associated with the `AuthzPolicy` resource. The format must comply with [the
+        /// following requirements](/compute/docs/labeling-resources#requirements).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Required. Identifier. Name of the `AuthzPolicy` resource in the following format:
+        /// `projects/{project}/locations/{location}/authzPolicies/{authz_policy}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. Specifies the set of resources to which this policy should be applied to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("target")]
+        public virtual AuthzPolicyTarget Target { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The timestamp when the resource was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Conditions to match against the incoming request.</summary>
+    public class AuthzPolicyAuthzRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Describes properties of one or more sources of a request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("from")]
+        public virtual AuthzPolicyAuthzRuleFrom From { get; set; }
+
+        /// <summary>Optional. Describes properties of one or more targets of a request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("to")]
+        public virtual AuthzPolicyAuthzRuleTo To { get; set; }
+
+        /// <summary>
+        /// Optional. CEL expression that describes the conditions to be satisfied for the action. The result of the CEL
+        /// expression is ANDed with the from and to. Refer to the CEL language reference for a list of available
+        /// attributes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("when")]
+        public virtual string When { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes properties of one or more sources of a request.</summary>
+    public class AuthzPolicyAuthzRuleFrom : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Describes the negated properties of request sources. Matches requests from sources that do not
+        /// match the criteria specified in this field. At least one of sources or notSources must be specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notSources")]
+        public virtual System.Collections.Generic.IList<AuthzPolicyAuthzRuleFromRequestSource> NotSources { get; set; }
+
+        /// <summary>
+        /// Optional. Describes the properties of a request's sources. At least one of sources or notSources must be
+        /// specified. Limited to 10 sources. A match occurs when ANY source (in sources or notSources) matches the
+        /// request. Within a single source, the match follows AND semantics across fields and OR semantics within a
+        /// single field, i.e. a match occurs when ANY principal matches AND ANY ipBlocks match.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sources")]
+        public virtual System.Collections.Generic.IList<AuthzPolicyAuthzRuleFromRequestSource> Sources { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes the properties of a single source.</summary>
+    public class AuthzPolicyAuthzRuleFromRequestSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A list of identities derived from the client's certificate. This field will not match on a request
+        /// unless mutual TLS is enabled for the Forwarding rule or Gateway. Each identity is a string whose value is
+        /// matched against the URI SAN, or DNS SAN or the subject field in the client's certificate. The match can be
+        /// exact, prefix, suffix or a substring match. One of exact, prefix, suffix or contains must be specified.
+        /// Limited to 10 principals.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("principals")]
+        public virtual System.Collections.Generic.IList<AuthzPolicyAuthzRuleStringMatch> Principals { get; set; }
+
+        /// <summary>
+        /// Optional. A list of resources to match against the resource of the source VM of a request. Limited to 10
+        /// resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resources")]
+        public virtual System.Collections.Generic.IList<AuthzPolicyAuthzRuleRequestResource> Resources { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Determines how a HTTP header should be matched.</summary>
+    public class AuthzPolicyAuthzRuleHeaderMatch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Specifies the name of the header in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. Specifies how the header match will be performed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual AuthzPolicyAuthzRuleStringMatch Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Describes the properties of a client VM resource accessing the internal application load balancers.
+    /// </summary>
+    public class AuthzPolicyAuthzRuleRequestResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. An IAM service account to match against the source service account of the VM sending the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iamServiceAccount")]
+        public virtual AuthzPolicyAuthzRuleStringMatch IamServiceAccount { get; set; }
+
+        /// <summary>
+        /// Optional. A list of resource tag value permanent IDs to match against the resource manager tags value
+        /// associated with the source VM of a request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tagValueIdSet")]
+        public virtual AuthzPolicyAuthzRuleRequestResourceTagValueIdSet TagValueIdSet { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Describes a set of resource tag value permanent IDs to match against the resource manager tags value associated
+    /// with the source VM of a request.
+    /// </summary>
+    public class AuthzPolicyAuthzRuleRequestResourceTagValueIdSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A list of resource tag value permanent IDs to match against the resource manager tags value
+        /// associated with the source VM of a request. The match follows AND semantics which means all the ids must
+        /// match. Limited to 10 matches.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ids")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> Ids { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Determines how a string value should be matched.</summary>
+    public class AuthzPolicyAuthzRuleStringMatch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The input string must have the substring specified here. Note: empty contains match is not allowed, please
+        /// use regex instead. Examples: * ``abc`` matches the value ``xyz.abc.def``
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contains")]
+        public virtual string Contains { get; set; }
+
+        /// <summary>
+        /// The input string must match exactly the string specified here. Examples: * ``abc`` only matches the value
+        /// ``abc``.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exact")]
+        public virtual string Exact { get; set; }
+
+        /// <summary>
+        /// If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the
+        /// matcher ``data`` will match both input string ``Data`` and ``data`` if set to true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreCase")]
+        public virtual System.Nullable<bool> IgnoreCase { get; set; }
+
+        /// <summary>
+        /// The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex
+        /// instead. Examples: * ``abc`` matches the value ``abc.xyz``
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prefix")]
+        public virtual string Prefix { get; set; }
+
+        /// <summary>
+        /// The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex
+        /// instead. Examples: * ``abc`` matches the value ``xyz.abc``
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suffix")]
+        public virtual string Suffix { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes properties of one or more targets of a request.</summary>
+    public class AuthzPolicyAuthzRuleTo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Describes the negated properties of the targets of a request. Matches requests for operations that
+        /// do not match the criteria specified in this field. At least one of operations or notOperations must be
+        /// specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notOperations")]
+        public virtual System.Collections.Generic.IList<AuthzPolicyAuthzRuleToRequestOperation> NotOperations { get; set; }
+
+        /// <summary>
+        /// Optional. Describes properties of one or more targets of a request. At least one of operations or
+        /// notOperations must be specified. Limited to 10 operations. A match occurs when ANY operation (in operations
+        /// or notOperations) matches. Within an operation, the match follows AND semantics across fields and OR
+        /// semantics within a field, i.e. a match occurs when ANY path matches AND ANY header matches and ANY method
+        /// matches.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operations")]
+        public virtual System.Collections.Generic.IList<AuthzPolicyAuthzRuleToRequestOperation> Operations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes properties of one or more targets of a request.</summary>
+    public class AuthzPolicyAuthzRuleToRequestOperation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. A list of headers to match against in http header.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headerSet")]
+        public virtual AuthzPolicyAuthzRuleToRequestOperationHeaderSet HeaderSet { get; set; }
+
+        /// <summary>
+        /// Optional. A list of HTTP Hosts to match against. The match can be one of exact, prefix, suffix, or contains
+        /// (substring match). Matches are always case sensitive unless the ignoreCase is set. Limited to 10 matches.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hosts")]
+        public virtual System.Collections.Generic.IList<AuthzPolicyAuthzRuleStringMatch> Hosts { get; set; }
+
+        /// <summary>
+        /// Optional. A list of HTTP methods to match against. Each entry must be a valid HTTP method name (GET, PUT,
+        /// POST, HEAD, PATCH, DELETE, OPTIONS). It only allows exact match and is always case sensitive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("methods")]
+        public virtual System.Collections.Generic.IList<string> Methods { get; set; }
+
+        /// <summary>
+        /// Optional. A list of paths to match against. The match can be one of exact, prefix, suffix, or contains
+        /// (substring match). Matches are always case sensitive unless the ignoreCase is set. Limited to 10 matches.
+        /// Note that this path match includes the query parameters. For gRPC services, this should be a fully-qualified
+        /// name of the form /package.service/method.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("paths")]
+        public virtual System.Collections.Generic.IList<AuthzPolicyAuthzRuleStringMatch> Paths { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes a set of HTTP headers to match against.</summary>
+    public class AuthzPolicyAuthzRuleToRequestOperationHeaderSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A list of headers to match against in http header. The match can be one of exact, prefix, suffix,
+        /// or contains (substring match). The match follows AND semantics which means all the headers must match.
+        /// Matches are always case sensitive unless the ignoreCase is set. Limited to 10 matches.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headers")]
+        public virtual System.Collections.Generic.IList<AuthzPolicyAuthzRuleHeaderMatch> Headers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Allows delegating authorization decisions to Cloud IAP or to Service Extensions.</summary>
+    public class AuthzPolicyCustomProvider : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Delegate authorization decision to user authored Service Extension. Only one of cloudIap or
+        /// authzExtension can be specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authzExtension")]
+        public virtual AuthzPolicyCustomProviderAuthzExtension AuthzExtension { get; set; }
+
+        /// <summary>
+        /// Optional. Delegates authorization decisions to Cloud IAP. Applicable only for managed load balancers.
+        /// Enabling Cloud IAP at the AuthzPolicy level is not compatible with Cloud IAP settings in the BackendService.
+        /// Enabling IAP in both places will result in request failure. Ensure that IAP is enabled in either the
+        /// AuthzPolicy or the BackendService but not in both places.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudIap")]
+        public virtual AuthzPolicyCustomProviderCloudIap CloudIap { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Optional. Delegate authorization decision to user authored extension. Only one of cloudIap or authzExtension can
+    /// be specified.
+    /// </summary>
+    public class AuthzPolicyCustomProviderAuthzExtension : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A list of references to authorization extensions that will be invoked for requests matching this
+        /// policy. Limited to 1 custom provider.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resources")]
+        public virtual System.Collections.Generic.IList<string> Resources { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Optional. Delegates authorization decisions to Cloud IAP. Applicable only for managed load balancers. Enabling
+    /// Cloud IAP at the AuthzPolicy level is not compatible with Cloud IAP settings in the BackendService. Enabling IAP
+    /// in both places will result in request failure. Ensure that IAP is enabled in either the AuthzPolicy or the
+    /// BackendService but not in both places.
+    /// </summary>
+    public class AuthzPolicyCustomProviderCloudIap : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies the set of targets to which this policy should be applied to.</summary>
+    public class AuthzPolicyTarget : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. All gateways and forwarding rules referenced by this policy and extensions must share the same
+        /// load balancing scheme. Supported values: `INTERNAL_MANAGED` and `EXTERNAL_MANAGED`. For more information,
+        /// refer to [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loadBalancingScheme")]
+        public virtual string LoadBalancingScheme { get; set; }
+
+        /// <summary>
+        /// Required. A list of references to the Forwarding Rules on which this policy will be applied.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resources")]
+        public virtual System.Collections.Generic.IList<string> Resources { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8627,6 +9509,25 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for response to listing `AuthzPolicy` resources.</summary>
+    public class ListAuthzPoliciesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of `AuthzPolicy` resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authzPolicies")]
+        public virtual System.Collections.Generic.IList<AuthzPolicy> AuthzPolicies { get; set; }
+
+        /// <summary>A token identifying a page of results that the server returns.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

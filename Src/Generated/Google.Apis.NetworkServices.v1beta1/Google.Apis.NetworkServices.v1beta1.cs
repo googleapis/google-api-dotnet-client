@@ -292,6 +292,7 @@ namespace Google.Apis.NetworkServices.v1beta1
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                AuthzExtensions = new AuthzExtensionsResource(service);
                 EndpointPolicies = new EndpointPoliciesResource(service);
                 Gateways = new GatewaysResource(service);
                 GrpcRoutes = new GrpcRoutesResource(service);
@@ -304,6 +305,438 @@ namespace Google.Apis.NetworkServices.v1beta1
                 ServiceLbPolicies = new ServiceLbPoliciesResource(service);
                 TcpRoutes = new TcpRoutesResource(service);
                 TlsRoutes = new TlsRoutesResource(service);
+            }
+
+            /// <summary>Gets the AuthzExtensions resource.</summary>
+            public virtual AuthzExtensionsResource AuthzExtensions { get; }
+
+            /// <summary>The "authzExtensions" collection of methods.</summary>
+            public class AuthzExtensionsResource
+            {
+                private const string Resource = "authzExtensions";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public AuthzExtensionsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new `AuthzExtension` resource in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource of the `AuthzExtension` resource. Must be in the format
+                /// `projects/{project}/locations/{location}`.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.NetworkServices.v1beta1.Data.AuthzExtension body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates a new `AuthzExtension` resource in a given project and location.</summary>
+                public class CreateRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkServices.v1beta1.Data.AuthzExtension body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource of the `AuthzExtension` resource. Must be in the format
+                    /// `projects/{project}/locations/{location}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Required. User-provided ID of the `AuthzExtension` resource to be created.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("authzExtensionId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string AuthzExtensionId { get; set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server can ignore the request if it has already been completed.
+                    /// The server guarantees that for at least 60 minutes since the first request. For example,
+                    /// consider a situation where you make an initial request and the request times out. If you make
+                    /// the request again with the same request ID, the server can check if original operation with the
+                    /// same request ID was received, and if so, ignores the second request. This prevents clients from
+                    /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkServices.v1beta1.Data.AuthzExtension Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/authzExtensions";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("authzExtensionId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "authzExtensionId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes the specified `AuthzExtension` resource.</summary>
+                /// <param name="name">
+                /// Required. The name of the `AuthzExtension` resource to delete. Must be in the format
+                /// `projects/{project}/locations/{location}/authzExtensions/{authz_extension}`.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes the specified `AuthzExtension` resource.</summary>
+                public class DeleteRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the `AuthzExtension` resource to delete. Must be in the format
+                    /// `projects/{project}/locations/{location}/authzExtensions/{authz_extension}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server can ignore the request if it has already been completed.
+                    /// The server guarantees that for at least 60 minutes after the first request. For example,
+                    /// consider a situation where you make an initial request and the request times out. If you make
+                    /// the request again with the same request ID, the server can check if original operation with the
+                    /// same request ID was received, and if so, ignores the second request. This prevents clients from
+                    /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/authzExtensions/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of the specified `AuthzExtension` resource.</summary>
+                /// <param name="name">
+                /// Required. A name of the `AuthzExtension` resource to get. Must be in the format
+                /// `projects/{project}/locations/{location}/authzExtensions/{authz_extension}`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Gets details of the specified `AuthzExtension` resource.</summary>
+                public class GetRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1beta1.Data.AuthzExtension>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the `AuthzExtension` resource to get. Must be in the format
+                    /// `projects/{project}/locations/{location}/authzExtensions/{authz_extension}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/authzExtensions/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists `AuthzExtension` resources in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The project and location from which the `AuthzExtension` resources are listed, specified
+                /// in the following format: `projects/{project}/locations/{location}`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists `AuthzExtension` resources in a given project and location.</summary>
+                public class ListRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1beta1.Data.ListAuthzExtensionsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project and location from which the `AuthzExtension` resources are listed,
+                    /// specified in the following format: `projects/{project}/locations/{location}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. Filtering results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. Hint for how to order the results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. Requested page size. The server might return fewer items than requested. If
+                    /// unspecified, the server picks an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. A token identifying a page of results that the server returns.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/authzExtensions";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates the parameters of the specified `AuthzExtension` resource.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Identifier. Name of the `AuthzExtension` resource in the following format:
+                /// `projects/{project}/locations/{location}/authzExtensions/{authz_extension}`.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.NetworkServices.v1beta1.Data.AuthzExtension body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates the parameters of the specified `AuthzExtension` resource.</summary>
+                public class PatchRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkServices.v1beta1.Data.AuthzExtension body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Identifier. Name of the `AuthzExtension` resource in the following format:
+                    /// `projects/{project}/locations/{location}/authzExtensions/{authz_extension}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server can ignore the request if it has already been completed.
+                    /// The server guarantees that for at least 60 minutes since the first request. For example,
+                    /// consider a situation where you make an initial request and the request times out. If you make
+                    /// the request again with the same request ID, the server can check if original operation with the
+                    /// same request ID was received, and if so, ignores the second request. This prevents clients from
+                    /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Required. Used to specify the fields to be overwritten in the `AuthzExtension` resource by the
+                    /// update. The fields specified in the update_mask are relative to the resource, not the full
+                    /// request. A field is overwritten if it is in the mask. If the user does not specify a mask, then
+                    /// all fields are overwritten.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkServices.v1beta1.Data.AuthzExtension Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/authzExtensions/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the EndpointPolicies resource.</summary>
@@ -580,7 +1013,7 @@ namespace Google.Apis.NetworkServices.v1beta1
                 /// <summary>Updates the parameters of a single EndpointPolicy.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. Name of the EndpointPolicy resource. It matches pattern
+                /// Identifier. Name of the EndpointPolicy resource. It matches pattern
                 /// `projects/{project}/locations/global/endpointPolicies/{endpoint_policy}`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkServices.v1beta1.Data.EndpointPolicy body, string name)
@@ -600,7 +1033,7 @@ namespace Google.Apis.NetworkServices.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. Name of the EndpointPolicy resource. It matches pattern
+                    /// Identifier. Name of the EndpointPolicy resource. It matches pattern
                     /// `projects/{project}/locations/global/endpointPolicies/{endpoint_policy}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -922,7 +1355,7 @@ namespace Google.Apis.NetworkServices.v1beta1
                 /// <summary>Updates the parameters of a single Gateway.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. Name of the Gateway resource. It matches pattern `projects/*/locations/*/gateways/`.
+                /// Identifier. Name of the Gateway resource. It matches pattern `projects/*/locations/*/gateways/`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkServices.v1beta1.Data.Gateway body, string name)
                 {
@@ -941,7 +1374,7 @@ namespace Google.Apis.NetworkServices.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. Name of the Gateway resource. It matches pattern `projects/*/locations/*/gateways/`.
+                    /// Identifier. Name of the Gateway resource. It matches pattern `projects/*/locations/*/gateways/`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1264,7 +1697,7 @@ namespace Google.Apis.NetworkServices.v1beta1
                 /// <summary>Updates the parameters of a single GrpcRoute.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. Name of the GrpcRoute resource. It matches pattern
+                /// Identifier. Name of the GrpcRoute resource. It matches pattern
                 /// `projects/*/locations/global/grpcRoutes/`
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkServices.v1beta1.Data.GrpcRoute body, string name)
@@ -1284,7 +1717,7 @@ namespace Google.Apis.NetworkServices.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. Name of the GrpcRoute resource. It matches pattern
+                    /// Identifier. Name of the GrpcRoute resource. It matches pattern
                     /// `projects/*/locations/global/grpcRoutes/`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1608,7 +2041,7 @@ namespace Google.Apis.NetworkServices.v1beta1
                 /// <summary>Updates the parameters of a single HttpRoute.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. Name of the HttpRoute resource. It matches pattern
+                /// Identifier. Name of the HttpRoute resource. It matches pattern
                 /// `projects/*/locations/global/httpRoutes/http_route_name&amp;gt;`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkServices.v1beta1.Data.HttpRoute body, string name)
@@ -1628,7 +2061,7 @@ namespace Google.Apis.NetworkServices.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. Name of the HttpRoute resource. It matches pattern
+                    /// Identifier. Name of the HttpRoute resource. It matches pattern
                     /// `projects/*/locations/global/httpRoutes/http_route_name&amp;gt;`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -2816,7 +3249,7 @@ namespace Google.Apis.NetworkServices.v1beta1
                 /// <summary>Updates the parameters of a single Mesh.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. Name of the Mesh resource. It matches pattern `projects/*/locations/global/meshes/`.
+                /// Identifier. Name of the Mesh resource. It matches pattern `projects/*/locations/global/meshes/`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkServices.v1beta1.Data.Mesh body, string name)
                 {
@@ -2835,7 +3268,7 @@ namespace Google.Apis.NetworkServices.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. Name of the Mesh resource. It matches pattern `projects/*/locations/global/meshes/`.
+                    /// Identifier. Name of the Mesh resource. It matches pattern `projects/*/locations/global/meshes/`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -4272,7 +4705,7 @@ namespace Google.Apis.NetworkServices.v1beta1
                 /// <summary>Updates the parameters of a single TcpRoute.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. Name of the TcpRoute resource. It matches pattern
+                /// Identifier. Name of the TcpRoute resource. It matches pattern
                 /// `projects/*/locations/global/tcpRoutes/tcp_route_name&amp;gt;`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkServices.v1beta1.Data.TcpRoute body, string name)
@@ -4292,7 +4725,7 @@ namespace Google.Apis.NetworkServices.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. Name of the TcpRoute resource. It matches pattern
+                    /// Identifier. Name of the TcpRoute resource. It matches pattern
                     /// `projects/*/locations/global/tcpRoutes/tcp_route_name&amp;gt;`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -4880,6 +5313,175 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// `AuthzExtension` is a resource that allows traffic forwarding to a callout backend to make an authorization
+    /// decision.
+    /// </summary>
+    public class AuthzExtension : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The `:authority` header in the gRPC request sent from Envoy to the extension service.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authority")]
+        public virtual string Authority { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The timestamp when the resource was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>Optional. A human-readable description of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. Determines how the proxy behaves if the call to the extension fails or times out. When set to
+        /// `TRUE`, request or response processing continues without error. Any subsequent extensions in the extension
+        /// chain are also executed. When set to `FALSE` or the default setting of `FALSE` is used, one of the following
+        /// happens: * If response headers have not been delivered to the downstream client, a generic 500 error is
+        /// returned to the client. The error response can be tailored by configuring a custom error response in the
+        /// load balancer. * If response headers have been delivered, then the HTTP stream to the downstream client is
+        /// reset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failOpen")]
+        public virtual System.Nullable<bool> FailOpen { get; set; }
+
+        /// <summary>
+        /// Optional. List of the HTTP headers to forward to the extension (from the client). If omitted, all headers
+        /// are sent. Each element is a string indicating the header name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("forwardHeaders")]
+        public virtual System.Collections.Generic.IList<string> ForwardHeaders { get; set; }
+
+        /// <summary>
+        /// Optional. Set of labels associated with the `AuthzExtension` resource. The format must comply with [the
+        /// requirements for labels](/compute/docs/labeling-resources#requirements) for Google Cloud resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Required. All backend services and forwarding rules referenced by this extension must share the same load
+        /// balancing scheme. Supported values: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. For more information, refer to
+        /// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loadBalancingScheme")]
+        public virtual string LoadBalancingScheme { get; set; }
+
+        /// <summary>
+        /// Optional. The metadata provided here is included as part of the `metadata_context` (of type
+        /// `google.protobuf.Struct`) in the `ProcessingRequest` message sent to the extension server. The metadata is
+        /// available under the namespace `com.google.authz_extension.`. The following variables are supported in the
+        /// metadata Struct: `{forwarding_rule_id}` - substituted with the forwarding rule's fully qualified resource
+        /// name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
+        /// <summary>
+        /// Required. Identifier. Name of the `AuthzExtension` resource in the following format:
+        /// `projects/{project}/locations/{location}/authzExtensions/{authz_extension}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. The reference to the service that runs the extension. Currently only callout extensions are
+        /// supported here. To configure a callout extension, `service` must be a fully-qualified reference to a
+        /// [backend service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices) in the format:
+        /// `https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/backendServices/{backendService}`
+        /// or `https://www.googleapis.com/compute/v1/projects/{project}/global/backendServices/{backendService}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; }
+
+        /// <summary>
+        /// Required. Specifies the timeout for each individual message on the stream. The timeout must be between
+        /// 10-10000 milliseconds.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
+        public virtual object Timeout { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The timestamp when the resource was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>
+        /// Optional. The format of communication supported by the callout extension. If not specified, the default is
+        /// `EXT_PROC_GRPC`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wireFormat")]
+        public virtual string WireFormat { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Associates `members`, or principals, with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5058,7 +5660,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Required. Name of the EndpointPolicy resource. It matches pattern
+        /// Identifier. Name of the EndpointPolicy resource. It matches pattern
         /// `projects/{project}/locations/global/endpointPolicies/{endpoint_policy}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -5372,7 +5974,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Required. Name of the Gateway resource. It matches pattern `projects/*/locations/*/gateways/`.
+        /// Identifier. Name of the Gateway resource. It matches pattern `projects/*/locations/*/gateways/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -5555,7 +6157,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual System.Collections.Generic.IList<string> Meshes { get; set; }
 
         /// <summary>
-        /// Required. Name of the GrpcRoute resource. It matches pattern `projects/*/locations/global/grpcRoutes/`
+        /// Identifier. Name of the GrpcRoute resource. It matches pattern `projects/*/locations/global/grpcRoutes/`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -5963,7 +6565,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual System.Collections.Generic.IList<string> Meshes { get; set; }
 
         /// <summary>
-        /// Required. Name of the HttpRoute resource. It matches pattern
+        /// Identifier. Name of the HttpRoute resource. It matches pattern
         /// `projects/*/locations/global/httpRoutes/http_route_name&amp;gt;`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -6887,6 +7489,25 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message for response to listing `AuthzExtension` resources.</summary>
+    public class ListAuthzExtensionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of `AuthzExtension` resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authzExtensions")]
+        public virtual System.Collections.Generic.IList<AuthzExtension> AuthzExtensions { get; set; }
+
+        /// <summary>A token identifying a page of results that the server returns.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response returned by the ListEndpointPolicies method.</summary>
     public class ListEndpointPoliciesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7221,7 +7842,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Required. Name of the Mesh resource. It matches pattern `projects/*/locations/global/meshes/`.
+        /// Identifier. Name of the Mesh resource. It matches pattern `projects/*/locations/global/meshes/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -7593,7 +8214,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Required. Name of the ServiceBinding resource. It matches pattern
+        /// Identifier. Name of the ServiceBinding resource. It matches pattern
         /// `projects/*/locations/global/serviceBindings/service_binding_name`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -7924,7 +8545,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         public virtual System.Collections.Generic.IList<string> Meshes { get; set; }
 
         /// <summary>
-        /// Required. Name of the TcpRoute resource. It matches pattern
+        /// Identifier. Name of the TcpRoute resource. It matches pattern
         /// `projects/*/locations/global/tcpRoutes/tcp_route_name&amp;gt;`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]

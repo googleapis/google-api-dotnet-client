@@ -8952,6 +8952,13 @@ namespace Google.Apis.Walletobjects.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("logo")]
         public virtual Image Logo { get; set; }
 
+        /// <summary>
+        /// An array of messages displayed in the app. All users of this object will receive its associated messages.
+        /// The maximum number of these fields is 10.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messages")]
+        public virtual System.Collections.Generic.IList<Message> Messages { get; set; }
+
         /// <summary>The notification settings that are enabled for this object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notifications")]
         public virtual Notifications Notifications { get; set; }

@@ -91,32 +91,31 @@ namespace Google.Apis.HangoutsChat.v1
             /// <summary>Private Service: https://www.googleapis.com/auth/chat.bot</summary>
             public static string ChatBot = "https://www.googleapis.com/auth/chat.bot";
 
-            /// <summary>
-            /// Delete conversations and spaces &amp;amp; remove access to associated files in Google Chat
-            /// </summary>
+            /// <summary>Delete conversations and spaces and remove access to associated files in Google Chat</summary>
             public static string ChatDelete = "https://www.googleapis.com/auth/chat.delete";
 
             /// <summary>Import spaces, messages, and memberships into Google Chat.</summary>
             public static string ChatImport = "https://www.googleapis.com/auth/chat.import";
 
-            /// <summary>View, add, update, and remove members from conversations in Google Chat</summary>
+            /// <summary>See, add, update, and remove members from conversations and spaces in Google Chat</summary>
             public static string ChatMemberships = "https://www.googleapis.com/auth/chat.memberships";
 
-            /// <summary>Add and remove itself from conversations in Google Chat</summary>
+            /// <summary>Add and remove itself from conversations and spaces in Google Chat</summary>
             public static string ChatMembershipsApp = "https://www.googleapis.com/auth/chat.memberships.app";
 
             /// <summary>View members in Google Chat conversations.</summary>
             public static string ChatMembershipsReadonly = "https://www.googleapis.com/auth/chat.memberships.readonly";
 
             /// <summary>
-            /// View, compose, send, update, and delete messages, and add, view, and delete reactions to messages.
+            /// See, compose, send, update, and delete messages and their associated attachments, and add, see, and
+            /// delete reactions to messages.
             /// </summary>
             public static string ChatMessages = "https://www.googleapis.com/auth/chat.messages";
 
             /// <summary>Compose and send messages in Google Chat</summary>
             public static string ChatMessagesCreate = "https://www.googleapis.com/auth/chat.messages.create";
 
-            /// <summary>View, add, and delete reactions to messages in Google Chat</summary>
+            /// <summary>See, add, and delete reactions to messages in Google Chat</summary>
             public static string ChatMessagesReactions = "https://www.googleapis.com/auth/chat.messages.reactions";
 
             /// <summary>Add reactions to messages in Google Chat</summary>
@@ -125,16 +124,16 @@ namespace Google.Apis.HangoutsChat.v1
             /// <summary>View reactions to messages in Google Chat</summary>
             public static string ChatMessagesReactionsReadonly = "https://www.googleapis.com/auth/chat.messages.reactions.readonly";
 
-            /// <summary>View messages and reactions in Google Chat</summary>
+            /// <summary>See messages and their associated reactions and attachments in Google Chat</summary>
             public static string ChatMessagesReadonly = "https://www.googleapis.com/auth/chat.messages.readonly";
 
             /// <summary>
-            /// Create conversations and spaces and see or edit metadata (including history settings and access
+            /// Create conversations and spaces and see or update metadata (including history settings and access
             /// settings) in Google Chat
             /// </summary>
             public static string ChatSpaces = "https://www.googleapis.com/auth/chat.spaces";
 
-            /// <summary>Create new conversations in Google Chat</summary>
+            /// <summary>Create new conversations and spaces in Google Chat</summary>
             public static string ChatSpacesCreate = "https://www.googleapis.com/auth/chat.spaces.create";
 
             /// <summary>View chat and spaces in Google Chat</summary>
@@ -179,32 +178,31 @@ namespace Google.Apis.HangoutsChat.v1
             /// <summary>Private Service: https://www.googleapis.com/auth/chat.bot</summary>
             public const string ChatBot = "https://www.googleapis.com/auth/chat.bot";
 
-            /// <summary>
-            /// Delete conversations and spaces &amp;amp; remove access to associated files in Google Chat
-            /// </summary>
+            /// <summary>Delete conversations and spaces and remove access to associated files in Google Chat</summary>
             public const string ChatDelete = "https://www.googleapis.com/auth/chat.delete";
 
             /// <summary>Import spaces, messages, and memberships into Google Chat.</summary>
             public const string ChatImport = "https://www.googleapis.com/auth/chat.import";
 
-            /// <summary>View, add, update, and remove members from conversations in Google Chat</summary>
+            /// <summary>See, add, update, and remove members from conversations and spaces in Google Chat</summary>
             public const string ChatMemberships = "https://www.googleapis.com/auth/chat.memberships";
 
-            /// <summary>Add and remove itself from conversations in Google Chat</summary>
+            /// <summary>Add and remove itself from conversations and spaces in Google Chat</summary>
             public const string ChatMembershipsApp = "https://www.googleapis.com/auth/chat.memberships.app";
 
             /// <summary>View members in Google Chat conversations.</summary>
             public const string ChatMembershipsReadonly = "https://www.googleapis.com/auth/chat.memberships.readonly";
 
             /// <summary>
-            /// View, compose, send, update, and delete messages, and add, view, and delete reactions to messages.
+            /// See, compose, send, update, and delete messages and their associated attachments, and add, see, and
+            /// delete reactions to messages.
             /// </summary>
             public const string ChatMessages = "https://www.googleapis.com/auth/chat.messages";
 
             /// <summary>Compose and send messages in Google Chat</summary>
             public const string ChatMessagesCreate = "https://www.googleapis.com/auth/chat.messages.create";
 
-            /// <summary>View, add, and delete reactions to messages in Google Chat</summary>
+            /// <summary>See, add, and delete reactions to messages in Google Chat</summary>
             public const string ChatMessagesReactions = "https://www.googleapis.com/auth/chat.messages.reactions";
 
             /// <summary>Add reactions to messages in Google Chat</summary>
@@ -213,16 +211,16 @@ namespace Google.Apis.HangoutsChat.v1
             /// <summary>View reactions to messages in Google Chat</summary>
             public const string ChatMessagesReactionsReadonly = "https://www.googleapis.com/auth/chat.messages.reactions.readonly";
 
-            /// <summary>View messages and reactions in Google Chat</summary>
+            /// <summary>See messages and their associated reactions and attachments in Google Chat</summary>
             public const string ChatMessagesReadonly = "https://www.googleapis.com/auth/chat.messages.readonly";
 
             /// <summary>
-            /// Create conversations and spaces and see or edit metadata (including history settings and access
+            /// Create conversations and spaces and see or update metadata (including history settings and access
             /// settings) in Google Chat
             /// </summary>
             public const string ChatSpaces = "https://www.googleapis.com/auth/chat.spaces";
 
-            /// <summary>Create new conversations in Google Chat</summary>
+            /// <summary>Create new conversations and spaces in Google Chat</summary>
             public const string ChatSpacesCreate = "https://www.googleapis.com/auth/chat.spaces.create";
 
             /// <summary>View chat and spaces in Google Chat</summary>
@@ -4220,7 +4218,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("isDialogEvent")]
         public virtual System.Nullable<bool> IsDialogEvent { get; set; }
 
-        /// <summary>The message that triggered the interaction event, if applicable.</summary>
+        /// <summary>
+        /// For `ADDED_TO_SPACE`, `CARD_CLICKED`, and `MESSAGE` interaction events, the message that triggered the
+        /// interaction event, if applicable.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual Message Message { get; set; }
 

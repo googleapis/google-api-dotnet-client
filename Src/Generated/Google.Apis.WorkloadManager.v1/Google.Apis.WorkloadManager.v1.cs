@@ -2230,7 +2230,11 @@ namespace Google.Apis.WorkloadManager.v1.Data
     /// <summary>Message for external data sources</summary>
     public class ExternalDataSources : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The asset type of the external data source must be one of go/cai-asset-types</summary>
+        /// <summary>
+        /// Required. The asset type of the external data source this can be one of go/cai-asset-types to override the
+        /// default asset type or it can be a custom type defined by the user custom type must match the asset type in
+        /// the rule
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assetType")]
         public virtual string AssetType { get; set; }
 
@@ -2343,6 +2347,13 @@ namespace Google.Apis.WorkloadManager.v1.Data
 
     public class IsolationExpectations : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Explicit overrides for ZI and ZS requirements to be used for resources that should be excluded from ZI/ZS
+        /// verification logic.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requirementOverride")]
+        public virtual RequirementOverride RequirementOverride { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("ziOrgPolicy")]
         public virtual string ZiOrgPolicy { get; set; }
 
@@ -2737,6 +2748,18 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// <summary>Cloud zones used by regional MIG to create instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zones")]
         public virtual System.Collections.Generic.IList<ZoneConfiguration> Zones { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class RequirementOverride : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("ziOverride")]
+        public virtual string ZiOverride { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("zsOverride")]
+        public virtual string ZsOverride { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

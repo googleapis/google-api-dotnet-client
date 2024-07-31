@@ -19502,11 +19502,18 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     /// <summary>Define behaviors on logging.</summary>
     public class GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Enables consent-based end-user input redaction, if true, a pre-defined session parameter
+        /// `$session.params.conversation-redaction` will be used to determine if the utterance should be redacted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableConsentBasedRedaction")]
+        public virtual System.Nullable<bool> EnableConsentBasedRedaction { get; set; }
+
         /// <summary>Enables DF Interaction logging.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableInteractionLogging")]
         public virtual System.Nullable<bool> EnableInteractionLogging { get; set; }
 
-        /// <summary>Enables StackDriver logging.</summary>
+        /// <summary>Enables Google Cloud Logging.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableStackdriverLogging")]
         public virtual System.Nullable<bool> EnableStackdriverLogging { get; set; }
 
@@ -19841,7 +19848,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     public class GoogleCloudDialogflowCxV3DeployFlowResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The name of the flow version Deployment. Format: `projects//locations//agents// environments//deployments/`.
+        /// The name of the flow version Deployment. Format: `projects//locations//agents//environments//deployments/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deployment")]
         public virtual string Deployment { get; set; }
@@ -19970,7 +19977,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
 
         /// <summary>
         /// A list of test case names to run. They should be under the same agent. Format of each test case name:
-        /// `projects//locations/ /agents//testCases/`
+        /// `projects//locations//agents//testCases/`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testCases")]
         public virtual System.Collections.Generic.IList<string> TestCases { get; set; }
@@ -21486,7 +21493,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
 
         /// <summary>
         /// The unique identifier of the test case. TestCases.CreateTestCase will populate the name automatically.
-        /// Otherwise use format: `projects//locations//agents/ /testCases/`.
+        /// Otherwise use format: `projects//locations//agents//testCases/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -21544,7 +21551,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string Environment { get; set; }
 
         /// <summary>
-        /// The resource name for the test case result. Format: `projects//locations//agents//testCases/ /results/`.
+        /// The resource name for the test case result. Format: `projects//locations//agents//testCases//results/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -22277,11 +22284,18 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     /// <summary>Define behaviors on logging.</summary>
     public class GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Enables consent-based end-user input redaction, if true, a pre-defined session parameter
+        /// `$session.params.conversation-redaction` will be used to determine if the utterance should be redacted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableConsentBasedRedaction")]
+        public virtual System.Nullable<bool> EnableConsentBasedRedaction { get; set; }
+
         /// <summary>Enables DF Interaction logging.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableInteractionLogging")]
         public virtual System.Nullable<bool> EnableInteractionLogging { get; set; }
 
-        /// <summary>Enables StackDriver logging.</summary>
+        /// <summary>Enables Google Cloud Logging.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableStackdriverLogging")]
         public virtual System.Nullable<bool> EnableStackdriverLogging { get; set; }
 
@@ -22616,7 +22630,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     public class GoogleCloudDialogflowCxV3beta1DeployFlowResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The name of the flow version deployment. Format: `projects//locations//agents// environments//deployments/`.
+        /// The name of the flow version deployment. Format: `projects//locations//agents//environments//deployments/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deployment")]
         public virtual string Deployment { get; set; }
@@ -22745,7 +22759,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
 
         /// <summary>
         /// A list of test case names to run. They should be under the same agent. Format of each test case name:
-        /// `projects//locations/ /agents//testCases/`
+        /// `projects//locations//agents//testCases/`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testCases")]
         public virtual System.Collections.Generic.IList<string> TestCases { get; set; }
@@ -24265,7 +24279,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
 
         /// <summary>
         /// The unique identifier of the test case. TestCases.CreateTestCase will populate the name automatically.
-        /// Otherwise use format: `projects//locations//agents/ /testCases/`.
+        /// Otherwise use format: `projects//locations//agents//testCases/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -24323,7 +24337,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string Environment { get; set; }
 
         /// <summary>
-        /// The resource name for the test case result. Format: `projects//locations//agents//testCases/ /results/`.
+        /// The resource name for the test case result. Format: `projects//locations//agents//testCases//results/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -33803,15 +33817,6 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     /// <summary>Configures speech transcription for ConversationProfile.</summary>
     public class GoogleCloudDialogflowV2beta1SpeechToTextConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Defines the list of other language codes in addition to the one provided by the conversation profile that
-        /// may be detected as the language code for the utterances over the conversation. See [Language
-        /// Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported
-        /// language codes.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("alternativeLanguageCodes")]
-        public virtual System.Collections.Generic.IList<string> AlternativeLanguageCodes { get; set; }
-
         /// <summary>Audio encoding of the audio content to process.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioEncoding")]
         public virtual string AudioEncoding { get; set; }

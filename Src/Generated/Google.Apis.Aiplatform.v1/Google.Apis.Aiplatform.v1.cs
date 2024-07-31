@@ -38589,6 +38589,14 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("encoding")]
         public virtual string Encoding { get; set; }
 
+        /// <summary>
+        /// Generation seed for the sampled image. This parameter is exposed to the user only if one of the following is
+        /// true: 1. The user specified per-example seeds in the request. 2. The user doesn't specify the generation
+        /// seed in the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generationSeed")]
+        public virtual System.Nullable<int> GenerationSeed { get; set; }
+
         /// <summary>Raw bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
         public virtual string Image { get; set; }
@@ -39972,6 +39980,14 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourcesConsumed")]
         public virtual GoogleCloudAiplatformV1ResourcesConsumed ResourcesConsumed { get; set; }
 
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
         /// <summary>
         /// The service account that the DeployedModel's container runs as. If not specified, a system generated one
         /// will be used, which has minimal permissions and the custom container, if used, may not have enough
@@ -40618,10 +40634,6 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("safetyRatings")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1SafetyRating> SafetyRatings { get; set; }
-
-        /// <summary>Output only. Confidence score of the candidate.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("score")]
-        public virtual System.Nullable<double> Score { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -41966,6 +41978,14 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual object Payload { get; set; }
 
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
         private string _updateTimeRaw;
 
         private object _updateTime;
@@ -42330,6 +42350,14 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
         /// <summary>
         /// All SavedQueries belong to the Dataset will be returned in List/Get Dataset response. The annotation_specs
         /// field will not be populated except for UI cases which will only use annotation_spec_count. In CreateDataset
@@ -42448,6 +42476,14 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Output only. Identifier. The resource name of the DatasetVersion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
         private string _updateTimeRaw;
 
@@ -43238,6 +43274,14 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
         /// <summary>
         /// The service account that the DeploymentResourcePool's container(s) run as. Specify the email address of the
         /// service account. If this service account is not specified, the container(s) run as a service account that
@@ -43510,6 +43554,14 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateServiceConnectConfig")]
         public virtual GoogleCloudAiplatformV1PrivateServiceConnectConfig PrivateServiceConnectConfig { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzi")]
+        public virtual System.Nullable<bool> SatisfiesPzi { get; set; }
+
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
         /// <summary>
         /// A map from a DeployedModel's ID to the percentage of this Endpoint's traffic that should be forwarded to
@@ -47578,6 +47630,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseSchema")]
         public virtual GoogleCloudAiplatformV1Schema ResponseSchema { get; set; }
+
+        /// <summary>Optional. Seed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seed")]
+        public virtual System.Nullable<int> Seed { get; set; }
 
         /// <summary>Optional. Stop sequences.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stopSequences")]
@@ -54049,10 +54105,6 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
 
-        /// <summary>Optional. Configuration for PSC-I for PersistentResource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pscInterfaceConfig")]
-        public virtual GoogleCloudAiplatformV1PscInterfaceConfig PscInterfaceConfig { get; set; }
-
         /// <summary>
         /// Optional. A list of names for the reserved IP ranges under the VPC network that can be used for this
         /// persistent resource. If set, we will deploy the persistent resource within the provided IP ranges.
@@ -55126,26 +55178,6 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Configuration for PSC-I.</summary>
-    public class GoogleCloudAiplatformV1PscInterfaceConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Optional. The full name of the Compute Engine [network
-        /// attachment](https://cloud.google.com/vpc/docs/about-network-attachments) to attach to the resource. For
-        /// example, `projects/12345/regions/us-central1/networkAttachments/myNA`. is of the form
-        /// `projects/{project}/regions/{region}/networkAttachments/{networkAttachment}`. Where {project} is a project
-        /// number, as in `12345`, and {networkAttachment} is a network attachment name. To specify this field, you must
-        /// have already [created a network attachment]
-        /// (https://cloud.google.com/vpc/docs/create-manage-network-attachments#create-network-attachments). This field
-        /// is only used for resources using PSC-I.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("networkAttachment")]
-        public virtual string NetworkAttachment { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>A Model Garden Publisher Model.</summary>
     public class GoogleCloudAiplatformV1PublisherModel : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -55332,6 +55364,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Optional. Sample request for deployed endpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleRequest")]
+        public virtual string SampleRequest { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -64781,7 +64817,6 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Next ID: 3</summary>
     public class GoogleCloudAiplatformV1TrialContext : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

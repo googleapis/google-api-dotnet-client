@@ -1211,13 +1211,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta2
                             /// insensitive. The fields eligible for filtering are: * `version` An example of using a
                             /// filter: *
                             /// `version="projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/1.0"`
-                            /// --&amp;gt; Tags that are applied to the version `1.0` in package `pkg1`. *
-                            /// `name="projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/a%2Fb%2F*"`
-                            /// --&amp;gt; tags with an ID starting with "a/b/". *
-                            /// `name="projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/*%2Fb%2Fc"`
-                            /// --&amp;gt; tags with an ID ending with "/b/c". *
-                            /// `name="projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/*%2Fb%2F*"`
-                            /// --&amp;gt; tags with an ID containing "/b/".
+                            /// --&amp;gt; Tags that are applied to the version `1.0` in package `pkg1`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Filter { get; set; }

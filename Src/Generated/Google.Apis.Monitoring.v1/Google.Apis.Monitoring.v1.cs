@@ -1146,9 +1146,9 @@ namespace Google.Apis.Monitoring.v1
 
                             /// <summary>Lists possible values for a given label name.</summary>
                             /// <param name="name">
-                            /// The workspace on which to execute the request. It is not part of the open source API but
-                            /// used as a request path prefix to distinguish different virtual Prometheus instances of
-                            /// Google Prometheus Engine. The format is: projects/PROJECT_ID_OR_NUMBER.
+                            /// Required. The workspace on which to execute the request. It is not part of the open
+                            /// source API but used as a request path prefix to distinguish different virtual Prometheus
+                            /// instances of Google Prometheus Engine. The format is: projects/PROJECT_ID_OR_NUMBER.
                             /// </param>
                             /// <param name="location">
                             /// Location of the resource information. Has to be "global" now.
@@ -1172,9 +1172,10 @@ namespace Google.Apis.Monitoring.v1
                                 }
 
                                 /// <summary>
-                                /// The workspace on which to execute the request. It is not part of the open source API
-                                /// but used as a request path prefix to distinguish different virtual Prometheus
-                                /// instances of Google Prometheus Engine. The format is: projects/PROJECT_ID_OR_NUMBER.
+                                /// Required. The workspace on which to execute the request. It is not part of the open
+                                /// source API but used as a request path prefix to distinguish different virtual
+                                /// Prometheus instances of Google Prometheus Engine. The format is:
+                                /// projects/PROJECT_ID_OR_NUMBER.
                                 /// </summary>
                                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                                 public virtual string Name { get; private set; }
@@ -1391,9 +1392,9 @@ namespace Google.Apis.Monitoring.v1
                         /// <summary>Lists labels for metrics.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
-                        /// The workspace on which to execute the request. It is not part of the open source API but
-                        /// used as a request path prefix to distinguish different virtual Prometheus instances of
-                        /// Google Prometheus Engine. The format is: projects/PROJECT_ID_OR_NUMBER.
+                        /// Required. The workspace on which to execute the request. It is not part of the open source
+                        /// API but used as a request path prefix to distinguish different virtual Prometheus instances
+                        /// of Google Prometheus Engine. The format is: projects/PROJECT_ID_OR_NUMBER.
                         /// </param>
                         /// <param name="location">Location of the resource information. Has to be "global" now.</param>
                         public virtual LabelsRequest Labels(Google.Apis.Monitoring.v1.Data.QueryLabelsRequest body, string name, string location)
@@ -1414,9 +1415,9 @@ namespace Google.Apis.Monitoring.v1
                             }
 
                             /// <summary>
-                            /// The workspace on which to execute the request. It is not part of the open source API but
-                            /// used as a request path prefix to distinguish different virtual Prometheus instances of
-                            /// Google Prometheus Engine. The format is: projects/PROJECT_ID_OR_NUMBER.
+                            /// Required. The workspace on which to execute the request. It is not part of the open
+                            /// source API but used as a request path prefix to distinguish different virtual Prometheus
+                            /// instances of Google Prometheus Engine. The format is: projects/PROJECT_ID_OR_NUMBER.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -1466,10 +1467,10 @@ namespace Google.Apis.Monitoring.v1
                         /// <summary>Evaluate a PromQL query at a single point in time.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
-                        /// The project on which to execute the request. Data associcated with the project's workspace
-                        /// stored under the The format is: projects/PROJECT_ID_OR_NUMBER. Open source API but used as a
-                        /// request path prefix to distinguish different virtual Prometheus instances of Google
-                        /// Prometheus Engine.
+                        /// Required. The project on which to execute the request. Data associcated with the project's
+                        /// workspace stored under the The format is: projects/PROJECT_ID_OR_NUMBER. Open source API but
+                        /// used as a request path prefix to distinguish different virtual Prometheus instances of
+                        /// Google Prometheus Engine.
                         /// </param>
                         /// <param name="location">Location of the resource information. Has to be "global" now.</param>
                         public virtual QueryRequest Query(Google.Apis.Monitoring.v1.Data.QueryInstantRequest body, string name, string location)
@@ -1490,10 +1491,10 @@ namespace Google.Apis.Monitoring.v1
                             }
 
                             /// <summary>
-                            /// The project on which to execute the request. Data associcated with the project's
-                            /// workspace stored under the The format is: projects/PROJECT_ID_OR_NUMBER. Open source API
-                            /// but used as a request path prefix to distinguish different virtual Prometheus instances
-                            /// of Google Prometheus Engine.
+                            /// Required. The project on which to execute the request. Data associcated with the
+                            /// project's workspace stored under the The format is: projects/PROJECT_ID_OR_NUMBER. Open
+                            /// source API but used as a request path prefix to distinguish different virtual Prometheus
+                            /// instances of Google Prometheus Engine.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -1543,10 +1544,10 @@ namespace Google.Apis.Monitoring.v1
                         /// <summary>Lists exemplars relevant to a given PromQL query,</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
-                        /// The project on which to execute the request. Data associcated with the project's workspace
-                        /// stored under the The format is: projects/PROJECT_ID_OR_NUMBER. Open source API but used as a
-                        /// request path prefix to distinguish different virtual Prometheus instances of Google
-                        /// Prometheus Engine.
+                        /// Required. The project on which to execute the request. Data associcated with the project's
+                        /// workspace stored under the The format is: projects/PROJECT_ID_OR_NUMBER. Open source API but
+                        /// used as a request path prefix to distinguish different virtual Prometheus instances of
+                        /// Google Prometheus Engine.
                         /// </param>
                         /// <param name="location">Location of the resource information. Has to be "global" now.</param>
                         public virtual QueryExemplarsRequest QueryExemplars(Google.Apis.Monitoring.v1.Data.QueryExemplarsRequest body, string name, string location)
@@ -1567,10 +1568,10 @@ namespace Google.Apis.Monitoring.v1
                             }
 
                             /// <summary>
-                            /// The project on which to execute the request. Data associcated with the project's
-                            /// workspace stored under the The format is: projects/PROJECT_ID_OR_NUMBER. Open source API
-                            /// but used as a request path prefix to distinguish different virtual Prometheus instances
-                            /// of Google Prometheus Engine.
+                            /// Required. The project on which to execute the request. Data associcated with the
+                            /// project's workspace stored under the The format is: projects/PROJECT_ID_OR_NUMBER. Open
+                            /// source API but used as a request path prefix to distinguish different virtual Prometheus
+                            /// instances of Google Prometheus Engine.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -1620,10 +1621,10 @@ namespace Google.Apis.Monitoring.v1
                         /// <summary>Evaluate a PromQL query with start, end time range.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
-                        /// The project on which to execute the request. Data associcated with the project's workspace
-                        /// stored under the The format is: projects/PROJECT_ID_OR_NUMBER. Open source API but used as a
-                        /// request path prefix to distinguish different virtual Prometheus instances of Google
-                        /// Prometheus Engine.
+                        /// Required. The project on which to execute the request. Data associcated with the project's
+                        /// workspace stored under the The format is: projects/PROJECT_ID_OR_NUMBER. Open source API but
+                        /// used as a request path prefix to distinguish different virtual Prometheus instances of
+                        /// Google Prometheus Engine.
                         /// </param>
                         /// <param name="location">Location of the resource information. Has to be "global" now.</param>
                         public virtual QueryRangeRequest QueryRange(Google.Apis.Monitoring.v1.Data.QueryRangeRequest body, string name, string location)
@@ -1644,10 +1645,10 @@ namespace Google.Apis.Monitoring.v1
                             }
 
                             /// <summary>
-                            /// The project on which to execute the request. Data associcated with the project's
-                            /// workspace stored under the The format is: projects/PROJECT_ID_OR_NUMBER. Open source API
-                            /// but used as a request path prefix to distinguish different virtual Prometheus instances
-                            /// of Google Prometheus Engine.
+                            /// Required. The project on which to execute the request. Data associcated with the
+                            /// project's workspace stored under the The format is: projects/PROJECT_ID_OR_NUMBER. Open
+                            /// source API but used as a request path prefix to distinguish different virtual Prometheus
+                            /// instances of Google Prometheus Engine.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -2105,11 +2106,28 @@ namespace Google.Apis.Monitoring.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("filterType")]
         public virtual string FilterType { get; set; }
 
-        /// <summary>Required. The key for the label</summary>
+        /// <summary>
+        /// Optional. The key for the label. This must be omitted if the filter_type is VALUE_ONLY but is required
+        /// otherwise.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelKey")]
         public virtual string LabelKey { get; set; }
 
-        /// <summary>A variable-length string value.</summary>
+        /// <summary>A list of possible string values for the filter</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringArray")]
+        public virtual StringArray StringArray { get; set; }
+
+        /// <summary>
+        /// An array of variable-length string values. If this field is set, value_type must be set to STRING_ARRAY or
+        /// VALUE_TYPE_UNSPECIFIED
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringArrayValue")]
+        public virtual StringArray StringArrayValue { get; set; }
+
+        /// <summary>
+        /// A variable-length string value. If this field is set, value_type must be set to STRING or
+        /// VALUE_TYPE_UNSPECIFIED
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
         public virtual string StringValue { get; set; }
 
@@ -2119,6 +2137,19 @@ namespace Google.Apis.Monitoring.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("templateVariable")]
         public virtual string TemplateVariable { get; set; }
+
+        /// <summary>
+        /// A query to run to fetch possible values for the filter. Only OpsAnalyticsQueries are supported
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesQuery")]
+        public virtual TimeSeriesQuery TimeSeriesQuery { get; set; }
+
+        /// <summary>
+        /// The type of the filter value. If value_type is not provided, it will be inferred from the default_value. If
+        /// neither value_type nor default_value is provided, value_type will be set to STRING by default.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueType")]
+        public virtual string ValueType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3518,6 +3549,17 @@ namespace Google.Apis.Monitoring.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An array of strings</summary>
+    public class StringArray : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The values of the array</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
