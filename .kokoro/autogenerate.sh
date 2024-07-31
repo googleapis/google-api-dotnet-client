@@ -62,9 +62,23 @@ fi
 # (We don't actually need to pack here, but it's simplest to always do so.)
 ./BuildGenerated.sh @tmp/ApisToGenerate.txt
 
+# For each new/updated Discovery file, add the Discovery file
+# and the generated code in a commit.
+for file in $(cat tmp/ApisToGenerate.txt | sed 's/\r//g')
+do
+  service=$(basename $file | sed 's/.json//g')
+  generated=$(dotnet run --project Src/Tools/BuildGeneratedArgumentTranslator -- Src/Generated $file)
+  git add $file $generated
+  git commit -m "feat: Regenerate $service with new or updated Discovery document"
+done
+
+# Clean up anything else that we've got, if there's anything left.
+# We expect this to only be deleted Discovery docs, hence the message,
+# but if anything else is present, we should commit it (as we used to).
+git add --all
+git commit -a -m "chore: Delete obsolete Discovery docs" || true
+
 # Push changes to git, not to the main branch but to branchname
-git add -A
-git commit -m "feat: Update discovery documents and generated code" -m "automatically_generated_update"
 # We change the origin URL so that we can push with SSH
 git remote set-url origin git@github.com:googleapis/google-api-dotnet-client.git
 git push --set-upstream origin $branchname
