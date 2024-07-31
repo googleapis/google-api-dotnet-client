@@ -4144,9 +4144,7 @@ namespace Google.Apis.CloudBuild.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("secretName")]
         public virtual string SecretName { get; set; }
 
-        /// <summary>
-        /// Output only. Resource name of the SecretVersion. In format: projects/*/secrets/*/versions/*
-        /// </summary>
+        /// <summary>Optional. Resource name of the SecretVersion. In format: projects/*/secrets/*/versions/*</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretVersion")]
         public virtual string SecretVersion { get; set; }
 

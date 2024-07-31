@@ -1291,7 +1291,7 @@ namespace Google.Apis.NetworkServices.v1
                 /// <summary>Updates the parameters of a single EndpointPolicy.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. Name of the EndpointPolicy resource. It matches pattern
+                /// Identifier. Name of the EndpointPolicy resource. It matches pattern
                 /// `projects/{project}/locations/global/endpointPolicies/{endpoint_policy}`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkServices.v1.Data.EndpointPolicy body, string name)
@@ -1311,7 +1311,7 @@ namespace Google.Apis.NetworkServices.v1
                     }
 
                     /// <summary>
-                    /// Required. Name of the EndpointPolicy resource. It matches pattern
+                    /// Identifier. Name of the EndpointPolicy resource. It matches pattern
                     /// `projects/{project}/locations/global/endpointPolicies/{endpoint_policy}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1633,7 +1633,7 @@ namespace Google.Apis.NetworkServices.v1
                 /// <summary>Updates the parameters of a single Gateway.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. Name of the Gateway resource. It matches pattern `projects/*/locations/*/gateways/`.
+                /// Identifier. Name of the Gateway resource. It matches pattern `projects/*/locations/*/gateways/`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkServices.v1.Data.Gateway body, string name)
                 {
@@ -1652,7 +1652,7 @@ namespace Google.Apis.NetworkServices.v1
                     }
 
                     /// <summary>
-                    /// Required. Name of the Gateway resource. It matches pattern `projects/*/locations/*/gateways/`.
+                    /// Identifier. Name of the Gateway resource. It matches pattern `projects/*/locations/*/gateways/`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1975,7 +1975,7 @@ namespace Google.Apis.NetworkServices.v1
                 /// <summary>Updates the parameters of a single GrpcRoute.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. Name of the GrpcRoute resource. It matches pattern
+                /// Identifier. Name of the GrpcRoute resource. It matches pattern
                 /// `projects/*/locations/global/grpcRoutes/`
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkServices.v1.Data.GrpcRoute body, string name)
@@ -1995,7 +1995,7 @@ namespace Google.Apis.NetworkServices.v1
                     }
 
                     /// <summary>
-                    /// Required. Name of the GrpcRoute resource. It matches pattern
+                    /// Identifier. Name of the GrpcRoute resource. It matches pattern
                     /// `projects/*/locations/global/grpcRoutes/`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -2319,7 +2319,7 @@ namespace Google.Apis.NetworkServices.v1
                 /// <summary>Updates the parameters of a single HttpRoute.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. Name of the HttpRoute resource. It matches pattern
+                /// Identifier. Name of the HttpRoute resource. It matches pattern
                 /// `projects/*/locations/global/httpRoutes/http_route_name&amp;gt;`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkServices.v1.Data.HttpRoute body, string name)
@@ -2339,7 +2339,7 @@ namespace Google.Apis.NetworkServices.v1
                     }
 
                     /// <summary>
-                    /// Required. Name of the HttpRoute resource. It matches pattern
+                    /// Identifier. Name of the HttpRoute resource. It matches pattern
                     /// `projects/*/locations/global/httpRoutes/http_route_name&amp;gt;`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -3527,7 +3527,7 @@ namespace Google.Apis.NetworkServices.v1
                 /// <summary>Updates the parameters of a single Mesh.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. Name of the Mesh resource. It matches pattern `projects/*/locations/global/meshes/`.
+                /// Identifier. Name of the Mesh resource. It matches pattern `projects/*/locations/global/meshes/`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkServices.v1.Data.Mesh body, string name)
                 {
@@ -3546,7 +3546,7 @@ namespace Google.Apis.NetworkServices.v1
                     }
 
                     /// <summary>
-                    /// Required. Name of the Mesh resource. It matches pattern `projects/*/locations/global/meshes/`.
+                    /// Identifier. Name of the Mesh resource. It matches pattern `projects/*/locations/global/meshes/`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -4983,7 +4983,7 @@ namespace Google.Apis.NetworkServices.v1
                 /// <summary>Updates the parameters of a single TcpRoute.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. Name of the TcpRoute resource. It matches pattern
+                /// Identifier. Name of the TcpRoute resource. It matches pattern
                 /// `projects/*/locations/global/tcpRoutes/tcp_route_name&amp;gt;`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkServices.v1.Data.TcpRoute body, string name)
@@ -5003,7 +5003,7 @@ namespace Google.Apis.NetworkServices.v1
                     }
 
                     /// <summary>
-                    /// Required. Name of the TcpRoute resource. It matches pattern
+                    /// Identifier. Name of the TcpRoute resource. It matches pattern
                     /// `projects/*/locations/global/tcpRoutes/tcp_route_name&amp;gt;`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -5815,7 +5815,7 @@ namespace Google.Apis.NetworkServices.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Required. Name of the EndpointPolicy resource. It matches pattern
+        /// Identifier. Name of the EndpointPolicy resource. It matches pattern
         /// `projects/{project}/locations/global/endpointPolicies/{endpoint_policy}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -6129,7 +6129,7 @@ namespace Google.Apis.NetworkServices.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Required. Name of the Gateway resource. It matches pattern `projects/*/locations/*/gateways/`.
+        /// Identifier. Name of the Gateway resource. It matches pattern `projects/*/locations/*/gateways/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -6312,7 +6312,7 @@ namespace Google.Apis.NetworkServices.v1.Data
         public virtual System.Collections.Generic.IList<string> Meshes { get; set; }
 
         /// <summary>
-        /// Required. Name of the GrpcRoute resource. It matches pattern `projects/*/locations/global/grpcRoutes/`
+        /// Identifier. Name of the GrpcRoute resource. It matches pattern `projects/*/locations/global/grpcRoutes/`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -6720,7 +6720,7 @@ namespace Google.Apis.NetworkServices.v1.Data
         public virtual System.Collections.Generic.IList<string> Meshes { get; set; }
 
         /// <summary>
-        /// Required. Name of the HttpRoute resource. It matches pattern
+        /// Identifier. Name of the HttpRoute resource. It matches pattern
         /// `projects/*/locations/global/httpRoutes/http_route_name&amp;gt;`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -7978,7 +7978,7 @@ namespace Google.Apis.NetworkServices.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Required. Name of the Mesh resource. It matches pattern `projects/*/locations/global/meshes/`.
+        /// Identifier. Name of the Mesh resource. It matches pattern `projects/*/locations/global/meshes/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -8304,7 +8304,7 @@ namespace Google.Apis.NetworkServices.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Required. Name of the ServiceBinding resource. It matches pattern
+        /// Identifier. Name of the ServiceBinding resource. It matches pattern
         /// `projects/*/locations/global/serviceBindings/service_binding_name`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -8635,7 +8635,7 @@ namespace Google.Apis.NetworkServices.v1.Data
         public virtual System.Collections.Generic.IList<string> Meshes { get; set; }
 
         /// <summary>
-        /// Required. Name of the TcpRoute resource. It matches pattern
+        /// Identifier. Name of the TcpRoute resource. It matches pattern
         /// `projects/*/locations/global/tcpRoutes/tcp_route_name&amp;gt;`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]

@@ -5130,7 +5130,7 @@ namespace Google.Apis.CloudKMS.v1.Data
 
         /// <summary>
         /// Immutable. The period of time that versions of this key spend in the DESTROY_SCHEDULED state before
-        /// transitioning to DESTROYED. If not specified at creation time, the default duration is 24 hours.
+        /// transitioning to DESTROYED. If not specified at creation time, the default duration is 30 days.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destroyScheduledDuration")]
         public virtual object DestroyScheduledDuration { get; set; }

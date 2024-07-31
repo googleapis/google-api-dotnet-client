@@ -1395,6 +1395,19 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha
 }
 namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
 {
+    /// <summary>Point for describing bounding boxes tap locations Top left is 0,0</summary>
+    public class AndroidxCrawlerOutputPoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("xCoordinate")]
+        public virtual System.Nullable<int> XCoordinate { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("yCoordinate")]
+        public virtual System.Nullable<int> YCoordinate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A release of a Firebase app.</summary>
     public class GoogleFirebaseAppdistroV1Release : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1566,6 +1579,14 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
     /// <summary>Captures the results of an AiStep</summary>
     public class GoogleFirebaseAppdistroV1alphaAiStepResult : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Details for an assertion step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assertionDetails")]
+        public virtual GoogleFirebaseAppdistroV1alphaAssertionDetails AssertionDetails { get; set; }
+
+        /// <summary>Output only. Details for a goal step.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("goalDetails")]
+        public virtual GoogleFirebaseAppdistroV1alphaGoalDetails GoalDetails { get; set; }
+
         /// <summary>Output only. The current state of the step</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
@@ -1630,6 +1651,25 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details for an assertion step.</summary>
+    public class GoogleFirebaseAppdistroV1alphaAssertionDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. An explanation justifying the assertion result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("explanation")]
+        public virtual string Explanation { get; set; }
+
+        /// <summary>Output only. The result of the assertion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("result")]
+        public virtual System.Nullable<bool> Result { get; set; }
+
+        /// <summary>Output only. The screenshot used in the context of this assertion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("screenshot")]
+        public virtual GoogleFirebaseAppdistroV1alphaScreenshot Screenshot { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class GoogleFirebaseAppdistroV1alphaCreateReleaseNotesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The actual release notes body from the user</summary>
@@ -1642,6 +1682,27 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
 
     public class GoogleFirebaseAppdistroV1alphaCreateReleaseNotesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A high level action taken by the AI on the device, potentially involving multiple taps, text entries, waits,
+    /// etc.
+    /// </summary>
+    public class GoogleFirebaseAppdistroV1alphaDeviceAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. A short description of the high level action taken by the AI agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Output only. The interactions made with the device as part of this higher level action taken by the agent,
+        /// such as taps, text entries, waits, etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceInteractions")]
+        public virtual System.Collections.Generic.IList<GoogleFirebaseAppdistroV1alphaDeviceInteraction> DeviceInteractions { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1698,6 +1759,62 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         /// <summary>Output only. A URI to a video of the test run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoUri")]
         public virtual string VideoUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An interaction with the device, such as a tap, text entry, wait, etc.</summary>
+    public class GoogleFirebaseAppdistroV1alphaDeviceInteraction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The screenshot used in the context of this action. The screen may have changed before the
+        /// action was actually taken.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("screenshot")]
+        public virtual GoogleFirebaseAppdistroV1alphaScreenshot Screenshot { get; set; }
+
+        /// <summary>Output only. A swipe action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("swipe")]
+        public virtual GoogleFirebaseAppdistroV1alphaDeviceInteractionSwipe Swipe { get; set; }
+
+        /// <summary>Output only. A tap action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tap")]
+        public virtual AndroidxCrawlerOutputPoint Tap { get; set; }
+
+        /// <summary>Output only. Text entered for a text entry action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textInput")]
+        public virtual string TextInput { get; set; }
+
+        /// <summary>Output only. A wait action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wait")]
+        public virtual GoogleFirebaseAppdistroV1alphaDeviceInteractionWait Wait { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A swipe action.</summary>
+    public class GoogleFirebaseAppdistroV1alphaDeviceInteractionSwipe : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The end point of the swipe.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("end")]
+        public virtual AndroidxCrawlerOutputPoint End { get; set; }
+
+        /// <summary>Output only. The start point of the swipe.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("start")]
+        public virtual AndroidxCrawlerOutputPoint Start { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A wait action.</summary>
+    public class GoogleFirebaseAppdistroV1alphaDeviceInteractionWait : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The duration of the wait.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
+        public virtual object Duration { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1783,6 +1900,36 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         /// <summary>The status of the upload</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An action taken by the AI agent while attempting to accomplish a goal.</summary>
+    public class GoogleFirebaseAppdistroV1alphaGoalAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. A high level action taken by the AI on the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceAction")]
+        public virtual GoogleFirebaseAppdistroV1alphaDeviceAction DeviceAction { get; set; }
+
+        /// <summary>Output only. An explanation justifying why the action was taken.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("explanation")]
+        public virtual string Explanation { get; set; }
+
+        /// <summary>Output only. An action taken by the AI to end the goal.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("terminalAction")]
+        public virtual GoogleFirebaseAppdistroV1alphaTerminalAction TerminalAction { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details for a goal step.</summary>
+    public class GoogleFirebaseAppdistroV1alphaGoalDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The actions taken by the AI while attempting to accomplish the goal.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("goalActions")]
+        public virtual System.Collections.Generic.IList<GoogleFirebaseAppdistroV1alphaGoalAction> GoalActions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2031,7 +2178,7 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
     /// <summary>The results of running an automated test on a release.</summary>
     public class GoogleFirebaseAppdistroV1alphaReleaseTest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Input only. Instructions for AI driven test. Input only.</summary>
+        /// <summary>Optional. Instructions for AI driven test.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aiInstructions")]
         public virtual GoogleFirebaseAppdistroV1alphaAiInstructions AiInstructions { get; set; }
 
@@ -2124,6 +2271,40 @@ namespace Google.Apis.FirebaseAppDistribution.v1alpha.Data
         /// <summary>Output only. Whether the main activity crawl timed out.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mainActivityCrawlTimedOut")]
         public virtual System.Nullable<bool> MainActivityCrawlTimedOut { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A device screenshot taken during a test.</summary>
+    public class GoogleFirebaseAppdistroV1alphaScreenshot : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The height of the screenshot, in pixels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("height")]
+        public virtual System.Nullable<int> Height { get; set; }
+
+        /// <summary>Output only. The URI of the screenshot.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>Output only. The width of the screenshot, in pixels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("width")]
+        public virtual System.Nullable<int> Width { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An action taken by the AI to end the goal.</summary>
+    public class GoogleFirebaseAppdistroV1alphaTerminalAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The reason why this goal was ended.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; }
+
+        /// <summary>Output only. The screenshot used in the context of this terminal action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("screenshot")]
+        public virtual GoogleFirebaseAppdistroV1alphaScreenshot Screenshot { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

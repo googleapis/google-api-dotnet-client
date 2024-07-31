@@ -6518,7 +6518,9 @@ namespace Google.Apis.Appengine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("generatedCustomerMetadata")]
         public virtual System.Collections.Generic.IDictionary<string, object> GeneratedCustomerMetadata { get; set; }
 
-        /// <summary>Relative name of the service within the application. Example: default.@OutputOnly</summary>
+        /// <summary>
+        /// Output only. Relative name of the service within the application. Example: default.@OutputOnly
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
@@ -6535,7 +6537,7 @@ namespace Google.Apis.Appengine.v1beta.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Full path to the Service resource in the API. Example: apps/myapp/services/default.@OutputOnly
+        /// Output only. Full path to the Service resource in the API. Example: apps/myapp/services/default.@OutputOnly
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -6884,7 +6886,7 @@ namespace Google.Apis.Appengine.v1beta.Data
             set => CreateTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
         }
 
-        /// <summary>Email address of the user who created this version.@OutputOnly</summary>
+        /// <summary>Output only. Email address of the user who created this version.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createdBy")]
         public virtual string CreatedBy { get; set; }
 
@@ -6904,8 +6906,8 @@ namespace Google.Apis.Appengine.v1beta.Data
         public virtual Deployment Deployment { get; set; }
 
         /// <summary>
-        /// Total size in bytes of all the files that are included in this version and currently hosted on the App
-        /// Engine disk.@OutputOnly
+        /// Output only. Total size in bytes of all the files that are included in this version and currently hosted on
+        /// the App Engine disk.@OutputOnly
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskUsageBytes")]
         public virtual System.Nullable<long> DiskUsageBytes { get; set; }
@@ -7007,7 +7009,8 @@ namespace Google.Apis.Appengine.v1beta.Data
         public virtual ManualScaling ManualScaling { get; set; }
 
         /// <summary>
-        /// Full path to the Version resource in the API. Example: apps/myapp/services/default/versions/v1.@OutputOnly
+        /// Output only. Full path to the Version resource in the API. Example:
+        /// apps/myapp/services/default/versions/v1.@OutputOnly
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -7076,7 +7079,8 @@ namespace Google.Apis.Appengine.v1beta.Data
         public virtual System.Nullable<bool> Threadsafe { get; set; }
 
         /// <summary>
-        /// Serving URL for this version. Example: "https://myversion-dot-myservice-dot-myapp.appspot.com"@OutputOnly
+        /// Output only. Serving URL for this version. Example:
+        /// "https://myversion-dot-myservice-dot-myapp.appspot.com"@OutputOnly
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionUrl")]
         public virtual string VersionUrl { get; set; }

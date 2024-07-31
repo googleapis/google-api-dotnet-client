@@ -2949,7 +2949,8 @@ namespace Google.Apis.Drive.v3
 
             /// <summary>
             /// Whether the user is acknowledging the risk of downloading known malware or other abusive files. This is
-            /// only applicable when alt=media.
+            /// only applicable when the `alt` parameter is set to `media` and the user is the owner of the file or an
+            /// organizer of the shared drive in which the file resides.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("acknowledgeAbuse", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> AcknowledgeAbuse { get; set; }
@@ -3933,7 +3934,8 @@ namespace Google.Apis.Drive.v3
 
             /// <summary>
             /// Whether the user is acknowledging the risk of downloading known malware or other abusive files. This is
-            /// only applicable when alt=media.
+            /// only applicable when the `alt` parameter is set to `media` and the user is the owner of the file or an
+            /// organizer of the shared drive in which the file resides.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("acknowledgeAbuse", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> AcknowledgeAbuse { get; set; }
@@ -5221,7 +5223,8 @@ namespace Google.Apis.Drive.v3
 
             /// <summary>
             /// Whether the user is acknowledging the risk of downloading known malware or other abusive files. This is
-            /// only applicable when alt=media.
+            /// only applicable when the `alt` parameter is set to `media` and the user is the owner of the file or an
+            /// organizer of the shared drive in which the file resides.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("acknowledgeAbuse", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> AcknowledgeAbuse { get; set; }

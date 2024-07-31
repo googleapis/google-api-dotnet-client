@@ -5279,7 +5279,9 @@ namespace Google.Apis.Bigquery.v2.Data
         /// at dataset creation time, BigQuery adds default dataset access for the following entities:
         /// access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role:
         /// WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email];
-        /// access.role: OWNER;
+        /// access.role: OWNER; If you patch a dataset, then this field is overwritten by the patched dataset's access
+        /// field. To add entities, you must supply the entire existing access array in addition to any new entities
+        /// that you want to add.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("access")]
         public virtual System.Collections.Generic.IList<AccessData> Access { get; set; }
@@ -5470,7 +5472,9 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("storageBillingModel")]
         public virtual string StorageBillingModel { get; set; }
 
-        /// <summary>Output only. Tags for the Dataset.</summary>
+        /// <summary>
+        /// Output only. Tags for the dataset. To provide tags as inputs, use the `resourceTags` field.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IList<TagsData> Tags { get; set; }
 
@@ -5488,7 +5492,9 @@ namespace Google.Apis.Bigquery.v2.Data
         /// at dataset creation time, BigQuery adds default dataset access for the following entities:
         /// access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role:
         /// WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email];
-        /// access.role: OWNER;
+        /// access.role: OWNER; If you patch a dataset, then this field is overwritten by the patched dataset's access
+        /// field. To add entities, you must supply the entire existing access array in addition to any new entities
+        /// that you want to add.
         /// </summary>
         public class AccessData
         {
@@ -5566,7 +5572,9 @@ namespace Google.Apis.Bigquery.v2.Data
             public virtual TableReference View { get; set; }
         }
 
-        /// <summary>Output only. Tags for the Dataset.</summary>
+        /// <summary>
+        /// Output only. Tags for the dataset. To provide tags as inputs, use the `resourceTags` field.
+        /// </summary>
         public class TagsData
         {
             /// <summary>
@@ -8037,6 +8045,12 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Output only. Statistics for data-masking. Present only for query and extract jobs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataMaskingStatistics")]
         public virtual DataMaskingStatistics DataMaskingStatistics { get; set; }
+
+        /// <summary>
+        /// Output only. Name of edition corresponding to the reservation for this job at the time of this update.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("edition")]
+        public virtual string Edition { get; set; }
 
         /// <summary>
         /// Output only. End time of this job, in milliseconds since the epoch. This field will be present whenever a

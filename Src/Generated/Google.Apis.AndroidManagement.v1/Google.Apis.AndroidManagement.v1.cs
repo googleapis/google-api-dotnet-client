@@ -978,9 +978,7 @@ namespace Google.Apis.AndroidManagement.v1
 
             /// <summary>
             /// Creates an enrollment token for a given enterprise. It's up to the caller's responsibility to manage the
-            /// lifecycle of newly created tokens and deleting them when they're not intended to be used anymore. Once
-            /// an enrollment token has been created, it's not possible to retrieve the token's content anymore using AM
-            /// API. It is recommended for EMMs to securely store the token if it's intended to be reused.
+            /// lifecycle of newly created tokens and deleting them when they're not intended to be used anymore.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">The name of the enterprise in the form enterprises/{enterpriseId}.</param>
@@ -991,9 +989,7 @@ namespace Google.Apis.AndroidManagement.v1
 
             /// <summary>
             /// Creates an enrollment token for a given enterprise. It's up to the caller's responsibility to manage the
-            /// lifecycle of newly created tokens and deleting them when they're not intended to be used anymore. Once
-            /// an enrollment token has been created, it's not possible to retrieve the token's content anymore using AM
-            /// API. It is recommended for EMMs to securely store the token if it's intended to be reused.
+            /// lifecycle of newly created tokens and deleting them when they're not intended to be used anymore.
             /// </summary>
             public class CreateRequest : AndroidManagementBaseServiceRequest<Google.Apis.AndroidManagement.v1.Data.EnrollmentToken>
             {

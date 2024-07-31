@@ -22692,8 +22692,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual System.Collections.Generic.IList<string> Sizes { get; set; }
 
         /// <summary>
-        /// The source of the offer, that is, how the offer was created. Acceptable values are: - "`api`" - "`crawl`" -
-        /// "`feed`"
+        /// Output only. The source of the offer, that is, how the offer was created. Acceptable values are: - "`api`" -
+        /// "`crawl`" - "`feed`"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual string Source { get; set; }

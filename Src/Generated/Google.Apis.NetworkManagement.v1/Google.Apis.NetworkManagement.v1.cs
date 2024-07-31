@@ -2358,6 +2358,10 @@ namespace Google.Apis.NetworkManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
         public virtual string NetworkUri { get; set; }
 
+        /// <summary>URI of the PSC network attachment the NIC is attached to (if relevant).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscNetworkAttachmentUri")]
+        public virtual string PscNetworkAttachmentUri { get; set; }
+
         /// <summary>Service account authorized for the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }

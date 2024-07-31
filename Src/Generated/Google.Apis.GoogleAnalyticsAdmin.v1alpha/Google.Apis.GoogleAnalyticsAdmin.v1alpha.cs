@@ -4671,6 +4671,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             {
                 this.service = service;
                 EventCreateRules = new EventCreateRulesResource(service);
+                EventEditRules = new EventEditRulesResource(service);
                 MeasurementProtocolSecrets = new MeasurementProtocolSecretsResource(service);
                 SKAdNetworkConversionValueSchema = new SKAdNetworkConversionValueSchemaResource(service);
             }
@@ -4990,6 +4991,379 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the EventEditRules resource.</summary>
+            public virtual EventEditRulesResource EventEditRules { get; }
+
+            /// <summary>The "eventEditRules" collection of methods.</summary>
+            public class EventEditRulesResource
+            {
+                private const string Resource = "eventEditRules";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public EventEditRulesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates an EventEditRule.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. Example format: properties/123/dataStreams/456</param>
+                public virtual CreateRequest Create(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaEventEditRule body, string parent)
+                {
+                    return new CreateRequest(this.service, body, parent);
+                }
+
+                /// <summary>Creates an EventEditRule.</summary>
+                public class CreateRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaEventEditRule>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaEventEditRule body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Example format: properties/123/dataStreams/456</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaEventEditRule Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/eventEditRules";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^properties/[^/]+/dataStreams/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Deletes an EventEditRule.</summary>
+                /// <param name="name">
+                /// Required. Example format: properties/123/dataStreams/456/eventEditRules/789
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(this.service, name);
+                }
+
+                /// <summary>Deletes an EventEditRule.</summary>
+                public class DeleteRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleProtobufEmpty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Example format: properties/123/dataStreams/456/eventEditRules/789</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^properties/[^/]+/dataStreams/[^/]+/eventEditRules/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lookup for a single EventEditRule.</summary>
+                /// <param name="name">
+                /// Required. The name of the EventEditRule to get. Example format:
+                /// properties/123/dataStreams/456/eventEditRules/789
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(this.service, name);
+                }
+
+                /// <summary>Lookup for a single EventEditRule.</summary>
+                public class GetRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaEventEditRule>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the EventEditRule to get. Example format:
+                    /// properties/123/dataStreams/456/eventEditRules/789
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^properties/[^/]+/dataStreams/[^/]+/eventEditRules/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists EventEditRules on a web data stream.</summary>
+                /// <param name="parent">Required. Example format: properties/123/dataStreams/456</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(this.service, parent);
+                }
+
+                /// <summary>Lists EventEditRules on a web data stream.</summary>
+                public class ListRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaListEventEditRulesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Example format: properties/123/dataStreams/456</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of resources to return. If unspecified, at most 50 resources will
+                    /// be returned. The maximum value is 200 (higher values will be coerced to the maximum).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A page token, received from a previous `ListEventEditRules` call. Provide this to
+                    /// retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `ListEventEditRules` must match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/eventEditRules";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^properties/[^/]+/dataStreams/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates an EventEditRule.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Identifier. Resource name for this EventEditRule resource. Format:
+                /// properties/{property}/dataStreams/{data_stream}/eventEditRules/{event_edit_rule}
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaEventEditRule body, string name)
+                {
+                    return new PatchRequest(this.service, body, name);
+                }
+
+                /// <summary>Updates an EventEditRule.</summary>
+                public class PatchRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaEventEditRule>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaEventEditRule body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Identifier. Resource name for this EventEditRule resource. Format:
+                    /// properties/{property}/dataStreams/{data_stream}/eventEditRules/{event_edit_rule}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Required. The list of fields to be updated. Field names must be in snake case (e.g.,
+                    /// "field_to_update"). Omitted fields will not be updated. To replace the entire entity, use one
+                    /// path with the string "*" to match all fields.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaEventEditRule Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^properties/[^/]+/dataStreams/[^/]+/eventEditRules/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Changes the processing order of event edit rules on the specified stream.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. Example format: properties/123/dataStreams/456</param>
+                public virtual ReorderRequest Reorder(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaReorderEventEditRulesRequest body, string parent)
+                {
+                    return new ReorderRequest(this.service, body, parent);
+                }
+
+                /// <summary>Changes the processing order of event edit rules on the specified stream.</summary>
+                public class ReorderRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleProtobufEmpty>
+                {
+                    /// <summary>Constructs a new Reorder request.</summary>
+                    public ReorderRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaReorderEventEditRulesRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Example format: properties/123/dataStreams/456</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaReorderEventEditRulesRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "reorder";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/eventEditRules:reorder";
+
+                    /// <summary>Initializes Reorder parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^properties/[^/]+/dataStreams/[^/]+$",
                         });
                     }
                 }
@@ -12859,6 +13233,52 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// An Event Edit Rule defines conditions that will trigger the creation of an entirely new event based upon matched
+    /// criteria of a source event. Additional mutations of the parameters from the source event can be defined. Unlike
+    /// Event Create rules, Event Edit Rules are applied in their defined order. Event Edit rules can't be used to
+    /// modify an event created from an Event Create rule.
+    /// </summary>
+    public class GoogleAnalyticsAdminV1alphaEventEditRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The display name of this event edit rule. Maximum of 255 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Required. Conditions on the source event must match for this rule to be applied. Must have at least one
+        /// condition, and can have up to 10 max.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventConditions")]
+        public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaMatchingCondition> EventConditions { get; set; }
+
+        /// <summary>
+        /// Identifier. Resource name for this EventEditRule resource. Format:
+        /// properties/{property}/dataStreams/{data_stream}/eventEditRules/{event_edit_rule}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. Parameter mutations define parameter behavior on the new event, and are applied in order. A
+        /// maximum of 20 mutations can be applied.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameterMutations")]
+        public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaParameterMutation> ParameterMutations { get; set; }
+
+        /// <summary>
+        /// Output only. The order for which this rule will be processed. Rules with an order value lower than this will
+        /// be processed before this rule, rules with an order value higher than this will be processed after this rule.
+        /// New event edit rules will be assigned an order value at the end of the order. This value does not apply to
+        /// event create rules.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processingOrder")]
+        public virtual System.Nullable<long> ProcessingOrder { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Event setting conditions to match an event.</summary>
     public class GoogleAnalyticsAdminV1alphaEventMapping : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13767,6 +14187,24 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for ListEventEditRules RPC.</summary>
+    public class GoogleAnalyticsAdminV1alphaListEventEditRulesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of EventEditRules. These will be ordered stably, but in an arbitrary order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventEditRules")]
+        public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaEventEditRule> EventEditRules { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for ListExpandedDataSets RPC.</summary>
     public class GoogleAnalyticsAdminV1alphaListExpandedDataSetsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14343,6 +14781,20 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// <summary>The param to be passed in the ToS link.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountTicketId")]
         public virtual string AccountTicketId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for ReorderEventEditRules RPC.</summary>
+    public class GoogleAnalyticsAdminV1alphaReorderEventEditRulesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. EventEditRule resource names for the specified data stream, in the needed processing order. All
+        /// EventEditRules for the stream must be present in the list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventEditRules")]
+        public virtual System.Collections.Generic.IList<string> EventEditRules { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

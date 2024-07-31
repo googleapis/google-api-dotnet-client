@@ -831,6 +831,73 @@ namespace Google.Apis.RecaptchaEnterprise.v1
                 this.service = service;
             }
 
+            /// <summary>
+            /// Adds an IP override to a key. The following restrictions hold: * The maximum number of IP overrides per
+            /// key is 100. * For any conflict (such as IP already exists or IP part of an existing IP range), an error
+            /// will be returned.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. The name of the key to which the IP override is added, in the format
+            /// `projects/{project}/keys/{key}`.
+            /// </param>
+            public virtual AddIpOverrideRequest AddIpOverride(Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1AddIpOverrideRequest body, string name)
+            {
+                return new AddIpOverrideRequest(this.service, body, name);
+            }
+
+            /// <summary>
+            /// Adds an IP override to a key. The following restrictions hold: * The maximum number of IP overrides per
+            /// key is 100. * For any conflict (such as IP already exists or IP part of an existing IP range), an error
+            /// will be returned.
+            /// </summary>
+            public class AddIpOverrideRequest : RecaptchaEnterpriseBaseServiceRequest<Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1AddIpOverrideResponse>
+            {
+                /// <summary>Constructs a new AddIpOverride request.</summary>
+                public AddIpOverrideRequest(Google.Apis.Services.IClientService service, Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1AddIpOverrideRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the key to which the IP override is added, in the format
+                /// `projects/{project}/keys/{key}`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.RecaptchaEnterprise.v1.Data.GoogleCloudRecaptchaenterpriseV1AddIpOverrideRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "addIpOverride";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}:addIpOverride";
+
+                /// <summary>Initializes AddIpOverride parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/keys/[^/]+$",
+                    });
+                }
+            }
+
             /// <summary>Creates a new reCAPTCHA Enterprise key.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -1632,6 +1699,24 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The AddIpOverride request message.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1AddIpOverrideRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. IP override added to the key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipOverrideData")]
+        public virtual GoogleCloudRecaptchaenterpriseV1IpOverrideData IpOverrideData { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for AddIpOverride.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1AddIpOverrideResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Settings specific to keys that can be used by Android apps.</summary>
     public class GoogleCloudRecaptchaenterpriseV1AndroidKeySettings : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1745,6 +1830,13 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountVerification")]
         public virtual GoogleCloudRecaptchaenterpriseV1AccountVerificationInfo AccountVerification { get; set; }
 
+        /// <summary>
+        /// Optional. The environment creating the assessment. This describes your environment (the system invoking
+        /// CreateAssessment), NOT the environment of your user.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assessmentEnvironment")]
+        public virtual GoogleCloudRecaptchaenterpriseV1AssessmentEnvironment AssessmentEnvironment { get; set; }
+
         /// <summary>Optional. The event being assessed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("event")]
         public virtual GoogleCloudRecaptchaenterpriseV1Event Event__ { get; set; }
@@ -1792,6 +1884,30 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         /// <summary>Output only. Properties of the provided event token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tokenProperties")]
         public virtual GoogleCloudRecaptchaenterpriseV1TokenProperties TokenProperties { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The environment creating the assessment. This describes your environment (the system invoking CreateAssessment),
+    /// NOT the environment of your user.
+    /// </summary>
+    public class GoogleCloudRecaptchaenterpriseV1AssessmentEnvironment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Identifies the client module initiating the CreateAssessment request. This can be the link to the
+        /// client module's project. Examples include: -
+        /// "github.com/GoogleCloudPlatform/recaptcha-enterprise-google-tag-manager" -
+        /// "cloud.google.com/recaptcha/docs/implement-waf-akamai" -
+        /// "cloud.google.com/recaptcha/docs/implement-waf-cloudflare" - "wordpress.org/plugins/recaptcha-something"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("client")]
+        public virtual string Client { get; set; }
+
+        /// <summary>Optional. The version of the client module. For example, "1.0.0".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2312,6 +2428,26 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appleDeveloperId")]
         public virtual GoogleCloudRecaptchaenterpriseV1AppleDeveloperId AppleDeveloperId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about the IP or IP range override.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1IpOverrideData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The IP address to override (can be IPv4, IPv6 or CIDR). The IP override must be a valid IPv4 or
+        /// IPv6 address, or a CIDR range. The IP override must be a public IP address. Example of IPv4: 168.192.5.6
+        /// Example of IPv6: 2001:0000:130F:0000:0000:09C0:876A:130B Example of IPv4 with CIDR: 168.192.5.0/24 Example
+        /// of IPv6 with CIDR: 2001:0DB8:1234::/48
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ip")]
+        public virtual string Ip { get; set; }
+
+        /// <summary>Required. Describes the type of IP override.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overrideType")]
+        public virtual string OverrideType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

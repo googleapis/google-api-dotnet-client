@@ -407,6 +407,10 @@ namespace Google.Apis.Discovery.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("default")]
         public virtual string Default__ { get; set; }
 
+        /// <summary>Whether the parameter is deprecated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deprecated")]
+        public virtual System.Nullable<bool> Deprecated { get; set; }
+
         /// <summary>A description of this object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
@@ -414,6 +418,12 @@ namespace Google.Apis.Discovery.v1.Data
         /// <summary>Values this parameter may take (if it is an enum).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enum")]
         public virtual System.Collections.Generic.IList<string> Enum__ { get; set; }
+
+        /// <summary>
+        /// The deprecation status for the enums. Each position maps to the corresponding value in the "enum" array.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enumDeprecated")]
+        public virtual System.Collections.Generic.IList<System.Nullable<bool>> EnumDeprecated { get; set; }
 
         /// <summary>
         /// The descriptions for the enums. Each position maps to the corresponding value in the "enum" array.
@@ -564,6 +574,13 @@ namespace Google.Apis.Discovery.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("documentationLink")]
         public virtual string DocumentationLink { get; set; }
 
+        /// <summary>
+        /// A list of location-based endpoint objects for this API. Each object contains the endpoint URL, location,
+        /// description and deprecation status.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpoints")]
+        public virtual System.Collections.Generic.IList<EndpointsData> Endpoints { get; set; }
+
         /// <summary>The ETag for this response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
@@ -678,6 +695,29 @@ namespace Google.Apis.Discovery.v1.Data
             }
         }
 
+        /// <summary>
+        /// A list of location-based endpoint objects for this API. Each object contains the endpoint URL, location,
+        /// description and deprecation status.
+        /// </summary>
+        public class EndpointsData
+        {
+            /// <summary>Whether this endpoint is deprecated</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("deprecated")]
+            public virtual System.Nullable<bool> Deprecated { get; set; }
+
+            /// <summary>A string describing the host designated by the URL</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("description")]
+            public virtual string Description { get; set; }
+
+            /// <summary>The URL of the endpoint target host</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("endpointUrl")]
+            public virtual string EndpointUrl { get; set; }
+
+            /// <summary>The location of the endpoint</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("location")]
+            public virtual string Location { get; set; }
+        }
+
         /// <summary>Links to 16x16 and 32x32 icons representing the API.</summary>
         public class IconsData
         {
@@ -693,6 +733,17 @@ namespace Google.Apis.Discovery.v1.Data
 
     public class RestMethod : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The API Version of this method, as passed in via the `X-Goog-Api-Version` header or `$apiVersion` query
+        /// parameter.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
+        public virtual string ApiVersion { get; set; }
+
+        /// <summary>Whether this method is deprecated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deprecated")]
+        public virtual System.Nullable<bool> Deprecated { get; set; }
+
         /// <summary>Description of this method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
@@ -858,6 +909,10 @@ namespace Google.Apis.Discovery.v1.Data
 
     public class RestResource : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Whether this resource is deprecated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deprecated")]
+        public virtual System.Nullable<bool> Deprecated { get; set; }
+
         /// <summary>Methods on this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("methods")]
         public virtual System.Collections.Generic.IDictionary<string, RestMethod> Methods { get; set; }

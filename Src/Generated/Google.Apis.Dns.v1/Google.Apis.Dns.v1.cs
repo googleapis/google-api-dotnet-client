@@ -5128,6 +5128,9 @@ namespace Google.Apis.Dns.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gkeClustersPerResponsePolicy")]
         public virtual System.Nullable<int> GkeClustersPerResponsePolicy { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("internetHealthChecksPerManagedZone")]
+        public virtual System.Nullable<int> InternetHealthChecksPerManagedZone { get; set; }
+
         /// <summary>Maximum allowed number of items per routing policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemsPerRoutingPolicy")]
         public virtual System.Nullable<int> ItemsPerRoutingPolicy { get; set; }
@@ -5226,6 +5229,13 @@ namespace Google.Apis.Dns.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("geo")]
         public virtual RRSetRoutingPolicyGeoPolicy Geo { get; set; }
 
+        /// <summary>
+        /// The selfLink attribute of the HealthCheck resource to use for this RRSetRoutingPolicy.
+        /// https://cloud.google.com/compute/docs/reference/rest/v1/healthChecks
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("healthCheck")]
+        public virtual string HealthCheck { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -5306,6 +5316,13 @@ namespace Google.Apis.Dns.v1.Data
     /// </summary>
     public class RRSetRoutingPolicyHealthCheckTargets : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The Internet IP addresses to be health checked. The format matches the format of ResourceRecordSet.rrdata as
+        /// defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalEndpoints")]
+        public virtual System.Collections.Generic.IList<string> ExternalEndpoints { get; set; }
+
         /// <summary>Configuration for internal load balancers to be health checked.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("internalLoadBalancers")]
         public virtual System.Collections.Generic.IList<RRSetRoutingPolicyLoadBalancerTarget> InternalLoadBalancers { get; set; }
