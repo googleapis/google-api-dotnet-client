@@ -6221,6 +6221,16 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         [Google.Apis.Util.RequestParameterAttribute("dataStoreId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string DataStoreId { get; set; }
 
+                        /// <summary>
+                        /// A boolean flag indicating whether to skip the default schema creation for the data store.
+                        /// Only enable this flag if you are certain that the default schema is incompatible with your
+                        /// use case. If set to true, you must manually create a schema for the data store before any
+                        /// documents can be ingested. This flag cannot be specified if `data_store.starting_schema` is
+                        /// specified.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("skipDefaultSchemaCreation", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> SkipDefaultSchemaCreation { get; set; }
+
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaDataStore Body { get; set; }
 
@@ -6259,6 +6269,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             RequestParameters.Add("dataStoreId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "dataStoreId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("skipDefaultSchemaCreation", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "skipDefaultSchemaCreation",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -14306,6 +14324,15 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     [Google.Apis.Util.RequestParameterAttribute("dataStoreId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string DataStoreId { get; set; }
 
+                    /// <summary>
+                    /// A boolean flag indicating whether to skip the default schema creation for the data store. Only
+                    /// enable this flag if you are certain that the default schema is incompatible with your use case.
+                    /// If set to true, you must manually create a schema for the data store before any documents can be
+                    /// ingested. This flag cannot be specified if `data_store.starting_schema` is specified.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("skipDefaultSchemaCreation", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> SkipDefaultSchemaCreation { get; set; }
+
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaDataStore Body { get; set; }
 
@@ -14344,6 +14371,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         RequestParameters.Add("dataStoreId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "dataStoreId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("skipDefaultSchemaCreation", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "skipDefaultSchemaCreation",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -15963,7 +15998,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// <summary>Deletes a SampleQuery.</summary>
                     /// <param name="name">
                     /// Required. Full resource name of SampleQuery, such as
-                    /// `projects/{project}/locations/{location}/sampleQuerySets/{sampleQuerySet}/sampleQueries/{sampleQuery}`.
+                    /// `projects/{project}/locations/{location}/sampleQuerySets/{sample_query_set}/sampleQueries/{sample_query}`.
                     /// If the caller does not have permission to delete the SampleQuery, regardless of whether or not
                     /// it exists, a `PERMISSION_DENIED` error is returned. If the SampleQuery to delete does not exist,
                     /// a `NOT_FOUND` error is returned.
@@ -15985,7 +16020,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
 
                         /// <summary>
                         /// Required. Full resource name of SampleQuery, such as
-                        /// `projects/{project}/locations/{location}/sampleQuerySets/{sampleQuerySet}/sampleQueries/{sampleQuery}`.
+                        /// `projects/{project}/locations/{location}/sampleQuerySets/{sample_query_set}/sampleQueries/{sample_query}`.
                         /// If the caller does not have permission to delete the SampleQuery, regardless of whether or
                         /// not it exists, a `PERMISSION_DENIED` error is returned. If the SampleQuery to delete does
                         /// not exist, a `NOT_FOUND` error is returned.
@@ -16020,7 +16055,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// <summary>Gets a SampleQuery.</summary>
                     /// <param name="name">
                     /// Required. Full resource name of SampleQuery, such as
-                    /// `projects/{project}/locations/{location}/sampleQuerySets/{sampleQuerySet}/sampleQueries/{sampleQuery}`.
+                    /// `projects/{project}/locations/{location}/sampleQuerySets/{sample_query_set}/sampleQueries/{sample_query}`.
                     /// If the caller does not have permission to access the SampleQuery, regardless of whether or not
                     /// it exists, a PERMISSION_DENIED error is returned. If the requested SampleQuery does not exist, a
                     /// NOT_FOUND error is returned.
@@ -16042,7 +16077,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
 
                         /// <summary>
                         /// Required. Full resource name of SampleQuery, such as
-                        /// `projects/{project}/locations/{location}/sampleQuerySets/{sampleQuerySet}/sampleQueries/{sampleQuery}`.
+                        /// `projects/{project}/locations/{location}/sampleQuerySets/{sample_query_set}/sampleQueries/{sample_query}`.
                         /// If the caller does not have permission to access the SampleQuery, regardless of whether or
                         /// not it exists, a PERMISSION_DENIED error is returned. If the requested SampleQuery does not
                         /// exist, a NOT_FOUND error is returned.
@@ -16235,8 +16270,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// <summary>Updates a SampleQuery.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Immutable. The full resource name of the sample query, in the format of
-                    /// `projects/{project}/locations/{location}/sampleQuerySets/{sampleQuerySet}/sampleQueries/{sampleQuery}`.
+                    /// Identifier. The full resource name of the sample query, in the format of
+                    /// `projects/{project}/locations/{location}/sampleQuerySets/{sample_query_set}/sampleQueries/{sample_query}`.
                     /// This field must be a UTF-8 encoded string with a length limit of 1024 characters.
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSampleQuery body, string name)
@@ -16256,8 +16291,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         }
 
                         /// <summary>
-                        /// Immutable. The full resource name of the sample query, in the format of
-                        /// `projects/{project}/locations/{location}/sampleQuerySets/{sampleQuerySet}/sampleQueries/{sampleQuery}`.
+                        /// Identifier. The full resource name of the sample query, in the format of
+                        /// `projects/{project}/locations/{location}/sampleQuerySets/{sample_query_set}/sampleQueries/{sample_query}`.
                         /// This field must be a UTF-8 encoded string with a length limit of 1024 characters.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -16388,7 +16423,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                 /// <summary>Deletes a SampleQuerySet.</summary>
                 /// <param name="name">
                 /// Required. Full resource name of SampleQuerySet, such as
-                /// `projects/{project}/locations/{location}/sampleQuerySets/{sampleQuerySet}`. If the caller does not
+                /// `projects/{project}/locations/{location}/sampleQuerySets/{sample_query_set}`. If the caller does not
                 /// have permission to delete the SampleQuerySet, regardless of whether or not it exists, a
                 /// `PERMISSION_DENIED` error is returned. If the SampleQuerySet to delete does not exist, a `NOT_FOUND`
                 /// error is returned.
@@ -16410,7 +16445,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
 
                     /// <summary>
                     /// Required. Full resource name of SampleQuerySet, such as
-                    /// `projects/{project}/locations/{location}/sampleQuerySets/{sampleQuerySet}`. If the caller does
+                    /// `projects/{project}/locations/{location}/sampleQuerySets/{sample_query_set}`. If the caller does
                     /// not have permission to delete the SampleQuerySet, regardless of whether or not it exists, a
                     /// `PERMISSION_DENIED` error is returned. If the SampleQuerySet to delete does not exist, a
                     /// `NOT_FOUND` error is returned.
@@ -16445,7 +16480,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                 /// <summary>Gets a SampleQuerySet.</summary>
                 /// <param name="name">
                 /// Required. Full resource name of SampleQuerySet, such as
-                /// `projects/{project}/locations/{location}/sampleQuerySets/{sampleQuerySet}`. If the caller does not
+                /// `projects/{project}/locations/{location}/sampleQuerySets/{sample_query_set}`. If the caller does not
                 /// have permission to access the SampleQuerySet, regardless of whether or not it exists, a
                 /// PERMISSION_DENIED error is returned. If the requested SampleQuerySet does not exist, a NOT_FOUND
                 /// error is returned.
@@ -16467,7 +16502,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
 
                     /// <summary>
                     /// Required. Full resource name of SampleQuerySet, such as
-                    /// `projects/{project}/locations/{location}/sampleQuerySets/{sampleQuerySet}`. If the caller does
+                    /// `projects/{project}/locations/{location}/sampleQuerySets/{sample_query_set}`. If the caller does
                     /// not have permission to access the SampleQuerySet, regardless of whether or not it exists, a
                     /// PERMISSION_DENIED error is returned. If the requested SampleQuerySet does not exist, a NOT_FOUND
                     /// error is returned.
@@ -16588,8 +16623,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                 /// <summary>Updates a SampleQuerySet.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Immutable. The full resource name of the SampleQuerySet, in the format of
-                /// `projects/{project}/locations/{location}/sampleQuerySets/{sampleQuerySet}`. This field must be a
+                /// Identifier. The full resource name of the SampleQuerySet, in the format of
+                /// `projects/{project}/locations/{location}/sampleQuerySets/{sample_query_set}`. This field must be a
                 /// UTF-8 encoded string with a length limit of 1024 characters.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaSampleQuerySet body, string name)
@@ -16609,9 +16644,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     }
 
                     /// <summary>
-                    /// Immutable. The full resource name of the SampleQuerySet, in the format of
-                    /// `projects/{project}/locations/{location}/sampleQuerySets/{sampleQuerySet}`. This field must be a
-                    /// UTF-8 encoded string with a length limit of 1024 characters.
+                    /// Identifier. The full resource name of the SampleQuerySet, in the format of
+                    /// `projects/{project}/locations/{location}/sampleQuerySets/{sample_query_set}`. This field must be
+                    /// a UTF-8 encoded string with a length limit of 1024 characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -21510,6 +21545,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("chunkInfo")]
         public virtual GoogleCloudDiscoveryengineV1alphaAnswerReferenceChunkInfo ChunkInfo { get; set; }
 
+        /// <summary>Structured document information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structuredDocumentInfo")]
+        public virtual GoogleCloudDiscoveryengineV1alphaAnswerReferenceStructuredDocumentInfo StructuredDocumentInfo { get; set; }
+
         /// <summary>Unstructured document information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unstructuredDocumentInfo")]
         public virtual GoogleCloudDiscoveryengineV1alphaAnswerReferenceUnstructuredDocumentInfo UnstructuredDocumentInfo { get; set; }
@@ -21533,7 +21572,11 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("documentMetadata")]
         public virtual GoogleCloudDiscoveryengineV1alphaAnswerReferenceChunkInfoDocumentMetadata DocumentMetadata { get; set; }
 
-        /// <summary>Relevance score.</summary>
+        /// <summary>
+        /// The relevance of the chunk for a given query. Values range from 0.0 (completely irrelevant) to 1.0
+        /// (completely relevant). This value is for informational purpose only. It may change for the same query and
+        /// chunk at any time due to a model retraining or change in implementation.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relevanceScore")]
         public virtual System.Nullable<float> RelevanceScore { get; set; }
 
@@ -21566,6 +21609,21 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>URI for the document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Structured search information.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaAnswerReferenceStructuredDocumentInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Document resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("document")]
+        public virtual string Document { get; set; }
+
+        /// <summary>Structured search data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structData")]
+        public virtual System.Collections.Generic.IDictionary<string, object> StructData { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21611,6 +21669,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Page identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageIdentifier")]
         public virtual string PageIdentifier { get; set; }
+
+        /// <summary>
+        /// The relevance of the chunk for a given query. Values range from 0.0 (completely irrelevant) to 1.0
+        /// (completely relevant). This value is for informational purpose only. It may change for the same query and
+        /// chunk at any time due to a model retraining or change in implementation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relevanceScore")]
+        public virtual System.Nullable<float> RelevanceScore { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21712,7 +21778,11 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
 
-        /// <summary>Relevance score.</summary>
+        /// <summary>
+        /// The relevance of the chunk for a given query. Values range from 0.0 (completely irrelevant) to 1.0
+        /// (completely relevant). This value is for informational purpose only. It may change for the same query and
+        /// chunk at any time due to a model retraining or change in implementation.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relevanceScore")]
         public virtual System.Nullable<float> RelevanceScore { get; set; }
 
@@ -24259,6 +24329,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// </summary>
     public class GoogleCloudDiscoveryengineV1alphaDocumentAclInfoAccessRestriction : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>All users within the Identity Provider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idpWide")]
+        public virtual System.Nullable<bool> IdpWide { get; set; }
+
         /// <summary>List of principals.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("principals")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaPrincipal> Principals { get; set; }
@@ -25210,7 +25284,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual GoogleCloudDiscoveryengineV1alphaEvaluationEvaluationSpec EvaluationSpec { get; set; }
 
         /// <summary>
-        /// Immutable. The full resource name of the Evaluation, in the format of
+        /// Identifier. The full resource name of the Evaluation, in the format of
         /// `projects/{project}/locations/{location}/evaluations/{evaluation}`. This field must be a UTF-8 encoded
         /// string with a length limit of 1024 characters.
         /// </summary>
@@ -25357,10 +25431,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// </summary>
     public class GoogleCloudDiscoveryengineV1alphaExportUserEventsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output result indicating where the data were exported to.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("outputResult")]
-        public virtual GoogleCloudDiscoveryengineV1alphaOutputResult OutputResult { get; set; }
-
         /// <summary>The status of the export operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual GoogleRpcStatus Status { get; set; }
@@ -26860,32 +26930,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Output result that stores the information about where the exported data is stored.</summary>
-    public class GoogleCloudDiscoveryengineV1alphaOutputResult : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The BigQuery location where the result is stored.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("bigqueryResult")]
-        public virtual GoogleCloudDiscoveryengineV1alphaOutputResultBigQueryOutputResult BigqueryResult { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A BigQuery output result.</summary>
-    public class GoogleCloudDiscoveryengineV1alphaOutputResultBigQueryOutputResult : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ID of a BigQuery Dataset.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("datasetId")]
-        public virtual string DatasetId { get; set; }
-
-        /// <summary>The ID of a BigQuery Table.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
-        public virtual string TableId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Detailed page information.</summary>
     public class GoogleCloudDiscoveryengineV1alphaPageInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -27460,6 +27504,24 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
         public virtual GoogleCloudDiscoveryengineV1alphaGcsSource GcsSource { get; set; }
+
+        /// <summary>Inline source for the input content for purge.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inlineSource")]
+        public virtual GoogleCloudDiscoveryengineV1alphaPurgeDocumentsRequestInlineSource InlineSource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The inline source for the input config for DocumentService.PurgeDocuments method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaPurgeDocumentsRequestInlineSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A list of full resource name of documents to purge. In the format
+        /// `projects/*/locations/*/collections/*/dataStores/*/branches/*/documents/*`. Recommended max of 100 items.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documents")]
+        public virtual System.Collections.Generic.IList<string> Documents { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -28476,9 +28538,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         }
 
         /// <summary>
-        /// Immutable. The full resource name of the sample query, in the format of
-        /// `projects/{project}/locations/{location}/sampleQuerySets/{sampleQuerySet}/sampleQueries/{sampleQuery}`. This
-        /// field must be a UTF-8 encoded string with a length limit of 1024 characters.
+        /// Identifier. The full resource name of the sample query, in the format of
+        /// `projects/{project}/locations/{location}/sampleQuerySets/{sample_query_set}/sampleQueries/{sample_query}`.
+        /// This field must be a UTF-8 encoded string with a length limit of 1024 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -28583,8 +28645,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Immutable. The full resource name of the SampleQuerySet, in the format of
-        /// `projects/{project}/locations/{location}/sampleQuerySets/{sampleQuerySet}`. This field must be a UTF-8
+        /// Identifier. The full resource name of the SampleQuerySet, in the format of
+        /// `projects/{project}/locations/{location}/sampleQuerySets/{sample_query_set}`. This field must be a UTF-8
         /// encoded string with a length limit of 1024 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -28764,8 +28826,11 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>
         /// The order in which documents are returned. Documents can be ordered by a field in an Document object. Leave
         /// it unset if ordered by relevance. `order_by` expression is case-sensitive. For more information on ordering
-        /// for retail search, see [Ordering](https://cloud.google.com/retail/docs/filter-and-order#order) If this field
-        /// is unrecognizable, an `INVALID_ARGUMENT` is returned.
+        /// the website search results, see [Order web search
+        /// results](https://cloud.google.com/generative-ai-app-builder/docs/order-web-search-results). For more
+        /// information on ordering the healthcare search results, see [Order healthcare search
+        /// results](https://cloud.google.com/generative-ai-app-builder/docs/order-hc-results). If this field is
+        /// unrecognizable, an `INVALID_ARGUMENT` is returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderBy")]
         public virtual string OrderBy { get; set; }
@@ -29173,6 +29238,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual System.Nullable<bool> IgnoreAdversarialQuery { get; set; }
 
         /// <summary>
+        /// Specifies whether to filter out queries that have low relevance. The default value is `false`. If this field
+        /// is set to `false`, all search results are used regardless of relevance to generate answers. If set to
+        /// `true`, only queries with high relevance search results will generate answers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreLowRelevantContent")]
+        public virtual System.Nullable<bool> IgnoreLowRelevantContent { get; set; }
+
+        /// <summary>
         /// Specifies whether to filter out queries that are not summary-seeking. The default value is `false`. Google
         /// employs search-query classification to detect summary-seeking queries. No summary is returned if the search
         /// query is classified as a non-summary seeking query. For example, `why is the sky blue` and `Who is the best
@@ -29577,6 +29650,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
+        /// <summary>A list of One Box results. There can be multiple One Box results of different types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oneBoxResults")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaSearchResponseOneBoxResult> OneBoxResults { get; set; }
+
         /// <summary>Query expansion information for the returned results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryExpansionInfo")]
         public virtual GoogleCloudDiscoveryengineV1alphaSearchResponseQueryExpansionInfo QueryExpansionInfo { get; set; }
@@ -29852,6 +29929,23 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<string> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// OneBoxResult is a holder for all results of specific type that we want to display in UI differently.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaSearchResponseOneBoxResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of One Box result.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oneBoxType")]
+        public virtual string OneBoxType { get; set; }
+
+        /// <summary>The search results for this One Box.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchResults")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaSearchResponseSearchResult> SearchResults { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -33404,7 +33498,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual GoogleCloudDiscoveryengineV1betaEvaluationEvaluationSpec EvaluationSpec { get; set; }
 
         /// <summary>
-        /// Immutable. The full resource name of the Evaluation, in the format of
+        /// Identifier. The full resource name of the Evaluation, in the format of
         /// `projects/{project}/locations/{location}/evaluations/{evaluation}`. This field must be a UTF-8 encoded
         /// string with a length limit of 1024 characters.
         /// </summary>
@@ -34726,8 +34820,11 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>
         /// The order in which documents are returned. Documents can be ordered by a field in an Document object. Leave
         /// it unset if ordered by relevance. `order_by` expression is case-sensitive. For more information on ordering
-        /// for retail search, see [Ordering](https://cloud.google.com/retail/docs/filter-and-order#order) If this field
-        /// is unrecognizable, an `INVALID_ARGUMENT` is returned.
+        /// the website search results, see [Order web search
+        /// results](https://cloud.google.com/generative-ai-app-builder/docs/order-web-search-results). For more
+        /// information on ordering the healthcare search results, see [Order healthcare search
+        /// results](https://cloud.google.com/generative-ai-app-builder/docs/order-hc-results). If this field is
+        /// unrecognizable, an `INVALID_ARGUMENT` is returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderBy")]
         public virtual string OrderBy { get; set; }
@@ -35125,6 +35222,14 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ignoreAdversarialQuery")]
         public virtual System.Nullable<bool> IgnoreAdversarialQuery { get; set; }
+
+        /// <summary>
+        /// Specifies whether to filter out queries that have low relevance. The default value is `false`. If this field
+        /// is set to `false`, all search results are used regardless of relevance to generate answers. If set to
+        /// `true`, only queries with high relevance search results will generate answers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreLowRelevantContent")]
+        public virtual System.Nullable<bool> IgnoreLowRelevantContent { get; set; }
 
         /// <summary>
         /// Specifies whether to filter out queries that are not summary-seeking. The default value is `false`. Google
