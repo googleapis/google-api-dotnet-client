@@ -63,12 +63,14 @@ fi
 ./BuildGenerated.sh @tmp/ApisToGenerate.txt
 
 # For each new/updated Discovery file, add the Discovery file
-# and the generated code in a commit.
+# and the generated code in a commit. Note that we need to add
+# everything *starting* with the given file name, so that we also add
+# ".json.original" files if they're patched.
 for file in $(cat tmp/ApisToGenerate.txt | sed 's/\r//g')
 do
   service=$(basename $file | sed 's/.json//g')
   generated=$(dotnet run --project Src/Tools/BuildGeneratedArgumentTranslator -- Src/Generated $file)
-  git add $file $generated
+  git add ${file}* $generated
   git commit -m "feat: Regenerate $service with new or updated Discovery document"
 done
 
