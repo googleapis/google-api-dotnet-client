@@ -4790,8 +4790,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// screen width is less than or equal to 480 pixels. * On iOS devices, the second column wraps if the screen width
     /// is less than or equal to 300 pt. * On Android devices, the second column wraps if the screen width is less than
     /// or equal to 320 dp. To include more than 2 columns, or to use rows, use the `Grid` widget. [Google Workspace
-    /// Add-ons and Chat apps](https://developers.google.com/workspace/extend): Columns for Google Workspace Add-ons are
-    /// in Developer Preview.
+    /// Add-ons and Chat apps](https://developers.google.com/workspace/extend):
     /// </summary>
     public class GoogleAppsCardV1Columns : Google.Apis.Requests.IDirectResponseSchema
     {
