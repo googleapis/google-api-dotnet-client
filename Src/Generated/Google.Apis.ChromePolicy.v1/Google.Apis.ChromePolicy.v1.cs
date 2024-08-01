@@ -1838,8 +1838,7 @@ namespace Google.Apis.ChromePolicy.v1.Data
 
         /// <summary>
         /// Corresponding to deprecated_in_favor_of, the fully qualified namespace(s) of the old policies that will be
-        /// deprecated because of introduction of this policy. This field should not be manually set but will be set and
-        /// exposed through PolicyAPI automatically.
+        /// deprecated because of introduction of this policy.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduledToDeprecatePolicies")]
         public virtual System.Collections.Generic.IList<string> ScheduledToDeprecatePolicies { get; set; }
