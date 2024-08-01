@@ -1836,8 +1836,9 @@ namespace Google.Apis.MapsPlaces.v1.Data
     public class GoogleMapsPlacesV1PlaceOpeningHours : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Is this place open right now? Always present unless we lack time-of-day or timezone data for these opening
-        /// hours.
+        /// Whether the opening hours period is currently active. For regular opening hours and current opening hours,
+        /// this field means whether the place is open. For secondary opening hours and current secondary opening hours,
+        /// this field means whether the secondary hours of this place is active.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("openNow")]
         public virtual System.Nullable<bool> OpenNow { get; set; }
