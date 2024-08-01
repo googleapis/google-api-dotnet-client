@@ -68,10 +68,11 @@ fi
 # ".json.original" files if they're patched.
 for file in $(cat tmp/ApisToGenerate.txt | sed 's/\r//g')
 do
-  service=$(basename $file | sed 's/.json//g')
   generated=$(dotnet run --project Src/Tools/BuildGeneratedArgumentTranslator -- Src/Generated $file)
+  pkg=$(basename $generated)
   git add ${file}* $generated
-  git commit -m "feat: Regenerate $service with new or updated Discovery document"
+  version=$(grep '<Version>' $generated/$pkg.csproj | cut -d '>' -f 2 | cut -d '<' -f 1)
+  git commit -m "feat: Generate $pkg version $version"
 done
 
 # Clean up anything else that we've got, if there's anything left.
