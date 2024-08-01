@@ -8207,7 +8207,7 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>EnterpriseConfig is the cluster enterprise configuration.</summary>
     public class EnterpriseConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. cluster_tier specifies the premium tier of the cluster.</summary>
+        /// <summary>Output only. cluster_tier indicates the effective tier of the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterTier")]
         public virtual string ClusterTier { get; set; }
 
