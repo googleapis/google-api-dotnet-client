@@ -18,7 +18,9 @@ using Google.Apis.Auth.OAuth2.Responses;
 using Google.Apis.Json;
 using Google.Apis.Logging;
 using Google.Apis.Requests.Parameters;
+using Google.Apis.Responses;
 using Google.Apis.Util;
+using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -51,7 +53,16 @@ namespace Google.Apis.Auth.OAuth2.Requests
             this object request, HttpClient httpClient, string url, CancellationToken cancellationToken)
         {
             var response = await request.PostJsonAsync(httpClient, url, cancellationToken).ConfigureAwait(false);
-            response.EnsureSuccessStatusCode();
+            if (!response.IsSuccessStatusCode)
+            {
+                var serviceHost = new Uri(url).Host;
+                var error = await response.DeserializeErrorAsync(serviceHost, NewtonsoftJsonSerializer.Instance).ConfigureAwait(false);
+                throw new GoogleApiException(serviceHost)
+                {
+                    Error = error,
+                    HttpStatusCode = response.StatusCode
+                };
+            }
             return await NewtonsoftJsonSerializer.Instance.DeserializeAsync<TResponse>(
                 await response.Content.ReadAsStreamAsync().ConfigureAwait(false), cancellationToken).ConfigureAwait(false);
         }
