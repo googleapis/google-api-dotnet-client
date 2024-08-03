@@ -206,8 +206,8 @@ namespace Google.Apis.Auth.Tests.OAuth2
         public async Task SignBlobAsync_Failure()
         {
             var credential = CreateImpersonatedCredentialWithErrorResponse();
-            var ex = await Assert.ThrowsAsync<HttpRequestException>(() => credential.SignBlobAsync(Encoding.ASCII.GetBytes("toSign")));
-            Assert.Equal("Response status code does not indicate success: 404 (Not Found).", ex.Message);
+            var ex = await Assert.ThrowsAsync<GoogleApiException>(() => credential.SignBlobAsync(Encoding.ASCII.GetBytes("toSign")));
+            Assert.Equal(HttpStatusCode.NotFound, ex.HttpStatusCode);
         }
 
         [Fact]

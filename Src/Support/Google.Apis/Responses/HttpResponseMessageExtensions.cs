@@ -20,7 +20,11 @@ using System.Threading.Tasks;
 
 namespace Google.Apis.Responses
 {
-    internal static class HttpResponseMessageExtensions
+    /// <summary>
+    /// Extensions for <see cref="HttpResponseMessage"/> to help with parasing errors as returned
+    /// by some Google services.
+    /// </summary>
+    public static class HttpResponseMessageExtensions
     {
         /// <summary>
         /// Attempts to deserialize a <see cref="RequestError"/> from the <paramref name="response"/>.
@@ -34,9 +38,9 @@ namespace Google.Apis.Responses
         /// </list>
         /// Any exception thrown while reading the <paramref name="response"/> <see cref="HttpResponseMessage.Content"/>
         /// will be bubbled up.
-        /// Otherwie this method will returned the deserialized <see cref="RequestError"/>.
+        /// Otherwise this method will return the deserialized <see cref="RequestError"/>.
         /// </remarks>
-        internal static async Task<RequestError> DeserializeErrorAsync(this HttpResponseMessage response, string name, ISerializer serializer)
+        public static async Task<RequestError> DeserializeErrorAsync(this HttpResponseMessage response, string name, ISerializer serializer)
         {
             if (response?.Content is null)
             {
