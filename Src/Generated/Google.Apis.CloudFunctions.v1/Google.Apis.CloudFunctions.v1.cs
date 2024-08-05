@@ -1510,7 +1510,10 @@ namespace Google.Apis.CloudFunctions.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("buildName")]
         public virtual string BuildName { get; set; }
 
-        /// <summary>Optional. A service account the user provides for use with Cloud Build.</summary>
+        /// <summary>
+        /// A service account the user provides for use with Cloud Build. The format of this field is
+        /// `projects/{projectId}/serviceAccounts/{serviceAccountEmail}`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buildServiceAccount")]
         public virtual string BuildServiceAccount { get; set; }
 
@@ -1923,6 +1926,10 @@ namespace Google.Apis.CloudFunctions.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
         public virtual string ApiVersion { get; set; }
 
+        /// <summary>The build name of the function for create and update operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildName")]
+        public virtual string BuildName { get; set; }
+
         /// <summary>
         /// Identifies whether the user has requested cancellation of the operation. Operations that have successfully
         /// been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of 1,
@@ -2108,6 +2115,10 @@ namespace Google.Apis.CloudFunctions.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
         public virtual string ApiVersion { get; set; }
 
+        /// <summary>The build name of the function for create and update operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildName")]
+        public virtual string BuildName { get; set; }
+
         /// <summary>
         /// Identifies whether the user has requested cancellation of the operation. Operations that have successfully
         /// been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of 1,
@@ -2292,6 +2303,10 @@ namespace Google.Apis.CloudFunctions.v1.Data
         /// <summary>API version used to start the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
         public virtual string ApiVersion { get; set; }
+
+        /// <summary>The build name of the function for create and update operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildName")]
+        public virtual string BuildName { get; set; }
 
         /// <summary>
         /// Identifies whether the user has requested cancellation of the operation. Operations that have successfully
