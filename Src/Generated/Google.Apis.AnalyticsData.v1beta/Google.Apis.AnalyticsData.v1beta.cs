@@ -2936,7 +2936,8 @@ namespace Google.Apis.AnalyticsData.v1beta.Data
 
         /// <summary>
         /// Aggregation of metrics. Aggregated metric values will be shown in rows where the dimension_values are set to
-        /// "RESERVED_(MetricAggregation)".
+        /// "RESERVED_(MetricAggregation)". Aggregates including both comparisons and multiple date ranges will be
+        /// aggregated based on the date ranges.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metricAggregations")]
         public virtual System.Collections.Generic.IList<string> MetricAggregations { get; set; }
@@ -2962,7 +2963,10 @@ namespace Google.Apis.AnalyticsData.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("offset")]
         public virtual System.Nullable<long> Offset { get; set; }
 
-        /// <summary>Specifies how rows are ordered in the response.</summary>
+        /// <summary>
+        /// Specifies how rows are ordered in the response. Requests including both comparisons and multiple date ranges
+        /// will have order bys applied on the comparisons.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderBys")]
         public virtual System.Collections.Generic.IList<OrderBy> OrderBys { get; set; }
 
