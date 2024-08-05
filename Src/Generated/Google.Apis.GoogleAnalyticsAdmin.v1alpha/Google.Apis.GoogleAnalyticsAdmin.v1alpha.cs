@@ -9652,49 +9652,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         }
 
         /// <summary>
-        /// Create a subproperty and a subproperty event filter that applies to the created subproperty.
-        /// </summary>
-        /// <param name="body">The body of the request.</param>
-        public virtual CreateSubpropertyRequest CreateSubproperty(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaCreateSubpropertyRequest body)
-        {
-            return new CreateSubpropertyRequest(this.service, body);
-        }
-
-        /// <summary>
-        /// Create a subproperty and a subproperty event filter that applies to the created subproperty.
-        /// </summary>
-        public class CreateSubpropertyRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaCreateSubpropertyResponse>
-        {
-            /// <summary>Constructs a new CreateSubproperty request.</summary>
-            public CreateSubpropertyRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaCreateSubpropertyRequest body) : base(service)
-            {
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaCreateSubpropertyRequest Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "createSubproperty";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1alpha/properties:createSubproperty";
-
-            /// <summary>Initializes CreateSubproperty parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-            }
-        }
-
-        /// <summary>
         /// Marks target Property as soft-deleted (ie: "trashed") and returns it. This API does not have a method to
         /// restore soft-deleted properties. However, they can be restored using the Trash Can UI. If the properties are
         /// not restored before the expiration time, the Property and all child resources (eg: GoogleAdsLinks, Streams,
@@ -10326,6 +10283,49 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     DefaultValue = null,
                     Pattern = null,
                 });
+            }
+        }
+
+        /// <summary>
+        /// Create a subproperty and a subproperty event filter that applies to the created subproperty.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual ProvisionSubpropertyRequest ProvisionSubproperty(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest body)
+        {
+            return new ProvisionSubpropertyRequest(this.service, body);
+        }
+
+        /// <summary>
+        /// Create a subproperty and a subproperty event filter that applies to the created subproperty.
+        /// </summary>
+        public class ProvisionSubpropertyRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaProvisionSubpropertyResponse>
+        {
+            /// <summary>Constructs a new ProvisionSubproperty request.</summary>
+            public ProvisionSubpropertyRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "provisionSubproperty";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1alpha/properties:provisionSubproperty";
+
+            /// <summary>Initializes ProvisionSubproperty parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
             }
         }
 
@@ -12556,36 +12556,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request message for CreateSubproperty RPC.</summary>
-    public class GoogleAnalyticsAdminV1alphaCreateSubpropertyRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. The subproperty to create.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("subproperty")]
-        public virtual GoogleAnalyticsAdminV1alphaProperty Subproperty { get; set; }
-
-        /// <summary>Optional. The subproperty event filter to create on an ordinary property.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("subpropertyEventFilter")]
-        public virtual GoogleAnalyticsAdminV1alphaSubpropertyEventFilter SubpropertyEventFilter { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response message for CreateSubproperty RPC.</summary>
-    public class GoogleAnalyticsAdminV1alphaCreateSubpropertyResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The created subproperty.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("subproperty")]
-        public virtual GoogleAnalyticsAdminV1alphaProperty Subproperty { get; set; }
-
-        /// <summary>The created subproperty event filter.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("subpropertyEventFilter")]
-        public virtual GoogleAnalyticsAdminV1alphaSubpropertyEventFilter SubpropertyEventFilter { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>A definition for a CustomDimension.</summary>
     public class GoogleAnalyticsAdminV1alphaCustomDimension : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14781,6 +14751,36 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// <summary>The param to be passed in the ToS link.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountTicketId")]
         public virtual string AccountTicketId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for CreateSubproperty RPC.</summary>
+    public class GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The subproperty to create.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subproperty")]
+        public virtual GoogleAnalyticsAdminV1alphaProperty Subproperty { get; set; }
+
+        /// <summary>Optional. The subproperty event filter to create on an ordinary property.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subpropertyEventFilter")]
+        public virtual GoogleAnalyticsAdminV1alphaSubpropertyEventFilter SubpropertyEventFilter { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ProvisionSubproperty RPC.</summary>
+    public class GoogleAnalyticsAdminV1alphaProvisionSubpropertyResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The created subproperty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subproperty")]
+        public virtual GoogleAnalyticsAdminV1alphaProperty Subproperty { get; set; }
+
+        /// <summary>The created subproperty event filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subpropertyEventFilter")]
+        public virtual GoogleAnalyticsAdminV1alphaSubpropertyEventFilter SubpropertyEventFilter { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
