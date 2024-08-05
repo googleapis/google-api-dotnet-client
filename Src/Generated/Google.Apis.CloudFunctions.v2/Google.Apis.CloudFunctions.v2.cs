@@ -1006,8 +1006,7 @@ namespace Google.Apis.CloudFunctions.v2
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// The list of fields to be updated. If no field mask is provided, all provided fields in the
-                    /// request will be updated.
+                    /// The list of fields to be updated. If no field mask is provided, all fields will be updated.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -1916,7 +1915,10 @@ namespace Google.Apis.CloudFunctions.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("runtime")]
         public virtual string Runtime { get; set; }
 
-        /// <summary>[Preview] Service account to be used for building the container</summary>
+        /// <summary>
+        /// Service account to be used for building the container. The format of this field is
+        /// `projects/{projectId}/serviceAccounts/{serviceAccountEmail}`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
 
@@ -2362,6 +2364,10 @@ namespace Google.Apis.CloudFunctions.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
         public virtual string ApiVersion { get; set; }
 
+        /// <summary>The build name of the function for create and update operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildName")]
+        public virtual string BuildName { get; set; }
+
         /// <summary>
         /// Identifies whether the user has requested cancellation of the operation. Operations that have successfully
         /// been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of 1,
@@ -2547,6 +2553,10 @@ namespace Google.Apis.CloudFunctions.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
         public virtual string ApiVersion { get; set; }
 
+        /// <summary>The build name of the function for create and update operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildName")]
+        public virtual string BuildName { get; set; }
+
         /// <summary>
         /// Identifies whether the user has requested cancellation of the operation. Operations that have successfully
         /// been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of 1,
@@ -2731,6 +2741,10 @@ namespace Google.Apis.CloudFunctions.v2.Data
         /// <summary>API version used to start the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
         public virtual string ApiVersion { get; set; }
+
+        /// <summary>The build name of the function for create and update operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildName")]
+        public virtual string BuildName { get; set; }
 
         /// <summary>
         /// Identifies whether the user has requested cancellation of the operation. Operations that have successfully
