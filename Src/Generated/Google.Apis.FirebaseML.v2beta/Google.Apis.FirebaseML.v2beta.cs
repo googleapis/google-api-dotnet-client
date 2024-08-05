@@ -560,6 +560,10 @@ namespace Google.Apis.FirebaseML.v2beta.Data
     /// <summary>A response candidate generated from the model.</summary>
     public class GoogleCloudAiplatformV1beta1Candidate : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Average log probability score of the candidate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("avgLogprobs")]
+        public virtual System.Nullable<double> AvgLogprobs { get; set; }
+
         /// <summary>Output only. Source attribution of the generated content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("citationMetadata")]
         public virtual GoogleCloudAiplatformV1beta1CitationMetadata CitationMetadata { get; set; }
