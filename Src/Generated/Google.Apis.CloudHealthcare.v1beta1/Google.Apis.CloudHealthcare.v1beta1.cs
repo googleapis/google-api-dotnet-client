@@ -13003,6 +13003,81 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     }
 
                     /// <summary>
+                    /// Rolls back messages from the HL7 store to the specified time. This method returns an Operation
+                    /// that can be used to track the status of the rollback by calling GetOperation. Immediate fatal
+                    /// errors appear in the error field, errors are also logged to Cloud Logging (see [Viewing error
+                    /// logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). Otherwise,
+                    /// when the operation finishes, a detailed response of type RollbackHl7V2MessagesResponse is
+                    /// returned in the response field. The metadata field type for this operation is OperationMetadata.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The name of the HL7v2 store to rollback, in the format of
+                    /// "projects/{project_id}/locations/{location_id}/datasets/{dataset_id}
+                    /// /hl7V2Stores/{hl7v2_store_id}".
+                    /// </param>
+                    public virtual RollbackRequest Rollback(Google.Apis.CloudHealthcare.v1beta1.Data.RollbackHl7V2MessagesRequest body, string name)
+                    {
+                        return new RollbackRequest(this.service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Rolls back messages from the HL7 store to the specified time. This method returns an Operation
+                    /// that can be used to track the status of the rollback by calling GetOperation. Immediate fatal
+                    /// errors appear in the error field, errors are also logged to Cloud Logging (see [Viewing error
+                    /// logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). Otherwise,
+                    /// when the operation finishes, a detailed response of type RollbackHl7V2MessagesResponse is
+                    /// returned in the response field. The metadata field type for this operation is OperationMetadata.
+                    /// </summary>
+                    public class RollbackRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Rollback request.</summary>
+                        public RollbackRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudHealthcare.v1beta1.Data.RollbackHl7V2MessagesRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the HL7v2 store to rollback, in the format of
+                        /// "projects/{project_id}/locations/{location_id}/datasets/{dataset_id}
+                        /// /hl7V2Stores/{hl7v2_store_id}".
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudHealthcare.v1beta1.Data.RollbackHl7V2MessagesRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "rollback";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}:rollback";
+
+                        /// <summary>Initializes Rollback parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/hl7V2Stores/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
                     /// Sets the access control policy on the specified resource. Replaces any existing policy. Can
                     /// return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
                     /// </summary>
@@ -19322,6 +19397,103 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fhirStore")]
         public virtual string FhirStore { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Filtering fields for an HL7 rollback. Currently only supports a list of operation ids to roll back.
+    /// </summary>
+    public class RollbackHL7MessagesFilteringFields : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. A list of operation IDs to roll back.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationIds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<ulong>> OperationIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Point in time recovery rollback request.</summary>
+    public class RollbackHl7V2MessagesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. CREATE/UPDATE/DELETE/ALL for reverting all txns of a certain type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("changeType")]
+        public virtual string ChangeType { get; set; }
+
+        /// <summary>Optional. Specifies whether to exclude earlier rollbacks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeRollbacks")]
+        public virtual System.Nullable<bool> ExcludeRollbacks { get; set; }
+
+        /// <summary>Optional. Parameters for filtering.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filteringFields")]
+        public virtual RollbackHL7MessagesFilteringFields FilteringFields { get; set; }
+
+        /// <summary>Optional. When enabled, changes will be reverted without explicit confirmation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("force")]
+        public virtual System.Nullable<bool> Force { get; set; }
+
+        /// <summary>
+        /// Optional. Cloud storage object containing list of {resourceId} lines, identifying resources to be reverted
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputGcsObject")]
+        public virtual string InputGcsObject { get; set; }
+
+        /// <summary>Required. Bucket to deposit result</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resultGcsBucket")]
+        public virtual string ResultGcsBucket { get; set; }
+
+        private string _rollbackTimeRaw;
+
+        private object _rollbackTime;
+
+        /// <summary>Required. Times point to rollback to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rollbackTime")]
+        public virtual string RollbackTimeRaw
+        {
+            get => _rollbackTimeRaw;
+            set
+            {
+                _rollbackTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _rollbackTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="RollbackTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use RollbackTimeDateTimeOffset instead.")]
+        public virtual object RollbackTime
+        {
+            get => _rollbackTime;
+            set
+            {
+                _rollbackTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _rollbackTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="RollbackTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? RollbackTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.DiscoveryFormat.ParseGoogleDateTimeToDateTimeOffset(RollbackTimeRaw);
+            set => RollbackTimeRaw = Google.Apis.Util.DiscoveryFormat.FormatDateTimeOffsetToGoogleDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Final response of rollback FHIR resources request.</summary>
+    public class RollbackHl7V2MessagesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The name of the HL7 store to rollback, in the format of
+        /// "projects/{project_id}/locations/{location_id}/datasets/{dataset_id} /hl7v2Stores/{fhir_store_id}".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hl7v2Store")]
+        public virtual string Hl7v2Store { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
