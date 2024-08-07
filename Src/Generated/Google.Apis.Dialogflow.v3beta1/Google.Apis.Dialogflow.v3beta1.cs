@@ -1299,8 +1299,8 @@ namespace Google.Apis.Dialogflow.v3beta1
 
                         /// <summary>Fetches a list of continuous test results for a given environment.</summary>
                         /// <param name="parent">
-                        /// Required. The environment to list results for. Format: `projects//locations//agents//
-                        /// environments/`.
+                        /// Required. The environment to list results for. Format:
+                        /// `projects//locations//agents//environments/`.
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
@@ -1318,8 +1318,8 @@ namespace Google.Apis.Dialogflow.v3beta1
                             }
 
                             /// <summary>
-                            /// Required. The environment to list results for. Format: `projects//locations//agents//
-                            /// environments/`.
+                            /// Required. The environment to list results for. Format:
+                            /// `projects//locations//agents//environments/`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -1779,8 +1779,7 @@ namespace Google.Apis.Dialogflow.v3beta1
                         /// <summary>Updates the specified Experiment.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="name">
-                        /// The name of the experiment. Format:
-                        /// projects//locations//agents//environments//experiments/..
+                        /// The name of the experiment. Format: projects//locations//agents//environments//experiments/.
                         /// </param>
                         public virtual PatchRequest Patch(Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1Experiment body, string name)
                         {
@@ -1800,7 +1799,7 @@ namespace Google.Apis.Dialogflow.v3beta1
 
                             /// <summary>
                             /// The name of the experiment. Format:
-                            /// projects//locations//agents//environments//experiments/..
+                            /// projects//locations//agents//environments//experiments/.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -2801,8 +2800,8 @@ namespace Google.Apis.Dialogflow.v3beta1
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="environment">
-                    /// Required. The environment to deploy the flow to. Format: `projects//locations//agents//
-                    /// environments/`.
+                    /// Required. The environment to deploy the flow to. Format:
+                    /// `projects//locations//agents//environments/`.
                     /// </param>
                     public virtual DeployFlowRequest DeployFlow(Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1DeployFlowRequest body, string environment)
                     {
@@ -2826,8 +2825,8 @@ namespace Google.Apis.Dialogflow.v3beta1
                         }
 
                         /// <summary>
-                        /// Required. The environment to deploy the flow to. Format: `projects//locations//agents//
-                        /// environments/`.
+                        /// Required. The environment to deploy the flow to. Format:
+                        /// `projects//locations//agents//environments/`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("environment", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Environment { get; private set; }
@@ -4156,7 +4155,7 @@ namespace Google.Apis.Dialogflow.v3beta1
                         /// <param name="baseVersion">
                         /// Required. Name of the base flow version to compare with the target version. Use version ID
                         /// `0` to indicate the draft version of the specified flow. Format:
-                        /// `projects//locations//agents/ /flows//versions/`.
+                        /// `projects//locations//agents//flows//versions/`.
                         /// </param>
                         public virtual CompareVersionsRequest CompareVersions(Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1CompareVersionsRequest body, string baseVersion)
                         {
@@ -4177,7 +4176,7 @@ namespace Google.Apis.Dialogflow.v3beta1
                             /// <summary>
                             /// Required. Name of the base flow version to compare with the target version. Use version
                             /// ID `0` to indicate the draft version of the specified flow. Format:
-                            /// `projects//locations//agents/ /flows//versions/`.
+                            /// `projects//locations//agents//flows//versions/`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("baseVersion", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string BaseVersion { get; private set; }
@@ -8106,9 +8105,9 @@ namespace Google.Apis.Dialogflow.v3beta1
                         /// for each test case.
                         /// </summary>
                         /// <param name="parent">
-                        /// Required. The test case to list results for. Format: `projects//locations//agents//
-                        /// testCases/`. Specify a `-` as a wildcard for TestCase ID to list results across multiple
-                        /// test cases.
+                        /// Required. The test case to list results for. Format:
+                        /// `projects//locations//agents//testCases/`. Specify a `-` as a wildcard for TestCase ID to
+                        /// list results across multiple test cases.
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
@@ -8129,9 +8128,9 @@ namespace Google.Apis.Dialogflow.v3beta1
                             }
 
                             /// <summary>
-                            /// Required. The test case to list results for. Format: `projects//locations//agents//
-                            /// testCases/`. Specify a `-` as a wildcard for TestCase ID to list results across multiple
-                            /// test cases.
+                            /// Required. The test case to list results for. Format:
+                            /// `projects//locations//agents//testCases/`. Specify a `-` as a wildcard for TestCase ID
+                            /// to list results across multiple test cases.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -8275,7 +8274,7 @@ namespace Google.Apis.Dialogflow.v3beta1
                     /// BatchRunTestCasesMetadata - `response`: BatchRunTestCasesResponse
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="parent">Required. Agent name. Format: `projects//locations//agents/ `.</param>
+                    /// <param name="parent">Required. Agent name. Format: `projects//locations//agents/`.</param>
                     public virtual BatchRunRequest BatchRun(Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1BatchRunTestCasesRequest body, string parent)
                     {
                         return new BatchRunRequest(this.service, body, parent);
@@ -8297,7 +8296,7 @@ namespace Google.Apis.Dialogflow.v3beta1
                             InitParameters();
                         }
 
-                        /// <summary>Required. Agent name. Format: `projects//locations//agents/ `.</summary>
+                        /// <summary>Required. Agent name. Format: `projects//locations//agents/`.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
@@ -8774,7 +8773,7 @@ namespace Google.Apis.Dialogflow.v3beta1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// The unique identifier of the test case. TestCases.CreateTestCase will populate the name
-                    /// automatically. Otherwise use format: `projects//locations//agents/ /testCases/`.
+                    /// automatically. Otherwise use format: `projects//locations//agents//testCases/`.
                     /// </param>
                     public virtual PatchRequest Patch(Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1TestCase body, string name)
                     {
@@ -8794,7 +8793,7 @@ namespace Google.Apis.Dialogflow.v3beta1
 
                         /// <summary>
                         /// The unique identifier of the test case. TestCases.CreateTestCase will populate the name
-                        /// automatically. Otherwise use format: `projects//locations//agents/ /testCases/`.
+                        /// automatically. Otherwise use format: `projects//locations//agents//testCases/`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -8852,7 +8851,7 @@ namespace Google.Apis.Dialogflow.v3beta1
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
-                    /// Required. Format of test case name to run: `projects//locations/ /agents//testCases/`.
+                    /// Required. Format of test case name to run: `projects//locations//agents//testCases/`.
                     /// </param>
                     public virtual RunRequest Run(Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1RunTestCaseRequest body, string name)
                     {
@@ -8876,7 +8875,7 @@ namespace Google.Apis.Dialogflow.v3beta1
                         }
 
                         /// <summary>
-                        /// Required. Format of test case name to run: `projects//locations/ /agents//testCases/`.
+                        /// Required. Format of test case name to run: `projects//locations//agents//testCases/`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -11801,7 +11800,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableInteractionLogging")]
         public virtual System.Nullable<bool> EnableInteractionLogging { get; set; }
 
-        /// <summary>Enables StackDriver logging.</summary>
+        /// <summary>Enables Google Cloud Logging.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableStackdriverLogging")]
         public virtual System.Nullable<bool> EnableStackdriverLogging { get; set; }
 
@@ -12136,7 +12135,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     public class GoogleCloudDialogflowCxV3DeployFlowResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The name of the flow version Deployment. Format: `projects//locations//agents// environments//deployments/`.
+        /// The name of the flow version Deployment. Format: `projects//locations//agents//environments//deployments/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deployment")]
         public virtual string Deployment { get; set; }
@@ -12265,7 +12264,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
 
         /// <summary>
         /// A list of test case names to run. They should be under the same agent. Format of each test case name:
-        /// `projects//locations/ /agents//testCases/`
+        /// `projects//locations//agents//testCases/`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testCases")]
         public virtual System.Collections.Generic.IList<string> TestCases { get; set; }
@@ -13781,7 +13780,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
 
         /// <summary>
         /// The unique identifier of the test case. TestCases.CreateTestCase will populate the name automatically.
-        /// Otherwise use format: `projects//locations//agents/ /testCases/`.
+        /// Otherwise use format: `projects//locations//agents//testCases/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -13839,7 +13838,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string Environment { get; set; }
 
         /// <summary>
-        /// The resource name for the test case result. Format: `projects//locations//agents//testCases/ /results/`.
+        /// The resource name for the test case result. Format: `projects//locations//agents//testCases//results/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -14610,7 +14609,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableInteractionLogging")]
         public virtual System.Nullable<bool> EnableInteractionLogging { get; set; }
 
-        /// <summary>Enables StackDriver logging.</summary>
+        /// <summary>Enables Google Cloud Logging.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableStackdriverLogging")]
         public virtual System.Nullable<bool> EnableStackdriverLogging { get; set; }
 
@@ -14989,7 +14988,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     /// <summary>The request message for TestCases.BatchDeleteTestCases.</summary>
     public class GoogleCloudDialogflowCxV3beta1BatchDeleteTestCasesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Format of test case names: `projects//locations/ /agents//testCases/`.</summary>
+        /// <summary>Required. Format of test case names: `projects//locations//agents//testCases/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("names")]
         public virtual System.Collections.Generic.IList<string> Names { get; set; }
 
@@ -15999,7 +15998,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     public class GoogleCloudDialogflowCxV3beta1DeployFlowRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The flow version to deploy. Format: `projects//locations//agents// flows//versions/`.
+        /// Required. The flow version to deploy. Format: `projects//locations//agents//flows//versions/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flowVersion")]
         public virtual string FlowVersion { get; set; }
@@ -16012,7 +16011,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     public class GoogleCloudDialogflowCxV3beta1DeployFlowResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The name of the flow version deployment. Format: `projects//locations//agents// environments//deployments/`.
+        /// The name of the flow version deployment. Format: `projects//locations//agents//environments//deployments/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deployment")]
         public virtual string Deployment { get; set; }
@@ -16441,7 +16440,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
 
         /// <summary>
         /// A list of test case names to run. They should be under the same agent. Format of each test case name:
-        /// `projects//locations/ /agents//testCases/`
+        /// `projects//locations//agents//testCases/`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testCases")]
         public virtual System.Collections.Generic.IList<string> TestCases { get; set; }
@@ -16793,7 +16792,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         }
 
         /// <summary>
-        /// The name of the experiment. Format: projects//locations//agents//environments//experiments/..
+        /// The name of the experiment. Format: projects//locations//agents//environments//experiments/.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -17418,6 +17417,13 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("knowledgeConnectorSettings")]
         public virtual GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings KnowledgeConnectorSettings { get; set; }
 
+        /// <summary>
+        /// Indicates whether the flow is locked for changes. If the flow is locked, modifications to the flow will be
+        /// rejected.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locked")]
+        public virtual System.Nullable<bool> Locked { get; set; }
+
         /// <summary>Optional. Multi-lingual agent settings for this flow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("multiLanguageSettings")]
         public virtual GoogleCloudDialogflowCxV3beta1FlowMultiLanguageSettings MultiLanguageSettings { get; set; }
@@ -17476,7 +17482,9 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     /// <summary>Stores metadata of the invocation of a CX flow. Next Id: 7</summary>
     public class GoogleCloudDialogflowCxV3beta1FlowInvocation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The unique identifier of the flow. Format: `projects//locations//agents/`.</summary>
+        /// <summary>
+        /// Required. The unique identifier of the flow. Format: `projects//locations//agents//flows/`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flow")]
         public virtual string Flow { get; set; }
 
@@ -18335,6 +18343,21 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Output only. The uncompressed byte content for the objects. Only populated in responses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A type schema object that's specified inline.</summary>
+    public class GoogleCloudDialogflowCxV3beta1InlineSchema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Schema of the elements if this is an ARRAY type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual GoogleCloudDialogflowCxV3beta1TypeSchema Items { get; set; }
+
+        /// <summary>Data type of the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -19517,9 +19540,13 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Required. Type of parameter.</summary>
+        /// <summary>Type of parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>Optional. Type schema of parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("typeSchema")]
+        public virtual GoogleCloudDialogflowCxV3beta1TypeSchema TypeSchema { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21081,7 +21108,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
 
         /// <summary>
         /// The unique identifier of the test case. TestCases.CreateTestCase will populate the name automatically.
-        /// Otherwise use format: `projects//locations//agents/ /testCases/`.
+        /// Otherwise use format: `projects//locations//agents//testCases/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -21139,7 +21166,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string Environment { get; set; }
 
         /// <summary>
-        /// The resource name for the test case result. Format: `projects//locations//agents//testCases/ /results/`.
+        /// The resource name for the test case result. Format: `projects//locations//agents//testCases//results/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -21577,7 +21604,7 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     {
         /// <summary>
         /// Required. The name of [Service Directory](https://cloud.google.com/service-directory) service. Format:
-        /// `projects//locations//namespaces//services/`. `Location ID` of the service directory must be the same as the
+        /// `projects//locations//namespaces//services/`. `LocationID` of the service directory must be the same as the
         /// location of the agent.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
@@ -21901,6 +21928,41 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Human-readable statuses of the webhooks triggered during this turn.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webhookStatuses")]
         public virtual System.Collections.Generic.IList<string> WebhookStatuses { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Encapsulates different type schema variations: either a reference to an a schema that's already defined by a
+    /// tool, or an inline definition.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3beta1TypeSchema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Set if this is an inline schema definition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inlineSchema")]
+        public virtual GoogleCloudDialogflowCxV3beta1InlineSchema InlineSchema { get; set; }
+
+        /// <summary>Set if this is a schema reference.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemaReference")]
+        public virtual GoogleCloudDialogflowCxV3beta1TypeSchemaSchemaReference SchemaReference { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A reference to the schema of an existing tool.</summary>
+    public class GoogleCloudDialogflowCxV3beta1TypeSchemaSchemaReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schema")]
+        public virtual string Schema { get; set; }
+
+        /// <summary>
+        /// The tool that contains this schema definition. Format: `projects//locations//agents//tools/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tool")]
+        public virtual string Tool { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
