@@ -17183,8 +17183,9 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string EntryType { get; set; }
 
         /// <summary>
-        /// Optional. A name for the entry that can be referenced by an external system. The maximum size of the field
-        /// is 4000 characters.
+        /// Optional. A name for the entry that can be referenced by an external system. For more information, see Fully
+        /// qualified names (https://cloud.google.com/data-catalog/docs/fully-qualified-names). The maximum size of the
+        /// field is 4000 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullyQualifiedName")]
         public virtual string FullyQualifiedName { get; set; }
