@@ -2618,30 +2618,30 @@ namespace Google.Apis.Monitoring.v3
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// If provided, this field specifies the criteria that must be met by alert policies to be included in
-                /// the response.For more details, see sorting and filtering
+                /// Optional. If provided, this field specifies the criteria that must be met by alert policies to be
+                /// included in the response.For more details, see sorting and filtering
                 /// (https://cloud.google.com/monitoring/api/v3/sorting-and-filtering).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
                 /// <summary>
-                /// A comma-separated list of fields by which to sort the result. Supports the same set of field
-                /// references as the filter field. Entries can be prefixed with a minus sign to sort by the field in
-                /// descending order.For more details, see sorting and filtering
+                /// Optional. A comma-separated list of fields by which to sort the result. Supports the same set of
+                /// field references as the filter field. Entries can be prefixed with a minus sign to sort by the field
+                /// in descending order.For more details, see sorting and filtering
                 /// (https://cloud.google.com/monitoring/api/v3/sorting-and-filtering).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
 
-                /// <summary>The maximum number of results to return in a single response.</summary>
+                /// <summary>Optional. The maximum number of results to return in a single response.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>
-                /// If this field is not empty then it must contain the nextPageToken value returned by a previous call
-                /// to this method. Using this field causes the method to return more results from the previous method
-                /// call.
+                /// Optional. If this field is not empty then it must contain the nextPageToken value returned by a
+                /// previous call to this method. Using this field causes the method to return more results from the
+                /// previous method call.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -2711,7 +2711,7 @@ namespace Google.Apis.Monitoring.v3
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Required if the policy exists. The resource name for this policy. The format is:
+            /// Identifier. Required if the policy exists. The resource name for this policy. The format is:
             /// projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] [ALERT_POLICY_ID] is assigned by Cloud
             /// Monitoring when the policy is created. When calling the alertPolicies.create method, do not include the
             /// name field in the alerting policy passed as part of the request.
@@ -2739,7 +2739,7 @@ namespace Google.Apis.Monitoring.v3
                 }
 
                 /// <summary>
-                /// Required if the policy exists. The resource name for this policy. The format is:
+                /// Identifier. Required if the policy exists. The resource name for this policy. The format is:
                 /// projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] [ALERT_POLICY_ID] is assigned by
                 /// Cloud Monitoring when the policy is created. When calling the alertPolicies.create method, do not
                 /// include the name field in the alerting policy passed as part of the request.
@@ -7726,7 +7726,7 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual MutationRecord MutationRecord { get; set; }
 
         /// <summary>
-        /// Required if the policy exists. The resource name for this policy. The format is:
+        /// Identifier. Required if the policy exists. The resource name for this policy. The format is:
         /// projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] [ALERT_POLICY_ID] is assigned by Cloud
         /// Monitoring when the policy is created. When calling the alertPolicies.create method, do not include the name
         /// field in the alerting policy passed as part of the request.
