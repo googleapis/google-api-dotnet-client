@@ -318,7 +318,7 @@ namespace Google.Apis.CloudDeploy.v1
                 /// <summary>Creates a new CustomTargetType in a given project and location.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The parent collection in which the `CustomTargetType` should be created. Format should be
+                /// Required. The parent collection in which the `CustomTargetType` must be created. The format is
                 /// `projects/{project_id}/locations/{location_name}`.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudDeploy.v1.Data.CustomTargetType body, string parent)
@@ -338,8 +338,8 @@ namespace Google.Apis.CloudDeploy.v1
                     }
 
                     /// <summary>
-                    /// Required. The parent collection in which the `CustomTargetType` should be created. Format should
-                    /// be `projects/{project_id}/locations/{location_name}`.
+                    /// Required. The parent collection in which the `CustomTargetType` must be created. The format is
+                    /// `projects/{project_id}/locations/{location_name}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -834,10 +834,10 @@ namespace Google.Apis.CloudDeploy.v1
                     public virtual string RequestId { get; set; }
 
                     /// <summary>
-                    /// Required. Field mask is used to specify the fields to be overwritten in the `CustomTargetType`
-                    /// resource by the update. The fields specified in the update_mask are relative to the resource,
-                    /// not the full request. A field will be overwritten if it's in the mask. If the user doesn't
-                    /// provide a mask then all fields are overwritten.
+                    /// Required. Field mask is used to specify the fields to be overwritten by the update in the
+                    /// `CustomTargetType` resource. The fields specified in the update_mask are relative to the
+                    /// resource, not the full request. A field will be overwritten if it's in the mask. If the user
+                    /// doesn't provide a mask then all fields are overwritten.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -1265,7 +1265,7 @@ namespace Google.Apis.CloudDeploy.v1
                     /// <summary>Creates a new Automation in a given project and location.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
-                    /// Required. The parent collection in which the `Automation` should be created. Format should be
+                    /// Required. The parent collection in which the `Automation` must be created. The format is
                     /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}`.
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.CloudDeploy.v1.Data.Automation body, string parent)
@@ -1285,8 +1285,8 @@ namespace Google.Apis.CloudDeploy.v1
                         }
 
                         /// <summary>
-                        /// Required. The parent collection in which the `Automation` should be created. Format should
-                        /// be `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}`.
+                        /// Required. The parent collection in which the `Automation` must be created. The format is
+                        /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -1372,7 +1372,7 @@ namespace Google.Apis.CloudDeploy.v1
 
                     /// <summary>Deletes a single Automation resource.</summary>
                     /// <param name="name">
-                    /// Required. The name of the `Automation` to delete. Format should be
+                    /// Required. The name of the `Automation` to delete. The format is
                     /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/automations/{automation_name}`.
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
@@ -1391,7 +1391,7 @@ namespace Google.Apis.CloudDeploy.v1
                         }
 
                         /// <summary>
-                        /// Required. The name of the `Automation` to delete. Format should be
+                        /// Required. The name of the `Automation` to delete. The format is
                         /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/automations/{automation_name}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1698,10 +1698,10 @@ namespace Google.Apis.CloudDeploy.v1
                         public virtual string RequestId { get; set; }
 
                         /// <summary>
-                        /// Required. Field mask is used to specify the fields to be overwritten in the `Automation`
-                        /// resource by the update. The fields specified in the update_mask are relative to the
-                        /// resource, not the full request. A field will be overwritten if it's in the mask. If the user
-                        /// doesn't provide a mask then all fields are overwritten.
+                        /// Required. Field mask is used to specify the fields to be overwritten by the update in the
+                        /// `Automation` resource. The fields specified in the update_mask are relative to the resource,
+                        /// not the full request. A field will be overwritten if it's in the mask. If the user doesn't
+                        /// provide a mask then all fields are overwritten.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
@@ -2231,7 +2231,7 @@ namespace Google.Apis.CloudDeploy.v1
                         /// <summary>Creates a new Rollout in a given project and location.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">
-                        /// Required. The parent collection in which the `Rollout` should be created. Format should be
+                        /// Required. The parent collection in which the `Rollout` must be created. The format is
                         /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/releases/{release_name}`.
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.CloudDeploy.v1.Data.Rollout body, string parent)
@@ -2251,8 +2251,7 @@ namespace Google.Apis.CloudDeploy.v1
                             }
 
                             /// <summary>
-                            /// Required. The parent collection in which the `Rollout` should be created. Format should
-                            /// be
+                            /// Required. The parent collection in which the `Rollout` must be created. The format is
                             /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}/releases/{release_name}`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -2694,7 +2693,7 @@ namespace Google.Apis.CloudDeploy.v1
                     /// <summary>Creates a new Release in a given project and location.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
-                    /// Required. The parent collection in which the `Release` should be created. Format should be
+                    /// Required. The parent collection in which the `Release` is created. The format is
                     /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}`.
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.CloudDeploy.v1.Data.Release body, string parent)
@@ -2714,7 +2713,7 @@ namespace Google.Apis.CloudDeploy.v1
                         }
 
                         /// <summary>
-                        /// Required. The parent collection in which the `Release` should be created. Format should be
+                        /// Required. The parent collection in which the `Release` is created. The format is
                         /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -2963,7 +2962,7 @@ namespace Google.Apis.CloudDeploy.v1
                 /// <summary>Creates a new DeliveryPipeline in a given project and location.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The parent collection in which the `DeliveryPipeline` should be created. Format should be
+                /// Required. The parent collection in which the `DeliveryPipeline` must be created. The format is
                 /// `projects/{project_id}/locations/{location_name}`.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudDeploy.v1.Data.DeliveryPipeline body, string parent)
@@ -2983,8 +2982,8 @@ namespace Google.Apis.CloudDeploy.v1
                     }
 
                     /// <summary>
-                    /// Required. The parent collection in which the `DeliveryPipeline` should be created. Format should
-                    /// be `projects/{project_id}/locations/{location_name}`.
+                    /// Required. The parent collection in which the `DeliveryPipeline` must be created. The format is
+                    /// `projects/{project_id}/locations/{location_name}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -3069,7 +3068,7 @@ namespace Google.Apis.CloudDeploy.v1
 
                 /// <summary>Deletes a single DeliveryPipeline.</summary>
                 /// <param name="name">
-                /// Required. The name of the `DeliveryPipeline` to delete. Format should be
+                /// Required. The name of the `DeliveryPipeline` to delete. The format is
                 /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}`.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
@@ -3088,7 +3087,7 @@ namespace Google.Apis.CloudDeploy.v1
                     }
 
                     /// <summary>
-                    /// Required. The name of the `DeliveryPipeline` to delete. Format should be
+                    /// Required. The name of the `DeliveryPipeline` to delete. The format is
                     /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -3491,10 +3490,10 @@ namespace Google.Apis.CloudDeploy.v1
                     public virtual string RequestId { get; set; }
 
                     /// <summary>
-                    /// Required. Field mask is used to specify the fields to be overwritten in the `DeliveryPipeline`
-                    /// resource by the update. The fields specified in the update_mask are relative to the resource,
-                    /// not the full request. A field will be overwritten if it's in the mask. If the user doesn't
-                    /// provide a mask then all fields are overwritten.
+                    /// Required. Field mask is used to specify the fields to be overwritten by the update in the
+                    /// `DeliveryPipeline` resource. The fields specified in the update_mask are relative to the
+                    /// resource, not the full request. A field will be overwritten if it's in the mask. If the user
+                    /// doesn't provide a mask then all fields are overwritten.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -3571,8 +3570,8 @@ namespace Google.Apis.CloudDeploy.v1
                 /// <summary>Creates a `Rollout` to roll back the specified target.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. The `DeliveryPipeline` for which the rollback `Rollout` should be created. Format should
-                /// be `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}`.
+                /// Required. The `DeliveryPipeline` for which the rollback `Rollout` must be created. The format is
+                /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}`.
                 /// </param>
                 public virtual RollbackTargetRequest RollbackTarget(Google.Apis.CloudDeploy.v1.Data.RollbackTargetRequest body, string name)
                 {
@@ -3591,8 +3590,8 @@ namespace Google.Apis.CloudDeploy.v1
                     }
 
                     /// <summary>
-                    /// Required. The `DeliveryPipeline` for which the rollback `Rollout` should be created. Format
-                    /// should be `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}`.
+                    /// Required. The `DeliveryPipeline` for which the rollback `Rollout` must be created. The format is
+                    /// `projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -4062,7 +4061,7 @@ namespace Google.Apis.CloudDeploy.v1
                 /// <summary>Creates a new Target in a given project and location.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The parent collection in which the `Target` should be created. Format should be
+                /// Required. The parent collection in which the `Target` must be created. The format is
                 /// `projects/{project_id}/locations/{location_name}`.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.CloudDeploy.v1.Data.Target body, string parent)
@@ -4082,7 +4081,7 @@ namespace Google.Apis.CloudDeploy.v1
                     }
 
                     /// <summary>
-                    /// Required. The parent collection in which the `Target` should be created. Format should be
+                    /// Required. The parent collection in which the `Target` must be created. The format is
                     /// `projects/{project_id}/locations/{location_name}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -4168,7 +4167,7 @@ namespace Google.Apis.CloudDeploy.v1
 
                 /// <summary>Deletes a single Target.</summary>
                 /// <param name="name">
-                /// Required. The name of the `Target` to delete. Format should be
+                /// Required. The name of the `Target` to delete. The format is
                 /// `projects/{project_id}/locations/{location_name}/targets/{target_name}`.
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
@@ -4187,7 +4186,7 @@ namespace Google.Apis.CloudDeploy.v1
                     }
 
                     /// <summary>
-                    /// Required. The name of the `Target` to delete. Format should be
+                    /// Required. The name of the `Target` to delete. The format is
                     /// `projects/{project_id}/locations/{location_name}/targets/{target_name}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -4577,10 +4576,10 @@ namespace Google.Apis.CloudDeploy.v1
                     public virtual string RequestId { get; set; }
 
                     /// <summary>
-                    /// Required. Field mask is used to specify the fields to be overwritten in the Target resource by
-                    /// the update. The fields specified in the update_mask are relative to the resource, not the full
-                    /// request. A field will be overwritten if it's in the mask. If the user doesn't provide a mask
-                    /// then all fields are overwritten.
+                    /// Required. Field mask is used to specify the fields to be overwritten by the update in the
+                    /// `Target` resource. The fields specified in the update_mask are relative to the resource, not the
+                    /// full request. A field will be overwritten if it's in the mask. If the user doesn't provide a
+                    /// mask then all fields are overwritten.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -6226,6 +6225,32 @@ namespace Google.Apis.CloudDeploy.v1.Data
     }
 
     /// <summary>
+    /// Payload proto for "clouddeploy.googleapis.com/customtargettype_notification" Platform Log event that describes
+    /// the failure to send a custom target type status change Pub/Sub notification.
+    /// </summary>
+    public class CustomTargetTypeNotificationEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the `CustomTargetType`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customTargetType")]
+        public virtual string CustomTargetType { get; set; }
+
+        /// <summary>Unique identifier of the `CustomTargetType`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customTargetTypeUid")]
+        public virtual string CustomTargetTypeUid { get; set; }
+
+        /// <summary>Debug message for when a notification fails to send.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>Type of this notification, e.g. for a Pub/Sub failure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
     /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
     /// of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year
@@ -6532,6 +6557,32 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Payload proto for "clouddeploy.googleapis.com/deploypolicy_notification". Platform Log event that describes the
+    /// failure to send a pub/sub notification when there is a DeployPolicy status change.
+    /// </summary>
+    public class DeployPolicyNotificationEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the `DeployPolicy`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployPolicy")]
+        public virtual string DeployPolicy { get; set; }
+
+        /// <summary>Unique identifier of the deploy policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployPolicyUid")]
+        public virtual string DeployPolicyUid { get; set; }
+
+        /// <summary>Debug message for when a deploy policy fails to send a pub/sub notification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>Type of this notification, e.g. for a Pub/Sub failure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Deployment job composition.</summary>
     public class DeploymentJobs : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6677,6 +6728,13 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>Required. Name of the Gateway API HTTPRoute.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpRoute")]
         public virtual string HttpRoute { get; set; }
+
+        /// <summary>
+        /// Optional. The label to use when selecting Pods for the Deployment and Service resources. This label must
+        /// already be present in both resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("podSelectorLabel")]
+        public virtual string PodSelectorLabel { get; set; }
 
         /// <summary>
         /// Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in
@@ -7851,7 +7909,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
     }
 
     /// <summary>
-    /// `PromoteRelease` rule will automatically promote a release from the current target to a specified target.
+    /// The `PromoteRelease` rule will automatically promote a release from the current target to a specified target.
     /// </summary>
     public class PromoteReleaseRule : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8868,6 +8926,13 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disablePodOverprovisioning")]
         public virtual System.Nullable<bool> DisablePodOverprovisioning { get; set; }
+
+        /// <summary>
+        /// Optional. The label to use when selecting Pods for the Deployment resource. This label must already be
+        /// present in the Deployment.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("podSelectorLabel")]
+        public virtual string PodSelectorLabel { get; set; }
 
         /// <summary>Required. Name of the Kubernetes Service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
