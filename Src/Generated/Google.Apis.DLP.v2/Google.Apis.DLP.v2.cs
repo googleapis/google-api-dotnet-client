@@ -1762,7 +1762,7 @@ namespace Google.Apis.DLP.v2
                 /// Lists Connections in a parent. Use SearchConnections to see all connections within an organization.
                 /// </summary>
                 /// <param name="parent">
-                /// Required. Resource name of the organization or project, for example
+                /// Required. Resource name of the organization or project, for example,
                 /// `organizations/433245324/locations/europe` or `projects/project-id/locations/asia`.
                 /// </param>
                 public virtual ListRequest List(string parent)
@@ -1783,7 +1783,7 @@ namespace Google.Apis.DLP.v2
                     }
 
                     /// <summary>
-                    /// Required. Resource name of the organization or project, for example
+                    /// Required. Resource name of the organization or project, for example,
                     /// `organizations/433245324/locations/europe` or `projects/project-id/locations/asia`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -1913,7 +1913,7 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>Searches for Connections in a parent.</summary>
                 /// <param name="parent">
-                /// Required. Resource name of the organization or project with a wildcard location, for example
+                /// Required. Resource name of the organization or project with a wildcard location, for example,
                 /// `organizations/433245324/locations/-` or `projects/project-id/locations/-`.
                 /// </param>
                 public virtual SearchRequest Search(string parent)
@@ -1932,7 +1932,7 @@ namespace Google.Apis.DLP.v2
                     }
 
                     /// <summary>
-                    /// Required. Resource name of the organization or project with a wildcard location, for example
+                    /// Required. Resource name of the organization or project with a wildcard location, for example,
                     /// `organizations/433245324/locations/-` or `projects/project-id/locations/-`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -7895,7 +7895,7 @@ namespace Google.Apis.DLP.v2
                 /// Lists Connections in a parent. Use SearchConnections to see all connections within an organization.
                 /// </summary>
                 /// <param name="parent">
-                /// Required. Resource name of the organization or project, for example
+                /// Required. Resource name of the organization or project, for example,
                 /// `organizations/433245324/locations/europe` or `projects/project-id/locations/asia`.
                 /// </param>
                 public virtual ListRequest List(string parent)
@@ -7916,7 +7916,7 @@ namespace Google.Apis.DLP.v2
                     }
 
                     /// <summary>
-                    /// Required. Resource name of the organization or project, for example
+                    /// Required. Resource name of the organization or project, for example,
                     /// `organizations/433245324/locations/europe` or `projects/project-id/locations/asia`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -8046,7 +8046,7 @@ namespace Google.Apis.DLP.v2
 
                 /// <summary>Searches for Connections in a parent.</summary>
                 /// <param name="parent">
-                /// Required. Resource name of the organization or project with a wildcard location, for example
+                /// Required. Resource name of the organization or project with a wildcard location, for example,
                 /// `organizations/433245324/locations/-` or `projects/project-id/locations/-`.
                 /// </param>
                 public virtual SearchRequest Search(string parent)
@@ -8065,7 +8065,7 @@ namespace Google.Apis.DLP.v2
                     }
 
                     /// <summary>
-                    /// Required. Resource name of the organization or project with a wildcard location, for example
+                    /// Required. Resource name of the organization or project with a wildcard location, for example,
                     /// `organizations/433245324/locations/-` or `projects/project-id/locations/-`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -15290,7 +15290,8 @@ namespace Google.Apis.DLP.v2.Data
         public virtual GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence InspectTemplateModifiedCadence { get; set; }
 
         /// <summary>
-        /// Frequency to update profiles regardless of whether the underlying resource has changed. Defaults to never.
+        /// Frequency at which profiles should be updated, regardless of whether the underlying resource has changed.
+        /// Defaults to never.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("refreshFrequency")]
         public virtual string RefreshFrequency { get; set; }
@@ -15345,7 +15346,7 @@ namespace Google.Apis.DLP.v2.Data
     /// </summary>
     public class GooglePrivacyDlpV2DiscoveryStartingLocation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ID of the folder within an organization to scan.</summary>
+        /// <summary>The ID of the folder within an organization to be scanned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("folderId")]
         public virtual System.Nullable<long> FolderId { get; set; }
 
