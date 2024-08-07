@@ -1625,6 +1625,28 @@ namespace Google.Apis.Connectors.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// AuthCodeData contains the data the runtime plane will give the connector backend in exchange for access and
+    /// refresh tokens.
+    /// </summary>
+    public class AuthCodeData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>OAuth authorization code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authCode")]
+        public virtual string AuthCode { get; set; }
+
+        /// <summary>OAuth PKCE verifier, needed if PKCE is enabled for this particular connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pkceVerifier")]
+        public virtual string PkceVerifier { get; set; }
+
+        /// <summary>OAuth redirect URI passed in during the auth code flow, required by some OAuth backends.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redirectUri")]
+        public virtual string RedirectUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response containing status of the connector for readiness prober.</summary>
     public class CheckReadinessResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1786,9 +1808,16 @@ namespace Google.Apis.Connectors.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>ExchangeAuthCodeRequest currently includes no fields.</summary>
+    /// <summary>ExchangeAuthCodeRequest currently includes the auth code data.</summary>
     public class ExchangeAuthCodeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. AuthCodeData contains the data the runtime requires to exchange for access and refresh tokens. If
+        /// the data is not provided, the runtime will read the data from the secret manager.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authCodeData")]
+        public virtual AuthCodeData AuthCodeData { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2714,9 +2743,16 @@ namespace Google.Apis.Connectors.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>RefreshAccessTokenRequest currently includes no fields.</summary>
+    /// <summary>RefreshAccessTokenRequest includes the refresh token.</summary>
     public class RefreshAccessTokenRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Refresh Token String. If the Refresh Token is not provided, the runtime will read the data from
+        /// the secret manager.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("refreshToken")]
+        public virtual string RefreshToken { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
